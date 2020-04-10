@@ -1,0 +1,48 @@
+---
+layout: default
+title: Projects
+description: Ach. Chanifuddin Fanani's Works
+---
+
+<section class="intro">
+
+	<div class="wrap">
+
+		<h1>What I've been up to</h1>
+		<!-- <p>Here's a selection of some work I've done since become web developer.</p> -->
+		<p>Here's a selection of some work I've done since I interested in web development. Some projects may look old-fashioned (they really are), but without them I can't go this far.</p>
+
+	</div>
+
+</section>
+
+<section class="portfolio">
+
+	<div class="content-wrap portfolio-wrap">
+
+		{% for project in site.projects reversed %}
+
+		<div class="portfolio-item">
+
+			<a class="portfolio-item__link" href="{{ project.url }}">
+
+				<div class="portfolio-item__image">
+					<img src="{{ project.featured_image  }}" alt="{{ project.title }}">
+				</div>
+
+				<div class="portfolio-item__content">
+					<div class="portfolio-item__info">
+						<h2 class="portfolio-item__title">{{ project.title }}</h2>
+						<p class="portfolio-item__subtitle">{{ project.subtitle }}</p>
+					</div>
+				</div>
+
+			</a>
+
+		</div>
+
+		{% endfor %}
+
+	</div>
+
+</section>

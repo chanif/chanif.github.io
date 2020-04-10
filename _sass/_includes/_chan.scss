@@ -1,0 +1,59 @@
+// - - - - - - - - - - - - - - - - - -
+
+// My custom style
+
+// - - - - - - - - - - - - - - - - - -
+
+
+.text-center{
+  text-align: center;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.div3{
+  width: 33.33%;
+  padding: 70px 30px 10px;
+
+  @include mq(phonel) {
+    width: 100%;
+  }
+
+  @include mq(tabletp) {
+    width: 33.33%;
+  }
+
+  p{
+    width: 90%;
+
+    @include mq(phonel) {
+      max-width: 70%;
+    }
+
+    @include mq(tabletp) {
+      max-width: 90%;
+    }
+  }
+
+  h3{
+    color: $accent-color;
+  }
+
+  h5{
+    margin-top: 0;
+    color: $text_light_color;
+  }
+}
+
+.big-icon{
+  color: #ccc;
+  font-size: 45px;
+  color: $text_medium_color;
+}
