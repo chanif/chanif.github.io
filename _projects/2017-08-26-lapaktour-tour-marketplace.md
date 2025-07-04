@@ -10,15 +10,15 @@ featured_image: '/images/projects/lapaktour/featured.jpg'
 
 ### Overview
 
-To be honest, this page does not fully contain an explanation of LapakTour.
+This project is an excellent example of a solution that evolved organically to meet dynamic business needs.
 
-This is the result of a poorly planned project, although all developers know that planning is the most crucial thing in developing applications.
+What began with a specific feature—to organize tour participants by bus and room—organically expanded into a comprehensive digital ecosystem composed of three core applications:
 
-Starting from a simple project to create an application that has a feature to group tour participants by bus & room, which then grows into 3 applications:
+1.  **A CMS (Content Management System)** to power the feliatour.com website.
+2.  **An advanced Event Manager** for solidmice.com, equipped with features to manage cashback & discounts via a queue system, and provide transaction summaries from all event stalls.
+3.  **LapakTour**, a marketplace platform designed to facilitate collaboration between travel agents. This platform represents the culmination of the project's evolution and is currently under development.
 
-1. CMS for feliatour.com
-2. Event manager for solidmice.com that has ability to manage cashback & discount with a queue system, and summary transaction data from all the stalls at certain events.
-3. LapakTour, the marketplace for tour packages that also has a feature for sharing tour packages between travel agents. LapakTour is still under development.
+This project demonstrates the ability to adapt to an expanding scope and deliver a multifaceted, integrated software solution.
 
 | Technology: |
 |-------------|
