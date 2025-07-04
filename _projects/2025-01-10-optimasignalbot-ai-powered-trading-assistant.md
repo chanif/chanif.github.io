@@ -6,7 +6,7 @@ description: A portfolio entry detailing the development of OptimaSignalBot, a f
 featured_image: '/images/projects/optimasignalbot/featured.jpeg'
 ---
 
-![](/images/projects/optimasignalbot/featured.jpeg)
+![](/images/projects/optimasignalbot/07.jpg)
 
 ### Project Overview
 
