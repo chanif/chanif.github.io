@@ -16,13 +16,13 @@ The development focused on creating a robust system capable of delivering timely
 
 ### Core Functionality
 
-As the developer, I implemented a range of features to create a multifaceted tool:
+As the developer, I implemented the following set of core functionalities to create a multifaceted tool:
 
-* **Signal Delivery & Performance Tracking:** A primary function is the real-time delivery of Forex and crypto signals. The system was built not only to push these alerts instantly but also to track the subsequent performance of each signal, reporting the outcome as either a profit or a loss. This creates a transparent performance record.
-
-* **Crypto Screener Module:** To provide deeper analytical capabilities, a crypto screening module was integrated. This feature allows users to filter and identify cryptocurrencies based on various technical parameters directly within the chat interface.
-
-* **Economic Calendar & Event Notifications:** The bot includes a built-in Economic Calendar. I developed a notification system that automatically sends an alert 30 minutes prior to significant economic events, ensuring users are aware of potential market volatility.
+| Functionality                          | Implementation Details                                                                                                               |
+|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| **Signal Delivery & Performance Tracking** | Built a system to deliver real-time Forex/crypto signals and subsequently track their profit/loss performance, providing a transparent analytical record. |
+| **Crypto Screener Module** | Integrated a data-driven module allowing users to filter and identify cryptocurrencies based on technical parameters within the chat interface. |
+| **Economic Calendar & Event Alerts** | Implemented an automated system that fetches economic calendar data and sends alerts 30 minutes before significant market events.       |
 
 ### Technical Scope
 
@@ -32,7 +32,7 @@ The scope of work for this project included:
 |--------------------------|-----------------------------------------------------------------------------|
 | **Real-Time Notifications** | Pushes trading signals and performance results instantly to users.          |
 | **Crypto Screener** | An integrated tool to filter cryptocurrencies on technical criteria.        |
-| **Economic Calendar API** | Fetches and displays key upcoming economic events.                          |
+| **Economic Calendar** | Fetches and displays key upcoming economic events.                          |
 | **Automated Alerts** | A notification system for events scheduled 30 minutes in advance.         |
 | **Information Hub** | Delivers relevant trading news and analysis within the bot.                 |
 
