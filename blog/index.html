@@ -1,30 +1,20 @@
 ---
 layout: default
 title: Classroom
-description: A collection of tutorials, articles, and learning resources about programming and technology by Ach. Chanifuddin Fanani.
+description: Practical tutorials and learning resources on programming and technology, tailored for Indonesian educators and for student self-study.
 ---
 
 <section class="intro">
-
 	<div class="wrap">
-
-		<h1>Welcome to the Classroom</h1>
-		<p>This is my dedicated space for sharing knowledge. Here you'll find tutorials, articles, and resources on web development, programming concepts, and other topics from the world of informatics.</p>
-
+		<h1>Informatics Learning Hub</h1>
+		<p>A collection of teaching materials, practical tutorials, and learning resources covering programming and technology, tailored for the Indonesian education community. Designed to be useful for fellow educators and for students on their self-learning journey.</p>
 	</div>
-
 </section>
-
 <section class="blog">
-
 	<div class="content-wrap blog-wrap">
-
 		{% for post in paginator.posts %}
-
 		<article class="blog-post">
-
 			<a class="blog-post__link" href="{{ post.url }}">
-
 				<div class="blog-post__image">
 					<img src="{{ post.featured_image  }}" alt="{{ post.title }}">
 				</div>
@@ -35,32 +25,23 @@ description: A collection of tutorials, articles, and learning resources about p
 						<p class="blog-post__subtitle">{{ post.date | date_to_long_string }}</p>
 					</div>
 				</div>
-
 			</a>
-
 		</article>
-
 		{% endfor %}
-
 	</div>
-
 </section>
 
 {% if paginator.total_pages > 1 %}
 
 <section class="pagination">
-
 	<div class="wrap">
-
 		{% if paginator.previous_page %}
 		<a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="button button--light pagination__prev"><i class="fa fa-angle-left" aria-hidden="true"></i> <span>Newer Posts</span></a>
 		{% endif %}
 		{% if paginator.next_page %}
 		<a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="button button--light pagination__next"><span>Older Posts</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 		{% endif %}
-
 	</div>
-
 </section>
 
 {% endif %}
