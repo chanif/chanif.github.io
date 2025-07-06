@@ -1,8 +1,6 @@
+# The source for downloading gems
 source 'https://rubygems.org'
 
-gem 'jekyll', '3.8.4'
-
-group :jekyll_plugins do
-  gem 'jekyll-paginate'
-  gem 'jekyll-sitemap'
-end
+# This gem handles all dependencies for GitHub Pages,
+# ensuring your local environment matches the live server.
+gem 'github-pages', group: :jekyll_plugins
