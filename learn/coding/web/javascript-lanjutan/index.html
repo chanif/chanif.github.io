@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tutorial JavaScript lanjutan: array, object, fetch API, asynchronous programming, ES6+, dan teknik modern untuk membuat web app yang dinamis.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>JavaScript Lanjutan: Function & Event | Coding untuk Pemula</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        pre,code{font-family:'JetBrains Mono',monospace;}
+        .code-block{background:#1e293b;color:#e2e8f0;padding:1.25rem 1.5rem;border-radius:1rem;overflow-x:auto;font-size:0.82rem;line-height:1.8;}
+        .kw{color:#f472b6;} .fn{color:#38bdf8;} .str{color:#fb923c;} .cm{color:#475569;} .num{color:#a78bfa;} .mt{color:#34d399;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] right-0 w-80 h-80 bg-yellow-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-8 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-indigo-600 hover:underline">← Tutorial Web</a>
+</nav>
+
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Tutorial Coding</a><span>/</span>
+        <a href="../" class="hover:text-indigo-600">Web</a><span>/</span>
+        <span class="text-slate-600 font-semibold">JavaScript Lanjutan</span>
+    </div>
+
+    <header class="pb-10">
+        <div class="inline-flex items-center gap-2 bg-yellow-50 text-yellow-700 font-heading font-bold px-4 py-2 rounded-full mb-5 text-sm">🚀 JavaScript · Tutorial 4</div>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-3 font-heading">JavaScript Lanjutan: <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">Function & Event</span></h1>
+        <p class="text-slate-500 leading-relaxed">Sudah tahu dasar JS? Saatnya naik level! Pelajari <strong>arrow function</strong>, <strong>array methods</strong>, <strong>event listener</strong>, dan buat mini proyek <strong>to-do list</strong> yang fungsional.</p>
+    </header>
+
+    <!-- Arrow Function -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">1. Arrow Function — Cara Modern Nulis Fungsi</h2>
+        <p class="text-slate-600 mb-4">Arrow function (<code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">=></code>) adalah cara menulis fungsi yang lebih singkat dan modern.</p>
+        <pre class="code-block"><code><span class="cm">// Fungsi biasa</span>
+<span class="kw">function</span> <span class="fn">sapa</span>(nama) {
+  <span class="kw">return</span> <span class="str">`Halo, ${nama}!`</span>;
+}
+
+<span class="cm">// Arrow function — lebih singkat!</span>
+<span class="kw">const</span> <span class="fn">sapa</span> = (nama) => <span class="str">`Halo, ${nama}!`</span>;
+
+<span class="cm">// Jika hanya 1 parameter, kurung boleh dihilangkan</span>
+<span class="kw">const</span> <span class="fn">kuadrat</span> = n => n * n;
+
+console.<span class="fn">log</span>(<span class="fn">sapa</span>(<span class="str">"Budi"</span>));   <span class="cm">// Halo, Budi!</span>
+console.<span class="fn">log</span>(<span class="fn">kuadrat</span>(<span class="num">5</span>));     <span class="cm">// 25</span></code></pre>
+    </section>
+
+    <!-- Array Methods -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">2. Array Methods — Olah Data dengan Elegan</h2>
+        <p class="text-slate-600 mb-4">Array punya method bawaan yang super berguna. Tiga yang paling sering dipakai:</p>
+        <pre class="code-block"><code><span class="kw">const</span> nilai = [<span class="num">75</span>, <span class="num">85</span>, <span class="num">60</span>, <span class="num">90</span>, <span class="num">55</span>];
+
+<span class="cm">// .filter() — ambil yang memenuhi syarat</span>
+<span class="kw">const</span> lulus = nilai.<span class="mt">filter</span>(n => n >= <span class="num">75</span>);
+console.<span class="fn">log</span>(lulus); <span class="cm">// [75, 85, 90]</span>
+
+<span class="cm">// .map() — ubah setiap item</span>
+<span class="kw">const</span> plusBonus = nilai.<span class="mt">map</span>(n => n + <span class="num">5</span>);
+console.<span class="fn">log</span>(plusBonus); <span class="cm">// [80, 90, 65, 95, 60]</span>
+
+<span class="cm">// .forEach() — lakukan sesuatu untuk tiap item</span>
+nilai.<span class="mt">forEach</span>((n, index) => {
+  console.<span class="fn">log</span>(<span class="str">`Siswa ${index+1}: nilai ${n}`</span>);
+});
+
+<span class="cm">// .find() — cari item pertama yang cocok</span>
+<span class="kw">const</span> pertamaDiatas80 = nilai.<span class="mt">find</span>(n => n > <span class="num">80</span>);
+console.<span class="fn">log</span>(pertamaDiatas80); <span class="cm">// 85</span></code></pre>
+    </section>
+
+    <!-- Event Listener -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">3. Event Listener — Reaksi terhadap Aksi User</h2>
+        <p class="text-slate-600 mb-4">Event listener "mendengarkan" aksi pengguna dan menjalankan kode saat aksi itu terjadi.</p>
+        <pre class="code-block"><code><span class="cm">// HTML-nya:</span>
+<span class="cm">// &lt;button id="tombol"&gt;Klik Aku!&lt;/button&gt;</span>
+<span class="cm">// &lt;p id="output"&gt;&lt;/p&gt;</span>
+
+<span class="kw">const</span> tombol = document.<span class="fn">getElementById</span>(<span class="str">'tombol'</span>);
+<span class="kw">const</span> output = document.<span class="fn">getElementById</span>(<span class="str">'output'</span>);
+
+<span class="cm">// Saat tombol diklik</span>
+tombol.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, () => {
+  output.textContent = <span class="str">'Kamu mengklik tombol! 🎉'</span>;
+  output.style.color = <span class="str">'green'</span>;
+});
+
+<span class="cm">// Event lain yang sering dipakai:</span>
+<span class="cm">// 'mouseover'  — saat mouse di atas elemen</span>
+<span class="cm">// 'keydown'    — saat keyboard ditekan</span>
+<span class="cm">// 'input'      — saat isi input berubah</span>
+<span class="cm">// 'submit'     — saat form disubmit</span></code></pre>
+    </section>
+
+    <!-- Template Literal -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">4. Template Literal & Destructuring</h2>
+        <pre class="code-block"><code><span class="cm">// Template Literal — string dengan variabel</span>
+<span class="kw">const</span> nama = <span class="str">"Siti"</span>;
+<span class="kw">const</span> nilai = <span class="num">88</span>;
+<span class="kw">const</span> pesan = <span class="str">`Selamat, ${nama}! Nilaimu ${nilai}. ${nilai >= 75 ? '✅ Lulus' : '❌ Remedial'}`</span>;
+console.<span class="fn">log</span>(pesan); <span class="cm">// Selamat, Siti! Nilaimu 88. ✅ Lulus</span>
+
+<span class="cm">// Destructuring Array</span>
+<span class="kw">const</span> [pertama, kedua, ...sisa] = [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>, <span class="num">40</span>];
+console.<span class="fn">log</span>(pertama); <span class="cm">// 10</span>
+console.<span class="fn">log</span>(sisa);    <span class="cm">// [30, 40]</span>
+
+<span class="cm">// Destructuring Object</span>
+<span class="kw">const</span> siswa = { nama: <span class="str">"Budi"</span>, kelas: <span class="str">"8A"</span>, nilai: <span class="num">90</span> };
+<span class="kw">const</span> { nama: namaSiswa, nilai: nilaiSiswa } = siswa;
+console.<span class="fn">log</span>(<span class="str">`${namaSiswa}: ${nilaiSiswa}`</span>); <span class="cm">// Budi: 90</span></code></pre>
+    </section>
+
+    <!-- Mini Proyek To-Do List -->
+    <section class="mb-8">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">5. 🏗️ Mini Proyek: To-Do List</h2>
+        <p class="text-slate-600 mb-4">Gabungkan semua yang sudah dipelajari! Buat aplikasi to-do list sederhana:</p>
+        <pre class="code-block"><code><span class="cm">&lt;!-- HTML --&gt;</span>
+&lt;input id=<span class="str">"input-tugas"</span> placeholder=<span class="str">"Tambah tugas..."</span>&gt;
+&lt;button id=<span class="str">"btn-tambah"</span>&gt;+ Tambah&lt;/button&gt;
+&lt;ul id=<span class="str">"daftar-tugas"</span>&gt;&lt;/ul&gt;
+
+<span class="cm">/* JavaScript */</span>
+<span class="kw">const</span> daftarTugas = [];
+
+<span class="kw">const</span> <span class="fn">tampilkanTugas</span> = () => {
+  <span class="kw">const</span> ul = document.<span class="fn">getElementById</span>(<span class="str">'daftar-tugas'</span>);
+  ul.innerHTML = daftarTugas.<span class="mt">map</span>((tugas, i) => <span class="str">`
+    &lt;li&gt;
+      ${tugas.selesai ? '&lt;s&gt;' : ''} ${tugas.teks} ${tugas.selesai ? '&lt;/s&gt;' : ''}
+      &lt;button onclick="selesaikan(${i})"&gt;✅&lt;/button&gt;
+      &lt;button onclick="hapus(${i})"&gt;🗑️&lt;/button&gt;
+    &lt;/li&gt;
+  `</span>).<span class="mt">join</span>(<span class="str">''</span>);
+};
+
+document.<span class="fn">getElementById</span>(<span class="str">'btn-tambah'</span>)
+  .<span class="fn">addEventListener</span>(<span class="str">'click'</span>, () => {
+    <span class="kw">const</span> input = document.<span class="fn">getElementById</span>(<span class="str">'input-tugas'</span>);
+    <span class="kw">if</span> (input.value.<span class="mt">trim</span>()) {
+      daftarTugas.<span class="mt">push</span>({ teks: input.value, selesai: <span class="kw">false</span> });
+      input.value = <span class="str">''</span>;
+      <span class="fn">tampilkanTugas</span>();
+    }
+  });
+
+<span class="kw">const</span> <span class="fn">selesaikan</span> = (i) => { daftarTugas[i].selesai = <span class="kw">true</span>; <span class="fn">tampilkanTugas</span>(); };
+<span class="kw">const</span> <span class="fn">hapus</span> = (i) => { daftarTugas.<span class="mt">splice</span>(i, <span class="num">1</span>); <span class="fn">tampilkanTugas</span>(); };</code></pre>
+        <div class="mt-4 bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-800">
+            ✅ <strong>Coba di CodePen!</strong> Copy kode di atas ke <a href="https://codepen.io/pen/" target="_blank" class="underline font-semibold">codepen.io</a> dan langsung bisa dicoba.
+        </div>
+    </section>
+
+    <!-- Navigasi -->
+    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+        <a href="../javascript-interaktif/" class="flex items-center gap-2 text-sm text-slate-500 hover:text-indigo-600 transition font-semibold">← Tutorial 3: JavaScript Dasar</a>
+        <a href="../../" class="flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-800 transition font-semibold">Semua Tutorial Web →</a>
+    </div>
+</main>
+
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>

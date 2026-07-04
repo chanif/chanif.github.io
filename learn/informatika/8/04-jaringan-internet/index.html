@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jaringan komputer dan internet: topologi jaringan, IP address, DNS, protokol HTTP/HTTPS, cara data bergerak di internet, dan konsep client-server.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Jaringan Komputer & Internet | Informatika Kelas 8</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
+        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
+        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
+        .prose strong{color:#1e293b;}
+        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
+        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
+        pre{background:#0f172a;color:#e2e8f0;padding:1.25rem;border-radius:.75rem;overflow-x:auto;font-size:.875rem;line-height:1.6;margin:1rem 0;}
+        code{font-family:'Courier New',monospace;}:not(pre)>code{background:#f1f5f9;color:#6366f1;padding:.15rem .4rem;border-radius:.35rem;font-size:.85em;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-emerald-600 hover:underline">← Kelas 8</a>
+</nav>
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
+        <a href="../" class="hover:text-emerald-600">Kelas 8</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Materi 4</span>
+    </div>
+    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 4 · Jaringan</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Jaringan Komputer & Internet 🌐</h1>
+            <p class="text-blue-100 leading-relaxed max-w-2xl">Bagaimana data bisa sampai dari HP-mu ke seluruh dunia dalam hitungan detik? Kenali cara internet bekerja lewat analogi yang mudah dipahami!</p>
+        </div>
+    </div>
+    <div class="prose max-w-none">
+        <h2>Internet Itu Apa Sih?</h2>
+        <p>Internet adalah <strong>jaringan komputer terbesar di dunia</strong> — menghubungkan miliaran perangkat dari HP, laptop, server, hingga kulkas pintar. Data bergerak melalui kabel bawah laut, gelombang radio WiFi, dan sinyal 4G/5G.</p>
+        <div class="callout callout-fun">
+            <p class="font-heading font-bold text-purple-800 mb-1">🌊 Fakta Keren!</p>
+            <p class="text-purple-700 text-sm">Lebih dari 95% data internet dunia berjalan melalui <strong>kabel optik bawah laut</strong>! Kabel-kabel ini membentang di dasar samudra menghubungkan benua-benua. Total panjangnya bisa mengelilingi bumi lebih dari 30 kali!</p>
+        </div>
+
+        <h2>Alamat IP — Alamat Rumahmu di Internet</h2>
+        <p>Setiap perangkat yang terhubung ke internet punya <strong>IP Address (Internet Protocol Address)</strong> — seperti alamat rumah agar data bisa dikirim ke tujuan yang tepat.</p>
+        <div class="not-prose grid md:grid-cols-2 gap-4 my-5">
+            <div class="bg-blue-50 border border-blue-100 rounded-xl p-4">
+                <p class="font-heading font-bold text-blue-800 mb-2">IPv4 (versi lama)</p>
+                <code class="text-blue-700 text-lg font-bold">192.168.1.1</code>
+                <p class="text-blue-600 text-xs mt-2">Format: 4 angka (0-255) dipisah titik. Total bisa ~4 miliar alamat — sekarang sudah hampir habis!</p>
+            </div>
+            <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4">
+                <p class="font-heading font-bold text-indigo-800 mb-2">IPv6 (versi baru)</p>
+                <code class="text-indigo-700 text-sm font-bold">2001:0db8:85a3::8a2e</code>
+                <p class="text-indigo-600 text-xs mt-2">Format lebih panjang dengan huruf dan angka. Bisa menampung 340 triliun triliun triliun alamat!</p>
+            </div>
+        </div>
+
+        <h2>DNS — Penerjemah Nama Website</h2>
+        <p>Saat kamu ketik <code>google.com</code>, komputermu tidak langsung tahu ke server mana harus pergi. <strong>DNS (Domain Name System)</strong> bertugas menerjemahkan nama domain menjadi IP address.</p>
+        <div class="not-prose my-5 bg-slate-50 border border-slate-200 rounded-xl p-5">
+            <p class="font-heading font-bold text-slate-700 mb-3">🗺️ Perjalanan Data Saat Buka Website</p>
+            <div class="space-y-2">
+                                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
+                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
+                    <span class="text-sm text-slate-700">⌨️ Kamu ketik "google.com" di browser</span>
+                </div>
+                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
+                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
+                    <span class="text-sm text-slate-700">🔍 Komputer tanya ke DNS: "Berapa IP address google.com?"</span>
+                </div>
+                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
+                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
+                    <span class="text-sm text-slate-700">📋 DNS jawab: "IP-nya 142.250.X.X"</span>
+                </div>
+                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
+                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
+                    <span class="text-sm text-slate-700">📤 Browser kirim permintaan ke server Google di IP tersebut</span>
+                </div>
+                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
+                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">5</span>
+                    <span class="text-sm text-slate-700">📥 Server Google kirim balik halaman web</span>
+                </div>
+                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
+                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">6</span>
+                    <span class="text-sm text-slate-700">🖥️ Browser tampilkan halaman di layarmu!</span>
+                </div>
+                            </div>
+        </div>
+
+        <h2>Jenis-Jenis Jaringan</h2>
+        <div class="not-prose grid md:grid-cols-3 gap-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">🏠</div>
+                <p class="font-heading font-extrabold text-blue-700 text-xl">LAN</p>
+                <p class="text-slate-500 text-xs font-semibold mb-2">Local Area Network</p>
+                <p class="text-slate-400 text-xs">WiFi di rumah atau sekolah. Jangkauan pendek, kecepatan tinggi.</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">🏙️</div>
+                <p class="font-heading font-extrabold text-blue-700 text-xl">MAN</p>
+                <p class="text-slate-500 text-xs font-semibold mb-2">Metropolitan Area Network</p>
+                <p class="text-slate-400 text-xs">Jaringan antar gedung pemerintah dalam satu kota.</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">🌍</div>
+                <p class="font-heading font-extrabold text-blue-700 text-xl">WAN</p>
+                <p class="text-slate-500 text-xs font-semibold mb-2">Wide Area Network</p>
+                <p class="text-slate-400 text-xs">Internet itu sendiri! Menghubungkan seluruh dunia.</p>
+            </div>
+                    </div>
+
+        <h2>HTTP vs HTTPS — Aman atau Tidak?</h2>
+        <p>Saat membuka website, perhatikan awalan URL-nya:</p>
+        <div class="not-prose grid md:grid-cols-2 gap-4 my-4">
+            <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+                <p class="font-heading font-bold text-red-700 text-lg mb-1">🔓 HTTP</p>
+                <p class="text-red-600 text-sm">Data dikirim <strong>tanpa enkripsi</strong>. Orang lain di jaringan yang sama bisa "mengintip" data yang kamu kirim. Jangan isi password atau data penting!</p>
+            </div>
+            <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                <p class="font-heading font-bold text-green-700 text-lg mb-1">🔒 HTTPS</p>
+                <p class="text-green-600 text-sm">Data dikirim dengan <strong>enkripsi SSL/TLS</strong>. Meskipun diintersepsi, data tidak bisa dibaca. Aman untuk transaksi dan login!</p>
+            </div>
+        </div>
+
+        <div class="callout callout-tip">
+            <p class="font-heading font-bold text-green-800 mb-2">✅ Kebiasaan Aman di Internet</p>
+            <ul class="text-green-700 text-sm space-y-1 list-disc pl-4">
+                <li>Selalu cek ada gembok 🔒 di browser sebelum isi data penting</li>
+                <li>Hindari WiFi publik tanpa password untuk transaksi online</li>
+                <li>Jangan klik link dari sumber yang tidak dikenal</li>
+                <li>Gunakan password yang berbeda untuk setiap akun</li>
+            </ul>
+        </div>
+
+        <h2>Ringkasan 📝</h2>
+        <ul>
+            <li>Internet = jaringan komputer terbesar yang menghubungkan seluruh dunia</li>
+            <li>IP Address = alamat unik setiap perangkat di internet</li>
+            <li>DNS menerjemahkan nama domain (google.com) menjadi IP address</li>
+            <li>HTTPS lebih aman dari HTTP karena menggunakan enkripsi</li>
+        </ul>
+    </div>
+    <div class="flex justify-between mt-12 gap-4">
+        <a href="../03-logika-percabangan-loop/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Percabangan & Loop</p></div>
+        </a>
+        <a href="../05-pengolahan-data-sheet/" class="flex items-center gap-3 px-5 py-3 bg-emerald-600 text-white rounded-2xl shadow hover:bg-emerald-700 transition">
+            <div class="text-right"><p class="text-[10px] text-emerald-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Pengolahan Data</p></div>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>

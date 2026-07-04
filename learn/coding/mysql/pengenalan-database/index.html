@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pengenalan database dan MySQL: konsep tabel, baris, kolom, primary key, relasi antar tabel, dan cara membuat database pertama dengan phpMyAdmin atau MySQL CLI.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Pengenalan Database & MySQL | Coding untuk Pemula</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        pre,code{font-family:'JetBrains Mono',monospace;}
+        .code-block{background:#1e293b;color:#e2e8f0;padding:1.25rem 1.5rem;border-radius:1rem;overflow-x:auto;font-size:0.82rem;line-height:1.8;}
+        .kw{color:#f472b6;} .str{color:#fb923c;} .cm{color:#475569;} .num{color:#a78bfa;} .fn{color:#38bdf8;} .tp{color:#34d399;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-8 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-blue-600 hover:underline">← Tutorial MySQL</a>
+</nav>
+
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Tutorial Coding</a><span>/</span>
+        <a href="../" class="hover:text-blue-600">MySQL</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Pengenalan Database</span>
+    </div>
+
+    <header class="pb-10">
+        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 font-heading font-bold px-4 py-2 rounded-full mb-5 text-sm">🗄️ MySQL · Tutorial 1</div>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-3 font-heading">Pengenalan <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">Database & MySQL</span></h1>
+        <p class="text-slate-500 leading-relaxed">Bayangkan sebuah lemari arsip raksasa yang terorganisir — itulah <strong>database</strong>. Semua aplikasi modern, dari Instagram hingga sistem sekolahmu, menyimpan datanya di database. Mari pelajari dasarnya!</p>
+    </header>
+
+    <!-- Mengapa Database -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">1. Mengapa Perlu Database?</h2>
+        <div class="grid md:grid-cols-3 gap-4 mb-5">
+                                    <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm text-center">
+                <div class="text-3xl mb-2">📁</div>
+                <p class="font-heading font-bold text-slate-800 mb-1 text-sm">Menyimpan Data</p>
+                <p class="text-slate-500 text-xs">Simpan ribuan data siswa, produk, atau transaksi dengan rapi dan aman</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm text-center">
+                <div class="text-3xl mb-2">🔍</div>
+                <p class="font-heading font-bold text-slate-800 mb-1 text-sm">Mencari Cepat</p>
+                <p class="text-slate-500 text-xs">Cari 1 data dari jutaan record dalam hitungan milidetik</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm text-center">
+                <div class="text-3xl mb-2">🔗</div>
+                <p class="font-heading font-bold text-slate-800 mb-1 text-sm">Hubungkan Data</p>
+                <p class="text-slate-500 text-xs">Relasikan tabel siswa dengan nilai, absensi, dan jadwal</p>
+            </div>
+                    </div>
+        <div class="bg-amber-50 border border-amber-100 rounded-xl p-4 text-sm text-amber-800">
+            💡 <strong>Tanpa database:</strong> Data disimpan di file teks/Excel → lambat, tidak aman, sulit dicari. <strong>Dengan database:</strong> Terstruktur, cepat, bisa diakses banyak user sekaligus!
+        </div>
+    </section>
+
+    <!-- Konsep Dasar -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">2. Konsep: Database, Tabel, Baris & Kolom</h2>
+        <p class="text-slate-600 mb-4">Struktur database mirip seperti spreadsheet Excel, tapi jauh lebih powerful:</p>
+        <div class="bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-sm mb-4">
+            <div class="bg-blue-600 px-4 py-2">
+                <p class="text-white font-heading font-bold text-sm">🗃️ Database: <code>sekolah_db</code></p>
+            </div>
+            <div class="p-4">
+                <p class="text-slate-500 text-xs mb-3">Berisi tabel: <code class="bg-slate-100 px-1 rounded">siswa</code>, <code class="bg-slate-100 px-1 rounded">guru</code>, <code class="bg-slate-100 px-1 rounded">nilai</code>, <code class="bg-slate-100 px-1 rounded">jadwal</code></p>
+                <p class="font-heading font-bold text-slate-700 text-sm mb-2">📋 Tabel: <code>siswa</code></p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs border-collapse">
+                        <thead><tr class="bg-slate-100">
+                            <th class="border border-slate-200 px-3 py-2 text-left text-slate-600">id_siswa</th>
+                            <th class="border border-slate-200 px-3 py-2 text-left text-slate-600">nama</th>
+                            <th class="border border-slate-200 px-3 py-2 text-left text-slate-600">kelas</th>
+                            <th class="border border-slate-200 px-3 py-2 text-left text-slate-600">tanggal_lahir</th>
+                            <th class="border border-slate-200 px-3 py-2 text-left text-slate-600">alamat</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr class="bg-white"><td class="border border-slate-200 px-3 py-2 text-blue-600 font-mono">1</td><td class="border border-slate-200 px-3 py-2">Budi Santoso</td><td class="border border-slate-200 px-3 py-2">8A</td><td class="border border-slate-200 px-3 py-2">2010-05-12</td><td class="border border-slate-200 px-3 py-2">Lamongan</td></tr>
+                            <tr class="bg-slate-50"><td class="border border-slate-200 px-3 py-2 text-blue-600 font-mono">2</td><td class="border border-slate-200 px-3 py-2">Siti Rahayu</td><td class="border border-slate-200 px-3 py-2">8B</td><td class="border border-slate-200 px-3 py-2">2010-08-23</td><td class="border border-slate-200 px-3 py-2">Gresik</td></tr>
+                            <tr class="bg-white"><td class="border border-slate-200 px-3 py-2 text-blue-600 font-mono">3</td><td class="border border-slate-200 px-3 py-2">Andi Pratama</td><td class="border border-slate-200 px-3 py-2">9A</td><td class="border border-slate-200 px-3 py-2">2009-11-07</td><td class="border border-slate-200 px-3 py-2">Surabaya</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-3 flex gap-4 text-xs text-slate-500 flex-wrap">
+                    <span>🔵 <strong>Kolom</strong> = jenis data (nama, kelas, dsb)</span>
+                    <span>➡️ <strong>Baris</strong> = satu record siswa</span>
+                    <span>🔑 <strong>id_siswa</strong> = Primary Key (unik)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tipe Data -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">3. Tipe Data di MySQL</h2>
+        <p class="text-slate-600 mb-4">Setiap kolom harus punya tipe data yang sesuai isinya:</p>
+        <div class="overflow-x-auto rounded-2xl border border-slate-100 shadow-sm">
+            <table class="w-full text-sm">
+                <thead><tr class="bg-blue-50"><th class="text-left p-3 font-heading text-blue-800">Tipe Data</th><th class="text-left p-3 font-heading text-blue-800">Untuk</th><th class="text-left p-3 font-heading text-blue-800">Contoh</th></tr></thead>
+                <tbody class="divide-y divide-slate-100">
+                                                            <tr class="bg-white">
+                        <td class="p-3"><code class="text-blue-600 text-xs font-semibold bg-blue-50 px-1.5 py-0.5 rounded">INT</code></td>
+                        <td class="p-3 text-slate-600 text-xs">Angka bulat</td>
+                        <td class="p-3 text-slate-400 text-xs italic">id, umur, jumlah</td>
+                    </tr>
+                                        <tr class="bg-slate-50/40">
+                        <td class="p-3"><code class="text-blue-600 text-xs font-semibold bg-blue-50 px-1.5 py-0.5 rounded">DECIMAL(8,2)</code></td>
+                        <td class="p-3 text-slate-600 text-xs">Angka desimal presisi</td>
+                        <td class="p-3 text-slate-400 text-xs italic">harga, nilai ujian</td>
+                    </tr>
+                                        <tr class="bg-white">
+                        <td class="p-3"><code class="text-blue-600 text-xs font-semibold bg-blue-50 px-1.5 py-0.5 rounded">VARCHAR(n)</code></td>
+                        <td class="p-3 text-slate-600 text-xs">Teks pendek (maks n karakter)</td>
+                        <td class="p-3 text-slate-400 text-xs italic">nama, kelas, email</td>
+                    </tr>
+                                        <tr class="bg-slate-50/40">
+                        <td class="p-3"><code class="text-blue-600 text-xs font-semibold bg-blue-50 px-1.5 py-0.5 rounded">TEXT</code></td>
+                        <td class="p-3 text-slate-600 text-xs">Teks panjang</td>
+                        <td class="p-3 text-slate-400 text-xs italic">deskripsi, catatan</td>
+                    </tr>
+                                        <tr class="bg-white">
+                        <td class="p-3"><code class="text-blue-600 text-xs font-semibold bg-blue-50 px-1.5 py-0.5 rounded">DATE</code></td>
+                        <td class="p-3 text-slate-600 text-xs">Tanggal (YYYY-MM-DD)</td>
+                        <td class="p-3 text-slate-400 text-xs italic">tanggal_lahir, tanggal_daftar</td>
+                    </tr>
+                                        <tr class="bg-slate-50/40">
+                        <td class="p-3"><code class="text-blue-600 text-xs font-semibold bg-blue-50 px-1.5 py-0.5 rounded">DATETIME</code></td>
+                        <td class="p-3 text-slate-600 text-xs">Tanggal + waktu</td>
+                        <td class="p-3 text-slate-400 text-xs italic">created_at, updated_at</td>
+                    </tr>
+                                        <tr class="bg-white">
+                        <td class="p-3"><code class="text-blue-600 text-xs font-semibold bg-blue-50 px-1.5 py-0.5 rounded">BOOLEAN / TINYINT(1)</code></td>
+                        <td class="p-3 text-slate-600 text-xs">Benar/salah</td>
+                        <td class="p-3 text-slate-400 text-xs italic">aktif, lulus</td>
+                    </tr>
+                                        <tr class="bg-slate-50/40">
+                        <td class="p-3"><code class="text-blue-600 text-xs font-semibold bg-blue-50 px-1.5 py-0.5 rounded">ENUM</code></td>
+                        <td class="p-3 text-slate-600 text-xs">Pilihan terbatas</td>
+                        <td class="p-3 text-slate-400 text-xs italic">jenis_kelamin: "L","P"</td>
+                    </tr>
+                                    </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Setup XAMPP -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">4. Setup MySQL dengan XAMPP</h2>
+        <div class="space-y-3">
+                                    <div class="flex gap-4 items-start bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">1</div>
+                <div>
+                    <p class="font-heading font-bold text-slate-800 text-sm">Download XAMPP</p>
+                    <p class="text-slate-500 text-sm mt-0.5">Unduh di <a href="https://www.apachefriends.org/" target="_blank" class="text-indigo-600 underline">apachefriends.org</a>, pilih versi sesuai OS (Windows/Mac/Linux)</p>
+                </div>
+            </div>
+                        <div class="flex gap-4 items-start bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">2</div>
+                <div>
+                    <p class="font-heading font-bold text-slate-800 text-sm">Install & Jalankan</p>
+                    <p class="text-slate-500 text-sm mt-0.5">Install XAMPP, buka XAMPP Control Panel, klik <strong>Start</strong> di baris <strong>Apache</strong> dan <strong>MySQL</strong></p>
+                </div>
+            </div>
+                        <div class="flex gap-4 items-start bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">3</div>
+                <div>
+                    <p class="font-heading font-bold text-slate-800 text-sm">Buka phpMyAdmin</p>
+                    <p class="text-slate-500 text-sm mt-0.5">Di browser, ketik <code class="bg-slate-100 px-1 rounded text-sm">http://localhost/phpmyadmin</code> → tekan Enter</p>
+                </div>
+            </div>
+                        <div class="flex gap-4 items-start bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">4</div>
+                <div>
+                    <p class="font-heading font-bold text-slate-800 text-sm">Buat Database Baru</p>
+                    <p class="text-slate-500 text-sm mt-0.5">Klik "New" di panel kiri → ketik nama database (contoh: <code class="bg-slate-100 px-1 rounded text-sm">sekolah_db</code>) → klik Create</p>
+                </div>
+            </div>
+                        <div class="flex gap-4 items-start bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">5</div>
+                <div>
+                    <p class="font-heading font-bold text-slate-800 text-sm">Mulai Belajar SQL!</p>
+                    <p class="text-slate-500 text-sm mt-0.5">Klik database yang dibuat → tab SQL → ketik query → klik Go!</p>
+                </div>
+            </div>
+                    </div>
+        <div class="mt-4 bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-sm text-indigo-800">
+            🌐 <strong>Alternatif tanpa install:</strong> Coba <a href="https://www.db-fiddle.com/" target="_blank" class="underline font-semibold">DB Fiddle</a> atau <a href="https://sqliteonline.com/" target="_blank" class="underline font-semibold">SQLite Online</a> — langsung di browser, tidak perlu install apapun!
+        </div>
+    </section>
+
+    <!-- Buat Tabel Pertama -->
+    <section class="mb-8">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">5. Buat Tabel Pertama</h2>
+        <p class="text-slate-600 mb-4">Query SQL untuk membuat tabel <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">siswa</code>:</p>
+        <pre class="code-block"><code><span class="cm">-- Buat database</span>
+<span class="kw">CREATE DATABASE</span> sekolah_db;
+<span class="kw">USE</span> sekolah_db;
+
+<span class="cm">-- Buat tabel siswa</span>
+<span class="kw">CREATE TABLE</span> siswa (
+    id_siswa    <span class="tp">INT</span> <span class="kw">AUTO_INCREMENT PRIMARY KEY</span>,
+    nama        <span class="tp">VARCHAR</span>(<span class="num">100</span>) <span class="kw">NOT NULL</span>,
+    kelas       <span class="tp">VARCHAR</span>(<span class="num">10</span>)  <span class="kw">NOT NULL</span>,
+    jenis_kelamin <span class="tp">ENUM</span>(<span class="str">'L'</span>,<span class="str">'P'</span>) <span class="kw">NOT NULL</span>,
+    tanggal_lahir <span class="tp">DATE</span>,
+    alamat      <span class="tp">TEXT</span>,
+    nilai_rata  <span class="tp">DECIMAL</span>(<span class="num">5</span>,<span class="num">2</span>) <span class="kw">DEFAULT</span> <span class="num">0.00</span>
+);
+
+<span class="cm">-- Cek struktur tabel</span>
+<span class="kw">DESCRIBE</span> siswa;</code></pre>
+        <div class="mt-4 bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-800">
+            ✅ <strong>AUTO_INCREMENT</strong> = id otomatis bertambah (1, 2, 3, ...) <br>
+            ✅ <strong>PRIMARY KEY</strong> = kolom unik yang jadi identitas baris<br>
+            ✅ <strong>NOT NULL</strong> = kolom wajib diisi (tidak boleh kosong)
+        </div>
+    </section>
+
+    <!-- Navigasi -->
+    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+        <a href="../" class="flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition font-semibold">← Semua Tutorial MySQL</a>
+        <a href="../query-dasar/" class="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 transition font-semibold">Tutorial 2: Query SQL CRUD →</a>
+    </div>
+</main>
+
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>

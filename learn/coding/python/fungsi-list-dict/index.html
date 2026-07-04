@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tutorial fungsi, list, dan dictionary Python: cara membuat dan memanggil fungsi, operasi pada list, penggunaan dictionary, dan lambda function.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Python: Fungsi, List & Dictionary | Coding untuk Pemula</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        pre,code{font-family:'JetBrains Mono',monospace;}
+        .code-block{background:#1e293b;color:#e2e8f0;padding:1.25rem 1.5rem;border-radius:1rem;overflow-x:auto;font-size:0.82rem;line-height:1.8;}
+        .kw{color:#f472b6;} .fn{color:#38bdf8;} .str{color:#fb923c;} .cm{color:#475569;} .num{color:#a78bfa;} .bi{color:#34d399;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-green-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-8 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-green-600 hover:underline">← Tutorial Python</a>
+</nav>
+
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Tutorial Coding</a><span>/</span>
+        <a href="../" class="hover:text-green-600">Python</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Fungsi, List & Dictionary</span>
+    </div>
+
+    <header class="pb-10">
+        <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 font-heading font-bold px-4 py-2 rounded-full mb-5 text-sm">🐍 Python · Tutorial 2</div>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-3 font-heading">Python: <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-green-500">Fungsi, List & Dictionary</span></h1>
+        <p class="text-slate-500 leading-relaxed">Sudah tahu dasar Python? Sekarang naik level dengan <strong>fungsi</strong> (kode yang bisa dipakai ulang), <strong>list</strong> (kumpulan data terurut), dan <strong>dictionary</strong> (pasangan kunci-nilai). Diakhiri dengan proyek kalkulator nilai!</p>
+    </header>
+
+    <!-- Fungsi -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">1. Fungsi — Kode yang Bisa Dipakai Ulang</h2>
+        <p class="text-slate-600 mb-4">Fungsi adalah blok kode yang diberi nama dan bisa dipanggil kapan saja. Prinsipnya: <strong>tulis sekali, pakai berkali-kali</strong>.</p>
+        <pre class="code-block"><code><span class="cm"># Definisi fungsi dengan def</span>
+<span class="kw">def</span> <span class="fn">sapa</span>(nama):
+    <span class="bi">print</span>(<span class="str">f"Halo, {nama}! Selamat belajar Python 🐍"</span>)
+
+<span class="cm"># Panggil fungsi</span>
+<span class="fn">sapa</span>(<span class="str">"Budi"</span>)    <span class="cm"># Halo, Budi! Selamat belajar Python 🐍</span>
+<span class="fn">sapa</span>(<span class="str">"Siti"</span>)    <span class="cm"># Halo, Siti! Selamat belajar Python 🐍</span>
+
+<span class="cm"># Fungsi dengan return (mengembalikan nilai)</span>
+<span class="kw">def</span> <span class="fn">hitung_luas</span>(panjang, lebar):
+    luas = panjang * lebar
+    <span class="kw">return</span> luas
+
+hasil = <span class="fn">hitung_luas</span>(<span class="num">5</span>, <span class="num">3</span>)
+<span class="bi">print</span>(<span class="str">f"Luas: {hasil} cm²"</span>)  <span class="cm"># Luas: 15 cm²</span>
+
+<span class="cm"># Parameter default</span>
+<span class="kw">def</span> <span class="fn">beri_salam</span>(nama, waktu=<span class="str">"pagi"</span>):
+    <span class="bi">print</span>(<span class="str">f"Selamat {waktu}, {nama}!"</span>)
+
+<span class="fn">beri_salam</span>(<span class="str">"Rina"</span>)            <span class="cm"># Selamat pagi, Rina!</span>
+<span class="fn">beri_salam</span>(<span class="str">"Rina"</span>, <span class="str">"malam"</span>)  <span class="cm"># Selamat malam, Rina!</span></code></pre>
+    </section>
+
+    <!-- List -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">2. List — Kumpulan Data Terurut</h2>
+        <p class="text-slate-600 mb-4">List adalah wadah untuk menyimpan banyak nilai sekaligus, dalam urutan tertentu. Seperti daftar belanja!</p>
+        <pre class="code-block"><code><span class="cm"># Buat list</span>
+nilai_siswa = [<span class="num">85</span>, <span class="num">72</span>, <span class="num">90</span>, <span class="num">68</span>, <span class="num">95</span>]
+buah = [<span class="str">"apel"</span>, <span class="str">"mangga"</span>, <span class="str">"jeruk"</span>]
+
+<span class="cm"># Akses item (index mulai dari 0)</span>
+<span class="bi">print</span>(nilai_siswa[<span class="num">0</span>])   <span class="cm"># 85 (pertama)</span>
+<span class="bi">print</span>(nilai_siswa[-<span class="num">1</span>])  <span class="cm"># 95 (terakhir)</span>
+
+<span class="cm"># Slicing (ambil sebagian)</span>
+<span class="bi">print</span>(nilai_siswa[<span class="num">1</span>:<span class="num">4</span>]) <span class="cm"># [72, 90, 68]</span>
+
+<span class="cm"># Metode list yang berguna</span>
+nilai_siswa.<span class="fn">append</span>(<span class="num">88</span>)     <span class="cm"># tambah di akhir</span>
+nilai_siswa.<span class="fn">insert</span>(<span class="num">0</span>, <span class="num">100</span>) <span class="cm"># sisipkan di index 0</span>
+nilai_siswa.<span class="fn">remove</span>(<span class="num">68</span>)     <span class="cm"># hapus nilai 68</span>
+nilai_siswa.<span class="fn">sort</span>()          <span class="cm"># urutkan</span>
+<span class="bi">print</span>(<span class="bi">len</span>(nilai_siswa))      <span class="cm"># jumlah item</span>
+<span class="bi">print</span>(<span class="bi">sum</span>(nilai_siswa))      <span class="cm"># total</span>
+<span class="bi">print</span>(<span class="bi">max</span>(nilai_siswa))      <span class="cm"># nilai tertinggi</span>
+
+<span class="cm"># Loop dengan list</span>
+<span class="kw">for</span> nilai <span class="kw">in</span> nilai_siswa:
+    status = <span class="str">"Lulus"</span> <span class="kw">if</span> nilai >= <span class="num">75</span> <span class="kw">else</span> <span class="str">"Remedial"</span>
+    <span class="bi">print</span>(<span class="str">f"Nilai {nilai}: {status}"</span>)</code></pre>
+    </section>
+
+    <!-- Dictionary -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">3. Dictionary — Pasangan Kunci:Nilai</h2>
+        <p class="text-slate-600 mb-4">Dictionary menyimpan data dalam bentuk <strong>kunci: nilai</strong>. Cocok untuk menyimpan data terstruktur seperti profil siswa.</p>
+        <pre class="code-block"><code><span class="cm"># Buat dictionary</span>
+siswa = {
+    <span class="str">"nama"</span>: <span class="str">"Budi Santoso"</span>,
+    <span class="str">"kelas"</span>: <span class="str">"8A"</span>,
+    <span class="str">"nilai"</span>: <span class="num">88</span>,
+    <span class="str">"lulus"</span>: <span class="kw">True</span>
+}
+
+<span class="cm"># Akses nilai</span>
+<span class="bi">print</span>(siswa[<span class="str">"nama"</span>])        <span class="cm"># Budi Santoso</span>
+<span class="bi">print</span>(siswa.<span class="fn">get</span>(<span class="str">"kelas"</span>))   <span class="cm"># 8A (lebih aman, tidak error jika key tidak ada)</span>
+
+<span class="cm"># Tambah / ubah</span>
+siswa[<span class="str">"alamat"</span>] = <span class="str">"Lamongan"</span>  <span class="cm"># tambah key baru</span>
+siswa[<span class="str">"nilai"</span>] = <span class="num">92</span>           <span class="cm"># ubah nilai</span>
+
+<span class="cm"># Loop dictionary</span>
+<span class="kw">for</span> kunci, nilai <span class="kw">in</span> siswa.<span class="fn">items</span>():
+    <span class="bi">print</span>(<span class="str">f"{kunci}: {nilai}"</span>)
+
+<span class="cm"># List berisi dictionary (pola umum untuk data siswa)</span>
+daftar_siswa = [
+    {<span class="str">"nama"</span>: <span class="str">"Budi"</span>, <span class="str">"nilai"</span>: <span class="num">88</span>},
+    {<span class="str">"nama"</span>: <span class="str">"Siti"</span>, <span class="str">"nilai"</span>: <span class="num">92</span>},
+    {<span class="str">"nama"</span>: <span class="str">"Andi"</span>, <span class="str">"nilai"</span>: <span class="num">65</span>},
+]</code></pre>
+    </section>
+
+    <!-- Proyek -->
+    <section class="mb-8">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">4. 🏗️ Mini Proyek: Kalkulator Nilai Kelas</h2>
+        <p class="text-slate-600 mb-4">Buat program yang menghitung rata-rata, nilai tertinggi, terendah, dan status lulus kelas:</p>
+        <pre class="code-block"><code><span class="kw">def</span> <span class="fn">analisis_nilai</span>(daftar_nilai):
+    rata_rata = <span class="bi">sum</span>(daftar_nilai) / <span class="bi">len</span>(daftar_nilai)
+    tertinggi = <span class="bi">max</span>(daftar_nilai)
+    terendah  = <span class="bi">min</span>(daftar_nilai)
+    lulus     = [n <span class="kw">for</span> n <span class="kw">in</span> daftar_nilai <span class="kw">if</span> n >= <span class="num">75</span>]
+
+    <span class="bi">print</span>(<span class="str">"=== LAPORAN NILAI KELAS ==="</span>)
+    <span class="bi">print</span>(<span class="str">f"Jumlah siswa : {len(daftar_nilai)}"</span>)
+    <span class="bi">print</span>(<span class="str">f"Rata-rata    : {rata_rata:.1f}"</span>)
+    <span class="bi">print</span>(<span class="str">f"Tertinggi    : {tertinggi}"</span>)
+    <span class="bi">print</span>(<span class="str">f"Terendah     : {terendah}"</span>)
+    <span class="bi">print</span>(<span class="str">f"Lulus        : {len(lulus)} siswa"</span>)
+    <span class="bi">print</span>(<span class="str">f"Remedial     : {len(daftar_nilai) - len(lulus)} siswa"</span>)
+
+<span class="cm"># Input nilai dari user</span>
+nilai_kelas = []
+<span class="kw">while</span> <span class="kw">True</span>:
+    inp = <span class="bi">input</span>(<span class="str">"Masukkan nilai (atau 'selesai'): "</span>)
+    <span class="kw">if</span> inp == <span class="str">"selesai"</span>:
+        <span class="kw">break</span>
+    nilai_kelas.<span class="fn">append</span>(<span class="bi">int</span>(inp))
+
+<span class="fn">analisis_nilai</span>(nilai_kelas)</code></pre>
+        <div class="mt-4 bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-800">
+            🚀 <strong>Coba sekarang!</strong> Paste kode di <a href="https://replit.com/languages/python3" target="_blank" class="underline font-semibold">Replit</a> atau Google Colab dan jalankan langsung.
+        </div>
+    </section>
+
+    <!-- Navigasi -->
+    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+        <a href="../syntax-dasar/" class="flex items-center gap-2 text-sm text-slate-500 hover:text-green-600 transition font-semibold">← Tutorial 1: Sintaks Dasar</a>
+        <a href="../" class="flex items-center gap-2 text-sm text-green-600 hover:text-green-800 transition font-semibold">Semua Tutorial Python →</a>
+    </div>
+</main>
+
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>

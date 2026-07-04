@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Slide — Workshop KKA PGRI | 1 Juli 2026</title>
+<meta name="description" content="Slide presentasi Workshop KKA PGRI: dari paham KKA Fase C, mengajar unplugged, sampai membuat & mempublikasikan media pembelajaran AI sendiri.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --amber-grad-from:#f59e0b; --amber-grad-to:#ea580c;
+}
+*{-webkit-tap-highlight-color:transparent;}
+h1,h2,h3,.font-heading{font-family:'Quicksand',sans-serif;}
+body{font-family:'Inter',sans-serif; overscroll-behavior:none;}
+html,body{height:100%; margin:0; background:#0f172a;}
+
+#deck{position:relative; width:100vw; height:100vh; height:100dvh; overflow:hidden;}
+
+.slide{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column;
+  padding:clamp(1.25rem,4vw,4rem) clamp(1.5rem,6vw,6rem);
+  opacity:0; transform:translateX(40px);
+  transition:opacity .45s ease, transform .45s ease;
+  pointer-events:none;
+  overflow-y:auto;
+}
+.slide.active{opacity:1; transform:translateX(0); pointer-events:auto;}
+.slide.prev{transform:translateX(-40px);}
+
+.slide-inner{margin:auto; width:100%; max-width:1100px;}
+
+/* progress */
+#progress-bar{position:fixed; top:0; left:0; height:4px; background:linear-gradient(90deg,#f59e0b,#ea580c); z-index:60; transition:width .4s ease;}
+
+#dots{position:fixed; bottom:14px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:60;}
+.dot{width:7px; height:7px; border-radius:99px; background:#cbd5e1; cursor:pointer; transition:.25s;}
+.dot.on{width:22px; background:linear-gradient(90deg,#f59e0b,#ea580c);}
+
+.nav-btn{position:fixed; z-index:60; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:99px; background:#fff; box-shadow:0 4px 14px rgba(0,0,0,.12); display:flex; align-items:center; justify-content:center; color:#475569; cursor:pointer; transition:.2s; font-size:20px; user-select:none;}
+.nav-btn:hover{background:#fef3c7; color:#b45309;}
+#btn-prev{left:10px;} #btn-next{right:10px;}
+@media(max-width:768px){.nav-btn{display:none;}}
+
+#counter{position:fixed; top:14px; right:18px; z-index:60; font-size:11px; font-weight:700; color:#fff; background:rgba(15,23,42,.35); padding:4px 10px; border-radius:99px; backdrop-filter:blur(6px);}
+#exit-link{position:fixed; top:14px; left:18px; z-index:60; font-size:11px; font-weight:700; color:#fff; background:rgba(15,23,42,.35); padding:4px 10px; border-radius:99px; backdrop-filter:blur(6px); text-decoration:none;}
+#exit-link:hover{background:rgba(15,23,42,.55);}
+
+.chip{font-size:11px; font-weight:700; padding:4px 12px; border-radius:99px;}
+.card{border-radius:1.25rem; border-width:1px;}
+
+/* per-slide backgrounds */
+.bg-cover{background:linear-gradient(135deg,#f59e0b,#ea580c); color:#fff;}
+.bg-light{background:#F8FAFC; color:#1e293b;}
+.bg-dark{background:#1e293b; color:#fff;}
+
+::-webkit-scrollbar{width:0;}
+</style>
+</head>
+<body class="bg-[#F8FAFC]">
+
+<div id="progress-bar" style="width:0%"></div>
+<a id="exit-link" href="../">← Workshop</a>
+<div id="counter">1 / 14</div>
+
+<div id="deck"></div>
+
+<div class="nav-btn" id="btn-prev" onclick="go(-1)">‹</div>
+<div class="nav-btn" id="btn-next" onclick="go(1)">›</div>
+<div id="dots"></div>
+
+<script>
+const slides = [];
+
+// ========================================================================
+// SLIDE 1 — COVER
+// ========================================================================
+slides.push(`
+<div class="slide-inner text-center">
+  <div class="flex flex-wrap gap-2 justify-center mb-6">
+    <span class="chip bg-white/20">📅 1 Juli 2026</span>
+    <span class="chip bg-white/20">⏰ 07.00–15.00 WIB</span>
+    <span class="chip bg-white/20">PGRI · Guru SD</span>
+  </div>
+  <h1 class="font-heading font-extrabold text-3xl md:text-5xl mb-5 leading-tight">Dari Paham KKA Fase C,<br>Sampai Punya Media Pembelajaran AI Sendiri 🤖✨</h1>
+  <p class="text-amber-50/90 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed">Sehari penuh: paham <strong>KKA Fase C</strong>, jago <strong>mengajar unplugged</strong> tanpa lab komputer, lalu <strong>membuat & mempublikasikan</strong> media pembelajaran interaktif sendiri pakai Claude AI.</p>
+  <p class="mt-8 text-xs md:text-sm text-amber-100/80 font-semibold">Workshop KKA PGRI &middot; geser / klik panah untuk lanjut →</p>
+</div>`);
+
+// ========================================================================
+// SLIDE 2 — PERKENALAN
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <h2 class="font-heading font-extrabold text-2xl md:text-4xl text-slate-800 mb-8 text-center">Perkenalan Fasilitator</h2>
+  <div class="max-w-2xl mx-auto bg-white border border-slate-100 p-8 md:p-10 rounded-3xl shadow-sm text-center">
+    <h3 class="font-heading font-extrabold text-2xl md:text-3xl text-slate-800 mb-2">Ach. Chanifuddin Fanani</h3>
+    <p class="text-amber-600 font-semibold text-sm md:text-base mb-6">Guru Informatika dan KKA SMPN 2 Lamongan</p>
+    <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-8">Salam kenal, Bapak/Ibu! Mari belajar bersama menghadirkan pembelajaran Koding dan Kecerdasan Artifisial (KKA) yang menyenangkan dan mudah dipahami, baik dengan maupun tanpa laboratorium komputer.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="https://instagram.com/qaneev" target="_blank" class="flex items-center gap-2 bg-slate-50 hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold transition border border-slate-200 text-decoration-none">
+        <span class="text-base">📸</span> @qaneev
+      </a>
+      <a href="https://wa.me/628158885508" target="_blank" class="flex items-center gap-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold transition border border-emerald-200 text-decoration-none">
+        <span class="text-base">💬</span> 0815-888-5508
+      </a>
+    </div>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 3 — KENAPA WORKSHOP INI ADA (LATAR BELAKANG)
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <h2 class="font-heading font-extrabold text-2xl md:text-4xl text-slate-800 mb-3 text-center">Kenapa Workshop Ini Diadakan?</h2>
+  <p class="text-slate-400 text-xs md:text-sm text-center mb-8 max-w-2xl mx-auto">KKA (Koding & Kecerdasan Artifisial) masuk kurikulum, tapi banyak sekolah dasar belum punya lab komputer — dan banyak guru merasa belum siap.</p>
+  <div class="grid md:grid-cols-3 gap-4">
+    ${[
+      ['😰','Kecemasan Guru','"Saya bukan orang IT, bagaimana cara mengajarkannya?" — kekhawatiran yang sangat wajar dan banyak dialami.','bg-rose-50 border-rose-100 text-rose-800'],
+      ['🏫','Keterbatasan Sarana','Tidak semua SD punya komputer atau internet stabil untuk satu kelas penuh.','bg-amber-50 border-amber-100 text-amber-800'],
+      ['🎯','Tuntutan Kurikulum','KKA Fase C tetap harus tersampaikan ke siswa kelas 5–6, dengan atau tanpa perangkat.','bg-indigo-50 border-indigo-100 text-indigo-800'],
+    ].map(o=>`
+    <div class="card ${o[3]} border p-5">
+      <div class="text-3xl mb-2">${o[0]}</div>
+      <p class="font-heading font-bold mb-2 text-sm">${o[1]}</p>
+      <p class="text-xs leading-relaxed opacity-80">${o[2]}</p>
+    </div>`).join('')}
+  </div>
+  <div class="card bg-emerald-50 border border-emerald-100 p-5 mt-5 text-center">
+    <p class="text-emerald-800 text-sm md:text-base leading-relaxed">💡 Workshop ini dirancang untuk menjawab ketiganya sekaligus: <strong>paham konsepnya, bisa mengajarkannya tanpa lab, dan tetap bisa menghadirkan teknologi AI lewat media yang dibuat sendiri.</strong></p>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 4 — 3 OUTPUT UTAMA
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <h2 class="font-heading font-extrabold text-2xl md:text-4xl text-slate-800 mb-8 text-center">3 Hal yang Akan Bapak/Ibu Bawa Pulang</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    ${[
+      ['🧭','Paham Arahnya','Tahu persis apa itu KKA Fase C dan cara menyelaraskannya ke Capaian Pembelajaran Kelas 5–6.','bg-amber-50 border-amber-100 text-amber-800'],
+      ['✋','Bisa Mengajar Tanpa Lab','Punya 2+ cara mengajar KKA unplugged yang siap dipakai besok, walau sekolah tidak punya komputer.','bg-orange-50 border-orange-100 text-orange-800'],
+      ['🤖','Bisa Bikin & Publish Media','Membuat media pembelajaran interaktif HTML pakai Claude AI, lalu publish online lewat Tiiny.site — hari itu juga.','bg-emerald-50 border-emerald-100 text-emerald-800'],
+    ].map(o=>`
+    <div class="card ${o[3]} border p-6">
+      <div class="text-4xl mb-3">${o[0]}</div>
+      <p class="font-heading font-bold mb-2 text-base">${o[1]}</p>
+      <p class="text-sm leading-relaxed opacity-80">${o[2]}</p>
+    </div>`).join('')}
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 5 — APA ITU KKA?
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-3 mb-6">
+    <div class="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center text-white font-heading font-extrabold text-lg">💡</div>
+    <div>
+      <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-slate-800">Apa Itu KKA, Sebenarnya?</h2>
+      <p class="text-slate-400 text-xs md:text-sm">Memahami dasar konsep sebelum mengajarkan</p>
+    </div>
+  </div>
+  <div class="card bg-white border border-slate-100 p-6 shadow-sm mb-5">
+    <p class="text-slate-600 text-sm md:text-base leading-relaxed"><strong>Koding dan Kecerdasan Artifisial (KKA)</strong> adalah mata pelajaran <strong>pilihan</strong> yang ditetapkan secara nasional, diposisikan sebagai pengantar <em>basic computer science</em>. KKA mulai diajarkan sejak <strong>kelas 5 SD (Fase C)</strong> hingga jenjang SMA/SMK, dengan alokasi <strong>2 jam pelajaran per minggu</strong> untuk SD.</p>
+  </div>
+  <div class="grid md:grid-cols-2 gap-4 mb-4">
+    <div class="card bg-amber-50 border border-amber-100 p-5">
+      <p class="font-heading font-bold text-amber-800 text-sm mb-2">📜 Dasar Kebijakan</p>
+      <p class="text-amber-700 text-xs md:text-sm leading-relaxed">Capaian Pembelajaran KKA ditetapkan lewat <strong>Keputusan Kepala BSKAP Kemendikdasmen No. 046/H/KR/2025</strong>, sebagai bagian dari penguatan SDM menuju Indonesia Emas 2045.</p>
+    </div>
+    <div class="card bg-orange-50 border border-orange-100 p-5">
+      <p class="font-heading font-bold text-orange-800 text-sm mb-2">🌍 Acuan Internasional</p>
+      <p class="text-orange-700 text-xs md:text-sm leading-relaxed">Penyusunannya mengacu pada UNESCO ICT Competency Framework, CSTA K-12 CS Standards, dan UNESCO AI Competency Framework for Students — diadaptasi ke konteks Indonesia.</p>
+    </div>
+  </div>
+  <div class="card bg-slate-50 border border-slate-100 p-5">
+    <p class="font-heading font-bold text-slate-700 text-sm mb-1">🤝 Pendekatan Human-Centered</p>
+    <p class="text-slate-600 text-xs md:text-sm leading-relaxed">KKA menempatkan <strong>manusia sebagai fokus utama</strong> dalam pembelajaran, pemanfaatan, dan pengembangan AI — bukan teknologi untuk teknologi, tapi teknologi untuk kemaslahatan manusia.</p>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 6 — MITOS vs FAKTA & PLUGGED vs UNPLUGGED
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <h2 class="font-heading font-extrabold text-xl md:text-3xl text-slate-800 mb-2 text-center">Meluruskan Miskonsepsi</h2>
+  <p class="text-slate-400 text-xs md:text-sm text-center mb-6">Sebelum lanjut ke teknis, mari samakan pemahaman dulu</p>
+  <div class="grid md:grid-cols-2 gap-4 mb-4">
+    <div class="card bg-rose-50 border border-rose-100 p-4">
+      <p class="font-heading font-bold text-rose-800 mb-2 text-sm">😟 Mitos yang Sering Dipercaya</p>
+      <div class="space-y-1.5">
+        ${['"KKA = pelajaran komputer" — tidak bisa diajarkan tanpa lab','"Harus bisa coding" agar bisa mengajar KKA','"AI itu terlalu rumit & berbahaya untuk anak SD"'].map(m=>`
+        <div class="flex gap-2 items-start"><span class="text-rose-400 flex-shrink-0 text-sm">✗</span><p class="text-rose-700 text-[11px] md:text-xs leading-relaxed">${m}</p></div>`).join('')}
+      </div>
+    </div>
+    <div class="card bg-emerald-50 border border-emerald-100 p-4">
+      <p class="font-heading font-bold text-emerald-800 mb-2 text-sm">✅ Fakta Sebenarnya</p>
+      <div class="space-y-1.5">
+        ${['KKA = <strong>cara berpikir</strong> — bisa dilatih dengan kertas & permainan fisik','Guru cukup jadi <strong>fasilitator aktivitas</strong>, bukan ahli pemrograman','Mayoritas materi Fase C justru dirancang <strong>unplugged</strong> (tanpa perangkat)'].map(b=>`
+        <div class="flex gap-2 items-start"><span class="text-emerald-500 flex-shrink-0 text-sm">✓</span><p class="text-emerald-700 text-[11px] md:text-xs leading-relaxed">${b}</p></div>`).join('')}
+      </div>
+    </div>
+  </div>
+  <div class="card bg-indigo-50 border border-indigo-100 p-5">
+    <p class="font-heading font-bold text-indigo-800 mb-3 text-sm">🔌 Plugged vs 🔋 Unplugged</p>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div>
+        <p class="text-indigo-700 text-xs md:text-sm font-bold mb-1">Plugged (Terkoneksi/Pakai Perangkat)</p>
+        <p class="text-indigo-600 text-xs leading-relaxed">Aktivitas pembelajaran yang mengharuskan penggunaan komputer, laptop, atau tablet untuk mempraktikkan konsep secara langsung (misal: coding aplikasi, menjelajah AI tool).</p>
+      </div>
+      <div>
+        <p class="text-indigo-700 text-xs md:text-sm font-bold mb-1">Unplugged (Tanpa Perangkat)</p>
+        <p class="text-indigo-600 text-xs leading-relaxed">Pembelajaran ilmu komputer menggunakan alat fisik sederhana (kertas, kartu bergambar, papan tulis, tubuh) <strong>tanpa melibatkan perangkat elektronik sama sekali</strong>.</p>
+      </div>
+    </div>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 7 — 4 ELEMEN RESMI KKA FASE C (Perbaikan Bug Class/Text)
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-slate-800 mb-2 text-center">📚 4 Elemen Resmi KKA Fase C</h2>
+  <p class="text-slate-400 text-xs md:text-sm text-center mb-8 max-w-xl mx-auto">Dari 6 elemen KKA secara nasional, hanya <strong>4 elemen</strong> ini yang berlaku untuk SD (kelas 5–6). Algoritma Pemrograman & Analisis Data baru muncul di jenjang selanjutnya.</p>
+  <div class="grid md:grid-cols-2 gap-4">
+    ${[
+      ['🧩','Berpikir Komputasional','Memecahkan masalah sehari-hari secara sistematis & menuliskan instruksi logis terstruktur.','bg-amber-50 border-amber-100 text-amber-800'],
+      ['💻','Literasi Digital','Memahami sistem komputer pradasar, keamanan data pribadi, internet, dan produksi konten.','bg-orange-50 border-orange-100 text-orange-800'],
+      ['🤖','Literasi & Etika KA','Memahami konsep dasar AI, bedanya dengan komputer biasa, serta etika empati.','bg-emerald-50 border-emerald-100 text-emerald-800'],
+      ['🔬','Pemanfaatan & Pengembangan KA','Mensimulasikan sederhana cara AI mengenali pola dan mengklasifikasi benda konkret.','bg-indigo-50 border-indigo-100 text-indigo-800'],
+    ].map(e=>`
+    <div class="card ${e[3]} border p-5">
+      <div class="text-3xl mb-2">${e[0]}</div>
+      <p class="font-heading font-bold mb-2 text-sm">${e[1]}</p>
+      <p class="text-xs leading-relaxed opacity-80">${e[2]}</p>
+    </div>`).join('')}
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 8 — CP ELEMEN 1 — BERPIKIR KOMPUTASIONAL (Merged w/ Pilar)
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-2 mb-4">
+    <span class="text-3xl">🧩</span>
+    <h2 class="font-heading font-extrabold text-xl md:text-3xl text-amber-800">Elemen 1: Berpikir Komputasional</h2>
+  </div>
+  <div class="card bg-amber-50 border border-amber-100 p-4 mb-4">
+    <p class="text-amber-800 text-xs md:text-sm leading-relaxed">Mampu <strong>memahami permasalahan sederhana</strong> dalam kehidupan sehari-hari, menerapkan <strong>pemecahan masalah secara sistematis</strong>, serta menuliskan <strong>instruksi logis dan terstruktur</strong> menggunakan kosakata atau simbol sederhana.</p>
+  </div>
+  <p class="font-heading font-semibold text-slate-700 mb-2 text-sm">🔑 Empat pilar komputasional yang melandasinya:</p>
+  <div class="grid md:grid-cols-2 gap-3">
+    ${[
+      ['🧱','Dekomposisi','Memecah masalah besar dan rumit menjadi bagian-bagian kecil yang lebih mudah ditangani.','Contoh: merencanakan pesta ulang tahun dipecah jadi undangan, makanan, acara.','bg-white'],
+      ['🔍','Pengenalan Pola','Menemukan kesamaan atau pola berulang di antara masalah untuk mempermudah penyelesaian.','Contoh: menyadari bahwa semua angka kelipatan 2 selalu genap.','bg-white'],
+      ['🎯','Abstraksi','Fokus pada informasi yang penting saja, mengabaikan detail yang tidak relevan.','Contoh: peta jalan hanya menampilkan rute utama, bukan setiap pohon.','bg-white'],
+      ['📋','Algoritma','Menyusun langkah-langkah berurutan dan jelas untuk menyelesaikan suatu tugas.','Contoh: resep masakan adalah algoritma (urutan langkah wajib).','bg-white'],
+    ].map(p=>`
+    <div class="card ${p[4]} border border-slate-200 p-3 shadow-sm flex gap-3 items-start">
+      <span class="text-2xl flex-shrink-0 pt-1">${p[0]}</span>
+      <div>
+        <p class="font-heading font-bold text-slate-700 text-xs mb-1">${p[1]}</p>
+        <p class="text-slate-500 text-[11px] leading-relaxed mb-1">${p[2]}</p>
+        <p class="text-slate-400 text-[10px] italic leading-tight">${p[3]}</p>
+      </div>
+    </div>`).join('')}
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 9 — CP ELEMEN 2 — LITERASI DIGITAL
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-2 mb-5">
+    <span class="text-3xl">💻</span>
+    <h2 class="font-heading font-extrabold text-xl md:text-3xl text-orange-800">Elemen 2: Literasi Digital</h2>
+  </div>
+  <div class="card bg-orange-50 border border-orange-100 p-6 mb-5">
+    <p class="text-orange-800 text-sm md:text-base leading-relaxed">Siswa diharapkan memahami <strong>konsep dasar, manfaat, dan dampak teknologi digital</strong>, mengenal sistem komputer tingkat pradasar, menerapkan <strong>pengamanan informasi pribadi</strong> saat berkomunikasi daring, memanfaatkan internet secara sehat, serta mampu memproduksi dan menyebarkan konten digital sederhana berupa teks dan gambar.</p>
+  </div>
+  <div class="grid md:grid-cols-3 gap-3">
+    ${[
+      ['🖥️','Kenal Sistem Komputer','Memahami bagian dasar perangkat digital secara sederhana'],
+      ['🔒','Amankan Data Pribadi','Tidak sembarang membagikan info pribadi secara daring'],
+      ['🎨','Produksi Konten','Membuat dan membagikan karya digital sederhana'],
+    ].map(d=>`
+    <div class="card bg-white border border-slate-100 p-4 text-center shadow-sm">
+      <div class="text-2xl mb-2">${d[0]}</div>
+      <p class="font-heading font-bold text-slate-700 text-xs mb-1">${d[1]}</p>
+      <p class="text-slate-500 text-[11px] leading-relaxed">${d[2]}</p>
+    </div>`).join('')}
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 10 — CP ELEMEN 3 — LITERASI & ETIKA KA
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-2 mb-5">
+    <span class="text-3xl">🤖</span>
+    <h2 class="font-heading font-extrabold text-xl md:text-3xl text-emerald-800">Elemen 3: Literasi & Etika KA</h2>
+  </div>
+  <div class="card bg-emerald-50 border border-emerald-100 p-6 mb-5">
+    <p class="text-emerald-800 text-sm md:text-base leading-relaxed">Siswa diharapkan memahami <strong>konsep AI secara sederhana</strong>, manfaat & dampaknya dalam kehidupan sehari-hari, serta prinsip bahwa <strong>AI dikembangkan untuk meningkatkan kesejahteraan manusia</strong> — bukan untuk merugikannya. Siswa juga belajar membedakan cara manusia dan komputer "menangkap" informasi (penginderaan), serta membedakan <strong>mesin cerdas dan mesin non-cerdas</strong>.</p>
+  </div>
+  <div class="card bg-rose-50 border border-rose-100 p-5">
+    <p class="font-heading font-bold text-rose-800 text-sm mb-2">💗 Nilai Etika yang Ditanamkan</p>
+    <p class="text-rose-700 text-xs md:text-sm leading-relaxed">Empati dan prinsip <strong>"tidak menyakiti orang lain"</strong> menjadi dasar etika dasar penggunaan AI sejak usia SD — bukan aturan teknis, tapi nilai kemanusiaan yang dibawa ke ranah digital.</p>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 11 — CP ELEMEN 4 — PEMANFAATAN & PENGEMBANGAN KA
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-2 mb-5">
+    <span class="text-3xl">🔬</span>
+    <h2 class="font-heading font-extrabold text-xl md:text-3xl text-indigo-800">Elemen 4: Pemanfaatan & Pengembangan KA</h2>
+  </div>
+  <div class="card bg-indigo-50 border border-indigo-100 p-6 mb-5">
+    <p class="text-indigo-800 text-sm md:text-base leading-relaxed">Di Fase C, elemen ini masih sangat sederhana: siswa diajak <strong>mensimulasikan cara kerja AI</strong> saat mengenali pola dan mengklasifikasikan benda-benda konkret berdasarkan sifatnya, serta memahami bagaimana <strong>input yang diberikan memengaruhi hasil prediksi</strong> sistem AI.</p>
+  </div>
+  <div class="card bg-white border border-slate-100 p-5 shadow-sm">
+    <p class="font-heading font-bold text-slate-700 text-sm mb-2">🔗 Inilah Mengapa Bagian Produksi Media Hari Ini Penting</p>
+    <p class="text-slate-600 text-xs md:text-sm leading-relaxed">Aktivitas "Latih AI-ku" yang akan dipraktikkan (membuat media simulasi klasifikasi dengan Claude AI) adalah penerapan langsung dari elemen ini — siswa <em>mengalami</em> bagaimana mesin belajar dari data, bukan sekadar mendengar penjelasannya.</p>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 12 — PRINSIP MENGAJAR UNPLUGGED
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-3 mb-6">
+    <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-white font-heading font-extrabold text-lg">💡</div>
+    <div>
+      <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-slate-800">Cara Mengajar KKA Unplugged</h2>
+      <p class="text-slate-400 text-xs md:text-sm">Langsung praktik, rasakan sendiri sebagai siswa</p>
+    </div>
+  </div>
+  <div class="grid md:grid-cols-3 gap-4">
+    ${[
+      ['🎬','Mulai dari Pengalaman','Anak SD belajar paling baik dengan <em>melakukan</em>, baru kemudian dijelaskan konsepnya secara verbal di akhir aktivitas.'],
+      ['🔗','Selalu Hubungkan ke AI/Komputer','Setiap aktivitas ditutup dengan kalimat penghubung: "nah, ini persis cara komputer/AI melakukannya" — agar konsep tidak mengambang.'],
+      ['🧰','Alat Sesederhana Mungkin','Kertas, kartu, kardus bekas, spidol, atau gerakan tubuh — tidak butuh perangkat mahal sama sekali untuk mengajarkan konsep inti.'],
+    ].map(p=>`
+    <div class="card bg-orange-50 border border-orange-100 p-5">
+      <div class="text-3xl mb-2">${p[0]}</div>
+      <p class="font-heading font-bold text-orange-800 text-sm mb-1">${p[1]}</p>
+      <p class="text-orange-700 text-xs md:text-sm leading-relaxed">${p[2]}</p>
+    </div>`).join('')}
+  </div>
+  <div class="card bg-slate-50 border border-slate-100 p-5 mt-5">
+    <p class="font-heading font-bold text-slate-700 text-sm mb-2">📐 Pola 3 Langkah dalam Setiap Aktivitas Unplugged</p>
+    <div class="grid md:grid-cols-3 gap-2 text-center">
+      <div class="bg-white rounded-lg p-3 border border-slate-200"><p class="text-xs font-bold text-slate-700">1. Lakukan</p><p class="text-[11px] text-slate-500">Siswa langsung mempraktikkan permainan/aktivitas</p></div>
+      <div class="bg-white rounded-lg p-3 border border-slate-200"><p class="text-xs font-bold text-slate-700">2. Refleksikan</p><p class="text-[11px] text-slate-500">Diskusi: apa yang terjadi & kenapa</p></div>
+      <div class="bg-white rounded-lg p-3 border border-slate-200"><p class="text-xs font-bold text-slate-700">3. Hubungkan</p><p class="text-[11px] text-slate-500">Kaitkan dengan cara kerja sistem/komputer/AI</p></div>
+    </div>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 13 — AKTIVITAS 1 DETAIL (ROBOT MANUSIA)
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center justify-between mb-5 flex-wrap gap-2">
+    <h2 class="font-heading font-extrabold text-xl md:text-3xl text-slate-800">🤸 Aktivitas 1: Robot Manusia</h2>
+    <span class="text-xs font-bold bg-emerald-200 text-emerald-800 px-3 py-1 rounded-full">Kelas 5 · Algoritma Unplugged</span>
+  </div>
+  <div class="card bg-emerald-50 border border-emerald-100 p-6 mb-4">
+    <p class="text-emerald-800 text-sm md:text-base leading-relaxed">Siswa berpasangan: satu berperan sebagai <strong>"Robot"</strong> (mata tertutup), satu sebagai <strong>"Programmer"</strong> yang memberi instruksi presisi ("maju 2 langkah", "belok kiri 90 derajat") untuk membawa Robot mengambil sebuah benda tanpa menabrak rintangan.</p>
+  </div>
+  <div class="grid md:grid-cols-2 gap-4 mb-4">
+    <div class="card bg-white border border-slate-100 p-5 shadow-sm">
+      <p class="font-heading font-bold text-slate-700 text-sm mb-2">🧰 Persiapan</p>
+      <ul class="text-slate-600 text-xs md:text-sm leading-relaxed space-y-1 list-disc list-inside">
+        <li>Tata beberapa rintangan sederhana (kursi, tas, kardus)</li>
+        <li>Penutup mata / kesepakatan "mata tertutup"</li>
+        <li>Satu benda kecil sebagai target di ujung lintasan</li>
+      </ul>
+    </div>
+    <div class="card bg-white border border-slate-100 p-5 shadow-sm">
+      <p class="font-heading font-bold text-slate-700 text-sm mb-2">💬 Diskusi Setelahnya</p>
+      <ul class="text-slate-600 text-xs md:text-sm leading-relaxed space-y-1 list-disc list-inside">
+        <li>Apa yang terjadi kalau instruksinya tidak presisi/salah urutan?</li>
+        <li>Bagaimana rasanya jadi "Robot" yang hanya mengikuti perintah?</li>
+        <li>Apa hubungannya dengan cara komputer bekerja?</li>
+      </ul>
+    </div>
+  </div>
+  <p class="text-emerald-700 text-xs md:text-sm bg-emerald-100 rounded-lg p-3 inline-block">🎯 Konsep yang dilatih: Algoritma, Debugging & Instruksi Presisi</p>
+</div>`);
+
+// ========================================================================
+// SLIDE 14 — AKTIVITAS 2 DETAIL (DEBAT AI)
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center justify-between mb-5 flex-wrap gap-2">
+    <h2 class="font-heading font-extrabold text-xl md:text-3xl text-slate-800">💬 Aktivitas 2: Debat AI</h2>
+    <span class="text-xs font-bold bg-indigo-200 text-indigo-800 px-3 py-1 rounded-full">Kelas 6 · Literasi Etika KA</span>
+  </div>
+  <div class="card bg-indigo-50 border border-indigo-100 p-6 mb-4">
+    <p class="text-indigo-800 text-sm md:text-base leading-relaxed">Kelas dibagi menjadi dua tim untuk berdebat: <strong>"AI lebih pintar dari manusia"</strong> vs <strong>"Manusia tetap lebih unggul"</strong>. Tiap tim menyiapkan argumen & contoh nyata, lalu berdebat secara bergiliran. Juri (guru atau siswa lain) menilai kekuatan argumen dan kesantunan penyampaian.</p>
+  </div>
+  <div class="grid md:grid-cols-3 gap-3 mb-4">
+    ${[
+      ['1','📑','Persiapan Argumen','5–10 menit menyiapkan poin & contoh per tim'],
+      ['2','🎙️','Sesi Debat','Bergiliran menyampaikan argumen & sanggahan'],
+      ['3','⚖️','Penilaian','Juri menilai kekuatan argumen, bukan menang-kalah mutlak'],
+    ].map(s=>`
+    <div class="card bg-white border border-slate-100 p-4 text-center shadow-sm">
+      <div class="w-7 h-7 bg-indigo-200 text-indigo-800 rounded-full flex items-center justify-center text-xs font-bold mx-auto mb-2">${s[0]}</div>
+      <div class="text-2xl mb-2">${s[1]}</div>
+      <p class="font-heading font-bold text-slate-700 text-xs mb-1">${s[2]}</p>
+      <p class="text-slate-500 text-[11px] leading-relaxed">${s[3]}</p>
+    </div>`).join('')}
+  </div>
+  <p class="text-indigo-700 text-xs md:text-sm bg-indigo-100 rounded-lg p-3 inline-block">🎯 Konsep yang dilatih: Berpikir Kritis, Argumentasi & Literasi Etika AI</p>
+</div>`);
+
+// ========================================================================
+// SLIDE 15 — TIPS FASILITASI
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <h2 class="font-heading font-extrabold text-xl md:text-3xl text-slate-800 mb-6 text-center">✨ Tips Memfasilitasi Aktivitas Unplugged</h2>
+  <div class="grid md:grid-cols-2 gap-4 mb-5">
+    ${[
+      ['⏱️','Jaga Waktu','Tetapkan batas waktu jelas per tahap agar aktivitas tidak molor dan diskusi tetap fokus.'],
+      ['🔊','Beri Instruksi Bertahap','Jangan jelaskan semua aturan sekaligus — beri instruksi selangkah demi selangkah agar siswa tidak bingung.'],
+      ['🙋','Libatkan Semua Siswa','Pastikan tiap siswa punya peran, bukan hanya menonton — bergiliran jika jumlah siswa banyak.'],
+      ['🔁','Ulangi Koneksi ke AI','Jangan lupakan langkah "Hubungkan" di akhir — ini yang membuat aktivitas bermakna, bukan sekadar permainan.'],
+    ].map(t=>`
+    <div class="card bg-orange-50 border border-orange-100 p-4">
+      <div class="text-2xl mb-2">${t[0]}</div>
+      <p class="font-heading font-bold text-orange-800 text-sm mb-1">${t[1]}</p>
+      <p class="text-orange-700 text-xs leading-relaxed">${t[2]}</p>
+    </div>`).join('')}
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 16 — KENAPA CLAUDE AI
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-3 mb-6">
+    <div class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center text-white font-heading font-extrabold text-lg">💡</div>
+    <div>
+      <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-slate-800">Produksi Media via Claude AI</h2>
+      <p class="text-slate-400 text-xs md:text-sm">Dari prompt text menjadi media interaktif, instan</p>
+    </div>
+  </div>
+  <div class="card bg-white border border-slate-100 p-6 shadow-sm mb-5">
+    <p class="text-slate-600 text-sm md:text-base leading-relaxed">Peserta membuka <strong>Claude AI</strong>, menuliskan permintaan dalam bahasa sehari-hari (disebut <strong>prompt</strong>), lalu Claude menghasilkan langsung sebuah <strong>halaman HTML interaktif siap pakai</strong> — lengkap dengan tampilan, animasi, dan logika permainan — tanpa peserta perlu menulis kode satu baris pun.</p>
+  </div>
+  <div class="grid md:grid-cols-2 gap-2">
+    <div class="bg-white rounded-lg p-3 border border-slate-100"><p class="text-xs text-slate-500">👤 Personalisasi</p><p class="text-xs font-semibold text-slate-700">Minta AI menambahkan nama guru & nama sekolah di dalam medianya</p></div>
+    <div class="bg-white rounded-lg p-3 border border-slate-100"><p class="text-xs text-slate-500">📁 Nama File</p><p class="text-xs font-semibold text-slate-700">Saat mengunduh/menyimpan kode, berikan ekstensi <code>.html</code></p></div>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 17 — ANATOMI PROMPT YANG BAIK
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <h2 class="font-heading font-extrabold text-xl md:text-3xl text-slate-800 mb-2 text-center">🧬 Anatomi Prompt yang Baik</h2>
+  <p class="text-slate-400 text-xs md:text-sm text-center mb-7">Empat elemen yang membuat hasil Claude AI lebih sesuai harapan</p>
+  <div class="grid md:grid-cols-2 gap-4">
+    ${[
+      ['1','🎮','Jenis Media','Sebutkan dengan jelas: kuis, simulasi, game, atau media penjelasan.','bg-emerald-50 border-emerald-100 text-emerald-800'],
+      ['2','📚','Materi & Jenjang','Sebutkan topik spesifik dan kelas berapa, misalnya "Algoritma untuk kelas 5 SD".','bg-amber-50 border-amber-100 text-amber-800'],
+      ['3','🎨','Gaya Visual','Minta tampilan ceria, warna-warni, atau profesional — sesuai karakter siswa.','bg-violet-50 border-violet-100 text-violet-800'],
+      ['4','⚙️','Fitur Tambahan','Sebutkan elemen interaktif yang diinginkan: skor, timer, animasi, atau umpan balik.','bg-indigo-50 border-indigo-100 text-indigo-800'],
+    ].map(a=>`
+    <div class="card ${a[4]} border p-5">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="w-6 h-6 bg-white/70 rounded-full flex items-center justify-center text-xs font-bold">${a[0]}</span>
+        <span class="text-xl">${a[1]}</span>
+        <p class="font-heading font-bold text-sm">${a[2]}</p>
+      </div>
+      <p class="text-xs leading-relaxed opacity-80">${a[3]}</p>
+    </div>`).join('')}
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 18 — BANK PROMPT 1
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-2 mb-4">
+    <span class="text-3xl">🎮</span>
+    <h2 class="font-heading font-extrabold text-xl md:text-3xl text-emerald-800">Bank Prompt 1: Media Materi & Kuis Terintegrasi</h2>
+  </div>
+  <div class="card bg-emerald-50 border border-emerald-100 p-5 mb-4">
+    <p class="text-[10px] font-bold text-emerald-700 mb-2 uppercase tracking-wider">Salin Teks di Bawah Ini ke Claude AI:</p>
+    <div class="bg-white/90 rounded-xl p-4 font-mono text-[11px] md:text-xs text-slate-700 leading-relaxed shadow-inner border border-slate-200">
+      Bertindaklah sebagai Expert Web Developer dan Pendidik Profesional. Buatkan 1 file HTML tunggal (HTML, Tailwind CSS via CDN, dan Vanilla JS) berupa Media Pembelajaran Interaktif Utuh untuk <strong>mata pelajaran KKA (Koding & Kecerdasan Artifisial)</strong> target <strong>Siswa Kelas 5 SD</strong>.<br><br><strong>Topik:</strong> 4 Pilar Berpikir Komputasional.<br><strong>Struktur Wajib:</strong> Terdiri dari 2 bagian utama yang bisa dinavigasi: 1) <strong>'Ruang Belajar'</strong> berisi ringkasan materi bergambar/kartu informasi yang mudah dipahami anak SD (tamilkan detail materi dan contoh kontekstual ketika card di-klik, gunakan sistem show-hide element). 2) <strong>'Tantangan Kuis'</strong> berisi 5 soal evaluasi pilihan ganda dari materi tersebut.<br><strong>Fitur & UI/UX:</strong> Sistem skor *real-time*, efek animasi benar/salah, tombol 'Main Lagi'. Desain gamifikasi ramah anak (warna-warni, *rounded corners*), 100% responsif di HP. <strong>Penting:</strong> Jangan gunakan alert() browser, buat navigasi perpindahan halaman antar materi dan kuis secara dinamis (Single Page Application).
+    </div>
+  </div>
+  <div class="grid md:grid-cols-3 gap-3">
+    <div class="card bg-white border border-slate-100 p-4"><p class="font-heading font-bold text-slate-700 text-xs mb-1">✅ Cocok untuk</p><p class="text-slate-500 text-[11px] leading-relaxed">Menyajikan materi baru sekaligus evaluasi seru dalam satu paket web mini</p></div>
+    <div class="card bg-white border border-slate-100 p-4"><p class="font-heading font-bold text-slate-700 text-xs mb-1">⏱️ Kualitas Output</p><p class="text-slate-500 text-[11px] leading-relaxed">Memiliki navigasi interaktif antara ringkasan materi dan ruang kuis</p></div>
+    <div class="card bg-white border border-slate-100 p-4"><p class="font-heading font-bold text-slate-700 text-xs mb-1">🔧 Mudah Diubah</p><p class="text-slate-500 text-[11px] leading-relaxed">Bapak/Ibu tinggal meminta AI mengganti topik materi atau teks soalnya</p></div>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 19 — BANK PROMPT 2
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-2 mb-4">
+    <span class="text-3xl">🃏</span>
+    <h2 class="font-heading font-extrabold text-xl md:text-3xl text-violet-800">Bank Prompt 2: Simulasi Klasifikasi AI</h2>
+  </div>
+  <div class="card bg-violet-50 border border-violet-100 p-5 mb-4">
+    <p class="text-[10px] font-bold text-violet-700 mb-2 uppercase tracking-wider">Salin Teks di Bawah Ini ke Claude AI:</p>
+    <div class="bg-white/90 rounded-xl p-4 font-mono text-[11px] md:text-xs text-slate-700 leading-relaxed shadow-inner border border-slate-200">
+      Sebagai Expert Web Developer, buatkan media interaktif 1 file HTML tunggal (Tailwind CSS & Vanilla JS) untuk <strong>Kelas 6 SD</strong>, mapel <strong>KKA</strong>, materi: <strong>'Literasi AI - Mengenali Pola'</strong>.<br><br>Buat simulasi 'Latih Model AI-mu'. <strong>Alur:</strong> Siswa memasukkan 'Data Latih' dengan mengeklik tombol pemilah (misal: mengelompokkan ciri-ciri Apel vs Jeruk).<br><br><strong>PENTING (Logika Utama):</strong> JavaScript harus *benar-benar* menghitung dan mencatat data klik dari pengguna. Jika siswa sengaja melatih AI dengan data yang salah/terbalik (misal: ciri jeruk diklik sebagai apel), maka hasil tebakan AI di akhir <strong>wajib ikut salah</strong> sesuai data latih tersebut. Tunjukkan prinsip fundamental AI yaitu 'Garbage In, Garbage Out'. Setelah input data selesai, beri animasi *progress bar* 'AI Belajar', lalu uji coba tebakannya. Berikan penjelasan singkat konsep *Machine Learning* dan UI futuristik ramah anak.
+    </div>
+  </div>
+  <div class="grid md:grid-cols-3 gap-3">
+    <div class="card bg-white border border-slate-100 p-4"><p class="font-heading font-bold text-slate-700 text-xs mb-1">✅ Cocok untuk</p><p class="text-slate-500 text-[11px] leading-relaxed">Memberi gambaran konkret konsep "AI belajar dari data"</p></div>
+    <div class="card bg-white border border-slate-100 p-4"><p class="font-heading font-bold text-slate-700 text-xs mb-1">🎯 Logika Cerdas</p><p class="text-slate-500 text-[11px] leading-relaxed">AI diinstruksikan menerapkan prinsip <em>Garbage In, Garbage Out</em> secara nyata</p></div>
+    <div class="card bg-white border border-slate-100 p-4"><p class="font-heading font-bold text-slate-700 text-xs mb-1">🔧 Mudah Diubah</p><p class="text-slate-500 text-[11px] leading-relaxed">Objek klasifikasi bisa diganti (misal: memilah sampah organik)</p></div>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 20 — BANK PROMPT 3
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-2 mb-4">
+    <span class="text-3xl">🔁</span>
+    <h2 class="font-heading font-extrabold text-xl md:text-3xl text-amber-800">Bank Prompt 3: Game Drag-and-Drop Algoritma</h2>
+  </div>
+  <div class="card bg-amber-50 border border-amber-100 p-5 mb-4">
+    <p class="text-[10px] font-bold text-amber-700 mb-2 uppercase tracking-wider">Salin Teks di Bawah Ini ke Claude AI:</p>
+    <div class="bg-white/90 rounded-xl p-4 font-mono text-[11px] md:text-xs text-slate-700 leading-relaxed shadow-inner border border-slate-200">
+      Tuliskan kode untuk 1 file HTML utuh (menggunakan Tailwind CSS & Vanilla JS) untuk Game Drag-and-Drop. Target: <strong>Siswa Kelas 5 SD, Mata Pelajaran KKA</strong>.<br><br><strong>Misi Pemain:</strong> Menyusun urutan langkah Algoritma yang teracak (dalam aplikasi ada 3 tema yang tampil secara acak ketika game dimulai: 'Langkah Robot Membuat Teh Manis', 'Algoritma Memasak Nasi', dan 'Urutan Langkah Memasak Mie') ke dalam kotak urutan yang benar (1 sampai 5(atau lebih)).<br><strong>Spesifikasi Teknis:</strong> Interaksi *drag-and-drop* harus mulus dan wajib mendukung sentuhan di layar HP (*touch events*). Tambahkan validasi (Benar/Salah) di setiap langkah, dan munculkan efek konfeti (*confetti animation*) saat semua urutan tepat. Desain menggunakan tata letak *grid/flex* yang rapi seperti aplikasi *mobile* modern.
+    </div>
+  </div>
+  <div class="grid md:grid-cols-3 gap-3">
+    <div class="card bg-white border border-slate-100 p-4"><p class="font-heading font-bold text-slate-700 text-xs mb-1">✅ Cocok untuk</p><p class="text-slate-500 text-[11px] leading-relaxed">Melanjutkan praktik "Robot Manusia" secara digital interaktif</p></div>
+    <div class="card bg-white border border-slate-100 p-4"><p class="font-heading font-bold text-slate-700 text-xs mb-1">🎯 Tantangan Khusus</p><p class="text-slate-500 text-[11px] leading-relaxed">Memaksa AI memastikan fitur geser (*drag*) bekerja di layar HP</p></div>
+    <div class="card bg-white border border-slate-100 p-4"><p class="font-heading font-bold text-slate-700 text-xs mb-1">🔧 Mudah Diubah</p><p class="text-slate-500 text-[11px] leading-relaxed">Tema algoritma bisa diganti (misal: cara cuci tangan)</p></div>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 21 — TAMBAHAN PROMPT PERSONALISASI
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-2 mb-3">
+    <span class="text-3xl">🏫</span>
+    <h2 class="font-heading font-extrabold text-xl md:text-3xl text-rose-800">Tambahan: Personalisasi Aset</h2>
+  </div>
+  <p class="text-slate-600 text-xs md:text-sm leading-relaxed mb-4">Agar media benar-benar menjadi "milik" Bapak/Ibu, siapkan <strong>file logo sekolah & foto Bapak/Ibu</strong> terlebih dahulu. <em>Ubah nama filenya agar menghindari penggunaan spasi atau karakter khusus (contoh yang benar: <code>logo-sekolah.png</code>, <code>foto-guru.jpg</code>).</em></p>
+  <div class="card bg-rose-50 border border-rose-100 p-5">
+    <p class="text-[10px] font-bold text-rose-700 mb-2 uppercase tracking-wider">Tambahkan kalimat ini di akhir prompt:</p>
+    <div class="bg-white/90 rounded-xl p-4 font-mono text-[11px] md:text-xs text-rose-800 leading-relaxed shadow-inner border border-slate-200">
+      ...Penting: Pastikan seluruh kode digabung ke dalam <strong>1 file HTML tunggal (single file HTML)</strong>. Pada bagian header, tambahkan judul 'Media KKA - [Nama Sekolah Bapak/Ibu]' berdampingan dengan logonya menggunakan tag <code>&lt;img src="../logo-sekolah.png"&gt;</code>. Di bagian footer, tuliskan 'Dikembangkan oleh: [Nama Bapak/Ibu]' beserta foto menggunakan tag <code>&lt;img src="../foto-guru.jpg"&gt;</code>. Buat agar desainnya rapi dan profesional.
+    </div>
+  </div>
+  <div class="card bg-white shadow-sm border border-slate-100 p-4 mt-4 flex gap-3 items-center">
+    <span class="text-2xl">📁</span>
+    <p class="text-slate-500 text-[11px] md:text-xs leading-relaxed"><strong>Catatan Penting:</strong> Setelah file media HTML diunduh/disimpan, pastikan file gambar (logo dan foto) diletakkan di dalam <strong>satu folder yang persis sama</strong> dengan file HTML tersebut agar gambar bisa tampil di layar.</p>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 22 — GURU TETAP PENGENDALI (CHECKLIST REVIEW)
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <h2 class="font-heading font-extrabold text-xl md:text-3xl text-slate-800 mb-2 text-center">⚠️ AI Asisten, Guru Tetap Pengendali</h2>
+  <p class="text-slate-400 text-xs md:text-sm text-center mb-7">Checklist validasi sebelum media dibagikan ke kelas</p>
+  <div class="grid md:grid-cols-2 gap-3">
+    ${[
+      ['✅','Bahasa Sesuai Usia','Pastikan kalimat dan instruksi dalam media mudah dipahami anak SD.'],
+      ['✅','Tingkat Kesulitan Pas','Soal/tantangan game tidak terlalu mudah, namun juga tidak terlalu rumit.'],
+      ['✅','Konten Tepat & Akurat','Cek ulang fakta, kunci jawaban kuis, dan kebenaran konsep.'],
+      ['✅','Aman & Bebas Bias','Pastikan contoh dan ilustrasi yang dipilih netral serta sesuai konteks budaya.'],
+    ].map(c=>`
+    <div class="flex gap-3 items-start card bg-amber-50 border border-amber-100 p-4">
+      <span class="text-xl flex-shrink-0">${c[0]}</span>
+      <div>
+        <p class="font-heading font-bold text-amber-800 text-sm">${c[1]}</p>
+        <p class="text-amber-700 text-[11px] md:text-xs leading-relaxed">${c[2]}</p>
+      </div>
+    </div>`).join('')}
+  </div>
+  <div class="card bg-amber-100/60 border border-amber-200 p-4 mt-5 text-center">
+    <p class="text-amber-800 text-xs md:text-sm leading-relaxed">Teknologi AI mempercepat drastis <strong>proses pengkodean/pembuatan</strong>, tetapi otoritas dan tanggung jawab atas <strong>kualitas pendidikan</strong> tetap sepenuhnya berada di tangan guru.</p>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 23 — KENAPA PUBLIKASI PENTING
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-3 mb-6">
+    <div class="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center text-white font-heading font-extrabold text-lg">🌐</div>
+    <div>
+      <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-slate-800">Publikasi via Tiiny.site</h2>
+      <p class="text-slate-400 text-xs md:text-sm">Dari file terisolasi di laptop, menjadi tautan publik</p>
+    </div>
+  </div>
+  <div class="card bg-white border border-slate-100 p-6 shadow-sm mb-5">
+    <p class="text-slate-600 text-sm md:text-base leading-relaxed">Kode HTML (media interaktif) yang dihasilkan Claude AI tidak bisa dibagikan langsung ke WhatsApp agar bisa dimainkan seketika. <strong>Tiiny.site</strong> menjembatani ini dengan mengubah file HTML lokal menjadi <strong>link web online</strong> hanya melalui fitur geser-dan-lepas (drag-and-drop).</p>
+  </div>
+  <div class="grid md:grid-cols-3 gap-3">
+    ${[
+      ['📱','Bisa Dibuka di HP Siswa','Cukup kirim link web ke grup WA kelas — langsung terbuka di peramban tanpa instalasi.'],
+      ['🆓','Praktis & Tak Berbayar','Tidak perlu menyewa server (hosting) atau domain berbayar untuk penggunaan standar.'],
+      ['🔄','Pembaruan Fleksibel','Terdapat kesalahan ejaan? Media bisa direvisi dan link yang sama dapat di-update.'],
+    ].map(b=>`
+    <div class="card bg-indigo-50 border border-indigo-100 p-4">
+      <div class="text-2xl mb-2">${b[0]}</div>
+      <p class="font-heading font-bold text-indigo-800 text-xs md:text-sm mb-1">${b[1]}</p>
+      <p class="text-indigo-700 text-[11px] md:text-xs leading-relaxed">${b[2]}</p>
+    </div>`).join('')}
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 24 — LANGKAH-LANGKAH DETAIL
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <h2 class="font-heading font-extrabold text-xl md:text-3xl text-slate-800 mb-7 text-center">🌐 Langkah Publikasi Sederhana</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    ${[
+      ['1','📝','Registrasi Akun','Buat akun gratis di tiiny.site. Sangat disarankan login untuk menjaga link tetap aktif permanen.'],
+      ['2','💾','Simpan File HTML','Salin kode dari Claude AI, simpan ke laptop/komputer dengan nama diakhiri ".html".'],
+      ['3','🖱️','Drag & Drop','Masuk ke dasbor Tiiny.site, tarik dan lepas file HTML tersebut ke kotak unggahan (upload).'],
+      ['4','🔗','Dapatkan Tautan','Sistem akan menghasilkan link khusus. Salin link tersebut dan bagikan ke peserta didik.'],
+    ].map(t=>`
+    <div class="card bg-indigo-50 border border-indigo-100 p-4 text-center">
+      <div class="w-7 h-7 bg-indigo-200 text-indigo-800 rounded-full flex items-center justify-center text-xs font-bold mx-auto mb-2">${t[0]}</div>
+      <div class="text-2xl mb-2">${t[1]}</div>
+      <p class="font-heading font-bold text-indigo-800 text-xs md:text-sm mb-2">${t[2]}</p>
+      <p class="text-slate-600 text-[11px] md:text-xs leading-relaxed">${t[3]}</p>
+    </div>`).join('')}
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 25 — MENJAGA LINK TETAP AKTIF & GITHUB PAGES
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <h2 class="font-heading font-extrabold text-xl md:text-3xl text-slate-800 mb-6 text-center">🔋 Menjaga Link Tetap Aktif</h2>
+  <div class="grid md:grid-cols-2 gap-4 mb-4">
+    <div class="card bg-rose-50 border border-rose-100 p-5">
+      <p class="font-heading font-bold text-rose-800 text-sm mb-2">⚠️ Tiiny.site (Tanpa Akun)</p>
+      <p class="text-rose-700 text-xs md:text-sm leading-relaxed">Tautan web bersifat sementara (temporary) dan dapat kadaluwarsa/dihapus oleh sistem dalam beberapa hari.</p>
+    </div>
+    <div class="card bg-emerald-50 border border-emerald-100 p-5">
+      <p class="font-heading font-bold text-emerald-800 text-sm mb-2">✅ Tiiny.site (Terdaftar/Login)</p>
+      <p class="text-emerald-700 text-xs md:text-sm leading-relaxed">Tautan dijamin tetap aktif selama pengguna secara rutin login ke akunnya (disarankan minimal setiap awal semester).</p>
+    </div>
+  </div>
+  <div class="card bg-slate-800 border border-slate-700 p-5 shadow-lg">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="text-2xl text-white"><i class="fa-brands fa-github"></i> 🐱</span>
+      <p class="font-heading font-bold text-white text-sm md:text-base">Alternatif Host Permanen: GitHub Pages</p>
+    </div>
+    <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-3">Sebuah fasilitas hosting gratis tanpa batas waktu, tanpa risiko situs terhapus karena akun sedang tidak aktif (inaktif). Sangat direkomendasikan untuk koleksi media berskala besar dan berjangka panjang.</p>
+    <div class="bg-slate-700/50 p-3 rounded-lg border border-slate-600">
+      <p class="text-amber-300 text-[11px] md:text-xs font-semibold">⚠️ Syarat Penggunaan Khusus:</p>
+      <p class="text-slate-300 text-[11px] md:text-xs leading-relaxed mt-1">Hanya disarankan bagi Bapak/Ibu yang memiliki pengetahuan dasar teknis terkait pengelolaan repositori (repository), struktur web dasar, serta pembaruan berkas via antarmuka Git/GitHub.</p>
+    </div>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 26 — SHOWCASE
+// ========================================================================
+slides.push(`
+<div class="slide-inner">
+  <div class="flex items-center gap-3 mb-6">
+    <div class="w-12 h-12 bg-violet-500 rounded-xl flex items-center justify-center text-white font-heading font-extrabold text-lg">🎉</div>
+    <div>
+      <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-slate-800">Showcase Karya Media</h2>
+      <p class="text-slate-400 text-xs md:text-sm">Tampilkan, apresiasi, dan saling menginspirasi</p>
+    </div>
+  </div>
+  <div class="grid md:grid-cols-3 gap-4 mb-5">
+    ${[
+      ['1','🔗','Tampilkan Tautan','Tiap kelompok/peserta membagikan tautan (link) HTML Tiiny.site ke layar utama.'],
+      ['2','🎤','Simulasi Ringkas','Berikan paparan 2 menit: sasaran kelas, materi KKA terkait, dan demonstrasi fungsinya.'],
+      ['3','🏆','Apresiasi Kolaboratif','Vote singkat untuk kategori ringan seperti "UI Paling Ramah Anak" atau "Konsep Teringan".'],
+    ].map(s=>`
+    <div class="card bg-violet-50 border border-violet-100 p-5 text-center">
+      <div class="w-8 h-8 bg-violet-200 text-violet-800 rounded-full flex items-center justify-center text-xs font-bold mx-auto mb-2">${s[0]}</div>
+      <div class="text-3xl mb-2">${s[1]}</div>
+      <p class="font-heading font-bold text-violet-800 text-sm mb-2">${s[2]}</p>
+      <p class="text-slate-600 text-[11px] md:text-xs leading-relaxed">${s[3]}</p>
+    </div>`).join('')}
+  </div>
+  <div class="card bg-white border border-slate-100 p-5 shadow-sm">
+    <p class="font-heading font-bold text-slate-700 text-sm mb-2">🗂️ Pesan Kolaborasi</p>
+    <p class="text-slate-500 text-xs md:text-sm leading-relaxed">Catat minimal satu ide brilian dari karya rekan pendidik lain hari ini yang sekiranya dapat disesuaikan dan diterapkan di ruang kelas Bapak/Ibu minggu depan.</p>
+  </div>
+</div>`);
+
+// ========================================================================
+// SLIDE 27 — PENUTUP (AKHIR WORKSHOP)
+// ========================================================================
+slides.push(`
+<div class="slide-inner text-center">
+  <div class="text-5xl mb-5">🏆</div>
+  <h2 class="font-heading font-extrabold text-2xl md:text-4xl mb-5">Hari Ini, Bapak/Ibu Sudah...</h2>
+  <div class="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8 text-left">
+    ${[
+      ['🧭','Memahami KKA Fase C','Mendudukkan pemahaman dan menyelaraskan Capaian Pembelajaran kelas 5–6 secara tepat.'],
+      ['✋','Mengajar Tanpa Lab','Menemukan solusi pembelajaran berpikir komputasional seru tanpa bergantung pada fasilitas komputer (unplugged).'],
+      ['🤖','Memproduksi Media AI','Berhasil merancang dan menyebarluaskan media interaktif ciptaan sendiri menggunakan AI.'],
+    ].map(o=>`
+    <div class="bg-white/10 border border-white/20 rounded-2xl p-4">
+      <div class="text-3xl mb-3">${o[0]}</div>
+      <p class="font-heading font-bold text-sm mb-2">${o[1]}</p>
+      <p class="text-amber-50/80 text-[11px] md:text-xs leading-relaxed">${o[2]}</p>
+    </div>`).join('')}
+  </div>
+  <p class="text-amber-50/90 text-sm md:text-lg max-w-xl mx-auto leading-relaxed mb-6">Bawa panduan, inspirasi bank prompt, dan hasil karya luar biasa hari ini kembali ke kelas Bapak/Ibu masing-masing — jadikan momen ini sebagai langkah permulaan, bukan pencapaian akhir.</p>
+  <p class="font-heading font-bold text-sm md:text-base">Workshop KKA PGRI &middot; 1 Juli 2026</p>
+  <p class="text-amber-100/70 text-xs mt-1">&copy; Ach. Chanifuddin Fanani.</p>
+</div>`);
+
+// theme per slide index: cover & penutup pakai gradient gelap, sisanya terang
+const themes = slides.map((_,i)=> (i===0 || i===slides.length-1) ? 'bg-cover' : 'bg-light');
+
+const deck = document.getElementById('deck');
+slides.forEach((html,i)=>{
+  const d = document.createElement('div');
+  d.className = 'slide ' + themes[i];
+  d.innerHTML = html;
+  deck.appendChild(d);
+});
+
+const dotsWrap = document.getElementById('dots');
+slides.forEach((_,i)=>{
+  const dot = document.createElement('div');
+  dot.className='dot';
+  dot.onclick=()=>showSlide(i);
+  dotsWrap.appendChild(dot);
+});
+
+let current = 0;
+const total = slides.length;
+const slideEls = document.querySelectorAll('.slide');
+const dotEls = document.querySelectorAll('.dot');
+
+function showSlide(i){
+  if(i<0||i>=total) return;
+  slideEls[current].classList.remove('active');
+  current = i;
+  slideEls[current].classList.add('active');
+  dotEls.forEach((d,idx)=>d.classList.toggle('on', idx===current));
+  document.getElementById('progress-bar').style.width = ((current+1)/total*100)+'%';
+  document.getElementById('counter').textContent = (current+1)+' / '+total;
+  document.getElementById('btn-prev') && (document.getElementById('btn-prev').style.opacity = current===0?'.3':'1');
+  document.getElementById('btn-next') && (document.getElementById('btn-next').style.opacity = current===total-1?'.3':'1');
+}
+function go(dir){ showSlide(current+dir); }
+
+showSlide(0);
+
+// keyboard
+window.addEventListener('keydown', e=>{
+  if(e.key==='ArrowRight'||e.key===' ') go(1);
+  if(e.key==='ArrowLeft') go(-1);
+});
+
+// swipe
+let touchX=null;
+document.getElementById('deck').addEventListener('touchstart', e=>{touchX=e.touches[0].clientX;});
+document.getElementById('deck').addEventListener('touchend', e=>{
+  if(touchX===null) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if(Math.abs(dx)>50) go(dx<0?1:-1);
+  touchX=null;
+});
+</script>
+</body>
+</html>

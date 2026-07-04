@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Belajar Python dengan Turtle: menggambar bentuk geometri, pola warna-warni, dan animasi sederhana menggunakan modul Turtle di Python — cara seru belajar coding!">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Python Turtle: Belajar Coding Lewat Menggambar | Informatika Kelas 8</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
+        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
+        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
+        .prose strong{color:#1e293b;}
+        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
+        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
+        pre{background:#0f172a;color:#e2e8f0;padding:1.25rem;border-radius:.75rem;overflow-x:auto;font-size:.875rem;line-height:1.6;margin:1rem 0;}
+        code{font-family:'Courier New',monospace;}:not(pre)>code{background:#f1f5f9;color:#6366f1;padding:.15rem .4rem;border-radius:.35rem;font-size:.85em;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-emerald-600 hover:underline">← Kelas 8</a>
+</nav>
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
+        <a href="../" class="hover:text-emerald-600">Kelas 8</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Materi 2</span>
+    </div>
+    <div class="bg-gradient-to-br from-teal-500 to-emerald-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 2 · Python</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Python Turtle: Belajar Coding Lewat Menggambar 🐢</h1>
+            <p class="text-teal-100 leading-relaxed max-w-2xl">Bayangkan ada kura-kura kecil di layar yang bisa kamu perintah untuk bergerak dan menggambar. Itulah Python Turtle — cara paling seru untuk mulai belajar Python!</p>
+        </div>
+    </div>
+    <div class="prose max-w-none">
+        <h2>Apa Itu Python Turtle?</h2>
+        <p>Python Turtle adalah modul bawaan Python yang memungkinkanmu menggambar dengan cara memberikan perintah. Sebuah "kura-kura" (kursor) bergerak di layar sesuai perintahmu dan meninggalkan jejak berupa garis.</p>
+        <div class="callout callout-fun">
+            <p class="font-heading font-bold text-purple-800 mb-1">🐢 Kenapa disebut "Turtle"?</p>
+            <p class="text-purple-700 text-sm">Namanya terinspirasi dari robot kura-kura fisik tahun 1960-an yang bisa ditempel pulpen dan diperintah bergerak untuk menggambar di atas kertas. Python Turtle adalah versi digitalnya!</p>
+        </div>
+
+        <h2>Perintah Dasar Turtle</h2>
+        <div class="not-prose grid md:grid-cols-2 gap-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
+                <code class="text-emerald-700 font-bold text-sm">forward(100)</code>
+                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">fd(100)</code></span>
+                                <p class="text-slate-500 text-xs mt-1">Maju 100 langkah ke depan</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
+                <code class="text-emerald-700 font-bold text-sm">backward(50)</code>
+                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">bk(50)</code></span>
+                                <p class="text-slate-500 text-xs mt-1">Mundur 50 langkah</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
+                <code class="text-emerald-700 font-bold text-sm">right(90)</code>
+                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">rt(90)</code></span>
+                                <p class="text-slate-500 text-xs mt-1">Putar kanan 90 derajat</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
+                <code class="text-emerald-700 font-bold text-sm">left(45)</code>
+                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">lt(45)</code></span>
+                                <p class="text-slate-500 text-xs mt-1">Putar kiri 45 derajat</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
+                <code class="text-emerald-700 font-bold text-sm">penup()</code>
+                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">pu()</code></span>
+                                <p class="text-slate-500 text-xs mt-1">Angkat pena (tidak meninggalkan jejak)</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
+                <code class="text-emerald-700 font-bold text-sm">pendown()</code>
+                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">pd()</code></span>
+                                <p class="text-slate-500 text-xs mt-1">Turunkan pena (mulai menggambar)</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
+                <code class="text-emerald-700 font-bold text-sm">color("red")</code>
+                                <p class="text-slate-500 text-xs mt-1">Ganti warna pena jadi merah</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
+                <code class="text-emerald-700 font-bold text-sm">circle(50)</code>
+                                <p class="text-slate-500 text-xs mt-1">Gambar lingkaran jari-jari 50</p>
+            </div>
+                    </div>
+
+        <h2>Program Pertama: Gambar Kotak</h2>
+        <p>Mari coba program paling sederhana — menggambar kotak persegi!</p>
+        <pre>import turtle
+
+t = turtle.Turtle()  # Buat kura-kura bernama "t"
+
+# Gambar kotak (4 sisi)
+t.forward(100)   # maju 100
+t.right(90)      # putar kanan 90°
+t.forward(100)
+t.right(90)
+t.forward(100)
+t.right(90)
+t.forward(100)
+
+turtle.done()    # Jaga jendela tetap terbuka</pre>
+
+        <div class="callout callout-tip">
+            <p class="font-heading font-bold text-green-800 mb-1">💡 Pakai Loop untuk Kode yang Lebih Singkat</p>
+            <p class="text-green-700 text-sm mb-2">Kode di atas bisa dipersingkat dengan loop <code>for</code>:</p>
+            <pre style="font-size:.8rem;margin:0;">for i in range(4):
+    t.forward(100)
+    t.right(90)</pre>
+        </div>
+
+        <h2>Menggambar Bentuk-Bentuk Keren</h2>
+        <div class="not-prose space-y-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <p class="font-heading font-bold text-slate-700 mb-2">🔺 Segitiga Sama Sisi</p>
+                <pre style="margin:0;font-size:.8rem;">for i in range(3):
+    t.forward(100)
+    t.right(120)</pre>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <p class="font-heading font-bold text-slate-700 mb-2">⭐ Bintang 5 Sudut</p>
+                <pre style="margin:0;font-size:.8rem;">for i in range(5):
+    t.forward(100)
+    t.right(144)</pre>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <p class="font-heading font-bold text-slate-700 mb-2">⭕ Lingkaran</p>
+                <pre style="margin:0;font-size:.8rem;">t.circle(80)  # jari-jari 80</pre>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <p class="font-heading font-bold text-slate-700 mb-2">🌀 Spiral Kotak</p>
+                <pre style="margin:0;font-size:.8rem;">for i in range(50):
+    t.forward(i * 2)
+    t.right(91)</pre>
+            </div>
+                    </div>
+
+        <h2>Menambahkan Warna</h2>
+        <p>Turtle mendukung warna dalam bahasa Inggris atau kode hex:</p>
+        <pre>t.color("blue")          # nama warna langsung
+t.color("#FF6B6B")       # kode hex (merah muda)
+t.fillcolor("yellow")    # warna isian
+t.begin_fill()
+t.circle(50)
+t.end_fill()             # bentuk terisi kuning</pre>
+
+        <h2>Proyek: Gambar Bunga dengan Loop</h2>
+        <pre>import turtle
+
+t = turtle.Turtle()
+t.speed(0)               # kecepatan maksimum
+colors = ["red","orange","yellow","green","blue","purple"]
+
+for i in range(36):      # 36 kelopak
+    t.color(colors[i % 6])
+    t.circle(60)
+    t.right(10)          # putar 10° setiap kelopak
+
+turtle.done()</pre>
+
+        <div class="callout callout-info">
+            <p class="font-heading font-bold text-blue-800 mb-1">🌐 Coba Online Gratis</p>
+            <p class="text-blue-700 text-sm">Tidak punya Python di komputer? Coba di <strong>trinket.io</strong> atau <strong>replit.com</strong> — Python Turtle bisa dijalankan langsung di browser!</p>
+        </div>
+
+        <h2>Ringkasan 📝</h2>
+        <ul>
+            <li>Python Turtle = kura-kura yang bisa diperintah menggambar</li>
+            <li>Perintah dasar: <code>forward()</code>, <code>right()</code>, <code>left()</code>, <code>color()</code></li>
+            <li>Loop <code>for</code> membuat kode lebih pendek dan bisa menggambar pola rumit</li>
+            <li>Turtle adalah cara yang menyenangkan untuk belajar logika Python!</li>
+        </ul>
+    </div>
+    <div class="flex justify-between mt-12 gap-4">
+        <a href="../01-scratch-lanjutan/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Scratch Lanjutan</p></div>
+        </a>
+        <a href="../03-logika-percabangan-loop/" class="flex items-center gap-3 px-5 py-3 bg-emerald-600 text-white rounded-2xl shadow hover:bg-emerald-700 transition">
+            <div class="text-right"><p class="text-[10px] text-emerald-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Percabangan & Loop</p></div>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>

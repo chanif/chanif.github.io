@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Styling website dengan CSS: selektor, properti warna & font, box model, flexbox, dan cara membuat tampilan website yang menarik dan responsif.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Mempercantik Web dengan CSS | Informatika Kelas 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
+        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
+        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
+        .prose strong{color:#1e293b;}
+        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
+        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
+        pre{background:#0f172a;color:#e2e8f0;padding:1.25rem;border-radius:.75rem;overflow-x:auto;font-size:.875rem;line-height:1.6;margin:1rem 0;}
+        code{font-family:'Courier New',monospace;}:not(pre)>code{background:#f1f5f9;color:#6366f1;padding:.15rem .4rem;border-radius:.35rem;font-size:.85em;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-amber-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-amber-600 hover:underline">← Kelas 9</a>
+</nav>
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
+        <a href="../" class="hover:text-amber-600">Kelas 9</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Materi 2</span>
+    </div>
+    <div class="bg-gradient-to-br from-pink-500 to-rose-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 2 · CSS</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Mempercantik Web dengan CSS 🎨</h1>
+            <p class="text-pink-100 leading-relaxed max-w-2xl">Website-mu sudah ada kerangkanya. Sekarang saatnya beri warna, font keren, dan layout yang rapi! CSS adalah "cat dan dekorasi" untuk rumah web-mu.</p>
+        </div>
+    </div>
+    <div class="prose max-w-none">
+        <h2>CSS Itu Apa?</h2>
+        <p><strong>CSS (Cascading Style Sheets)</strong> adalah bahasa untuk mengatur tampilan elemen HTML — warna, ukuran font, spasi, layout, animasi, dan masih banyak lagi. Tanpa CSS, semua website terlihat seperti dokumen teks hitam-putih biasa!</p>
+
+        <h2>Cara Menulis CSS</h2>
+        <p>Ada 3 cara menyisipkan CSS ke HTML:</p>
+        <div class="not-prose grid md:grid-cols-3 gap-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <span class="bg-red-50 text-red-600 text-xs font-bold px-2 py-0.5 rounded-md">Inline</span>
+                <code class="block text-slate-600 text-xs mt-2 mb-1">&lt;p style=&quot;color:red&quot;&gt;</code>
+                <p class="text-slate-400 text-xs">Langsung di dalam tag. Hindari untuk proyek besar.</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <span class="bg-amber-50 text-amber-600 text-xs font-bold px-2 py-0.5 rounded-md">Internal</span>
+                <code class="block text-slate-600 text-xs mt-2 mb-1">&lt;style&gt; di dalam &lt;head&gt;</code>
+                <p class="text-slate-400 text-xs">Tulis CSS di dalam tag &lt;style&gt; di bagian head.</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <span class="bg-emerald-50 text-emerald-600 text-xs font-bold px-2 py-0.5 rounded-md">External</span>
+                <code class="block text-slate-600 text-xs mt-2 mb-1">&lt;link href=&quot;style.css&quot;&gt;</code>
+                <p class="text-slate-400 text-xs">File CSS terpisah. Cara terbaik untuk proyek nyata!</p>
+            </div>
+                    </div>
+
+        <h2>Struktur Penulisan CSS</h2>
+        <pre>/* Selector { property: value; } */
+
+h1 {
+    color: #6366f1;        /* warna teks */
+    font-size: 2rem;       /* ukuran huruf */
+    text-align: center;    /* rata tengah */
+}
+
+p {
+    color: #475569;        /* abu-abu sedang */
+    line-height: 1.7;      /* jarak antar baris */
+    margin-bottom: 1rem;   /* jarak bawah */
+}
+
+.kartu {
+    background: white;     /* warna latar */
+    padding: 20px;         /* jarak dalam */
+    border-radius: 12px;   /* sudut membulat */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}</pre>
+
+        <h2>Properti CSS yang Paling Sering Dipakai</h2>
+        <div class="not-prose grid md:grid-cols-2 gap-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
+                <code class="text-pink-600 font-bold text-xs min-w-[100px]">color</code>
+                <div>
+                    <code class="text-slate-400 text-xs">color: #333</code>
+                    <p class="text-slate-500 text-xs">Warna teks</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
+                <code class="text-pink-600 font-bold text-xs min-w-[100px]">background</code>
+                <div>
+                    <code class="text-slate-400 text-xs">background: #f0f9ff</code>
+                    <p class="text-slate-500 text-xs">Warna/gambar latar belakang</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
+                <code class="text-pink-600 font-bold text-xs min-w-[100px]">font-size</code>
+                <div>
+                    <code class="text-slate-400 text-xs">font-size: 1.2rem</code>
+                    <p class="text-slate-500 text-xs">Ukuran huruf</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
+                <code class="text-pink-600 font-bold text-xs min-w-[100px]">font-family</code>
+                <div>
+                    <code class="text-slate-400 text-xs">font-family: 'Poppins'</code>
+                    <p class="text-slate-500 text-xs">Jenis font</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
+                <code class="text-pink-600 font-bold text-xs min-w-[100px]">padding</code>
+                <div>
+                    <code class="text-slate-400 text-xs">padding: 16px</code>
+                    <p class="text-slate-500 text-xs">Jarak antara konten dan tepi elemen</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
+                <code class="text-pink-600 font-bold text-xs min-w-[100px]">margin</code>
+                <div>
+                    <code class="text-slate-400 text-xs">margin: 0 auto</code>
+                    <p class="text-slate-500 text-xs">Jarak antara elemen dengan elemen lain</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
+                <code class="text-pink-600 font-bold text-xs min-w-[100px]">border-radius</code>
+                <div>
+                    <code class="text-slate-400 text-xs">border-radius: 8px</code>
+                    <p class="text-slate-500 text-xs">Membuat sudut elemen membulat</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
+                <code class="text-pink-600 font-bold text-xs min-w-[100px]">display</code>
+                <div>
+                    <code class="text-slate-400 text-xs">display: flex</code>
+                    <p class="text-slate-500 text-xs">Cara elemen ditampilkan (flex/block/grid)</p>
+                </div>
+            </div>
+                    </div>
+
+        <h2>Proyek: Percantik Halaman Profil</h2>
+        <p>Lanjutkan proyek profil dari materi sebelumnya! Tambahkan file <code>style.css</code> di folder yang sama:</p>
+        <pre>/* style.css */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f8fafc;
+    color: #334155;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    color: #6366f1;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    color: #334155;
+    border-bottom: 3px solid #6366f1;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+img {
+    border-radius: 50%;      /* foto jadi lingkaran */
+    border: 4px solid #6366f1;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+ul {
+    background: white;
+    padding: 1rem 1rem 1rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}</pre>
+        <p>Sambungkan ke HTML dengan menambahkan di bagian <code>&lt;head&gt;</code>:</p>
+        <pre>&lt;link rel="stylesheet" href="../style.css"&gt;</pre>
+
+        <div class="callout callout-info">
+            <p class="font-heading font-bold text-blue-800 mb-1">🌈 Sumber Warna Gratis</p>
+            <p class="text-blue-700 text-sm">Bingung pilih warna yang cocok? Coba <strong>coolors.co</strong> untuk membuat palet warna harmonis, atau <strong>color.adobe.com</strong> untuk eksplorasi kombinasi warna!</p>
+        </div>
+
+        <h2>Ringkasan 📝</h2>
+        <ul>
+            <li>CSS mengatur tampilan visual: warna, ukuran, spasi, layout</li>
+            <li>Struktur CSS: <code>selector { property: value; }</code></li>
+            <li>Gunakan file CSS eksternal (<code>style.css</code>) untuk proyek yang rapi</li>
+            <li>Properti terpenting: color, background, font-size, padding, margin, border-radius</li>
+        </ul>
+    </div>
+    <div class="flex justify-between mt-12 gap-4">
+        <a href="../01-membuat-website-html/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-amber-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Membuat Website HTML</p></div>
+        </a>
+        <a href="../03-ui-ux-dasar/" class="flex items-center gap-3 px-5 py-3 bg-amber-600 text-white rounded-2xl shadow hover:bg-amber-700 transition">
+            <div class="text-right"><p class="text-[10px] text-amber-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">UI/UX Dasar</p></div>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>

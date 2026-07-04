@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Konsep machine learning: supervised learning, unsupervised learning, data latih dan data uji, overfitting, dan bagaimana mesin bisa belajar dari contoh-contoh yang diberikan.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Konsep Machine Learning | KKA Kelas 7</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
+        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
+        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
+        .prose strong{color:#1e293b;}
+        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
+        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-violet-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-violet-600 hover:underline">← KKA Kelas 7</a>
+</nav>
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-violet-600">KKA</a><span>/</span>
+        <a href="../" class="hover:text-violet-600">Kelas 7</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Materi 2</span>
+    </div>
+    <div class="bg-gradient-to-br from-violet-500 to-purple-700 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 2 · ML</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Konsep Machine Learning 🧠</h1>
+            <p class="text-violet-100 leading-relaxed max-w-2xl">Bagaimana caranya mesin bisa "belajar"? Tidak ada sihir di sini — hanya data, pola, dan latihan berulang. Yuk kupas konsepnya dengan cara yang mudah!</p>
+        </div>
+    </div>
+    <div class="prose max-w-none">
+        <h2>Bedanya AI Biasa vs Machine Learning</h2>
+        <p>Ada dua cara membuat AI:</p>
+        <div class="not-prose grid md:grid-cols-2 gap-4 my-5">
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <p class="font-heading font-extrabold text-slate-700 text-lg mb-2">📋 AI Berbasis Aturan</p>
+                <p class="text-slate-600 text-sm mb-3">Programmer menulis aturan satu per satu:</p>
+                <div class="bg-slate-800 text-slate-100 rounded-lg p-3 text-xs font-mono">
+                    <p>JIKA warna merah → lampu berhenti</p>
+                    <p>JIKA warna hijau → lampu jalan</p>
+                    <p>JIKA suhu > 37.5 → demam</p>
+                </div>
+                <p class="text-slate-500 text-xs mt-2">Masalah: tidak bisa menangani situasi yang tidak ada aturannya!</p>
+            </div>
+            <div class="bg-violet-50 border border-violet-200 rounded-xl p-5">
+                <p class="font-heading font-extrabold text-violet-700 text-lg mb-2">🧠 Machine Learning</p>
+                <p class="text-violet-600 text-sm mb-3">Mesin diberi banyak contoh, lalu "mencari sendiri" polanya:</p>
+                <div class="bg-violet-100 rounded-lg p-3 text-xs text-violet-800">
+                    <p>📷 Lihat 1000 foto kucing → "Oh, ini pola kucing"</p>
+                    <p>📷 Lihat 1000 foto anjing → "Oh, ini pola anjing"</p>
+                    <p>❓ Foto baru → "Ini kucing! 97% yakin"</p>
+                </div>
+                <p class="text-violet-500 text-xs mt-2">Keunggulan: bisa menemukan pola yang tidak terpikirkan manusia!</p>
+            </div>
+        </div>
+
+        <h2>Cara Mesin "Belajar"</h2>
+        <p>Proses machine learning mirip dengan cara manusia belajar — dengan mencoba, salah, dan memperbaiki diri:</p>
+        <div class="not-prose space-y-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
+                <div class="w-9 h-9 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">1</div>
+                <div>
+                    <p class="font-heading font-bold text-slate-700">📦 Kumpulkan Data</p>
+                    <p class="text-slate-500 text-sm mt-1">Mesin membutuhkan banyak contoh. Untuk mengenali wajah, butuh ribuan foto wajah. Untuk deteksi spam, butuh ribuan email.</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
+                <div class="w-9 h-9 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">2</div>
+                <div>
+                    <p class="font-heading font-bold text-slate-700">🏷️ Beri Label (Training)</p>
+                    <p class="text-slate-500 text-sm mt-1">Setiap data diberi label: "ini kucing", "ini bukan kucing". Proses ini disebut supervised learning.</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
+                <div class="w-9 h-9 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">3</div>
+                <div>
+                    <p class="font-heading font-bold text-slate-700">🔄 Latih Model</p>
+                    <p class="text-slate-500 text-sm mt-1">Komputer menganalisis semua data berlabel, mencari pola matematis. Proses ini bisa memakan waktu jam bahkan hari!</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
+                <div class="w-9 h-9 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">4</div>
+                <div>
+                    <p class="font-heading font-bold text-slate-700">🧪 Uji dengan Data Baru</p>
+                    <p class="text-slate-500 text-sm mt-1">Model diuji dengan data yang belum pernah dilihat sebelumnya. Seberapa akurat tebaknya?</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
+                <div class="w-9 h-9 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">5</div>
+                <div>
+                    <p class="font-heading font-bold text-slate-700">✅ Gunakan!</p>
+                    <p class="text-slate-500 text-sm mt-1">Jika sudah akurat, model siap digunakan — itulah AI yang kita pakai sehari-hari!</p>
+                </div>
+            </div>
+                    </div>
+
+        <h2>Jenis-jenis Machine Learning</h2>
+        <div class="not-prose grid md:grid-cols-3 gap-3 my-5">
+                                    <div class="bg-blue-50 border-blue-200 border rounded-xl p-4">
+                <div class="text-3xl mb-2">👨‍🏫</div>
+                <p class="font-heading font-bold text-blue-700 text-sm mb-1">Supervised Learning</p>
+                <p class="text-slate-600 text-xs mb-2">Belajar dari data yang sudah diberi label. Seperti belajar dengan guru yang punya kunci jawaban.</p>
+                <p class="text-slate-400 text-xs"><strong>Contoh:</strong> Filter spam, pengenal gambar, prediksi harga</p>
+            </div>
+                        <div class="bg-emerald-50 border-emerald-200 border rounded-xl p-4">
+                <div class="text-3xl mb-2">🔍</div>
+                <p class="font-heading font-bold text-emerald-700 text-sm mb-1">Unsupervised Learning</p>
+                <p class="text-slate-600 text-xs mb-2">Mencari pola sendiri dari data tanpa label. Seperti mengelompokkan benda tanpa tahu namanya.</p>
+                <p class="text-slate-400 text-xs"><strong>Contoh:</strong> Segmentasi pelanggan, deteksi anomali</p>
+            </div>
+                        <div class="bg-amber-50 border-amber-200 border rounded-xl p-4">
+                <div class="text-3xl mb-2">🎮</div>
+                <p class="font-heading font-bold text-amber-700 text-sm mb-1">Reinforcement Learning</p>
+                <p class="text-slate-600 text-xs mb-2">Belajar dari reward dan punishment. Seperti melatih hewan dengan hadiah dan hukuman.</p>
+                <p class="text-slate-400 text-xs"><strong>Contoh:</strong> AI main game, robot, mobil otonom</p>
+            </div>
+                    </div>
+
+        <div class="callout callout-fun">
+            <p class="font-heading font-bold text-purple-800 mb-1">🎯 Analogi Sederhana</p>
+            <p class="text-purple-700 text-sm">Supervised Learning = belajar dengan buku pelajaran yang ada jawabannya. Unsupervised = pilah-pilah sendiri buku tak berlabel. Reinforcement = belajar main game, makin jago makin dapat poin!</p>
+        </div>
+
+        <h2>Machine Learning di Sekitar Kita</h2>
+        <div class="not-prose grid grid-cols-2 md:grid-cols-4 gap-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">🎵</div>
+                <p class="font-heading font-bold text-slate-700 text-xs">Rekomendasi Musik</p>
+                <p class="text-slate-400 text-xs mt-1">Spotify / YouTube</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">📷</div>
+                <p class="font-heading font-bold text-slate-700 text-xs">Filter Wajah</p>
+                <p class="text-slate-400 text-xs mt-1">TikTok / Instagram</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">🛡️</div>
+                <p class="font-heading font-bold text-slate-700 text-xs">Filter Spam</p>
+                <p class="text-slate-400 text-xs mt-1">Gmail</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">🗣️</div>
+                <p class="font-heading font-bold text-slate-700 text-xs">Asisten Suara</p>
+                <p class="text-slate-400 text-xs mt-1">Google / Siri</p>
+            </div>
+                    </div>
+
+        <h2>Ringkasan 📝</h2>
+        <ul>
+            <li>Machine Learning = cara membuat AI yang belajar dari data, bukan dari aturan manual</li>
+            <li>Prosesnya: kumpulkan data → beri label → latih → uji → gunakan!</li>
+            <li>Tiga jenis: Supervised (dengan guru), Unsupervised (mandiri), Reinforcement (coba-coba)</li>
+            <li>ML sudah ada di mana-mana: musik, filter foto, email, asisten suara!</li>
+        </ul>
+    </div>
+    <div class="flex justify-between mt-12 gap-4">
+        <a href="../01-pengenalan-ai/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-violet-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Pengenalan AI</p></div>
+        </a>
+        <a href="../03-teachable-machine/" class="flex items-center gap-3 px-5 py-3 bg-violet-600 text-white rounded-2xl shadow hover:bg-violet-700 transition">
+            <div class="text-right"><p class="text-[10px] text-violet-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Teachable Machine</p></div>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>

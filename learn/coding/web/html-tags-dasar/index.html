@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tutorial HTML tags dasar untuk pemula: heading (h1-h6), paragraf, link, gambar, tabel, form, div, span — semua tag penting untuk membangun website pertamamu.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>HTML Tags Dasar | Coding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        code,pre,.font-mono{font-family:'JetBrains Mono',monospace;}
+        .tag{background:#dbeafe;color:#1e40af;border-radius:.4rem;padding:.15rem .5rem;font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:600;}
+        pre{background:#0f172a;color:#e2e8f0;border-radius:1rem;padding:1.25rem;overflow-x:auto;font-size:.82rem;line-height:1.7;}
+        .kw{color:#93c5fd;}.attr{color:#86efac;}.val{color:#fca5a5;}.com{color:#64748b;font-style:italic;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../../" class="text-sm font-semibold text-indigo-600 hover:underline">← Coding</a>
+</nav>
+<main class="relative z-10 max-w-5xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Coding</a><span>/</span>
+        <span class="text-slate-600 font-semibold">HTML Tags Dasar</span>
+    </div>
+    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-36 h-36 bg-white opacity-5 rounded-full -translate-y-6 translate-x-6"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Cheat Sheet · HTML</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">HTML Tags Dasar 🌐</h1>
+            <p class="text-blue-100 leading-relaxed max-w-2xl">Referensi lengkap tag HTML yang paling sering digunakan. Dari struktur halaman hingga formulir dan tabel — semua ada di sini!</p>
+        </div>
+    </div>
+
+    <!-- Struktur Dasar -->
+    <div class="mb-8">
+        <h2 class="font-heading font-extrabold text-xl text-slate-800 mb-4">🏗️ Struktur Wajib HTML</h2>
+        <pre><span class="com">&lt;!-- Struktur dasar setiap halaman HTML --&gt;</span>
+<span class="kw">&lt;!DOCTYPE html&gt;</span>
+<span class="kw">&lt;html</span> <span class="attr">lang</span>=<span class="val">"id"</span><span class="kw">&gt;</span>
+<span class="kw">&lt;head&gt;</span>
+    <span class="kw">&lt;meta</span> <span class="attr">charset</span>=<span class="val">"UTF-8"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;meta</span> <span class="attr">name</span>=<span class="val">"viewport"</span> <span class="attr">content</span>=<span class="val">"width=device-width, initial-scale=1.0"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;title&gt;</span>Judul Halaman<span class="kw">&lt;/title&gt;</span>
+<span class="kw">&lt;/head&gt;</span>
+<span class="kw">&lt;body&gt;</span>
+    <span class="com">&lt;!-- Konten halaman di sini --&gt;</span>
+<span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></pre>
+    </div>
+
+    <div class="space-y-8">
+                                <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📝 Teks & Heading</h2>
+            <div class="space-y-4">
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;h1&gt; - &lt;h6&gt;</span>
+                        <p class="text-slate-600 text-sm">Judul halaman, h1 paling besar, h6 paling kecil. Gunakan berurutan!</p>
+                    </div>
+                    <pre>&lt;h1&gt;Judul Utama&lt;/h1&gt;
+&lt;h2&gt;Sub Judul&lt;/h2&gt;
+&lt;h3&gt;Sub-sub Judul&lt;/h3&gt;</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <div style="font-family:sans-serif;line-height:1.4"><h1 style="font-size:1.8rem;font-weight:900;margin:0 0 4px">Judul Utama (h1)</h1><h2 style="font-size:1.4rem;font-weight:800;margin:0 0 4px">Sub Judul (h2)</h2><h3 style="font-size:1.1rem;font-weight:700;margin:0">Sub-sub Judul (h3)</h3></div>                        </div>
+                    </div>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;p&gt;</span>
+                        <p class="text-slate-600 text-sm">Paragraf teks. Tag paling sering digunakan untuk konten.</p>
+                    </div>
+                    <pre>&lt;p&gt;Ini adalah sebuah paragraf teks biasa.&lt;/p&gt;</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <p style="font-family:sans-serif;color:#444;line-height:1.7;margin:0">Ini adalah sebuah paragraf teks biasa. Paragraf membuat teks tampil dengan jeda vertikal yang rapi.</p>                        </div>
+                    </div>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;strong&gt; / &lt;b&gt;</span>
+                        <p class="text-slate-600 text-sm">Teks tebal. <strong> lebih semantik (penting), <b> hanya visual.</p>
+                    </div>
+                    <pre>Teks &lt;strong&gt;penting&lt;/strong&gt; dan teks &lt;b&gt;tebal&lt;/b&gt;.</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <p style="font-family:sans-serif">Teks <strong>penting</strong> dan teks <b>tebal</b>.</p>                        </div>
+                    </div>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;em&gt; / &lt;i&gt;</span>
+                        <p class="text-slate-600 text-sm">Teks miring. <em> untuk penekanan semantik, <i> hanya visual.</p>
+                    </div>
+                    <pre>Kata &lt;em&gt;ditekankan&lt;/em&gt; dan teks &lt;i&gt;miring&lt;/i&gt;.</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <p style="font-family:sans-serif">Kata <em>ditekankan</em> dan teks <i>miring</i>.</p>                        </div>
+                    </div>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;br&gt;</span>
+                        <p class="text-slate-600 text-sm">Baris baru (line break). Tag tunggal, tidak perlu penutup.</p>
+                    </div>
+                    <pre>Baris pertama.&lt;br&gt;Baris kedua.</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <p style="font-family:sans-serif;line-height:1.8">Baris pertama.<br>Baris kedua.</p>                        </div>
+                    </div>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;hr&gt;</span>
+                        <p class="text-slate-600 text-sm">Garis horizontal pembatas. Tag tunggal.</p>
+                    </div>
+                    <pre>&lt;p&gt;Bagian 1&lt;/p&gt;&lt;hr&gt;&lt;p&gt;Bagian 2&lt;/p&gt;</pre>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;span&gt;</span>
+                        <p class="text-slate-600 text-sm">Container inline untuk styling bagian teks tertentu.</p>
+                    </div>
+                    <pre>Teks &lt;span style=&quot;color:red&quot;&gt;merah&lt;/span&gt; di sini.</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <p style="font-family:sans-serif">Teks <span style="color:red;font-weight:bold">merah</span> di sini.</p>                        </div>
+                    </div>
+                                    </div>
+                            </div>
+        </div>
+                <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🔗 Link & Gambar</h2>
+            <div class="space-y-4">
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;a href=&quot;...&quot;&gt;</span>
+                        <p class="text-slate-600 text-sm">Tautan/hyperlink. href berisi URL tujuan. target="_blank" buka di tab baru.</p>
+                    </div>
+                    <pre>&lt;a href=&quot;https://google.com&quot;&gt;Pergi ke Google&lt;/a&gt;
+&lt;a href=&quot;halaman-lain.html&quot; target=&quot;_blank&quot;&gt;Buka Tab Baru&lt;/a&gt;
+&lt;a href=&quot;#bagian-bawah&quot;&gt;Link ke Bagian Ini&lt;/a&gt;</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <p style="font-family:sans-serif"><a href="#" style="color:#4f46e5;font-weight:600">Pergi ke Google</a> &nbsp;|&nbsp; <a href="#" style="color:#4f46e5;font-weight:600">Buka Tab Baru</a></p>                        </div>
+                    </div>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;img&gt;</span>
+                        <p class="text-slate-600 text-sm">Menampilkan gambar. src=sumber file, alt=teks alternatif (wajib untuk aksesibilitas).</p>
+                    </div>
+                    <pre>&lt;img src=&quot;foto.jpg&quot; alt=&quot;Deskripsi foto&quot; width=&quot;300&quot;&gt;
+&lt;img src=&quot;https://via.placeholder.com/150&quot; alt=&quot;Gambar placeholder&quot;&gt;</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <img src="https://picsum.photos/seed/html/200/80" alt="Contoh gambar" style="border-radius:8px;display:block">                        </div>
+                    </div>
+                                    </div>
+                            </div>
+        </div>
+                <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📋 List (Daftar)</h2>
+            <div class="space-y-4">
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;ul&gt; + &lt;li&gt;</span>
+                        <p class="text-slate-600 text-sm">Unordered list — daftar dengan bullet point (titik/lingkaran).</p>
+                    </div>
+                    <pre>&lt;ul&gt;
+  &lt;li&gt;Item pertama&lt;/li&gt;
+  &lt;li&gt;Item kedua&lt;/li&gt;
+  &lt;li&gt;Item ketiga&lt;/li&gt;
+&lt;/ul&gt;</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <ul style="font-family:sans-serif;padding-left:20px;line-height:1.8"><li>Item pertama</li><li>Item kedua</li><li>Item ketiga</li></ul>                        </div>
+                    </div>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;ol&gt; + &lt;li&gt;</span>
+                        <p class="text-slate-600 text-sm">Ordered list — daftar bernomor (1, 2, 3...).</p>
+                    </div>
+                    <pre>&lt;ol&gt;
+  &lt;li&gt;Langkah pertama&lt;/li&gt;
+  &lt;li&gt;Langkah kedua&lt;/li&gt;
+  &lt;li&gt;Langkah ketiga&lt;/li&gt;
+&lt;/ol&gt;</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <ol style="font-family:sans-serif;padding-left:20px;line-height:1.8"><li>Langkah pertama</li><li>Langkah kedua</li><li>Langkah ketiga</li></ol>                        </div>
+                    </div>
+                                    </div>
+                            </div>
+        </div>
+                <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📦 Container & Layout</h2>
+            <div class="space-y-4">
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;div&gt;</span>
+                        <p class="text-slate-600 text-sm">Container blok serbaguna untuk mengelompokkan elemen. Tidak punya makna semantik.</p>
+                    </div>
+                    <pre>&lt;div class=&quot;kotak&quot;&gt;
+  &lt;h2&gt;Judul Kotak&lt;/h2&gt;
+  &lt;p&gt;Isi kotak ini.&lt;/p&gt;
+&lt;/div&gt;</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <div style="background:#f0f4ff;border:2px dashed #818cf8;border-radius:10px;padding:12px;font-family:sans-serif"><h3 style="margin:0 0 4px;font-size:1rem">Judul Kotak</h3><p style="margin:0;color:#555;font-size:0.9rem">Isi kotak ini dikelompokkan dalam satu div.</p></div>                        </div>
+                    </div>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;header&gt;</span>
+                        <p class="text-slate-600 text-sm">Kepala halaman — biasanya berisi logo dan navigasi. Semantik HTML5.</p>
+                    </div>
+                    <pre>&lt;header&gt;
+  &lt;h1&gt;Nama Website&lt;/h1&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;</pre>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;main&gt;</span>
+                        <p class="text-slate-600 text-sm">Konten utama halaman. Hanya boleh ada satu per halaman.</p>
+                    </div>
+                    <pre>&lt;main&gt;
+  &lt;h2&gt;Artikel Utama&lt;/h2&gt;
+  &lt;p&gt;Isi artikel...&lt;/p&gt;
+&lt;/main&gt;</pre>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;footer&gt;</span>
+                        <p class="text-slate-600 text-sm">Bagian bawah halaman — copyright, link, kontak.</p>
+                    </div>
+                    <pre>&lt;footer&gt;
+  &lt;p&gt;&amp;copy; 2025 Nama Saya&lt;/p&gt;
+&lt;/footer&gt;</pre>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;section&gt;</span>
+                        <p class="text-slate-600 text-sm">Bagian/seksi konten yang bisa berdiri sendiri dengan judul.</p>
+                    </div>
+                    <pre>&lt;section id=&quot;tentang&quot;&gt;
+  &lt;h2&gt;Tentang Kami&lt;/h2&gt;
+  &lt;p&gt;Deskripsi...&lt;/p&gt;
+&lt;/section&gt;</pre>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;article&gt;</span>
+                        <p class="text-slate-600 text-sm">Konten mandiri yang bisa dipublikasikan sendiri (posting blog, berita).</p>
+                    </div>
+                    <pre>&lt;article&gt;
+  &lt;h2&gt;Judul Artikel&lt;/h2&gt;
+  &lt;p&gt;Isi artikel...&lt;/p&gt;
+&lt;/article&gt;</pre>
+                                    </div>
+                            </div>
+        </div>
+                <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📊 Tabel</h2>
+            <div class="space-y-4">
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;table&gt;</span>
+                        <p class="text-slate-600 text-sm">Membuat tabel. Terdiri dari baris (<tr>), header (<th>), dan data (<td>).</p>
+                    </div>
+                    <pre>&lt;table border=&quot;1&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nama&lt;/th&gt;
+      &lt;th&gt;Nilai&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Budi&lt;/td&gt;
+      &lt;td&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ani&lt;/td&gt;
+      &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <table style="border-collapse:collapse;font-family:sans-serif;font-size:0.9rem"><thead><tr style="background:#4f46e5;color:white"><th style="padding:6px 12px">Nama</th><th style="padding:6px 12px">Nilai</th></tr></thead><tbody><tr style="background:#f8fafc"><td style="padding:6px 12px;border:1px solid #e2e8f0">Budi</td><td style="padding:6px 12px;border:1px solid #e2e8f0">90</td></tr><tr><td style="padding:6px 12px;border:1px solid #e2e8f0">Ani</td><td style="padding:6px 12px;border:1px solid #e2e8f0">85</td></tr></tbody></table>                        </div>
+                    </div>
+                                    </div>
+                            </div>
+        </div>
+                <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📝 Formulir (Form)</h2>
+            <div class="space-y-4">
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;form&gt;</span>
+                        <p class="text-slate-600 text-sm">Wadah untuk input pengguna. action=tujuan pengiriman, method=GET atau POST.</p>
+                    </div>
+                    <pre>&lt;form action=&quot;proses.php&quot; method=&quot;POST&quot;&gt;
+  &lt;!-- Isi form di sini --&gt;
+  &lt;button type=&quot;submit&quot;&gt;Kirim&lt;/button&gt;
+&lt;/form&gt;</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <form onsubmit="return false" style="font-family:sans-serif"><div style="display:flex;gap:8px"><input type="text" placeholder="Tulis sesuatu..." style="border:1px solid #cbd5e1;border-radius:6px;padding:6px 10px;flex:1"><button type="submit" style="background:#4f46e5;color:white;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-weight:600">Kirim</button></div></form>                        </div>
+                    </div>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;input&gt;</span>
+                        <p class="text-slate-600 text-sm">Field input. type menentukan jenisnya: text, email, password, number, checkbox, radio.</p>
+                    </div>
+                    <pre>&lt;input type=&quot;text&quot; name=&quot;nama&quot; placeholder=&quot;Nama kamu&quot;&gt;
+&lt;input type=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Email&quot;&gt;
+&lt;input type=&quot;password&quot; name=&quot;pass&quot; placeholder=&quot;Password&quot;&gt;
+&lt;input type=&quot;number&quot; name=&quot;umur&quot; min=&quot;1&quot; max=&quot;100&quot;&gt;
+&lt;input type=&quot;checkbox&quot; name=&quot;setuju&quot; value=&quot;ya&quot;&gt; Setuju?
+&lt;input type=&quot;submit&quot; value=&quot;Kirim&quot;&gt;</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <div style="font-family:sans-serif;display:flex;flex-direction:column;gap:8px"><input type="text" placeholder="Nama kamu" style="border:1px solid #cbd5e1;border-radius:6px;padding:6px 10px"><input type="email" placeholder="email@contoh.com" style="border:1px solid #cbd5e1;border-radius:6px;padding:6px 10px"><input type="number" placeholder="Umur" min="1" max="100" style="border:1px solid #cbd5e1;border-radius:6px;padding:6px 10px"></div>                        </div>
+                    </div>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;textarea&gt;</span>
+                        <p class="text-slate-600 text-sm">Area input teks multi-baris. rows dan cols mengatur ukuran.</p>
+                    </div>
+                    <pre>&lt;textarea name=&quot;pesan&quot; rows=&quot;5&quot; cols=&quot;40&quot;
+  placeholder=&quot;Tulis pesanmu di sini...&quot;&gt;
+&lt;/textarea&gt;</pre>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;select&gt;</span>
+                        <p class="text-slate-600 text-sm">Dropdown pilihan. Setiap pilihan menggunakan <option>.</p>
+                    </div>
+                    <pre>&lt;select name=&quot;kelas&quot;&gt;
+  &lt;option value=&quot;&quot;&gt;-- Pilih Kelas --&lt;/option&gt;
+  &lt;option value=&quot;7&quot;&gt;Kelas 7&lt;/option&gt;
+  &lt;option value=&quot;8&quot;&gt;Kelas 8&lt;/option&gt;
+  &lt;option value=&quot;9&quot;&gt;Kelas 9&lt;/option&gt;
+&lt;/select&gt;</pre>
+                                        <div class="mt-3">
+                        <p class="text-xs text-slate-400 font-semibold mb-2">✨ Hasil tampilan:</p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <select style="border:1px solid #cbd5e1;border-radius:6px;padding:6px 10px;font-family:sans-serif"><option>-- Pilih Kelas --</option><option>Kelas 7</option><option>Kelas 8</option><option>Kelas 9</option></select>                        </div>
+                    </div>
+                                    </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-start mb-3">
+                        <span class="tag">&lt;label&gt;</span>
+                        <p class="text-slate-600 text-sm">Label untuk elemen form. for harus sama dengan id input — penting untuk aksesibilitas!</p>
+                    </div>
+                    <pre>&lt;label for=&quot;nama&quot;&gt;Nama Lengkap:&lt;/label&gt;
+&lt;input type=&quot;text&quot; id=&quot;nama&quot; name=&quot;nama&quot;&gt;</pre>
+                                    </div>
+                            </div>
+        </div>
+            </div>
+
+    <div class="mt-10 bg-blue-50 border border-blue-100 rounded-2xl p-6 flex gap-4 items-start">
+        <span class="text-2xl flex-shrink-0">🛠️</span>
+        <div>
+            <p class="font-heading font-bold text-blue-800 mb-1">Coba Langsung!</p>
+            <p class="text-blue-700 text-sm">Buka <strong>codepen.io</strong> atau buat file <code>.html</code> baru di VS Code. Ketik struktur dasar HTML, lalu coba semua tag di atas. Klik F12 di browser untuk melihat struktur HTML dengan DevTools!</p>
+        </div>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <div class="flex gap-4">
+            <a href="../javascript-interaktif/" class="hover:text-indigo-600 font-medium">Selanjutnya: JavaScript DOM →</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

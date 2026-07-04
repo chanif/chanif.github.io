@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tutorial JavaScript interaktif: variabel, fungsi, event listener, DOM manipulation, dan membuat elemen web yang merespons klik dan input pengguna.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>JavaScript Interaktif | Coding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        code,.font-mono{font-family:'JetBrains Mono',monospace;}
+        pre{background:#0f172a;color:#e2e8f0;border-radius:1rem;padding:1.25rem;overflow-x:auto;font-size:.82rem;line-height:1.8;margin-top:.75rem;}
+        .kw{color:#c084fc;}.fn{color:#93c5fd;}.str{color:#86efac;}.com{color:#64748b;font-style:italic;}.num{color:#fbbf24;}.dom{color:#f9a8d4;}
+        .chip{background:#f1f5f9;color:#475569;border-radius:.5rem;padding:.2rem .6rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-yellow-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../../" class="text-sm font-semibold text-indigo-600 hover:underline">← Coding</a>
+</nav>
+<main class="relative z-10 max-w-5xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Coding</a><span>/</span>
+        <span class="text-slate-600 font-semibold">JavaScript Interaktif</span>
+    </div>
+    <div class="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-36 h-36 bg-white opacity-5 rounded-full -translate-y-6 translate-x-6"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Cheat Sheet · JavaScript</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">JavaScript DOM Dasar ⚡</h1>
+            <p class="text-yellow-100 leading-relaxed max-w-2xl">Buat halaman web jadi interaktif! Pelajari cara memanipulasi DOM — mengganti teks, mengubah warna, merespons klik tombol, dan banyak lagi.</p>
+        </div>
+    </div>
+
+    <div class="space-y-8">
+
+        <!-- Cara Menyertakan JS -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📌 Cara Menyertakan JavaScript</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <p class="text-slate-600 text-sm mb-3">Ada 3 cara menyertakan JavaScript di HTML:</p>
+                <pre><span class="com">/* 1. Inline — langsung di elemen HTML */</span>
+&lt;button <span class="dom">onclick</span>=<span class="str">"alert('Halo!')"</span>&gt;Klik Saya&lt;/button&gt;
+
+<span class="com">/* 2. Internal — di dalam tag &lt;script&gt; */</span>
+&lt;script&gt;
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Halo dari JavaScript!"</span>);
+&lt;/script&gt;
+
+<span class="com">/* 3. External — file .js terpisah (REKOMENDASI) */</span>
+&lt;script <span class="dom">src</span>=<span class="str">"script.js"</span> <span class="dom">defer</span>&gt;&lt;/script&gt;
+<span class="com">/* defer = tunggu HTML selesai dimuat dulu */</span></pre>
+            </div>
+        </div>
+
+        <!-- Seleksi Elemen DOM -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🎯 Memilih Elemen HTML (DOM Selection)</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <p class="text-slate-600 text-sm mb-3">Langkah pertama manipulasi DOM: pilih elemen yang ingin diubah.</p>
+                <pre><span class="com">// Cara 1: Pilih satu elemen berdasarkan ID (paling umum)</span>
+<span class="kw">const</span> judul = <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"judul"</span>);
+
+<span class="com">// Cara 2: Pilih satu elemen berdasarkan CSS selector</span>
+<span class="kw">const</span> tombol = <span class="fn">document</span>.<span class="fn">querySelector</span>(<span class="str">"button"</span>);
+<span class="kw">const</span> kotak = <span class="fn">document</span>.<span class="fn">querySelector</span>(<span class="str">".kotak"</span>);   <span class="com">// class</span>
+<span class="kw">const</span> nama = <span class="fn">document</span>.<span class="fn">querySelector</span>(<span class="str">"#nama"</span>);     <span class="com">// id</span>
+
+<span class="com">// Cara 3: Pilih semua elemen yang cocok (mengembalikan NodeList)</span>
+<span class="kw">const</span> semuaTombol = <span class="fn">document</span>.<span class="fn">querySelectorAll</span>(<span class="str">"button"</span>);
+<span class="kw">const</span> semuaLi = <span class="fn">document</span>.<span class="fn">querySelectorAll</span>(<span class="str">"ul li"</span>);</pre>
+            </div>
+        </div>
+
+        <!-- Manipulasi Konten -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">✏️ Mengubah Konten & Teks</h2>
+            <div class="space-y-4">
+                                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-center mb-2">
+                        <span class="chip">textContent</span>
+                        <p class="text-slate-600 text-sm">Mengubah teks elemen (tanpa HTML, lebih aman)</p>
+                    </div>
+                    <pre>// HTML: &lt;h1 id=&quot;judul&quot;&gt;Teks Lama&lt;/h1&gt;
+const judul = document.getElementById(&quot;judul&quot;);
+judul.textContent = &quot;Teks Baru yang Keren!&quot;;
+// Hasil: &lt;h1 id=&quot;judul&quot;&gt;Teks Baru yang Keren!&lt;/h1&gt;</pre>
+                </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-center mb-2">
+                        <span class="chip">innerHTML</span>
+                        <p class="text-slate-600 text-sm">Mengubah konten HTML di dalam elemen (bisa sisipkan tag HTML)</p>
+                    </div>
+                    <pre>const kotak = document.querySelector(&quot;#info&quot;);
+kotak.innerHTML = &quot;&lt;strong&gt;Selamat!&lt;/strong&gt; Kamu berhasil! 🎉&quot;;
+// innerHTML bisa menyisipkan tag HTML — hati-hati XSS!</pre>
+                </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <div class="flex gap-3 items-center mb-2">
+                        <span class="chip">value</span>
+                        <p class="text-slate-600 text-sm">Membaca atau mengubah nilai input field</p>
+                    </div>
+                    <pre>const inputNama = document.getElementById(&quot;nama&quot;);
+const nilaiBaru = inputNama.value;   // Baca nilai input
+inputNama.value = &quot;Budi&quot;;            // Set nilai input</pre>
+                </div>
+                            </div>
+        </div>
+
+        <!-- Manipulasi Style -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🎨 Mengubah Gaya (CSS)</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="kw">const</span> kotak = <span class="fn">document</span>.<span class="fn">querySelector</span>(<span class="str">".kotak"</span>);
+
+<span class="com">// Ubah properti CSS langsung via .style</span>
+kotak.<span class="dom">style</span>.backgroundColor = <span class="str">"#3b82f6"</span>;  <span class="com">// background-color → camelCase!</span>
+kotak.<span class="dom">style</span>.color = <span class="str">"white"</span>;
+kotak.<span class="dom">style</span>.fontSize = <span class="str">"20px"</span>;
+kotak.<span class="dom">style</span>.display = <span class="str">"none"</span>;         <span class="com">// Sembunyikan elemen</span>
+kotak.<span class="dom">style</span>.display = <span class="str">"block"</span>;        <span class="com">// Tampilkan lagi</span>
+
+<span class="com">// Cara lebih baik: tambah/hapus class CSS</span>
+kotak.<span class="dom">classList</span>.<span class="fn">add</span>(<span class="str">"aktif"</span>);         <span class="com">// Tambah class</span>
+kotak.<span class="dom">classList</span>.<span class="fn">remove</span>(<span class="str">"aktif"</span>);      <span class="com">// Hapus class</span>
+kotak.<span class="dom">classList</span>.<span class="fn">toggle</span>(<span class="str">"aktif"</span>);     <span class="com">// Toggle (on/off)</span>
+kotak.<span class="dom">classList</span>.<span class="fn">contains</span>(<span class="str">"aktif"</span>);  <span class="com">// Cek apakah punya class</span></pre>
+            </div>
+        </div>
+
+        <!-- Event Listener -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🖱️ Event Listener (Respons Aksi Pengguna)</h2>
+            <div class="space-y-4">
+                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <p class="text-slate-600 text-sm mb-3">Event listener menunggu aksi pengguna (klik, ketik, hover, dll.) lalu menjalankan fungsi.</p>
+                    <pre><span class="kw">const</span> tombol = <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"btnKlik"</span>);
+
+<span class="com">// Cara 1: addEventListener (REKOMENDASI)</span>
+tombol.<span class="fn">addEventListener</span>(<span class="str">"click"</span>, <span class="kw">function</span>() {
+    <span class="fn">alert</span>(<span class="str">"Tombol diklik!"</span>);
+});
+
+<span class="com">// Cara 2: Arrow function (lebih ringkas)</span>
+tombol.<span class="fn">addEventListener</span>(<span class="str">"click"</span>, () => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Klik terdeteksi"</span>);
+});
+
+<span class="com">// Jenis-jenis event yang umum:</span>
+<span class="com">// "click"      - klik mouse</span>
+<span class="com">// "dblclick"   - double klik</span>
+<span class="com">// "mouseover"  - kursor masuk ke elemen</span>
+<span class="com">// "mouseout"   - kursor keluar dari elemen</span>
+<span class="com">// "keydown"    - tombol keyboard ditekan</span>
+<span class="com">// "keyup"      - tombol keyboard dilepas</span>
+<span class="com">// "input"      - nilai input berubah</span>
+<span class="com">// "submit"     - form dikirim</span>
+<span class="com">// "change"     - select/checkbox berubah</span></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contoh Proyek Mini -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🚀 Proyek Mini: Tombol Interaktif</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <p class="text-slate-600 text-sm mb-3">Contoh lengkap: tombol yang mengubah warna latar dan teks saat diklik.</p>
+                <pre><span class="com">&lt;!-- HTML --&gt;</span>
+&lt;div <span class="dom">id</span>=<span class="str">"kotak"</span> <span class="dom">style</span>=<span class="str">"padding:20px;background:#dbeafe;border-radius:12px"</span>&gt;
+  &lt;p <span class="dom">id</span>=<span class="str">"teks"</span>&gt;Klik tombol di bawah!&lt;/p&gt;
+  &lt;button <span class="dom">id</span>=<span class="str">"btn"</span>&gt;Ubah Warna&lt;/button&gt;
+  &lt;button <span class="dom">id</span>=<span class="str">"btnReset"</span>&gt;Reset&lt;/button&gt;
+&lt;/div&gt;
+
+<span class="com">&lt;!-- JavaScript --&gt;</span>
+&lt;script&gt;
+  <span class="kw">const</span> kotak = <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"kotak"</span>);
+  <span class="kw">const</span> teks = <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"teks"</span>);
+  <span class="kw">const</span> btn = <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"btn"</span>);
+  <span class="kw">const</span> btnReset = <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"btnReset"</span>);
+
+  <span class="kw">const</span> warna = [<span class="str">"#fef3c7"</span>, <span class="str">"#d1fae5"</span>, <span class="str">"#fce7f3"</span>, <span class="str">"#e0e7ff"</span>];
+  <span class="kw">let</span> i = <span class="num">0</span>;
+
+  btn.<span class="fn">addEventListener</span>(<span class="str">"click"</span>, () => {
+    kotak.<span class="dom">style</span>.background = warna[i % warna.length];
+    teks.<span class="dom">textContent</span> = <span class="str">"Warna ke-"</span> + (i + <span class="num">1</span>) + <span class="str">"! 🎨"</span>;
+    i++;
+  });
+
+  btnReset.<span class="fn">addEventListener</span>(<span class="str">"click"</span>, () => {
+    kotak.<span class="dom">style</span>.background = <span class="str">"#dbeafe"</span>;
+    teks.<span class="dom">textContent</span> = <span class="str">"Klik tombol di bawah!"</span>;
+    i = <span class="num">0</span>;
+  });
+&lt;/script&gt;</pre>
+            </div>
+
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm mt-4">
+                <p class="font-heading font-bold text-slate-800 mb-3">📝 Proyek Mini: Kalkulator Input</p>
+                <pre><span class="com">&lt;!-- HTML --&gt;</span>
+&lt;input <span class="dom">type</span>=<span class="str">"number"</span> <span class="dom">id</span>=<span class="str">"angka1"</span> <span class="dom">placeholder</span>=<span class="str">"Angka 1"</span>&gt;
+&lt;input <span class="dom">type</span>=<span class="str">"number"</span> <span class="dom">id</span>=<span class="str">"angka2"</span> <span class="dom">placeholder</span>=<span class="str">"Angka 2"</span>&gt;
+&lt;button <span class="dom">id</span>=<span class="str">"btnHitung"</span>&gt;Tambahkan!&lt;/button&gt;
+&lt;p <span class="dom">id</span>=<span class="str">"hasil"</span>&gt;Hasil: -&lt;/p&gt;
+
+<span class="com">&lt;!-- JavaScript --&gt;</span>
+&lt;script&gt;
+  <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"btnHitung"</span>)
+    .<span class="fn">addEventListener</span>(<span class="str">"click"</span>, () => {
+      <span class="kw">const</span> a = <span class="fn">Number</span>(<span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"angka1"</span>).value);
+      <span class="kw">const</span> b = <span class="fn">Number</span>(<span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"angka2"</span>).value);
+      <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"hasil"</span>).textContent = <span class="str">"Hasil: "</span> + (a + b);
+    });
+&lt;/script&gt;</pre>
+            </div>
+        </div>
+
+        <!-- Dialog & Console -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">💬 Dialog & Debug</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com">// 3 jenis dialog bawaan browser</span>
+<span class="fn">alert</span>(<span class="str">"Pesan informasi untuk pengguna"</span>);
+
+<span class="kw">const</span> setuju = <span class="fn">confirm</span>(<span class="str">"Apakah kamu yakin?"</span>);
+<span class="com">// setuju = true jika klik OK, false jika Cancel</span>
+
+<span class="kw">const</span> nama = <span class="fn">prompt</span>(<span class="str">"Siapa namamu?"</span>, <span class="str">"Tulis di sini"</span>);
+<span class="com">// nama = teks yang diketik pengguna, null jika Cancel</span>
+
+<span class="com">// Debug dengan console (buka F12 → Console)</span>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Nilai:"</span>, variabel);    <span class="com">// Cetak nilai biasa</span>
+<span class="fn">console</span>.<span class="fn">error</span>(<span class="str">"Ada error!"</span>);         <span class="com">// Cetak pesan error (merah)</span>
+<span class="fn">console</span>.<span class="fn">warn</span>(<span class="str">"Peringatan!"</span>);         <span class="com">// Cetak peringatan (kuning)</span>
+<span class="fn">console</span>.<span class="fn">table</span>(arrayData);            <span class="com">// Tampilkan array/objek sebagai tabel</span></pre>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-10 bg-yellow-50 border border-yellow-100 rounded-2xl p-6 flex gap-4 items-start">
+        <span class="text-2xl flex-shrink-0">⚡</span>
+        <div>
+            <p class="font-heading font-bold text-yellow-800 mb-1">Latihan Terbaik</p>
+            <p class="text-yellow-700 text-sm">Buka <strong>codepen.io</strong>, buat HTML dengan beberapa tombol dan elemen, lalu coba manipulasi dengan JavaScript di panel JS. Tekan F12 → Console untuk debug. Setiap error adalah pelajaran!</p>
+        </div>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../html-tags-dasar/" class="hover:text-indigo-600 font-medium">← HTML Tags Dasar</a>
+    </div>
+</footer>
+</body>
+</html>

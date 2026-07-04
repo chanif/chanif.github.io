@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pengolahan data dengan Google Sheets: fungsi SUM, AVERAGE, COUNT, VLOOKUP, membuat grafik, dan analisis data sederhana untuk mengolah data kelas.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Pengolahan Data dengan Google Sheets | Informatika Kelas 8</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
+        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
+        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
+        .prose strong{color:#1e293b;}
+        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
+        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
+        code{font-family:'Courier New',monospace;}:not(pre)>code{background:#f1f5f9;color:#6366f1;padding:.15rem .4rem;border-radius:.35rem;font-size:.85em;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-emerald-600 hover:underline">← Kelas 8</a>
+</nav>
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
+        <a href="../" class="hover:text-emerald-600">Kelas 8</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Materi 5</span>
+    </div>
+    <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 5 · Data</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Pengolahan Data dengan Google Sheets 📊</h1>
+            <p class="text-green-100 leading-relaxed max-w-2xl">Data ada di mana-mana! Pelajari cara mengumpulkan, mengolah, dan memvisualisasikan data kelas menggunakan Google Sheets — gratis dan bisa diakses dari mana saja.</p>
+        </div>
+    </div>
+    <div class="prose max-w-none">
+        <h2>Mengapa Belajar Spreadsheet?</h2>
+        <p>Spreadsheet (lembar kerja) adalah salah satu alat paling berguna di dunia kerja. Hampir semua bidang — bisnis, sains, pendidikan, kesehatan — menggunakan spreadsheet untuk mengolah data. Dengan Google Sheets, kamu bisa:</p>
+        <ul>
+            <li>📋 Mencatat dan mengorganisir data</li>
+            <li>🧮 Melakukan perhitungan otomatis</li>
+            <li>📈 Membuat grafik dan visualisasi data</li>
+            <li>🤝 Berkolaborasi bersama teman secara real-time</li>
+        </ul>
+
+        <h2>Anatomi Google Sheets</h2>
+        <div class="not-prose grid grid-cols-2 md:grid-cols-4 gap-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">📦</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Sel (Cell)</p>
+                <p class="text-slate-400 text-xs mt-1">Kotak tempat data diisi. Contoh: A1, B3</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">↔️</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Baris (Row)</p>
+                <p class="text-slate-400 text-xs mt-1">Deretan horizontal. Diberi nomor 1, 2, 3...</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">↕️</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Kolom (Column)</p>
+                <p class="text-slate-400 text-xs mt-1">Deretan vertikal. Diberi huruf A, B, C...</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">📄</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Sheet</p>
+                <p class="text-slate-400 text-xs mt-1">Tab halaman kerja. Satu file bisa punya banyak sheet</p>
+            </div>
+                    </div>
+
+        <h2>Rumus-Rumus Dasar yang Wajib Tahu</h2>
+        <div class="not-prose space-y-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-4 flex items-start gap-4 shadow-sm">
+                <span class="text-2xl flex-shrink-0">➕</span>
+                <div>
+                    <code class="text-emerald-700 font-bold text-sm">=SUM(B2:B10)</code>
+                    <p class="text-slate-500 text-xs mt-1">Menjumlahkan semua nilai di sel B2 sampai B10</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 flex items-start gap-4 shadow-sm">
+                <span class="text-2xl flex-shrink-0">📊</span>
+                <div>
+                    <code class="text-emerald-700 font-bold text-sm">=AVERAGE(B2:B10)</code>
+                    <p class="text-slate-500 text-xs mt-1">Menghitung rata-rata nilai</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 flex items-start gap-4 shadow-sm">
+                <span class="text-2xl flex-shrink-0">⬆️</span>
+                <div>
+                    <code class="text-emerald-700 font-bold text-sm">=MAX(B2:B10)</code>
+                    <p class="text-slate-500 text-xs mt-1">Mencari nilai terbesar</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 flex items-start gap-4 shadow-sm">
+                <span class="text-2xl flex-shrink-0">⬇️</span>
+                <div>
+                    <code class="text-emerald-700 font-bold text-sm">=MIN(B2:B10)</code>
+                    <p class="text-slate-500 text-xs mt-1">Mencari nilai terkecil</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 flex items-start gap-4 shadow-sm">
+                <span class="text-2xl flex-shrink-0">🔢</span>
+                <div>
+                    <code class="text-emerald-700 font-bold text-sm">=COUNT(B2:B10)</code>
+                    <p class="text-slate-500 text-xs mt-1">Menghitung jumlah data (angka)</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 flex items-start gap-4 shadow-sm">
+                <span class="text-2xl flex-shrink-0">🔀</span>
+                <div>
+                    <code class="text-emerald-700 font-bold text-sm">=IF(B2>=75,"Lulus","Remedial")</code>
+                    <p class="text-slate-500 text-xs mt-1">Logika: jika nilai ≥ 75 tulis "Lulus", jika tidak "Remedial"</p>
+                </div>
+            </div>
+                    </div>
+
+        <h2>Proyek: Analisis Nilai Kelas</h2>
+        <p>Mari buat spreadsheet sederhana untuk menganalisis nilai ujian kelas!</p>
+        <div class="not-prose space-y-2 my-4">
+                                    <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">1</span>
+                <span class="text-slate-700 text-sm">Buka sheets.google.com, buat spreadsheet baru</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">2</span>
+                <span class="text-slate-700 text-sm">Buat header: Nama | Nilai Ulangan | Nilai Tugas | Nilai Akhir | Status</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">3</span>
+                <span class="text-slate-700 text-sm">Isi data 10 siswa (boleh nama fiktif)</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">4</span>
+                <span class="text-slate-700 text-sm">Di kolom Nilai Akhir: =AVERAGE(B2:C2) untuk rata-rata ulangan & tugas</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">5</span>
+                <span class="text-slate-700 text-sm">Di kolom Status: =IF(D2>=75,"✅ Lulus","⚠️ Remedial")</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">6</span>
+                <span class="text-slate-700 text-sm">Di bawah data: tambahkan Nilai Tertinggi, Terendah, dan Rata-rata kelas</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">7</span>
+                <span class="text-slate-700 text-sm">Buat grafik batang dari nama siswa vs nilai akhir</span>
+            </div>
+                    </div>
+
+        <h2>Membuat Grafik</h2>
+        <p>Grafik membantu kita "melihat" data dengan lebih mudah. Di Google Sheets:</p>
+        <ol class="list-decimal pl-6 text-slate-600 space-y-1">
+            <li>Pilih (blok) data yang ingin dijadikan grafik</li>
+            <li>Klik menu <strong>Insert → Chart</strong></li>
+            <li>Pilih jenis grafik (Bar, Line, Pie, dll)</li>
+            <li>Sesuaikan judul dan warna di panel samping</li>
+        </ol>
+
+        <div class="not-prose grid md:grid-cols-3 gap-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">📊</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Bar / Column</p>
+                <p class="text-slate-400 text-xs mt-1">Membandingkan nilai antar kategori</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">📈</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Line Chart</p>
+                <p class="text-slate-400 text-xs mt-1">Menunjukkan perubahan seiring waktu</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-3xl mb-2">🥧</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Pie Chart</p>
+                <p class="text-slate-400 text-xs mt-1">Menampilkan proporsi bagian dari keseluruhan</p>
+            </div>
+                    </div>
+
+        <div class="callout callout-tip">
+            <p class="font-heading font-bold text-green-800 mb-1">💡 Tips Kolaborasi</p>
+            <p class="text-green-700 text-sm">Google Sheets bisa dikerjakan bersama! Klik tombol <strong>Share</strong> di kanan atas, masukkan email teman, dan pilih Editor. Kalian bisa mengisi data bersamaan secara real-time!</p>
+        </div>
+
+        <h2>Ringkasan 📝</h2>
+        <ul>
+            <li>Spreadsheet membantu mengolah data secara otomatis dan efisien</li>
+            <li>Rumus dasar: SUM, AVERAGE, MAX, MIN, COUNT, dan IF</li>
+            <li>Grafik memvisualisasikan data agar lebih mudah dipahami</li>
+            <li>Google Sheets mendukung kolaborasi real-time — cocok untuk kerja kelompok!</li>
+        </ul>
+    </div>
+    <div class="flex justify-between mt-12 gap-4">
+        <a href="../04-jaringan-internet/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Jaringan & Internet</p></div>
+        </a>
+        <a href="../06-rekam-jejak-digital/" class="flex items-center gap-3 px-5 py-3 bg-emerald-600 text-white rounded-2xl shadow hover:bg-emerald-700 transition">
+            <div class="text-right"><p class="text-[10px] text-emerald-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Rekam Jejak Digital</p></div>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>

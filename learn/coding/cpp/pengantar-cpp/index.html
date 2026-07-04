@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tutorial pengantar C++ untuk pemula: sintaks dasar, tipe data, variabel, operator, input/output dengan cin/cout, percabangan, dan looping di C++.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Pengantar C++ | Coding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        pre{background:#0f172a;color:#e2e8f0;border-radius:1rem;padding:1.25rem;overflow-x:auto;font-size:.82rem;line-height:1.8;margin-top:.75rem;}
+        .kw{color:#c084fc;}.fn{color:#93c5fd;}.str{color:#86efac;}.com{color:#64748b;font-style:italic;}.num{color:#fbbf24;}.tp{color:#f9a8d4;}.pp{color:#fb923c;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-slate-300 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../../" class="text-sm font-semibold text-slate-600 hover:underline">← Coding</a>
+</nav>
+<main class="relative z-10 max-w-5xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-slate-600">Coding</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Pengantar C++</span>
+    </div>
+    <div class="bg-gradient-to-br from-slate-600 to-slate-800 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-36 h-36 bg-white opacity-5 rounded-full -translate-y-6 translate-x-6"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Referensi · C++</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Pengantar C++ ⚡</h1>
+            <p class="text-slate-300 leading-relaxed max-w-2xl">Sintaks dasar C++ — bahasa yang digunakan di Arduino, game engine, dan sistem embedded. Cocok sebagai batu loncatan sebelum belajar pemrograman Arduino/IoT.</p>
+        </div>
+    </div>
+
+    <div class="space-y-8">
+
+        <!-- Program Pertama -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">👋 Program C++ Pertama</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="pp">#include</span> <span class="str">&lt;iostream&gt;</span>   <span class="com">// Library input/output</span>
+<span class="kw">using namespace</span> std;   <span class="com">// Agar bisa tulis cout, cin langsung</span>
+
+<span class="tp">int</span> <span class="fn">main</span>() {            <span class="com">// Titik masuk program — WAJIB ada</span>
+    cout &lt;&lt; <span class="str">"Halo, Dunia!"</span> &lt;&lt; endl;  <span class="com">// Cetak teks + baris baru</span>
+    cout &lt;&lt; <span class="str">"Belajar C++ yuk!"</span> &lt;&lt; <span class="str">"\n"</span>;  <span class="com">// \n = baris baru</span>
+    <span class="kw">return</span> <span class="num">0</span>;             <span class="com">// Kembalikan 0 = program sukses</span>
+}</pre>
+            </div>
+        </div>
+
+        <!-- Variabel & Tipe Data -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📦 Variabel & Tipe Data</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <p class="text-slate-600 text-sm mb-3">C++ bersifat <strong>strongly typed</strong> — setiap variabel harus dideklarasikan dengan tipe datanya.</p>
+                <pre><span class="pp">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="pp">#include</span> <span class="str">&lt;string&gt;</span>    <span class="com">// Untuk tipe string</span>
+<span class="kw">using namespace</span> std;
+
+<span class="tp">int</span> <span class="fn">main</span>() {
+    <span class="com">// Deklarasi & inisialisasi variabel</span>
+    <span class="tp">int</span> umur = <span class="num">15</span>;              <span class="com">// Bilangan bulat: -2,147,483,648 s/d 2,147,483,647</span>
+    <span class="tp">float</span> tinggi = <span class="num">165.5</span>f;     <span class="com">// Desimal presisi rendah (tambah f)</span>
+    <span class="tp">double</span> pi = <span class="num">3.14159265</span>;   <span class="com">// Desimal presisi tinggi</span>
+    <span class="tp">char</span> inisial = <span class="str">'B'</span>;        <span class="com">// Satu karakter (tanda KUTIP TUNGGAL!)</span>
+    <span class="tp">bool</span> lulus = <span class="kw">true</span>;         <span class="com">// true atau false (huruf kecil!)</span>
+    <span class="tp">string</span> nama = <span class="str">"Budi"</span>;     <span class="com">// Teks (butuh #include &lt;string&gt;)</span>
+
+    <span class="com">// Output</span>
+    cout &lt;&lt; <span class="str">"Nama: "</span> &lt;&lt; nama &lt;&lt; endl;
+    cout &lt;&lt; <span class="str">"Umur: "</span> &lt;&lt; umur &lt;&lt; <span class="str">" tahun"</span> &lt;&lt; endl;
+    cout &lt;&lt; <span class="str">"Lulus: "</span> &lt;&lt; (lulus ? <span class="str">"Ya"</span> : <span class="str">"Tidak"</span>) &lt;&lt; endl;
+
+    <span class="com">// Konstanta — nilai tidak bisa diubah</span>
+    <span class="kw">const</span> <span class="tp">int</span> MAKS_NILAI = <span class="num">100</span>;
+    <span class="kw">const</span> <span class="tp">double</span> GRAVITASI = <span class="num">9.8</span>;
+
+    <span class="kw">return</span> <span class="num">0</span>;
+}</pre>
+            </div>
+        </div>
+
+        <!-- Input & Operasi -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">⌨️ Input & Operasi Aritmatika</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="pp">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="kw">using namespace</span> std;
+
+<span class="tp">int</span> <span class="fn">main</span>() {
+    <span class="tp">int</span> a, b;
+    cout &lt;&lt; <span class="str">"Masukkan dua angka: "</span>;
+    cin &gt;&gt; a &gt;&gt; b;    <span class="com">// Baca dua input sekaligus</span>
+
+    cout &lt;&lt; a + b &lt;&lt; endl;   <span class="com">// Penjumlahan</span>
+    cout &lt;&lt; a - b &lt;&lt; endl;   <span class="com">// Pengurangan</span>
+    cout &lt;&lt; a * b &lt;&lt; endl;   <span class="com">// Perkalian</span>
+    cout &lt;&lt; a / b &lt;&lt; endl;   <span class="com">// Pembagian bulat (karena int)</span>
+    cout &lt;&lt; a % b &lt;&lt; endl;   <span class="com">// Sisa bagi (modulo)</span>
+
+    <span class="com">// Pembagian desimal — gunakan (float) atau (double)</span>
+    cout &lt;&lt; (<span class="tp">float</span>)a / b &lt;&lt; endl;
+
+    <span class="com">// Operator increment/decrement</span>
+    a++;    <span class="com">// a = a + 1</span>
+    b--;    <span class="com">// b = b - 1</span>
+    a += <span class="num">5</span>; <span class="com">// a = a + 5</span>
+    b *= <span class="num">2</span>; <span class="com">// b = b * 2</span>
+
+    <span class="kw">return</span> <span class="num">0</span>;
+}</pre>
+            </div>
+        </div>
+
+        <!-- Percabangan -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🔀 Percabangan</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="tp">int</span> nilai = <span class="num">85</span>;
+
+<span class="com">// if - else if - else</span>
+<span class="kw">if</span> (nilai >= <span class="num">90</span>) {
+    cout &lt;&lt; <span class="str">"A - Sangat Baik"</span> &lt;&lt; endl;
+} <span class="kw">else if</span> (nilai >= <span class="num">80</span>) {
+    cout &lt;&lt; <span class="str">"B - Baik"</span> &lt;&lt; endl;
+} <span class="kw">else if</span> (nilai >= <span class="num">70</span>) {
+    cout &lt;&lt; <span class="str">"C - Cukup"</span> &lt;&lt; endl;
+} <span class="kw">else</span> {
+    cout &lt;&lt; <span class="str">"D - Perlu Perbaikan"</span> &lt;&lt; endl;
+}
+
+<span class="com">// Ternary operator: kondisi ? nilai_jika_benar : nilai_jika_salah</span>
+<span class="tp">string</span> status = (nilai >= <span class="num">75</span>) ? <span class="str">"Lulus"</span> : <span class="str">"Tidak Lulus"</span>;
+cout &lt;&lt; status &lt;&lt; endl;
+
+<span class="com">// switch — untuk nilai diskrit</span>
+<span class="tp">int</span> hari = <span class="num">1</span>;
+<span class="kw">switch</span> (hari) {
+    <span class="kw">case</span> <span class="num">1</span>: cout &lt;&lt; <span class="str">"Senin"</span>; <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="num">2</span>: cout &lt;&lt; <span class="str">"Selasa"</span>; <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="num">3</span>: cout &lt;&lt; <span class="str">"Rabu"</span>; <span class="kw">break</span>;
+    <span class="kw">default</span>: cout &lt;&lt; <span class="str">"Hari lain"</span>;
+}</pre>
+            </div>
+        </div>
+
+        <!-- Perulangan -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🔁 Perulangan</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com">// FOR — jumlah iterasi sudah diketahui</span>
+<span class="kw">for</span> (<span class="tp">int</span> i = <span class="num">1</span>; i <= <span class="num">5</span>; i++) {
+    cout &lt;&lt; <span class="str">"Baris ke-"</span> &lt;&lt; i &lt;&lt; endl;
+}
+
+<span class="com">// Pola bintang dengan for bersarang</span>
+<span class="kw">for</span> (<span class="tp">int</span> i = <span class="num">1</span>; i <= <span class="num">5</span>; i++) {
+    <span class="kw">for</span> (<span class="tp">int</span> j = <span class="num">1</span>; j <= i; j++) {
+        cout &lt;&lt; <span class="str">"* "</span>;
+    }
+    cout &lt;&lt; endl;
+}
+
+<span class="com">// WHILE — kondisi diperiksa di awal</span>
+<span class="tp">int</span> n = <span class="num">1</span>;
+<span class="kw">while</span> (n <= <span class="num">10</span>) {
+    cout &lt;&lt; n &lt;&lt; <span class="str">" "</span>;
+    n++;
+}
+
+<span class="com">// DO-WHILE — eksekusi minimal 1 kali, kondisi diperiksa di akhir</span>
+<span class="tp">int</span> x = <span class="num">0</span>;
+<span class="kw">do</span> {
+    cout &lt;&lt; <span class="str">"Nilai x: "</span> &lt;&lt; x &lt;&lt; endl;
+    x++;
+} <span class="kw">while</span> (x < <span class="num">3</span>);
+
+<span class="com">// break & continue</span>
+<span class="kw">for</span> (<span class="tp">int</span> i = <span class="num">0</span>; i < <span class="num">10</span>; i++) {
+    <span class="kw">if</span> (i == <span class="num">5</span>) <span class="kw">break</span>;     <span class="com">// Hentikan loop</span>
+    <span class="kw">if</span> (i % <span class="num">2</span> == <span class="num">0</span>) <span class="kw">continue</span>;  <span class="com">// Lewati genap</span>
+    cout &lt;&lt; i &lt;&lt; endl;        <span class="com">// Cetak 1, 3</span>
+}</pre>
+            </div>
+        </div>
+
+        <!-- Fungsi -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🔧 Fungsi</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="pp">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="kw">using namespace</span> std;
+
+<span class="com">// Deklarasi fungsi (prototype) — jika fungsi didefinisikan setelah main()</span>
+<span class="tp">int</span> <span class="fn">tambah</span>(<span class="tp">int</span> a, <span class="tp">int</span> b);
+<span class="tp">void</span> <span class="fn">sapa</span>(<span class="tp">string</span> nama);     <span class="com">// void = tidak mengembalikan nilai</span>
+
+<span class="tp">int</span> <span class="fn">main</span>() {
+    <span class="fn">sapa</span>(<span class="str">"Budi"</span>);
+    <span class="tp">int</span> hasil = <span class="fn">tambah</span>(<span class="num">10</span>, <span class="num">20</span>);
+    cout &lt;&lt; <span class="str">"Hasil: "</span> &lt;&lt; hasil &lt;&lt; endl;
+    <span class="kw">return</span> <span class="num">0</span>;
+}
+
+<span class="com">// Definisi fungsi</span>
+<span class="tp">void</span> <span class="fn">sapa</span>(<span class="tp">string</span> nama) {
+    cout &lt;&lt; <span class="str">"Halo, "</span> &lt;&lt; nama &lt;&lt; <span class="str">"!"</span> &lt;&lt; endl;
+}
+
+<span class="tp">int</span> <span class="fn">tambah</span>(<span class="tp">int</span> a, <span class="tp">int</span> b) {
+    <span class="kw">return</span> a + b;
+}
+
+<span class="com">// Fungsi rekursif — faktorial</span>
+<span class="tp">int</span> <span class="fn">faktorial</span>(<span class="tp">int</span> n) {
+    <span class="kw">if</span> (n <= <span class="num">1</span>) <span class="kw">return</span> <span class="num">1</span>;   <span class="com">// Base case</span>
+    <span class="kw">return</span> n * <span class="fn">faktorial</span>(n - <span class="num">1</span>);  <span class="com">// Recursive case</span>
+}</pre>
+            </div>
+        </div>
+
+        <!-- Array -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📋 Array</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com">// Deklarasi array — ukuran harus ditentukan saat deklarasi</span>
+<span class="tp">int</span> nilai[<span class="num">5</span>] = {<span class="num">85</span>, <span class="num">90</span>, <span class="num">78</span>, <span class="num">92</span>, <span class="num">88</span>};
+<span class="tp">string</span> nama[<span class="num">3</span>] = {<span class="str">"Budi"</span>, <span class="str">"Ani"</span>, <span class="str">"Citra"</span>};
+
+<span class="com">// Akses elemen (indeks mulai dari 0)</span>
+cout &lt;&lt; nilai[<span class="num">0</span>] &lt;&lt; endl;   <span class="com">// 85</span>
+cout &lt;&lt; nilai[<span class="num">4</span>] &lt;&lt; endl;   <span class="com">// 88 (terakhir)</span>
+
+<span class="com">// Ubah nilai</span>
+nilai[<span class="num">2</span>] = <span class="num">95</span>;
+
+<span class="com">// Iterasi dengan for</span>
+<span class="kw">for</span> (<span class="tp">int</span> i = <span class="num">0</span>; i < <span class="num">5</span>; i++) {
+    cout &lt;&lt; <span class="str">"Nilai ke-"</span> &lt;&lt; (i+<span class="num">1</span>) &lt;&lt; <span class="str">": "</span> &lt;&lt; nilai[i] &lt;&lt; endl;
+}
+
+<span class="com">// Range-based for (C++11 ke atas)</span>
+<span class="kw">for</span> (<span class="tp">int</span> n : nilai) {
+    cout &lt;&lt; n &lt;&lt; <span class="str">" "</span>;
+}</pre>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-10 flex flex-col md:flex-row gap-4">
+        <div class="flex-1 bg-slate-50 border border-slate-200 rounded-2xl p-6 flex gap-4 items-start">
+            <span class="text-2xl flex-shrink-0">💻</span>
+            <div>
+                <p class="font-heading font-bold text-slate-800 mb-1">Coba Online</p>
+                <p class="text-slate-600 text-sm">Gunakan <strong>onlinegdb.com</strong> atau <strong>replit.com</strong> untuk compile & run C++ langsung di browser tanpa instalasi.</p>
+            </div>
+        </div>
+        <div class="flex-1 bg-indigo-50 border border-indigo-100 rounded-2xl p-6 flex gap-4 items-start">
+            <span class="text-2xl flex-shrink-0">⚡</span>
+            <div>
+                <p class="font-heading font-bold text-indigo-800 mb-1">Langkah Berikutnya</p>
+                <p class="text-indigo-700 text-sm">Setelah memahami sintaks dasar C++, lanjut ke <a href="../dasar-iot-arduino/" class="underline font-semibold">Arduino & IoT</a> — di sana C++ digunakan untuk memprogram mikrokontroler nyata!</p>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <div class="flex gap-4">
+            <a href="../../" class="hover:text-indigo-600 font-medium">← Coding</a>
+            <a href="../dasar-iot-arduino/" class="hover:text-indigo-600 font-medium">Arduino & IoT →</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

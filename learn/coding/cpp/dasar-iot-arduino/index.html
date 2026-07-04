@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dasar IoT dengan Arduino: pengenalan mikrokontroler Arduino, pemrograman C++ untuk Arduino, LED, sensor, dan membuat proyek IoT pertamamu.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Dasar IoT & Arduino | Coding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        pre{background:#0f172a;color:#e2e8f0;border-radius:1rem;padding:1.25rem;overflow-x:auto;font-size:.82rem;line-height:1.8;margin-top:.75rem;}
+        .kw{color:#c084fc;}.fn{color:#93c5fd;}.str{color:#86efac;}.com{color:#64748b;font-style:italic;}.num{color:#fbbf24;}.tp{color:#f9a8d4;}.pp{color:#fb923c;}
+        .pin{background:#fef3c7;color:#92400e;border-radius:.4rem;padding:.1rem .45rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:700;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-amber-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../../" class="text-sm font-semibold text-slate-600 hover:underline">← Coding</a>
+</nav>
+<main class="relative z-10 max-w-5xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-slate-600">Coding</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Dasar IoT & Arduino</span>
+    </div>
+    <div class="bg-gradient-to-br from-amber-500 to-orange-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-36 h-36 bg-white opacity-5 rounded-full -translate-y-6 translate-x-6"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Referensi · Arduino · IoT</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Dasar IoT & Arduino 🤖</h1>
+            <p class="text-amber-100 leading-relaxed max-w-2xl">Pemrograman mikrokontroler Arduino menggunakan C++. Dari LED berkedip hingga sensor, aktuator, dan koneksi IoT dengan Blynk — semuanya ada di sini!</p>
+        </div>
+    </div>
+
+    <!-- Konsep Dasar -->
+    <div class="mb-8 bg-amber-50 border border-amber-100 rounded-2xl p-6">
+        <p class="font-heading font-bold text-amber-800 mb-2">📌 Konsep Dasar Arduino</p>
+        <div class="grid md:grid-cols-3 gap-4 text-sm text-amber-700">
+            <div><strong>setup()</strong> — Berjalan sekali saat Arduino dinyalakan. Gunakan untuk konfigurasi pin dan inisialisasi.</div>
+            <div><strong>loop()</strong> — Berjalan terus-menerus selama Arduino hidup. Letakkan logika utama di sini.</div>
+            <div><strong>Pin Digital vs Analog</strong> — Digital: 0 atau 1 (HIGH/LOW). Analog: nilai 0–1023 (membaca sensor).</div>
+        </div>
+    </div>
+
+    <div class="space-y-8">
+
+        <!-- Struktur Dasar -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🏗️ Struktur Program Arduino</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com">// Semua program Arduino punya dua fungsi wajib ini:</span>
+
+<span class="tp">void</span> <span class="fn">setup</span>() {
+    <span class="com">// Dijalankan SEKALI saat Arduino menyala / reset</span>
+    <span class="com">// Gunakan untuk:</span>
+    <span class="com">// - Konfigurasi pin (pinMode)</span>
+    <span class="com">// - Inisialisasi Serial Monitor</span>
+    <span class="com">// - Koneksi WiFi, sensor, dll.</span>
+    Serial.<span class="fn">begin</span>(<span class="num">9600</span>);           <span class="com">// Mulai komunikasi serial (9600 baud)</span>
+    Serial.<span class="fn">println</span>(<span class="str">"Arduino siap!"</span>);
+}
+
+<span class="tp">void</span> <span class="fn">loop</span>() {
+    <span class="com">// Dijalankan BERULANG TERUS-MENERUS</span>
+    <span class="com">// Ini adalah "jantung" program Arduino</span>
+    Serial.<span class="fn">println</span>(<span class="str">"Halo dari Arduino!"</span>);
+    <span class="fn">delay</span>(<span class="num">1000</span>);                  <span class="com">// Tunggu 1000ms = 1 detik</span>
+}</pre>
+            </div>
+        </div>
+
+        <!-- LED Blink -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">💡 LED Blink — "Hello World" Arduino</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <div class="flex gap-3 items-center mb-3 flex-wrap">
+                    <span class="pin">Pin 13</span>
+                    <span class="text-slate-500 text-sm">→ LED bawaan Arduino ada di pin 13 (atau gunakan LED eksternal)</span>
+                </div>
+                <pre><span class="kw">const</span> <span class="tp">int</span> LED_PIN = <span class="num">13</span>;      <span class="com">// LED bawaan Arduino Uno</span>
+
+<span class="tp">void</span> <span class="fn">setup</span>() {
+    <span class="fn">pinMode</span>(LED_PIN, OUTPUT);   <span class="com">// Set pin sebagai OUTPUT</span>
+}
+
+<span class="tp">void</span> <span class="fn">loop</span>() {
+    <span class="fn">digitalWrite</span>(LED_PIN, HIGH); <span class="com">// Nyalakan LED</span>
+    <span class="fn">delay</span>(<span class="num">500</span>);                   <span class="com">// Tunggu 500ms</span>
+    <span class="fn">digitalWrite</span>(LED_PIN, LOW);  <span class="com">// Matikan LED</span>
+    <span class="fn">delay</span>(<span class="num">500</span>);                   <span class="com">// Tunggu 500ms</span>
+    <span class="com">// Total: LED kedip 1 kali per detik</span>
+}
+
+<span class="com">// Variasi: Pola SOS (... --- ...)</span>
+<span class="tp">void</span> <span class="fn">kedip</span>(<span class="tp">int</span> durasi) {
+    <span class="fn">digitalWrite</span>(LED_PIN, HIGH);
+    <span class="fn">delay</span>(durasi);
+    <span class="fn">digitalWrite</span>(LED_PIN, LOW);
+    <span class="fn">delay</span>(<span class="num">200</span>);
+}</pre>
+            </div>
+        </div>
+
+        <!-- Tombol (Button) -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🔘 Membaca Tombol (Button)</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <div class="flex gap-3 items-center mb-3 flex-wrap">
+                    <span class="pin">Pin 2</span><span class="text-slate-400">→ Tombol</span>
+                    <span class="pin">Pin 13</span><span class="text-slate-400">→ LED</span>
+                </div>
+                <pre><span class="kw">const</span> <span class="tp">int</span> BTN_PIN = <span class="num">2</span>;
+<span class="kw">const</span> <span class="tp">int</span> LED_PIN = <span class="num">13</span>;
+
+<span class="tp">void</span> <span class="fn">setup</span>() {
+    <span class="fn">pinMode</span>(BTN_PIN, INPUT_PULLUP);  <span class="com">// INPUT_PULLUP: tombol aktif LOW (0)</span>
+    <span class="fn">pinMode</span>(LED_PIN, OUTPUT);
+    Serial.<span class="fn">begin</span>(<span class="num">9600</span>);
+}
+
+<span class="tp">void</span> <span class="fn">loop</span>() {
+    <span class="tp">int</span> statusTombol = <span class="fn">digitalRead</span>(BTN_PIN);
+    
+    <span class="kw">if</span> (statusTombol == LOW) {        <span class="com">// LOW = tombol ditekan (karena PULLUP)</span>
+        <span class="fn">digitalWrite</span>(LED_PIN, HIGH);    <span class="com">// Nyalakan LED</span>
+        Serial.<span class="fn">println</span>(<span class="str">"Tombol DITEKAN!"</span>);
+    } <span class="kw">else</span> {
+        <span class="fn">digitalWrite</span>(LED_PIN, LOW);     <span class="com">// Matikan LED</span>
+    }
+}</pre>
+            </div>
+        </div>
+
+        <!-- Sensor Analog -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🌡️ Membaca Sensor Analog</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <div class="flex gap-3 items-center mb-3 flex-wrap">
+                    <span class="pin">A0</span><span class="text-slate-400">→ Potensiometer / LDR / Sensor Suhu</span>
+                </div>
+                <pre><span class="kw">const</span> <span class="tp">int</span> SENSOR_PIN = A0;     <span class="com">// Pin analog A0</span>
+<span class="kw">const</span> <span class="tp">int</span> LED_PIN = <span class="num">9</span>;          <span class="com">// Pin PWM untuk kontrol kecerahan</span>
+
+<span class="tp">void</span> <span class="fn">setup</span>() {
+    <span class="fn">pinMode</span>(LED_PIN, OUTPUT);
+    Serial.<span class="fn">begin</span>(<span class="num">9600</span>);
+}
+
+<span class="tp">void</span> <span class="fn">loop</span>() {
+    <span class="tp">int</span> nilaiSensor = <span class="fn">analogRead</span>(SENSOR_PIN);  <span class="com">// Baca nilai 0-1023</span>
+    
+    <span class="com">// Map nilai sensor ke rentang lain</span>
+    <span class="tp">int</span> kecerahan = <span class="fn">map</span>(nilaiSensor, <span class="num">0</span>, <span class="num">1023</span>, <span class="num">0</span>, <span class="num">255</span>);
+    <span class="fn">analogWrite</span>(LED_PIN, kecerahan);   <span class="com">// PWM: 0=mati, 255=terang penuh</span>
+    
+    <span class="com">// Konversi ke tegangan</span>
+    <span class="tp">float</span> tegangan = nilaiSensor * (<span class="num">5.0</span> / <span class="num">1023.0</span>);
+    
+    Serial.<span class="fn">print</span>(<span class="str">"Sensor: "</span>); Serial.<span class="fn">print</span>(nilaiSensor);
+    Serial.<span class="fn">print</span>(<span class="str">" | Tegangan: "</span>); Serial.<span class="fn">print</span>(tegangan); Serial.<span class="fn">println</span>(<span class="str">"V"</span>);
+    <span class="fn">delay</span>(<span class="num">500</span>);
+}</pre>
+            </div>
+        </div>
+
+        <!-- Sensor DHT11 -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🌡️ Sensor Suhu & Kelembaban (DHT11/DHT22)</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-3 text-xs text-slate-600">
+                    ⚙️ Install library: <strong>Sketch → Include Library → Manage Libraries → cari "DHT sensor library" by Adafruit</strong>
+                </div>
+                <pre><span class="pp">#include</span> <span class="str">&lt;DHT.h&gt;</span>
+
+<span class="pp">#define</span> DHT_PIN     <span class="num">4</span>         <span class="com">// Pin data DHT terhubung ke pin 4</span>
+<span class="pp">#define</span> DHT_TYPE    DHT11     <span class="com">// DHT11 atau DHT22</span>
+
+DHT dht(DHT_PIN, DHT_TYPE);  <span class="com">// Buat objek sensor</span>
+
+<span class="tp">void</span> <span class="fn">setup</span>() {
+    Serial.<span class="fn">begin</span>(<span class="num">9600</span>);
+    dht.<span class="fn">begin</span>();
+    Serial.<span class="fn">println</span>(<span class="str">"Sensor DHT siap!"</span>);
+}
+
+<span class="tp">void</span> <span class="fn">loop</span>() {
+    <span class="fn">delay</span>(<span class="num">2000</span>);   <span class="com">// DHT butuh jeda minimal 2 detik antar pembacaan</span>
+    
+    <span class="tp">float</span> suhu = dht.<span class="fn">readTemperature</span>();     <span class="com">// Celcius</span>
+    <span class="tp">float</span> kelembaban = dht.<span class="fn">readHumidity</span>();  <span class="com">// Persen (%)</span>
+    
+    <span class="com">// Cek apakah pembacaan gagal</span>
+    <span class="kw">if</span> (<span class="fn">isnan</span>(suhu) || <span class="fn">isnan</span>(kelembaban)) {
+        Serial.<span class="fn">println</span>(<span class="str">"Gagal membaca sensor!"</span>);
+        <span class="kw">return</span>;
+    }
+    
+    Serial.<span class="fn">print</span>(<span class="str">"Suhu: "</span>); Serial.<span class="fn">print</span>(suhu); Serial.<span class="fn">println</span>(<span class="str">"°C"</span>);
+    Serial.<span class="fn">print</span>(<span class="str">"Kelembaban: "</span>); Serial.<span class="fn">print</span>(kelembaban); Serial.<span class="fn">println</span>(<span class="str">"%"</span>);
+}</pre>
+            </div>
+        </div>
+
+        <!-- Servo Motor -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">⚙️ Servo Motor</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="pp">#include</span> <span class="str">&lt;Servo.h&gt;</span>   <span class="com">// Library built-in Arduino IDE</span>
+
+Servo servo1;           <span class="com">// Buat objek servo</span>
+<span class="kw">const</span> <span class="tp">int</span> SERVO_PIN = <span class="num">9</span>;
+
+<span class="tp">void</span> <span class="fn">setup</span>() {
+    servo1.<span class="fn">attach</span>(SERVO_PIN);   <span class="com">// Hubungkan servo ke pin 9</span>
+}
+
+<span class="tp">void</span> <span class="fn">loop</span>() {
+    <span class="com">// Gerakkan servo dari 0° ke 180° bertahap</span>
+    <span class="kw">for</span> (<span class="tp">int</span> sudut = <span class="num">0</span>; sudut <= <span class="num">180</span>; sudut++) {
+        servo1.<span class="fn">write</span>(sudut);   <span class="com">// Set sudut (0-180 derajat)</span>
+        <span class="fn">delay</span>(<span class="num">15</span>);
+    }
+    <span class="com">// Balik dari 180° ke 0°</span>
+    <span class="kw">for</span> (<span class="tp">int</span> sudut = <span class="num">180</span>; sudut >= <span class="num">0</span>; sudut--) {
+        servo1.<span class="fn">write</span>(sudut);
+        <span class="fn">delay</span>(<span class="num">15</span>);
+    }
+}</pre>
+            </div>
+        </div>
+
+        <!-- Blynk IoT -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📱 Blynk IoT — Kontrol via Smartphone</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <div class="bg-blue-50 border border-blue-100 rounded-xl p-3 mb-3 text-xs text-blue-700">
+                    📲 Buat akun di <strong>blynk.cloud</strong>, buat template baru, tambahkan datastream, lalu salin Auth Token.
+                    Install library: <strong>Library Manager → "Blynk"</strong>
+                </div>
+                <pre><span class="com">/* Contoh: ESP8266/ESP32 + Blynk — kontrol LED dari HP */</span>
+<span class="pp">#define</span> BLYNK_TEMPLATE_ID    <span class="str">"TMPLxxxxxx"</span>
+<span class="pp">#define</span> BLYNK_TEMPLATE_NAME  <span class="str">"Proyek IoT Saya"</span>
+<span class="pp">#define</span> BLYNK_AUTH_TOKEN     <span class="str">"YourAuthTokenHere"</span>
+
+<span class="pp">#include</span> <span class="str">&lt;ESP8266WiFi.h&gt;</span>   <span class="com">// Ganti ESP32WiFi.h jika pakai ESP32</span>
+<span class="pp">#include</span> <span class="str">&lt;BlynkSimpleEsp8266.h&gt;</span>
+
+<span class="kw">char</span> ssid[] = <span class="str">"NamaWiFimu"</span>;
+<span class="kw">char</span> pass[] = <span class="str">"PasswordWiFi"</span>;
+<span class="kw">const</span> <span class="tp">int</span> LED_PIN = <span class="num">2</span>;
+
+<span class="com">// Fungsi otomatis dipanggil saat Virtual Pin V0 berubah dari aplikasi</span>
+BLYNK_WRITE(V0) {
+    <span class="tp">int</span> nilai = <span class="fn">param</span>.<span class="fn">asInt</span>();   <span class="com">// 1 = ON, 0 = OFF dari tombol di app</span>
+    <span class="fn">digitalWrite</span>(LED_PIN, nilai);
+}
+
+<span class="tp">void</span> <span class="fn">setup</span>() {
+    Serial.<span class="fn">begin</span>(<span class="num">115200</span>);
+    <span class="fn">pinMode</span>(LED_PIN, OUTPUT);
+    Blynk.<span class="fn">begin</span>(BLYNK_AUTH_TOKEN, ssid, pass);  <span class="com">// Koneksi ke Blynk Cloud</span>
+}
+
+<span class="tp">void</span> <span class="fn">loop</span>() {
+    Blynk.<span class="fn">run</span>();   <span class="com">// WAJIB ada — proses komunikasi Blynk</span>
+    <span class="com">// Kirim data sensor ke Virtual Pin V1 setiap 2 detik</span>
+    <span class="kw">static</span> <span class="tp">unsigned long</span> lastSend = <span class="num">0</span>;
+    <span class="kw">if</span> (<span class="fn">millis</span>() - lastSend > <span class="num">2000</span>) {
+        Blynk.<span class="fn">virtualWrite</span>(V1, <span class="fn">analogRead</span>(A0));
+        lastSend = <span class="fn">millis</span>();
+    }
+}</pre>
+            </div>
+        </div>
+
+        <!-- Referensi Fungsi -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📖 Referensi Fungsi Arduino</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <p class="font-heading font-bold text-slate-800 mb-3">Pin & Digital</p>
+                    <div class="space-y-2">
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">pinMode(pin, mode)</code>
+                            <p class="text-xs text-slate-500 mt-0.5">Set mode pin: INPUT, OUTPUT, INPUT_PULLUP</p>
+                        </div>
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">digitalWrite(pin, val)</code>
+                            <p class="text-xs text-slate-500 mt-0.5">Set pin digital: HIGH (1) atau LOW (0)</p>
+                        </div>
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">digitalRead(pin)</code>
+                            <p class="text-xs text-slate-500 mt-0.5">Baca nilai pin digital: HIGH atau LOW</p>
+                        </div>
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">analogWrite(pin, val)</code>
+                            <p class="text-xs text-slate-500 mt-0.5">PWM output, val = 0-255 (pin ~)</p>
+                        </div>
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">analogRead(pin)</code>
+                            <p class="text-xs text-slate-500 mt-0.5">Baca pin analog A0-A5, nilai 0-1023</p>
+                        </div>
+                                            </div>
+                </div>
+                                <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                    <p class="font-heading font-bold text-slate-800 mb-3">Waktu & Utilitas</p>
+                    <div class="space-y-2">
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">delay(ms)</code>
+                            <p class="text-xs text-slate-500 mt-0.5">Jeda eksekusi selama N milidetik</p>
+                        </div>
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">delayMicroseconds(us)</code>
+                            <p class="text-xs text-slate-500 mt-0.5">Jeda dalam mikrodetik</p>
+                        </div>
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">millis()</code>
+                            <p class="text-xs text-slate-500 mt-0.5">Milidetik sejak Arduino menyala (non-blocking)</p>
+                        </div>
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">micros()</code>
+                            <p class="text-xs text-slate-500 mt-0.5">Mikrodetik sejak Arduino menyala</p>
+                        </div>
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">map(val, in_min, in_max, out_min, out_max)</code>
+                            <p class="text-xs text-slate-500 mt-0.5">Konversi nilai antar rentang</p>
+                        </div>
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">constrain(val, min, max)</code>
+                            <p class="text-xs text-slate-500 mt-0.5">Batasi nilai dalam rentang</p>
+                        </div>
+                                                <div>
+                            <code class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">random(max)</code>
+                            <p class="text-xs text-slate-500 mt-0.5">Angka acak 0 s/d max-1</p>
+                        </div>
+                                            </div>
+                </div>
+                            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-10 bg-amber-50 border border-amber-100 rounded-2xl p-6 flex gap-4 items-start">
+        <span class="text-2xl flex-shrink-0">🔧</span>
+        <div>
+            <p class="font-heading font-bold text-amber-800 mb-1">Mulai Proyek IoT Pertamamu!</p>
+            <p class="text-amber-700 text-sm">Unduh <strong>Arduino IDE</strong> dari arduino.cc, hubungkan board Arduino Uno atau ESP8266 via USB, pilih Board & Port yang sesuai, lalu upload sketchmu! Gunakan Serial Monitor (Ctrl+Shift+M) untuk debug.</p>
+        </div>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <div class="flex gap-4">
+            <a href="../pengantar-cpp/" class="hover:text-indigo-600 font-medium">← Pengantar C++</a>
+            <a href="../../" class="hover:text-indigo-600 font-medium">Coding</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

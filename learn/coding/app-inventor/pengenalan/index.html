@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pengenalan MIT App Inventor: antarmuka drag-and-drop, komponen UI (Button, Label, TextBox), event handler, dan membuat aplikasi Android pertama tanpa coding teks.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Mengenal MIT App Inventor | Coding untuk Pemula</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-8 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-teal-600 hover:underline">← Tutorial App Inventor</a>
+</nav>
+
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Tutorial Coding</a><span>/</span>
+        <a href="../" class="hover:text-teal-600">App Inventor</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Pengenalan</span>
+    </div>
+
+    <header class="pb-10">
+        <div class="inline-flex items-center gap-2 bg-teal-50 text-teal-700 font-heading font-bold px-4 py-2 rounded-full mb-5 text-sm">📱 App Inventor · Tutorial 1</div>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-3 font-heading">Mengenal <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-500">MIT App Inventor</span></h1>
+        <p class="text-slate-500 leading-relaxed">App Inventor adalah platform dari MIT (Massachusetts Institute of Technology) untuk membuat aplikasi Android dengan cara menyusun blok visual — mirip Scratch, tapi hasilnya bisa diinstall di HP kamu!</p>
+    </header>
+
+    <!-- Apa itu App Inventor -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">1. Apa Itu App Inventor?</h2>
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-teal-50 border border-teal-100 rounded-2xl p-5">
+                <p class="font-heading font-bold text-teal-800 mb-2">✅ Bisa Dilakukan</p>
+                <ul class="text-teal-700 text-sm space-y-1">
+                    <li>• Bikin app Android (.apk)</li>
+                    <li>• Desain UI drag-and-drop</li>
+                    <li>• Logika pakai blok visual</li>
+                    <li>• Uji coba langsung di HP</li>
+                    <li>• Gratis & berbasis browser</li>
+                </ul>
+            </div>
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-5">
+                <p class="font-heading font-bold text-slate-700 mb-2">ℹ️ Perlu Diketahui</p>
+                <ul class="text-slate-600 text-sm space-y-1">
+                    <li>• Khusus Android (bukan iOS)</li>
+                    <li>• Butuh akun Google</li>
+                    <li>• Untuk preview butuh HP Android atau emulator</li>
+                    <li>• Cocok untuk app sederhana–menengah</li>
+                </ul>
+            </div>
+        </div>
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-sm text-indigo-800">
+            🔗 <strong>Buka App Inventor:</strong> <a href="https://appinventor.mit.edu/" target="_blank" class="underline font-semibold">appinventor.mit.edu</a> → klik "Create Apps!" → login dengan Google
+        </div>
+    </section>
+
+    <!-- Antarmuka -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">2. Mengenal Antarmuka App Inventor</h2>
+        <p class="text-slate-600 mb-5">App Inventor punya dua mode utama yang bisa kamu switch kapan saja:</p>
+        <div class="grid md:grid-cols-2 gap-5 mb-6">
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center text-2xl mb-3">🎨</div>
+                <h3 class="font-heading font-bold text-slate-800 mb-2">Designer Mode</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">Tempat kamu <strong>mendesain tampilan</strong> app. Drag komponen dari panel kiri ke layar ponsel di tengah. Atur propertinya di panel kanan.</p>
+                <ul class="mt-3 text-sm text-slate-500 space-y-1">
+                    <li>📦 <strong>Palette</strong> — daftar komponen tersedia</li>
+                    <li>📱 <strong>Viewer</strong> — preview layar HP</li>
+                    <li>🔧 <strong>Properties</strong> — atur warna, ukuran, teks</li>
+                    <li>📋 <strong>Components</strong> — daftar komponen yang sudah ditambah</li>
+                </ul>
+            </div>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-2xl mb-3">🧩</div>
+                <h3 class="font-heading font-bold text-slate-800 mb-2">Blocks Mode</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">Tempat kamu menulis <strong>logika/program</strong> menggunakan blok visual. Seperti puzzle — susun blok untuk menentukan "apa yang terjadi ketika..."</p>
+                <ul class="mt-3 text-sm text-slate-500 space-y-1">
+                    <li>🎪 <strong>Built-in Blocks</strong> — blok logika bawaan (if, loop, math)</li>
+                    <li>📱 <strong>Component Blocks</strong> — blok dari komponen yang kamu tambah</li>
+                    <li>🔄 <strong>Event Blocks</strong> — "ketika tombol diklik..."</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Komponen Dasar -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">3. Komponen Dasar yang Wajib Tahu</h2>
+        <div class="overflow-x-auto rounded-2xl border border-slate-100 shadow-sm">
+            <table class="w-full text-sm">
+                <thead><tr class="bg-teal-50"><th class="text-left p-3 font-heading text-teal-800">Komponen</th><th class="text-left p-3 font-heading text-teal-800">Fungsi</th><th class="text-left p-3 font-heading text-teal-800">Contoh Penggunaan</th></tr></thead>
+                <tbody class="divide-y divide-slate-100">
+                                                            <tr class="bg-white">
+                        <td class="p-3 font-semibold text-slate-700">🏠 Screen</td>
+                        <td class="p-3 text-slate-600">Layar utama app</td>
+                        <td class="p-3 text-slate-400 text-xs">Satu app bisa punya banyak Screen</td>
+                    </tr>
+                                        <tr class="bg-slate-50/40">
+                        <td class="p-3 font-semibold text-slate-700">🔘 Button</td>
+                        <td class="p-3 text-slate-600">Tombol yang bisa diklik</td>
+                        <td class="p-3 text-slate-400 text-xs">Tombol "Hitung", "Simpan", "Mulai"</td>
+                    </tr>
+                                        <tr class="bg-white">
+                        <td class="p-3 font-semibold text-slate-700">🏷️ Label</td>
+                        <td class="p-3 text-slate-600">Teks yang ditampilkan</td>
+                        <td class="p-3 text-slate-400 text-xs">Judul, hasil perhitungan, pesan</td>
+                    </tr>
+                                        <tr class="bg-slate-50/40">
+                        <td class="p-3 font-semibold text-slate-700">✏️ TextBox</td>
+                        <td class="p-3 text-slate-600">Input teks dari user</td>
+                        <td class="p-3 text-slate-400 text-xs">Form nama, angka, password</td>
+                    </tr>
+                                        <tr class="bg-white">
+                        <td class="p-3 font-semibold text-slate-700">🖼️ Image</td>
+                        <td class="p-3 text-slate-600">Menampilkan gambar</td>
+                        <td class="p-3 text-slate-400 text-xs">Foto profil, logo, ilustrasi</td>
+                    </tr>
+                                        <tr class="bg-slate-50/40">
+                        <td class="p-3 font-semibold text-slate-700">📻 RadioButton</td>
+                        <td class="p-3 text-slate-600">Pilihan satu dari banyak</td>
+                        <td class="p-3 text-slate-400 text-xs">Pilih jenis kelamin</td>
+                    </tr>
+                                        <tr class="bg-white">
+                        <td class="p-3 font-semibold text-slate-700">☑️ CheckBox</td>
+                        <td class="p-3 text-slate-600">Pilihan ya/tidak</td>
+                        <td class="p-3 text-slate-400 text-xs">Persetujuan, filter</td>
+                    </tr>
+                                        <tr class="bg-slate-50/40">
+                        <td class="p-3 font-semibold text-slate-700">🔊 Sound</td>
+                        <td class="p-3 text-slate-600">Memutar suara/musik</td>
+                        <td class="p-3 text-slate-400 text-xs">Efek suara game, notifikasi</td>
+                    </tr>
+                                        <tr class="bg-white">
+                        <td class="p-3 font-semibold text-slate-700">🗣️ TextToSpeech</td>
+                        <td class="p-3 text-slate-600">Teks dibacakan suara</td>
+                        <td class="p-3 text-slate-400 text-xs">App aksesibilitas, kuis</td>
+                    </tr>
+                                        <tr class="bg-slate-50/40">
+                        <td class="p-3 font-semibold text-slate-700">💾 TinyDB</td>
+                        <td class="p-3 text-slate-600">Simpan data lokal</td>
+                        <td class="p-3 text-slate-400 text-xs">Simpan skor, preferensi user</td>
+                    </tr>
+                                    </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Cara Kerja Blok -->
+    <section class="mb-10">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">4. Cara Kerja Blok Event</h2>
+        <p class="text-slate-600 mb-4">Blok di App Inventor bekerja dengan pola <strong>Event → Aksi</strong>. "Ketika sesuatu terjadi → lakukan ini".</p>
+        <div class="space-y-4">
+                                    <div class="flex items-start gap-4 bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <span class="text-xl"></span>
+                <div>
+                    <code class="text-teal-600 text-xs font-mono bg-teal-50 px-2 py-1 rounded">when Button1.Click do</code>
+                    <p class="text-slate-500 text-sm mt-1">Jalankan aksi saat tombol ditekan</p>
+                </div>
+            </div>
+                        <div class="flex items-start gap-4 bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <span class="text-xl"></span>
+                <div>
+                    <code class="text-teal-600 text-xs font-mono bg-teal-50 px-2 py-1 rounded">when TextBox1.TextChanged do</code>
+                    <p class="text-slate-500 text-sm mt-1">Reaksi real-time saat user mengetik</p>
+                </div>
+            </div>
+                        <div class="flex items-start gap-4 bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <span class="text-xl"></span>
+                <div>
+                    <code class="text-teal-600 text-xs font-mono bg-teal-50 px-2 py-1 rounded">when Screen1.Initialize do</code>
+                    <p class="text-slate-500 text-sm mt-1">Setup awal saat app pertama dibuka</p>
+                </div>
+            </div>
+                        <div class="flex items-start gap-4 bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <span class="text-xl"></span>
+                <div>
+                    <code class="text-teal-600 text-xs font-mono bg-teal-50 px-2 py-1 rounded">when Clock1.Timer do</code>
+                    <p class="text-slate-500 text-sm mt-1">Update tampilan secara berkala</p>
+                </div>
+            </div>
+                    </div>
+    </section>
+
+    <!-- App Hello World -->
+    <section class="mb-8">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">5. 🏗️ App Pertama: "Klik Sapa!"</h2>
+        <p class="text-slate-600 mb-4">Buat app sederhana: ketika tombol diklik, label menampilkan "Halo, Dunia!"</p>
+        <div class="space-y-4">
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <p class="font-heading font-bold text-slate-700 mb-3">Langkah 1 — Designer Mode</p>
+                <ol class="text-slate-600 text-sm space-y-2">
+                    <li><span class="font-bold text-teal-600">1.</span> Drag <strong>Label</strong> ke layar → Properties: Text = "Tekan tombol di bawah!", FontSize = 18</li>
+                    <li><span class="font-bold text-teal-600">2.</span> Drag <strong>Button</strong> ke layar → Properties: Text = "👋 Sapa Dunia!"</li>
+                    <li><span class="font-bold text-teal-600">3.</span> Rename komponen: Label1 → LabelHasil, Button1 → TombolSapa</li>
+                </ol>
+            </div>
+            <div class="bg-slate-800 rounded-2xl p-5 shadow-sm">
+                <p class="font-heading font-bold text-white mb-3 text-sm">Langkah 2 — Blocks Mode</p>
+                <div class="space-y-2">
+                    <div class="bg-indigo-600 rounded-lg px-4 py-2 text-white text-sm font-mono">when TombolSapa.Click do</div>
+                    <div class="ml-6 bg-teal-600 rounded-lg px-4 py-2 text-white text-sm font-mono">set LabelHasil.Text to "Halo, Dunia! 🎉"</div>
+                </div>
+                <p class="text-slate-200 text-xs mt-3">↑ Inilah tampilannya di Blocks mode — blok disusun seperti puzzle</p>
+            </div>
+            <div class="bg-teal-50 border border-teal-100 rounded-xl p-4 text-sm text-teal-800">
+                📱 <strong>Test di HP:</strong> Klik <em>Connect → AI Companion</em> → install app "MIT AI2 Companion" di HP → scan QR code. App langsung jalan di HP kamu!
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigasi -->
+    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+        <a href="../" class="flex items-center gap-2 text-sm text-slate-500 hover:text-teal-600 transition font-semibold">← Semua Tutorial App Inventor</a>
+        <a href="../proyek-pertama/" class="flex items-center gap-2 text-sm text-teal-600 hover:text-teal-800 transition font-semibold">Tutorial 2: Proyek Kalkulator BMI →</a>
+    </div>
+</main>
+
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>

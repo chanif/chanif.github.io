@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluasi KKA Kelas 8 | Pak Fanani</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .option-btn{transition:all 0.2s;}
+        .option-btn:hover:not(:disabled){transform:translateY(-1px);}
+        .option-btn.correct{background-color:#dcfce7;border-color:#22c55e;color:#15803d;}
+        .option-btn.wrong{background-color:#fee2e2;border-color:#ef4444;color:#b91c1c;}
+        .option-btn.reveal{background-color:#dcfce7;border-color:#22c55e;color:#15803d;opacity:0.7;}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+        .fade-in{animation:fadeIn 0.35s ease forwards;}
+        #progress-bar{transition:width 0.4s ease;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased min-h-screen">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-pink-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-pink-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-pink-600 hover:underline">← KKA Kelas 8</a>
+</nav>
+<div class="relative z-10 max-w-4xl mx-auto px-6 mb-4">
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../" class="hover:text-pink-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-pink-600">KKA</a><span>/</span>
+        <a href="../" class="hover:text-pink-600">Kelas 8</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Evaluasi</span>
+    </div>
+</div>
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="bg-gradient-to-br from-pink-500 to-rose-600 rounded-[2rem] p-8 text-white mb-8 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">📝 Evaluasi · 8 Soal Acak</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-2">Evaluasi KKA Kelas 8</h1>
+            <p class="text-white/80 text-sm leading-relaxed max-w-xl">Uji pemahaman kamu tentang Generative AI, Prompt Engineering, etika AI, dan halusinasi AI.</p>
+        </div>
+    </div>
+    <div class="mb-6">
+        <div class="flex justify-between text-xs text-slate-500 mb-1.5">
+            <span id="progress-label">Soal 1 dari 8</span>
+            <span id="score-label">Skor: 0</span>
+        </div>
+        <div class="w-full bg-slate-100 rounded-full h-2">
+            <div id="progress-bar" class="bg-pink-500 h-2 rounded-full" style="width:13%"></div>
+        </div>
+    </div>
+    <div id="quiz-container"></div>
+    <div id="result-container" class="hidden fade-in text-center py-10"></div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+<script>
+let soalData = [];
+const JUMLAH=8;
+let current=0,score=0,answered=false;
+const labels=['A','B','C','D'];
+function renderSoal(){answered=false;const s=soalData[current];document.getElementById('progress-label').textContent=`Soal ${current+1} dari ${JUMLAH}`;document.getElementById('progress-bar').style.width=Math.round(((current+1)/JUMLAH)*100)+'%';document.getElementById('quiz-container').innerHTML=`<div class="fade-in bg-white rounded-[1.5rem] border border-slate-100 shadow-sm p-7 md:p-9"><p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Soal ${current+1}</p><h2 class="font-heading font-extrabold text-xl md:text-2xl text-slate-800 mb-6 leading-snug">${escHtml(s.soal)}</h2><div class="space-y-3" id="options-container">${s.opsi.map((o,i)=>`<button class="option-btn w-full text-left flex items-center gap-4 px-5 py-4 rounded-2xl border-2 border-slate-100 bg-slate-50 hover:border-pink-200 hover:bg-pink-50 font-medium text-slate-700" data-index="${i}" onclick="pilihJawaban(this,${i},${s.jawaban})"><span class="w-8 h-8 flex-shrink-0 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-xs font-extrabold text-slate-500">${labels[i]}</span><span>${escHtml(o)}</span></button>`).join('')}</div><div id="feedback-box" class="hidden mt-5 p-4 rounded-2xl text-sm font-medium"></div><div class="flex justify-end mt-6"><button id="next-btn" class="hidden bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-2xl font-bold transition" onclick="nextSoal()">${current<JUMLAH-1?'Soal Berikutnya →':'Lihat Hasil 🎉'}</button></div></div>`;}
+function pilihJawaban(btn,idx,jawaban){if(answered)return;answered=true;const btns=document.querySelectorAll('.option-btn');btns.forEach(b=>b.disabled=true);const fb=document.getElementById('feedback-box');fb.classList.remove('hidden');if(idx===jawaban){score++;btn.classList.add('correct');fb.className='mt-5 p-4 rounded-2xl text-sm font-medium bg-green-50 text-green-800 border border-green-200';fb.innerHTML='✅ <strong>Benar!</strong> Jawaban yang tepat.';}else{btn.classList.add('wrong');btns[jawaban].classList.add('reveal');fb.className='mt-5 p-4 rounded-2xl text-sm font-medium bg-red-50 text-red-800 border border-red-200';fb.innerHTML=`❌ <strong>Kurang tepat.</strong> Jawaban yang benar: <strong>${labels[jawaban]}. ${escHtml(soalData[current].opsi[jawaban])}</strong>`;}document.getElementById('score-label').textContent=`Skor: ${score}`;document.getElementById('next-btn').classList.remove('hidden');}
+function nextSoal(){current++;if(current<JUMLAH){renderSoal();}else{showResult();}}
+function showResult(){document.getElementById('quiz-container').classList.add('hidden');document.getElementById('progress-label').textContent='Selesai!';document.getElementById('progress-bar').style.width='100%';const pct=Math.round((score/JUMLAH)*100);let emoji,msg,colorClass;if(pct>=88){emoji='🏆';msg='Luar Biasa! Kamu menguasai materi ini dengan sangat baik!';colorClass='from-green-400 to-emerald-600';}else if(pct>=63){emoji='👍';msg='Bagus! Pemahaman kamu sudah cukup baik. Coba ulangi materi yang belum tepat.';colorClass='from-blue-400 to-indigo-600';}else if(pct>=38){emoji='📚';msg='Lumayan! Masih ada beberapa materi yang perlu diulang kembali.';colorClass='from-amber-400 to-orange-500';}else{emoji='💪';msg='Semangat! Yuk pelajari lagi materi-materinya dan coba lagi!';colorClass='from-red-400 to-rose-600';}const rc=document.getElementById('result-container');rc.innerHTML=`<div class="fade-in bg-white rounded-[2rem] border border-slate-100 shadow-sm p-10 text-center"><div class="w-24 h-24 bg-gradient-to-br ${colorClass} rounded-full flex items-center justify-center text-4xl mx-auto mb-6 shadow-lg">${emoji}</div><h2 class="font-heading font-extrabold text-3xl text-slate-800 mb-2">${score} / ${JUMLAH}</h2><p class="text-slate-500 text-sm mb-2">${pct}% benar</p><p class="text-slate-600 font-medium mb-8 max-w-md mx-auto">${msg}</p><div class="flex flex-col sm:flex-row gap-3 justify-center"><button onclick="location.reload()" class="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-2xl font-bold transition">🔄 Coba Lagi (Soal Baru)</button><a href="../" class="border border-slate-200 text-slate-700 hover:border-indigo-300 px-6 py-3 rounded-2xl font-bold transition text-center">← Kembali ke Daftar Materi</a></div></div>`;rc.classList.remove('hidden');}
+function escHtml(str){return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+fetch('../soal.json')
+    .then(res => res.json())
+    .then(data => {
+        // Shuffle array using Fisher-Yates algorithm
+        for (let i = data.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [data[i], data[j]] = [data[j], data[i]];
+        }
+        soalData = data.slice(0, JUMLAH);
+        renderSoal();
+    })
+    .catch(err => {
+        console.error("Gagal memuat soal.json:", err);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Membuat website pertama dengan HTML: tag heading, paragraf, gambar, link, tabel, form, dan struktur dasar dokumen HTML untuk membangun halaman web.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Membuat Website dengan HTML | Informatika Kelas 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
+        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
+        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
+        .prose strong{color:#1e293b;}
+        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
+        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
+        pre{background:#0f172a;color:#e2e8f0;padding:1.25rem;border-radius:.75rem;overflow-x:auto;font-size:.875rem;line-height:1.6;margin:1rem 0;}
+        code{font-family:'Courier New',monospace;}:not(pre)>code{background:#f1f5f9;color:#6366f1;padding:.15rem .4rem;border-radius:.35rem;font-size:.85em;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-amber-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-amber-600 hover:underline">← Kelas 9</a>
+</nav>
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
+        <a href="../" class="hover:text-amber-600">Kelas 9</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Materi 1</span>
+    </div>
+    <div class="bg-gradient-to-br from-orange-500 to-amber-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 1 · HTML</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Membuat Website dengan HTML 🌐</h1>
+            <p class="text-orange-100 leading-relaxed max-w-2xl">Setiap website yang kamu buka dibangun dengan HTML. Hari ini kamu akan buat website pertamamu — dari nol, dari scratch, dari kamu sendiri!</p>
+        </div>
+    </div>
+    <div class="prose max-w-none">
+        <h2>HTML Itu Apa?</h2>
+        <p><strong>HTML (HyperText Markup Language)</strong> adalah bahasa untuk membuat struktur halaman web. HTML bukan bahasa pemrograman — ia adalah <em>bahasa markup</em> yang memberitahu browser "ini adalah judul", "ini adalah paragraf", "ini adalah gambar".</p>
+        <div class="callout callout-fun">
+            <p class="font-heading font-bold text-purple-800 mb-1">🏠 Analogi Rumah</p>
+            <p class="text-purple-700 text-sm">HTML = kerangka rumah (dinding, atap, lantai). CSS = cat, dekorasi, furnitur. JavaScript = listrik, alarm, dan sistem otomatis. Kita mulai dari kerangkanya dulu!</p>
+        </div>
+
+        <h2>Struktur Dasar HTML</h2>
+        <p>Setiap file HTML punya struktur yang sama. Ini adalah kerangka minimalnya:</p>
+        <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Judul Tab Browser&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Konten website ditulis di sini --&gt;
+    &lt;h1&gt;Halo, Dunia!&lt;/h1&gt;
+    &lt;p&gt;Ini website pertamaku.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+        <div class="not-prose grid md:grid-cols-2 gap-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <code class="text-orange-600 font-bold text-sm">&lt;head&gt;</code>
+                <p class="text-slate-500 text-xs mt-1">Berisi informasi tersembunyi — judul, encoding, link CSS. Tidak ditampilkan di halaman.</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <code class="text-orange-600 font-bold text-sm">&lt;body&gt;</code>
+                <p class="text-slate-500 text-xs mt-1">Semua yang ditampilkan di browser ada di sini: teks, gambar, tombol, dll.</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <code class="text-orange-600 font-bold text-sm">&lt;meta charset&gt;</code>
+                <p class="text-slate-500 text-xs mt-1">Menentukan encoding karakter agar huruf Indonesia (é, ñ) tampil benar.</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
+                <code class="text-orange-600 font-bold text-sm">&lt;title&gt;</code>
+                <p class="text-slate-500 text-xs mt-1">Judul yang muncul di tab browser dan hasil pencarian Google.</p>
+            </div>
+                    </div>
+
+        <h2>Tag-Tag HTML yang Sering Dipakai</h2>
+        <div class="not-prose space-y-2 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
+                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;h1&gt; sampai &lt;h6&gt;</code>
+                <div class="flex-1 min-w-0">
+                    <p class="text-slate-600 text-xs">Judul/heading. h1 paling besar, h6 paling kecil</p>
+                    <code class="text-slate-400 text-xs">&lt;h1&gt;Judul Utama&lt;/h1&gt;</code>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
+                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;p&gt;</code>
+                <div class="flex-1 min-w-0">
+                    <p class="text-slate-600 text-xs">Paragraf teks biasa</p>
+                    <code class="text-slate-400 text-xs">&lt;p&gt;Ini paragraf pertama.&lt;/p&gt;</code>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
+                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;a href=&quot;...&quot;&gt;</code>
+                <div class="flex-1 min-w-0">
+                    <p class="text-slate-600 text-xs">Link yang bisa diklik</p>
+                    <code class="text-slate-400 text-xs">&lt;a href=&quot;https://google.com&quot;&gt;Buka Google&lt;/a&gt;</code>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
+                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;img src=&quot;...&quot; alt=&quot;...&quot;&gt;</code>
+                <div class="flex-1 min-w-0">
+                    <p class="text-slate-600 text-xs">Menampilkan gambar</p>
+                    <code class="text-slate-400 text-xs">&lt;img src=&quot;foto.jpg&quot; alt=&quot;Foto Profil&quot;&gt;</code>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
+                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;ul&gt; dan &lt;li&gt;</code>
+                <div class="flex-1 min-w-0">
+                    <p class="text-slate-600 text-xs">Daftar berurutan (bullet points)</p>
+                    <code class="text-slate-400 text-xs">&lt;ul&gt;&lt;li&gt;Item satu&lt;/li&gt;&lt;/ul&gt;</code>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
+                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;ol&gt; dan &lt;li&gt;</code>
+                <div class="flex-1 min-w-0">
+                    <p class="text-slate-600 text-xs">Daftar bernomor</p>
+                    <code class="text-slate-400 text-xs">&lt;ol&gt;&lt;li&gt;Langkah 1&lt;/li&gt;&lt;/ol&gt;</code>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
+                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;strong&gt;</code>
+                <div class="flex-1 min-w-0">
+                    <p class="text-slate-600 text-xs">Teks tebal (penting)</p>
+                    <code class="text-slate-400 text-xs">Ini &lt;strong&gt;sangat penting&lt;/strong&gt;!</code>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
+                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;div&gt;</code>
+                <div class="flex-1 min-w-0">
+                    <p class="text-slate-600 text-xs">Kotak pembungkus untuk mengelompokkan elemen</p>
+                    <code class="text-slate-400 text-xs">&lt;div class=&quot;kartu&quot;&gt;...&lt;/div&gt;</code>
+                </div>
+            </div>
+                    </div>
+
+        <h2>Proyek: Halaman Profil Diri</h2>
+        <p>Buat halaman web profil dirimu sendiri! Berisi foto, nama, biodata singkat, hobi, dan cita-cita.</p>
+        <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Profil - [Nama Kamu]&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hai, Saya [Nama Kamu]! 👋&lt;/h1&gt;
+    &lt;img src="../fotoku.jpg" alt="Foto Saya" width="150"&gt;
+
+    &lt;h2&gt;Tentang Saya&lt;/h2&gt;
+    &lt;p&gt;Saya pelajar kelas 9 di SMP Negeri ... Lamongan.
+    Saya suka belajar teknologi dan bermain game.&lt;/p&gt;
+
+    &lt;h2&gt;Hobi Saya&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;🎮 Bermain game edukatif&lt;/li&gt;
+        &lt;li&gt;📚 Membaca komik dan novel&lt;/li&gt;
+        &lt;li&gt;🎵 Mendengarkan musik&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;Cita-cita&lt;/h2&gt;
+    &lt;p&gt;Saya ingin menjadi &lt;strong&gt;programmer&lt;/strong&gt;
+    yang bisa membuat aplikasi bermanfaat.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+        <div class="callout callout-tip">
+            <p class="font-heading font-bold text-green-800 mb-2">✅ Cara Memulai</p>
+            <ul class="text-green-700 text-sm space-y-1 list-disc pl-4">
+                <li>Buka Notepad / VS Code / Notepad++</li>
+                <li>Ketik kode HTML di atas, ganti dengan info dirimu</li>
+                <li>Simpan sebagai <code>profil.html</code> (perhatikan ekstensi .html!)</li>
+                <li>Buka file tersebut dengan browser — hore, website pertamamu!</li>
+                <li>Atau coba langsung di <strong>codepen.io</strong> tanpa install apapun</li>
+            </ul>
+        </div>
+
+        <h2>Ringkasan 📝</h2>
+        <ul>
+            <li>HTML = bahasa markup untuk membuat kerangka halaman web</li>
+            <li>Struktur dasar: DOCTYPE → html → head + body</li>
+            <li>Tag utama: h1-h6 (judul), p (paragraf), a (link), img (gambar), ul/ol (daftar)</li>
+            <li>Setiap tag punya tag pembuka dan penutup: <code>&lt;p&gt;...&lt;/p&gt;</code></li>
+        </ul>
+    </div>
+    <div class="flex justify-between mt-12 gap-4">
+        <div></div>
+        <a href="../02-styling-dengan-css/" class="flex items-center gap-3 px-5 py-3 bg-amber-600 text-white rounded-2xl shadow hover:bg-amber-700 transition">
+            <div class="text-right"><p class="text-[10px] text-amber-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Styling dengan CSS</p></div>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>

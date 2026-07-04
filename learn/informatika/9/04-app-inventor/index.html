@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Membuat aplikasi Android dengan MIT App Inventor: blok pemrograman visual, komponen UI, event handling, dan membangun app mobile pertamamu tanpa coding teks.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>App Inventor: Buat Aplikasi Android | Informatika Kelas 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
+        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
+        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
+        .prose strong{color:#1e293b;}
+        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
+        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-amber-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-amber-600 hover:underline">← Kelas 9</a>
+</nav>
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
+        <a href="../" class="hover:text-amber-600">Kelas 9</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Materi 4</span>
+    </div>
+    <div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 4 · App</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">App Inventor: Buat Aplikasi Android! 📱</h1>
+            <p class="text-emerald-100 leading-relaxed max-w-2xl">Punya ide aplikasi Android keren? Dengan MIT App Inventor, kamu bisa membuatnya sendiri menggunakan blok coding — tanpa perlu bisa Java atau Kotlin!</p>
+        </div>
+    </div>
+    <div class="prose max-w-none">
+        <h2>Apa Itu MIT App Inventor?</h2>
+        <p>MIT App Inventor adalah platform online gratis dari Massachusetts Institute of Technology (MIT) yang memungkinkanmu membuat aplikasi Android menggunakan <strong>sistem blok visual</strong> — mirip Scratch, tapi hasilnya adalah aplikasi HP yang nyata!</p>
+        <div class="callout callout-fun">
+            <p class="font-heading font-bold text-purple-800 mb-1">📱 Fakta Seru!</p>
+            <p class="text-purple-700 text-sm">App Inventor telah digunakan oleh lebih dari 10 juta orang di 195 negara! Kamu bisa langsung mencoba aplikasinya di HP Android menggunakan aplikasi <strong>MIT AI2 Companion</strong> yang gratis.</p>
+        </div>
+
+        <h2>Dua Bagian Utama App Inventor</h2>
+        <div class="not-prose grid md:grid-cols-2 gap-4 my-5">
+            <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                <p class="font-heading font-extrabold text-emerald-800 text-lg mb-2">🖼️ Designer</p>
+                <p class="text-emerald-700 text-sm mb-3">Tempat kamu mendesain tampilan aplikasi. Seperti Photoshop, tapi lebih mudah!</p>
+                <ul class="text-emerald-600 text-sm space-y-1">
+                    <li>• Drag & drop komponen (tombol, teks, gambar)</li>
+                    <li>• Atur posisi, warna, dan ukuran</li>
+                    <li>• Tambahkan media (suara, gambar)</li>
+                </ul>
+            </div>
+            <div class="bg-teal-50 border border-teal-200 rounded-xl p-5">
+                <p class="font-heading font-extrabold text-teal-800 text-lg mb-2">🧩 Blocks</p>
+                <p class="text-teal-700 text-sm mb-3">Tempat kamu membuat logika aplikasi menggunakan blok — seperti Scratch!</p>
+                <ul class="text-teal-600 text-sm space-y-1">
+                    <li>• Tentukan apa yang terjadi saat tombol diklik</li>
+                    <li>• Buat kondisi (if-else) dan pengulangan</li>
+                    <li>• Hubungkan dengan sensor HP (GPS, kamera, dll)</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Komponen yang Sering Dipakai</h2>
+        <div class="not-prose grid md:grid-cols-3 gap-3 my-5">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-2xl mb-2">🔘</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Button</p>
+                <p class="text-slate-400 text-xs mt-1">Tombol yang bisa diklik oleh pengguna</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-2xl mb-2">🏷️</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Label</p>
+                <p class="text-slate-400 text-xs mt-1">Menampilkan teks di layar</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-2xl mb-2">📝</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">TextBox</p>
+                <p class="text-slate-400 text-xs mt-1">Kotak input untuk memasukkan teks</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-2xl mb-2">🖼️</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Image</p>
+                <p class="text-slate-400 text-xs mt-1">Menampilkan gambar</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-2xl mb-2">🔊</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Sound</p>
+                <p class="text-slate-400 text-xs mt-1">Memainkan file audio</p>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
+                <div class="text-2xl mb-2">📸</div>
+                <p class="font-heading font-bold text-slate-700 text-sm">Camera</p>
+                <p class="text-slate-400 text-xs mt-1">Mengakses kamera HP</p>
+            </div>
+                    </div>
+
+        <h2>Proyek: Aplikasi Penghitung Klik</h2>
+        <p>Mulai dengan aplikasi sederhana! Sebuah tombol yang ditekan, angkanya bertambah — seperti tally counter di HP-mu.</p>
+        <div class="not-prose space-y-2 my-4">
+                                    <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">1</span>
+                <span class="text-slate-700 text-sm">Buka ai2.appinventor.mit.edu, login dengan akun Google</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">2</span>
+                <span class="text-slate-700 text-sm">Buat proyek baru → "Start new project" → beri nama "PenghitungKlik"</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">3</span>
+                <span class="text-slate-700 text-sm">[Designer] Tambahkan Label (judul), Label (angka penghitung), dan Button (tombol "Klik!")</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">4</span>
+                <span class="text-slate-700 text-sm">[Designer] Atur warna tombol menjadi hijau, font Label angka jadi besar (24sp)</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">5</span>
+                <span class="text-slate-700 text-sm">[Blocks] Buat variabel "hitungan" = 0</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">6</span>
+                <span class="text-slate-700 text-sm">[Blocks] Saat Button diklik: hitungan = hitungan + 1, lalu tampilkan di Label</span>
+            </div>
+                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">7</span>
+                <span class="text-slate-700 text-sm">Uji di HP: Install MIT AI2 Companion, scan QR code dari menu Connect</span>
+            </div>
+                    </div>
+
+        <h2>Ide Proyek Lanjutan</h2>
+        <div class="not-prose grid md:grid-cols-2 gap-3 my-4">
+                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-3">
+                <span class="text-2xl flex-shrink-0">🎵</span>
+                <div>
+                    <p class="font-heading font-bold text-slate-700 text-sm">Keyboard Piano</p>
+                    <p class="text-slate-400 text-xs mt-0.5">Tombol warna-warni yang memainkan nada berbeda</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-3">
+                <span class="text-2xl flex-shrink-0">🎲</span>
+                <div>
+                    <p class="font-heading font-bold text-slate-700 text-sm">Dadu Digital</p>
+                    <p class="text-slate-400 text-xs mt-0.5">Kocok HP → muncul angka acak 1-6</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-3">
+                <span class="text-2xl flex-shrink-0">📍</span>
+                <div>
+                    <p class="font-heading font-bold text-slate-700 text-sm">Penanda Lokasi</p>
+                    <p class="text-slate-400 text-xs mt-0.5">Simpan koordinat GPS tempat favoritmu</p>
+                </div>
+            </div>
+                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-3">
+                <span class="text-2xl flex-shrink-0">⏱️</span>
+                <div>
+                    <p class="font-heading font-bold text-slate-700 text-sm">Stopwatch</p>
+                    <p class="text-slate-400 text-xs mt-0.5">Hitung waktu dengan start, stop, dan reset</p>
+                </div>
+            </div>
+                    </div>
+
+        <div class="callout callout-tip">
+            <p class="font-heading font-bold text-green-800 mb-2">✅ Tips Sukses dengan App Inventor</p>
+            <ul class="text-green-700 text-sm space-y-1 list-disc pl-4">
+                <li>Mulai dari yang sederhana — 1 layar, 1 fungsi</li>
+                <li>Gunakan Live Testing (MIT AI2 Companion) untuk langsung lihat hasilnya di HP</li>
+                <li>Beri nama komponen yang jelas: "btnMulai" bukan "Button1"</li>
+                <li>Simpan hasil karyamu sebagai file .aia agar bisa dilanjutkan lain waktu</li>
+            </ul>
+        </div>
+
+        <h2>Ringkasan 📝</h2>
+        <ul>
+            <li>MIT App Inventor = platform buat aplikasi Android dengan blok visual, gratis!</li>
+            <li>Dua bagian: Designer (tampilan) dan Blocks (logika)</li>
+            <li>Bisa langsung diuji di HP Android menggunakan MIT AI2 Companion</li>
+            <li>Mulai sederhana: 1 tombol, 1 fungsi, lalu kembangkan!</li>
+        </ul>
+    </div>
+    <div class="flex justify-between mt-12 gap-4">
+        <a href="../03-ui-ux-dasar/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-amber-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">UI/UX Dasar</p></div>
+        </a>
+        <a href="../05-kewargaan-digital/" class="flex items-center gap-3 px-5 py-3 bg-amber-600 text-white rounded-2xl shadow hover:bg-amber-700 transition">
+            <div class="text-right"><p class="text-[10px] text-amber-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Kewargaan Digital</p></div>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>

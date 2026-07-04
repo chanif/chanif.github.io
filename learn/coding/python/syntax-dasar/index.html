@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tutorial Python syntax dasar untuk pemula: variabel, tipe data, input/output, operator, percabangan if-else, dan loop — fondasi penting belajar Python.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Syntax Dasar Python | Coding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
+        pre{background:#0f172a;color:#e2e8f0;border-radius:1rem;padding:1.25rem;overflow-x:auto;font-size:.82rem;line-height:1.8;margin-top:.75rem;}
+        .kw{color:#c084fc;}.fn{color:#93c5fd;}.str{color:#86efac;}.com{color:#64748b;font-style:italic;}.num{color:#fbbf24;}.bl{color:#f9a8d4;}
+        .badge{display:inline-block;border-radius:.5rem;padding:.15rem .55rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-green-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../../" class="text-sm font-semibold text-green-600 hover:underline">← Coding</a>
+</nav>
+<main class="relative z-10 max-w-5xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-green-600">Coding</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Syntax Dasar Python</span>
+    </div>
+    <div class="bg-gradient-to-br from-green-500 to-teal-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-36 h-36 bg-white opacity-5 rounded-full -translate-y-6 translate-x-6"></div>
+        <div class="relative z-10">
+            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Cheat Sheet · Python 3</span>
+            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Syntax Dasar Python 🐍</h1>
+            <p class="text-green-100 leading-relaxed max-w-2xl">Referensi cepat sintaks Python 3 — variabel, tipe data, input/output, percabangan, perulangan, fungsi, dan list. Cocok untuk pemula!</p>
+        </div>
+    </div>
+
+    <div class="space-y-8">
+
+        <!-- Output & Input -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📤 Output & Input</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com"># Mencetak teks ke layar</span>
+<span class="fn">print</span>(<span class="str">"Halo, Dunia!"</span>)
+<span class="fn">print</span>(<span class="str">"Nama saya"</span>, <span class="str">"Budi"</span>)         <span class="com"># Pisahkan dengan koma → spasi otomatis</span>
+<span class="fn">print</span>(<span class="str">f"Halo, {nama}!"</span>)              <span class="com"># f-string: sisipkan variabel ke teks</span>
+<span class="fn">print</span>(<span class="str">"Baris 1\nBaris 2"</span>)            <span class="com"># \n = baris baru</span>
+<span class="fn">print</span>(<span class="str">"A"</span>, end=<span class="str">" "</span>)                  <span class="com"># end="" = tidak ganti baris</span>
+
+<span class="com"># Menerima input dari pengguna</span>
+nama = <span class="fn">input</span>(<span class="str">"Siapa namamu? "</span>)      <span class="com"># input() selalu mengembalikan str</span>
+umur = <span class="fn">int</span>(<span class="fn">input</span>(<span class="str">"Umurmu? "</span>))       <span class="com"># Konversi ke int untuk dihitung</span>
+tinggi = <span class="fn">float</span>(<span class="fn">input</span>(<span class="str">"Tinggi (cm)? "</span>))  <span class="com"># Konversi ke float</span></pre>
+            </div>
+        </div>
+
+        <!-- Variabel & Tipe Data -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📦 Variabel & Tipe Data</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com"># Variabel — tidak perlu deklarasi tipe, langsung isi!</span>
+nama = <span class="str">"Budi"</span>                <span class="com"># str  — teks (dalam tanda kutip)</span>
+umur = <span class="num">15</span>                    <span class="com"># int  — bilangan bulat</span>
+tinggi = <span class="num">165.5</span>               <span class="com"># float — bilangan desimal</span>
+lulus = <span class="kw">True</span>                  <span class="com"># bool — True atau False (kapital!)</span>
+kosong = <span class="kw">None</span>                 <span class="com"># NoneType — tidak ada nilai</span>
+
+<span class="com"># Cek tipe data</span>
+<span class="fn">print</span>(<span class="fn">type</span>(nama))             <span class="com"># &lt;class 'str'&gt;</span>
+<span class="fn">print</span>(<span class="fn">type</span>(umur))             <span class="com"># &lt;class 'int'&gt;</span>
+
+<span class="com"># Konversi tipe data</span>
+angka_str = <span class="fn">str</span>(<span class="num">42</span>)          <span class="com"># int → str: "42"</span>
+angka_int = <span class="fn">int</span>(<span class="str">"99"</span>)        <span class="com"># str → int: 99</span>
+angka_float = <span class="fn">float</span>(<span class="str">"3.14"</span>) <span class="com"># str → float: 3.14</span>
+
+<span class="com"># Operasi aritmatika</span>
+a, b = <span class="num">10</span>, <span class="num">3</span>
+<span class="fn">print</span>(a + b)   <span class="com"># 13  — penjumlahan</span>
+<span class="fn">print</span>(a - b)   <span class="com"># 7   — pengurangan</span>
+<span class="fn">print</span>(a * b)   <span class="com"># 30  — perkalian</span>
+<span class="fn">print</span>(a / b)   <span class="com"># 3.333... — pembagian (selalu float)</span>
+<span class="fn">print</span>(a // b)  <span class="com"># 3   — pembagian bulat (floor division)</span>
+<span class="fn">print</span>(a % b)   <span class="com"># 1   — sisa bagi (modulo)</span>
+<span class="fn">print</span>(a ** b)  <span class="com"># 1000 — pangkat (10³)</span></pre>
+            </div>
+        </div>
+
+        <!-- String -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🔤 Operasi String</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre>teks = <span class="str">"Hello, Python!"</span>
+
+<span class="com"># Panjang string</span>
+<span class="fn">print</span>(<span class="fn">len</span>(teks))              <span class="com"># 15</span>
+
+<span class="com"># Ubah huruf besar/kecil</span>
+<span class="fn">print</span>(teks.<span class="fn">upper</span>())           <span class="com"># "HELLO, PYTHON!"</span>
+<span class="fn">print</span>(teks.<span class="fn">lower</span>())           <span class="com"># "hello, python!"</span>
+
+<span class="com"># Cari & ganti</span>
+<span class="fn">print</span>(teks.<span class="fn">replace</span>(<span class="str">"Python"</span>, <span class="str">"Dunia"</span>))  <span class="com"># "Hello, Dunia!"</span>
+
+<span class="com"># Cek apakah ada kata tertentu</span>
+<span class="fn">print</span>(<span class="str">"Python"</span> <span class="kw">in</span> teks)       <span class="com"># True</span>
+
+<span class="com"># Ambil karakter/bagian (slicing)</span>
+<span class="fn">print</span>(teks[<span class="num">0</span>])                <span class="com"># "H" (indeks mulai dari 0)</span>
+<span class="fn">print</span>(teks[<span class="num">0</span>:<span class="num">5</span>])              <span class="com"># "Hello" (0 sampai sebelum 5)</span>
+<span class="fn">print</span>(teks[-<span class="num">1</span>])               <span class="com"># "!" (karakter terakhir)</span>
+
+<span class="com"># Gabung teks (concatenation)</span>
+salam = <span class="str">"Halo"</span> + <span class="str">" "</span> + <span class="str">"Budi"</span>  <span class="com"># "Halo Budi"</span>
+berulang = <span class="str">"ha"</span> * <span class="num">3</span>           <span class="com"># "hahaha"</span>
+
+<span class="com"># f-string (cara paling modern)</span>
+nama = <span class="str">"Ani"</span>; nilai = <span class="num">95</span>
+<span class="fn">print</span>(<span class="str">f"Nama: {nama}, Nilai: {nilai}"</span>)   <span class="com"># "Nama: Ani, Nilai: 95"</span>
+<span class="fn">print</span>(<span class="str">f"Nilai kuadrat: {nilai**2}"</span>)      <span class="com"># Bisa operasi di dalam {}</span></pre>
+            </div>
+        </div>
+
+        <!-- Percabangan -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🔀 Percabangan (if / elif / else)</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com"># Indentasi (4 spasi) WAJIB di Python!</span>
+nilai = <span class="num">85</span>
+
+<span class="kw">if</span> nilai >= <span class="num">90</span>:
+    <span class="fn">print</span>(<span class="str">"A — Sangat Baik! 🌟"</span>)
+<span class="kw">elif</span> nilai >= <span class="num">80</span>:
+    <span class="fn">print</span>(<span class="str">"B — Baik 👍"</span>)
+<span class="kw">elif</span> nilai >= <span class="num">70</span>:
+    <span class="fn">print</span>(<span class="str">"C — Cukup"</span>)
+<span class="kw">elif</span> nilai >= <span class="num">60</span>:
+    <span class="fn">print</span>(<span class="str">"D — Perlu Belajar Lagi"</span>)
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="str">"E — Remedial"</span>)
+
+<span class="com"># Operator perbandingan</span>
+<span class="com"># ==  sama dengan        !=  tidak sama</span>
+<span class="com"># >   lebih besar        <   lebih kecil</span>
+<span class="com"># >=  lebih besar/sama   <=  lebih kecil/sama</span>
+
+<span class="com"># Operator logika</span>
+<span class="kw">if</span> nilai >= <span class="num">75</span> <span class="kw">and</span> nilai <= <span class="num">100</span>:
+    <span class="fn">print</span>(<span class="str">"Lulus!"</span>)
+
+<span class="kw">if</span> nilai < <span class="num">0</span> <span class="kw">or</span> nilai > <span class="num">100</span>:
+    <span class="fn">print</span>(<span class="str">"Nilai tidak valid!"</span>)
+
+<span class="kw">if</span> <span class="kw">not</span> lulus:
+    <span class="fn">print</span>(<span class="str">"Belum lulus"</span>)</pre>
+            </div>
+        </div>
+
+        <!-- Perulangan -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🔁 Perulangan (for / while)</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com"># FOR — ulangi sebanyak N kali / untuk setiap item</span>
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">5</span>):           <span class="com"># i = 0, 1, 2, 3, 4</span>
+    <span class="fn">print</span>(<span class="str">f"Langkah ke-{i+1}"</span>)
+
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, <span class="num">11</span>):        <span class="com"># 1 sampai 10</span>
+    <span class="fn">print</span>(i, end=<span class="str">" "</span>)
+
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">10</span>, <span class="num">0</span>, -<span class="num">1</span>):    <span class="com"># hitung mundur: 10, 9, ..., 1</span>
+    <span class="fn">print</span>(i)
+
+<span class="com"># Iterasi elemen list</span>
+buah = [<span class="str">"apel"</span>, <span class="str">"mangga"</span>, <span class="str">"jeruk"</span>]
+<span class="kw">for</span> b <span class="kw">in</span> buah:
+    <span class="fn">print</span>(<span class="str">f"Buah: {b}"</span>)
+
+<span class="com"># enumerate — dapat indeks sekaligus</span>
+<span class="kw">for</span> i, b <span class="kw">in</span> <span class="fn">enumerate</span>(buah, <span class="num">1</span>):
+    <span class="fn">print</span>(<span class="str">f"{i}. {b}"</span>)
+
+<span class="com"># WHILE — ulangi selama kondisi benar</span>
+hitung = <span class="num">1</span>
+<span class="kw">while</span> hitung <= <span class="num">5</span>:
+    <span class="fn">print</span>(<span class="str">f"Hitung: {hitung}"</span>)
+    hitung += <span class="num">1</span>               <span class="com"># WAJIB update variabel untuk hindari infinite loop!</span>
+
+<span class="com"># break & continue</span>
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">10</span>):
+    <span class="kw">if</span> i == <span class="num">5</span>: <span class="kw">break</span>          <span class="com"># hentikan loop</span>
+    <span class="kw">if</span> i % <span class="num">2</span> == <span class="num">0</span>: <span class="kw">continue</span>  <span class="com"># lewati iterasi ini, lanjut ke berikutnya</span>
+    <span class="fn">print</span>(i)                   <span class="com"># cetak 1, 3</span></pre>
+            </div>
+        </div>
+
+        <!-- List -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">📋 List (Array)</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com"># Membuat list</span>
+nilai = [<span class="num">85</span>, <span class="num">90</span>, <span class="num">78</span>, <span class="num">92</span>, <span class="num">88</span>]
+nama = [<span class="str">"Budi"</span>, <span class="str">"Ani"</span>, <span class="str">"Citra"</span>]
+campuran = [<span class="num">1</span>, <span class="str">"dua"</span>, <span class="num">3.0</span>, <span class="kw">True</span>]  <span class="com"># boleh campur tipe</span>
+
+<span class="com"># Akses elemen (indeks mulai 0)</span>
+<span class="fn">print</span>(nilai[<span class="num">0</span>])       <span class="com"># 85 (pertama)</span>
+<span class="fn">print</span>(nilai[-<span class="num">1</span>])      <span class="com"># 88 (terakhir)</span>
+<span class="fn">print</span>(nilai[<span class="num">1</span>:<span class="num">3</span>])     <span class="com"># [90, 78] (slicing)</span>
+
+<span class="com"># Modifikasi</span>
+nilai.<span class="fn">append</span>(<span class="num">95</span>)      <span class="com"># Tambah di akhir → [85, 90, 78, 92, 88, 95]</span>
+nilai.<span class="fn">insert</span>(<span class="num">0</span>, <span class="num">100</span>)  <span class="com"># Sisip di posisi 0</span>
+nilai.<span class="fn">remove</span>(<span class="num">78</span>)     <span class="com"># Hapus nilai 78</span>
+nilai.<span class="fn">pop</span>()           <span class="com"># Hapus & kembalikan elemen terakhir</span>
+nilai.<span class="fn">pop</span>(<span class="num">1</span>)          <span class="com"># Hapus elemen di indeks 1</span>
+
+<span class="com"># Info list</span>
+<span class="fn">print</span>(<span class="fn">len</span>(nilai))     <span class="com"># Jumlah elemen</span>
+<span class="fn">print</span>(<span class="fn">max</span>(nilai))     <span class="com"># Nilai terbesar</span>
+<span class="fn">print</span>(<span class="fn">min</span>(nilai))     <span class="com"># Nilai terkecil</span>
+<span class="fn">print</span>(<span class="fn">sum</span>(nilai))     <span class="com"># Jumlah semua elemen</span>
+nilai.<span class="fn">sort</span>()          <span class="com"># Urutkan (ascending)</span>
+nilai.<span class="fn">sort</span>(reverse=<span class="kw">True</span>)  <span class="com"># Urutkan descending</span>
+<span class="fn">print</span>(<span class="num">85</span> <span class="kw">in</span> nilai)    <span class="com"># True — cek keanggotaan</span></pre>
+            </div>
+        </div>
+
+        <!-- Fungsi -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🔧 Fungsi (def)</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com"># Mendefinisikan fungsi</span>
+<span class="kw">def</span> <span class="fn">sapa</span>(nama):
+    <span class="fn">print</span>(<span class="str">f"Halo, {nama}! Selamat datang!"</span>)
+
+<span class="fn">sapa</span>(<span class="str">"Budi"</span>)   <span class="com"># Panggil fungsi → "Halo, Budi! Selamat datang!"</span>
+
+<span class="com"># Fungsi dengan nilai kembalian (return)</span>
+<span class="kw">def</span> <span class="fn">luas_segitiga</span>(alas, tinggi):
+    luas = <span class="num">0.5</span> * alas * tinggi
+    <span class="kw">return</span> luas
+
+hasil = <span class="fn">luas_segitiga</span>(<span class="num">10</span>, <span class="num">6</span>)
+<span class="fn">print</span>(<span class="str">f"Luas: {hasil}"</span>)   <span class="com"># "Luas: 30.0"</span>
+
+<span class="com"># Parameter default</span>
+<span class="kw">def</span> <span class="fn">salam</span>(nama, waktu=<span class="str">"pagi"</span>):
+    <span class="fn">print</span>(<span class="str">f"Selamat {waktu}, {nama}!"</span>)
+
+<span class="fn">salam</span>(<span class="str">"Ani"</span>)               <span class="com"># "Selamat pagi, Ani!" (pakai default)</span>
+<span class="fn">salam</span>(<span class="str">"Budi"</span>, <span class="str">"siang"</span>)     <span class="com"># "Selamat siang, Budi!"</span>
+
+<span class="com"># Fungsi menghitung rata-rata</span>
+<span class="kw">def</span> <span class="fn">rata_rata</span>(daftar_nilai):
+    <span class="kw">if</span> <span class="fn">len</span>(daftar_nilai) == <span class="num">0</span>:
+        <span class="kw">return</span> <span class="num">0</span>
+    <span class="kw">return</span> <span class="fn">sum</span>(daftar_nilai) / <span class="fn">len</span>(daftar_nilai)
+
+nilai = [<span class="num">85</span>, <span class="num">90</span>, <span class="num">78</span>, <span class="num">92</span>]
+<span class="fn">print</span>(<span class="str">f"Rata-rata: {<span class="fn">rata_rata</span>(nilai):.1f}"</span>)  <span class="com"># 86.2</span></pre>
+            </div>
+        </div>
+
+        <!-- Dictionary -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🗂️ Dictionary (Kamus Data)</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com"># Dictionary: pasangan kunci → nilai (key: value)</span>
+siswa = {
+    <span class="str">"nama"</span>: <span class="str">"Ani"</span>,
+    <span class="str">"kelas"</span>: <span class="str">"8A"</span>,
+    <span class="str">"nilai"</span>: <span class="num">92</span>,
+    <span class="str">"lulus"</span>: <span class="kw">True</span>
+}
+
+<span class="com"># Akses nilai</span>
+<span class="fn">print</span>(siswa[<span class="str">"nama"</span>])           <span class="com"># "Ani"</span>
+<span class="fn">print</span>(siswa.<span class="fn">get</span>(<span class="str">"nilai"</span>))      <span class="com"># 92 (.get() aman jika kunci tidak ada)</span>
+
+<span class="com"># Ubah / tambah data</span>
+siswa[<span class="str">"nilai"</span>] = <span class="num">95</span>           <span class="com"># Ubah nilai</span>
+siswa[<span class="str">"hobi"</span>] = <span class="str">"Membaca"</span>    <span class="com"># Tambah kunci baru</span>
+
+<span class="com"># Iterasi dictionary</span>
+<span class="kw">for</span> kunci, nilai <span class="kw">in</span> siswa.<span class="fn">items</span>():
+    <span class="fn">print</span>(<span class="str">f"{kunci}: {nilai}"</span>)
+
+<span class="com"># Cek apakah kunci ada</span>
+<span class="kw">if</span> <span class="str">"nama"</span> <span class="kw">in</span> siswa:
+    <span class="fn">print</span>(<span class="str">"Kunci 'nama' ada!"</span>)
+
+<span class="com"># List of dict — data banyak siswa</span>
+daftar_siswa = [
+    {<span class="str">"nama"</span>: <span class="str">"Budi"</span>, <span class="str">"nilai"</span>: <span class="num">85</span>},
+    {<span class="str">"nama"</span>: <span class="str">"Citra"</span>, <span class="str">"nilai"</span>: <span class="num">91</span>},
+    {<span class="str">"nama"</span>: <span class="str">"Dani"</span>, <span class="str">"nilai"</span>: <span class="num">78</span>},
+]
+<span class="kw">for</span> s <span class="kw">in</span> daftar_siswa:
+    <span class="fn">print</span>(<span class="str">f"{s['nama']}: {s['nilai']}"</span>)</pre>
+            </div>
+        </div>
+
+        <!-- Mini Proyek -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">🏗️ Mini Proyek: Kalkulator Nilai</h2>
+            <p class="text-slate-500 text-sm mb-3">Gabungkan semua konsep — input, list, fungsi, percabangan — dalam satu program nyata:</p>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com"># Kalkulator rata-rata nilai dengan kategori</span>
+
+<span class="kw">def</span> <span class="fn">kategori_nilai</span>(rata):
+    <span class="kw">if</span> rata >= <span class="num">90</span>: <span class="kw">return</span> <span class="str">"A — Sangat Baik 🌟"</span>
+    <span class="kw">elif</span> rata >= <span class="num">80</span>: <span class="kw">return</span> <span class="str">"B — Baik 👍"</span>
+    <span class="kw">elif</span> rata >= <span class="num">70</span>: <span class="kw">return</span> <span class="str">"C — Cukup 📖"</span>
+    <span class="kw">else</span>: <span class="kw">return</span> <span class="str">"D — Perlu Belajar Lagi 💪"</span>
+
+<span class="kw">def</span> <span class="fn">hitung_rapor</span>(nama, daftar_nilai):
+    rata = <span class="fn">sum</span>(daftar_nilai) / <span class="fn">len</span>(daftar_nilai)
+    tertinggi = <span class="fn">max</span>(daftar_nilai)
+    terendah = <span class="fn">min</span>(daftar_nilai)
+    <span class="fn">print</span>(<span class="str">f"\n=== Rapor {nama} ==="</span>)
+    <span class="fn">print</span>(<span class="str">f"Nilai    : {daftar_nilai}"</span>)
+    <span class="fn">print</span>(<span class="str">f"Rata-rata: {rata:.1f}"</span>)
+    <span class="fn">print</span>(<span class="str">f"Tertinggi: {tertinggi}"</span>)
+    <span class="fn">print</span>(<span class="str">f"Terendah : {terendah}"</span>)
+    <span class="fn">print</span>(<span class="str">f"Kategori : {<span class="fn">kategori_nilai</span>(rata)}"</span>)
+
+<span class="com"># Data siswa</span>
+<span class="fn">hitung_rapor</span>(<span class="str">"Budi"</span>,  [<span class="num">85</span>, <span class="num">90</span>, <span class="num">78</span>, <span class="num">92</span>, <span class="num">88</span>])
+<span class="fn">hitung_rapor</span>(<span class="str">"Ani"</span>,   [<span class="num">95</span>, <span class="num">98</span>, <span class="num">91</span>, <span class="num">97</span>, <span class="num">94</span>])
+<span class="fn">hitung_rapor</span>(<span class="str">"Citra"</span>, [<span class="num">65</span>, <span class="num">70</span>, <span class="num">68</span>, <span class="num">72</span>, <span class="num">69</span>])</pre>
+            </div>
+            <div class="mt-3 bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-800">
+                <strong>Output yang dihasilkan:</strong>
+                <pre class="bg-transparent text-green-900 text-xs mt-2 p-0" style="font-family:'JetBrains Mono',monospace">
+=== Rapor Budi ===
+Nilai    : [85, 90, 78, 92, 88]
+Rata-rata: 86.6
+Tertinggi: 92
+Terendah : 78
+Kategori : B — Baik 👍
+
+=== Rapor Ani ===
+Rata-rata: 95.0
+Kategori : A — Sangat Baik 🌟</pre>
+            </div>
+        </div>
+
+        <!-- List Comprehension -->
+        <div>
+            <h2 class="font-heading font-extrabold text-lg text-slate-800 mb-4">⚡ List Comprehension — Cara Singkat Membuat List</h2>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <pre><span class="com"># Cara biasa — buat list kuadrat dengan for loop</span>
+kuadrat = []
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, <span class="num">6</span>):
+    kuadrat.<span class="fn">append</span>(i ** <span class="num">2</span>)
+<span class="fn">print</span>(kuadrat)   <span class="com"># [1, 4, 9, 16, 25]</span>
+
+<span class="com"># Cara singkat — List Comprehension (lebih Pythonic!)</span>
+kuadrat = [i ** <span class="num">2</span> <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, <span class="num">6</span>)]
+<span class="fn">print</span>(kuadrat)   <span class="com"># [1, 4, 9, 16, 25]</span>
+
+<span class="com"># Dengan filter (if di dalam)</span>
+genap = [i <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, <span class="num">21</span>) <span class="kw">if</span> i % <span class="num">2</span> == <span class="num">0</span>]
+<span class="fn">print</span>(genap)     <span class="com"># [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]</span>
+
+<span class="com"># Ubah format string</span>
+nama = [<span class="str">"budi"</span>, <span class="str">"ani"</span>, <span class="str">"citra"</span>]
+kapital = [n.<span class="fn">capitalize</span>() <span class="kw">for</span> n <span class="kw">in</span> nama]
+<span class="fn">print</span>(kapital)   <span class="com"># ['Budi', 'Ani', 'Citra']</span>
+
+<span class="com"># Filter nilai lulus (>= 75) dari list</span>
+semua_nilai = [<span class="num">85</span>, <span class="num">60</span>, <span class="num">90</span>, <span class="num">55</span>, <span class="num">78</span>, <span class="num">72</span>]
+lulus = [n <span class="kw">for</span> n <span class="kw">in</span> semua_nilai <span class="kw">if</span> n >= <span class="num">75</span>]
+<span class="fn">print</span>(lulus)     <span class="com"># [85, 90, 78]</span></pre>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-10 bg-green-50 border border-green-100 rounded-2xl p-6 flex gap-4 items-start">
+        <span class="text-2xl flex-shrink-0">🐍</span>
+        <div>
+            <p class="font-heading font-bold text-green-800 mb-1">Jalankan Sekarang!</p>
+            <p class="text-green-700 text-sm">Gunakan <strong>replit.com</strong> atau <strong>trinket.io</strong> untuk latihan Python online tanpa instalasi. Atau install Python 3 + VS Code di komputer dan jalankan file <code>.py</code> dengan terminal: <code>python namafile.py</code></p>
+        </div>
+    </div>
+</main>
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../" class="hover:text-green-600 font-medium">← Coding</a>
+    </div>
+</footer>
+</body>
+</html>

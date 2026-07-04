@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Proyek pertama MIT App Inventor: membangun aplikasi Android lengkap dengan tombol interaktif, input teks, dan output yang ditampilkan — langkah demi langkah.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <title>Proyek: Kalkulator BMI | App Inventor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}</style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+<div class="fixed top-[-10%] right-0 w-80 h-80 bg-cyan-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<nav class="relative z-50 max-w-4xl mx-auto px-6 py-8 flex justify-between items-center">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
+    <a href="../" class="text-sm font-semibold text-teal-600 hover:underline">← Tutorial App Inventor</a>
+</nav>
+
+<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
+        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
+        <a href="../../" class="hover:text-indigo-600">Tutorial Coding</a><span>/</span>
+        <a href="../" class="hover:text-teal-600">App Inventor</a><span>/</span>
+        <span class="text-slate-600 font-semibold">Proyek: Kalkulator BMI</span>
+    </div>
+
+    <header class="pb-10">
+        <div class="inline-flex items-center gap-2 bg-teal-50 text-teal-700 font-heading font-bold px-4 py-2 rounded-full mb-5 text-sm">🏗️ App Inventor · Tutorial 2 — Proyek</div>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-3 font-heading">Proyek: Buat App <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-500">Kalkulator BMI</span></h1>
+        <p class="text-slate-500 leading-relaxed">Kita akan membuat aplikasi Android yang menghitung <strong>BMI (Body Mass Index)</strong> — indikator kesehatan berdasarkan berat dan tinggi badan. Selesai, kamu bisa install di HP sendiri!</p>
+    </header>
+
+    <!-- BMI -->
+    <section class="mb-8">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">Apa Itu BMI?</h2>
+        <div class="bg-slate-800 rounded-2xl p-5 mb-4 text-center">
+            <p class="text-slate-200 text-sm mb-2">Rumus BMI</p>
+            <p class="text-white text-2xl font-bold font-mono">BMI = Berat (kg) ÷ Tinggi² (m)</p>
+            <p class="text-slate-200 text-xs mt-2">Contoh: Berat 50 kg, Tinggi 1.6 m → BMI = 50 ÷ (1.6 × 1.6) = 50 ÷ 2.56 = <span class="text-teal-400">19.5</span></p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                    <div class="border bg-blue-50 text-blue-700 border-blue-100 rounded-xl p-3 text-center">
+                <p class="font-mono font-bold text-sm">< 18.5</p>
+                <p class="text-xs mt-1">Kurus</p>
+            </div>
+                        <div class="border bg-green-50 text-green-700 border-green-100 rounded-xl p-3 text-center">
+                <p class="font-mono font-bold text-sm">18.5 – 24.9</p>
+                <p class="text-xs mt-1">Normal</p>
+            </div>
+                        <div class="border bg-yellow-50 text-yellow-700 border-yellow-100 rounded-xl p-3 text-center">
+                <p class="font-mono font-bold text-sm">25 – 29.9</p>
+                <p class="text-xs mt-1">Gemuk</p>
+            </div>
+                        <div class="border bg-red-50 text-red-700 border-red-100 rounded-xl p-3 text-center">
+                <p class="font-mono font-bold text-sm">≥ 30</p>
+                <p class="text-xs mt-1">Obesitas</p>
+            </div>
+                    </div>
+    </section>
+
+    <!-- Step 1: Designer -->
+    <section class="mb-8">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">Langkah 1 — Desain UI (Designer Mode)</h2>
+        <div class="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
+            <p class="text-slate-600 text-sm mb-4">Buat tampilan seperti ini dengan drag-and-drop komponen:</p>
+            <div class="bg-slate-900 rounded-2xl p-4 max-w-xs mx-auto">
+                <div class="bg-teal-600 rounded-t-xl px-4 py-3 text-center">
+                    <p class="text-white font-bold text-sm">🏃 Kalkulator BMI</p>
+                </div>
+                <div class="bg-white rounded-b-xl p-4 space-y-3">
+                    <div><p class="text-xs text-slate-500">Berat Badan (kg)</p><div class="border rounded p-2 text-xs text-slate-400 bg-slate-50">55</div></div>
+                    <div><p class="text-xs text-slate-500">Tinggi Badan (cm)</p><div class="border rounded p-2 text-xs text-slate-400 bg-slate-50">165</div></div>
+                    <div class="bg-teal-500 rounded-lg py-2 text-center text-white text-xs font-bold">⚡ Hitung BMI</div>
+                    <div class="bg-green-50 rounded-lg p-3 text-center"><p class="text-green-700 text-xs font-bold">BMI: 20.2 — Normal ✅</p></div>
+                    <div class="bg-slate-100 rounded-lg py-2 text-center text-slate-500 text-xs">🔄 Reset</div>
+                </div>
+            </div>
+            <div class="mt-5 space-y-2 text-sm">
+                <p class="font-heading font-bold text-slate-700 mb-2">Komponen yang dibutuhkan:</p>
+                                                <div class="flex gap-3 items-start">
+                    <span class="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded font-bold flex-shrink-0">Label</span>
+                    <span class="text-xs font-mono text-indigo-600 flex-shrink-0">LabelJudul</span>
+                    <span class="text-xs text-slate-500">Text: "Kalkulator BMI", FontSize: 20, Bold: true, TextColor: Teal</span>
+                </div>
+                                <div class="flex gap-3 items-start">
+                    <span class="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded font-bold flex-shrink-0">Label</span>
+                    <span class="text-xs font-mono text-indigo-600 flex-shrink-0">LabelBeratHint</span>
+                    <span class="text-xs text-slate-500">Text: "Berat Badan (kg):"</span>
+                </div>
+                                <div class="flex gap-3 items-start">
+                    <span class="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded font-bold flex-shrink-0">TextBox</span>
+                    <span class="text-xs font-mono text-indigo-600 flex-shrink-0">TextBoxBerat</span>
+                    <span class="text-xs text-slate-500">Hint: "Contoh: 55", NumbersOnly: true</span>
+                </div>
+                                <div class="flex gap-3 items-start">
+                    <span class="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded font-bold flex-shrink-0">Label</span>
+                    <span class="text-xs font-mono text-indigo-600 flex-shrink-0">LabelTinggiHint</span>
+                    <span class="text-xs text-slate-500">Text: "Tinggi Badan (cm):"</span>
+                </div>
+                                <div class="flex gap-3 items-start">
+                    <span class="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded font-bold flex-shrink-0">TextBox</span>
+                    <span class="text-xs font-mono text-indigo-600 flex-shrink-0">TextBoxTinggi</span>
+                    <span class="text-xs text-slate-500">Hint: "Contoh: 165", NumbersOnly: true</span>
+                </div>
+                                <div class="flex gap-3 items-start">
+                    <span class="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded font-bold flex-shrink-0">Button</span>
+                    <span class="text-xs font-mono text-indigo-600 flex-shrink-0">TombolHitung</span>
+                    <span class="text-xs text-slate-500">Text: "⚡ Hitung BMI", BackgroundColor: Teal, TextColor: White</span>
+                </div>
+                                <div class="flex gap-3 items-start">
+                    <span class="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded font-bold flex-shrink-0">Label</span>
+                    <span class="text-xs font-mono text-indigo-600 flex-shrink-0">LabelHasil</span>
+                    <span class="text-xs text-slate-500">Text: "" (kosong), TextColor: Green, Bold: true</span>
+                </div>
+                                <div class="flex gap-3 items-start">
+                    <span class="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded font-bold flex-shrink-0">Button</span>
+                    <span class="text-xs font-mono text-indigo-600 flex-shrink-0">TombolReset</span>
+                    <span class="text-xs text-slate-500">Text: "🔄 Reset"</span>
+                </div>
+                            </div>
+        </div>
+    </section>
+
+    <!-- Step 2: Blocks -->
+    <section class="mb-8">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">Langkah 2 — Logika Blok (Blocks Mode)</h2>
+        <p class="text-slate-600 text-sm mb-4">Susun blok berikut di Blocks Mode. Klik "Blocks" di kanan atas untuk switch mode.</p>
+
+        <div class="space-y-4">
+            <!-- Blok Hitung -->
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <p class="font-heading font-bold text-slate-700 mb-3">🔘 Ketika TombolHitung diklik</p>
+            <div class="bg-slate-900 rounded-xl p-4 space-y-2 text-xs font-mono">
+                    <div class="bg-indigo-600 rounded px-3 py-1.5 text-white">when TombolHitung.Click do</div>
+                    <div class="ml-4 space-y-1.5">
+                        <div class="bg-slate-600 rounded px-3 py-1.5 text-slate-100">set berat to TextBoxBerat.Text (as number)</div>
+                        <div class="bg-slate-600 rounded px-3 py-1.5 text-slate-100">set tinggi_m to TextBoxTinggi.Text / 100 (as number)</div>
+                        <div class="bg-slate-600 rounded px-3 py-1.5 text-slate-100">set bmi to berat / (tinggi_m × tinggi_m)</div>
+                        <div class="bg-amber-700 rounded px-3 py-1.5 text-amber-100">if bmi &lt; 18.5 then</div>
+                        <div class="ml-4 bg-blue-700 rounded px-3 py-1.5 text-blue-100">set LabelHasil.Text to "BMI: " + bmi + " — Kurus 📉"</div>
+                        <div class="bg-amber-700 rounded px-3 py-1.5 text-amber-100">else if bmi &lt; 25 then</div>
+                        <div class="ml-4 bg-green-700 rounded px-3 py-1.5 text-green-100">set LabelHasil.Text to "BMI: " + bmi + " — Normal ✅"</div>
+                        <div class="bg-amber-700 rounded px-3 py-1.5 text-amber-100">else if bmi &lt; 30 then</div>
+                        <div class="ml-4 bg-yellow-700 rounded px-3 py-1.5 text-yellow-100">set LabelHasil.Text to "BMI: " + bmi + " — Gemuk ⚠️"</div>
+                        <div class="bg-amber-700 rounded px-3 py-1.5 text-amber-100">else</div>
+                        <div class="ml-4 bg-red-700 rounded px-3 py-1.5 text-red-100">set LabelHasil.Text to "BMI: " + bmi + " — Obesitas 🔴"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blok Reset -->
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <p class="font-heading font-bold text-slate-700 mb-3">🔄 Ketika TombolReset diklik</p>
+                <div class="bg-slate-900 rounded-xl p-4 space-y-2 text-xs font-mono">
+                    <div class="bg-indigo-600 rounded px-3 py-1.5 text-white">when TombolReset.Click do</div>
+                    <div class="ml-4 space-y-1.5">
+                        <div class="bg-slate-600 rounded px-3 py-1.5 text-slate-100">set TextBoxBerat.Text to ""</div>
+                        <div class="bg-slate-600 rounded px-3 py-1.5 text-slate-100">set TextBoxTinggi.Text to ""</div>
+                        <div class="bg-slate-600 rounded px-3 py-1.5 text-slate-100">set LabelHasil.Text to ""</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 3: Test -->
+    <section class="mb-8">
+        <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-4">Langkah 3 — Test & Export App</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <p class="font-heading font-bold text-slate-700 mb-3">📱 Test Langsung di HP</p>
+                <ol class="text-slate-500 text-sm space-y-2">
+                    <li>1. Install <strong>MIT AI2 Companion</strong> dari Play Store</li>
+                    <li>2. Di App Inventor: klik <strong>Connect → AI Companion</strong></li>
+                    <li>3. Scan QR code di HP kamu</li>
+                    <li>4. App langsung berjalan real-time!</li>
+                </ol>
+            </div>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <p class="font-heading font-bold text-slate-700 mb-3">📦 Download APK</p>
+                <ol class="text-slate-500 text-sm space-y-2">
+                    <li>1. Klik <strong>Build → Android App (.apk)</strong></li>
+                    <li>2. Tunggu proses build (1–2 menit)</li>
+                    <li>3. Download file .apk</li>
+                    <li>4. Transfer ke HP dan install!</li>
+                </ol>
+                <p class="text-slate-400 text-xs mt-2">⚠️ Aktifkan "Install dari sumber tidak dikenal" di pengaturan HP</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tantangan -->
+    <section class="mb-8">
+        <div class="bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-100 rounded-2xl p-6">
+            <p class="font-heading font-bold text-teal-800 mb-2">🚀 Tantangan Selanjutnya!</p>
+            <p class="text-teal-700 text-sm mb-3">Coba tambahkan fitur-fitur ini untuk upgrade app kamu:</p>
+            <ul class="text-teal-700 text-sm space-y-1">
+                <li>💡 Tambah validasi: kalau input kosong, tampilkan pesan error</li>
+                <li>💡 Ganti warna LabelHasil sesuai kategori BMI (hijau/kuning/merah)</li>
+                <li>💡 Tambah komponen <strong>TinyDB</strong> untuk simpan hasil terakhir</li>
+                <li>💡 Tambah <strong>TextToSpeech</strong> agar hasil dibacakan dengan suara</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Navigasi -->
+    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+        <a href="../pengenalan/" class="flex items-center gap-2 text-sm text-slate-500 hover:text-teal-600 transition font-semibold">← Tutorial 1: Pengenalan</a>
+        <a href="../" class="flex items-center gap-2 text-sm text-teal-600 hover:text-teal-800 transition font-semibold">Semua Tutorial App Inventor →</a>
+    </div>
+</main>
+
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+    </div>
+</footer>
+</body>
+</html>
