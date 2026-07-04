@@ -1,5 +1,5 @@
 # Personal Website & Learning Portal
-## by Ach. Chanifuddin Fanani
+**by Ach. Chanifuddin Fanani**
 
 Welcome to my repository. This is the source code for my personal website and portfolio, hosted at [fanani.my.id](https://fanani.my.id/).
 
