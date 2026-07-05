@@ -13,7 +13,8 @@ This site has two main sections:
 
 * `index.html`: The main portfolio landing page.
 * `learn/`: The learning section for classes and teacher workshops.
-  * `coding/`: Step-by-step tutorials for Scratch, Web Dev, Python, C++, App Inventor, and MySQL.
+  * `coding/`: The dynamic interactive LMS learning platform (Zero to Pro) with levels and quizzes.
+  * `tutorial/`: Step-by-step standalone reference tutorials for Scratch, Web Dev, Python, C++, App Inventor, and MySQL.
   * `informatika/`: Informatics curriculum resources.
   * `kka/`: Coding and AI (Kecerdasan Artifisial) curriculum resources.
   * `workshop/`: Lesson plans, templates, and reference materials from my teacher workshops.
