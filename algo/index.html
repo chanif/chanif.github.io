@@ -398,25 +398,25 @@
                 const isSelected = selectedLevelId === level.id;
                 
                 const card = document.createElement("div");
-                card.className = `bg-white border rounded-3xl p-5 shadow-sm lms-card cursor-pointer flex flex-col justify-between ${isSelected ? \`border-\${color}-500 ring-2 ring-\${color}-100\` : 'border-slate-100'}`;
+                card.className = `bg-white border rounded-3xl p-5 shadow-sm lms-card cursor-pointer flex flex-col justify-between ${isSelected ? `border-${color}-500 ring-2 ring-${color}-100` : 'border-slate-100'}`;
                 card.onclick = () => selectLevel(level.id);
 
-                card.innerHTML = \`
+                card.innerHTML = `
                     <div class="space-y-3">
                         <div class="flex justify-between items-start">
-                            <span class="text-4xl">\${level.icon}</span>
-                            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-\${color}-50 text-\${color}-600 border border-\${color}-100">\${level.badge}</span>
+                            <span class="text-4xl">${level.icon}</span>
+                            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-${color}-50 text-${color}-600 border border-${color}-100">${level.badge}</span>
                         </div>
                         <div>
-                            <h3 class="font-heading font-extrabold text-base text-slate-800">\${level.title}</h3>
-                            <p class="text-xs text-slate-400 mt-1 leading-normal line-clamp-2">\${level.description}</p>
+                            <h3 class="font-heading font-extrabold text-base text-slate-800">${level.title}</h3>
+                            <p class="text-xs text-slate-400 mt-1 leading-normal line-clamp-2">${level.description}</p>
                         </div>
                     </div>
                     <div class="mt-4 pt-3 border-t border-slate-50 flex items-center justify-between text-xs font-bold">
                         <span class="text-slate-400">Progres:</span>
-                        <span class="text-\${color}-600 bg-\${color}-50/50 px-2 py-1 rounded-lg">\${completed} / \${level.lessons.length}</span>
+                        <span class="text-${color}-600 bg-${color}-50/50 px-2 py-1 rounded-lg">${completed} / ${level.lessons.length}</span>
                     </div>
-                \`;
+                `;
                 grid.appendChild(card);
             });
         }
@@ -453,7 +453,7 @@
                 let scoreLabel = "";
                 if (isCompleted) {
                     const scoreVal = record.score !== undefined && record.score !== null ? `${record.score}%` : "-";
-                    scoreLabel = \`<span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md border border-slate-200">Skor Quiz: \${scoreVal}</span>\`;
+                    scoreLabel = `<span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md border border-slate-200">Skor Quiz: ${scoreVal}</span>`;
                 }
 
                 const diffColor = lesson.difficulty === "Mudah" ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
@@ -465,30 +465,30 @@
                 const item = document.createElement("div");
                 item.className = "flex flex-col sm:flex-row items-start sm:items-center justify-between py-4 gap-4";
 
-                item.innerHTML = \`
+                item.innerHTML = `
                     <div class="flex items-start gap-4">
-                        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 border mt-0.5 \${isCompleted ? \`bg-\${color}-500 border-\${color}-500 text-white\` : 'border-slate-300 text-transparent'}">
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 border mt-0.5 ${isCompleted ? `bg-${color}-500 border-${color}-500 text-white` : 'border-slate-300 text-transparent'}">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                         </div>
                         <div>
                             <div class="flex flex-wrap items-center gap-2">
-                                <span class="text-xs text-slate-400 font-bold">Bagian \${index + 1}</span>
-                                <span class="text-sm font-bold uppercase tracking-wider text-slate-800 font-heading">\${lesson.title}</span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md \${diffColor}">\${lesson.difficulty}</span>
+                                <span class="text-xs text-slate-400 font-bold">Bagian ${index + 1}</span>
+                                <span class="text-sm font-bold uppercase tracking-wider text-slate-800 font-heading">${lesson.title}</span>
+                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md ${diffColor}">${lesson.difficulty}</span>
                             </div>
                             <div class="flex items-center gap-3 mt-1.5 text-[11px] text-slate-400">
-                                <span>⏱️ \${lesson.duration}</span>
-                                \${scoreLabel}
+                                <span>⏱️ ${lesson.duration}</span>
+                                ${scoreLabel}
                             </div>
                         </div>
                     </div>
                     <div class="flex-shrink-0 self-end sm:self-center">
-                        <button onclick="startLesson('\${levelId}', '\${lesson.id}')" 
+                        <button onclick="startLesson('${levelId}', '${lesson.id}')" 
                             class="inline-block text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 px-5 py-2.5 rounded-xl transition hover:shadow-sm">
-                            \${isCompleted ? 'Ulangi Materi' : 'Mulai Belajar! 🚀'}
+                            ${isCompleted ? 'Ulangi Materi' : 'Mulai Belajar! 🚀'}
                         </button>
                     </div>
-                \`;
+                `;
                 list.appendChild(item);
             });
 
@@ -546,7 +546,7 @@
         function renderStepIndicator() {
             const container = document.getElementById("stepIndicator");
             container.innerHTML = "";
-            container.className = `grid gap-2 mb-8 text-center text-[10px] sm:text-xs font-bold text-slate-400 grid-cols-\${steps.length}`;
+            container.className = `grid gap-2 mb-8 text-center text-[10px] sm:text-xs font-bold text-slate-400 grid-cols-${steps.length}`;
 
             steps.forEach((step, i) => {
                 const stepName = step === "material" ? "1. BACA MATERI 📖" :
@@ -555,7 +555,7 @@
 
                 const indicator = document.createElement("div");
                 const colorClass = subjectsData[activeSubject].color;
-                indicator.className = `pb-2 border-b-4 transition \${i === currentStepIndex ? \`border-\${colorClass}-500 text-\${colorClass}-600 font-extrabold text-sm\` : 'border-slate-200'}`;
+                indicator.className = `pb-2 border-b-4 transition ${i === currentStepIndex ? `border-${colorClass}-500 text-${colorClass}-600 font-extrabold text-sm` : 'border-slate-200'}`;
                 indicator.textContent = stepName;
                 container.appendChild(indicator);
             });
@@ -577,7 +577,7 @@
 
             const nextBtn = document.getElementById("nextStepBtn");
             const colorClass = subjectsData[activeSubject].color;
-            nextBtn.className = `bg-\${colorClass}-600 hover:bg-\${colorClass}-700 text-white font-bold px-8 py-3 rounded-xl text-sm transition shadow-md transform hover:-translate-y-0.5 active:translate-y-0`;
+            nextBtn.className = `bg-${colorClass}-600 hover:bg-${colorClass}-700 text-white font-bold px-8 py-3 rounded-xl text-sm transition shadow-md transform hover:-translate-y-0.5 active:translate-y-0`;
 
             if (step === "summary") {
                 nextBtn.textContent = "Selesai! 🏁";
@@ -590,42 +590,42 @@
 
         function renderMaterial(container) {
             const colorClass = subjectsData[activeSubject].color;
-            container.innerHTML = \`
+            container.innerHTML = `
                 <div class="space-y-3 pb-4 border-b border-slate-100 text-center">
-                    <span class="text-6xl block mb-4">\${activeLessonData.icon || '📖'}</span>
-                    <h2 class="font-heading font-extrabold text-3xl text-slate-800">\${activeLessonData.title}</h2>
+                    <span class="text-6xl block mb-4">${activeLessonData.icon || '📖'}</span>
+                    <h2 class="font-heading font-extrabold text-3xl text-slate-800">${activeLessonData.title}</h2>
                 </div>
                 <div class="prose max-w-none text-slate-700 text-lg leading-relaxed space-y-6 pt-4 mx-auto">
-                    \${activeLessonData.content}
+                    ${activeLessonData.content}
                 </div>
-            \`;
+            `;
         }
 
         function renderQuiz(container) {
             const colorClass = subjectsData[activeSubject].color;
-            container.innerHTML = \`
+            container.innerHTML = `
                 <div class="text-center space-y-2 mb-8">
-                    <h2 class="font-heading font-extrabold text-3xl text-\${colorClass}-600">Saatnya Kuis! 🎯</h2>
-                    <p class="text-slate-500 font-medium">Jawablah \${quizQuestions.length} pertanyaan di bawah ini dengan benar ya!</p>
+                    <h2 class="font-heading font-extrabold text-3xl text-${colorClass}-600">Saatnya Kuis! 🎯</h2>
+                    <p class="text-slate-500 font-medium">Jawablah ${quizQuestions.length} pertanyaan di bawah ini dengan benar ya!</p>
                 </div>
                 <div class="space-y-8" id="quizContainer"></div>
-            \`;
+            `;
 
             const quizContainer = document.getElementById("quizContainer");
             quizQuestions.forEach((q, qIdx) => {
                 const qBlock = document.createElement("div");
-                qBlock.className = `bg-white border-2 border-\${colorClass}-100 p-6 rounded-2xl shadow-sm space-y-4`;
-                qBlock.innerHTML = \`
-                    <div class="text-lg font-extrabold text-slate-800">\${qIdx + 1}. \${q.question}</div>
+                qBlock.className = `bg-white border-2 border-${colorClass}-100 p-6 rounded-2xl shadow-sm space-y-4`;
+                qBlock.innerHTML = `
+                    <div class="text-lg font-extrabold text-slate-800">${qIdx + 1}. ${q.question}</div>
                     <div class="grid gap-3">
-                        \${q.options.map((opt, optIdx) => \`
-                            <label class="flex items-center gap-4 p-4 rounded-xl border-2 border-slate-100 bg-slate-50 hover:bg-\${colorClass}-50 hover:border-\${colorClass}-200 cursor-pointer transition">
-                                <input type="radio" name="q_\${qIdx}" value="\${optIdx}" \${userAnswers[qIdx] === String(optIdx) ? 'checked' : ''} class="w-5 h-5 text-\${colorClass}-600 border-slate-300 focus:ring-\${colorClass}-500">
-                                <span class="font-bold text-slate-700 text-base">\${opt}</span>
+                        ${q.options.map((opt, optIdx) => `
+                            <label class="flex items-center gap-4 p-4 rounded-xl border-2 border-slate-100 bg-slate-50 hover:bg-${colorClass}-50 hover:border-${colorClass}-200 cursor-pointer transition">
+                                <input type="radio" name="q_${qIdx}" value="${optIdx}" ${userAnswers[qIdx] === String(optIdx) ? 'checked' : ''} class="w-5 h-5 text-${colorClass}-600 border-slate-300 focus:ring-${colorClass}-500">
+                                <span class="font-bold text-slate-700 text-base">${opt}</span>
                             </label>
-                        \`).join('')}
+                        `).join('')}
                     </div>
-                \`;
+                `;
                 qBlock.querySelectorAll('input[type="radio"]').forEach(input => {
                     input.addEventListener("change", (e) => {
                         userAnswers[qIdx] = e.target.value;
@@ -646,33 +646,33 @@
             let descText = "";
 
             if (isPassed) {
-                iconHtml = \`<div class="text-8xl mb-6 animate-bounce">🌟</div>\`;
+                iconHtml = `<div class="text-8xl mb-6 animate-bounce">🌟</div>`;
                 titleText = "Hebat Sekali!";
-                descText = \`Kamu berhasil menyelesaikan materi ini!\`;
+                descText = `Kamu berhasil menyelesaikan materi ini!`;
             } else {
-                iconHtml = \`<div class="text-8xl mb-6">💪</div>\`;
+                iconHtml = `<div class="text-8xl mb-6">💪</div>`;
                 titleText = "Hampir Saja!";
-                descText = \`Coba lagi ya, kamu pasti bisa! Minimal skor adalah \${MIN_PASSING_SCORE}.\`;
+                descText = `Coba lagi ya, kamu pasti bisa! Minimal skor adalah ${MIN_PASSING_SCORE}.`;
             }
 
             let scoreSection = "";
             if(quizQuestions.length > 0) {
-                scoreSection = \`
-                    <div class="mt-8 bg-\${colorClass}-50 p-6 rounded-2xl border-2 border-\${colorClass}-200 inline-block min-w-[200px]">
-                        <span class="block text-sm font-bold text-\${colorClass}-500 uppercase mb-2">Skor Kamu</span>
-                        <span class="block text-5xl font-black font-heading text-\${colorClass}-600">\${quizScore}</span>
+                scoreSection = `
+                    <div class="mt-8 bg-${colorClass}-50 p-6 rounded-2xl border-2 border-${colorClass}-200 inline-block min-w-[200px]">
+                        <span class="block text-sm font-bold text-${colorClass}-500 uppercase mb-2">Skor Kamu</span>
+                        <span class="block text-5xl font-black font-heading text-${colorClass}-600">${quizScore}</span>
                     </div>
-                \`;
+                `;
             }
 
-            container.innerHTML = \`
+            container.innerHTML = `
                 <div class="text-center py-10">
-                    \${iconHtml}
-                    <h2 class="font-heading font-extrabold text-4xl text-slate-800 mb-2">\${titleText}</h2>
-                    <p class="text-slate-500 font-medium text-lg">\${descText}</p>
-                    \${scoreSection}
+                    ${iconHtml}
+                    <h2 class="font-heading font-extrabold text-4xl text-slate-800 mb-2">${titleText}</h2>
+                    <p class="text-slate-500 font-medium text-lg">${descText}</p>
+                    ${scoreSection}
                 </div>
-            \`;
+            `;
 
             const userProgress = getUserProgress();
             const record = userProgress[`${activeLevelData.id}_${activeLessonData.id}`];
