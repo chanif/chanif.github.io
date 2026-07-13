@@ -1,487 +1,367 @@
 window.english18 = {
     "id": "english-18",
-    "title": "Level 18: Prepositions",
+    "title": "Level 18: Question Words",
     "badge": "Kelas 5",
-    "icon": "\ud83c\udf0d",
-    "description": "In, On, Under",
+    "icon": "❓",
+    "description": "Question Words",
     "lessons": [
         {
             "id": "eng18_1",
             "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "❓",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Prepositions - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>❓</span><span class='font-black text-emerald-700 text-base'>What</span><span class='text-emerald-400 text-xs font-bold'>Apa</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📍</span><span class='font-black text-emerald-700 text-base'>Where</span><span class='text-emerald-400 text-xs font-bold'>Di mana</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📅</span><span class='font-black text-emerald-700 text-base'>When</span><span class='text-emerald-400 text-xs font-bold'>Kapan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🙋</span><span class='font-black text-emerald-700 text-base'>Who</span><span class='text-emerald-400 text-xs font-bold'>Siapa</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Question words diletakkan di AWAL kalimat tanya! What is this? Where do you live?</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Makan'?",
+                    "question": "What is the meaning of 'Who'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Run",
-                        "Eat",
-                        "Walk"
+                        "Seberapa sering",
+                        "Jam berapa",
+                        "Siapa"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "What is the meaning of 'Drink'?",
+                    "question": "Bahasa Inggris dari 'Siapa' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Minum",
-                        "Membaca",
-                        "Lari"
+                        "How",
+                        "Who",
+                        "Which"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Lari'?",
+                    "question": "Gambar ❓ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Read",
-                        "Drink",
-                        "Run"
+                        "Whose",
+                        "What",
+                        "How"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Run'?",
+                    "question": "What is the meaning of 'What'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Membaca",
-                        "Lari",
-                        "Tidur"
+                        "Apa",
+                        "Seberapa sering",
+                        "Milik siapa"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "What is the meaning of 'Drink'?",
+                    "question": "Bahasa Inggris dari 'Di mana' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Minum",
-                        "Tidur",
-                        "Makan"
+                        "What time",
+                        "When",
+                        "Where"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "What is the meaning of 'Eat'?",
+                    "question": "Gambar 📅 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Makan",
-                        "Tidur",
-                        "Jalan"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
-                    "options": [
-                        "Read",
-                        "Run",
-                        "Sleep"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q7",
-                    "question": "What is the meaning of 'Sleep'?",
-                    "options": [
-                        "Lari",
-                        "Jalan",
-                        "Tidur"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Jalan'?",
-                    "options": [
-                        "Drink",
-                        "Run",
-                        "Walk"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Eat'?",
-                    "options": [
-                        "Makan",
-                        "Minum",
-                        "Lari"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Run'?",
-                    "options": [
-                        "Lari",
-                        "Tidur",
-                        "Jalan"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Drink'?",
-                    "options": [
-                        "Membaca",
-                        "Minum",
-                        "Makan"
+                        "How",
+                        "When",
+                        "What time"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q12",
-                    "question": "What is the meaning of 'Drink'?",
+                    "id": "q6",
+                    "question": "Gambar 🙋 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Minum",
-                        "Membaca",
-                        "Lari"
+                        "How old",
+                        "Who",
+                        "Where"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q7",
+                    "question": "What is the meaning of 'Where'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Di mana",
+                        "Mengapa",
+                        "Berapa lama"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Drink'?",
+                    "id": "q8",
+                    "question": "Bahasa Inggris dari 'Kapan' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Minum",
-                        "Makan",
-                        "Lari"
+                        "What time",
+                        "When",
+                        "How much"
                     ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
-                    "options": [
-                        "Drink",
-                        "Read",
-                        "Sleep"
-                    ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "eng18_2",
             "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "icon": "❓",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Prepositions - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💭</span><span class='font-black text-emerald-700 text-base'>Why</span><span class='text-emerald-400 text-xs font-bold'>Mengapa</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🤔</span><span class='font-black text-emerald-700 text-base'>How</span><span class='text-emerald-400 text-xs font-bold'>Bagaimana</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🔀</span><span class='font-black text-emerald-700 text-base'>Which</span><span class='text-emerald-400 text-xs font-bold'>Yang mana</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🔢</span><span class='font-black text-emerald-700 text-base'>How many</span><span class='text-emerald-400 text-xs font-bold'>Berapa banyak (bisa dihitung)</span></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Drink'?",
+                    "question": "What is the meaning of 'How'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Minum",
-                        "Jalan",
-                        "Lari"
+                        "Apa",
+                        "Bagaimana",
+                        "Siapa"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "What is the meaning of 'Eat'?",
+                    "question": "Bahasa Inggris dari 'Mengapa' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Makan",
-                        "Jalan",
-                        "Tidur"
+                        "Why",
+                        "How often",
+                        "How"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
+                    "question": "Gambar 💭 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Run",
-                        "Eat",
-                        "Sleep"
+                        "When",
+                        "How many",
+                        "Why"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Walk'?",
+                    "question": "What is the meaning of 'Which'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Jalan",
-                        "Tidur",
-                        "Makan"
+                        "Yang mana",
+                        "Mengapa",
+                        "Berapa lama"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
+                    "question": "Bahasa Inggris dari 'Yang mana' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Run",
-                        "Sleep",
-                        "Eat"
+                        "Which",
+                        "Who",
+                        "How much"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
+                    "question": "Bahasa Inggris dari 'Berapa banyak (bisa dihitung)' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Read",
-                        "Drink",
-                        "Sleep"
+                        "How many",
+                        "How much",
+                        "Which"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "What is the meaning of 'Walk'?",
+                    "question": "Gambar 🤔 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Makan",
-                        "Jalan",
-                        "Tidur"
+                        "How much",
+                        "What time",
+                        "How"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Minum'?",
+                    "question": "What is the meaning of 'How many'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Read",
-                        "Drink",
-                        "Walk"
+                        "Berapa banyak (bisa dihitung)",
+                        "Jam berapa",
+                        "Yang mana"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Minum'?",
+                    "question": "Gambar 🔢 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Drink",
-                        "Walk",
-                        "Read"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Read'?",
-                    "options": [
-                        "Membaca",
-                        "Minum",
-                        "Lari"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Eat'?",
-                    "options": [
-                        "Minum",
-                        "Jalan",
-                        "Makan"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Eat'?",
-                    "options": [
-                        "Minum",
-                        "Makan",
-                        "Lari"
+                        "How much",
+                        "How many",
+                        "When"
                     ],
                     "correctIndex": 1
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
-                    "options": [
-                        "Walk",
-                        "Read",
-                        "Sleep"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Lari'?",
-                    "options": [
-                        "Run",
-                        "Walk",
-                        "Eat"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q14",
-                    "question": "What is the meaning of 'Walk'?",
-                    "options": [
-                        "Minum",
-                        "Makan",
-                        "Jalan"
-                    ],
-                    "correctIndex": 2
                 }
             ]
         },
         {
             "id": "eng18_3",
             "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "❓",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Prepositions - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💰</span><span class='font-black text-emerald-700 text-base'>How much</span><span class='text-emerald-400 text-xs font-bold'>Berapa banyak/harganya</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>⏱️</span><span class='font-black text-emerald-700 text-base'>How long</span><span class='text-emerald-400 text-xs font-bold'>Berapa lama</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📆</span><span class='font-black text-emerald-700 text-base'>How often</span><span class='text-emerald-400 text-xs font-bold'>Seberapa sering</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎂</span><span class='font-black text-emerald-700 text-base'>How old</span><span class='text-emerald-400 text-xs font-bold'>Berapa umur</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👤</span><span class='font-black text-emerald-700 text-base'>Whose</span><span class='text-emerald-400 text-xs font-bold'>Milik siapa</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>⏰</span><span class='font-black text-emerald-700 text-base'>What time</span><span class='text-emerald-400 text-xs font-bold'>Jam berapa</span></div></div></div>",
             "questions": [
                 {
-                    "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
+                    "id": "q9",
+                    "question": "___ color do you like? (Warna mana yang kamu suka?)",
                     "options": [
-                        "Eye",
-                        "Leg",
-                        "Ear"
+                        "Which",
+                        "What",
+                        "Where"
                     ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q1",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Tangan",
-                        "Kaki",
-                        "Hidung"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
-                    "options": [
-                        "Hand",
-                        "Leg",
-                        "Eye"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q3",
-                    "question": "What is the meaning of 'Ear'?",
-                    "options": [
-                        "Hidung",
-                        "Tangan",
-                        "Telinga"
-                    ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "What is the meaning of 'Nose'?",
+                    "question": "___ do you study English? (Mengapa kamu belajar bahasa Inggris?)",
                     "options": [
-                        "Hidung",
-                        "Telinga",
-                        "Kepala"
+                        "Why",
+                        "How",
+                        "Which"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "'Mengapa' in English is...",
+                    "options": [
+                        "Why",
+                        "How",
+                        "What"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "___ is your teacher? (Siapa gurumu?)",
+                    "options": [
+                        "Who",
+                        "What",
+                        "Where"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q0",
+                    "question": "___ is your name? (Siapa namamu?)",
+                    "options": [
+                        "What",
+                        "Where",
+                        "When"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "'Siapa' in English is...",
+                    "options": [
+                        "Who",
+                        "What",
+                        "Where"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "___ do you live? (Di mana kamu tinggal?)",
+                    "options": [
+                        "Where",
+                        "When",
+                        "Who"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "___ old are you? (Berapa umurmu?)",
+                    "options": [
+                        "How",
+                        "What",
+                        "Where"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q14",
+                    "question": "'Milik siapa' in English is...",
+                    "options": [
+                        "Whose",
+                        "Who",
+                        "Which"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
+                    "question": "___ do you go to school? (Bagaimana kamu pergi ke sekolah?)",
                     "options": [
-                        "Leg",
-                        "Nose",
-                        "Eye"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
-                    "options": [
-                        "Leg",
-                        "Nose",
-                        "Eye"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q7",
-                    "question": "What is the meaning of 'Eye'?",
-                    "options": [
-                        "Tangan",
-                        "Hidung",
-                        "Mata"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q8",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Hidung",
-                        "Tangan",
-                        "Kaki"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
-                    "options": [
-                        "Leg",
-                        "Nose",
-                        "Ear"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
-                    "options": [
-                        "Eye",
-                        "Nose",
-                        "Ear"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
-                    "options": [
-                        "Head",
-                        "Eye",
-                        "Nose"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
-                    "options": [
-                        "Ear",
-                        "Nose",
-                        "Eye"
+                        "How",
+                        "What",
+                        "Where"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
+                    "question": "'Bagaimana' in English is...",
                     "options": [
-                        "Hand",
-                        "Nose",
-                        "Ear"
+                        "How",
+                        "Why",
+                        "What"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q14",
-                    "question": "What is the meaning of 'Eye'?",
+                    "id": "q12",
+                    "question": "'Kapan' in English is...",
                     "options": [
-                        "Telinga",
-                        "Mata",
-                        "Kepala"
+                        "When",
+                        "Where",
+                        "Who"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "___ is your birthday? (Kapan ulang tahunmu?)",
+                    "options": [
+                        "When",
+                        "What",
+                        "Why"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "___ is this bag? (Berapa harga tas ini?)",
+                    "options": [
+                        "How much",
+                        "How many",
+                        "How long"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "___ apples do you want? (Berapa banyak apel?)",
+                    "options": [
+                        "How many",
+                        "How much",
+                        "How long"
+                    ],
+                    "correctIndex": 0
                 }
             ]
         }

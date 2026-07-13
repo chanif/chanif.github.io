@@ -1,165 +1,165 @@
 window.math4 = {
     "id": "math-4",
-    "title": "Level 4: Angka 21-100",
+    "title": "Level 4: Angka 11-100",
     "badge": "Kelas 1",
-    "icon": "\ud83e\uddee",
-    "description": "Puluhan, satuan, pola bilangan",
+    "icon": "📊",
+    "description": "Angka 11-100",
     "lessons": [
         {
             "id": "mth4_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "📊",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Angka 21-100 - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Angka 11 sampai 100</h3>\n        <p class='text-slate-700 text-lg'>Angka 11-100 terdiri dari puluhan dan satuan. Contoh: 45 = 4 puluhan + 5 satuan.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>45</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 puluhan 5 satuan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>73</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>7 puluhan 3 satuan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>28</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2 puluhan 8 satuan</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Puluhan = angka pertama × 10, Satuan = angka kedua</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 4 + 10?",
+                    "question": "Angka 48 memiliki berapa puluhan?",
                     "options": [
-                        "14",
-                        "18",
-                        "11"
+                        "3",
+                        "4",
+                        "5"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 7 + 4?",
+                    "question": "Berapa angka ini? 5 puluhan 4 satuan",
                     "options": [
-                        "10",
-                        "11",
-                        "15"
+                        "56",
+                        "54",
+                        "49"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 8 + 8?",
+                    "question": "Angka 76 memiliki berapa satuan?",
                     "options": [
-                        "14",
-                        "20",
-                        "16"
+                        "7",
+                        "6",
+                        "5"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 10 + 9?",
+                    "question": "Angka 78 memiliki berapa puluhan?",
                     "options": [
-                        "19",
-                        "18",
-                        "24"
+                        "7",
+                        "8",
+                        "6"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 5 + 4?",
+                    "question": "Angka 80 memiliki berapa puluhan?",
                     "options": [
-                        "6",
-                        "12",
-                        "9"
+                        "9",
+                        "7",
+                        "8"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 9 + 9?",
+                    "question": "Angka 43 memiliki berapa satuan?",
                     "options": [
-                        "18",
-                        "13",
-                        "22"
+                        "3",
+                        "2",
+                        "4"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 3 + 9?",
+                    "question": "Angka 79 memiliki berapa puluhan?",
                     "options": [
-                        "12",
-                        "17",
-                        "7"
+                        "7",
+                        "6",
+                        "8"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 2 + 4?",
+                    "question": "Angka 17 memiliki berapa satuan?",
                     "options": [
-                        "4",
-                        "10",
-                        "6"
+                        "8",
+                        "6",
+                        "7"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 10 + 8?",
+                    "question": "Berapa angka ini? 6 puluhan 6 satuan",
                     "options": [
-                        "18",
-                        "23",
-                        "14"
+                        "61",
+                        "66",
+                        "67"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 3 + 10?",
+                    "question": "Angka 89 memiliki berapa satuan?",
                     "options": [
-                        "13",
-                        "12",
-                        "16"
+                        "9",
+                        "10",
+                        "8"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 5 + 9?",
+                    "question": "Berapa angka ini? 7 puluhan 1 satuan",
                     "options": [
-                        "15",
-                        "12",
-                        "14"
+                        "76",
+                        "71",
+                        "68"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 7 + 5?",
+                    "question": "Berapa angka ini? 5 puluhan 8 satuan",
                     "options": [
-                        "9",
-                        "14",
-                        "12"
+                        "55",
+                        "62",
+                        "58"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 5 + 10?",
+                    "question": "Angka 79 memiliki berapa satuan?",
                     "options": [
-                        "15",
-                        "14",
-                        "16"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 4 + 2?",
-                    "options": [
-                        "5",
-                        "9",
-                        "6"
+                        "10",
+                        "8",
+                        "9"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q14",
-                    "question": "Berapa hasil dari 2 + 4?",
+                    "id": "q13",
+                    "question": "Angka 35 memiliki berapa satuan?",
                     "options": [
-                        "11",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q14",
+                    "question": "Angka 73 memiliki berapa puluhan?",
+                    "options": [
                         "6",
-                        "1"
+                        "7",
+                        "8"
                     ],
                     "correctIndex": 1
                 }
@@ -168,320 +168,320 @@ window.math4 = {
         {
             "id": "mth4_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "📊",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Angka 21-100 - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Angka 11 sampai 100</h3>\n        <p class='text-slate-700 text-lg'>Angka 11-100 terdiri dari puluhan dan satuan. Contoh: 45 = 4 puluhan + 5 satuan.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>45</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 puluhan 5 satuan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>73</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>7 puluhan 3 satuan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>28</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2 puluhan 8 satuan</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Puluhan = angka pertama × 10, Satuan = angka kedua</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 8 + 5?",
+                    "question": "Angka 48 memiliki berapa puluhan?",
                     "options": [
-                        "14",
-                        "13",
-                        "10"
+                        "3",
+                        "4",
+                        "5"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 4 + 6?",
+                    "question": "Berapa angka ini? 5 puluhan 4 satuan",
                     "options": [
-                        "10",
-                        "6",
-                        "14"
+                        "56",
+                        "54",
+                        "49"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 5 + 6?",
+                    "question": "Angka 76 memiliki berapa satuan?",
                     "options": [
-                        "15",
-                        "11",
-                        "7"
+                        "7",
+                        "6",
+                        "5"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 5 + 10?",
-                    "options": [
-                        "13",
-                        "15",
-                        "17"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 3 + 4?",
+                    "question": "Angka 78 memiliki berapa puluhan?",
                     "options": [
                         "7",
-                        "5",
-                        "8"
+                        "8",
+                        "6"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 9 + 5?",
+                    "id": "q4",
+                    "question": "Angka 80 memiliki berapa puluhan?",
                     "options": [
-                        "13",
-                        "16",
-                        "14"
+                        "9",
+                        "7",
+                        "8"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q6",
-                    "question": "Berapa hasil dari 3 + 10?",
+                    "id": "q5",
+                    "question": "Angka 43 memiliki berapa satuan?",
                     "options": [
-                        "13",
-                        "9",
-                        "14"
+                        "3",
+                        "2",
+                        "4"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "Angka 79 memiliki berapa puluhan?",
+                    "options": [
+                        "7",
+                        "6",
+                        "8"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 5 + 10?",
+                    "question": "Angka 17 memiliki berapa satuan?",
                     "options": [
-                        "15",
-                        "14",
-                        "18"
+                        "8",
+                        "6",
+                        "7"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q8",
+                    "question": "Berapa angka ini? 6 puluhan 6 satuan",
+                    "options": [
+                        "61",
+                        "66",
+                        "67"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q9",
+                    "question": "Angka 89 memiliki berapa satuan?",
+                    "options": [
+                        "9",
+                        "10",
+                        "8"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 5 + 4?",
-                    "options": [
-                        "7",
-                        "10",
-                        "9"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 7 + 8?",
-                    "options": [
-                        "20",
-                        "12",
-                        "15"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q10",
-                    "question": "Berapa hasil dari 5 + 9?",
+                    "question": "Berapa angka ini? 7 puluhan 1 satuan",
                     "options": [
-                        "18",
-                        "14",
-                        "10"
+                        "76",
+                        "71",
+                        "68"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 7 + 2?",
+                    "question": "Berapa angka ini? 5 puluhan 8 satuan",
                     "options": [
-                        "8",
-                        "9",
-                        "11"
+                        "55",
+                        "62",
+                        "58"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 3 + 1?",
+                    "question": "Angka 79 memiliki berapa satuan?",
                     "options": [
-                        "-1",
-                        "6",
-                        "4"
+                        "10",
+                        "8",
+                        "9"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 5 + 4?",
+                    "question": "Angka 35 memiliki berapa satuan?",
                     "options": [
-                        "13",
-                        "9",
-                        "8"
+                        "4",
+                        "5",
+                        "6"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 7 + 2?",
+                    "question": "Angka 73 memiliki berapa puluhan?",
                     "options": [
-                        "4",
-                        "12",
-                        "9"
+                        "6",
+                        "7",
+                        "8"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "mth4_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "📊",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Angka 21-100 - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Angka 11 sampai 100</h3>\n        <p class='text-slate-700 text-lg'>Angka 11-100 terdiri dari puluhan dan satuan. Contoh: 45 = 4 puluhan + 5 satuan.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>45</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 puluhan 5 satuan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>73</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>7 puluhan 3 satuan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>28</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2 puluhan 8 satuan</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Puluhan = angka pertama × 10, Satuan = angka kedua</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 9 + 6?",
+                    "question": "Angka 48 memiliki berapa puluhan?",
                     "options": [
-                        "13",
-                        "20",
-                        "15"
+                        "3",
+                        "4",
+                        "5"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 3 + 2?",
+                    "question": "Berapa angka ini? 5 puluhan 4 satuan",
                     "options": [
-                        "5",
-                        "2",
-                        "10"
+                        "56",
+                        "54",
+                        "49"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 10 + 6?",
+                    "question": "Angka 76 memiliki berapa satuan?",
                     "options": [
-                        "18",
-                        "16",
-                        "13"
+                        "7",
+                        "6",
+                        "5"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 10 + 4?",
+                    "question": "Angka 78 memiliki berapa puluhan?",
                     "options": [
-                        "14",
-                        "16",
-                        "10"
+                        "7",
+                        "8",
+                        "6"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 5 + 1?",
+                    "question": "Angka 80 memiliki berapa puluhan?",
                     "options": [
-                        "10",
-                        "2",
-                        "6"
+                        "9",
+                        "7",
+                        "8"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 2 + 2?",
+                    "question": "Angka 43 memiliki berapa satuan?",
                     "options": [
-                        "-1",
-                        "4",
-                        "9"
+                        "3",
+                        "2",
+                        "4"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 1 + 9?",
+                    "question": "Angka 79 memiliki berapa puluhan?",
                     "options": [
-                        "10",
-                        "12",
-                        "5"
+                        "7",
+                        "6",
+                        "8"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 1 + 5?",
+                    "question": "Angka 17 memiliki berapa satuan?",
                     "options": [
-                        "2",
-                        "9",
-                        "6"
+                        "8",
+                        "6",
+                        "7"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 2 + 6?",
+                    "question": "Berapa angka ini? 6 puluhan 6 satuan",
                     "options": [
-                        "5",
-                        "8",
-                        "9"
+                        "61",
+                        "66",
+                        "67"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 7 + 2?",
+                    "question": "Angka 89 memiliki berapa satuan?",
                     "options": [
-                        "7",
+                        "9",
                         "10",
-                        "9"
+                        "8"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 1 + 3?",
+                    "question": "Berapa angka ini? 7 puluhan 1 satuan",
                     "options": [
-                        "1",
-                        "4",
-                        "8"
+                        "76",
+                        "71",
+                        "68"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 9 + 4?",
+                    "question": "Berapa angka ini? 5 puluhan 8 satuan",
                     "options": [
-                        "8",
-                        "17",
-                        "13"
+                        "55",
+                        "62",
+                        "58"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 10 + 7?",
+                    "question": "Angka 79 memiliki berapa satuan?",
                     "options": [
-                        "20",
-                        "15",
-                        "17"
+                        "10",
+                        "8",
+                        "9"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 10 + 1?",
+                    "question": "Angka 35 memiliki berapa satuan?",
                     "options": [
-                        "13",
-                        "6",
-                        "11"
+                        "4",
+                        "5",
+                        "6"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 7 + 2?",
+                    "question": "Angka 73 memiliki berapa puluhan?",
                     "options": [
-                        "5",
-                        "14",
-                        "9"
+                        "6",
+                        "7",
+                        "8"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 }
             ]
         }

@@ -2,486 +2,486 @@ window.math21 = {
     "id": "math-21",
     "title": "Level 21: KPK & FPB",
     "badge": "Kelas 5-6",
-    "icon": "\ud83e\uddee",
-    "description": "Kelipatan, faktor",
+    "icon": "🔢",
+    "description": "KPK & FPB",
     "lessons": [
         {
             "id": "mth21_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "🔢",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>KPK & FPB - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>KPK dan FPB</h3>\n        <p class='text-slate-700 text-lg'>FPB = Faktor Persekutuan Terbesar. KPK = Kelipatan Persekutuan Terkecil.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>FPB(12,8) = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Faktor 12: 1,2,3,4,6,12. Faktor 8: 1,2,4,8. Terbesar sama = 4</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>KPK(4,6) = 12</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Kelipatan 4: 4,8,12. Kelipatan 6: 6,12. Terkecil sama = 12</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: FPB untuk menyederhanakan pecahan, KPK untuk menyamakan penyebut</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 48 \u00d7 3?",
+                    "question": "KPK dari 4 dan 8 adalah...",
                     "options": [
-                        "143",
-                        "145",
-                        "144"
+                        "8",
+                        "1",
+                        "12"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "FPB dari 3 dan 15 adalah...",
+                    "options": [
+                        "4",
+                        "2",
+                        "3"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q1",
-                    "question": "Berapa hasil dari 21 \u00d7 9?",
-                    "options": [
-                        "194",
-                        "189",
-                        "188"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q2",
-                    "question": "Berapa hasil dari 28 \u00d7 10?",
+                    "question": "FPB dari 6 dan 18 adalah...",
                     "options": [
-                        "279",
-                        "280",
-                        "285"
+                        "6",
+                        "5",
+                        "7"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 35 \u00d7 10?",
+                    "question": "FPB dari 4 dan 8 adalah...",
                     "options": [
-                        "349",
-                        "350",
-                        "352"
+                        "3",
+                        "5",
+                        "4"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 40 \u00d7 7?",
+                    "question": "KPK dari 4 dan 16 adalah...",
                     "options": [
-                        "285",
-                        "278",
-                        "280"
+                        "1",
+                        "20",
+                        "16"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 30 \u00d7 4?",
+                    "question": "FPB dari 2 dan 8 adalah...",
                     "options": [
-                        "120",
-                        "118",
-                        "123"
+                        "1",
+                        "2",
+                        "3"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 41 \u00d7 2?",
+                    "question": "KPK dari 3 dan 6 adalah...",
                     "options": [
-                        "86",
-                        "81",
-                        "82"
+                        "9",
+                        "6",
+                        "1"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 18 \u00d7 6?",
+                    "question": "KPK dari 6 dan 10 adalah...",
                     "options": [
-                        "113",
-                        "108",
-                        "107"
+                        "36",
+                        "30",
+                        "20"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 49 \u00d7 4?",
+                    "question": "FPB dari 6 dan 9 adalah...",
                     "options": [
-                        "196",
-                        "199",
-                        "194"
+                        "3",
+                        "2",
+                        "4"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 47 \u00d7 9?",
+                    "question": "KPK dari 5 dan 10 adalah...",
                     "options": [
-                        "423",
-                        "421",
-                        "427"
+                        "10",
+                        "15",
+                        "1"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 43 \u00d7 2?",
+                    "question": "FPB dari 3 dan 9 adalah...",
                     "options": [
-                        "84",
-                        "87",
-                        "86"
+                        "4",
+                        "2",
+                        "3"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 40 \u00d7 2?",
+                    "question": "FPB dari 2 dan 4 adalah...",
                     "options": [
-                        "82",
-                        "78",
-                        "80"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 20 \u00d7 2?",
-                    "options": [
-                        "40",
-                        "41",
-                        "39"
+                        "2",
+                        "1",
+                        "3"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 28 \u00d7 5?",
+                    "id": "q12",
+                    "question": "KPK dari 6 dan 18 adalah...",
                     "options": [
-                        "141",
-                        "140",
-                        "136"
+                        "1",
+                        "24",
+                        "18"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q13",
+                    "question": "KPK dari 3 dan 9 adalah...",
+                    "options": [
+                        "9",
+                        "1",
+                        "12"
+                    ],
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 22 \u00d7 8?",
+                    "question": "FPB dari 4 dan 16 adalah...",
                     "options": [
-                        "179",
-                        "176",
-                        "173"
+                        "4",
+                        "5",
+                        "3"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mth21_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "🔢",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>KPK & FPB - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>KPK dan FPB</h3>\n        <p class='text-slate-700 text-lg'>FPB = Faktor Persekutuan Terbesar. KPK = Kelipatan Persekutuan Terkecil.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>FPB(12,8) = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Faktor 12: 1,2,3,4,6,12. Faktor 8: 1,2,4,8. Terbesar sama = 4</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>KPK(4,6) = 12</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Kelipatan 4: 4,8,12. Kelipatan 6: 6,12. Terkecil sama = 12</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: FPB untuk menyederhanakan pecahan, KPK untuk menyamakan penyebut</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 15 \u00d7 9?",
+                    "question": "KPK dari 4 dan 8 adalah...",
                     "options": [
-                        "135",
-                        "134",
-                        "137"
+                        "8",
+                        "1",
+                        "12"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 39 \u00d7 8?",
+                    "question": "FPB dari 3 dan 15 adalah...",
                     "options": [
-                        "311",
-                        "312",
-                        "317"
+                        "4",
+                        "2",
+                        "3"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 41 \u00d7 7?",
+                    "question": "FPB dari 6 dan 18 adalah...",
                     "options": [
-                        "287",
-                        "284",
-                        "290"
+                        "6",
+                        "5",
+                        "7"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 44 \u00d7 6?",
+                    "question": "FPB dari 4 dan 8 adalah...",
                     "options": [
-                        "264",
-                        "267",
-                        "262"
+                        "3",
+                        "5",
+                        "4"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 28 \u00d7 3?",
+                    "question": "KPK dari 4 dan 16 adalah...",
                     "options": [
-                        "88",
-                        "83",
-                        "84"
+                        "1",
+                        "20",
+                        "16"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 17 \u00d7 3?",
+                    "question": "FPB dari 2 dan 8 adalah...",
                     "options": [
-                        "49",
-                        "51",
-                        "54"
+                        "1",
+                        "2",
+                        "3"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 36 \u00d7 4?",
+                    "question": "KPK dari 3 dan 6 adalah...",
                     "options": [
-                        "145",
-                        "143",
-                        "144"
+                        "9",
+                        "6",
+                        "1"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 48 \u00d7 10?",
+                    "question": "KPK dari 6 dan 10 adalah...",
                     "options": [
-                        "482",
-                        "479",
-                        "480"
+                        "36",
+                        "30",
+                        "20"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 43 \u00d7 7?",
+                    "question": "FPB dari 6 dan 9 adalah...",
                     "options": [
-                        "301",
-                        "300",
-                        "304"
+                        "3",
+                        "2",
+                        "4"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 27 \u00d7 6?",
+                    "question": "KPK dari 5 dan 10 adalah...",
                     "options": [
-                        "159",
-                        "162",
-                        "164"
+                        "10",
+                        "15",
+                        "1"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 46 \u00d7 6?",
+                    "question": "FPB dari 3 dan 9 adalah...",
                     "options": [
-                        "280",
-                        "271",
-                        "276"
+                        "4",
+                        "2",
+                        "3"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 42 \u00d7 10?",
+                    "question": "FPB dari 2 dan 4 adalah...",
                     "options": [
-                        "415",
-                        "420",
-                        "422"
+                        "2",
+                        "1",
+                        "3"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 21 \u00d7 7?",
+                    "question": "KPK dari 6 dan 18 adalah...",
                     "options": [
-                        "144",
-                        "152",
-                        "147"
+                        "1",
+                        "24",
+                        "18"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 35 \u00d7 3?",
+                    "question": "KPK dari 3 dan 9 adalah...",
                     "options": [
-                        "108",
-                        "103",
-                        "105"
+                        "9",
+                        "1",
+                        "12"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 48 \u00d7 8?",
+                    "question": "FPB dari 4 dan 16 adalah...",
                     "options": [
-                        "385",
-                        "384",
-                        "379"
+                        "4",
+                        "5",
+                        "3"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mth21_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "🔢",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>KPK & FPB - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>KPK dan FPB</h3>\n        <p class='text-slate-700 text-lg'>FPB = Faktor Persekutuan Terbesar. KPK = Kelipatan Persekutuan Terkecil.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>FPB(12,8) = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Faktor 12: 1,2,3,4,6,12. Faktor 8: 1,2,4,8. Terbesar sama = 4</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>KPK(4,6) = 12</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Kelipatan 4: 4,8,12. Kelipatan 6: 6,12. Terkecil sama = 12</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: FPB untuk menyederhanakan pecahan, KPK untuk menyamakan penyebut</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 29 \u00d7 10?",
+                    "question": "KPK dari 4 dan 8 adalah...",
                     "options": [
-                        "290",
-                        "294",
-                        "287"
+                        "8",
+                        "1",
+                        "12"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 42 \u00d7 8?",
+                    "question": "FPB dari 3 dan 15 adalah...",
                     "options": [
-                        "336",
-                        "331",
-                        "340"
+                        "4",
+                        "2",
+                        "3"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 19 \u00d7 8?",
+                    "question": "FPB dari 6 dan 18 adalah...",
                     "options": [
-                        "151",
-                        "152",
-                        "154"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 18 \u00d7 3?",
-                    "options": [
-                        "54",
-                        "57",
-                        "53"
+                        "6",
+                        "5",
+                        "7"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 20 \u00d7 10?",
+                    "id": "q3",
+                    "question": "FPB dari 4 dan 8 adalah...",
                     "options": [
-                        "204",
-                        "199",
-                        "200"
+                        "3",
+                        "5",
+                        "4"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q4",
+                    "question": "KPK dari 4 dan 16 adalah...",
+                    "options": [
+                        "1",
+                        "20",
+                        "16"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 50 \u00d7 7?",
+                    "question": "FPB dari 2 dan 8 adalah...",
                     "options": [
-                        "355",
-                        "347",
-                        "350"
+                        "1",
+                        "2",
+                        "3"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 46 \u00d7 5?",
+                    "question": "KPK dari 3 dan 6 adalah...",
                     "options": [
-                        "234",
-                        "229",
-                        "230"
+                        "9",
+                        "6",
+                        "1"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 30 \u00d7 8?",
+                    "question": "KPK dari 6 dan 10 adalah...",
                     "options": [
-                        "235",
-                        "244",
-                        "240"
+                        "36",
+                        "30",
+                        "20"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 25 \u00d7 9?",
+                    "question": "FPB dari 6 dan 9 adalah...",
                     "options": [
-                        "225",
-                        "223",
-                        "228"
+                        "3",
+                        "2",
+                        "4"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 38 \u00d7 7?",
+                    "question": "KPK dari 5 dan 10 adalah...",
                     "options": [
-                        "268",
-                        "266",
-                        "261"
+                        "10",
+                        "15",
+                        "1"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 21 \u00d7 5?",
+                    "question": "FPB dari 3 dan 9 adalah...",
                     "options": [
-                        "105",
-                        "107",
-                        "102"
+                        "4",
+                        "2",
+                        "3"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 32 \u00d7 8?",
+                    "question": "FPB dari 2 dan 4 adalah...",
                     "options": [
-                        "254",
-                        "256",
-                        "261"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 15 \u00d7 4?",
-                    "options": [
-                        "60",
-                        "61",
-                        "56"
+                        "2",
+                        "1",
+                        "3"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 27 \u00d7 8?",
+                    "id": "q12",
+                    "question": "KPK dari 6 dan 18 adalah...",
                     "options": [
-                        "218",
-                        "216",
-                        "211"
+                        "1",
+                        "24",
+                        "18"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q13",
+                    "question": "KPK dari 3 dan 9 adalah...",
+                    "options": [
+                        "9",
+                        "1",
+                        "12"
+                    ],
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 25 \u00d7 10?",
+                    "question": "FPB dari 4 dan 16 adalah...",
                     "options": [
-                        "253",
-                        "250",
-                        "245"
+                        "4",
+                        "5",
+                        "3"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         }

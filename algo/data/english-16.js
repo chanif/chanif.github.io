@@ -1,165 +1,105 @@
 window.english16 = {
     "id": "english-16",
-    "title": "Level 16: Past Tense",
-    "badge": "Kelas 4-5",
-    "icon": "\ud83c\udf0d",
-    "description": "I ate, She played",
+    "title": "Level 16: Future Tense",
+    "badge": "Kelas 5",
+    "icon": "⏩",
+    "description": "Future Tense",
     "lessons": [
         {
             "id": "eng16_1",
             "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "⏩",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Past Tense - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>⏩</span><span class='font-black text-emerald-700 text-base'>I will go</span><span class='text-emerald-400 text-xs font-bold'>Saya akan pergi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍽️</span><span class='font-black text-emerald-700 text-base'>She will eat</span><span class='text-emerald-400 text-xs font-bold'>Dia akan makan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎮</span><span class='font-black text-emerald-700 text-base'>He will play</span><span class='text-emerald-400 text-xs font-bold'>Dia akan bermain</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📚</span><span class='font-black text-emerald-700 text-base'>We will study</span><span class='text-emerald-400 text-xs font-bold'>Kami akan belajar</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Future tense: WILL + base verb (kata dasar, tanpa -s, -ed, -ing).</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Eye'?",
+                    "question": "What is the meaning of 'She will eat'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Kaki",
-                        "Hidung",
-                        "Mata"
+                        "Mereka akan menang",
+                        "Dia akan datang",
+                        "Dia akan makan"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "What is the meaning of 'Ear'?",
+                    "question": "Bahasa Inggris dari 'Kami akan belajar' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Kaki",
-                        "Telinga",
-                        "Mata"
+                        "I will buy",
+                        "We will study",
+                        "We will travel"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "What is the meaning of 'Nose'?",
+                    "question": "Gambar 🎮 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Hidung",
-                        "Kaki",
-                        "Telinga"
+                        "He will play",
+                        "She will sing",
+                        "They will run"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Tangan'?",
+                    "question": "Bahasa Inggris dari 'Saya akan pergi' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Hand",
-                        "Nose",
-                        "Head"
+                        "I will go",
+                        "They will win",
+                        "He will come"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "What is the meaning of 'Hand'?",
+                    "question": "Gambar ⏩ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Mata",
-                        "Tangan",
-                        "Hidung"
+                        "We will cook",
+                        "She will sing",
+                        "I will go"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Tangan'?",
+                    "question": "What is the meaning of 'We will study'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Leg",
-                        "Hand",
-                        "Ear"
+                        "Saya akan membeli",
+                        "Kami akan belajar",
+                        "Mereka akan berlari"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Kaki'?",
+                    "question": "Bahasa Inggris dari 'Dia akan bermain' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Head",
-                        "Ear",
-                        "Leg"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Tangan'?",
-                    "options": [
-                        "Hand",
-                        "Head",
-                        "Leg"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q8",
-                    "question": "What is the meaning of 'Ear'?",
-                    "options": [
-                        "Telinga",
-                        "Kepala",
-                        "Mata"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Kaki'?",
-                    "options": [
-                        "Leg",
-                        "Head",
-                        "Hand"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
-                    "options": [
-                        "Ear",
-                        "Hand",
-                        "Head"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Hand'?",
-                    "options": [
-                        "Mata",
-                        "Telinga",
-                        "Tangan"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q12",
-                    "question": "What is the meaning of 'Leg'?",
-                    "options": [
-                        "Hidung",
-                        "Kepala",
-                        "Kaki"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Hand'?",
-                    "options": [
-                        "Telinga",
-                        "Tangan",
-                        "Kaki"
+                        "They will win",
+                        "He will play",
+                        "We will cook"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
+                    "id": "q7",
+                    "question": "Gambar 🍽️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Nose",
-                        "Ear",
-                        "Head"
+                        "We will travel",
+                        "She will eat",
+                        "She will write"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q8",
+                    "question": "What is the meaning of 'I will go'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Mereka akan berlari",
+                        "Saya akan pergi",
+                        "Saya akan membeli"
                     ],
                     "correctIndex": 1
                 }
@@ -168,320 +108,260 @@ window.english16 = {
         {
             "id": "eng16_2",
             "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "icon": "⏩",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Past Tense - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🏃</span><span class='font-black text-emerald-700 text-base'>They will run</span><span class='text-emerald-400 text-xs font-bold'>Mereka akan berlari</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌧️</span><span class='font-black text-emerald-700 text-base'>It will rain</span><span class='text-emerald-400 text-xs font-bold'>Akan hujan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🛒</span><span class='font-black text-emerald-700 text-base'>I will buy</span><span class='text-emerald-400 text-xs font-bold'>Saya akan membeli</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>✍️</span><span class='font-black text-emerald-700 text-base'>She will write</span><span class='text-emerald-400 text-xs font-bold'>Dia akan menulis</span></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
+                    "question": "What is the meaning of 'I will buy'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Head",
-                        "Nose",
-                        "Eye"
+                        "Saya akan membeli",
+                        "Kami akan bepergian",
+                        "Dia akan menulis"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "What is the meaning of 'Hand'?",
+                    "question": "Bahasa Inggris dari 'Akan hujan' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Kepala",
-                        "Telinga",
-                        "Tangan"
+                        "She will write",
+                        "He will play",
+                        "It will rain"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
+                    "question": "Gambar 🌧️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Eye",
-                        "Hand",
-                        "Ear"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q3",
-                    "question": "What is the meaning of 'Leg'?",
-                    "options": [
-                        "Kaki",
-                        "Telinga",
-                        "Mata"
+                        "It will rain",
+                        "I will be a doctor",
+                        "I will buy"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
+                    "id": "q3",
+                    "question": "What is the meaning of 'She will write'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Leg",
-                        "Hand",
-                        "Eye"
+                        "Kami akan memasak",
+                        "Dia akan datang",
+                        "Dia akan menulis"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q4",
+                    "question": "Bahasa Inggris dari 'Saya akan membeli' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "We will study",
+                        "He will come",
+                        "I will buy"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "What is the meaning of 'Eye'?",
+                    "question": "Gambar 🏃 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Hidung",
-                        "Mata",
-                        "Tangan"
+                        "He will play",
+                        "They will run",
+                        "I will be a doctor"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "What is the meaning of 'Head'?",
+                    "question": "Bahasa Inggris dari 'Mereka akan berlari' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Telinga",
-                        "Tangan",
-                        "Kepala"
+                        "I will be a doctor",
+                        "I will buy",
+                        "They will run"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "What is the meaning of 'Ear'?",
+                    "question": "Gambar ✍️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Tangan",
-                        "Kaki",
-                        "Telinga"
+                        "He will play",
+                        "I will buy",
+                        "She will write"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "What is the meaning of 'Hand'?",
+                    "question": "What is the meaning of 'They will run'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Mata",
-                        "Hidung",
-                        "Tangan"
+                        "Dia akan makan",
+                        "Dia akan datang",
+                        "Mereka akan berlari"
                     ],
                     "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Telinga",
-                        "Hidung",
-                        "Mata"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Hidung",
-                        "Telinga",
-                        "Kaki"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Hand'?",
-                    "options": [
-                        "Tangan",
-                        "Mata",
-                        "Telinga"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
-                    "options": [
-                        "Hand",
-                        "Nose",
-                        "Eye"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Tangan'?",
-                    "options": [
-                        "Hand",
-                        "Head",
-                        "Eye"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
-                    "options": [
-                        "Ear",
-                        "Eye",
-                        "Head"
-                    ],
-                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "eng16_3",
             "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "⏩",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Past Tense - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>✈️</span><span class='font-black text-emerald-700 text-base'>We will travel</span><span class='text-emerald-400 text-xs font-bold'>Kami akan bepergian</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🏆</span><span class='font-black text-emerald-700 text-base'>They will win</span><span class='text-emerald-400 text-xs font-bold'>Mereka akan menang</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👨‍⚕️</span><span class='font-black text-emerald-700 text-base'>I will be a doctor</span><span class='text-emerald-400 text-xs font-bold'>Saya akan jadi dokter</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🚶</span><span class='font-black text-emerald-700 text-base'>He will come</span><span class='text-emerald-400 text-xs font-bold'>Dia akan datang</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👨‍🍳</span><span class='font-black text-emerald-700 text-base'>We will cook</span><span class='text-emerald-400 text-xs font-bold'>Kami akan memasak</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎵</span><span class='font-black text-emerald-700 text-base'>She will sing</span><span class='text-emerald-400 text-xs font-bold'>Dia akan bernyanyi</span></div></div></div>",
             "questions": [
                 {
-                    "id": "q0",
-                    "question": "What is the meaning of 'Dog'?",
+                    "id": "q14",
+                    "question": "Which sentence is FUTURE TENSE?",
                     "options": [
-                        "Ikan",
-                        "Burung",
-                        "Anjing"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q1",
-                    "question": "What is the meaning of 'Tiger'?",
-                    "options": [
-                        "Kucing",
-                        "Burung",
-                        "Harimau"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Ikan'?",
-                    "options": [
-                        "Dog",
-                        "Fish",
-                        "Tiger"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q3",
-                    "question": "What is the meaning of 'Fish'?",
-                    "options": [
-                        "Ikan",
-                        "Harimau",
-                        "Anjing"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q4",
-                    "question": "What is the meaning of 'Bird'?",
-                    "options": [
-                        "Harimau",
-                        "Kucing",
-                        "Burung"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q5",
-                    "question": "What is the meaning of 'Elephant'?",
-                    "options": [
-                        "Ikan",
-                        "Gajah",
-                        "Kucing"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Ikan'?",
-                    "options": [
-                        "Tiger",
-                        "Fish",
-                        "Dog"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q7",
-                    "question": "What is the meaning of 'Bird'?",
-                    "options": [
-                        "Burung",
-                        "Ikan",
-                        "Kucing"
+                        "He will come tomorrow.",
+                        "He came yesterday.",
+                        "He comes every day."
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Gajah'?",
+                    "question": "'Will' diikuti oleh...",
                     "options": [
-                        "Elephant",
-                        "Dog",
-                        "Bird"
+                        "Base verb (kata dasar)",
+                        "Verb + s",
+                        "Verb + ed"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Cat'?",
+                    "id": "q5",
+                    "question": "Rumus future tense adalah...",
                     "options": [
-                        "Gajah",
-                        "Kucing",
-                        "Anjing"
+                        "will + base verb",
+                        "is/am/are + verb",
+                        "verb + ed"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
+                    "id": "q7",
+                    "question": "'Kami akan belajar besok.' In English:",
                     "options": [
-                        "Fish",
-                        "Bird",
-                        "Cat"
+                        "We will study tomorrow.",
+                        "We studied tomorrow.",
+                        "We study tomorrow."
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Bird'?",
+                    "id": "q3",
+                    "question": "It ___ (rain) this afternoon.",
                     "options": [
-                        "Kucing",
-                        "Anjing",
-                        "Burung"
+                        "will rain",
+                        "rained",
+                        "rains"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "id": "q6",
+                    "question": "'Dia akan bermain.' In English:",
                     "options": [
-                        "Bird",
-                        "Fish",
-                        "Cat"
+                        "He will play.",
+                        "He played.",
+                        "He plays."
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "They ___ (win) the game tomorrow.",
+                    "options": [
+                        "will win",
+                        "won",
+                        "wins"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "'Saya akan jadi dokter.' In English:",
                     "options": [
-                        "Bird",
-                        "Cat",
-                        "Elephant"
+                        "I will be a doctor.",
+                        "I am a doctor.",
+                        "I was a doctor."
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
+                    "id": "q9",
+                    "question": "Choose the correct future sentence:",
                     "options": [
-                        "Fish",
-                        "Elephant",
-                        "Dog"
+                        "I will be a doctor.",
+                        "I will am a doctor.",
+                        "I will being a doctor."
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "'She will sing.' Artinya...",
+                    "options": [
+                        "Dia akan bernyanyi",
+                        "Dia bernyanyi",
+                        "Dia sudah bernyanyi"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "She ___ (eat) dinner at 7 PM.",
+                    "options": [
+                        "will eat",
+                        "ate",
+                        "eats"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "Which word shows FUTURE?",
+                    "options": [
+                        "will",
+                        "went",
+                        "am"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "We ___ (travel) to Bali next month.",
+                    "options": [
+                        "will travel",
+                        "traveled",
+                        "travels"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "'I will buy a book.' Artinya...",
+                    "options": [
+                        "Saya akan membeli buku",
+                        "Saya membeli buku",
+                        "Saya sudah membeli buku"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q0",
+                    "question": "Tomorrow, I ___ (go) to school.",
+                    "options": [
+                        "will go",
+                        "went",
+                        "go"
+                    ],
+                    "correctIndex": 0
                 }
             ]
         }

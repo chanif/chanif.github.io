@@ -1,157 +1,488 @@
 window.english1 = {
-    id: "english-1",
-    title: "English Alphabet A-M",
-    badge: "PAUD",
-    icon: "🔤",
-    description: "Learn the English Alphabet from A to M with fun pictures!",
-    lessons: [
+    "id": "english-1",
+    "title": "Level 1: Colors & Numbers",
+    "badge": "PAUD",
+    "icon": "🎨",
+    "description": "Learn colors and numbers in English with fun emoji pictures.",
+    "lessons": [
         {
-            id: "eng1_1",
-            title: "Letters A to E",
-            icon: "🅰️",
-            difficulty: "Mudah",
-            duration: "10 menit",
-            content: `
-                <div class="flex flex-col items-center gap-6">
-                    <div class="bg-emerald-100 p-8 rounded-3xl border-4 border-emerald-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-emerald-600 block mb-4">A</span>
-                        <span class="text-6xl block">🍎</span>
-                        <p class="text-2xl font-bold text-emerald-800 mt-4 uppercase">Apple</p>
-                    </div>
-                    <div class="bg-amber-100 p-8 rounded-3xl border-4 border-amber-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-amber-600 block mb-4">B</span>
-                        <span class="text-6xl block">🐻</span>
-                        <p class="text-2xl font-bold text-amber-800 mt-4 uppercase">Bear</p>
-                    </div>
-                    <div class="bg-orange-100 p-8 rounded-3xl border-4 border-orange-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-orange-600 block mb-4">C</span>
-                        <span class="text-6xl block">🐱</span>
-                        <p class="text-2xl font-bold text-orange-800 mt-4 uppercase">Cat</p>
-                    </div>
-                    <div class="bg-stone-100 p-8 rounded-3xl border-4 border-stone-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-stone-600 block mb-4">D</span>
-                        <span class="text-6xl block">🐶</span>
-                        <p class="text-2xl font-bold text-stone-800 mt-4 uppercase">Dog</p>
-                    </div>
-                    <div class="bg-blue-100 p-8 rounded-3xl border-4 border-blue-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-blue-600 block mb-4">E</span>
-                        <span class="text-6xl block">🐘</span>
-                        <p class="text-2xl font-bold text-blue-800 mt-4 uppercase">Elephant</p>
-                    </div>
-                </div>
-            `,
-            questions: [
-                { id: "q1", question: "Apple (🍎) starts with the letter...", options: ["A", "B", "C"], correctIndex: 0 },
-                { id: "q2", question: "Bear (🐻) starts with the letter...", options: ["A", "B", "C"], correctIndex: 1 },
-                { id: "q3", question: "Cat (🐱) starts with the letter...", options: ["A", "B", "C"], correctIndex: 2 },
-                { id: "q4", question: "Dog (🐶) starts with the letter...", options: ["D", "E", "A"], correctIndex: 0 },
-                { id: "q5", question: "Elephant (🐘) starts with the letter...", options: ["E", "D", "B"], correctIndex: 0 },
-                { id: "q6", question: "Which letter comes after A?", options: ["B", "C", "D"], correctIndex: 0 },
-                { id: "q7", question: "Which letter comes before E?", options: ["D", "C", "B"], correctIndex: 0 },
-                { id: "q8", question: "What animal starts with C?", options: ["Cat 🐱", "Dog 🐶", "Bear 🐻"], correctIndex: 0 },
-                { id: "q9", question: "What animal starts with D?", options: ["Dog 🐶", "Cat 🐱", "Bear 🐻"], correctIndex: 0 },
-                { id: "q10", question: "What animal starts with E?", options: ["Elephant 🐘", "Bear 🐻", "Dog 🐶"], correctIndex: 0 },
-                { id: "q11", question: "What fruit starts with A?", options: ["Apple 🍎", "Orange 🍊", "Banana 🍌"], correctIndex: 0 },
-                { id: "q12", question: "Find the letter B!", options: ["B", "A", "C"], correctIndex: 0 },
-                { id: "q13", question: "Find the letter D!", options: ["D", "E", "C"], correctIndex: 0 },
-                { id: "q14", question: "Find the letter E!", options: ["E", "A", "B"], correctIndex: 0 },
-                { id: "q15", question: "Which letter comes after D?", options: ["E", "C", "B"], correctIndex: 0 }
+            "id": "eng1_1",
+            "title": "Colors (Warna)",
+            "icon": "🎨",
+            "difficulty": "Mudah",
+            "duration": "10 menit",
+            "content": "<div class='grid grid-cols-2 sm:grid-cols-3 gap-4'><div class='flex flex-col items-center justify-center bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🔴</span><span class='text-2xl font-black text-indigo-700 mb-1'>Red</span><span class='text-base text-indigo-400 font-bold'>Merah</span></div><div class='flex flex-col items-center justify-center bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🔵</span><span class='text-2xl font-black text-indigo-700 mb-1'>Blue</span><span class='text-base text-indigo-400 font-bold'>Biru</span></div><div class='flex flex-col items-center justify-center bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🟢</span><span class='text-2xl font-black text-indigo-700 mb-1'>Green</span><span class='text-base text-indigo-400 font-bold'>Hijau</span></div><div class='flex flex-col items-center justify-center bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🟡</span><span class='text-2xl font-black text-indigo-700 mb-1'>Yellow</span><span class='text-base text-indigo-400 font-bold'>Kuning</span></div><div class='flex flex-col items-center justify-center bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🟠</span><span class='text-2xl font-black text-indigo-700 mb-1'>Orange</span><span class='text-base text-indigo-400 font-bold'>Oranye</span></div><div class='flex flex-col items-center justify-center bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🟣</span><span class='text-2xl font-black text-indigo-700 mb-1'>Purple</span><span class='text-base text-indigo-400 font-bold'>Ungu</span></div><div class='flex flex-col items-center justify-center bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>⬜</span><span class='text-2xl font-black text-indigo-700 mb-1'>White</span><span class='text-base text-indigo-400 font-bold'>Putih</span></div><div class='flex flex-col items-center justify-center bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>⬛</span><span class='text-2xl font-black text-indigo-700 mb-1'>Black</span><span class='text-base text-indigo-400 font-bold'>Hitam</span></div><div class='flex flex-col items-center justify-center bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🩷</span><span class='text-2xl font-black text-indigo-700 mb-1'>Pink</span><span class='text-base text-indigo-400 font-bold'>Merah Muda</span></div><div class='flex flex-col items-center justify-center bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🟫</span><span class='text-2xl font-black text-indigo-700 mb-1'>Brown</span><span class='text-base text-indigo-400 font-bold'>Coklat</span></div></div>",
+            "questions": [
+                {
+                    "id": "q0",
+                    "question": "What is the meaning of 'White'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Ungu",
+                        "Merah",
+                        "Putih"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q1",
+                    "question": "Bahasa Inggris dari 'Hijau' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Purple",
+                        "Green",
+                        "White"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 🟠 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "White",
+                        "Orange",
+                        "Blue"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q3",
+                    "question": "What is the meaning of 'Red'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Hitam",
+                        "Oranye",
+                        "Merah"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q4",
+                    "question": "Bahasa Inggris dari 'Merah Muda' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Green",
+                        "Purple",
+                        "Pink"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q5",
+                    "question": "Gambar 🟡 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Yellow",
+                        "Pink",
+                        "Orange"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "What is the meaning of 'Blue'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Putih",
+                        "Merah Muda",
+                        "Biru"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "Bahasa Inggris dari 'Ungu' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Purple",
+                        "Orange",
+                        "Brown"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "Gambar 🟢 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Green",
+                        "Black",
+                        "Orange"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "What is the meaning of 'Black'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Hitam",
+                        "Hijau",
+                        "Oranye"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "Gambar ⬛ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Purple",
+                        "Red",
+                        "Black"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q11",
+                    "question": "What is the meaning of 'Brown'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Coklat",
+                        "Ungu",
+                        "Biru"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "Bahasa Inggris dari 'Coklat' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Red",
+                        "White",
+                        "Brown"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q13",
+                    "question": "Bahasa Inggris dari 'Oranye' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Orange",
+                        "Brown",
+                        "Yellow"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q14",
+                    "question": "Gambar ⬜ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Purple",
+                        "White",
+                        "Black"
+                    ],
+                    "correctIndex": 1
+                }
             ]
         },
         {
-            id: "eng1_2",
-            title: "Letters F to I",
-            icon: "🅵",
-            difficulty: "Mudah",
-            duration: "10 menit",
-            content: `
-                <div class="flex flex-col items-center gap-6">
-                    <div class="bg-sky-100 p-8 rounded-3xl border-4 border-sky-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-sky-600 block mb-4">F</span>
-                        <span class="text-6xl block">🐸</span>
-                        <p class="text-2xl font-bold text-sky-800 mt-4 uppercase">Frog</p>
-                    </div>
-                    <div class="bg-green-100 p-8 rounded-3xl border-4 border-green-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-green-600 block mb-4">G</span>
-                        <span class="text-6xl block">🦒</span>
-                        <p class="text-2xl font-bold text-green-800 mt-4 uppercase">Giraffe</p>
-                    </div>
-                    <div class="bg-pink-100 p-8 rounded-3xl border-4 border-pink-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-pink-600 block mb-4">H</span>
-                        <span class="text-6xl block">🐎</span>
-                        <p class="text-2xl font-bold text-pink-800 mt-4 uppercase">Horse</p>
-                    </div>
-                    <div class="bg-indigo-100 p-8 rounded-3xl border-4 border-indigo-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-indigo-600 block mb-4">I</span>
-                        <span class="text-6xl block">🍦</span>
-                        <p class="text-2xl font-bold text-indigo-800 mt-4 uppercase">Ice Cream</p>
-                    </div>
-                </div>
-            `,
-            questions: [
-                { id: "q1", question: "Frog (🐸) starts with the letter...", options: ["F", "G", "H"], correctIndex: 0 },
-                { id: "q2", question: "Giraffe (🦒) starts with the letter...", options: ["F", "G", "H"], correctIndex: 1 },
-                { id: "q3", question: "Horse (🐎) starts with the letter...", options: ["H", "G", "F"], correctIndex: 0 },
-                { id: "q4", question: "Ice Cream (🍦) starts with the letter...", options: ["I", "H", "G"], correctIndex: 0 },
-                { id: "q5", question: "Which letter comes after F?", options: ["G", "H", "I"], correctIndex: 0 },
-                { id: "q6", question: "Which letter comes before I?", options: ["H", "G", "F"], correctIndex: 0 },
-                { id: "q7", question: "What animal starts with F?", options: ["Frog 🐸", "Horse 🐎", "Giraffe 🦒"], correctIndex: 0 },
-                { id: "q8", question: "What animal starts with H?", options: ["Horse 🐎", "Frog 🐸", "Giraffe 🦒"], correctIndex: 0 },
-                { id: "q9", question: "What animal starts with G?", options: ["Giraffe 🦒", "Horse 🐎", "Frog 🐸"], correctIndex: 0 },
-                { id: "q10", question: "What sweet treat starts with I?", options: ["Ice Cream 🍦", "Apple 🍎", "Cake 🍰"], correctIndex: 0 },
-                { id: "q11", question: "Find the letter G!", options: ["G", "F", "H"], correctIndex: 0 },
-                { id: "q12", question: "Find the letter I!", options: ["I", "H", "G"], correctIndex: 0 },
-                { id: "q13", question: "Find the letter F!", options: ["F", "I", "G"], correctIndex: 0 },
-                { id: "q14", question: "Which letter comes after G?", options: ["H", "I", "F"], correctIndex: 0 },
-                { id: "q15", question: "Which letter looks like a straight line?", options: ["I", "H", "G"], correctIndex: 0 }
+            "id": "eng1_2",
+            "title": "Numbers 1-10",
+            "icon": "🔢",
+            "difficulty": "Mudah",
+            "duration": "10 menit",
+            "content": "<div class='grid grid-cols-2 sm:grid-cols-3 gap-4'><div class='flex flex-col items-center justify-center bg-emerald-50 border-4 border-emerald-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>1️⃣</span><span class='text-2xl font-black text-emerald-700 mb-1'>One</span><span class='text-base text-emerald-400 font-bold'>Satu</span></div><div class='flex flex-col items-center justify-center bg-emerald-50 border-4 border-emerald-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>2️⃣</span><span class='text-2xl font-black text-emerald-700 mb-1'>Two</span><span class='text-base text-emerald-400 font-bold'>Dua</span></div><div class='flex flex-col items-center justify-center bg-emerald-50 border-4 border-emerald-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>3️⃣</span><span class='text-2xl font-black text-emerald-700 mb-1'>Three</span><span class='text-base text-emerald-400 font-bold'>Tiga</span></div><div class='flex flex-col items-center justify-center bg-emerald-50 border-4 border-emerald-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>4️⃣</span><span class='text-2xl font-black text-emerald-700 mb-1'>Four</span><span class='text-base text-emerald-400 font-bold'>Empat</span></div><div class='flex flex-col items-center justify-center bg-emerald-50 border-4 border-emerald-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>5️⃣</span><span class='text-2xl font-black text-emerald-700 mb-1'>Five</span><span class='text-base text-emerald-400 font-bold'>Lima</span></div><div class='flex flex-col items-center justify-center bg-emerald-50 border-4 border-emerald-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>6️⃣</span><span class='text-2xl font-black text-emerald-700 mb-1'>Six</span><span class='text-base text-emerald-400 font-bold'>Enam</span></div><div class='flex flex-col items-center justify-center bg-emerald-50 border-4 border-emerald-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>7️⃣</span><span class='text-2xl font-black text-emerald-700 mb-1'>Seven</span><span class='text-base text-emerald-400 font-bold'>Tujuh</span></div><div class='flex flex-col items-center justify-center bg-emerald-50 border-4 border-emerald-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>8️⃣</span><span class='text-2xl font-black text-emerald-700 mb-1'>Eight</span><span class='text-base text-emerald-400 font-bold'>Delapan</span></div><div class='flex flex-col items-center justify-center bg-emerald-50 border-4 border-emerald-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>9️⃣</span><span class='text-2xl font-black text-emerald-700 mb-1'>Nine</span><span class='text-base text-emerald-400 font-bold'>Sembilan</span></div><div class='flex flex-col items-center justify-center bg-emerald-50 border-4 border-emerald-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🔟</span><span class='text-2xl font-black text-emerald-700 mb-1'>Ten</span><span class='text-base text-emerald-400 font-bold'>Sepuluh</span></div></div>",
+            "questions": [
+                {
+                    "id": "q0",
+                    "question": "What is the meaning of 'Eight'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Dua",
+                        "Sepuluh",
+                        "Delapan"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q1",
+                    "question": "Bahasa Inggris dari 'Empat' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Ten",
+                        "One",
+                        "Four"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 🔟 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Ten",
+                        "Eight",
+                        "Four"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "What is the meaning of 'Three'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Enam",
+                        "Tiga",
+                        "Lima"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q4",
+                    "question": "Bahasa Inggris dari 'Sembilan' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "One",
+                        "Three",
+                        "Nine"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q5",
+                    "question": "Gambar 2️⃣ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Two",
+                        "One",
+                        "Three"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "What is the meaning of 'Two'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Dua",
+                        "Delapan",
+                        "Tiga"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "Bahasa Inggris dari 'Lima' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Five",
+                        "Nine",
+                        "Three"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "Gambar 9️⃣ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "One",
+                        "Five",
+                        "Nine"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q9",
+                    "question": "What is the meaning of 'Ten'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Sepuluh",
+                        "Lima",
+                        "Delapan"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "Bahasa Inggris dari 'Delapan' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Three",
+                        "Eight",
+                        "One"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "Gambar 6️⃣ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Six",
+                        "Eight",
+                        "Nine"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "What is the meaning of 'Six'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Enam",
+                        "Lima",
+                        "Tujuh"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q13",
+                    "question": "Gambar 1️⃣ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Four",
+                        "Five",
+                        "One"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q14",
+                    "question": "Gambar 4️⃣ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Eight",
+                        "Four",
+                        "Ten"
+                    ],
+                    "correctIndex": 1
+                }
             ]
         },
         {
-            id: "eng1_3",
-            title: "Letters J to M",
-            icon: "🇯",
-            difficulty: "Mudah",
-            duration: "10 menit",
-            content: `
-                <div class="flex flex-col items-center gap-6">
-                    <div class="bg-rose-100 p-8 rounded-3xl border-4 border-rose-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-rose-600 block mb-4">J</span>
-                        <span class="text-6xl block">🍹</span>
-                        <p class="text-2xl font-bold text-rose-800 mt-4 uppercase">Juice</p>
-                    </div>
-                    <div class="bg-yellow-100 p-8 rounded-3xl border-4 border-yellow-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-yellow-600 block mb-4">K</span>
-                        <span class="text-6xl block">🪁</span>
-                        <p class="text-2xl font-bold text-yellow-800 mt-4 uppercase">Kite</p>
-                    </div>
-                    <div class="bg-fuchsia-100 p-8 rounded-3xl border-4 border-fuchsia-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-fuchsia-600 block mb-4">L</span>
-                        <span class="text-6xl block">🦁</span>
-                        <p class="text-2xl font-bold text-fuchsia-800 mt-4 uppercase">Lion</p>
-                    </div>
-                    <div class="bg-amber-100 p-8 rounded-3xl border-4 border-amber-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-amber-600 block mb-4">M</span>
-                        <span class="text-6xl block">🐒</span>
-                        <p class="text-2xl font-bold text-amber-800 mt-4 uppercase">Monkey</p>
-                    </div>
-                </div>
-            `,
-            questions: [
-                { id: "q1", question: "Juice (🍹) starts with the letter...", options: ["J", "K", "L"], correctIndex: 0 },
-                { id: "q2", question: "Kite (🪁) starts with the letter...", options: ["K", "J", "L"], correctIndex: 0 },
-                { id: "q3", question: "Lion (🦁) starts with the letter...", options: ["L", "M", "K"], correctIndex: 0 },
-                { id: "q4", question: "Monkey (🐒) starts with the letter...", options: ["M", "L", "K"], correctIndex: 0 },
-                { id: "q5", question: "Which letter comes after J?", options: ["K", "L", "M"], correctIndex: 0 },
-                { id: "q6", question: "Which letter comes before M?", options: ["L", "K", "J"], correctIndex: 0 },
-                { id: "q7", question: "What animal starts with L?", options: ["Lion 🦁", "Monkey 🐒", "Cat 🐱"], correctIndex: 0 },
-                { id: "q8", question: "What animal starts with M?", options: ["Monkey 🐒", "Lion 🦁", "Bear 🐻"], correctIndex: 0 },
-                { id: "q9", question: "What drink starts with J?", options: ["Juice 🍹", "Milk 🥛", "Water 💧"], correctIndex: 0 },
-                { id: "q10", question: "What toy starts with K?", options: ["Kite 🪁", "Car 🚗", "Ball ⚽"], correctIndex: 0 },
-                { id: "q11", question: "Find the letter K!", options: ["K", "L", "M"], correctIndex: 0 },
-                { id: "q12", question: "Find the letter L!", options: ["L", "J", "K"], correctIndex: 0 },
-                { id: "q13", question: "Find the letter M!", options: ["M", "L", "K"], correctIndex: 0 },
-                { id: "q14", question: "Find the letter J!", options: ["J", "M", "L"], correctIndex: 0 },
-                { id: "q15", question: "Which letter comes after L?", options: ["M", "K", "J"], correctIndex: 0 }
+            "id": "eng1_3",
+            "title": "Colors & Numbers Mixed",
+            "icon": "🏆",
+            "difficulty": "Sedang",
+            "duration": "10 menit",
+            "content": "<div class='grid grid-cols-2 sm:grid-cols-3 gap-4'><div class='flex flex-col items-center justify-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🔴</span><span class='text-2xl font-black text-pink-700 mb-1'>Red</span><span class='text-base text-pink-400 font-bold'>Merah</span></div><div class='flex flex-col items-center justify-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🔵</span><span class='text-2xl font-black text-pink-700 mb-1'>Blue</span><span class='text-base text-pink-400 font-bold'>Biru</span></div><div class='flex flex-col items-center justify-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🟢</span><span class='text-2xl font-black text-pink-700 mb-1'>Green</span><span class='text-base text-pink-400 font-bold'>Hijau</span></div><div class='flex flex-col items-center justify-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🟡</span><span class='text-2xl font-black text-pink-700 mb-1'>Yellow</span><span class='text-base text-pink-400 font-bold'>Kuning</span></div><div class='flex flex-col items-center justify-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>🟠</span><span class='text-2xl font-black text-pink-700 mb-1'>Orange</span><span class='text-base text-pink-400 font-bold'>Oranye</span></div><div class='flex flex-col items-center justify-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>1️⃣</span><span class='text-2xl font-black text-pink-700 mb-1'>One</span><span class='text-base text-pink-400 font-bold'>Satu</span></div><div class='flex flex-col items-center justify-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>2️⃣</span><span class='text-2xl font-black text-pink-700 mb-1'>Two</span><span class='text-base text-pink-400 font-bold'>Dua</span></div><div class='flex flex-col items-center justify-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>3️⃣</span><span class='text-2xl font-black text-pink-700 mb-1'>Three</span><span class='text-base text-pink-400 font-bold'>Tiga</span></div><div class='flex flex-col items-center justify-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>4️⃣</span><span class='text-2xl font-black text-pink-700 mb-1'>Four</span><span class='text-base text-pink-400 font-bold'>Empat</span></div><div class='flex flex-col items-center justify-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform cursor-default' style='min-height:160px'><span class='text-7xl mb-3 block'>5️⃣</span><span class='text-2xl font-black text-pink-700 mb-1'>Five</span><span class='text-base text-pink-400 font-bold'>Lima</span></div></div>",
+            "questions": [
+                {
+                    "id": "q0",
+                    "question": "What is the meaning of 'Blue'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Biru",
+                        "Satu",
+                        "Putih"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "Bahasa Inggris dari 'Oranye' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Orange",
+                        "Purple",
+                        "Pink"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 1️⃣ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Green",
+                        "Four",
+                        "One"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q3",
+                    "question": "What is the meaning of 'Red'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Coklat",
+                        "Merah",
+                        "Delapan"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q4",
+                    "question": "Bahasa Inggris dari 'Hijau' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Green",
+                        "Blue",
+                        "Two"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "Gambar 5️⃣ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Yellow",
+                        "Orange",
+                        "Five"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q6",
+                    "question": "What is the meaning of 'One'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Satu",
+                        "Putih",
+                        "Hitam"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "Bahasa Inggris dari 'Kuning' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Three",
+                        "Yellow",
+                        "Four"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q8",
+                    "question": "Gambar 🟠 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Purple",
+                        "Orange",
+                        "Pink"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q9",
+                    "question": "What is the meaning of 'Two'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Hijau",
+                        "Lima",
+                        "Dua"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q10",
+                    "question": "Bahasa Inggris dari 'Biru' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Orange",
+                        "Blue",
+                        "Six"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "Gambar 🟡 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Four",
+                        "Yellow",
+                        "Pink"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q12",
+                    "question": "Bahasa Inggris dari 'Merah' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Brown",
+                        "Red",
+                        "Nine"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q13",
+                    "question": "Gambar 4️⃣ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Four",
+                        "Eight",
+                        "Two"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q14",
+                    "question": "Gambar 3️⃣ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Yellow",
+                        "Three",
+                        "Purple"
+                    ],
+                    "correctIndex": 1
+                }
             ]
         }
     ]

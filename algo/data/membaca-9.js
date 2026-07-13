@@ -1,487 +1,487 @@
 window.membaca9 = {
     "id": "membaca-9",
-    "title": "Level 9: Jenis Teks",
-    "badge": "Kelas 4",
-    "icon": "\ud83d\udcda",
-    "description": "Narasi, Deskripsi",
+    "title": "Level 9: Jenis-Jenis Teks",
+    "badge": "Kelas 4-5",
+    "icon": "📑",
+    "description": "Jenis-Jenis Teks",
     "lessons": [
         {
             "id": "mb9_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udcd6",
-            "difficulty": "Sedang",
+            "icon": "📑",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Jenis Teks - Bagian 1</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-1 sm:grid-cols-2 gap-4'><div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'><h3 class='font-black text-blue-600 text-lg mb-2'>📖 Narasi</h3><p class='text-slate-600'>Menceritakan urutan peristiwa. Ada tokoh, alur, dan latar. <i>Contoh: Dongeng, cerpen</i></p></div><div class='bg-emerald-50 border-4 border-emerald-200 rounded-2xl p-5'><h3 class='font-black text-emerald-600 text-lg mb-2'>🎨 Deskripsi</h3><p class='text-slate-600'>Menggambarkan suatu objek secara detail. <i>Contoh: Mendeskripsikan suasana alam</i></p></div><div class='bg-orange-50 border-4 border-orange-200 rounded-2xl p-5'><h3 class='font-black text-orange-600 text-lg mb-2'>💡 Eksposisi</h3><p class='text-slate-600'>Memaparkan informasi atau pengetahuan. <i>Contoh: Artikel, ensiklopedia</i></p></div><div class='bg-pink-50 border-4 border-pink-200 rounded-2xl p-5'><h3 class='font-black text-pink-600 text-lg mb-2'>🗣️ Persuasi</h3><p class='text-slate-600'>Mengajak atau membujuk pembaca. <i>Contoh: Iklan, poster ajakan</i></p></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Teks narasi bertujuan untuk...",
                     "options": [
-                        "Sita",
-                        "Ibu",
-                        "Adik"
+                        "Menceritakan urutan peristiwa",
+                        "Menjelaskan cara kerja",
+                        "Mengajak pembaca"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Dongeng termasuk jenis teks...",
                     "options": [
-                        "Budi",
-                        "Ibu",
-                        "Paman"
+                        "Narasi",
+                        "Deskripsi",
+                        "Eksposisi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Teks deskripsi bertujuan untuk...",
                     "options": [
-                        "Nenek",
-                        "Kucing",
-                        "Ayah"
+                        "Menggambarkan objek secara detail",
+                        "Menceritakan cerita",
+                        "Mengajak pembaca"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Kalimat: 'Kucing tidur di kursi'. Kata pertamanya adalah...",
+                    "question": "Artikel ilmiah termasuk jenis teks...",
                     "options": [
-                        "Kucing",
-                        "Nenek",
-                        "Burung"
+                        "Eksposisi",
+                        "Narasi",
+                        "Persuasi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Kalimat: 'Ani suka buah apel'. Kata pertamanya adalah...",
+                    "question": "Iklan termasuk jenis teks...",
                     "options": [
-                        "Adik",
-                        "Sita",
-                        "Ani"
+                        "Persuasi",
+                        "Narasi",
+                        "Deskripsi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "Teks yang mengajak pembaca disebut...",
                     "options": [
-                        "Rudi",
-                        "Ikan",
-                        "Burung"
+                        "Persuasi",
+                        "Eksposisi",
+                        "Narasi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Kalimat: 'Sita beli buku baru'. Kata pertamanya adalah...",
+                    "question": "'Bunga mawar itu berwarna merah dengan kelopak halus.' Ini contoh teks...",
                     "options": [
-                        "Sita",
-                        "Kucing",
-                        "Paman"
+                        "Deskripsi",
+                        "Narasi",
+                        "Persuasi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "'Pada suatu hari, Budi pergi ke hutan.' Ini teks...",
                     "options": [
-                        "Nenek",
-                        "Ikan",
-                        "Kucing"
+                        "Narasi",
+                        "Deskripsi",
+                        "Eksposisi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "'Ayo hemat listrik demi masa depan!' Ini teks...",
                     "options": [
-                        "Paman",
-                        "Ibu",
-                        "Budi"
+                        "Persuasi",
+                        "Narasi",
+                        "Deskripsi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "Unsur utama teks narasi adalah...",
                     "options": [
-                        "Sita",
-                        "Budi",
-                        "Burung"
+                        "Tokoh, alur, latar",
+                        "Fakta dan data",
+                        "Ajakan dan bujukan"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Ensiklopedia termasuk jenis teks...",
                     "options": [
-                        "Burung",
-                        "Budi",
-                        "Tikus"
+                        "Eksposisi",
+                        "Narasi",
+                        "Deskripsi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Kalimat: 'Kucing tidur di kursi'. Kata pertamanya adalah...",
+                    "question": "Poster 'Jangan Buang Sampah Sembarangan!' termasuk...",
                     "options": [
-                        "Paman",
-                        "Sita",
-                        "Kucing"
+                        "Persuasi",
+                        "Narasi",
+                        "Eksposisi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Kalimat: 'Sita beli buku baru'. Kata pertamanya adalah...",
+                    "question": "Cerpen adalah singkatan dari...",
                     "options": [
-                        "Ibu",
-                        "Tikus",
-                        "Sita"
+                        "Cerita Pendek",
+                        "Cerita Penting",
+                        "Cerita Pengantar"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Ciri teks deskripsi adalah...",
                     "options": [
-                        "Kucing",
-                        "Nenek",
-                        "Burung"
+                        "Banyak kata sifat dan perbandingan",
+                        "Banyak kata kerja",
+                        "Banyak angka dan data"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "'Gula itu manis dan berwarna putih.' Ini teks...",
                     "options": [
-                        "Ani",
-                        "Ikan",
-                        "Nenek"
+                        "Deskripsi",
+                        "Narasi",
+                        "Persuasi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mb9_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udcd6",
+            "icon": "📑",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Jenis Teks - Bagian 2</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-1 sm:grid-cols-2 gap-4'><div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'><h3 class='font-black text-blue-600 text-lg mb-2'>📖 Narasi</h3><p class='text-slate-600'>Menceritakan urutan peristiwa. Ada tokoh, alur, dan latar. <i>Contoh: Dongeng, cerpen</i></p></div><div class='bg-emerald-50 border-4 border-emerald-200 rounded-2xl p-5'><h3 class='font-black text-emerald-600 text-lg mb-2'>🎨 Deskripsi</h3><p class='text-slate-600'>Menggambarkan suatu objek secara detail. <i>Contoh: Mendeskripsikan suasana alam</i></p></div><div class='bg-orange-50 border-4 border-orange-200 rounded-2xl p-5'><h3 class='font-black text-orange-600 text-lg mb-2'>💡 Eksposisi</h3><p class='text-slate-600'>Memaparkan informasi atau pengetahuan. <i>Contoh: Artikel, ensiklopedia</i></p></div><div class='bg-pink-50 border-4 border-pink-200 rounded-2xl p-5'><h3 class='font-black text-pink-600 text-lg mb-2'>🗣️ Persuasi</h3><p class='text-slate-600'>Mengajak atau membujuk pembaca. <i>Contoh: Iklan, poster ajakan</i></p></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Teks narasi bertujuan untuk...",
                     "options": [
-                        "Burung",
-                        "Paman",
-                        "Sita"
+                        "Menceritakan urutan peristiwa",
+                        "Menjelaskan cara kerja",
+                        "Mengajak pembaca"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Kalimat: 'Ani suka buah apel'. Kata pertamanya adalah...",
+                    "question": "Dongeng termasuk jenis teks...",
                     "options": [
-                        "Tikus",
-                        "Adik",
-                        "Ani"
+                        "Narasi",
+                        "Deskripsi",
+                        "Eksposisi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Kalimat: 'Kucing tidur di kursi'. Kata pertamanya adalah...",
+                    "question": "Teks deskripsi bertujuan untuk...",
                     "options": [
-                        "Kucing",
-                        "Sita",
-                        "Budi"
+                        "Menggambarkan objek secara detail",
+                        "Menceritakan cerita",
+                        "Mengajak pembaca"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Artikel ilmiah termasuk jenis teks...",
                     "options": [
-                        "Kakek",
-                        "Paman",
-                        "Ibu"
+                        "Eksposisi",
+                        "Narasi",
+                        "Persuasi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Iklan termasuk jenis teks...",
                     "options": [
-                        "Burung",
-                        "Budi",
-                        "Tikus"
+                        "Persuasi",
+                        "Narasi",
+                        "Deskripsi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "Teks yang mengajak pembaca disebut...",
                     "options": [
-                        "Ayah",
-                        "Ikan",
-                        "Nenek"
+                        "Persuasi",
+                        "Eksposisi",
+                        "Narasi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Kalimat: 'Ani suka buah apel'. Kata pertamanya adalah...",
+                    "question": "'Bunga mawar itu berwarna merah dengan kelopak halus.' Ini contoh teks...",
                     "options": [
-                        "Tikus",
-                        "Budi",
-                        "Ani"
+                        "Deskripsi",
+                        "Narasi",
+                        "Persuasi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "'Pada suatu hari, Budi pergi ke hutan.' Ini teks...",
                     "options": [
-                        "Ayah",
-                        "Adik",
-                        "Sita"
+                        "Narasi",
+                        "Deskripsi",
+                        "Eksposisi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Kalimat: 'Ani suka buah apel'. Kata pertamanya adalah...",
+                    "question": "'Ayo hemat listrik demi masa depan!' Ini teks...",
                     "options": [
-                        "Nenek",
-                        "Paman",
-                        "Ani"
+                        "Persuasi",
+                        "Narasi",
+                        "Deskripsi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "Unsur utama teks narasi adalah...",
                     "options": [
-                        "Ibu",
-                        "Rudi",
-                        "Tikus"
+                        "Tokoh, alur, latar",
+                        "Fakta dan data",
+                        "Ajakan dan bujukan"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "Ensiklopedia termasuk jenis teks...",
                     "options": [
-                        "Burung",
-                        "Sita",
-                        "Budi"
+                        "Eksposisi",
+                        "Narasi",
+                        "Deskripsi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Poster 'Jangan Buang Sampah Sembarangan!' termasuk...",
                     "options": [
-                        "Ibu",
-                        "Rudi",
-                        "Ayah"
+                        "Persuasi",
+                        "Narasi",
+                        "Eksposisi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Cerpen adalah singkatan dari...",
                     "options": [
-                        "Burung",
-                        "Ani",
-                        "Nenek"
+                        "Cerita Pendek",
+                        "Cerita Penting",
+                        "Cerita Pengantar"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "Ciri teks deskripsi adalah...",
                     "options": [
-                        "Ayah",
-                        "Ikan",
-                        "Paman"
+                        "Banyak kata sifat dan perbandingan",
+                        "Banyak kata kerja",
+                        "Banyak angka dan data"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "'Gula itu manis dan berwarna putih.' Ini teks...",
                     "options": [
-                        "Burung",
-                        "Sita",
-                        "Adik"
+                        "Deskripsi",
+                        "Narasi",
+                        "Persuasi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mb9_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udcd6",
-            "difficulty": "Sedang",
+            "icon": "📑",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Jenis Teks - Bagian 3</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-1 sm:grid-cols-2 gap-4'><div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'><h3 class='font-black text-blue-600 text-lg mb-2'>📖 Narasi</h3><p class='text-slate-600'>Menceritakan urutan peristiwa. Ada tokoh, alur, dan latar. <i>Contoh: Dongeng, cerpen</i></p></div><div class='bg-emerald-50 border-4 border-emerald-200 rounded-2xl p-5'><h3 class='font-black text-emerald-600 text-lg mb-2'>🎨 Deskripsi</h3><p class='text-slate-600'>Menggambarkan suatu objek secara detail. <i>Contoh: Mendeskripsikan suasana alam</i></p></div><div class='bg-orange-50 border-4 border-orange-200 rounded-2xl p-5'><h3 class='font-black text-orange-600 text-lg mb-2'>💡 Eksposisi</h3><p class='text-slate-600'>Memaparkan informasi atau pengetahuan. <i>Contoh: Artikel, ensiklopedia</i></p></div><div class='bg-pink-50 border-4 border-pink-200 rounded-2xl p-5'><h3 class='font-black text-pink-600 text-lg mb-2'>🗣️ Persuasi</h3><p class='text-slate-600'>Mengajak atau membujuk pembaca. <i>Contoh: Iklan, poster ajakan</i></p></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Teks narasi bertujuan untuk...",
                     "options": [
-                        "Nenek",
-                        "Ayah",
-                        "Ibu"
+                        "Menceritakan urutan peristiwa",
+                        "Menjelaskan cara kerja",
+                        "Mengajak pembaca"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Kalimat: 'Sita beli buku baru'. Kata pertamanya adalah...",
+                    "question": "Dongeng termasuk jenis teks...",
                     "options": [
-                        "Sita",
-                        "Ikan",
-                        "Kakek"
+                        "Narasi",
+                        "Deskripsi",
+                        "Eksposisi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Kalimat: 'Kucing tidur di kursi'. Kata pertamanya adalah...",
+                    "question": "Teks deskripsi bertujuan untuk...",
                     "options": [
-                        "Paman",
-                        "Kucing",
-                        "Ibu"
+                        "Menggambarkan objek secara detail",
+                        "Menceritakan cerita",
+                        "Mengajak pembaca"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "Artikel ilmiah termasuk jenis teks...",
                     "options": [
-                        "Budi",
-                        "Ayah",
-                        "Sita"
+                        "Eksposisi",
+                        "Narasi",
+                        "Persuasi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Kalimat: 'Kucing tidur di kursi'. Kata pertamanya adalah...",
+                    "question": "Iklan termasuk jenis teks...",
                     "options": [
-                        "Tikus",
-                        "Kucing",
-                        "Budi"
+                        "Persuasi",
+                        "Narasi",
+                        "Deskripsi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Kalimat: 'Sita beli buku baru'. Kata pertamanya adalah...",
+                    "question": "Teks yang mengajak pembaca disebut...",
                     "options": [
-                        "Sita",
-                        "Rudi",
-                        "Burung"
+                        "Persuasi",
+                        "Eksposisi",
+                        "Narasi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "'Bunga mawar itu berwarna merah dengan kelopak halus.' Ini contoh teks...",
                     "options": [
-                        "Adik",
-                        "Ikan",
-                        "Sita"
+                        "Deskripsi",
+                        "Narasi",
+                        "Persuasi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "'Pada suatu hari, Budi pergi ke hutan.' Ini teks...",
                     "options": [
-                        "Kakek",
-                        "Burung",
-                        "Ayah"
+                        "Narasi",
+                        "Deskripsi",
+                        "Eksposisi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "'Ayo hemat listrik demi masa depan!' Ini teks...",
                     "options": [
-                        "Ani",
-                        "Tikus",
-                        "Ibu"
+                        "Persuasi",
+                        "Narasi",
+                        "Deskripsi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Kalimat: 'Sita beli buku baru'. Kata pertamanya adalah...",
+                    "question": "Unsur utama teks narasi adalah...",
                     "options": [
-                        "Sita",
-                        "Rudi",
-                        "Ibu"
+                        "Tokoh, alur, latar",
+                        "Fakta dan data",
+                        "Ajakan dan bujukan"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Ensiklopedia termasuk jenis teks...",
                     "options": [
-                        "Kucing",
-                        "Ayah",
-                        "Kakek"
+                        "Eksposisi",
+                        "Narasi",
+                        "Deskripsi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Kalimat: 'Ani suka buah apel'. Kata pertamanya adalah...",
+                    "question": "Poster 'Jangan Buang Sampah Sembarangan!' termasuk...",
                     "options": [
-                        "Paman",
-                        "Burung",
-                        "Ani"
+                        "Persuasi",
+                        "Narasi",
+                        "Eksposisi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "Cerpen adalah singkatan dari...",
                     "options": [
-                        "Burung",
-                        "Budi",
-                        "Rudi"
+                        "Cerita Pendek",
+                        "Cerita Penting",
+                        "Cerita Pengantar"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "Ciri teks deskripsi adalah...",
                     "options": [
-                        "Budi",
-                        "Ikan",
-                        "Paman"
+                        "Banyak kata sifat dan perbandingan",
+                        "Banyak kata kerja",
+                        "Banyak angka dan data"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Kalimat: 'Sita beli buku baru'. Kata pertamanya adalah...",
+                    "question": "'Gula itu manis dan berwarna putih.' Ini teks...",
                     "options": [
-                        "Kucing",
-                        "Sita",
-                        "Nenek"
+                        "Deskripsi",
+                        "Narasi",
+                        "Persuasi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         }

@@ -1,325 +1,185 @@
 window.english14 = {
     "id": "english-14",
-    "title": "Level 14: Adjectives",
+    "title": "Level 14: Present Tense",
     "badge": "Kelas 4",
-    "icon": "\ud83c\udf0d",
-    "description": "Big, Small, Beautiful",
+    "icon": "📝",
+    "description": "Present Tense",
     "lessons": [
         {
             "id": "eng14_1",
             "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "📝",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Adjectives - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎮</span><span class='font-black text-emerald-700 text-base'>I play</span><span class='text-emerald-400 text-xs font-bold'>Saya bermain</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎮</span><span class='font-black text-emerald-700 text-base'>She plays</span><span class='text-emerald-400 text-xs font-bold'>Dia bermain</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍽️</span><span class='font-black text-emerald-700 text-base'>He eats</span><span class='text-emerald-400 text-xs font-bold'>Dia makan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍽️</span><span class='font-black text-emerald-700 text-base'>They eat</span><span class='text-emerald-400 text-xs font-bold'>Mereka makan</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>He/She/It + verb + S or ES | I/You/We/They + base verb (tanpa S)</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Walk'?",
+                    "question": "What is the meaning of 'She plays'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Jalan",
-                        "Lari",
-                        "Minum"
+                        "Dia bermain",
+                        "Mereka tinggal di Jakarta",
+                        "Saya bermain"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Minum'?",
+                    "question": "Bahasa Inggris dari 'Dia makan' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Run",
-                        "Read",
-                        "Drink"
+                        "He eats",
+                        "It runs",
+                        "They live in Jakarta"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Lari'?",
+                    "question": "Gambar 🍽️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Eat",
-                        "Run",
-                        "Walk"
+                        "They eat",
+                        "He eats",
+                        "We love music"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Walk'?",
+                    "question": "What is the meaning of 'He eats'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Makan",
-                        "Tidur",
-                        "Jalan"
+                        "Dia makan",
+                        "Mereka makan",
+                        "Saya bermain"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "What is the meaning of 'Read'?",
+                    "question": "Bahasa Inggris dari 'Mereka makan' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Minum",
-                        "Membaca",
-                        "Jalan"
+                        "It runs",
+                        "They eat",
+                        "I go to school"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q5",
-                    "question": "What is the meaning of 'Eat'?",
+                    "question": "Gambar 🎮 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Lari",
-                        "Makan",
-                        "Jalan"
+                        "He eats",
+                        "I play",
+                        "They live in Jakarta"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Makan'?",
+                    "question": "What is the meaning of 'I play'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Eat",
-                        "Walk",
-                        "Read"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Jalan'?",
-                    "options": [
-                        "Sleep",
-                        "Read",
-                        "Walk"
+                        "Dia bekerja",
+                        "Saya bangun pagi",
+                        "Saya bermain"
                     ],
                     "correctIndex": 2
-                },
-                {
-                    "id": "q8",
-                    "question": "What is the meaning of 'Walk'?",
-                    "options": [
-                        "Jalan",
-                        "Tidur",
-                        "Minum"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Membaca'?",
-                    "options": [
-                        "Walk",
-                        "Run",
-                        "Read"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
-                    "options": [
-                        "Sleep",
-                        "Drink",
-                        "Read"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
-                    "options": [
-                        "Sleep",
-                        "Walk",
-                        "Run"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q12",
-                    "question": "What is the meaning of 'Walk'?",
-                    "options": [
-                        "Lari",
-                        "Jalan",
-                        "Membaca"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Lari'?",
-                    "options": [
-                        "Run",
-                        "Eat",
-                        "Sleep"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Membaca'?",
-                    "options": [
-                        "Run",
-                        "Read",
-                        "Walk"
-                    ],
-                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "eng14_2",
             "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "icon": "📝",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Adjectives - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📚</span><span class='font-black text-emerald-700 text-base'>We study</span><span class='text-emerald-400 text-xs font-bold'>Kami belajar</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📚</span><span class='font-black text-emerald-700 text-base'>She studies</span><span class='text-emerald-400 text-xs font-bold'>Dia belajar</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💼</span><span class='font-black text-emerald-700 text-base'>He works</span><span class='text-emerald-400 text-xs font-bold'>Dia bekerja</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🏫</span><span class='font-black text-emerald-700 text-base'>I go to school</span><span class='text-emerald-400 text-xs font-bold'>Saya pergi ke sekolah</span></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Jalan'?",
+                    "question": "What is the meaning of 'I go to school'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Walk",
-                        "Eat",
-                        "Read"
+                        "Dia pergi ke sekolah",
+                        "Dia bekerja",
+                        "Saya pergi ke sekolah"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
+                    "question": "Bahasa Inggris dari 'Dia bekerja' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Sleep",
-                        "Run",
-                        "Read"
+                        "They live in Jakarta",
+                        "She studies",
+                        "He works"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Makan'?",
+                    "question": "Gambar 📚 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Walk",
-                        "Eat",
-                        "Run"
+                        "She goes to school",
+                        "She studies",
+                        "He reads"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Drink'?",
+                    "question": "Bahasa Inggris dari 'Dia belajar' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Minum",
-                        "Membaca",
-                        "Jalan"
+                        "They eat",
+                        "We love music",
+                        "She studies"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "What is the meaning of 'Drink'?",
+                    "question": "Gambar 🏫 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Membaca",
-                        "Minum",
-                        "Makan"
+                        "They eat",
+                        "She plays",
+                        "I go to school"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Membaca'?",
+                    "question": "What is the meaning of 'She studies'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Sleep",
-                        "Read",
-                        "Walk"
+                        "Dia bermain",
+                        "Dia belajar",
+                        "Itu berlari"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
+                    "question": "Bahasa Inggris dari 'Kami belajar' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Sleep",
-                        "Read",
-                        "Drink"
+                        "We study",
+                        "She goes to school",
+                        "He eats"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "What is the meaning of 'Read'?",
+                    "question": "What is the meaning of 'We study'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Jalan",
-                        "Membaca",
-                        "Lari"
+                        "Saya pergi ke sekolah",
+                        "Dia makan",
+                        "Kami belajar"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Lari'?",
+                    "question": "Gambar 💼 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Run",
-                        "Read",
-                        "Walk"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Lari'?",
-                    "options": [
-                        "Eat",
-                        "Walk",
-                        "Run"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Eat'?",
-                    "options": [
-                        "Makan",
-                        "Lari",
-                        "Membaca"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Minum'?",
-                    "options": [
-                        "Drink",
-                        "Sleep",
-                        "Walk"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Makan'?",
-                    "options": [
-                        "Sleep",
-                        "Read",
-                        "Eat"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Run'?",
-                    "options": [
-                        "Membaca",
-                        "Minum",
-                        "Lari"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q14",
-                    "question": "What is the meaning of 'Read'?",
-                    "options": [
-                        "Lari",
-                        "Membaca",
-                        "Minum"
+                        "He eats",
+                        "He works",
+                        "They live in Jakarta"
                     ],
                     "correctIndex": 1
                 }
@@ -328,160 +188,150 @@ window.english14 = {
         {
             "id": "eng14_3",
             "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "📝",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Adjectives - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🏫</span><span class='font-black text-emerald-700 text-base'>She goes to school</span><span class='text-emerald-400 text-xs font-bold'>Dia pergi ke sekolah</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🏙️</span><span class='font-black text-emerald-700 text-base'>They live in Jakarta</span><span class='text-emerald-400 text-xs font-bold'>Mereka tinggal di Jakarta</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🏃</span><span class='font-black text-emerald-700 text-base'>It runs</span><span class='text-emerald-400 text-xs font-bold'>Itu berlari</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎵</span><span class='font-black text-emerald-700 text-base'>We love music</span><span class='text-emerald-400 text-xs font-bold'>Kami suka musik</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📖</span><span class='font-black text-emerald-700 text-base'>He reads</span><span class='text-emerald-400 text-xs font-bold'>Dia membaca</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>⏰</span><span class='font-black text-emerald-700 text-base'>I wake up early</span><span class='text-emerald-400 text-xs font-bold'>Saya bangun pagi</span></div></div></div>",
             "questions": [
                 {
-                    "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
-                    "options": [
-                        "Leg",
-                        "Nose",
-                        "Head"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q1",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Telinga",
-                        "Hidung",
-                        "Tangan"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
-                    "options": [
-                        "Eye",
-                        "Ear",
-                        "Nose"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
-                    "options": [
-                        "Leg",
-                        "Hand",
-                        "Head"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
+                    "question": "We ___ (study) English every day.",
                     "options": [
-                        "Nose",
-                        "Ear",
-                        "Head"
+                        "study",
+                        "studies",
+                        "studying"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
+                    "question": "She ___ (study) English every day.",
                     "options": [
-                        "Nose",
-                        "Ear",
-                        "Head"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
-                    "options": [
-                        "Nose",
-                        "Eye",
-                        "Ear"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
-                    "options": [
-                        "Ear",
-                        "Eye",
-                        "Nose"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Tangan'?",
-                    "options": [
-                        "Head",
-                        "Hand",
-                        "Ear"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Ear'?",
-                    "options": [
-                        "Tangan",
-                        "Mata",
-                        "Telinga"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Hand'?",
-                    "options": [
-                        "Telinga",
-                        "Tangan",
-                        "Kepala"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Leg'?",
-                    "options": [
-                        "Kepala",
-                        "Kaki",
-                        "Hidung"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
-                    "options": [
-                        "Leg",
-                        "Ear",
-                        "Eye"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
-                    "options": [
-                        "Eye",
-                        "Leg",
-                        "Head"
+                        "studies",
+                        "study",
+                        "studying"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Kaki'?",
+                    "id": "q2",
+                    "question": "He ___ (eat) rice for lunch.",
                     "options": [
-                        "Eye",
-                        "Ear",
-                        "Leg"
+                        "eats",
+                        "eat",
+                        "eating"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "She ___ (play) football every Sunday.",
+                    "options": [
+                        "plays",
+                        "play",
+                        "playing"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q13",
+                    "question": "Which sentence is CORRECT?",
+                    "options": [
+                        "I wake up early.",
+                        "I wakes up early.",
+                        "I waking up early."
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "He ___ (go) to school by bus.",
+                    "options": [
+                        "goes",
+                        "go",
+                        "going"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "The rule: He/She/It + verb + ___",
+                    "options": [
+                        "s or es",
+                        "ing",
+                        "ed"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "'Dia (L) belajar bahasa Inggris.' In English:",
+                    "options": [
+                        "He studies English.",
+                        "He study English.",
+                        "He studying English."
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "'Kami tinggal di Jakarta.' In English:",
+                    "options": [
+                        "We live in Jakarta.",
+                        "We lives in Jakarta.",
+                        "We living Jakarta."
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "I ___ (go) to school by bus.",
+                    "options": [
+                        "go",
+                        "goes",
+                        "going"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "They ___ (eat) rice for lunch.",
+                    "options": [
+                        "eat",
+                        "eats",
+                        "eating"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "Choose the correct form:",
+                    "options": [
+                        "She reads books.",
+                        "She read books.",
+                        "She reading books."
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "It ___ (run) very fast.",
+                    "options": [
+                        "runs",
+                        "run",
+                        "running"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q0",
+                    "question": "I ___ (play) football every Sunday.",
+                    "options": [
+                        "play",
+                        "plays",
+                        "playing"
+                    ],
+                    "correctIndex": 0
                 }
             ]
         }

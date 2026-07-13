@@ -1,487 +1,487 @@
 window.english5 = {
     "id": "english-5",
-    "title": "Level 5: Colors & Shapes",
+    "title": "Level 5: Food & Drinks",
     "badge": "Kelas 1",
-    "icon": "\ud83c\udf0d",
-    "description": "Red, Blue, Circle, Square",
+    "icon": "🍽️",
+    "description": "Learn names of food and drinks in English.",
     "lessons": [
         {
             "id": "eng5_1",
-            "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
-            "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Colors & Shapes - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "title": "Food (Makanan)",
+            "icon": "🍽️",
+            "difficulty": "Mudah",
+            "duration": "12 menit",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍚</span><span class='font-black text-emerald-700 text-base'>Rice</span><span class='text-emerald-400 text-xs font-bold'>Nasi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍞</span><span class='font-black text-emerald-700 text-base'>Bread</span><span class='text-emerald-400 text-xs font-bold'>Roti</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥚</span><span class='font-black text-emerald-700 text-base'>Egg</span><span class='text-emerald-400 text-xs font-bold'>Telur</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥛</span><span class='font-black text-emerald-700 text-base'>Milk</span><span class='text-emerald-400 text-xs font-bold'>Susu</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💧</span><span class='font-black text-emerald-700 text-base'>Water</span><span class='text-emerald-400 text-xs font-bold'>Air</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥤</span><span class='font-black text-emerald-700 text-base'>Juice</span><span class='text-emerald-400 text-xs font-bold'>Jus</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎂</span><span class='font-black text-emerald-700 text-base'>Cake</span><span class='text-emerald-400 text-xs font-bold'>Kue</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍲</span><span class='font-black text-emerald-700 text-base'>Soup</span><span class='text-emerald-400 text-xs font-bold'>Sup</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>I eat... every day. (Saya makan... setiap hari.)</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Gajah'?",
+                    "question": "What is the meaning of 'Milk'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Bird",
-                        "Fish",
-                        "Elephant"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Harimau'?",
-                    "options": [
-                        "Tiger",
-                        "Bird",
-                        "Cat"
+                        "Susu",
+                        "Ayam",
+                        "Jus"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "id": "q1",
+                    "question": "Bahasa Inggris dari 'Air' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Cat",
-                        "Bird",
-                        "Fish"
+                        "Ice Cream",
+                        "Bread",
+                        "Water"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 🍲 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Soup",
+                        "Chicken",
+                        "Cookie"
+                    ],
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Dog'?",
+                    "question": "What is the meaning of 'Water'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Ikan",
-                        "Kucing",
-                        "Anjing"
+                        "Susu",
+                        "Kue",
+                        "Air"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "What is the meaning of 'Bird'?",
+                    "question": "Bahasa Inggris dari 'Sup' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Anjing",
-                        "Burung",
-                        "Harimau"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q5",
-                    "question": "What is the meaning of 'Bird'?",
-                    "options": [
-                        "Burung",
-                        "Anjing",
-                        "Harimau"
+                        "Soup",
+                        "Pizza",
+                        "Juice"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
+                    "id": "q5",
+                    "question": "Gambar 🍚 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Fish",
-                        "Dog",
-                        "Bird"
+                        "Soup",
+                        "Juice",
+                        "Rice"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q6",
+                    "question": "What is the meaning of 'Cake'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Kue",
+                        "Telur",
+                        "Pizza"
+                    ],
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "What is the meaning of 'Cat'?",
+                    "question": "Gambar 🎂 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Kucing",
-                        "Ikan",
-                        "Burung"
+                        "Cake",
+                        "Juice",
+                        "Bread"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "What is the meaning of 'Bird'?",
+                    "question": "What is the meaning of 'Rice'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Burung",
-                        "Anjing",
-                        "Gajah"
+                        "Biskuit",
+                        "Jus",
+                        "Nasi"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q9",
+                    "question": "Bahasa Inggris dari 'Kue' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Cake",
+                        "Sandwich",
+                        "Cookie"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Dog'?",
-                    "options": [
-                        "Ikan",
-                        "Anjing",
-                        "Burung"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q10",
-                    "question": "What is the meaning of 'Cat'?",
+                    "question": "Gambar 🥤 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Gajah",
-                        "Burung",
-                        "Kucing"
+                        "Juice",
+                        "Water",
+                        "Ice Cream"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "Bahasa Inggris dari 'Telur' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Tiger",
-                        "Dog",
-                        "Bird"
+                        "Egg",
+                        "Milk",
+                        "Pizza"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "Gambar 🥚 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Cat",
-                        "Dog",
-                        "Bird"
+                        "Egg",
+                        "Cookie",
+                        "Bread"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "What is the meaning of 'Bird'?",
+                    "question": "Bahasa Inggris dari 'Roti' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Kucing",
-                        "Ikan",
-                        "Burung"
+                        "Soup",
+                        "Cookie",
+                        "Bread"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
+                    "question": "What is the meaning of 'Bread'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Tiger",
-                        "Dog",
-                        "Cat"
+                        "Roti",
+                        "Jus",
+                        "Biskuit"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "eng5_2",
-            "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
-            "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Colors & Shapes - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "title": "Drinks (Minuman)",
+            "icon": "🥤",
+            "difficulty": "Mudah",
+            "duration": "12 menit",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥛</span><span class='font-black text-emerald-700 text-base'>Milk</span><span class='text-emerald-400 text-xs font-bold'>Susu</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💧</span><span class='font-black text-emerald-700 text-base'>Water</span><span class='text-emerald-400 text-xs font-bold'>Air</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥤</span><span class='font-black text-emerald-700 text-base'>Juice</span><span class='text-emerald-400 text-xs font-bold'>Jus</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎂</span><span class='font-black text-emerald-700 text-base'>Cake</span><span class='text-emerald-400 text-xs font-bold'>Kue</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍲</span><span class='font-black text-emerald-700 text-base'>Soup</span><span class='text-emerald-400 text-xs font-bold'>Sup</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍜</span><span class='font-black text-emerald-700 text-base'>Noodle</span><span class='text-emerald-400 text-xs font-bold'>Mie</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍪</span><span class='font-black text-emerald-700 text-base'>Cookie</span><span class='text-emerald-400 text-xs font-bold'>Biskuit</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>I drink... (Saya minum...) / I am thirsty. (Saya haus.)</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Red'?",
+                    "question": "What is the meaning of 'Water'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Kuning",
-                        "Merah",
-                        "Biru"
+                        "Air",
+                        "Susu",
+                        "Kue"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "What is the meaning of 'Green'?",
+                    "question": "Bahasa Inggris dari 'Biskuit' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Biru",
-                        "Hitam",
-                        "Hijau"
+                        "Cake",
+                        "Egg",
+                        "Cookie"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Merah'?",
+                    "question": "Gambar 🎂 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Yellow",
-                        "Red",
-                        "Black"
+                        "Pizza",
+                        "Cake",
+                        "Juice"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Kuning'?",
+                    "question": "What is the meaning of 'Juice'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Black",
-                        "Green",
-                        "Yellow"
+                        "Pizza",
+                        "Es Krim",
+                        "Jus"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Hijau'?",
+                    "question": "Bahasa Inggris dari 'Susu' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Green",
-                        "Blue",
-                        "Black"
+                        "Cake",
+                        "Cookie",
+                        "Milk"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Hijau'?",
+                    "question": "Gambar 🥛 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Blue",
-                        "Black",
-                        "Green"
+                        "Chicken",
+                        "Egg",
+                        "Milk"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Hitam'?",
+                    "question": "What is the meaning of 'Soup'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Black",
-                        "Yellow",
-                        "Green"
+                        "Es Krim",
+                        "Air",
+                        "Sup"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "What is the meaning of 'Red'?",
+                    "question": "Bahasa Inggris dari 'Mie' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Hitam",
-                        "Putih",
-                        "Merah"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Putih'?",
-                    "options": [
-                        "Green",
-                        "Yellow",
-                        "White"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Yellow'?",
-                    "options": [
-                        "Kuning",
-                        "Hitam",
-                        "Hijau"
+                        "Noodle",
+                        "Bread",
+                        "Ice Cream"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Kuning'?",
+                    "id": "q8",
+                    "question": "What is the meaning of 'Noodle'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Black",
-                        "Yellow",
-                        "Blue"
+                        "Jus",
+                        "Mie",
+                        "Pizza"
                     ],
                     "correctIndex": 1
+                },
+                {
+                    "id": "q9",
+                    "question": "Bahasa Inggris dari 'Sup' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Water",
+                        "Noodle",
+                        "Soup"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q10",
+                    "question": "Gambar 💧 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Juice",
+                        "Ice Cream",
+                        "Water"
+                    ],
+                    "correctIndex": 2
                 },
                 {
                     "id": "q11",
-                    "question": "What is the meaning of 'Yellow'?",
+                    "question": "What is the meaning of 'Cake'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Biru",
-                        "Hijau",
-                        "Kuning"
+                        "Kue",
+                        "Biskuit",
+                        "Air"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "What is the meaning of 'White'?",
+                    "question": "Bahasa Inggris dari 'Kue' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Hitam",
-                        "Putih",
-                        "Biru"
+                        "Cake",
+                        "Rice",
+                        "Noodle"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Kuning'?",
+                    "question": "What is the meaning of 'Cookie'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Blue",
-                        "Yellow",
-                        "Red"
+                        "Biskuit",
+                        "Roti Lapis",
+                        "Kue"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Merah'?",
+                    "question": "Bahasa Inggris dari 'Jus' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Yellow",
-                        "Blue",
-                        "Red"
+                        "Sandwich",
+                        "Juice",
+                        "Chicken"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "eng5_3",
-            "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "title": "Food & Drinks Mixed",
+            "icon": "🏆",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Colors & Shapes - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍚</span><span class='font-black text-emerald-700 text-base'>Rice</span><span class='text-emerald-400 text-xs font-bold'>Nasi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍞</span><span class='font-black text-emerald-700 text-base'>Bread</span><span class='text-emerald-400 text-xs font-bold'>Roti</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥚</span><span class='font-black text-emerald-700 text-base'>Egg</span><span class='text-emerald-400 text-xs font-bold'>Telur</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥛</span><span class='font-black text-emerald-700 text-base'>Milk</span><span class='text-emerald-400 text-xs font-bold'>Susu</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💧</span><span class='font-black text-emerald-700 text-base'>Water</span><span class='text-emerald-400 text-xs font-bold'>Air</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥤</span><span class='font-black text-emerald-700 text-base'>Juice</span><span class='text-emerald-400 text-xs font-bold'>Jus</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎂</span><span class='font-black text-emerald-700 text-base'>Cake</span><span class='text-emerald-400 text-xs font-bold'>Kue</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍲</span><span class='font-black text-emerald-700 text-base'>Soup</span><span class='text-emerald-400 text-xs font-bold'>Sup</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍜</span><span class='font-black text-emerald-700 text-base'>Noodle</span><span class='text-emerald-400 text-xs font-bold'>Mie</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍪</span><span class='font-black text-emerald-700 text-base'>Cookie</span><span class='text-emerald-400 text-xs font-bold'>Biskuit</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍗</span><span class='font-black text-emerald-700 text-base'>Chicken</span><span class='text-emerald-400 text-xs font-bold'>Ayam</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍦</span><span class='font-black text-emerald-700 text-base'>Ice Cream</span><span class='text-emerald-400 text-xs font-bold'>Es Krim</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍕</span><span class='font-black text-emerald-700 text-base'>Pizza</span><span class='text-emerald-400 text-xs font-bold'>Pizza</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥪</span><span class='font-black text-emerald-700 text-base'>Sandwich</span><span class='text-emerald-400 text-xs font-bold'>Roti Lapis</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>I am hungry! / I am thirsty! (Saya lapar! / Saya haus!)</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Blue'?",
+                    "question": "What is the meaning of 'Rice'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Hijau",
-                        "Hitam",
-                        "Biru"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Putih'?",
-                    "options": [
-                        "Black",
-                        "White",
-                        "Yellow"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Hitam'?",
-                    "options": [
-                        "Blue",
-                        "Black",
-                        "Red"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q3",
-                    "question": "What is the meaning of 'Green'?",
-                    "options": [
-                        "Hijau",
-                        "Merah",
-                        "Hitam"
+                        "Nasi",
+                        "Mie",
+                        "Susu"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Biru'?",
+                    "id": "q1",
+                    "question": "Bahasa Inggris dari 'Roti' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Yellow",
-                        "Red",
-                        "Blue"
+                        "Noodle",
+                        "Milk",
+                        "Bread"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 🍗 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Chicken",
+                        "Water",
+                        "Ice Cream"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "What is the meaning of 'Cake'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Roti",
+                        "Kue",
+                        "Susu"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q4",
+                    "question": "Bahasa Inggris dari 'Jus' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Water",
+                        "Rice",
+                        "Juice"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "What is the meaning of 'Black'?",
+                    "question": "Gambar 🍪 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Hijau",
-                        "Biru",
-                        "Hitam"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q6",
-                    "question": "What is the meaning of 'White'?",
-                    "options": [
-                        "Putih",
-                        "Biru",
-                        "Hijau"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q7",
-                    "question": "What is the meaning of 'Red'?",
-                    "options": [
-                        "Putih",
-                        "Merah",
-                        "Hijau"
+                        "Bread",
+                        "Cookie",
+                        "Chicken"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Biru'?",
+                    "id": "q6",
+                    "question": "What is the meaning of 'Pizza'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Blue",
-                        "Black",
-                        "Red"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'White'?",
-                    "options": [
-                        "Kuning",
-                        "Merah",
-                        "Putih"
+                        "Telur",
+                        "Roti",
+                        "Pizza"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Hijau'?",
+                    "id": "q7",
+                    "question": "Bahasa Inggris dari 'Pizza' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Blue",
-                        "Green",
-                        "Red"
+                        "Soup",
+                        "Cookie",
+                        "Pizza"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q8",
+                    "question": "Gambar 🍦 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Noodle",
+                        "Ice Cream",
+                        "Cake"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q9",
+                    "question": "What is the meaning of 'Egg'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Telur",
+                        "Es Krim",
+                        "Biskuit"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "Bahasa Inggris dari 'Mie' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Bread",
+                        "Noodle",
+                        "Juice"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Biru'?",
+                    "question": "What is the meaning of 'Bread'? 🇬🇧→🇮🇩",
                     "options": [
-                        "White",
-                        "Blue",
-                        "Red"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Merah'?",
-                    "options": [
-                        "Red",
-                        "Green",
-                        "Blue"
+                        "Roti",
+                        "Kue",
+                        "Ayam"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Hijau'?",
+                    "id": "q12",
+                    "question": "Bahasa Inggris dari 'Air' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Green",
-                        "Red",
-                        "Yellow"
+                        "Noodle",
+                        "Pizza",
+                        "Water"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q13",
+                    "question": "Gambar 💧 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Water",
+                        "Ice Cream",
+                        "Cake"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "What is the meaning of 'White'?",
+                    "question": "What is the meaning of 'Chicken'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Putih",
-                        "Hitam",
-                        "Biru"
+                        "Es Krim",
+                        "Susu",
+                        "Ayam"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 }
             ]
         }

@@ -1,165 +1,165 @@
 window.english4 = {
     "id": "english-4",
-    "title": "Level 4: Numbers 1-20",
-    "badge": "TK",
-    "icon": "\ud83c\udf0d",
-    "description": "One, Two, Three... Twenty",
+    "title": "Level 4: Fruits & Vegetables",
+    "badge": "Kelas 1",
+    "icon": "🍎",
+    "description": "Learn names of fruits and vegetables in English.",
     "lessons": [
         {
             "id": "eng4_1",
-            "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
-            "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Numbers 1-20 - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "title": "Fruits (Buah-buahan)",
+            "icon": "🍎",
+            "difficulty": "Mudah",
+            "duration": "12 menit",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍎</span><span class='font-black text-emerald-700 text-base'>Apple</span><span class='text-emerald-400 text-xs font-bold'>Apel</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍌</span><span class='font-black text-emerald-700 text-base'>Banana</span><span class='text-emerald-400 text-xs font-bold'>Pisang</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍊</span><span class='font-black text-emerald-700 text-base'>Orange</span><span class='text-emerald-400 text-xs font-bold'>Jeruk</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍇</span><span class='font-black text-emerald-700 text-base'>Grape</span><span class='text-emerald-400 text-xs font-bold'>Anggur</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥭</span><span class='font-black text-emerald-700 text-base'>Mango</span><span class='text-emerald-400 text-xs font-bold'>Mangga</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥕</span><span class='font-black text-emerald-700 text-base'>Carrot</span><span class='text-emerald-400 text-xs font-bold'>Wortel</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍅</span><span class='font-black text-emerald-700 text-base'>Tomato</span><span class='text-emerald-400 text-xs font-bold'>Tomat</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Fruits are usually sweet! Example: Apple is sweet, Lemon is sour.</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
+                    "question": "What is the meaning of 'Apple'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Tiger",
-                        "Bird",
-                        "Cat"
+                        "Jagung",
+                        "Bayam",
+                        "Apel"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "What is the meaning of 'Bird'?",
+                    "question": "Bahasa Inggris dari 'Apel' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Burung",
-                        "Kucing",
-                        "Harimau"
+                        "Orange",
+                        "Apple",
+                        "Strawberry"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 🍅 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Carrot",
+                        "Banana",
+                        "Tomato"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q3",
+                    "question": "What is the meaning of 'Mango'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Mangga",
+                        "Nanas",
+                        "Stroberi"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q2",
-                    "question": "What is the meaning of 'Cat'?",
-                    "options": [
-                        "Anjing",
-                        "Kucing",
-                        "Burung"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Harimau'?",
-                    "options": [
-                        "Bird",
-                        "Tiger",
-                        "Dog"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q4",
-                    "question": "What is the meaning of 'Dog'?",
+                    "question": "Bahasa Inggris dari 'Anggur' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Gajah",
-                        "Burung",
-                        "Anjing"
+                        "Watermelon",
+                        "Spinach",
+                        "Grape"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
+                    "question": "Gambar 🍌 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Fish",
-                        "Cat",
-                        "Bird"
+                        "Banana",
+                        "Grape",
+                        "Pineapple"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "What is the meaning of 'Tiger'?",
+                    "question": "Bahasa Inggris dari 'Pisang' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Harimau",
-                        "Gajah",
-                        "Kucing"
+                        "Banana",
+                        "Grape",
+                        "Mango"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
+                    "question": "Gambar 🍊 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Bird",
-                        "Elephant",
-                        "Dog"
+                        "Potato",
+                        "Apple",
+                        "Orange"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Ikan'?",
+                    "question": "What is the meaning of 'Grape'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Fish",
-                        "Tiger",
-                        "Dog"
+                        "Anggur",
+                        "Wortel",
+                        "Jeruk"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Ikan'?",
+                    "question": "Bahasa Inggris dari 'Jeruk' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Tiger",
-                        "Cat",
-                        "Fish"
+                        "Watermelon",
+                        "Orange",
+                        "Grape"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q10",
-                    "question": "What is the meaning of 'Bird'?",
+                    "question": "What is the meaning of 'Carrot'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Anjing",
-                        "Kucing",
-                        "Burung"
+                        "Wortel",
+                        "Semangka",
+                        "Jeruk"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Harimau'?",
+                    "question": "Bahasa Inggris dari 'Mangga' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Tiger",
-                        "Fish",
-                        "Bird"
+                        "Mango",
+                        "Spinach",
+                        "Banana"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "Gambar 🍇 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Dog",
-                        "Cat",
-                        "Bird"
+                        "Strawberry",
+                        "Pineapple",
+                        "Grape"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "What is the meaning of 'Elephant'?",
+                    "question": "What is the meaning of 'Tomato'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Gajah",
-                        "Ikan",
-                        "Burung"
+                        "Nanas",
+                        "Wortel",
+                        "Tomat"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
+                    "question": "Bahasa Inggris dari 'Wortel' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Dog",
-                        "Cat",
-                        "Fish"
+                        "Apple",
+                        "Carrot",
+                        "Spinach"
                     ],
                     "correctIndex": 1
                 }
@@ -167,319 +167,319 @@ window.english4 = {
         },
         {
             "id": "eng4_2",
-            "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
-            "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Numbers 1-20 - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "title": "Vegetables (Sayuran)",
+            "icon": "🥕",
+            "difficulty": "Mudah",
+            "duration": "12 menit",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥕</span><span class='font-black text-emerald-700 text-base'>Carrot</span><span class='text-emerald-400 text-xs font-bold'>Wortel</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍅</span><span class='font-black text-emerald-700 text-base'>Tomato</span><span class='text-emerald-400 text-xs font-bold'>Tomat</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌽</span><span class='font-black text-emerald-700 text-base'>Corn</span><span class='text-emerald-400 text-xs font-bold'>Jagung</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥔</span><span class='font-black text-emerald-700 text-base'>Potato</span><span class='text-emerald-400 text-xs font-bold'>Kentang</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍓</span><span class='font-black text-emerald-700 text-base'>Strawberry</span><span class='text-emerald-400 text-xs font-bold'>Stroberi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍉</span><span class='font-black text-emerald-700 text-base'>Watermelon</span><span class='text-emerald-400 text-xs font-bold'>Semangka</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍍</span><span class='font-black text-emerald-700 text-base'>Pineapple</span><span class='text-emerald-400 text-xs font-bold'>Nanas</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥬</span><span class='font-black text-emerald-700 text-base'>Spinach</span><span class='text-emerald-400 text-xs font-bold'>Bayam</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥒</span><span class='font-black text-emerald-700 text-base'>Cucumber</span><span class='text-emerald-400 text-xs font-bold'>Mentimun</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Vegetables are good for your health! Eat them every day.</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Black'?",
+                    "question": "What is the meaning of 'Pineapple'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Hitam",
-                        "Kuning",
-                        "Hijau"
+                        "Pisang",
+                        "Nanas",
+                        "Anggur"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Biru'?",
+                    "question": "Bahasa Inggris dari 'Semangka' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Blue",
-                        "Yellow",
-                        "White"
+                        "Apple",
+                        "Carrot",
+                        "Watermelon"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "What is the meaning of 'Red'?",
+                    "question": "Gambar 🥒 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Merah",
-                        "Putih",
-                        "Hitam"
+                        "Cucumber",
+                        "Mango",
+                        "Orange"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Biru'?",
+                    "question": "What is the meaning of 'Potato'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Green",
-                        "Blue",
-                        "White"
+                        "Kentang",
+                        "Stroberi",
+                        "Tomat"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "What is the meaning of 'Red'?",
+                    "question": "Bahasa Inggris dari 'Tomat' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Hitam",
-                        "Kuning",
-                        "Merah"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Hijau'?",
-                    "options": [
-                        "Red",
-                        "Blue",
-                        "Green"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Merah'?",
-                    "options": [
-                        "Black",
-                        "Red",
-                        "Green"
+                        "Potato",
+                        "Tomato",
+                        "Cucumber"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q7",
-                    "question": "What is the meaning of 'Green'?",
+                    "id": "q5",
+                    "question": "Gambar 🌽 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Hijau",
-                        "Hitam",
-                        "Kuning"
+                        "Banana",
+                        "Corn",
+                        "Orange"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q6",
+                    "question": "What is the meaning of 'Carrot'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Pisang",
+                        "Kentang",
+                        "Wortel"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "Bahasa Inggris dari 'Mentimun' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Cucumber",
+                        "Tomato",
+                        "Banana"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "What is the meaning of 'White'?",
+                    "question": "Gambar 🥔 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Putih",
-                        "Biru",
-                        "Hijau"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Putih'?",
-                    "options": [
-                        "Yellow",
-                        "Black",
-                        "White"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'White'?",
-                    "options": [
-                        "Merah",
-                        "Putih",
-                        "Hitam"
+                        "Grape",
+                        "Potato",
+                        "Pineapple"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Yellow'?",
+                    "id": "q9",
+                    "question": "Bahasa Inggris dari 'Kentang' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Biru",
-                        "Putih",
-                        "Kuning"
+                        "Banana",
+                        "Potato",
+                        "Spinach"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q10",
+                    "question": "Gambar 🍍 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Pineapple",
+                        "Grape",
+                        "Cucumber"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "What is the meaning of 'Spinach'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Wortel",
+                        "Mentimun",
+                        "Bayam"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Hijau'?",
+                    "question": "Gambar 🍓 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Blue",
-                        "Yellow",
-                        "Green"
+                        "Potato",
+                        "Strawberry",
+                        "Orange"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q13",
+                    "question": "What is the meaning of 'Strawberry'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Apel",
+                        "Jeruk",
+                        "Stroberi"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Blue'?",
-                    "options": [
-                        "Biru",
-                        "Kuning",
-                        "Hijau"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Kuning'?",
+                    "question": "Bahasa Inggris dari 'Stroberi' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Blue",
-                        "Yellow",
-                        "Red"
+                        "Cucumber",
+                        "Pineapple",
+                        "Strawberry"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 }
             ]
         },
         {
             "id": "eng4_3",
-            "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "title": "Fruits & Veggies Mixed",
+            "icon": "🏆",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Numbers 1-20 - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍎</span><span class='font-black text-emerald-700 text-base'>Apple</span><span class='text-emerald-400 text-xs font-bold'>Apel</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍌</span><span class='font-black text-emerald-700 text-base'>Banana</span><span class='text-emerald-400 text-xs font-bold'>Pisang</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍊</span><span class='font-black text-emerald-700 text-base'>Orange</span><span class='text-emerald-400 text-xs font-bold'>Jeruk</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍇</span><span class='font-black text-emerald-700 text-base'>Grape</span><span class='text-emerald-400 text-xs font-bold'>Anggur</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥭</span><span class='font-black text-emerald-700 text-base'>Mango</span><span class='text-emerald-400 text-xs font-bold'>Mangga</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥕</span><span class='font-black text-emerald-700 text-base'>Carrot</span><span class='text-emerald-400 text-xs font-bold'>Wortel</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍅</span><span class='font-black text-emerald-700 text-base'>Tomato</span><span class='text-emerald-400 text-xs font-bold'>Tomat</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌽</span><span class='font-black text-emerald-700 text-base'>Corn</span><span class='text-emerald-400 text-xs font-bold'>Jagung</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥔</span><span class='font-black text-emerald-700 text-base'>Potato</span><span class='text-emerald-400 text-xs font-bold'>Kentang</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍓</span><span class='font-black text-emerald-700 text-base'>Strawberry</span><span class='text-emerald-400 text-xs font-bold'>Stroberi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍉</span><span class='font-black text-emerald-700 text-base'>Watermelon</span><span class='text-emerald-400 text-xs font-bold'>Semangka</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍍</span><span class='font-black text-emerald-700 text-base'>Pineapple</span><span class='text-emerald-400 text-xs font-bold'>Nanas</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥬</span><span class='font-black text-emerald-700 text-base'>Spinach</span><span class='text-emerald-400 text-xs font-bold'>Bayam</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥒</span><span class='font-black text-emerald-700 text-base'>Cucumber</span><span class='text-emerald-400 text-xs font-bold'>Mentimun</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>I like... / I don't like... (suka / tidak suka)</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Green'?",
+                    "question": "What is the meaning of 'Orange'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Hijau",
-                        "Merah",
-                        "Hitam"
+                        "Pisang",
+                        "Nanas",
+                        "Jeruk"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q1",
+                    "question": "Bahasa Inggris dari 'Wortel' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Pineapple",
+                        "Grape",
+                        "Carrot"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 🍎 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Apple",
+                        "Banana",
+                        "Pineapple"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q1",
-                    "question": "What is the meaning of 'Red'?",
-                    "options": [
-                        "Kuning",
-                        "Merah",
-                        "Hijau"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "What is the meaning of 'White'?",
-                    "options": [
-                        "Merah",
-                        "Putih",
-                        "Hitam"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Putih'?",
+                    "question": "What is the meaning of 'Cucumber'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Red",
-                        "White",
-                        "Blue"
+                        "Stroberi",
+                        "Mentimun",
+                        "Apel"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "What is the meaning of 'Blue'?",
+                    "question": "Bahasa Inggris dari 'Jagung' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Merah",
-                        "Putih",
-                        "Biru"
+                        "Corn",
+                        "Mango",
+                        "Pineapple"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "What is the meaning of 'Black'?",
+                    "question": "Gambar 🥕 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Putih",
-                        "Hitam",
-                        "Hijau"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q6",
-                    "question": "What is the meaning of 'Yellow'?",
-                    "options": [
-                        "Hijau",
-                        "Kuning",
-                        "Hitam"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Biru'?",
-                    "options": [
-                        "Red",
-                        "White",
-                        "Blue"
+                        "Grape",
+                        "Watermelon",
+                        "Carrot"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q8",
-                    "question": "What is the meaning of 'Red'?",
+                    "id": "q6",
+                    "question": "What is the meaning of 'Tomato'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Hitam",
-                        "Kuning",
-                        "Merah"
+                        "Tomat",
+                        "Mentimun",
+                        "Anggur"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "Gambar 🍉 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Potato",
+                        "Watermelon",
+                        "Spinach"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q8",
+                    "question": "What is the meaning of 'Banana'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Bayam",
+                        "Nanas",
+                        "Pisang"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "What is the meaning of 'White'?",
+                    "question": "Bahasa Inggris dari 'Anggur' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Kuning",
-                        "Putih",
-                        "Hitam"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Black'?",
-                    "options": [
-                        "Hitam",
-                        "Merah",
-                        "Putih"
+                        "Grape",
+                        "Orange",
+                        "Apple"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Yellow'?",
+                    "id": "q10",
+                    "question": "Gambar 🌽 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Hijau",
-                        "Kuning",
-                        "Hitam"
+                        "Strawberry",
+                        "Corn",
+                        "Cucumber"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q12",
-                    "question": "What is the meaning of 'White'?",
+                    "id": "q11",
+                    "question": "Bahasa Inggris dari 'Tomat' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Hitam",
-                        "Putih",
-                        "Biru"
+                        "Cucumber",
+                        "Strawberry",
+                        "Tomato"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q12",
+                    "question": "Gambar 🥔 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Strawberry",
+                        "Potato",
+                        "Pineapple"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q13",
-                    "question": "What is the meaning of 'Red'?",
+                    "question": "What is the meaning of 'Watermelon'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Merah",
-                        "Hijau",
-                        "Biru"
+                        "Kentang",
+                        "Semangka",
+                        "Nanas"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "What is the meaning of 'Blue'?",
+                    "question": "Bahasa Inggris dari 'Nanas' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Hijau",
-                        "Biru",
-                        "Putih"
+                        "Orange",
+                        "Pineapple",
+                        "Corn"
                     ],
                     "correctIndex": 1
                 }

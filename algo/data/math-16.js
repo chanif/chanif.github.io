@@ -2,164 +2,164 @@ window.math16 = {
     "id": "math-16",
     "title": "Level 16: Persen",
     "badge": "Kelas 4-5",
-    "icon": "\ud83e\uddee",
-    "description": "50%, diskon",
+    "icon": "💯",
+    "description": "Persen",
     "lessons": [
         {
             "id": "mth16_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "💯",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Persen - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Mengenal Persen</h3>\n        <p class='text-slate-700 text-lg'>Persen (%) berarti per-seratus. 50% = 50/100 = 0.5.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>50% dari 100 = 50</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>100 × 50/100 = 50</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>25% dari 200 = 50</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>200 × 25/100 = 50</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>10% dari 80 = 8</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>80 × 10/100 = 8</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Cara cepat: 10% = bagi 10, 50% = bagi 2, 25% = bagi 4</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 43 + 61?",
+                    "question": "20% dari 50 adalah...",
                     "options": [
-                        "99",
-                        "104",
-                        "105"
+                        "15",
+                        "5",
+                        "10"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 53 - 50?",
+                    "question": "75% dari 50 adalah...",
                     "options": [
-                        "1",
-                        "7",
-                        "3"
+                        "32",
+                        "42",
+                        "37"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 65 - 38?",
+                    "question": "20% dari 20 adalah...",
                     "options": [
-                        "27",
-                        "23",
-                        "29"
+                        "4",
+                        "0",
+                        "9"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 62 - 45?",
+                    "question": "50% dari 100 adalah...",
                     "options": [
-                        "17",
-                        "19",
-                        "13"
+                        "50",
+                        "55",
+                        "45"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 97 - 96?",
+                    "question": "10% dari 200 adalah...",
                     "options": [
-                        "-1",
-                        "1",
-                        "3"
+                        "25",
+                        "20",
+                        "15"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 28 - 25?",
+                    "question": "10% dari 20 adalah...",
                     "options": [
-                        "3",
-                        "-1",
-                        "4"
+                        "0",
+                        "2",
+                        "7"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 89 + 57?",
+                    "question": "20% dari 100 adalah...",
                     "options": [
-                        "142",
-                        "146",
-                        "151"
+                        "25",
+                        "20",
+                        "15"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 32 + 63?",
+                    "question": "75% dari 200 adalah...",
                     "options": [
-                        "95",
-                        "99",
-                        "90"
+                        "145",
+                        "155",
+                        "150"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 95 - 63?",
+                    "question": "10% dari 10 adalah...",
                     "options": [
-                        "35",
-                        "30",
-                        "32"
+                        "6",
+                        "0",
+                        "1"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 64 - 59?",
+                    "question": "50% dari 10 adalah...",
                     "options": [
                         "5",
-                        "3",
-                        "7"
+                        "10",
+                        "0"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 22 + 44?",
+                    "question": "20% dari 200 adalah...",
                     "options": [
-                        "65",
-                        "66",
-                        "67"
+                        "35",
+                        "45",
+                        "40"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 99 - 75?",
+                    "question": "25% dari 10 adalah...",
                     "options": [
-                        "23",
-                        "27",
-                        "24"
+                        "0",
+                        "7",
+                        "2"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 92 - 46?",
+                    "question": "75% dari 10 adalah...",
                     "options": [
-                        "42",
-                        "49",
-                        "46"
+                        "12",
+                        "2",
+                        "7"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 76 - 46?",
+                    "question": "25% dari 50 adalah...",
                     "options": [
-                        "30",
-                        "27",
-                        "33"
+                        "12",
+                        "17",
+                        "7"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 90 - 32?",
+                    "question": "25% dari 200 adalah...",
                     "options": [
-                        "62",
-                        "58",
-                        "56"
+                        "45",
+                        "50",
+                        "55"
                     ],
                     "correctIndex": 1
                 }
@@ -168,318 +168,318 @@ window.math16 = {
         {
             "id": "mth16_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "💯",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Persen - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Mengenal Persen</h3>\n        <p class='text-slate-700 text-lg'>Persen (%) berarti per-seratus. 50% = 50/100 = 0.5.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>50% dari 100 = 50</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>100 × 50/100 = 50</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>25% dari 200 = 50</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>200 × 25/100 = 50</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>10% dari 80 = 8</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>80 × 10/100 = 8</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Cara cepat: 10% = bagi 10, 50% = bagi 2, 25% = bagi 4</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 41 - 20?",
+                    "question": "20% dari 50 adalah...",
                     "options": [
-                        "21",
-                        "24",
-                        "16"
+                        "15",
+                        "5",
+                        "10"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 63 - 17?",
+                    "question": "75% dari 50 adalah...",
                     "options": [
-                        "48",
-                        "46",
-                        "44"
+                        "32",
+                        "42",
+                        "37"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 42 + 98?",
+                    "question": "20% dari 20 adalah...",
                     "options": [
-                        "138",
-                        "142",
-                        "140"
+                        "4",
+                        "0",
+                        "9"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 92 - 50?",
+                    "question": "50% dari 100 adalah...",
                     "options": [
-                        "44",
-                        "42",
-                        "40"
+                        "50",
+                        "55",
+                        "45"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 85 - 66?",
+                    "question": "10% dari 200 adalah...",
                     "options": [
-                        "15",
-                        "22",
-                        "19"
+                        "25",
+                        "20",
+                        "15"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 41 + 60?",
+                    "question": "10% dari 20 adalah...",
                     "options": [
-                        "101",
-                        "102",
-                        "96"
+                        "0",
+                        "2",
+                        "7"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 94 - 63?",
+                    "question": "20% dari 100 adalah...",
                     "options": [
-                        "28",
-                        "35",
-                        "31"
+                        "25",
+                        "20",
+                        "15"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 90 + 70?",
+                    "question": "75% dari 200 adalah...",
                     "options": [
-                        "160",
-                        "163",
-                        "155"
+                        "145",
+                        "155",
+                        "150"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 64 + 94?",
+                    "question": "10% dari 10 adalah...",
                     "options": [
-                        "158",
-                        "154",
-                        "161"
+                        "6",
+                        "0",
+                        "1"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 67 + 76?",
+                    "question": "50% dari 10 adalah...",
                     "options": [
-                        "140",
-                        "143",
-                        "144"
+                        "5",
+                        "10",
+                        "0"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 91 + 26?",
+                    "question": "20% dari 200 adalah...",
                     "options": [
-                        "117",
-                        "121",
-                        "114"
+                        "35",
+                        "45",
+                        "40"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 89 - 80?",
+                    "question": "25% dari 10 adalah...",
                     "options": [
-                        "4",
-                        "9",
-                        "13"
+                        "0",
+                        "7",
+                        "2"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 66 + 24?",
+                    "question": "75% dari 10 adalah...",
                     "options": [
-                        "90",
-                        "93",
-                        "89"
+                        "12",
+                        "2",
+                        "7"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q13",
+                    "question": "25% dari 50 adalah...",
+                    "options": [
+                        "12",
+                        "17",
+                        "7"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 87 - 59?",
-                    "options": [
-                        "31",
-                        "26",
-                        "28"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q14",
-                    "question": "Berapa hasil dari 28 - 16?",
+                    "question": "25% dari 200 adalah...",
                     "options": [
-                        "11",
-                        "17",
-                        "12"
+                        "45",
+                        "50",
+                        "55"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "mth16_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "💯",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Persen - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Mengenal Persen</h3>\n        <p class='text-slate-700 text-lg'>Persen (%) berarti per-seratus. 50% = 50/100 = 0.5.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>50% dari 100 = 50</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>100 × 50/100 = 50</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>25% dari 200 = 50</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>200 × 25/100 = 50</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>10% dari 80 = 8</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>80 × 10/100 = 8</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Cara cepat: 10% = bagi 10, 50% = bagi 2, 25% = bagi 4</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 59 + 74?",
+                    "question": "20% dari 50 adalah...",
                     "options": [
-                        "137",
-                        "133",
-                        "129"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q1",
-                    "question": "Berapa hasil dari 99 + 39?",
-                    "options": [
-                        "135",
-                        "138",
-                        "141"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 26 + 62?",
-                    "options": [
-                        "83",
-                        "88",
-                        "89"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 38 + 27?",
-                    "options": [
-                        "68",
-                        "61",
-                        "65"
+                        "15",
+                        "5",
+                        "10"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 85 - 21?",
+                    "id": "q1",
+                    "question": "75% dari 50 adalah...",
                     "options": [
-                        "64",
-                        "63",
-                        "68"
+                        "32",
+                        "42",
+                        "37"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q2",
+                    "question": "20% dari 20 adalah...",
+                    "options": [
+                        "4",
+                        "0",
+                        "9"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 82 + 60?",
+                    "id": "q3",
+                    "question": "50% dari 100 adalah...",
                     "options": [
-                        "137",
-                        "142",
-                        "144"
+                        "50",
+                        "55",
+                        "45"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "10% dari 200 adalah...",
+                    "options": [
+                        "25",
+                        "20",
+                        "15"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q5",
+                    "question": "10% dari 20 adalah...",
+                    "options": [
+                        "0",
+                        "2",
+                        "7"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 79 - 26?",
+                    "question": "20% dari 100 adalah...",
                     "options": [
-                        "55",
-                        "51",
-                        "53"
+                        "25",
+                        "20",
+                        "15"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 67 + 18?",
+                    "question": "75% dari 200 adalah...",
                     "options": [
-                        "85",
-                        "82",
-                        "86"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 89 - 73?",
-                    "options": [
-                        "16",
-                        "13",
-                        "21"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 93 - 23?",
-                    "options": [
-                        "75",
-                        "68",
-                        "70"
+                        "145",
+                        "155",
+                        "150"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 15 + 69?",
+                    "id": "q8",
+                    "question": "10% dari 10 adalah...",
                     "options": [
-                        "84",
-                        "80",
-                        "87"
+                        "6",
+                        "0",
+                        "1"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q9",
+                    "question": "50% dari 10 adalah...",
+                    "options": [
+                        "5",
+                        "10",
+                        "0"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 34 + 60?",
+                    "id": "q10",
+                    "question": "20% dari 200 adalah...",
                     "options": [
-                        "91",
-                        "94",
-                        "99"
+                        "35",
+                        "45",
+                        "40"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q11",
+                    "question": "25% dari 10 adalah...",
+                    "options": [
+                        "0",
+                        "7",
+                        "2"
+                    ],
+                    "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 47 + 69?",
+                    "question": "75% dari 10 adalah...",
                     "options": [
-                        "115",
-                        "116",
-                        "121"
+                        "12",
+                        "2",
+                        "7"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 13 + 31?",
+                    "question": "25% dari 50 adalah...",
                     "options": [
-                        "44",
-                        "39",
-                        "49"
+                        "12",
+                        "17",
+                        "7"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 21 + 10?",
+                    "question": "25% dari 200 adalah...",
                     "options": [
-                        "36",
-                        "31",
-                        "27"
+                        "45",
+                        "50",
+                        "55"
                     ],
                     "correctIndex": 1
                 }

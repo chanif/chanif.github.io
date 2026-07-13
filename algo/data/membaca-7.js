@@ -1,325 +1,325 @@
 window.membaca7 = {
     "id": "membaca-7",
-    "title": "Level 7: Membaca Kalimat Pendek",
-    "badge": "Kelas 2",
-    "icon": "\ud83d\udcda",
-    "description": "Ibu pergi ke pasar",
+    "title": "Level 7: Cerita Pendek",
+    "badge": "Kelas 2-3",
+    "icon": "📖",
+    "description": "Cerita Pendek",
     "lessons": [
         {
             "id": "mb7_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udcd6",
-            "difficulty": "Sedang",
+            "icon": "📖",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Membaca Kalimat Pendek - Bagian 1</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-4'><div class='bg-pink-50 border-4 border-pink-200 rounded-2xl p-6'><h3 class='text-xl font-black text-pink-600 mb-3'>🐱 Kisah Si Kucing</h3><p class='text-lg text-slate-700 leading-relaxed'>Si Mimi adalah seekor kucing kecil yang tinggal di rumah Pak Budi. Setiap pagi, Mimi bermain di taman. Ia suka mengejar kupu-kupu dan daun yang jatuh. Ketika lapar, Mimi mengeong memanggil Pak Budi untuk diberi makan.</p></div><div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-6'><h3 class='text-xl font-black text-blue-600 mb-3'>🌳 Pohon Mangga</h3><p class='text-lg text-slate-700 leading-relaxed'>Di halaman rumah Ani terdapat sebuah pohon mangga. Setiap musim panas, pohon itu berbuah lebat. Ani dan teman-temannya sering bermain di bawah pohon itu. Mereka memakan mangga yang manis dan segar bersama-sama.</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Siapa nama kucing dalam cerita?",
                     "options": [
-                        "Ibu",
-                        "Burung",
-                        "Paman"
+                        "Mimi",
+                        "Budi",
+                        "Ani"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Di mana Mimi bermain setiap pagi?",
                     "options": [
-                        "Paman",
-                        "Adik",
-                        "Burung"
+                        "Di taman",
+                        "Di kolam",
+                        "Di sekolah"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Apa yang dikejar Mimi di taman?",
                     "options": [
-                        "Ibu",
-                        "Kucing",
-                        "Paman"
+                        "Kupu-kupu dan daun",
+                        "Ikan dan bola",
+                        "Buku dan pensil"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "Apa yang dilakukan Mimi saat lapar?",
                     "options": [
-                        "Rudi",
-                        "Ikan",
-                        "Kucing"
+                        "Mengeong",
+                        "Berlari",
+                        "Tidur"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "Pohon apa yang ada di halaman Ani?",
                     "options": [
-                        "Ikan",
-                        "Paman",
-                        "Kakek"
+                        "Mangga",
+                        "Apel",
+                        "Pisang"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "Kapan pohon mangga berbuah?",
                     "options": [
-                        "Sita",
-                        "Rudi",
-                        "Kucing"
+                        "Musim panas",
+                        "Musim hujan",
+                        "Musim dingin"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "Apa yang dilakukan Ani di bawah pohon?",
                     "options": [
-                        "Rudi",
-                        "Ibu",
-                        "Tikus"
+                        "Bermain bersama teman",
+                        "Belajar sendirian",
+                        "Tidur siang"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Bagaimana rasa mangga dalam cerita?",
                     "options": [
-                        "Kucing",
-                        "Rudi",
-                        "Adik"
+                        "Manis dan segar",
+                        "Asam dan pahit",
+                        "Asin dan pedas"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Cerita tentang Mimi termasuk jenis cerita...",
                     "options": [
-                        "Rudi",
-                        "Ibu",
-                        "Adik"
+                        "Hewan (fabel)",
+                        "Sejarah",
+                        "Ilmu pengetahuan"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Ide pokok cerita Si Kucing adalah...",
                     "options": [
-                        "Burung",
-                        "Ayah",
-                        "Sita"
+                        "Keseharian kucing bernama Mimi",
+                        "Cara memberi makan kucing",
+                        "Jenis-jenis hewan peliharaan"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Kata 'bermain' termasuk jenis kata...",
                     "options": [
-                        "Adik",
-                        "Ibu",
-                        "Paman"
+                        "Kata kerja",
+                        "Kata benda",
+                        "Kata sifat"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Kata 'manis' termasuk jenis kata...",
                     "options": [
-                        "Ani",
-                        "Ibu",
-                        "Rudi"
+                        "Kata sifat",
+                        "Kata kerja",
+                        "Kata benda"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Kalimat: 'Sita beli buku baru'. Kata pertamanya adalah...",
+                    "question": "Kata 'halaman' dalam cerita bermakna...",
                     "options": [
-                        "Ayah",
-                        "Sita",
-                        "Tikus"
+                        "Pekarangan rumah",
+                        "Halaman buku",
+                        "Nomor halaman"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Kalimat 'Mimi mengeong memanggil Pak Budi' artinya...",
                     "options": [
-                        "Nenek",
-                        "Ayah",
-                        "Burung"
+                        "Mimi minta makan",
+                        "Mimi sedang bermain",
+                        "Mimi sedang tidur"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Apa perbedaan antara dua cerita di atas?",
                     "options": [
-                        "Kucing",
-                        "Rudi",
-                        "Ibu"
+                        "Tokoh dan tempatnya berbeda",
+                        "Sama persis",
+                        "Tidak ada perbedaan"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mb7_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udcd6",
+            "icon": "📖",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Membaca Kalimat Pendek - Bagian 2</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-4'><div class='bg-pink-50 border-4 border-pink-200 rounded-2xl p-6'><h3 class='text-xl font-black text-pink-600 mb-3'>🐱 Kisah Si Kucing</h3><p class='text-lg text-slate-700 leading-relaxed'>Si Mimi adalah seekor kucing kecil yang tinggal di rumah Pak Budi. Setiap pagi, Mimi bermain di taman. Ia suka mengejar kupu-kupu dan daun yang jatuh. Ketika lapar, Mimi mengeong memanggil Pak Budi untuk diberi makan.</p></div><div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-6'><h3 class='text-xl font-black text-blue-600 mb-3'>🌳 Pohon Mangga</h3><p class='text-lg text-slate-700 leading-relaxed'>Di halaman rumah Ani terdapat sebuah pohon mangga. Setiap musim panas, pohon itu berbuah lebat. Ani dan teman-temannya sering bermain di bawah pohon itu. Mereka memakan mangga yang manis dan segar bersama-sama.</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Kalimat: 'Ani suka buah apel'. Kata pertamanya adalah...",
+                    "question": "Siapa nama kucing dalam cerita?",
                     "options": [
-                        "Rudi",
+                        "Mimi",
                         "Budi",
                         "Ani"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Di mana Mimi bermain setiap pagi?",
                     "options": [
-                        "Adik",
-                        "Rudi",
-                        "Ayah"
+                        "Di taman",
+                        "Di kolam",
+                        "Di sekolah"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Apa yang dikejar Mimi di taman?",
                     "options": [
-                        "Ani",
-                        "Paman",
-                        "Ibu"
+                        "Kupu-kupu dan daun",
+                        "Ikan dan bola",
+                        "Buku dan pensil"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Apa yang dilakukan Mimi saat lapar?",
                     "options": [
-                        "Ayah",
-                        "Tikus",
-                        "Burung"
+                        "Mengeong",
+                        "Berlari",
+                        "Tidur"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "Pohon apa yang ada di halaman Ani?",
                     "options": [
-                        "Rudi",
-                        "Ikan",
-                        "Nenek"
+                        "Mangga",
+                        "Apel",
+                        "Pisang"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Kalimat: 'Sita beli buku baru'. Kata pertamanya adalah...",
+                    "question": "Kapan pohon mangga berbuah?",
                     "options": [
-                        "Sita",
-                        "Budi",
-                        "Kakek"
+                        "Musim panas",
+                        "Musim hujan",
+                        "Musim dingin"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Apa yang dilakukan Ani di bawah pohon?",
                     "options": [
-                        "Tikus",
-                        "Adik",
-                        "Ikan"
+                        "Bermain bersama teman",
+                        "Belajar sendirian",
+                        "Tidur siang"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Bagaimana rasa mangga dalam cerita?",
                     "options": [
-                        "Adik",
-                        "Tikus",
-                        "Ayah"
+                        "Manis dan segar",
+                        "Asam dan pahit",
+                        "Asin dan pedas"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Cerita tentang Mimi termasuk jenis cerita...",
                     "options": [
-                        "Adik",
-                        "Ibu",
-                        "Tikus"
+                        "Hewan (fabel)",
+                        "Sejarah",
+                        "Ilmu pengetahuan"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Ide pokok cerita Si Kucing adalah...",
                     "options": [
-                        "Paman",
-                        "Kucing",
-                        "Ibu"
+                        "Keseharian kucing bernama Mimi",
+                        "Cara memberi makan kucing",
+                        "Jenis-jenis hewan peliharaan"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Kata 'bermain' termasuk jenis kata...",
                     "options": [
-                        "Ani",
-                        "Paman",
-                        "Adik"
+                        "Kata kerja",
+                        "Kata benda",
+                        "Kata sifat"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Kata 'manis' termasuk jenis kata...",
                     "options": [
-                        "Ibu",
-                        "Sita",
-                        "Burung"
+                        "Kata sifat",
+                        "Kata kerja",
+                        "Kata benda"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "Kata 'halaman' dalam cerita bermakna...",
                     "options": [
-                        "Rudi",
-                        "Tikus",
-                        "Ibu"
+                        "Pekarangan rumah",
+                        "Halaman buku",
+                        "Nomor halaman"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Kalimat 'Mimi mengeong memanggil Pak Budi' artinya...",
                     "options": [
-                        "Nenek",
-                        "Ayah",
-                        "Adik"
+                        "Mimi minta makan",
+                        "Mimi sedang bermain",
+                        "Mimi sedang tidur"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Apa perbedaan antara dua cerita di atas?",
                     "options": [
-                        "Ayah",
-                        "Kakek",
-                        "Ibu"
+                        "Tokoh dan tempatnya berbeda",
+                        "Sama persis",
+                        "Tidak ada perbedaan"
                     ],
                     "correctIndex": 0
                 }
@@ -328,160 +328,160 @@ window.membaca7 = {
         {
             "id": "mb7_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udcd6",
-            "difficulty": "Sedang",
+            "icon": "📖",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Membaca Kalimat Pendek - Bagian 3</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-4'><div class='bg-pink-50 border-4 border-pink-200 rounded-2xl p-6'><h3 class='text-xl font-black text-pink-600 mb-3'>🐱 Kisah Si Kucing</h3><p class='text-lg text-slate-700 leading-relaxed'>Si Mimi adalah seekor kucing kecil yang tinggal di rumah Pak Budi. Setiap pagi, Mimi bermain di taman. Ia suka mengejar kupu-kupu dan daun yang jatuh. Ketika lapar, Mimi mengeong memanggil Pak Budi untuk diberi makan.</p></div><div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-6'><h3 class='text-xl font-black text-blue-600 mb-3'>🌳 Pohon Mangga</h3><p class='text-lg text-slate-700 leading-relaxed'>Di halaman rumah Ani terdapat sebuah pohon mangga. Setiap musim panas, pohon itu berbuah lebat. Ani dan teman-temannya sering bermain di bawah pohon itu. Mereka memakan mangga yang manis dan segar bersama-sama.</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Kalimat: 'Kucing tidur di kursi'. Kata pertamanya adalah...",
+                    "question": "Siapa nama kucing dalam cerita?",
                     "options": [
+                        "Mimi",
                         "Budi",
-                        "Paman",
-                        "Kucing"
+                        "Ani"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Di mana Mimi bermain setiap pagi?",
                     "options": [
-                        "Paman",
-                        "Burung",
-                        "Ibu"
+                        "Di taman",
+                        "Di kolam",
+                        "Di sekolah"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "Apa yang dikejar Mimi di taman?",
                     "options": [
-                        "Budi",
-                        "Kucing",
-                        "Sita"
+                        "Kupu-kupu dan daun",
+                        "Ikan dan bola",
+                        "Buku dan pensil"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Apa yang dilakukan Mimi saat lapar?",
                     "options": [
-                        "Kakek",
-                        "Ayah",
-                        "Paman"
+                        "Mengeong",
+                        "Berlari",
+                        "Tidur"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Pohon apa yang ada di halaman Ani?",
                     "options": [
-                        "Paman",
-                        "Paman",
-                        "Adik"
+                        "Mangga",
+                        "Apel",
+                        "Pisang"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Kapan pohon mangga berbuah?",
                     "options": [
-                        "Kakek",
-                        "Ayah",
-                        "Burung"
+                        "Musim panas",
+                        "Musim hujan",
+                        "Musim dingin"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Apa yang dilakukan Ani di bawah pohon?",
                     "options": [
-                        "Adik",
-                        "Nenek",
-                        "Kucing"
+                        "Bermain bersama teman",
+                        "Belajar sendirian",
+                        "Tidur siang"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "Bagaimana rasa mangga dalam cerita?",
                     "options": [
-                        "Tikus",
-                        "Ibu",
-                        "Rudi"
+                        "Manis dan segar",
+                        "Asam dan pahit",
+                        "Asin dan pedas"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Kalimat: 'Kucing tidur di kursi'. Kata pertamanya adalah...",
+                    "question": "Cerita tentang Mimi termasuk jenis cerita...",
                     "options": [
-                        "Ayah",
-                        "Kucing",
-                        "Kakek"
+                        "Hewan (fabel)",
+                        "Sejarah",
+                        "Ilmu pengetahuan"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "Ide pokok cerita Si Kucing adalah...",
                     "options": [
-                        "Budi",
-                        "Kucing",
-                        "Paman"
+                        "Keseharian kucing bernama Mimi",
+                        "Cara memberi makan kucing",
+                        "Jenis-jenis hewan peliharaan"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Kalimat: 'Ani suka buah apel'. Kata pertamanya adalah...",
+                    "question": "Kata 'bermain' termasuk jenis kata...",
                     "options": [
-                        "Kucing",
-                        "Paman",
-                        "Ani"
+                        "Kata kerja",
+                        "Kata benda",
+                        "Kata sifat"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "Kata 'manis' termasuk jenis kata...",
                     "options": [
-                        "Ikan",
-                        "Sita",
-                        "Rudi"
+                        "Kata sifat",
+                        "Kata kerja",
+                        "Kata benda"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Kata 'halaman' dalam cerita bermakna...",
                     "options": [
-                        "Ani",
-                        "Burung",
-                        "Sita"
+                        "Pekarangan rumah",
+                        "Halaman buku",
+                        "Nomor halaman"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "Kalimat 'Mimi mengeong memanggil Pak Budi' artinya...",
                     "options": [
-                        "Ikan",
-                        "Kakek",
-                        "Budi"
+                        "Mimi minta makan",
+                        "Mimi sedang bermain",
+                        "Mimi sedang tidur"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Apa perbedaan antara dua cerita di atas?",
                     "options": [
-                        "Rudi",
-                        "Ayah",
-                        "Ikan"
+                        "Tokoh dan tempatnya berbeda",
+                        "Sama persis",
+                        "Tidak ada perbedaan"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         }

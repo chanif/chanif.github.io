@@ -1,139 +1,488 @@
 window.membaca3 = {
-    id: "membaca-3",
-    title: "Huruf U-Z & Vokal",
-    badge: "TK",
-    icon: "🔡",
-    description: "Belajar huruf U sampai Z dan mengenal 5 huruf Vokal (A-I-U-E-O).",
-    lessons: [
+    "id": "membaca-3",
+    "title": "Level 3: Suku Kata Terbuka",
+    "badge": "PAUD-TK",
+    "icon": "🐝",
+    "description": "Belajar suku kata BA BI BU BE BO, CA CI CU, dan seterusnya dengan gambar.",
+    "lessons": [
         {
-            id: "mb3_1",
-            title: "Huruf U - Z",
-            icon: "🆄",
-            difficulty: "Mudah",
-            duration: "10 menit",
-            content: `
-                <div class="flex flex-col items-center gap-6">
-                    <div class="bg-violet-100 p-8 rounded-3xl border-4 border-violet-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-violet-600 block mb-4">U</span>
-                        <span class="text-6xl block">🐍</span>
-                        <p class="text-2xl font-bold text-violet-800 mt-4 uppercase">Ular</p>
-                    </div>
-                    <div class="bg-fuchsia-100 p-8 rounded-3xl border-4 border-fuchsia-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-fuchsia-600 block mb-4">V</span>
-                        <span class="text-6xl block">🌋</span>
-                        <p class="text-2xl font-bold text-fuchsia-800 mt-4 uppercase">Vulkano (Gunung Berapi)</p>
-                    </div>
-                    <div class="bg-blue-100 p-8 rounded-3xl border-4 border-blue-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-blue-600 block mb-4">W</span>
-                        <span class="text-6xl block">🥕</span>
-                        <p class="text-2xl font-bold text-blue-800 mt-4 uppercase">Wortel</p>
-                    </div>
-                    <div class="bg-gray-100 p-8 rounded-3xl border-4 border-gray-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-gray-600 block mb-4">X</span>
-                        <span class="text-6xl block">❌</span>
-                        <p class="text-2xl font-bold text-gray-800 mt-4 uppercase">X (Silang)</p>
-                    </div>
-                    <div class="bg-yellow-100 p-8 rounded-3xl border-4 border-yellow-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-yellow-600 block mb-4">Y</span>
-                        <span class="text-6xl block">🪀</span>
-                        <p class="text-2xl font-bold text-yellow-800 mt-4 uppercase">Yoyo</p>
-                    </div>
-                    <div class="bg-zinc-100 p-8 rounded-3xl border-4 border-zinc-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-zinc-600 block mb-4">Z</span>
-                        <span class="text-6xl block">🦓</span>
-                        <p class="text-2xl font-bold text-zinc-800 mt-4 uppercase">Zebra</p>
-                    </div>
-                </div>
-            `,
-            questions: [
-                { id: "q1", question: "Ular (🐍) dimulai huruf...", options: ["U", "V", "W"], correctIndex: 0 },
-                { id: "q2", question: "Wortel (🥕) dimulai huruf...", options: ["W", "V", "X"], correctIndex: 0 },
-                { id: "q3", question: "Yoyo (🪀) dimulai huruf...", options: ["Y", "X", "Z"], correctIndex: 0 },
-                { id: "q4", question: "Zebra (🦓) dimulai huruf...", options: ["Z", "Y", "X"], correctIndex: 0 },
-                { id: "q5", question: "Tanda silang (❌) seperti huruf...", options: ["X", "Y", "V"], correctIndex: 0 },
-                { id: "q6", question: "Vulkano (Gunung Berapi) dimulai huruf...", options: ["V", "U", "W"], correctIndex: 0 },
-                { id: "q7", question: "Huruf terakhir dalam alfabet adalah...", options: ["Z", "Y", "X"], correctIndex: 0 },
-                { id: "q8", question: "Huruf W seperti huruf V yang digabung...", options: ["Dua kali", "Tiga kali", "Satu kali"], correctIndex: 0 },
-                { id: "q9", question: "Sebelum huruf Z adalah huruf...", options: ["Y", "X", "W"], correctIndex: 0 },
-                { id: "q10", question: "Mana huruf Y?", options: ["Y", "V", "U"], correctIndex: 0 },
-                { id: "q11", question: "Mana huruf W?", options: ["W", "M", "V"], correctIndex: 0 },
-                { id: "q12", question: "Huruf V bentuknya mirip...", options: ["Segitiga terbalik", "Lingkaran", "Kotak"], correctIndex: 0 },
-                { id: "q13", question: "Kata 'Ular' berawalan huruf?", options: ["U", "V", "O"], correctIndex: 0 },
-                { id: "q14", question: "Kata 'Wortel' berawalan huruf?", options: ["W", "M", "V"], correctIndex: 0 },
-                { id: "q15", question: "Kata 'Zebra' berawalan huruf?", options: ["Z", "S", "X"], correctIndex: 0 }
+            "id": "mb3_1",
+            "title": "Suku Kata BA BI BU BE BO",
+            "icon": "🐝",
+            "difficulty": "Mudah",
+            "duration": "10 menit",
+            "content": "<div class='grid grid-cols-2 sm:grid-cols-3 gap-4'><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>🍌</span><span class='text-4xl font-black text-pink-700 tracking-widest'>BA</span></div><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>🐝</span><span class='text-4xl font-black text-pink-700 tracking-widest'>BI</span></div><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>🌹</span><span class='text-4xl font-black text-pink-700 tracking-widest'>BU</span></div><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>🐻</span><span class='text-4xl font-black text-pink-700 tracking-widest'>BE</span></div><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>⛵</span><span class='text-4xl font-black text-pink-700 tracking-widest'>BO</span></div></div>",
+            "questions": [
+                {
+                    "id": "q0",
+                    "question": "🐝 = BI... apa bacaan gambar ini? (BI + ...)",
+                    "options": [
+                        "BIRU",
+                        "BOLA",
+                        "BUKU"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "Gambar 🦇 berbunyi...",
+                    "options": [
+                        "BA",
+                        "BI",
+                        "BU"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "🌸 berbunyi...",
+                    "options": [
+                        "BU",
+                        "BO",
+                        "BE"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "Suku kata BE seperti bunyi di kata...",
+                    "options": [
+                        "Bebek",
+                        "Buku",
+                        "Bola"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "Suku kata BO seperti bunyi di kata...",
+                    "options": [
+                        "Bola",
+                        "Buku",
+                        "Bebek"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "BA + BI dibaca...",
+                    "options": [
+                        "BABI",
+                        "BIBI",
+                        "BABA"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "BO + LA dibaca...",
+                    "options": [
+                        "BOLA",
+                        "LABO",
+                        "BABO"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "BU + KU dibaca...",
+                    "options": [
+                        "BUKU",
+                        "KUBU",
+                        "BUBU"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "BE + BE + K dibaca...",
+                    "options": [
+                        "BEBEK",
+                        "BEKBE",
+                        "BEBE"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "BI + RU dibaca...",
+                    "options": [
+                        "BIRU",
+                        "RUBI",
+                        "BIBI"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "Suku pertama kata BUMI adalah...",
+                    "options": [
+                        "BU",
+                        "MI",
+                        "BI"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "Suku pertama kata BAJU adalah...",
+                    "options": [
+                        "BA",
+                        "JU",
+                        "BI"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "Kata BOLA punya berapa suku?",
+                    "options": [
+                        "2",
+                        "3",
+                        "1"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q13",
+                    "question": "Kata BUKU punya berapa suku?",
+                    "options": [
+                        "2",
+                        "3",
+                        "1"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q14",
+                    "question": "BI + SA dibaca...",
+                    "options": [
+                        "BISA",
+                        "SABI",
+                        "BISI"
+                    ],
+                    "correctIndex": 0
+                }
             ]
         },
         {
-            id: "mb3_2",
-            title: "Mengenal Huruf Vokal A-I-U-E-O",
-            icon: "📢",
-            difficulty: "Sedang",
-            duration: "10 menit",
-            content: `
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-extrabold text-pink-600 mb-4">Huruf Vokal (Huruf Hidup)</h2>
-                    <p class="text-xl text-slate-600">Ada 5 huruf ajaib yang membuat huruf lain bisa dibaca! Namanya Huruf Vokal.</p>
-                </div>
-                
-                <div class="flex justify-center flex-wrap gap-4">
-                    <div class="bg-red-100 p-6 rounded-2xl border-4 border-red-300 text-center font-black text-6xl text-red-600">A</div>
-                    <div class="bg-orange-100 p-6 rounded-2xl border-4 border-orange-300 text-center font-black text-6xl text-orange-600">I</div>
-                    <div class="bg-yellow-100 p-6 rounded-2xl border-4 border-yellow-300 text-center font-black text-6xl text-yellow-600">U</div>
-                    <div class="bg-green-100 p-6 rounded-2xl border-4 border-green-300 text-center font-black text-6xl text-green-600">E</div>
-                    <div class="bg-blue-100 p-6 rounded-2xl border-4 border-blue-300 text-center font-black text-6xl text-blue-600">O</div>
-                </div>
-
-                <div class="mt-8 bg-pink-50 p-6 rounded-2xl border-2 border-pink-200">
-                    <p class="text-lg font-bold text-pink-800 text-center">Nyanyikan: A - I - U - E - O ! 🎶</p>
-                </div>
-            `,
-            questions: [
-                { id: "q1", question: "Berapa jumlah huruf vokal?", options: ["5", "3", "7"], correctIndex: 0 },
-                { id: "q2", question: "Mana yang termasuk huruf vokal?", options: ["A", "B", "C"], correctIndex: 0 },
-                { id: "q3", question: "Mana yang termasuk huruf vokal?", options: ["O", "P", "Q"], correctIndex: 0 },
-                { id: "q4", question: "Mana yang termasuk huruf vokal?", options: ["I", "J", "K"], correctIndex: 0 },
-                { id: "q5", question: "Mana yang termasuk huruf vokal?", options: ["U", "V", "W"], correctIndex: 0 },
-                { id: "q6", question: "Mana yang BUKAN huruf vokal?", options: ["B", "A", "E"], correctIndex: 0 },
-                { id: "q7", question: "Mana yang BUKAN huruf vokal?", options: ["S", "I", "U"], correctIndex: 0 },
-                { id: "q8", question: "A - I - U - E - ... ?", options: ["O", "P", "A"], correctIndex: 0 },
-                { id: "q9", question: "Huruf pertama dari A-I-U-E-O adalah...", options: ["A", "I", "U"], correctIndex: 0 },
-                { id: "q10", question: "Dalam kata 'IBU', huruf vokalnya adalah...", options: ["I dan U", "B saja", "I dan B"], correctIndex: 0 },
-                { id: "q11", question: "Dalam kata 'ADA', huruf vokalnya adalah...", options: ["A", "D", "A dan D"], correctIndex: 0 },
-                { id: "q12", question: "Dalam kata 'OPI', huruf vokalnya adalah...", options: ["O dan I", "P saja", "O dan P"], correctIndex: 0 },
-                { id: "q13", question: "Kata 'APEL' punya huruf vokal...", options: ["A dan E", "P dan L", "A dan P"], correctIndex: 0 },
-                { id: "q14", question: "Kata 'UBI' punya huruf vokal...", options: ["U dan I", "B saja", "U dan B"], correctIndex: 0 },
-                { id: "q15", question: "Huruf vokal bentuk bundar adalah...", options: ["O", "A", "I"], correctIndex: 0 }
+            "id": "mb3_2",
+            "title": "Suku Kata CA CI CU CE CO / DA DI DU",
+            "icon": "🦀",
+            "difficulty": "Mudah",
+            "duration": "10 menit",
+            "content": "<div class='grid grid-cols-2 sm:grid-cols-3 gap-4'><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>🦀</span><span class='text-4xl font-black text-pink-700 tracking-widest'>CA</span></div><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>💧</span><span class='text-4xl font-black text-pink-700 tracking-widest'>CI</span></div><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>☁️</span><span class='text-4xl font-black text-pink-700 tracking-widest'>CU</span></div><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>🍒</span><span class='text-4xl font-black text-pink-700 tracking-widest'>CE</span></div><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>🍫</span><span class='text-4xl font-black text-pink-700 tracking-widest'>CO</span></div><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>🍃</span><span class='text-4xl font-black text-pink-700 tracking-widest'>DA</span></div><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>📍</span><span class='text-4xl font-black text-pink-700 tracking-widest'>DI</span></div><div class='flex flex-col items-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-6 hover:scale-105 transition-transform'><span class='text-6xl mb-3'>🌵</span><span class='text-4xl font-black text-pink-700 tracking-widest'>DU</span></div></div>",
+            "questions": [
+                {
+                    "id": "q0",
+                    "question": "🦀 berbunyi...",
+                    "options": [
+                        "CA",
+                        "CE",
+                        "CO"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "💧 berbunyi...",
+                    "options": [
+                        "CI",
+                        "CA",
+                        "CU"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "CA + CA dibaca...",
+                    "options": [
+                        "CACA",
+                        "ACAC",
+                        "CAAC"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "CO + LA + K dibaca...",
+                    "options": [
+                        "COLAK",
+                        "LACOL",
+                        "COLOK"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "CA + BI dibaca...",
+                    "options": [
+                        "CABI",
+                        "BICA",
+                        "CIBA"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "DA + DA + H dibaca...",
+                    "options": [
+                        "DADAH",
+                        "HADAD",
+                        "DAHDA"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "DI + A dibaca...",
+                    "options": [
+                        "DIA",
+                        "AID",
+                        "IDA"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "DU + RI + AN dibaca...",
+                    "options": [
+                        "DURIAN",
+                        "RIANDU",
+                        "ANDURI"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "Suku pertama kata CACING adalah...",
+                    "options": [
+                        "CA",
+                        "CI",
+                        "CACI"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "Suku pertama kata DUIT adalah...",
+                    "options": [
+                        "DU",
+                        "IT",
+                        "DI"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "CA + IR dibaca...",
+                    "options": [
+                        "CAIR",
+                        "IRCA",
+                        "CAIRI"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "CE + LA + NA dibaca...",
+                    "options": [
+                        "CELANA",
+                        "NACELA",
+                        "LACENA"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "🍩 (Donat) suku pertamanya...",
+                    "options": [
+                        "DO",
+                        "DA",
+                        "DE"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q13",
+                    "question": "Kata DAUN punya berapa suku?",
+                    "options": [
+                        "2",
+                        "3",
+                        "1"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q14",
+                    "question": "CO + KO + LAT dibaca...",
+                    "options": [
+                        "COKLAT",
+                        "LATCOK",
+                        "COKOLA"
+                    ],
+                    "correctIndex": 0
+                }
             ]
         },
         {
-            id: "mb3_3",
-            title: "Review A-Z",
-            icon: "🏆",
-            difficulty: "Sedang",
-            duration: "10 menit",
-            content: `
-                <div class="text-center">
-                    <span class="text-9xl mb-8 block">🎉</span>
-                    <h2 class="text-3xl font-extrabold text-pink-600 mb-4">Hebat! Kamu Sudah Tahu A-Z!</h2>
-                    <p class="text-xl text-slate-600">Ayo kita buktikan seberapa jago kamu menebak semua huruf yang ada!</p>
-                </div>
-            `,
-            questions: [
-                { id: "q1", question: "Huruf paling pertama adalah...", options: ["A", "Z", "M"], correctIndex: 0 },
-                { id: "q2", question: "Huruf paling terakhir adalah...", options: ["Z", "A", "Y"], correctIndex: 0 },
-                { id: "q3", question: "Kucing berawalan huruf...", options: ["K", "C", "G"], correctIndex: 0 },
-                { id: "q4", question: "Apel berawalan huruf...", options: ["A", "P", "L"], correctIndex: 0 },
-                { id: "q5", question: "Zebra berawalan huruf...", options: ["Z", "S", "X"], correctIndex: 0 },
-                { id: "q6", question: "Ikan berawalan huruf...", options: ["I", "K", "A"], correctIndex: 0 },
-                { id: "q7", question: "Ular berawalan huruf...", options: ["U", "O", "L"], correctIndex: 0 },
-                { id: "q8", question: "Monyet berawalan huruf...", options: ["M", "N", "O"], correctIndex: 0 },
-                { id: "q9", question: "Gajah berawalan huruf...", options: ["G", "J", "H"], correctIndex: 0 },
-                { id: "q10", question: "Donat berawalan huruf...", options: ["D", "B", "P"], correctIndex: 0 },
-                { id: "q11", question: "Setelah A adalah...", options: ["B", "C", "D"], correctIndex: 0 },
-                { id: "q12", question: "Setelah Y adalah...", options: ["Z", "X", "W"], correctIndex: 0 },
-                { id: "q13", question: "Sebelum B adalah...", options: ["A", "C", "D"], correctIndex: 0 },
-                { id: "q14", question: "Huruf vokal ada berapa?", options: ["5", "26", "10"], correctIndex: 0 },
-                { id: "q15", question: "Huruf Vokal itu A-I-U-E-...", options: ["O", "P", "Q"], correctIndex: 0 }
+            "id": "mb3_3",
+            "title": "Gabungan Suku Kata Jadi Kata",
+            "icon": "🏆",
+            "difficulty": "Sedang",
+            "duration": "10 menit",
+            "content": "<div class='space-y-4'><div class='text-center'><span class='text-7xl'>🧩</span><h2 class='text-3xl font-black text-pink-600 mt-3'>Suku Kata jadi Kata!</h2></div><div class='flex items-center justify-center gap-4 bg-pink-50 border-4 border-pink-200 rounded-2xl p-4'><span class='text-3xl font-black text-pink-600'>BA</span><span class='text-3xl text-slate-400'>+</span><span class='text-3xl font-black text-blue-600'>BU</span><span class='text-3xl text-slate-400'>=</span><span class='text-3xl font-black text-emerald-600'>BABU</span><span class='text-3xl ml-2'>👶</span></div><div class='flex items-center justify-center gap-4 bg-pink-50 border-4 border-pink-200 rounded-2xl p-4'><span class='text-3xl font-black text-pink-600'>BI</span><span class='text-3xl text-slate-400'>+</span><span class='text-3xl font-black text-blue-600'>RU</span><span class='text-3xl text-slate-400'>=</span><span class='text-3xl font-black text-emerald-600'>BIRU</span><span class='text-3xl ml-2'>💙</span></div><div class='flex items-center justify-center gap-4 bg-pink-50 border-4 border-pink-200 rounded-2xl p-4'><span class='text-3xl font-black text-pink-600'>CA</span><span class='text-3xl text-slate-400'>+</span><span class='text-3xl font-black text-blue-600'>CA</span><span class='text-3xl text-slate-400'>=</span><span class='text-3xl font-black text-emerald-600'>CACA</span><span class='text-3xl ml-2'>😄</span></div><div class='flex items-center justify-center gap-4 bg-pink-50 border-4 border-pink-200 rounded-2xl p-4'><span class='text-3xl font-black text-pink-600'>DA</span><span class='text-3xl text-slate-400'>+</span><span class='text-3xl font-black text-blue-600'>DA</span><span class='text-3xl text-slate-400'>=</span><span class='text-3xl font-black text-emerald-600'>DADA</span><span class='text-3xl ml-2'>👐</span></div><div class='flex items-center justify-center gap-4 bg-pink-50 border-4 border-pink-200 rounded-2xl p-4'><span class='text-3xl font-black text-pink-600'>BO</span><span class='text-3xl text-slate-400'>+</span><span class='text-3xl font-black text-blue-600'>LA</span><span class='text-3xl text-slate-400'>=</span><span class='text-3xl font-black text-emerald-600'>BOLA</span><span class='text-3xl ml-2'>⚽</span></div><div class='flex items-center justify-center gap-4 bg-pink-50 border-4 border-pink-200 rounded-2xl p-4'><span class='text-3xl font-black text-pink-600'>BU</span><span class='text-3xl text-slate-400'>+</span><span class='text-3xl font-black text-blue-600'>KU</span><span class='text-3xl text-slate-400'>=</span><span class='text-3xl font-black text-emerald-600'>BUKU</span><span class='text-3xl ml-2'>📚</span></div></div>",
+            "questions": [
+                {
+                    "id": "q0",
+                    "question": "BA + BU = ?",
+                    "options": [
+                        "BABU",
+                        "BUBA",
+                        "BAAB"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "BI + RU = ?",
+                    "options": [
+                        "BIRU",
+                        "RUBI",
+                        "BIUR"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "BO + LA = ?",
+                    "options": [
+                        "BOLA",
+                        "LABO",
+                        "BALO"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "BU + KU = ?",
+                    "options": [
+                        "BUKU",
+                        "KUBU",
+                        "BUKKU"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "CA + CA = ?",
+                    "options": [
+                        "CACA",
+                        "ACCA",
+                        "CAAC"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "DA + DA = ?",
+                    "options": [
+                        "DADA",
+                        "ADAD",
+                        "DADA"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "BOLA terdiri dari suku...",
+                    "options": [
+                        "BO + LA",
+                        "BAL + A",
+                        "B + OLA"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "BUKU terdiri dari suku...",
+                    "options": [
+                        "BU + KU",
+                        "BUK + U",
+                        "B + UKU"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "BIRU terdiri dari suku...",
+                    "options": [
+                        "BI + RU",
+                        "BIR + U",
+                        "B + IRU"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "BE + BE + K = ?",
+                    "options": [
+                        "BEBEK",
+                        "BEKBE",
+                        "BEEK"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "CA + CIN + G = ?",
+                    "options": [
+                        "CACING",
+                        "GINCI",
+                        "CACIG"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "DU + RI + AN = ?",
+                    "options": [
+                        "DURIAN",
+                        "RIANDU",
+                        "ANDURI"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "BI + SA dibaca...",
+                    "options": [
+                        "BISA",
+                        "SABI",
+                        "BIIS"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q13",
+                    "question": "CO + BA dibaca...",
+                    "options": [
+                        "COBA",
+                        "BACO",
+                        "COAB"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q14",
+                    "question": "DA + PUR dibaca...",
+                    "options": [
+                        "DAPUR",
+                        "PURDA",
+                        "DADPU"
+                    ],
+                    "correctIndex": 0
+                }
             ]
         }
     ]

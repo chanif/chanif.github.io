@@ -1,165 +1,95 @@
 window.english12 = {
     "id": "english-12",
-    "title": "Level 12: Simple Sentences",
-    "badge": "Kelas 3",
-    "icon": "\ud83c\udf0d",
-    "description": "I have a cat",
+    "title": "Level 12: Verbs - Action Words",
+    "badge": "Kelas 3-4",
+    "icon": "🏃",
+    "description": "Verbs - Action Words",
     "lessons": [
         {
             "id": "eng12_1",
             "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "🏃",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Simple Sentences - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🏃</span><span class='font-black text-emerald-700 text-base'>Run</span><span class='text-emerald-400 text-xs font-bold'>Berlari</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🤸</span><span class='font-black text-emerald-700 text-base'>Jump</span><span class='text-emerald-400 text-xs font-bold'>Melompat</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🍽️</span><span class='font-black text-emerald-700 text-base'>Eat</span><span class='text-emerald-400 text-xs font-bold'>Makan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🥤</span><span class='font-black text-emerald-700 text-base'>Drink</span><span class='text-emerald-400 text-xs font-bold'>Minum</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Action verbs describe what people or animals DO!</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Eye'?",
+                    "question": "What is the meaning of 'Jump'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Tangan",
-                        "Kaki",
-                        "Mata"
+                        "Melompat",
+                        "Menari",
+                        "Tidur"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "What is the meaning of 'Hand'?",
+                    "question": "Bahasa Inggris dari 'Makan' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Kepala",
-                        "Tangan",
-                        "Hidung"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
-                    "options": [
-                        "Eye",
-                        "Nose",
-                        "Ear"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q3",
-                    "question": "What is the meaning of 'Ear'?",
-                    "options": [
-                        "Telinga",
-                        "Kaki",
-                        "Hidung"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
-                    "options": [
-                        "Nose",
-                        "Head",
-                        "Leg"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
-                    "options": [
-                        "Hand",
-                        "Eye",
-                        "Head"
+                        "Drink",
+                        "Sing",
+                        "Eat"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
+                    "id": "q2",
+                    "question": "Gambar 🥤 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Leg",
-                        "Nose",
-                        "Hand"
+                        "Sleep",
+                        "Read",
+                        "Drink"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q3",
+                    "question": "What is the meaning of 'Drink'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Membaca",
+                        "Minum",
+                        "Makan"
                     ],
                     "correctIndex": 1
+                },
+                {
+                    "id": "q4",
+                    "question": "Gambar 🤸 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Sing",
+                        "Drink",
+                        "Jump"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q5",
+                    "question": "Bahasa Inggris dari 'Berlari' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Sleep",
+                        "Run",
+                        "Write"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q6",
+                    "question": "Gambar 🏃 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Cook",
+                        "Fly",
+                        "Run"
+                    ],
+                    "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
+                    "question": "What is the meaning of 'Eat'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Head",
-                        "Eye",
-                        "Hand"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
-                    "options": [
-                        "Head",
-                        "Hand",
-                        "Nose"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Eye'?",
-                    "options": [
-                        "Mata",
-                        "Tangan",
-                        "Telinga"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Tangan",
-                        "Hidung",
-                        "Kepala"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Head'?",
-                    "options": [
-                        "Kepala",
-                        "Mata",
-                        "Kaki"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Kaki'?",
-                    "options": [
-                        "Leg",
-                        "Nose",
-                        "Hand"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
-                    "options": [
-                        "Eye",
-                        "Nose",
-                        "Ear"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
-                    "options": [
-                        "Head",
-                        "Eye",
-                        "Ear"
+                        "Makan",
+                        "Terbang",
+                        "Menggambar"
                     ],
                     "correctIndex": 0
                 }
@@ -168,320 +98,260 @@ window.english12 = {
         {
             "id": "eng12_2",
             "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "icon": "🏃",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Simple Sentences - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>😴</span><span class='font-black text-emerald-700 text-base'>Sleep</span><span class='text-emerald-400 text-xs font-bold'>Tidur</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📖</span><span class='font-black text-emerald-700 text-base'>Read</span><span class='text-emerald-400 text-xs font-bold'>Membaca</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>✍️</span><span class='font-black text-emerald-700 text-base'>Write</span><span class='text-emerald-400 text-xs font-bold'>Menulis</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🏊</span><span class='font-black text-emerald-700 text-base'>Swim</span><span class='text-emerald-400 text-xs font-bold'>Berenang</span></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Bird'?",
+                    "question": "What is the meaning of 'Swim'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Anjing",
-                        "Gajah",
-                        "Burung"
+                        "Berlari",
+                        "Berenang",
+                        "Menulis"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
+                    "question": "Bahasa Inggris dari 'Membaca' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Elephant",
-                        "Bird",
-                        "Dog"
+                        "Read",
+                        "Swim",
+                        "Eat"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
+                    "question": "Gambar 😴 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Bird",
-                        "Elephant",
-                        "Cat"
+                        "Write",
+                        "Sing",
+                        "Sleep"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Cat'?",
+                    "question": "What is the meaning of 'Sleep'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Kucing",
-                        "Burung",
-                        "Gajah"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
-                    "options": [
-                        "Bird",
-                        "Dog",
-                        "Elephant"
+                        "Makan",
+                        "Tidur",
+                        "Terbang"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "id": "q4",
+                    "question": "Bahasa Inggris dari 'Menulis' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Bird",
-                        "Tiger",
-                        "Cat"
+                        "Swim",
+                        "Run",
+                        "Write"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q5",
+                    "question": "Gambar 📖 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Read",
+                        "Swim",
+                        "Write"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Ikan'?",
+                    "question": "What is the meaning of 'Write'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Cat",
-                        "Elephant",
-                        "Fish"
+                        "Menulis",
+                        "Berenang",
+                        "Bermain"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Harimau'?",
+                    "question": "Bahasa Inggris dari 'Berenang' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Tiger",
-                        "Bird",
-                        "Dog"
+                        "Swim",
+                        "Fly",
+                        "Jump"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "What is the meaning of 'Elephant'?",
+                    "question": "Gambar 🏊 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Burung",
-                        "Gajah",
-                        "Harimau"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Fish'?",
-                    "options": [
-                        "Ikan",
-                        "Gajah",
-                        "Kucing"
+                        "Swim",
+                        "Eat",
+                        "Read"
                     ],
                     "correctIndex": 0
-                },
-                {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Ikan'?",
-                    "options": [
-                        "Fish",
-                        "Dog",
-                        "Tiger"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
-                    "options": [
-                        "Cat",
-                        "Dog",
-                        "Tiger"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Gajah'?",
-                    "options": [
-                        "Elephant",
-                        "Cat",
-                        "Fish"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Dog'?",
-                    "options": [
-                        "Anjing",
-                        "Kucing",
-                        "Harimau"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q14",
-                    "question": "What is the meaning of 'Dog'?",
-                    "options": [
-                        "Burung",
-                        "Anjing",
-                        "Gajah"
-                    ],
-                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "eng12_3",
             "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "🏃",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Simple Sentences - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🦅</span><span class='font-black text-emerald-700 text-base'>Fly</span><span class='text-emerald-400 text-xs font-bold'>Terbang</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎵</span><span class='font-black text-emerald-700 text-base'>Sing</span><span class='text-emerald-400 text-xs font-bold'>Bernyanyi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💃</span><span class='font-black text-emerald-700 text-base'>Dance</span><span class='text-emerald-400 text-xs font-bold'>Menari</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎨</span><span class='font-black text-emerald-700 text-base'>Draw</span><span class='text-emerald-400 text-xs font-bold'>Menggambar</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👩‍🍳</span><span class='font-black text-emerald-700 text-base'>Cook</span><span class='text-emerald-400 text-xs font-bold'>Memasak</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎮</span><span class='font-black text-emerald-700 text-base'>Play</span><span class='text-emerald-400 text-xs font-bold'>Bermain</span></div></div></div>",
             "questions": [
                 {
-                    "id": "q0",
-                    "question": "What is the meaning of 'Hand'?",
+                    "id": "q2",
+                    "question": "'Menyanyi' in English is...",
                     "options": [
-                        "Hidung",
-                        "Tangan",
-                        "Kepala"
+                        "Sing",
+                        "Read",
+                        "Write"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "'Menggambar' in English is...",
+                    "options": [
+                        "Draw",
+                        "Write",
+                        "Read"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q0",
+                    "question": "'Berlari' in English is...",
+                    "options": [
+                        "Run",
+                        "Jump",
+                        "Fly"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "Birds ___ (terbang) in the sky.",
+                    "options": [
+                        "fly",
+                        "flies",
+                        "flying"
+                    ],
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
+                    "question": "'Berenang' in English is...",
                     "options": [
-                        "Ear",
-                        "Eye",
-                        "Leg"
+                        "Swim",
+                        "Dance",
+                        "Sleep"
                     ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "What is the meaning of 'Ear'?",
-                    "options": [
-                        "Hidung",
-                        "Telinga",
-                        "Tangan"
-                    ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Head'?",
+                    "question": "'Melompat' in English is...",
                     "options": [
-                        "Kepala",
-                        "Telinga",
-                        "Tangan"
+                        "Jump",
+                        "Run",
+                        "Cook"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q14",
+                    "question": "Fish ___ (berenang) in the ocean.",
+                    "options": [
+                        "swim",
+                        "swims",
+                        "swimming"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
+                    "question": "'Menari' in English is...",
                     "options": [
-                        "Leg",
-                        "Nose",
-                        "Ear"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
-                    "options": [
-                        "Nose",
-                        "Leg",
-                        "Head"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
-                    "options": [
-                        "Ear",
-                        "Leg",
-                        "Eye"
+                        "Dance",
+                        "Fly",
+                        "Eat"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Kaki'?",
+                    "id": "q13",
+                    "question": "We ___ (bermain) in the park.",
                     "options": [
-                        "Leg",
-                        "Hand",
-                        "Eye"
+                        "play",
+                        "plays",
+                        "played"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "He ___ (memasak) dinner every night.",
+                    "options": [
+                        "cooks",
+                        "cook",
+                        "cooked"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Tangan'?",
+                    "question": "They ___ (berlari) every morning.",
                     "options": [
-                        "Leg",
-                        "Hand",
-                        "Eye"
+                        "run",
+                        "runs",
+                        "running"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Leg'?",
+                    "id": "q7",
+                    "question": "She ___ (menari) at the party.",
                     "options": [
-                        "Mata",
-                        "Kaki",
-                        "Hidung"
+                        "dances",
+                        "dance",
+                        "dancing"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Hand'?",
+                    "id": "q6",
+                    "question": "'Memasak' in English is...",
                     "options": [
-                        "Mata",
-                        "Telinga",
-                        "Tangan"
+                        "Cook",
+                        "Eat",
+                        "Drink"
                     ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Kaki",
-                        "Kepala",
-                        "Hidung"
-                    ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "What is the meaning of 'Head'?",
+                    "question": "She ___ (membaca) a book every day.",
                     "options": [
-                        "Kaki",
-                        "Kepala",
-                        "Telinga"
+                        "reads",
+                        "read",
+                        "reading"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Ear'?",
+                    "id": "q11",
+                    "question": "I ___ (menggambar) a picture.",
                     "options": [
-                        "Kaki",
-                        "Telinga",
-                        "Kepala"
+                        "draw",
+                        "draws",
+                        "drew"
                     ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q14",
-                    "question": "What is the meaning of 'Hand'?",
-                    "options": [
-                        "Kepala",
-                        "Hidung",
-                        "Tangan"
-                    ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         }

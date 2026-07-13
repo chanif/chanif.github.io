@@ -1,145 +1,488 @@
 window.membaca2 = {
-    id: "membaca-2",
-    title: "Huruf K-T",
-    badge: "PAUD",
-    icon: "🔠",
-    description: "Melanjutkan mengenal huruf K sampai T dengan contoh benda di sekitar kita.",
-    lessons: [
+    "id": "membaca-2",
+    "title": "Level 2: Vokal & Konsonan",
+    "badge": "PAUD",
+    "icon": "🎵",
+    "description": "Belajar membedakan huruf vokal (AIUEO) dan huruf konsonan dengan gambar.",
+    "lessons": [
         {
-            id: "mb2_1",
-            title: "Huruf K - O",
-            icon: "🅺",
-            difficulty: "Mudah",
-            duration: "10 menit",
-            content: `
-                <div class="flex flex-col items-center gap-6">
-                    <div class="bg-rose-100 p-8 rounded-3xl border-4 border-rose-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-rose-600 block mb-4">K</span>
-                        <span class="text-6xl block">🐈</span>
-                        <p class="text-2xl font-bold text-rose-800 mt-4 uppercase">Kucing</p>
-                    </div>
-                    <div class="bg-cyan-100 p-8 rounded-3xl border-4 border-cyan-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-cyan-600 block mb-4">L</span>
-                        <span class="text-6xl block">🐝</span>
-                        <p class="text-2xl font-bold text-cyan-800 mt-4 uppercase">Lebah</p>
-                    </div>
-                    <div class="bg-lime-100 p-8 rounded-3xl border-4 border-lime-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-lime-600 block mb-4">M</span>
-                        <span class="text-6xl block">🐒</span>
-                        <p class="text-2xl font-bold text-lime-800 mt-4 uppercase">Monyet</p>
-                    </div>
-                    <div class="bg-amber-100 p-8 rounded-3xl border-4 border-amber-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-amber-600 block mb-4">N</span>
-                        <span class="text-6xl block">🍍</span>
-                        <p class="text-2xl font-bold text-amber-800 mt-4 uppercase">Nanas</p>
-                    </div>
-                    <div class="bg-teal-100 p-8 rounded-3xl border-4 border-teal-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-teal-600 block mb-4">O</span>
-                        <span class="text-6xl block">💊</span>
-                        <p class="text-2xl font-bold text-teal-800 mt-4 uppercase">Obat</p>
-                    </div>
-                </div>
-            `,
-            questions: [
-                { id: "q1", question: "Kucing (🐈) dimulai dengan huruf...", options: ["K", "L", "M"], correctIndex: 0 },
-                { id: "q2", question: "Lebah (🐝) dimulai dengan huruf...", options: ["K", "L", "M"], correctIndex: 1 },
-                { id: "q3", question: "Monyet (🐒) dimulai dengan huruf...", options: ["M", "N", "O"], correctIndex: 0 },
-                { id: "q4", question: "Nanas (🍍) dimulai dengan huruf...", options: ["M", "N", "O"], correctIndex: 1 },
-                { id: "q5", question: "Obat (💊) dimulai dengan huruf...", options: ["M", "N", "O"], correctIndex: 2 },
-                { id: "q6", question: "Huruf O bentuknya seperti...", options: ["Bulan Sabit 🌙", "Lingkaran ⭕", "Garis Lurus 📏"], correctIndex: 1 },
-                { id: "q7", question: "Setelah K adalah huruf...", options: ["L", "M", "N"], correctIndex: 0 },
-                { id: "q8", question: "Sebelum huruf O adalah huruf...", options: ["N", "M", "L"], correctIndex: 0 },
-                { id: "q9", question: "Huruf M kakinya ada...", options: ["1", "2", "3"], correctIndex: 2 },
-                { id: "q10", question: "Mana yang huruf N?", options: ["M", "N", "K"], correctIndex: 1 },
-                { id: "q11", question: "Mana yang huruf L?", options: ["L", "K", "O"], correctIndex: 0 },
-                { id: "q12", question: "Setelah M adalah...", options: ["N", "O", "L"], correctIndex: 0 },
-                { id: "q13", question: "Mana huruf O?", options: ["O", "Q", "C"], correctIndex: 0 },
-                { id: "q14", question: "Kata 'Nanas' berawalan huruf?", options: ["M", "N", "O"], correctIndex: 1 },
-                { id: "q15", question: "Kata 'Lebah' berawalan huruf?", options: ["L", "K", "M"], correctIndex: 0 }
+            "id": "mb2_1",
+            "title": "Huruf Vokal A I U E O",
+            "icon": "🎵",
+            "difficulty": "Mudah",
+            "duration": "10 menit",
+            "content": "<div class='grid grid-cols-1 sm:grid-cols-2 gap-4'>\n    <div class='flex flex-col items-center justify-center bg-pink-50 border-4 border-pink-200 rounded-3xl p-8 hover:scale-105 transition-transform'>\n        <span class='text-9xl mb-4 block'>🍎</span>\n        <span class='text-5xl font-black text-pink-700 mb-2'>A</span>\n        <span class='text-2xl text-pink-500 font-bold'>Apel</span>\n    </div>\n    <div class='flex flex-col items-center justify-center bg-cyan-50 border-4 border-cyan-200 rounded-3xl p-8 hover:scale-105 transition-transform'>\n        <span class='text-9xl mb-4 block'>🐟</span>\n        <span class='text-5xl font-black text-cyan-700 mb-2'>I</span>\n        <span class='text-2xl text-cyan-500 font-bold'>Ikan</span>\n    </div>\n    <div class='flex flex-col items-center justify-center bg-purple-50 border-4 border-purple-200 rounded-3xl p-8 hover:scale-105 transition-transform'>\n        <span class='text-9xl mb-4 block'>🦄</span>\n        <span class='text-5xl font-black text-purple-700 mb-2'>U</span>\n        <span class='text-2xl text-purple-500 font-bold'>Unicorn</span>\n    </div>\n    <div class='flex flex-col items-center justify-center bg-blue-50 border-4 border-blue-200 rounded-3xl p-8 hover:scale-105 transition-transform'>\n        <span class='text-9xl mb-4 block'>🦅</span>\n        <span class='text-5xl font-black text-blue-700 mb-2'>E</span>\n        <span class='text-2xl text-blue-500 font-bold'>Elang</span>\n    </div>\n    <div class='flex flex-col items-center justify-center bg-orange-50 border-4 border-orange-200 rounded-3xl p-8 hover:scale-105 transition-transform'>\n        <span class='text-9xl mb-4 block'>🍊</span>\n        <span class='text-5xl font-black text-orange-700 mb-2'>O</span>\n        <span class='text-2xl text-orange-500 font-bold'>Jeruk</span>\n    </div></div><div class='mt-6 text-center text-2xl font-bold text-slate-500'>Huruf Vokal = A I U E O 🎵</div>",
+            "questions": [
+                {
+                    "id": "q0",
+                    "question": "Manakah huruf VOKAL? 🅰️",
+                    "options": [
+                        "A",
+                        "B",
+                        "C"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "Manakah huruf VOKAL? 🔵",
+                    "options": [
+                        "D",
+                        "I",
+                        "K"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q2",
+                    "question": "Manakah huruf VOKAL? 🔴",
+                    "options": [
+                        "F",
+                        "G",
+                        "U"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q3",
+                    "question": "Manakah huruf VOKAL? 🟢",
+                    "options": [
+                        "E",
+                        "H",
+                        "J"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "Manakah huruf VOKAL? 🟡",
+                    "options": [
+                        "L",
+                        "M",
+                        "O"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q5",
+                    "question": "Berapa banyak huruf vokal? 🤔",
+                    "options": [
+                        "5",
+                        "6",
+                        "4"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "🍎 Apel — huruf pertamanya adalah vokal atau konsonan?",
+                    "options": [
+                        "Vokal",
+                        "Konsonan",
+                        "Bukan keduanya"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "🦆 Bebek — huruf pertamanya adalah vokal atau konsonan?",
+                    "options": [
+                        "Vokal",
+                        "Konsonan",
+                        "Bukan keduanya"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q8",
+                    "question": "🐟 Ikan — huruf pertamanya adalah...",
+                    "options": [
+                        "Vokal (I)",
+                        "Konsonan (I)",
+                        "Bukan huruf"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "🦅 Elang — huruf pertamanya adalah...",
+                    "options": [
+                        "Vokal (E)",
+                        "Konsonan (E)",
+                        "Nomor"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "Manakah yang BUKAN huruf vokal?",
+                    "options": [
+                        "B",
+                        "A",
+                        "I"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "Manakah yang BUKAN huruf vokal?",
+                    "options": [
+                        "U",
+                        "E",
+                        "C"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q12",
+                    "question": "Sebutkan vokal ke-3! 🥉",
+                    "options": [
+                        "E",
+                        "U",
+                        "O"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q13",
+                    "question": "Sebutkan vokal ke-1! 🥇",
+                    "options": [
+                        "I",
+                        "A",
+                        "U"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q14",
+                    "question": "Sebutkan vokal ke-5! 🏆",
+                    "options": [
+                        "O",
+                        "A",
+                        "E"
+                    ],
+                    "correctIndex": 0
+                }
             ]
         },
         {
-            id: "mb2_2",
-            title: "Huruf P - T",
-            icon: "🅿️",
-            difficulty: "Mudah",
-            duration: "10 menit",
-            content: `
-                <div class="flex flex-col items-center gap-6">
-                    <div class="bg-indigo-100 p-8 rounded-3xl border-4 border-indigo-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-indigo-600 block mb-4">P</span>
-                        <span class="text-6xl block">🐧</span>
-                        <p class="text-2xl font-bold text-indigo-800 mt-4 uppercase">Penguin</p>
-                    </div>
-                    <div class="bg-yellow-100 p-8 rounded-3xl border-4 border-yellow-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-yellow-600 block mb-4">Q</span>
-                        <span class="text-6xl block">👑</span>
-                        <p class="text-2xl font-bold text-yellow-800 mt-4 uppercase">Queen (Ratu)</p>
-                    </div>
-                    <div class="bg-red-100 p-8 rounded-3xl border-4 border-red-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-red-600 block mb-4">R</span>
-                        <span class="text-6xl block">🏠</span>
-                        <p class="text-2xl font-bold text-red-800 mt-4 uppercase">Rumah</p>
-                    </div>
-                    <div class="bg-sky-100 p-8 rounded-3xl border-4 border-sky-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-sky-600 block mb-4">S</span>
-                        <span class="text-6xl block">🍉</span>
-                        <p class="text-2xl font-bold text-sky-800 mt-4 uppercase">Semangka</p>
-                    </div>
-                    <div class="bg-emerald-100 p-8 rounded-3xl border-4 border-emerald-200 text-center w-full max-w-md transform transition hover:scale-105">
-                        <span class="text-8xl font-black text-emerald-600 block mb-4">T</span>
-                        <span class="text-6xl block">🍅</span>
-                        <p class="text-2xl font-bold text-emerald-800 mt-4 uppercase">Tomat</p>
-                    </div>
-                </div>
-            `,
-            questions: [
-                { id: "q1", question: "Penguin (🐧) dimulai dengan huruf...", options: ["P", "Q", "R"], correctIndex: 0 },
-                { id: "q2", question: "Queen (👑) dimulai dengan huruf...", options: ["Q", "P", "R"], correctIndex: 0 },
-                { id: "q3", question: "Rumah (🏠) dimulai dengan huruf...", options: ["R", "S", "T"], correctIndex: 0 },
-                { id: "q4", question: "Semangka (🍉) dimulai dengan huruf...", options: ["S", "R", "T"], correctIndex: 0 },
-                { id: "q5", question: "Tomat (🍅) dimulai dengan huruf...", options: ["T", "S", "R"], correctIndex: 0 },
-                { id: "q6", question: "Huruf S bentuknya seperti...", options: ["Ular berkelok 🐍", "Tiang listrik 📏", "Roda ⭕"], correctIndex: 0 },
-                { id: "q7", question: "Huruf Q mirip dengan huruf O tapi ada...", options: ["Ekornya", "Topinya", "Sayapnya"], correctIndex: 0 },
-                { id: "q8", question: "Setelah huruf P adalah huruf...", options: ["Q", "R", "S"], correctIndex: 0 },
-                { id: "q9", question: "Sebelum huruf T adalah huruf...", options: ["S", "R", "Q"], correctIndex: 0 },
-                { id: "q10", question: "Mana huruf R?", options: ["R", "P", "B"], correctIndex: 0 },
-                { id: "q11", question: "Mana huruf T?", options: ["T", "I", "L"], correctIndex: 0 },
-                { id: "q12", question: "Kata 'Semangka' berawalan huruf?", options: ["S", "M", "K"], correctIndex: 0 },
-                { id: "q13", question: "Kata 'Tomat' berawalan huruf?", options: ["T", "M", "O"], correctIndex: 0 },
-                { id: "q14", question: "Mana yang huruf S?", options: ["S", "C", "G"], correctIndex: 0 },
-                { id: "q15", question: "Setelah huruf R adalah...", options: ["S", "T", "U"], correctIndex: 0 }
+            "id": "mb2_2",
+            "title": "Huruf Konsonan",
+            "icon": "🔡",
+            "difficulty": "Mudah",
+            "duration": "10 menit",
+            "content": "<div class='mb-4 text-center text-2xl font-black text-blue-600'>Huruf Konsonan (B-Z, bukan AIUEO)</div><div class='grid grid-cols-2 sm:grid-cols-3 gap-4'>\n    <div class='flex flex-col items-center justify-center bg-orange-50 border-4 border-orange-200 rounded-3xl p-6 cursor-pointer hover:scale-105 transition-transform' style='min-height:180px'>\n        <span class='text-8xl mb-3 block'>🦆</span>\n        <span class='text-4xl font-black text-orange-700 tracking-widest'>B</span>\n    </div>\n    <div class='flex flex-col items-center justify-center bg-red-50 border-4 border-red-200 rounded-3xl p-6 cursor-pointer hover:scale-105 transition-transform' style='min-height:180px'>\n        <span class='text-8xl mb-3 block'>🍒</span>\n        <span class='text-4xl font-black text-red-700 tracking-widest'>C</span>\n    </div>\n    <div class='flex flex-col items-center justify-center bg-yellow-50 border-4 border-yellow-200 rounded-3xl p-6 cursor-pointer hover:scale-105 transition-transform' style='min-height:180px'>\n        <span class='text-8xl mb-3 block'>🍩</span>\n        <span class='text-4xl font-black text-yellow-700 tracking-widest'>D</span>\n    </div>\n    <div class='flex flex-col items-center justify-center bg-green-50 border-4 border-green-200 rounded-3xl p-6 cursor-pointer hover:scale-105 transition-transform' style='min-height:180px'>\n        <span class='text-8xl mb-3 block'>🐸</span>\n        <span class='text-4xl font-black text-green-700 tracking-widest'>F</span>\n    </div>\n    <div class='flex flex-col items-center justify-center bg-purple-50 border-4 border-purple-200 rounded-3xl p-6 cursor-pointer hover:scale-105 transition-transform' style='min-height:180px'>\n        <span class='text-8xl mb-3 block'>🐘</span>\n        <span class='text-4xl font-black text-purple-700 tracking-widest'>G</span>\n    </div>\n    <div class='flex flex-col items-center justify-center bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 cursor-pointer hover:scale-105 transition-transform' style='min-height:180px'>\n        <span class='text-8xl mb-3 block'>🚁</span>\n        <span class='text-4xl font-black text-indigo-700 tracking-widest'>H</span>\n    </div></div><div class='mt-4 text-center text-xl text-slate-500 font-bold'>dan masih banyak lagi... B C D F G H J K L M N P Q R S T V W X Y Z 🎯</div>",
+            "questions": [
+                {
+                    "id": "q0",
+                    "question": "Huruf B — konsonan atau vokal?",
+                    "options": [
+                        "Konsonan",
+                        "Vokal",
+                        "Keduanya"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "Huruf C — konsonan atau vokal?",
+                    "options": [
+                        "Konsonan",
+                        "Vokal",
+                        "Keduanya"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "Huruf D — konsonan atau vokal?",
+                    "options": [
+                        "Konsonan",
+                        "Vokal",
+                        "Angka"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "Huruf A — konsonan atau vokal?",
+                    "options": [
+                        "Vokal",
+                        "Konsonan",
+                        "Angka"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "Huruf O — konsonan atau vokal?",
+                    "options": [
+                        "Vokal",
+                        "Konsonan",
+                        "Simbol"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "🦆 Bebek — diawali huruf konsonan apa?",
+                    "options": [
+                        "B",
+                        "D",
+                        "G"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "🍒 Ceri — diawali huruf konsonan apa?",
+                    "options": [
+                        "C",
+                        "B",
+                        "D"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "🐘 Gajah — diawali huruf konsonan apa?",
+                    "options": [
+                        "F",
+                        "G",
+                        "H"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q8",
+                    "question": "🚁 Helikopter — diawali huruf konsonan apa?",
+                    "options": [
+                        "H",
+                        "I",
+                        "J"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "Manakah yang KONSONAN?",
+                    "options": [
+                        "K",
+                        "A",
+                        "E"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "Manakah yang KONSONAN?",
+                    "options": [
+                        "I",
+                        "L",
+                        "U"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "Manakah yang KONSONAN?",
+                    "options": [
+                        "O",
+                        "E",
+                        "M"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q12",
+                    "question": "Ada berapa huruf alfabet total?",
+                    "options": [
+                        "26",
+                        "25",
+                        "27"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q13",
+                    "question": "Ada berapa huruf KONSONAN?",
+                    "options": [
+                        "21",
+                        "20",
+                        "22"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q14",
+                    "question": "Ada berapa huruf VOKAL?",
+                    "options": [
+                        "5",
+                        "6",
+                        "4"
+                    ],
+                    "correctIndex": 0
+                }
             ]
         },
         {
-            id: "mb2_3",
-            title: "Tebak Huruf K-T",
-            icon: "🎲",
-            difficulty: "Sedang",
-            duration: "10 menit",
-            content: `
-                <div class="text-center">
-                    <span class="text-9xl mb-8 block">🤔</span>
-                    <h2 class="text-3xl font-extrabold text-pink-600 mb-4">Review K sampai T!</h2>
-                    <p class="text-xl text-slate-600">Ayo kita tebak lagi huruf-huruf yang baru saja kita pelajari!</p>
-                </div>
-            `,
-            questions: [
-                { id: "q1", question: "Kucing dimulai huruf...", options: ["K", "L", "M"], correctIndex: 0 },
-                { id: "q2", question: "Nanas dimulai huruf...", options: ["N", "O", "P"], correctIndex: 0 },
-                { id: "q3", question: "Semangka dimulai huruf...", options: ["S", "T", "R"], correctIndex: 0 },
-                { id: "q4", question: "Obat dimulai huruf...", options: ["O", "Q", "P"], correctIndex: 0 },
-                { id: "q5", question: "Rumah dimulai huruf...", options: ["R", "P", "S"], correctIndex: 0 },
-                { id: "q6", question: "Setelah L adalah...", options: ["M", "N", "O"], correctIndex: 0 },
-                { id: "q7", question: "Sebelum S adalah...", options: ["R", "T", "Q"], correctIndex: 0 },
-                { id: "q8", question: "Huruf O berbentuk seperti...", options: ["Lingkaran", "Segitiga", "Kotak"], correctIndex: 0 },
-                { id: "q9", question: "Tomat dimulai huruf...", options: ["T", "R", "S"], correctIndex: 0 },
-                { id: "q10", question: "Penguin dimulai huruf...", options: ["P", "Q", "R"], correctIndex: 0 },
-                { id: "q11", question: "Monyet dimulai huruf...", options: ["M", "N", "K"], correctIndex: 0 },
-                { id: "q12", question: "Lebah dimulai huruf...", options: ["L", "M", "N"], correctIndex: 0 },
-                { id: "q13", question: "Mana huruf R?", options: ["R", "P", "B"], correctIndex: 0 },
-                { id: "q14", question: "Mana huruf Q?", options: ["Q", "O", "C"], correctIndex: 0 },
-                { id: "q15", question: "Huruf S seperti bentuk...", options: ["Ular", "Tiang", "Kursi"], correctIndex: 0 }
+            "id": "mb2_3",
+            "title": "Latihan Vokal & Konsonan",
+            "icon": "🏆",
+            "difficulty": "Sedang",
+            "duration": "10 menit",
+            "content": "<div class='text-center space-y-6'><span class='text-8xl block'>🎯</span><h2 class='text-3xl font-extrabold text-pink-600'>Waktunya Latihan!</h2><div class='grid grid-cols-2 gap-4 mt-6'><div class='bg-pink-50 border-4 border-pink-200 rounded-2xl p-4 text-center'><span class='text-5xl font-black text-pink-600'>A</span><p class='text-pink-500 font-bold mt-2'>VOKAL</p></div><div class='bg-pink-50 border-4 border-pink-200 rounded-2xl p-4 text-center'><span class='text-5xl font-black text-pink-600'>I</span><p class='text-pink-500 font-bold mt-2'>VOKAL</p></div><div class='bg-pink-50 border-4 border-pink-200 rounded-2xl p-4 text-center'><span class='text-5xl font-black text-pink-600'>U</span><p class='text-pink-500 font-bold mt-2'>VOKAL</p></div><div class='bg-pink-50 border-4 border-pink-200 rounded-2xl p-4 text-center'><span class='text-5xl font-black text-pink-600'>E</span><p class='text-pink-500 font-bold mt-2'>VOKAL</p></div><div class='bg-pink-50 border-4 border-pink-200 rounded-2xl p-4 text-center'><span class='text-5xl font-black text-pink-600'>O</span><p class='text-pink-500 font-bold mt-2'>VOKAL</p></div></div></div>",
+            "questions": [
+                {
+                    "id": "q0",
+                    "question": "Kata 'IKU' — huruf vokalnya ada berapa?",
+                    "options": [
+                        "2",
+                        "3",
+                        "1"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q1",
+                    "question": "Kata 'BOLA' — huruf vokalnya adalah...",
+                    "options": [
+                        "O dan A",
+                        "B dan L",
+                        "O dan L"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "Kata 'SUSU' — ada berapa huruf vokal?",
+                    "options": [
+                        "2",
+                        "1",
+                        "3"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "Huruf 'A' termasuk...",
+                    "options": [
+                        "Vokal",
+                        "Konsonan",
+                        "Angka"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "Huruf 'Z' termasuk...",
+                    "options": [
+                        "Konsonan",
+                        "Vokal",
+                        "Simbol"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "Kata 'MATA' — huruf konsonannya adalah...",
+                    "options": [
+                        "M dan T",
+                        "A dan A",
+                        "M dan A"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "Dalam kata 'KAKI', ada berapa vokal?",
+                    "options": [
+                        "2",
+                        "3",
+                        "1"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "Dalam kata 'ELANG', huruf pertamanya adalah...",
+                    "options": [
+                        "Vokal (E)",
+                        "Konsonan (E)",
+                        "Angka"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "Dalam kata 'GIGI', ada berapa konsonan?",
+                    "options": [
+                        "2",
+                        "3",
+                        "1"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "Manakah kata yang DIAWALI vokal?",
+                    "options": [
+                        "Apel",
+                        "Bola",
+                        "Ceri"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "Manakah kata yang DIAWALI konsonan?",
+                    "options": [
+                        "Ikan",
+                        "Pisang",
+                        "Elang"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "Manakah kata yang DIAWALI vokal?",
+                    "options": [
+                        "Domba",
+                        "Ular",
+                        "Sapi"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q12",
+                    "question": "Huruf kelima dari abjad adalah...",
+                    "options": [
+                        "E",
+                        "F",
+                        "D"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q13",
+                    "question": "Huruf ke-10 dari abjad adalah...",
+                    "options": [
+                        "J",
+                        "I",
+                        "K"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q14",
+                    "question": "Huruf terakhir abjad adalah...",
+                    "options": [
+                        "Z",
+                        "Y",
+                        "X"
+                    ],
+                    "correctIndex": 0
+                }
             ]
         }
     ]

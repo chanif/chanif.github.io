@@ -2,486 +2,486 @@ window.math24 = {
     "id": "math-24",
     "title": "Level 24: Aljabar Dasar",
     "badge": "SMP",
-    "icon": "\ud83e\uddee",
-    "description": "Variabel x, y",
+    "icon": "🔣",
+    "description": "Aljabar Dasar",
     "lessons": [
         {
             "id": "mth24_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "🔣",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Aljabar Dasar - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Aljabar: Variabel & Ekspresi</h3>\n        <p class='text-slate-700 text-lg'>Variabel adalah simbol (x, y) yang mewakili bilangan yang belum diketahui.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>2x + 3, x=4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2(4)+3 = 8+3 = 11</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>3y - 5, y=3</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>3(3)-5 = 9-5 = 4</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Selesaikan: 2x+1=7</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2x = 7-1 = 6, x = 3</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Substitusi: ganti variabel dengan nilainya lalu hitung!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 18 \u00d7 5?",
+                    "question": "Selesaikan: 2x + 5 = 9. Nilai x = ...",
                     "options": [
-                        "87",
-                        "94",
-                        "90"
+                        "2",
+                        "1",
+                        "3"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 18 \u00d7 2?",
+                    "question": "Selesaikan: 4x + 1 = 9. Nilai x = ...",
                     "options": [
-                        "41",
-                        "36",
-                        "31"
+                        "3",
+                        "2",
+                        "1"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 11 \u00d7 7?",
+                    "question": "Jika x = 5, nilai dari 3x + 5 = ...",
                     "options": [
-                        "74",
-                        "78",
-                        "77"
+                        "17",
+                        "23",
+                        "20"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 24 \u00d7 8?",
+                    "question": "Jika x = 5, nilai dari 4x + 2 = ...",
                     "options": [
-                        "197",
-                        "192",
-                        "187"
+                        "22",
+                        "26",
+                        "18"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 42 \u00d7 5?",
+                    "question": "Selesaikan: 5x + 5 = 30. Nilai x = ...",
                     "options": [
-                        "208",
-                        "215",
-                        "210"
+                        "5",
+                        "4",
+                        "6"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 30 \u00d7 7?",
+                    "question": "Selesaikan: 4x + 7 = 11. Nilai x = ...",
                     "options": [
-                        "208",
-                        "214",
-                        "210"
+                        "1",
+                        "0",
+                        "2"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 19 \u00d7 6?",
+                    "question": "Selesaikan: 5x + 7 = 17. Nilai x = ...",
                     "options": [
-                        "109",
-                        "119",
-                        "114"
+                        "2",
+                        "3",
+                        "1"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 46 \u00d7 8?",
+                    "question": "Jika x = 7, nilai dari 4x + 6 = ...",
                     "options": [
-                        "368",
-                        "369",
-                        "363"
+                        "34",
+                        "38",
+                        "30"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 17 \u00d7 6?",
+                    "question": "Jika x = 5, nilai dari 2x + 3 = ...",
                     "options": [
-                        "104",
-                        "101",
-                        "102"
+                        "11",
+                        "15",
+                        "13"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 23 \u00d7 2?",
+                    "question": "Selesaikan: 2x + 1 = 9. Nilai x = ...",
                     "options": [
-                        "42",
-                        "46",
-                        "48"
+                        "5",
+                        "4",
+                        "3"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 47 \u00d7 5?",
+                    "question": "Jika x = 6, nilai dari 2x + 7 = ...",
                     "options": [
-                        "238",
-                        "235",
-                        "234"
+                        "17",
+                        "21",
+                        "19"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 44 \u00d7 3?",
+                    "question": "Jika x = 7, nilai dari 3x + 4 = ...",
                     "options": [
-                        "132",
-                        "129",
-                        "135"
+                        "25",
+                        "28",
+                        "22"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 41 \u00d7 4?",
+                    "question": "Selesaikan: 4x + 3 = 15. Nilai x = ...",
                     "options": [
-                        "164",
-                        "161",
-                        "169"
+                        "4",
+                        "2",
+                        "3"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q13",
+                    "question": "Selesaikan: 3x + 2 = 20. Nilai x = ...",
+                    "options": [
+                        "6",
+                        "5",
+                        "7"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 49 \u00d7 9?",
-                    "options": [
-                        "436",
-                        "443",
-                        "441"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q14",
-                    "question": "Berapa hasil dari 47 \u00d7 7?",
+                    "question": "Jika x = 4, nilai dari 4x + 3 = ...",
                     "options": [
-                        "332",
-                        "324",
-                        "329"
+                        "15",
+                        "19",
+                        "23"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "mth24_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "🔣",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Aljabar Dasar - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Aljabar: Variabel & Ekspresi</h3>\n        <p class='text-slate-700 text-lg'>Variabel adalah simbol (x, y) yang mewakili bilangan yang belum diketahui.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>2x + 3, x=4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2(4)+3 = 8+3 = 11</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>3y - 5, y=3</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>3(3)-5 = 9-5 = 4</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Selesaikan: 2x+1=7</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2x = 7-1 = 6, x = 3</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Substitusi: ganti variabel dengan nilainya lalu hitung!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 48 \u00d7 4?",
+                    "question": "Selesaikan: 2x + 5 = 9. Nilai x = ...",
                     "options": [
-                        "192",
-                        "197",
-                        "187"
+                        "2",
+                        "1",
+                        "3"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 37 \u00d7 7?",
+                    "question": "Selesaikan: 4x + 1 = 9. Nilai x = ...",
                     "options": [
-                        "255",
-                        "259",
-                        "263"
+                        "3",
+                        "2",
+                        "1"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 34 \u00d7 5?",
+                    "question": "Jika x = 5, nilai dari 3x + 5 = ...",
                     "options": [
-                        "175",
-                        "165",
-                        "170"
+                        "17",
+                        "23",
+                        "20"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 24 \u00d7 7?",
+                    "question": "Jika x = 5, nilai dari 4x + 2 = ...",
                     "options": [
-                        "168",
-                        "164",
-                        "170"
+                        "22",
+                        "26",
+                        "18"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 23 \u00d7 8?",
+                    "question": "Selesaikan: 5x + 5 = 30. Nilai x = ...",
                     "options": [
-                        "184",
-                        "187",
-                        "183"
+                        "5",
+                        "4",
+                        "6"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 17 \u00d7 6?",
+                    "question": "Selesaikan: 4x + 7 = 11. Nilai x = ...",
                     "options": [
-                        "99",
-                        "103",
-                        "102"
+                        "1",
+                        "0",
+                        "2"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 42 \u00d7 5?",
+                    "question": "Selesaikan: 5x + 7 = 17. Nilai x = ...",
                     "options": [
-                        "210",
-                        "214",
-                        "209"
+                        "2",
+                        "3",
+                        "1"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 40 \u00d7 7?",
+                    "question": "Jika x = 7, nilai dari 4x + 6 = ...",
                     "options": [
-                        "280",
-                        "279",
-                        "284"
+                        "34",
+                        "38",
+                        "30"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 49 \u00d7 6?",
+                    "question": "Jika x = 5, nilai dari 2x + 3 = ...",
                     "options": [
-                        "294",
-                        "293",
-                        "296"
+                        "11",
+                        "15",
+                        "13"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 26 \u00d7 6?",
+                    "question": "Selesaikan: 2x + 1 = 9. Nilai x = ...",
                     "options": [
-                        "152",
-                        "156",
-                        "158"
+                        "5",
+                        "4",
+                        "3"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 33 \u00d7 10?",
+                    "question": "Jika x = 6, nilai dari 2x + 7 = ...",
                     "options": [
-                        "334",
-                        "330",
-                        "329"
+                        "17",
+                        "21",
+                        "19"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 45 \u00d7 9?",
+                    "question": "Jika x = 7, nilai dari 3x + 4 = ...",
                     "options": [
-                        "405",
-                        "401",
-                        "409"
+                        "25",
+                        "28",
+                        "22"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 37 \u00d7 10?",
+                    "question": "Selesaikan: 4x + 3 = 15. Nilai x = ...",
                     "options": [
-                        "368",
-                        "375",
-                        "370"
+                        "4",
+                        "2",
+                        "3"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 18 \u00d7 3?",
+                    "question": "Selesaikan: 3x + 2 = 20. Nilai x = ...",
                     "options": [
-                        "54",
-                        "57",
-                        "51"
+                        "6",
+                        "5",
+                        "7"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 23 \u00d7 7?",
+                    "question": "Jika x = 4, nilai dari 4x + 3 = ...",
                     "options": [
-                        "161",
-                        "160",
-                        "165"
+                        "15",
+                        "19",
+                        "23"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "mth24_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "🔣",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Aljabar Dasar - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Aljabar: Variabel & Ekspresi</h3>\n        <p class='text-slate-700 text-lg'>Variabel adalah simbol (x, y) yang mewakili bilangan yang belum diketahui.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>2x + 3, x=4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2(4)+3 = 8+3 = 11</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>3y - 5, y=3</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>3(3)-5 = 9-5 = 4</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Selesaikan: 2x+1=7</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2x = 7-1 = 6, x = 3</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Substitusi: ganti variabel dengan nilainya lalu hitung!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 15 \u00d7 10?",
+                    "question": "Selesaikan: 2x + 5 = 9. Nilai x = ...",
                     "options": [
-                        "150",
-                        "152",
-                        "146"
+                        "2",
+                        "1",
+                        "3"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 11 \u00d7 8?",
+                    "question": "Selesaikan: 4x + 1 = 9. Nilai x = ...",
                     "options": [
-                        "92",
-                        "86",
-                        "88"
+                        "3",
+                        "2",
+                        "1"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q2",
+                    "question": "Jika x = 5, nilai dari 3x + 5 = ...",
+                    "options": [
+                        "17",
+                        "23",
+                        "20"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 33 \u00d7 2?",
+                    "id": "q3",
+                    "question": "Jika x = 5, nilai dari 4x + 2 = ...",
                     "options": [
-                        "66",
-                        "70",
-                        "65"
+                        "22",
+                        "26",
+                        "18"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 15 \u00d7 3?",
-                    "options": [
-                        "40",
-                        "50",
-                        "45"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q4",
-                    "question": "Berapa hasil dari 48 \u00d7 8?",
+                    "question": "Selesaikan: 5x + 5 = 30. Nilai x = ...",
                     "options": [
-                        "388",
-                        "384",
-                        "380"
+                        "5",
+                        "4",
+                        "6"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 47 \u00d7 7?",
+                    "question": "Selesaikan: 4x + 7 = 11. Nilai x = ...",
                     "options": [
-                        "332",
-                        "329",
-                        "324"
+                        "1",
+                        "0",
+                        "2"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 38 \u00d7 2?",
+                    "question": "Selesaikan: 5x + 7 = 17. Nilai x = ...",
                     "options": [
-                        "73",
-                        "78",
-                        "76"
+                        "2",
+                        "3",
+                        "1"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 11 \u00d7 9?",
+                    "question": "Jika x = 7, nilai dari 4x + 6 = ...",
                     "options": [
-                        "102",
-                        "94",
-                        "99"
+                        "34",
+                        "38",
+                        "30"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 47 \u00d7 3?",
+                    "question": "Jika x = 5, nilai dari 2x + 3 = ...",
                     "options": [
-                        "137",
-                        "142",
-                        "141"
+                        "11",
+                        "15",
+                        "13"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 21 \u00d7 3?",
+                    "question": "Selesaikan: 2x + 1 = 9. Nilai x = ...",
                     "options": [
-                        "63",
-                        "64",
-                        "59"
+                        "5",
+                        "4",
+                        "3"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 20 \u00d7 6?",
+                    "question": "Jika x = 6, nilai dari 2x + 7 = ...",
                     "options": [
-                        "120",
-                        "121",
-                        "119"
+                        "17",
+                        "21",
+                        "19"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 13 \u00d7 7?",
+                    "question": "Jika x = 7, nilai dari 3x + 4 = ...",
                     "options": [
-                        "91",
-                        "86",
-                        "94"
+                        "25",
+                        "28",
+                        "22"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 36 \u00d7 4?",
+                    "question": "Selesaikan: 4x + 3 = 15. Nilai x = ...",
                     "options": [
-                        "144",
-                        "140",
-                        "146"
+                        "4",
+                        "2",
+                        "3"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 23 \u00d7 3?",
+                    "question": "Selesaikan: 3x + 2 = 20. Nilai x = ...",
                     "options": [
-                        "69",
-                        "64",
-                        "74"
+                        "6",
+                        "5",
+                        "7"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 13 \u00d7 6?",
+                    "question": "Jika x = 4, nilai dari 4x + 3 = ...",
                     "options": [
-                        "78",
-                        "76",
-                        "80"
+                        "15",
+                        "19",
+                        "23"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 }
             ]
         }

@@ -2,164 +2,164 @@ window.math17 = {
     "id": "math-17",
     "title": "Level 17: Bangun Datar",
     "badge": "Kelas 4",
-    "icon": "\ud83e\uddee",
-    "description": "Segitiga, persegi, lingkaran",
+    "icon": "📐",
+    "description": "Bangun Datar",
     "lessons": [
         {
             "id": "mth17_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "📐",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Bangun Datar - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Bangun Datar</h3>\n        <p class='text-slate-700 text-lg'>Bangun datar adalah bentuk 2 dimensi. Contoh: segitiga, persegi, lingkaran.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Segitiga</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>3 sisi, 3 sudut, jumlah sudut = 180°</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Persegi</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 sisi sama panjang, 4 sudut siku-siku</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Lingkaran</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Tidak punya sudut, keliling = 2πr</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Sudut siku-siku = 90°, lancip < 90°, tumpul > 90°</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 19 + 43?",
+                    "question": "Bangun yang memiliki 4 sisi disebut...",
                     "options": [
-                        "61",
-                        "64",
-                        "62"
+                        "Persegi Panjang",
+                        "Persegi",
+                        "Segitiga Sama Sisi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 74 - 21?",
+                    "question": "Bangun Lingkaran memiliki berapa sisi?",
                     "options": [
-                        "57",
-                        "53",
-                        "48"
+                        "6",
+                        "0",
+                        "3"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 76 - 32?",
+                    "question": "Bangun yang memiliki 0 sisi disebut...",
                     "options": [
-                        "45",
-                        "42",
-                        "44"
+                        "Lingkaran",
+                        "Segienam",
+                        "Segitiga Sama Sisi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 70 - 47?",
+                    "question": "Bangun Segienam memiliki berapa sisi?",
                     "options": [
-                        "28",
-                        "23",
-                        "19"
+                        "4",
+                        "6",
+                        "3"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 84 - 27?",
+                    "question": "Bangun Segitiga memiliki berapa sisi?",
                     "options": [
-                        "57",
-                        "56",
-                        "62"
+                        "3",
+                        "3",
+                        "4"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 99 + 42?",
+                    "question": "Bangun Persegi memiliki berapa sisi?",
                     "options": [
-                        "139",
-                        "143",
-                        "141"
+                        "4",
+                        "4",
+                        "3"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "Bangun Segitiga Sama Sisi memiliki berapa sisi?",
+                    "options": [
+                        "0",
+                        "4",
+                        "3"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q6",
-                    "question": "Berapa hasil dari 90 + 73?",
-                    "options": [
-                        "163",
-                        "159",
-                        "165"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q7",
-                    "question": "Berapa hasil dari 84 - 70?",
+                    "question": "Bangun yang memiliki 6 sisi disebut...",
                     "options": [
-                        "14",
-                        "18",
-                        "13"
+                        "Persegi Panjang",
+                        "Segienam",
+                        "Segitiga"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 55 - 13?",
+                    "question": "Bangun yang memiliki 3 sisi disebut...",
                     "options": [
-                        "42",
-                        "38",
-                        "45"
+                        "Persegi",
+                        "Segitiga Sama Sisi",
+                        "Lingkaran"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 93 - 47?",
+                    "question": "Ciri-ciri bangun Segienam adalah...",
                     "options": [
-                        "46",
-                        "47",
-                        "42"
+                        "6 sisi sama panjang, 6 sudut",
+                        "sisi berlawanan sama panjang",
+                        "3 sudut, jumlah sudut 180°"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 85 - 37?",
+                    "question": "Ciri-ciri bangun Segitiga Sama Sisi adalah...",
                     "options": [
-                        "48",
-                        "45",
-                        "52"
+                        "3 sisi sama panjang, sudut 60° semua",
+                        "4 sisi sama panjang, 4 sudut 90°",
+                        "tidak punya sudut, keliling = 2πr"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 100 + 75?",
+                    "question": "Ciri-ciri bangun Persegi adalah...",
                     "options": [
-                        "171",
-                        "175",
-                        "179"
+                        "3 sisi sama panjang, sudut 60° semua",
+                        "4 sisi sama panjang, 4 sudut 90°",
+                        "sisi berlawanan sama panjang"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 78 - 17?",
+                    "question": "Bangun yang memiliki 4 sisi disebut...",
                     "options": [
-                        "56",
-                        "61",
-                        "63"
+                        "Persegi Panjang",
+                        "Segitiga Sama Sisi",
+                        "Persegi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 64 - 54?",
+                    "question": "Ciri-ciri bangun Persegi Panjang adalah...",
                     "options": [
-                        "8",
-                        "10",
-                        "13"
+                        "4 sisi sama panjang, 4 sudut 90°",
+                        "3 sisi sama panjang, sudut 60° semua",
+                        "sisi berlawanan sama panjang"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 77 - 72?",
+                    "question": "Bangun Persegi Panjang memiliki berapa sisi?",
                     "options": [
-                        "1",
-                        "5",
-                        "6"
+                        "3",
+                        "4",
+                        "4"
                     ],
                     "correctIndex": 1
                 }
@@ -168,320 +168,320 @@ window.math17 = {
         {
             "id": "mth17_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "📐",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Bangun Datar - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Bangun Datar</h3>\n        <p class='text-slate-700 text-lg'>Bangun datar adalah bentuk 2 dimensi. Contoh: segitiga, persegi, lingkaran.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Segitiga</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>3 sisi, 3 sudut, jumlah sudut = 180°</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Persegi</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 sisi sama panjang, 4 sudut siku-siku</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Lingkaran</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Tidak punya sudut, keliling = 2πr</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Sudut siku-siku = 90°, lancip < 90°, tumpul > 90°</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 76 - 12?",
+                    "question": "Bangun yang memiliki 4 sisi disebut...",
                     "options": [
-                        "69",
-                        "64",
-                        "60"
+                        "Persegi Panjang",
+                        "Persegi",
+                        "Segitiga Sama Sisi"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "Bangun Lingkaran memiliki berapa sisi?",
+                    "options": [
+                        "6",
+                        "0",
+                        "3"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q1",
-                    "question": "Berapa hasil dari 27 + 79?",
-                    "options": [
-                        "108",
-                        "101",
-                        "106"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q2",
-                    "question": "Berapa hasil dari 99 - 18?",
+                    "question": "Bangun yang memiliki 0 sisi disebut...",
                     "options": [
-                        "78",
-                        "82",
-                        "81"
+                        "Lingkaran",
+                        "Segienam",
+                        "Segitiga Sama Sisi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 60 - 55?",
+                    "question": "Bangun Segienam memiliki berapa sisi?",
                     "options": [
-                        "10",
-                        "3",
-                        "5"
+                        "4",
+                        "6",
+                        "3"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 15 + 16?",
+                    "question": "Bangun Segitiga memiliki berapa sisi?",
                     "options": [
-                        "31",
-                        "33",
-                        "29"
+                        "3",
+                        "3",
+                        "4"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 88 + 33?",
+                    "question": "Bangun Persegi memiliki berapa sisi?",
                     "options": [
-                        "126",
-                        "121",
-                        "116"
+                        "4",
+                        "4",
+                        "3"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 79 - 35?",
+                    "question": "Bangun Segitiga Sama Sisi memiliki berapa sisi?",
                     "options": [
-                        "41",
-                        "46",
-                        "44"
+                        "0",
+                        "4",
+                        "3"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 43 - 14?",
+                    "question": "Bangun yang memiliki 6 sisi disebut...",
                     "options": [
-                        "32",
-                        "25",
-                        "29"
+                        "Persegi Panjang",
+                        "Segienam",
+                        "Segitiga"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 35 + 93?",
+                    "question": "Bangun yang memiliki 3 sisi disebut...",
                     "options": [
-                        "127",
-                        "128",
-                        "130"
+                        "Persegi",
+                        "Segitiga Sama Sisi",
+                        "Lingkaran"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 75 - 12?",
+                    "question": "Ciri-ciri bangun Segienam adalah...",
                     "options": [
-                        "63",
-                        "66",
-                        "60"
+                        "6 sisi sama panjang, 6 sudut",
+                        "sisi berlawanan sama panjang",
+                        "3 sudut, jumlah sudut 180°"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 41 - 29?",
+                    "question": "Ciri-ciri bangun Segitiga Sama Sisi adalah...",
                     "options": [
-                        "12",
-                        "16",
-                        "11"
+                        "3 sisi sama panjang, sudut 60° semua",
+                        "4 sisi sama panjang, 4 sudut 90°",
+                        "tidak punya sudut, keliling = 2πr"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 80 + 30?",
+                    "question": "Ciri-ciri bangun Persegi adalah...",
                     "options": [
-                        "114",
-                        "108",
-                        "110"
+                        "3 sisi sama panjang, sudut 60° semua",
+                        "4 sisi sama panjang, 4 sudut 90°",
+                        "sisi berlawanan sama panjang"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q12",
+                    "question": "Bangun yang memiliki 4 sisi disebut...",
+                    "options": [
+                        "Persegi Panjang",
+                        "Segitiga Sama Sisi",
+                        "Persegi"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 67 - 63?",
-                    "options": [
-                        "4",
-                        "8",
-                        "0"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q13",
-                    "question": "Berapa hasil dari 59 + 39?",
+                    "question": "Ciri-ciri bangun Persegi Panjang adalah...",
                     "options": [
-                        "98",
-                        "99",
-                        "95"
+                        "4 sisi sama panjang, 4 sudut 90°",
+                        "3 sisi sama panjang, sudut 60° semua",
+                        "sisi berlawanan sama panjang"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 43 - 10?",
+                    "question": "Bangun Persegi Panjang memiliki berapa sisi?",
                     "options": [
-                        "33",
-                        "30",
-                        "35"
+                        "3",
+                        "4",
+                        "4"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "mth17_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "📐",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Bangun Datar - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Bangun Datar</h3>\n        <p class='text-slate-700 text-lg'>Bangun datar adalah bentuk 2 dimensi. Contoh: segitiga, persegi, lingkaran.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Segitiga</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>3 sisi, 3 sudut, jumlah sudut = 180°</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Persegi</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 sisi sama panjang, 4 sudut siku-siku</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Lingkaran</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Tidak punya sudut, keliling = 2πr</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Sudut siku-siku = 90°, lancip < 90°, tumpul > 90°</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 79 + 91?",
+                    "question": "Bangun yang memiliki 4 sisi disebut...",
                     "options": [
-                        "170",
-                        "166",
-                        "171"
+                        "Persegi Panjang",
+                        "Persegi",
+                        "Segitiga Sama Sisi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 55 - 16?",
+                    "question": "Bangun Lingkaran memiliki berapa sisi?",
                     "options": [
-                        "37",
-                        "40",
-                        "39"
+                        "6",
+                        "0",
+                        "3"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 37 + 45?",
+                    "question": "Bangun yang memiliki 0 sisi disebut...",
                     "options": [
-                        "82",
-                        "78",
-                        "85"
+                        "Lingkaran",
+                        "Segienam",
+                        "Segitiga Sama Sisi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 30 + 10?",
+                    "question": "Bangun Segienam memiliki berapa sisi?",
                     "options": [
-                        "40",
-                        "41",
-                        "37"
+                        "4",
+                        "6",
+                        "3"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q4",
+                    "question": "Bangun Segitiga memiliki berapa sisi?",
+                    "options": [
+                        "3",
+                        "3",
+                        "4"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 86 - 20?",
-                    "options": [
-                        "70",
-                        "62",
-                        "66"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q5",
-                    "question": "Berapa hasil dari 66 - 22?",
+                    "question": "Bangun Persegi memiliki berapa sisi?",
                     "options": [
-                        "44",
-                        "47",
-                        "42"
+                        "4",
+                        "4",
+                        "3"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 42 + 46?",
+                    "question": "Bangun Segitiga Sama Sisi memiliki berapa sisi?",
                     "options": [
-                        "88",
-                        "90",
-                        "87"
+                        "0",
+                        "4",
+                        "3"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 96 - 54?",
+                    "question": "Bangun yang memiliki 6 sisi disebut...",
                     "options": [
-                        "47",
-                        "42",
-                        "37"
+                        "Persegi Panjang",
+                        "Segienam",
+                        "Segitiga"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 97 + 57?",
+                    "question": "Bangun yang memiliki 3 sisi disebut...",
                     "options": [
-                        "159",
-                        "151",
-                        "154"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 37 - 28?",
-                    "options": [
-                        "13",
-                        "8",
-                        "9"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 17 + 81?",
-                    "options": [
-                        "103",
-                        "95",
-                        "98"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 79 + 69?",
-                    "options": [
-                        "150",
-                        "146",
-                        "148"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 87 - 51?",
-                    "options": [
-                        "37",
-                        "36",
-                        "31"
+                        "Persegi",
+                        "Segitiga Sama Sisi",
+                        "Lingkaran"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 82 - 59?",
+                    "id": "q9",
+                    "question": "Ciri-ciri bangun Segienam adalah...",
                     "options": [
-                        "19",
-                        "28",
-                        "23"
+                        "6 sisi sama panjang, 6 sudut",
+                        "sisi berlawanan sama panjang",
+                        "3 sudut, jumlah sudut 180°"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "Ciri-ciri bangun Segitiga Sama Sisi adalah...",
+                    "options": [
+                        "3 sisi sama panjang, sudut 60° semua",
+                        "4 sisi sama panjang, 4 sudut 90°",
+                        "tidak punya sudut, keliling = 2πr"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "Ciri-ciri bangun Persegi adalah...",
+                    "options": [
+                        "3 sisi sama panjang, sudut 60° semua",
+                        "4 sisi sama panjang, 4 sudut 90°",
+                        "sisi berlawanan sama panjang"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q12",
+                    "question": "Bangun yang memiliki 4 sisi disebut...",
+                    "options": [
+                        "Persegi Panjang",
+                        "Segitiga Sama Sisi",
+                        "Persegi"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q13",
+                    "question": "Ciri-ciri bangun Persegi Panjang adalah...",
+                    "options": [
+                        "4 sisi sama panjang, 4 sudut 90°",
+                        "3 sisi sama panjang, sudut 60° semua",
+                        "sisi berlawanan sama panjang"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 78 + 47?",
+                    "question": "Bangun Persegi Panjang memiliki berapa sisi?",
                     "options": [
-                        "130",
-                        "124",
-                        "125"
+                        "3",
+                        "4",
+                        "4"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 }
             ]
         }

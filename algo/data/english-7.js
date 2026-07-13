@@ -1,487 +1,487 @@
 window.english7 = {
     "id": "english-7",
-    "title": "Level 7: Fruits & Vegetables",
-    "badge": "Kelas 1-2",
-    "icon": "\ud83c\udf0d",
-    "description": "Apple, Banana, Carrot",
+    "title": "Level 7: Days of the Week",
+    "badge": "Kelas 2",
+    "icon": "📅",
+    "description": "Learn the 7 days of the week in English.",
     "lessons": [
         {
             "id": "eng7_1",
-            "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
-            "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Fruits & Vegetables - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "title": "Days of the Week",
+            "icon": "📅",
+            "difficulty": "Mudah",
+            "duration": "12 menit",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌙</span><span class='font-black text-emerald-700 text-base'>Monday</span><span class='text-emerald-400 text-xs font-bold'>Senin</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🔥</span><span class='font-black text-emerald-700 text-base'>Tuesday</span><span class='text-emerald-400 text-xs font-bold'>Selasa</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💧</span><span class='font-black text-emerald-700 text-base'>Wednesday</span><span class='text-emerald-400 text-xs font-bold'>Rabu</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌩️</span><span class='font-black text-emerald-700 text-base'>Thursday</span><span class='text-emerald-400 text-xs font-bold'>Kamis</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌤️</span><span class='font-black text-emerald-700 text-base'>Friday</span><span class='text-emerald-400 text-xs font-bold'>Jumat</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎉</span><span class='font-black text-emerald-700 text-base'>Saturday</span><span class='text-emerald-400 text-xs font-bold'>Sabtu</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>☀️</span><span class='font-black text-emerald-700 text-base'>Sunday</span><span class='text-emerald-400 text-xs font-bold'>Minggu</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>There are 7 days in a week: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Grape'?",
+                    "question": "What is the meaning of 'Tuesday'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Pisang",
-                        "Mangga",
-                        "Anggur"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q1",
-                    "question": "What is the meaning of 'Banana'?",
-                    "options": [
-                        "Pisang",
-                        "Mangga",
-                        "Apel"
+                        "Selasa",
+                        "Sabtu",
+                        "Senin"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Pisang'?",
+                    "id": "q1",
+                    "question": "Bahasa Inggris dari 'Jumat' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Grape",
-                        "Apple",
-                        "Banana"
+                        "Monday",
+                        "Saturday",
+                        "Friday"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 💧 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Holiday",
+                        "Tuesday",
+                        "Wednesday"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Banana'?",
+                    "question": "What is the meaning of 'Thursday'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Anggur",
-                        "Pisang",
-                        "Mangga"
+                        "Hari Kerja",
+                        "Kamis",
+                        "Senin"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Pisang'?",
+                    "question": "Bahasa Inggris dari 'Rabu' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Apple",
-                        "Banana",
-                        "Orange"
+                        "Wednesday",
+                        "Tuesday",
+                        "Thursday"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "What is the meaning of 'Apple'?",
+                    "question": "Gambar ☀️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Anggur",
-                        "Apel",
-                        "Mangga"
+                        "Tuesday",
+                        "Friday",
+                        "Sunday"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Anggur'?",
+                    "question": "What is the meaning of 'Monday'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Grape",
-                        "Apple",
-                        "Banana"
+                        "Minggu",
+                        "Selasa",
+                        "Senin"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "Bahasa Inggris dari 'Kamis' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Thursday",
+                        "Sunday",
+                        "Monday"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q7",
-                    "question": "What is the meaning of 'Apple'?",
+                    "id": "q8",
+                    "question": "Gambar 🌙 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Pisang",
-                        "Apel",
-                        "Jeruk"
+                        "Saturday",
+                        "Monday",
+                        "Friday"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Mangga'?",
+                    "id": "q9",
+                    "question": "What is the meaning of 'Sunday'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Grape",
-                        "Apple",
-                        "Mango"
+                        "Selasa",
+                        "Jumat",
+                        "Minggu"
                     ],
                     "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Apple'?",
-                    "options": [
-                        "Apel",
-                        "Anggur",
-                        "Jeruk"
-                    ],
-                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "What is the meaning of 'Apple'?",
+                    "question": "Bahasa Inggris dari 'Selasa' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Jeruk",
-                        "Anggur",
-                        "Apel"
+                        "Weekend",
+                        "Tuesday",
+                        "Friday"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Pisang'?",
+                    "question": "Gambar 🌤️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Banana",
-                        "Grape",
-                        "Mango"
+                        "Friday",
+                        "Saturday",
+                        "Weekday"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Mangga'?",
+                    "question": "What is the meaning of 'Saturday'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Mango",
-                        "Grape",
-                        "Banana"
+                        "Hari Kerja",
+                        "Jumat",
+                        "Sabtu"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "What is the meaning of 'Orange'?",
+                    "question": "Gambar 🎉 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Anggur",
-                        "Jeruk",
-                        "Mangga"
+                        "Saturday",
+                        "Wednesday",
+                        "Weekend"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Mangga'?",
+                    "question": "What is the meaning of 'Wednesday'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Mango",
-                        "Apple",
-                        "Orange"
+                        "Jumat",
+                        "Kamis",
+                        "Rabu"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 }
             ]
         },
         {
             "id": "eng7_2",
-            "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
-            "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Fruits & Vegetables - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "title": "Weekday vs Weekend",
+            "icon": "🎉",
+            "difficulty": "Mudah",
+            "duration": "12 menit",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌙</span><span class='font-black text-emerald-700 text-base'>Monday</span><span class='text-emerald-400 text-xs font-bold'>Senin</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🔥</span><span class='font-black text-emerald-700 text-base'>Tuesday</span><span class='text-emerald-400 text-xs font-bold'>Selasa</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💧</span><span class='font-black text-emerald-700 text-base'>Wednesday</span><span class='text-emerald-400 text-xs font-bold'>Rabu</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌩️</span><span class='font-black text-emerald-700 text-base'>Thursday</span><span class='text-emerald-400 text-xs font-bold'>Kamis</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌤️</span><span class='font-black text-emerald-700 text-base'>Friday</span><span class='text-emerald-400 text-xs font-bold'>Jumat</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎉</span><span class='font-black text-emerald-700 text-base'>Saturday</span><span class='text-emerald-400 text-xs font-bold'>Sabtu</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>☀️</span><span class='font-black text-emerald-700 text-base'>Sunday</span><span class='text-emerald-400 text-xs font-bold'>Minggu</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💼</span><span class='font-black text-emerald-700 text-base'>Weekday</span><span class='text-emerald-400 text-xs font-bold'>Hari Kerja</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🏖️</span><span class='font-black text-emerald-700 text-base'>Weekend</span><span class='text-emerald-400 text-xs font-bold'>Akhir Pekan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎊</span><span class='font-black text-emerald-700 text-base'>Holiday</span><span class='text-emerald-400 text-xs font-bold'>Hari Libur</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Weekday = Senin-Jumat (hari kerja). Weekend = Sabtu-Minggu (akhir pekan).</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Mother'?",
+                    "question": "What is the meaning of 'Sunday'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Saudara Laki-laki",
-                        "Ibu",
-                        "Saudara Perempuan"
+                        "Selasa",
+                        "Minggu",
+                        "Hari Libur"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "What is the meaning of 'Brother'?",
+                    "question": "Bahasa Inggris dari 'Selasa' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Saudara Laki-laki",
-                        "Ayah",
-                        "Ibu"
+                        "Weekday",
+                        "Weekend",
+                        "Tuesday"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 🌩️ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Thursday",
+                        "Friday",
+                        "Weekday"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q2",
-                    "question": "What is the meaning of 'Father'?",
-                    "options": [
-                        "Ibu",
-                        "Ayah",
-                        "Saudara Perempuan"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Ayah'?",
+                    "question": "What is the meaning of 'Weekend'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Sister",
-                        "Father",
-                        "Mother"
+                        "Sabtu",
+                        "Akhir Pekan",
+                        "Senin"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Ayah'?",
+                    "question": "Bahasa Inggris dari 'Kamis' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Brother",
-                        "Sister",
-                        "Father"
+                        "Wednesday",
+                        "Weekday",
+                        "Thursday"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Saudara Laki-laki'?",
+                    "question": "Gambar 🌤️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Father",
-                        "Sister",
-                        "Brother"
+                        "Wednesday",
+                        "Friday",
+                        "Weekend"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "What is the meaning of 'Brother'?",
+                    "question": "What is the meaning of 'Friday'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Saudara Perempuan",
-                        "Ayah",
-                        "Saudara Laki-laki"
+                        "Senin",
+                        "Sabtu",
+                        "Jumat"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "What is the meaning of 'Brother'?",
+                    "question": "Bahasa Inggris dari 'Sabtu' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Ibu",
-                        "Ayah",
-                        "Saudara Laki-laki"
+                        "Weekend",
+                        "Saturday",
+                        "Holiday"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "What is the meaning of 'Brother'?",
+                    "question": "Gambar 💼 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Saudara Laki-laki",
-                        "Saudara Perempuan",
-                        "Ayah"
+                        "Sunday",
+                        "Weekday",
+                        "Friday"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q9",
-                    "question": "What is the meaning of 'Mother'?",
+                    "question": "What is the meaning of 'Monday'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Saudara Perempuan",
-                        "Ibu",
-                        "Saudara Laki-laki"
+                        "Minggu",
+                        "Senin",
+                        "Selasa"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Ayah'?",
+                    "question": "Gambar 💧 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Brother",
-                        "Father",
-                        "Sister"
+                        "Sunday",
+                        "Wednesday",
+                        "Thursday"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "What is the meaning of 'Sister'?",
+                    "question": "Gambar ☀️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Ayah",
-                        "Saudara Laki-laki",
-                        "Saudara Perempuan"
+                        "Friday",
+                        "Thursday",
+                        "Sunday"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Saudara Perempuan'?",
+                    "question": "What is the meaning of 'Holiday'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Mother",
-                        "Sister",
-                        "Father"
+                        "Selasa",
+                        "Hari Kerja",
+                        "Hari Libur"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "What is the meaning of 'Mother'?",
+                    "question": "Gambar 🔥 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Saudara Perempuan",
-                        "Saudara Laki-laki",
-                        "Ibu"
+                        "Tuesday",
+                        "Friday",
+                        "Wednesday"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "What is the meaning of 'Mother'?",
+                    "question": "What is the meaning of 'Weekday'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Ayah",
-                        "Saudara Laki-laki",
-                        "Ibu"
+                        "Akhir Pekan",
+                        "Hari Kerja",
+                        "Jumat"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "eng7_3",
-            "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "title": "Days Quiz",
+            "icon": "🏆",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Fruits & Vegetables - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌙</span><span class='font-black text-emerald-700 text-base'>Monday</span><span class='text-emerald-400 text-xs font-bold'>Senin</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🔥</span><span class='font-black text-emerald-700 text-base'>Tuesday</span><span class='text-emerald-400 text-xs font-bold'>Selasa</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💧</span><span class='font-black text-emerald-700 text-base'>Wednesday</span><span class='text-emerald-400 text-xs font-bold'>Rabu</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌩️</span><span class='font-black text-emerald-700 text-base'>Thursday</span><span class='text-emerald-400 text-xs font-bold'>Kamis</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌤️</span><span class='font-black text-emerald-700 text-base'>Friday</span><span class='text-emerald-400 text-xs font-bold'>Jumat</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎉</span><span class='font-black text-emerald-700 text-base'>Saturday</span><span class='text-emerald-400 text-xs font-bold'>Sabtu</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>☀️</span><span class='font-black text-emerald-700 text-base'>Sunday</span><span class='text-emerald-400 text-xs font-bold'>Minggu</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday — hafal urutan ini!</p></div></div>",
             "questions": [
                 {
-                    "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Saudara Laki-laki'?",
-                    "options": [
-                        "Brother",
-                        "Mother",
-                        "Father"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q1",
-                    "question": "What is the meaning of 'Father'?",
+                    "question": "What day comes after Friday?",
                     "options": [
-                        "Ayah",
-                        "Ibu",
-                        "Saudara Perempuan"
+                        "Saturday",
+                        "Sunday",
+                        "Thursday"
                     ],
                     "correctIndex": 0
-                },
-                {
-                    "id": "q2",
-                    "question": "What is the meaning of 'Father'?",
-                    "options": [
-                        "Saudara Perempuan",
-                        "Saudara Laki-laki",
-                        "Ayah"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Ayah'?",
-                    "options": [
-                        "Father",
-                        "Sister",
-                        "Brother"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q4",
-                    "question": "What is the meaning of 'Brother'?",
-                    "options": [
-                        "Saudara Laki-laki",
-                        "Saudara Perempuan",
-                        "Ibu"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q5",
-                    "question": "What is the meaning of 'Brother'?",
-                    "options": [
-                        "Saudara Laki-laki",
-                        "Ayah",
-                        "Ibu"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Ibu'?",
-                    "options": [
-                        "Brother",
-                        "Mother",
-                        "Sister"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Saudara Perempuan'?",
-                    "options": [
-                        "Brother",
-                        "Father",
-                        "Sister"
-                    ],
-                    "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "What is the meaning of 'Brother'?",
+                    "question": "Monday is a...",
                     "options": [
-                        "Saudara Laki-laki",
-                        "Saudara Perempuan",
-                        "Ibu"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Brother'?",
-                    "options": [
-                        "Ibu",
-                        "Saudara Laki-laki",
-                        "Ayah"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Mother'?",
-                    "options": [
-                        "Saudara Laki-laki",
-                        "Ibu",
-                        "Ayah"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Sister'?",
-                    "options": [
-                        "Ayah",
-                        "Saudara Laki-laki",
-                        "Saudara Perempuan"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Ibu'?",
-                    "options": [
-                        "Brother",
-                        "Mother",
-                        "Father"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Sister'?",
-                    "options": [
-                        "Saudara Perempuan",
-                        "Ayah",
-                        "Saudara Laki-laki"
+                        "Weekday",
+                        "Weekend",
+                        "Holiday"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "What is the meaning of 'Father'?",
+                    "question": "Which two days start with 'S'?",
                     "options": [
-                        "Saudara Perempuan",
-                        "Ayah",
-                        "Ibu"
+                        "Saturday and Sunday",
+                        "Sunday and Monday",
+                        "Friday and Saturday"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q0",
+                    "question": "Today is ___. Tomorrow will be Tuesday. Today is...",
+                    "options": [
+                        "Monday",
+                        "Sunday",
+                        "Wednesday"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "What day comes before Monday?",
+                    "options": [
+                        "Sunday",
+                        "Saturday",
+                        "Tuesday"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "School days are usually...",
+                    "options": [
+                        "Monday to Friday",
+                        "Saturday to Sunday",
+                        "Only Monday"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "Saturday and Sunday are called...",
+                    "options": [
+                        "Weekend",
+                        "Weekday",
+                        "Holiday"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "The day before Wednesday is...",
+                    "options": [
+                        "Tuesday",
+                        "Monday",
+                        "Thursday"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "The day after Thursday is...",
+                    "options": [
+                        "Friday",
+                        "Wednesday",
+                        "Saturday"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "Wednesday is in the ___ of the week.",
+                    "options": [
+                        "Middle",
+                        "Beginning",
+                        "End"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "Which day comes right after Saturday?",
+                    "options": [
+                        "Sunday",
+                        "Monday",
+                        "Friday"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "If today is Sunday, yesterday was...",
+                    "options": [
+                        "Saturday",
+                        "Friday",
+                        "Monday"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q13",
+                    "question": "Which day starts with 'T'?",
+                    "options": [
+                        "Tuesday",
+                        "Monday",
+                        "Saturday"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "How many weekdays are there?",
+                    "options": [
+                        "5",
+                        "7",
+                        "2"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "How many days are there in a week?",
+                    "options": [
+                        "7",
+                        "5",
+                        "6"
+                    ],
+                    "correctIndex": 0
                 }
             ]
         }

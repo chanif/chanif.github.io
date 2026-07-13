@@ -1,485 +1,485 @@
 window.english9 = {
     "id": "english-9",
-    "title": "Level 9: Classroom & School",
-    "badge": "Kelas 2",
-    "icon": "\ud83c\udf0d",
-    "description": "Book, Pen, Teacher, Student",
+    "title": "Level 9: Greetings & Expressions",
+    "badge": "Kelas 2-3",
+    "icon": "👋",
+    "description": "Learn how to greet people and express feelings in English.",
     "lessons": [
         {
             "id": "eng9_1",
-            "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
-            "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Classroom & School - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "title": "Greetings (Salam)",
+            "icon": "👋",
+            "difficulty": "Mudah",
+            "duration": "12 menit",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👋</span><span class='font-black text-emerald-700 text-base'>Hello</span><span class='text-emerald-400 text-xs font-bold'>Halo</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌅</span><span class='font-black text-emerald-700 text-base'>Good morning</span><span class='text-emerald-400 text-xs font-bold'>Selamat pagi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>☀️</span><span class='font-black text-emerald-700 text-base'>Good afternoon</span><span class='text-emerald-400 text-xs font-bold'>Selamat siang</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌆</span><span class='font-black text-emerald-700 text-base'>Good evening</span><span class='text-emerald-400 text-xs font-bold'>Selamat sore</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌙</span><span class='font-black text-emerald-700 text-base'>Good night</span><span class='text-emerald-400 text-xs font-bold'>Selamat malam</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👋</span><span class='font-black text-emerald-700 text-base'>Goodbye</span><span class='text-emerald-400 text-xs font-bold'>Sampai jumpa</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🙏</span><span class='font-black text-emerald-700 text-base'>Thank you</span><span class='text-emerald-400 text-xs font-bold'>Terima kasih</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Use greetings based on the time of day! Morning, afternoon, or evening.</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Sister'?",
+                    "question": "What is the meaning of 'Good morning'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Saudara Laki-laki",
-                        "Ayah",
-                        "Saudara Perempuan"
+                        "Selamat sore",
+                        "Selamat pagi",
+                        "Maaf"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Ibu'?",
+                    "question": "Bahasa Inggris dari 'Selamat siang' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Mother",
-                        "Father",
-                        "Sister"
+                        "Good morning",
+                        "Good afternoon",
+                        "Hello"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Ibu'?",
+                    "question": "Gambar ☀️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Sister",
-                        "Mother",
-                        "Brother"
+                        "Good night",
+                        "Good afternoon",
+                        "Goodbye"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Saudara Laki-laki'?",
+                    "question": "What is the meaning of 'Good evening'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Brother",
-                        "Mother",
-                        "Father"
+                        "Selamat sore",
+                        "Sampai jumpa",
+                        "Sama-sama"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Ibu'?",
+                    "question": "Bahasa Inggris dari 'Selamat pagi' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Sister",
-                        "Brother",
-                        "Mother"
+                        "Good morning",
+                        "Goodbye",
+                        "Hello"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Saudara Laki-laki'?",
+                    "question": "Gambar 👋 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Father",
-                        "Brother",
-                        "Sister"
+                        "Nice to meet you",
+                        "How are you?",
+                        "Goodbye"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Ayah'?",
+                    "question": "What is the meaning of 'Thank you'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Brother",
-                        "Mother",
-                        "Father"
+                        "Terima kasih",
+                        "Permisi",
+                        "Sampai jumpa"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Saudara Perempuan'?",
+                    "question": "Bahasa Inggris dari 'Selamat sore' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Sister",
-                        "Brother",
-                        "Mother"
+                        "How are you?",
+                        "Good evening",
+                        "Good afternoon"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Saudara Laki-laki'?",
+                    "question": "Gambar 🙏 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Sister",
-                        "Brother",
-                        "Mother"
+                        "Hello",
+                        "Goodbye",
+                        "Thank you"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Saudara Perempuan'?",
+                    "question": "What is the meaning of 'Good night'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Brother",
-                        "Sister",
-                        "Mother"
+                        "Selamat malam",
+                        "Sampai jumpa",
+                        "Tolong/Silakan"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "What is the meaning of 'Father'?",
+                    "question": "Bahasa Inggris dari 'Terima kasih' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Ayah",
-                        "Saudara Laki-laki",
-                        "Saudara Perempuan"
+                        "Goodbye",
+                        "Thank you",
+                        "Good night"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Ayah'?",
+                    "question": "Gambar 🌙 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Mother",
-                        "Father",
-                        "Sister"
+                        "Nice to meet you",
+                        "Good morning",
+                        "Good night"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Ayah'?",
+                    "question": "What is the meaning of 'Goodbye'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Father",
-                        "Sister",
-                        "Brother"
+                        "Sama-sama",
+                        "Permisi",
+                        "Sampai jumpa"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q13",
+                    "question": "Bahasa Inggris dari 'Selamat malam' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Good night",
+                        "You're welcome",
+                        "Good evening"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Ayah'?",
-                    "options": [
-                        "Mother",
-                        "Father",
-                        "Brother"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q14",
-                    "question": "What is the meaning of 'Brother'?",
+                    "question": "What is the meaning of 'Hello'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Ibu",
-                        "Ayah",
-                        "Saudara Laki-laki"
+                        "Halo",
+                        "Sama-sama",
+                        "Selamat sore"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "eng9_2",
-            "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
-            "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Classroom & School - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "title": "Polite Expressions",
+            "icon": "🙏",
+            "difficulty": "Mudah",
+            "duration": "12 menit",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🙏</span><span class='font-black text-emerald-700 text-base'>Thank you</span><span class='text-emerald-400 text-xs font-bold'>Terima kasih</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>😊</span><span class='font-black text-emerald-700 text-base'>You're welcome</span><span class='text-emerald-400 text-xs font-bold'>Sama-sama</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🤲</span><span class='font-black text-emerald-700 text-base'>Please</span><span class='text-emerald-400 text-xs font-bold'>Tolong/Silakan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>😔</span><span class='font-black text-emerald-700 text-base'>Sorry</span><span class='text-emerald-400 text-xs font-bold'>Maaf</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🙋</span><span class='font-black text-emerald-700 text-base'>Excuse me</span><span class='text-emerald-400 text-xs font-bold'>Permisi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>❓</span><span class='font-black text-emerald-700 text-base'>How are you?</span><span class='text-emerald-400 text-xs font-bold'>Apa kabar?</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>😊</span><span class='font-black text-emerald-700 text-base'>I'm fine</span><span class='text-emerald-400 text-xs font-bold'>Saya baik-baik saja</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🤝</span><span class='font-black text-emerald-700 text-base'>Nice to meet you</span><span class='text-emerald-400 text-xs font-bold'>Senang bertemu denganmu</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Being polite is very important! Always say please, thank you, and sorry.</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Kaki'?",
+                    "question": "What is the meaning of 'Excuse me'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Hand",
-                        "Leg",
-                        "Ear"
+                        "Selamat malam",
+                        "Permisi",
+                        "Saya baik-baik saja"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "What is the meaning of 'Hand'?",
+                    "question": "Bahasa Inggris dari 'Permisi' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Hidung",
-                        "Mata",
-                        "Tangan"
+                        "Good afternoon",
+                        "Excuse me",
+                        "How are you?"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 🙋 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Please",
+                        "You're welcome",
+                        "Excuse me"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
-                    "options": [
-                        "Head",
-                        "Nose",
-                        "Hand"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q3",
-                    "question": "What is the meaning of 'Leg'?",
+                    "question": "What is the meaning of 'Nice to meet you'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Hidung",
-                        "Kaki",
-                        "Tangan"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
-                    "options": [
-                        "Head",
-                        "Hand",
-                        "Eye"
+                        "Senang bertemu denganmu",
+                        "Selamat pagi",
+                        "Selamat malam"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q5",
-                    "question": "What is the meaning of 'Nose'?",
+                    "id": "q4",
+                    "question": "Bahasa Inggris dari 'Saya baik-baik saja' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Tangan",
-                        "Telinga",
-                        "Hidung"
+                        "Thank you",
+                        "Sorry",
+                        "I'm fine"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q5",
+                    "question": "Gambar ❓ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "You're welcome",
+                        "Sorry",
+                        "How are you?"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "What is the meaning of 'Nose'?",
+                    "question": "Bahasa Inggris dari 'Apa kabar?' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Kepala",
-                        "Tangan",
-                        "Hidung"
+                        "I'm fine",
+                        "How are you?",
+                        "Good morning"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
+                    "question": "Gambar 🙏 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Nose",
-                        "Head",
-                        "Leg"
+                        "Nice to meet you",
+                        "Thank you",
+                        "Sorry"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "What is the meaning of 'Hand'?",
+                    "question": "Bahasa Inggris dari 'Terima kasih' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Kaki",
-                        "Telinga",
-                        "Tangan"
+                        "How are you?",
+                        "Excuse me",
+                        "Thank you"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Kaki'?",
+                    "question": "Gambar 🤲 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Leg",
-                        "Ear",
-                        "Nose"
+                        "Hello",
+                        "Goodbye",
+                        "Please"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q10",
+                    "question": "What is the meaning of 'Please'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Selamat siang",
+                        "Tolong/Silakan",
+                        "Terima kasih"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "Bahasa Inggris dari 'Maaf' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Sorry",
+                        "Good morning",
+                        "Good afternoon"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
-                    "options": [
-                        "Leg",
-                        "Hand",
-                        "Head"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
-                    "options": [
-                        "Leg",
-                        "Nose",
-                        "Eye"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
+                    "question": "Gambar 😊 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Head",
-                        "Ear",
-                        "Eye"
+                        "Hello",
+                        "Thank you",
+                        "I'm fine"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "What is the meaning of 'Hand'?",
+                    "question": "What is the meaning of 'How are you?'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Kaki",
-                        "Telinga",
-                        "Tangan"
+                        "Selamat sore",
+                        "Apa kabar?",
+                        "Sampai jumpa"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
+                    "question": "What is the meaning of 'Sorry'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Ear",
-                        "Eye",
-                        "Hand"
+                        "Selamat siang",
+                        "Maaf",
+                        "Saya baik-baik saja"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "eng9_3",
-            "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "title": "Greetings in Context",
+            "icon": "🏆",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Classroom & School - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👋</span><span class='font-black text-emerald-700 text-base'>Hello</span><span class='text-emerald-400 text-xs font-bold'>Halo</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌅</span><span class='font-black text-emerald-700 text-base'>Good morning</span><span class='text-emerald-400 text-xs font-bold'>Selamat pagi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>☀️</span><span class='font-black text-emerald-700 text-base'>Good afternoon</span><span class='text-emerald-400 text-xs font-bold'>Selamat siang</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌆</span><span class='font-black text-emerald-700 text-base'>Good evening</span><span class='text-emerald-400 text-xs font-bold'>Selamat sore</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌙</span><span class='font-black text-emerald-700 text-base'>Good night</span><span class='text-emerald-400 text-xs font-bold'>Selamat malam</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👋</span><span class='font-black text-emerald-700 text-base'>Goodbye</span><span class='text-emerald-400 text-xs font-bold'>Sampai jumpa</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🙏</span><span class='font-black text-emerald-700 text-base'>Thank you</span><span class='text-emerald-400 text-xs font-bold'>Terima kasih</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>😊</span><span class='font-black text-emerald-700 text-base'>You're welcome</span><span class='text-emerald-400 text-xs font-bold'>Sama-sama</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🤲</span><span class='font-black text-emerald-700 text-base'>Please</span><span class='text-emerald-400 text-xs font-bold'>Tolong/Silakan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>😔</span><span class='font-black text-emerald-700 text-base'>Sorry</span><span class='text-emerald-400 text-xs font-bold'>Maaf</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🙋</span><span class='font-black text-emerald-700 text-base'>Excuse me</span><span class='text-emerald-400 text-xs font-bold'>Permisi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>❓</span><span class='font-black text-emerald-700 text-base'>How are you?</span><span class='text-emerald-400 text-xs font-bold'>Apa kabar?</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>😊</span><span class='font-black text-emerald-700 text-base'>I'm fine</span><span class='text-emerald-400 text-xs font-bold'>Saya baik-baik saja</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🤝</span><span class='font-black text-emerald-700 text-base'>Nice to meet you</span><span class='text-emerald-400 text-xs font-bold'>Senang bertemu denganmu</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Practice using these phrases in real conversations!</p></div></div>",
             "questions": [
                 {
-                    "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Ibu'?",
+                    "id": "q8",
+                    "question": "You want someone to pass the salt. You say...",
                     "options": [
-                        "Father",
-                        "Sister",
-                        "Mother"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Saudara Laki-laki'?",
-                    "options": [
-                        "Father",
-                        "Brother",
-                        "Mother"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "What is the meaning of 'Brother'?",
-                    "options": [
-                        "Saudara Laki-laki",
-                        "Ayah",
-                        "Saudara Perempuan"
+                        "Please pass the salt.",
+                        "Sorry!",
+                        "Goodbye!"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q3",
-                    "question": "What is the meaning of 'Mother'?",
+                    "id": "q13",
+                    "question": "'Maaf' in English is...",
                     "options": [
-                        "Saudara Laki-laki",
-                        "Ayah",
-                        "Ibu"
+                        "Sorry",
+                        "Hello",
+                        "Goodbye"
                     ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q4",
-                    "question": "What is the meaning of 'Mother'?",
-                    "options": [
-                        "Ayah",
-                        "Ibu",
-                        "Saudara Laki-laki"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q5",
-                    "question": "What is the meaning of 'Brother'?",
-                    "options": [
-                        "Ayah",
-                        "Saudara Laki-laki",
-                        "Ibu"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Saudara Perempuan'?",
-                    "options": [
-                        "Father",
-                        "Sister",
-                        "Mother"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Ayah'?",
-                    "options": [
-                        "Sister",
-                        "Father",
-                        "Mother"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Saudara Perempuan'?",
-                    "options": [
-                        "Brother",
-                        "Mother",
-                        "Sister"
-                    ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Ibu'?",
+                    "question": "You are leaving school. You say...",
                     "options": [
-                        "Mother",
-                        "Brother",
-                        "Sister"
+                        "Goodbye! See you tomorrow!",
+                        "Good morning!",
+                        "Thank you!"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "'Selamat pagi' in English is...",
+                    "options": [
+                        "Good morning",
+                        "Good night",
+                        "Good evening"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "Someone asks 'How are you?' You reply...",
+                    "options": [
+                        "I'm fine, thank you!",
+                        "Good morning!",
+                        "Goodbye!"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "You want to leave. What do you say?",
+                    "options": [
+                        "Goodbye!",
+                        "Hello!",
+                        "Good morning!"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "'Terima kasih' in English is...",
+                    "options": [
+                        "Thank you",
+                        "Sorry",
+                        "Please"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "You meet a new friend. You say...",
+                    "options": [
+                        "Nice to meet you!",
+                        "Goodbye!",
+                        "Thank you!"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q14",
+                    "question": "To get someone's attention politely, you say...",
+                    "options": [
+                        "Excuse me!",
+                        "Goodbye!",
+                        "Thank you!"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "You greet someone at 7 PM (malam). You say...",
+                    "options": [
+                        "Good evening!",
+                        "Good morning!",
+                        "Good afternoon!"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "What is the meaning of 'Sister'?",
+                    "question": "'Hello' in Indonesian is...",
                     "options": [
-                        "Ibu",
-                        "Saudara Perempuan",
-                        "Saudara Laki-laki"
+                        "Halo",
+                        "Selamat tinggal",
+                        "Terima kasih"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Ibu'?",
+                    "id": "q1",
+                    "question": "Your friend helps you. What do you say?",
                     "options": [
-                        "Sister",
-                        "Mother",
-                        "Brother"
+                        "Thank you!",
+                        "Sorry!",
+                        "Excuse me!"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Ayah'?",
+                    "id": "q3",
+                    "question": "You accidentally bump into someone. What do you say?",
                     "options": [
-                        "Sister",
-                        "Father",
-                        "Brother"
+                        "Sorry! / Excuse me!",
+                        "Thank you!",
+                        "Good morning!"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Saudara Perempuan'?",
+                    "id": "q0",
+                    "question": "You meet your teacher in the morning. What do you say?",
                     "options": [
-                        "Mother",
-                        "Sister",
-                        "Father"
+                        "Good morning!",
+                        "Good night!",
+                        "Goodbye!"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Saudara Laki-laki'?",
+                    "id": "q2",
+                    "question": "Someone says 'Thank you' to you. You reply...",
                     "options": [
-                        "Brother",
-                        "Mother",
-                        "Sister"
+                        "You're welcome!",
+                        "Good morning!",
+                        "Sorry!"
                     ],
                     "correctIndex": 0
                 }

@@ -1,487 +1,487 @@
 window.english6 = {
     "id": "english-6",
-    "title": "Level 6: Animals",
-    "badge": "Kelas 1",
-    "icon": "\ud83c\udf0d",
-    "description": "Cat, Dog, Bird, Fish",
+    "title": "Level 6: Classroom Objects",
+    "badge": "Kelas 2",
+    "icon": "🏫",
+    "description": "Learn names of things in the classroom in English.",
     "lessons": [
         {
             "id": "eng6_1",
-            "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
-            "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Animals - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "title": "School Things",
+            "icon": "📚",
+            "difficulty": "Mudah",
+            "duration": "12 menit",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📚</span><span class='font-black text-emerald-700 text-base'>Book</span><span class='text-emerald-400 text-xs font-bold'>Buku</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🖊️</span><span class='font-black text-emerald-700 text-base'>Pen</span><span class='text-emerald-400 text-xs font-bold'>Pena</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>✏️</span><span class='font-black text-emerald-700 text-base'>Pencil</span><span class='text-emerald-400 text-xs font-bold'>Pensil</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📏</span><span class='font-black text-emerald-700 text-base'>Ruler</span><span class='text-emerald-400 text-xs font-bold'>Penggaris</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🧹</span><span class='font-black text-emerald-700 text-base'>Eraser</span><span class='text-emerald-400 text-xs font-bold'>Penghapus</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎒</span><span class='font-black text-emerald-700 text-base'>Bag</span><span class='text-emerald-400 text-xs font-bold'>Tas</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🪑</span><span class='font-black text-emerald-700 text-base'>Chair</span><span class='text-emerald-400 text-xs font-bold'>Kursi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🪑</span><span class='font-black text-emerald-700 text-base'>Table</span><span class='text-emerald-400 text-xs font-bold'>Meja</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>I need a pencil. Can I borrow your eraser? (Boleh pinjam penghapus?)</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Gajah'?",
+                    "question": "What is the meaning of 'Table'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Tiger",
-                        "Elephant",
-                        "Dog"
+                        "Buku",
+                        "Meja",
+                        "Pena"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "What is the meaning of 'Bird'?",
+                    "question": "Bahasa Inggris dari 'Meja' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Burung",
-                        "Harimau",
-                        "Kucing"
+                        "Table",
+                        "Glue",
+                        "Chair"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "What is the meaning of 'Bird'?",
+                    "question": "Gambar 🎒 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Ikan",
-                        "Burung",
-                        "Kucing"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Gajah'?",
-                    "options": [
-                        "Dog",
-                        "Tiger",
-                        "Elephant"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
-                    "options": [
-                        "Fish",
-                        "Bird",
-                        "Dog"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q5",
-                    "question": "What is the meaning of 'Cat'?",
-                    "options": [
-                        "Kucing",
-                        "Burung",
-                        "Anjing"
+                        "Bag",
+                        "Eraser",
+                        "Notebook"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q6",
-                    "question": "What is the meaning of 'Elephant'?",
+                    "id": "q3",
+                    "question": "What is the meaning of 'Chair'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Burung",
-                        "Gajah",
-                        "Harimau"
+                        "Pensil",
+                        "Kursi",
+                        "Buku"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q7",
-                    "question": "What is the meaning of 'Bird'?",
+                    "id": "q4",
+                    "question": "Bahasa Inggris dari 'Pena' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Harimau",
-                        "Kucing",
-                        "Burung"
+                        "Pen",
+                        "Notebook",
+                        "Scissors"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "What is the meaning of 'Ruler'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Meja",
+                        "Pena",
+                        "Penggaris"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "id": "q6",
+                    "question": "Gambar 📚 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Fish",
-                        "Dog",
-                        "Bird"
+                        "Pen",
+                        "Board",
+                        "Book"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "What is the meaning of 'Eraser'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Kalkulator",
+                        "Penghapus",
+                        "Pensil"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q8",
+                    "question": "Bahasa Inggris dari 'Buku' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Ruler",
+                        "Bag",
+                        "Book"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Ikan'?",
+                    "question": "Gambar 🪑 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Fish",
-                        "Bird",
-                        "Cat"
+                        "Board",
+                        "Chair",
+                        "Scissors"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Harimau'?",
+                    "question": "Bahasa Inggris dari 'Penghapus' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Tiger",
-                        "Fish",
-                        "Elephant"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
-                    "options": [
-                        "Elephant",
-                        "Fish",
-                        "Dog"
+                        "Pen",
+                        "Bag",
+                        "Eraser"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
+                    "id": "q11",
+                    "question": "What is the meaning of 'Pencil'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Bird",
-                        "Cat",
-                        "Dog"
+                        "Buku Tulis",
+                        "Pensil",
+                        "Gunting"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q12",
+                    "question": "Bahasa Inggris dari 'Penggaris' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Chair",
+                        "Glue",
+                        "Ruler"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
+                    "question": "Gambar 🧹 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Cat",
-                        "Tiger",
-                        "Dog"
+                        "Eraser",
+                        "Pencil",
+                        "Table"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "What is the meaning of 'Pen'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Elephant",
-                        "Bird",
-                        "Dog"
+                        "Pena",
+                        "Meja",
+                        "Buku Tulis"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "eng6_2",
-            "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
-            "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Animals - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "title": "More School Things",
+            "icon": "✂️",
+            "difficulty": "Mudah",
+            "duration": "12 menit",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🪑</span><span class='font-black text-emerald-700 text-base'>Chair</span><span class='text-emerald-400 text-xs font-bold'>Kursi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🪑</span><span class='font-black text-emerald-700 text-base'>Table</span><span class='text-emerald-400 text-xs font-bold'>Meja</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📋</span><span class='font-black text-emerald-700 text-base'>Board</span><span class='text-emerald-400 text-xs font-bold'>Papan Tulis</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>✂️</span><span class='font-black text-emerald-700 text-base'>Scissors</span><span class='text-emerald-400 text-xs font-bold'>Gunting</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🫙</span><span class='font-black text-emerald-700 text-base'>Glue</span><span class='text-emerald-400 text-xs font-bold'>Lem</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📓</span><span class='font-black text-emerald-700 text-base'>Notebook</span><span class='text-emerald-400 text-xs font-bold'>Buku Tulis</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🔢</span><span class='font-black text-emerald-700 text-base'>Calculator</span><span class='text-emerald-400 text-xs font-bold'>Kalkulator</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🖍️</span><span class='font-black text-emerald-700 text-base'>Crayon</span><span class='text-emerald-400 text-xs font-bold'>Krayon</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Open your book! Close your bag! (Perintah di kelas.)</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Hitam'?",
+                    "question": "What is the meaning of 'Glue'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Black",
-                        "Red",
-                        "Yellow"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Hijau'?",
-                    "options": [
-                        "Blue",
-                        "Green",
-                        "Red"
+                        "Buku",
+                        "Lem",
+                        "Tas"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q2",
-                    "question": "What is the meaning of 'White'?",
+                    "id": "q1",
+                    "question": "Bahasa Inggris dari 'Kursi' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Hitam",
-                        "Putih",
-                        "Biru"
+                        "Chair",
+                        "Scissors",
+                        "Eraser"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 🔢 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Ruler",
+                        "Calculator",
+                        "Chair"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Green'?",
+                    "question": "What is the meaning of 'Table'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Putih",
-                        "Hijau",
-                        "Kuning"
+                        "Meja",
+                        "Tas",
+                        "Gunting"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Biru'?",
+                    "question": "Bahasa Inggris dari 'Krayon' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Yellow",
-                        "Black",
-                        "Blue"
+                        "Notebook",
+                        "Table",
+                        "Crayon"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Hitam'?",
+                    "question": "Gambar 🖍️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Red",
-                        "Green",
-                        "Black"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Merah'?",
-                    "options": [
-                        "White",
-                        "Red",
-                        "Yellow"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Biru'?",
-                    "options": [
-                        "Blue",
-                        "Black",
-                        "Green"
+                        "Crayon",
+                        "Book",
+                        "Glue"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q8",
-                    "question": "What is the meaning of 'Yellow'?",
+                    "id": "q6",
+                    "question": "What is the meaning of 'Board'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Hitam",
-                        "Kuning",
-                        "Putih"
+                        "Gunting",
+                        "Tas",
+                        "Papan Tulis"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "Bahasa Inggris dari 'Lem' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Crayon",
+                        "Glue",
+                        "Table"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q8",
+                    "question": "Gambar ✂️ ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Board",
+                        "Scissors",
+                        "Notebook"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Putih'?",
+                    "question": "What is the meaning of 'Crayon'? 🇬🇧→🇮🇩",
                     "options": [
-                        "White",
-                        "Green",
-                        "Red"
+                        "Krayon",
+                        "Pena",
+                        "Penggaris"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Kuning'?",
+                    "question": "Gambar 📋 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Yellow",
-                        "Red",
-                        "White"
+                        "Board",
+                        "Table",
+                        "Notebook"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "What is the meaning of 'White'?",
+                    "question": "What is the meaning of 'Calculator'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Putih",
-                        "Kuning",
-                        "Hijau"
+                        "Kalkulator",
+                        "Kursi",
+                        "Papan Tulis"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Putih'?",
+                    "question": "Bahasa Inggris dari 'Buku Tulis' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "White",
-                        "Blue",
-                        "Red"
+                        "Notebook",
+                        "Pencil",
+                        "Calculator"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "What is the meaning of 'Yellow'?",
+                    "question": "Bahasa Inggris dari 'Meja' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Biru",
-                        "Merah",
-                        "Kuning"
+                        "Table",
+                        "Book",
+                        "Calculator"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "What is the meaning of 'Black'?",
+                    "question": "What is the meaning of 'Scissors'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Merah",
-                        "Kuning",
-                        "Hitam"
+                        "Meja",
+                        "Gunting",
+                        "Papan Tulis"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "eng6_3",
-            "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "title": "Classroom Full Review",
+            "icon": "🏆",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Animals - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📚</span><span class='font-black text-emerald-700 text-base'>Book</span><span class='text-emerald-400 text-xs font-bold'>Buku</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🖊️</span><span class='font-black text-emerald-700 text-base'>Pen</span><span class='text-emerald-400 text-xs font-bold'>Pena</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>✏️</span><span class='font-black text-emerald-700 text-base'>Pencil</span><span class='text-emerald-400 text-xs font-bold'>Pensil</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📏</span><span class='font-black text-emerald-700 text-base'>Ruler</span><span class='text-emerald-400 text-xs font-bold'>Penggaris</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🧹</span><span class='font-black text-emerald-700 text-base'>Eraser</span><span class='text-emerald-400 text-xs font-bold'>Penghapus</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🎒</span><span class='font-black text-emerald-700 text-base'>Bag</span><span class='text-emerald-400 text-xs font-bold'>Tas</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🪑</span><span class='font-black text-emerald-700 text-base'>Chair</span><span class='text-emerald-400 text-xs font-bold'>Kursi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🪑</span><span class='font-black text-emerald-700 text-base'>Table</span><span class='text-emerald-400 text-xs font-bold'>Meja</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📋</span><span class='font-black text-emerald-700 text-base'>Board</span><span class='text-emerald-400 text-xs font-bold'>Papan Tulis</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>✂️</span><span class='font-black text-emerald-700 text-base'>Scissors</span><span class='text-emerald-400 text-xs font-bold'>Gunting</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🫙</span><span class='font-black text-emerald-700 text-base'>Glue</span><span class='text-emerald-400 text-xs font-bold'>Lem</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📓</span><span class='font-black text-emerald-700 text-base'>Notebook</span><span class='text-emerald-400 text-xs font-bold'>Buku Tulis</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🔢</span><span class='font-black text-emerald-700 text-base'>Calculator</span><span class='text-emerald-400 text-xs font-bold'>Kalkulator</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🖍️</span><span class='font-black text-emerald-700 text-base'>Crayon</span><span class='text-emerald-400 text-xs font-bold'>Krayon</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>This is a... / That is a... (Ini adalah... / Itu adalah...)</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "What is the meaning of 'Scissors'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Dog",
-                        "Fish",
-                        "Bird"
+                        "Gunting",
+                        "Penggaris",
+                        "Buku Tulis"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "Bahasa Inggris dari 'Krayon' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Pen",
+                        "Crayon",
+                        "Board"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q2",
+                    "question": "Gambar 📚 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "Calculator",
+                        "Notebook",
+                        "Book"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
-                    "options": [
-                        "Cat",
-                        "Tiger",
-                        "Fish"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Harimau'?",
-                    "options": [
-                        "Tiger",
-                        "Dog",
-                        "Fish"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q3",
-                    "question": "What is the meaning of 'Dog'?",
+                    "question": "What is the meaning of 'Calculator'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Harimau",
-                        "Burung",
-                        "Anjing"
+                        "Pena",
+                        "Papan Tulis",
+                        "Kalkulator"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "Bahasa Inggris dari 'Penggaris' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Fish",
-                        "Dog",
-                        "Bird"
+                        "Eraser",
+                        "Ruler",
+                        "Chair"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Gajah'?",
+                    "question": "Gambar 🎒 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Elephant",
-                        "Cat",
-                        "Dog"
+                        "Bag",
+                        "Glue",
+                        "Crayon"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "What is the meaning of 'Fish'?",
+                    "question": "What is the meaning of 'Crayon'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Burung",
-                        "Ikan",
-                        "Gajah"
+                        "Buku",
+                        "Krayon",
+                        "Meja"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
+                    "question": "What is the meaning of 'Table'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Cat",
-                        "Fish",
-                        "Elephant"
+                        "Meja",
+                        "Papan Tulis",
+                        "Buku Tulis"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "What is the meaning of 'Cat'?",
+                    "question": "Bahasa Inggris dari 'Buku' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Ikan",
-                        "Burung",
-                        "Kucing"
+                        "Chair",
+                        "Bag",
+                        "Book"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
+                    "question": "Gambar ✂️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Tiger",
-                        "Bird",
-                        "Cat"
+                        "Crayon",
+                        "Table",
+                        "Scissors"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q10",
-                    "question": "What is the meaning of 'Elephant'?",
+                    "question": "What is the meaning of 'Pencil'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Gajah",
-                        "Anjing",
-                        "Kucing"
+                        "Penggaris",
+                        "Buku Tulis",
+                        "Pensil"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "Bahasa Inggris dari 'Papan Tulis' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Dog",
-                        "Elephant",
-                        "Bird"
+                        "Eraser",
+                        "Glue",
+                        "Board"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "What is the meaning of 'Dog'?",
+                    "question": "Gambar 🪑 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Harimau",
-                        "Anjing",
-                        "Gajah"
+                        "Crayon",
+                        "Bag",
+                        "Table"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Harimau'?",
+                    "question": "What is the meaning of 'Glue'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Elephant",
-                        "Tiger",
-                        "Bird"
+                        "Lem",
+                        "Tas",
+                        "Pensil"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
+                    "question": "Gambar 🧹 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Tiger",
-                        "Bird",
-                        "Cat"
+                        "Eraser",
+                        "Book",
+                        "Ruler"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         }

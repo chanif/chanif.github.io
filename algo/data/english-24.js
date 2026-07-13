@@ -1,325 +1,205 @@
 window.english24 = {
     "id": "english-24",
-    "title": "Level 24: Writing",
+    "title": "Level 24: Writing Skills",
     "badge": "SMP",
-    "icon": "\ud83c\udf0d",
-    "description": "Paragraph writing",
+    "icon": "✍️",
+    "description": "Writing Skills",
     "lessons": [
         {
             "id": "eng24_1",
             "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "✍️",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Writing - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📝</span><span class='font-black text-emerald-700 text-base'>Introduction</span><span class='text-emerald-400 text-xs font-bold'>Pendahuluan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📄</span><span class='font-black text-emerald-700 text-base'>Body paragraph</span><span class='text-emerald-400 text-xs font-bold'>Paragraf isi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🏁</span><span class='font-black text-emerald-700 text-base'>Conclusion</span><span class='text-emerald-400 text-xs font-bold'>Kesimpulan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💡</span><span class='font-black text-emerald-700 text-base'>Topic sentence</span><span class='text-emerald-400 text-xs font-bold'>Kalimat topik</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>A good paragraph: 1) Topic sentence | 2) 3 supporting details | 3) Concluding sentence.</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Eye'?",
+                    "question": "What is the meaning of 'Body paragraph'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Kaki",
-                        "Telinga",
-                        "Mata"
+                        "Paragraf isi",
+                        "Kesimpulan",
+                        "Paragraf"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "Bahasa Inggris dari 'Pendahuluan' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Conclusion",
+                        "In conclusion",
+                        "Introduction"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q1",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Kaki",
-                        "Hidung",
-                        "Tangan"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q2",
-                    "question": "What is the meaning of 'Eye'?",
+                    "question": "Gambar 💡 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Hidung",
-                        "Mata",
-                        "Tangan"
+                        "Supporting detail",
+                        "Topic sentence",
+                        "Essay"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Head'?",
+                    "question": "What is the meaning of 'Conclusion'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Kepala",
-                        "Kaki",
-                        "Hidung"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q4",
-                    "question": "What is the meaning of 'Hand'?",
-                    "options": [
-                        "Kaki",
-                        "Mata",
-                        "Tangan"
+                        "Kalimat topik",
+                        "Namun/Tetapi",
+                        "Kesimpulan"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q5",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
+                    "id": "q4",
+                    "question": "Bahasa Inggris dari 'Kesimpulan' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Ear",
-                        "Head",
-                        "Nose"
+                        "In conclusion",
+                        "Conclusion",
+                        "However"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q5",
+                    "question": "Gambar 📝 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "First",
+                        "Introduction",
+                        "Furthermore"
+                    ],
+                    "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "What is the meaning of 'Hand'?",
+                    "question": "What is the meaning of 'Topic sentence'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Telinga",
-                        "Mata",
-                        "Tangan"
+                        "Selain itu/Lebih lanjut",
+                        "Paragraf isi",
+                        "Kalimat topik"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Tangan'?",
+                    "question": "Bahasa Inggris dari 'Paragraf isi' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Ear",
-                        "Hand",
-                        "Eye"
+                        "Topic sentence",
+                        "Paragraph",
+                        "Body paragraph"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "What is the meaning of 'Ear'?",
+                    "question": "Gambar 📄 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Mata",
-                        "Kaki",
-                        "Telinga"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Hand'?",
-                    "options": [
-                        "Kaki",
-                        "Tangan",
-                        "Mata"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
-                    "options": [
-                        "Nose",
-                        "Eye",
-                        "Head"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Leg'?",
-                    "options": [
-                        "Hidung",
-                        "Telinga",
-                        "Kaki"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Tangan'?",
-                    "options": [
-                        "Hand",
-                        "Leg",
-                        "Eye"
+                        "Body paragraph",
+                        "Revise",
+                        "Supporting detail"
                     ],
                     "correctIndex": 0
-                },
-                {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Hidung",
-                        "Tangan",
-                        "Kepala"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q14",
-                    "question": "What is the meaning of 'Ear'?",
-                    "options": [
-                        "Kepala",
-                        "Mata",
-                        "Telinga"
-                    ],
-                    "correctIndex": 2
                 }
             ]
         },
         {
             "id": "eng24_2",
             "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "icon": "✍️",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Writing - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📋</span><span class='font-black text-emerald-700 text-base'>Supporting detail</span><span class='text-emerald-400 text-xs font-bold'>Rincian pendukung</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🔗</span><span class='font-black text-emerald-700 text-base'>Transition word</span><span class='text-emerald-400 text-xs font-bold'>Kata penghubung</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>1️⃣</span><span class='font-black text-emerald-700 text-base'>First</span><span class='text-emerald-400 text-xs font-bold'>Pertama</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>➕</span><span class='font-black text-emerald-700 text-base'>Furthermore</span><span class='text-emerald-400 text-xs font-bold'>Selain itu/Lebih lanjut</span></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Tiger'?",
+                    "question": "What is the meaning of 'Supporting detail'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Burung",
-                        "Anjing",
-                        "Harimau"
+                        "Kalimat topik",
+                        "Selain itu/Lebih lanjut",
+                        "Rincian pendukung"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "What is the meaning of 'Tiger'?",
+                    "question": "Bahasa Inggris dari 'Pertama' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Harimau",
-                        "Gajah",
-                        "Ikan"
+                        "Draft",
+                        "First",
+                        "Topic sentence"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "Gambar ➕ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Dog",
-                        "Bird",
-                        "Cat"
+                        "Transition word",
+                        "Furthermore",
+                        "Revise"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Tiger'?",
+                    "question": "Bahasa Inggris dari 'Kata penghubung' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Burung",
-                        "Harimau",
-                        "Anjing"
+                        "Transition word",
+                        "Revise",
+                        "Body paragraph"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "Gambar 🔗 ini dalam bahasa Inggris disebut...",
+                    "options": [
+                        "First",
+                        "Transition word",
+                        "Conclusion"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
+                    "id": "q5",
+                    "question": "What is the meaning of 'First'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Tiger",
-                        "Fish",
-                        "Cat"
+                        "Merevisi",
+                        "Kalimat topik",
+                        "Pertama"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q5",
-                    "question": "What is the meaning of 'Tiger'?",
-                    "options": [
-                        "Gajah",
-                        "Harimau",
-                        "Kucing"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
+                    "question": "What is the meaning of 'Transition word'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Bird",
-                        "Dog",
-                        "Tiger"
+                        "Merevisi",
+                        "Paragraf isi",
+                        "Kata penghubung"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Harimau'?",
+                    "question": "Bahasa Inggris dari 'Selain itu/Lebih lanjut' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Tiger",
-                        "Elephant",
-                        "Dog"
+                        "Furthermore",
+                        "Topic sentence",
+                        "Transition word"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "What is the meaning of 'Cat'?",
+                    "question": "Gambar 📋 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Anjing",
-                        "Kucing",
-                        "Gajah"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
-                    "options": [
-                        "Tiger",
-                        "Cat",
-                        "Fish"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Gajah'?",
-                    "options": [
-                        "Tiger",
-                        "Elephant",
-                        "Dog"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
-                    "options": [
-                        "Bird",
-                        "Cat",
-                        "Elephant"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
-                    "options": [
-                        "Bird",
-                        "Cat",
-                        "Dog"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Tiger'?",
-                    "options": [
-                        "Burung",
-                        "Harimau",
-                        "Ikan"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Ikan'?",
-                    "options": [
-                        "Fish",
-                        "Tiger",
-                        "Cat"
+                        "Supporting detail",
+                        "Transition word",
+                        "Revise"
                     ],
                     "correctIndex": 0
                 }
@@ -328,160 +208,160 @@ window.english24 = {
         {
             "id": "eng24_3",
             "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "✍️",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Writing - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>↩️</span><span class='font-black text-emerald-700 text-base'>However</span><span class='text-emerald-400 text-xs font-bold'>Namun/Tetapi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🏁</span><span class='font-black text-emerald-700 text-base'>In conclusion</span><span class='text-emerald-400 text-xs font-bold'>Sebagai kesimpulan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📄</span><span class='font-black text-emerald-700 text-base'>Paragraph</span><span class='text-emerald-400 text-xs font-bold'>Paragraf</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📝</span><span class='font-black text-emerald-700 text-base'>Essay</span><span class='text-emerald-400 text-xs font-bold'>Esai</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>✏️</span><span class='font-black text-emerald-700 text-base'>Draft</span><span class='text-emerald-400 text-xs font-bold'>Draf</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🔄</span><span class='font-black text-emerald-700 text-base'>Revise</span><span class='text-emerald-400 text-xs font-bold'>Merevisi</span></div></div></div>",
             "questions": [
                 {
-                    "id": "q0",
-                    "question": "What is the meaning of 'Nose'?",
+                    "id": "q13",
+                    "question": "Berapa banyak kalimat dalam satu paragraf minimal?",
                     "options": [
-                        "Kepala",
-                        "Hidung",
-                        "Mata"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q1",
-                    "question": "What is the meaning of 'Head'?",
-                    "options": [
-                        "Mata",
-                        "Kaki",
-                        "Kepala"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Kaki'?",
-                    "options": [
-                        "Leg",
-                        "Hand",
-                        "Eye"
+                        "3 kalimat",
+                        "1 kalimat",
+                        "10 kalimat"
                     ],
                     "correctIndex": 0
-                },
-                {
-                    "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Kaki'?",
-                    "options": [
-                        "Ear",
-                        "Leg",
-                        "Nose"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q4",
-                    "question": "What is the meaning of 'Eye'?",
-                    "options": [
-                        "Mata",
-                        "Kaki",
-                        "Telinga"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q5",
-                    "question": "What is the meaning of 'Hand'?",
-                    "options": [
-                        "Kaki",
-                        "Tangan",
-                        "Mata"
-                    ],
-                    "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "What is the meaning of 'Hand'?",
+                    "question": "'First' adalah transition word untuk...",
                     "options": [
-                        "Telinga",
-                        "Hidung",
-                        "Tangan"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q7",
-                    "question": "What is the meaning of 'Ear'?",
-                    "options": [
-                        "Kaki",
-                        "Telinga",
-                        "Mata"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
-                    "options": [
-                        "Leg",
-                        "Hand",
-                        "Head"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Eye'?",
-                    "options": [
-                        "Mata",
-                        "Telinga",
-                        "Kepala"
+                        "Menyebutkan hal pertama",
+                        "Memberi kontras",
+                        "Menyimpulkan"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "What is the meaning of 'Leg'?",
+                    "question": "'Essay' adalah...",
                     "options": [
-                        "Kepala",
-                        "Kaki",
-                        "Telinga"
+                        "Tulisan panjang berisi argumen/penjelasan",
+                        "Satu kalimat saja",
+                        "Daftar kata-kata"
                     ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Kaki",
-                        "Hidung",
-                        "Kepala"
-                    ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
+                    "question": "Transition word untuk menyimpulkan:",
                     "options": [
-                        "Hand",
-                        "Nose",
-                        "Head"
+                        "In conclusion / Therefore",
+                        "First / Second",
+                        "However / But"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Eye'?",
+                    "id": "q7",
+                    "question": "'Draft' artinya...",
                     "options": [
-                        "Kaki",
-                        "Mata",
-                        "Hidung"
+                        "Tulisan pertama yang belum sempurna",
+                        "Tulisan akhir",
+                        "Judul esai"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
+                    "question": "'Body paragraph' berisi...",
                     "options": [
-                        "Ear",
-                        "Head",
-                        "Hand"
+                        "Rincian dan penjelasan utama",
+                        "Pembuka esai",
+                        "Penutup esai"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "'Revise' artinya...",
+                    "options": [
+                        "Memperbaiki tulisan",
+                        "Menulis ulang dari awal",
+                        "Menghapus tulisan"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "Sebuah paragraf yang baik memiliki...",
+                    "options": [
+                        "Kalimat topik + rincian + penutup",
+                        "Hanya kalimat panjang",
+                        "Hanya kalimat pendek"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "'Topic sentence' adalah...",
+                    "options": [
+                        "Kalimat utama yang memperkenalkan topik",
+                        "Kalimat penutup",
+                        "Rincian pendukung"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "'Supporting detail' adalah...",
+                    "options": [
+                        "Rincian yang mendukung kalimat topik",
+                        "Kalimat pembuka",
+                        "Kesimpulan"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q0",
+                    "question": "Bagian pertama dari sebuah teks/esai disebut...",
+                    "options": [
+                        "Introduction",
+                        "Conclusion",
+                        "Body"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "'In conclusion' digunakan di...",
+                    "options": [
+                        "Akhir paragraf/esai",
+                        "Awal paragraf",
+                        "Tengah paragraf"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "'However' digunakan untuk...",
+                    "options": [
+                        "Memberi kontras/pertentangan",
+                        "Menambah informasi",
+                        "Menyimpulkan"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "'Furthermore' digunakan untuk...",
+                    "options": [
+                        "Menambah informasi",
+                        "Menyimpulkan",
+                        "Memberi kontras"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "Urutan yang benar dalam esai:",
+                    "options": [
+                        "Introduction → Body → Conclusion",
+                        "Body → Introduction → Conclusion",
+                        "Conclusion → Body → Introduction"
+                    ],
+                    "correctIndex": 0
                 }
             ]
         }

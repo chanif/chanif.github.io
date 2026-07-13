@@ -2,164 +2,164 @@ window.math7 = {
     "id": "math-7",
     "title": "Level 7: Penjumlahan 2 Digit",
     "badge": "Kelas 2",
-    "icon": "\ud83e\uddee",
-    "description": "12+15, menyimpan",
+    "icon": "➕",
+    "description": "Penjumlahan 2 Digit",
     "lessons": [
         {
             "id": "mth7_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "➕",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Penjumlahan 2 Digit - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Penjumlahan 2 Angka</h3>\n        <p class='text-slate-700 text-lg'>Menjumlahkan dua angka puluhan. Jumlahkan satuan dulu, lalu puluhannya.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>23 + 15 = 38</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>3+5=8, 2+1=3, jadi 38</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>47 + 26 = 73</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>7+6=13 (simpan 1), 4+2+1=7, jadi 73</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>35 + 48 = 83</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>5+8=13, 3+4+1=8, jadi 83</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Jika jumlah satuan ≥ 10, simpan 1 ke kolom puluhan!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 47 - 16?",
+                    "question": "Berapa 33 + 32?",
                     "options": [
-                        "31",
-                        "36",
-                        "26"
+                        "63",
+                        "65",
+                        "71"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 26 + 13?",
+                    "question": "Berapa 41 + 14?",
                     "options": [
-                        "34",
-                        "40",
-                        "39"
+                        "64",
+                        "51",
+                        "55"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 12 + 18?",
+                    "question": "Berapa 50 + 36?",
                     "options": [
-                        "34",
-                        "25",
-                        "30"
+                        "86",
+                        "76",
+                        "94"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 24 - 18?",
+                    "question": "Berapa 27 + 16?",
                     "options": [
-                        "6",
-                        "5",
-                        "10"
+                        "43",
+                        "41",
+                        "44"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 36 - 12?",
+                    "question": "Berapa 11 + 16?",
                     "options": [
+                        "32",
                         "24",
-                        "21",
-                        "26"
+                        "27"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 30 + 19?",
+                    "question": "Berapa 49 + 31?",
                     "options": [
-                        "51",
-                        "45",
-                        "49"
+                        "74",
+                        "89",
+                        "80"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 27 + 20?",
+                    "question": "Berapa 45 + 31?",
                     "options": [
-                        "44",
-                        "48",
-                        "47"
+                        "77",
+                        "71",
+                        "76"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 34 - 1?",
+                    "question": "Berapa 22 + 39?",
                     "options": [
-                        "33",
-                        "29",
-                        "35"
+                        "61",
+                        "57",
+                        "66"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 29 - 13?",
+                    "question": "Berapa 50 + 13?",
                     "options": [
-                        "16",
-                        "19",
-                        "15"
+                        "63",
+                        "62",
+                        "70"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 14 + 17?",
+                    "question": "Berapa 22 + 12?",
                     "options": [
-                        "29",
-                        "31",
-                        "35"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 43 - 16?",
-                    "options": [
-                        "27",
-                        "31",
-                        "26"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 44 - 14?",
-                    "options": [
-                        "27",
-                        "34",
-                        "30"
+                        "25",
+                        "38",
+                        "34"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 22 + 13?",
+                    "id": "q10",
+                    "question": "Berapa 12 + 33?",
                     "options": [
-                        "34",
-                        "40",
-                        "35"
+                        "47",
+                        "45",
+                        "39"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "Berapa 45 + 37?",
+                    "options": [
+                        "77",
+                        "82",
+                        "87"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q12",
+                    "question": "Berapa 39 + 25?",
+                    "options": [
+                        "69",
+                        "62",
+                        "64"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 23 + 11?",
+                    "question": "Berapa 42 + 25?",
                     "options": [
-                        "34",
-                        "35",
-                        "31"
+                        "74",
+                        "67",
+                        "58"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 46 - 19?",
+                    "question": "Berapa 44 + 34?",
                     "options": [
-                        "27",
-                        "30",
-                        "23"
+                        "78",
+                        "86",
+                        "73"
                     ],
                     "correctIndex": 0
                 }
@@ -168,320 +168,320 @@ window.math7 = {
         {
             "id": "mth7_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "➕",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Penjumlahan 2 Digit - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Penjumlahan 2 Angka</h3>\n        <p class='text-slate-700 text-lg'>Menjumlahkan dua angka puluhan. Jumlahkan satuan dulu, lalu puluhannya.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>23 + 15 = 38</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>3+5=8, 2+1=3, jadi 38</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>47 + 26 = 73</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>7+6=13 (simpan 1), 4+2+1=7, jadi 73</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>35 + 48 = 83</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>5+8=13, 3+4+1=8, jadi 83</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Jika jumlah satuan ≥ 10, simpan 1 ke kolom puluhan!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 28 + 11?",
+                    "question": "Berapa 33 + 32?",
                     "options": [
-                        "35",
-                        "42",
-                        "39"
+                        "63",
+                        "65",
+                        "71"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 39 - 3?",
+                    "question": "Berapa 41 + 14?",
                     "options": [
-                        "34",
-                        "36",
-                        "39"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 46 - 11?",
-                    "options": [
-                        "30",
-                        "40",
-                        "35"
+                        "64",
+                        "51",
+                        "55"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 43 - 12?",
+                    "id": "q2",
+                    "question": "Berapa 50 + 36?",
                     "options": [
-                        "35",
-                        "31",
-                        "29"
+                        "86",
+                        "76",
+                        "94"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "Berapa 27 + 16?",
+                    "options": [
+                        "43",
+                        "41",
+                        "44"
+                    ],
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 24 - 7?",
+                    "question": "Berapa 11 + 16?",
                     "options": [
-                        "12",
-                        "22",
-                        "17"
+                        "32",
+                        "24",
+                        "27"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 22 - 10?",
+                    "question": "Berapa 49 + 31?",
                     "options": [
-                        "7",
-                        "13",
-                        "12"
+                        "74",
+                        "89",
+                        "80"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 29 - 8?",
+                    "question": "Berapa 45 + 31?",
                     "options": [
-                        "21",
-                        "20",
-                        "24"
+                        "77",
+                        "71",
+                        "76"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "Berapa 22 + 39?",
+                    "options": [
+                        "61",
+                        "57",
+                        "66"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 30 - 13?",
+                    "id": "q8",
+                    "question": "Berapa 50 + 13?",
                     "options": [
-                        "22",
-                        "17",
-                        "12"
+                        "63",
+                        "62",
+                        "70"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "Berapa 22 + 12?",
+                    "options": [
+                        "25",
+                        "38",
+                        "34"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q10",
+                    "question": "Berapa 12 + 33?",
+                    "options": [
+                        "47",
+                        "45",
+                        "39"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 21 - 2?",
-                    "options": [
-                        "24",
-                        "18",
-                        "19"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 15 + 11?",
-                    "options": [
-                        "26",
-                        "27",
-                        "24"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 29 + 18?",
-                    "options": [
-                        "45",
-                        "48",
-                        "47"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q11",
-                    "question": "Berapa hasil dari 46 - 4?",
+                    "question": "Berapa 45 + 37?",
                     "options": [
-                        "37",
-                        "42",
-                        "44"
+                        "77",
+                        "82",
+                        "87"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 43 - 10?",
+                    "question": "Berapa 39 + 25?",
                     "options": [
-                        "29",
-                        "34",
-                        "33"
+                        "69",
+                        "62",
+                        "64"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 22 + 14?",
+                    "question": "Berapa 42 + 25?",
                     "options": [
-                        "36",
-                        "34",
-                        "41"
+                        "74",
+                        "67",
+                        "58"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 47 - 18?",
+                    "question": "Berapa 44 + 34?",
                     "options": [
-                        "31",
-                        "24",
-                        "29"
+                        "78",
+                        "86",
+                        "73"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mth7_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "➕",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Penjumlahan 2 Digit - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Penjumlahan 2 Angka</h3>\n        <p class='text-slate-700 text-lg'>Menjumlahkan dua angka puluhan. Jumlahkan satuan dulu, lalu puluhannya.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>23 + 15 = 38</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>3+5=8, 2+1=3, jadi 38</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>47 + 26 = 73</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>7+6=13 (simpan 1), 4+2+1=7, jadi 73</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>35 + 48 = 83</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>5+8=13, 3+4+1=8, jadi 83</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Jika jumlah satuan ≥ 10, simpan 1 ke kolom puluhan!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 23 + 15?",
+                    "question": "Berapa 33 + 32?",
                     "options": [
-                        "38",
-                        "35",
-                        "40"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q1",
-                    "question": "Berapa hasil dari 18 + 10?",
-                    "options": [
-                        "23",
-                        "28",
-                        "30"
+                        "63",
+                        "65",
+                        "71"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 25 - 17?",
+                    "id": "q1",
+                    "question": "Berapa 41 + 14?",
                     "options": [
-                        "13",
-                        "7",
-                        "8"
+                        "64",
+                        "51",
+                        "55"
                     ],
                     "correctIndex": 2
+                },
+                {
+                    "id": "q2",
+                    "question": "Berapa 50 + 36?",
+                    "options": [
+                        "86",
+                        "76",
+                        "94"
+                    ],
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 27 - 10?",
+                    "question": "Berapa 27 + 16?",
                     "options": [
-                        "16",
-                        "18",
-                        "17"
+                        "43",
+                        "41",
+                        "44"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 46 - 18?",
+                    "question": "Berapa 11 + 16?",
                     "options": [
-                        "31",
-                        "26",
-                        "28"
+                        "32",
+                        "24",
+                        "27"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 24 + 15?",
+                    "question": "Berapa 49 + 31?",
                     "options": [
-                        "44",
-                        "39",
-                        "36"
+                        "74",
+                        "89",
+                        "80"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 31 - 1?",
+                    "question": "Berapa 45 + 31?",
                     "options": [
-                        "28",
-                        "31",
-                        "30"
+                        "77",
+                        "71",
+                        "76"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 30 - 13?",
+                    "question": "Berapa 22 + 39?",
                     "options": [
-                        "14",
-                        "21",
-                        "17"
+                        "61",
+                        "57",
+                        "66"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 18 + 14?",
+                    "question": "Berapa 50 + 13?",
                     "options": [
-                        "32",
-                        "27",
-                        "35"
+                        "63",
+                        "62",
+                        "70"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 17 + 17?",
+                    "question": "Berapa 22 + 12?",
                     "options": [
+                        "25",
                         "38",
-                        "34",
-                        "32"
+                        "34"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 22 + 20?",
+                    "question": "Berapa 12 + 33?",
                     "options": [
-                        "37",
-                        "42",
-                        "45"
+                        "47",
+                        "45",
+                        "39"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 12 + 15?",
+                    "question": "Berapa 45 + 37?",
                     "options": [
-                        "29",
-                        "27",
-                        "26"
+                        "77",
+                        "82",
+                        "87"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 30 + 13?",
+                    "question": "Berapa 39 + 25?",
                     "options": [
-                        "47",
-                        "43",
-                        "42"
+                        "69",
+                        "62",
+                        "64"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 27 + 17?",
+                    "question": "Berapa 42 + 25?",
                     "options": [
-                        "48",
-                        "44",
-                        "42"
+                        "74",
+                        "67",
+                        "58"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 26 - 8?",
+                    "question": "Berapa 44 + 34?",
                     "options": [
-                        "16",
-                        "19",
-                        "18"
+                        "78",
+                        "86",
+                        "73"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         }

@@ -2,324 +2,324 @@ window.math5 = {
     "id": "math-5",
     "title": "Level 5: Membandingkan Angka",
     "badge": "Kelas 1",
-    "icon": "\ud83e\uddee",
-    "description": "Lebih besar/kecil, sama dengan",
+    "icon": "🔍",
+    "description": "Membandingkan Angka",
     "lessons": [
         {
             "id": "mth5_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "🔍",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Membandingkan Angka - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Membandingkan Angka</h3>\n        <p class='text-slate-700 text-lg'>Gunakan simbol > (lebih dari), < (kurang dari), = (sama dengan) untuk membandingkan angka.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>5 > 3</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Lima lebih dari tiga</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>2 < 8</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Dua kurang dari delapan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>4 = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Empat sama dengan empat</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Ujung terbuka simbol < dan > selalu menghadap ke angka yang lebih kecil</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 4 + 6?",
+                    "question": "56 ___ 84",
                     "options": [
-                        "14",
-                        "10",
-                        "6"
+                        ">",
+                        "<",
+                        "="
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 5 + 6?",
+                    "question": "Mana yang lebih besar: 43 atau 13?",
                     "options": [
                         "13",
-                        "11",
-                        "8"
+                        "43",
+                        "33"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 10 + 6?",
+                    "question": "2 ___ 81",
                     "options": [
-                        "18",
-                        "12",
-                        "16"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 10 + 1?",
-                    "options": [
-                        "10",
-                        "13",
-                        "11"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 9 + 10?",
-                    "options": [
-                        "16",
-                        "19",
-                        "20"
+                        ">",
+                        "<",
+                        "="
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 7 + 10?",
+                    "id": "q3",
+                    "question": "Mana yang lebih besar: 67 atau 61?",
                     "options": [
-                        "12",
-                        "17",
-                        "21"
+                        "67",
+                        "34",
+                        "61"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "Mana yang lebih besar: 30 atau 72?",
+                    "options": [
+                        "72",
+                        "30",
+                        "67"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "Mana yang lebih besar: 18 atau 34?",
+                    "options": [
+                        "43",
+                        "34",
+                        "18"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 4 + 3?",
+                    "question": "58 ___ 90",
                     "options": [
-                        "7",
-                        "11",
-                        "6"
+                        ">",
+                        "<",
+                        "="
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q7",
+                    "question": "38 ___ 31",
+                    "options": [
+                        ">",
+                        "<",
+                        "="
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 6 + 5?",
+                    "id": "q8",
+                    "question": "Mana yang lebih besar: 59 atau 28?",
                     "options": [
-                        "14",
-                        "8",
-                        "11"
+                        "59",
+                        "67",
+                        "28"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 6 + 2?",
+                    "id": "q9",
+                    "question": "Mana yang lebih besar: 57 atau 5?",
                     "options": [
-                        "12",
-                        "8",
+                        "31",
+                        "57",
                         "5"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 7 + 7?",
-                    "options": [
-                        "12",
-                        "14",
-                        "17"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q10",
-                    "question": "Berapa hasil dari 6 + 4?",
+                    "question": "Berapa 16 + 4?",
                     "options": [
-                        "11",
-                        "10",
-                        "6"
+                        "19",
+                        "20",
+                        "21"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 10 + 4?",
+                    "question": "Berapa 8 + 7?",
                     "options": [
+                        "16",
                         "14",
-                        "11",
-                        "18"
+                        "15"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q12",
+                    "question": "Berapa 14 + 4?",
+                    "options": [
+                        "18",
+                        "17",
+                        "19"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 5 + 5?",
-                    "options": [
-                        "14",
-                        "10",
-                        "6"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q13",
-                    "question": "Berapa hasil dari 4 + 3?",
+                    "question": "Berapa 18 + 2?",
                     "options": [
-                        "7",
-                        "5",
-                        "12"
+                        "20",
+                        "19",
+                        "21"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 5 + 6?",
+                    "question": "Berapa 14 + 3?",
                     "options": [
-                        "6",
-                        "13",
-                        "11"
+                        "16",
+                        "17",
+                        "18"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "mth5_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "🔍",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Membandingkan Angka - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Membandingkan Angka</h3>\n        <p class='text-slate-700 text-lg'>Gunakan simbol > (lebih dari), < (kurang dari), = (sama dengan) untuk membandingkan angka.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>5 > 3</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Lima lebih dari tiga</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>2 < 8</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Dua kurang dari delapan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>4 = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Empat sama dengan empat</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Ujung terbuka simbol < dan > selalu menghadap ke angka yang lebih kecil</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 6 + 4?",
+                    "question": "56 ___ 84",
                     "options": [
-                        "15",
-                        "10",
-                        "9"
+                        ">",
+                        "<",
+                        "="
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 8 + 10?",
+                    "question": "Mana yang lebih besar: 43 atau 13?",
                     "options": [
-                        "18",
-                        "16",
-                        "20"
+                        "13",
+                        "43",
+                        "33"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 7 + 4?",
+                    "question": "2 ___ 81",
                     "options": [
-                        "11",
-                        "12",
-                        "10"
+                        ">",
+                        "<",
+                        "="
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q3",
+                    "question": "Mana yang lebih besar: 67 atau 61?",
+                    "options": [
+                        "67",
+                        "34",
+                        "61"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 7 + 7?",
-                    "options": [
-                        "16",
-                        "10",
-                        "14"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q4",
-                    "question": "Berapa hasil dari 10 + 9?",
+                    "question": "Mana yang lebih besar: 30 atau 72?",
                     "options": [
-                        "19",
-                        "16",
-                        "22"
+                        "72",
+                        "30",
+                        "67"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 5 + 2?",
+                    "question": "Mana yang lebih besar: 18 atau 34?",
                     "options": [
-                        "7",
-                        "4",
-                        "8"
+                        "43",
+                        "34",
+                        "18"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 1 + 5?",
+                    "question": "58 ___ 90",
                     "options": [
-                        "1",
-                        "10",
-                        "6"
+                        ">",
+                        "<",
+                        "="
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 8 + 6?",
+                    "question": "38 ___ 31",
                     "options": [
-                        "14",
-                        "19",
-                        "12"
+                        ">",
+                        "<",
+                        "="
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 5 + 5?",
+                    "question": "Mana yang lebih besar: 59 atau 28?",
                     "options": [
-                        "9",
-                        "14",
-                        "10"
+                        "59",
+                        "67",
+                        "28"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 5 + 4?",
+                    "question": "Mana yang lebih besar: 57 atau 5?",
                     "options": [
-                        "9",
-                        "8",
-                        "13"
+                        "31",
+                        "57",
+                        "5"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 10 + 9?",
+                    "question": "Berapa 16 + 4?",
                     "options": [
-                        "18",
-                        "24",
-                        "19"
+                        "19",
+                        "20",
+                        "21"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "Berapa 8 + 7?",
+                    "options": [
+                        "16",
+                        "14",
+                        "15"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 6 + 8?",
-                    "options": [
-                        "14",
-                        "13",
-                        "17"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q12",
-                    "question": "Berapa hasil dari 5 + 6?",
+                    "question": "Berapa 14 + 4?",
                     "options": [
-                        "11",
-                        "6",
-                        "13"
+                        "18",
+                        "17",
+                        "19"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 3 + 8?",
+                    "question": "Berapa 18 + 2?",
                     "options": [
-                        "8",
-                        "11",
-                        "12"
+                        "20",
+                        "19",
+                        "21"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 10 + 1?",
+                    "question": "Berapa 14 + 3?",
                     "options": [
-                        "10",
-                        "11",
-                        "15"
+                        "16",
+                        "17",
+                        "18"
                     ],
                     "correctIndex": 1
                 }
@@ -328,160 +328,160 @@ window.math5 = {
         {
             "id": "mth5_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "🔍",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Membandingkan Angka - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Membandingkan Angka</h3>\n        <p class='text-slate-700 text-lg'>Gunakan simbol > (lebih dari), < (kurang dari), = (sama dengan) untuk membandingkan angka.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>5 > 3</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Lima lebih dari tiga</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>2 < 8</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Dua kurang dari delapan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>4 = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Empat sama dengan empat</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Ujung terbuka simbol < dan > selalu menghadap ke angka yang lebih kecil</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 2 + 2?",
+                    "question": "56 ___ 84",
                     "options": [
-                        "7",
-                        "-1",
-                        "4"
+                        ">",
+                        "<",
+                        "="
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 2 + 8?",
+                    "question": "Mana yang lebih besar: 43 atau 13?",
                     "options": [
-                        "10",
-                        "15",
-                        "7"
+                        "13",
+                        "43",
+                        "33"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 7 + 3?",
+                    "question": "2 ___ 81",
                     "options": [
-                        "10",
-                        "6",
-                        "12"
+                        ">",
+                        "<",
+                        "="
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 9 + 3?",
+                    "question": "Mana yang lebih besar: 67 atau 61?",
                     "options": [
-                        "12",
-                        "10",
-                        "15"
+                        "67",
+                        "34",
+                        "61"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 5 + 2?",
+                    "question": "Mana yang lebih besar: 30 atau 72?",
                     "options": [
-                        "12",
-                        "7",
-                        "2"
+                        "72",
+                        "30",
+                        "67"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "Mana yang lebih besar: 18 atau 34?",
+                    "options": [
+                        "43",
+                        "34",
+                        "18"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 5 + 9?",
-                    "options": [
-                        "14",
-                        "16",
-                        "10"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q6",
-                    "question": "Berapa hasil dari 9 + 6?",
+                    "question": "58 ___ 90",
                     "options": [
-                        "15",
-                        "19",
-                        "14"
+                        ">",
+                        "<",
+                        "="
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 3 + 7?",
+                    "question": "38 ___ 31",
                     "options": [
-                        "10",
-                        "14",
-                        "8"
+                        ">",
+                        "<",
+                        "="
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 2 + 2?",
+                    "question": "Mana yang lebih besar: 59 atau 28?",
                     "options": [
-                        "-1",
-                        "4",
-                        "6"
+                        "59",
+                        "67",
+                        "28"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 5 + 8?",
+                    "question": "Mana yang lebih besar: 57 atau 5?",
                     "options": [
-                        "18",
-                        "8",
-                        "13"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 8 + 3?",
-                    "options": [
-                        "12",
-                        "8",
-                        "11"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 8 + 3?",
-                    "options": [
-                        "14",
-                        "11",
-                        "10"
+                        "31",
+                        "57",
+                        "5"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 2 + 5?",
+                    "id": "q10",
+                    "question": "Berapa 16 + 4?",
                     "options": [
-                        "11",
-                        "4",
-                        "7"
+                        "19",
+                        "20",
+                        "21"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 4 + 3?",
+                    "id": "q11",
+                    "question": "Berapa 8 + 7?",
                     "options": [
-                        "12",
-                        "4",
-                        "7"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q14",
-                    "question": "Berapa hasil dari 10 + 5?",
-                    "options": [
-                        "14",
                         "16",
+                        "14",
                         "15"
                     ],
                     "correctIndex": 2
+                },
+                {
+                    "id": "q12",
+                    "question": "Berapa 14 + 4?",
+                    "options": [
+                        "18",
+                        "17",
+                        "19"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q13",
+                    "question": "Berapa 18 + 2?",
+                    "options": [
+                        "20",
+                        "19",
+                        "21"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q14",
+                    "question": "Berapa 14 + 3?",
+                    "options": [
+                        "16",
+                        "17",
+                        "18"
+                    ],
+                    "correctIndex": 1
                 }
             ]
         }

@@ -2,324 +2,324 @@ window.math10 = {
     "id": "math-10",
     "title": "Level 10: Perkalian 1-5",
     "badge": "Kelas 2",
-    "icon": "\ud83e\uddee",
-    "description": "Tabel perkalian 1-5",
+    "icon": "✖️",
+    "description": "Perkalian 1-5",
     "lessons": [
         {
             "id": "mth10_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "✖️",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Perkalian 1-5 - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Tabel Perkalian 1-5</h3>\n        <p class='text-slate-700 text-lg'>Perkalian adalah penjumlahan berulang. 3 × 4 berarti 4+4+4 = 12.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>2 × 5 = 10</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>5 + 5 = 10</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>3 × 4 = 12</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 + 4 + 4 = 12</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>5 × 6 = 30</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 × 5 kali = 30</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Hafalkan tabel perkalian 1-5, itu fondasi matematika!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 2 \u00d7 7?",
+                    "question": "3 + 3 + ... (4 kali) = ?",
                     "options": [
-                        "18",
-                        "14",
-                        "10"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q1",
-                    "question": "Berapa hasil dari 4 \u00d7 8?",
-                    "options": [
-                        "32",
-                        "31",
-                        "33"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 2 \u00d7 4?",
-                    "options": [
-                        "5",
+                        "13",
                         "8",
                         "12"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 5 \u00d7 5?",
+                    "id": "q1",
+                    "question": "Berapa 3 × 9?",
                     "options": [
-                        "25",
+                        "27",
                         "28",
                         "24"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 3 \u00d7 7?",
+                    "id": "q2",
+                    "question": "4 + 4 + ... (1 kali) = ?",
                     "options": [
-                        "26",
-                        "19",
-                        "21"
+                        "4",
+                        "5",
+                        "2"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "Berapa 3 × 6?",
+                    "options": [
+                        "18",
+                        "15",
+                        "20"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "2 + 2 + ... (5 kali) = ?",
+                    "options": [
+                        "6",
+                        "14",
+                        "10"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 2 \u00d7 6?",
+                    "question": "5 + 5 + ... (3 kali) = ?",
                     "options": [
-                        "11",
-                        "12",
-                        "16"
+                        "17",
+                        "15",
+                        "14"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 3 \u00d7 2?",
+                    "question": "Berapa 5 × 3?",
                     "options": [
-                        "3",
-                        "6",
-                        "10"
+                        "12",
+                        "17",
+                        "15"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "9 + 9 + ... (2 kali) = ?",
+                    "options": [
+                        "22",
+                        "18",
+                        "15"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 5 \u00d7 10?",
+                    "id": "q8",
+                    "question": "Berapa 1 × 5?",
                     "options": [
-                        "52",
-                        "45",
-                        "50"
+                        "6",
+                        "2",
+                        "5"
                     ],
                     "correctIndex": 2
-                },
-                {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 5 \u00d7 6?",
-                    "options": [
-                        "30",
-                        "34",
-                        "29"
-                    ],
-                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 2 \u00d7 1?",
+                    "question": "7 + 7 + ... (3 kali) = ?",
                     "options": [
-                        "4",
-                        "0",
-                        "2"
+                        "19",
+                        "21",
+                        "22"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 3 \u00d7 8?",
+                    "question": "9 + 9 + ... (5 kali) = ?",
                     "options": [
-                        "26",
-                        "24",
-                        "23"
+                        "44",
+                        "45",
+                        "48"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 3 \u00d7 2?",
+                    "question": "4 + 4 + ... (4 kali) = ?",
                     "options": [
-                        "7",
-                        "6",
-                        "2"
+                        "17",
+                        "12",
+                        "16"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 2 \u00d7 4?",
+                    "question": "1 + 1 + ... (1 kali) = ?",
                     "options": [
-                        "3",
-                        "8",
-                        "9"
+                        "2",
+                        "1",
+                        "1"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 5 \u00d7 1?",
+                    "question": "Berapa 2 × 2?",
                     "options": [
-                        "5",
-                        "6",
-                        "0"
+                        "3",
+                        "7",
+                        "4"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 3 \u00d7 8?",
+                    "question": "Berapa 5 × 5?",
                     "options": [
-                        "22",
-                        "24",
-                        "26"
+                        "25",
+                        "26",
+                        "24"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mth10_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "✖️",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Perkalian 1-5 - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Tabel Perkalian 1-5</h3>\n        <p class='text-slate-700 text-lg'>Perkalian adalah penjumlahan berulang. 3 × 4 berarti 4+4+4 = 12.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>2 × 5 = 10</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>5 + 5 = 10</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>3 × 4 = 12</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 + 4 + 4 = 12</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>5 × 6 = 30</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 × 5 kali = 30</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Hafalkan tabel perkalian 1-5, itu fondasi matematika!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 2 \u00d7 6?",
+                    "question": "3 + 3 + ... (4 kali) = ?",
                     "options": [
-                        "12",
-                        "15",
-                        "7"
+                        "13",
+                        "8",
+                        "12"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 1 \u00d7 4?",
+                    "question": "Berapa 3 × 9?",
                     "options": [
-                        "4",
-                        "9",
-                        "3"
+                        "27",
+                        "28",
+                        "24"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 2 \u00d7 5?",
+                    "question": "4 + 4 + ... (1 kali) = ?",
                     "options": [
-                        "12",
-                        "6",
-                        "10"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 3 \u00d7 9?",
-                    "options": [
-                        "29",
-                        "22",
-                        "27"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 1 \u00d7 5?",
-                    "options": [
+                        "4",
                         "5",
-                        "8",
-                        "1"
+                        "2"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 2 \u00d7 4?",
+                    "id": "q3",
+                    "question": "Berapa 3 × 6?",
+                    "options": [
+                        "18",
+                        "15",
+                        "20"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "2 + 2 + ... (5 kali) = ?",
                     "options": [
                         "6",
-                        "8",
+                        "14",
                         "10"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q5",
+                    "question": "5 + 5 + ... (3 kali) = ?",
+                    "options": [
+                        "17",
+                        "15",
+                        "14"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 4 \u00d7 4?",
+                    "question": "Berapa 5 × 3?",
                     "options": [
-                        "16",
-                        "21",
-                        "13"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 5 \u00d7 10?",
-                    "options": [
-                        "50",
-                        "53",
-                        "47"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 5 \u00d7 8?",
-                    "options": [
-                        "38",
-                        "45",
-                        "40"
+                        "12",
+                        "17",
+                        "15"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 1 \u00d7 10?",
+                    "id": "q7",
+                    "question": "9 + 9 + ... (2 kali) = ?",
                     "options": [
-                        "6",
-                        "10",
+                        "22",
+                        "18",
                         "15"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 5 \u00d7 2?",
+                    "id": "q8",
+                    "question": "Berapa 1 × 5?",
                     "options": [
-                        "10",
-                        "13",
-                        "9"
+                        "6",
+                        "2",
+                        "5"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q9",
+                    "question": "7 + 7 + ... (3 kali) = ?",
+                    "options": [
+                        "19",
+                        "21",
+                        "22"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q10",
+                    "question": "9 + 9 + ... (5 kali) = ?",
+                    "options": [
+                        "44",
+                        "45",
+                        "48"
+                    ],
+                    "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 4 \u00d7 5?",
+                    "question": "4 + 4 + ... (4 kali) = ?",
                     "options": [
-                        "19",
-                        "23",
-                        "20"
+                        "17",
+                        "12",
+                        "16"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 2 \u00d7 1?",
+                    "question": "1 + 1 + ... (1 kali) = ?",
                     "options": [
-                        "0",
-                        "5",
-                        "2"
+                        "2",
+                        "1",
+                        "1"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q13",
+                    "question": "Berapa 2 × 2?",
+                    "options": [
+                        "3",
+                        "7",
+                        "4"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 4 \u00d7 1?",
-                    "options": [
-                        "4",
-                        "1",
-                        "6"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q14",
-                    "question": "Berapa hasil dari 2 \u00d7 6?",
+                    "question": "Berapa 5 × 5?",
                     "options": [
-                        "12",
-                        "16",
-                        "11"
+                        "25",
+                        "26",
+                        "24"
                     ],
                     "correctIndex": 0
                 }
@@ -328,158 +328,158 @@ window.math10 = {
         {
             "id": "mth10_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "✖️",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Perkalian 1-5 - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Tabel Perkalian 1-5</h3>\n        <p class='text-slate-700 text-lg'>Perkalian adalah penjumlahan berulang. 3 × 4 berarti 4+4+4 = 12.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>2 × 5 = 10</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>5 + 5 = 10</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>3 × 4 = 12</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 + 4 + 4 = 12</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>5 × 6 = 30</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 × 5 kali = 30</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Hafalkan tabel perkalian 1-5, itu fondasi matematika!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 4 \u00d7 9?",
+                    "question": "3 + 3 + ... (4 kali) = ?",
                     "options": [
-                        "33",
-                        "41",
-                        "36"
+                        "13",
+                        "8",
+                        "12"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 5 \u00d7 2?",
+                    "question": "Berapa 3 × 9?",
                     "options": [
-                        "7",
-                        "14",
-                        "10"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 4 \u00d7 3?",
-                    "options": [
-                        "10",
-                        "12",
-                        "15"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 3 \u00d7 5?",
-                    "options": [
-                        "15",
-                        "20",
-                        "10"
+                        "27",
+                        "28",
+                        "24"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 5 \u00d7 3?",
+                    "id": "q2",
+                    "question": "4 + 4 + ... (1 kali) = ?",
                     "options": [
+                        "4",
+                        "5",
+                        "2"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "Berapa 3 × 6?",
+                    "options": [
+                        "18",
                         "15",
-                        "13",
                         "20"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 4 \u00d7 4?",
+                    "id": "q4",
+                    "question": "2 + 2 + ... (5 kali) = ?",
                     "options": [
-                        "12",
-                        "20",
-                        "16"
+                        "6",
+                        "14",
+                        "10"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q6",
-                    "question": "Berapa hasil dari 4 \u00d7 4?",
+                    "id": "q5",
+                    "question": "5 + 5 + ... (3 kali) = ?",
                     "options": [
                         "17",
-                        "14",
-                        "16"
+                        "15",
+                        "14"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q6",
+                    "question": "Berapa 5 × 3?",
+                    "options": [
+                        "12",
+                        "17",
+                        "15"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 2 \u00d7 1?",
+                    "question": "9 + 9 + ... (2 kali) = ?",
                     "options": [
-                        "7",
-                        "2",
-                        "1"
+                        "22",
+                        "18",
+                        "15"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 3 \u00d7 3?",
+                    "question": "Berapa 1 × 5?",
                     "options": [
-                        "11",
                         "6",
-                        "9"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 2 \u00d7 4?",
-                    "options": [
-                        "4",
-                        "12",
-                        "8"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 5 \u00d7 1?",
-                    "options": [
-                        "1",
-                        "9",
+                        "2",
                         "5"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 3 \u00d7 6?",
+                    "id": "q9",
+                    "question": "7 + 7 + ... (3 kali) = ?",
                     "options": [
-                        "18",
                         "19",
-                        "17"
+                        "21",
+                        "22"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q10",
+                    "question": "9 + 9 + ... (5 kali) = ?",
+                    "options": [
+                        "44",
+                        "45",
+                        "48"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "4 + 4 + ... (4 kali) = ?",
+                    "options": [
+                        "17",
+                        "12",
+                        "16"
+                    ],
+                    "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 4 \u00d7 6?",
+                    "question": "1 + 1 + ... (1 kali) = ?",
                     "options": [
-                        "20",
-                        "24",
-                        "29"
+                        "2",
+                        "1",
+                        "1"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 1 \u00d7 2?",
+                    "question": "Berapa 2 × 2?",
                     "options": [
-                        "2",
-                        "1",
-                        "6"
+                        "3",
+                        "7",
+                        "4"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 4 \u00d7 5?",
+                    "question": "Berapa 5 × 5?",
                     "options": [
-                        "20",
-                        "15",
-                        "23"
+                        "25",
+                        "26",
+                        "24"
                     ],
                     "correctIndex": 0
                 }

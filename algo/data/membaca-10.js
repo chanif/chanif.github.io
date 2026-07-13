@@ -2,164 +2,164 @@ window.membaca10 = {
     "id": "membaca-10",
     "title": "Level 10: Membaca Kritis",
     "badge": "SMP",
-    "icon": "\ud83d\udcda",
-    "description": "Membaca analitis",
+    "icon": "🔍",
+    "description": "Membaca Kritis",
     "lessons": [
         {
             "id": "mb10_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udcd6",
-            "difficulty": "Sedang",
+            "icon": "🔍",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Membaca Kritis - Bagian 1</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-4'><div class='bg-indigo-50 border-4 border-indigo-200 rounded-2xl p-6'><h3 class='text-xl font-black text-indigo-600 mb-3'>Apa itu Membaca Kritis?</h3><p class='text-slate-700 text-lg'>Membaca kritis berarti tidak hanya memahami isi teks, tetapi juga <b>menganalisis</b>, <b>mengevaluasi</b>, dan <b>menilai kebenaran</b> informasi yang disampaikan.</p></div><div class='grid grid-cols-1 sm:grid-cols-2 gap-4'><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><h3 class='font-black text-amber-600'>💭 Strategi</h3><ul class='text-slate-600 list-disc list-inside space-y-1 mt-2'><li>Temukan fakta vs. opini</li><li>Cari tujuan penulis</li><li>Pertanyakan asumsi</li><li>Cari bukti pendukung</li></ul></div><div class='bg-rose-50 border-4 border-rose-200 rounded-2xl p-4'><h3 class='font-black text-rose-600'>⚠️ Waspada!</h3><ul class='text-slate-600 list-disc list-inside space-y-1 mt-2'><li>Informasi yang menyesatkan</li><li>Hoaks / berita palsu</li><li>Sumber yang tidak jelas</li><li>Generalisasi berlebihan</li></ul></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "Membaca kritis artinya...",
                     "options": [
-                        "Budi",
-                        "Nenek",
-                        "Rudi"
+                        "Menganalisis dan mengevaluasi teks",
+                        "Membaca dengan cepat",
+                        "Membaca sambil menulis"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "'Fakta' adalah...",
                     "options": [
-                        "Adik",
-                        "Kakek",
-                        "Ani"
+                        "Pernyataan yang bisa dibuktikan kebenarannya",
+                        "Pendapat seseorang",
+                        "Dugaan tanpa bukti"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "'Opini' adalah...",
                     "options": [
-                        "Nenek",
-                        "Ibu",
-                        "Ayah"
+                        "Pendapat atau pandangan seseorang",
+                        "Hal yang sudah terbukti",
+                        "Angka statistik resmi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "'Jakarta adalah ibu kota Indonesia.' Ini termasuk...",
                     "options": [
-                        "Burung",
-                        "Ikan",
-                        "Tikus"
+                        "Fakta",
+                        "Opini",
+                        "Dugaan"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "'Film itu sangat bagus.' Ini termasuk...",
                     "options": [
-                        "Sita",
-                        "Paman",
-                        "Adik"
+                        "Opini",
+                        "Fakta",
+                        "Data"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Cara mengecek kebenaran berita adalah...",
                     "options": [
-                        "Paman",
-                        "Adik",
-                        "Budi"
+                        "Cek sumber, cari berita lain yang sama",
+                        "Langsung percaya",
+                        "Sebarkan tanpa cek"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Kalimat: 'Ani suka buah apel'. Kata pertamanya adalah...",
+                    "question": "Hoaks adalah...",
                     "options": [
-                        "Rudi",
-                        "Ibu",
-                        "Ani"
+                        "Informasi palsu yang disebarkan",
+                        "Berita resmi dari pemerintah",
+                        "Artikel ilmiah"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Mengapa perlu membaca kritis?",
                     "options": [
-                        "Adik",
-                        "Paman",
-                        "Ibu"
+                        "Agar tidak mudah tertipu informasi palsu",
+                        "Agar bisa membaca cepat",
+                        "Agar nilai ujian bagus"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "'Semua orang pasti suka makan pedas.' Ini adalah...",
                     "options": [
-                        "Rudi",
-                        "Burung",
-                        "Kakek"
+                        "Generalisasi berlebihan",
+                        "Fakta ilmiah",
+                        "Data statistik"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Sebelum mempercayai informasi, kita harus...",
                     "options": [
-                        "Tikus",
-                        "Adik",
-                        "Ayah"
+                        "Mengecek sumbernya",
+                        "Langsung menyebarkan",
+                        "Mengabaikannya"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Kalimat: 'Kucing tidur di kursi'. Kata pertamanya adalah...",
+                    "question": "Sumber terpercaya untuk informasi adalah...",
                     "options": [
-                        "Kucing",
-                        "Ikan",
-                        "Nenek"
+                        "Lembaga resmi, jurnal ilmiah",
+                        "Gosip",
+                        "Obrolan warung"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "Tujuan penulis bisa diketahui dari...",
                     "options": [
-                        "Nenek",
-                        "Budi",
-                        "Adik"
+                        "Pilihan kata, struktur teks, dan konteks",
+                        "Warna tulisan",
+                        "Ukuran font"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "Teks persuasi sering menggunakan kata...",
                     "options": [
-                        "Sita",
-                        "Adik",
-                        "Rudi"
+                        "Ayo, mari, harap, jangan",
+                        "Itu, ini, sana, sini",
+                        "Dan, atau, tetapi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Kalimat: 'Ani suka buah apel'. Kata pertamanya adalah...",
+                    "question": "Cara mendeteksi berita palsu...",
                     "options": [
-                        "Kucing",
-                        "Tikus",
-                        "Ani"
+                        "Cek tanggal, sumber, dan foto",
+                        "Lihat judul saja",
+                        "Percaya teman yang kirim"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Kalimat: 'Kucing tidur di kursi'. Kata pertamanya adalah...",
+                    "question": "Inferensi dalam membaca berarti...",
                     "options": [
-                        "Kucing",
-                        "Tikus",
-                        "Ayah"
+                        "Menyimpulkan sesuatu yang tidak tertulis langsung",
+                        "Membaca dengan keras",
+                        "Mencatat semua kata"
                     ],
                     "correctIndex": 0
                 }
@@ -168,158 +168,158 @@ window.membaca10 = {
         {
             "id": "mb10_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udcd6",
+            "icon": "🔍",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Membaca Kritis - Bagian 2</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-4'><div class='bg-indigo-50 border-4 border-indigo-200 rounded-2xl p-6'><h3 class='text-xl font-black text-indigo-600 mb-3'>Apa itu Membaca Kritis?</h3><p class='text-slate-700 text-lg'>Membaca kritis berarti tidak hanya memahami isi teks, tetapi juga <b>menganalisis</b>, <b>mengevaluasi</b>, dan <b>menilai kebenaran</b> informasi yang disampaikan.</p></div><div class='grid grid-cols-1 sm:grid-cols-2 gap-4'><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><h3 class='font-black text-amber-600'>💭 Strategi</h3><ul class='text-slate-600 list-disc list-inside space-y-1 mt-2'><li>Temukan fakta vs. opini</li><li>Cari tujuan penulis</li><li>Pertanyakan asumsi</li><li>Cari bukti pendukung</li></ul></div><div class='bg-rose-50 border-4 border-rose-200 rounded-2xl p-4'><h3 class='font-black text-rose-600'>⚠️ Waspada!</h3><ul class='text-slate-600 list-disc list-inside space-y-1 mt-2'><li>Informasi yang menyesatkan</li><li>Hoaks / berita palsu</li><li>Sumber yang tidak jelas</li><li>Generalisasi berlebihan</li></ul></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Kalimat: 'Ani suka buah apel'. Kata pertamanya adalah...",
+                    "question": "Membaca kritis artinya...",
                     "options": [
-                        "Tikus",
-                        "Ani",
-                        "Budi"
+                        "Menganalisis dan mengevaluasi teks",
+                        "Membaca dengan cepat",
+                        "Membaca sambil menulis"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Kalimat: 'Sita beli buku baru'. Kata pertamanya adalah...",
+                    "question": "'Fakta' adalah...",
                     "options": [
-                        "Rudi",
-                        "Sita",
-                        "Budi"
+                        "Pernyataan yang bisa dibuktikan kebenarannya",
+                        "Pendapat seseorang",
+                        "Dugaan tanpa bukti"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "'Opini' adalah...",
                     "options": [
-                        "Kakek",
-                        "Burung",
-                        "Paman"
+                        "Pendapat atau pandangan seseorang",
+                        "Hal yang sudah terbukti",
+                        "Angka statistik resmi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "'Jakarta adalah ibu kota Indonesia.' Ini termasuk...",
                     "options": [
-                        "Adik",
-                        "Rudi",
-                        "Kakek"
+                        "Fakta",
+                        "Opini",
+                        "Dugaan"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Kalimat: 'Kucing tidur di kursi'. Kata pertamanya adalah...",
+                    "question": "'Film itu sangat bagus.' Ini termasuk...",
                     "options": [
-                        "Kucing",
-                        "Paman",
-                        "Nenek"
+                        "Opini",
+                        "Fakta",
+                        "Data"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Cara mengecek kebenaran berita adalah...",
                     "options": [
-                        "Nenek",
-                        "Ibu",
-                        "Ayah"
+                        "Cek sumber, cari berita lain yang sama",
+                        "Langsung percaya",
+                        "Sebarkan tanpa cek"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Hoaks adalah...",
                     "options": [
-                        "Kakek",
-                        "Ayah",
-                        "Burung"
+                        "Informasi palsu yang disebarkan",
+                        "Berita resmi dari pemerintah",
+                        "Artikel ilmiah"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Mengapa perlu membaca kritis?",
                     "options": [
-                        "Adik",
-                        "Paman",
-                        "Rudi"
+                        "Agar tidak mudah tertipu informasi palsu",
+                        "Agar bisa membaca cepat",
+                        "Agar nilai ujian bagus"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "'Semua orang pasti suka makan pedas.' Ini adalah...",
                     "options": [
-                        "Paman",
-                        "Ikan",
-                        "Rudi"
+                        "Generalisasi berlebihan",
+                        "Fakta ilmiah",
+                        "Data statistik"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "Sebelum mempercayai informasi, kita harus...",
                     "options": [
-                        "Ikan",
-                        "Burung",
-                        "Paman"
+                        "Mengecek sumbernya",
+                        "Langsung menyebarkan",
+                        "Mengabaikannya"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Sumber terpercaya untuk informasi adalah...",
                     "options": [
-                        "Rudi",
-                        "Kucing",
-                        "Ayah"
+                        "Lembaga resmi, jurnal ilmiah",
+                        "Gosip",
+                        "Obrolan warung"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "Tujuan penulis bisa diketahui dari...",
                     "options": [
-                        "Ayah",
-                        "Paman",
-                        "Ikan"
+                        "Pilihan kata, struktur teks, dan konteks",
+                        "Warna tulisan",
+                        "Ukuran font"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "Teks persuasi sering menggunakan kata...",
                     "options": [
-                        "Ikan",
-                        "Budi",
-                        "Kakek"
+                        "Ayo, mari, harap, jangan",
+                        "Itu, ini, sana, sini",
+                        "Dan, atau, tetapi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Cara mendeteksi berita palsu...",
                     "options": [
-                        "Ayah",
-                        "Kucing",
-                        "Kakek"
+                        "Cek tanggal, sumber, dan foto",
+                        "Lihat judul saja",
+                        "Percaya teman yang kirim"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "Inferensi dalam membaca berarti...",
                     "options": [
-                        "Ikan",
-                        "Nenek",
-                        "Ani"
+                        "Menyimpulkan sesuatu yang tidak tertulis langsung",
+                        "Membaca dengan keras",
+                        "Mencatat semua kata"
                     ],
                     "correctIndex": 0
                 }
@@ -328,160 +328,160 @@ window.membaca10 = {
         {
             "id": "mb10_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udcd6",
-            "difficulty": "Sedang",
+            "icon": "🔍",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Membaca Kritis - Bagian 3</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-4'><div class='bg-indigo-50 border-4 border-indigo-200 rounded-2xl p-6'><h3 class='text-xl font-black text-indigo-600 mb-3'>Apa itu Membaca Kritis?</h3><p class='text-slate-700 text-lg'>Membaca kritis berarti tidak hanya memahami isi teks, tetapi juga <b>menganalisis</b>, <b>mengevaluasi</b>, dan <b>menilai kebenaran</b> informasi yang disampaikan.</p></div><div class='grid grid-cols-1 sm:grid-cols-2 gap-4'><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><h3 class='font-black text-amber-600'>💭 Strategi</h3><ul class='text-slate-600 list-disc list-inside space-y-1 mt-2'><li>Temukan fakta vs. opini</li><li>Cari tujuan penulis</li><li>Pertanyakan asumsi</li><li>Cari bukti pendukung</li></ul></div><div class='bg-rose-50 border-4 border-rose-200 rounded-2xl p-4'><h3 class='font-black text-rose-600'>⚠️ Waspada!</h3><ul class='text-slate-600 list-disc list-inside space-y-1 mt-2'><li>Informasi yang menyesatkan</li><li>Hoaks / berita palsu</li><li>Sumber yang tidak jelas</li><li>Generalisasi berlebihan</li></ul></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Kalimat: 'Sita beli buku baru'. Kata pertamanya adalah...",
+                    "question": "Membaca kritis artinya...",
                     "options": [
-                        "Nenek",
-                        "Ibu",
-                        "Sita"
+                        "Menganalisis dan mengevaluasi teks",
+                        "Membaca dengan cepat",
+                        "Membaca sambil menulis"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "'Fakta' adalah...",
                     "options": [
-                        "Ikan",
-                        "Adik",
-                        "Rudi"
+                        "Pernyataan yang bisa dibuktikan kebenarannya",
+                        "Pendapat seseorang",
+                        "Dugaan tanpa bukti"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Kalimat: 'Rudi naik sepeda'. Kata pertamanya adalah...",
+                    "question": "'Opini' adalah...",
                     "options": [
-                        "Paman",
-                        "Adik",
-                        "Rudi"
+                        "Pendapat atau pandangan seseorang",
+                        "Hal yang sudah terbukti",
+                        "Angka statistik resmi"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "'Jakarta adalah ibu kota Indonesia.' Ini termasuk...",
                     "options": [
-                        "Ani",
-                        "Ibu",
-                        "Rudi"
+                        "Fakta",
+                        "Opini",
+                        "Dugaan"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "'Film itu sangat bagus.' Ini termasuk...",
                     "options": [
-                        "Kakek",
-                        "Burung",
-                        "Budi"
+                        "Opini",
+                        "Fakta",
+                        "Data"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Kalimat: 'Ayah baca koran'. Kata pertamanya adalah...",
+                    "question": "Cara mengecek kebenaran berita adalah...",
                     "options": [
-                        "Sita",
-                        "Ayah",
-                        "Ibu"
+                        "Cek sumber, cari berita lain yang sama",
+                        "Langsung percaya",
+                        "Sebarkan tanpa cek"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "Hoaks adalah...",
                     "options": [
-                        "Ibu",
-                        "Ikan",
-                        "Sita"
+                        "Informasi palsu yang disebarkan",
+                        "Berita resmi dari pemerintah",
+                        "Artikel ilmiah"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Kalimat: 'Kucing tidur di kursi'. Kata pertamanya adalah...",
+                    "question": "Mengapa perlu membaca kritis?",
                     "options": [
-                        "Budi",
-                        "Kucing",
-                        "Tikus"
+                        "Agar tidak mudah tertipu informasi palsu",
+                        "Agar bisa membaca cepat",
+                        "Agar nilai ujian bagus"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "'Semua orang pasti suka makan pedas.' Ini adalah...",
                     "options": [
-                        "Rudi",
-                        "Adik",
-                        "Budi"
+                        "Generalisasi berlebihan",
+                        "Fakta ilmiah",
+                        "Data statistik"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Kalimat: 'Ikan berenang di kolam'. Kata pertamanya adalah...",
+                    "question": "Sebelum mempercayai informasi, kita harus...",
                     "options": [
-                        "Budi",
-                        "Tikus",
-                        "Ikan"
+                        "Mengecek sumbernya",
+                        "Langsung menyebarkan",
+                        "Mengabaikannya"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Kalimat: 'Sita beli buku baru'. Kata pertamanya adalah...",
+                    "question": "Sumber terpercaya untuk informasi adalah...",
                     "options": [
-                        "Sita",
-                        "Ayah",
-                        "Kakek"
+                        "Lembaga resmi, jurnal ilmiah",
+                        "Gosip",
+                        "Obrolan warung"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Kalimat: 'Adik minum susu'. Kata pertamanya adalah...",
+                    "question": "Tujuan penulis bisa diketahui dari...",
                     "options": [
-                        "Paman",
-                        "Adik",
-                        "Ani"
+                        "Pilihan kata, struktur teks, dan konteks",
+                        "Warna tulisan",
+                        "Ukuran font"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Kalimat: 'Budi main bola'. Kata pertamanya adalah...",
+                    "question": "Teks persuasi sering menggunakan kata...",
                     "options": [
-                        "Budi",
-                        "Nenek",
-                        "Ayah"
+                        "Ayo, mari, harap, jangan",
+                        "Itu, ini, sana, sini",
+                        "Dan, atau, tetapi"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Kalimat: 'Burung terbang tinggi'. Kata pertamanya adalah...",
+                    "question": "Cara mendeteksi berita palsu...",
                     "options": [
-                        "Burung",
-                        "Ibu",
-                        "Sita"
+                        "Cek tanggal, sumber, dan foto",
+                        "Lihat judul saja",
+                        "Percaya teman yang kirim"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Kalimat: 'Ibu pergi ke pasar'. Kata pertamanya adalah...",
+                    "question": "Inferensi dalam membaca berarti...",
                     "options": [
-                        "Paman",
-                        "Ibu",
-                        "Adik"
+                        "Menyimpulkan sesuatu yang tidak tertulis langsung",
+                        "Membaca dengan keras",
+                        "Mencatat semua kata"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         }

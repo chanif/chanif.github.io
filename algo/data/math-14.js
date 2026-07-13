@@ -2,164 +2,164 @@ window.math14 = {
     "id": "math-14",
     "title": "Level 14: Pecahan Sederhana",
     "badge": "Kelas 3-4",
-    "icon": "\ud83e\uddee",
-    "description": "\u00bd, \u2153, \u00bc",
+    "icon": "🍕",
+    "description": "Pecahan Sederhana",
     "lessons": [
         {
             "id": "mth14_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "🍕",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Pecahan Sederhana - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Mengenal Pecahan</h3>\n        <p class='text-slate-700 text-lg'>Pecahan a/b berarti membagi sesuatu menjadi b bagian yang sama, dan mengambil a bagian.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>1/2</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Setengah - satu dari dua bagian sama</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>1/4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Seperempat - satu dari empat bagian sama</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>3/4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Tiga perempat - tiga dari empat bagian sama</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Semakin besar penyebut (angka bawah), semakin kecil setiap bagiannya!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 19 + 66?",
+                    "question": "Simbol pecahan dari '2/3' adalah...",
                     "options": [
-                        "85",
-                        "87",
-                        "82"
+                        "⅓",
+                        "½",
+                        "⅔"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 88 - 23?",
+                    "question": "Pecahan 2/3 artinya 1 bagian dari 3 bagian sama. Siapa yang benar?",
                     "options": [
-                        "65",
-                        "66",
-                        "64"
+                        "2/3",
+                        "1/3",
+                        "3/4"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 82 + 31?",
+                    "question": "Simbol pecahan dari '1/3' adalah...",
                     "options": [
-                        "111",
-                        "118",
-                        "113"
+                        "⅓",
+                        "¼",
+                        "⅔"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "Simbol pecahan dari '3/4' adalah...",
+                    "options": [
+                        "¼",
+                        "⅕",
+                        "¾"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 73 + 15?",
+                    "id": "q4",
+                    "question": "Pecahan 3/4 artinya 1 bagian dari 4 bagian sama. Siapa yang benar?",
                     "options": [
-                        "90",
-                        "88",
-                        "87"
+                        "1/5",
+                        "1/4",
+                        "3/4"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q5",
+                    "question": "1/2 sama dengan berapa persen?",
+                    "options": [
+                        "33%",
+                        "50%",
+                        "67%"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 44 + 75?",
-                    "options": [
-                        "119",
-                        "115",
-                        "121"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 18 + 19?",
-                    "options": [
-                        "37",
-                        "33",
-                        "39"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q6",
-                    "question": "Berapa hasil dari 86 - 22?",
+                    "question": "1/4 sama dengan berapa persen?",
                     "options": [
-                        "64",
-                        "62",
-                        "68"
+                        "50%",
+                        "20%",
+                        "25%"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 61 - 27?",
+                    "question": "Simbol pecahan dari '1/5' adalah...",
                     "options": [
-                        "34",
-                        "37",
-                        "31"
+                        "⅓",
+                        "⅔",
+                        "⅕"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 89 + 95?",
+                    "question": "3/4 sama dengan berapa persen?",
                     "options": [
-                        "185",
-                        "184",
-                        "179"
+                        "20%",
+                        "75%",
+                        "67%"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 94 - 76?",
+                    "question": "1/5 sama dengan berapa persen?",
                     "options": [
-                        "15",
-                        "20",
-                        "18"
+                        "67%",
+                        "75%",
+                        "20%"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 92 - 74?",
+                    "question": "1/3 sama dengan berapa persen?",
                     "options": [
-                        "15",
-                        "18",
-                        "19"
+                        "25%",
+                        "33%",
+                        "67%"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 90 + 19?",
+                    "question": "Pecahan 1/4 artinya 1 bagian dari 4 bagian sama. Siapa yang benar?",
                     "options": [
-                        "112",
-                        "109",
-                        "107"
+                        "1/5",
+                        "1/4",
+                        "1/3"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 29 - 25?",
+                    "question": "Pecahan 1/5 artinya 1 bagian dari 5 bagian sama. Siapa yang benar?",
                     "options": [
-                        "4",
-                        "8",
-                        "-1"
+                        "3/4",
+                        "1/3",
+                        "1/5"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 52 - 46?",
+                    "question": "Pecahan 1/3 artinya 1 bagian dari 3 bagian sama. Siapa yang benar?",
                     "options": [
-                        "9",
-                        "2",
-                        "6"
+                        "3/4",
+                        "2/3",
+                        "1/3"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 66 - 53?",
+                    "question": "Simbol pecahan dari '1/2' adalah...",
                     "options": [
-                        "13",
-                        "10",
-                        "16"
+                        "½",
+                        "⅓",
+                        "¼"
                     ],
                     "correctIndex": 0
                 }
@@ -168,318 +168,318 @@ window.math14 = {
         {
             "id": "mth14_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "🍕",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Pecahan Sederhana - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Mengenal Pecahan</h3>\n        <p class='text-slate-700 text-lg'>Pecahan a/b berarti membagi sesuatu menjadi b bagian yang sama, dan mengambil a bagian.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>1/2</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Setengah - satu dari dua bagian sama</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>1/4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Seperempat - satu dari empat bagian sama</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>3/4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Tiga perempat - tiga dari empat bagian sama</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Semakin besar penyebut (angka bawah), semakin kecil setiap bagiannya!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 36 - 22?",
+                    "question": "Simbol pecahan dari '2/3' adalah...",
                     "options": [
-                        "13",
-                        "17",
-                        "14"
+                        "⅓",
+                        "½",
+                        "⅔"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 57 + 52?",
+                    "question": "Pecahan 2/3 artinya 1 bagian dari 3 bagian sama. Siapa yang benar?",
                     "options": [
-                        "104",
-                        "109",
-                        "112"
+                        "2/3",
+                        "1/3",
+                        "3/4"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 54 + 61?",
+                    "question": "Simbol pecahan dari '1/3' adalah...",
                     "options": [
-                        "115",
-                        "113",
-                        "116"
+                        "⅓",
+                        "¼",
+                        "⅔"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 85 - 64?",
+                    "question": "Simbol pecahan dari '3/4' adalah...",
                     "options": [
-                        "24",
-                        "21",
-                        "19"
+                        "¼",
+                        "⅕",
+                        "¾"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 67 - 49?",
+                    "question": "Pecahan 3/4 artinya 1 bagian dari 4 bagian sama. Siapa yang benar?",
                     "options": [
-                        "20",
-                        "18",
-                        "15"
+                        "1/5",
+                        "1/4",
+                        "3/4"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 82 + 92?",
+                    "question": "1/2 sama dengan berapa persen?",
                     "options": [
-                        "174",
-                        "170",
-                        "175"
+                        "33%",
+                        "50%",
+                        "67%"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 72 + 50?",
+                    "question": "1/4 sama dengan berapa persen?",
                     "options": [
-                        "126",
-                        "122",
-                        "117"
+                        "50%",
+                        "20%",
+                        "25%"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 42 + 49?",
+                    "question": "Simbol pecahan dari '1/5' adalah...",
                     "options": [
-                        "87",
-                        "91",
-                        "93"
+                        "⅓",
+                        "⅔",
+                        "⅕"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q8",
+                    "question": "3/4 sama dengan berapa persen?",
+                    "options": [
+                        "20%",
+                        "75%",
+                        "67%"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 100 - 74?",
-                    "options": [
-                        "26",
-                        "25",
-                        "31"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q9",
-                    "question": "Berapa hasil dari 88 - 61?",
+                    "question": "1/5 sama dengan berapa persen?",
                     "options": [
-                        "31",
-                        "24",
-                        "27"
+                        "67%",
+                        "75%",
+                        "20%"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 93 - 50?",
+                    "question": "1/3 sama dengan berapa persen?",
                     "options": [
-                        "44",
-                        "39",
-                        "43"
+                        "25%",
+                        "33%",
+                        "67%"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 23 + 59?",
+                    "question": "Pecahan 1/4 artinya 1 bagian dari 4 bagian sama. Siapa yang benar?",
                     "options": [
-                        "82",
-                        "86",
-                        "78"
+                        "1/5",
+                        "1/4",
+                        "1/3"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 57 - 53?",
+                    "question": "Pecahan 1/5 artinya 1 bagian dari 5 bagian sama. Siapa yang benar?",
                     "options": [
-                        "2",
-                        "4",
-                        "7"
+                        "3/4",
+                        "1/3",
+                        "1/5"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 78 - 35?",
+                    "question": "Pecahan 1/3 artinya 1 bagian dari 3 bagian sama. Siapa yang benar?",
                     "options": [
-                        "42",
-                        "43",
-                        "48"
+                        "3/4",
+                        "2/3",
+                        "1/3"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 73 + 48?",
+                    "question": "Simbol pecahan dari '1/2' adalah...",
                     "options": [
-                        "118",
-                        "126",
-                        "121"
+                        "½",
+                        "⅓",
+                        "¼"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mth14_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "🍕",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Pecahan Sederhana - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Mengenal Pecahan</h3>\n        <p class='text-slate-700 text-lg'>Pecahan a/b berarti membagi sesuatu menjadi b bagian yang sama, dan mengambil a bagian.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>1/2</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Setengah - satu dari dua bagian sama</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>1/4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Seperempat - satu dari empat bagian sama</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>3/4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Tiga perempat - tiga dari empat bagian sama</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Semakin besar penyebut (angka bawah), semakin kecil setiap bagiannya!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 47 + 36?",
+                    "question": "Simbol pecahan dari '2/3' adalah...",
                     "options": [
-                        "81",
-                        "83",
-                        "86"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q1",
-                    "question": "Berapa hasil dari 41 - 18?",
-                    "options": [
-                        "20",
-                        "28",
-                        "23"
+                        "⅓",
+                        "½",
+                        "⅔"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 62 - 15?",
+                    "id": "q1",
+                    "question": "Pecahan 2/3 artinya 1 bagian dari 3 bagian sama. Siapa yang benar?",
                     "options": [
-                        "42",
-                        "47",
-                        "48"
+                        "2/3",
+                        "1/3",
+                        "3/4"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "Simbol pecahan dari '1/3' adalah...",
+                    "options": [
+                        "⅓",
+                        "¼",
+                        "⅔"
+                    ],
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 70 + 64?",
+                    "question": "Simbol pecahan dari '3/4' adalah...",
                     "options": [
-                        "139",
-                        "134",
-                        "130"
+                        "¼",
+                        "⅕",
+                        "¾"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 45 + 93?",
+                    "question": "Pecahan 3/4 artinya 1 bagian dari 4 bagian sama. Siapa yang benar?",
                     "options": [
-                        "135",
-                        "138",
-                        "141"
+                        "1/5",
+                        "1/4",
+                        "3/4"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 99 - 41?",
+                    "question": "1/2 sama dengan berapa persen?",
                     "options": [
-                        "56",
-                        "58",
-                        "63"
+                        "33%",
+                        "50%",
+                        "67%"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 19 - 14?",
+                    "question": "1/4 sama dengan berapa persen?",
                     "options": [
-                        "5",
-                        "6",
-                        "2"
+                        "50%",
+                        "20%",
+                        "25%"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 13 + 33?",
+                    "question": "Simbol pecahan dari '1/5' adalah...",
                     "options": [
-                        "45",
-                        "51",
-                        "46"
+                        "⅓",
+                        "⅔",
+                        "⅕"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 12 + 31?",
+                    "question": "3/4 sama dengan berapa persen?",
                     "options": [
-                        "42",
-                        "43",
-                        "46"
+                        "20%",
+                        "75%",
+                        "67%"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 23 + 10?",
+                    "question": "1/5 sama dengan berapa persen?",
                     "options": [
-                        "33",
-                        "32",
-                        "36"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 36 - 27?",
-                    "options": [
-                        "13",
-                        "7",
-                        "9"
+                        "67%",
+                        "75%",
+                        "20%"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 77 - 25?",
+                    "id": "q10",
+                    "question": "1/3 sama dengan berapa persen?",
                     "options": [
-                        "52",
-                        "53",
-                        "49"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 98 - 64?",
-                    "options": [
-                        "34",
-                        "29",
-                        "35"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 85 + 78?",
-                    "options": [
-                        "161",
-                        "163",
-                        "168"
+                        "25%",
+                        "33%",
+                        "67%"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q14",
-                    "question": "Berapa hasil dari 49 - 35?",
+                    "id": "q11",
+                    "question": "Pecahan 1/4 artinya 1 bagian dari 4 bagian sama. Siapa yang benar?",
                     "options": [
-                        "14",
-                        "11",
-                        "19"
+                        "1/5",
+                        "1/4",
+                        "1/3"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q12",
+                    "question": "Pecahan 1/5 artinya 1 bagian dari 5 bagian sama. Siapa yang benar?",
+                    "options": [
+                        "3/4",
+                        "1/3",
+                        "1/5"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q13",
+                    "question": "Pecahan 1/3 artinya 1 bagian dari 3 bagian sama. Siapa yang benar?",
+                    "options": [
+                        "3/4",
+                        "2/3",
+                        "1/3"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q14",
+                    "question": "Simbol pecahan dari '1/2' adalah...",
+                    "options": [
+                        "½",
+                        "⅓",
+                        "¼"
                     ],
                     "correctIndex": 0
                 }

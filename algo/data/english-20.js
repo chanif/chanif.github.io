@@ -1,487 +1,357 @@
 window.english20 = {
     "id": "english-20",
-    "title": "Level 20: Question Words",
-    "badge": "Kelas 5-6",
-    "icon": "\ud83c\udf0d",
-    "description": "What, Where, When",
+    "title": "Level 20: Comparative",
+    "badge": "Kelas 6",
+    "icon": "📊",
+    "description": "Comparative",
     "lessons": [
         {
             "id": "eng20_1",
             "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "📊",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Question Words - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🐘</span><span class='font-black text-emerald-700 text-base'>Bigger</span><span class='text-emerald-400 text-xs font-bold'>Lebih besar</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🐭</span><span class='font-black text-emerald-700 text-base'>Smaller</span><span class='text-emerald-400 text-xs font-bold'>Lebih kecil</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>⚡</span><span class='font-black text-emerald-700 text-base'>Faster</span><span class='text-emerald-400 text-xs font-bold'>Lebih cepat</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🐢</span><span class='font-black text-emerald-700 text-base'>Slower</span><span class='text-emerald-400 text-xs font-bold'>Lebih lambat</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Comparative: adj + -er + THAN (big→bigger, tall→taller) OR more + adj + than (beautiful→more beautiful than).</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Gajah'?",
+                    "question": "What is the meaning of 'Faster'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Cat",
-                        "Elephant",
-                        "Fish"
+                        "Lebih baik",
+                        "Lebih berat",
+                        "Lebih cepat"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
+                    "question": "Bahasa Inggris dari 'Lebih besar' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Tiger",
-                        "Dog",
-                        "Fish"
+                        "Bigger",
+                        "Smarter",
+                        "Slower"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "What is the meaning of 'Cat'?",
+                    "question": "Gambar ⚡ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Gajah",
-                        "Kucing",
-                        "Harimau"
+                        "Better",
+                        "Faster",
+                        "Slower"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
+                    "question": "What is the meaning of 'Smaller'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Elephant",
-                        "Dog",
-                        "Tiger"
+                        "Lebih kecil",
+                        "Lebih tinggi",
+                        "Lebih baik"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
+                    "question": "Gambar 🐢 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Dog",
-                        "Tiger",
-                        "Cat"
+                        "Worse",
+                        "Smaller",
+                        "Slower"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "What is the meaning of 'Tiger'?",
+                    "question": "Bahasa Inggris dari 'Lebih lambat' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Ikan",
-                        "Burung",
-                        "Harimau"
+                        "Slower",
+                        "Heavier",
+                        "Better"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "What is the meaning of 'Bird'?",
+                    "question": "Gambar 🐘 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Gajah",
-                        "Anjing",
-                        "Burung"
+                        "Bigger",
+                        "Older",
+                        "Better"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "What is the meaning of 'Slower'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Elephant",
-                        "Bird",
-                        "Tiger"
+                        "Lebih pendek",
+                        "Lebih lambat",
+                        "Lebih cantik"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "Bahasa Inggris dari 'Lebih kecil' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Dog",
-                        "Elephant",
-                        "Bird"
+                        "Older",
+                        "Taller",
+                        "Smaller"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
+                    "question": "Gambar 🐭 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Bird",
-                        "Elephant",
-                        "Dog"
+                        "Smaller",
+                        "Heavier",
+                        "Older"
                     ],
                     "correctIndex": 0
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Dog'?",
-                    "options": [
-                        "Harimau",
-                        "Ikan",
-                        "Anjing"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
-                    "options": [
-                        "Bird",
-                        "Tiger",
-                        "Dog"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Harimau'?",
-                    "options": [
-                        "Dog",
-                        "Bird",
-                        "Tiger"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Dog'?",
-                    "options": [
-                        "Anjing",
-                        "Harimau",
-                        "Burung"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q14",
-                    "question": "What is the meaning of 'Cat'?",
-                    "options": [
-                        "Burung",
-                        "Kucing",
-                        "Harimau"
-                    ],
-                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "eng20_2",
             "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "icon": "📊",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Question Words - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👍</span><span class='font-black text-emerald-700 text-base'>Better</span><span class='text-emerald-400 text-xs font-bold'>Lebih baik</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👎</span><span class='font-black text-emerald-700 text-base'>Worse</span><span class='text-emerald-400 text-xs font-bold'>Lebih buruk</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📏</span><span class='font-black text-emerald-700 text-base'>Taller</span><span class='text-emerald-400 text-xs font-bold'>Lebih tinggi</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📏</span><span class='font-black text-emerald-700 text-base'>Shorter</span><span class='text-emerald-400 text-xs font-bold'>Lebih pendek</span></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Lari'?",
+                    "question": "What is the meaning of 'Worse'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Run",
-                        "Eat",
-                        "Sleep"
+                        "Lebih muda",
+                        "Lebih berat",
+                        "Lebih buruk"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q1",
+                    "question": "Bahasa Inggris dari 'Lebih baik' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Better",
+                        "Heavier",
+                        "Shorter"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q1",
-                    "question": "What is the meaning of 'Drink'?",
-                    "options": [
-                        "Lari",
-                        "Minum",
-                        "Tidur"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q2",
-                    "question": "What is the meaning of 'Drink'?",
+                    "question": "Gambar 📏 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Minum",
-                        "Membaca",
-                        "Lari"
+                        "Shorter",
+                        "Taller",
+                        "Faster"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "What is the meaning of 'Run'?",
+                    "question": "What is the meaning of 'Shorter'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Jalan",
-                        "Lari",
-                        "Makan"
+                        "Lebih kecil",
+                        "Lebih muda",
+                        "Lebih pendek"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q4",
+                    "question": "Bahasa Inggris dari 'Lebih buruk' adalah... 🇮🇩→🇬🇧",
+                    "options": [
+                        "Older",
+                        "Worse",
+                        "Smaller"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q4",
-                    "question": "What is the meaning of 'Drink'?",
-                    "options": [
-                        "Minum",
-                        "Membaca",
-                        "Jalan"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q5",
-                    "question": "What is the meaning of 'Sleep'?",
+                    "question": "What is the meaning of 'Better'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Minum",
-                        "Jalan",
-                        "Tidur"
+                        "Lebih cantik",
+                        "Lebih pintar",
+                        "Lebih baik"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "What is the meaning of 'Read'?",
+                    "question": "Bahasa Inggris dari 'Lebih tinggi' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Membaca",
-                        "Tidur",
-                        "Makan"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q7",
-                    "question": "What is the meaning of 'Read'?",
-                    "options": [
-                        "Makan",
-                        "Membaca",
-                        "Minum"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q8",
-                    "question": "What is the meaning of 'Drink'?",
-                    "options": [
-                        "Makan",
-                        "Membaca",
-                        "Minum"
+                        "Slower",
+                        "Worse",
+                        "Taller"
                     ],
                     "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Walk'?",
-                    "options": [
-                        "Lari",
-                        "Minum",
-                        "Jalan"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Eat'?",
-                    "options": [
-                        "Makan",
-                        "Jalan",
-                        "Lari"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Jalan'?",
-                    "options": [
-                        "Run",
-                        "Drink",
-                        "Walk"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
-                    "options": [
-                        "Run",
-                        "Sleep",
-                        "Read"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Walk'?",
-                    "options": [
-                        "Makan",
-                        "Tidur",
-                        "Jalan"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q14",
-                    "question": "What is the meaning of 'Drink'?",
-                    "options": [
-                        "Minum",
-                        "Jalan",
-                        "Membaca"
-                    ],
-                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "eng20_3",
             "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "📊",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Question Words - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🧠</span><span class='font-black text-emerald-700 text-base'>Smarter</span><span class='text-emerald-400 text-xs font-bold'>Lebih pintar</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>⚖️</span><span class='font-black text-emerald-700 text-base'>Heavier</span><span class='text-emerald-400 text-xs font-bold'>Lebih berat</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🪶</span><span class='font-black text-emerald-700 text-base'>Lighter</span><span class='text-emerald-400 text-xs font-bold'>Lebih ringan</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👴</span><span class='font-black text-emerald-700 text-base'>Older</span><span class='text-emerald-400 text-xs font-bold'>Lebih tua</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>👶</span><span class='font-black text-emerald-700 text-base'>Younger</span><span class='text-emerald-400 text-xs font-bold'>Lebih muda</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🌹</span><span class='font-black text-emerald-700 text-base'>More beautiful</span><span class='text-emerald-400 text-xs font-bold'>Lebih cantik</span></div></div></div>",
             "questions": [
                 {
-                    "id": "q0",
-                    "question": "What is the meaning of 'Eat'?",
+                    "id": "q14",
+                    "question": "Kata 'than' digunakan dalam...",
                     "options": [
-                        "Lari",
-                        "Minum",
-                        "Makan"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Makan'?",
-                    "options": [
-                        "Read",
-                        "Eat",
-                        "Drink"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Membaca'?",
-                    "options": [
-                        "Read",
-                        "Drink",
-                        "Run"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Minum'?",
-                    "options": [
-                        "Sleep",
-                        "Eat",
-                        "Drink"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Minum'?",
-                    "options": [
-                        "Drink",
-                        "Sleep",
-                        "Read"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q5",
-                    "question": "What is the meaning of 'Drink'?",
-                    "options": [
-                        "Minum",
-                        "Membaca",
-                        "Lari"
+                        "Comparative (perbandingan)",
+                        "Superlative",
+                        "Biasa saja"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Apa bahasa Inggris dari 'Membaca'?",
+                    "question": "Cara bentuk comparative dari 'beautiful' adalah...",
                     "options": [
-                        "Read",
-                        "Walk",
-                        "Drink"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
-                    "options": [
-                        "Walk",
-                        "Drink",
-                        "Sleep"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q8",
-                    "question": "What is the meaning of 'Read'?",
-                    "options": [
-                        "Tidur",
-                        "Jalan",
-                        "Membaca"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "What is the meaning of 'Run'?",
-                    "options": [
-                        "Jalan",
-                        "Membaca",
-                        "Lari"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
-                    "options": [
-                        "Run",
-                        "Sleep",
-                        "Drink"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Lari'?",
-                    "options": [
-                        "Run",
-                        "Eat",
-                        "Read"
+                        "more beautiful",
+                        "beautifuler",
+                        "most beautiful"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
+                    "question": "Comparative dari 'bad' adalah... (tidak beraturan!)",
                     "options": [
-                        "Eat",
-                        "Sleep",
-                        "Drink"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Lari'?",
-                    "options": [
-                        "Run",
-                        "Read",
-                        "Eat"
+                        "worse",
+                        "badder",
+                        "more bad"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q14",
-                    "question": "What is the meaning of 'Walk'?",
+                    "id": "q13",
+                    "question": "'This car is faster than that car.' Artinya...",
                     "options": [
-                        "Membaca",
-                        "Makan",
-                        "Jalan"
+                        "Mobil ini lebih cepat dari mobil itu",
+                        "Mobil itu lebih cepat",
+                        "Kedua mobil sama cepatnya"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "Dalam comparative, kita menggunakan kata...",
+                    "options": [
+                        "than",
+                        "the",
+                        "is"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q0",
+                    "question": "An elephant is ___ than a mouse.",
+                    "options": [
+                        "bigger",
+                        "smaller",
+                        "faster"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "This book is ___ than that book. (lebih baik)",
+                    "options": [
+                        "better",
+                        "worse",
+                        "older"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "'Lebih cepat' in English is...",
+                    "options": [
+                        "faster",
+                        "slower",
+                        "fastest"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "My sister is ___ than me. (lebih muda)",
+                    "options": [
+                        "younger",
+                        "older",
+                        "shorter"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "Cara bentuk comparative dari 'big' adalah...",
+                    "options": [
+                        "bigger",
+                        "more big",
+                        "bigest"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "'She is taller than me.' Artinya...",
+                    "options": [
+                        "Dia lebih tinggi dari saya",
+                        "Saya lebih tinggi dari dia",
+                        "Dia yang tertinggi"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "A cheetah is ___ than a turtle.",
+                    "options": [
+                        "faster",
+                        "slower",
+                        "heavier"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "'Lebih tua' in English is...",
+                    "options": [
+                        "older",
+                        "younger",
+                        "oldest"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "Comparative dari 'good' adalah... (tidak beraturan!)",
+                    "options": [
+                        "better",
+                        "gooder",
+                        "more good"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "A feather is ___ than a rock. (lebih ringan)",
+                    "options": [
+                        "lighter",
+                        "heavier",
+                        "slower"
+                    ],
+                    "correctIndex": 0
                 }
             ]
         }

@@ -1,485 +1,485 @@
 window.math22 = {
     "id": "math-22",
-    "title": "Level 22: Perbandingan",
+    "title": "Level 22: Perbandingan & Skala",
     "badge": "Kelas 6",
-    "icon": "\ud83e\uddee",
-    "description": "Rasio, skala",
+    "icon": "⚖️",
+    "description": "Perbandingan & Skala",
     "lessons": [
         {
             "id": "mth22_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "⚖️",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Perbandingan - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Perbandingan dan Skala</h3>\n        <p class='text-slate-700 text-lg'>Perbandingan a:b berarti untuk setiap a bagian pertama, ada b bagian kedua.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Perbandingan 2:3, total 10</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>A = 2/5×10 = 4, B = 3/5×10 = 6</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Skala 1:100</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>1 cm di peta = 100 cm di nyata</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Rasio 3:1</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Tiga kali lebih banyak</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Bagian = (rasio bagian / jumlah total rasio) × total keseluruhan</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 12 \u00d7 6?",
+                    "question": "Bagi 24 dengan perbandingan 2:4. Bagian kedua = ...",
                     "options": [
-                        "71",
-                        "73",
-                        "72"
+                        "10",
+                        "6",
+                        "16"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 16 \u00d7 4?",
+                    "question": "Bagi 20 dengan perbandingan 1:4. Bagian pertama = ...",
                     "options": [
-                        "63",
-                        "64",
-                        "65"
+                        "3",
+                        "5",
+                        "4"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 25 \u00d7 3?",
+                    "question": "Bagi 6 dengan perbandingan 2:1. Bagian pertama = ...",
                     "options": [
-                        "75",
-                        "71",
-                        "76"
+                        "4",
+                        "6",
+                        "2"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 50 \u00d7 6?",
+                    "question": "Bagi 6 dengan perbandingan 2:1. Bagian kedua = ...",
                     "options": [
-                        "301",
-                        "300",
-                        "295"
+                        "6",
+                        "2",
+                        "2"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 49 \u00d7 3?",
+                    "question": "Bagi 8 dengan perbandingan 1:3. Bagian kedua = ...",
                     "options": [
-                        "145",
-                        "147",
-                        "148"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 30 \u00d7 5?",
-                    "options": [
-                        "155",
-                        "147",
-                        "150"
+                        "1",
+                        "3",
+                        "6"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q6",
-                    "question": "Berapa hasil dari 14 \u00d7 3?",
+                    "id": "q5",
+                    "question": "Bagi 15 dengan perbandingan 4:1. Bagian kedua = ...",
                     "options": [
-                        "39",
-                        "42",
-                        "45"
+                        "16",
+                        "3",
+                        "8"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 47 \u00d7 4?",
+                    "id": "q6",
+                    "question": "Bagi 20 dengan perbandingan 1:4. Bagian kedua = ...",
                     "options": [
-                        "188",
-                        "190",
-                        "183"
+                        "3",
+                        "5",
+                        "16"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "Bagi 20 dengan perbandingan 3:2. Bagian pertama = ...",
+                    "options": [
+                        "15",
+                        "9",
+                        "12"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q8",
+                    "question": "Bagi 10 dengan perbandingan 2:3. Bagian kedua = ...",
+                    "options": [
+                        "6",
+                        "2",
+                        "6"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 32 \u00d7 3?",
-                    "options": [
-                        "93",
-                        "96",
-                        "101"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q9",
-                    "question": "Berapa hasil dari 26 \u00d7 10?",
+                    "question": "Bagi 12 dengan perbandingan 4:2. Bagian kedua = ...",
                     "options": [
-                        "260",
-                        "259",
-                        "263"
+                        "4",
+                        "4",
+                        "12"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 31 \u00d7 2?",
+                    "question": "Bagi 15 dengan perbandingan 4:1. Bagian pertama = ...",
                     "options": [
-                        "62",
-                        "61",
-                        "63"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 47 \u00d7 6?",
-                    "options": [
-                        "280",
-                        "282",
-                        "287"
+                        "16",
+                        "12",
+                        "8"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 43 \u00d7 2?",
+                    "id": "q11",
+                    "question": "Bagi 24 dengan perbandingan 2:4. Bagian pertama = ...",
                     "options": [
-                        "83",
-                        "91",
-                        "86"
+                        "6",
+                        "10",
+                        "8"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q12",
+                    "question": "Bagi 14 dengan perbandingan 4:3. Bagian pertama = ...",
+                    "options": [
+                        "12",
+                        "4",
+                        "8"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 46 \u00d7 2?",
+                    "question": "Bagi 6 dengan perbandingan 1:2. Bagian kedua = ...",
                     "options": [
-                        "90",
-                        "96",
-                        "92"
+                        "3",
+                        "1",
+                        "4"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 14 \u00d7 8?",
+                    "question": "Bagi 10 dengan perbandingan 2:3. Bagian pertama = ...",
                     "options": [
-                        "112",
-                        "116",
-                        "110"
+                        "2",
+                        "6",
+                        "4"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 }
             ]
         },
         {
             "id": "mth22_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "⚖️",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Perbandingan - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Perbandingan dan Skala</h3>\n        <p class='text-slate-700 text-lg'>Perbandingan a:b berarti untuk setiap a bagian pertama, ada b bagian kedua.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Perbandingan 2:3, total 10</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>A = 2/5×10 = 4, B = 3/5×10 = 6</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Skala 1:100</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>1 cm di peta = 100 cm di nyata</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Rasio 3:1</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Tiga kali lebih banyak</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Bagian = (rasio bagian / jumlah total rasio) × total keseluruhan</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 14 \u00d7 5?",
+                    "question": "Bagi 24 dengan perbandingan 2:4. Bagian kedua = ...",
                     "options": [
-                        "71",
-                        "70",
-                        "67"
+                        "10",
+                        "6",
+                        "16"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 33 \u00d7 9?",
+                    "question": "Bagi 20 dengan perbandingan 1:4. Bagian pertama = ...",
                     "options": [
-                        "299",
-                        "294",
-                        "297"
+                        "3",
+                        "5",
+                        "4"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 40 \u00d7 9?",
+                    "question": "Bagi 6 dengan perbandingan 2:1. Bagian pertama = ...",
                     "options": [
-                        "360",
-                        "355",
-                        "361"
+                        "4",
+                        "6",
+                        "2"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 15 \u00d7 10?",
+                    "question": "Bagi 6 dengan perbandingan 2:1. Bagian kedua = ...",
                     "options": [
-                        "146",
-                        "150",
-                        "152"
+                        "6",
+                        "2",
+                        "2"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 48 \u00d7 3?",
+                    "question": "Bagi 8 dengan perbandingan 1:3. Bagian kedua = ...",
                     "options": [
-                        "147",
-                        "140",
-                        "144"
+                        "1",
+                        "3",
+                        "6"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 26 \u00d7 8?",
+                    "question": "Bagi 15 dengan perbandingan 4:1. Bagian kedua = ...",
                     "options": [
-                        "210",
-                        "208",
-                        "206"
+                        "16",
+                        "3",
+                        "8"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 31 \u00d7 4?",
+                    "question": "Bagi 20 dengan perbandingan 1:4. Bagian kedua = ...",
                     "options": [
-                        "122",
-                        "124",
-                        "129"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 42 \u00d7 9?",
-                    "options": [
-                        "374",
-                        "378",
-                        "381"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 18 \u00d7 2?",
-                    "options": [
-                        "41",
-                        "34",
-                        "36"
+                        "3",
+                        "5",
+                        "16"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 29 \u00d7 4?",
+                    "id": "q7",
+                    "question": "Bagi 20 dengan perbandingan 3:2. Bagian pertama = ...",
                     "options": [
-                        "114",
-                        "116",
-                        "119"
+                        "15",
+                        "9",
+                        "12"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q8",
+                    "question": "Bagi 10 dengan perbandingan 2:3. Bagian kedua = ...",
+                    "options": [
+                        "6",
+                        "2",
+                        "6"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "Bagi 12 dengan perbandingan 4:2. Bagian kedua = ...",
+                    "options": [
+                        "4",
+                        "4",
+                        "12"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "Bagi 15 dengan perbandingan 4:1. Bagian pertama = ...",
+                    "options": [
+                        "16",
+                        "12",
+                        "8"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 41 \u00d7 6?",
-                    "options": [
-                        "246",
-                        "242",
-                        "250"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q11",
-                    "question": "Berapa hasil dari 22 \u00d7 9?",
+                    "question": "Bagi 24 dengan perbandingan 2:4. Bagian pertama = ...",
                     "options": [
-                        "198",
-                        "193",
-                        "202"
+                        "6",
+                        "10",
+                        "8"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 23 \u00d7 2?",
+                    "question": "Bagi 14 dengan perbandingan 4:3. Bagian pertama = ...",
                     "options": [
-                        "46",
-                        "45",
-                        "51"
+                        "12",
+                        "4",
+                        "8"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 23 \u00d7 6?",
+                    "question": "Bagi 6 dengan perbandingan 1:2. Bagian kedua = ...",
                     "options": [
-                        "138",
-                        "143",
-                        "137"
+                        "3",
+                        "1",
+                        "4"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 48 \u00d7 5?",
+                    "question": "Bagi 10 dengan perbandingan 2:3. Bagian pertama = ...",
                     "options": [
-                        "240",
-                        "244",
-                        "238"
+                        "2",
+                        "6",
+                        "4"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 }
             ]
         },
         {
             "id": "mth22_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "⚖️",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Perbandingan - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Perbandingan dan Skala</h3>\n        <p class='text-slate-700 text-lg'>Perbandingan a:b berarti untuk setiap a bagian pertama, ada b bagian kedua.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Perbandingan 2:3, total 10</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>A = 2/5×10 = 4, B = 3/5×10 = 6</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Skala 1:100</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>1 cm di peta = 100 cm di nyata</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Rasio 3:1</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Tiga kali lebih banyak</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Bagian = (rasio bagian / jumlah total rasio) × total keseluruhan</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 26 \u00d7 6?",
+                    "question": "Bagi 24 dengan perbandingan 2:4. Bagian kedua = ...",
                     "options": [
-                        "153",
-                        "156",
-                        "158"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q1",
-                    "question": "Berapa hasil dari 38 \u00d7 9?",
-                    "options": [
-                        "346",
-                        "342",
-                        "341"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 45 \u00d7 10?",
-                    "options": [
-                        "451",
-                        "446",
-                        "450"
+                        "10",
+                        "6",
+                        "16"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 39 \u00d7 2?",
+                    "id": "q1",
+                    "question": "Bagi 20 dengan perbandingan 1:4. Bagian pertama = ...",
                     "options": [
-                        "77",
-                        "78",
-                        "81"
+                        "3",
+                        "5",
+                        "4"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q2",
+                    "question": "Bagi 6 dengan perbandingan 2:1. Bagian pertama = ...",
+                    "options": [
+                        "4",
+                        "6",
+                        "2"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "Bagi 6 dengan perbandingan 2:1. Bagian kedua = ...",
+                    "options": [
+                        "6",
+                        "2",
+                        "2"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 33 \u00d7 8?",
+                    "question": "Bagi 8 dengan perbandingan 1:3. Bagian kedua = ...",
                     "options": [
-                        "264",
-                        "265",
-                        "260"
+                        "1",
+                        "3",
+                        "6"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 45 \u00d7 10?",
+                    "question": "Bagi 15 dengan perbandingan 4:1. Bagian kedua = ...",
                     "options": [
-                        "454",
-                        "448",
-                        "450"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q6",
-                    "question": "Berapa hasil dari 33 \u00d7 4?",
-                    "options": [
-                        "127",
-                        "132",
-                        "136"
+                        "16",
+                        "3",
+                        "8"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 48 \u00d7 10?",
+                    "id": "q6",
+                    "question": "Bagi 20 dengan perbandingan 1:4. Bagian kedua = ...",
                     "options": [
-                        "480",
-                        "476",
-                        "481"
+                        "3",
+                        "5",
+                        "16"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "Bagi 20 dengan perbandingan 3:2. Bagian pertama = ...",
+                    "options": [
+                        "15",
+                        "9",
+                        "12"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q8",
+                    "question": "Bagi 10 dengan perbandingan 2:3. Bagian kedua = ...",
+                    "options": [
+                        "6",
+                        "2",
+                        "6"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 37 \u00d7 6?",
-                    "options": [
-                        "224",
-                        "220",
-                        "222"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q9",
-                    "question": "Berapa hasil dari 27 \u00d7 9?",
+                    "question": "Bagi 12 dengan perbandingan 4:2. Bagian kedua = ...",
                     "options": [
-                        "242",
-                        "243",
-                        "244"
+                        "4",
+                        "4",
+                        "12"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 10 \u00d7 2?",
+                    "question": "Bagi 15 dengan perbandingan 4:1. Bagian pertama = ...",
                     "options": [
-                        "25",
-                        "20",
-                        "18"
+                        "16",
+                        "12",
+                        "8"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 16 \u00d7 5?",
+                    "question": "Bagi 24 dengan perbandingan 2:4. Bagian pertama = ...",
                     "options": [
-                        "77",
-                        "80",
-                        "82"
+                        "6",
+                        "10",
+                        "8"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 23 \u00d7 2?",
+                    "question": "Bagi 14 dengan perbandingan 4:3. Bagian pertama = ...",
                     "options": [
-                        "46",
-                        "43",
-                        "49"
+                        "12",
+                        "4",
+                        "8"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 26 \u00d7 9?",
+                    "question": "Bagi 6 dengan perbandingan 1:2. Bagian kedua = ...",
                     "options": [
-                        "234",
-                        "233",
-                        "235"
+                        "3",
+                        "1",
+                        "4"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 43 \u00d7 8?",
+                    "question": "Bagi 10 dengan perbandingan 2:3. Bagian pertama = ...",
                     "options": [
-                        "345",
-                        "342",
-                        "344"
+                        "2",
+                        "6",
+                        "4"
                     ],
                     "correctIndex": 2
                 }

@@ -2,486 +2,486 @@ window.math18 = {
     "id": "math-18",
     "title": "Level 18: Keliling & Luas",
     "badge": "Kelas 5",
-    "icon": "\ud83e\uddee",
-    "description": "Rumus keliling & luas",
+    "icon": "📏",
+    "description": "Keliling & Luas",
     "lessons": [
         {
             "id": "mth18_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "📏",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Keliling & Luas - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Keliling dan Luas</h3>\n        <p class='text-slate-700 text-lg'>Keliling = jarak mengelilingi bangun. Luas = besar permukaan bangun.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Persegi sisi s</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Keliling = 4s, Luas = s×s</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Persegi Panjang p×l</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Keliling = 2(p+l), Luas = p×l</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Segitiga alas a tinggi t</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Luas = ½×a×t</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Keliling dalam cm/m, luas dalam cm²/m²</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 18 \u00d7 4?",
+                    "question": "Keliling persegi panjang 7×10 cm = ... cm",
                     "options": [
-                        "68",
-                        "72",
-                        "73"
+                        "36",
+                        "34",
+                        "32"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 23 \u00d7 10?",
+                    "question": "Luas segitiga alas 5 cm tinggi 5 cm = ... cm²",
                     "options": [
-                        "233",
-                        "230",
-                        "229"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 32 \u00d7 7?",
-                    "options": [
-                        "224",
-                        "225",
-                        "220"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 37 \u00d7 10?",
-                    "options": [
-                        "366",
-                        "373",
-                        "370"
+                        "17",
+                        "7",
+                        "12"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 47 \u00d7 3?",
+                    "id": "q2",
+                    "question": "Keliling persegi panjang 15×5 cm = ... cm",
                     "options": [
-                        "141",
-                        "143",
-                        "139"
+                        "38",
+                        "40",
+                        "42"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q3",
+                    "question": "Luas segitiga alas 6 cm tinggi 8 cm = ... cm²",
+                    "options": [
+                        "24",
+                        "30",
+                        "18"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "Keliling persegi dengan sisi 5 cm = ... cm",
+                    "options": [
+                        "20",
+                        "16",
+                        "24"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 14 \u00d7 2?",
+                    "question": "Luas persegi dengan sisi 3 cm = ... cm²",
                     "options": [
-                        "27",
-                        "28",
-                        "29"
+                        "12",
+                        "6",
+                        "9"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 28 \u00d7 7?",
+                    "question": "Keliling persegi dengan sisi 12 cm = ... cm",
                     "options": [
-                        "196",
-                        "192",
-                        "201"
+                        "52",
+                        "44",
+                        "48"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 39 \u00d7 5?",
+                    "question": "Keliling persegi dengan sisi 7 cm = ... cm",
                     "options": [
-                        "200",
-                        "195",
-                        "194"
+                        "24",
+                        "28",
+                        "32"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 28 \u00d7 5?",
+                    "question": "Luas segitiga alas 7 cm tinggi 6 cm = ... cm²",
                     "options": [
-                        "140",
-                        "145",
-                        "139"
+                        "14",
+                        "21",
+                        "28"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 44 \u00d7 9?",
+                    "question": "Luas persegi dengan sisi 10 cm = ... cm²",
                     "options": [
-                        "394",
-                        "396",
-                        "399"
+                        "110",
+                        "100",
+                        "90"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 48 \u00d7 9?",
+                    "question": "Keliling persegi panjang 4×2 cm = ... cm",
                     "options": [
-                        "433",
-                        "430",
-                        "432"
+                        "14",
+                        "12",
+                        "10"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 13 \u00d7 7?",
+                    "question": "Luas segitiga alas 7 cm tinggi 5 cm = ... cm²",
                     "options": [
-                        "89",
-                        "94",
-                        "91"
+                        "24",
+                        "17",
+                        "10"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 49 \u00d7 5?",
+                    "question": "Luas persegi dengan sisi 2 cm = ... cm²",
                     "options": [
-                        "245",
-                        "240",
-                        "248"
+                        "6",
+                        "4",
+                        "2"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 47 \u00d7 9?",
+                    "question": "Luas persegi panjang 8×4 cm = ... cm²",
                     "options": [
-                        "423",
-                        "424",
-                        "421"
+                        "36",
+                        "32",
+                        "28"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 50 \u00d7 5?",
+                    "question": "Keliling persegi dengan sisi 13 cm = ... cm",
                     "options": [
-                        "253",
-                        "250",
-                        "248"
+                        "56",
+                        "48",
+                        "52"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 }
             ]
         },
         {
             "id": "mth18_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "📏",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Keliling & Luas - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Keliling dan Luas</h3>\n        <p class='text-slate-700 text-lg'>Keliling = jarak mengelilingi bangun. Luas = besar permukaan bangun.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Persegi sisi s</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Keliling = 4s, Luas = s×s</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Persegi Panjang p×l</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Keliling = 2(p+l), Luas = p×l</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Segitiga alas a tinggi t</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Luas = ½×a×t</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Keliling dalam cm/m, luas dalam cm²/m²</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 49 \u00d7 4?",
+                    "question": "Keliling persegi panjang 7×10 cm = ... cm",
                     "options": [
-                        "196",
-                        "198",
-                        "195"
+                        "36",
+                        "34",
+                        "32"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 22 \u00d7 3?",
+                    "question": "Luas segitiga alas 5 cm tinggi 5 cm = ... cm²",
                     "options": [
-                        "66",
-                        "65",
-                        "71"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 24 \u00d7 10?",
-                    "options": [
-                        "240",
-                        "235",
-                        "243"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 49 \u00d7 6?",
-                    "options": [
-                        "297",
-                        "292",
-                        "294"
+                        "17",
+                        "7",
+                        "12"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 37 \u00d7 9?",
+                    "id": "q2",
+                    "question": "Keliling persegi panjang 15×5 cm = ... cm",
                     "options": [
-                        "333",
-                        "330",
-                        "336"
+                        "38",
+                        "40",
+                        "42"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q3",
+                    "question": "Luas segitiga alas 6 cm tinggi 8 cm = ... cm²",
+                    "options": [
+                        "24",
+                        "30",
+                        "18"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "Keliling persegi dengan sisi 5 cm = ... cm",
+                    "options": [
+                        "20",
+                        "16",
+                        "24"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 18 \u00d7 4?",
+                    "question": "Luas persegi dengan sisi 3 cm = ... cm²",
                     "options": [
-                        "73",
-                        "70",
-                        "72"
+                        "12",
+                        "6",
+                        "9"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 19 \u00d7 10?",
+                    "question": "Keliling persegi dengan sisi 12 cm = ... cm",
                     "options": [
-                        "194",
-                        "190",
-                        "187"
+                        "52",
+                        "44",
+                        "48"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "Keliling persegi dengan sisi 7 cm = ... cm",
+                    "options": [
+                        "24",
+                        "28",
+                        "32"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 11 \u00d7 8?",
-                    "options": [
-                        "88",
-                        "90",
-                        "83"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q8",
-                    "question": "Berapa hasil dari 29 \u00d7 8?",
+                    "question": "Luas segitiga alas 7 cm tinggi 6 cm = ... cm²",
                     "options": [
-                        "231",
-                        "232",
-                        "236"
+                        "14",
+                        "21",
+                        "28"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 49 \u00d7 2?",
+                    "question": "Luas persegi dengan sisi 10 cm = ... cm²",
                     "options": [
-                        "98",
-                        "93",
-                        "101"
+                        "110",
+                        "100",
+                        "90"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 19 \u00d7 6?",
+                    "question": "Keliling persegi panjang 4×2 cm = ... cm",
                     "options": [
-                        "114",
-                        "116",
-                        "113"
+                        "14",
+                        "12",
+                        "10"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 19 \u00d7 9?",
+                    "question": "Luas segitiga alas 7 cm tinggi 5 cm = ... cm²",
                     "options": [
-                        "171",
-                        "170",
-                        "176"
+                        "24",
+                        "17",
+                        "10"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 33 \u00d7 9?",
+                    "question": "Luas persegi dengan sisi 2 cm = ... cm²",
                     "options": [
-                        "293",
-                        "300",
-                        "297"
+                        "6",
+                        "4",
+                        "2"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 45 \u00d7 7?",
+                    "question": "Luas persegi panjang 8×4 cm = ... cm²",
                     "options": [
-                        "320",
-                        "315",
-                        "310"
+                        "36",
+                        "32",
+                        "28"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 44 \u00d7 6?",
+                    "question": "Keliling persegi dengan sisi 13 cm = ... cm",
                     "options": [
-                        "264",
-                        "263",
-                        "266"
+                        "56",
+                        "48",
+                        "52"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 }
             ]
         },
         {
             "id": "mth18_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "📏",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Keliling & Luas - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Keliling dan Luas</h3>\n        <p class='text-slate-700 text-lg'>Keliling = jarak mengelilingi bangun. Luas = besar permukaan bangun.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Persegi sisi s</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Keliling = 4s, Luas = s×s</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Persegi Panjang p×l</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Keliling = 2(p+l), Luas = p×l</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Segitiga alas a tinggi t</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Luas = ½×a×t</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Keliling dalam cm/m, luas dalam cm²/m²</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 38 \u00d7 9?",
+                    "question": "Keliling persegi panjang 7×10 cm = ... cm",
                     "options": [
-                        "337",
-                        "345",
-                        "342"
+                        "36",
+                        "34",
+                        "32"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 42 \u00d7 7?",
+                    "question": "Luas segitiga alas 5 cm tinggi 5 cm = ... cm²",
                     "options": [
-                        "294",
-                        "291",
-                        "299"
+                        "17",
+                        "7",
+                        "12"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 24 \u00d7 10?",
+                    "question": "Keliling persegi panjang 15×5 cm = ... cm",
                     "options": [
-                        "240",
-                        "245",
-                        "235"
+                        "38",
+                        "40",
+                        "42"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 47 \u00d7 10?",
+                    "question": "Luas segitiga alas 6 cm tinggi 8 cm = ... cm²",
                     "options": [
-                        "468",
-                        "474",
-                        "470"
+                        "24",
+                        "30",
+                        "18"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 18 \u00d7 8?",
+                    "question": "Keliling persegi dengan sisi 5 cm = ... cm",
                     "options": [
-                        "143",
-                        "148",
-                        "144"
+                        "20",
+                        "16",
+                        "24"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 36 \u00d7 8?",
+                    "question": "Luas persegi dengan sisi 3 cm = ... cm²",
                     "options": [
-                        "292",
-                        "288",
-                        "284"
+                        "12",
+                        "6",
+                        "9"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 39 \u00d7 3?",
-                    "options": [
-                        "122",
-                        "113",
-                        "117"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 13 \u00d7 3?",
-                    "options": [
-                        "39",
-                        "42",
-                        "35"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 17 \u00d7 6?",
-                    "options": [
-                        "102",
-                        "100",
-                        "107"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 12 \u00d7 9?",
-                    "options": [
-                        "104",
-                        "108",
-                        "112"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 48 \u00d7 10?",
-                    "options": [
-                        "484",
-                        "475",
-                        "480"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 20 \u00d7 8?",
-                    "options": [
-                        "158",
-                        "161",
-                        "160"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 12 \u00d7 4?",
+                    "question": "Keliling persegi dengan sisi 12 cm = ... cm",
                     "options": [
                         "52",
-                        "45",
+                        "44",
                         "48"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 16 \u00d7 2?",
+                    "id": "q7",
+                    "question": "Keliling persegi dengan sisi 7 cm = ... cm",
                     "options": [
-                        "32",
-                        "34",
-                        "31"
+                        "24",
+                        "28",
+                        "32"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q8",
+                    "question": "Luas segitiga alas 7 cm tinggi 6 cm = ... cm²",
+                    "options": [
+                        "14",
+                        "21",
+                        "28"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q9",
+                    "question": "Luas persegi dengan sisi 10 cm = ... cm²",
+                    "options": [
+                        "110",
+                        "100",
+                        "90"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q10",
+                    "question": "Keliling persegi panjang 4×2 cm = ... cm",
+                    "options": [
+                        "14",
+                        "12",
+                        "10"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "Luas segitiga alas 7 cm tinggi 5 cm = ... cm²",
+                    "options": [
+                        "24",
+                        "17",
+                        "10"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q12",
+                    "question": "Luas persegi dengan sisi 2 cm = ... cm²",
+                    "options": [
+                        "6",
+                        "4",
+                        "2"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q13",
+                    "question": "Luas persegi panjang 8×4 cm = ... cm²",
+                    "options": [
+                        "36",
+                        "32",
+                        "28"
+                    ],
+                    "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 39 \u00d7 3?",
+                    "question": "Keliling persegi dengan sisi 13 cm = ... cm",
                     "options": [
-                        "117",
-                        "119",
-                        "115"
+                        "56",
+                        "48",
+                        "52"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 }
             ]
         }

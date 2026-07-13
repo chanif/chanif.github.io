@@ -1,485 +1,465 @@
 window.membaca6 = {
     "id": "membaca-6",
-    "title": "Level 6: Membaca Kata Sederhana",
-    "badge": "Kelas 1",
-    "icon": "\ud83d\udcda",
-    "description": "Membaca BUKU, MEJA, TOPI",
+    "title": "Level 6: Kalimat Pendek",
+    "badge": "Kelas 1-2",
+    "icon": "📝",
+    "description": "Membaca dan memahami kalimat pendek sehari-hari: Siapa, Apa, Di mana.",
     "lessons": [
         {
             "id": "mb6_1",
-            "title": "Bagian 1",
-            "icon": "\ud83d\udcd6",
-            "difficulty": "Sedang",
+            "title": "Kalimat Sederhana",
+            "icon": "📝",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Membaca Kata Sederhana - Bagian 1</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-3'><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>👩‍🍳</span><p class='text-xl font-bold text-slate-700'>Ibu memasak nasi.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>👨‍💼</span><p class='text-xl font-bold text-slate-700'>Ayah pergi ke kantor.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>⚽</span><p class='text-xl font-bold text-slate-700'>Budi main bola di lapangan.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🥛</span><p class='text-xl font-bold text-slate-700'>Adik minum susu setiap pagi.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🐱</span><p class='text-xl font-bold text-slate-700'>Kucing tidur di atas bantal.</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bacaan dari ejaan 'SA-PU'?",
+                    "question": "'Ibu memasak nasi.' — siapa yang melakukan kegiatan?",
                     "options": [
-                        "SAPU",
-                        "GIGI",
-                        "RUDU"
+                        "nasi",
+                        "memasak",
+                        "Ibu"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bacaan dari ejaan 'GI-GI'?",
+                    "question": "'Ayah pergi ke kantor.' — siapa yang melakukan kegiatan?",
                     "options": [
-                        "GIGI",
-                        "PALU",
-                        "PADI"
+                        "pergi",
+                        "kantor",
+                        "Ayah"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bacaan dari ejaan 'BO-LA'?",
+                    "question": "'Budi main bola di lapangan.' — siapa yang melakukan kegiatan?",
                     "options": [
-                        "TOPI",
-                        "BOLA",
-                        "SAPI"
+                        "bola",
+                        "main",
+                        "Budi"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q3",
-                    "question": "Apa bacaan dari ejaan 'RU-DU'?",
+                    "question": "'Adik minum susu setiap pagi.' — siapa yang melakukan kegiatan?",
                     "options": [
-                        "TOPI",
-                        "RUDU",
-                        "SUSU"
+                        "minum",
+                        "susu",
+                        "Adik"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bacaan dari ejaan 'RU-DU'?",
+                    "question": "'Kucing tidur di atas bantal.' — siapa yang melakukan kegiatan?",
                     "options": [
-                        "RUDU",
-                        "SAPU",
-                        "MATA"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q5",
-                    "question": "Apa bacaan dari ejaan 'KA-DO'?",
-                    "options": [
-                        "RUDU",
-                        "GULA",
-                        "KADO"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q6",
-                    "question": "Apa bacaan dari ejaan 'PE-NA'?",
-                    "options": [
-                        "PENA",
-                        "BUKU",
-                        "MEJA"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q7",
-                    "question": "Apa bacaan dari ejaan 'SU-DU'?",
-                    "options": [
-                        "BUKU",
-                        "PADI",
-                        "SUDU"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q8",
-                    "question": "Apa bacaan dari ejaan 'SU-SU'?",
-                    "options": [
-                        "MEJA",
-                        "BATA",
-                        "SUSU"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "Apa bacaan dari ejaan 'SA-PI'?",
-                    "options": [
-                        "SAPI",
-                        "RANI",
-                        "GULA"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q10",
-                    "question": "Apa bacaan dari ejaan 'RU-SA'?",
-                    "options": [
-                        "RUSA",
-                        "PALU",
-                        "KAKI"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bacaan dari ejaan 'BU-KU'?",
-                    "options": [
-                        "BATA",
-                        "GULA",
-                        "BUKU"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bacaan dari ejaan 'KA-DO'?",
-                    "options": [
-                        "PALU",
-                        "MEJA",
-                        "KADO"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q13",
-                    "question": "Apa bacaan dari ejaan 'MA-TA'?",
-                    "options": [
-                        "RUSA",
-                        "MATA",
-                        "SUDU"
+                        "bantal",
+                        "Kucing",
+                        "tidur"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q14",
-                    "question": "Apa bacaan dari ejaan 'ME-JA'?",
+                    "id": "q5",
+                    "question": "'Adik minum susu setiap pagi.' — apa yang dilakukan?",
                     "options": [
-                        "MEJA",
-                        "BOLA",
-                        "BUKU"
+                        "minum",
+                        "susu",
+                        "Adik"
                     ],
                     "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "'Kucing tidur di atas bantal.' — apa yang dilakukan?",
+                    "options": [
+                        "bantal",
+                        "Kucing",
+                        "tidur"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "'Burung terbang tinggi di langit.' — apa yang dilakukan?",
+                    "options": [
+                        "terbang",
+                        "Burung",
+                        "langit"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "'Ikan berenang di dalam kolam.' — apa yang dilakukan?",
+                    "options": [
+                        "Ikan",
+                        "berenang",
+                        "kolam"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q9",
+                    "question": "'Sita beli buku baru di toko.' — apa yang dilakukan?",
+                    "options": [
+                        "buku",
+                        "Sita",
+                        "beli"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q10",
+                    "question": "'Burung terbang tinggi di langit.' — apa objeknya?",
+                    "options": [
+                        "Burung",
+                        "terbang",
+                        "langit"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q11",
+                    "question": "'Ikan berenang di dalam kolam.' — apa objeknya?",
+                    "options": [
+                        "kolam",
+                        "berenang",
+                        "Ikan"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "'Sita beli buku baru di toko.' — apa objeknya?",
+                    "options": [
+                        "Sita",
+                        "beli",
+                        "buku"
+                    ],
+                    "correctIndex": 2
                 }
             ]
         },
         {
             "id": "mb6_2",
-            "title": "Bagian 2",
-            "icon": "\ud83d\udcd6",
+            "title": "Siapa, Apa, Di mana?",
+            "icon": "🤔",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Membaca Kata Sederhana - Bagian 2</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-3 gap-3 mb-4'><div class='bg-blue-50 border-2 border-blue-200 rounded-xl p-3 text-center'><span class='text-3xl block'>🙋</span><span class='font-black text-blue-600'>SIAPA?</span><span class='text-sm text-blue-400 block'>pelaku</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-xl p-3 text-center'><span class='text-3xl block'>🏃</span><span class='font-black text-emerald-600'>APA?</span><span class='text-sm text-emerald-400 block'>kegiatan</span></div><div class='bg-pink-50 border-2 border-pink-200 rounded-xl p-3 text-center'><span class='text-3xl block'>📍</span><span class='font-black text-pink-600'>DI MANA?</span><span class='text-sm text-pink-400 block'>tempat</span></div></div><div class='space-y-3'><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🐦</span><p class='text-xl font-bold text-slate-700'>Burung terbang tinggi di langit.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🐟</span><p class='text-xl font-bold text-slate-700'>Ikan berenang di dalam kolam.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>📚</span><p class='text-xl font-bold text-slate-700'>Sita beli buku baru di toko.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🍎</span><p class='text-xl font-bold text-slate-700'>Ani suka makan buah apel.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🚲</span><p class='text-xl font-bold text-slate-700'>Rudi naik sepeda ke sekolah.</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bacaan dari ejaan 'PA-DI'?",
+                    "question": "'Ibu memasak nasi.' — siapa yang melakukan kegiatan?",
                     "options": [
-                        "MEJA",
-                        "PENA",
-                        "PADI"
+                        "memasak",
+                        "nasi",
+                        "Ibu"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bacaan dari ejaan 'RU-DU'?",
+                    "question": "'Ayah pergi ke kantor.' — siapa yang melakukan kegiatan?",
                     "options": [
-                        "RUDU",
-                        "SUDU",
-                        "RANI"
+                        "Ayah",
+                        "pergi",
+                        "kantor"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bacaan dari ejaan 'ME-JA'?",
+                    "question": "'Budi main bola di lapangan.' — siapa yang melakukan kegiatan?",
                     "options": [
-                        "KADO",
-                        "MEJA",
-                        "GULA"
+                        "Budi",
+                        "bola",
+                        "main"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Apa bacaan dari ejaan 'RU-SA'?",
+                    "question": "'Adik minum susu setiap pagi.' — siapa yang melakukan kegiatan?",
                     "options": [
-                        "SUSU",
-                        "BOLA",
-                        "RUSA"
+                        "minum",
+                        "susu",
+                        "Adik"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bacaan dari ejaan 'SA-PU'?",
+                    "question": "'Kucing tidur di atas bantal.' — siapa yang melakukan kegiatan?",
                     "options": [
-                        "SAPU",
-                        "MATA",
-                        "RUDU"
+                        "bantal",
+                        "tidur",
+                        "Kucing"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bacaan dari ejaan 'PE-NA'?",
+                    "question": "'Adik minum susu setiap pagi.' — apa yang dilakukan?",
                     "options": [
-                        "KADO",
-                        "PENA",
-                        "GIGI"
+                        "Adik",
+                        "susu",
+                        "minum"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Apa bacaan dari ejaan 'KA-DO'?",
+                    "question": "'Kucing tidur di atas bantal.' — apa yang dilakukan?",
                     "options": [
-                        "KADO",
-                        "PENA",
-                        "SAPI"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q7",
-                    "question": "Apa bacaan dari ejaan 'KA-DO'?",
-                    "options": [
-                        "PADI",
-                        "MEJA",
-                        "KADO"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q8",
-                    "question": "Apa bacaan dari ejaan 'BO-LA'?",
-                    "options": [
-                        "TOPI",
-                        "BOLA",
-                        "SAPU"
+                        "Kucing",
+                        "tidur",
+                        "bantal"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q9",
-                    "question": "Apa bacaan dari ejaan 'TO-PI'?",
+                    "id": "q7",
+                    "question": "'Burung terbang tinggi di langit.' — apa yang dilakukan?",
                     "options": [
-                        "RUSA",
-                        "BUKU",
-                        "TOPI"
+                        "langit",
+                        "terbang",
+                        "Burung"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q8",
+                    "question": "'Ikan berenang di dalam kolam.' — apa yang dilakukan?",
+                    "options": [
+                        "Ikan",
+                        "kolam",
+                        "berenang"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q10",
-                    "question": "Apa bacaan dari ejaan 'BO-LA'?",
+                    "id": "q9",
+                    "question": "'Sita beli buku baru di toko.' — apa yang dilakukan?",
                     "options": [
-                        "BOLA",
-                        "PALU",
-                        "BUKU"
+                        "beli",
+                        "Sita",
+                        "buku"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q11",
-                    "question": "Apa bacaan dari ejaan 'RU-DU'?",
+                    "id": "q10",
+                    "question": "'Burung terbang tinggi di langit.' — apa objeknya?",
                     "options": [
-                        "PADI",
-                        "RUDU",
-                        "KADO"
+                        "terbang",
+                        "langit",
+                        "Burung"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "'Ikan berenang di dalam kolam.' — apa objeknya?",
+                    "options": [
+                        "Ikan",
+                        "kolam",
+                        "berenang"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q12",
-                    "question": "Apa bacaan dari ejaan 'KA-KI'?",
+                    "question": "'Sita beli buku baru di toko.' — apa objeknya?",
                     "options": [
-                        "MATA",
-                        "MEJA",
-                        "KAKI"
+                        "Sita",
+                        "buku",
+                        "beli"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q13",
+                    "question": "'Ani suka makan buah apel.' — apa objeknya?",
+                    "options": [
+                        "Ani",
+                        "makan",
+                        "apel"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q13",
-                    "question": "Apa bacaan dari ejaan 'SU-SU'?",
+                    "id": "q14",
+                    "question": "'Rudi naik sepeda ke sekolah.' — apa objeknya?",
                     "options": [
-                        "SUSU",
-                        "TOPI",
-                        "BUKU"
+                        "sepeda",
+                        "naik",
+                        "Rudi"
                     ],
                     "correctIndex": 0
-                },
-                {
-                    "id": "q14",
-                    "question": "Apa bacaan dari ejaan 'BA-TA'?",
-                    "options": [
-                        "RANI",
-                        "BATA",
-                        "PADI"
-                    ],
-                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "mb6_3",
-            "title": "Bagian 3",
-            "icon": "\ud83d\udcd6",
-            "difficulty": "Sedang",
+            "title": "Melengkapi Kalimat",
+            "icon": "✏️",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-pink-600 font-bold'>Membaca Kata Sederhana - Bagian 3</h2><p class='mt-4'>Mari kita berlatih membaca dengan cermat dan teliti!</p></div>",
+            "content": "<div class='space-y-3'><h3 class='text-2xl font-black text-pink-600'>Lengkapi kalimat di bawah ini!</h3><div class='space-y-3'><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>👩‍🍳</span><p class='text-xl font-bold text-slate-700'>Ibu memasak nasi.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>👨‍💼</span><p class='text-xl font-bold text-slate-700'>Ayah pergi ke kantor.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>⚽</span><p class='text-xl font-bold text-slate-700'>Budi main bola di lapangan.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🥛</span><p class='text-xl font-bold text-slate-700'>Adik minum susu setiap pagi.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🐱</span><p class='text-xl font-bold text-slate-700'>Kucing tidur di atas bantal.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🐦</span><p class='text-xl font-bold text-slate-700'>Burung terbang tinggi di langit.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🐟</span><p class='text-xl font-bold text-slate-700'>Ikan berenang di dalam kolam.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>📚</span><p class='text-xl font-bold text-slate-700'>Sita beli buku baru di toko.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🍎</span><p class='text-xl font-bold text-slate-700'>Ani suka makan buah apel.</p></div><div class='bg-pink-50 border-l-8 border-pink-400 rounded-xl p-4 flex items-center gap-4'><span class='text-4xl'>🚲</span><p class='text-xl font-bold text-slate-700'>Rudi naik sepeda ke sekolah.</p></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bacaan dari ejaan 'PA-DI'?",
+                    "question": "Ibu ___ nasi di dapur.",
                     "options": [
-                        "BUKU",
-                        "PALU",
-                        "PADI"
+                        "memasak",
+                        "berenang",
+                        "terbang"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bacaan dari ejaan 'GI-GI'?",
+                    "question": "___ main bola di lapangan.",
                     "options": [
-                        "GIGI",
-                        "PADI",
-                        "BATA"
+                        "Budi",
+                        "Ikan",
+                        "Burung"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bacaan dari ejaan 'GU-LA'?",
+                    "question": "Adik minum ___ setiap pagi.",
                     "options": [
-                        "RANI",
-                        "PALU",
-                        "GULA"
+                        "susu",
+                        "bola",
+                        "buku"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Apa bacaan dari ejaan 'GU-LA'?",
+                    "question": "Kucing tidur di atas ___.",
                     "options": [
-                        "RANI",
-                        "GULA",
-                        "SUDU"
+                        "bantal",
+                        "pohon",
+                        "kolam"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Apa bacaan dari ejaan 'SA-PU'?",
+                    "question": "Burung terbang tinggi di ___.",
                     "options": [
-                        "MEJA",
-                        "GIGI",
-                        "SAPU"
+                        "langit",
+                        "kolam",
+                        "dapur"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Apa bacaan dari ejaan 'SA-PI'?",
+                    "question": "Ikan berenang di dalam ___.",
                     "options": [
-                        "KAKI",
-                        "SAPI",
-                        "SUDU"
+                        "kolam",
+                        "langit",
+                        "kantor"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Apa bacaan dari ejaan 'KA-DO'?",
+                    "question": "Sita beli ___ baru di toko.",
                     "options": [
-                        "PALU",
-                        "GIGI",
-                        "KADO"
+                        "buku",
+                        "bola",
+                        "pensil"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Apa bacaan dari ejaan 'KA-KI'?",
+                    "question": "Rudi naik ___ ke sekolah.",
                     "options": [
-                        "KAKI",
-                        "TOPI",
-                        "MEJA"
+                        "sepeda",
+                        "mobil",
+                        "kapal"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Apa bacaan dari ejaan 'MA-TA'?",
+                    "question": "Ani suka makan buah ___.",
                     "options": [
-                        "GIGI",
-                        "BATA",
-                        "MATA"
+                        "apel",
+                        "bantal",
+                        "susu"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Apa bacaan dari ejaan 'RU-DU'?",
+                    "question": "Ayah pergi ke ___.",
                     "options": [
-                        "RUDU",
-                        "PADI",
-                        "RUSA"
+                        "kantor",
+                        "kolam",
+                        "sekolah"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Apa bacaan dari ejaan 'MA-TA'?",
+                    "question": "Kata tanya untuk menanyakan pelaku adalah...",
                     "options": [
-                        "MATA",
-                        "BOLA",
-                        "SUDU"
+                        "Siapa",
+                        "Di mana",
+                        "Kapan"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q11",
-                    "question": "Apa bacaan dari ejaan 'TO-PI'?",
+                    "question": "Kata tanya untuk menanyakan tempat adalah...",
                     "options": [
-                        "TOPI",
-                        "BATA",
-                        "SAPI"
+                        "Di mana",
+                        "Siapa",
+                        "Apa"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Apa bacaan dari ejaan 'PE-NA'?",
+                    "question": "Kata tanya untuk menanyakan kegiatan adalah...",
                     "options": [
-                        "PENA",
-                        "BATA",
-                        "BOLA"
+                        "Apa",
+                        "Siapa",
+                        "Di mana"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Apa bacaan dari ejaan 'RU-DU'?",
+                    "question": "Kalimat yang baik memiliki...",
                     "options": [
-                        "RANI",
-                        "RUDU",
-                        "KADO"
+                        "Subjek dan predikat",
+                        "Hanya kata benda",
+                        "Hanya angka"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Apa bacaan dari ejaan 'TO-PI'?",
+                    "question": "'Adik minum susu.' — kata 'minum' termasuk...",
                     "options": [
-                        "TOPI",
-                        "PALU",
-                        "MEJA"
+                        "Kata kerja",
+                        "Kata benda",
+                        "Kata sifat"
                     ],
                     "correctIndex": 0
                 }

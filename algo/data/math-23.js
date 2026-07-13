@@ -1,487 +1,487 @@
 window.math23 = {
     "id": "math-23",
-    "title": "Level 23: Statistika",
+    "title": "Level 23: Statistika Dasar",
     "badge": "SMP",
-    "icon": "\ud83e\uddee",
-    "description": "Mean, median, modus",
+    "icon": "📊",
+    "description": "Statistika Dasar",
     "lessons": [
         {
             "id": "mth23_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "📊",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Statistika - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Mean, Median, Modus</h3>\n        <p class='text-slate-700 text-lg'>Tiga ukuran pemusatan data yang penting.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Mean</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Rata-rata: jumlah semua data ÷ banyak data</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Median</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Nilai tengah setelah data diurutkan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Modus</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Nilai yang paling sering muncul</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Data: 3,5,5,7,8 → Mean=5.6, Median=5, Modus=5</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 20 \u00d7 7?",
+                    "question": "Data: 4, 4, 5, 8, 12. Median = ...",
                     "options": [
-                        "138",
-                        "145",
-                        "140"
+                        "6",
+                        "4",
+                        "5"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 43 \u00d7 7?",
+                    "question": "Data: 2, 2, 5, 7, 9. Modus = ...",
                     "options": [
-                        "301",
-                        "304",
-                        "298"
+                        "2",
+                        "9",
+                        "9"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 38 \u00d7 2?",
+                    "question": "Data: 2, 4, 4, 6, 9. Median = ...",
                     "options": [
-                        "73",
-                        "76",
-                        "77"
+                        "4",
+                        "5",
+                        "3"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 20 \u00d7 10?",
+                    "question": "Data: 1, 3, 6, 6, 9. Modus = ...",
                     "options": [
-                        "200",
-                        "198",
-                        "204"
+                        "6",
+                        "1",
+                        "3"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 10 \u00d7 9?",
+                    "question": "Data: 5, 6, 6, 9, 14. Modus = ...",
                     "options": [
-                        "90",
-                        "93",
-                        "85"
+                        "6",
+                        "9",
+                        "9"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 10 \u00d7 9?",
+                    "question": "Data: 1, 4, 7, 7, 11. Median = ...",
                     "options": [
-                        "92",
-                        "86",
-                        "90"
+                        "6",
+                        "8",
+                        "7"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 35 \u00d7 10?",
+                    "question": "Data: 1, 4, 7, 7, 11. Modus = ...",
                     "options": [
-                        "353",
-                        "350",
-                        "347"
+                        "11",
+                        "1",
+                        "7"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 33 \u00d7 4?",
+                    "question": "Data: 5, 6, 6, 9, 14. Mean = ...",
                     "options": [
-                        "132",
-                        "134",
-                        "128"
+                        "7.0",
+                        "8",
+                        "9.0"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 37 \u00d7 4?",
+                    "question": "Data: 3, 3, 6, 8, 10. Median = ...",
                     "options": [
-                        "148",
-                        "149",
-                        "143"
+                        "5",
+                        "7",
+                        "6"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 46 \u00d7 4?",
+                    "question": "Data: 5, 6, 6, 9, 14. Median = ...",
                     "options": [
-                        "186",
-                        "184",
-                        "181"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 43 \u00d7 4?",
-                    "options": [
-                        "168",
-                        "176",
-                        "172"
+                        "5",
+                        "7",
+                        "6"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 36 \u00d7 10?",
+                    "id": "q10",
+                    "question": "Data: 1, 3, 6, 6, 9. Mean = ...",
                     "options": [
-                        "360",
-                        "359",
-                        "364"
+                        "5",
+                        "6.0",
+                        "4.0"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 48 \u00d7 5?",
+                    "id": "q11",
+                    "question": "Data: 3, 3, 6, 8, 10. Mean = ...",
                     "options": [
-                        "245",
-                        "236",
-                        "240"
+                        "7.0",
+                        "5.0",
+                        "6"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 22 \u00d7 9?",
+                    "id": "q12",
+                    "question": "Data: 1, 3, 6, 6, 9. Median = ...",
                     "options": [
-                        "201",
-                        "198",
-                        "195"
+                        "5",
+                        "6",
+                        "7"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q14",
-                    "question": "Berapa hasil dari 36 \u00d7 7?",
+                    "id": "q13",
+                    "question": "Data: 4, 4, 5, 8, 12. Mean = ...",
                     "options": [
-                        "254",
-                        "252",
-                        "249"
+                        "7.6",
+                        "5.6",
+                        "6.6"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q14",
+                    "question": "Data: 3, 5, 5, 7, 10. Mean = ...",
+                    "options": [
+                        "6",
+                        "5.0",
+                        "7.0"
+                    ],
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mth23_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "📊",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Statistika - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Mean, Median, Modus</h3>\n        <p class='text-slate-700 text-lg'>Tiga ukuran pemusatan data yang penting.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Mean</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Rata-rata: jumlah semua data ÷ banyak data</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Median</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Nilai tengah setelah data diurutkan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Modus</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Nilai yang paling sering muncul</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Data: 3,5,5,7,8 → Mean=5.6, Median=5, Modus=5</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 22 \u00d7 10?",
+                    "question": "Data: 4, 4, 5, 8, 12. Median = ...",
                     "options": [
-                        "222",
-                        "217",
-                        "220"
+                        "6",
+                        "4",
+                        "5"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 43 \u00d7 5?",
+                    "question": "Data: 2, 2, 5, 7, 9. Modus = ...",
                     "options": [
-                        "219",
-                        "212",
-                        "215"
+                        "2",
+                        "9",
+                        "9"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 44 \u00d7 7?",
+                    "question": "Data: 2, 4, 4, 6, 9. Median = ...",
                     "options": [
-                        "308",
-                        "311",
-                        "307"
+                        "4",
+                        "5",
+                        "3"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 29 \u00d7 2?",
+                    "question": "Data: 1, 3, 6, 6, 9. Modus = ...",
                     "options": [
-                        "62",
-                        "54",
-                        "58"
+                        "6",
+                        "1",
+                        "3"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 49 \u00d7 4?",
+                    "question": "Data: 5, 6, 6, 9, 14. Modus = ...",
                     "options": [
-                        "192",
-                        "196",
-                        "199"
+                        "6",
+                        "9",
+                        "9"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 25 \u00d7 7?",
+                    "question": "Data: 1, 4, 7, 7, 11. Median = ...",
                     "options": [
-                        "170",
-                        "180",
-                        "175"
+                        "6",
+                        "8",
+                        "7"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 39 \u00d7 2?",
+                    "question": "Data: 1, 4, 7, 7, 11. Modus = ...",
                     "options": [
-                        "77",
-                        "83",
-                        "78"
+                        "11",
+                        "1",
+                        "7"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 13 \u00d7 8?",
+                    "question": "Data: 5, 6, 6, 9, 14. Mean = ...",
                     "options": [
-                        "107",
-                        "104",
-                        "102"
+                        "7.0",
+                        "8",
+                        "9.0"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 32 \u00d7 5?",
+                    "question": "Data: 3, 3, 6, 8, 10. Median = ...",
                     "options": [
-                        "165",
-                        "160",
-                        "155"
+                        "5",
+                        "7",
+                        "6"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 19 \u00d7 8?",
+                    "question": "Data: 5, 6, 6, 9, 14. Median = ...",
                     "options": [
-                        "152",
-                        "155",
-                        "147"
+                        "5",
+                        "7",
+                        "6"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 37 \u00d7 3?",
+                    "question": "Data: 1, 3, 6, 6, 9. Mean = ...",
                     "options": [
-                        "112",
-                        "111",
-                        "110"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 26 \u00d7 6?",
-                    "options": [
-                        "156",
-                        "154",
-                        "161"
+                        "5",
+                        "6.0",
+                        "4.0"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 13 \u00d7 8?",
+                    "id": "q11",
+                    "question": "Data: 3, 3, 6, 8, 10. Mean = ...",
                     "options": [
-                        "109",
-                        "104",
-                        "101"
+                        "7.0",
+                        "5.0",
+                        "6"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q12",
+                    "question": "Data: 1, 3, 6, 6, 9. Median = ...",
+                    "options": [
+                        "5",
+                        "6",
+                        "7"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 18 \u00d7 10?",
+                    "question": "Data: 4, 4, 5, 8, 12. Mean = ...",
                     "options": [
-                        "183",
-                        "180",
-                        "178"
+                        "7.6",
+                        "5.6",
+                        "6.6"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 31 \u00d7 2?",
+                    "question": "Data: 3, 5, 5, 7, 10. Mean = ...",
                     "options": [
-                        "65",
-                        "62",
-                        "58"
+                        "6",
+                        "5.0",
+                        "7.0"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mth23_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "📊",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Statistika - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Mean, Median, Modus</h3>\n        <p class='text-slate-700 text-lg'>Tiga ukuran pemusatan data yang penting.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Mean</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Rata-rata: jumlah semua data ÷ banyak data</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Median</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Nilai tengah setelah data diurutkan</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Modus</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Nilai yang paling sering muncul</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Data: 3,5,5,7,8 → Mean=5.6, Median=5, Modus=5</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 46 \u00d7 8?",
+                    "question": "Data: 4, 4, 5, 8, 12. Median = ...",
                     "options": [
-                        "363",
-                        "368",
-                        "372"
+                        "6",
+                        "4",
+                        "5"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 24 \u00d7 3?",
+                    "question": "Data: 2, 2, 5, 7, 9. Modus = ...",
                     "options": [
-                        "74",
-                        "72",
-                        "69"
+                        "2",
+                        "9",
+                        "9"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 41 \u00d7 3?",
+                    "question": "Data: 2, 4, 4, 6, 9. Median = ...",
                     "options": [
-                        "127",
-                        "123",
-                        "120"
+                        "4",
+                        "5",
+                        "3"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 29 \u00d7 5?",
+                    "question": "Data: 1, 3, 6, 6, 9. Modus = ...",
                     "options": [
-                        "143",
-                        "145",
-                        "148"
+                        "6",
+                        "1",
+                        "3"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 17 \u00d7 5?",
+                    "question": "Data: 5, 6, 6, 9, 14. Modus = ...",
                     "options": [
-                        "85",
-                        "89",
-                        "80"
+                        "6",
+                        "9",
+                        "9"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 32 \u00d7 10?",
+                    "question": "Data: 1, 4, 7, 7, 11. Median = ...",
                     "options": [
-                        "320",
-                        "321",
-                        "319"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q6",
-                    "question": "Berapa hasil dari 45 \u00d7 5?",
-                    "options": [
-                        "226",
-                        "225",
-                        "224"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 41 \u00d7 5?",
-                    "options": [
-                        "204",
-                        "209",
-                        "205"
+                        "6",
+                        "8",
+                        "7"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 44 \u00d7 9?",
+                    "id": "q6",
+                    "question": "Data: 1, 4, 7, 7, 11. Modus = ...",
                     "options": [
-                        "392",
-                        "400",
-                        "396"
+                        "11",
+                        "1",
+                        "7"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "Data: 5, 6, 6, 9, 14. Mean = ...",
+                    "options": [
+                        "7.0",
+                        "8",
+                        "9.0"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q8",
+                    "question": "Data: 3, 3, 6, 8, 10. Median = ...",
+                    "options": [
+                        "5",
+                        "7",
+                        "6"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 13 \u00d7 6?",
+                    "question": "Data: 5, 6, 6, 9, 14. Median = ...",
                     "options": [
-                        "80",
-                        "78",
-                        "74"
+                        "5",
+                        "7",
+                        "6"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q10",
+                    "question": "Data: 1, 3, 6, 6, 9. Mean = ...",
+                    "options": [
+                        "5",
+                        "6.0",
+                        "4.0"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "Data: 3, 3, 6, 8, 10. Mean = ...",
+                    "options": [
+                        "7.0",
+                        "5.0",
+                        "6"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q12",
+                    "question": "Data: 1, 3, 6, 6, 9. Median = ...",
+                    "options": [
+                        "5",
+                        "6",
+                        "7"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 36 \u00d7 2?",
-                    "options": [
-                        "77",
-                        "68",
-                        "72"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 40 \u00d7 6?",
-                    "options": [
-                        "240",
-                        "245",
-                        "238"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 34 \u00d7 9?",
-                    "options": [
-                        "302",
-                        "311",
-                        "306"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q13",
-                    "question": "Berapa hasil dari 49 \u00d7 7?",
+                    "question": "Data: 4, 4, 5, 8, 12. Mean = ...",
                     "options": [
-                        "343",
-                        "339",
-                        "347"
+                        "7.6",
+                        "5.6",
+                        "6.6"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 33 \u00d7 4?",
+                    "question": "Data: 3, 5, 5, 7, 10. Mean = ...",
                     "options": [
-                        "128",
-                        "133",
-                        "132"
+                        "6",
+                        "5.0",
+                        "7.0"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         }

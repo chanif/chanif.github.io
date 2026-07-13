@@ -2,486 +2,486 @@ window.math12 = {
     "id": "math-12",
     "title": "Level 12: Pembagian Dasar",
     "badge": "Kelas 3",
-    "icon": "\ud83e\uddee",
-    "description": "10\u00f72, 15\u00f73",
+    "icon": "➗",
+    "description": "Pembagian Dasar",
     "lessons": [
         {
             "id": "mth12_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "➗",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Pembagian Dasar - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Pembagian Dasar</h3>\n        <p class='text-slate-700 text-lg'>Pembagian adalah kebalikan perkalian. 12 ÷ 3 = 4 karena 4 × 3 = 12.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>12 ÷ 3 = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 × 3 = 12</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>20 ÷ 5 = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 × 5 = 20</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>36 ÷ 6 = 6</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 × 6 = 36</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Gunakan tabel perkalian untuk membantu pembagian!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 8 \u00d7 6?",
+                    "question": "Berapa 50 ÷ 5?",
                     "options": [
-                        "48",
-                        "52",
-                        "46"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q1",
-                    "question": "Berapa hasil dari 80 \u00f7 8?",
-                    "options": [
-                        "10",
-                        "7",
-                        "13"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 16 \u00f7 8?",
-                    "options": [
-                        "2",
-                        "1",
-                        "5"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 12 \u00f7 3?",
-                    "options": [
-                        "4",
-                        "-1",
-                        "7"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 25 \u00f7 5?",
-                    "options": [
-                        "5",
-                        "4",
-                        "6"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 48 \u00f7 8?",
-                    "options": [
-                        "8",
-                        "6",
-                        "1"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q6",
-                    "question": "Berapa hasil dari 100 \u00f7 10?",
-                    "options": [
-                        "11",
-                        "5",
+                        "13",
+                        "9",
                         "10"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 9 \u00d7 8?",
+                    "id": "q1",
+                    "question": "48 : 6 = ?",
                     "options": [
-                        "69",
-                        "72",
-                        "73"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 8 \u00d7 7?",
-                    "options": [
-                        "58",
-                        "52",
-                        "56"
+                        "9",
+                        "7",
+                        "8"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 12 \u00f7 2?",
+                    "id": "q2",
+                    "question": "56 : 7 = ?",
                     "options": [
+                        "6",
                         "8",
+                        "9"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q3",
+                    "question": "14 : 7 = ?",
+                    "options": [
+                        "5",
                         "1",
-                        "6"
+                        "2"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q4",
+                    "question": "Berapa 10 ÷ 5?",
+                    "options": [
+                        "4",
+                        "1",
+                        "2"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q5",
+                    "question": "4 : 2 = ?",
+                    "options": [
+                        "5",
+                        "1",
+                        "2"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q6",
+                    "question": "Berapa 6 ÷ 6?",
+                    "options": [
+                        "1",
+                        "1",
+                        "4"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "Berapa 36 ÷ 9?",
+                    "options": [
+                        "7",
+                        "1",
+                        "4"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q8",
+                    "question": "2 : 2 = ?",
+                    "options": [
+                        "1",
+                        "1",
+                        "4"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "Berapa 56 ÷ 7?",
+                    "options": [
+                        "11",
+                        "6",
+                        "8"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 40 \u00f7 5?",
+                    "question": "Berapa 8 ÷ 2?",
                     "options": [
-                        "8",
-                        "6",
-                        "13"
+                        "3",
+                        "4",
+                        "5"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "Berapa 8 ÷ 4?",
+                    "options": [
+                        "3",
+                        "1",
+                        "2"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q12",
+                    "question": "45 : 5 = ?",
+                    "options": [
+                        "9",
+                        "7",
+                        "11"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 12 \u00f7 4?",
-                    "options": [
-                        "5",
-                        "3",
-                        "-2"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 10 \u00d7 2?",
-                    "options": [
-                        "18",
-                        "20",
-                        "24"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q13",
-                    "question": "Berapa hasil dari 6 \u00d7 9?",
+                    "question": "Berapa 35 ÷ 5?",
                     "options": [
-                        "55",
-                        "54",
-                        "52"
+                        "10",
+                        "7",
+                        "6"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 7 \u00d7 1?",
+                    "question": "80 : 10 = ?",
                     "options": [
-                        "4",
+                        "8",
                         "9",
-                        "7"
+                        "5"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mth12_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "➗",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Pembagian Dasar - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Pembagian Dasar</h3>\n        <p class='text-slate-700 text-lg'>Pembagian adalah kebalikan perkalian. 12 ÷ 3 = 4 karena 4 × 3 = 12.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>12 ÷ 3 = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 × 3 = 12</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>20 ÷ 5 = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 × 5 = 20</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>36 ÷ 6 = 6</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 × 6 = 36</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Gunakan tabel perkalian untuk membantu pembagian!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 10 \u00f7 2?",
+                    "question": "Berapa 50 ÷ 5?",
                     "options": [
-                        "5",
-                        "6",
-                        "3"
+                        "13",
+                        "9",
+                        "10"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 6 \u00d7 8?",
+                    "question": "48 : 6 = ?",
                     "options": [
-                        "43",
-                        "48",
-                        "51"
+                        "9",
+                        "7",
+                        "8"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q2",
+                    "question": "56 : 7 = ?",
+                    "options": [
+                        "6",
+                        "8",
+                        "9"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 6 \u00d7 8?",
-                    "options": [
-                        "48",
-                        "47",
-                        "49"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q3",
-                    "question": "Berapa hasil dari 21 \u00f7 7?",
+                    "question": "14 : 7 = ?",
                     "options": [
-                        "3",
-                        "8",
-                        "1"
+                        "5",
+                        "1",
+                        "2"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 9 \u00d7 4?",
+                    "question": "Berapa 10 ÷ 5?",
                     "options": [
-                        "36",
-                        "41",
-                        "31"
+                        "4",
+                        "1",
+                        "2"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 10 \u00d7 7?",
+                    "question": "4 : 2 = ?",
                     "options": [
-                        "70",
-                        "73",
-                        "66"
+                        "5",
+                        "1",
+                        "2"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 15 \u00f7 3?",
+                    "question": "Berapa 6 ÷ 6?",
                     "options": [
-                        "5",
-                        "7",
-                        "2"
+                        "1",
+                        "1",
+                        "4"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 18 \u00f7 9?",
+                    "question": "Berapa 36 ÷ 9?",
                     "options": [
-                        "5",
-                        "2",
-                        "-3"
+                        "7",
+                        "1",
+                        "4"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 18 \u00f7 9?",
+                    "question": "2 : 2 = ?",
                     "options": [
-                        "-2",
-                        "2",
-                        "6"
+                        "1",
+                        "1",
+                        "4"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 24 \u00f7 4?",
+                    "question": "Berapa 56 ÷ 7?",
                     "options": [
-                        "1",
-                        "10",
-                        "6"
+                        "11",
+                        "6",
+                        "8"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 80 \u00f7 10?",
+                    "question": "Berapa 8 ÷ 2?",
                     "options": [
-                        "7",
-                        "8",
-                        "10"
+                        "3",
+                        "4",
+                        "5"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 6 \u00d7 3?",
+                    "question": "Berapa 8 ÷ 4?",
                     "options": [
-                        "22",
-                        "18",
-                        "14"
+                        "3",
+                        "1",
+                        "2"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 18 \u00f7 9?",
+                    "question": "45 : 5 = ?",
                     "options": [
-                        "2",
-                        "3",
-                        "-2"
+                        "9",
+                        "7",
+                        "11"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 10 \u00d7 6?",
+                    "question": "Berapa 35 ÷ 5?",
                     "options": [
-                        "64",
-                        "55",
-                        "60"
+                        "10",
+                        "7",
+                        "6"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 9 \u00d7 3?",
+                    "question": "80 : 10 = ?",
                     "options": [
-                        "32",
-                        "25",
-                        "27"
+                        "8",
+                        "9",
+                        "5"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "mth12_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "➗",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Pembagian Dasar - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Pembagian Dasar</h3>\n        <p class='text-slate-700 text-lg'>Pembagian adalah kebalikan perkalian. 12 ÷ 3 = 4 karena 4 × 3 = 12.</p>\n    </div>\n    <div class='space-y-3'>\n        <h4 class='font-black text-slate-600'>Contoh:</h4>\n        <div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>12 ÷ 3 = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 × 3 = 12</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>20 ÷ 5 = 4</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>4 × 5 = 20</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>36 ÷ 6 = 6</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 × 6 = 36</span></div>\n    </div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Gunakan tabel perkalian untuk membantu pembagian!</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 8 \u00d7 7?",
+                    "question": "Berapa 50 ÷ 5?",
                     "options": [
-                        "56",
-                        "58",
-                        "55"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q1",
-                    "question": "Berapa hasil dari 6 \u00d7 7?",
-                    "options": [
-                        "44",
-                        "42",
-                        "41"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "Berapa hasil dari 15 \u00f7 3?",
-                    "options": [
-                        "8",
-                        "3",
-                        "5"
+                        "13",
+                        "9",
+                        "10"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 9 \u00d7 5?",
+                    "id": "q1",
+                    "question": "48 : 6 = ?",
                     "options": [
-                        "45",
-                        "44",
-                        "49"
+                        "9",
+                        "7",
+                        "8"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q2",
+                    "question": "56 : 7 = ?",
+                    "options": [
+                        "6",
+                        "8",
+                        "9"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q3",
+                    "question": "14 : 7 = ?",
+                    "options": [
+                        "5",
+                        "1",
+                        "2"
+                    ],
+                    "correctIndex": 2
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 6 \u00f7 2?",
+                    "question": "Berapa 10 ÷ 5?",
                     "options": [
-                        "8",
-                        "2",
-                        "3"
+                        "4",
+                        "1",
+                        "2"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 25 \u00f7 5?",
+                    "question": "4 : 2 = ?",
                     "options": [
-                        "7",
                         "5",
+                        "1",
                         "2"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 9 \u00d7 5?",
+                    "question": "Berapa 6 ÷ 6?",
                     "options": [
-                        "45",
-                        "47",
-                        "40"
+                        "1",
+                        "1",
+                        "4"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 7 \u00d7 6?",
+                    "question": "Berapa 36 ÷ 9?",
                     "options": [
-                        "41",
-                        "44",
-                        "42"
+                        "7",
+                        "1",
+                        "4"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 90 \u00f7 9?",
+                    "question": "2 : 2 = ?",
                     "options": [
-                        "5",
-                        "10",
-                        "15"
+                        "1",
+                        "1",
+                        "4"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 6 \u00d7 1?",
+                    "question": "Berapa 56 ÷ 7?",
                     "options": [
-                        "4",
-                        "10",
-                        "6"
+                        "11",
+                        "6",
+                        "8"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 63 \u00f7 9?",
+                    "question": "Berapa 8 ÷ 2?",
                     "options": [
-                        "8",
-                        "6",
-                        "7"
+                        "3",
+                        "4",
+                        "5"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q11",
+                    "question": "Berapa 8 ÷ 4?",
+                    "options": [
+                        "3",
+                        "1",
+                        "2"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 7 \u00d7 8?",
-                    "options": [
-                        "51",
-                        "56",
-                        "59"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q12",
-                    "question": "Berapa hasil dari 6 \u00d7 6?",
+                    "question": "45 : 5 = ?",
                     "options": [
-                        "31",
-                        "36",
-                        "37"
+                        "9",
+                        "7",
+                        "11"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 42 \u00f7 6?",
+                    "question": "Berapa 35 ÷ 5?",
                     "options": [
-                        "5",
+                        "10",
                         "7",
-                        "12"
+                        "6"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 15 \u00f7 5?",
+                    "question": "80 : 10 = ?",
                     "options": [
-                        "6",
-                        "3",
-                        "-2"
+                        "8",
+                        "9",
+                        "5"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         }

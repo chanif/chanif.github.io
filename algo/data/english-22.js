@@ -2,486 +2,366 @@ window.english22 = {
     "id": "english-22",
     "title": "Level 22: Modal Verbs",
     "badge": "Kelas 6",
-    "icon": "\ud83c\udf0d",
-    "description": "Can, Could, Should",
+    "icon": "🔤",
+    "description": "Modal Verbs",
     "lessons": [
         {
             "id": "eng22_1",
             "title": "Part 1",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "🔤",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Modal Verbs - Part 1</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>✅</span><span class='font-black text-emerald-700 text-base'>Can</span><span class='text-emerald-400 text-xs font-bold'>Bisa/Dapat</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>❌</span><span class='font-black text-emerald-700 text-base'>Cannot / Can't</span><span class='text-emerald-400 text-xs font-bold'>Tidak bisa</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>⚠️</span><span class='font-black text-emerald-700 text-base'>Must</span><span class='text-emerald-400 text-xs font-bold'>Harus</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>💡</span><span class='font-black text-emerald-700 text-base'>Should</span><span class='text-emerald-400 text-xs font-bold'>Seharusnya</span></div></div><div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='font-black text-amber-600 mb-1'>📝 Grammar Tip:</p><p class='text-amber-700'>Modal verbs: can, could, may, might, must, should, will, would. Selalu diikuti BASE VERB (kata dasar)!</p></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
+                    "question": "What is the meaning of 'Cannot / Can't'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Nose",
-                        "Ear",
-                        "Eye"
+                        "Bisa (lampau/permintaan sopan)",
+                        "Tidak bisa",
+                        "Ingin (sopan)"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Mata'?",
+                    "question": "Bahasa Inggris dari 'Tidak bisa' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Hand",
-                        "Eye",
-                        "Leg"
+                        "May",
+                        "Cannot / Can't",
+                        "Would like"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q2",
-                    "question": "What is the meaning of 'Head'?",
+                    "question": "Gambar 💡 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Kepala",
-                        "Hidung",
-                        "Tangan"
+                        "Should",
+                        "Could you...?",
+                        "Can"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Kaki'?",
+                    "question": "What is the meaning of 'Can'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Eye",
-                        "Leg",
-                        "Head"
+                        "Akan (formal/saran)",
+                        "Bisa/Dapat",
+                        "Mungkin"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "What is the meaning of 'Ear'?",
+                    "question": "Bahasa Inggris dari 'Bisa/Dapat' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Kepala",
-                        "Hidung",
-                        "Telinga"
+                        "Could",
+                        "Should not",
+                        "Can"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "What is the meaning of 'Leg'?",
+                    "question": "Gambar ⚠️ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Mata",
-                        "Kaki",
-                        "Kepala"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q6",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Mata",
-                        "Telinga",
-                        "Hidung"
+                        "Cannot / Can't",
+                        "Would",
+                        "Must"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q7",
-                    "question": "Apa bahasa Inggris dari 'Tangan'?",
+                    "id": "q6",
+                    "question": "Bahasa Inggris dari 'Seharusnya' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Leg",
-                        "Eye",
-                        "Hand"
+                        "Should",
+                        "Would like",
+                        "Could you...?"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "What is the meaning of 'Must'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Dilarang",
+                        "Bisa/Dapat",
+                        "Harus"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q8",
-                    "question": "What is the meaning of 'Leg'?",
+                    "question": "Gambar ✅ ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Tangan",
-                        "Kaki",
-                        "Hidung"
+                        "Can",
+                        "Must",
+                        "Could you...?"
                     ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Hidung'?",
-                    "options": [
-                        "Ear",
-                        "Nose",
-                        "Head"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Nose'?",
-                    "options": [
-                        "Kepala",
-                        "Hidung",
-                        "Kaki"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Kepala'?",
-                    "options": [
-                        "Ear",
-                        "Head",
-                        "Hand"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q12",
-                    "question": "What is the meaning of 'Eye'?",
-                    "options": [
-                        "Telinga",
-                        "Mata",
-                        "Tangan"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q13",
-                    "question": "Apa bahasa Inggris dari 'Telinga'?",
-                    "options": [
-                        "Eye",
-                        "Hand",
-                        "Ear"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Kaki'?",
-                    "options": [
-                        "Nose",
-                        "Eye",
-                        "Leg"
-                    ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "eng22_2",
             "title": "Part 2",
-            "icon": "\ud83c\uddec\ud83c\udde7",
+            "icon": "🔤",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Modal Verbs - Part 2</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🟢</span><span class='font-black text-emerald-700 text-base'>May</span><span class='text-emerald-400 text-xs font-bold'>Boleh (izin)</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🤔</span><span class='font-black text-emerald-700 text-base'>Might</span><span class='text-emerald-400 text-xs font-bold'>Mungkin</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>😊</span><span class='font-black text-emerald-700 text-base'>Would</span><span class='text-emerald-400 text-xs font-bold'>Akan (sopan/kondisional)</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🔹</span><span class='font-black text-emerald-700 text-base'>Could</span><span class='text-emerald-400 text-xs font-bold'>Bisa (lampau/permintaan sopan)</span></div></div></div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "What is the meaning of 'Run'?",
+                    "question": "What is the meaning of 'Might'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Jalan",
-                        "Makan",
-                        "Lari"
+                        "Ingin (sopan)",
+                        "Akan (sopan/kondisional)",
+                        "Mungkin"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Jalan'?",
+                    "question": "Bahasa Inggris dari 'Bisa (lampau/permintaan sopan)' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Walk",
-                        "Sleep",
-                        "Run"
+                        "Could you...?",
+                        "Must not",
+                        "Could"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Membaca'?",
+                    "question": "Gambar 🟢 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Read",
-                        "Eat",
-                        "Run"
+                        "Cannot / Can't",
+                        "Should",
+                        "May"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q3",
+                    "question": "What is the meaning of 'Could'? 🇬🇧→🇮🇩",
+                    "options": [
+                        "Bisa (lampau/permintaan sopan)",
+                        "Ingin (sopan)",
+                        "Dilarang"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q3",
-                    "question": "What is the meaning of 'Eat'?",
+                    "id": "q4",
+                    "question": "Bahasa Inggris dari 'Boleh (izin)' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Tidur",
-                        "Makan",
-                        "Minum"
+                        "Would like",
+                        "May",
+                        "Shall"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q4",
-                    "question": "What is the meaning of 'Read'?",
-                    "options": [
-                        "Membaca",
-                        "Minum",
-                        "Makan"
-                    ],
-                    "correctIndex": 0
-                },
-                {
                     "id": "q5",
-                    "question": "What is the meaning of 'Drink'?",
+                    "question": "Gambar 🤔 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Minum",
-                        "Makan",
-                        "Tidur"
+                        "Might",
+                        "Should not",
+                        "Can"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "What is the meaning of 'Eat'?",
+                    "question": "What is the meaning of 'Would'? 🇬🇧→🇮🇩",
                     "options": [
-                        "Jalan",
-                        "Minum",
-                        "Makan"
+                        "Akan (sopan/kondisional)",
+                        "Dilarang",
+                        "Ingin (sopan)"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "What is the meaning of 'Run'?",
+                    "question": "Bahasa Inggris dari 'Mungkin' adalah... 🇮🇩→🇬🇧",
                     "options": [
-                        "Lari",
-                        "Tidur",
-                        "Makan"
+                        "Might",
+                        "Should not",
+                        "Can"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Apa bahasa Inggris dari 'Minum'?",
+                    "question": "Gambar 😊 ini dalam bahasa Inggris disebut...",
                     "options": [
-                        "Read",
-                        "Run",
-                        "Drink"
+                        "Would",
+                        "Need",
+                        "May"
                     ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Membaca'?",
-                    "options": [
-                        "Sleep",
-                        "Read",
-                        "Walk"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q10",
-                    "question": "What is the meaning of 'Walk'?",
-                    "options": [
-                        "Lari",
-                        "Makan",
-                        "Jalan"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "What is the meaning of 'Sleep'?",
-                    "options": [
-                        "Lari",
-                        "Tidur",
-                        "Minum"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Tidur'?",
-                    "options": [
-                        "Eat",
-                        "Run",
-                        "Sleep"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Walk'?",
-                    "options": [
-                        "Minum",
-                        "Jalan",
-                        "Tidur"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q14",
-                    "question": "Apa bahasa Inggris dari 'Minum'?",
-                    "options": [
-                        "Run",
-                        "Drink",
-                        "Walk"
-                    ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 }
             ]
         },
         {
             "id": "eng22_3",
             "title": "Part 3",
-            "icon": "\ud83c\uddec\ud83c\udde7",
-            "difficulty": "Sedang",
+            "icon": "🔤",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-emerald-600 font-bold'>Modal Verbs - Part 3</h2><p class='mt-4'>Let's learn English together!</p></div>",
+            "content": "<div class='space-y-4'><div class='grid grid-cols-2 sm:grid-cols-3 gap-3'><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🔷</span><span class='font-black text-emerald-700 text-base'>Shall</span><span class='text-emerald-400 text-xs font-bold'>Akan (formal/saran)</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>📌</span><span class='font-black text-emerald-700 text-base'>Need</span><span class='text-emerald-400 text-xs font-bold'>Perlu</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🚫</span><span class='font-black text-emerald-700 text-base'>Must not</span><span class='text-emerald-400 text-xs font-bold'>Dilarang</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>⚠️</span><span class='font-black text-emerald-700 text-base'>Should not</span><span class='text-emerald-400 text-xs font-bold'>Sebaiknya tidak</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>😊</span><span class='font-black text-emerald-700 text-base'>Would like</span><span class='text-emerald-400 text-xs font-bold'>Ingin (sopan)</span></div><div class='bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 flex flex-col items-center gap-1 text-center'><span class='text-4xl'>🙏</span><span class='font-black text-emerald-700 text-base'>Could you...?</span><span class='text-emerald-400 text-xs font-bold'>Bisakah kamu...? (sopan)</span></div></div></div>",
             "questions": [
                 {
-                    "id": "q0",
-                    "question": "Apa bahasa Inggris dari 'Ikan'?",
-                    "options": [
-                        "Fish",
-                        "Elephant",
-                        "Bird"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q1",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
-                    "options": [
-                        "Fish",
-                        "Cat",
-                        "Dog"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q2",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
-                    "options": [
-                        "Cat",
-                        "Elephant",
-                        "Dog"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q3",
-                    "question": "Apa bahasa Inggris dari 'Burung'?",
-                    "options": [
-                        "Bird",
-                        "Fish",
-                        "Dog"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q4",
-                    "question": "Apa bahasa Inggris dari 'Harimau'?",
-                    "options": [
-                        "Cat",
-                        "Tiger",
-                        "Elephant"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q5",
-                    "question": "What is the meaning of 'Dog'?",
+                    "question": "You ___ wear a seatbelt. (harus pakai sabuk)",
                     "options": [
-                        "Kucing",
-                        "Harimau",
-                        "Anjing"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q6",
-                    "question": "What is the meaning of 'Fish'?",
-                    "options": [
-                        "Gajah",
-                        "Ikan",
-                        "Burung"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q7",
-                    "question": "What is the meaning of 'Tiger'?",
-                    "options": [
-                        "Harimau",
-                        "Ikan",
-                        "Kucing"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q8",
-                    "question": "What is the meaning of 'Tiger'?",
-                    "options": [
-                        "Ikan",
-                        "Burung",
-                        "Harimau"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "Apa bahasa Inggris dari 'Gajah'?",
-                    "options": [
-                        "Fish",
-                        "Dog",
-                        "Elephant"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q10",
-                    "question": "Apa bahasa Inggris dari 'Gajah'?",
-                    "options": [
-                        "Elephant",
-                        "Cat",
-                        "Fish"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "Apa bahasa Inggris dari 'Anjing'?",
-                    "options": [
-                        "Tiger",
-                        "Dog",
-                        "Fish"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q12",
-                    "question": "Apa bahasa Inggris dari 'Kucing'?",
-                    "options": [
-                        "Bird",
-                        "Cat",
-                        "Elephant"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q13",
-                    "question": "What is the meaning of 'Dog'?",
-                    "options": [
-                        "Anjing",
-                        "Harimau",
-                        "Gajah"
+                        "must",
+                        "might",
+                        "should"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "What is the meaning of 'Cat'?",
+                    "question": "Kalimat yang benar...",
                     "options": [
-                        "Anjing",
-                        "Kucing",
-                        "Ikan"
+                        "She can sing beautifully.",
+                        "She cans sing.",
+                        "She can sings."
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q7",
+                    "question": "___ you help me? (Bisakah kamu bantu saya? - sopan)",
+                    "options": [
+                        "Could",
+                        "Must",
+                        "Should"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q1",
+                    "question": "You ___ eat here. (tidak boleh = dilarang)",
+                    "options": [
+                        "must not",
+                        "should",
+                        "can"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q2",
+                    "question": "You ___ study hard. (seharusnya belajar keras)",
+                    "options": [
+                        "should",
+                        "can",
+                        "must not"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q3",
+                    "question": "It ___ rain today. (mungkin akan hujan)",
+                    "options": [
+                        "might",
+                        "must",
+                        "can"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "'Must' berarti...",
+                    "options": [
+                        "Harus",
+                        "Boleh",
+                        "Mungkin"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "She ___ speak three languages. (bisa)",
+                    "options": [
+                        "can",
+                        "must",
+                        "might"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "Modal verb diikuti oleh...",
+                    "options": [
+                        "Base verb (kata dasar)",
+                        "Verb + s",
+                        "Verb + ing"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q4",
+                    "question": "___ I use your pen? (Boleh saya pakai penamu?)",
+                    "options": [
+                        "May",
+                        "Must",
+                        "Should"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q13",
+                    "question": "'Can' menunjukkan...",
+                    "options": [
+                        "Kemampuan (ability)",
+                        "Kewajiban",
+                        "Larangan"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q0",
+                    "question": "I ___ swim. (bisa berenang)",
+                    "options": [
+                        "can",
+                        "cans",
+                        "am can"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q11",
+                    "question": "'Should' berarti...",
+                    "options": [
+                        "Seharusnya",
+                        "Harus",
+                        "Tidak bisa"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q8",
+                    "question": "I ___ like some water. (ingin air - sopan)",
+                    "options": [
+                        "would",
+                        "must",
+                        "can"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q9",
+                    "question": "'Might' berarti...",
+                    "options": [
+                        "Mungkin",
+                        "Harus",
+                        "Bisa"
+                    ],
+                    "correctIndex": 0
                 }
             ]
         }

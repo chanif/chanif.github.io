@@ -1,165 +1,165 @@
 window.math20 = {
     "id": "math-20",
-    "title": "Level 20: Bilangan Bulat",
+    "title": "Level 20: Bilangan Bulat Negatif",
     "badge": "Kelas 5-6",
-    "icon": "\ud83e\uddee",
-    "description": "Bilangan negatif",
+    "icon": "🔢",
+    "description": "Bilangan Bulat Negatif",
     "lessons": [
         {
             "id": "mth20_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "🔢",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Bilangan Bulat - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Bilangan Bulat Negatif</h3>\n        <p class='text-slate-700 text-lg'>Bilangan bulat mencakup negatif, nol, dan positif: ...-3,-2,-1,0,1,2,3...</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>(-3) + 5 = 2</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Mulai dari -3, maju 5 langkah = 2</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>(-4) - (-2) = -2</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Mengurangi negatif = menambah positif</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>(-2) × 3 = -6</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Negatif × positif = negatif</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Di garis bilangan: kiri = negatif, kanan = positif</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 24 \u00d7 4?",
+                    "question": "(-6) - (-3) = ?",
                     "options": [
-                        "97",
-                        "96",
-                        "91"
+                        "-4",
+                        "-3",
+                        "-2"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 35 \u00d7 6?",
+                    "question": "(-1) + (10) = ?",
                     "options": [
-                        "206",
-                        "210",
-                        "214"
+                        "9",
+                        "8",
+                        "10"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 16 \u00d7 2?",
+                    "question": "(-5) + (7) = ?",
                     "options": [
-                        "33",
-                        "32",
-                        "28"
+                        "3",
+                        "2",
+                        "1"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 15 \u00d7 7?",
+                    "question": "(9) + (7) = ?",
                     "options": [
-                        "110",
-                        "105",
-                        "102"
+                        "17",
+                        "16",
+                        "15"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 18 \u00d7 8?",
+                    "question": "(8) - (3) = ?",
                     "options": [
-                        "142",
-                        "144",
-                        "148"
+                        "4",
+                        "6",
+                        "5"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 43 \u00d7 2?",
+                    "question": "(10) - (2) = ?",
                     "options": [
-                        "86",
-                        "89",
-                        "82"
+                        "8",
+                        "9",
+                        "7"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 28 \u00d7 5?",
+                    "question": "(-10) - (-8) = ?",
                     "options": [
-                        "140",
-                        "144",
-                        "138"
+                        "-2",
+                        "-3",
+                        "-1"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 42 \u00d7 3?",
+                    "question": "(-10) + (8) = ?",
                     "options": [
-                        "124",
-                        "126",
-                        "128"
+                        "-2",
+                        "-1",
+                        "-3"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 44 \u00d7 2?",
+                    "question": "(9) - (2) = ?",
                     "options": [
-                        "85",
-                        "88",
-                        "91"
+                        "8",
+                        "7",
+                        "6"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 10 \u00d7 7?",
+                    "question": "(1) - (-1) = ?",
                     "options": [
-                        "68",
-                        "73",
-                        "70"
+                        "2",
+                        "3",
+                        "1"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 23 \u00d7 3?",
+                    "question": "(1) + (10) = ?",
                     "options": [
-                        "69",
-                        "73",
-                        "64"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 26 \u00d7 3?",
-                    "options": [
-                        "73",
-                        "80",
-                        "78"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 27 \u00d7 6?",
-                    "options": [
-                        "162",
-                        "161",
-                        "165"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q13",
-                    "question": "Berapa hasil dari 33 \u00d7 10?",
-                    "options": [
-                        "327",
-                        "330",
-                        "334"
+                        "10",
+                        "11",
+                        "12"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q14",
-                    "question": "Berapa hasil dari 46 \u00d7 6?",
+                    "id": "q11",
+                    "question": "(-4) - (8) = ?",
                     "options": [
-                        "277",
-                        "276",
-                        "273"
+                        "-12",
+                        "-13",
+                        "-11"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "(-5) + (-7) = ?",
+                    "options": [
+                        "-13",
+                        "-11",
+                        "-12"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q13",
+                    "question": "(4) - (-8) = ?",
+                    "options": [
+                        "13",
+                        "11",
+                        "12"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q14",
+                    "question": "(-4) + (8) = ?",
+                    "options": [
+                        "5",
+                        "4",
+                        "3"
                     ],
                     "correctIndex": 1
                 }
@@ -168,158 +168,158 @@ window.math20 = {
         {
             "id": "mth20_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "🔢",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Bilangan Bulat - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Bilangan Bulat Negatif</h3>\n        <p class='text-slate-700 text-lg'>Bilangan bulat mencakup negatif, nol, dan positif: ...-3,-2,-1,0,1,2,3...</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>(-3) + 5 = 2</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Mulai dari -3, maju 5 langkah = 2</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>(-4) - (-2) = -2</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Mengurangi negatif = menambah positif</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>(-2) × 3 = -6</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Negatif × positif = negatif</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Di garis bilangan: kiri = negatif, kanan = positif</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 19 \u00d7 10?",
+                    "question": "(-6) - (-3) = ?",
                     "options": [
-                        "195",
-                        "190",
-                        "186"
+                        "-4",
+                        "-3",
+                        "-2"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 13 \u00d7 4?",
+                    "question": "(-1) + (10) = ?",
                     "options": [
-                        "49",
-                        "54",
-                        "52"
+                        "9",
+                        "8",
+                        "10"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 19 \u00d7 3?",
+                    "question": "(-5) + (7) = ?",
                     "options": [
-                        "54",
-                        "58",
-                        "57"
+                        "3",
+                        "2",
+                        "1"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 42 \u00d7 2?",
+                    "question": "(9) + (7) = ?",
                     "options": [
-                        "80",
-                        "84",
-                        "86"
+                        "17",
+                        "16",
+                        "15"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 27 \u00d7 2?",
+                    "question": "(8) - (3) = ?",
                     "options": [
-                        "52",
-                        "54",
-                        "59"
+                        "4",
+                        "6",
+                        "5"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 2
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 36 \u00d7 6?",
+                    "question": "(10) - (2) = ?",
                     "options": [
-                        "213",
-                        "216",
-                        "218"
+                        "8",
+                        "9",
+                        "7"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 29 \u00d7 4?",
+                    "question": "(-10) - (-8) = ?",
                     "options": [
-                        "117",
-                        "116",
-                        "114"
+                        "-2",
+                        "-3",
+                        "-1"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 27 \u00d7 3?",
+                    "question": "(-10) + (8) = ?",
                     "options": [
-                        "81",
-                        "79",
-                        "85"
+                        "-2",
+                        "-1",
+                        "-3"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 42 \u00d7 6?",
+                    "question": "(9) - (2) = ?",
                     "options": [
-                        "254",
-                        "247",
-                        "252"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 38 \u00d7 7?",
-                    "options": [
-                        "267",
-                        "266",
-                        "265"
+                        "8",
+                        "7",
+                        "6"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q10",
-                    "question": "Berapa hasil dari 40 \u00d7 8?",
+                    "id": "q9",
+                    "question": "(1) - (-1) = ?",
                     "options": [
-                        "322",
-                        "320",
-                        "315"
+                        "2",
+                        "3",
+                        "1"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q10",
+                    "question": "(1) + (10) = ?",
+                    "options": [
+                        "10",
+                        "11",
+                        "12"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 10 \u00d7 7?",
+                    "question": "(-4) - (8) = ?",
                     "options": [
-                        "69",
-                        "72",
-                        "70"
+                        "-12",
+                        "-13",
+                        "-11"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "(-5) + (-7) = ?",
+                    "options": [
+                        "-13",
+                        "-11",
+                        "-12"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 12 \u00d7 2?",
-                    "options": [
-                        "28",
-                        "24",
-                        "22"
-                    ],
-                    "correctIndex": 1
-                },
-                {
                     "id": "q13",
-                    "question": "Berapa hasil dari 50 \u00d7 3?",
+                    "question": "(4) - (-8) = ?",
                     "options": [
-                        "152",
-                        "148",
-                        "150"
+                        "13",
+                        "11",
+                        "12"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 46 \u00d7 10?",
+                    "question": "(-4) + (8) = ?",
                     "options": [
-                        "461",
-                        "460",
-                        "457"
+                        "5",
+                        "4",
+                        "3"
                     ],
                     "correctIndex": 1
                 }
@@ -328,160 +328,160 @@ window.math20 = {
         {
             "id": "mth20_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "🔢",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Bilangan Bulat - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Bilangan Bulat Negatif</h3>\n        <p class='text-slate-700 text-lg'>Bilangan bulat mencakup negatif, nol, dan positif: ...-3,-2,-1,0,1,2,3...</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>(-3) + 5 = 2</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Mulai dari -3, maju 5 langkah = 2</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>(-4) - (-2) = -2</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Mengurangi negatif = menambah positif</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>(-2) × 3 = -6</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>Negatif × positif = negatif</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Di garis bilangan: kiri = negatif, kanan = positif</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 18 \u00d7 8?",
+                    "question": "(-6) - (-3) = ?",
                     "options": [
-                        "148",
-                        "144",
-                        "140"
+                        "-4",
+                        "-3",
+                        "-2"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 26 \u00d7 5?",
+                    "question": "(-1) + (10) = ?",
                     "options": [
-                        "133",
-                        "130",
-                        "127"
+                        "9",
+                        "8",
+                        "10"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 34 \u00d7 5?",
+                    "question": "(-5) + (7) = ?",
                     "options": [
-                        "169",
-                        "170",
-                        "173"
+                        "3",
+                        "2",
+                        "1"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 22 \u00d7 10?",
+                    "question": "(9) + (7) = ?",
                     "options": [
-                        "223",
-                        "219",
-                        "220"
+                        "17",
+                        "16",
+                        "15"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q4",
+                    "question": "(8) - (3) = ?",
+                    "options": [
+                        "4",
+                        "6",
+                        "5"
                     ],
                     "correctIndex": 2
                 },
                 {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 44 \u00d7 6?",
+                    "id": "q5",
+                    "question": "(10) - (2) = ?",
                     "options": [
-                        "264",
-                        "262",
-                        "268"
+                        "8",
+                        "9",
+                        "7"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 20 \u00d7 2?",
-                    "options": [
-                        "44",
-                        "36",
-                        "40"
-                    ],
-                    "correctIndex": 2
-                },
-                {
                     "id": "q6",
-                    "question": "Berapa hasil dari 39 \u00d7 6?",
+                    "question": "(-10) - (-8) = ?",
                     "options": [
-                        "234",
-                        "231",
-                        "236"
+                        "-2",
+                        "-3",
+                        "-1"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 50 \u00d7 9?",
+                    "question": "(-10) + (8) = ?",
                     "options": [
-                        "447",
-                        "451",
-                        "450"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q8",
-                    "question": "Berapa hasil dari 14 \u00d7 6?",
-                    "options": [
-                        "84",
-                        "89",
-                        "79"
+                        "-2",
+                        "-1",
+                        "-3"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q9",
-                    "question": "Berapa hasil dari 39 \u00d7 4?",
+                    "id": "q8",
+                    "question": "(9) - (2) = ?",
                     "options": [
-                        "156",
-                        "160",
-                        "151"
+                        "8",
+                        "7",
+                        "6"
+                    ],
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q9",
+                    "question": "(1) - (-1) = ?",
+                    "options": [
+                        "2",
+                        "3",
+                        "1"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 14 \u00d7 8?",
+                    "question": "(1) + (10) = ?",
                     "options": [
-                        "111",
-                        "112",
-                        "115"
+                        "10",
+                        "11",
+                        "12"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 49 \u00d7 8?",
+                    "question": "(-4) - (8) = ?",
                     "options": [
-                        "389",
-                        "392",
-                        "393"
+                        "-12",
+                        "-13",
+                        "-11"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 30 \u00d7 9?",
+                    "question": "(-5) + (-7) = ?",
                     "options": [
-                        "274",
-                        "267",
-                        "270"
+                        "-13",
+                        "-11",
+                        "-12"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 27 \u00d7 9?",
+                    "question": "(4) - (-8) = ?",
                     "options": [
-                        "243",
-                        "245",
-                        "238"
+                        "13",
+                        "11",
+                        "12"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 12 \u00d7 4?",
+                    "question": "(-4) + (8) = ?",
                     "options": [
-                        "44",
-                        "51",
-                        "48"
+                        "5",
+                        "4",
+                        "3"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 }
             ]
         }

@@ -2,164 +2,164 @@ window.math19 = {
     "id": "math-19",
     "title": "Level 19: Bangun Ruang",
     "badge": "Kelas 5",
-    "icon": "\ud83e\uddee",
-    "description": "Kubus, balok, volume",
+    "icon": "📦",
+    "description": "Bangun Ruang",
     "lessons": [
         {
             "id": "mth19_1",
             "title": "Bagian 1",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "📦",
+            "difficulty": "Mudah",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Bangun Ruang - Bagian 1</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Bangun Ruang</h3>\n        <p class='text-slate-700 text-lg'>Bangun ruang adalah bentuk 3 dimensi yang memiliki volume.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Kubus</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 sisi, 8 titik sudut, 12 rusuk, Volume = s³</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Balok</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 sisi, Volume = p×l×t</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Tabung</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2 lingkaran + 1 sisi lengkung, Volume = πr²×t</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Volume kubus = s³, Volume balok = panjang × lebar × tinggi</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 35 \u00d7 6?",
+                    "question": "Bangun ruang yang memiliki 6 sisi disebut...",
                     "options": [
-                        "212",
-                        "207",
-                        "210"
+                        "Balok",
+                        "Limas Segi Empat",
+                        "Kubus"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 48 \u00d7 7?",
+                    "question": "Tabung memiliki berapa rusuk?",
                     "options": [
-                        "340",
-                        "333",
-                        "336"
+                        "2",
+                        "0",
+                        "12"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 14 \u00d7 4?",
+                    "question": "Limas Segi Empat memiliki berapa rusuk?",
                     "options": [
-                        "56",
-                        "51",
-                        "58"
+                        "12",
+                        "8",
+                        "0"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 40 \u00d7 10?",
+                    "question": "Bola memiliki berapa rusuk?",
                     "options": [
-                        "400",
-                        "395",
-                        "401"
+                        "12",
+                        "0",
+                        "12"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 12 \u00d7 2?",
+                    "question": "Kerucut memiliki berapa rusuk?",
                     "options": [
-                        "24",
-                        "23",
-                        "28"
+                        "1",
+                        "0",
+                        "12"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q5",
-                    "question": "Berapa hasil dari 10 \u00d7 3?",
+                    "question": "Kubus memiliki berapa rusuk?",
                     "options": [
-                        "30",
-                        "25",
-                        "34"
+                        "12",
+                        "8",
+                        "12"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 46 \u00d7 3?",
+                    "question": "Bangun ruang yang memiliki 6 sisi disebut...",
                     "options": [
-                        "138",
-                        "137",
-                        "140"
+                        "Bola",
+                        "Kubus",
+                        "Balok"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 25 \u00d7 7?",
+                    "question": "Bangun ruang yang memiliki 3 sisi disebut...",
                     "options": [
-                        "175",
-                        "179",
-                        "171"
+                        "Tabung",
+                        "Bola",
+                        "Kubus"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 48 \u00d7 4?",
+                    "question": "Balok memiliki berapa rusuk?",
                     "options": [
-                        "195",
-                        "188",
-                        "192"
+                        "12",
+                        "0",
+                        "12"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 48 \u00d7 7?",
+                    "question": "Bangun ruang yang memiliki 2 sisi disebut...",
                     "options": [
-                        "336",
-                        "338",
-                        "332"
+                        "Kerucut",
+                        "Balok",
+                        "Bola"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 48 \u00d7 7?",
+                    "question": "Bangun ruang yang memiliki 5 sisi disebut...",
                     "options": [
-                        "339",
-                        "332",
-                        "336"
-                    ],
-                    "correctIndex": 2
-                },
-                {
-                    "id": "q11",
-                    "question": "Berapa hasil dari 48 \u00d7 8?",
-                    "options": [
-                        "388",
-                        "384",
-                        "381"
+                        "Bola",
+                        "Limas Segi Empat",
+                        "Balok"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q12",
-                    "question": "Berapa hasil dari 50 \u00d7 5?",
+                    "id": "q11",
+                    "question": "Balok memiliki berapa sisi (bidang)?",
                     "options": [
-                        "250",
-                        "248",
-                        "252"
+                        "6",
+                        "6",
+                        "1"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q12",
+                    "question": "Bola memiliki berapa sisi (bidang)?",
+                    "options": [
+                        "1",
+                        "6",
+                        "6"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 10 \u00d7 10?",
+                    "question": "Kubus memiliki berapa sisi (bidang)?",
                     "options": [
-                        "99",
-                        "100",
-                        "105"
+                        "6",
+                        "6",
+                        "5"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 38 \u00d7 6?",
+                    "question": "Limas Segi Empat memiliki berapa sisi (bidang)?",
                     "options": [
-                        "232",
-                        "228",
-                        "223"
+                        "6",
+                        "5",
+                        "1"
                     ],
                     "correctIndex": 1
                 }
@@ -168,320 +168,320 @@ window.math19 = {
         {
             "id": "mth19_2",
             "title": "Bagian 2",
-            "icon": "\ud83d\udd22",
+            "icon": "📦",
             "difficulty": "Sedang",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Bangun Ruang - Bagian 2</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Bangun Ruang</h3>\n        <p class='text-slate-700 text-lg'>Bangun ruang adalah bentuk 3 dimensi yang memiliki volume.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Kubus</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 sisi, 8 titik sudut, 12 rusuk, Volume = s³</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Balok</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 sisi, Volume = p×l×t</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Tabung</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2 lingkaran + 1 sisi lengkung, Volume = πr²×t</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Volume kubus = s³, Volume balok = panjang × lebar × tinggi</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 19 \u00d7 5?",
+                    "question": "Bangun ruang yang memiliki 6 sisi disebut...",
                     "options": [
-                        "90",
-                        "97",
-                        "95"
+                        "Balok",
+                        "Limas Segi Empat",
+                        "Kubus"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 39 \u00d7 5?",
+                    "question": "Tabung memiliki berapa rusuk?",
                     "options": [
-                        "190",
-                        "200",
-                        "195"
+                        "2",
+                        "0",
+                        "12"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 29 \u00d7 5?",
+                    "question": "Limas Segi Empat memiliki berapa rusuk?",
                     "options": [
-                        "145",
-                        "146",
-                        "140"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q3",
-                    "question": "Berapa hasil dari 48 \u00d7 10?",
-                    "options": [
-                        "480",
-                        "485",
-                        "476"
-                    ],
-                    "correctIndex": 0
-                },
-                {
-                    "id": "q4",
-                    "question": "Berapa hasil dari 30 \u00d7 8?",
-                    "options": [
-                        "235",
-                        "240",
-                        "244"
+                        "12",
+                        "8",
+                        "0"
                     ],
                     "correctIndex": 1
                 },
                 {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 30 \u00d7 4?",
+                    "id": "q3",
+                    "question": "Bola memiliki berapa rusuk?",
                     "options": [
-                        "122",
-                        "117",
-                        "120"
+                        "12",
+                        "0",
+                        "12"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
+                },
+                {
+                    "id": "q4",
+                    "question": "Kerucut memiliki berapa rusuk?",
+                    "options": [
+                        "1",
+                        "0",
+                        "12"
+                    ],
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q5",
+                    "question": "Kubus memiliki berapa rusuk?",
+                    "options": [
+                        "12",
+                        "8",
+                        "12"
+                    ],
+                    "correctIndex": 0
                 },
                 {
                     "id": "q6",
-                    "question": "Berapa hasil dari 50 \u00d7 5?",
+                    "question": "Bangun ruang yang memiliki 6 sisi disebut...",
                     "options": [
-                        "248",
-                        "255",
-                        "250"
+                        "Bola",
+                        "Kubus",
+                        "Balok"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q7",
-                    "question": "Berapa hasil dari 43 \u00d7 2?",
+                    "question": "Bangun ruang yang memiliki 3 sisi disebut...",
                     "options": [
-                        "86",
-                        "88",
-                        "81"
+                        "Tabung",
+                        "Bola",
+                        "Kubus"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 36 \u00d7 10?",
+                    "question": "Balok memiliki berapa rusuk?",
                     "options": [
-                        "362",
-                        "360",
-                        "357"
+                        "12",
+                        "0",
+                        "12"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 13 \u00d7 8?",
+                    "question": "Bangun ruang yang memiliki 2 sisi disebut...",
                     "options": [
-                        "104",
-                        "100",
-                        "105"
+                        "Kerucut",
+                        "Balok",
+                        "Bola"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 11 \u00d7 3?",
+                    "question": "Bangun ruang yang memiliki 5 sisi disebut...",
                     "options": [
-                        "36",
-                        "33",
-                        "31"
+                        "Bola",
+                        "Limas Segi Empat",
+                        "Balok"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 21 \u00d7 4?",
+                    "question": "Balok memiliki berapa sisi (bidang)?",
                     "options": [
-                        "80",
-                        "84",
-                        "87"
+                        "6",
+                        "6",
+                        "1"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 38 \u00d7 3?",
+                    "question": "Bola memiliki berapa sisi (bidang)?",
                     "options": [
-                        "114",
-                        "117",
-                        "112"
+                        "1",
+                        "6",
+                        "6"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 19 \u00d7 7?",
+                    "question": "Kubus memiliki berapa sisi (bidang)?",
                     "options": [
-                        "133",
-                        "131",
-                        "136"
+                        "6",
+                        "6",
+                        "5"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 23 \u00d7 3?",
+                    "question": "Limas Segi Empat memiliki berapa sisi (bidang)?",
                     "options": [
-                        "69",
-                        "64",
-                        "74"
+                        "6",
+                        "5",
+                        "1"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 }
             ]
         },
         {
             "id": "mth19_3",
             "title": "Bagian 3",
-            "icon": "\ud83d\udd22",
-            "difficulty": "Sedang",
+            "icon": "📦",
+            "difficulty": "Sulit",
             "duration": "15 menit",
-            "content": "<div class='text-center'><h2 class='text-3xl text-blue-600 font-bold'>Bangun Ruang - Bagian 3</h2><p class='mt-4'>Ayo kita berlatih berhitung agar makin jago!</p></div>",
+            "content": "<div class='space-y-4'>\n    <div class='bg-blue-50 border-4 border-blue-200 rounded-2xl p-5'>\n        <h3 class='text-xl font-black text-blue-600 mb-2'>Bangun Ruang</h3>\n        <p class='text-slate-700 text-lg'>Bangun ruang adalah bentuk 3 dimensi yang memiliki volume.</p>\n    </div>\n    <div class='space-y-3'><h4 class='font-black text-slate-600'>Contoh:</h4><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Kubus</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 sisi, 8 titik sudut, 12 rusuk, Volume = s³</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Balok</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>6 sisi, Volume = p×l×t</span></div><div class='flex items-center gap-4 bg-white border-2 border-slate-100 rounded-xl p-3'><span class='text-2xl font-black text-blue-600 font-mono'>Tabung</span><span class='text-slate-400 text-xl'>→</span><span class='text-xl font-black text-emerald-600'>2 lingkaran + 1 sisi lengkung, Volume = πr²×t</span></div></div>\n    <div class='bg-amber-50 border-4 border-amber-200 rounded-2xl p-4'><p class='text-amber-700 font-bold'>💡 Tips: Volume kubus = s³, Volume balok = panjang × lebar × tinggi</p></div>\n    </div>",
             "questions": [
                 {
                     "id": "q0",
-                    "question": "Berapa hasil dari 36 \u00d7 9?",
+                    "question": "Bangun ruang yang memiliki 6 sisi disebut...",
                     "options": [
-                        "319",
-                        "326",
-                        "324"
+                        "Balok",
+                        "Limas Segi Empat",
+                        "Kubus"
                     ],
                     "correctIndex": 2
                 },
                 {
                     "id": "q1",
-                    "question": "Berapa hasil dari 45 \u00d7 9?",
+                    "question": "Tabung memiliki berapa rusuk?",
                     "options": [
-                        "405",
-                        "410",
-                        "403"
+                        "2",
+                        "0",
+                        "12"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q2",
-                    "question": "Berapa hasil dari 18 \u00d7 5?",
+                    "question": "Limas Segi Empat memiliki berapa rusuk?",
                     "options": [
-                        "94",
-                        "90",
-                        "89"
+                        "12",
+                        "8",
+                        "0"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q3",
-                    "question": "Berapa hasil dari 32 \u00d7 10?",
+                    "question": "Bola memiliki berapa rusuk?",
                     "options": [
-                        "318",
-                        "321",
-                        "320"
+                        "12",
+                        "0",
+                        "12"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 1
                 },
                 {
                     "id": "q4",
-                    "question": "Berapa hasil dari 13 \u00d7 3?",
+                    "question": "Kerucut memiliki berapa rusuk?",
                     "options": [
-                        "40",
-                        "39",
-                        "34"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q5",
-                    "question": "Berapa hasil dari 26 \u00d7 3?",
-                    "options": [
-                        "79",
-                        "78",
-                        "74"
-                    ],
-                    "correctIndex": 1
-                },
-                {
-                    "id": "q6",
-                    "question": "Berapa hasil dari 21 \u00d7 3?",
-                    "options": [
-                        "63",
-                        "65",
-                        "61"
+                        "1",
+                        "0",
+                        "12"
                     ],
                     "correctIndex": 0
                 },
                 {
-                    "id": "q7",
-                    "question": "Berapa hasil dari 10 \u00d7 6?",
+                    "id": "q5",
+                    "question": "Kubus memiliki berapa rusuk?",
                     "options": [
-                        "55",
-                        "60",
-                        "65"
+                        "12",
+                        "8",
+                        "12"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
+                },
+                {
+                    "id": "q6",
+                    "question": "Bangun ruang yang memiliki 6 sisi disebut...",
+                    "options": [
+                        "Bola",
+                        "Kubus",
+                        "Balok"
+                    ],
+                    "correctIndex": 2
+                },
+                {
+                    "id": "q7",
+                    "question": "Bangun ruang yang memiliki 3 sisi disebut...",
+                    "options": [
+                        "Tabung",
+                        "Bola",
+                        "Kubus"
+                    ],
+                    "correctIndex": 0
                 },
                 {
                     "id": "q8",
-                    "question": "Berapa hasil dari 41 \u00d7 3?",
+                    "question": "Balok memiliki berapa rusuk?",
                     "options": [
-                        "123",
-                        "127",
-                        "121"
+                        "12",
+                        "0",
+                        "12"
                     ],
                     "correctIndex": 0
                 },
                 {
                     "id": "q9",
-                    "question": "Berapa hasil dari 33 \u00d7 3?",
+                    "question": "Bangun ruang yang memiliki 2 sisi disebut...",
                     "options": [
-                        "104",
-                        "96",
-                        "99"
+                        "Kerucut",
+                        "Balok",
+                        "Bola"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q10",
-                    "question": "Berapa hasil dari 48 \u00d7 6?",
+                    "question": "Bangun ruang yang memiliki 5 sisi disebut...",
                     "options": [
-                        "293",
-                        "288",
-                        "284"
+                        "Bola",
+                        "Limas Segi Empat",
+                        "Balok"
                     ],
                     "correctIndex": 1
                 },
                 {
                     "id": "q11",
-                    "question": "Berapa hasil dari 36 \u00d7 8?",
+                    "question": "Balok memiliki berapa sisi (bidang)?",
                     "options": [
-                        "290",
-                        "288",
-                        "287"
+                        "6",
+                        "6",
+                        "1"
                     ],
-                    "correctIndex": 1
+                    "correctIndex": 0
                 },
                 {
                     "id": "q12",
-                    "question": "Berapa hasil dari 45 \u00d7 10?",
+                    "question": "Bola memiliki berapa sisi (bidang)?",
                     "options": [
-                        "455",
-                        "448",
-                        "450"
+                        "1",
+                        "6",
+                        "6"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q13",
-                    "question": "Berapa hasil dari 10 \u00d7 2?",
+                    "question": "Kubus memiliki berapa sisi (bidang)?",
                     "options": [
-                        "23",
-                        "16",
-                        "20"
+                        "6",
+                        "6",
+                        "5"
                     ],
-                    "correctIndex": 2
+                    "correctIndex": 0
                 },
                 {
                     "id": "q14",
-                    "question": "Berapa hasil dari 26 \u00d7 4?",
+                    "question": "Limas Segi Empat memiliki berapa sisi (bidang)?",
                     "options": [
-                        "104",
-                        "109",
-                        "103"
+                        "6",
+                        "5",
+                        "1"
                     ],
-                    "correctIndex": 0
+                    "correctIndex": 1
                 }
             ]
         }
