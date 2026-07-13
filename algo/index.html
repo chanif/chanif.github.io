@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALGO | Belajar Seru Alin & Golang</title>
+    
+    <!-- Tailwind CSS & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        h1, h2, h3, h4, .font-heading { font-family: 'Quicksand', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .lms-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .lms-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15);
+        }
+
+        .step-transition {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* High contrast overrides for dynamic lesson contents */
+        .prose, .prose * {
+            color: #334155 !important;
+        }
+        .prose h1, .prose h2, .prose h3, .prose h4, .prose strong {
+            color: #4f46e5 !important;
+        }
+        .prose .bg-slate-900\/50, .prose .bg-slate-900 {
+            background-color: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+        }
+        .prose .bg-indigo-900\/40, .prose .bg-indigo-900 {
+            background-color: #e0e7ff !important;
+            border-color: #c7d2fe !important;
+        }
+        .prose code, .prose .font-mono {
+            background-color: #e2e8f0 !important;
+            color: #0f172a !important;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased overflow-x-hidden relative min-h-screen selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Decorative blur blobs -->
+    <div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-pink-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+    <div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-blue-200 opacity-15 blur-[100px] rounded-full pointer-events-none z-0"></div>
+    <div class="fixed top-[40%] left-[45%] w-72 h-72 bg-emerald-200 opacity-15 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+    <!-- Main Navigation Bar -->
+    <nav class="border-b border-slate-200/60 bg-white/80 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+            <div class="font-heading font-extrabold text-2xl text-slate-900 tracking-tight flex items-center gap-2">
+                ALGO<span class="text-indigo-500 text-lg">🚀</span>
+            </div>
+            
+            <!-- Subject Tabs -->
+            <div class="flex bg-slate-100 p-1 rounded-2xl border border-slate-200 shadow-inner overflow-x-auto max-w-full">
+                <button onclick="switchSubject('membaca')" id="tab-membaca" class="px-4 py-2 rounded-xl text-sm font-bold transition-all whitespace-nowrap bg-white text-pink-600 shadow-sm border border-slate-200">
+                    📖 Membaca
+                </button>
+                <button onclick="switchSubject('math')" id="tab-math" class="px-4 py-2 rounded-xl text-sm font-bold text-slate-500 hover:text-slate-700 transition-all whitespace-nowrap">
+                    🔢 Matematika
+                </button>
+                <button onclick="switchSubject('english')" id="tab-english" class="px-4 py-2 rounded-xl text-sm font-bold text-slate-500 hover:text-slate-700 transition-all whitespace-nowrap">
+                    🇬🇧 English
+                </button>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button id="resetProgressBtn" class="text-xs font-bold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 px-3.5 py-2 rounded-xl border border-rose-100 transition shadow-sm">
+                    🔄 Reset
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Screen Container -->
+    <div id="dashboardSection" class="relative z-10 flex flex-col transition-all duration-300">
+        <main class="max-w-5xl mx-auto px-6 py-8 flex-1 w-full space-y-8 animate-fade-in">
+            <!-- Progress Card -->
+            <section class="bg-white rounded-[2rem] border border-slate-100 shadow-sm p-8">
+                <div class="space-y-3 w-full">
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <h2 class="font-heading font-extrabold text-2xl text-slate-800">Bintang Prestasi <span id="subjectNameProgress">Membaca</span> 🌟</h2>
+                            <p class="text-slate-400 text-xs mt-0.5" id="progressDetails">Memuat data kemajuan...</p>
+                        </div>
+                        <span class="text-3xl font-black text-indigo-600 font-heading" id="progressPctVal">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-4 rounded-full overflow-hidden border border-slate-200/50">
+                        <div id="progressBar" class="bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-700" style="width: 0%"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Level Grid Section -->
+            <section class="space-y-4">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-2xl">🗺️</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-800">Peta Petualangan</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="levelGrid">
+                    <!-- Levels will be dynamically rendered here -->
+                </div>
+            </section>
+
+            <!-- Lesson Panel Section -->
+            <section id="lessonSection" class="bg-white rounded-[2rem] border border-slate-100 shadow-sm p-8 space-y-6 hidden scroll-mt-24">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-4 gap-2">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-3xl" id="selectedLevelIcon">👶</span>
+                            <h3 class="font-heading font-extrabold text-2xl text-slate-800" id="selectedLevelTitle">Level 1</h3>
+                        </div>
+                        <p class="text-slate-500 text-sm mt-1" id="selectedLevelDesc">Deskripsi</p>
+                    </div>
+                    <span class="text-sm font-bold text-indigo-600 bg-indigo-50 px-4 py-2 rounded-xl border border-indigo-100 shadow-sm" id="selectedLevelProgress">0 / 0 Selesai</span>
+                </div>
+
+                <div class="divide-y divide-slate-100 space-y-3" id="lessonList">
+                    <!-- Lessons will be dynamically rendered here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Lesson Viewer Screen Container -->
+    <div id="viewerSection" class="relative z-10 max-w-3xl mx-auto px-6 py-8 flex flex-col min-h-screen hidden transition-all duration-300">
+        <!-- Header -->
+        <header class="flex flex-wrap gap-4 justify-between items-center mb-8 pb-4 border-b border-slate-200/60">
+            <button id="exitViewerBtn" class="font-heading font-extrabold text-sm text-slate-900 tracking-tight flex items-center gap-1.5 hover:text-indigo-600 transition bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200">
+                <span>←</span> Peta
+            </button>
+            <span id="lessonNavMeta" class="text-xs font-bold text-slate-400">Materi ...</span>
+        </header>
+
+        <!-- Progress/Step Indicator -->
+        <section id="stepIndicator" class="grid gap-2 mb-8 text-center text-[10px] sm:text-xs font-bold text-slate-400">
+            <!-- Dynamic step indicator -->
+        </section>
+
+        <!-- Reader Wrapper Card -->
+        <main class="bg-white rounded-[2rem] border border-slate-100 shadow-xl p-8 flex-1 flex flex-col justify-between">
+            <div id="stepContent" class="step-transition space-y-6">
+                <!-- Dynamic step contents rendered here -->
+            </div>
+            
+            <!-- Navigation Footer -->
+            <div id="stepFooter" class="mt-8 pt-6 border-t border-slate-100 flex justify-between items-center gap-4">
+                <button id="cancelViewerBtn" class="px-5 py-3 rounded-xl border border-slate-200 text-xs font-bold text-slate-500 hover:bg-slate-50 transition">
+                    Keluar
+                </button>
+                <button id="nextStepBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3 rounded-xl text-sm transition shadow-md transform hover:-translate-y-0.5 active:translate-y-0">
+                    Lanjut ➡️
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white mt-12 py-8 relative z-10">
+        <div class="max-w-5xl mx-auto px-6 flex justify-center items-center text-xs text-slate-400 font-bold">
+            <span>Dibuat dengan ❤️ untuk Alin & Golang</span>
+        </div>
+    </footer>
+
+    <!-- Syllabus Data Scripts -->
+    <!-- Membaca -->
+    <script src="./data/membaca-1.js"></script>
+    <script src="./data/membaca-2.js"></script>
+    <script src="./data/membaca-3.js"></script>
+    <script src="./data/membaca-4.js"></script>
+    <script src="./data/membaca-5.js"></script>
+    <script src="./data/membaca-6.js"></script>
+    <script src="./data/membaca-7.js"></script>
+    <script src="./data/membaca-8.js"></script>
+    <script src="./data/membaca-9.js"></script>
+    <script src="./data/membaca-10.js"></script>
+    <!-- Math -->
+    <script src="./data/math-1.js"></script>
+    <script src="./data/math-2.js"></script>
+    <script src="./data/math-3.js"></script>
+    <script src="./data/math-4.js"></script>
+    <script src="./data/math-5.js"></script>
+    <script src="./data/math-6.js"></script>
+    <script src="./data/math-7.js"></script>
+    <script src="./data/math-8.js"></script>
+    <script src="./data/math-9.js"></script>
+    <script src="./data/math-10.js"></script>
+    <script src="./data/math-11.js"></script>
+    <script src="./data/math-12.js"></script>
+    <script src="./data/math-13.js"></script>
+    <script src="./data/math-14.js"></script>
+    <script src="./data/math-15.js"></script>
+    <script src="./data/math-16.js"></script>
+    <script src="./data/math-17.js"></script>
+    <script src="./data/math-18.js"></script>
+    <script src="./data/math-19.js"></script>
+    <script src="./data/math-20.js"></script>
+    <script src="./data/math-21.js"></script>
+    <script src="./data/math-22.js"></script>
+    <script src="./data/math-23.js"></script>
+    <script src="./data/math-24.js"></script>
+    <script src="./data/math-25.js"></script>
+    <!-- English -->
+    <script src="./data/english-1.js"></script>
+    <script src="./data/english-2.js"></script>
+    <script src="./data/english-3.js"></script>
+    <script src="./data/english-4.js"></script>
+    <script src="./data/english-5.js"></script>
+    <script src="./data/english-6.js"></script>
+    <script src="./data/english-7.js"></script>
+    <script src="./data/english-8.js"></script>
+    <script src="./data/english-9.js"></script>
+    <script src="./data/english-10.js"></script>
+    <script src="./data/english-11.js"></script>
+    <script src="./data/english-12.js"></script>
+    <script src="./data/english-13.js"></script>
+    <script src="./data/english-14.js"></script>
+    <script src="./data/english-15.js"></script>
+    <script src="./data/english-16.js"></script>
+    <script src="./data/english-17.js"></script>
+    <script src="./data/english-18.js"></script>
+    <script src="./data/english-19.js"></script>
+    <script src="./data/english-20.js"></script>
+    <script src="./data/english-21.js"></script>
+    <script src="./data/english-22.js"></script>
+    <script src="./data/english-23.js"></script>
+    <script src="./data/english-24.js"></script>
+    <script src="./data/english-25.js"></script>
+
+    <!-- Script to aggregate data (ignoring missing files for now) -->
+    <script>
+        const subjectsData = {
+            'membaca': {
+                name: 'Membaca',
+                color: 'pink',
+                levels: []
+            },
+            'math': {
+                name: 'Matematika',
+                color: 'blue',
+                levels: []
+            },
+            'english': {
+                name: 'Bahasa Inggris',
+                color: 'emerald',
+                levels: []
+            }
+        };
+
+        // Populate reading levels
+        for(let i=1; i<=10; i++) {
+            if(window['membaca' + i]) subjectsData.membaca.levels.push(window['membaca' + i]);
+        }
+        // Populate math levels
+        for(let i=1; i<=25; i++) {
+            if(window['math' + i]) subjectsData.math.levels.push(window['math' + i]);
+        }
+        // Populate english levels
+        for(let i=1; i<=25; i++) {
+            if(window['english' + i]) subjectsData.english.levels.push(window['english' + i]);
+        }
+    </script>
+
+    <!-- App Script -->
+    <script>
+        // ==========================================
+        // 2. DATABASE / STORAGE LOGIC 
+        // ==========================================
+        const STORAGE_KEY = "algo_progress";
+
+        function getUserProgress() {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        }
+
+        function saveUserProgress(levelId, lessonId, data) {
+            const progress = getUserProgress();
+            progress[`${levelId}_${lessonId}`] = data;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+        }
+
+        function clearAllProgress() {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+
+        // ==========================================
+        // 3. UI STATE & INTERACTION LOGIC
+        // ==========================================
+        let activeSubject = 'membaca';
+        let selectedLevelId = null;
+        let activeLevelData = null;
+        let activeLessonData = null;
+
+        // Lesson Viewer Flow variables
+        let steps = [];
+        let currentStepIndex = 0;
+        let quizQuestions = [];
+        let userAnswers = {};
+        let quizScore = 0;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            initApp();
+            setupEventListeners();
+        });
+
+        function switchSubject(subject) {
+            activeSubject = subject;
+            selectedLevelId = null; // Reset selected level on tab switch
+            
+            // Update tabs UI
+            ['membaca', 'math', 'english'].forEach(s => {
+                const tab = document.getElementById(`tab-${s}`);
+                if(s === subject) {
+                    tab.className = `px-4 py-2 rounded-xl text-sm font-bold transition-all whitespace-nowrap bg-white shadow-sm border border-slate-200 text-${subjectsData[s].color}-600`;
+                } else {
+                    tab.className = `px-4 py-2 rounded-xl text-sm font-bold transition-all whitespace-nowrap text-slate-500 hover:text-slate-700`;
+                }
+            });
+
+            // Update progress bar color
+            const pBar = document.getElementById('progressBar');
+            pBar.className = `h-full rounded-full transition-all duration-700 bg-gradient-to-r from-${subjectsData[subject].color}-400 to-${subjectsData[subject].color}-600`;
+            
+            document.getElementById('subjectNameProgress').textContent = subjectsData[subject].name;
+            document.getElementById("lessonSection").classList.add("hidden");
+
+            calculateOverallProgress();
+            renderLevels();
+        }
+
+        function initApp() {
+            switchSubject(activeSubject);
+        }
+
+        function calculateOverallProgress() {
+            const userProgress = getUserProgress();
+            let totalLessons = 0;
+            let completedLessons = 0;
+
+            const levels = subjectsData[activeSubject].levels;
+
+            levels.forEach(level => {
+                level.lessons.forEach(lesson => {
+                    totalLessons++;
+                    const record = userProgress[`${level.id}_${lesson.id}`];
+                    if (record && record.completed) {
+                        completedLessons++;
+                    }
+                });
+            });
+
+            const pct = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+            document.getElementById("progressDetails").textContent = `${completedLessons} dari ${totalLessons} materi diselesaikan`;
+            document.getElementById("progressPctVal").textContent = `${pct}%`;
+            document.getElementById("progressBar").style.width = `${pct}%`;
+        }
+
+        function renderLevels() {
+            const userProgress = getUserProgress();
+            const grid = document.getElementById("levelGrid");
+            grid.innerHTML = "";
+
+            const levels = subjectsData[activeSubject].levels;
+
+            levels.forEach(level => {
+                let completed = 0;
+                level.lessons.forEach(lesson => {
+                    const record = userProgress[`${level.id}_${lesson.id}`];
+                    if (record && record.completed) {
+                        completed++;
+                    }
+                });
+
+                const color = subjectsData[activeSubject].color;
+                const isSelected = selectedLevelId === level.id;
+                
+                const card = document.createElement("div");
+                card.className = `bg-white border rounded-3xl p-5 shadow-sm lms-card cursor-pointer flex flex-col justify-between ${isSelected ? \`border-\${color}-500 ring-2 ring-\${color}-100\` : 'border-slate-100'}`;
+                card.onclick = () => selectLevel(level.id);
+
+                card.innerHTML = \`
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-start">
+                            <span class="text-4xl">\${level.icon}</span>
+                            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-\${color}-50 text-\${color}-600 border border-\${color}-100">\${level.badge}</span>
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-extrabold text-base text-slate-800">\${level.title}</h3>
+                            <p class="text-xs text-slate-400 mt-1 leading-normal line-clamp-2">\${level.description}</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-50 flex items-center justify-between text-xs font-bold">
+                        <span class="text-slate-400">Progres:</span>
+                        <span class="text-\${color}-600 bg-\${color}-50/50 px-2 py-1 rounded-lg">\${completed} / \${level.lessons.length}</span>
+                    </div>
+                \`;
+                grid.appendChild(card);
+            });
+        }
+
+        function selectLevel(levelId) {
+            selectedLevelId = levelId;
+            renderLevels();
+            showLevelLessons(levelId);
+            
+            setTimeout(() => {
+                document.getElementById("lessonSection").scrollIntoView({ behavior: 'smooth' });
+            }, 50);
+        }
+
+        function showLevelLessons(levelId) {
+            const userProgress = getUserProgress();
+            const levels = subjectsData[activeSubject].levels;
+            const level = levels.find(l => l.id === levelId);
+            if (!level) return;
+
+            document.getElementById("selectedLevelIcon").textContent = level.icon;
+            document.getElementById("selectedLevelTitle").textContent = level.title;
+            document.getElementById("selectedLevelDesc").textContent = level.description;
+            
+            let completed = 0;
+            const list = document.getElementById("lessonList");
+            list.innerHTML = "";
+
+            level.lessons.forEach((lesson, index) => {
+                const record = userProgress[`${level.id}_${lesson.id}`];
+                const isCompleted = record && record.completed;
+                if (isCompleted) completed++;
+
+                let scoreLabel = "";
+                if (isCompleted) {
+                    const scoreVal = record.score !== undefined && record.score !== null ? `${record.score}%` : "-";
+                    scoreLabel = \`<span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md border border-slate-200">Skor Quiz: \${scoreVal}</span>\`;
+                }
+
+                const diffColor = lesson.difficulty === "Mudah" ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
+                                  lesson.difficulty === "Sedang" ? "bg-amber-50 text-amber-600 border border-amber-100" :
+                                  "bg-rose-50 text-rose-600 border border-rose-100";
+
+                const color = subjectsData[activeSubject].color;
+
+                const item = document.createElement("div");
+                item.className = "flex flex-col sm:flex-row items-start sm:items-center justify-between py-4 gap-4";
+
+                item.innerHTML = \`
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 border mt-0.5 \${isCompleted ? \`bg-\${color}-500 border-\${color}-500 text-white\` : 'border-slate-300 text-transparent'}">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="text-xs text-slate-400 font-bold">Bagian \${index + 1}</span>
+                                <span class="text-sm font-bold uppercase tracking-wider text-slate-800 font-heading">\${lesson.title}</span>
+                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md \${diffColor}">\${lesson.difficulty}</span>
+                            </div>
+                            <div class="flex items-center gap-3 mt-1.5 text-[11px] text-slate-400">
+                                <span>⏱️ \${lesson.duration}</span>
+                                \${scoreLabel}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 self-end sm:self-center">
+                        <button onclick="startLesson('\${levelId}', '\${lesson.id}')" 
+                            class="inline-block text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 px-5 py-2.5 rounded-xl transition hover:shadow-sm">
+                            \${isCompleted ? 'Ulangi Materi' : 'Mulai Belajar! 🚀'}
+                        </button>
+                    </div>
+                \`;
+                list.appendChild(item);
+            });
+
+            document.getElementById("selectedLevelProgress").textContent = `${completed} / ${level.lessons.length} Selesai`;
+            document.getElementById("lessonSection").classList.remove("hidden");
+        }
+
+
+        // ==========================================
+        // 4. LESSON VIEWER CORE LOGIC 
+        // ==========================================
+
+        function startLesson(levelId, lessonId) {
+            const levels = subjectsData[activeSubject].levels;
+            activeLevelData = levels.find(l => l.id === levelId);
+            if (activeLevelData) {
+                activeLessonData = activeLevelData.lessons.find(l => l.id === lessonId);
+            }
+
+            if (!activeLevelData || !activeLessonData) {
+                alert("Materi belum tersedia!");
+                return;
+            }
+
+            document.getElementById("dashboardSection").classList.add("hidden");
+            document.getElementById("viewerSection").classList.remove("hidden");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Simpler flow for ALGO: Material -> Quiz -> Summary
+            steps = ["material", "quiz", "summary"];
+            currentStepIndex = 0;
+            quizScore = 0;
+            userAnswers = {};
+
+            document.getElementById("lessonNavMeta").textContent = `${activeLevelData.title} | ${activeLessonData.title}`;
+
+            // Load all questions (or max 15)
+            const pool = activeLessonData.questions || [];
+            quizQuestions = getRandomSubset(pool, Math.min(pool.length, 15));
+            
+            // If no questions, skip quiz step
+            if(quizQuestions.length === 0) {
+                steps = ["material", "summary"];
+            }
+
+            renderStepIndicator();
+            renderStep();
+        }
+
+        function getRandomSubset(array, size) {
+            const shuffled = [...array].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, size);
+        }
+
+        function renderStepIndicator() {
+            const container = document.getElementById("stepIndicator");
+            container.innerHTML = "";
+            container.className = `grid gap-2 mb-8 text-center text-[10px] sm:text-xs font-bold text-slate-400 grid-cols-\${steps.length}`;
+
+            steps.forEach((step, i) => {
+                const stepName = step === "material" ? "1. BACA MATERI 📖" :
+                                 step === "quiz" ? "2. KUIS SERU 🎯" :
+                                 (steps.length === 3 ? "3. BINTANG 🌟" : "2. BINTANG 🌟");
+
+                const indicator = document.createElement("div");
+                const colorClass = subjectsData[activeSubject].color;
+                indicator.className = `pb-2 border-b-4 transition \${i === currentStepIndex ? \`border-\${colorClass}-500 text-\${colorClass}-600 font-extrabold text-sm\` : 'border-slate-200'}`;
+                indicator.textContent = stepName;
+                container.appendChild(indicator);
+            });
+        }
+
+        function renderStep() {
+            const step = steps[currentStepIndex];
+            const contentDiv = document.getElementById("stepContent");
+            contentDiv.innerHTML = "";
+            contentDiv.className = "step-transition space-y-6";
+
+            if (step === "material") {
+                renderMaterial(contentDiv);
+            } else if (step === "quiz") {
+                renderQuiz(contentDiv);
+            } else if (step === "summary") {
+                renderSummary(contentDiv);
+            }
+
+            const nextBtn = document.getElementById("nextStepBtn");
+            const colorClass = subjectsData[activeSubject].color;
+            nextBtn.className = `bg-\${colorClass}-600 hover:bg-\${colorClass}-700 text-white font-bold px-8 py-3 rounded-xl text-sm transition shadow-md transform hover:-translate-y-0.5 active:translate-y-0`;
+
+            if (step === "summary") {
+                nextBtn.textContent = "Selesai! 🏁";
+            } else if (step === "quiz") {
+                nextBtn.textContent = "Kumpulkan Jawaban 📝";
+            } else {
+                nextBtn.textContent = "Lanjut ke Kuis! ➡️";
+            }
+        }
+
+        function renderMaterial(container) {
+            const colorClass = subjectsData[activeSubject].color;
+            container.innerHTML = \`
+                <div class="space-y-3 pb-4 border-b border-slate-100 text-center">
+                    <span class="text-6xl block mb-4">\${activeLessonData.icon || '📖'}</span>
+                    <h2 class="font-heading font-extrabold text-3xl text-slate-800">\${activeLessonData.title}</h2>
+                </div>
+                <div class="prose max-w-none text-slate-700 text-lg leading-relaxed space-y-6 pt-4 mx-auto">
+                    \${activeLessonData.content}
+                </div>
+            \`;
+        }
+
+        function renderQuiz(container) {
+            const colorClass = subjectsData[activeSubject].color;
+            container.innerHTML = \`
+                <div class="text-center space-y-2 mb-8">
+                    <h2 class="font-heading font-extrabold text-3xl text-\${colorClass}-600">Saatnya Kuis! 🎯</h2>
+                    <p class="text-slate-500 font-medium">Jawablah \${quizQuestions.length} pertanyaan di bawah ini dengan benar ya!</p>
+                </div>
+                <div class="space-y-8" id="quizContainer"></div>
+            \`;
+
+            const quizContainer = document.getElementById("quizContainer");
+            quizQuestions.forEach((q, qIdx) => {
+                const qBlock = document.createElement("div");
+                qBlock.className = `bg-white border-2 border-\${colorClass}-100 p-6 rounded-2xl shadow-sm space-y-4`;
+                qBlock.innerHTML = \`
+                    <div class="text-lg font-extrabold text-slate-800">\${qIdx + 1}. \${q.question}</div>
+                    <div class="grid gap-3">
+                        \${q.options.map((opt, optIdx) => \`
+                            <label class="flex items-center gap-4 p-4 rounded-xl border-2 border-slate-100 bg-slate-50 hover:bg-\${colorClass}-50 hover:border-\${colorClass}-200 cursor-pointer transition">
+                                <input type="radio" name="q_\${qIdx}" value="\${optIdx}" \${userAnswers[qIdx] === String(optIdx) ? 'checked' : ''} class="w-5 h-5 text-\${colorClass}-600 border-slate-300 focus:ring-\${colorClass}-500">
+                                <span class="font-bold text-slate-700 text-base">\${opt}</span>
+                            </label>
+                        \`).join('')}
+                    </div>
+                \`;
+                qBlock.querySelectorAll('input[type="radio"]').forEach(input => {
+                    input.addEventListener("change", (e) => {
+                        userAnswers[qIdx] = e.target.value;
+                    });
+                });
+                quizContainer.appendChild(qBlock);
+            });
+        }
+
+        const MIN_PASSING_SCORE = 70;
+
+        function renderSummary(container) {
+            const isPassed = quizScore >= MIN_PASSING_SCORE || quizQuestions.length === 0;
+            const colorClass = subjectsData[activeSubject].color;
+
+            let iconHtml = "";
+            let titleText = "";
+            let descText = "";
+
+            if (isPassed) {
+                iconHtml = \`<div class="text-8xl mb-6 animate-bounce">🌟</div>\`;
+                titleText = "Hebat Sekali!";
+                descText = \`Kamu berhasil menyelesaikan materi ini!\`;
+            } else {
+                iconHtml = \`<div class="text-8xl mb-6">💪</div>\`;
+                titleText = "Hampir Saja!";
+                descText = \`Coba lagi ya, kamu pasti bisa! Minimal skor adalah \${MIN_PASSING_SCORE}.\`;
+            }
+
+            let scoreSection = "";
+            if(quizQuestions.length > 0) {
+                scoreSection = \`
+                    <div class="mt-8 bg-\${colorClass}-50 p-6 rounded-2xl border-2 border-\${colorClass}-200 inline-block min-w-[200px]">
+                        <span class="block text-sm font-bold text-\${colorClass}-500 uppercase mb-2">Skor Kamu</span>
+                        <span class="block text-5xl font-black font-heading text-\${colorClass}-600">\${quizScore}</span>
+                    </div>
+                \`;
+            }
+
+            container.innerHTML = \`
+                <div class="text-center py-10">
+                    \${iconHtml}
+                    <h2 class="font-heading font-extrabold text-4xl text-slate-800 mb-2">\${titleText}</h2>
+                    <p class="text-slate-500 font-medium text-lg">\${descText}</p>
+                    \${scoreSection}
+                </div>
+            \`;
+
+            const userProgress = getUserProgress();
+            const record = userProgress[`${activeLevelData.id}_${activeLessonData.id}`];
+            const wasCompleted = record && record.completed;
+
+            const progressData = {
+                completed: wasCompleted || isPassed,
+                score: Math.max(quizScore, (record && record.score) ? record.score : 0),
+                timestamp: new Date().toISOString()
+            };
+            saveUserProgress(activeLevelData.id, activeLessonData.id, progressData);
+        }
+
+        function handleNextStep() {
+            const step = steps[currentStepIndex];
+            
+            if (step === "quiz") {
+                if (Object.keys(userAnswers).length < quizQuestions.length) {
+                    alert("Ayo jawab semua pertanyaan dulu ya! 😊");
+                    return;
+                }
+
+                let correctCount = 0;
+                quizQuestions.forEach((q, idx) => {
+                    if (Number(userAnswers[idx]) === q.correctIndex) {
+                        correctCount++;
+                    }
+                });
+                quizScore = Math.round((correctCount / quizQuestions.length) * 100);
+            } 
+            else if (step === "summary") {
+                closeViewer();
+                return;
+            }
+
+            currentStepIndex++;
+            renderStepIndicator();
+            renderStep();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeViewer() {
+            document.getElementById("viewerSection").classList.add("hidden");
+            document.getElementById("dashboardSection").classList.remove("hidden");
+            initApp();
+        }
+
+        function setupEventListeners() {
+            document.getElementById("resetProgressBtn").addEventListener("click", () => {
+                if (confirm("Hapus semua bintang dan mulai dari awal?")) {
+                    clearAllProgress();
+                    initApp();
+                }
+            });
+
+            document.getElementById("exitViewerBtn").addEventListener("click", () => {
+                closeViewer();
+            });
+
+            document.getElementById("cancelViewerBtn").addEventListener("click", () => {
+                closeViewer();
+            });
+
+            document.getElementById("nextStepBtn").addEventListener("click", handleNextStep);
+        }
+    </script>
+</body>
+</html>
