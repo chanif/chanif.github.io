@@ -380,17 +380,24 @@
             const levels = subjectsData[activeSubject].levels;
 
             levels.forEach(level => {
-                level.lessons.forEach(lesson => {
-                    totalLessons++;
-                    const record = userProgress[`${level.id}_${lesson.id}`];
-                    if (record && record.completed) {
-                        completedLessons++;
-                    }
-                });
+                if (level.isLomba && level.sessions) {
+                    level.sessions.forEach(session => {
+                        totalLessons++;
+                        const record = userProgress[`${level.id}_${session.id}`];
+                        if (record && record.completed) completedLessons++;
+                    });
+                } else if (level.lessons) {
+                    level.lessons.forEach(lesson => {
+                        totalLessons++;
+                        const record = userProgress[`${level.id}_${lesson.id}`];
+                        if (record && record.completed) completedLessons++;
+                    });
+                }
             });
 
             const pct = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
-            document.getElementById("progressDetails").textContent = `${completedLessons} dari ${totalLessons} materi diselesaikan`;
+            const label = subjectsData[activeSubject].isLomba ? 'sesi diselesaikan' : 'materi diselesaikan';
+            document.getElementById("progressDetails").textContent = `${completedLessons} dari ${totalLessons} ${label}`;
             document.getElementById("progressPctVal").textContent = `${pct}%`;
             document.getElementById("progressBar").style.width = `${pct}%`;
         }
@@ -404,12 +411,20 @@
 
             levels.forEach(level => {
                 let completed = 0;
-                level.lessons.forEach(lesson => {
-                    const record = userProgress[`${level.id}_${lesson.id}`];
-                    if (record && record.completed) {
-                        completed++;
-                    }
-                });
+                let totalItems = 0;
+                if (level.isLomba && level.sessions) {
+                    totalItems = level.sessions.length;
+                    level.sessions.forEach(session => {
+                        const record = userProgress[`${level.id}_${session.id}`];
+                        if (record && record.completed) completed++;
+                    });
+                } else if (level.lessons) {
+                    totalItems = level.lessons.length;
+                    level.lessons.forEach(lesson => {
+                        const record = userProgress[`${level.id}_${lesson.id}`];
+                        if (record && record.completed) completed++;
+                    });
+                }
 
                 const color = subjectsData[activeSubject].color;
                 const isSelected = selectedLevelId === level.id;
@@ -431,7 +446,7 @@
                     </div>
                     <div class="mt-4 pt-3 border-t border-slate-50 flex items-center justify-between text-xs font-bold">
                         <span class="text-slate-400">Progres:</span>
-                        <span class="text-${color}-600 bg-${color}-50/50 px-2 py-1 rounded-lg">${completed} / ${level.lessons.length}</span>
+                        <span class="text-${color}-600 bg-${color}-50/50 px-2 py-1 rounded-lg">${completed} / ${totalItems}</span>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -462,54 +477,92 @@
             const list = document.getElementById("lessonList");
             list.innerHTML = "";
 
-            level.lessons.forEach((lesson, index) => {
-                const record = userProgress[`${level.id}_${lesson.id}`];
-                const isCompleted = record && record.completed;
-                if (isCompleted) completed++;
-
-                let scoreLabel = "";
-                if (isCompleted) {
-                    const scoreVal = record.score !== undefined && record.score !== null ? `${record.score}%` : "-";
-                    scoreLabel = `<span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md border border-slate-200">Skor Quiz: ${scoreVal}</span>`;
-                }
-
-                const diffColor = lesson.difficulty === "Mudah" ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
-                                  lesson.difficulty === "Sedang" ? "bg-amber-50 text-amber-600 border border-amber-100" :
-                                  "bg-rose-50 text-rose-600 border border-rose-100";
-
+            // Handle Lomba sessions
+            if (level.isLomba && level.sessions) {
                 const color = subjectsData[activeSubject].color;
-
-                const item = document.createElement("div");
-                item.className = "flex flex-col sm:flex-row items-start sm:items-center justify-between py-4 gap-4";
-
-                item.innerHTML = `
-                    <div class="flex items-start gap-4">
-                        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 border mt-0.5 ${isCompleted ? `bg-${color}-500 border-${color}-500 text-white` : 'border-slate-300 text-transparent'}">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                        </div>
-                        <div>
-                            <div class="flex flex-wrap items-center gap-2">
-                                <span class="text-xs text-slate-400 font-bold">Bagian ${index + 1}</span>
-                                <span class="text-sm font-bold uppercase tracking-wider text-slate-800 font-heading">${lesson.title}</span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md ${diffColor}">${lesson.difficulty}</span>
+                level.sessions.forEach((session, index) => {
+                    const record = userProgress[`${level.id}_${session.id}`];
+                    const isCompleted = record && record.completed;
+                    if (isCompleted) completed++;
+                    let scoreLabel = "";
+                    if (isCompleted) {
+                        const scoreVal = record.score !== undefined && record.score !== null ? `${record.score}%` : "-";
+                        scoreLabel = `<span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md border border-slate-200">Skor: ${scoreVal}</span>`;
+                    }
+                    const item = document.createElement("div");
+                    item.className = "flex flex-col sm:flex-row items-start sm:items-center justify-between py-4 gap-4";
+                    item.innerHTML = `
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 border mt-0.5 ${isCompleted ? `bg-${color}-500 border-${color}-500 text-white` : 'border-slate-300 text-transparent'}">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                             </div>
-                            <div class="flex items-center gap-3 mt-1.5 text-[11px] text-slate-400">
-                                <span>⏱️ ${lesson.duration}</span>
-                                ${scoreLabel}
+                            <div>
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="text-xs text-slate-400 font-bold">Sesi ${index + 1}</span>
+                                    <span class="text-sm font-bold uppercase tracking-wider text-slate-800 font-heading">${session.title}</span>
+                                    <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-100">${session.questions.length} soal</span>
+                                </div>
+                                <div class="flex items-center gap-3 mt-1.5 text-[11px] text-slate-400">
+                                    <span>🏆 Lomba</span>
+                                    ${scoreLabel}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex-shrink-0 self-end sm:self-center">
-                        <button onclick="startLesson('${levelId}', '${lesson.id}')" 
-                            class="inline-block text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 px-5 py-2.5 rounded-xl transition hover:shadow-sm">
-                            ${isCompleted ? 'Ulangi Materi' : 'Mulai Belajar! 🚀'}
-                        </button>
-                    </div>
-                `;
-                list.appendChild(item);
-            });
-
-            document.getElementById("selectedLevelProgress").textContent = `${completed} / ${level.lessons.length} Selesai`;
+                        <div class="flex-shrink-0 self-end sm:self-center">
+                            <button onclick="startLombaSession('${levelId}', '${session.id}')" 
+                                class="inline-block text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 px-5 py-2.5 rounded-xl transition hover:shadow-sm">
+                                ${isCompleted ? 'Ulangi Sesi' : 'Mulai Sesi! 🚀'}
+                            </button>
+                        </div>
+                    `;
+                    list.appendChild(item);
+                });
+                document.getElementById("selectedLevelProgress").textContent = `${completed} / ${level.sessions.length} Selesai`;
+            } else if (level.lessons) {
+                // Original lesson rendering
+                level.lessons.forEach((lesson, index) => {
+                    const record = userProgress[`${level.id}_${lesson.id}`];
+                    const isCompleted = record && record.completed;
+                    if (isCompleted) completed++;
+                    let scoreLabel = "";
+                    if (isCompleted) {
+                        const scoreVal = record.score !== undefined && record.score !== null ? `${record.score}%` : "-";
+                        scoreLabel = `<span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md border border-slate-200">Skor Quiz: ${scoreVal}</span>`;
+                    }
+                    const diffColor = lesson.difficulty === "Mudah" ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
+                                      lesson.difficulty === "Sedang" ? "bg-amber-50 text-amber-600 border border-amber-100" :
+                                      "bg-rose-50 text-rose-600 border border-rose-100";
+                    const color = subjectsData[activeSubject].color;
+                    const item = document.createElement("div");
+                    item.className = "flex flex-col sm:flex-row items-start sm:items-center justify-between py-4 gap-4";
+                    item.innerHTML = `
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 border mt-0.5 ${isCompleted ? `bg-${color}-500 border-${color}-500 text-white` : 'border-slate-300 text-transparent'}">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="text-xs text-slate-400 font-bold">Bagian ${index + 1}</span>
+                                    <span class="text-sm font-bold uppercase tracking-wider text-slate-800 font-heading">${lesson.title}</span>
+                                    <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md ${diffColor}">${lesson.difficulty}</span>
+                                </div>
+                                <div class="flex items-center gap-3 mt-1.5 text-[11px] text-slate-400">
+                                    <span>⏱️ ${lesson.duration}</span>
+                                    ${scoreLabel}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 self-end sm:self-center">
+                            <button onclick="startLesson('${levelId}', '${lesson.id}')" 
+                                class="inline-block text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 px-5 py-2.5 rounded-xl transition hover:shadow-sm">
+                                ${isCompleted ? 'Ulangi Materi' : 'Mulai Belajar! 🚀'}
+                            </button>
+                        </div>
+                    `;
+                    list.appendChild(item);
+                });
+                document.getElementById("selectedLevelProgress").textContent = `${completed} / ${level.lessons.length} Selesai`;
+            }
             document.getElementById("lessonSection").classList.remove("hidden");
         }
 
@@ -805,6 +858,355 @@
 
             document.getElementById("nextStepBtn").addEventListener("click", handleNextStep);
         }
+
+        // ==========================================
+        // 5. LOMBA QUIZ ENGINE
+        // ==========================================
+        let lombaLevelData = null;
+        let lombaSessionData = null;
+        let lombaAnswers = {};
+        let lombaMode = false;
+
+        function startLombaSession(levelId, sessionId) {
+            const levels = subjectsData['lomba'].levels;
+            lombaLevelData = levels.find(l => l.id === levelId);
+            if (!lombaLevelData) { alert('Data lomba tidak ditemukan!'); return; }
+            lombaSessionData = lombaLevelData.sessions.find(s => s.id === sessionId);
+            if (!lombaSessionData) { alert('Sesi tidak ditemukan!'); return; }
+
+            lombaMode = true;
+            lombaAnswers = {};
+            quizQuestions = lombaSessionData.questions;
+
+            document.getElementById("dashboardSection").classList.add("hidden");
+            document.getElementById("viewerSection").classList.remove("hidden");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            steps = ["lomba_quiz", "lomba_review"];
+            currentStepIndex = 0;
+
+            document.getElementById("lessonNavMeta").textContent = `${lombaLevelData.title} | ${lombaSessionData.title}`;
+
+            // Step indicator
+            const container = document.getElementById("stepIndicator");
+            container.innerHTML = '';
+            container.className = 'grid gap-2 mb-8 text-center text-[10px] sm:text-xs font-bold text-slate-400 grid-cols-2';
+            ['1. KERJAKAN SOAL 🎯', '2. REVIEW JAWABAN 📋'].forEach((name, i) => {
+                const d = document.createElement('div');
+                d.className = `pb-2 border-b-4 transition ${i === 0 ? 'border-indigo-500 text-indigo-600 font-extrabold text-sm' : 'border-slate-200'}`;
+                d.textContent = name;
+                container.appendChild(d);
+            });
+
+            renderLombaQuiz();
+        }
+
+        function renderLombaQuiz() {
+            const contentDiv = document.getElementById("stepContent");
+            contentDiv.innerHTML = '';
+            contentDiv.className = 'step-transition space-y-6';
+
+            contentDiv.innerHTML = `
+                <div class="text-center space-y-2 mb-8">
+                    <h2 class="font-heading font-extrabold text-3xl text-indigo-600">🏆 ${lombaSessionData.title}</h2>
+                    <p class="text-slate-500 font-medium">Jawab ${lombaSessionData.questions.length} soal berikut!</p>
+                </div>
+                <div class="space-y-8" id="lombaQuizContainer"></div>
+            `;
+
+            const container = document.getElementById('lombaQuizContainer');
+            lombaSessionData.questions.forEach((q, qIdx) => {
+                const qBlock = document.createElement('div');
+                qBlock.className = 'bg-white border-2 border-indigo-100 p-6 rounded-2xl shadow-sm space-y-4';
+
+                if (q.type === 'drag_order') {
+                    // Drag and drop ordering
+                    qBlock.innerHTML = `
+                        <div class="text-lg font-extrabold text-slate-800">${qIdx + 1}. ${q.question}</div>
+                        <div class="text-sm text-slate-400 mb-2">Seret dan susun urutan yang benar:</div>
+                        <div class="lomba-drag-zone space-y-2" data-qidx="${qIdx}" id="drag-zone-${qIdx}"></div>
+                    `;
+                    const zone = qBlock.querySelector(`#drag-zone-${qIdx}`);
+                    const shuffled = [...q.items].sort(() => Math.random() - 0.5);
+                    // Store initial state
+                    lombaAnswers[qIdx] = { type: 'drag', items: [...shuffled] };
+
+                    shuffled.forEach((item, idx) => {
+                        const chip = document.createElement('div');
+                        chip.className = 'flex items-center gap-3 bg-indigo-50 border-2 border-indigo-200 rounded-xl px-4 py-3 cursor-grab active:cursor-grabbing hover:bg-indigo-100 transition select-none';
+                        chip.draggable = true;
+                        chip.dataset.value = String(item);
+                        chip.innerHTML = `<span class="text-indigo-400 font-bold text-sm">☰</span><span class="text-lg font-black text-indigo-700">${item}</span>`;
+                        zone.appendChild(chip);
+                    });
+
+                    // Setup drag and drop
+                    setupDragAndDrop(zone, qIdx);
+                } else {
+                    // Multiple choice
+                    const optCount = q.options.length;
+                    qBlock.innerHTML = `
+                        <div class="text-lg font-extrabold text-slate-800" style="white-space:pre-line">${qIdx + 1}. ${q.question}</div>
+                        <div class="grid gap-3">
+                            ${q.options.map((opt, optIdx) => `
+                                <label class="flex items-center gap-4 p-4 rounded-xl border-2 border-slate-100 bg-slate-50 hover:bg-indigo-50 hover:border-indigo-200 cursor-pointer transition">
+                                    <input type="radio" name="lomba_q_${qIdx}" value="${optIdx}" ${lombaAnswers[qIdx] && lombaAnswers[qIdx].value === String(optIdx) ? 'checked' : ''} class="w-5 h-5 text-indigo-600 border-slate-300 focus:ring-indigo-500">
+                                    <span class="font-bold text-slate-700 text-base">${opt}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    `;
+                    qBlock.querySelectorAll('input[type="radio"]').forEach(input => {
+                        input.addEventListener('change', (e) => {
+                            lombaAnswers[qIdx] = { type: 'choice', value: e.target.value };
+                        });
+                    });
+                }
+                container.appendChild(qBlock);
+            });
+
+            // Update button
+            const nextBtn = document.getElementById('nextStepBtn');
+            nextBtn.className = 'bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3 rounded-xl text-sm transition shadow-md transform hover:-translate-y-0.5 active:translate-y-0';
+            nextBtn.textContent = 'Koreksi Jawaban 📝';
+        }
+
+        function setupDragAndDrop(zone, qIdx) {
+            let draggedEl = null;
+            zone.addEventListener('dragstart', (e) => {
+                draggedEl = e.target.closest('[draggable]');
+                if (draggedEl) {
+                    draggedEl.style.opacity = '0.4';
+                    e.dataTransfer.effectAllowed = 'move';
+                }
+            });
+            zone.addEventListener('dragend', (e) => {
+                if (draggedEl) draggedEl.style.opacity = '1';
+                draggedEl = null;
+                zone.querySelectorAll('[draggable]').forEach(c => c.classList.remove('border-indigo-500', 'bg-indigo-200'));
+            });
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                const target = e.target.closest('[draggable]');
+                if (target && target !== draggedEl) {
+                    target.classList.add('border-indigo-500', 'bg-indigo-200');
+                }
+            });
+            zone.addEventListener('dragleave', (e) => {
+                const target = e.target.closest('[draggable]');
+                if (target) target.classList.remove('border-indigo-500', 'bg-indigo-200');
+            });
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const target = e.target.closest('[draggable]');
+                if (target && target !== draggedEl && draggedEl) {
+                    const items = [...zone.children];
+                    const dragIdx = items.indexOf(draggedEl);
+                    const dropIdx = items.indexOf(target);
+                    if (dragIdx < dropIdx) {
+                        zone.insertBefore(draggedEl, target.nextSibling);
+                    } else {
+                        zone.insertBefore(draggedEl, target);
+                    }
+                    target.classList.remove('border-indigo-500', 'bg-indigo-200');
+                    // Update answer
+                    const newOrder = [...zone.children].map(c => c.dataset.value);
+                    lombaAnswers[qIdx] = { type: 'drag', items: newOrder };
+                }
+            });
+
+            // Touch support for mobile
+            let touchDragged = null;
+            let touchClone = null;
+            zone.addEventListener('touchstart', (e) => {
+                touchDragged = e.target.closest('[draggable]');
+                if (!touchDragged) return;
+                touchDragged.style.opacity = '0.4';
+            }, { passive: true });
+            zone.addEventListener('touchmove', (e) => {
+                if (!touchDragged) return;
+                e.preventDefault();
+                const touch = e.touches[0];
+                const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+                const target = elem ? elem.closest('[draggable]') : null;
+                zone.querySelectorAll('[draggable]').forEach(c => c.classList.remove('border-indigo-500', 'bg-indigo-200'));
+                if (target && target !== touchDragged) {
+                    target.classList.add('border-indigo-500', 'bg-indigo-200');
+                }
+            }, { passive: false });
+            zone.addEventListener('touchend', (e) => {
+                if (!touchDragged) return;
+                touchDragged.style.opacity = '1';
+                const touch = e.changedTouches[0];
+                const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+                const target = elem ? elem.closest('[draggable]') : null;
+                if (target && target !== touchDragged) {
+                    const items = [...zone.children];
+                    const dragIdx = items.indexOf(touchDragged);
+                    const dropIdx = items.indexOf(target);
+                    if (dragIdx < dropIdx) {
+                        zone.insertBefore(touchDragged, target.nextSibling);
+                    } else {
+                        zone.insertBefore(touchDragged, target);
+                    }
+                    const newOrder = [...zone.children].map(c => c.dataset.value);
+                    lombaAnswers[qIdx] = { type: 'drag', items: newOrder };
+                }
+                zone.querySelectorAll('[draggable]').forEach(c => c.classList.remove('border-indigo-500', 'bg-indigo-200'));
+                touchDragged = null;
+            }, { passive: true });
+        }
+
+        function checkLombaAnswer(q, qIdx) {
+            const ans = lombaAnswers[qIdx];
+            if (!ans) return false;
+            if (q.type === 'drag_order') {
+                const userItems = ans.items.map(String);
+                const correctItems = q.correct.map(String);
+                return JSON.stringify(userItems) === JSON.stringify(correctItems);
+            } else {
+                return Number(ans.value) === q.correctIndex;
+            }
+        }
+
+        function renderLombaReview() {
+            const questions = lombaSessionData.questions;
+            let correctCount = 0;
+            questions.forEach((q, idx) => { if (checkLombaAnswer(q, idx)) correctCount++; });
+            const score = Math.round((correctCount / questions.length) * 100);
+            const isPassed = score >= MIN_PASSING_SCORE;
+
+            // Update step indicator
+            const stepCont = document.getElementById('stepIndicator');
+            stepCont.innerHTML = '';
+            ['1. KERJAKAN SOAL 🎯', '2. REVIEW JAWABAN 📋'].forEach((name, i) => {
+                const d = document.createElement('div');
+                d.className = `pb-2 border-b-4 transition ${i === 1 ? 'border-indigo-500 text-indigo-600 font-extrabold text-sm' : 'border-slate-200'}`;
+                d.textContent = name;
+                stepCont.appendChild(d);
+            });
+
+            // Build review items
+            const reviewItems = questions.map((q, idx) => {
+                const isCorrect = checkLombaAnswer(q, idx);
+                const statusIcon = isCorrect ? '✅' : '❌';
+                const statusColor = isCorrect ? 'emerald' : 'rose';
+                const ans = lombaAnswers[idx];
+
+                let answerHtml = '';
+                if (q.type === 'drag_order') {
+                    const userOrder = ans ? ans.items.map(String) : [];
+                    const correctOrder = q.correct.map(String);
+                    answerHtml = `
+                        <div class="space-y-2 pl-7">
+                            <div class="text-sm font-bold text-slate-600">Jawabanmu:</div>
+                            <div class="flex flex-wrap gap-2">${userOrder.map((v, i) => {
+                                const isRight = v === correctOrder[i];
+                                return `<span class="px-3 py-1.5 rounded-lg border-2 text-sm font-bold ${isRight ? 'bg-emerald-50 border-emerald-400 text-emerald-700' : 'bg-rose-50 border-rose-400 text-rose-700'}">${v}</span>`;
+                            }).join('')}</div>
+                            ${!isCorrect ? `<div class="text-sm font-bold text-emerald-600 mt-1">Jawaban benar: ${correctOrder.join(' → ')}</div>` : ''}
+                        </div>
+                    `;
+                } else {
+                    answerHtml = `<div class="grid gap-2 pl-7">${q.options.map((opt, optIdx) => {
+                        let bg = 'bg-slate-50 border-slate-200 text-slate-600';
+                        if (optIdx === q.correctIndex) bg = 'bg-emerald-50 border-emerald-400 text-emerald-700 font-bold';
+                        if (ans && Number(ans.value) === optIdx && !isCorrect) bg = 'bg-rose-50 border-rose-400 text-rose-700 font-bold';
+                        const prefix = optIdx === q.correctIndex ? '✅ ' : (ans && Number(ans.value) === optIdx && !isCorrect ? '❌ ' : '○ ');
+                        return `<span class="block px-3 py-2 rounded-lg border text-sm ${bg}">${prefix}${opt}</span>`;
+                    }).join('')}</div>`;
+                }
+
+                return `
+                    <div class="bg-white border-2 border-${statusColor}-200 rounded-2xl p-4 space-y-2">
+                        <div class="flex items-start gap-2">
+                            <span class="text-xl flex-shrink-0">${statusIcon}</span>
+                            <p class="font-bold text-slate-700 text-sm" style="white-space:pre-line">${idx+1}. ${q.question}</p>
+                        </div>
+                        ${answerHtml}
+                    </div>
+                `;
+            }).join('');
+
+            const contentDiv = document.getElementById('stepContent');
+            contentDiv.innerHTML = `
+                <div class="text-center py-6">
+                    <div class="text-8xl mb-6 ${isPassed ? 'animate-bounce' : ''}">${isPassed ? '🌟' : '💪'}</div>
+                    <h2 class="font-heading font-extrabold text-4xl text-slate-800 mb-2">${isPassed ? 'Hebat Sekali!' : 'Hampir Saja!'}</h2>
+                    <p class="text-slate-500 font-medium text-lg">${isPassed ? 'Kamu berhasil menyelesaikan sesi ini!' : `Coba lagi ya! Minimal skor ${MIN_PASSING_SCORE}.`}</p>
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <div class="bg-indigo-50 p-6 rounded-2xl border-2 border-indigo-200 min-w-[160px] text-center">
+                            <span class="block text-sm font-bold text-indigo-500 uppercase mb-2">Skor</span>
+                            <span class="block text-5xl font-black font-heading text-indigo-600">${score}</span>
+                        </div>
+                        <div class="bg-emerald-50 p-6 rounded-2xl border-2 border-emerald-200 min-w-[160px] text-center">
+                            <span class="block text-sm font-bold text-emerald-500 uppercase mb-2">Benar ✅</span>
+                            <span class="block text-5xl font-black font-heading text-emerald-600">${correctCount}</span>
+                        </div>
+                        <div class="bg-rose-50 p-6 rounded-2xl border-2 border-rose-200 min-w-[160px] text-center">
+                            <span class="block text-sm font-bold text-rose-500 uppercase mb-2">Salah ❌</span>
+                            <span class="block text-5xl font-black font-heading text-rose-600">${questions.length - correctCount}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 text-left w-full">
+                    <h3 class="text-lg font-black text-slate-700 mb-4 flex items-center gap-2">📋 Review Jawaban</h3>
+                    <div class="space-y-3 max-h-[600px] overflow-y-auto pr-1">${reviewItems}</div>
+                </div>
+            `;
+
+            // Save progress
+            const progressData = {
+                completed: isPassed || (getUserProgress()[`${lombaLevelData.id}_${lombaSessionData.id}`] || {}).completed || false,
+                score: Math.max(score, ((getUserProgress()[`${lombaLevelData.id}_${lombaSessionData.id}`]) || {}).score || 0),
+                timestamp: new Date().toISOString()
+            };
+            saveUserProgress(lombaLevelData.id, lombaSessionData.id, progressData);
+
+            // Update button
+            const nextBtn = document.getElementById('nextStepBtn');
+            nextBtn.textContent = 'Selesai! 🏁';
+        }
+
+        // Override handleNextStep to support lomba
+        const originalHandleNextStep = handleNextStep;
+        handleNextStep = function() {
+            if (lombaMode) {
+                const step = steps[currentStepIndex];
+                if (step === 'lomba_quiz') {
+                    // Check all answered
+                    const questions = lombaSessionData.questions;
+                    let allAnswered = true;
+                    questions.forEach((q, idx) => {
+                        if (!lombaAnswers[idx]) allAnswered = false;
+                        if (q.type !== 'drag_order' && lombaAnswers[idx] && lombaAnswers[idx].value === undefined) allAnswered = false;
+                    });
+                    if (!allAnswered) {
+                        alert('Ayo jawab semua soal dulu ya! 😊');
+                        return;
+                    }
+                    // Capture final drag orders from DOM
+                    questions.forEach((q, idx) => {
+                        if (q.type === 'drag_order') {
+                            const zone = document.getElementById(`drag-zone-${idx}`);
+                            if (zone) {
+                                const order = [...zone.children].map(c => c.dataset.value);
+                                lombaAnswers[idx] = { type: 'drag', items: order };
+                            }
+                        }
+                    });
+                    currentStepIndex = 1;
+                    renderLombaReview();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (step === 'lomba_review') {
+                    lombaMode = false;
+                    closeViewer();
+                }
+                return;
+            }
+            originalHandleNextStep();
+        };
     </script>
     <script src="./auto_advance.js"></script>
 </body>
