@@ -80,24 +80,26 @@ def make_huruf_quiz(huruf_list):
 
 mb1_lessons = [
     {
-        "id": "mb1_1", "title": "Huruf A - I", "icon": "🔤", "difficulty": "Mudah", "duration": "10 menit",
+        "id": "mb1_1", "title": "", "icon": "🔤", "difficulty": "", "duration": "",
         "content": make_huruf_cards(huruf_data[0:9]),
         "questions": make_huruf_quiz(huruf_data[0:9])
     },
     {
-        "id": "mb1_2", "title": "Huruf J - R", "icon": "🔡", "difficulty": "Mudah", "duration": "10 menit",
+        "id": "mb1_2", "title": "", "icon": "🔡", "difficulty": "", "duration": "",
         "content": make_huruf_cards(huruf_data[9:18]),
         "questions": make_huruf_quiz(huruf_data[9:18])
     },
     {
-        "id": "mb1_3", "title": "Huruf S - Z", "icon": "🎲", "difficulty": "Sedang", "duration": "10 menit",
+        "id": "mb1_3", "title": "", "icon": "🎲", "difficulty": "", "duration": "",
         "content": make_huruf_cards(huruf_data[18:26]),
         "questions": make_huruf_quiz(huruf_data[18:26])
     }
 ]
 write_js("membaca-1.js", "membaca1", {
-    "id": "membaca-1", "title": "Level 1: Mengenal Huruf A-Z", "badge": "PAUD",
-    "icon": "🔤", "description": "Belajar mengenal 26 huruf alfabet dengan gambar yang lucu dan warna-warni.",
+    "id": "membaca-1",    "title": "",
+    "description": "",
+    "icon": "🔤",
+    "badge": "PAUD",
     "lessons": mb1_lessons
 })
 print("membaca-1.js done")
