@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starter Pack: Robot Penghindar Rintangan - SMPN 2 Lamongan</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & RESET
+       ========================================================================== */
+    :root {
+      --primary: #2F5496;
+      /* Biru Tua Utama */
+      --primary-dark: #1e3867;
+      --primary-light: #eaf1fb;
+      --accent: #0563C1;
+      /* Biru Medium Aksen */
+      --accent-hover: #044b94;
+      --text-main: #1f2937;
+      --text-secondary: #595959;
+      /* Abu Teks Sekunder */
+      --bg-canvas: #0f172a;
+      --bg-slide: #ffffff;
+      --card-bg: #f8fafc;
+      --border-color: #e2e8f0;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px rgba(47, 84, 150, 0.08);
+      --shadow-lg: 0 10px 25px rgba(47, 84, 150, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-title {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    code,
+    pre {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ==========================================================================
+       STAGE & PRESENTATION CONTAINER (16:9 Aspect Ratio)
+       ========================================================================== */
+    #presentation-stage {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    }
+
+    .slide-wrapper {
+      position: relative;
+      width: min(96vw, 170.67vh);
+      height: min(54vw, 96vh);
+      max-width: 1440px;
+      max-height: 810px;
+      background: var(--bg-slide);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Slide Deck */
+    .slides-deck {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 44px 56px 64px 56px;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(30px);
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.35s;
+      background-color: var(--bg-slide);
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+      z-index: 10;
+    }
+
+    .slide.prev-slide {
+      transform: translateX(-30px);
+    }
+
+    /* ==========================================================================
+       SLIDE HEADER & DECORATION
+       ========================================================================== */
+    .slide-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary-light);
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 700;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .school-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .slide-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    /* Grid & Flex Utilities */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+      flex: 1;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      flex: 1;
+    }
+
+    .flex-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Card styling */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card-highlight {
+      border-left: 5px solid var(--accent);
+      background: #fdfefe;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-body {
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .card-body ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .card-body li {
+      margin-bottom: 6px;
+    }
+
+    /* ==========================================================================
+       BOTTOM CONTROLS & NAVIGATION BAR
+       ========================================================================== */
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 52px;
+      background: #ffffff;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+      z-index: 20;
+    }
+
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .progress-bar-bg {
+      width: 180px;
+      height: 6px;
+      background: var(--border-color);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 5%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .slide-counter {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-nav {
+      background: #f1f5f9;
+      border: 1px solid var(--border-color);
+      color: var(--primary);
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .btn-nav:hover:not(:disabled) {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .btn-nav:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .btn-icon-text {
+      background: #f1f5f9;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-icon-text:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* ==========================================================================
+       INTERACTIVE / VISUAL COMPONENTS
+       ========================================================================== */
+
+    /* Hook Box */
+    .hook-box {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0563C1 100%);
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(5, 99, 193, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hook-quote {
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hook-subtext {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      max-width: 680px;
+      line-height: 1.6;
+      z-index: 2;
+    }
+
+    /* CSS Ultrasonic Radar Animation */
+    .radar-demo-container {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      background: #0b192c;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .radar-robot {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #94a3b8;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .radar-robot-icon {
+      width: 80px;
+      height: 80px;
+      background: #1e293b;
+      border: 3px solid #38bdf8;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+      margin-bottom: 8px;
+    }
+
+    .radar-waves {
+      position: relative;
+      width: 160px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wave-pulse {
+      position: absolute;
+      width: 20px;
+      height: 60px;
+      border-right: 4px solid #38bdf8;
+      border-radius: 50%;
+      opacity: 0;
+      animation: sendWave 2.4s infinite ease-out;
+    }
+
+    .wave-pulse:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+
+    .wave-pulse:nth-child(3) {
+      animation-delay: 1.2s;
+    }
+
+    .wave-echo {
+      position: absolute;
+      width: 20px;
+      height: 60px;
+      border-left: 4px dashed #f59e0b;
+      border-radius: 50%;
+      opacity: 0;
+      animation: echoWave 2.4s infinite ease-in;
+      animation-delay: 1.2s;
+    }
+
+    @keyframes sendWave {
+      0% {
+        left: 10px;
+        opacity: 1;
+        transform: scaleY(0.5);
+      }
+
+      50% {
+        left: 120px;
+        opacity: 0.8;
+        transform: scaleY(1);
+      }
+
+      51% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes echoWave {
+      0% {
+        right: 10px;
+        opacity: 1;
+        transform: scaleY(1);
+      }
+
+      50% {
+        right: 120px;
+        opacity: 0.9;
+        transform: scaleY(0.5);
+      }
+
+      51% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .radar-wall {
+      width: 24px;
+      height: 120px;
+      background: repeating-linear-gradient(45deg, #ef4444, #ef4444 10px, #b91c1c 10px, #b91c1c 20px);
+      border-radius: 6px;
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.75rem;
+      writing-mode: vertical-rl;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* Flowchart Node Box */
+    .flow-step {
+      background: white;
+      border: 2px solid var(--primary);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--primary);
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .flow-decision {
+      background: #fffbeb;
+      border: 2px solid #f59e0b;
+      color: #b45309;
+      transform: rotate(0deg);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-weight: 700;
+    }
+
+    .flow-action-green {
+      background: #ecfdf5;
+      border: 2px solid var(--success);
+      color: #065f46;
+    }
+
+    .flow-action-orange {
+      background: #fff7ed;
+      border: 2px solid #ea580c;
+      color: #9a3412;
+    }
+
+    .flow-arrow {
+      color: var(--accent);
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1;
+    }
+
+    /* Code Block Display */
+    .code-editor {
+      background: #1e1e1e;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      color: #d4d4d4;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      overflow-x: auto;
+      border: 1px solid #333;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .code-keyword {
+      color: #569cd6;
+      font-weight: 600;
+    }
+
+    .code-func {
+      color: #dcdcaa;
+    }
+
+    .code-var {
+      color: #9cdcfe;
+    }
+
+    .code-num {
+      color: #b5cea8;
+    }
+
+    .code-string {
+      color: #ce9178;
+    }
+
+    .code-comment {
+      color: #6a9955;
+      font-style: italic;
+    }
+
+    /* Checkpoint Milestone Item */
+    .checkpoint-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .checkpoint-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 16px;
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .checkpoint-item:hover {
+      transform: translateX(4px);
+      border-color: var(--accent);
+    }
+
+    .interactive-check {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 18px;
+      background: var(--card-bg);
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+      margin-top: 14px;
+    }
+
+    .interactive-check.checked {
+      background: #ecfdf5;
+      border-color: var(--success);
+      border-style: solid;
+    }
+
+    .interactive-check input {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: var(--success);
+    }
+
+    /* Modal / Overview Drawer */
+    #overview-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    #overview-modal.open {
+      display: flex;
+    }
+
+    .overview-content {
+      background: white;
+      width: 90%;
+      max-width: 1100px;
+      max-height: 85vh;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .overview-thumb {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      height: 100px;
+      justify-content: space-between;
+    }
+
+    .overview-thumb:hover {
+      border-color: var(--accent);
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .overview-thumb.current {
+      border: 2px solid var(--primary);
+      background: #eff6ff;
+    }
+
+    .overview-thumb-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Key Shortcuts Modal */
+    #shortcuts-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(4px);
+      z-index: 1001;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #shortcuts-modal.open {
+      display: flex;
+    }
+
+    .shortcuts-box {
+      background: white;
+      width: 460px;
+      padding: 28px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .shortcut-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.92rem;
+    }
+
+    .kbd-key {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 3px 8px;
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 0.85rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PRESENTATION MAIN STAGE -->
+  <div id="presentation-stage">
+    <div class="slide-wrapper" id="slide-wrapper">
+
+      <!-- SLIDES DECK (TOTAL 21 SLIDES) -->
+      <div class="slides-deck" id="slides-deck">
+
+        <!-- =================================================================
+             TAHAP PEMBUKAAN (SLIDE 1)
+             ================================================================= -->
+        <!-- SLIDE 1: Pembukaan & Hook Pertanyaan Pemantik -->
+        <section class="slide active" data-slide="1">
+          <div class="slide-top-bar">
+            <span class="badge-tag">🤖 Starter Pack Informatika</span>
+            <span class="school-label">SMP Negeri 2 Lamongan</span>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h1 class="slide-title" style="font-size: 2.5rem; margin-bottom: 6px;">
+                Robot Penghindar Rintangan
+              </h1>
+              <p class="slide-subtitle" style="margin-bottom: 18px; font-size: 1.15rem;">
+                Membangun Kecerdasan Sederhana dengan <strong>Sensor Ultrasonik</strong> & <strong>Logika
+                  If-Else</strong>
+              </p>
+            </div>
+
+            <!-- Visual Hook Box -->
+            <div class="hook-box">
+              <div style="font-size: 2.8rem; margin-bottom: 10px;">🤔 🧹 ⚡</div>
+              <div class="hook-quote">
+                "Bagaimana robot vacuum cleaner tahu ada tembok atau meja di depannya tanpa menabrak?"
+              </div>
+              <div class="hook-subtext">
+                Hari ini kita akan membedah rahasia di balik mata robot dan otak pembuat keputusannya secara virtual di
+                <strong>Tinkercad Circuits</strong>!
+              </div>
+            </div>
+
+            <div
+              style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-size: 0.9rem; color: var(--text-secondary);">
+              <div>⏱️ <strong>Durasi:</strong> 90 Menit</div>
+              <div>🛠️ <strong>Platform:</strong> Autodesk Tinkercad Circuits</div>
+              <div>👥 <strong>Mode:</strong> Kolaborasi Praktik Kelompok</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================
+             TAHAP PENGEMBANGAN (SLIDE 2 - 20)
+             ================================================================= -->
+        <!-- SLIDE 2: Pertanyaan Diskusi Sensor Jarak -->
+        <section class="slide" data-slide="2">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Konsep Dasar</span>
+            <span class="school-label">Tahap Pengembangan</span>
+          </div>
+          <h2 class="slide-title">Sensor Jarak: Mata Robot Modern</h2>
+          <p class="slide-subtitle">Mari berdiskusi sejenak sebelum merakit sirkuit robot kita.</p>
+
+          <div class="grid-2">
+            <div class="card card-highlight">
+              <div class="card-title">💬 Pertanyaan Diskusi Kelas</div>
+              <div class="card-body" style="font-size: 1.1rem; line-height: 1.7;">
+                <p><em>"Pernahkah kalian melihat alat atau perangkat di sekitar kita yang bisa mengukur jarak tanpa
+                    harus menyentuh objeknya?"</em></p>
+                <div
+                  style="margin-top: 18px; padding: 14px; background: var(--primary-light); border-radius: var(--radius-sm); color: var(--primary);">
+                  💡 <strong>Petunjuk:</strong> Pikirkan saat mobil mundur saat parkir, dispenser sabun otomatis, atau
+                  bahkan hewan malam seperti kelelawar!
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-title">🔍 Contoh di Kehidupan Sehari-hari</div>
+              <div class="card-body">
+                <div style="display: flex; gap: 14px; margin-bottom: 14px; align-items: center;">
+                  <div style="font-size: 2rem;">🚗</div>
+                  <div><strong>Sensor Parkir Mobil</strong><br><span
+                      style="font-size: 0.85rem; color: var(--text-secondary);">Berbunyi 'bip-bip' semakin cepat ketika
+                      mobil mendekati dinding.</span></div>
+                </div>
+                <div style="display: flex; gap: 14px; margin-bottom: 14px; align-items: center;">
+                  <div style="font-size: 2rem;">🦇</div>
+                  <div><strong>Ekolokasi Kelelawar</strong><br><span
+                      style="font-size: 0.85rem; color: var(--text-secondary);">Mengeluarkan bunyi frekuensi tinggi dan
+                      mendengar pantulannya.</span></div>
+                </div>
+                <div style="display: flex; gap: 14px; align-items: center;">
+                  <div style="font-size: 2rem;">🚪</div>
+                  <div><strong>Pintu Otomatis Mall</strong><br><span
+                      style="font-size: 0.85rem; color: var(--text-secondary);">Terbuka otomatis saat mendeteksi tubuh
+                      manusia mendekat.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 3: Mengenal Komponen Sensor HC-SR04 -->
+        <section class="slide" data-slide="3">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Hardware Virtual</span>
+            <span class="school-label">Sensor HC-SR04</span>
+          </div>
+          <h2 class="slide-title">Mengenal Sensor Ultrasonik HC-SR04</h2>
+          <p class="slide-subtitle">Komponen utama yang bertindak sebagai indera penglihatan robot.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">📌 4 Pin Utama HC-SR04</div>
+              <div class="card-body">
+                <div style="margin-bottom: 12px;">
+                  <strong style="color: #dc2626;">1. VCC:</strong> Dihubungkan ke sumber daya <code>5V</code> Arduino.
+                </div>
+                <div style="margin-bottom: 12px;">
+                  <strong style="color: #2563eb;">2. TRIG (Trigger):</strong> Pin pengirim sinyal suara (Transmitter).
+                </div>
+                <div style="margin-bottom: 12px;">
+                  <strong style="color: #d97706;">3. ECHO:</strong> Pin penerima pantulan suara (Receiver).
+                </div>
+                <div>
+                  <strong style="color: #1f2937;">4. GND (Ground):</strong> Dihubungkan ke <code>GND</code> Arduino.
+                </div>
+              </div>
+            </div>
+
+            <div class="card flex-center" style="background: #f1f5f9; text-align: center;">
+              <!-- Sensor Illustration SVG -->
+              <svg width="280" height="150" viewBox="0 0 280 150">
+                <rect x="20" y="20" width="240" height="100" rx="10" fill="#0284c7" stroke="#0369a1" stroke-width="3" />
+                <!-- Eyes / Transducers -->
+                <circle cx="80" cy="70" r="34" fill="#cbd5e1" stroke="#334155" stroke-width="4" />
+                <circle cx="80" cy="70" r="24" fill="#94a3b8" />
+                <text x="80" y="75" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f172a">T
+                  (Trig)</text>
+
+                <circle cx="200" cy="70" r="34" fill="#cbd5e1" stroke="#334155" stroke-width="4" />
+                <circle cx="200" cy="70" r="24" fill="#94a3b8" />
+                <text x="200" y="75" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f172a">R
+                  (Echo)</text>
+                <!-- Pin labels -->
+                <rect x="95" y="120" width="90" height="16" fill="#1e293b" rx="2" />
+                <text x="140" y="132" text-anchor="middle" font-size="10" fill="#ffffff" font-family="monospace">VCC
+                  TRIG ECHO GND</text>
+              </svg>
+              <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px;">
+                Bentuk sensor menyerupai sepasang mata bulat (Transmitter & Receiver).
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 4: Prinsip Kerja Sensor Ultrasonik (Animasi Pantulan) -->
+        <section class="slide" data-slide="4">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Fisika & Komputasi</span>
+            <span class="school-label">Prinsip Kerja</span>
+          </div>
+          <h2 class="slide-title">Bagaimana Sensor Mengukur Jarak?</h2>
+          <p class="slide-subtitle">Prinsip Pemantulan Gelombang Suara (Echo & Waktu Tempuh).</p>
+
+          <div class="grid-2">
+            <div>
+              <div class="radar-demo-container">
+                <div class="radar-robot">
+                  <div class="radar-robot-icon">📡</div>
+                  <span>HC-SR04</span>
+                </div>
+
+                <div class="radar-waves">
+                  <div class="wave-pulse"></div>
+                  <div class="wave-pulse"></div>
+                  <div class="wave-pulse"></div>
+                  <div class="wave-echo"></div>
+                </div>
+
+                <div class="radar-wall">
+                  RINTANGAN
+                </div>
+              </div>
+              <div
+                style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-top: 6px; color: var(--text-secondary);">
+                <span>🔵 <strong>Gelombang Keluar (Trig)</strong></span>
+                <span>🟠 <strong>Gelombang Pantul (Echo)</strong></span>
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">📐 Rumus Menghitung Jarak</div>
+              <div class="card-body">
+                <p>Sensor mengukur <strong>waktu tempuh ($t$)</strong> gelombang suara bolak-balik dari sensor ke
+                  rintangan.</p>
+                <div
+                  style="background: var(--primary-light); padding: 14px; border-radius: var(--radius-sm); margin: 12px 0; text-align: center;">
+                  <strong style="color: var(--primary); font-size: 1.15rem; font-family: monospace;">
+                    Jarak = (Waktu &times; Kecepatan Suara) / 2
+                  </strong>
+                </div>
+                <p style="font-size: 0.88rem;">
+                  Mengapa dibagi 2? Karena gelombang suara menempuh perjalanan <strong>pergi dan pulang</strong>!
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 5: Logika Kondisional (If-Else) -->
+        <section class="slide" data-slide="5">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Berpikir Komputasional</span>
+            <span class="school-label">Logika Pengambilan Keputusan</span>
+          </div>
+          <h2 class="slide-title">Otak Robot: Logika Kondisional (If-Else)</h2>
+          <p class="slide-subtitle">Bagaimana komputer membuat keputusan berdasarkan data sensor?</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">🧠 Konsep Dasar If-Else</div>
+              <div class="card-body" style="font-size: 1.02rem;">
+                <p>Robot tidak bisa berpikir sendiri. Kita harus memberikan <strong>aturan keputusan</strong> yang
+                  jelas:</p>
+                <div
+                  style="margin-top: 16px; padding: 14px; background: #eff6ff; border-radius: var(--radius-sm); border-left: 4px solid var(--accent);">
+                  <strong>JIKA (Kondisi Terpenuhi)</strong><br>
+                  &rarr; Lakukan Aksi A<br>
+                  <strong>JIKA TIDAK (Kondisi Lain)</strong><br>
+                  &rarr; Lakukan Aksi B
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">🚗 Contoh Kasus Robot Kita</div>
+              <div class="card-body">
+                <p>Kondisi batas jarak aman kita tentukan pada <strong>15 cm</strong>:</p>
+                <div style="margin-top: 14px; line-height: 1.8;">
+                  <div
+                    style="background: #fff7ed; padding: 10px 14px; border-radius: 6px; margin-bottom: 8px; border: 1px solid #fdba74;">
+                    🛑 <strong>JIKA Jarak &lt; 15 cm:</strong><br>
+                    Robot dalam bahaya! &rarr; <em>Berhenti &amp; Belok Kanan</em>.
+                  </div>
+                  <div style="background: #f0fdf4; padding: 10px 14px; border-radius: 6px; border: 1px solid #86efac;">
+                    🟢 <strong>JIKA TIDAK (&ge; 15 cm):</strong><br>
+                    Jalan aman! &rarr; <em>Maju Lurus Terus</em>.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 6: Flowchart Logika Robot -->
+        <section class="slide" data-slide="6">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Algoritma</span>
+            <span class="school-label">Flowchart Keputusan</span>
+          </div>
+          <h2 class="slide-title">Diagram Alur (Flowchart) Robot</h2>
+          <p class="slide-subtitle">Visualisasi langkah berpikir robot yang dieksekusi berulang-ulang (loop).</p>
+
+          <div style="display: flex; justify-content: center; align-items: center; flex: 1;">
+            <div
+              style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; max-width: 650px;">
+              <div class="flow-step" style="border-radius: 999px; background: #e2e8f0; width: 200px;">
+                🟢 MULAI (Start Loop)
+              </div>
+              <div class="flow-arrow">&darr;</div>
+              <div class="flow-step" style="width: 280px;">
+                📡 Baca Jarak Sensor Ultrasonik
+              </div>
+              <div class="flow-arrow">&darr;</div>
+              <div class="flow-decision" style="width: 320px;">
+                ❓ Apakah Jarak &lt; 15 cm?
+              </div>
+              <div style="display: flex; justify-content: space-between; width: 100%; gap: 20px;">
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                  <div style="color: var(--danger); font-weight: 700; font-size: 0.9rem;">[ YA / Terlalu Dekat ]</div>
+                  <div class="flow-arrow">&darr;</div>
+                  <div class="flow-step flow-action-orange" style="width: 100%;">
+                    🛑 Berhenti &amp; Putar Arah
+                  </div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                  <div style="color: var(--success); font-weight: 700; font-size: 0.9rem;">[ TIDAK / Aman ]</div>
+                  <div class="flow-arrow">&darr;</div>
+                  <div class="flow-step flow-action-green" style="width: 100%;">
+                    🟢 Lanjut Maju ke Depan
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 7: Pengenalan Tinkercad Circuits -->
+        <section class="slide" data-slide="7">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Platform Praktik</span>
+            <span class="school-label">Tinkercad Circuits</span>
+          </div>
+          <h2 class="slide-title">Mengenal Simulator Tinkercad</h2>
+          <p class="slide-subtitle">Laboratorium elektronika virtual gratis di browser tanpa resiko komponen rusak.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">🌐 Mengapa Menggunakan Tinkercad?</div>
+              <div class="card-body">
+                <ul>
+                  <li><strong>Aman:</strong> Tidak ada bahaya konsleting atau komponen terbakar.</li>
+                  <li><strong>Gratis &amp; Mudah:</strong> Berjalan langsung di browser (Chrome/Edge).</li>
+                  <li><strong>Simulasi Realistis:</strong> Memiliki monitor serial dan interaksi visual komponen.</li>
+                  <li><strong>Mudah Di-debug:</strong> Jika ada kesalahan kabel, tinggal hapus dan tarik ulang.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">🚀 Langkah Masuk Lab Virtual</div>
+              <div class="card-body">
+                <ol style="padding-left: 20px; line-height: 1.8;">
+                  <li>Buka browser di laptop &rarr; kunjungi <code>tinkercad.com</code>.</li>
+                  <li>Login menggunakan akun Google / Akun Siswa.</li>
+                  <li>Pilih menu <strong>Designs</strong> &rarr; klik <strong>+ Create</strong> &rarr;
+                    <strong>Circuit</strong>.
+                  </li>
+                  <li>Beri nama project: <code>Robot_Penghindar_Kelompok_XX</code>.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 8: Anatomi Komponen Rangkaian Virtual -->
+        <section class="slide" data-slide="8">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Daftar Komponen</span>
+            <span class="school-label">Tinkercad Circuits</span>
+          </div>
+          <h2 class="slide-title">Daftar Komponen yang Diperlukan</h2>
+          <p class="slide-subtitle">Cari dan letakkan komponen-komponen berikut di kanvas Tinkercad kalian.</p>
+
+          <div class="grid-3">
+            <div class="card">
+              <div style="font-size: 2.2rem; margin-bottom: 8px;">📟</div>
+              <div class="card-title" style="font-size: 1rem;">Arduino Uno R3</div>
+              <div class="card-body" style="font-size: 0.85rem;">
+                Mikrokontroler yang menjadi otak pengolah kode dan instruksi gerak.
+              </div>
+            </div>
+
+            <div class="card">
+              <div style="font-size: 2.2rem; margin-bottom: 8px;">📡</div>
+              <div class="card-title" style="font-size: 1rem;">Sensor HC-SR04</div>
+              <div class="card-body" style="font-size: 0.85rem;">
+                Pilih sensor dengan <strong>4 pin</strong> (VCC, TRIG, ECHO, GND).
+              </div>
+            </div>
+
+            <div class="card">
+              <div style="font-size: 2.2rem; margin-bottom: 8px;">⚙️</div>
+              <div class="card-title" style="font-size: 1rem;">Motor DC / Servo</div>
+              <div class="card-body" style="font-size: 0.85rem;">
+                Aktuator penggerak roda robot saat maju atau bermanuver.
+              </div>
+            </div>
+
+            <div class="card">
+              <div style="font-size: 2.2rem; margin-bottom: 8px;">🍞</div>
+              <div class="card-title" style="font-size: 1rem;">Breadboard Mini</div>
+              <div class="card-body" style="font-size: 0.85rem;">
+                Papan penghubung kabel jumper tanpa perlu menyolder.
+              </div>
+            </div>
+
+            <div class="card">
+              <div style="font-size: 2.2rem; margin-bottom: 8px;">🔌</div>
+              <div class="card-title" style="font-size: 1rem;">Kabel Jumper</div>
+              <div class="card-body" style="font-size: 0.85rem;">
+                Gunakan warna berbeda (Merah: 5V, Hitam: GND, Kuning: Signal).
+              </div>
+            </div>
+
+            <div class="card">
+              <div style="font-size: 2.2rem; margin-bottom: 8px;">💡</div>
+              <div class="card-title" style="font-size: 1rem;">LED Indikator</div>
+              <div class="card-body" style="font-size: 0.85rem;">
+                Sebagai indikator visual status deteksi bahaya rintangan.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 9: Logika Pemrograman & Pseudocode -->
+        <section class="slide" data-slide="9">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Pseudocode</span>
+            <span class="school-label">Logika Program</span>
+          </div>
+          <h2 class="slide-title">Pseudocode: Menulis Logika Robot</h2>
+          <p class="slide-subtitle">Sebelum mengetik kode asli, mari pahami alur dalam bahasa manusia.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">📝 Pseudocode Bahasa Indonesia</div>
+              <div class="code-editor" style="font-size: 0.86rem;">
+                <span class="code-comment">// Inisialisasi pin</span>
+                SET trigPin = 9
+                SET echoPin = 8
+                SET jarakBatas = 15 cm
+
+                <span class="code-comment">// Alur Program Berulang (Loop)</span>
+                FUNGSI loop():
+                jarak = ukurJarakUltrasonik()
+
+                <span class="code-keyword">JIKA</span> (jarak &lt; jarakBatas) <span class="code-keyword">MAKA</span>:
+                cetak("Awas Rintangan! Belok!")
+                nyalakanLEDMerah()
+                gerakkanMotorBelokKanan()
+                <span class="code-keyword">JIKA TIDAK</span>:
+                cetak("Jalan Bebas! Maju!")
+                matikanLEDMerah()
+                gerakkanMotorMajuLurus()
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">💡 Poin Penting Pemrograman</div>
+              <div class="card-body">
+                <ul>
+                  <li><strong>Trigger Pulse:</strong> Arduino mengirim sinyal HIGH singkat (10 mikrodetik) ke pin TRIG.
+                  </li>
+                  <li><strong>Echo Reading:</strong> Menghitung durasi pin ECHO menerima pantulan dengan
+                    <code>pulseIn()</code>.
+                  </li>
+                  <li><strong>Batas Jarak:</strong> Nilai <code>15 cm</code> adalah threshold aman agar robot tidak
+                    menabrak.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 10: Bedah Kode Arduino C++ -->
+        <section class="slide" data-slide="10">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Kode Arduino</span>
+            <span class="school-label">Implementasi C++</span>
+          </div>
+          <h2 class="slide-title">Struktur Kode di Editor Tinkercad</h2>
+          <p class="slide-subtitle">Potongan kode utama yang akan kita masukkan ke panel Code Tinkercad.</p>
+
+          <div class="grid-2">
+            <div class="code-editor" style="font-size: 0.8rem;">
+              <span class="code-keyword">const int</span> trigPin = <span class="code-num">9</span>;
+              <span class="code-keyword">const int</span> echoPin = <span class="code-num">8</span>;
+
+              <span class="code-keyword">void</span> <span class="code-func">setup</span>() {
+              <span class="code-func">pinMode</span>(trigPin, OUTPUT);
+              <span class="code-func">pinMode</span>(echoPin, INPUT);
+              <span class="code-var">Serial</span>.<span class="code-func">begin</span>(<span
+                class="code-num">9600</span>);
+              }
+
+              <span class="code-keyword">void</span> <span class="code-func">loop</span>() {
+              <span class="code-comment">// 1. Kirim gelombang ultrasonik</span>
+              <span class="code-func">digitalWrite</span>(trigPin, LOW);
+              <span class="code-func">delayMicroseconds</span>(<span class="code-num">2</span>);
+              <span class="code-func">digitalWrite</span>(trigPin, HIGH);
+              <span class="code-func">delayMicroseconds</span>(<span class="code-num">10</span>);
+              <span class="code-func">digitalWrite</span>(trigPin, LOW);
+
+              <span class="code-comment">// 2. Hitung jarak (cm)</span>
+              <span class="code-keyword">long</span> durasi = <span class="code-func">pulseIn</span>(echoPin, HIGH);
+              <span class="code-keyword">int</span> jarak = durasi * <span class="code-num">0.034</span> / <span
+                class="code-num">2</span>;
+
+              <span class="code-comment">// 3. Logika Keputusan If-Else</span>
+              <span class="code-keyword">if</span> (jarak &lt; <span class="code-num">15</span>) {
+              <span class="code-var">Serial</span>.<span class="code-func">println</span>(<span
+                class="code-string">"Rintangan Terdeteksi! Belok."</span>);
+              <span class="code-comment">// Aksi manuver belok</span>
+              } <span class="code-keyword">else</span> {
+              <span class="code-var">Serial</span>.<span class="code-func">println</span>(<span
+                class="code-string">"Jalan Aman: Maju Lurus."</span>);
+              <span class="code-comment">// Aksi maju</span>
+              }
+              <span class="code-func">delay</span>(<span class="code-num">100</span>);
+              }
+            </div>
+
+            <div class="card">
+              <div class="card-title">🔍 Bagian Kunci Kode</div>
+              <div class="card-body">
+                <div style="margin-bottom: 12px;">
+                  <strong style="color: var(--primary);">Serial.begin(9600):</strong><br>
+                  Mengaktifkan komunikasi data ke Serial Monitor untuk memantau angka jarak secara realtime.
+                </div>
+                <div style="margin-bottom: 12px;">
+                  <strong style="color: var(--primary);">durasi * 0.034 / 2:</strong><br>
+                  Kecepatan suara di udara adalah 0.034 cm/mikrodetik.
+                </div>
+                <div>
+                  <strong style="color: var(--primary);">if (jarak &lt; 15):</strong><br>
+                  Pengecekan logika kondisi apakah jarak objek lebih kecil dari batas toleransi tabrakan.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 11: Misi Praktik Mandiri & Pembagian Peran -->
+        <section class="slide" data-slide="11">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Aktivitas Kelompok</span>
+            <span class="school-label">Panduan Praktik</span>
+          </div>
+          <h2 class="slide-title">Misi Praktik: 9 Checkpoints Menuju Sukses</h2>
+          <p class="slide-subtitle">Waktu pengerjaan: <strong>40 Menit</strong>. Bagi tugas dalam kelompok dengan
+            kompak!</p>
+
+          <div class="grid-2">
+            <div class="card card-highlight">
+              <div class="card-title">👥 Pembagian Peran Kelompok</div>
+              <div class="card-body">
+                <div style="margin-bottom: 12px;">
+                  <strong>🔧 Hardware Builder (Siswa 1):</strong><br>
+                  Bertanggung jawab merangkai kabel, sensor, dan Arduino di Tinkercad.
+                </div>
+                <div style="margin-bottom: 12px;">
+                  <strong>💻 Software Coder (Siswa 2):</strong><br>
+                  Mengetik kode, mengatur kondisi if-else, dan memeriksa syntax error.
+                </div>
+                <div>
+                  <strong>📋 Tester &amp; Reporter (Siswa 3/4):</strong><br>
+                  Menguji jarak rintangan, mencatat data di LKPD, dan mengevaluasi hasil.
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-title">🚩 9 Target Checkpoint</div>
+              <div class="card-body" style="font-size: 0.88rem;">
+                <ol style="padding-left: 18px; line-height: 1.7;">
+                  <li>Siapkan kanvas &amp; komponen utama.</li>
+                  <li>Sambungkan kabel sensor ultrasonik.</li>
+                  <li>Tambahkan aktuator motor / lampu indikator.</li>
+                  <li>Tulis kode pembacaan jarak ultrasonik.</li>
+                  <li>Terapkan logika kondisi If-Else (15 cm).</li>
+                  <li>Uji respon dengan Serial Monitor Tinkercad.</li>
+                  <li>Troubleshooting jika terjadi error.</li>
+                  <li>Uji manuver robot saat objek mendekat.</li>
+                  <li>Lengkapi catatan di LKPD &amp; siap presentasi!</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 12: Checkpoint 1 - Kanvas & Komponen -->
+        <section class="slide" data-slide="12">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Checkpoint 1 / 9</span>
+            <span class="school-label">Tahap Merakit</span>
+          </div>
+          <h2 class="slide-title">Checkpoint 1: Setup Kanvas &amp; Komponen</h2>
+          <p class="slide-subtitle">Tarik komponen utama dari sidebar kanan Tinkercad ke area kerja.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">📋 Instruksi Kerja</div>
+              <div class="card-body">
+                <div class="checkpoint-item">
+                  <span class="checkpoint-badge">1</span>
+                  <div>Tarik <strong>1x Arduino Uno R3</strong> ke tengah kanvas.</div>
+                </div>
+                <div class="checkpoint-item">
+                  <span class="checkpoint-badge">2</span>
+                  <div>Tarik <strong>1x Breadboard Mini</strong> di samping Arduino.</div>
+                </div>
+                <div class="checkpoint-item">
+                  <span class="checkpoint-badge">3</span>
+                  <div>Cari <em>"Ultrasonic Distance Sensor"</em> yang memiliki <strong>4 PIN</strong>. Pasang di
+                    breadboard.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">⚠️ Peringatan Penting</div>
+              <div class="card-body">
+                <p>Di Tinkercad terdapat 2 jenis sensor ultrasonik:</p>
+                <div style="margin: 14px 0; padding: 12px; background: #fee2e2; border-radius: 6px; color: #991b1b;">
+                  ❌ <strong>3 Pin (SIG):</strong> Bukan yang ini!<br>
+                  ✅ <strong>4 Pin (VCC, TRIG, ECHO, GND):</strong> Gunakan yang ini!
+                </div>
+                <p style="font-size: 0.88rem;">Pastikan pin sensor tertancap rapi pada lubang breadboard.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 13: Checkpoint 2 - Menyambungkan Kabel Sensor -->
+        <section class="slide" data-slide="13">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Checkpoint 2 / 9</span>
+            <span class="school-label">Tahap Wiring</span>
+          </div>
+          <h2 class="slide-title">Checkpoint 2: Wiring Sensor ke Arduino</h2>
+          <p class="slide-subtitle">Hubungkan pin sensor ke Arduino dengan panduan tabel berikut.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">🔌 Tabel Pin Connection</div>
+              <div class="card-body">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem;">
+                  <tr style="background: var(--primary-light); color: var(--primary); text-align: left;">
+                    <th style="padding: 8px;">Pin Sensor</th>
+                    <th style="padding: 8px;">Pin Arduino</th>
+                    <th style="padding: 8px;">Warna Kabel</th>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 8px;"><strong>VCC</strong></td>
+                    <td style="padding: 8px;">5V</td>
+                    <td style="padding: 8px; color: #dc2626;">🔴 Merah</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 8px;"><strong>TRIG</strong></td>
+                    <td style="padding: 8px;">Pin D9</td>
+                    <td style="padding: 8px; color: #2563eb;">🔵 Biru</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 8px;"><strong>ECHO</strong></td>
+                    <td style="padding: 8px;">Pin D8</td>
+                    <td style="padding: 8px; color: #d97706;">🟡 Kuning</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px;"><strong>GND</strong></td>
+                    <td style="padding: 8px;">GND</td>
+                    <td style="padding: 8px; color: #1e293b;">⚫ Hitam</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">💡 Tips Kerapian Kabel</div>
+              <div class="card-body">
+                <ul>
+                  <li>Klik pada jalur kabel untuk membuat belokan kabel yang rapi bersudut 90 derajat.</li>
+                  <li>Pewarnaan kabel standar internasional mempermudah pencarian kesalahan (debugging).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 14: Checkpoint 3 - Menghubungkan Output Motor/Indikator -->
+        <section class="slide" data-slide="14">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Checkpoint 3 / 9</span>
+            <span class="school-label">Tahap Aktuator</span>
+          </div>
+          <h2 class="slide-title">Checkpoint 3: Menambahkan Indikator / Motor</h2>
+          <p class="slide-subtitle">Pasang LED dan Motor DC untuk melihat aksi fisik saat rintangan terdeteksi.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">💡 Memasang LED Bahaya</div>
+              <div class="card-body">
+                <ol style="padding-left: 18px; line-height: 1.7;">
+                  <li>Pasang 1x <strong>LED Merah</strong> di breadboard.</li>
+                  <li>Hubungkan kaki panjang (Anoda) ke <strong>Pin D13</strong> Arduino melalui resistor
+                    <code>220 &Omega;</code>.
+                  </li>
+                  <li>Hubungkan kaki pendek (Katoda) ke jalur <strong>GND</strong>.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">⚙️ Memasang Motor Penggerak</div>
+              <div class="card-body">
+                <p>Tarik <strong>DC Motor</strong> / <strong>Micro Servo</strong>:</p>
+                <ul>
+                  <li>Pin kontrol motor dihubungkan ke <strong>Pin D5 &amp; D6</strong> Arduino.</li>
+                  <li>Motor akan berputar penuh saat jalan aman, dan berhenti/berbalik saat mendeteksi rintangan &lt; 15
+                    cm.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 15: Checkpoint 4 - Menulis Kode Pembacaan Sensor -->
+        <section class="slide" data-slide="15">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Checkpoint 4 / 9</span>
+            <span class="school-label">Tahap Koding</span>
+          </div>
+          <h2 class="slide-title">Checkpoint 4: Input Kode Inisialisasi</h2>
+          <p class="slide-subtitle">Buka panel <strong>Code</strong> (ubah mode ke <em>Text</em>) dan ketik fungsi
+            pembacaan.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">📝 Langkah Buka Editor</div>
+              <div class="card-body">
+                <ol style="padding-left: 18px; line-height: 1.7;">
+                  <li>Klik tombol <strong>Code</strong> di kanan atas Tinkercad.</li>
+                  <li>Ubah dropdown dari <em>Blocks</em> menjadi <strong>Text</strong>.</li>
+                  <li>Klik <em>Continue</em> jika muncul kotak dialog konfirmasi.</li>
+                  <li>Hapus kode bawaan, lalu masukkan fungsi pembacaan pulsa.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="code-editor" style="font-size: 0.82rem;">
+              <span class="code-comment">// Fungsi mengukur jarak dalam cm</span>
+              <span class="code-keyword">int</span> <span class="code-func">bacaJarakCM</span>() {
+              <span class="code-func">digitalWrite</span>(trigPin, LOW);
+              <span class="code-func">delayMicroseconds</span>(<span class="code-num">2</span>);
+              <span class="code-func">digitalWrite</span>(trigPin, HIGH);
+              <span class="code-func">delayMicroseconds</span>(<span class="code-num">10</span>);
+              <span class="code-func">digitalWrite</span>(trigPin, LOW);
+
+              <span class="code-keyword">long</span> waktu = <span class="code-func">pulseIn</span>(echoPin, HIGH);
+              <span class="code-keyword">return</span> waktu * <span class="code-num">0.034</span> / <span
+                class="code-num">2</span>;
+              }
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 16: Checkpoint 5 - Menambahkan Logika If-Else -->
+        <section class="slide" data-slide="16">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Checkpoint 5 / 9</span>
+            <span class="school-label">Tahap Logika</span>
+          </div>
+          <h2 class="slide-title">Checkpoint 5: Menanamkan Logika If-Else</h2>
+          <p class="slide-subtitle">Lengkapi blok <code>void loop()</code> dengan kondisi ambang batas 15 cm.</p>
+
+          <div class="grid-2">
+            <div class="code-editor" style="font-size: 0.82rem;">
+              <span class="code-keyword">void</span> <span class="code-func">loop</span>() {
+              <span class="code-keyword">int</span> jarak = <span class="code-func">bacaJarakCM</span>();
+
+              <span class="code-var">Serial</span>.<span class="code-func">print</span>(<span class="code-string">"Jarak
+                objek: "</span>);
+              <span class="code-var">Serial</span>.<span class="code-func">print</span>(jarak);
+              <span class="code-var">Serial</span>.<span class="code-func">println</span>(<span class="code-string">"
+                cm"</span>);
+
+              <span class="code-comment">// KONDISIONAL IF-ELSE</span>
+              <span class="code-keyword">if</span> (jarak &lt; <span class="code-num">15</span>) {
+              <span class="code-comment">// TERLALU DEKAT: Bahaya!</span>
+              <span class="code-func">digitalWrite</span>(<span class="code-num">13</span>, HIGH); <span
+                class="code-comment">// LED Nyala</span>
+              <span class="code-comment">// Instruksi belok...</span>
+              } <span class="code-keyword">else</span> {
+              <span class="code-comment">// AMAN: Maju terus</span>
+              <span class="code-func">digitalWrite</span>(<span class="code-num">13</span>, LOW); <span
+                class="code-comment">// LED Mati</span>
+              <span class="code-comment">// Instruksi maju...</span>
+              }
+              <span class="code-func">delay</span>(<span class="code-num">100</span>);
+              }
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">🎯 Uji Pemikiran Siswa</div>
+              <div class="card-body">
+                <p>Diskusikan dengan teman sekelompok:</p>
+                <div
+                  style="margin-top: 12px; padding: 12px; background: var(--primary-light); border-radius: 6px; color: var(--primary);">
+                  <em>"Apa yang terjadi jika angka <code>15</code> kita ubah menjadi <code>50</code>? Apakah robot akan
+                    bereaksi lebih cepat atau lebih lambat?"</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 17: Checkpoint 6 - Menguji Simulasi & Serial Monitor -->
+        <section class="slide" data-slide="17">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Checkpoint 6 / 9</span>
+            <span class="school-label">Tahap Uji Coba</span>
+          </div>
+          <h2 class="slide-title">Checkpoint 6: Uji Coba Simulasi Virtual</h2>
+          <p class="slide-subtitle">Jalankan simulator dan geser bola target sensor ultrasonik.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">▶️ Cara Menjalankan Uji Coba</div>
+              <div class="card-body">
+                <ol style="padding-left: 18px; line-height: 1.7;">
+                  <li>Klik tombol hijau <strong>Start Simulation</strong> di kanan atas.</li>
+                  <li>Buka <strong>Serial Monitor</strong> di bagian bawah panel Code.</li>
+                  <li>Klik pada komponen sensor ultrasonik di kanvas &rarr; akan muncul <strong>lingkaran hijau (objek
+                      rintangan)</strong>.</li>
+                  <li>Geser lingkaran hijau mendekat (&lt; 15 cm) dan menjauh (&gt; 15 cm).</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">👀 Apa yang Harus Terjadi?</div>
+              <div class="card-body">
+                <div style="margin-bottom: 12px;">
+                  🟢 <strong>Saat Jarak &gt; 15 cm:</strong><br>
+                  LED padam, Serial Monitor menampilkan teks jarak aman, motor berputar maju.
+                </div>
+                <div>
+                  🔴 <strong>Saat Jarak &lt; 15 cm:</strong><br>
+                  LED menyala terang, Serial Monitor memberikan peringatan bahaya, motor merespons manuver belok!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 18: Checkpoint 7 - Troubleshooting & Debugging -->
+        <section class="slide" data-slide="18">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Checkpoint 7 / 9</span>
+            <span class="school-label">Troubleshooting</span>
+          </div>
+          <h2 class="slide-title">Checkpoint 7: Mengatasi Masalah (Debugging)</h2>
+          <p class="slide-subtitle">Simulasi tidak berjalan sesuai rencana? Cek daftar kendala umum berikut.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">❌ Masalah &amp; Gejala</div>
+              <div class="card-body">
+                <div style="margin-bottom: 12px;">
+                  <strong>1. Jarak di Serial Monitor selalu 0 atau angka acak:</strong><br>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary);">Kabel TRIG dan ECHO tertukar.</span>
+                </div>
+                <div style="margin-bottom: 12px;">
+                  <strong>2. Muncul error saat Start Simulation:</strong><br>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary);">Periksa tanda titik-koma
+                    (<code>;</code>) atau kurung kurawal (<code>{}</code>) di kode.</span>
+                </div>
+                <div>
+                  <strong>3. LED tidak mau menyala:</strong><br>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary);">Kaki anoda/katoda terbalik atau kabel
+                    GND belum tersambung.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">🔧 Solusi Cepat</div>
+              <div class="card-body">
+                <ul>
+                  <li>Stop simulasi terlebih dahulu sebelum mengedit rangkaian atau kode.</li>
+                  <li>Periksa kecocokan nomor pin di kode C++ dengan posisi kabel di papan Arduino.</li>
+                  <li>Gunakan fitur zoom dan pan di Tinkercad untuk melihat sambungan pin dengan teliti.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 19: Checkpoint 8 - Uji Coba Manuver Robot -->
+        <section class="slide" data-slide="19">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Checkpoint 8 / 9</span>
+            <span class="school-label">Uji Manuver</span>
+          </div>
+          <h2 class="slide-title">Checkpoint 8: Optimasi Respon Manuver</h2>
+          <p class="slide-subtitle">Sempurnakan logika agar gerakan robot terasa mulus dan responsif.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">🎛️ Variasi Eksperimen</div>
+              <div class="card-body">
+                <p>Coba uji skenario lanjutan berikut:</p>
+                <div style="margin-top: 12px;">
+                  <div
+                    style="padding: 10px; background: white; border: 1px solid var(--border-color); border-radius: 6px; margin-bottom: 8px;">
+                    <strong>Uji Jarak Ekstrem:</strong> Berikan rintangan sangat dekat (&lt; 5 cm) &rarr; tambahkan aksi
+                    mundur darurat!
+                  </div>
+                  <div
+                    style="padding: 10px; background: white; border: 1px solid var(--border-color); border-radius: 6px;">
+                    <strong>Uji Delay:</strong> Kurangi nilai <code>delay()</code> agar sensor membaca lebih cepat saat
+                    robot melaju kencang.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">📊 Pengisian Data LKPD</div>
+              <div class="card-body">
+                <p>Pastikan anggota tim Tester mencatat data hasil percobaan pada <strong>Tabel Kegiatan 4 di
+                    LKPD</strong>:</p>
+                <ul style="margin-top: 10px;">
+                  <li>Jarak deteksi rintangan.</li>
+                  <li>Status putaran motor (Maju / Belok).</li>
+                  <li>Kondisi LED indikator (Nyala / Mati).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 20: Checkpoint 9 - Finalisasi & Presentasi Hasil -->
+        <section class="slide" data-slide="20">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Checkpoint 9 / 9</span>
+            <span class="school-label">Presentasi Karya</span>
+          </div>
+          <h2 class="slide-title">Checkpoint 9: Siap Show &amp; Tell!</h2>
+          <p class="slide-subtitle">Selamat! Rangkaian robot penghindar rintangan kalian sudah berfungsi.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">🎤 Hal yang Perlu Dipresentasikan (2 Menit)</div>
+              <div class="card-body">
+                <ol style="padding-left: 18px; line-height: 1.7;">
+                  <li>Tunjukkan rangkaian sirkuit di layar Tinkercad.</li>
+                  <li>Jalankan simulasi dan demokan saat sensor mendeteksi halangan &lt; 15 cm.</li>
+                  <li>Jelaskan baris kode <code>if-else</code> yang menentukan arah robot.</li>
+                  <li>Sebutkan 1 kendala yang berhasil kelompok selesaikan bersama!</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="card card-highlight flex-center" style="text-align: center; background: #f0fdf4;">
+              <div>
+                <div style="font-size: 3.5rem; margin-bottom: 12px;">🏆 🤖 🎉</div>
+                <h3 style="color: #166534; margin-bottom: 8px;">Kalian Luar Biasa!</h3>
+                <p style="color: #15803d; font-size: 0.92rem; max-width: 320px;">
+                  Kalian telah berhasil memadukan konsep fisika sensor, logika komputasi, dan elektronika modern!
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================
+             TAHAP PENUTUP (SLIDE 21)
+             ================================================================= -->
+        <!-- SLIDE 21: Rangkuman & Penerapan Dunia Nyata -->
+        <section class="slide" data-slide="21">
+          <div class="slide-top-bar">
+            <span class="badge-tag">Tahap Penutup</span>
+            <span class="school-label">Refleksi Pembelajaran</span>
+          </div>
+          <h2 class="slide-title">Rangkuman &amp; Masa Depan Otomasi</h2>
+          <p class="slide-subtitle">Dari proyek kelas menuju teknologi masa depan dunia nyata.</p>
+
+          <div class="grid-3">
+            <div class="card">
+              <div style="font-size: 2.2rem; margin-bottom: 8px;">📡 + 🧠</div>
+              <div class="card-title" style="font-size: 1rem;">Sensor + Logika</div>
+              <div class="card-body" style="font-size: 0.85rem;">
+                Sensor adalah <em>indera</em> penerima data lingkungan, dan <code>if-else</code> adalah <em>otak</em>
+                pengambil keputusannya.
+              </div>
+            </div>
+
+            <div class="card">
+              <div style="font-size: 2.2rem; margin-bottom: 8px;">🚗 🤖 🛸</div>
+              <div class="card-title" style="font-size: 1rem;">Aplikasi Nyata</div>
+              <div class="card-body" style="font-size: 0.85rem;">
+                Mobil otonom (Tesla/Waymo), drone anti-tabrak, dan robot logistik gudang otomatis menerapkan prinsip
+                yang sama dengan skala lebih besar!
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div style="font-size: 2.2rem; margin-bottom: 8px;">✨ 📝</div>
+              <div class="card-title" style="font-size: 1rem;">Refleksi Akhir</div>
+              <div class="card-body" style="font-size: 0.85rem;">
+                Buka LKPD masing-masing, isi bagian refleksi penutup, dan simpan/kumpulkan hasil kerja kalian hari ini.
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="margin-top: 24px; padding: 16px; background: var(--primary); color: white; border-radius: var(--radius-md); text-align: center;">
+            <strong>"Teknologi canggih bermula dari logika sederhana yang dirangkai dengan tekun."</strong><br>
+            <span style="font-size: 0.85rem; opacity: 0.9;">Informatika SMP Negeri 2 Lamongan — Terus Belajar &amp;
+              Berkarya! 🚀</span>
+          </div>
+        </section>
+
+      </div> <!-- End Slides Deck -->
+
+      <!-- BOTTOM NAVIGATION BAR -->
+      <footer class="bottom-bar">
+        <div class="progress-container">
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+          </div>
+          <span class="slide-counter" id="slide-counter">Slide 1 / 21</span>
+        </div>
+
+        <div class="nav-buttons">
+          <button class="btn-icon-text" id="btn-overview" title="Lihat Semua Slide (G)">
+            📑 Overview
+          </button>
+          <button class="btn-icon-text" id="btn-shortcuts" title="Bantuan Keyboard (?)">
+            ⌨️ Shortcuts
+          </button>
+          <button class="btn-icon-text" id="btn-fullscreen" title="Mode Layar Penuh (F)">
+            ⛶ Fullscreen
+          </button>
+          <button class="btn-nav" id="btn-prev" title="Slide Sebelumnya (←)">
+            &larr;
+          </button>
+          <button class="btn-nav" id="btn-next" title="Slide Selanjutnya (&rarr;)">
+            &rarr;
+          </button>
+        </div>
+      </footer>
+
+    </div> <!-- End Slide Wrapper -->
+  </div> <!-- End Presentation Stage -->
+
+  <!-- OVERVIEW GRID MODAL -->
+  <div id="overview-modal">
+    <div class="overview-content">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="font-size: 1.4rem; color: var(--primary);">📑 Daftar Semua Slide</h2>
+        <button class="btn-icon-text" id="close-overview">Tutup (Esc)</button>
+      </div>
+      <div class="overview-grid" id="overview-grid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- KEYBOARD SHORTCUTS MODAL -->
+  <div id="shortcuts-modal">
+    <div class="shortcuts-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h3 style="color: var(--primary);">⌨️ Pintasan Keyboard</h3>
+        <button class="btn-icon-text" id="close-shortcuts">Tutup (Esc)</button>
+      </div>
+      <div class="shortcut-row">
+        <span>Slide Selanjutnya</span>
+        <div><span class="kbd-key">&rarr;</span> / <span class="kbd-key">Spasi</span></div>
+      </div>
+      <div class="shortcut-row">
+        <span>Slide Sebelumnya</span>
+        <div><span class="kbd-key">&larr;</span> / <span class="kbd-key">Backspace</span></div>
+      </div>
+      <div class="shortcut-row">
+        <span>Buka Grid Overview</span>
+        <span class="kbd-key">G</span>
+      </div>
+      <div class="shortcut-row">
+        <span>Layar Penuh (Fullscreen)</span>
+        <span class="kbd-key">F</span>
+      </div>
+      <div class="shortcut-row">
+        <span>Slide Pertama / Terakhir</span>
+        <div><span class="kbd-key">Home</span> / <span class="kbd-key">End</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGIC
+       ========================================================================== -->
+  <script>
+    (function () {
+      // Elements
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const totalSlides = slides.length;
+      let currentSlideIndex = 0;
+
+      const counterEl = document.getElementById('slide-counter');
+      const progressFillEl = document.getElementById('progress-bar-fill');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const btnOverview = document.getElementById('btn-overview');
+      const btnShortcuts = document.getElementById('btn-shortcuts');
+      const overviewModal = document.getElementById('overview-modal');
+      const overviewGrid = document.getElementById('overview-grid');
+      const closeOverviewBtn = document.getElementById('close-overview');
+      const shortcutsModal = document.getElementById('shortcuts-modal');
+      const closeShortcutsBtn = document.getElementById('close-shortcuts');
+      const slideWrapper = document.getElementById('slide-wrapper');
+
+      // Update slide display
+      function goToSlide(index) {
+        if (index < 0 || index >= totalSlides) return;
+
+        slides.forEach((slide, i) => {
+          slide.classList.remove('active', 'prev-slide');
+          if (i === index) {
+            slide.classList.add('active');
+          } else if (i < index) {
+            slide.classList.add('prev-slide');
+          }
+        });
+
+        currentSlideIndex = index;
+        updateUI();
+      }
+
+      function updateUI() {
+        const slideNum = currentSlideIndex + 1;
+        counterEl.textContent = `Slide ${slideNum} / ${totalSlides}`;
+
+        const pct = (slideNum / totalSlides) * 100;
+        progressFillEl.style.width = `${pct}%`;
+
+        btnPrev.disabled = currentSlideIndex === 0;
+        btnNext.disabled = currentSlideIndex === totalSlides - 1;
+
+        // Highlight in overview grid
+        const thumbs = overviewGrid.querySelectorAll('.overview-thumb');
+        thumbs.forEach((th, i) => {
+          if (i === currentSlideIndex) {
+            th.classList.add('current');
+          } else {
+            th.classList.remove('current');
+          }
+        });
+      }
+
+      function nextSlide() {
+        if (currentSlideIndex < totalSlides - 1) {
+          goToSlide(currentSlideIndex + 1);
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlideIndex > 0) {
+          goToSlide(currentSlideIndex - 1);
+        }
+      }
+
+      // Build Overview Grid
+      function buildOverview() {
+        overviewGrid.innerHTML = '';
+        slides.forEach((slide, idx) => {
+          const title = slide.querySelector('.slide-title')?.innerText || `Slide ${idx + 1}`;
+          const badge = slide.querySelector('.badge-tag')?.innerText || '';
+
+          const thumb = document.createElement('div');
+          thumb.className = `overview-thumb ${idx === currentSlideIndex ? 'current' : ''}`;
+          thumb.innerHTML = `
+            <div>
+              <div style="font-size: 0.7rem; color: var(--accent); font-weight: 700;">#${idx + 1} ${badge}</div>
+              <div class="overview-thumb-title">${title}</div>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--text-secondary); text-align: right;">Klik untuk buka &rarr;</div>
+          `;
+          thumb.addEventListener('click', () => {
+            goToSlide(idx);
+            closeOverview();
+          });
+          overviewGrid.appendChild(thumb);
+        });
+      }
+
+      function openOverview() {
+        buildOverview();
+        overviewModal.classList.add('open');
+      }
+
+      function closeOverview() {
+        overviewModal.classList.remove('open');
+      }
+
+      function openShortcuts() {
+        shortcutsModal.classList.add('open');
+      }
+
+      function closeShortcuts() {
+        shortcutsModal.classList.remove('open');
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.warn(`Fullscreen error: ${err.message}`);
+          });
+        } else {
+          document.exitFullscreen();
+        }
+      }
+
+      // Event Listeners
+      btnNext.addEventListener('click', nextSlide);
+      btnPrev.addEventListener('click', prevSlide);
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+      btnOverview.addEventListener('click', openOverview);
+      closeOverviewBtn.addEventListener('click', closeOverview);
+      btnShortcuts.addEventListener('click', openShortcuts);
+      closeShortcutsBtn.addEventListener('click', closeShortcuts);
+
+      overviewModal.addEventListener('click', (e) => {
+        if (e.target === overviewModal) closeOverview();
+      });
+
+      shortcutsModal.addEventListener('click', (e) => {
+        if (e.target === shortcutsModal) closeShortcuts();
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (overviewModal.classList.contains('open') || shortcutsModal.classList.contains('open')) {
+          if (e.key === 'Escape') {
+            closeOverview();
+            closeShortcuts();
+          }
+          return;
+        }
+
+        switch (e.key) {
+          case 'ArrowRight':
+          case ' ':
+          case 'PageDown':
+            e.preventDefault();
+            nextSlide();
+            break;
+          case 'ArrowLeft':
+          case 'Backspace':
+          case 'PageUp':
+            e.preventDefault();
+            prevSlide();
+            break;
+          case 'Home':
+            e.preventDefault();
+            goToSlide(0);
+            break;
+          case 'End':
+            e.preventDefault();
+            goToSlide(totalSlides - 1);
+            break;
+          case 'f':
+          case 'F':
+            toggleFullscreen();
+            break;
+          case 'g':
+          case 'G':
+            openOverview();
+            break;
+          case '?':
+            openShortcuts();
+            break;
+        }
+      });
+
+      // Touch / Swipe Navigation for tablets/touchscreens
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      slideWrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      slideWrapper.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchEndX - touchStartX;
+        if (Math.abs(diff) > 50) {
+          if (diff < 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+      }, { passive: true });
+
+      // Initialize
+      goToSlide(0);
+    })();
+  </script>
+</body>
+
+</html>
