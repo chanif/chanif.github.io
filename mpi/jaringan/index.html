@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MPI — Jaringan Komputer: Perjalanan Paket Data | Informatika Kelas VIII Fase D</title>
+  <meta name="description" content="Media Pembelajaran Interaktif (MPI) tentang Jaringan Komputer — Perjalanan Paket Data untuk mata pelajaran Informatika Kelas VIII SMP Fase D.">
+  <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================== CLASSROOM BACKGROUND ============================== -->
+<div class="classroom-bg" id="classroom-bg">
+  <svg viewBox="0 0 1536 804" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- SVG fallback wall & furniture if image is missing -->
+    <rect width="1536" height="804" fill="#f0e6dc"/>
+    <rect y="0" width="1536" height="560" fill="#ede0d4"/>
+    <rect y="520" width="1536" height="8" fill="#d4c4b0" rx="2"/>
+    <rect y="528" width="1536" height="276" fill="#c8a882"/>
+    <rect x="80" y="60" width="200" height="280" rx="8" fill="#b3e5fc" stroke="#a08060" stroke-width="6"/>
+    <rect x="380" y="60" width="200" height="280" rx="8" fill="#b3e5fc" stroke="#a08060" stroke-width="6"/>
+    <rect x="700" y="80" width="440" height="260" rx="6" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="5"/>
+    <circle cx="1280" cy="140" r="36" fill="#fff" stroke="#795548" stroke-width="4"/>
+  </svg>
+</div>
+
+<div id="app">
+
+<!-- ============================== PAGE 1: COVER ============================== -->
+<section id="page-cover" class="page active">
+  <div class="logo-top left">
+    <img src="../assets/kemendikdasmen lengkap.png" alt="Logo Kemendikdasmen" id="logo-kemendikdasmen-cover">
+  </div>
+  <div class="logo-top right">
+    <img src="../assets/sobat + bermutu + ramah.png" alt="Logo Sobat SMP" id="logo-sobat-cover">
+  </div>
+
+  <div class="cover-center">
+    <h1 class="cover-title">
+      <span class="cover-title-main">Jaringan Komputer</span>
+      <span class="cover-title-sub">Perjalanan Paket Data</span>
+    </h1>
+    <div>
+      <span class="cover-subtitle">Informatika — Kelas VIII / Fase D</span>
+    </div>
+    <button class="btn-mulai" onclick="goToPage('menu')" id="btn-cover-mulai">
+      <span class="play-icon">▶</span>
+      <span class="mulai-text">MULAI</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============================== PAGE 2: MENU UTAMA ============================== -->
+<section id="page-menu" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('cover')" id="btn-menu-beranda">🏠</button>
+    <span class="nav-label">BERANDA</span>
+  </div>
+
+  <div class="title-bar" id="title-menu">Menu</div>
+  <div style="height:12px"></div>
+
+  <div class="menu-grid" id="menu-grid">
+    <div class="menu-card" onclick="goToPage('petunjuk')" id="card-petunjuk">
+      <span class="card-icon">💡</span>
+      <span class="card-label">Petunjuk</span>
+    </div>
+    <div class="menu-card" onclick="goToPage('tujuan')" id="card-tujuan">
+      <span class="card-icon">🎯</span>
+      <span class="card-label">Tujuan Pembelajaran</span>
+    </div>
+    <div class="menu-card" onclick="goToPage('materi-list')" id="card-materi">
+      <span class="card-icon">📖</span>
+      <span class="card-label">Materi</span>
+    </div>
+    <div class="menu-card" onclick="goToPage('permainan-intro')" id="card-permainan">
+      <span class="card-icon">🎲</span>
+      <span class="card-label">Permainan</span>
+    </div>
+    <div class="menu-card" onclick="goToPage('latihan-intro')" id="card-latihan">
+      <span class="card-icon">📝</span>
+      <span class="card-label">Latihan</span>
+    </div>
+    <div class="menu-card" onclick="goToPage('rangkuman')" id="card-rangkuman">
+      <span class="card-icon">📋</span>
+      <span class="card-label">Rangkuman</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PAGE 3: PETUNJUK ============================== -->
+<section id="page-petunjuk" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-petunjuk-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Petunjuk</div>
+  <div class="content-box scrollable" id="content-petunjuk">
+    <h2 style="font-family:var(--font-heading);font-size:26px;color:var(--teal-dark);margin-bottom:14px;">Cara Menggunakan Media Pembelajaran Interaktif</h2>
+    <p style="margin-bottom:12px;">Selamat datang di Media Pembelajaran Interaktif (MPI) <strong>Jaringan Komputer — Perjalanan Paket Data</strong>! Ikuti petunjuk berikut agar pengalaman belajarmu optimal:</p>
+    <ol style="margin-bottom:16px;">
+      <li><strong>Tombol MENU (☰)</strong> — Tekan tombol ini di pojok kiri atas untuk kembali ke halaman Menu Utama kapan saja.</li>
+      <li><strong>Tombol BERANDA (🏠)</strong> — Tersedia di halaman Cover dan Kredit untuk kembali ke halaman awal.</li>
+      <li><strong>Tombol ◀ (Kembali) dan ▶ (Lanjut)</strong> — Gunakan tombol panah di pojok kiri bawah dan kanan bawah untuk berpindah antar halaman materi secara berurutan.</li>
+      <li><strong>Tombol MULAI (▶)</strong> — Tekan untuk memulai pembelajaran, permainan, atau latihan.</li>
+    </ol>
+    <h3 style="font-family:var(--font-heading);font-size:22px;color:var(--teal-dark);margin-bottom:12px;">Fitur Interaktif Media</h3>
+    <ul>
+      <li>📖 <strong>Materi</strong> — Pelajari konsep paket data, router, dan rute dinamis melalui penjelasan visual dua kolom.</li>
+      <li>🔀 <strong>Tarik Jawaban</strong> — Seret istilah ke definisi yang tepat untuk menguji pemahamanmu (drag and drop).</li>
+      <li>🎬 <strong>Video</strong> — Tonton video animasi tentang perjalanan paket data dalam jaringan.</li>
+      <li>🎲 <strong>Permainan</strong> — Simulasikan pengiriman paket data: pilih router jalur alternatif yang aman ketika ada server down!</li>
+      <li>📝 <strong>Latihan</strong> — Kerjakan soal evaluasi interaktif (Pilihan Ganda, Benar/Salah, Menjodohkan, Mengurutkan, &amp; Praktik) dengan rekap skor 18 poin.</li>
+      <li>📋 <strong>Rangkuman</strong> — Baca ringkasan materi, tulis refleksi pribadimu, dan dapatkan badge penghargaan!</li>
+    </ul>
+    <p style="margin-top:16px;font-style:italic;color:var(--teal-dark);font-weight:600;">💡 Tips: Pelajari seluruh materi terlebih dahulu sebelum mengerjakan permainan dan evaluasi latihan!</p>
+  </div>
+</section>
+
+<!-- ============================== PAGE 4: TUJUAN PEMBELAJARAN ============================== -->
+<section id="page-tujuan" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-tujuan-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Tujuan Pembelajaran</div>
+  <div class="content-box" id="content-tujuan">
+    <p style="margin-bottom:16px;font-weight:600;">Setelah mengikuti pembelajaran melalui Media Pembelajaran Interaktif ini, peserta didik diharapkan mampu:</p>
+    <ol>
+      <li>Menjelaskan konsep dasar jaringan komputer dan fungsinya dalam kehidupan sehari-hari.</li>
+      <li>Mendeskripsikan proses pemecahan data menjadi paket-paket kecil untuk dikirimkan melalui jaringan.</li>
+      <li>Menganalisis peran router sebagai pengarah lalu lintas data dalam jaringan.</li>
+      <li>Mensimulasikan pengambilan keputusan rute alternatif ketika terjadi gangguan pada jaringan.</li>
+      <li>Menyimpulkan keunggulan sistem pengiriman berbasis paket (<em>packet switching</em>) dibandingkan pengiriman file utuh.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================== PAGE 5: MATERI (DAFTAR) ============================== -->
+<section id="page-materi-list" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-materilist-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Materi</div>
+  <div style="height:14px"></div>
+
+  <div class="materi-cards" id="materi-cards">
+    <div class="materi-card" onclick="goToPage('materi-1')" id="card-materi1">
+      <div class="card-thumb">📦</div>
+      <div class="card-title">Konsep Paket Data &amp; Router</div>
+    </div>
+    <div class="materi-card" onclick="goToPage('tarik-jawaban')" id="card-materi2">
+      <div class="card-thumb">🔀</div>
+      <div class="card-title">Tarik Jawaban — Cocokkan Istilah</div>
+    </div>
+    <div class="materi-card" onclick="goToPage('materi-3')" id="card-materi3">
+      <div class="card-thumb">🌐</div>
+      <div class="card-title">Keunggulan Packet Switching</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PAGE 6: MATERI 1 ============================== -->
+<section id="page-materi-1" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi1-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Materi 1: Konsep Jaringan, Paket Data &amp; Router</div>
+  <div class="content-box wide scrollable" style="padding: 22px 36px 16px;">
+    <div class="content-columns" style="gap: 24px;">
+      <!-- Kolom Kiri: Konsep Jaringan & Paket Data -->
+      <div class="content-col">
+        <h3 style="font-size:20px;margin-bottom:6px;">🌐 1. Apa Itu Jaringan Komputer?</h3>
+        <p style="font-size:16.5px;line-height:1.45;margin-bottom:10px;"><strong>Jaringan Komputer</strong> adalah sistem penghubung perangkat digital (HP, laptop, server) agar dapat saling <strong>berbagi koneksi internet, data, pesan, serta video</strong>.</p>
+        
+        <h3 style="font-size:20px;margin-bottom:6px;margin-top:10px;">📦 2. Mengapa Data Dipecah?</h3>
+        <p style="font-size:16.5px;line-height:1.45;margin-bottom:8px;">Saat kamu mengirim foto di chat, file tersebut <strong>TIDAK</strong> dikirim utuh, melainkan dipotong menjadi ribuan serpihan kecil bernama <strong>PAKET DATA</strong>.</p>
+        
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:12px 16px;margin-top:6px;border:2px solid rgba(0,172,193,0.35);box-shadow:0 3px 10px var(--shadow-light);">
+          <h4 style="font-family:var(--font-heading);font-size:17.5px;color:var(--teal-dark);margin-bottom:6px;">💌 Anatomi Paket Data (Analogi Amplop Surat):</h4>
+          <ul style="margin-left:18px;font-size:15.5px;line-height:1.45;">
+            <li><strong>🏷️ HEADER (Kepala Paket):</strong> Alamat IP Asal, IP Tujuan, dan <strong>Nomor Urut</strong> (mis. "Paket 1 dari 4").</li>
+            <li><strong>📄 PAYLOAD (Isi Paket):</strong> Potongan data asli (piksel foto/pesan).</li>
+          </ul>
+        </div>
+        <p style="margin-top:8px;font-size:15.5px;margin-bottom:0;">💡 <em>Fungsi Nomor Urut:</em> Agar komputer penerima dapat merakit kembali seluruh potongan menjadi foto asli tanpa tertukar.</p>
+      </div>
+
+      <!-- Kolom Kanan: Router & Rute Dinamis -->
+      <div class="content-col">
+        <h3 style="font-size:20px;margin-bottom:6px;">🚦 3. Router: Polisi Lalu Lintas Jaringan</h3>
+        <p style="font-size:16.5px;line-height:1.45;margin-bottom:8px;">Di internet terdapat jutaan persimpangan kabel dan nirkabel. Perangkat bernama <strong>ROUTER</strong> bertugas mengatur jalur setiap paket data.</p>
+        
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:12px 16px;margin-top:6px;border:2px solid rgba(0,172,193,0.35);box-shadow:0 3px 10px var(--shadow-light);">
+          <p style="margin-bottom:8px;font-size:15.5px;line-height:1.45;"><strong>🧭 MEMILIH RUTE TERBAIK:</strong> Router membaca alamat tujuan dan mencarikan rute tercepat yang tidak macet (mirip navigasi GPS / Google Maps).</p>
+          <p style="margin-bottom:0;font-size:15.5px;line-height:1.45;"><strong>🔀 RUTE DINAMIS:</strong> Jika salah satu jalur putus atau server bermasalah (<em>Server Down / RTO</em>), router otomatis mengalihkan paket ke jalur alternatif yang lancar.</p>
+        </div>
+        
+        <div style="background:#e0f2fe;border-left:5px solid var(--blue);padding:12px 16px;border-radius:0 12px 12px 0;margin-top:12px;">
+          <p style="margin-bottom:0;font-size:16px;font-weight:600;color:#0369a1;line-height:1.45;">
+            ✨ Prinsip Utama: Berkat paket data dan router, pengiriman data internet tidak akan berhenti total hanya karena satu jalur mengalami gangguan!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-materi1-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-materi1-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 7: TARIK JAWABAN ============================== -->
+<section id="page-tarik-jawaban" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-tarik-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Tarik Jawaban: Cocokkan Istilah</div>
+  <div class="content-box wide scrollable">
+    <p class="instruction" style="font-size:20px;font-weight:700;color:var(--teal-dark);text-align:center;margin-bottom:14px;">
+      🎯 Tarik istilah di sebelah kiri ke kotak definisi yang tepat di sebelah kanan!
+    </p>
+    <div class="dd-container" id="dd-container">
+      <div class="dd-column" id="dd-terms">
+        <h3>Istilah</h3>
+        <!-- Terms populated by JS -->
+      </div>
+      <div class="dd-column" id="dd-definitions">
+        <h3>Definisi</h3>
+        <!-- Drop zones populated by JS -->
+      </div>
+    </div>
+    <div class="dd-actions">
+      <button class="btn btn-secondary" onclick="resetDragDrop()" id="btn-dd-reset">🔄 Reset</button>
+      <button class="btn btn-primary" onclick="checkDragDrop()" id="btn-dd-check">✅ Periksa Jawaban</button>
+    </div>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-tarik-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-tarik-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 8: VIDEO ============================== -->
+<section id="page-video" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-video-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Video: Perjalanan Paket Data</div>
+  <div class="content-box wide">
+    <div class="video-layout">
+      <div class="video-wrapper" id="video-wrapper">
+        <video controls preload="metadata" id="main-video">
+          <source src="assets/video/materi-video.mp4" type="video/mp4">
+          Browser kamu tidak mendukung pemutaran video langsung.
+        </video>
+      </div>
+      <div class="video-summary">
+        <h3>🎬 Poin Penting Video</h3>
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:12px;border:2px solid rgba(0,172,193,0.25);">
+          <p style="margin-bottom:4px;"><strong>📦 1. Pemecahan Data</strong></p>
+          <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">File dibagi menjadi paket data kecil (Header + Payload) agar efisien saat melintasi jaringan.</p>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:12px;border:2px solid rgba(0,172,193,0.25);">
+          <p style="margin-bottom:4px;"><strong>🚦 2. Peran Router</strong></p>
+          <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">Mengarahkan tiap paket data ke rute tercepat dan paling lancar menuju alamat tujuan.</p>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;border:2px solid rgba(0,172,193,0.25);">
+          <p style="margin-bottom:4px;"><strong>🔀 3. Rute Dinamis</strong></p>
+          <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">Kemampuan jaringan otomatis mengalihkan paket saat jalur utama terganggu atau server down.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-video-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-video-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 9: MATERI 3 ============================== -->
+<section id="page-materi-3" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi3-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Materi 3: Keunggulan Packet Switching</div>
+  <div class="content-box wide scrollable">
+    <div class="content-img-text">
+      <div class="img-placeholder" style="flex-direction:column;font-size:48px;gap:8px;">
+        <span>🌐</span>
+        <span style="font-size:18px;font-family:var(--font-heading);font-weight:700;color:var(--teal-dark);">Packet Switching</span>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-heading);font-size:25px;color:var(--teal-dark);margin-bottom:12px;">4 Tahapan Pengiriman Data &amp; 3 Keunggulan Utamanya</h3>
+        <p style="margin-bottom:12px;font-size:18px;">Teknologi pengiriman data di seluruh dunia menggunakan metode <strong>Packet Switching</strong> dengan 4 tahapan berurutan:</p>
+        
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
+          <div style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">1. Dipecah Menjadi Paket</div>
+          <div style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">2. Diberi Header &amp; No. Urut</div>
+          <div style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">3. Dirutekan via Router</div>
+          <div style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">4. Dirakit Ulang di Tujuan</div>
+        </div>
+
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:10px;border:2px solid rgba(0,172,193,0.3);box-shadow:0 4px 12px var(--shadow-light);">
+          <p style="margin-bottom:2px;font-size:18px;"><strong>⚡ 1. Efisiensi Tinggi (Bisa Berbagi Jalur / Multi-User)</strong></p>
+          <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">Jalur internet tidak dimonopoli satu orang. Ribuan siswa bisa mengirim foto bersamaan karena paket-paket kecil bisa menyelip bergantian di jalur yang sama.</p>
+        </div>
+        
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:10px;border:2px solid rgba(0,172,193,0.3);box-shadow:0 4px 12px var(--shadow-light);">
+          <p style="margin-bottom:2px;font-size:18px;"><strong>🛡️ 2. Andal &amp; Tahan Gangguan (Fault Tolerance)</strong></p>
+          <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">Jika ada kabel putus di tengah jalan, hanya paket yang hilang yang perlu dikirim ulang, <em>bukan seluruh file 5 MB dari awal!</em></p>
+        </div>
+        
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;border:2px solid rgba(0,172,193,0.3);box-shadow:0 4px 12px var(--shadow-light);">
+          <p style="margin-bottom:2px;font-size:18px;"><strong>🚀 3. Kecepatan Paralel Super Cepat</strong></p>
+          <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">Paket data dapat dikirim secara bersamaan melalui berbagai rute berbeda, lalu langsung disusun kembali di komputer penerima dalam milidetik.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-materi3-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-materi3-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 10: PERMAINAN (INTRO) ============================== -->
+<section id="page-permainan-intro" class="page intro-page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-permainan-intro-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="intro-card-box">
+    <div class="intro-side-icon left">🎮</div>
+    <div class="intro-side-icon right">🏆</div>
+
+    <h2 class="sticker-text intro-title">Permainan Simulasi</h2>
+    <p class="intro-desc">
+      Uji keahlianmu sebagai pengarah rute jaringan komputer!<br>
+      Pilihlah router pada jalur alternatif yang aman ketika terjadi server down, lalu kirimkan paket data sampai ke tujuan.
+    </p>
+
+    <button class="btn-mulai" onclick="goToPage('permainan')" id="btn-permainan-mulai">
+      <span class="play-icon">▶</span>
+      <span class="mulai-text">MULAI MAIN</span>
+    </button>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-permainan-intro-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-permainan-intro-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 11: PERMAINAN (KONTEN) ============================== -->
+<section id="page-permainan" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-permainan-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Permainan Simulasi Jalur</div>
+  <div class="content-box wide" id="sim-content-box" style="padding: 24px 44px 16px;">
+    <p class="instruction" style="font-size:20px;font-weight:700;color:var(--teal-dark);text-align:center;margin-bottom:10px;">
+      🚦 Pilihlah router pada jalur alternatif yang aman! Jalur B sedang mengalami gangguan (Server Down ⚠️).
+    </p>
+
+    <div class="sim-container" id="sim-game">
+      <div class="sim-topology" id="sim-topology">
+        <svg viewBox="0 0 980 310">
+          <path d="M 120,60 C 300,60 420,38 490,38 C 560,38 680,60 860,60" class="sim-path path-a" id="path-a-line"/>
+          <path d="M 120,135 C 300,135 420,135 490,135 C 560,135 680,135 860,135" class="sim-path path-b" id="path-b-line"/>
+          <path d="M 120,210 C 300,210 420,232 490,232 C 560,232 680,210 860,210" class="sim-path path-c" id="path-c-line"/>
+        </svg>
+
+        <!-- Sender -->
+        <div class="sim-node sender" style="left:30px;top:92px;">
+          <div class="node-icon">💻</div>
+          <span style="font-size:16px;">Pengirim</span>
+        </div>
+        <!-- Receiver -->
+        <div class="sim-node receiver" style="right:30px;top:92px;">
+          <div class="node-icon">💻</div>
+          <span style="font-size:16px;">Penerima</span>
+        </div>
+
+        <!-- Router A -->
+        <div class="sim-router path-a" data-path="a" style="left:460px;top:8px;" onclick="selectSimPath('a')" id="router-a">
+          <div class="router-icon">🚦</div>
+          <span class="router-label" style="font-size:16px;font-weight:700;">Router A</span>
+        </div>
+        <!-- Router B -->
+        <div class="sim-router path-b" data-path="b" style="left:460px;top:105px;" onclick="selectSimPath('b')" id="router-b">
+          <div class="router-icon">🚦</div>
+          <span class="warning">⚠️</span>
+          <span class="router-label" style="font-size:16px;font-weight:700;color:#c62828;">Router B (Down)</span>
+        </div>
+        <!-- Router C -->
+        <div class="sim-router path-c" data-path="c" style="left:460px;top:200px;" onclick="selectSimPath('c')" id="router-c">
+          <div class="router-icon">🚦</div>
+          <span class="router-label" style="font-size:16px;font-weight:700;">Router C</span>
+        </div>
+      </div>
+
+      <div class="sim-actions" style="text-align:center;margin-top:10px;">
+        <button class="btn-send" onclick="sendPacket('game')" id="btn-send-packet" disabled>📤 Kirim Paket Data</button>
+      </div>
+
+      <!-- Feedback overlay -->
+      <div class="sim-feedback" id="sim-feedback">
+        <div class="sim-feedback-card" id="sim-feedback-card"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-permainan-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-permainan-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 12: LATIHAN (INTRO) ============================== -->
+<section id="page-latihan-intro" class="page intro-page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-latihan-intro-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="intro-card-box">
+    <div class="intro-side-icon left">💡</div>
+    <div class="intro-side-icon right">🎯</div>
+
+    <h2 class="sticker-text intro-title">Latihan Evaluasi</h2>
+    <p class="intro-desc">
+      Uji pemahamanmu secara menyeluruh melalui 5 jenis tantangan interaktif:<br>
+      Pilihan Ganda, Benar/Salah, Menjodohkan, Mengurutkan Proses, dan Simulasi Praktik!
+    </p>
+
+    <button class="btn-mulai" onclick="goToPage('latihan');startEval()" id="btn-latihan-mulai">
+      <span class="play-icon">▶</span>
+      <span class="mulai-text">MULAI LATIHAN</span>
+    </button>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-latihan-intro-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-latihan-intro-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 13: LATIHAN (KONTEN) ============================== -->
+<section id="page-latihan" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-latihan-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Latihan</div>
+  <div class="content-box wide scrollable" id="eval-box">
+    <!-- Progress Indicator -->
+    <div class="eval-progress" id="eval-progress">
+      <div class="step active" data-step="A">A</div>
+      <div class="step" data-step="B">B</div>
+      <div class="step" data-step="C">C</div>
+      <div class="step" data-step="D">D</div>
+      <div class="step" data-step="E">E</div>
+    </div>
+
+    <div class="eval-container" id="eval-container">
+      <!-- ===== BAGIAN A: PILIHAN GANDA ===== -->
+      <div class="eval-section active" id="eval-section-A">
+        <div class="eval-section-title">📝 Bagian A — Pilihan Ganda (5 Soal)</div>
+
+        <div class="mcq-question" data-q="A1">
+          <div class="q-text">1. Apa fungsi utama jaringan komputer?</div>
+          <div class="mcq-options">
+            <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span> Menyimpan data secara permanen</div>
+            <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span> Menghubungkan perangkat agar bisa saling bertukar data</div>
+            <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span> Mempercepat proses booting komputer</div>
+            <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span> Mengganti fungsi hard disk</div>
+          </div>
+        </div>
+
+        <div class="mcq-question" data-q="A2">
+          <div class="q-text">2. Saat kamu mengirim foto lewat aplikasi chat, foto tersebut sebenarnya...</div>
+          <div class="mcq-options">
+            <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span> Dikirim utuh dalam satu waktu</div>
+            <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span> Disimpan dulu di server sebelum dibuka penerima</div>
+            <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span> Dipecah menjadi paket-paket kecil lalu disusun kembali di penerima</div>
+            <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span> Diubah menjadi teks lalu dikembalikan jadi gambar</div>
+          </div>
+        </div>
+
+        <div class="mcq-question" data-q="A3">
+          <div class="q-text">3. Bagian paket data yang berisi alamat pengirim, alamat tujuan, dan nomor urut disebut...</div>
+          <div class="mcq-options">
+            <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span> Payload</div>
+            <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span> Header</div>
+            <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span> Router</div>
+            <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span> Bandwidth</div>
+          </div>
+        </div>
+
+        <div class="mcq-question" data-q="A4">
+          <div class="q-text">4. Peran router dalam jaringan komputer paling tepat digambarkan sebagai...</div>
+          <div class="mcq-options">
+            <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span> Tempat penyimpanan data sementara</div>
+            <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span> Perangkat yang mengarahkan paket data ke rute terbaik</div>
+            <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span> Aplikasi pengirim pesan</div>
+            <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span> Alat pengukur kecepatan internet</div>
+          </div>
+        </div>
+
+        <div class="mcq-question" data-q="A5">
+          <div class="q-text">5. Berikut ini yang BUKAN keunggulan sistem <em>packet switching</em> dibanding pengiriman file utuh adalah...</div>
+          <div class="mcq-options">
+            <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span> Lebih efisien karena jalur bisa dipakai bergantian oleh banyak pengguna</div>
+            <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span> Lebih tahan gangguan karena hanya paket yang terdampak yang perlu dialihkan</div>
+            <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span> Data pasti terkirim lebih cepat walau tanpa router</div>
+            <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span> Paket bisa dikirim lewat jalur berbeda secara paralel</div>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:20px;">
+          <button class="btn btn-primary" onclick="nextEvalSection('B')">Lanjut ke Bagian B ▶</button>
+        </div>
+      </div>
+
+      <!-- ===== BAGIAN B: BENAR/SALAH ===== -->
+      <div class="eval-section" id="eval-section-B">
+        <div class="eval-section-title">✅❌ Bagian B — Benar / Salah (6 Soal)</div>
+
+        <div class="tf-question" data-q="B1">
+          <div class="q-text">1. Data yang dikirim melalui jaringan selalu dikirim dalam bentuk utuh tanpa dipecah.</div>
+          <div class="tf-buttons">
+            <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+            <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+          </div>
+        </div>
+
+        <div class="tf-question" data-q="B2">
+          <div class="q-text">2. Setiap paket data memiliki nomor urut agar bisa disusun kembali di penerima.</div>
+          <div class="tf-buttons">
+            <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+            <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+          </div>
+        </div>
+
+        <div class="tf-question" data-q="B3">
+          <div class="q-text">3. Router bertugas mengarahkan paket data ke rute tercepat yang tersedia.</div>
+          <div class="tf-buttons">
+            <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+            <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+          </div>
+        </div>
+
+        <div class="tf-question" data-q="B4">
+          <div class="q-text">4. Jika satu rute mengalami gangguan, seluruh proses pengiriman data akan berhenti total.</div>
+          <div class="tf-buttons">
+            <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+            <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+          </div>
+        </div>
+
+        <div class="tf-question" data-q="B5">
+          <div class="q-text">5. Payload adalah bagian paket data yang berisi alamat pengirim dan alamat tujuan.</div>
+          <div class="tf-buttons">
+            <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+            <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+          </div>
+        </div>
+
+        <div class="tf-question" data-q="B6">
+          <div class="q-text">6. Packet switching membuat jaringan lebih tahan terhadap gangguan dibanding mengirim file utuh.</div>
+          <div class="tf-buttons">
+            <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+            <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:20px;display:flex;gap:12px;justify-content:center;">
+          <button class="btn btn-secondary" onclick="nextEvalSection('A')">◀ Bagian A</button>
+          <button class="btn btn-primary" onclick="nextEvalSection('C')">Lanjut ke Bagian C ▶</button>
+        </div>
+      </div>
+
+      <!-- ===== BAGIAN C: MENJODOHKAN ===== -->
+      <div class="eval-section" id="eval-section-C">
+        <div class="eval-section-title">🔗 Bagian C — Menjodohkan (5 Pasangan)</div>
+        <p class="instruction">Klik istilah di sebelah kiri, lalu klik definisi yang tepat di sebelah kanan untuk menjodohkan.</p>
+
+        <div class="match-container" id="match-container">
+          <div class="match-left" id="match-left"></div>
+          <div class="match-right" id="match-right"></div>
+        </div>
+
+        <div style="text-align:center;margin-top:20px;display:flex;gap:12px;justify-content:center;">
+          <button class="btn btn-secondary" onclick="nextEvalSection('B')">◀ Bagian B</button>
+          <button class="btn btn-primary" onclick="nextEvalSection('D')">Lanjut ke Bagian D ▶</button>
+        </div>
+      </div>
+
+      <!-- ===== BAGIAN D: DRAG & DROP MENGURUTKAN ===== -->
+      <div class="eval-section" id="eval-section-D">
+        <div class="eval-section-title">📊 Bagian D — Mengurutkan Proses (6 Tahap)</div>
+        <p class="instruction">Seret kotak-kotak tahapan berikut ke urutan proses transmisi data yang benar dari awal hingga akhir.</p>
+
+        <div class="seq-list" id="seq-list"></div>
+
+        <div style="text-align:center;margin-top:20px;display:flex;gap:12px;justify-content:center;">
+          <button class="btn btn-secondary" onclick="nextEvalSection('C')">◀ Bagian C</button>
+          <button class="btn btn-primary" onclick="nextEvalSection('E')">Lanjut ke Bagian E ▶</button>
+        </div>
+      </div>
+
+      <!-- ===== BAGIAN E: SIMULASI PRAKTIK ===== -->
+      <div class="eval-section" id="eval-section-E">
+        <div class="eval-section-title">🎮 Bagian E — Simulasi Praktik Autentik</div>
+        <p class="instruction">Pilih jalur transmisi yang aman untuk mengirim paket data! (Skor benar pada percobaan pertama = 1 poin)</p>
+
+        <div class="sim-container" id="sim-eval">
+          <div class="sim-topology" id="sim-topology-eval">
+            <svg viewBox="0 0 980 330">
+              <path d="M 120,75 C 300,75 420,45 490,45 C 560,45 680,75 860,75" class="sim-path path-a" id="eval-path-a-line"/>
+              <path d="M 120,165 C 300,165 420,165 490,165 C 560,165 680,165 860,165" class="sim-path path-b" id="eval-path-b-line"/>
+              <path d="M 120,255 C 300,255 420,285 490,285 C 560,285 680,255 860,255" class="sim-path path-c" id="eval-path-c-line"/>
+            </svg>
+            <div class="sim-node sender" style="left:30px;top:120px;">
+              <div class="node-icon">💻</div><span>Pengirim</span>
+            </div>
+            <div class="sim-node receiver" style="right:30px;top:120px;">
+              <div class="node-icon">💻</div><span>Penerima</span>
+            </div>
+            <div class="sim-router path-a" data-path="a" style="left:460px;top:12px;" onclick="selectEvalSimPath('a')" id="eval-router-a">
+              <div class="router-icon">🚦</div><span class="router-label">Router A</span>
+            </div>
+            <div class="sim-router path-b" data-path="b" style="left:460px;top:132px;" onclick="selectEvalSimPath('b')" id="eval-router-b">
+              <div class="router-icon">🚦</div><span class="warning">⚠️</span><span class="router-label">Router B</span>
+            </div>
+            <div class="sim-router path-c" data-path="c" style="left:460px;top:250px;" onclick="selectEvalSimPath('c')" id="eval-router-c">
+              <div class="router-icon">🚦</div><span class="router-label">Router C</span>
+            </div>
+          </div>
+          <div class="sim-actions" style="text-align:center;">
+            <button class="btn-send" onclick="sendPacket('eval')" id="btn-send-eval" disabled>📤 Kirim Paket</button>
+          </div>
+          <div class="sim-feedback" id="sim-feedback-eval">
+            <div class="sim-feedback-card" id="sim-feedback-card-eval"></div>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:24px;display:flex;gap:12px;justify-content:center;">
+          <button class="btn btn-secondary" onclick="nextEvalSection('D')">◀ Bagian D</button>
+          <button class="btn btn-success" onclick="submitEval()" id="btn-submit-eval">📊 Lihat Hasil Evaluasi</button>
+        </div>
+      </div>
+
+      <!-- ===== REKAP SKOR ===== -->
+      <div class="eval-section" id="eval-section-recap">
+        <div class="recap-card" id="recap-card"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-latihan-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-latihan-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 14: RANGKUMAN ============================== -->
+<section id="page-rangkuman" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-rangkuman-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Rangkuman</div>
+  <div class="content-box wide scrollable">
+    <div class="rangkuman-points">
+      <div class="rangkuman-point">
+        <span class="rp-icon">📦</span>
+        <span class="rp-text">Data dipecah menjadi <strong>paket-paket kecil</strong> agar pengiriman lebih efisien dan andal.</span>
+      </div>
+      <div class="rangkuman-point">
+        <span class="rp-icon">🚦</span>
+        <span class="rp-text"><strong>Router</strong> berperan sebagai pengarah lalu lintas yang menentukan jalur terbaik untuk tiap paket.</span>
+      </div>
+      <div class="rangkuman-point">
+        <span class="rp-icon">🔀</span>
+        <span class="rp-text">Jaringan bersifat <strong>dinamis</strong> — selalu mencari rute alternatif jika ada rute utama yang terganggu.</span>
+      </div>
+    </div>
+
+    <div class="refleksi-box">
+      <div class="refleksi-q">💭 Refleksi: Tuliskan di buku catatanmu — Mengapa memecah data menjadi paket-paket kecil lebih menguntungkan daripada mengirimkan satu file utuh sekaligus?</div>
+      <textarea id="refleksi-input" placeholder="Tulis catatan refleksimu di sini..."></textarea>
+    </div>
+
+    <div class="badge-completion">🏆 Kamu sudah menjadi Packet Explorer!</div>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-rangkuman-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-rangkuman-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 15: REFERENSI ============================== -->
+<section id="page-referensi" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-referensi-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Referensi</div>
+  <div class="content-box scrollable">
+    <ol>
+      <li style="margin-bottom:12px;"><strong>Kurikulum Merdeka</strong> — Capaian Pembelajaran Informatika Fase D, Kementerian Pendidikan Dasar dan Menengah Republik Indonesia.</li>
+      <li style="margin-bottom:12px;"><strong>Buku Siswa Informatika Kelas VIII</strong> — Bab Jaringan Komputer dan Internet, Pusat Perbukuan Kemendikdasmen.</li>
+      <li style="margin-bottom:12px;"><strong>Tanenbaum, A. S., &amp; Wetherall, D. J. (2011)</strong>. <em>Computer Networks</em> (5th Edition). Pearson Education.</li>
+      <li style="margin-bottom:12px;"><strong>Kurose, J. F., &amp; Ross, K. W. (2021)</strong>. <em>Computer Networking: A Top-Down Approach</em> (8th Edition). Pearson.</li>
+      <li><strong>Storyboard MPI Informatika</strong> — "Jaringan Komputer: Perjalanan Paket Data", Tim Pengembang SMP Negeri 2 Lamongan, 2025.</li>
+    </ol>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-referensi-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-referensi-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 16: PENGEMBANG ============================== -->
+<section id="page-pengembang" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-pengembang-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="title-bar">Pengembang</div>
+  <div class="content-box scrollable">
+    <!-- Developer 1 -->
+    <div class="dev-card">
+      <div class="dev-layout">
+        <div class="dev-photo" id="dev-photo-1">
+          <img src="../assets/fanani.jpg" alt="Foto Ach. Chanifuddin Fanani, S.Pd." onerror="this.outerHTML='👨‍💻'">
+        </div>
+        <div class="dev-fields">
+          <div class="dev-field">
+            <span class="field-label">Nama :</span>
+            <span class="field-value">Ach. Chanifuddin Fanani, S.Pd.</span>
+          </div>
+          <div class="dev-field">
+            <span class="field-label">Instansi :</span>
+            <span class="field-value">SMP Negeri 2 Lamongan</span>
+          </div>
+          <div class="dev-field">
+            <span class="field-label">Email :</span>
+            <span class="field-value">chanifuddin@gmail.com</span>
+          </div>
+          <div class="dev-field">
+            <span class="field-label">Tautan :</span>
+            <span class="field-value" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+              <a href="https://instagram.com/qaneev" target="_blank" style="display:inline-flex;align-items:center;gap:8px;color:var(--text-dark);text-decoration:none;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;border-radius:6px;flex-shrink:0;">
+                  <defs>
+                    <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+                      <stop offset="0%" stop-color="#fdf497"/>
+                      <stop offset="5%" stop-color="#fdf497"/>
+                      <stop offset="45%" stop-color="#fd5949"/>
+                      <stop offset="60%" stop-color="#d6249f"/>
+                      <stop offset="90%" stop-color="#285AEB"/>
+                    </radialGradient>
+                  </defs>
+                  <rect width="24" height="24" rx="6" fill="url(#ig-grad)"/>
+                  <rect x="5.5" y="5.5" width="13" height="13" rx="3.5" stroke="white" stroke-width="1.6" fill="none"/>
+                  <circle cx="12" cy="12" r="3.2" stroke="white" stroke-width="1.6" fill="none"/>
+                  <circle cx="15.8" cy="8.2" r="0.9" fill="white"/>
+                </svg>
+                <span>@qaneev</span>
+              </a>
+              <span style="color:rgba(0,0,0,0.25);">|</span>
+              <a href="https://fanani.my.id" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:var(--blue);text-decoration:underline;">
+                <span>🌐</span>
+                <span>fanani.my.id</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Developer 2 -->
+    <div class="dev-card">
+      <div class="dev-layout">
+        <div class="dev-photo" id="dev-photo-2">
+          <img src="../assets/ilyas.jpeg" alt="Foto Akhmad Ilyas Yudansyah" onerror="this.outerHTML='👨‍🔧'">
+        </div>
+        <div class="dev-fields">
+          <div class="dev-field">
+            <span class="field-label">Nama :</span>
+            <span class="field-value">Akhmad Ilyas Yudansyah</span>
+          </div>
+          <div class="dev-field">
+            <span class="field-label">Instansi :</span>
+            <span class="field-value">SMP Negeri 2 Lamongan</span>
+          </div>
+          <div class="dev-field">
+            <span class="field-label">Email :</span>
+            <span class="field-value">akhmadilyasyudansyah@gmail.com</span>
+          </div>
+          <div class="dev-field">
+            <span class="field-label">Tautan :</span>
+            <span class="field-value" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+              <a href="https://www.instagram.com/ilyassyd_/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;color:var(--text-dark);text-decoration:none;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;border-radius:6px;flex-shrink:0;">
+                  <defs>
+                    <radialGradient id="ig-grad-2" cx="30%" cy="107%" r="150%">
+                      <stop offset="0%" stop-color="#fdf497"/>
+                      <stop offset="5%" stop-color="#fdf497"/>
+                      <stop offset="45%" stop-color="#fd5949"/>
+                      <stop offset="60%" stop-color="#d6249f"/>
+                      <stop offset="90%" stop-color="#285AEB"/>
+                    </radialGradient>
+                  </defs>
+                  <rect width="24" height="24" rx="6" fill="url(#ig-grad-2)"/>
+                  <rect x="5.5" y="5.5" width="13" height="13" rx="3.5" stroke="white" stroke-width="1.6" fill="none"/>
+                  <circle cx="12" cy="12" r="3.2" stroke="white" stroke-width="1.6" fill="none"/>
+                  <circle cx="15.8" cy="8.2" r="0.9" fill="white"/>
+                </svg>
+                <span>@ilyassyd_</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-pengembang-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-pengembang-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 17: PJ & PENYUNTING ============================== -->
+<section id="page-pj-penyunting" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-pj-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="content-box wide scrollable" style="padding-top:24px;">
+    <div class="pj-layout">
+      <div class="pj-column">
+        <div class="title-bar" style="font-size:20px;padding:8px 32px;">Penanggung Jawab</div>
+        <div style="height:20px"></div>
+        <div class="pj-list">
+          <div class="pj-item">
+            <div class="pj-name">1. Dr. Maulani Mega Hapsari, S.IP, M.A.</div>
+            <div class="pj-role">Direktur SMP — Kemendikdasmen</div>
+          </div>
+          <div class="pj-item">
+            <div class="pj-name">2. Roelly Herdyanto, S.E., M.Si.</div>
+            <div class="pj-role">Kasubag Tata Usaha Direktorat SMP</div>
+          </div>
+          <div class="pj-item">
+            <div class="pj-name">3. Cepy Lukman Rusdiana, S.Kom., M.Si</div>
+            <div class="pj-role">Kasubdit Fasilitasi Sarana &amp; Prasarana Tatakelola Direktorat SMP</div>
+          </div>
+          <div class="pj-item">
+            <div class="pj-name">4. Hendro Sucipto, S.Kom</div>
+            <div class="pj-role">Pejabat Pembuat Komitmen Direktorat SMP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pj-column">
+        <div class="title-bar" style="font-size:20px;padding:8px 32px;">Penyunting</div>
+        <div style="height:20px"></div>
+        <div class="pj-list">
+          <div class="pj-item">
+            <div class="pj-name">1. Dra. Nikensari, M.Ed</div>
+            <div class="pj-role">Direktorat SMP</div>
+          </div>
+          <div class="pj-item">
+            <div class="pj-name">2. Dr. Noris Rahmatullah, S.T., M.T</div>
+            <div class="pj-role">Direktorat SMP</div>
+          </div>
+          <div class="pj-item">
+            <div class="pj-name">3. Johan Winarni, S.P., M.Pd</div>
+            <div class="pj-role">Direktorat SMP</div>
+          </div>
+          <div class="pj-item">
+            <div class="pj-name">4. Rindhy Anthika Nadya, S.Kom</div>
+            <div class="pj-role">Direktorat SMP</div>
+          </div>
+          <div class="pj-item">
+            <div class="pj-name">5. Kunto Imbar Nursetyo, M.Pd.</div>
+            <div class="pj-role">Universitas Negeri Jakarta</div>
+          </div>
+          <div class="pj-item">
+            <div class="pj-name">6. Syifa Aulia Usman</div>
+            <div class="pj-role">Universitas Negeri Jakarta</div>
+          </div>
+          <div class="pj-item">
+            <div class="pj-name">7. Fadia Meyra Mukti</div>
+            <div class="pj-role">Universitas Negeri Jakarta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-pj-prev">◀</button></div>
+  <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-pj-next">▶</button></div>
+</section>
+
+<!-- ============================== PAGE 18: KUTIPAN/MOTTO ============================== -->
+<section id="page-kutipan" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('menu')" id="btn-kutipan-menu">☰</button>
+    <span class="nav-label">MENU</span>
+  </div>
+
+  <div class="kutipan-card" id="kutipan-card">
+    <p class="kutipan-text">BERKARYA UNTUK NEGERI MELALUI DIGITALISASI PEMBELAJARAN INOVATIF BERDAMPAK</p>
+  </div>
+
+  <div style="position:absolute;bottom:24px;text-align:center;">
+    <button class="btn btn-primary" onclick="goToPage('kredit')" id="btn-kutipan-lanjut">Lanjut ke Penutup ▶</button>
+  </div>
+</section>
+
+<!-- ============================== PAGE 19: KREDIT/PENUTUP ============================== -->
+<section id="page-kredit" class="page">
+  <div class="nav-top">
+    <button class="nav-circle" onclick="goToPage('cover')" id="btn-kredit-beranda">🏠</button>
+    <span class="nav-label">BERANDA</span>
+  </div>
+
+  <div class="kredit-content">
+    <div class="kredit-box">
+      <div class="logo-row" id="kredit-logos">
+        <img src="../assets/Logo Tutwuri Kemendikdasmen.png" alt="Logo Tut Wuri Handayani">
+        <img src="../assets/Logo Sobat SMP 2025.png" alt="Logo Sobat SMP 2025">
+        <img src="../assets/Logo Pendidikan Bermutu.png" alt="Logo Pendidikan Bermutu">
+        <img src="../assets/Logo Ramah.png" alt="Logo Ramah">
+      </div>
+
+      <div class="kredit-text">
+        <p>KEMENTERIAN PENDIDIKAN DASAR DAN MENENGAH</p>
+        <p>DIREKTORAT JENDERAL PENDIDIKAN ANAK USIA DINI, PENDIDIKAN DASAR, DAN PENDIDIKAN NONFORMAL DAN INFORMAL</p>
+        <p>DIREKTORAT SEKOLAH MENENGAH PERTAMA</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /app -->
+
+<!-- Scripts -->
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
