@@ -344,10 +344,10 @@
     <div class="intro-side-icon left">🎮</div>
     <div class="intro-side-icon right">🏆</div>
 
-    <h2 class="sticker-text intro-title">Permainan Simulasi</h2>
+    <h2 class="sticker-text intro-title">Permainan — Packet Commander</h2>
     <p class="intro-desc">
-      Uji keahlianmu sebagai pengarah rute jaringan komputer!<br>
-      Pilihlah router pada jalur alternatif yang aman ketika terjadi server down, lalu kirimkan paket data sampai ke tujuan.
+      Uji keahlianmu sebagai pengatur rute jaringan komputer handal!<br>
+      Taklukkan 3 Misi Tantangan: <strong>Rute Alternatif</strong> saat Server Down, <strong>Bagi Beban Jalur</strong> (Load Balancing), hingga <strong>Perakitan Kembali Foto</strong> (Packet Reassembly)!
     </p>
 
     <button class="btn-mulai" onclick="goToPage('permainan')" id="btn-permainan-mulai">
@@ -367,57 +367,219 @@
     <span class="nav-label">MENU</span>
   </div>
 
-  <div class="title-bar">Permainan Simulasi Jalur</div>
-  <div class="content-box wide" id="sim-content-box" style="padding: 24px 44px 16px;">
-    <p class="instruction" style="font-size:20px;font-weight:700;color:var(--teal-dark);text-align:center;margin-bottom:10px;">
-      🚦 Pilihlah router pada jalur alternatif yang aman! Jalur B sedang mengalami gangguan (Server Down ⚠️).
-    </p>
+  <div class="title-bar">Permainan — Packet Commander</div>
+  <div class="content-box wide game-main-box" id="game-main-box">
+    <!-- Game Header: Level Selector Tabs + HUD Stats -->
+    <div class="game-header">
+      <div class="game-level-tabs">
+        <button class="game-tab active" onclick="switchGameLevel(1)" id="game-tab-1">
+          <span class="tab-badge">Misi 1</span>
+          <span class="tab-title">Rute Alternatif</span>
+          <span class="tab-stars" id="stars-lvl-1">⭐ 0/1</span>
+        </button>
+        <button class="game-tab locked" onclick="switchGameLevel(2)" id="game-tab-2">
+          <span class="tab-badge">Misi 2</span>
+          <span class="tab-title">Bagi Beban (Load Balance)</span>
+          <span class="tab-stars" id="stars-lvl-2">🔒</span>
+        </button>
+        <button class="game-tab locked" onclick="switchGameLevel(3)" id="game-tab-3">
+          <span class="tab-badge">Misi 3</span>
+          <span class="tab-title">Mesh Dinamis &amp; Reassembly</span>
+          <span class="tab-stars" id="stars-lvl-3">🔒</span>
+        </button>
+      </div>
 
-    <div class="sim-container" id="sim-game">
-      <div class="sim-topology" id="sim-topology">
-        <svg viewBox="0 0 980 310">
-          <path d="M 120,60 C 300,60 420,38 490,38 C 560,38 680,60 860,60" class="sim-path path-a" id="path-a-line"/>
-          <path d="M 120,135 C 300,135 420,135 490,135 C 560,135 680,135 860,135" class="sim-path path-b" id="path-b-line"/>
-          <path d="M 120,210 C 300,210 420,232 490,232 C 560,232 680,210 860,210" class="sim-path path-c" id="path-c-line"/>
-        </svg>
+      <div class="game-hud">
+        <div class="hud-item">
+          <span class="hud-label">TOTAL BINTANG</span>
+          <span class="hud-val star-val" id="game-total-stars">⭐ 0/3</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">STATUS JALUR</span>
+          <span class="hud-val status-badge ready" id="game-net-status">🟢 Siap</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">LATENCY</span>
+          <span class="hud-val latency-badge" id="game-latency">⏱️ 0 ms</span>
+        </div>
+      </div>
+    </div>
 
-        <!-- Sender -->
-        <div class="sim-node sender" style="left:30px;top:92px;">
-          <div class="node-icon">💻</div>
-          <span style="font-size:16px;">Pengirim</span>
-        </div>
-        <!-- Receiver -->
-        <div class="sim-node receiver" style="right:30px;top:92px;">
-          <div class="node-icon">💻</div>
-          <span style="font-size:16px;">Penerima</span>
-        </div>
+    <!-- Instruction Bar -->
+    <div class="game-mission-info" id="game-mission-info">
+      <span class="mission-icon" id="game-mission-icon">🎯</span>
+      <span class="mission-text" id="game-mission-desc">Tentukan rute transmisi paket data foto kucing!</span>
+    </div>
 
-        <!-- Router A -->
-        <div class="sim-router path-a" data-path="a" style="left:460px;top:8px;" onclick="selectSimPath('a')" id="router-a">
-          <div class="router-icon">🚦</div>
-          <span class="router-label" style="font-size:16px;font-weight:700;">Router A</span>
+    <!-- Main Game Stage: 3-column Layout (Sender Panel | Topology SVG | Receiver Panel) -->
+    <div class="game-stage-wrapper">
+      <!-- 1. Sender Panel (Left) -->
+      <div class="game-side-panel sender-panel" id="game-sender-panel">
+        <div class="side-panel-header">
+          <span class="side-icon">💻</span>
+          <span class="side-title">Pengirim</span>
         </div>
-        <!-- Router B -->
-        <div class="sim-router path-b" data-path="b" style="left:460px;top:105px;" onclick="selectSimPath('b')" id="router-b">
-          <div class="router-icon">🚦</div>
-          <span class="warning">⚠️</span>
-          <span class="router-label" style="font-size:16px;font-weight:700;color:#c62828;">Router B (Down)</span>
-        </div>
-        <!-- Router C -->
-        <div class="sim-router path-c" data-path="c" style="left:460px;top:200px;" onclick="selectSimPath('c')" id="router-c">
-          <div class="router-icon">🚦</div>
-          <span class="router-label" style="font-size:16px;font-weight:700;">Router C</span>
+        <div class="side-preview-box">
+          <div class="cat-preview-frame">
+            <img src="assets/cat.png" alt="Foto Kucing Asli" class="cat-preview-img">
+            <div class="photo-overlay-grid">
+              <span>#1</span><span>#2</span>
+              <span>#3</span><span>#4</span>
+            </div>
+          </div>
+          <div class="photo-info-badge">📦 4 Paket Data</div>
         </div>
       </div>
 
-      <div class="sim-actions" style="text-align:center;margin-top:10px;">
-        <button class="btn-send" onclick="sendPacket('game')" id="btn-send-packet" disabled>📤 Kirim Paket Data</button>
+      <!-- 2. Interactive SVG Network Canvas (Center) -->
+      <div class="game-canvas" id="game-canvas">
+        <svg id="game-svg-layer" viewBox="0 0 880 340" preserveAspectRatio="xMidYMid meet"></svg>
+        <div id="game-packets-layer"></div>
       </div>
 
-      <!-- Feedback overlay -->
-      <div class="sim-feedback" id="sim-feedback">
-        <div class="sim-feedback-card" id="sim-feedback-card"></div>
+      <!-- 3. Receiver Reassembly Panel (Right) -->
+      <div class="game-side-panel receiver-panel" id="game-receiver-panel">
+        <div class="side-panel-header">
+          <span class="side-icon">💻</span>
+          <span class="side-title">Penerima</span>
+        </div>
+        <div class="side-preview-box">
+          <div class="rx-puzzle-grid" id="rx-puzzle-grid">
+            <div class="rx-slot" id="rx-slot-1" data-slot="1" onclick="clickReceiverSlot(1)"><span class="slot-badge">#1</span></div>
+            <div class="rx-slot" id="rx-slot-2" data-slot="2" onclick="clickReceiverSlot(2)"><span class="slot-badge">#2</span></div>
+            <div class="rx-slot" id="rx-slot-3" data-slot="3" onclick="clickReceiverSlot(3)"><span class="slot-badge">#3</span></div>
+            <div class="rx-slot" id="rx-slot-4" data-slot="4" onclick="clickReceiverSlot(4)"><span class="slot-badge">#4</span></div>
+          </div>
+          <div class="rx-status" id="rx-status-label">Menunggu 4 paket...</div>
+        </div>
       </div>
+    </div>
+
+    <!-- Misi 2 Control Deck: Load Balancer (Visible only in Level 2) -->
+    <div class="game-deck" id="game-deck-loadbalance" style="display:none;">
+      <div class="deck-title">🎛️ Atur Rute Setiap Paket (Kapasitas Maksimal tiap Jalur = <strong>2 Paket</strong>):</div>
+      <div class="packet-routes-grid">
+        <div class="packet-route-card" id="prc-1">
+          <span class="pkt-badge">📦 Paket 1</span>
+          <div class="pkt-selector">
+            <button class="btn-pkt-path active" onclick="setPacketPath(1, 'A')" id="btn-p1-a">Jalur A (Atas)</button>
+            <button class="btn-pkt-path" onclick="setPacketPath(1, 'B')" id="btn-p1-b">Jalur B (Bawah)</button>
+          </div>
+        </div>
+        <div class="packet-route-card" id="prc-2">
+          <span class="pkt-badge">📦 Paket 2</span>
+          <div class="pkt-selector">
+            <button class="btn-pkt-path active" onclick="setPacketPath(2, 'A')" id="btn-p2-a">Jalur A (Atas)</button>
+            <button class="btn-pkt-path" onclick="setPacketPath(2, 'B')" id="btn-p2-b">Jalur B (Bawah)</button>
+          </div>
+        </div>
+        <div class="packet-route-card" id="prc-3">
+          <span class="pkt-badge">📦 Paket 3</span>
+          <div class="pkt-selector">
+            <button class="btn-pkt-path active" onclick="setPacketPath(3, 'A')" id="btn-p3-a">Jalur A (Atas)</button>
+            <button class="btn-pkt-path" onclick="setPacketPath(3, 'B')" id="btn-p3-b">Jalur B (Bawah)</button>
+          </div>
+        </div>
+        <div class="packet-route-card" id="prc-4">
+          <span class="pkt-badge">📦 Paket 4</span>
+          <div class="pkt-selector">
+            <button class="btn-pkt-path active" onclick="setPacketPath(4, 'A')" id="btn-p4-a">Jalur A (Atas)</button>
+            <button class="btn-pkt-path" onclick="setPacketPath(4, 'B')" id="btn-p4-b">Jalur B (Bawah)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Misi 3 Interactive Deck: Dynamic Mesh Route Allocation & Buffer Reassembly -->
+    <div class="game-deck" id="game-deck-mesh" style="display:none;">
+      <!-- Step 1: Mesh Route Config per Packet -->
+      <div id="mesh-config-deck">
+        <div class="deck-title">
+          🔀 <strong>Tabel Routing Mesh Dinamis:</strong> Tentukan rute tiap paket data foto. Hindari antrean pada Jalur Express (kapasitas 1 paket)!
+        </div>
+        <div class="mesh-pkt-routes-grid">
+          <!-- Paket 1 -->
+          <div class="mesh-pkt-card" id="mpc-1">
+            <div class="mesh-pkt-header">
+              <span class="pkt-badge" style="background:#00ACC1;color:#fff;padding:1px 6px;border-radius:6px;">📦 Paket #1</span>
+              <span class="pkt-target-hint">Kuadran Kiri-Atas</span>
+            </div>
+            <select class="mesh-route-select" id="select-m-p1" onchange="updateMeshPacketRoute(1, this.value)">
+              <option value="1" selected>⚡ R1➔R3 Express (35ms | Max 1)</option>
+              <option value="2">🚦 R1➔R4 Transit (75ms | Max 2)</option>
+              <option value="3">🔀 R2➔R4 Cross (90ms | Max 2)</option>
+              <option value="4">📡 R2➔R5 Satelit (160ms | Max 2)</option>
+            </select>
+          </div>
+
+          <!-- Paket 2 -->
+          <div class="mesh-pkt-card" id="mpc-2">
+            <div class="mesh-pkt-header">
+              <span class="pkt-badge" style="background:#0288D1;color:#fff;padding:1px 6px;border-radius:6px;">📦 Paket #2</span>
+              <span class="pkt-target-hint">Kuadran Kanan-Atas</span>
+            </div>
+            <select class="mesh-route-select" id="select-m-p2" onchange="updateMeshPacketRoute(2, this.value)">
+              <option value="1" selected>⚡ R1➔R3 Express (35ms | Max 1)</option>
+              <option value="2">🚦 R1➔R4 Transit (75ms | Max 2)</option>
+              <option value="3">🔀 R2➔R4 Cross (90ms | Max 2)</option>
+              <option value="4">📡 R2➔R5 Satelit (160ms | Max 2)</option>
+            </select>
+          </div>
+
+          <!-- Paket 3 -->
+          <div class="mesh-pkt-card" id="mpc-3">
+            <div class="mesh-pkt-header">
+              <span class="pkt-badge" style="background:#7b1fa2;color:#fff;padding:1px 6px;border-radius:6px;">📦 Paket #3</span>
+              <span class="pkt-target-hint">Kuadran Kiri-Bawah</span>
+            </div>
+            <select class="mesh-route-select" id="select-m-p3" onchange="updateMeshPacketRoute(3, this.value)">
+              <option value="1" selected>⚡ R1➔R3 Express (35ms | Max 1)</option>
+              <option value="2">🚦 R1➔R4 Transit (75ms | Max 2)</option>
+              <option value="3">🔀 R2➔R4 Cross (90ms | Max 2)</option>
+              <option value="4">📡 R2➔R5 Satelit (160ms | Max 2)</option>
+            </select>
+          </div>
+
+          <!-- Paket 4 -->
+          <div class="mesh-pkt-card" id="mpc-4">
+            <div class="mesh-pkt-header">
+              <span class="pkt-badge" style="background:#e65100;color:#fff;padding:1px 6px;border-radius:6px;">📦 Paket #4</span>
+              <span class="pkt-target-hint">Kuadran Kanan-Bawah</span>
+            </div>
+            <select class="mesh-route-select" id="select-m-p4" onchange="updateMeshPacketRoute(4, this.value)">
+              <option value="1" selected>⚡ R1➔R3 Express (35ms | Max 1)</option>
+              <option value="2">🚦 R1➔R4 Transit (75ms | Max 2)</option>
+              <option value="3">🔀 R2➔R4 Cross (90ms | Max 2)</option>
+              <option value="4">📡 R2➔R5 Satelit (160ms | Max 2)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Interactive Buffer Inbox (Active after transmission) -->
+      <div id="mesh-inbox-deck" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+          <div class="deck-title" style="color:#0288D1; margin-bottom:0;">
+            🧩 <strong>Tantangan Header Reassembly:</strong> Klik kartu paket di bawah (atau klik Kuadran monitor) untuk langsung merakit foto kucing:
+          </div>
+          <button class="btn-game" style="background:#e0f2fe; color:#0288D1; border:1.5px solid #0288D1; padding:6px 16px; font-size:13.5px;" onclick="autoAssembleAllBufferPackets()">⚡ Rakit Semua Otomatis</button>
+        </div>
+        <div class="mesh-inbox-grid" id="mesh-inbox-grid">
+          <!-- Dynamic packet cards rendered here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Toolbar -->
+    <div class="game-toolbar">
+      <button class="btn-game btn-reset" onclick="resetCurrentGameLevel()" id="btn-game-reset">🔄 Reset Jalur</button>
+      <button class="btn-game btn-transmit" onclick="launchGameTransmission()" id="btn-game-transmit">🚀 Kirim Paket Data</button>
+      <button class="btn-game btn-hint" onclick="showGameHint()" id="btn-game-hint">💡 Bantuan</button>
+    </div>
+
+    <!-- Feedback & Victory Modal -->
+    <div class="game-modal" id="game-modal">
+      <div class="game-modal-card" id="game-modal-card"></div>
     </div>
   </div>
 
@@ -778,7 +940,7 @@
                 <span>@qaneev</span>
               </a>
               <span style="color:rgba(0,0,0,0.25);">|</span>
-              <a href="https://fanani.my.id" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:var(--blue);text-decoration:underline;">
+              <a href="https://fanani.my.id" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-dark);text-decoration:none;">
                 <span>🌐</span>
                 <span>fanani.my.id</span>
               </a>
