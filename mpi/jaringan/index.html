@@ -211,7 +211,7 @@
       <div class="nav-bottom right"><button class="nav-arrow" onclick="goToPage('materi-1')" id="btn-materilist-next">▶</button></div>
     </section>
 
-    <!-- ============================== PAGE 6: MATERI 1 ============================== -->
+    <!-- ============================== PAGE 6: MATERI 1 (TABBED MODEL) ============================== -->
     <section id="page-materi-1" class="page">
       <div class="nav-top">
         <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi1-menu">☰</button>
@@ -219,57 +219,187 @@
       </div>
 
       <div class="title-bar">Materi 1: Konsep Jaringan, Paket Data &amp; Router</div>
-      <div class="content-box wide scrollable" style="padding: 22px 36px 16px;">
-        <div class="content-columns" style="gap: 24px;">
-          <!-- Kolom Kiri: Konsep Jaringan & Paket Data -->
-          <div class="content-col">
-            <h3 style="font-size:20px;margin-bottom:6px;">🌐 1. Apa Itu Jaringan Komputer?</h3>
-            <p style="font-size:16.5px;line-height:1.45;margin-bottom:10px;"><strong>Jaringan Komputer</strong> adalah
-              sistem penghubung perangkat digital (HP, laptop, server) agar dapat saling <strong>berbagi koneksi
-                internet, data, pesan, serta video</strong>.</p>
 
-            <h3 style="font-size:20px;margin-bottom:6px;margin-top:10px;">📦 2. Mengapa Data Dipecah?</h3>
-            <p style="font-size:16.5px;line-height:1.45;margin-bottom:8px;">Saat kamu mengirim foto di chat, file
-              tersebut <strong>TIDAK</strong> dikirim utuh, melainkan dipotong menjadi ribuan serpihan kecil bernama
-              <strong>PAKET DATA</strong>.</p>
+      <div class="content-box wide scrollable" style="padding: 16px 36px 18px;">
+        <!-- Tab Navigation Bar -->
+        <div class="materi-tabs-nav" id="materi1-tabs-nav">
+          <button class="materi-tab-btn active" onclick="switchMateri1Tab(1)" id="mtab1-btn-1">
+            <span class="mtab-icon">📦</span>
+            <span class="mtab-title">1. Paket Data &amp; Anatomi</span>
+          </button>
+          <button class="materi-tab-btn" onclick="switchMateri1Tab(2)" id="mtab1-btn-2">
+            <span class="mtab-icon">🚦</span>
+            <span class="mtab-title">2. Router &amp; Cara Kerja</span>
+          </button>
+          <button class="materi-tab-btn" onclick="switchMateri1Tab(3)" id="mtab1-btn-3">
+            <span class="mtab-icon">🔀</span>
+            <span class="mtab-title">3. Rute Dinamis &amp; Reassembly</span>
+          </button>
+        </div>
 
-            <div
-              style="background:var(--white);border-radius:var(--radius-md);padding:12px 16px;margin-top:6px;border:2px solid rgba(0,172,193,0.35);box-shadow:0 3px 10px var(--shadow-light);">
-              <h4 style="font-family:var(--font-heading);font-size:17.5px;color:var(--teal-dark);margin-bottom:6px;">💌
-                Anatomi Paket Data (Analogi Amplop Surat):</h4>
-              <ul style="margin-left:18px;font-size:15.5px;line-height:1.45;">
-                <li><strong>🏷️ HEADER (Kepala Paket):</strong> Alamat IP Asal, IP Tujuan, dan <strong>Nomor
-                    Urut</strong> (mis. "Paket 1 dari 4").</li>
-                <li><strong>📄 PAYLOAD (Isi Paket):</strong> Potongan data asli (piksel foto/pesan).</li>
-              </ul>
-            </div>
-            <p style="margin-top:8px;font-size:15.5px;margin-bottom:0;">💡 <em>Fungsi Nomor Urut:</em> Agar komputer
-              penerima dapat merakit kembali seluruh potongan menjadi foto asli tanpa tertukar.</p>
-          </div>
-
-          <!-- Kolom Kanan: Router & Rute Dinamis -->
-          <div class="content-col">
-            <h3 style="font-size:20px;margin-bottom:6px;">🚦 3. Router: Polisi Lalu Lintas Jaringan</h3>
-            <p style="font-size:16.5px;line-height:1.45;margin-bottom:8px;">Di internet terdapat jutaan persimpangan
-              kabel dan nirkabel. Perangkat bernama <strong>ROUTER</strong> bertugas mengatur jalur setiap paket data.
-            </p>
-
-            <div
-              style="background:var(--white);border-radius:var(--radius-md);padding:12px 16px;margin-top:6px;border:2px solid rgba(0,172,193,0.35);box-shadow:0 3px 10px var(--shadow-light);">
-              <p style="margin-bottom:8px;font-size:15.5px;line-height:1.45;"><strong>🧭 MEMILIH RUTE TERBAIK:</strong>
-                Router membaca alamat tujuan dan mencarikan rute tercepat yang tidak macet (mirip navigasi GPS / Google
-                Maps).</p>
-              <p style="margin-bottom:0;font-size:15.5px;line-height:1.45;"><strong>🔀 RUTE DINAMIS:</strong> Jika salah
-                satu jalur putus atau server bermasalah (<em>Server Down / RTO</em>), router otomatis mengalihkan paket
-                ke jalur alternatif yang lancar.</p>
-            </div>
-
-            <div
-              style="background:#e0f2fe;border-left:5px solid var(--blue);padding:12px 16px;border-radius:0 12px 12px 0;margin-top:12px;">
-              <p style="margin-bottom:0;font-size:16px;font-weight:600;color:#0369a1;line-height:1.45;">
-                ✨ Prinsip Utama: Berkat paket data dan router, pengiriman data internet tidak akan berhenti total hanya
-                karena satu jalur mengalami gangguan!
+        <!-- ==================== PANEL TAB 1: PAKET DATA & ANATOMI ==================== -->
+        <div class="materi-tab-panel active" id="mtab1-panel-1">
+          <div class="content-columns" style="gap: 22px;">
+            <!-- Kolom Kiri: Konsep Dasar & Alasan Pemecahan -->
+            <div class="content-col" style="padding: 20px 24px;">
+              <h3 style="font-size:19.5px;margin-bottom:6px;color:#00838F;">🌐 1. Apa Itu Jaringan Komputer?</h3>
+              <p style="font-size:15.5px;line-height:1.45;margin-bottom:10px;">
+                <strong>Jaringan Komputer</strong> adalah sistem yang menghubungkan miliaran perangkat digital (HP, laptop, server, smart TV) di seluruh dunia agar dapat saling <strong>berbagi koneksi internet, data, pesan chat, video, dan berkas</strong> secara instan.
               </p>
+
+              <h3 style="font-size:19.5px;margin-bottom:6px;margin-top:8px;color:#00838F;">✂️ 2. Mengapa Data Harus Dipecah?</h3>
+              <p style="font-size:15.5px;line-height:1.45;margin-bottom:8px;">
+                Saat kamu mengirim foto 5 MB di chat, file tersebut <strong>TIDAK PERNAH dikirim utuh segumpal</strong> di kabel internet, melainkan dipotong menjadi ribuan serpihan kecil bernama <strong>PAKET DATA</strong> (<em>Packetization</em>).
+              </p>
+              
+              <div style="background:#e0f7fa;border-left:4px solid var(--teal);padding:10px 14px;border-radius:0 10px 10px 0;margin-top:6px;">
+                <p style="margin-bottom:0;font-size:14.5px;line-height:1.4;color:#006064;">
+                  💡 <strong>Analogi Lemari Rakit (IKEA):</strong> Jauh lebih mudah dan aman mengangkut 4 kotak kardus potongan lemari di mobil daripada mengangkut 1 lemari kayu raksasa yang sudah jadi!
+                </p>
+              </div>
+            </div>
+
+            <!-- Kolom Kanan: 3 Komponen Anatomi Paket Data -->
+            <div class="content-col" style="padding: 20px 24px;">
+              <h3 style="font-size:19.5px;margin-bottom:6px;color:#00838F;">💌 3. Anatomi Paket Data (Analogi Amplop Surat)</h3>
+              <p style="font-size:15px;line-height:1.4;margin-bottom:8px;">Setiap paket data yang meluncur di jaringan memiliki 3 komponen utama:</p>
+
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <!-- 1. Header -->
+                <div style="background:var(--white);border-radius:10px;padding:9px 14px;border:1.5px solid rgba(0,172,193,0.35);box-shadow:0 2px 6px var(--shadow-light);">
+                  <div style="font-size:15.5px;font-weight:700;color:var(--teal-dark);margin-bottom:2px;">🏷️ 1. HEADER (Kepala Paket):</div>
+                  <p style="font-size:14px;line-height:1.35;margin-bottom:0;color:var(--text-body);">
+                    Berisi <strong>Alamat IP Pengirim &amp; Penerima</strong>, serta <strong>Nomor Urut Paket</strong> (mis. <em>"Paket #2 dari 4"</em>) agar komputer penerima dapat merakitnya kembali tanpa tertukar.
+                  </p>
+                </div>
+
+                <!-- 2. Payload -->
+                <div style="background:var(--white);border-radius:10px;padding:9px 14px;border:1.5px solid rgba(2,136,209,0.35);box-shadow:0 2px 6px var(--shadow-light);">
+                  <div style="font-size:15.5px;font-weight:700;color:#0288D1;margin-bottom:2px;">📄 2. PAYLOAD (Muatan / Isi Data):</div>
+                  <p style="font-size:14px;line-height:1.35;margin-bottom:0;color:var(--text-body);">
+                    Berisi potongan data asli yang dikirimkan (misalnya ribuan byte piksel foto kucing atau potongan teks pesan).
+                  </p>
+                </div>
+
+                <!-- 3. Trailer -->
+                <div style="background:var(--white);border-radius:10px;padding:9px 14px;border:1.5px solid rgba(123,31,162,0.35);box-shadow:0 2px 6px var(--shadow-light);">
+                  <div style="font-size:15.5px;font-weight:700;color:#7b1fa2;margin-bottom:2px;">🔖 3. TRAILER / CHECKSUM (Ekor Paket):</div>
+                  <p style="font-size:14px;line-height:1.35;margin-bottom:0;color:var(--text-body);">
+                    Berisi kode verifikasi error (<em>Error Checking</em>) untuk memastikan data tidak rusak atau korup selama melintasi kabel sinyal.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== PANEL TAB 2: ROUTER & CARA KERJA ==================== -->
+        <div class="materi-tab-panel" id="mtab1-panel-2">
+          <div class="content-columns" style="gap: 22px;">
+            <!-- Kolom Kiri: Mengenal Router -->
+            <div class="content-col" style="padding: 20px 24px;">
+              <h3 style="font-size:19.5px;margin-bottom:6px;color:#00838F;">🚦 1. Apa Itu Router?</h3>
+              <p style="font-size:15.5px;line-height:1.45;margin-bottom:10px;">
+                <strong>Router</strong> adalah perangkat keras jaringan cerdas yang berfungsi sebagai <strong>"Polisi Lalu Lintas Digital"</strong>. Di internet terdapat jutaan persimpangan kabel dan nirkabel, dan router bertugas mengarahkan setiap paket data ke jalur tercepat yang tidak macet.
+              </p>
+
+              <h3 style="font-size:19.5px;margin-bottom:6px;margin-top:8px;color:#00838F;">🏠 2. Peran Router di Rumah &amp; Sekolah</h3>
+              <p style="font-size:15.5px;line-height:1.45;margin-bottom:8px;">
+                Router di rumahmu menghubungkan seluruh perangkat di dalam rumah (HP, laptop, Smart TV) ke satu saluran internet global dari ISP (penyedia internet) secara bersamaan tanpa saling bertabrakan (Network Address Translation / NAT).
+              </p>
+
+              <div style="background:#e0f2fe;border-left:4px solid #0288D1;padding:10px 14px;border-radius:0 10px 10px 0;margin-top:6px;">
+                <p style="margin-bottom:0;font-size:14.5px;line-height:1.4;color:#01579b;">
+                  ✨ <strong>Cerdas &amp; Cepat:</strong> Router mampu membaca, memverifikasi alamat, dan meneruskan ribuan paket data dalam hitungan mikrodetik!
+                </p>
+              </div>
+            </div>
+
+            <!-- Kolom Kanan: 3 Tahap Kerja Router -->
+            <div class="content-col" style="padding: 20px 24px;">
+              <h3 style="font-size:19.5px;margin-bottom:6px;color:#00838F;">🧭 3. Tiga Tahap Router Memproses Paket</h3>
+              <p style="font-size:15px;line-height:1.4;margin-bottom:8px;">Setiap kali paket data tiba di router, terjadi 3 tahapan otomatis:</p>
+
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="background:var(--white);border-radius:10px;padding:9px 14px;border:1.5px solid rgba(0,172,193,0.35);box-shadow:0 2px 6px var(--shadow-light);">
+                  <div style="font-size:15.5px;font-weight:700;color:var(--teal-dark);margin-bottom:2px;">🔍 1. Inspeksi Alamat Header:</div>
+                  <p style="font-size:14px;line-height:1.35;margin-bottom:0;color:var(--text-body);">
+                    Router membuka dan membaca <strong>Alamat IP Tujuan</strong> yang tertera pada Header paket data.
+                  </p>
+                </div>
+
+                <div style="background:var(--white);border-radius:10px;padding:9px 14px;border:1.5px solid rgba(0,172,193,0.35);box-shadow:0 2px 6px var(--shadow-light);">
+                  <div style="font-size:15.5px;font-weight:700;color:var(--teal-dark);margin-bottom:2px;">🗺️ 2. Cek Routing Table (Peta Digital):</div>
+                  <p style="font-size:14px;line-height:1.35;margin-bottom:0;color:var(--text-body);">
+                    Router mencocokkan alamat dengan tabel rute digital untuk menghitung jalur terpendek dan tercepat yang tidak macet (mirip algoritma GPS Google Maps/Waze).
+                  </p>
+                </div>
+
+                <div style="background:var(--white);border-radius:10px;padding:9px 14px;border:1.5px solid rgba(0,172,193,0.35);box-shadow:0 2px 6px var(--shadow-light);">
+                  <div style="font-size:15.5px;font-weight:700;color:var(--teal-dark);margin-bottom:2px;">🚀 3. Meneruskan Paket (Forwarding):</div>
+                  <p style="font-size:14px;line-height:1.35;margin-bottom:0;color:var(--text-body);">
+                    Paket dioper ke router tetangga berikutnya (<em>Next Hop</em>) hingga akhirnya tiba di komputer tujuan.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== PANEL TAB 3: RUTE DINAMIS & REASSEMBLY ==================== -->
+        <div class="materi-tab-panel" id="mtab1-panel-3">
+          <div class="content-columns" style="gap: 22px;">
+            <!-- Kolom Kiri: Rute Dinamis & Toleransi Gangguan -->
+            <div class="content-col" style="padding: 20px 24px;">
+              <h3 style="font-size:19.5px;margin-bottom:6px;color:#00838F;">🔀 1. Kehebatan Rute Dinamis (Dynamic Routing)</h3>
+              <p style="font-size:15.5px;line-height:1.45;margin-bottom:8px;">
+                Topologi internet dirancang berbentuk jaring laba-laba (Mesh Topology), artinya selalu ada lebih dari satu jalan untuk menuju tujuan yang sama.
+              </p>
+
+              <div style="background:var(--white);border-radius:10px;padding:10px 14px;border:1.5px solid rgba(0,172,193,0.35);margin-bottom:8px;">
+                <p style="margin-bottom:4px;font-size:14.5px;font-weight:700;color:#c62828;">🛡️ Tahan Gangguan (Fault Tolerance):</p>
+                <p style="font-size:14px;line-height:1.4;margin-bottom:0;color:var(--text-body);">
+                  Jika salah satu jalur putus atau router mengalami gangguan (Server Down / RTO), router otomatis membelokkan paket ke <strong>jalur alternatif yang lancar</strong> tanpa membuat internet mati total!
+                </p>
+              </div>
+
+              <div style="background:var(--white);border-radius:10px;padding:10px 14px;border:1.5px solid rgba(0,172,193,0.35);">
+                <p style="margin-bottom:4px;font-size:14.5px;font-weight:700;color:#0288D1;">⚡ Transmisi Paralel (Multi-Path):</p>
+                <p style="font-size:14px;line-height:1.4;margin-bottom:0;color:var(--text-body);">
+                  4 paket dari foto yang sama bisa melesat bersamaan lewat 4 jalur berbeda (kabel darat, serat optik bawah laut, hingga sinyal satelit).
+                </p>
+              </div>
+            </div>
+
+            <!-- Kolom Kanan: Proses Perakitan Kembali (Packet Reassembly) -->
+            <div class="content-col" style="padding: 20px 24px;">
+              <h3 style="font-size:19.5px;margin-bottom:6px;color:#00838F;">🧩 2. Perakitan Kembali di Penerima (Reassembly)</h3>
+              <p style="font-size:15.5px;line-height:1.45;margin-bottom:8px;">
+                Karena paket data menempuh rute yang berbeda-beda, paket bisa saja <strong>tiba tidak berurutan</strong> (Out of Order) — misalnya Paket #3 tiba lebih awal daripada Paket #1.
+              </p>
+
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="background:var(--white);border-radius:10px;padding:10px 14px;border:1.5px solid rgba(0,172,193,0.35);box-shadow:0 2px 6px var(--shadow-light);">
+                  <div style="font-size:15px;font-weight:700;color:var(--teal-dark);margin-bottom:2px;">📥 1. Menampung di Buffer:</div>
+                  <p style="font-size:14px;line-height:1.35;margin-bottom:0;color:var(--text-body);">
+                    Komputer penerima menampung setiap paket yang baru tiba ke dalam memori antrean (Buffer Memory).
+                  </p>
+                </div>
+
+                <div style="background:var(--white);border-radius:10px;padding:10px 14px;border:1.5px solid rgba(0,172,193,0.35);box-shadow:0 2px 6px var(--shadow-light);">
+                  <div style="font-size:15px;font-weight:700;color:var(--teal-dark);margin-bottom:2px;">🔢 2. Membaca Header Nomor Urut:</div>
+                  <p style="font-size:14px;line-height:1.35;margin-bottom:0;color:var(--text-body);">
+                    Komputer membaca nomor urut (#1, #2, #3, #4) pada masing-masing Header paket.
+                  </p>
+                </div>
+
+                <div style="background:var(--white);border-radius:10px;padding:10px 14px;border:1.5px solid rgba(0,172,193,0.35);box-shadow:0 2px 6px var(--shadow-light);">
+                  <div style="font-size:15px;font-weight:700;color:var(--teal-dark);margin-bottom:2px;">🖼️ 3. Merakit Foto Utuh 100%:</div>
+                  <p style="font-size:14px;line-height:1.35;margin-bottom:0;color:var(--text-body);">
+                    Semua potongan piksel disatukan kembali secara presisi menjadi foto kucing yang utuh dan siap ditampilkan di layar!
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

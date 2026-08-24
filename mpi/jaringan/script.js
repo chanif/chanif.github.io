@@ -140,9 +140,27 @@ function goToPage(pageId) {
   scrollables.forEach(el => el.scrollTop = 0);
 
   // Lazy initialize interactive modules on page entry
+  if (pageId === 'materi-1') switchMateri1Tab(1);
   if (pageId === 'tarik-jawaban') initDragDrop();
   if (pageId === 'permainan') initPacketCommanderGame();
   if (pageId === 'video') initVideo();
+}
+
+// ==================== MATERI 1 TABBED NAVIGATION ====================
+
+function switchMateri1Tab(tabNum) {
+  for (let i = 1; i <= 3; i++) {
+    const btn = document.getElementById(`mtab1-btn-${i}`);
+    const panel = document.getElementById(`mtab1-panel-${i}`);
+    if (btn) {
+      if (i === tabNum) btn.classList.add('active');
+      else btn.classList.remove('active');
+    }
+    if (panel) {
+      if (i === tabNum) panel.classList.add('active');
+      else panel.classList.remove('active');
+    }
+  }
 }
 
 function navNext() {
