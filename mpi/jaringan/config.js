@@ -24,7 +24,7 @@ window.MPI_CONFIG = {
     background: {
         // Path gambar latar belakang ruang kelas (mendukung JPG, PNG, WEBP, SVG)
         // Kosongkan ('') jika ingin menggunakan latar belakang animasi SVG internal
-        image: '../assets/bg-jaringan-orange.png',
+        image: 'assets/bg-jaringan-orange.png',
 
         // Mode tampilan background ('cover', 'contain', '100% 100%')
         size: 'cover',
@@ -48,17 +48,17 @@ window.MPI_CONFIG = {
     // ------------------------------------------------------------
     logos: {
         // Header Cover (Pojok Kiri Atas)
-        header_left: '../assets/kemendikdasmen lengkap.png',
+        header_left: 'assets/kemendikdasmen lengkap.png',
 
         // Header Cover (Pojok Kanan Atas)
-        header_right: '../assets/sobat + bermutu + ramah.png',
+        header_right: 'assets/sobat + bermutu + ramah.png',
 
         // 4 Logo Berjajar di Halaman Kredit/Penutup (Urut dari Kiri ke Kanan)
         footer_logos: [
-            '../assets/Logo Tutwuri Kemendikdasmen.png',
-            '../assets/Logo Sobat SMP 2025.png',
-            '../assets/Logo Pendidikan Bermutu.png',
-            '../assets/Logo Ramah.png',
+            'assets/Logo Tutwuri Kemendikdasmen.png',
+            'assets/Logo Sobat SMP 2025.png',
+            'assets/Logo Pendidikan Bermutu.png',
+            'assets/Logo Ramah.png',
         ],
     },
 
@@ -67,8 +67,8 @@ window.MPI_CONFIG = {
     // ------------------------------------------------------------
     assets: {
         // Foto Pengembang di Halaman Pengembang
-        dev_photo_1: '../assets/fanani.jpg',
-        dev_photo_2: '../assets/ilyas.jpeg',
+        dev_photo_1: 'assets/fanani.jpg',
+        dev_photo_2: 'assets/ilyas.jpeg',
 
         // Video materi lokal (offline ready)
         video_src: 'assets/video/materi-video.mp4',
