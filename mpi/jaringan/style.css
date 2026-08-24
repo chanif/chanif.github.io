@@ -749,6 +749,120 @@ a {
   }
 }
 
+/* ---------- Page 6: Materi 1 Specifics ---------- */
+#page-materi-1 {
+  justify-content: flex-start;
+  padding-top: 12px;
+}
+
+#page-materi-1 .title-bar {
+  margin-top: 100px;
+  margin-bottom: -18px;
+  font-size: 32px;
+  padding: 8px 52px;
+}
+
+#page-materi-1 .content-box {
+  width: 96%;
+  max-width: 1440px;
+  min-height: 636px;
+  padding: 26px 36px 18px !important;
+}
+
+#page-materi-1 .materi-tabs-nav {
+  margin-bottom: 12px;
+  gap: 12px;
+  padding: 5px 10px;
+}
+
+#page-materi-1 .materi-tab-btn {
+  padding: 8px 24px;
+  font-size: 17.5px;
+  gap: 8px;
+}
+
+#page-materi-1 .content-columns {
+  gap: 22px;
+}
+
+#page-materi-1 .content-col {
+  padding: 16px 22px !important;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+}
+
+#page-materi-1 .content-col h3 {
+  font-size: 20.5px !important;
+  margin-bottom: 6px !important;
+  line-height: 1.3;
+  color: #00838F;
+}
+
+#page-materi-1 .content-col p {
+  font-size: 16.5px !important;
+  line-height: 1.5 !important;
+  margin-bottom: 8px !important;
+}
+
+#page-materi-1 .materi-subcard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+#page-materi-1 .materi-subcard {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 8px 14px;
+  border: 1.5px solid rgba(0, 172, 193, 0.35);
+  box-shadow: 0 2px 6px var(--shadow-light);
+}
+
+#page-materi-1 .materi-subcard-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+#page-materi-1 .materi-subcard-desc {
+  font-size: 14.5px !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0 !important;
+  color: var(--text-body);
+}
+
+#page-materi-1 .materi-analogi-box {
+  background: #e0f7fa;
+  border-left: 5px solid var(--teal);
+  padding: 10px 14px;
+  border-radius: 0 10px 10px 0;
+  margin-top: 6px;
+}
+
+#page-materi-1 .materi-analogi-box p {
+  margin-bottom: 0 !important;
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  color: #006064;
+}
+
+#page-materi-1 .materi-highlight-box {
+  background: #e0f2fe;
+  border-left: 5px solid #0288D1;
+  padding: 10px 14px;
+  border-radius: 0 10px 10px 0;
+  margin-top: 6px;
+}
+
+#page-materi-1 .materi-highlight-box p {
+  margin-bottom: 0 !important;
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  color: #01579b;
+}
+
 /* ---------- Cover Page Specifics ---------- */
 #page-cover .cover-center {
   text-align: center;
@@ -951,8 +1065,8 @@ a {
 /* ---------- Drag & Drop (Tarik Jawaban) ---------- */
 .dd-container {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 36px;
+  grid-template-columns: 30% calc(70% - 32px);
+  gap: 32px;
   width: 100%;
   flex: 1;
 }
@@ -1036,6 +1150,40 @@ a {
   font-size: 18px;
   color: var(--teal-dark);
   margin-top: 6px;
+}
+
+.dd-score-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: linear-gradient(135deg, rgba(0, 131, 143, 0.12) 0%, rgba(2, 136, 209, 0.12) 100%);
+  border: 2.5px solid var(--teal);
+  border-radius: var(--radius-pill);
+  padding: 10px 28px;
+  margin: 12px auto 6px;
+  width: fit-content;
+  box-shadow: 0 4px 14px rgba(0, 172, 193, 0.25);
+  animation: fadeInScore 0.35s ease;
+}
+
+.dd-score-badge {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--teal-dark);
+}
+
+.dd-score-text {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+@keyframes fadeInScore {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .dd-actions {
@@ -2639,77 +2787,6 @@ a {
   font-style: italic;
 }
 
-/* ---------- Kutipan / Motto Card (Page 18) ---------- */
-.kutipan-card {
-  position: relative;
-  background: var(--white);
-  border: 4px dashed var(--teal);
-  border-radius: var(--radius-lg);
-  padding: 60px 52px 48px;
-  max-width: 960px;
-  text-align: center;
-  box-shadow: 0 12px 36px var(--shadow);
-}
-
-.kutipan-card::before {
-  content: '❝';
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 42px;
-  color: var(--white);
-  background: var(--teal);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3.5px solid var(--white);
-  box-shadow: 0 4px 14px var(--shadow);
-  z-index: 5;
-  line-height: 1;
-}
-
-.kutipan-text {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 32px;
-  color: var(--teal-dark);
-  line-height: 1.6;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-/* ---------- Kredit / Penutup Page (Page 19) ---------- */
-.kredit-content {
-  text-align: center;
-  max-width: 1100px;
-}
-
-.kredit-content .kredit-box {
-  background: rgba(255, 255, 255, 0.9);
-  border: 4px dashed var(--teal);
-  border-radius: var(--radius-lg);
-  padding: 36px 48px;
-  box-shadow: 0 10px 32px var(--shadow);
-}
-
-.kredit-content .kredit-text {
-  margin-top: 28px;
-}
-
-.kredit-content .kredit-text p {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--text-dark);
-  text-transform: uppercase;
-  line-height: 1.7;
-  letter-spacing: 0.5px;
-}
-
 /* ---------- Rangkuman Page ---------- */
 .rangkuman-points {
   display: flex;
@@ -2865,6 +2942,162 @@ a {
   pointer-events: none;
   border-radius: 2px;
   animation: confettiFall 2.8s ease-in forwards;
+}
+
+/* ---------- Page 18: Kutipan / Motto ---------- */
+#page-kutipan .content-box {
+  width: 95%;
+  max-width: 1400px;
+  min-height: 640px;
+  height: 640px;
+  max-height: calc(100vh - 150px);
+  padding: 40px 60px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+#page-kutipan .kutipan-quote-mark {
+  font-family: var(--font-heading);
+  font-size: 140px;
+  line-height: 1;
+  color: var(--teal);
+  opacity: 0.22;
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+}
+
+#page-kutipan .kutipan-quote-mark.left {
+  top: 18px;
+  left: 36px;
+}
+
+#page-kutipan .kutipan-quote-mark.right {
+  bottom: 18px;
+  right: 36px;
+}
+
+#page-kutipan .kutipan-text {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 42px;
+  line-height: 1.55;
+  color: #004d40;
+  max-width: 1220px;
+  margin: 0 auto 20px;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+#page-kutipan .kutipan-subtag {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--teal-dark);
+  margin-bottom: 34px;
+  letter-spacing: 0.8px;
+}
+
+#page-kutipan .btn-kutipan-action {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  padding: 16px 52px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 24px rgba(0, 172, 193, 0.45);
+  letter-spacing: 1px;
+  transition: all var(--transition);
+}
+
+#page-kutipan .btn-kutipan-action:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 12px 32px rgba(0, 172, 193, 0.6);
+}
+
+/* ---------- Page 19: Kredit / Penutup ---------- */
+#page-kredit .content-box {
+  width: 95%;
+  max-width: 1400px;
+  min-height: 640px;
+  height: 640px;
+  max-height: calc(100vh - 150px);
+  padding: 36px 60px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#page-kredit .logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 52px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+#page-kredit .logo-row img {
+  max-height: 120px;
+  max-width: 250px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
+  transition: transform var(--transition);
+}
+
+#page-kredit .logo-row img:hover {
+  transform: scale(1.06);
+}
+
+#page-kredit .kredit-divider {
+  width: 75%;
+  max-width: 900px;
+  height: 3.5px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  margin: 0 auto 24px;
+}
+
+#page-kredit .kredit-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#page-kredit .kredit-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 800;
+  color: #004d40;
+  letter-spacing: 1.5px;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+#page-kredit .kredit-ditjen {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: #006064;
+  line-height: 1.5;
+  max-width: 1150px;
+  margin: 0;
+}
+
+#page-kredit .kredit-smp {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--teal-dark);
+  letter-spacing: 2px;
+  margin: 6px 0 0;
 }
 
 /* ---------- Animations Keyframes ---------- */

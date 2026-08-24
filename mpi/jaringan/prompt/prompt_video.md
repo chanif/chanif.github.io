@@ -1,58 +1,89 @@
-# Prompt Video — Google Flow (Veo 3.1)
+# Panduan Prompt Video — Google Flow / Veo (Bahasa Indonesia)
 
-Video ini untuk mengisi slot halaman **"(Video)"** pada `spesifikasi.md`, menggantikan placeholder video player yang ada di sana. Video menggabungkan **Scene 1 (pembuka/pemantik)** dan **Scene 2 (animasi konsep paket data & router)** dari storyboard di `materi.md`, menjadi satu video explainer pendek ±30–32 detik.
-
-## Cara pakai
-1. Buka **flow.google** (Google Flow), login dengan akun Google.
-2. Generate tiap klip di bawah ini satu per satu (Veo membatasi ±8 detik per generate).
-3. Gunakan fitur **Scenebuilder / Extend** untuk menyambung klip 1→2→3→4 secara berurutan menjadi satu video utuh.
-4. Setelah semua klip jadi, export dengan rasio **16:9**, lalu simpan sebagai file video (mis. `materi-video.mp4`).
-5. Tempatkan file hasil export ke slot video di halaman **"(Video)"** pada MPI (lihat instruksi penempatan di bagian bawah).
-
-> Catatan gaya: MPI ini bergaya **flat 2D vector illustration / motion graphic**, BUKAN sinematik fotorealistik. Tambahkan penegasan gaya ini di setiap prompt agar hasil Veo tetap konsisten dengan ilustrasi ruang kelas kartun di `spesifikasi.md`. Jangan biarkan Veo menambahkan dialog/narasi suara sendiri — suara narasi akan ditambahkan terpisah di dalam aplikasi MPI, jadi minta audio hanya berupa efek suara ambient/elektronik ringan, tanpa dialog.
+Dokumen ini berisi prompt lengkap dalam **Bahasa Indonesia** untuk membuat video animasi edukasi pembelajaran jaringan komputer (Perjalanan Paket Data) untuk **Halaman 8 (Video)** pada aplikasi MPI.
 
 ---
 
-## Klip 1 (± 8 detik) — Pembuka: Mengirim Foto
+## 💡 Alur Kerja Terbaik: Image-to-Video (Extend Model)
+1. **Buat Gambar Referensi Awal (First Frame)** menggunakan prompt Bagian 1 di AI Image Generator (Imagen / Midjourney / DALL-E / Flux) dengan rasio **16:9**.
+2. Buka **flow.google** (Google Flow), unggah gambar tersebut sebagai **Start Frame**.
+3. Masukkan **Klip 1**. Setelah selesai, gunakan fitur **Extend** untuk menyambungkan **Klip 2, 3, 4, 5, dan 6** secara berurutan.
+4. Export video utuh (rasio **16:9**), simpan ke: `assets/video/materi-video.mp4`.
 
-```
-Flat 2D vector illustration motion graphic, clean minimalist explainer animation style (NOT photorealistic, NOT cinematic live-action). Two cartoon teenage students, simple flat character design, sitting at a school desk, each holding a smartphone, chatting with each other. Character A taps a "Send" button on the phone screen to send a photo. Soft teal and cyan color palette (#00ACC1, #4DD0E1, #E0F7FA), clean white background with subtle classroom shapes. Camera stays static, medium shot. Gentle upbeat ambient electronic sound effect only, no dialogue, no voice-over, no on-screen text.
-```
+---
 
-## Klip 2 (± 8 detik) — Foto Pecah Menjadi Paket Data
+# 🎨 BAGIAN 1: Prompt Gambar Awal (Referensi Frame Pertama)
 
-```
-Flat 2D vector illustration motion graphic, clean minimalist explainer animation style (NOT photorealistic). Close-up on a smartphone screen: a photo icon shrinks and bursts into several small glowing rectangular fragments, each fragment numbered 1, 2, 3, 4, representing data packets. The fragments float into a stream of glowing blue-white light lines representing a network cable/signal. Teal and cyan color palette (#00ACC1, #4DD0E1, #0288D1), soft glowing particle effect. Camera slowly zooms in on the bursting animation. Soft digital "whoosh" and sparkle sound effects only, no dialogue, no voice-over, no on-screen text.
-```
+> **Gunakan prompt ini untuk membuat gambar acuan utama (Rasio 16:9):**
 
-## Klip 3 (± 8 detik) — Paket Melewati Router
-
-```
-Flat 2D vector illustration motion graphic, clean minimalist explainer animation style (NOT photorealistic). Several small glowing numbered packet icons travel along different curved light-blue path lines on a clean white background, representing a network. The paths cross at a junction where a friendly cartoon router icon, styled like a small robot traffic officer, points each packet toward a different path. Teal, cyan, and blue color palette (#00ACC1, #4DD0E1, #0288D1). Camera follows the packets moving from left to right in a smooth tracking shot. Soft electronic beeping and "swoosh" sound effects only, no dialogue, no voice-over, no on-screen text.
-```
-
-## Klip 4 (± 8 detik) — Paket Tersusun Kembali di Penerima
-
-```
-Flat 2D vector illustration motion graphic, clean minimalist explainer animation style (NOT photorealistic). The numbered packet fragments from before arrive at a second smartphone screen and snap together in order (1,2,3,4) to reassemble into the original complete photo, with a small sparkle/glow effect when fully assembled. Character B (from the classroom scene) smiles looking at the completed photo notification. Teal and cyan color palette (#00ACC1, #4DD0E1, #E0F7FA), same clean flat classroom background as klip 1. Camera stays static, medium shot. Gentle success chime sound effect only, no dialogue, no voice-over, no on-screen text.
+```text
+Ilustrasi edukasi gaya 2.5D modern vektor motion graphic yang rapi dan bersih. Di bagian depan, dua siswa SMP Indonesia yang ceria (satu siswa laki-laki berseragam putih-biru rapi, dan satu siswi perempuan memakai jilbab putih rapi) sedang duduk bersama di meja belajar modern. Siswa laki-laki memegang smartphone yang menampilkan foto kucing oranye lucu di layarnya dengan tombol "KIRIM" berwarna cyan menyala. Jejak cahaya digital halus berwarna toska dan cyan (#00ACC1, #4DD0E1) melayang lembut keluar dari layar ponsel ke udara. Latar belakang ruang kelas minimalis yang bersih dengan pencahayaan hangat yang lembut, bayangan halus, estetika isometrik premium dengan gradien halus, resolusi tinggi 8k, komposisi bersih, rasio layar lebar 16:9.
 ```
 
 ---
 
-## Alternatif: Prompt Tunggal Diagram Konsep (jika hanya ingin 1 video pendek, tanpa karakter)
+# 🎬 BAGIAN 2: Rangkaian Prompt Video (Google Flow Extend Sequence)
 
-Jika tidak ingin membuat 4 klip cerita, cukup generate **satu klip diagram konsep** ini saja (≈8 detik, bisa di-*loop*):
+---
 
-```
-Flat 2D vector infographic motion graphic, clean minimalist whiteboard-explainer style (NOT photorealistic). A simple diagram: on the left, an icon labeled "Komputer Pengirim"; a photo icon breaks into four small glowing numbered packet boxes; the packets travel along three curved blue lines toward a router icon styled as a small traffic-cop robot, which redirects each packet; on the right, the packets arrive at an icon labeled "Komputer Penerima" and reassemble into the original photo. Teal and cyan color palette (#00ACC1, #4DD0E1, #E0F7FA, #0288D1). Static wide shot, smooth step-by-step reveal animation. Soft ambient electronic background sound only, no dialogue, no voice-over.
+### 🔹 Klip 1 (00:00 – 00:08) — Aksi Mengirim & Kamera Masuk ke Layar HP
+> **Fokus Gerakan:** Jari siswa menekan tombol "Kirim", gelombang cahaya menyala, kamera zoom-in masuk ke layar.
+
+```text
+Melanjutkan dari gambar referensi awal. Ibu jari siswa laki-laki dengan lembut menekan tombol "KIRIM" berwarna cyan yang menyala di layar ponsel. Efek riak cahaya cyan menyebar keluar dari tombol ke seluruh permukaan layar. Foto kucing mulai bercahaya terang dan memancarkan partikel digital berkilau. Kamera melakukan gerakan zoom-in maju perlahan dan halus (push-in) dari sudut pandang siswa langsung masuk ke dalam layar smartphone yang bercahaya. Fisika animasi motion graphic halus 60fps, sinar cahaya berpendar lembut, tanpa goyangan kamera, tanpa suara dialog atau narasi.
 ```
 
 ---
 
-## Di Mana Video Ini Disisipkan
+### 🔹 Klip 2 (00:08 – 00:16) — Foto Terpecah Menjadi 4 Paket Data
+> **Fokus Gerakan:** Foto terbelah menjadi 4 kartu bercahaya bernomor 1-2-3-4 dengan header amplop, lalu meluncur ke kabel serat optik.
 
-- **Halaman utama:** halaman **"(Video)"** pada urutan struktur di `spesifikasi.md` (berada di antara halaman "Tarik Jawaban" dan "Materi 3" dalam rangkaian ber-navigasi ◀▶).
-- **Judul halaman:** ganti label placeholder "(Video)" menjadi judul yang sesuai, misalnya **"Video: Perjalanan Paket Data"**.
-- **Kotak teks di sebelah video** (sesuai layout Materi/Video pada `spesifikasi.md`): isi dengan poin ringkas dari Scene 2 di `materi.md` — 3 konsep utama (Paket Data, Router, Rute Dinamis) — sebagai keterangan pendamping video.
-- **Cara pasang di kode:** letakkan file video (mis. `materi-video.mp4`) di folder aset proyek (mis. `assets/video/`), lalu arahkan elemen `<video>` pada halaman "(Video)" ke path tersebut. Jangan hard-code video dari CDN eksternal, agar MPI tetap bisa berjalan offline.
-- File video ini akan **disiapkan/diunggah manual oleh pengguna** — agent pembuat kode MPI cukup menyediakan slot `<video>` yang siap menerima file tersebut, tidak perlu men-generate videonya sendiri.
+```text
+Melanjutkan gerakan kamera yang meluncur masuk ke dalam ruang sirkuit digital layar ponsel. Foto kucing dengan mulus terbelah menjadi 4 paket data persegi panjang transparan berkilau yang melayang di udara. Setiap paket memiliki badan kaca bercahaya toska yang memuat potongan foto, kepala paket (header) putih di bagian atas bertuliskan angka '1', '2', '3', dan '4', serta penanda verifikasi kecil di bagian bawah. Keempat paket melayang sejenak, lalu melesat cepat satu per satu masuk ke dalam jalur kabel serat optik biru bercahaya yang membentang ke depan. Efek jejak cahaya partikel dinamis, garis vektor tajam dan bersih, kamera bergerak mulus mengikuti laju paket.
+```
+
+---
+
+### 🔹 Klip 3 (00:16 – 00:24) — Masuk ke Persimpangan & Diarahkan Router
+> **Fokus Gerakan:** Paket tiba di persimpangan jalan digital. Router memindai header dan membagi jalur perjalanan paket.
+
+```text
+Melanjutkan perjalanan paket data. Keempat paket data bernomor meluncur di sepanjang jalur sirkuit bercahaya dan tiba di persimpangan jaringan digital. Di tengah persimpangan terdapat perangkat Router kartun modern yang ramah dengan lampu indikator hijau berkedip dan panah penunjuk arah holografis. Saat setiap paket mendekat, sinar pemindai holografis membaca header nomor paket. Router menggerakkan indikator arahnya, meneruskan Paket 1 dan 2 ke jalur atas berwarna biru, Paket 3 ke jalur tengah, dan Paket 4 ke jalur bawah berwarna oranye. Gerakan kamera berputar halus menyapu pemandangan mengikuti pemisahan rute paket. Gerakan berirama dan estetik bersih.
+```
+
+---
+
+### 🔹 Klip 4 (00:24 – 00:32) — Rute Dinamis Menghindari Jalur Rusak
+> **Fokus Gerakan:** Jalur tengah mengalami gangguan (kabel putus/merah), Paket 3 otomatis membelok ke rute alternatif.
+
+```text
+Melanjutkan pergerakan mengikuti Paket 3 di jalur tengah. Tiba-tiba jalur tengah berkedip merah dengan ikon peringatan bahaya yang menunjukkan kabel terputus (Server Down / RTO). Alih-alih berhenti, lintasan Paket 3 seketika melengkung ke atas, secara cerdas beralih ke jalur alternatif bercahaya toska yang aman. Paket meluncur lancar memutar melewati area jalur yang rusak dan bergabung kembali ke jalur transmisi utama tanpa hambatan. Kamera bergerak menyamping mengikuti manuver cerdas Paket 3. Kontras visual yang indah antara jalur merah yang macet dan jalur toska yang lancar.
+```
+
+---
+
+### 🔹 Klip 5 (00:32 – 00:40) — Tiba di Buffer HP Penerima
+> **Fokus Gerakan:** Paket tiba dari berbagai arah dengan urutan tidak beraturan (3, 1, 4, 2) dan masuk ke memori antrean (*Buffer*).
+
+```text
+Melanjutkan perjalanan. Kamera meluncur masuk ke dalam ruang memori penerima—sebuah wadah kaca transparan bercahaya (Buffer) di dalam smartphone tujuan. Keempat paket data tiba dari pintu kabel yang berbeda pada waktu kedatangan yang berbeda secara acak: Paket 3 tiba paling awal, disusul Paket 1, Paket 4, dan terakhir Paket 2. Setiap paket mendarat mulus ke dalam wadah antrean dengan efek pantulan magnetik yang halus. Sudut kamera menghadap ke bawah menangkap proses penampungan paket secara menyeluruh dan jelas.
+```
+
+---
+
+### 🔹 Klip 6 (00:40 – 00:48) — Perakitan Kembali & Foto Utuh 100%
+> **Fokus Gerakan:** Paket mengurutkan diri 1-2-3-4, menyatu kembali menjadi foto asli, lalu kamera keluar ke siswi yang tersenyum puas.
+
+```text
+Melanjutkan adegan di dalam buffer. Keempat pecahan paket data membaca nomor urut header masing-masing dan secara otomatis bergeser menyusun diri sesuai urutan yang benar: 1, 2, 3, 4. Ujung-ujung pecahan saling menempel dan menyatu secara magnetis dengan kilauan cahaya emas yang memukau. Garis potongan menghilang, menampilkan kembali foto kucing oranye yang utuh 100% dan sangat jernih di layar ponsel. Kamera bergerak mundur perlahan (zoom out) keluar dari layar HP kembali ke ruang kelas, memperlihatkan siswi tersenyum senang menatap foto yang baru saja diterimanya dengan sempurna. Pencahayaan kelas yang hangat dan nyaman, penutupan animasi yang elegan dan mulus.
+```
+
+---
+
+# 🌟 OPSI ALTERNATIF: Single Master Prompt (1 Prompt Penuh)
+
+> **Jika ingin men-generate 1 video berdurasi panjang sekaligus tanpa sistem potongan:**
+
+```text
+Animasi motion graphic edukasi 2D vektor modern yang bersih dan jelas mengenai cara kerja jaringan komputer. Cerita dimulai dari seorang siswa SMP kartun yang menekan tombol kirim foto di layar ponsel. Foto tersebut terbelah menjadi 4 paket data bercahaya bernomor (1, 2, 3, 4) lengkap dengan kepala paket (header) yang melesat melintasi kabel serat optik bercahaya. Paket tiba di persimpangan yang dijaga perangkat Router cerdas yang membaca alamat dan mengarahkan paket ke beberapa rute berbeda. Saat salah satu rute mengalami gangguan putus sinyal, paket secara otomatis berbelok ke rute alternatif yang lancar. Paket tiba tidak berurutan di wadah memori (buffer) ponsel penerima, lalu secara otomatis mengurutkan diri (1-2-3-4) dan menyatu kembali menjadi foto asli yang utuh dan jernih, diterima dengan gembira oleh siswi penerima. Palet warna toska (#00ACC1), cyan (#4DD0E1), dan putih bersih. Gerakan kamera mengalir mulus, tanpa teks yang bertumpuk, hanya efek suara ambient elektronik ringan tanpa narasi suara.
+```

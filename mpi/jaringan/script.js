@@ -116,7 +116,8 @@ function updateTestingIndicator(pageId) {
 const LINEAR_PAGES = [
   'materi-1', 'tarik-jawaban', 'video', 'materi-3',
   'permainan-intro', 'permainan', 'latihan-intro', 'latihan',
-  'rangkuman', 'referensi', 'pengembang', 'pj-penyunting'
+  'rangkuman', 'referensi', 'pengembang', 'pj-penyunting',
+  'kutipan', 'kredit'
 ];
 
 let currentPage = 'cover';
@@ -142,7 +143,6 @@ function goToPage(pageId) {
   // Lazy initialize interactive modules on page entry
   if (pageId === 'materi-1') switchMateri1Tab(1);
   if (pageId === 'tarik-jawaban') initDragDrop();
-  if (pageId === 'permainan') initPacketCommanderGame();
   if (pageId === 'video') initVideo();
 }
 
@@ -168,8 +168,6 @@ function navNext() {
   if (idx === -1) return;
   if (idx < LINEAR_PAGES.length - 1) {
     goToPage(LINEAR_PAGES[idx + 1]);
-  } else {
-    goToPage('kutipan');
   }
 }
 
@@ -212,7 +210,6 @@ function initVideo() {
 
 const DD_DATA = [
   { term: 'Paket Data', def: 'Bagian kecil hasil pemecahan data asli yang dikirim melalui jaringan', id: 'paket-data' },
-  { term: 'Header', def: 'Bagian paket berisi alamat pengirim, alamat tujuan, dan nomor urut', id: 'header' },
   { term: 'Payload', def: 'Bagian paket berisi potongan data/isi asli yang dikirim', id: 'payload' },
   { term: 'Router', def: 'Perangkat yang mengarahkan paket data ke rute tercepat/tersedia', id: 'router' },
   { term: 'Rute Dinamis', def: 'Kemampuan jaringan mencari jalur baru saat jalur utama terganggu', id: 'rute-dinamis' },
@@ -375,13 +372,16 @@ function onTouchEnd(e) {
 
 function resetDragDrop() {
   ddInitialized = false;
+  const scoreBox = document.getElementById('dd-score-box');
+  if (scoreBox) scoreBox.style.display = 'none';
   initDragDrop();
 }
 
 function checkDragDrop() {
   const zones = document.querySelectorAll('#dd-definitions .dd-drop-zone');
   let allFilled = true;
-  let allCorrect = true;
+  let correctCount = 0;
+  const total = zones.length;
 
   zones.forEach(zone => {
     const placed = zone.querySelector('.dd-placed');
@@ -391,15 +391,34 @@ function checkDragDrop() {
     }
 
     const isCorrect = placed.dataset.id === zone.dataset.id;
-    if (!isCorrect) allCorrect = false;
+    if (isCorrect) correctCount++;
     zone.classList.remove('correct', 'incorrect');
     zone.classList.add(isCorrect ? 'correct' : 'incorrect');
   });
 
+  const scoreBox = document.getElementById('dd-score-box');
+  const scoreBadge = document.getElementById('dd-score-badge');
+  const scoreText = document.getElementById('dd-score-text');
+
   if (!allFilled) {
     alert('Silakan pasangkan semua istilah terlebih dahulu!');
-  } else if (allCorrect) {
-    spawnConfetti();
+    if (scoreBox) scoreBox.style.display = 'none';
+    return;
+  }
+
+  const score = Math.round((correctCount / total) * 100);
+
+  if (scoreBox && scoreBadge && scoreText) {
+    scoreBadge.textContent = `🏆 Skor: ${score}`;
+    if (correctCount === total) {
+      scoreText.textContent = `Sempurna! ${correctCount} dari ${total} Pasangan Benar! 🎉`;
+      spawnConfetti();
+      playSynthSound('success');
+    } else {
+      scoreText.textContent = `${correctCount} dari ${total} Benar. Cek kotak berwarna merah dan perbaiki! 💡`;
+      playSynthSound('error');
+    }
+    scoreBox.style.display = 'flex';
   }
 }
 
