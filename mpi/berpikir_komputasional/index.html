@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MPI — Berpikir Komputasional: Algoritma di Balik Rumah Cerdas (IoT) | Informatika Kelas IX Fase D</title>
+  <meta name="description"
+    content="Media Pembelajaran Interaktif (MPI) tentang Berpikir Komputasional — Algoritma di Balik Rumah Cerdas (IoT) untuk mata pelajaran Informatika Kelas IX SMP Fase D.">
+  <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+
+<body>
+
+  <!-- ============================== CLASSROOM BACKGROUND ============================== -->
+  <div class="classroom-bg" id="classroom-bg">
+    <svg viewBox="0 0 1536 804" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- SVG fallback wall & furniture if image is missing -->
+      <rect width="1536" height="804" fill="#f0e6dc" />
+      <rect y="0" width="1536" height="560" fill="#ede0d4" />
+      <rect y="520" width="1536" height="8" fill="#d4c4b0" rx="2" />
+      <rect y="528" width="1536" height="276" fill="#c8a882" />
+      <rect x="80" y="60" width="200" height="280" rx="8" fill="#b3e5fc" stroke="#a08060" stroke-width="6" />
+      <rect x="380" y="60" width="200" height="280" rx="8" fill="#b3e5fc" stroke="#a08060" stroke-width="6" />
+      <rect x="700" y="80" width="440" height="260" rx="6" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="5" />
+      <circle cx="1280" cy="140" r="36" fill="#fff" stroke="#795548" stroke-width="4" />
+    </svg>
+  </div>
+
+  <div id="app">
+
+    <!-- ============================== PAGE 1: COVER ============================== -->
+    <section id="page-cover" class="page active">
+      <div class="logo-top left">
+        <img src="assets/kemendikdasmen lengkap.png" alt="Logo Kemendikdasmen" id="logo-kemendikdasmen-cover">
+      </div>
+      <div class="logo-top right">
+        <img src="assets/sobat + bermutu + ramah.png" alt="Logo Sobat SMP" id="logo-sobat-cover">
+      </div>
+
+      <div class="cover-center">
+        <h1 class="cover-title">
+          <span class="cover-title-main">Berpikir Komputasional</span>
+          <span class="cover-title-sub">Algoritma di Balik Rumah Cerdas (IoT)</span>
+        </h1>
+        <div>
+          <span class="cover-subtitle">Informatika — Kelas IX / Fase D</span>
+        </div>
+        <button class="btn-mulai" onclick="goToPage('menu')" id="btn-cover-mulai">
+          <span class="play-icon">▶</span>
+          <span class="mulai-text">MULAI</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 2: MENU UTAMA ============================== -->
+    <section id="page-menu" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('cover')" id="btn-menu-beranda">🏠</button>
+        <span class="nav-label">BERANDA</span>
+      </div>
+
+      <div class="title-bar" id="title-menu">Menu</div>
+      <div style="height:12px"></div>
+
+      <div class="menu-grid" id="menu-grid">
+        <div class="menu-card" onclick="goToPage('petunjuk')" id="card-petunjuk">
+          <span class="card-icon">💡</span>
+          <span class="card-label">Petunjuk</span>
+        </div>
+        <div class="menu-card" onclick="goToPage('tujuan')" id="card-tujuan">
+          <span class="card-icon">🎯</span>
+          <span class="card-label">Tujuan Pembelajaran</span>
+        </div>
+        <div class="menu-card" onclick="goToPage('materi-list')" id="card-materi">
+          <span class="card-icon">📖</span>
+          <span class="card-label">Materi</span>
+        </div>
+        <div class="menu-card" onclick="goToPage('permainan-intro')" id="card-permainan">
+          <span class="card-icon">🏠</span>
+          <span class="card-label">Permainan</span>
+        </div>
+        <div class="menu-card" onclick="goToPage('latihan-intro')" id="card-latihan">
+          <span class="card-icon">📝</span>
+          <span class="card-label">Latihan</span>
+        </div>
+        <div class="menu-card" onclick="goToPage('rangkuman')" id="card-rangkuman">
+          <span class="card-icon">📋</span>
+          <span class="card-label">Rangkuman</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 3: PETUNJUK ============================== -->
+    <section id="page-petunjuk" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-petunjuk-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Petunjuk Penggunaan</div>
+      <div class="content-box wide" id="content-petunjuk" style="padding: 24px 36px 35px;">
+        <p style="font-size: 20px; font-weight: 700; color: var(--teal-dark); text-align: center; margin-bottom: 16px;">
+          💡 Panduan Belajar Media Pembelajaran Interaktif (MPI)
+        </p>
+
+        <div class="petunjuk-grid">
+          <!-- Kolom 1: Navigasi Tombol -->
+          <div class="petunjuk-card">
+            <h3 class="petunjuk-card-title">🧭 Tombol Navigasi</h3>
+            <div class="petunjuk-item">
+              <div class="nav-mini-btn">🏠</div>
+              <div>
+                <strong>BERANDA</strong>
+                <p>Kembali ke halaman sampul awal.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-btn">☰</div>
+              <div>
+                <strong>MENU</strong>
+                <p>Buka peta menu utama untuk memilih topik belajar.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-btn">◀</div>
+              <div>
+                <strong>KEMBALI</strong>
+                <p>Mundur ke halaman atau aktivitas sebelumnya.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-btn">▶</div>
+              <div>
+                <strong>LANJUT</strong>
+                <p>Maju ke halaman atau tantangan berikutnya.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-btn">▶</div>
+              <div>
+                <strong>MULAI</strong>
+                <p>Memulai pengalaman belajar dan membuka menu.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom 2: Alur Pembelajaran -->
+          <div class="petunjuk-card">
+            <h3 class="petunjuk-card-title">🚀 Alur Pembelajaran</h3>
+            <div class="petunjuk-item">
+              <div class="nav-mini-num">1</div>
+              <div>
+                <strong>Pahami 4 Fondasi Berpikir Komputasional</strong>
+                <p>Pelajari Dekomposisi, Abstraksi, Pengenalan Pola, dan Algoritma pada sistem IoT.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-num">2</div>
+              <div>
+                <strong>Simak Video &amp; Aktivitas Tarik Jawaban</strong>
+                <p>Lihat simulasi rumah cerdas dan uji pemahaman komponen sensor &amp; aktuator.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-num">3</div>
+              <div>
+                <strong>Mainkan Game: Smart Home IoT Lab</strong>
+                <p>Susun blok logika kondisi (IF-THEN) dan uji coba otomasi lampu, kipas, serta alarm.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-num">4</div>
+              <div>
+                <strong>Evaluasi Pemahaman &amp; Refleksi</strong>
+                <p>Uji kemampuanmu lewat latihan komprehensif dan tuliskan refleksi ide kreatifmu.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-petunjuk-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-petunjuk-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 4: TUJUAN PEMBELAJARAN ============================== -->
+    <section id="page-tujuan" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-tujuan-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Tujuan Pembelajaran</div>
+      <div class="content-box wide scrollable" id="content-tujuan" style="padding: 24px 36px 30px;">
+        <p class="tujuan-heading" style="margin-bottom: 14px;">
+          🎯 Berdasarkan Capaian Pembelajaran Informatika Fase D (Kurikulum Merdeka), setelah mempelajari media ini kamu diharapkan mampu:
+        </p>
+
+        <div class="tujuan-list">
+          <div class="tujuan-item">
+            <div class="tujuan-num">1</div>
+            <div class="tujuan-text">
+              <strong>Menjelaskan 4 Fondasi Berpikir Komputasional:</strong> Mengidentifikasi dan memahami konsep <em>Dekomposisi, Abstraksi, Pengenalan Pola (Pattern Recognition),</em> dan <em>Algoritma</em> sebagai metode pemecahan masalah (<em>problem solving</em>) yang sistematis.
+            </div>
+          </div>
+
+          <div class="tujuan-item">
+            <div class="tujuan-num">2</div>
+            <div class="tujuan-text">
+              <strong>Menerapkan Dekomposisi:</strong> Memecah persoalan atau sistem yang rumit menjadi bagian-bagian atau subsistem yang lebih kecil, terstruktur, dan mudah dikelola (<em>Input ➔ Proses ➔ Output</em>).
+            </div>
+          </div>
+
+          <div class="tujuan-item">
+            <div class="tujuan-num">3</div>
+            <div class="tujuan-text">
+              <strong>Menerapkan Abstraksi:</strong> Menyaring dan berfokus hanya pada informasi/data esensial yang relevan dengan tujuan, serta mengabaikan detail-detail non-esensial yang tidak diperlukan.
+            </div>
+          </div>
+
+          <div class="tujuan-item">
+            <div class="tujuan-num">4</div>
+            <div class="tujuan-text">
+              <strong>Menerapkan Pengenalan Pola:</strong> Mengidentifikasi kesamaan karakteristik, keteraturan tren, atau siklus berulang pada data/lingkungan untuk merumuskan solusi efisien yang dapat digunakan kembali.
+            </div>
+          </div>
+
+          <div class="tujuan-item">
+            <div class="tujuan-num">5</div>
+            <div class="tujuan-text">
+              <strong>Merancang Algoritma &amp; Logika Kondisional:</strong> Menyusun urutan langkah instruksi logis dan aturan pengambilan keputusan (<em>IF-THEN, IF-AND-THEN, IF-ELSE</em>) dalam format instruksi terstruktur (<em>pseudocode</em> sederhana) untuk menyelesaikan persoalan otomasi.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-tujuan-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-tujuan-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 5: DAFTAR MATERI ============================== -->
+    <section id="page-materi-list" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi-list-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar" id="title-materi-list">Materi Pembelajaran</div>
+
+      <div class="materi-cards" id="materi-cards">
+        <!-- Kartu 1: Materi 1 (4 Fondasi BK) -->
+        <div class="materi-card" onclick="goToPage('materi-1')" id="card-materi1">
+          <div class="card-thumb">
+            <span class="card-badge" style="background:#00838F;">📖 Materi 1</span>
+            <img src="assets/branch.jpg" alt="4 Fondasi Berpikir Komputasional">
+          </div>
+          <div class="card-body">
+            <div class="card-title">4 Fondasi Berpikir Komputasional</div>
+            <div class="card-desc">Pelajari Dekomposisi, Abstraksi, Pengenalan Pola, dan Algoritma (Logika IF-THEN-ELSE).</div>
+          </div>
+        </div>
+
+        <!-- Kartu 2: Video Animasi -->
+        <div class="materi-card" onclick="goToPage('video')" id="card-video">
+          <div class="card-thumb">
+            <span class="card-badge" style="background:#e65100;">🎬 Video</span>
+            <img src="assets/router.jpg" alt="Animasi Cara Kerja Rumah Cerdas">
+          </div>
+          <div class="card-body">
+            <div class="card-title">Video Animasi Rumah Cerdas</div>
+            <div class="card-desc">Saksikan visualisasi interaktif bagaimana sensor, otak komputer, dan aktuator bekerja otomatis.</div>
+          </div>
+        </div>
+
+        <!-- Kartu 3: Aktivitas Tarik Jawaban -->
+        <div class="materi-card" onclick="goToPage('tarik-jawaban')" id="card-tarik-jawaban">
+          <div class="card-thumb">
+            <span class="card-badge" style="background:#0288D1;">🎯 Aktivitas</span>
+            <img src="assets/puzzle.jpg" alt="Tarik Jawaban: Cocokkan Istilah">
+          </div>
+          <div class="card-body">
+            <div class="card-title">Aktivitas Tarik Jawaban</div>
+            <div class="card-desc">Uji pemahaman 6 konsep kunci berpikir komputasional dan IoT lewat seret-cocokkan interaktif.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-materilist-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-materilist-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 6: MATERI 1 (4 TAB INTERAKTIF) ============================== -->
+    <section id="page-materi-1" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi1-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar" id="title-materi-1">Materi: 4 Fondasi Berpikir Komputasional</div>
+
+      <div class="content-box wide scrollable" id="content-materi-1">
+        <!-- Tab Navigation (4 Tabs) -->
+        <div class="materi-tabs-bar">
+          <button class="mtab-btn active" onclick="switchMateri1Tab(1)" id="mtab1-btn-1">
+            🧩 1. Dekomposisi
+          </button>
+          <button class="mtab-btn" onclick="switchMateri1Tab(2)" id="mtab1-btn-2">
+            🔍 2. Abstraksi
+          </button>
+          <button class="mtab-btn" onclick="switchMateri1Tab(3)" id="mtab1-btn-3">
+            📈 3. Pengenalan Pola
+          </button>
+          <button class="mtab-btn" onclick="switchMateri1Tab(4)" id="mtab1-btn-4">
+            ⚡ 4. Algoritma &amp; Logika
+          </button>
+        </div>
+
+        <!-- Tab 1: Dekomposisi -->
+        <div class="mtab-panel active" id="mtab1-panel-1">
+          <div class="story-lead">
+            <div class="story-lead-icon">🧩</div>
+            <div class="story-lead-text">
+              <strong>Dekomposisi: Memecah Masalah Besar Menjadi Bagian Kecil</strong><br>
+              Bayangkan saat kamu merapikan kamar tidur atau mengerjakan mading kelompok: kamu membaginya menjadi langkah-langkah kecil. Begitu pula saat merancang rumah cerdas, kita membedahnya menjadi 3 subsistem terstruktur:
+            </div>
+          </div>
+
+          <div class="concept-cards-grid">
+            <div class="concept-card">
+              <div class="concept-card-icon">🛰️</div>
+              <h4 class="concept-card-title">1. SENSOR (Input / Indera)</h4>
+              <p class="concept-card-desc">
+                Membaca perubahan besaran fisik lingkungan sekitar. Contoh: <strong>Sensor LDR</strong> (mengukur terang/gelap), <strong>Sensor DHT11</strong> (mengukur derajat panas suhu), dan <strong>Sensor PIR</strong> (mendeteksi gerakan manusia).
+              </p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-icon">🧠</div>
+              <h4 class="concept-card-title">2. MIKROKONTROLER (Proses / Otak)</h4>
+              <p class="concept-card-desc">
+                Komputer mini (seperti Arduino atau ESP32) yang bertugas menerima data dari sensor, mengevaluasi aturan logika algoritma, lalu memutuskan tindakan yang tepat.
+              </p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-icon">💡</div>
+              <h4 class="concept-card-title">3. AKTUATOR (Output / Pelaksana)</h4>
+              <p class="concept-card-desc">
+                Perangkat fisik pelaksana aksi nyata. Contoh: <strong>Lampu LED</strong> (menyala menerangi ruangan), <strong>Kipas angin</strong> (berputar mendinginkan udara), atau <strong>Sirine buzzer</strong> (berbunyi memberi peringatan).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Abstraksi -->
+        <div class="mtab-panel" id="mtab1-panel-2">
+          <div class="story-lead">
+            <div class="story-lead-icon">🔍</div>
+            <div class="story-lead-text">
+              <strong>Abstraksi: Fokus Pada yang Penting, Abaikan yang Tidak Relevan</strong><br>
+              Komputer tidak perlu memproses semua detail dunia nyata. Dengan hanya menyaring data esensial yang dibutuhkan, sistem bekerja jauh lebih cepat, hemat memori, dan hemat daya!
+            </div>
+          </div>
+
+          <div class="analogy-split">
+            <div class="analogy-box">
+              <div class="analogy-badge">ANALOGI DUNIA NYATA</div>
+              <h4 style="color:var(--teal-dark);margin:10px 0 6px;font-size:18px;">Peta Rute KRL / MRT &amp; Kontak HP</h4>
+              <p style="font-size:15px;line-height:1.55;color:var(--text-body);">
+                🚇 <strong>Peta Kereta:</strong> Hanya menampilkan garis jalur dan stasiun transit. Peta tidak menggambar pohon, ruko, atau aspal jalan karena tidak dibutuhkan penumpang.<br><br>
+                📱 <strong>Buku Kontak HP:</strong> Kamu hanya menyimpan Nama dan No. HP temanmu, tanpa perlu mencatat ukuran sepatu atau warna baju favoritnya.
+              </p>
+            </div>
+
+            <div class="analogy-box">
+              <div class="analogy-badge" style="background:#0288D1;">PENERAPAN DI RUMAH CERDAS</div>
+              <h4 style="color:#0288D1;margin:10px 0 6px;font-size:18px;">Menyaring Data Lampu Otomatis</h4>
+              <p style="font-size:15px;line-height:1.55;color:var(--text-body);">
+                💡 <strong>Data Esensial yang Dipakai:</strong> Sistem hanya mengecek <em>"Apakah intensitas cahaya &lt; 200 Lux (gelap)?"</em><br><br>
+                🚫 <strong>Data yang Diabaikan:</strong> Warna cat tembok kamar, merk kasur, jenis sprei, dan poster di dinding. Program berjalan sangat ringan dan stabil!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Pengenalan Pola -->
+        <div class="mtab-panel" id="mtab1-panel-3">
+          <div class="story-lead">
+            <div class="story-lead-icon">📈</div>
+            <div class="story-lead-text">
+              <strong>Pengenalan Pola: Melihat Keteraturan &amp; Siklus Berulang</strong><br>
+              Dengan mengenali pola keteraturan pada data, kita bisa memprediksi kejadian dan merumuskan aturan otomasi umum yang dapat dipakai secara berulang tanpa perlu diprogram ulang setiap hari.
+            </div>
+          </div>
+
+          <div class="analogy-split">
+            <div class="analogy-box">
+              <div class="analogy-badge" style="background:#e65100;">ANALOGI DUNIA NYATA</div>
+              <h4 style="color:#e65100;margin:10px 0 6px;font-size:18px;">Pola Jam Macet &amp; Siklus Musim Hujan</h4>
+              <p style="font-size:15px;line-height:1.55;color:var(--text-body);">
+                🚗 <strong>Jam Berangkat Sekolah:</strong> Kamu tahu jalan raya selalu macet pukul 06.30 pagi, sehingga kamu terbiasa berangkat lebih awal.<br><br>
+                ☔ <strong>Musim Hujan:</strong> Mengetahui pola hujan sore hari di bulan November–Februari membuatmu selalu siap membawa payung di tas sekolah.
+              </p>
+            </div>
+
+            <div class="analogy-box">
+              <div class="analogy-badge" style="background:#00838F;">PENERAPAN DI RUMAH CERDAS</div>
+              <h4 style="color:#00838F;margin:10px 0 6px;font-size:18px;">Pola Siklus Sensor Lingkungan</h4>
+              <p style="font-size:15px;line-height:1.55;color:var(--text-body);">
+                ☀️🌙 <strong>Siklus Siang-Malam:</strong> Sensor membaca pola bahwa setiap pukul 18.00 cahaya selalu meredup dan pukul 05.30 cahaya naik kembali.<br><br>
+                🌡️ <strong>Fluktuasi Suhu:</strong> Suhu konsisten naik di atas 31°C antara pukul 12.00–14.00. Pola ini dipakai untuk otomasi jadwal pendingin ruangan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Algoritma & Logika Kondisional -->
+        <div class="mtab-panel" id="mtab1-panel-4">
+          <div class="story-lead">
+            <div class="story-lead-icon">⚡</div>
+            <div class="story-lead-text">
+              <strong>Algoritma &amp; Logika Kondisional: Instruksi Logis &amp; Pengambilan Keputusan</strong><br>
+              Seperti resep memasak mie instan yang harus runtut, mikrokontroler mengambil keputusan cerdas berdasarkan 3 pola aturan logika kondisional (<em>IF-THEN-ELSE</em>):
+            </div>
+          </div>
+
+          <div class="concept-cards-grid">
+            <div class="concept-card">
+              <div class="concept-card-icon">⚡</div>
+              <h4 class="concept-card-title">1. Logika Tunggal (IF - THEN)</h4>
+              <p class="concept-card-desc">
+                Hanya mengecek satu syarat sederhana.<br><br>
+                <code>JIKA Sensor Cahaya &lt; 200 Lux (Gelap)<br>➔ MAKA Nyalakan Lampu Kamar 💡</code>
+              </p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-icon">🔗</div>
+              <h4 class="concept-card-title">2. Logika Majemuk (IF - AND - THEN)</h4>
+              <p class="concept-card-desc">
+                Mengecek dua syarat sekaligus untuk efisiensi energi.<br><br>
+                <code>JIKA Suhu &gt; 30°C DAN Ada Orang<br>➔ MAKA Putar Kipas Angin 🌀</code>
+              </p>
+            </div>
+
+            <div class="concept-card">
+              <div class="concept-card-icon">🔄</div>
+              <h4 class="concept-card-title">3. Logika Percabangan (IF - ELSE)</h4>
+              <p class="concept-card-desc">
+                Memiliki aksi alternatif saat syarat tidak terpenuhi.<br><br>
+                <code>JIKA Pintu Dibuka Tanpa Kartu Sah<br>➔ MAKA Bunyikan Alarm 🚨<br>JIKA TIDAK ➔ Buka Pintu Aman ✅</code>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-materi1-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-materi1-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 7: VIDEO ============================== -->
+    <section id="page-video" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-video-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Video Pembelajaran</div>
+      <div class="content-box wide" id="content-video">
+        <div class="video-layout">
+          <div class="video-wrapper">
+            <video id="main-video" controls preload="metadata" poster="assets/router.jpg">
+              <source src="assets/video/jaringan.mp4" type="video/mp4">
+              Browser Anda tidak mendukung tag video HTML5.
+            </video>
+          </div>
+
+          <div class="video-info">
+            <h3 class="video-title">Animasi Konsep Smart Home IoT</h3>
+            <p class="video-desc">
+              Saksikan bagaimana sensor mendeteksi perubahan lingkungan, mikrokontroler memproses algoritma kondisi, dan aktuator bergerak otomatis menciptakan rumah pintar hemat energi.
+            </p>
+            <div class="video-highlights">
+              <div class="highlight-item">
+                <span class="hl-icon">📡</span>
+                <span><strong>Input:</strong> Pembacaan kondisi sensor LDR &amp; Suhu</span>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-icon">🧠</span>
+                <span><strong>Proses:</strong> Algoritma logika kondisional IF-THEN</span>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-icon">⚡</span>
+                <span><strong>Output:</strong> Aksi otomatis lampu &amp; kipas angin</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-video-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-video-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 8: TARIK JAWABAN ============================== -->
+    <section id="page-tarik-jawaban" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-tarik-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Aktivitas: Tarik Jawaban — Cocokkan Istilah</div>
+      <div class="content-box wide scrollable" id="content-tj">
+        <p class="instruction"
+          style="font-size:18px;font-weight:700;color:var(--teal-dark);text-align:center;margin-bottom:12px;">
+          🎯 Tarik kartu istilah di sebelah kiri, lalu letakkan pada kotak definisi yang tepat di sebelah kanan!
+        </p>
+
+        <div class="dd-container" id="dd-container">
+          <div class="dd-column" id="dd-terms">
+            <h3>🧩 Kartu Istilah</h3>
+            <!-- Terms populated by JS -->
+          </div>
+          <div class="dd-column" id="dd-definitions">
+            <h3>🎯 Definisi &amp; Penerapan</h3>
+            <!-- Drop zones populated by JS -->
+          </div>
+        </div>
+
+        <div class="dd-score-box" id="dd-score-box" style="display:none;">
+          <span class="dd-score-badge" id="dd-score-badge">Skor: 0</span>
+          <span class="dd-score-text" id="dd-score-text">0 dari 6 Benar</span>
+        </div>
+
+        <div class="dd-actions">
+          <button class="btn btn-secondary" onclick="resetDragDrop()" id="btn-dd-reset">🔄 Reset Pilihan</button>
+          <button class="btn btn-primary" onclick="checkDragDrop()" id="btn-dd-check">✓ Periksa Jawaban</button>
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-tarik-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-tarik-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 9: PERMAINAN INTRO ============================== -->
+    <!-- (Note: previously numbered Page 10, now Page 9 in linear sequence) -->
+    <!-- ============================== PAGE 10: PERMAINAN INTRO ============================== -->
+    <section id="page-permainan-intro" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-permainan-intro-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="cover-center">
+        <h2 class="section-hero-title">
+          <span class="cover-title-main" style="font-size: 50px;">Smart Home IoT Lab</span>
+          <span class="cover-title-sub" style="font-size: 24px;">Simulator Otomasi Rumah Cerdas</span>
+        </h2>
+        <p class="hero-desc">
+          Jadilah Arsitek Rumah Pintar! Tugasmu adalah menyusun aturan logika algoritma (IF-THEN) dan menguji apakah sensor berhasil mengontrol lampu, kipas angin, dan alarm keamanan secara otomatis.
+        </p>
+        <button class="btn-mulai" onclick="goToPage('permainan')" id="btn-permainan-mulai">
+          <span class="play-icon">▶</span>
+          <span class="mulai-text">MULAI SIMULATOR</span>
+        </button>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-permainan-intro-prev">◀</button>
+      </div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-permainan-intro-next">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 11: PERMAINAN (SMART HOME IOT LAB) ============================== -->
+    <section id="page-permainan" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-game-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar" id="game-title-bar">Permainan — Smart Home IoT Lab</div>
+
+      <div class="game-hud-box">
+        <!-- Level Tabs -->
+        <div class="game-level-tabs">
+          <button class="game-tab-btn active" id="tab-lvl-1" onclick="switchGameLevel(1)">
+            Misi 1 <span class="tab-subtitle">Lampu Sensor Cahaya</span> <span class="tab-star" id="star-lvl-1">⭐ 0/1</span>
+          </button>
+          <button class="game-tab-btn locked" id="tab-lvl-2" onclick="switchGameLevel(2)">
+            Misi 2 <span class="tab-subtitle">Kipas Angin Suhu &amp; Gerak</span> <span class="tab-lock">🔒</span>
+          </button>
+          <button class="game-tab-btn locked" id="tab-lvl-3" onclick="switchGameLevel(3)">
+            Misi 3 <span class="tab-subtitle">Sistem Keamanan Alarm Cerdas</span> <span class="tab-lock">🔒</span>
+          </button>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="game-status-bar">
+          <div class="status-badge stars-badge">
+            <span>TOTAL BINTANG</span>
+            <strong id="hud-total-stars">⭐ 0/3</strong>
+          </div>
+          <div class="status-badge path-badge">
+            <span>STATUS SISTEM</span>
+            <strong id="hud-path-status" style="color: #2e7d32;">● Siap Diuji</strong>
+          </div>
+          <div class="status-badge latency-badge">
+            <span>SUHU / SENSOR</span>
+            <strong id="hud-latency-val">⏱️ 28°C / Terang</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instruction Callout -->
+      <div class="game-instruction-callout" id="game-instruction-text">
+        <span class="callout-icon">💡</span>
+        <span class="callout-text"><strong>Misi 1: Lampu Otomatis</strong> — Susun aturan IF-THEN agar lampu kamar menyala saat sensor LDR mendeteksi kondisi gelap!</span>
+      </div>
+
+      <!-- Main Game Canvas Container -->
+      <div class="content-box wide" id="game-main-container">
+        <div class="game-arena-wrapper">
+          <!-- Left Panel: Sensor Inputs -->
+          <div class="game-panel-left" id="game-panel-inputs">
+            <div class="panel-header">
+              <span class="panel-icon">📡</span>
+              <h4>Panel Sensor (Input)</h4>
+            </div>
+            <div class="sensor-controls-list" id="sensor-controls-container">
+              <!-- Dynamically populated per mission -->
+            </div>
+          </div>
+
+          <!-- Middle Panel: Smart House Canvas -->
+          <div class="game-stage-center" id="game-canvas-stage">
+            <svg id="game-svg-layer" viewBox="0 0 740 380" preserveAspectRatio="xMidYMid meet"></svg>
+            <div class="house-visual-container" id="house-visual-container">
+              <!-- Interactive smart home room elements (lamp, fan, siren, door) -->
+            </div>
+          </div>
+
+          <!-- Right Panel: Logic Rules (Algorithm) -->
+          <div class="game-panel-right" id="game-panel-rules">
+            <div class="panel-header">
+              <span class="panel-icon">🧠</span>
+              <h4>Aturan Algoritma (IF-THEN)</h4>
+            </div>
+            <div class="logic-builder-container" id="logic-builder-container">
+              <!-- Rule selector dropdowns / toggles -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Game Controls Bottom Bar -->
+        <div class="game-controls-bottom">
+          <button class="btn btn-secondary" onclick="resetCurrentGameLevel()" id="btn-game-reset">
+            🔄 Reset Simulator
+          </button>
+          <button class="btn btn-primary btn-transmit" onclick="launchGameSimulation()" id="btn-game-transmit">
+            ⚡ Uji Logika Otomasi (Test Run)
+          </button>
+          <button class="btn btn-warning" onclick="showGameHint()" id="btn-game-hint">
+            💡 Petunjuk Misi
+          </button>
+        </div>
+      </div>
+
+      <!-- In-Game Feedback / Victory Modal -->
+      <div class="game-modal-overlay" id="game-modal">
+        <div class="game-modal-card" id="game-modal-card">
+          <!-- Dynamic Content -->
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-game-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-game-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 12: LATIHAN INTRO ============================== -->
+    <section id="page-latihan-intro" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-latihan-intro-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="cover-center">
+        <h2 class="section-hero-title">
+          <span class="cover-title-main" style="font-size: 52px;">Latihan Evaluasi</span>
+          <span class="cover-title-sub" style="font-size: 24px;">Uji Pemahaman Berpikir Komputasional</span>
+        </h2>
+        <p class="hero-desc">
+          Evaluasi ini menguji pemahamanmu secara menyeluruh tentang 4 Fondasi Berpikir Komputasional &amp; Penerapan Logika Rumah Cerdas IoT melalui 5 bagian soal autentik (Total Skor Maksimal: 18 Poin).
+        </p>
+        <button class="btn-mulai" onclick="startEval();goToPage('latihan')" id="btn-latihan-mulai">
+          <span class="play-icon">▶</span>
+          <span class="mulai-text">MULAI LATIHAN</span>
+        </button>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-latihan-intro-prev">◀</button>
+      </div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-latihan-intro-next">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 13: LATIHAN (KONTEN EVALUASI) ============================== -->
+    <section id="page-latihan" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-latihan-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Latihan Evaluasi</div>
+      <div class="content-box wide scrollable" id="eval-box">
+        <!-- Progress Indicator -->
+        <div class="eval-progress" id="eval-progress">
+          <div class="step active" data-step="A">A</div>
+          <div class="step" data-step="B">B</div>
+          <div class="step" data-step="C">C</div>
+          <div class="step" data-step="D">D</div>
+          <div class="step" data-step="E">E</div>
+        </div>
+
+        <div class="eval-container" id="eval-container">
+          <!-- ===== BAGIAN A: PILIHAN GANDA ===== -->
+          <div class="eval-section active" id="eval-section-A">
+            <div class="eval-section-title">📝 Bagian A — Pilihan Ganda (5 Soal)</div>
+
+            <div class="mcq-question" data-q="A1">
+              <div class="q-text">1. Memecah sistem rumah pintar yang rumit menjadi komponen Sensor, Mikrokontroler, dan Aktuator merupakan penerapan dari fondasi...</div>
+              <div class="mcq-options">
+                <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span> Abstraksi</div>
+                <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span> Dekomposisi</div>
+                <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span> Pengenalan Pola</div>
+                <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span> Algoritma</div>
+              </div>
+            </div>
+
+            <div class="mcq-question" data-q="A2">
+              <div class="q-text">2. Saat merancang sistem lampu teras otomatis, programmer hanya fokus pada kondisi gelap/terang dan mengabaikan warna cat dinding rumah. Konsep ini disebut...</div>
+              <div class="mcq-options">
+                <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span> Pengenalan Pola</div>
+                <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span> Dekomposisi</div>
+                <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span> Abstraksi</div>
+                <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span> Debugging</div>
+              </div>
+            </div>
+
+            <div class="mcq-question" data-q="A3">
+              <div class="q-text">3. Komponen dalam sistem IoT yang bertindak sebagai "indera" untuk membaca perubahan kondisi lingkungan fisik adalah...</div>
+              <div class="mcq-options">
+                <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span> Aktuator (Lampu / Kipas)</div>
+                <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span> Sensor (LDR / Suhu / PIR)</div>
+                <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span> Baterai Cadangan</div>
+                <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span> Kabel Jumper</div>
+              </div>
+            </div>
+
+            <div class="mcq-question" data-q="A4">
+              <div class="q-text">4. Manakah penulisan aturan logika kondisional yang paling tepat untuk menyalakan kipas angin hanya jika suhu ruangan lebih dari 30°C?</div>
+              <div class="mcq-options">
+                <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span> JIKA Suhu &lt; 30°C MAKA Nyalakan Kipas</div>
+                <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span> JIKA Suhu &gt; 30°C MAKA Nyalakan Kipas</div>
+                <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span> JIKA Kipas Berputar MAKA Suhu 30°C</div>
+                <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span> JIKA Tidak Ada Orang MAKA Nyalakan Kipas</div>
+              </div>
+            </div>
+
+            <div class="mcq-question" data-q="A5">
+              <div class="q-text">5. Sensor pintar mengenali bahwa matahari selalu terbit pukul 06.00 dan terbenam pukul 18.00 setiap hari. Kemampuan mendeteksi siklus berulang ini merupakan contoh dari...</div>
+              <div class="mcq-options">
+                <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span> Dekomposisi</div>
+                <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span> Abstraksi</div>
+                <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span> Pengenalan Pola (Pattern Recognition)</div>
+                <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span> Kompilasi Data</div>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:20px;">
+              <button class="btn btn-primary" onclick="nextEvalSection('B')">Lanjut ke Bagian B ▶</button>
+            </div>
+          </div>
+
+          <!-- ===== BAGIAN B: BENAR/SALAH ===== -->
+          <div class="eval-section" id="eval-section-B">
+            <div class="eval-section-title">✅❌ Bagian B — Benar / Salah (6 Soal)</div>
+
+            <div class="tf-question" data-q="B1">
+              <div class="q-text">1. Sensor bertindak sebagai perangkat output yang mengeksekusi gerakan fisik di rumah cerdas.</div>
+              <div class="tf-buttons">
+                <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+                <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+              </div>
+            </div>
+
+            <div class="tf-question" data-q="B2">
+              <div class="q-text">2. Mikrokontroler berfungsi sebagai otak pemroses yang menjalankan aturan algoritma dari data sensor.</div>
+              <div class="tf-buttons">
+                <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+                <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+              </div>
+            </div>
+
+            <div class="tf-question" data-q="B3">
+              <div class="q-text">3. Abstraksi membantu sistem IoT menghemat memori karena hanya memproses data yang relevan dengan tujuan otomasi.</div>
+              <div class="tf-buttons">
+                <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+                <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+              </div>
+            </div>
+
+            <div class="tf-question" data-q="B4">
+              <div class="q-text">4. Tanpa algoritma yang jelas, mikrokontroler tetap bisa menebak kapan waktu yang tepat untuk menyalakan alarm.</div>
+              <div class="tf-buttons">
+                <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+                <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+              </div>
+            </div>
+
+            <div class="tf-question" data-q="B5">
+              <div class="q-text">5. Logika majemuk (IF - AND - THEN) mensyaratkan semua kondisi harus bernilai benar agar aksi dijalankan.</div>
+              <div class="tf-buttons">
+                <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+                <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+              </div>
+            </div>
+
+            <div class="tf-question" data-q="B6">
+              <div class="q-text">6. Lampu LED, motor servo kunci pintu, dan speaker buzzer adalah contoh komponen aktuator.</div>
+              <div class="tf-buttons">
+                <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+                <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:20px;display:flex;gap:12px;justify-content:center;">
+              <button class="btn btn-secondary" onclick="nextEvalSection('A')">◀ Bagian A</button>
+              <button class="btn btn-primary" onclick="nextEvalSection('C')">Lanjut ke Bagian C ▶</button>
+            </div>
+          </div>
+
+          <!-- ===== BAGIAN C: MENJODOHKAN ===== -->
+          <div class="eval-section" id="eval-section-C">
+            <div class="eval-section-title">🔗 Bagian C — Menjodohkan (5 Pasangan)</div>
+            <p class="instruction">Klik istilah di sebelah kiri, lalu klik definisi yang tepat di sebelah kanan untuk menghubungkan. Kamu bisa mengklik kartu/tombol ✕ untuk <strong>membatalkan atau mengoreksi</strong> pasangan.</p>
+
+            <div class="match-container" id="match-container">
+              <svg class="match-svg-layer" id="match-svg-layer"></svg>
+              <div class="match-left" id="match-left"></div>
+              <div class="match-right" id="match-right"></div>
+            </div>
+
+            <div style="text-align:center;margin-top:22px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+              <button class="btn btn-secondary" onclick="nextEvalSection('B')">◀ Bagian B</button>
+              <button class="btn btn-warning" onclick="resetMatchPairs()" style="font-size:16px;">🔄 Reset Pasangan</button>
+              <button class="btn btn-primary" onclick="nextEvalSection('D')">Lanjut ke Bagian D ▶</button>
+            </div>
+          </div>
+
+          <!-- ===== BAGIAN D: DRAG & DROP MENGURUTKAN ===== -->
+          <div class="eval-section" id="eval-section-D">
+            <div class="eval-section-title">📊 Bagian D — Mengurutkan Algoritma Smart Home (6 Tahap)</div>
+            <p class="instruction">Seret kotak-kotak tahapan kerja sistem lampu teras otomatis berikut ke urutan proses yang benar dari awal hingga akhir!</p>
+
+            <div class="seq-list" id="seq-list"></div>
+
+            <div style="text-align:center;margin-top:20px;display:flex;gap:12px;justify-content:center;">
+              <button class="btn btn-secondary" onclick="nextEvalSection('C')">◀ Bagian C</button>
+              <button class="btn btn-primary" onclick="nextEvalSection('E')">Lanjut ke Bagian E ▶</button>
+            </div>
+          </div>
+
+          <!-- ===== BAGIAN E: SIMULASI PRAKTIK ===== -->
+          <div class="eval-section" id="eval-section-E">
+            <div class="eval-section-title">🎮 Bagian E — Simulasi Praktik Autentik Logika IoT</div>
+            <p class="instruction">Pilih aturan logika kondisional yang paling hemat energi dan tepat untuk sistem penerangan teras rumah pintar! (Skor benar percobaan pertama = 1 poin)</p>
+
+            <div class="sim-container" id="sim-eval">
+              <div class="sim-topology" id="sim-topology-eval" style="padding:24px 30px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:18px;">
+                  <div class="rule-option-card" onclick="selectEvalRule('a')" id="eval-rule-a">
+                    <div style="font-size:24px;margin-bottom:6px;">💡 Aturan A</div>
+                    <strong style="color:var(--teal-dark);">Lampu Selalu Menyala 24 Jam Penuh</strong>
+                    <p style="font-size:14px;color:var(--text-muted);margin-top:6px;">Tanpa menggunakan sensor.</p>
+                  </div>
+                  <div class="rule-option-card" onclick="selectEvalRule('b')" id="eval-rule-b">
+                    <div style="font-size:24px;margin-bottom:6px;">🌟 Aturan B (Ideal)</div>
+                    <strong style="color:#2e7d32;">JIKA Sensor Gelap DAN Ada Gerakan -&gt; Lampu Menyala</strong>
+                    <p style="font-size:14px;color:var(--text-muted);margin-top:6px;">Hemat energi &amp; adaptif.</p>
+                  </div>
+                  <div class="rule-option-card" onclick="selectEvalRule('c')" id="eval-rule-c">
+                    <div style="font-size:24px;margin-bottom:6px;">⚠️ Aturan C</div>
+                    <strong style="color:#e65100;">JIKA Siang Terang -&gt; Lampu Menyala</strong>
+                    <p style="font-size:14px;color:var(--text-muted);margin-top:6px;">Logika terbalik / boros listrik.</p>
+                  </div>
+                </div>
+
+                <div style="text-align:center;">
+                  <button class="btn btn-primary" onclick="testEvalRule()" id="btn-send-eval" disabled style="font-size:18px;padding:12px 36px;">
+                    ⚡ Uji Aturan Logika Terpilih
+                  </button>
+                </div>
+              </div>
+
+              <!-- Feedback Card on Evaluation Simulation -->
+              <div class="sim-feedback-overlay" id="sim-feedback-eval">
+                <div class="sim-feedback-card" id="sim-feedback-card-eval"></div>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:24px;display:flex;gap:14px;justify-content:center;">
+              <button class="btn btn-secondary" onclick="nextEvalSection('D')">◀ Bagian D</button>
+              <button class="btn btn-success" onclick="submitEval()" style="font-size:19px;padding:12px 36px;" id="btn-submit-eval">
+                📊 Selesai &amp; Lihat Hasil Rekap Evaluasi
+              </button>
+            </div>
+          </div>
+
+          <!-- ===== HASIL REKAP EVALUASI ===== -->
+          <div class="eval-section" id="eval-section-recap">
+            <div class="recap-card" id="recap-card"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-latihan-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-latihan-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 14: RANGKUMAN ============================== -->
+    <section id="page-rangkuman" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-rangkuman-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Rangkuman &amp; Refleksi</div>
+      <div class="content-box wide scrollable" id="content-rangkuman">
+        <div class="rangkuman-points">
+          <div class="rangkuman-point">
+            <span class="rp-icon">🧩</span>
+            <span class="rp-text"><strong>Dekomposisi &amp; Abstraksi</strong><br>Sistem IoT dipecah menjadi Sensor, Mikrokontroler, dan Aktuator, serta hanya memproses data esensial yang relevan.</span>
+          </div>
+
+          <div class="rangkuman-point">
+            <span class="rp-icon">🔍</span>
+            <span class="rp-text"><strong>Pengenalan Pola</strong><br>Mendeteksi siklus harian dan kebiasaan lingkungan untuk memicu otomasi tanpa perlu perintah berulang.</span>
+          </div>
+
+          <div class="rangkuman-point">
+            <span class="rp-icon">⚡</span>
+            <span class="rp-text"><strong>Algoritma Kondisional</strong><br>Aturan IF-THEN-ELSE memberi kecerdasan bagi perangkat untuk mengambil keputusan mandiri secara tepat.</span>
+          </div>
+        </div>
+
+        <div class="refleksi-box">
+          <p class="refleksi-q">
+            💭 <strong>Refleksi Siswa:</strong> Menurutmu, perangkat atau peralatan apa lagi di rumah atau sekolahmu yang bisa dibuat otomatis menggunakan 4 Fondasi Berpikir Komputasional? Tuliskan idemu di bawah ini:
+          </p>
+          <textarea placeholder="Tuliskan ide kreatifmu di sini... (contoh: penyiram tanaman otomatis dengan sensor kelembapan tanah, kunci lemari RFID, dll.)" id="refleksi-input"></textarea>
+        </div>
+
+        <div class="badge-completion">
+          🏆 Selamat! Kamu telah resmi menjadi <strong>Smart Home Architect</strong>!
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-rangkuman-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-rangkuman-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 15: REFERENSI ============================== -->
+    <section id="page-referensi" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-referensi-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Referensi &amp; Daftar Pustaka</div>
+      <div class="content-box wide" id="content-referensi">
+        <div class="ref-list">
+          <div class="ref-item">
+            <div class="ref-num">1.</div>
+            <div class="ref-text">
+              Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi. (2022). <em>Buku Panduan Guru Informatika untuk SMP Kelas IX</em>. Jakarta: Pusat Kurikulum dan Perbukuan.
+            </div>
+          </div>
+
+          <div class="ref-item">
+            <div class="ref-num">2.</div>
+            <div class="ref-text">
+              Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi. (2022). <em>Buku Siswa Informatika untuk SMP Kelas IX</em>. Jakarta: Pusat Kurikulum dan Perbukuan.
+            </div>
+          </div>
+
+          <div class="ref-item">
+            <div class="ref-num">3.</div>
+            <div class="ref-text">
+              Wing, J. M. (2006). <em>Computational Thinking</em>. Communications of the ACM, 49(3), 33-35.
+            </div>
+          </div>
+
+          <div class="ref-item">
+            <div class="ref-num">4.</div>
+            <div class="ref-text">
+              Monk, S. (2017). <em>Programming Arduino: Getting Started with Sketches &amp; IoT Sensors</em> (2nd ed.). McGraw-Hill Education.
+            </div>
+          </div>
+
+          <div class="ref-item">
+            <div class="ref-num">5.</div>
+            <div class="ref-text">
+              Direktorat Sekolah Menengah Pertama. (2024). <em>Panduan Pengembangan Media Pembelajaran Interaktif (MPI) Kurikulum Merdeka</em>. Kemendikdasmen.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-referensi-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-referensi-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 16: PENGEMBANG ============================== -->
+    <section id="page-pengembang" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-pengembang-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Profil Pengembang</div>
+      <div class="content-box wide" id="content-pengembang" style="display:flex;flex-direction:column;justify-content:center;padding:24px 32px;">
+        <div class="dev-cards">
+          <!-- Card 1: Pengembang 1 -->
+          <div class="dev-card" id="dev-card-1">
+            <div class="dev-photo-wrap">
+              <img src="assets/fanani.jpg" alt="Foto Ach. Chanifuddin Fanani, S.Pd." class="dev-photo">
+            </div>
+            <div class="dev-info">
+              <div class="dev-badge">PENGEMBANG UTAMA</div>
+              <h3 class="dev-name">Ach. Chanifuddin Fanani, S.Pd.</h3>
+              <div class="dev-fields">
+                <div class="dev-field">
+                  <span class="dev-field-label">Instansi:</span>
+                  <span class="dev-field-val">SMP Negeri 2 Lamongan</span>
+                </div>
+                <div class="dev-field">
+                  <span class="dev-field-label">Email:</span>
+                  <span class="dev-field-val">chanif.fanani@gmail.com</span>
+                </div>
+                <div class="dev-field">
+                  <span class="dev-field-label">Keahlian:</span>
+                  <span class="dev-field-val">Guru Informatika &amp; Pembelajaran Digital</span>
+                </div>
+              </div>
+              <div class="dev-social">
+                <a href="https://instagram.com/qaneev" target="_blank" rel="noopener" class="dev-social-link ig" title="Instagram @qaneev">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                  </svg>
+                  <span>@qaneev</span>
+                </a>
+                <a href="https://fanani.my.id" target="_blank" rel="noopener" class="dev-social-link web" title="Website fanani.my.id">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  <span>fanani.my.id</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Pengembang 2 -->
+          <div class="dev-card" id="dev-card-2">
+            <div class="dev-photo-wrap">
+              <img src="assets/ilyas.jpeg" alt="Foto Muhammad Ilyas Sayyid, S.Kom." class="dev-photo">
+            </div>
+            <div class="dev-info">
+              <div class="dev-badge second">TIM PENGEMBANG</div>
+              <h3 class="dev-name">Muhammad Ilyas Sayyid, S.Kom.</h3>
+              <div class="dev-fields">
+                <div class="dev-field">
+                  <span class="dev-field-label">Instansi:</span>
+                  <span class="dev-field-val">Informatika &amp; Rekayasa Perangkat Lunak</span>
+                </div>
+                <div class="dev-field">
+                  <span class="dev-field-label">Peran:</span>
+                  <span class="dev-field-val">Penyusun &amp; Pengembang Media</span>
+                </div>
+                <div class="dev-field">
+                  <span class="dev-field-label">Fokus:</span>
+                  <span class="dev-field-val">UI/UX &amp; Interaktivitas Web</span>
+                </div>
+              </div>
+              <div class="dev-social">
+                <a href="https://www.instagram.com/ilyassyd_/" target="_blank" rel="noopener" class="dev-social-link ig" title="Instagram @ilyassyd_">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                  </svg>
+                  <span>@ilyassyd_</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-pengembang-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-pengembang-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 17: PENANGGUNG JAWAB ============================== -->
+    <section id="page-pj-penyunting" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-pj-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Penanggung Jawab &amp; Tim Penyunting</div>
+      <div class="content-box wide scrollable" id="content-pj">
+        <div class="pj-grid">
+          <div class="pj-col">
+            <h3 class="pj-section-title">🏛️ Penanggung Jawab</h3>
+            <div class="pj-list">
+              <div class="pj-item">
+                <div class="pj-name">Direktorat Sekolah Menengah Pertama</div>
+                <div class="pj-role">Direktorat Jenderal Pendidikan Anak Usia Dini, Pendidikan Dasar, dan Pendidikan Menengah</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">Kementerian Pendidikan Dasar dan Menengah</div>
+                <div class="pj-role">Republik Indonesia</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pj-col">
+            <h3 class="pj-section-title">✍️ Tim Pengembang &amp; Penyunting</h3>
+            <div class="pj-list">
+              <div class="pj-item">
+                <div class="pj-name">Ach. Chanifuddin Fanani, S.Pd.</div>
+                <div class="pj-role">Penulis Naskah &amp; Pengembang Media (SMPN 2 Lamongan)</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">Muhammad Ilyas Sayyid, S.Kom.</div>
+                <div class="pj-role">Penyusun &amp; Reviewer Konten Teknis</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">Tim Pengembang Pembelajaran Digital</div>
+                <div class="pj-role">Direktorat SMP — Kemendikdasmen</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-pj-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-pj-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 18: KUTIPAN/MOTTO ============================== -->
+    <section id="page-kutipan" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-kutipan-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="content-box wide"
+        style="min-height:640px;height:640px;justify-content:center;align-items:center;text-align:center;position:relative;padding:48px 64px;">
+        <div class="kutipan-quote-mark left">“</div>
+        <p class="kutipan-text">BERPIKIR KOMPUTASIONAL MEMBEKALI GENERASI MUDA MENGUBAH TANTANGAN DUNIA NYATA MENJADI SOLUSI CERDAS DAN INOVATIF</p>
+        <div class="kutipan-quote-mark right">”</div>
+        <p class="kutipan-subtag">— Bersama Memajukan Pendidikan Informatika Indonesia yang Berdaya Saing —</p>
+        <button class="btn btn-primary btn-kutipan-action" onclick="goToPage('kredit')" id="btn-kutipan-lanjut">Lanjut ke Penutup ▶</button>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-kutipan-prev">◀</button></div>
+      <div class="nav-bottom right"><button class="nav-arrow" onclick="navNext()" id="btn-kutipan-next">▶</button></div>
+    </section>
+
+    <!-- ============================== PAGE 19: KREDIT/PENUTUP ============================== -->
+    <section id="page-kredit" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('cover')" id="btn-kredit-beranda">🏠</button>
+        <span class="nav-label">BERANDA</span>
+      </div>
+
+      <div class="content-box wide"
+        style="min-height:640px;height:640px;justify-content:center;align-items:center;text-align:center;padding:40px 60px;">
+        <div class="logo-row" id="kredit-logos">
+          <img src="assets/Logo Tutwuri Kemendikdasmen.png" alt="Logo Tut Wuri Handayani">
+          <img src="assets/Logo Sobat SMP 2025.png" alt="Logo Sobat SMP 2025">
+          <img src="assets/Logo Pendidikan Bermutu.png" alt="Logo Pendidikan Bermutu">
+          <img src="assets/Logo Ramah.png" alt="Logo Ramah">
+        </div>
+
+        <div class="kredit-divider"></div>
+
+        <div class="kredit-text">
+          <p class="kredit-title">KEMENTERIAN PENDIDIKAN DASAR DAN MENENGAH</p>
+          <p class="kredit-ditjen">DIREKTORAT JENDERAL PENDIDIKAN ANAK USIA DINI, PENDIDIKAN DASAR, DAN PENDIDIKAN NONFORMAL DAN INFORMAL</p>
+          <p class="kredit-smp">DIREKTORAT SEKOLAH MENENGAH PERTAMA</p>
+        </div>
+
+        <div style="margin-top:28px;">
+          <button class="btn btn-primary" onclick="goToPage('cover')" id="btn-kredit-selesai"
+            style="font-size:22px;padding:14px 44px;border-radius:var(--radius-pill);box-shadow:0 8px 24px rgba(0,172,193,0.45);">
+            🏠 Selesai &amp; Kembali ke Beranda
+          </button>
+        </div>
+      </div>
+
+      <div class="nav-bottom left"><button class="nav-arrow" onclick="navPrev()" id="btn-kredit-prev">◀</button></div>
+    </section>
+
+  </div><!-- /app -->
+
+  <!-- Scripts -->
+  <script src="config.js?v=2"></script>
+  <script src="script.js?v=3"></script>
+</body>
+
+</html>
