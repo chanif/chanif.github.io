@@ -64,6 +64,21 @@ function applyConfig() {
     devPhoto2.src = cfg.assets.dev_photo_2;
   }
 
+  // Apply Video Source if configured
+  const mainVideo = document.getElementById('main-video');
+  if (mainVideo && cfg.assets && cfg.assets.video_src) {
+    const videoSource = document.getElementById('main-video-source') || mainVideo.querySelector('source');
+    if (videoSource) {
+      if (videoSource.getAttribute('src') !== cfg.assets.video_src) {
+        videoSource.src = cfg.assets.video_src;
+        mainVideo.load();
+      }
+    } else if (mainVideo.getAttribute('src') !== cfg.assets.video_src) {
+      mainVideo.src = cfg.assets.video_src;
+      mainVideo.load();
+    }
+  }
+
   // Apply Testing Page Indicator
   updateTestingIndicator(currentPage);
 }
@@ -77,8 +92,8 @@ const PAGE_INDEX_MAP = {
   'tujuan': 4,
   'materi-list': 5,
   'materi-1': 6,
-  'tarik-jawaban': 7,
-  'video': 8,
+  'video': 7,
+  'tarik-jawaban': 8,
   'materi-3': 9,
   'permainan-intro': 10,
   'permainan': 11,
@@ -114,7 +129,7 @@ function updateTestingIndicator(pageId) {
 }
 
 const LINEAR_PAGES = [
-  'materi-1', 'tarik-jawaban', 'video', 'materi-3',
+  'materi-1', 'video', 'tarik-jawaban', 'materi-3',
   'permainan-intro', 'permainan', 'latihan-intro', 'latihan',
   'rangkuman', 'referensi', 'pengembang', 'pj-penyunting',
   'kutipan', 'kredit'
@@ -144,6 +159,7 @@ function goToPage(pageId) {
   if (pageId === 'materi-1') switchMateri1Tab(1);
   if (pageId === 'tarik-jawaban') initDragDrop();
   if (pageId === 'video') initVideo();
+  if (pageId === 'permainan') initPacketCommanderGame();
 }
 
 // ==================== MATERI 1 TABBED NAVIGATION ====================
@@ -184,25 +200,58 @@ function navPrev() {
 
 // ==================== VIDEO ====================
 
+let videoInitialized = false;
+
 function initVideo() {
   const video = document.getElementById('main-video');
   const fallback = document.getElementById('video-fallback');
-  if (!video || !fallback) return;
+  if (!video) return;
 
-  video.addEventListener('error', function() {
-    video.style.display = 'none';
-    fallback.style.display = 'block';
-  }, { once: true });
-
-  video.addEventListener('loadeddata', function() {
-    fallback.style.display = 'none';
-    video.style.display = 'block';
-  }, { once: true });
-
-  if (video.readyState === 0) {
-    video.style.display = 'none';
-    fallback.style.display = 'block';
+  const cfg = window.MPI_CONFIG;
+  if (cfg && cfg.assets && cfg.assets.video_src) {
+    const source = document.getElementById('main-video-source') || video.querySelector('source');
+    if (source && source.getAttribute('src') !== cfg.assets.video_src) {
+      source.src = cfg.assets.video_src;
+      video.load();
+    } else if (!source && video.getAttribute('src') !== cfg.assets.video_src) {
+      video.src = cfg.assets.video_src;
+      video.load();
+    }
   }
+
+  const source = video.querySelector('source');
+  const currentSrc = source ? (source.getAttribute('src') || source.src) : (video.getAttribute('src') || video.src);
+
+  if (!currentSrc || currentSrc.trim() === '') {
+    video.style.display = 'none';
+    if (fallback) fallback.style.display = 'block';
+    return;
+  }
+
+  if (!videoInitialized) {
+    videoInitialized = true;
+
+    const onVideoError = function() {
+      video.style.display = 'none';
+      if (fallback) fallback.style.display = 'block';
+    };
+
+    const onVideoSuccess = function() {
+      video.style.display = 'block';
+      if (fallback) fallback.style.display = 'none';
+    };
+
+    video.addEventListener('error', onVideoError);
+    if (source) {
+      source.addEventListener('error', onVideoError);
+    }
+    video.addEventListener('loadeddata', onVideoSuccess);
+    video.addEventListener('canplay', onVideoSuccess);
+    video.addEventListener('loadedmetadata', onVideoSuccess);
+  }
+
+  video.style.display = 'block';
+  if (fallback) fallback.style.display = 'none';
 }
 
 

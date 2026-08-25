@@ -71,7 +71,7 @@ window.MPI_CONFIG = {
         dev_photo_2: 'assets/ilyas.jpeg',
 
         // Video materi lokal (offline ready)
-        video_src: 'assets/video/materi-video.mp4',
+        video_src: 'assets/video/jaringan.mp4',
     },
 
     // ------------------------------------------------------------
