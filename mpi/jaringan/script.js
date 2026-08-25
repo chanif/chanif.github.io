@@ -160,6 +160,12 @@ function goToPage(pageId) {
   if (pageId === 'tarik-jawaban') initDragDrop();
   if (pageId === 'video') initVideo();
   if (pageId === 'permainan') initPacketCommanderGame();
+  if (pageId === 'latihan') {
+    const activeSec = document.querySelector('.eval-section.active');
+    if (!activeSec || activeSec.id === 'eval-section-recap') {
+      startEval();
+    }
+  }
 }
 
 // ==================== MATERI 1 TABBED NAVIGATION ====================
@@ -1952,6 +1958,44 @@ function startEval() {
   evalUserAnswers = {};
   matchState = { selectedLeft: null, pairs: {} };
   evalSectionInited = { C: false, D: false, E: false };
+  currentShuffledRight = null;
+
+  // 1. Reset Bagian A (Pilihan Ganda): Hapus semua pilihan yang terpilih
+  document.querySelectorAll('#eval-section-A .mcq-option').forEach(o => {
+    o.classList.remove('selected');
+  });
+
+  // 2. Reset Bagian B (Benar / Salah): Hapus semua tombol yang terpilih
+  document.querySelectorAll('#eval-section-B .tf-btn').forEach(b => {
+    b.classList.remove('selected-benar', 'selected-salah');
+  });
+
+  // 3. Reset Bagian C (Menjodohkan): Kosongkan kontainer dan render ulang fresh
+  const leftCol = document.getElementById('match-left');
+  const rightCol = document.getElementById('match-right');
+  const svg = document.getElementById('match-svg-layer');
+  if (leftCol) leftCol.innerHTML = '';
+  if (rightCol) rightCol.innerHTML = '';
+  if (svg) svg.innerHTML = '';
+
+  // 4. Reset Bagian D (Mengurutkan): Kosongkan urutan dan render ulang fresh
+  const seqList = document.getElementById('seq-list');
+  if (seqList) seqList.innerHTML = '';
+
+  // 5. Reset Bagian E (Simulasi Praktik): Reset topology, router, path, & feedback
+  initEvalSimulation();
+
+  // 6. Reset Halaman Rekap & Progress Steps
+  const recapCard = document.getElementById('recap-card');
+  if (recapCard) recapCard.innerHTML = '';
+  const recapSection = document.getElementById('eval-section-recap');
+  if (recapSection) recapSection.classList.remove('active');
+
+  document.querySelectorAll('.eval-progress .step').forEach(s => {
+    s.classList.remove('active', 'done');
+  });
+
+  // 7. Mulai kembali dari Bagian A
   nextEvalSection('A');
 }
 
@@ -1970,7 +2014,13 @@ function nextEvalSection(sectionId) {
     if (stepIdx === currentIdx) s.classList.add('active');
   });
 
-  if (sectionId === 'C' && !evalSectionInited.C) initMatchSection();
+  if (sectionId === 'C') {
+    if (!evalSectionInited.C) {
+      initMatchSection();
+    } else {
+      setTimeout(drawMatchLines, 50);
+    }
+  }
   if (sectionId === 'D' && !evalSectionInited.D) initSeqSection();
   if (sectionId === 'E' && !evalSectionInited.E) {
     initSimulation('eval');
@@ -2013,55 +2063,250 @@ const MATCH_RIGHT_DATA = [
   { id: 'e', text: 'Potongan isi data asli yang dikirim di dalam paket' }
 ];
 
+const MATCH_PAIR_THEMES = {
+  '1': { color: '#00838f', bg: '#e0f7fa', border: '#00acc1', num: 1, label: '1' },
+  '2': { color: '#e65100', bg: '#fff3e0', border: '#ff9800', num: 2, label: '2' },
+  '3': { color: '#6a1b9a', bg: '#f3e5f5', border: '#ab47bc', num: 3, label: '3' },
+  '4': { color: '#2e7d32', bg: '#e8f5e9', border: '#4caf50', num: 4, label: '4' },
+  '5': { color: '#c2185b', bg: '#fce4ec', border: '#e91e63', num: 5, label: '5' }
+};
+
+let currentShuffledRight = null;
+
 function initMatchSection() {
   evalSectionInited.C = true;
   const leftCol = document.getElementById('match-left');
   const rightCol = document.getElementById('match-right');
+  if (!leftCol || !rightCol) return;
   leftCol.innerHTML = '';
   rightCol.innerHTML = '';
 
-  const shuffledRight = [...MATCH_RIGHT_DATA].sort(() => Math.random() - 0.5);
+  if (!currentShuffledRight) {
+    currentShuffledRight = [...MATCH_RIGHT_DATA].sort(() => Math.random() - 0.5);
+  }
 
   MATCH_LEFT_DATA.forEach(item => {
     const el = document.createElement('div');
     el.className = 'match-item';
+    el.id = `match-left-${item.id}`;
     el.dataset.id = item.id;
     el.dataset.side = 'left';
-    el.textContent = item.id + '. ' + item.text;
-    el.onclick = () => onMatchClick('left', item.id, el);
+    el.onclick = (e) => {
+      if (e.target.closest('.match-unpair-btn')) {
+        e.stopPropagation();
+        unpairMatchItem(item.id);
+        return;
+      }
+      onMatchClick('left', item.id, el);
+    };
     leftCol.appendChild(el);
   });
 
-  shuffledRight.forEach(item => {
+  currentShuffledRight.forEach(item => {
     const el = document.createElement('div');
     el.className = 'match-item';
+    el.id = `match-right-${item.id}`;
     el.dataset.id = item.id;
     el.dataset.side = 'right';
-    el.textContent = item.id + '. ' + item.text;
-    el.onclick = () => onMatchClick('right', item.id, el);
+    el.onclick = (e) => {
+      if (e.target.closest('.match-unpair-btn')) {
+        e.stopPropagation();
+        const pairedLeft = Object.keys(matchState.pairs).find(k => matchState.pairs[k] === item.id);
+        if (pairedLeft) unpairMatchItem(pairedLeft);
+        return;
+      }
+      onMatchClick('right', item.id, el);
+    };
     rightCol.appendChild(el);
   });
+
+  renderMatchUI();
+}
+
+function renderMatchUI() {
+  // 1. Render Left items
+  MATCH_LEFT_DATA.forEach(item => {
+    const el = document.getElementById(`match-left-${item.id}`);
+    if (!el) return;
+    const isSelected = matchState.selectedLeft === item.id;
+    const pairedRight = matchState.pairs[item.id];
+    const theme = MATCH_PAIR_THEMES[item.id] || MATCH_PAIR_THEMES['1'];
+
+    el.className = 'match-item' + (isSelected ? ' selected' : '') + (pairedRight ? ' matched' : '');
+    if (pairedRight) {
+      el.style.setProperty('--pair-color', theme.color);
+      el.style.setProperty('--pair-bg', theme.bg);
+      el.style.setProperty('--pair-border', theme.border);
+      el.innerHTML = `
+        <div class="match-item-content">
+          <span>${item.id}. ${item.text}</span>
+        </div>
+        <span class="match-badge">🔗 #${theme.label} <span class="match-unpair-btn" title="Batalkan pasangan">✕</span></span>
+        <span class="match-anchor-dot"></span>
+      `;
+    } else {
+      el.removeAttribute('style');
+      el.innerHTML = `
+        <div class="match-item-content">
+          <span>${item.id}. ${item.text}</span>
+        </div>
+        <span class="match-anchor-dot"></span>
+      `;
+    }
+  });
+
+  // 2. Render Right items
+  if (currentShuffledRight) {
+    currentShuffledRight.forEach(item => {
+      const el = document.getElementById(`match-right-${item.id}`);
+      if (!el) return;
+      const pairedLeft = Object.keys(matchState.pairs).find(k => matchState.pairs[k] === item.id);
+      const theme = pairedLeft ? (MATCH_PAIR_THEMES[pairedLeft] || MATCH_PAIR_THEMES['1']) : null;
+
+      el.className = 'match-item' + (pairedLeft ? ' matched' : '');
+      if (pairedLeft && theme) {
+        el.style.setProperty('--pair-color', theme.color);
+        el.style.setProperty('--pair-bg', theme.bg);
+        el.style.setProperty('--pair-border', theme.border);
+        el.innerHTML = `
+          <span class="match-anchor-dot"></span>
+          <span class="match-badge">🔗 #${theme.label} <span class="match-unpair-btn" title="Batalkan pasangan">✕</span></span>
+          <div class="match-item-content">
+            <span>${item.id}. ${item.text}</span>
+          </div>
+        `;
+      } else {
+        el.removeAttribute('style');
+        el.innerHTML = `
+          <span class="match-anchor-dot"></span>
+          <div class="match-item-content">
+            <span>${item.id}. ${item.text}</span>
+          </div>
+        `;
+      }
+    });
+  }
+
+  // 3. Draw dynamic connecting SVG lines
+  setTimeout(drawMatchLines, 20);
 }
 
 function onMatchClick(side, id, el) {
-  if (el.classList.contains('matched')) return;
-
   if (side === 'left') {
-    document.querySelectorAll('#match-left .match-item').forEach(i => i.classList.remove('selected'));
-    el.classList.add('selected');
-    matchState.selectedLeft = id;
-  } else if (side === 'right' && matchState.selectedLeft !== null) {
-    const leftId = matchState.selectedLeft;
-    matchState.pairs[leftId] = id;
-
-    const leftEl = document.querySelector(`#match-left .match-item[data-id="${leftId}"]`);
-    if (leftEl) {
-      leftEl.classList.remove('selected');
-      leftEl.classList.add('matched');
+    if (matchState.pairs[id]) {
+      // User clicked an already matched left item -> unpair it and make it selected to allow quick correction
+      delete matchState.pairs[id];
+      matchState.selectedLeft = id;
+      playSynthSound('click');
+      renderMatchUI();
+      return;
     }
-    el.classList.add('matched');
-    matchState.selectedLeft = null;
+
+    if (matchState.selectedLeft === id) {
+      // Toggle off / cancel selection
+      matchState.selectedLeft = null;
+      playSynthSound('click');
+      renderMatchUI();
+      return;
+    }
+
+    // Select this left item
+    matchState.selectedLeft = id;
+    playSynthSound('click');
+    renderMatchUI();
+
+  } else if (side === 'right') {
+    if (matchState.selectedLeft !== null) {
+      const leftId = matchState.selectedLeft;
+
+      // If right item was already paired with another left item, unpair that other left item
+      const existingLeft = Object.keys(matchState.pairs).find(k => matchState.pairs[k] === id);
+      if (existingLeft && existingLeft !== leftId) {
+        delete matchState.pairs[existingLeft];
+      }
+
+      // Pair selected left with this right
+      matchState.pairs[leftId] = id;
+      matchState.selectedLeft = null;
+      playSynthSound('packet_arrive');
+      renderMatchUI();
+
+    } else {
+      // User clicked a right item without any left item selected
+      const pairedLeft = Object.keys(matchState.pairs).find(k => matchState.pairs[k] === id);
+      if (pairedLeft) {
+        // Unpair this match
+        delete matchState.pairs[pairedLeft];
+        playSynthSound('click');
+        renderMatchUI();
+      }
+    }
   }
+}
+
+function unpairMatchItem(leftId) {
+  if (matchState.pairs[leftId]) {
+    delete matchState.pairs[leftId];
+    playSynthSound('click');
+    renderMatchUI();
+  }
+}
+
+function resetMatchPairs() {
+  matchState = { selectedLeft: null, pairs: {} };
+  playSynthSound('click');
+  renderMatchUI();
+}
+
+function drawMatchLines() {
+  const container = document.getElementById('match-container');
+  const svg = document.getElementById('match-svg-layer');
+  if (!container || !svg) return;
+
+  svg.innerHTML = '';
+  const containerRect = container.getBoundingClientRect();
+  if (containerRect.width === 0 || containerRect.height === 0) return;
+
+  Object.entries(matchState.pairs).forEach(([leftId, rightId]) => {
+    const leftEl = document.getElementById(`match-left-${leftId}`);
+    const rightEl = document.getElementById(`match-right-${rightId}`);
+    if (!leftEl || !rightEl) return;
+
+    const leftRect = leftEl.getBoundingClientRect();
+    const rightRect = rightEl.getBoundingClientRect();
+
+    const x1 = leftRect.right - containerRect.left;
+    const y1 = leftRect.top + leftRect.height / 2 - containerRect.top;
+    const x2 = rightRect.left - containerRect.left;
+    const y2 = rightRect.top + rightRect.height / 2 - containerRect.top;
+
+    const theme = MATCH_PAIR_THEMES[leftId] || MATCH_PAIR_THEMES['1'];
+    const midX = (x1 + x2) / 2;
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', `M ${x1},${y1} C ${midX},${y1} ${midX},${y2} ${x2},${y2}`);
+    path.setAttribute('stroke', theme.border);
+    path.setAttribute('stroke-width', '4');
+    path.setAttribute('stroke-dasharray', '8 4');
+    path.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('fill', 'none');
+    svg.appendChild(path);
+
+    // Endpoint dots
+    const c1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c1.setAttribute('cx', x1);
+    c1.setAttribute('cy', y1);
+    c1.setAttribute('r', '5');
+    c1.setAttribute('fill', theme.color);
+    svg.appendChild(c1);
+
+    const c2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c2.setAttribute('cx', x2);
+    c2.setAttribute('cy', y2);
+    c2.setAttribute('r', '5');
+    c2.setAttribute('fill', theme.color);
+    svg.appendChild(c2);
+  });
 }
 
 function initSeqSection() {
@@ -2288,4 +2533,21 @@ function submitEval() {
 document.addEventListener('DOMContentLoaded', function() {
   applyConfig();
   goToPage('cover');
+
+  window.addEventListener('resize', () => {
+    const secC = document.getElementById('eval-section-C');
+    if (secC && secC.classList.contains('active')) {
+      drawMatchLines();
+    }
+  });
+
+  const evalBox = document.getElementById('eval-box');
+  if (evalBox) {
+    evalBox.addEventListener('scroll', () => {
+      const secC = document.getElementById('eval-section-C');
+      if (secC && secC.classList.contains('active')) {
+        drawMatchLines();
+      }
+    });
+  }
 });

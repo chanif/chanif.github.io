@@ -16,7 +16,7 @@ window.MPI_CONFIG = {
     // ------------------------------------------------------------
     // 1 = Tampilkan nomor halaman di bawah tengah (untuk mempermudah koreksi/revisi)
     // 0 = Mode produksi/normal (nomor halaman disembunyikan)
-    is_testing: 1,
+    is_testing: 0,
 
     // ------------------------------------------------------------
     // 1. LATAR BELAKANG (BACKGROUND)
