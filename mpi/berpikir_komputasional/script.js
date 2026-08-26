@@ -104,7 +104,7 @@ function goToPage(pageId) {
 
   // Lazy initialize interactive modules on page entry
   if (pageId === 'materi-1') switchMateri1Tab(1);
-  if (pageId === 'tarik-jawaban') initDragDrop();
+  if (pageId === 'tarik-jawaban') initSmartHomeActivity();
   if (pageId === 'video') initVideo();
   if (pageId === 'permainan') initSmartHomeGame();
   if (pageId === 'latihan') {
@@ -129,7 +129,9 @@ function navPrev() {
   }
 }
 
-// ==================== MATERI 1 TABBED NAVIGATION ====================
+// ==================== MATERI 1 GUIDED STEPPER NAVIGATION (OPSI 2) ====================
+let activeMateriSteps = { 1: 1, 2: 1, 3: 1, 4: 1 };
+
 function switchMateri1Tab(tabNum) {
   for (let i = 1; i <= 4; i++) {
     const btn = document.getElementById(`mtab1-btn-${i}`);
@@ -143,6 +145,36 @@ function switchMateri1Tab(tabNum) {
       else panel.classList.remove('active');
     }
   }
+  // Default to step 1 on tab switch
+  switchMateri1Step(tabNum, 1);
+  playSynthSound('click');
+}
+
+function switchMateri1Step(tabNum, stepNum) {
+  activeMateriSteps[tabNum] = stepNum;
+  for (let s = 1; s <= 2; s++) {
+    const stepBtn = document.getElementById(`mstep-${tabNum}-btn-${s}`);
+    const stepPanel = document.getElementById(`mstep-${tabNum}-panel-${s}`);
+    if (stepBtn) {
+      if (s === stepNum) stepBtn.classList.add('active');
+      else stepBtn.classList.remove('active');
+    }
+    if (stepPanel) {
+      if (s === stepNum) stepPanel.classList.add('active');
+      else stepPanel.classList.remove('active');
+    }
+  }
+
+  // Smooth scroll reset to top
+  const box = document.getElementById('content-materi-1');
+  if (box) box.scrollTop = 0;
+
+  playSynthSound('click');
+}
+
+// Backward compatibility alias
+function switchMateri1SubTab(tabNum, subTabNum) {
+  switchMateri1Step(tabNum, subTabNum);
 }
 
 // ==================== VIDEO MODULE ====================
@@ -180,7 +212,7 @@ function playSynthSound(type) {
     osc.connect(gain);
     gain.connect(ctx.destination);
 
-    if (type === 'click') {
+    if (type === 'click' || type === 'btn') {
       osc.type = 'sine';
       osc.frequency.setValueAtTime(600, now);
       osc.frequency.exponentialRampToValueAtTime(300, now + 0.05);
@@ -188,7 +220,7 @@ function playSynthSound(type) {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
       osc.start(now);
       osc.stop(now + 0.05);
-    } else if (type === 'success' || type === 'device_on') {
+    } else if (type === 'success' || type === 'device_on' || type === 'correct') {
       osc.type = 'triangle';
       osc.frequency.setValueAtTime(523.25, now); // C5
       osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
@@ -197,7 +229,7 @@ function playSynthSound(type) {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
       osc.start(now);
       osc.stop(now + 0.35);
-    } else if (type === 'device_off') {
+    } else if (type === 'device_off' || type === 'reset') {
       osc.type = 'sine';
       osc.frequency.setValueAtTime(600, now);
       osc.frequency.exponentialRampToValueAtTime(200, now + 0.18);
@@ -205,25 +237,15 @@ function playSynthSound(type) {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
       osc.start(now);
       osc.stop(now + 0.18);
-    } else if (type === 'alarm') {
+    } else if (type === 'alarm' || type === 'error' || type === 'wrong') {
       osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(880, now);
-      osc.frequency.setValueAtTime(440, now + 0.1);
-      osc.frequency.setValueAtTime(880, now + 0.2);
-      osc.frequency.setValueAtTime(440, now + 0.3);
-      gain.gain.setValueAtTime(0.3, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
-      osc.start(now);
-      osc.stop(now + 0.45);
-    } else if (type === 'error') {
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(280, now);
-      osc.frequency.setValueAtTime(140, now + 0.12);
-      gain.gain.setValueAtTime(0.3, now);
+      osc.frequency.setValueAtTime(350, now);
+      osc.frequency.setValueAtTime(150, now + 0.15);
+      gain.gain.setValueAtTime(0.25, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
       osc.start(now);
       osc.stop(now + 0.25);
-    } else if (type === 'victory') {
+    } else if (type === 'victory' || type === 'win') {
       const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
       notes.forEach((freq, i) => {
         const o = ctx.createOscillator();
@@ -243,645 +265,1063 @@ function playSynthSound(type) {
   }
 }
 
-// ==================== AKTIVITAS TARIK JAWABAN (PAGE 8) ====================
-const DRAG_ITEMS_DATA = [
-  { id: 'item-1', text: 'Dekomposisi', matchId: 'zone-1' },
-  { id: 'item-2', text: 'Abstraksi', matchId: 'zone-2' },
-  { id: 'item-3', text: 'Pengenalan Pola', matchId: 'zone-3' },
-  { id: 'item-4', text: 'Algoritma', matchId: 'zone-4' },
-  { id: 'item-5', text: 'Sensor (Input)', matchId: 'zone-5' },
-  { id: 'item-6', text: 'Aktuator (Output)', matchId: 'zone-6' }
-];
+// ============================================================
+// AKTIVITAS: RANCANG RUMAH CERDAS (PAGE 8)
+// Visual Drag & Drop Komponen Sensor + Aktuator ke Ruangan
+// ============================================================
 
-const DROP_ZONES_DATA = [
-  { id: 'zone-1', text: 'Memecah sistem rumah cerdas menjadi Sensor, Mikrokontroler, dan Aktuator' },
-  { id: 'zone-2', text: 'Fokus pada data kondisi esensial (gelap/terang) & abaikan detail non-relevan' },
-  { id: 'zone-3', text: 'Mengenali siklus berulang (siang-malam) untuk memicu jadwal otomatis' },
-  { id: 'zone-4', text: 'Urutan langkah logis & aturan kondisional (IF-THEN) untuk mengambil keputusan' },
-  { id: 'zone-5', text: 'Perangkat pendeteksi kondisi fisik lingkungan (cahaya, suhu, gerakan)' },
-  { id: 'zone-6', text: 'Perangkat pelaksana tindakan fisik (lampu menyala, kipas berputar, sirine)' }
-];
+const COMPONENT_DATA = {
+  'sensor-cahaya': { name: 'Sensor Cahaya', icon: '📡', type: 'sensor' },
+  'sensor-suhu': { name: 'Sensor Suhu', icon: '🌡️', type: 'sensor' },
+  'sensor-gerak': { name: 'Sensor Gerak', icon: '🚶', type: 'sensor' },
+  'sensor-gas': { name: 'Sensor Gas', icon: '💨', type: 'sensor' },
+  'lampu-led': { name: 'Lampu LED', icon: '💡', type: 'actuator' },
+  'kipas-angin': { name: 'Kipas Angin', icon: '🌀', type: 'actuator' },
+  'alarm-buzzer': { name: 'Alarm / Buzzer', icon: '🔔', type: 'actuator' },
+  'ventilasi': { name: 'Ventilasi Otomatis', icon: '🪟', type: 'actuator' }
+};
 
-let currentDragEl = null;
-let currentTouchClone = null;
-
-function initDragDrop() {
-  const dragContainer = document.getElementById('drag-items');
-  const dropContainer = document.getElementById('drop-zones');
-  if (!dragContainer || !dropContainer) return;
-
-  dragContainer.innerHTML = '';
-  dropContainer.innerHTML = '';
-
-  const shuffledItems = [...DRAG_ITEMS_DATA].sort(() => Math.random() - 0.5);
-
-  shuffledItems.forEach(item => {
-    const el = document.createElement('div');
-    el.className = 'drag-card';
-    el.id = item.id;
-    el.draggable = true;
-    el.dataset.matchId = item.matchId;
-    el.textContent = item.text;
-
-    el.addEventListener('dragstart', onCardDragStart);
-    el.addEventListener('dragend', onCardDragEnd);
-    el.addEventListener('touchstart', onCardTouchStart, { passive: false });
-    el.addEventListener('touchmove', onCardTouchMove, { passive: false });
-    el.addEventListener('touchend', onCardTouchEnd);
-
-    dragContainer.appendChild(el);
-  });
-
-  DROP_ZONES_DATA.forEach(zone => {
-    const zEl = document.createElement('div');
-    zEl.className = 'drop-slot';
-    zEl.id = zone.id;
-    zEl.innerHTML = `<div class="slot-text">${zone.text}</div><div class="slot-target">Tarik Istilah ke Sini</div>`;
-
-    zEl.addEventListener('dragover', (e) => e.preventDefault());
-    zEl.addEventListener('dragenter', (e) => {
-      e.preventDefault();
-      zEl.classList.add('over');
-    });
-    zEl.addEventListener('dragleave', () => zEl.classList.remove('over'));
-    zEl.addEventListener('drop', (e) => {
-      e.preventDefault();
-      zEl.classList.remove('over');
-      if (currentDragEl) {
-        dropCardToSlot(currentDragEl, zEl);
-      }
-    });
-
-    dropContainer.appendChild(zEl);
-  });
-
-  const scoreBadge = document.getElementById('tj-score-badge');
-  if (scoreBadge) scoreBadge.textContent = 'Skor: 0 / 6';
-}
-
-function onCardDragStart(e) {
-  currentDragEl = e.currentTarget;
-  e.currentTarget.classList.add('dragging');
-  playSynthSound('click');
-}
-
-function onCardDragEnd(e) {
-  e.currentTarget.classList.remove('dragging');
-  currentDragEl = null;
-}
-
-function onCardTouchStart(e) {
-  currentDragEl = e.currentTarget;
-  e.preventDefault();
-  currentTouchClone = currentDragEl.cloneNode(true);
-  currentTouchClone.style.position = 'fixed';
-  currentTouchClone.style.zIndex = '1000';
-  currentTouchClone.style.opacity = '0.85';
-  currentTouchClone.style.pointerEvents = 'none';
-  currentTouchClone.style.width = currentDragEl.offsetWidth + 'px';
-  document.body.appendChild(currentTouchClone);
-
-  const touch = e.touches[0];
-  currentTouchClone.style.left = (touch.clientX - currentDragEl.offsetWidth / 2) + 'px';
-  currentTouchClone.style.top = (touch.clientY - 25) + 'px';
-  currentDragEl.classList.add('dragging');
-  playSynthSound('click');
-}
-
-function onCardTouchMove(e) {
-  if (!currentTouchClone) return;
-  e.preventDefault();
-  const touch = e.touches[0];
-  currentTouchClone.style.left = (touch.clientX - currentTouchClone.offsetWidth / 2) + 'px';
-  currentTouchClone.style.top = (touch.clientY - 25) + 'px';
-
-  document.querySelectorAll('.drop-slot').forEach(s => s.classList.remove('over'));
-  const elem = document.elementFromPoint(touch.clientX, touch.clientY);
-  if (elem) {
-    const slot = elem.closest('.drop-slot');
-    if (slot) slot.classList.add('over');
-  }
-}
-
-function onCardTouchEnd(e) {
-  if (!currentTouchClone || !currentDragEl) return;
-  const touch = e.changedTouches[0];
-  const elem = document.elementFromPoint(touch.clientX, touch.clientY);
-
-  document.body.removeChild(currentTouchClone);
-  currentTouchClone = null;
-  currentDragEl.classList.remove('dragging');
-
-  if (elem) {
-    const slot = elem.closest('.drop-slot');
-    if (slot) {
-      dropCardToSlot(currentDragEl, slot);
-    }
-  }
-  document.querySelectorAll('.drop-slot').forEach(s => s.classList.remove('over'));
-  currentDragEl = null;
-}
-
-function dropCardToSlot(cardEl, slotEl) {
-  const existingCard = slotEl.querySelector('.drag-card');
-  if (existingCard) {
-    document.getElementById('drag-items').appendChild(existingCard);
-  }
-
-  const targetBox = slotEl.querySelector('.slot-target');
-  if (targetBox) {
-    targetBox.textContent = '';
-    targetBox.appendChild(cardEl);
-  } else {
-    slotEl.appendChild(cardEl);
-  }
-
-  playSynthSound('device_on');
-}
-
-function checkDragDrop() {
-  let correctCount = 0;
-  DROP_ZONES_DATA.forEach(zone => {
-    const slotEl = document.getElementById(zone.id);
-    if (!slotEl) return;
-    const placedCard = slotEl.querySelector('.drag-card');
-    slotEl.classList.remove('correct', 'incorrect');
-
-    if (placedCard) {
-      if (placedCard.dataset.matchId === zone.id) {
-        slotEl.classList.add('correct');
-        correctCount++;
-      } else {
-        slotEl.classList.add('incorrect');
-      }
-    }
-  });
-
-  const scoreBadge = document.getElementById('tj-score-badge');
-  if (scoreBadge) {
-    scoreBadge.textContent = `Skor: ${correctCount} / 6`;
-  }
-
-  if (correctCount === 6) {
-    playSynthSound('victory');
-    spawnConfetti();
-  } else if (correctCount > 0) {
-    playSynthSound('success');
-  } else {
-    playSynthSound('error');
-  }
-}
-
-function resetDragDrop() {
-  initDragDrop();
-  playSynthSound('click');
-}
-
-// ==================== PERMAINAN: SMART HOME IOT LAB (PAGE 11) ====================
-let smartHomeGame = {
-  currentLevel: 1,
-  stars: { 1: 0, 2: 0, 3: 0 },
-  sensors: {
-    lightLux: 100, // 0 - 1000 (< 200 = Gelap)
-    tempC: 32, // 20 - 40 (> 30 = Panas)
-    hasMotion: true, // true / false
-    doorOpen: true, // true / false
-    rfidValid: false // true / false
+// Expected components per room:
+const ROOM_CORRECT_COMPONENTS = {
+  'kamar-tidur': {
+    sensors: ['sensor-cahaya'],
+    actuators: ['lampu-led']
   },
-  rules: {
-    lvl1: { condition: 'dark', action: 'lamp_on' },
-    lvl2: { condition: 'hot_and_motion', action: 'fan_on' },
-    lvl3: { condition: 'door_open_no_rfid', action: 'alarm_on' }
+  'ruang-tamu': {
+    sensors: ['sensor-suhu', 'sensor-gerak'],
+    actuators: ['kipas-angin']
+  },
+  'teras': {
+    sensors: ['sensor-gerak'],
+    actuators: ['alarm-buzzer']
+  },
+  'dapur': {
+    sensors: ['sensor-gas'],
+    actuators: ['alarm-buzzer', 'ventilasi']
   }
 };
 
-function initSmartHomeGame() {
-  updateGameHUD();
-  renderGameMission(smartHomeGame.currentLevel);
+let currentDraggedComponent = null;
+let currentDraggedType = null;
+let touchDraggedElement = null;
+
+function initSmartHomeActivity() {
+  const chips = document.querySelectorAll('.component-chip');
+  chips.forEach(chip => {
+    chip.addEventListener('dragstart', onChipDragStart);
+    chip.addEventListener('dragend', onChipDragEnd);
+    chip.addEventListener('touchstart', onChipTouchStart, { passive: false });
+    chip.addEventListener('touchmove', onChipTouchMove, { passive: false });
+    chip.addEventListener('touchend', onChipTouchEnd);
+  });
+
+  const slots = document.querySelectorAll('.room-slot');
+  slots.forEach(slot => {
+    slot.addEventListener('dragover', onSlotDragOver);
+    slot.addEventListener('dragenter', onSlotDragEnter);
+    slot.addEventListener('dragleave', onSlotDragLeave);
+    slot.addEventListener('drop', onSlotDrop);
+  });
+
+  resetSmartHomeActivity();
 }
 
-function switchGameLevel(lvl) {
-  if (lvl > 1 && smartHomeGame.stars[lvl - 1] === 0) {
+function onChipDragStart(e) {
+  currentDraggedComponent = e.currentTarget.dataset.component;
+  currentDraggedType = e.currentTarget.dataset.type;
+  e.currentTarget.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'copy';
+  e.dataTransfer.setData('text/plain', currentDraggedComponent);
+  playSynthSound('click');
+}
+
+function onChipDragEnd(e) {
+  e.currentTarget.classList.remove('dragging');
+  document.querySelectorAll('.room-slot').forEach(s => s.classList.remove('drag-over'));
+  currentDraggedComponent = null;
+  currentDraggedType = null;
+}
+
+function onSlotDragOver(e) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'copy';
+}
+
+function onSlotDragEnter(e) {
+  e.preventDefault();
+  const slot = e.currentTarget;
+  if (!slot.classList.contains('filled')) {
+    slot.classList.add('drag-over');
+  }
+}
+
+function onSlotDragLeave(e) {
+  e.currentTarget.classList.remove('drag-over');
+}
+
+function onSlotDrop(e) {
+  e.preventDefault();
+  const slot = e.currentTarget;
+  slot.classList.remove('drag-over');
+
+  const compKey = currentDraggedComponent || e.dataTransfer.getData('text/plain');
+  if (!compKey || !COMPONENT_DATA[compKey]) return;
+
+  const comp = COMPONENT_DATA[compKey];
+  const slotType = slot.dataset.slotType;
+
+  // Type check: sensor to sensor slot, actuator to actuator slot
+  if (comp.type !== slotType) {
     playSynthSound('error');
     return;
   }
-  smartHomeGame.currentLevel = lvl;
+
+  fillSlot(slot, compKey);
+  playSynthSound('device_on');
+}
+
+// Touch event handlers for mobile/tablets
+function onChipTouchStart(e) {
+  const chip = e.currentTarget;
+  currentDraggedComponent = chip.dataset.component;
+  currentDraggedType = chip.dataset.type;
+  chip.classList.add('dragging');
+
+  touchDraggedElement = chip.cloneNode(true);
+  touchDraggedElement.style.position = 'fixed';
+  touchDraggedElement.style.zIndex = '1000';
+  touchDraggedElement.style.opacity = '0.85';
+  touchDraggedElement.style.pointerEvents = 'none';
+  touchDraggedElement.style.width = chip.offsetWidth + 'px';
+  document.body.appendChild(touchDraggedElement);
+
+  const touch = e.touches[0];
+  touchDraggedElement.style.left = (touch.clientX - chip.offsetWidth / 2) + 'px';
+  touchDraggedElement.style.top = (touch.clientY - 25) + 'px';
+  playSynthSound('click');
+}
+
+function onChipTouchMove(e) {
+  if (!touchDraggedElement) return;
+  e.preventDefault();
+  const touch = e.touches[0];
+  touchDraggedElement.style.left = (touch.clientX - touchDraggedElement.offsetWidth / 2) + 'px';
+  touchDraggedElement.style.top = (touch.clientY - 25) + 'px';
+
+  document.querySelectorAll('.room-slot').forEach(s => s.classList.remove('drag-over'));
+  const target = document.elementFromPoint(touch.clientX, touch.clientY);
+  if (target) {
+    const slot = target.closest('.room-slot');
+    if (slot && !slot.classList.contains('filled')) {
+      slot.classList.add('drag-over');
+    }
+  }
+}
+
+function onChipTouchEnd(e) {
+  if (!touchDraggedElement) return;
+  const touch = e.changedTouches[0];
+  const target = document.elementFromPoint(touch.clientX, touch.clientY);
+
+  document.body.removeChild(touchDraggedElement);
+  touchDraggedElement = null;
+
+  document.querySelectorAll('.component-chip').forEach(c => c.classList.remove('dragging'));
+  document.querySelectorAll('.room-slot').forEach(s => s.classList.remove('drag-over'));
+
+  if (target) {
+    const slot = target.closest('.room-slot');
+    if (slot && currentDraggedComponent) {
+      const comp = COMPONENT_DATA[currentDraggedComponent];
+      if (comp && comp.type === slot.dataset.slotType) {
+        fillSlot(slot, currentDraggedComponent);
+        playSynthSound('device_on');
+      } else {
+        playSynthSound('error');
+      }
+    }
+  }
+
+  currentDraggedComponent = null;
+  currentDraggedType = null;
+}
+
+function fillSlot(slot, compKey) {
+  const comp = COMPONENT_DATA[compKey];
+  slot.classList.add('filled');
+  slot.dataset.assigned = compKey;
+  slot.innerHTML = `
+    <div class="slot-filled-chip">
+      <span>${comp.icon}</span>
+      <span>${comp.name}</span>
+      <span class="slot-remove" onclick="clearSlot(this.closest('.room-slot'))" title="Hapus">✕</span>
+    </div>
+  `;
+}
+
+function clearSlot(slot) {
+  if (!slot) return;
+  slot.classList.remove('filled', 'wrong');
+  delete slot.dataset.assigned;
+  const isSensor = slot.dataset.slotType === 'sensor';
+  slot.innerHTML = `<span class="slot-label">${isSensor ? '📡 Seret Sensor ke sini' : '⚡ Seret Aktuator ke sini'}</span>`;
+  playSynthSound('click');
+}
+
+function resetSmartHomeActivity() {
+  document.querySelectorAll('.room-slot').forEach(slot => {
+    clearSlot(slot);
+  });
+  const scoreBox = document.getElementById('dd-score-box');
+  if (scoreBox) scoreBox.style.display = 'none';
+  playSynthSound('reset');
+}
+
+function checkSmartHomeActivity() {
+  const rooms = document.querySelectorAll('.room-card');
+  let totalSlots = 0;
+  let correctCount = 0;
+
+  rooms.forEach(room => {
+    const roomKey = room.dataset.room;
+    const expected = ROOM_CORRECT_COMPONENTS[roomKey];
+    if (!expected) return;
+
+    const sensorSlots = room.querySelectorAll('.room-slot[data-slot-type="sensor"]');
+    const actuatorSlots = room.querySelectorAll('.room-slot[data-slot-type="actuator"]');
+
+    // Check sensors in this room
+    const assignedSensors = [];
+    sensorSlots.forEach(slot => {
+      totalSlots++;
+      const assigned = slot.dataset.assigned;
+      slot.classList.remove('wrong');
+      if (assigned) assignedSensors.push({ slot, key: assigned });
+    });
+
+    const expectedSensors = [...expected.sensors];
+    assignedSensors.forEach(item => {
+      const idx = expectedSensors.indexOf(item.key);
+      if (idx !== -1) {
+        correctCount++;
+        expectedSensors.splice(idx, 1);
+      } else {
+        item.slot.classList.add('wrong');
+      }
+    });
+
+    // Check actuators in this room
+    const assignedActuators = [];
+    actuatorSlots.forEach(slot => {
+      totalSlots++;
+      const assigned = slot.dataset.assigned;
+      slot.classList.remove('wrong');
+      if (assigned) assignedActuators.push({ slot, key: assigned });
+    });
+
+    const expectedActuators = [...expected.actuators];
+    assignedActuators.forEach(item => {
+      const idx = expectedActuators.indexOf(item.key);
+      if (idx !== -1) {
+        correctCount++;
+        expectedActuators.splice(idx, 1);
+      } else {
+        item.slot.classList.add('wrong');
+      }
+    });
+  });
+
+  const scoreBox = document.getElementById('dd-score-box');
+  const badge = document.getElementById('dd-score-badge');
+  const text = document.getElementById('dd-score-text');
+
+  if (scoreBox && badge && text) {
+    scoreBox.style.display = 'flex';
+    badge.textContent = `Skor: ${Math.round((correctCount / totalSlots) * 100)}`;
+    text.textContent = `${correctCount} dari ${totalSlots} Komponen Terpasang Tepat! ${correctCount === totalSlots ? '🎉 Sempurna!' : 'Perbaiki komponen yang bertanda merah!'}`;
+  }
+
+  if (correctCount === totalSlots) {
+    playSynthSound('victory');
+    spawnConfetti();
+  } else {
+    playSynthSound('wrong');
+  }
+}
+
+// ============================================================
+// PERMAINAN: TANTANGAN BERPIKIR KOMPUTASIONAL (4 TAHAP)
+// 1. Dekomposisi  2. Abstraksi  3. Pengenalan Pola  4. Algoritma
+// ============================================================
+
+let ctGame = {
+  currentStage: 1,
+  stars: { 1: 0, 2: 0, 3: 0, 4: 0 },
+  stagesInited: { 1: false, 2: false, 3: false, 4: false }
+};
+
+// Data for Stage 1: Dekomposisi
+const DECOMP_ITEMS = [
+  { id: 'd1', text: 'Sensor Cahaya (LDR)', icon: '📡', category: 'input' },
+  { id: 'd2', text: 'Sensor Suhu', icon: '🌡️', category: 'input' },
+  { id: 'd3', text: 'Sensor Gerak (PIR)', icon: '🚶', category: 'input' },
+  { id: 'd4', text: 'Komputer Mini (Mikrokontroler)', icon: '🧠', category: 'proses' },
+  { id: 'd5', text: 'Lampu LED Teras', icon: '💡', category: 'output' },
+  { id: 'd6', text: 'Kipas Angin', icon: '🌀', category: 'output' },
+  { id: 'd7', text: 'Sirine Alarm', icon: '🔔', category: 'output' }
+];
+
+// Data for Stage 2: Abstraksi
+const ABSTRACTION_CARDS = [
+  { id: 'a1', text: 'Tingkat Cahaya Ruangan (Lux)', icon: '☀️', important: true },
+  { id: 'a2', text: 'Status Siang / Malam', icon: '🌙', important: true },
+  { id: 'a3', text: 'Status Lampu (Nyala / Mati)', icon: '💡', important: true },
+  { id: 'a4', text: 'Warna Cat Tembok Kamar', icon: '🎨', important: false },
+  { id: 'a5', text: 'Merk & Ukuran Kasur', icon: '🛏️', important: false },
+  { id: 'a6', text: 'Motif Gorden Jendela', icon: '🪟', important: false },
+  { id: 'a7', text: 'Poster di Dinding', icon: '🖼️', important: false },
+  { id: 'a8', text: 'Jumlah Sepatu di Rak', icon: '👟', important: false }
+];
+
+// Data for Stage 4: Algoritma
+const ALGO_CHALLENGES = [
+  {
+    id: 'c1',
+    title: '1. Lampu Otomatis (Logika Tunggal)',
+    prefix: 'JIKA',
+    suffix: 'MAKA',
+    slots: [
+      { id: 'c1-s1', expected: 'cahaya-gelap', label: 'Syarat Sensor' },
+      { id: 'c1-s2', expected: 'nyalakan-lampu', label: 'Aksi Aktuator' }
+    ],
+    blocks: [
+      { id: 'cahaya-gelap', text: 'Sensor Cahaya = Gelap' },
+      { id: 'nyalakan-lampu', text: 'Nyalakan Lampu' },
+      { id: 'matikan-kipas', text: 'Matikan Kipas' }
+    ]
+  },
+  {
+    id: 'c2',
+    title: '2. Kipas Angin Hemat Energi (Logika Majemuk)',
+    prefix: 'JIKA',
+    suffix: 'MAKA',
+    slots: [
+      { id: 'c2-s1', expected: 'suhu-panas', label: 'Syarat 1' },
+      { id: 'c2-s2', expected: 'dan-ada-orang', label: 'Syarat 2' },
+      { id: 'c2-s3', expected: 'putar-kipas', label: 'Aksi' }
+    ],
+    blocks: [
+      { id: 'suhu-panas', text: 'Suhu > 30°C' },
+      { id: 'dan-ada-orang', text: 'DAN Ada Orang' },
+      { id: 'putar-kipas', text: 'Putar Kipas Angin' },
+      { id: 'pintu-tutup', text: 'Pintu Tertutup' }
+    ]
+  },
+  {
+    id: 'c3',
+    title: '3. Alarm Keamanan (Logika Percabangan)',
+    prefix: 'JIKA',
+    suffix: 'MAKA',
+    slots: [
+      { id: 'c3-s1', expected: 'pintu-buka-tanpa-kartu', label: 'Syarat' },
+      { id: 'c3-s2', expected: 'bunyikan-alarm', label: 'Aksi' },
+      { id: 'c3-s3', expected: 'buka-pintu-aman', label: 'Aksi Jika Tidak' }
+    ],
+    blocks: [
+      { id: 'pintu-buka-tanpa-kartu', text: 'Pintu Terbuka Tanpa Kartu Sah' },
+      { id: 'bunyikan-alarm', text: 'Bunyikan Alarm' },
+      { id: 'buka-pintu-aman', text: 'JIKA TIDAK: Buka Pintu Aman' },
+      { id: 'kamera-mati', text: 'Matikan Kamera' }
+    ]
+  }
+];
+
+function initSmartHomeGame() {
   updateGameHUD();
-  renderGameMission(lvl);
+  loadGameStage(ctGame.currentStage);
+}
+
+function switchGameStage(stage) {
+  if (stage > 1 && ctGame.stars[stage - 1] === 0) {
+    playSynthSound('error');
+    showGameModal({
+      icon: '🔒',
+      title: 'Tahap Terkunci',
+      text: `Selesaikan Tantangan Tahap ${stage - 1} terlebih dahulu untuk membuka tahap ini!`,
+      type: 'warning',
+      actions: [{ label: 'Paham', cls: 'btn btn-primary', onClick: 'closeGameModal()' }]
+    });
+    return;
+  }
+  ctGame.currentStage = stage;
+  updateGameHUD();
+  loadGameStage(stage);
   playSynthSound('click');
 }
 
 function updateGameHUD() {
-  const lvl = smartHomeGame.currentLevel;
-  const totalStars = Object.values(smartHomeGame.stars).reduce((a, b) => a + b, 0);
+  const stage = ctGame.currentStage;
+  const totalStars = Object.values(ctGame.stars).reduce((a, b) => a + b, 0);
 
   const starTotalEl = document.getElementById('hud-total-stars');
-  if (starTotalEl) starTotalEl.textContent = `⭐ ${totalStars}/3`;
+  if (starTotalEl) starTotalEl.textContent = `⭐ ${totalStars}/4`;
 
-  for (let i = 1; i <= 3; i++) {
-    const tab = document.getElementById(`tab-lvl-${i}`);
+  for (let i = 1; i <= 4; i++) {
+    const tab = document.getElementById(`tab-stage-${i}`);
     if (tab) {
       tab.className = 'game-tab-btn';
-      if (i === lvl) tab.classList.add('active');
-      if (i > 1 && smartHomeGame.stars[i - 1] === 0) {
+      if (i === stage) tab.classList.add('active');
+      if (i > 1 && ctGame.stars[i - 1] === 0) {
         tab.classList.add('locked');
       } else {
-        const starSpan = tab.querySelector('.tab-star') || tab.querySelector('.tab-lock');
-        if (starSpan) {
-          starSpan.className = 'tab-star';
-          starSpan.textContent = `⭐ ${smartHomeGame.stars[i]}/1`;
+        const starEl = document.getElementById(`star-stage-${i}`) || document.getElementById(`lock-stage-${i}`);
+        if (starEl) {
+          starEl.className = 'tab-star';
+          starEl.textContent = `⭐ ${ctGame.stars[i]}/1`;
         }
       }
     }
   }
-}
 
-function renderGameMission(lvl) {
-  const inputsContainer = document.getElementById('sensor-controls-container');
-  const houseStage = document.getElementById('house-visual-container');
-  const rulesContainer = document.getElementById('logic-builder-container');
-  const calloutText = document.getElementById('game-instruction-text');
-  const statusLabel = document.getElementById('hud-path-status');
-  const latencyVal = document.getElementById('hud-latency-val');
-
-  if (statusLabel) statusLabel.textContent = '● Siap Diuji';
-
-  if (lvl === 1) {
-    if (latencyVal) latencyVal.textContent = `💡 Cahaya: ${smartHomeGame.sensors.lightLux} Lux`;
-    if (calloutText) {
-      calloutText.innerHTML = `
-        <span class="callout-icon">💡</span>
-        <span class="callout-text"><strong>Misi 1: Lampu Otomatis</strong> — Buat aturan algoritma agar lampu kamar tidur otomatis MENYALA saat sensor LDR mendeteksi kondisi GELAP (&lt; 200 Lux), dan MATI saat TERANG.</span>
-      `;
-    }
-
-    // Controls
-    inputsContainer.innerHTML = `
-      <div class="sensor-control-card">
-        <label class="sensor-label">🔆 Sensor Cahaya LDR: <strong id="val-lux">${smartHomeGame.sensors.lightLux} Lux (${smartHomeGame.sensors.lightLux < 200 ? 'GELAP' : 'TERANG'})</strong></label>
-        <input type="range" min="0" max="800" value="${smartHomeGame.sensors.lightLux}" step="20" class="game-slider" id="slider-lux" oninput="onSensorChange('lux', this.value)">
-        <div class="slider-ticks"><span>🌑 0 Lux (Gelap)</span><span>☀️ 800 Lux (Terang)</span></div>
-      </div>
-    `;
-
-    // House Visual
-    houseStage.innerHTML = `
-      <div class="room-box" id="room-bedroom">
-        <div class="room-title">🛏️ Kamar Tidur</div>
-        <div class="appliance-lamp" id="appliance-lamp">
-          <div class="lamp-bulb">💡</div>
-          <div class="lamp-glow" id="lamp-glow"></div>
-          <div class="lamp-status" id="lamp-status">Status: PADAM</div>
-        </div>
-      </div>
-    `;
-
-    // Rule Builder
-    rulesContainer.innerHTML = `
-      <div class="rule-block-row">
-        <span class="rule-keyword">JIKA (IF)</span>
-        <select class="rule-select" id="rule-lvl1-cond" onchange="smartHomeGame.rules.lvl1.condition = this.value">
-          <option value="dark" ${smartHomeGame.rules.lvl1.condition === 'dark' ? 'selected' : ''}>Cahaya &lt; 200 Lux (Gelap)</option>
-          <option value="bright" ${smartHomeGame.rules.lvl1.condition === 'bright' ? 'selected' : ''}>Cahaya &gt;= 200 Lux (Terang)</option>
-        </select>
-      </div>
-      <div class="rule-block-row">
-        <span class="rule-keyword">MAKA (THEN)</span>
-        <select class="rule-select" id="rule-lvl1-act" onchange="smartHomeGame.rules.lvl1.action = this.value">
-          <option value="lamp_on" ${smartHomeGame.rules.lvl1.action === 'lamp_on' ? 'selected' : ''}>Nyalakan Lampu Kamar</option>
-          <option value="lamp_off" ${smartHomeGame.rules.lvl1.action === 'lamp_off' ? 'selected' : ''}>Matikan Lampu Kamar</option>
-        </select>
-      </div>
-      <div class="rule-block-row">
-        <span class="rule-keyword">JIKA TIDAK (ELSE)</span>
-        <span class="rule-fixed-text">Matikan Lampu Kamar</span>
-      </div>
-    `;
-
-  } else if (lvl === 2) {
-    if (latencyVal) latencyVal.textContent = `🌡️ ${smartHomeGame.sensors.tempC}°C | 🚶 ${smartHomeGame.sensors.hasMotion ? 'Ada Orang' : 'Kosong'}`;
-    if (calloutText) {
-      calloutText.innerHTML = `
-        <span class="callout-icon">❄️</span>
-        <span class="callout-text"><strong>Misi 2: Kipas Angin Cerdas</strong> — Susun aturan IF-AND-THEN agar kipas angin menyala HANYA jika suhu ruangan PANAS (&gt; 30°C) DAN sensor PIR mendeteksi ada orang di ruang keluarga.</span>
-      `;
-    }
-
-    // Controls
-    inputsContainer.innerHTML = `
-      <div class="sensor-control-card">
-        <label class="sensor-label">🌡️ Sensor Suhu DHT11: <strong id="val-temp">${smartHomeGame.sensors.tempC}°C (${smartHomeGame.sensors.tempC > 30 ? 'PANAS' : 'SEJUK'})</strong></label>
-        <input type="range" min="20" max="40" value="${smartHomeGame.sensors.tempC}" step="1" class="game-slider" id="slider-temp" oninput="onSensorChange('temp', this.value)">
-        <div class="slider-ticks"><span>❄️ 20°C</span><span>🔥 40°C</span></div>
-      </div>
-      <div class="sensor-control-card">
-        <label class="sensor-label">🚶 Sensor Gerak PIR:</label>
-        <button class="btn ${smartHomeGame.sensors.hasMotion ? 'btn-success' : 'btn-secondary'}" onclick="onSensorChange('motion', !smartHomeGame.sensors.hasMotion)" id="btn-motion-toggle">
-          ${smartHomeGame.sensors.hasMotion ? '🟢 Ada Orang di Ruangan' : '⚪ Ruangan Kosong'}
-        </button>
-      </div>
-    `;
-
-    // House Visual
-    houseStage.innerHTML = `
-      <div class="room-box" id="room-living">
-        <div class="room-title">🛋️ Ruang Keluarga</div>
-        <div class="appliance-fan" id="appliance-fan">
-          <div class="fan-blade" id="fan-blade">🌀</div>
-          <div class="fan-status" id="fan-status">Kipas: MATI</div>
-        </div>
-      </div>
-    `;
-
-    // Rule Builder
-    rulesContainer.innerHTML = `
-      <div class="rule-block-row">
-        <span class="rule-keyword">JIKA (IF)</span>
-        <select class="rule-select" id="rule-lvl2-cond" onchange="smartHomeGame.rules.lvl2.condition = this.value">
-          <option value="hot_and_motion" ${smartHomeGame.rules.lvl2.condition === 'hot_and_motion' ? 'selected' : ''}>Suhu &gt; 30°C DAN Ada Gerakan</option>
-          <option value="hot_only" ${smartHomeGame.rules.lvl2.condition === 'hot_only' ? 'selected' : ''}>Suhu &gt; 30°C Saja (Tanpa Gerak)</option>
-          <option value="motion_only" ${smartHomeGame.rules.lvl2.condition === 'motion_only' ? 'selected' : ''}>Ada Gerakan Saja (Berapapun Suhu)</option>
-        </select>
-      </div>
-      <div class="rule-block-row">
-        <span class="rule-keyword">MAKA (THEN)</span>
-        <select class="rule-select" id="rule-lvl2-act" onchange="smartHomeGame.rules.lvl2.action = this.value">
-          <option value="fan_on" ${smartHomeGame.rules.lvl2.action === 'fan_on' ? 'selected' : ''}>Putar Kipas Angin</option>
-          <option value="fan_off" ${smartHomeGame.rules.lvl2.action === 'fan_off' ? 'selected' : ''}>Matikan Kipas Angin</option>
-        </select>
-      </div>
-    `;
-
-  } else if (lvl === 3) {
-    if (latencyVal) latencyVal.textContent = `🚨 Pintu: ${smartHomeGame.sensors.doorOpen ? 'Terbuka' : 'Tertutup'} | RFID: ${smartHomeGame.sensors.rfidValid ? 'Valid' : 'Tidak'}`;
-    if (calloutText) {
-      calloutText.innerHTML = `
-        <span class="callout-icon">🚨</span>
-        <span class="callout-text"><strong>Misi 3: Sistem Keamanan Cerdas</strong> — Susun aturan keamanan: jika pintu terbuka TANPA kartu kunci RFID yang sah, bunyikan sirine alarm darurat dan kirim sinyal bahaya!</span>
-      `;
-    }
-
-    // Controls
-    inputsContainer.innerHTML = `
-      <div class="sensor-control-card">
-        <label class="sensor-label">🚪 Sensor Pintu Magnet:</label>
-        <button class="btn ${smartHomeGame.sensors.doorOpen ? 'btn-danger' : 'btn-success'}" onclick="onSensorChange('door', !smartHomeGame.sensors.doorOpen)" id="btn-door-toggle">
-          ${smartHomeGame.sensors.doorOpen ? '🔓 Pintu Terbuka' : '🔒 Pintu Tertutup Rapat'}
-        </button>
-      </div>
-      <div class="sensor-control-card">
-        <label class="sensor-label">🪪 Kartu Kunci RFID:</label>
-        <button class="btn ${smartHomeGame.sensors.rfidValid ? 'btn-success' : 'btn-secondary'}" onclick="onSensorChange('rfid', !smartHomeGame.sensors.rfidValid)" id="btn-rfid-toggle">
-          ${smartHomeGame.sensors.rfidValid ? '✅ Kartu Dikenali (Akses Sah)' : '❌ Tanpa Kartu (Akses Ilegal)'}
-        </button>
-      </div>
-    `;
-
-    // House Visual
-    houseStage.innerHTML = `
-      <div class="room-box" id="room-porch">
-        <div class="room-title">🏡 Teras &amp; Pintu Masuk</div>
-        <div class="appliance-alarm" id="appliance-alarm">
-          <div class="alarm-siren" id="alarm-siren">🚨</div>
-          <div class="alarm-status" id="alarm-status">Status: AMAN</div>
-        </div>
-      </div>
-    `;
-
-    // Rule Builder
-    rulesContainer.innerHTML = `
-      <div class="rule-block-row">
-        <span class="rule-keyword">JIKA (IF)</span>
-        <select class="rule-select" id="rule-lvl3-cond" onchange="smartHomeGame.rules.lvl3.condition = this.value">
-          <option value="door_open_no_rfid" ${smartHomeGame.rules.lvl3.condition === 'door_open_no_rfid' ? 'selected' : ''}>Pintu Terbuka TANPA Kartu RFID</option>
-          <option value="door_open_with_rfid" ${smartHomeGame.rules.lvl3.condition === 'door_open_with_rfid' ? 'selected' : ''}>Pintu Terbuka DENGAN Kartu RFID</option>
-          <option value="always" ${smartHomeGame.rules.lvl3.condition === 'always' ? 'selected' : ''}>Kapanpun Pintu Terbuka</option>
-        </select>
-      </div>
-      <div class="rule-block-row">
-        <span class="rule-keyword">MAKA (THEN)</span>
-        <select class="rule-select" id="rule-lvl3-act" onchange="smartHomeGame.rules.lvl3.action = this.value">
-          <option value="alarm_on" ${smartHomeGame.rules.lvl3.action === 'alarm_on' ? 'selected' : ''}>Bunyikan Sirine &amp; Kirim Peringatan</option>
-          <option value="alarm_off" ${smartHomeGame.rules.lvl3.action === 'alarm_off' ? 'selected' : ''}>Buka Kunci Normal (Tanpa Alarm)</option>
-        </select>
-      </div>
-    `;
+  // Update instruction callout
+  const callout = document.getElementById('game-instruction-text');
+  if (callout) {
+    const instructions = {
+      1: '<strong>Tahap 1: Dekomposisi</strong> — Seret setiap komponen ke kategori yang tepat: INPUT (Sensor), PROSES (Otak), atau OUTPUT (Aktuator)!',
+      2: '<strong>Tahap 2: Abstraksi</strong> — Klik kartu untuk menentukan mana data PENTING dan mana data TIDAK PENTING untuk merancang lampu kamar otomatis!',
+      3: '<strong>Tahap 3: Pengenalan Pola</strong> — Amati grafik sensor cahaya 24 jam, lalu jawab pertanyaan mengenai siklus perulangannya!',
+      4: '<strong>Tahap 4: Algoritma</strong> — Susun blok-blok logika ke urutan slot yang benar untuk 3 aturan otomasi rumah cerdas!'
+    };
+    callout.innerHTML = `<span class="callout-icon">💡</span><span class="callout-text">${instructions[stage]}</span>`;
   }
 }
 
-function onSensorChange(type, val) {
-  if (type === 'lux') {
-    smartHomeGame.sensors.lightLux = parseInt(val);
-    const label = document.getElementById('val-lux');
-    if (label) label.textContent = `${val} Lux (${val < 200 ? 'GELAP' : 'TERANG'})`;
-  } else if (type === 'temp') {
-    smartHomeGame.sensors.tempC = parseInt(val);
-    const label = document.getElementById('val-temp');
-    if (label) label.textContent = `${val}°C (${val > 30 ? 'PANAS' : 'SEJUK'})`;
-  } else if (type === 'motion') {
-    smartHomeGame.sensors.hasMotion = val;
-    renderGameMission(2);
-  } else if (type === 'door') {
-    smartHomeGame.sensors.doorOpen = val;
-    renderGameMission(3);
-  } else if (type === 'rfid') {
-    smartHomeGame.sensors.rfidValid = val;
-    renderGameMission(3);
-  }
+function loadGameStage(stage) {
+  document.querySelectorAll('.game-stage-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById(`game-stage-${stage}`);
+  if (panel) panel.classList.add('active');
+
+  if (stage === 1 && !ctGame.stagesInited[1]) initStage1();
+  if (stage === 2 && !ctGame.stagesInited[2]) initStage2();
+  if (stage === 3 && !ctGame.stagesInited[3]) initStage3();
+  if (stage === 4 && !ctGame.stagesInited[4]) initStage4();
+}
+
+// ---------- STAGE 1: DEKOMPOSISI ----------
+let draggedDecompItem = null;
+
+function initStage1() {
+  ctGame.stagesInited[1] = true;
+  const itemsContainer = document.getElementById('decomp-items');
+  const catDrops = document.querySelectorAll('.decomp-cat-drop');
+  if (!itemsContainer) return;
+
+  itemsContainer.innerHTML = '';
+  catDrops.forEach(d => d.innerHTML = '');
+
+  const shuffled = [...DECOMP_ITEMS].sort(() => Math.random() - 0.5);
+  shuffled.forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'decomp-item';
+    el.draggable = true;
+    el.id = `decomp-item-${item.id}`;
+    el.dataset.id = item.id;
+    el.dataset.category = item.category;
+    el.innerHTML = `<span class="di-icon">${item.icon}</span> <span>${item.text}</span>`;
+
+    el.addEventListener('dragstart', onDecompDragStart);
+    el.addEventListener('dragend', onDecompDragEnd);
+    el.addEventListener('touchstart', onDecompTouchStart, { passive: false });
+    el.addEventListener('touchmove', onDecompTouchMove, { passive: false });
+    el.addEventListener('touchend', onDecompTouchEnd);
+
+    itemsContainer.appendChild(el);
+  });
+
+  document.querySelectorAll('.decomp-category').forEach(cat => {
+    cat.addEventListener('dragover', (e) => e.preventDefault());
+    cat.addEventListener('dragenter', (e) => {
+      e.preventDefault();
+      cat.classList.add('drag-over');
+    });
+    cat.addEventListener('dragleave', () => cat.classList.remove('drag-over'));
+    cat.addEventListener('drop', (e) => {
+      e.preventDefault();
+      cat.classList.remove('drag-over');
+      if (draggedDecompItem) {
+        const dropZone = cat.querySelector('.decomp-cat-drop');
+        dropZone.appendChild(draggedDecompItem);
+        playSynthSound('click');
+      }
+    });
+  });
+}
+
+function onDecompDragStart(e) {
+  draggedDecompItem = e.currentTarget;
+  e.currentTarget.classList.add('dragging');
+  e.dataTransfer.setData('text/plain', e.currentTarget.dataset.id);
   playSynthSound('click');
 }
 
-function launchGameSimulation() {
-  const lvl = smartHomeGame.currentLevel;
-  const statusLabel = document.getElementById('hud-path-status');
-
-  if (lvl === 1) {
-    const isDark = smartHomeGame.sensors.lightLux < 200;
-    const ruleMatch = smartHomeGame.rules.lvl1.condition === 'dark' && smartHomeGame.rules.lvl1.action === 'lamp_on';
-
-    const lampBulb = document.getElementById('appliance-lamp');
-    const lampGlow = document.getElementById('lamp-glow');
-    const lampStatus = document.getElementById('lamp-status');
-
-    if (ruleMatch && isDark) {
-      if (lampBulb) lampBulb.classList.add('active');
-      if (lampGlow) lampGlow.classList.add('glow');
-      if (lampStatus) lampStatus.textContent = 'Status: MENYALA (Otomatis)';
-      if (statusLabel) statusLabel.textContent = '✅ Berhasil!';
-
-      smartHomeGame.stars[1] = 1;
-      updateGameHUD();
-      playSynthSound('device_on');
-      spawnConfetti();
-
-      setTimeout(() => {
-        showGameModal({
-          icon: '🌟',
-          title: 'Misi 1 Berhasil!',
-          text: 'Aturan logikamu tepat! Saat ruangan gelap (&lt; 200 Lux), mikrokontroler otomatis menyalakan lampu kamar. Dekomposisi &amp; Algoritma berjalan sempurna!',
-          type: 'victory',
-          actions: [
-            { label: '▶ Lanjut ke Misi 2', cls: 'btn btn-primary', onClick: 'closeGameModal();switchGameLevel(2)' }
-          ]
-        });
-      }, 500);
-
-    } else if (ruleMatch && !isDark) {
-      if (lampBulb) lampBulb.classList.remove('active');
-      if (lampGlow) lampGlow.classList.remove('glow');
-      if (lampStatus) lampStatus.textContent = 'Status: PADAM (Ruangan Terang)';
-      if (statusLabel) statusLabel.textContent = '💡 Geser slider ke Gelap untuk tes';
-      playSynthSound('device_off');
-
-      showGameModal({
-        icon: 'ℹ️',
-        title: 'Kondisi Belum Terpenuhi',
-        text: 'Aturan logikamu sudah benar (IF Gelap -&gt; Lampu Menyala). Namun saat ini sensor membaca ruangan masih <strong>TERANG</strong>. Geser slider cahaya ke arah GELAP (&lt; 200 Lux) untuk menguji!',
-        type: 'info',
-        actions: [{ label: 'Paham', cls: 'btn btn-primary', onClick: 'closeGameModal()' }]
-      });
-
-    } else {
-      playSynthSound('error');
-      showGameModal({
-        icon: '⚠️',
-        title: 'Logika Kurang Tepat',
-        text: 'Lampu kamar seharusnya menyala ketika kondisi <strong>GELAP (&lt; 200 Lux)</strong> untuk membantu penghuni melihat, bukan saat terang.',
-        type: 'error',
-        actions: [{ label: 'Coba Lagi', cls: 'btn btn-warning', onClick: 'closeGameModal()' }]
-      });
-    }
-
-  } else if (lvl === 2) {
-    const isHot = smartHomeGame.sensors.tempC > 30;
-    const hasPerson = smartHomeGame.sensors.hasMotion;
-    const ruleMatch = smartHomeGame.rules.lvl2.condition === 'hot_and_motion' && smartHomeGame.rules.lvl2.action === 'fan_on';
-
-    const fanBlade = document.getElementById('fan-blade');
-    const fanStatus = document.getElementById('fan-status');
-
-    if (ruleMatch && isHot && hasPerson) {
-      if (fanBlade) fanBlade.classList.add('spinning');
-      if (fanStatus) fanStatus.textContent = 'Kipas: BERPUTAR KENCANG';
-      if (statusLabel) statusLabel.textContent = '✅ Berhasil!';
-
-      smartHomeGame.stars[2] = 1;
-      updateGameHUD();
-      playSynthSound('device_on');
-      spawnConfetti();
-
-      setTimeout(() => {
-        showGameModal({
-          icon: '❄️',
-          title: 'Misi 2 Berhasil!',
-          text: 'Hebat! Logika majemuk (IF-AND-THEN) berhasil menghemat energi. Kipas angin hanya berputar jika suhu panas DAN ada orang di ruangan!',
-          type: 'victory',
-          actions: [
-            { label: '▶ Lanjut ke Misi 3', cls: 'btn btn-primary', onClick: 'closeGameModal();switchGameLevel(3)' }
-          ]
-        });
-      }, 500);
-
-    } else if (ruleMatch && (!isHot || !hasPerson)) {
-      if (fanBlade) fanBlade.classList.remove('spinning');
-      if (fanStatus) fanStatus.textContent = 'Kipas: MATI (Hemat Energi)';
-      playSynthSound('device_off');
-
-      showGameModal({
-        icon: 'ℹ️',
-        title: 'Kondisi Belum Lengkap',
-        text: `Aturan logikamu sudah benar! Namun saat ini ${!isHot ? 'suhu masih sejuk (&lt; 30°C)' : 'ruangan kosong'}. Pastikan suhu &gt; 30°C DAN ada orang untuk menguji!`,
-        type: 'info',
-        actions: [{ label: 'Paham', cls: 'btn btn-primary', onClick: 'closeGameModal()' }]
-      });
-
-    } else {
-      playSynthSound('error');
-      showGameModal({
-        icon: '⚠️',
-        title: 'Aturan Kurang Efisien',
-        text: 'Gunakan logika majemuk: <strong>Suhu &gt; 30°C DAN Ada Gerakan</strong> agar kipas tidak berputar sia-sia di ruangan kosong.',
-        type: 'error',
-        actions: [{ label: 'Koreksi Logika', cls: 'btn btn-warning', onClick: 'closeGameModal()' }]
-      });
-    }
-
-  } else if (lvl === 3) {
-    const isDoorOpen = smartHomeGame.sensors.doorOpen;
-    const isIllegal = isDoorOpen && !smartHomeGame.sensors.rfidValid;
-    const ruleMatch = smartHomeGame.rules.lvl3.condition === 'door_open_no_rfid' && smartHomeGame.rules.lvl3.action === 'alarm_on';
-
-    const siren = document.getElementById('alarm-siren');
-    const alarmStatus = document.getElementById('alarm-status');
-
-    if (ruleMatch && isIllegal) {
-      if (siren) siren.classList.add('alarming');
-      if (alarmStatus) alarmStatus.textContent = '🚨 BAHAYA: AKSES ILEGAL DETECTED!';
-      if (statusLabel) statusLabel.textContent = '✅ Alarm Aktif!';
-
-      smartHomeGame.stars[3] = 1;
-      updateGameHUD();
-      playSynthSound('alarm');
-      spawnConfetti();
-
-      setTimeout(() => {
-        showGameModal({
-          icon: '👑',
-          title: 'Selamat! Master Smart Home Architect!',
-          text: 'Luar biasa! Kamu berhasil merancang seluruh sistem otomasi rumah pintar dengan menerapkan 4 Fondasi Berpikir Komputasional secara nyata!',
-          type: 'victory',
-          actions: [
-            { label: '🔄 Mainkan Lagi Misi', cls: 'btn btn-secondary', onClick: 'closeGameModal();switchGameLevel(1)' },
-            { label: '▶ Lanjut ke Latihan Evaluasi', cls: 'btn btn-success', onClick: 'closeGameModal();goToPage(\'latihan-intro\')' }
-          ]
-        });
-      }, 500);
-
-    } else {
-      playSynthSound('error');
-      showGameModal({
-        icon: '💡',
-        title: 'Uji Keamanan',
-        text: 'Pastikan aturan diset: <strong>JIKA Pintu Terbuka TANPA Kartu RFID -> MAKA Bunyikan Sirine</strong>, lalu pastikan tombol Pintu Terbuka dan Kartu Ilegal aktif.',
-        type: 'info',
-        actions: [{ label: 'Paham', cls: 'btn btn-primary', onClick: 'closeGameModal()' }]
-      });
-    }
-  }
+function onDecompDragEnd(e) {
+  e.currentTarget.classList.remove('dragging');
+  draggedDecompItem = null;
 }
 
-function resetCurrentGameLevel() {
-  renderGameMission(smartHomeGame.currentLevel);
+let decompTouchClone = null;
+let decompTouchEl = null;
+
+function onDecompTouchStart(e) {
+  decompTouchEl = e.currentTarget;
+  e.preventDefault();
+  decompTouchClone = decompTouchEl.cloneNode(true);
+  decompTouchClone.style.position = 'fixed';
+  decompTouchClone.style.zIndex = '1000';
+  decompTouchClone.style.opacity = '0.85';
+  decompTouchClone.style.pointerEvents = 'none';
+  decompTouchClone.style.width = decompTouchEl.offsetWidth + 'px';
+  document.body.appendChild(decompTouchClone);
+
+  const touch = e.touches[0];
+  decompTouchClone.style.left = (touch.clientX - decompTouchEl.offsetWidth / 2) + 'px';
+  decompTouchClone.style.top = (touch.clientY - 25) + 'px';
+  decompTouchEl.classList.add('dragging');
   playSynthSound('click');
 }
 
-function showGameHint() {
-  const lvl = smartHomeGame.currentLevel;
-  if (lvl === 1) {
+function onDecompTouchMove(e) {
+  if (!decompTouchClone) return;
+  e.preventDefault();
+  const touch = e.touches[0];
+  decompTouchClone.style.left = (touch.clientX - decompTouchClone.offsetWidth / 2) + 'px';
+  decompTouchClone.style.top = (touch.clientY - 25) + 'px';
+
+  document.querySelectorAll('.decomp-category').forEach(c => c.classList.remove('drag-over'));
+  const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+  if (elem) {
+    const cat = elem.closest('.decomp-category');
+    if (cat) cat.classList.add('drag-over');
+  }
+}
+
+function onDecompTouchEnd(e) {
+  if (!decompTouchClone || !decompTouchEl) return;
+  const touch = e.changedTouches[0];
+  const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+
+  document.body.removeChild(decompTouchClone);
+  decompTouchClone = null;
+  decompTouchEl.classList.remove('dragging');
+
+  if (elem) {
+    const cat = elem.closest('.decomp-category');
+    if (cat) {
+      const dropZone = cat.querySelector('.decomp-cat-drop');
+      dropZone.appendChild(decompTouchEl);
+      playSynthSound('click');
+    }
+  }
+
+  document.querySelectorAll('.decomp-category').forEach(c => c.classList.remove('drag-over'));
+  decompTouchEl = null;
+}
+
+function checkStage1() {
+  const items = document.querySelectorAll('.decomp-cat-drop .decomp-item');
+  let correct = 0;
+  let total = DECOMP_ITEMS.length;
+
+  items.forEach(el => {
+    const parentCat = el.closest('.decomp-category').dataset.category;
+    const itemCat = el.dataset.category;
+    el.classList.remove('wrong');
+    if (parentCat === itemCat) {
+      correct++;
+    } else {
+      el.classList.add('wrong');
+    }
+  });
+
+  if (correct === total) {
+    ctGame.stars[1] = 1;
+    updateGameHUD();
+    playSynthSound('victory');
+    spawnConfetti();
     showGameModal({
-      icon: '💡',
-      title: 'Petunjuk Misi 1',
-      text: 'Sensor LDR membaca nilai cahaya. Pilih aturan: JIKA Cahaya &lt; 200 Lux (Gelap) MAKA Nyalakan Lampu Kamar.',
-      type: 'info',
-      actions: [{ label: 'Paham', cls: 'btn btn-primary', onClick: 'closeGameModal()' }]
+      icon: '🎉',
+      title: 'Tahap 1 Berhasil!',
+      text: 'Hebat! Kamu berhasil memecah sistem rumah cerdas ke dalam Sensor, Otak, dan Aktuator secara tepat!',
+      type: 'success',
+      actions: [
+        { label: 'Lanjut ke Tahap 2 (Abstraksi) ▶', cls: 'btn btn-success', onClick: 'closeGameModal(); switchGameStage(2);' }
+      ]
     });
-  } else if (lvl === 2) {
+  } else {
+    playSynthSound('error');
     showGameModal({
-      icon: '💡',
-      title: 'Petunjuk Misi 2',
-      text: 'Gunakan logika IF-AND-THEN. Syarat kipas menyala: Suhu &gt; 30°C DAN ada gerakan orang.',
-      type: 'info',
-      actions: [{ label: 'Paham', cls: 'btn btn-primary', onClick: 'closeGameModal()' }]
-    });
-  } else if (lvl === 3) {
-    showGameModal({
-      icon: '💡',
-      title: 'Petunjuk Misi 3',
-      text: 'Sirine harus berbunyi jika pintu terbuka tanpa verifikasi kartu kunci RFID yang sah.',
-      type: 'info',
-      actions: [{ label: 'Paham', cls: 'btn btn-primary', onClick: 'closeGameModal()' }]
+      icon: '⚠️',
+      title: 'Belum Tepat',
+      text: `Kamu menempatkan ${correct} dari ${total} komponen dengan benar. Periksa kembali komponen yang bertanda merah!`,
+      type: 'warning',
+      actions: [{ label: 'Coba Lagi', cls: 'btn btn-primary', onClick: 'closeGameModal()' }]
     });
   }
+}
+
+// ---------- STAGE 2: ABSTRAKSI ----------
+function initStage2() {
+  ctGame.stagesInited[2] = true;
+  const container = document.getElementById('abstraction-cards');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const shuffled = [...ABSTRACTION_CARDS].sort(() => Math.random() - 0.5);
+  shuffled.forEach(card => {
+    const el = document.createElement('div');
+    el.className = 'abstraction-card';
+    el.id = `ac-card-${card.id}`;
+    el.dataset.id = card.id;
+    el.dataset.important = card.important ? 'true' : 'false';
+    el.dataset.state = 'none'; // 'none', 'important', 'not-important'
+
+    el.innerHTML = `
+      <span class="ac-icon">${card.icon}</span>
+      <span class="ac-text">${card.text}</span>
+    `;
+
+    el.onclick = () => toggleAbstractionCard(el);
+    container.appendChild(el);
+  });
+}
+
+function toggleAbstractionCard(el) {
+  const currentState = el.dataset.state;
+  el.classList.remove('selected-important', 'selected-not-important');
+
+  if (currentState === 'none') {
+    el.dataset.state = 'important';
+    el.classList.add('selected-important');
+  } else if (currentState === 'important') {
+    el.dataset.state = 'not-important';
+    el.classList.add('selected-not-important');
+  } else {
+    el.dataset.state = 'none';
+  }
+
+  playSynthSound('click');
+}
+
+function checkStage2() {
+  const cards = document.querySelectorAll('.abstraction-card');
+  let correct = 0;
+  let total = cards.length;
+
+  cards.forEach(card => {
+    const shouldBeImportant = card.dataset.important === 'true';
+    const userState = card.dataset.state;
+    card.classList.remove('correct-answer', 'wrong-answer');
+
+    if ((shouldBeImportant && userState === 'important') || (!shouldBeImportant && userState === 'not-important')) {
+      correct++;
+      card.classList.add('correct-answer');
+    } else {
+      card.classList.add('wrong-answer');
+    }
+  });
+
+  if (correct === total) {
+    ctGame.stars[2] = 1;
+    updateGameHUD();
+    playSynthSound('victory');
+    spawnConfetti();
+    showGameModal({
+      icon: '🌟',
+      title: 'Tahap 2 Berhasil!',
+      text: 'Luar biasa! Kamu bisa membedakan data yang penting dan mengabaikan yang tidak relevan dengan sempurna!',
+      type: 'success',
+      actions: [
+        { label: 'Lanjut ke Tahap 3 (Pengenalan Pola) ▶', cls: 'btn btn-success', onClick: 'closeGameModal(); switchGameStage(3);' }
+      ]
+    });
+  } else {
+    playSynthSound('error');
+    showGameModal({
+      icon: '⚠️',
+      title: 'Belum Tepat',
+      text: `Kamu mengklasifikasikan ${correct} dari ${total} data dengan benar. Perbaiki kartu yang bertanda merah!`,
+      type: 'warning',
+      actions: [{ label: 'Coba Lagi', cls: 'btn btn-primary', onClick: 'closeGameModal()' }]
+    });
+  }
+}
+
+// ---------- STAGE 3: PENGENALAN POLA ----------
+function initStage3() {
+  ctGame.stagesInited[3] = true;
+  drawPatternTimeline();
+}
+
+function drawPatternTimeline() {
+  const container = document.getElementById('pattern-timeline');
+  if (!container) return;
+
+  container.innerHTML = '<canvas id="pattern-canvas" width="700" height="170"></canvas>';
+  const canvas = document.getElementById('pattern-canvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width;
+  const h = canvas.height;
+
+  // Background
+  ctx.fillStyle = '#f8fafc';
+  ctx.fillRect(0, 0, w, h);
+
+  // Night/Day zones
+  // 0-5.5h = Night
+  const x530 = (5.5 / 24) * (w - 80) + 50;
+  const x1730 = (17.5 / 24) * (w - 80) + 50;
+
+  // Night 1
+  ctx.fillStyle = 'rgba(30, 41, 59, 0.08)';
+  ctx.fillRect(50, 20, x530 - 50, h - 50);
+
+  // Day
+  ctx.fillStyle = 'rgba(255, 235, 59, 0.15)';
+  ctx.fillRect(x530, 20, x1730 - x530, h - 50);
+
+  // Night 2
+  ctx.fillStyle = 'rgba(30, 41, 59, 0.08)';
+  ctx.fillRect(x1730, 20, w - 30 - x1730, h - 50);
+
+  // Axes
+  ctx.strokeStyle = '#94a3b8';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(50, 20);
+  ctx.lineTo(50, h - 30);
+  ctx.lineTo(w - 30, h - 30);
+  ctx.stroke();
+
+  // Y Labels (Lux)
+  ctx.fillStyle = '#64748b';
+  ctx.font = '11px sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('800 Lux (Terang)', 45, 35);
+  ctx.fillText('200 Lux (Ambang)', 45, 95);
+  ctx.fillText('0 Lux (Gelap)', 45, h - 35);
+
+  // 200 Lux Threshold Line
+  ctx.strokeStyle = '#ef4444';
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath();
+  ctx.moveTo(50, 95);
+  ctx.lineTo(w - 30, 95);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Time Labels
+  ctx.textAlign = 'center';
+  const times = ['00:00', '05:30 (Fajar)', '12:00', '17:30 (Senja)', '24:00'];
+  const xPos = [50, x530, (12 / 24) * (w - 80) + 50, x1730, w - 30];
+
+  times.forEach((t, i) => {
+    ctx.fillText(t, xPos[i], h - 12);
+  });
+
+  // Light curve
+  ctx.strokeStyle = '#0288D1';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(50, h - 40); // 00:00 (dark)
+  ctx.lineTo(x530 - 20, h - 40); // 04:30
+  ctx.quadraticCurveTo(x530, h - 40, x530 + 30, 40); // sunrise curve
+  ctx.lineTo(x1730 - 30, 35); // noon to afternoon
+  ctx.quadraticCurveTo(x1730, 35, x1730 + 30, h - 40); // sunset curve
+  ctx.lineTo(w - 30, h - 40); // midnight
+  ctx.stroke();
+
+  // Dots at key transitions
+  ctx.fillStyle = '#e65100';
+  ctx.beginPath();
+  ctx.arc(x530, 95, 5, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(x1730, 95, 5, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function checkStage3() {
+  const fajar = document.getElementById('pattern-q-fajar').value;
+  const senja = document.getElementById('pattern-q-senja').value;
+  const berulang = document.getElementById('pattern-q-berulang').value;
+
+  const qFajarEl = document.getElementById('pattern-q-fajar');
+  const qSenjaEl = document.getElementById('pattern-q-senja');
+  const qBerulangEl = document.getElementById('pattern-q-berulang');
+
+  qFajarEl.className = 'pattern-select ' + (fajar === '05:30' ? 'correct' : 'wrong');
+  qSenjaEl.className = 'pattern-select ' + (senja === '17:30' ? 'correct' : 'wrong');
+  qBerulangEl.className = 'pattern-select ' + (berulang === 'ya' ? 'correct' : 'wrong');
+
+  if (fajar === '05:30' && senja === '17:30' && berulang === 'ya') {
+    ctGame.stars[3] = 1;
+    updateGameHUD();
+    playSynthSound('victory');
+    spawnConfetti();
+    showGameModal({
+      icon: '📈',
+      title: 'Tahap 3 Berhasil!',
+      text: 'Keren! Kamu mengenali pola siklus siang-malam berulang dan waktu pergantiannya secara tepat!',
+      type: 'success',
+      actions: [
+        { label: 'Lanjut ke Tahap 4 (Algoritma) ▶', cls: 'btn btn-success', onClick: 'closeGameModal(); switchGameStage(4);' }
+      ]
+    });
+  } else {
+    playSynthSound('error');
+    showGameModal({
+      icon: '⚠️',
+      title: 'Jawaban Belum Tepat',
+      text: 'Perhatikan grafik baik-baik pada garis putus-putus merah (200 Lux) untuk waktu fajar dan senja!',
+      type: 'warning',
+      actions: [{ label: 'Coba Lagi', cls: 'btn btn-primary', onClick: 'closeGameModal()' }]
+    });
+  }
+}
+
+// ---------- STAGE 4: ALGORITMA ----------
+let draggedAlgoBlock = null;
+
+function initStage4() {
+  ctGame.stagesInited[4] = true;
+  const container = document.getElementById('algo-challenges');
+  if (!container) return;
+  container.innerHTML = '';
+
+  ALGO_CHALLENGES.forEach(ch => {
+    const card = document.createElement('div');
+    card.className = 'algo-challenge';
+    card.id = `algo-ch-${ch.id}`;
+
+    let slotsHtml = `<span class="algo-static">${ch.prefix}</span>`;
+    ch.slots.forEach(slot => {
+      slotsHtml += `<div class="algo-slot" id="slot-${slot.id}" data-expected="${slot.expected}" data-label="${slot.label}">${slot.label}</div>`;
+    });
+
+    let blocksHtml = '<div class="algo-blocks">';
+    const shuffledBlocks = [...ch.blocks].sort(() => Math.random() - 0.5);
+    shuffledBlocks.forEach(b => {
+      blocksHtml += `<div class="algo-block" id="block-${b.id}" draggable="true" data-id="${b.id}">${b.text}</div>`;
+    });
+    blocksHtml += '</div>';
+
+    card.innerHTML = `
+      <div class="algo-challenge-title">${ch.title}</div>
+      <div class="algo-slots">${slotsHtml}</div>
+      ${blocksHtml}
+    `;
+
+    container.appendChild(card);
+  });
+
+  // Attach drag events to all blocks and slots
+  document.querySelectorAll('.algo-block').forEach(b => {
+    b.addEventListener('dragstart', onAlgoDragStart);
+    b.addEventListener('dragend', onAlgoDragEnd);
+    b.addEventListener('touchstart', onAlgoTouchStart, { passive: false });
+    b.addEventListener('touchmove', onAlgoTouchMove, { passive: false });
+    b.addEventListener('touchend', onAlgoTouchEnd);
+  });
+
+  document.querySelectorAll('.algo-slot').forEach(s => {
+    s.addEventListener('dragover', (e) => e.preventDefault());
+    s.addEventListener('dragenter', (e) => {
+      e.preventDefault();
+      s.classList.add('drag-over');
+    });
+    s.addEventListener('dragleave', () => s.classList.remove('drag-over'));
+    s.addEventListener('drop', onAlgoSlotDrop);
+    s.addEventListener('click', () => clearAlgoSlot(s));
+  });
+}
+
+function onAlgoDragStart(e) {
+  draggedAlgoBlock = e.currentTarget;
+  e.currentTarget.classList.add('dragging');
+  e.dataTransfer.setData('text/plain', e.currentTarget.dataset.id);
+  playSynthSound('click');
+}
+
+function onAlgoDragEnd(e) {
+  e.currentTarget.classList.remove('dragging');
+  draggedAlgoBlock = null;
+}
+
+function onAlgoSlotDrop(e) {
+  e.preventDefault();
+  const slot = e.currentTarget;
+  slot.classList.remove('drag-over');
+
+  if (!draggedAlgoBlock) return;
+
+  fillAlgoSlot(slot, draggedAlgoBlock);
+  playSynthSound('click');
+}
+
+let algoTouchClone = null;
+let algoTouchEl = null;
+
+function onAlgoTouchStart(e) {
+  algoTouchEl = e.currentTarget;
+  if (algoTouchEl.classList.contains('used')) return;
+
+  e.preventDefault();
+  algoTouchClone = algoTouchEl.cloneNode(true);
+  algoTouchClone.style.position = 'fixed';
+  algoTouchClone.style.zIndex = '1000';
+  algoTouchClone.style.opacity = '0.85';
+  algoTouchClone.style.pointerEvents = 'none';
+  algoTouchClone.style.width = algoTouchEl.offsetWidth + 'px';
+  document.body.appendChild(algoTouchClone);
+
+  const touch = e.touches[0];
+  algoTouchClone.style.left = (touch.clientX - algoTouchEl.offsetWidth / 2) + 'px';
+  algoTouchClone.style.top = (touch.clientY - 25) + 'px';
+  algoTouchEl.classList.add('dragging');
+  playSynthSound('click');
+}
+
+function onAlgoTouchMove(e) {
+  if (!algoTouchClone) return;
+  e.preventDefault();
+  const touch = e.touches[0];
+  algoTouchClone.style.left = (touch.clientX - algoTouchClone.offsetWidth / 2) + 'px';
+  algoTouchClone.style.top = (touch.clientY - 25) + 'px';
+
+  document.querySelectorAll('.algo-slot').forEach(s => s.classList.remove('drag-over'));
+  const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+  if (elem) {
+    const slot = elem.closest('.algo-slot');
+    if (slot) slot.classList.add('drag-over');
+  }
+}
+
+function onAlgoTouchEnd(e) {
+  if (!algoTouchClone || !algoTouchEl) return;
+  const touch = e.changedTouches[0];
+  const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+
+  document.body.removeChild(algoTouchClone);
+  algoTouchClone = null;
+  algoTouchEl.classList.remove('dragging');
+
+  if (elem) {
+    const slot = elem.closest('.algo-slot');
+    if (slot) {
+      fillAlgoSlot(slot, algoTouchEl);
+      playSynthSound('click');
+    }
+  }
+
+  document.querySelectorAll('.algo-slot').forEach(s => s.classList.remove('drag-over'));
+  algoTouchEl = null;
+}
+
+function fillAlgoSlot(slot, block) {
+  // If slot already had a block, release old block
+  if (slot.dataset.assignedBlock) {
+    const oldBlock = document.getElementById(`block-${slot.dataset.assignedBlock}`);
+    if (oldBlock) oldBlock.classList.remove('used');
+  }
+
+  slot.classList.add('filled');
+  slot.dataset.assignedBlock = block.dataset.id;
+  slot.textContent = block.textContent;
+  block.classList.add('used');
+}
+
+function clearAlgoSlot(slot) {
+  if (!slot.classList.contains('filled')) return;
+  const assignedId = slot.dataset.assignedBlock;
+  if (assignedId) {
+    const block = document.getElementById(`block-${assignedId}`);
+    if (block) block.classList.remove('used');
+  }
+  slot.classList.remove('filled', 'correct', 'wrong');
+  delete slot.dataset.assignedBlock;
+  slot.textContent = slot.dataset.label;
+  playSynthSound('click');
+}
+
+function checkStage4() {
+  const slots = document.querySelectorAll('.algo-slot');
+  let correct = 0;
+  let total = slots.length;
+
+  slots.forEach(slot => {
+    const expected = slot.dataset.expected;
+    const assigned = slot.dataset.assignedBlock;
+    slot.classList.remove('correct', 'wrong');
+
+    if (assigned === expected) {
+      correct++;
+      slot.classList.add('correct');
+    } else {
+      slot.classList.add('wrong');
+    }
+  });
+
+  if (correct === total) {
+    ctGame.stars[4] = 1;
+    updateGameHUD();
+    playSynthSound('victory');
+    spawnConfetti();
+
+    showGameModal({
+      icon: '🏆',
+      title: 'Selamat! Semua Tahap Selesai!',
+      text: 'Luar biasa, Arsitek Rumah Cerdas! Kamu telah menguasai 4 Fondasi Berpikir Komputasional dengan bintang sempurna ⭐ 4/4!',
+      type: 'success',
+      actions: [
+        { label: 'Lanjut ke Latihan Evaluasi ▶', cls: 'btn btn-primary', onClick: 'closeGameModal(); goToPage("latihan-intro");' }
+      ]
+    });
+  } else {
+    playSynthSound('error');
+    showGameModal({
+      icon: '⚠️',
+      title: 'Urutan Logika Belum Tepat',
+      text: `Kamu menyusun ${correct} dari ${total} blok logika dengan benar. Periksa kembali blok yang bertanda merah!`,
+      type: 'warning',
+      actions: [{ label: 'Coba Lagi', cls: 'btn btn-primary', onClick: 'closeGameModal()' }]
+    });
+  }
+}
+
+// Global stage reset & check dispatchers
+function resetCurrentGameStage() {
+  const stage = ctGame.currentStage;
+  playSynthSound('reset');
+  if (stage === 1) initStage1();
+  if (stage === 2) initStage2();
+  if (stage === 3) {
+    document.getElementById('pattern-q-fajar').value = '';
+    document.getElementById('pattern-q-senja').value = '';
+    document.getElementById('pattern-q-berulang').value = '';
+    document.querySelectorAll('.pattern-select').forEach(s => s.className = 'pattern-select');
+  }
+  if (stage === 4) initStage4();
+}
+
+function checkCurrentGameStage() {
+  const stage = ctGame.currentStage;
+  if (stage === 1) checkStage1();
+  if (stage === 2) checkStage2();
+  if (stage === 3) checkStage3();
+  if (stage === 4) checkStage4();
 }
 
 function showGameModal(config) {
@@ -911,29 +1351,57 @@ function closeGameModal() {
   if (modal) modal.classList.remove('show');
 }
 
-// ==================== LATIHAN EVALUASI (PAGE 13) ====================
+// ============================================================
+// LATIHAN EVALUASI (PAGE 13) — 18 POIN
+// ============================================================
+
 const EVAL_ANSWERS = {
   A1: 'B', A2: 'C', A3: 'B', A4: 'B', A5: 'C',
-  B1: 'salah', B2: 'benar', B3: 'benar', B4: 'salah', B5: 'benar', B6: 'benar',
+  B1: 'salah', B2: 'benar', B3: 'benar', B4: 'salah', B5: 'benar', B6: 'benar'
 };
 
 const MATCH_ANSWERS = {
   '1': 'b', '2': 'd', '3': 'a', '4': 'e', '5': 'c'
 };
 
+const MATCH_LEFT_DATA = [
+  { id: '1', text: 'Sensor Cahaya' },
+  { id: '2', text: 'Komputer Mini (Mikrokontroler)' },
+  { id: '3', text: 'Aktuator (Relay / Penggerak)' },
+  { id: '4', text: 'Logika JIKA - MAKA' },
+  { id: '5', text: 'Abstraksi Data' }
+];
+
+const MATCH_RIGHT_DATA = [
+  { id: 'a', text: 'Saklar otomatis yang menghubungkan listrik ke perangkat fisik' },
+  { id: 'b', text: 'Membaca tingkat terang/gelap di sekitar ruangan (seperti mata)' },
+  { id: 'c', text: 'Menyaring data penting yang dibutuhkan dan membuang detail non-relevan' },
+  { id: 'd', text: 'Otak kecil yang memproses data dan menjalankan aturan logika' },
+  { id: 'e', text: 'Aturan terstruktur untuk mengambil keputusan otomatis berdasarkan kondisi' }
+];
+
+const MATCH_PAIR_THEMES = {
+  '1': { color: '#00838f', bg: '#e0f7fa', border: '#00acc1', label: '1' },
+  '2': { color: '#e65100', bg: '#fff3e0', border: '#ff9800', label: '2' },
+  '3': { color: '#6a1b9a', bg: '#f3e5f5', border: '#ab47bc', label: '3' },
+  '4': { color: '#2e7d32', bg: '#e8f5e9', border: '#4caf50', label: '4' },
+  '5': { color: '#c2185b', bg: '#fce4ec', border: '#e91e63', label: '5' }
+};
+
 const SEQ_CORRECT_ORDER = [
-  'Sensor LDR mengukur intensitas cahaya di sekitar teras rumah',
-  'Data analog cahaya dikirimkan ke pin input mikrokontroler',
-  'Mikrokontroler mengevaluasi aturan logika algoritma: apakah kondisi gelap?',
-  'Jika kondisi gelap terpenuhi, mikrokontroler mengirim sinyal aktif ke relay',
-  'Relay mengalirkan arus listrik menuju lampu teras rumah',
-  'Lampu teras menyala secara otomatis dan aman menerangi malam'
+  'Sensor Cahaya merasakan tingkat terang/gelap di sekitar teras rumah.',
+  'Data pembacaan cahaya dikirim ke komputer mini (mikrokontroler).',
+  'Komputer mini mengecek aturan logika: apakah saat ini gelap?',
+  'Jika gelap, komputer mini mengirim perintah "nyalakan" ke saklar otomatis (relay).',
+  'Saklar otomatis menghubungkan aliran listrik ke lampu teras.',
+  'Lampu teras menyala otomatis menerangi halaman rumah di malam hari.'
 ];
 
 let evalUserAnswers = {};
 let matchState = { selectedLeft: null, pairs: {} };
 let evalSectionInited = { C: false, D: false, E: false };
 let evalRuleSelected = null;
+let currentShuffledRight = null;
 
 function startEval() {
   evalUserAnswers = {};
@@ -1020,43 +1488,17 @@ function selectMCQ(el) {
   playSynthSound('click');
 }
 
-function selectTF(el) {
-  const question = el.closest('.tf-question');
-  question.querySelectorAll('.tf-btn').forEach(b => {
-    b.classList.remove('selected-benar', 'selected-salah');
-  });
-  el.classList.add(el.dataset.val === 'benar' ? 'selected-benar' : 'selected-salah');
-  evalUserAnswers[question.dataset.q] = el.dataset.val;
+function selectTF(btn) {
+  const question = btn.closest('.tf-question');
+  question.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('selected-benar', 'selected-salah'));
+  const val = btn.dataset.val;
+  if (val === 'benar') btn.classList.add('selected-benar');
+  else btn.classList.add('selected-salah');
+  evalUserAnswers[question.dataset.q] = val;
   playSynthSound('click');
 }
 
 // ---------- BAGIAN C: MENJODOHKAN ----------
-const MATCH_LEFT_DATA = [
-  { id: '1', text: 'Sensor LDR' },
-  { id: '2', text: 'Mikrokontroler ESP32' },
-  { id: '3', text: 'Aktuator Relay' },
-  { id: '4', text: 'Logika IF-THEN' },
-  { id: '5', text: 'Abstraksi Data' }
-];
-
-const MATCH_RIGHT_DATA = [
-  { id: 'a', text: 'Pemicu saklar listrik untuk menyalakan/mematikan alat fisik' },
-  { id: 'b', text: 'Membaca intensitas cahaya gelap/terang di sekitar ruangan' },
-  { id: 'c', text: 'Hanya fokus pada status esensial sensor dan abaikan detail fisik' },
-  { id: 'd', text: 'Otak komputer mini yang mengeksekusi instruksi program' },
-  { id: 'e', text: 'Struktur aturan pengambilan keputusan berdasarkan kondisi' }
-];
-
-const MATCH_PAIR_THEMES = {
-  '1': { color: '#00838f', bg: '#e0f7fa', border: '#00acc1', label: '1' },
-  '2': { color: '#e65100', bg: '#fff3e0', border: '#ff9800', label: '2' },
-  '3': { color: '#6a1b9a', bg: '#f3e5f5', border: '#ab47bc', label: '3' },
-  '4': { color: '#2e7d32', bg: '#e8f5e9', border: '#4caf50', label: '4' },
-  '5': { color: '#c2185b', bg: '#fce4ec', border: '#e91e63', label: '5' }
-};
-
-let currentShuffledRight = null;
-
 function initMatchSection() {
   evalSectionInited.C = true;
   const leftCol = document.getElementById('match-left');
@@ -1516,7 +1958,7 @@ function submitEval() {
   let msgClass, msgText;
   if (percentage >= 90) {
     msgClass = 'excellent';
-    msgText = 'Luar biasa! Kamu adalah Smart Home Architect sejati! 🏆';
+    msgText = 'Luar biasa! Kamu adalah Arsitek Berpikir Komputasional sejati! 🏆';
   } else if (percentage >= 60) {
     msgClass = 'good';
     msgText = 'Bagus! Pemahaman berpikir komputasionalmu sudah baik, yuk pelajari lagi bagian yang keliru.';
@@ -1599,201 +2041,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-
-
-// ==================== DRAG & DROP (TARIK JAWABAN) ====================
-
-const DD_DATA = [
-  { term: 'Dekomposisi', def: 'Memecah sistem rumah cerdas menjadi Sensor (Input), Mikrokontroler (Proses), dan Aktuator (Output)', id: 'dekomposisi' },
-  { term: 'Abstraksi', def: 'Hanya fokus pada data tingkat cahaya (terang/gelap) dan mengabaikan warna cat tembok kamar', id: 'abstraksi' },
-  { term: 'Pengenalan Pola', def: 'Mengenali siklus matahari terbenam pukul 18.00 untuk menjadwalkan lampu otomatis secara teratur', id: 'pola' },
-  { term: 'Algoritma', def: 'Menyusun aturan logika terstruktur: JIKA sensor gelap MAKA nyalakan lampu, JIKA terang MAKA matikan', id: 'algoritma' },
-  { term: 'Sensor (Input)', def: 'Alat pencari tahu yang membaca besaran fisik lingkungan (cahaya, suhu, gerakan)', id: 'sensor' },
-  { term: 'Aktuator (Output)', def: 'Perangkat pelaksana fisik nyata (lampu menyala, kipas berputar, sirine berbunyi)', id: 'aktuator' }
-];
-
-let ddInitialized = false;
-
-function initDragDrop() {
-  const termsCol = document.getElementById('dd-terms');
-  const defsCol = document.getElementById('dd-definitions');
-  const scoreBox = document.getElementById('dd-score-box');
-  if (!termsCol || !defsCol) return;
-
-  if (scoreBox) scoreBox.style.display = 'none';
-
-  termsCol.innerHTML = '<h3>🧩 Kartu Istilah</h3>';
-  defsCol.innerHTML = '<h3>🎯 Definisi & Penerapan</h3>';
-
-  const shuffledTerms = [...DD_DATA].sort(() => Math.random() - 0.5);
-  const shuffledDefs = [...DD_DATA].sort(() => Math.random() - 0.5);
-
-  shuffledTerms.forEach(item => {
-    const el = document.createElement('div');
-    el.className = 'dd-item';
-    el.draggable = true;
-    el.dataset.id = item.id;
-    el.innerHTML = `<span class="dd-grip">⠿</span> <span class="dd-term-text">${item.term}</span>`;
-    el.addEventListener('dragstart', onDragStart);
-    el.addEventListener('dragend', onDragEnd);
-    el.addEventListener('touchstart', onTouchStart, { passive: false });
-    el.addEventListener('touchmove', onTouchMove, { passive: false });
-    el.addEventListener('touchend', onTouchEnd);
-    termsCol.appendChild(el);
-  });
-
-  shuffledDefs.forEach(item => {
-    const zone = document.createElement('div');
-    zone.className = 'dd-drop-zone';
-    zone.dataset.id = item.id;
-    zone.innerHTML = `
-      <div class="dd-def-desc">${item.def}</div>
-      <div class="dd-slot" data-slot-id="${item.id}">
-        <span class="dd-placeholder">Tarik istilah ke sini...</span>
-      </div>
-    `;
-    zone.addEventListener('dragover', onDragOver);
-    zone.addEventListener('dragenter', onDragEnter);
-    zone.addEventListener('dragleave', onDragLeave);
-    zone.addEventListener('drop', onDrop);
-    defsCol.appendChild(zone);
-  });
-}
-
-let draggedItem = null;
-let touchElement = null;
-
-function onDragStart(e) {
-  draggedItem = e.target.closest('.dd-item');
-  if (!draggedItem) return;
-  draggedItem.classList.add('dragging');
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/plain', draggedItem.dataset.id);
-  playSynthSound('btn');
-}
-
-function onDragEnd(e) {
-  if (draggedItem) draggedItem.classList.remove('dragging');
-  document.querySelectorAll('.dd-drop-zone').forEach(z => z.classList.remove('over'));
-}
-
-function onDragOver(e) {
-  e.preventDefault();
-  e.dataTransfer.dropEffect = 'move';
-}
-
-function onDragEnter(e) {
-  e.preventDefault();
-  e.currentTarget.classList.add('over');
-}
-
-function onDragLeave(e) {
-  e.currentTarget.classList.remove('over');
-}
-
-function onDrop(e) {
-  e.preventDefault();
-  const zone = e.currentTarget;
-  zone.classList.remove('over');
-  if (!draggedItem) return;
-
-  const slot = zone.querySelector('.dd-slot');
-  if (!slot) return;
-
-  // If slot already has an item, move it back to terms
-  const existingItem = slot.querySelector('.dd-item');
-  if (existingItem) {
-    document.getElementById('dd-terms').appendChild(existingItem);
-  }
-
-  // Hide placeholder, place item inside slot
-  const placeholder = slot.querySelector('.dd-placeholder');
-  if (placeholder) placeholder.style.display = 'none';
-
-  slot.appendChild(draggedItem);
-  draggedItem.classList.remove('dragging');
-  playSynthSound('correct');
-}
-
-// Touch support for mobile/tablets
-function onTouchStart(e) {
-  touchElement = e.target.closest('.dd-item');
-  if (!touchElement) return;
-  touchElement.classList.add('dragging');
-}
-
-function onTouchMove(e) {
-  if (!touchElement) return;
-  e.preventDefault();
-  const touch = e.touches[0];
-  const target = document.elementFromPoint(touch.clientX, touch.clientY);
-  document.querySelectorAll('.dd-drop-zone').forEach(z => z.classList.remove('over'));
-  if (target) {
-    const zone = target.closest('.dd-drop-zone');
-    if (zone) zone.classList.add('over');
-  }
-}
-
-function onTouchEnd(e) {
-  if (!touchElement) return;
-  touchElement.classList.remove('dragging');
-  const touch = e.changedTouches[0];
-  const target = document.elementFromPoint(touch.clientX, touch.clientY);
-  document.querySelectorAll('.dd-drop-zone').forEach(z => z.classList.remove('over'));
-
-  if (target) {
-    const zone = target.closest('.dd-drop-zone');
-    if (zone) {
-      const slot = zone.querySelector('.dd-slot');
-      if (slot) {
-        const existing = slot.querySelector('.dd-item');
-        if (existing) document.getElementById('dd-terms').appendChild(existing);
-        const placeholder = slot.querySelector('.dd-placeholder');
-        if (placeholder) placeholder.style.display = 'none';
-        slot.appendChild(touchElement);
-        playSynthSound('correct');
-      }
-    }
-  }
-  touchElement = null;
-}
-
-function resetDragDrop() {
-  playSynthSound('reset');
-  initDragDrop();
-}
-
-function checkDragDrop() {
-  const zones = document.querySelectorAll('.dd-drop-zone');
-  let score = 0;
-  let total = zones.length;
-
-  zones.forEach(zone => {
-    const expectedId = zone.dataset.id;
-    const item = zone.querySelector('.dd-item');
-    zone.classList.remove('correct', 'wrong');
-
-    if (item && item.dataset.id === expectedId) {
-      score++;
-      zone.classList.add('correct');
-    } else if (item) {
-      zone.classList.add('wrong');
-    }
-  });
-
-  const scoreBox = document.getElementById('dd-score-box');
-  const badge = document.getElementById('dd-score-badge');
-  const text = document.getElementById('dd-score-text');
-
-  if (scoreBox && badge && text) {
-    scoreBox.style.display = 'flex';
-    badge.textContent = `Skor: ${Math.round((score / total) * 100)}`;
-    text.textContent = `${score} dari ${total} Pasangan Benar! ${score === total ? '🎉 Sempurna!' : 'Coba perbaiki yang salah!'}`;
-  }
-
-  if (score === total) {
-    playSynthSound('win');
-  } else {
-    playSynthSound('wrong');
-  }
-}

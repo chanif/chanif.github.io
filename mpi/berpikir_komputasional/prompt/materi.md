@@ -16,15 +16,15 @@
 > *(Kepmendikbudristek No. 008/H/KR/2022 — SK BSKAP)*
 
 ### Catatan Pedagogis:
-Konteks **Rumah Cerdas (Smart Home IoT)** digunakan sebagai **sarana konteks / studi kasus aplikatif nyata**, bukan tujuan akhir. Tujuannya adalah mempermudah siswa memahami dan memvisualisasikan bagaimana 4 fondasi berpikir komputasional dan logika kondisional bekerja secara nyata dalam teknologi modern.
+Konteks **Rumah Cerdas (Smart Home)** digunakan sebagai **sarana konteks / studi kasus**, bukan tujuan akhir. Rumah Cerdas adalah contoh nyata yang bisa dibayangkan siswa SMP untuk memahami bagaimana 4 fondasi berpikir komputasional bekerja di kehidupan nyata. **Inti yang harus dikuasai adalah cara berpikirnya**, bukan teknologinya.
 
 ### Tujuan Pembelajaran (TP):
 Setelah mengikuti pembelajaran melalui media interaktif ini, peserta didik diharapkan mampu:
 1. **Menjelaskan 4 Fondasi Berpikir Komputasional:** Mengidentifikasi dan memahami konsep *Dekomposisi, Abstraksi, Pengenalan Pola (Pattern Recognition),* dan *Algoritma* sebagai metode pemecahan masalah (*problem solving*) yang sistematis.
-2. **Menerapkan Dekomposisi:** Memecah persoalan atau sistem yang rumit menjadi bagian-bagian atau subsistem yang lebih kecil, terstruktur, dan mudah dikelola (Input $\rightarrow$ Proses $\rightarrow$ Output).
-3. **Menerapkan Abstraksi:** Menyaring dan berfokus hanya pada informasi/data esensial yang relevan dengan tujuan, serta mengabaikan detail-detail yang tidak diperlukan.
-4. **Menerapkan Pengenalan Pola:** Mengidentifikasi kesamaan karakteristik, keteraturan tren, atau siklus berulang pada data/lingkungan untuk merumuskan solusi efisien yang dapat digunakan kembali.
-5. **Merancang Algoritma & Logika Kondisional:** Menyusun urutan langkah instruksi logis dan aturan pengambilan keputusan (*IF-THEN, IF-AND-THEN, IF-ELSE*) dalam format instruksi terstruktur (*pseudocode* sederhana) untuk menyelesaikan persoalan otomasi.
+2. **Menerapkan Dekomposisi:** Memecah persoalan atau sistem yang rumit menjadi bagian-bagian kecil yang lebih mudah ditangani satu per satu.
+3. **Menerapkan Abstraksi:** Menyaring dan berfokus hanya pada informasi penting yang dibutuhkan, serta mengabaikan detail yang tidak relevan.
+4. **Menerapkan Pengenalan Pola:** Mengidentifikasi kesamaan, keteraturan, atau siklus berulang pada data/kejadian untuk membuat solusi yang efisien.
+5. **Merancang Algoritma & Logika Kondisional:** Menyusun urutan langkah instruksi logis dan aturan pengambilan keputusan (*JIKA-MAKA, JIKA-DAN-MAKA, JIKA-MAKA-JIKA TIDAK*) untuk menyelesaikan masalah secara otomatis.
 
 ---
 
@@ -37,18 +37,27 @@ Setelah mengikuti pembelajaran melalui media interaktif ini, peserta didik dihar
 **Narasi / Dialog Karakter:**
 > *"Halo, Sahabat Informatika! 👋*
 >
-> *Pernahkah kamu terburu-buru berangkat ke sekolah di pagi hari, lalu sesampainya di kelas kamu tiba-tiba teringat: 'Aduh! Lampu kamarku sudah dimatikan belum ya? Kipas anginku masih menyala tidak ya?'*
+> *Pernahkah kamu mengalami hal seperti ini?*
 >
-> *Sekarang bayangkan jika kamarmu punya 'otak kecil' sendiri. Ketika kamu pergi dan hari sudah siang, lampu otomatis mati. Saat kamu pulang di sore hari yang gerah, kipas angin menyala otomatis menyambutmu.*
+> *Pagi hari, kamu buru-buru berangkat ke sekolah. Sesampainya di kelas, tiba-tiba kamu teringat: 'Aduh! Lampu kamarku sudah dimatikan belum ya? Kipas anginku masih menyala tidak?'*
 >
-> *Apakah rumah itu punya sihir? Tentu tidak! Rumah seperti itu disebut **Rumah Cerdas (Smart Home)**. Di baliknya, ada **cara berpikir manusia** yang diterjemahkan menjadi bahasa komputasi. Cara berpikir itu disebut **Berpikir Komputasional (Computational Thinking)**.*
+> *Atau coba bayangkan: saat siang hari yang panas, kamu pulang sekolah dan berharap kamar sudah dingin duluan. Enak banget kan kalau kipas angin bisa nyala sendiri sebelum kamu sampai?*
 >
-> *Berpikir Komputasional bukan tentang berpikir seperti robot, melainkan melatih otak kita agar mampu memecahkan masalah yang rumit dengan cara yang rapi, terstruktur, dan cerdas. Yuk, kita pelajari 4 fondasi rahasianya! 🚀"*
+> *Nah, sekarang bayangkan kalau rumahmu punya 'otak kecil' yang bisa berpikir sendiri:*
+> - *Lampu otomatis mati kalau hari sudah terang ☀️*
+> - *Kipas nyala sendiri saat suhu panas 🌀*
+> - *Alarm berbunyi kalau ada orang asing masuk 🚨*
+>
+> *Rumah seperti itu bukan sihir! Itu namanya **Rumah Cerdas (Smart Home)**. Di balik kecanggihannya, ada **cara berpikir manusia** yang diajarkan ke mesin. Cara berpikir itu disebut **Berpikir Komputasional (Computational Thinking)**.*
+>
+> *Berpikir Komputasional bukan berarti kita harus berpikir seperti robot. Justru sebaliknya — kita melatih otak kita agar mampu memecahkan masalah sehari-hari dengan cara yang **rapi, terstruktur, dan cerdas**. Skill ini berguna bukan cuma di pelajaran Informatika, tapi juga saat mengerjakan PR, memasak, bahkan mengatur jadwal belajar!*
+>
+> *Yuk, kita pelajari 4 fondasi rahasianya! 🚀"*
 
 **Poin Pemantik di Layar:**
-- Apa itu Berpikir Komputasional? *(Melatih otak memecahkan masalah secara cerdas dan terstruktur)*.
-- Mengapa kita butuh 4 Fondasi BK dalam kehidupan sehari-hari dan teknologi?
-- Bagaimana 4 Fondasi BK menggerakkan sistem Rumah Cerdas?
+- 🤔 Apa sih Berpikir Komputasional? *(Melatih otak memecahkan masalah secara cerdas dan terstruktur — bukan hanya untuk komputer!)*
+- 💡 Mengapa 4 Fondasi BK berguna dalam kehidupan sehari-hari?
+- 🏠 Bagaimana cara kerja Rumah Cerdas? *(Spoiler: pakai 4 fondasi ini!)*
 
 ---
 
@@ -56,148 +65,217 @@ Setelah mengikuti pembelajaran melalui media interaktif ini, peserta didik dihar
 
 ---
 
-#### 🧩 TAB 1: DEKOMPOSISI (Decomposition) — *Memecah Masalah Besar Menjadi Kecil*
+#### 🧩 TAB 1: DEKOMPOSISI (Decomposition) — *Memecah Masalah Besar Menjadi Bagian Kecil*
 
-* **Konsep Dasar:**  
-  Kemampuan memecah suatu masalah, tugas, atau sistem yang besar dan kompleks menjadi bagian-bagian yang lebih kecil, sederhana, dan terfokus agar mudah diselesaikan satu per satu.
+* **Apa Itu Dekomposisi?**  
+  Dekomposisi adalah kemampuan **memecah masalah besar yang terlihat rumit menjadi bagian-bagian kecil** yang lebih mudah dikerjakan satu per satu. Bayangkan seperti memotong pizza besar — kalau utuh susah dimakan, tapi kalau dipotong jadi irisan kecil, jadi gampang!
 
-* **Analogi Kehidupan Sehari-hari:**  
-  * **Merapikan Kamar Tidur 🛏️:** Kamu tidak mungkin merapikan seluruh kamar dalam satu detik sekaligus. Kamu memecahnya jadi langkah-langkah kecil: ① Rapikan tempat tidur $\rightarrow$ ② Kumpulkan baju kotor ke keranjang $\rightarrow$ ③ Tata buku di meja belajar $\rightarrow$ ④ Buang sampah $\rightarrow$ ⑤ Sapu lantai.
-  * **Tugas Kelompok Mading 🎨:** Tugas membuat majalah dinding dibagi: siapa yang mencari artikel, siapa yang menggambar ilustrasi, dan siapa yang menata tata letak.
+* **Contoh di Kehidupan Sehari-hari:**  
+  * **Merapikan Kamar Tidur 🛏️:** Kamu tidak bisa merapikan seluruh kamar sekaligus dalam satu detik. Kamu memecahnya jadi langkah-langkah kecil: ① Rapikan tempat tidur → ② Kumpulkan baju kotor ke keranjang → ③ Tata buku di meja belajar → ④ Buang sampah → ⑤ Sapu lantai. Setiap langkah kecil terasa mudah, kan?
+  * **Mengerjakan Tugas Presentasi Kelompok 📊:** Tugas besar "buat presentasi" dipecah menjadi: Siapa yang riset materi? Siapa yang buat slide? Siapa yang latihan presentasi? Siapa yang siapkan pertanyaan?
+  * **Tugas Mading Kelas 🎨:** Mading dibagi tugasnya: cari artikel, gambar ilustrasi, tata layout, dan hias.
 
-* **Penerapan pada Sistem Rumah Cerdas (Studi Kasus IoT):**  
-  Sistem rumah cerdas yang tampak canggih sebenarnya didekomposisi menjadi **3 bagian sederhana**:
-  1. **🛰️ SENSOR (Input / Indera):** Alat pencari tahu yang membaca kondisi lingkungan.
-     * *Sensor Cahaya (LDR):* Mengukur tingkat terang/gelap (satuan Lux).
-     * *Sensor Suhu (DHT11):* Mengukur derajat panas/dingin udara (°C).
-     * *Sensor Gerak (PIR):* Mendeteksi pancaran panas tubuh manusia saat bergerak.
-  2. **🧠 MIKROKONTROLER (Proses / Otak):** Komputer mini (seperti *Arduino* atau *ESP32*) yang menerima data sensor, mengevaluasi aturan logika program, lalu memutuskan tindakan.
-  3. **💡 AKTUATOR (Output / Pelaksana Tindakan):** Perangkat fisik yang melakukan aksi nyata.
+* **Penerapan di Rumah Cerdas:**  
+  Rumah cerdas yang terlihat canggih sebenarnya bisa dipecah jadi **3 bagian sederhana** (sama seperti tubuh manusia punya indera, otak, dan anggota tubuh!):
+  1. **📡 SENSOR (Input / Indera Rumah):** Alat yang bisa "merasakan" kondisi lingkungan, mirip mata dan kulit kita.
+     * *Sensor Cahaya:* Merasakan terang atau gelap (seperti mata kita yang bisa membedakan siang dan malam).
+     * *Sensor Suhu:* Merasakan panas atau dingin udara (seperti kulit kita yang merasakan gerah).
+     * *Sensor Gerak:* Mendeteksi ada tidaknya orang bergerak di ruangan (seperti kita menoleh saat mendengar langkah kaki).
+  2. **🧠 KOMPUTER MINI (Proses / Otak Rumah):** Otak kecil berupa komputer mungil (disebut *mikrokontroler*) yang menerima informasi dari sensor, lalu berpikir dan memutuskan apa yang harus dilakukan — persis seperti otak kita yang memproses informasi.
+  3. **💡 AKTUATOR (Output / Tangan & Kaki Rumah):** Alat yang melakukan aksi nyata berdasarkan perintah dari "otak".
      * *Lampu LED:* Menyala menerangi ruangan.
-     * *Kipas Angin (Motor DC):* Berputar menyejukkan ruangan.
-     * *Sirine Buzzer:* Berbunyi memberi peringatan bahaya.
+     * *Kipas Angin:* Berputar menyejukkan ruangan.
+     * *Buzzer (Alarm):* Berbunyi memberi tanda bahaya.
 
-> 💡 **Intisari Dekomposisi:** Masalah serumit apa pun menjadi mudah dikelola jika dipecah menjadi: **Sensor (Input)** $\rightarrow$ **Mikrokontroler (Proses)** $\rightarrow$ **Aktuator (Output)**!
+> 💡 **Intisari:** Masalah serumit apa pun jadi lebih mudah kalau dipecah menjadi bagian kecil. Di rumah cerdas: **Sensor** (merasakan) → **Otak Komputer** (berpikir) → **Aktuator** (bertindak)!
 
 ---
 
 #### 🔍 TAB 2: ABSTRAKSI (Abstraction) — *Fokus Pada yang Penting, Abaikan yang Tidak Perlu*
 
-* **Konsep Dasar:**  
-  Kemampuan menyaring informasi dengan hanya memusatkan perhatian pada data esensial yang dibutuhkan untuk menyelesaikan masalah, dan dengan sengaja mengabaikan detail-detail yang tidak relevan.
+* **Apa Itu Abstraksi?**  
+  Abstraksi adalah kemampuan **menyaring informasi — hanya fokus pada data penting yang dibutuhkan**, dan sengaja mengabaikan detail-detail yang tidak relevan. Ini seperti saat guru bilang "yang penting inti ceritanya" — kamu tidak perlu menghafalkan setiap kata, cukup pahami ide utamanya.
 
-* **Analogi Kehidupan Sehari-hari:**  
-  * **Peta Rute KRL / MRT 🚇:** Peta jalur kereta hanya menampilkan garis stasiun dan titik transit. Peta TIDAK menggambar pohon di pinggir rel, deretan ruko, atau jenis aspal jalan karena informasi itu tidak dibutuhkan penumpang untuk bepergian.
-  * **Buku Kontak di HP 📱:** Kamu hanya menyimpan Nama dan Nomor Telepon temanmu. Kamu tidak perlu mencatat warna baju favorit atau ukuran sepatunya di buku telepon.
+* **Contoh di Kehidupan Sehari-hari:**  
+  * **Peta Rute KRL / MRT 🚇:** Peta jalur kereta hanya menampilkan nama stasiun dan garis jalur. Tidak ada gambar pohon, toko, atau warna aspal jalan. Kenapa? Karena informasi itu **tidak dibutuhkan** penumpang untuk sampai tujuan.
+  * **Buku Kontak di HP 📱:** Kamu hanya menyimpan Nama dan Nomor HP temanmu. Kamu tidak mencatat warna baju favorit atau ukuran sepatunya — informasi itu tidak berguna untuk menghubungi teman.
+  * **Mengisi Formulir Pendaftaran Sekolah 📝:** Formulir hanya minta data penting: Nama, Alamat, Tanggal Lahir, Nilai Rapor. Formulir TIDAK menanyakan makanan favorit, nama hewan peliharaan, atau warna kamar tidurmu — karena tidak relevan.
 
-* **Penerapan pada Sistem Rumah Cerdas (Studi Kasus IoT):**  
-  * Saat merancang **lampu kamar otomatis**, data yang ada di kamar sangat banyak: warna cat dinding, merk kasur, motif sprei, ukuran lemari, dan poster di tembok.
-  * **Data Esensial yang Dipakai:** *Berapakah nilai sensor cahaya saat ini? Apakah < 200 Lux (gelap)?*
-  * **Data yang Diabaikan (Dibuang):** Warna cat tembok, merk kasur, dan jenis gantungan baju.
-  * **Manfaat Abstraksi:** Program mikrokontroler berjalan sangat cepat, hemat memori, hemat daya listrik, dan tidak terbebani data yang tidak berguna.
+* **Penerapan di Rumah Cerdas:**  
+  * Bayangkan kamarmu penuh dengan berbagai informasi: warna cat tembok biru, kasur bermerk tertentu, sprei motif kartun, lemari ukuran 2 meter, poster artis favorit di dinding, dll.
+  * Saat merancang **lampu otomatis**, yang perlu diketahui hanya satu: **"Berapa tingkat cahaya saat ini? Apakah gelap?"** Itu saja!
+  * **Data Penting (Dipakai):** Nilai cahaya dari sensor — apakah gelap (kurang dari 200 Lux)?
+  * **Data Tidak Penting (Dibuang):** Warna cat tembok, merk kasur, motif sprei, poster di dinding — semua itu tidak mempengaruhi kerja lampu otomatis!
+  * **Hasilnya:** Program di komputer mini berjalan sangat ringan, cepat, dan hemat listrik karena tidak perlu memproses data-data yang tidak berguna.
 
-> 💡 **Intisari Abstraksi:** Abstraksi membuat sistem bekerja efisien dengan menyaring hal-hal penting dan membuang detail yang mubazir.
+> 💡 **Intisari:** Abstraksi membuat kita (dan komputer) bekerja lebih efisien. Fokus pada yang penting, abaikan yang mubazir!
 
 ---
 
 #### 📈 TAB 3: PENGENALAN POLA (Pattern Recognition) — *Melihat Keteraturan & Siklus Berulang*
 
-* **Konsep Dasar:**  
-  Kemampuan menemukan kesamaan karakteristik, tren, atau keteraturan berulang pada suatu data/kejadian untuk memprediksi hal yang akan terjadi dan membuat solusi yang bisa digunakan berulang kali.
+* **Apa Itu Pengenalan Pola?**  
+  Pengenalan pola adalah kemampuan **menemukan kesamaan, tren, atau keteraturan yang berulang** pada suatu kejadian atau data. Dengan mengenali pola, kita bisa memprediksi apa yang akan terjadi dan membuat solusi yang bisa dipakai berulang kali tanpa memulai dari nol.
 
-* **Analogi Kehidupan Sehari-hari:**  
-  * **Pola Jam Macet Sekolah 🚗:** Kamu tahu bahwa setiap pagi pukul 06.30 lalu lintas depan sekolah selalu padat. Karena kamu mengenali pola ini, kamu berangkat 15 menit lebih awal agar tidak terlambat.
-  * **Pola Musim Hujan ☔:** Setiap bulan November–Februari hujan sering turun di sore hari, sehingga kamu selalu menyiapkan payung lipat di dalam tas.
-  * **Tebak Nada Lagu 🎵:** Kamu bisa menebak judul lagu hanya dari mendengar 3 ketukan nada pertama karena otakmu mengenali polanya.
+* **Contoh di Kehidupan Sehari-hari:**  
+  * **Pola Jam Macet 🚗:** Kamu tahu bahwa setiap pagi pukul 06.30, jalan depan sekolah selalu macet. Karena kamu sudah **mengenali pola** ini, kamu berangkat 15 menit lebih awal. Besok, lusa, dan seterusnya — kamu tidak perlu kaget lagi, karena polanya sudah kamu pahami.
+  * **Pola Musim Hujan ☔:** Setiap bulan November–Februari, hujan sering turun di sore hari. Kamu selalu siapkan payung lipat di tas sekolah selama bulan-bulan itu.
+  * **Pola Jadwal Ujian Semester 📚:** Kamu menyadari bahwa setiap semester, ujian selalu dimulai dari mata pelajaran yang banyak hafalan di hari pertama. Jadi kamu prioritaskan belajar mapel hafalan dulu.
+  * **Tebak Lagu dari Nada Pertama 🎵:** Kamu bisa langsung tahu judul lagu hanya dari mendengar 3-4 nada pertama karena otakmu sudah mengenali polanya.
 
-* **Penerapan pada Sistem Rumah Cerdas (Studi Kasus IoT):**  
-  * **Pola Siklus Siang-Malam ☀️🌙:** Sensor membaca bahwa setiap pukul 17.30–18.00 matahari selalu terbenam dan cahaya meredup drastis. Pukul 05.30 pagi cahaya selalu naik kembali.
-  * **Pola Suhu Siang Hari 🌡️:** Suhu ruangan konsisten naik di atas 31°C antara pukul 12.00–14.00 siang.
-  * **Manfaat Pengenalan Pola:** Sistem tidak perlu diprogram ulang setiap hari; mikrokontroler cukup memanfaatkan pola siklus ini untuk menjadwalkan otomasi lampu dan pendingin udara secara teratur.
+* **Penerapan di Rumah Cerdas:**  
+  * **Pola Siang-Malam ☀️🌙:** Sensor cahaya membaca bahwa setiap hari pukul 17.30–18.00, cahaya matahari selalu meredup drastis (matahari terbenam). Dan setiap pukul 05.30 pagi, cahaya selalu naik kembali (matahari terbit). Pola ini berulang setiap hari!
+  * **Pola Suhu Siang 🌡️:** Suhu ruangan selalu naik di atas 31°C antara pukul 12.00–14.00 siang, lalu turun kembali menjelang sore.
+  * **Manfaatnya:** Berkat pengenalan pola, sistem rumah cerdas tidak perlu diprogram ulang setiap hari. Cukup satu kali atur aturan berdasarkan pola yang sudah dikenali, dan sistem berjalan otomatis terus-menerus!
 
-> 💡 **Intisari Pengenalan Pola:** Dengan mengenali pola berulang, kita bisa membuat aturan otomatisasi yang bekerja stabil sepanjang waktu.
+> 💡 **Intisari:** Dengan mengenali pola berulang, kita bisa membuat aturan yang bekerja stabil sepanjang waktu — tanpa harus mengatur ulang setiap hari.
 
 ---
 
 #### ⚡ TAB 4: ALGORITMA & LOGIKA KONDISIONAL (Algorithm & Logic) — *Instruksi Logis & Pengambilan Keputusan*
 
-* **Konsep Dasar Algoritma:**  
-  Menyusun rangkaian instruksi langkah demi langkah yang logis, berurutan, terstruktur, dan tidak bermakna ganda (tidak ambigu) untuk menyelesaikan masalah atau mengambil keputusan.
+* **Apa Itu Algoritma?**  
+  Algoritma adalah **rangkaian langkah-langkah yang jelas, berurutan, dan tidak membingungkan** untuk menyelesaikan masalah. Seperti resep masakan — kalau langkahnya benar dan urut, hasilnya pasti berhasil. Kalau langkahnya acak atau tertukar, hasilnya bisa gagal!
 
-* **Analogi Kehidupan Sehari-hari:**  
-  * **Resep Memasak Mie Instan 🍜:**  
-    ① Rebus 400 ml air hingga mendidih $\rightarrow$ ② Masukkan mie selama 3 menit $\rightarrow$ ③ Tuang bumbu ke piring $\rightarrow$ ④ Tiriskan mie dan aduk bersama bumbu. *(Jika langkah tertukar, hasilnya akan gagal!).*
-  * **Langkah Aman Menyeberang Jalan 🚶:**  
-    ① Berdiri di tepi jalan $\rightarrow$ ② Tengok kanan $\rightarrow$ ③ Tengok kiri $\rightarrow$ ④ JIKA aman, melangkah maju $\rightarrow$ ⑤ JIKA TIDAK aman, tunggu sejenak.
+* **Contoh di Kehidupan Sehari-hari:**  
+  * **Resep Mie Instan 🍜:**  
+    ① Rebus air sampai mendidih → ② Masukkan mie, tunggu 3 menit → ③ Tuang bumbu ke piring → ④ Tiriskan mie dan aduk bersama bumbu. *(Coba bayangkan kalau langkah 3 dan 1 tertukar — bumbunya direbus! Pasti rasanya aneh!)*
+  * **Login ke WiFi Sekolah 📶:**  
+    ① Buka menu Settings → ② Pilih WiFi → ③ Cari nama WiFi sekolah → ④ Masukkan password → ⑤ Tekan "Connect". *(Kalau kamu langsung tekan Connect tanpa memasukkan password, pasti gagal!)*
 
-* **Jantung Algoritma: Logika Kondisional (Aturan Keputusan Komputer):**  
-  Komputer dan mikrokontroler tidak memiliki insting; mereka mengambil keputusan berdasarkan **aturan logika kondisional**:
+* **Jantung Algoritma: Logika Kondisional (Aturan Keputusan)**  
+  Komputer dan komputer mini (mikrokontroler) tidak bisa menebak atau berinsting seperti manusia. Mereka mengambil keputusan berdasarkan **aturan yang jelas**:
 
-  1. **Logika Tunggal (JIKA - MAKA / *IF - THEN*):**  
-     *Pola:* `JIKA (Syarat Terpenuhi) -> MAKA (Jalankan Aksi)`  
-     *Contoh di Rumah Cerdas (Lampu Otomatis):*  
-     `JIKA Sensor Cahaya < 200 Lux (Gelap) -> MAKA Nyalakan Lampu Kamar 💡`
+  1. **Logika Tunggal (JIKA - MAKA):**  
+     *Artinya:* Kalau syarat terpenuhi, lakukan aksi.  
+     *Contoh di Rumah Cerdas:*  
+     `JIKA Sensor Cahaya mendeteksi GELAP → MAKA Nyalakan Lampu 💡`  
+     *Contoh sehari-hari:*  
+     `JIKA hujan turun → MAKA buka payung ☔`
 
-  2. **Logika Majemuk (JIKA - DAN - MAKA / *IF - AND - THEN*):**  
-     *Pola:* Menggabungkan dua syarat dengan kata hubung **DAN**. Aksi hanya jalan jika **SEMUA syarat bernilai BENAR**.  
+  2. **Logika Majemuk (JIKA - DAN - MAKA):**  
+     *Artinya:* Ada dua syarat yang harus terpenuhi **SEMUA** baru aksi dilakukan.  
      *Contoh di Rumah Cerdas (Kipas Hemat Listrik):*  
-     `JIKA Suhu Ruangan > 30°C (Panas) DAN Sensor Gerak Mendeteksi Orang -> MAKA Putar Kipas Angin 🌀`  
-     *(Jika suhu panas tetapi kamar kosong, kipas TIDAK berputar, sehingga menghemat listrik!).*
+     `JIKA Suhu panas (> 30°C) DAN ada orang di ruangan → MAKA Putar Kipas Angin 🌀`  
+     *(Kenapa pakai DAN? Kalau suhu panas tapi kamar kosong, kipas nyala sia-sia → boros listrik!)*  
+     *Contoh sehari-hari:*  
+     `JIKA hari libur DAN cuaca cerah → MAKA pergi olahraga 🏃`
 
-  3. **Logika Percabangan (JIKA - MAKA - JIKA TIDAK / *IF - THEN - ELSE*):**  
-     *Pola:* Menyediakan respon alternatif jika syarat utama tidak terpenuhi.  
-     *Contoh di Rumah Cerdas (Sistem Keamanan Pintu):*  
-     `JIKA Pintu Terbuka TANPA Kartu Kunci Sah -> MAKA Bunyikan Sirine Alarm 🚨;`  
-     `JIKA TIDAK (Kartu Sah Terbaca) -> MAKA Buka Kunci Pintu dengan Aman ✅.`
+  3. **Logika Percabangan (JIKA - MAKA - JIKA TIDAK):**  
+     *Artinya:* Menyediakan aksi alternatif jika syarat tidak terpenuhi.  
+     *Contoh di Rumah Cerdas (Alarm Keamanan):*  
+     `JIKA pintu dibuka TANPA kartu kunci yang sah → MAKA Bunyikan Alarm 🚨`  
+     `JIKA TIDAK (kartu sah terdeteksi) → MAKA Buka Kunci Pintu dengan aman ✅`  
+     *Contoh sehari-hari:*  
+     `JIKA jawaban ujian benar → MAKA dapat nilai`  
+     `JIKA TIDAK → MAKA pelajari kembali materinya 📖`
 
-> 💡 **Intisari Algoritma:** Algoritma adalah jembatan instruksi dari pikiran manusia ke komputer. Logika kondisional (*IF-THEN-ELSE*) memungkinkan rumah cerdas mengambil keputusan secara otomatis dan tepat.
+> 💡 **Intisari:** Algoritma adalah "resep instruksi" dari pikiran manusia ke komputer. Logika kondisional (JIKA-MAKA) memungkinkan rumah cerdas mengambil keputusan otomatis dan tepat — seperti otak yang sudah diajari aturan!
 
 ---
 
 ## 3. Video Pembelajaran (Audio-Visual)
 
-* **Konten:** Animasi cara kerja sistem Rumah Cerdas (Smart Home IoT).
-* **Fokus Tayangan:** Memperlihatkan bagaimana Sensor LDR membaca cahaya senja (Dekomposisi & Abstraksi), Mikrokontroler mengevaluasi logika `IF Cahaya < 200 Lux` (Algoritma), dan Lampu teras menyala otomatis (Aktuator).
+* **Konten:** Animasi cara kerja sistem Rumah Cerdas (Smart Home).
+* **Fokus Tayangan:** Memperlihatkan bagaimana Sensor Cahaya membaca cahaya senja (Dekomposisi & Abstraksi), Komputer Mini mengevaluasi logika `JIKA Cahaya Gelap` (Algoritma), dan Lampu teras menyala otomatis (Aktuator).
 
 ---
 
-## 4. Aktivitas Tarik Jawaban (Drag & Drop Uji Konsep)
+## 4. Aktivitas Interaktif: Rancang Rumah Cerdasmu! (Drag & Drop Komponen Visual)
 
 **Instruksi bagi Siswa:**  
-*"Tarik kartu konsep di sebelah kiri, lalu pasangkan pada kotak penjelasan yang tepat di sebelah kanan!"*
+*"Jadilah arsitek rumah cerdas! Seret komponen sensor dan aktuator yang tepat ke setiap ruangan rumah. Pasangkan alat yang sesuai dengan kebutuhan tiap ruangan!"*
 
-| Konsep Berpikir Komputasional (Kiri) | Penjelasan Penerapan Kontekstual (Kanan) |
-|---|---|
-| **Dekomposisi** | Memecah sistem rumah cerdas menjadi 3 bagian sederhana: Sensor (Input), Mikrokontroler (Proses), dan Aktuator (Output) |
-| **Abstraksi** | Hanya fokus pada data tingkat cahaya gelap/terang saat merancang lampu otomatis dan mengabaikan warna cat tembok |
-| **Pengenalan Pola** | Mengenali bahwa matahari selalu terbenam pukul 18.00 setiap hari untuk menjadwalkan lampu otomatis secara teratur |
-| **Algoritma** | Menyusun aturan logika langkah demi langkah: JIKA sensor gelap MAKA nyalakan lampu, JIKA terang MAKA matikan |
-| **Sensor (Input)** | Alat pencari tahu yang membaca kondisi fisik lingkungan (cahaya, suhu, gerakan) sebagai masukan data |
-| **Aktuator (Output)** | Alat pelaksana fisik yang melakukan aksi nyata (lampu menyala, kipas berputar, sirine alarm berbunyi) |
+### Skenario Ruangan & Komponen:
+
+**Ruangan yang Tersedia (Drop Zones):**
+
+| No | Ruangan | Kebutuhan Otomasi | Sensor yang Tepat | Aktuator yang Tepat |
+|----|---------|-------------------|--------------------|--------------------|
+| 1 | 🛏️ Kamar Tidur | Lampu otomatis mati/nyala | 📡 Sensor Cahaya | 💡 Lampu LED |
+| 2 | 🛋️ Ruang Tamu | Kipas otomatis saat panas & ada orang | 🌡️ Sensor Suhu + 🚶 Sensor Gerak | 🌀 Kipas Angin |
+| 3 | 🚪 Teras / Pintu Depan | Alarm keamanan saat ada penyusup | 🚶 Sensor Gerak | 🔔 Alarm / Buzzer |
+| 4 | 🍳 Dapur | Deteksi kebocoran gas | 💨 Sensor Gas | 🔔 Alarm + 🪟 Ventilasi Otomatis |
+
+**Komponen yang Bisa Diseret (Draggable Items):**
+- 📡 Sensor Cahaya — *Merasakan terang/gelap*
+- 🌡️ Sensor Suhu — *Merasakan panas/dingin*
+- 🚶 Sensor Gerak — *Mendeteksi ada/tidaknya orang*
+- 💨 Sensor Gas — *Mendeteksi kebocoran gas berbahaya*
+- 💡 Lampu LED — *Menerangi ruangan*
+- 🌀 Kipas Angin — *Mendinginkan ruangan*
+- 🔔 Alarm / Buzzer — *Berbunyi memberi peringatan*
+- 🪟 Ventilasi Otomatis — *Membuka jendela/sirkulasi udara*
+
+**Mekanika:**
+- Siswa menyeret ikon komponen (bergambar, bukan sekadar teks) ke slot ruangan
+- Setiap ruangan memiliki 1-2 slot "Sensor" dan 1-2 slot "Aktuator"
+- Feedback langsung: hijau jika benar, merah jika salah
+- Skor ditampilkan setelah semua ruangan terisi
 
 ---
 
-## 5. Simulator Permainan Edukatif: Smart Home IoT Lab
+## 5. Permainan Edukatif: Tantangan Berpikir Komputasional — 4 Tahap
 
-Siswa berperan sebagai **Arsitek Rumah Cerdas** yang merancang dan menguji aturan logika pada 3 misi interaktif:
+Siswa melewati **4 tahap permainan bertingkat**, masing-masing melatih satu fondasi Berpikir Komputasional. Setiap tahap harus diselesaikan sebelum bisa lanjut ke tahap berikutnya (progressive unlock).
 
-### 🔹 Misi 1: Lampu Kamar Otomatis (Logika Sederhana)
-* **Tantangan:** Rancang aturan agar lampu kamar otomatis menyala ketika ruangan gelap (< 200 Lux) dan padam saat terang.
-* **Panel Uji:** Slider Sensor Cahaya LDR (0–800 Lux).
-* **Blok Aturan:** `JIKA Cahaya < 200 Lux -> MAKA Nyalakan Lampu -> JIKA TIDAK -> Matikan Lampu`.
-* **Respon Visual:** Lampu memancarkan pendaran kuning saat slider digeser ke area gelap.
+---
 
-### 🔹 Misi 2: Kipas Angin Pintar Hemat Energi (Logika Majemuk)
-* **Tantangan:** Cegah pemborosan listrik! Kipas angin hanya boleh berputar jika suhu terasa panas (> 30°C) **DAN** sensor mendeteksi keberadaan orang di ruangan.
-* **Panel Uji:** Slider Suhu (20–40°C) + Tombol Deteksi Gerak PIR (Ada Orang / Kosong).
-* **Blok Aturan:** `JIKA Suhu > 30°C DAN Ada Gerakan -> MAKA Putar Kipas Angin`.
-* **Respon Visual:** Animasi kipas berputar kencang hanya saat kedua syarat terpenuhi secara bersamaan.
+### 🧩 TAHAP 1: DEKOMPOSISI — "Pecah Sistemnya!"
+* **Tantangan:** Di layar muncul berbagai komponen rumah cerdas yang campur aduk. Siswa harus menyeret setiap komponen ke 3 kategori yang benar.
+* **Komponen yang Diacak:**
+  - Sensor Cahaya, Sensor Suhu, Sensor Gerak (kategori: INPUT / Sensor)
+  - Komputer Mini / Mikrokontroler (kategori: PROSES / Otak)
+  - Lampu LED, Kipas Angin, Alarm Buzzer (kategori: OUTPUT / Aktuator)
+* **Mekanika:** Drag-and-drop ke 3 kotak kategori
+* **Skor:** 1 bintang jika semua benar
 
-### 🔹 Misi 3: Sistem Keamanan Pintu & Alarm (Logika Percabangan)
-* **Tantangan:** Lindungi rumah dari penyusup. Jika pintu terbuka tanpa kartu kunci yang sah, sirine alarm darurat harus berbunyi.
-* **Panel Uji:** Switch Status Pintu (Terbuka/Tertutup) + Switch Kartu RFID (Sah/Ilegal).
-* **Blok Aturan:** `JIKA Pintu Terbuka TANPA Kartu Sah -> MAKA Bunyikan Sirine & Kirim Sinyal Bahaya`.
-* **Respon Visual:** Sirine berkedip merah dan memancarkan efek suara alarm darurat.
+---
+
+### 🔍 TAHAP 2: ABSTRAKSI — "Pilih Data yang Penting!"
+* **Tantangan:** Ditampilkan skenario "Merancang Lampu Kamar Otomatis". Ada banyak kartu data tentang kamar, siswa harus memilih hanya data yang relevan dan membuang yang tidak penting.
+* **Kartu Data yang Muncul (Klik untuk Pilih/Buang):**
+  - Data Penting: "Tingkat cahaya ruangan (Lux)", "Apakah malam atau siang?", "Status lampu saat ini (nyala/mati)"
+  - Data Tidak Penting: "Warna cat tembok kamar", "Merk kasur di kamar", "Ukuran lemari pakaian", "Motif gorden jendela", "Jumlah poster di dinding"
+* **Mekanika:** Klik kartu untuk memilih (penting) atau membuang (tidak penting)
+* **Skor:** 1 bintang jika semua klasifikasi benar
+
+---
+
+### 📈 TAHAP 3: PENGENALAN POLA — "Temukan Polanya!"
+* **Tantangan:** Ditampilkan grafik/timeline sederhana data sensor cahaya selama 24 jam (dari jam 00.00 sampai 23.59). Siswa harus menandai:
+  1. Jam berapa cahaya mulai meredup (senja/matahari terbenam)?
+  2. Jam berapa cahaya mulai terang (fajar/matahari terbit)?
+  3. Apakah pola ini berulang setiap hari?
+* **Data Grafik Sensor:**
+  - 00.00-05.00: Gelap (cahaya rendah ~50 Lux)
+  - 05.30-06.00: Cahaya naik perlahan (fajar) → 200 Lux
+  - 06.00-17.00: Terang (cahaya tinggi ~500-800 Lux)
+  - 17.30-18.00: Cahaya turun drastis (senja) → 150 Lux
+  - 18.00-23.59: Gelap kembali (~50 Lux)
+* **Mekanika:** Klik pada area timeline untuk menandai waktu senja dan fajar + jawab pertanyaan "Apakah berulang?" (Ya/Tidak)
+* **Skor:** 1 bintang jika semua jawaban benar
+
+---
+
+### ⚡ TAHAP 4: ALGORITMA — "Susun Aturan Logikanya!"
+* **Tantangan:** Siswa menyusun blok-blok logika IF-THEN dari potongan kalimat yang diacak untuk membuat 3 aturan otomasi rumah cerdas.
+* **Aturan yang Harus Disusun:**
+  1. **Lampu Otomatis (Logika Tunggal):**
+     Blok: [JIKA] [Sensor Cahaya = Gelap] [MAKA] [Nyalakan Lampu]
+  2. **Kipas Hemat Energi (Logika Majemuk):**
+     Blok: [JIKA] [Suhu > 30C] [DAN] [Ada Orang] [MAKA] [Putar Kipas]
+  3. **Alarm Keamanan (Logika Percabangan):**
+     Blok: [JIKA] [Pintu Terbuka] [TANPA Kartu Sah] [MAKA] [Bunyikan Alarm] [JIKA TIDAK] [Buka Pintu Aman]
+* **Mekanika:** Drag-and-drop blok kalimat ke slot urutan yang benar
+* **Skor:** 1 bintang jika semua aturan tersusun benar
+
+---
+
+### Skor Total Permainan:
+- **4/4 Bintang:** *"Luar biasa, Arsitek Rumah Cerdas! Kamu menguasai semua fondasi Berpikir Komputasional!"*
+- **2-3/4 Bintang:** *"Hebat! Kamu sudah paham sebagian besar konsep. Coba ulangi tahap yang belum dapat bintang!"*
+- **0-1/4 Bintang:** *"Semangat! Pelajari kembali materinya dan coba lagi!"*
 
 ---
 
@@ -205,9 +283,9 @@ Siswa berperan sebagai **Arsitek Rumah Cerdas** yang merancang dan menguji atura
 
 ---
 
-### 📝 Bagian A — Pilihan Ganda (5 Soal @ 1 Poin = 5 Poin)
+### Bagian A — Pilihan Ganda (5 Soal @ 1 Poin = 5 Poin)
 
-1. **(C2 - Dekomposisi)** Memecah sistem rumah pintar yang rumit menjadi komponen Sensor (Input), Mikrokontroler (Proses), dan Aktuator (Output) merupakan penerapan fondasi...  
+1. **(C2 - Dekomposisi)** Memecah sistem rumah pintar yang rumit menjadi komponen Sensor (Input), Komputer Mini (Proses), dan Aktuator (Output) merupakan penerapan fondasi...  
    A. Abstraksi  
    B. **Dekomposisi** *(Kunci Benar)*  
    C. Pengenalan Pola  
@@ -219,19 +297,19 @@ Siswa berperan sebagai **Arsitek Rumah Cerdas** yang merancang dan menguji atura
    C. **Abstraksi** *(Kunci Benar)*  
    D. Kompilasi  
 
-3. **(C2 - Konsep IoT & Input/Output)** Dalam sistem Rumah Cerdas, komponen yang bertindak sebagai "indera" untuk membaca perubahan kondisi lingkungan fisik sekitar (seperti cahaya, suhu, atau gerakan) adalah...  
+3. **(C2 - Konsep Input/Output)** Dalam sistem Rumah Cerdas, komponen yang bertindak sebagai "indera" untuk membaca perubahan kondisi lingkungan fisik sekitar (seperti cahaya, suhu, atau gerakan) adalah...  
    A. Aktuator (Lampu / Kipas)  
-   B. **Sensor (LDR / Suhu / PIR)** *(Kunci Benar)*  
+   B. **Sensor (Cahaya / Suhu / Gerak)** *(Kunci Benar)*  
    C. Baterai Cadangan  
    D. Kabel Penghubung  
 
-4. **(C3 - Algoritma Kondisional)** Manakah penulisan aturan logika kondisional yang paling tepat dan hemat energi agar kipas angin menyala hanya ketika suhu ruangan melebihi 30°C?  
-   A. JIKA Suhu < 30°C MAKA Nyalakan Kipas  
-   B. **JIKA Suhu > 30°C MAKA Nyalakan Kipas** *(Kunci Benar)*  
-   C. JIKA Kipas Berputar MAKA Suhu 30°C  
+4. **(C3 - Algoritma Kondisional)** Manakah penulisan aturan logika kondisional yang paling tepat dan hemat energi agar kipas angin menyala hanya ketika suhu ruangan melebihi 30 derajat Celcius?  
+   A. JIKA Suhu < 30 derajat MAKA Nyalakan Kipas  
+   B. **JIKA Suhu > 30 derajat MAKA Nyalakan Kipas** *(Kunci Benar)*  
+   C. JIKA Kipas Berputar MAKA Suhu 30 derajat  
    D. JIKA Ruangan Kosong MAKA Nyalakan Kipas  
 
-5. **(C2 - Pengenalan Pola)** Sistem pemantau cuaca mendeteksi bahwa matahari selalu terbenam pukul 18.00 dan suhu udara selalu meningkat tajam pada pukul 12.00–14.00 setiap hari. Kemampuan mendeteksi keteraturan data berulang ini merupakan contoh fondasi...  
+5. **(C2 - Pengenalan Pola)** Sistem pemantau cuaca mendeteksi bahwa matahari selalu terbenam pukul 18.00 dan suhu udara selalu meningkat tajam pada pukul 12.00-14.00 setiap hari. Kemampuan mendeteksi keteraturan data berulang ini merupakan contoh fondasi...  
    A. Dekomposisi  
    B. Abstraksi  
    C. **Pengenalan Pola (Pattern Recognition)** *(Kunci Benar)*  
@@ -239,76 +317,76 @@ Siswa berperan sebagai **Arsitek Rumah Cerdas** yang merancang dan menguji atura
 
 ---
 
-### ✅❌ Bagian B — Benar / Salah (6 Soal @ 1 Poin = 6 Poin)
+### Bagian B — Benar / Salah (6 Soal @ 1 Poin = 6 Poin)
 
-1. Sensor bertindak sebagai perangkat output yang mengeksekusi gerakan mekanik pada sistem rumah cerdas. $\rightarrow$ **Salah** *(Sensor adalah input/pembaca data, sedangkan aktuator adalah output/pelaksana).*
-2. Mikrokontroler berfungsi sebagai otak pemroses data yang mengeksekusi aturan logika algoritma dari nilai sensor. $\rightarrow$ **Benar**
-3. Prinsip Abstraksi membantu komputer menghemat kapasitas memori dan daya komputasi karena hanya mengolah data penting yang relevan. $\rightarrow$ **Benar**
-4. Tanpa algoritma yang tersusun jelas dan pasti, mikrokontroler tetap dapat menebak waktu yang tepat untuk menyalakan sirine alarm. $\rightarrow$ **Salah** *(Komputer hanya bisa bekerja berdasarkan instruksi yang pasti).*
-5. Pada logika majemuk (JIKA - DAN - MAKA), seluruh syarat kondisi yang ditentukan harus bernilai benar agar aksi dapat dijalankan. $\rightarrow$ **Benar**
-6. Lampu LED, motor penggerak kipas, dan speaker sirine adalah contoh perangkat aktuator (output). $\rightarrow$ **Benar**
+1. Sensor bertindak sebagai perangkat output yang mengeksekusi gerakan mekanik pada sistem rumah cerdas. → **Salah** *(Sensor adalah input/pembaca data, sedangkan aktuator adalah output/pelaksana).*
+2. Komputer mini (mikrokontroler) berfungsi sebagai otak pemroses data yang mengeksekusi aturan logika algoritma dari nilai sensor. → **Benar**
+3. Prinsip Abstraksi membantu komputer menghemat kapasitas memori dan daya komputasi karena hanya mengolah data penting yang relevan. → **Benar**
+4. Tanpa algoritma yang tersusun jelas dan pasti, komputer mini tetap dapat menebak waktu yang tepat untuk menyalakan sirine alarm. → **Salah** *(Komputer hanya bisa bekerja berdasarkan instruksi yang pasti dan jelas).*
+5. Pada logika majemuk (JIKA - DAN - MAKA), seluruh syarat kondisi yang ditentukan harus bernilai benar agar aksi dapat dijalankan. → **Benar**
+6. Lampu LED, motor penggerak kipas, dan speaker sirine adalah contoh perangkat aktuator (output). → **Benar**
 
 ---
 
-### 🔗 Bagian C — Menjodohkan / Matching (5 Pasangan @ 1 Poin = 5 Poin)
+### Bagian C — Menjodohkan / Matching (5 Pasangan @ 1 Poin = 5 Poin)
 
 | Kolom Kiri (Komponen / Konsep) | Kolom Kanan (Peran & Definisi Kontekstual) |
 |---|---|
-| **1. Sensor Cahaya (LDR)** | **b.** Membaca intensitas cahaya gelap/terang di sekitar ruangan |
-| **2. Mikrokontroler (ESP32)** | **d.** Otak komputer mini yang memproses data dan mengeksekusi aturan logika |
-| **3. Aktuator (Relay)** | **a.** Saklar otomatis yang menghubungkan aliran listrik ke perangkat fisik |
-| **4. Logika JIKA-MAKA** | **e.** Aturan terstruktur untuk mengambil keputusan otomatis berdasarkan input |
-| **5. Abstraksi Data** | **c.** Menyaring data penting yang dibutuhkan dan mengabaikan detail non-esensial |
+| **1. Sensor Cahaya** | **b.** Membaca tingkat terang/gelap di sekitar ruangan (seperti mata) |
+| **2. Komputer Mini** | **d.** Otak kecil yang memproses data dan menjalankan aturan logika |
+| **3. Aktuator (Relay/Penggerak)** | **a.** Saklar otomatis yang menghubungkan listrik ke perangkat fisik |
+| **4. Logika JIKA-MAKA** | **e.** Aturan terstruktur untuk mengambil keputusan otomatis berdasarkan kondisi |
+| **5. Abstraksi Data** | **c.** Menyaring data penting yang dibutuhkan dan membuang detail yang tidak relevan |
 
 *Kunci Pasangan:* **1-b, 2-d, 3-a, 4-e, 5-c**
 
 ---
 
-### 📊 Bagian D — Drag & Drop Mengurutkan Algoritma (1 Poin)
+### Bagian D — Drag & Drop Mengurutkan Algoritma (1 Poin)
 
-**Instruksi:** *"Seret dan susunlah 6 tahapan cara kerja sistem lampu teras otomatis berikut ke urutan algoritma yang tepat dari awal hingga akhir!"*
+**Instruksi:** *"Seret dan susunlah 6 tahapan cara kerja sistem lampu teras otomatis berikut ke urutan yang tepat dari awal hingga akhir!"*
 
-*Kunci Urutan Runtut (1 $\rightarrow$ 6):*
-1. Sensor Cahaya (LDR) mengukur intensitas cahaya di sekitar teras rumah.
-2. Data analog pembacaan cahaya dikirimkan menuju pin input mikrokontroler.
-3. Mikrokontroler mengevaluasi aturan logika algoritma: apakah kondisi saat ini gelap (< 200 Lux)?
-4. Jika kondisi gelap terpenuhi, mikrokontroler mengirimkan sinyal pemicu aktif ke modul relay.
-5. Modul relay menghubungkan aliran arus listrik menuju lampu teras rumah.
-6. Lampu teras menyala secara otomatis menerangi lingkungan malam dengan aman.
+*Kunci Urutan Runtut (1 → 6):*
+1. Sensor Cahaya merasakan tingkat terang/gelap di sekitar teras rumah.
+2. Data pembacaan cahaya dikirim ke komputer mini (mikrokontroler).
+3. Komputer mini mengecek aturan logika: apakah saat ini gelap?
+4. Jika gelap, komputer mini mengirim perintah "nyalakan" ke saklar otomatis (relay).
+5. Saklar otomatis menghubungkan aliran listrik ke lampu teras.
+6. Lampu teras menyala otomatis menerangi halaman rumah di malam hari.
 
 ---
 
-### 🎮 Bagian E — Simulasi Praktik Keputusan Logika (1 Poin)
+### Bagian E — Simulasi Praktik Keputusan Logika (1 Poin)
 
 **Tantangan Kasus:**  
 *"Sebagai Arsitek Rumah Cerdas, analisislah pilihan aturan logika mana yang paling hemat energi, cerdas, dan adaptif untuk penerangan teras rumah malam hari!"*
 
 - Pilihan A: *Lampu Selalu Menyala 24 Jam Penuh Tanpa Sensor* (Boros listrik, tidak cerdas).
-- **Pilihan B (Kunci Benar):** *JIKA Sensor Cahaya Gelap DAN Sensor Gerak Mendeteksi Ada Orang $\rightarrow$ MAKA Lampu Menyala* (Hemat energi, adaptif, menerapkan logika multi-kondisi).
-- Pilihan C: *JIKA Siang Hari Terang $\rightarrow$ MAKA Lampu Menyala* (Logika terbalik dan boros energi).
+- **Pilihan B (Kunci Benar):** *JIKA Sensor Cahaya Gelap DAN Sensor Gerak Mendeteksi Ada Orang → MAKA Lampu Menyala* (Hemat energi, adaptif, menerapkan logika multi-kondisi).
+- Pilihan C: *JIKA Siang Hari Terang → MAKA Lampu Menyala* (Logika terbalik dan boros energi).
 
 ---
 
-### 🏆 Skema Rekapitulasi Skor & Apresiasi
+### Skema Rekapitulasi Skor & Apresiasi
 * **Total Poin:** Bagian A (5) + Bagian B (6) + Bagian C (5) + Bagian D (1) + Bagian E (1) = **18 Poin**
-* **Konversi Nilai:** $\text{Skor Akhir} = (\text{Poin Diperoleh} / 18) \times 100\%$
+* **Konversi Nilai:** Skor Akhir = (Poin Diperoleh / 18) x 100%
 * **Tingkat Apresiasi:**
-  - **90% – 100%:** *"Luar biasa, Arsitek! 🏆 Pemikiran komputasionalmu sangat matang! Kamu siap merancang inovasi rumah cerdas masa depan!"*
-  - **60% – 89%:** *"Kerja bagus! 👏 Kamu sudah memahami konsep berpikir komputasional dengan baik. Ulas kembali beberapa bagian untuk hasil sempurna!"*
-  - **< 60%:** *"Tetap semangat! 💪 Pelajari kembali 4 Fondasi Berpikir Komputasional dan coba simulasikan kembali!"*
+  - **90% - 100%:** *"Luar biasa, Arsitek! Pemikiran komputasionalmu sangat matang! Kamu siap merancang inovasi masa depan!"*
+  - **60% - 89%:** *"Kerja bagus! Kamu sudah memahami konsep berpikir komputasional dengan baik. Ulas kembali beberapa bagian untuk hasil sempurna!"*
+  - **< 60%:** *"Tetap semangat! Pelajari kembali 4 Fondasi Berpikir Komputasional dan coba lagi!"*
 
 ---
 
-## 7. Rangkuman Materi & Refleksi Kritis
+## 7. Rangkuman Materi & Refleksi
 
-### Ringkasan Intisari (Takeaway Points):
-1. **Berpikir Komputasional adalah Cara Berpikir:** Melatih kita menjadi pemecah masalah (*problem solver*) yang efektif, rapi, dan terstruktur. Keterampilan ini berguna di semua mata pelajaran dan kehidupan nyata.
+### Ringkasan Intisari:
+1. **Berpikir Komputasional adalah Cara Berpikir:** Melatih kita menjadi pemecah masalah yang efektif, rapi, dan terstruktur. Keterampilan ini berguna di semua mata pelajaran dan kehidupan nyata — bukan hanya untuk komputer!
 2. **Harmoni 4 Fondasi:** 
-   - 🧩 **Dekomposisi:** Memecah masalah besar jadi bagian kecil.
+   - 🧩 **Dekomposisi:** Pecah masalah besar jadi bagian kecil.
    - 🔍 **Abstraksi:** Fokus pada yang penting, abaikan yang tidak relevan.
-   - 📈 **Pengenalan Pola:** Mencari keteraturan atau siklus berulang.
-   - ⚡ **Algoritma:** Menyusun instruksi logis dan aturan keputusan (*IF-THEN-ELSE*).
-3. **Penerapan Teknologi:** Dalam otomasi modern (seperti IoT), **Sensor** membaca data (Input), **Mikrokontroler** memproses aturan logika (Proses), dan **Aktuator** mengeksekusi tindakan nyata (Output).
+   - 📈 **Pengenalan Pola:** Temukan keteraturan atau siklus berulang.
+   - ⚡ **Algoritma:** Susun instruksi logis dan aturan keputusan (JIKA-MAKA).
+3. **Penerapan di Rumah Cerdas:** **Sensor** merasakan kondisi (Input) → **Komputer Mini** berpikir dan memutuskan (Proses) → **Aktuator** melakukan aksi nyata (Output).
 
 ### Lembar Refleksi Siswa:
-> *"Setelah mempelajari materi ini, coba amati lingkungan rumah atau sekolahmu! Masalah sehari-hari apa lagi yang menurutmu bisa diselesaikan atau diotomatisasi dengan menerapkan 4 Fondasi Berpikir Komputasional? Tuliskan ide kreatifmu secara mandiri!"*
+> *"Setelah mempelajari materi ini, coba amati lingkungan rumah atau sekolahmu! Masalah sehari-hari apa lagi yang menurutmu bisa diselesaikan dengan menerapkan 4 Fondasi Berpikir Komputasional? Tuliskan ide kreatifmu secara mandiri!"*
