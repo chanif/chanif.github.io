@@ -102,6 +102,18 @@ function goToPage(pageId) {
   const scrollables = newPage.querySelectorAll('.scrollable');
   scrollables.forEach(el => el.scrollTop = 0);
 
+  // Stop all playing videos and audios when navigating to any page
+  document.querySelectorAll('video').forEach(v => {
+    try {
+      v.pause();
+    } catch (e) {}
+  });
+  document.querySelectorAll('audio').forEach(a => {
+    try {
+      a.pause();
+    } catch (e) {}
+  });
+
   // Lazy initialize interactive modules on page entry
   if (pageId === 'materi-1') switchMateri1Tab(1);
   if (pageId === 'tarik-jawaban') initSmartHomeActivity();
@@ -116,6 +128,19 @@ function goToPage(pageId) {
 }
 
 function navNext() {
+  if (currentPage === 'materi-1') {
+    const currentStepIndex = MATERI1_STEPS.findIndex(s => s.tab === currentMateri1Tab && s.step === currentMateri1Step);
+    if (currentStepIndex !== -1 && currentStepIndex < MATERI1_STEPS.length - 1) {
+      const nextStepInfo = MATERI1_STEPS[currentStepIndex + 1];
+      if (nextStepInfo.tab !== currentMateri1Tab) {
+        switchMateri1Tab(nextStepInfo.tab);
+      }
+      switchMateri1Step(nextStepInfo.tab, nextStepInfo.step);
+    } else {
+      goToPage('video');
+    }
+    return;
+  }
   const idx = LINEAR_PAGES.indexOf(currentPage);
   if (idx >= 0 && idx < LINEAR_PAGES.length - 1) {
     goToPage(LINEAR_PAGES[idx + 1]);
@@ -123,6 +148,19 @@ function navNext() {
 }
 
 function navPrev() {
+  if (currentPage === 'materi-1') {
+    const currentStepIndex = MATERI1_STEPS.findIndex(s => s.tab === currentMateri1Tab && s.step === currentMateri1Step);
+    if (currentStepIndex > 0) {
+      const prevStepInfo = MATERI1_STEPS[currentStepIndex - 1];
+      if (prevStepInfo.tab !== currentMateri1Tab) {
+        switchMateri1Tab(prevStepInfo.tab);
+      }
+      switchMateri1Step(prevStepInfo.tab, prevStepInfo.step);
+    } else {
+      goToPage('petunjuk');
+    }
+    return;
+  }
   const idx = LINEAR_PAGES.indexOf(currentPage);
   if (idx > 0) {
     goToPage(LINEAR_PAGES[idx - 1]);
@@ -130,9 +168,116 @@ function navPrev() {
 }
 
 // ==================== MATERI 1 GUIDED STEPPER NAVIGATION (OPSI 2) ====================
+let currentMateri1Tab = 1;
+let currentMateri1Step = 1;
 let activeMateriSteps = { 1: 1, 2: 1, 3: 1, 4: 1 };
 
+const MATERI1_STEPS = [
+  {
+    tab: 1,
+    step: 1,
+    prevText: 'Petunjuk',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Penerapan di Rumah Cerdas (IoT)',
+    nextSub: 'LANGKAH BERIKUTNYA',
+    isFinish: false
+  },
+  {
+    tab: 1,
+    step: 2,
+    prevText: 'Konsep Dasar Dekomposisi',
+    prevSub: 'LANGKAH SEBELUMNYA',
+    nextText: 'Fondasi 2: Abstraksi',
+    nextSub: 'FONDASI BERIKUTNYA',
+    isFinish: false
+  },
+  {
+    tab: 2,
+    step: 1,
+    prevText: 'Penerapan Dekomposisi IoT',
+    prevSub: 'LANGKAH SEBELUMNYA',
+    nextText: 'Penerapan di Rumah Cerdas (IoT)',
+    nextSub: 'LANGKAH BERIKUTNYA',
+    isFinish: false
+  },
+  {
+    tab: 2,
+    step: 2,
+    prevText: 'Konsep Dasar Abstraksi',
+    prevSub: 'LANGKAH SEBELUMNYA',
+    nextText: 'Fondasi 3: Pengenalan Pola',
+    nextSub: 'FONDASI BERIKUTNYA',
+    isFinish: false
+  },
+  {
+    tab: 3,
+    step: 1,
+    prevText: 'Penerapan Abstraksi IoT',
+    prevSub: 'LANGKAH SEBELUMNYA',
+    nextText: 'Penerapan di Rumah Cerdas (IoT)',
+    nextSub: 'LANGKAH BERIKUTNYA',
+    isFinish: false
+  },
+  {
+    tab: 3,
+    step: 2,
+    prevText: 'Konsep Dasar Pengenalan Pola',
+    prevSub: 'LANGKAH SEBELUMNYA',
+    nextText: 'Fondasi 4: Algoritma & Logika',
+    nextSub: 'FONDASI BERIKUTNYA',
+    isFinish: false
+  },
+  {
+    tab: 4,
+    step: 1,
+    prevText: 'Penerapan Pengenalan Pola IoT',
+    prevSub: 'LANGKAH SEBELUMNYA',
+    nextText: 'Penerapan di Rumah Cerdas (IoT)',
+    nextSub: 'LANGKAH BERIKUTNYA',
+    isFinish: false
+  },
+  {
+    tab: 4,
+    step: 2,
+    prevText: 'Konsep Dasar Algoritma',
+    prevSub: 'LANGKAH SEBELUMNYA',
+    nextText: 'Video Pembelajaran 🎬',
+    nextSub: 'SELESAI MATERI',
+    isFinish: true
+  }
+];
+
+function updateMateri1Nav() {
+  const currentStepIndex = MATERI1_STEPS.findIndex(s => s.tab === currentMateri1Tab && s.step === currentMateri1Step);
+  if (currentStepIndex === -1) return;
+
+  const currentInfo = MATERI1_STEPS[currentStepIndex];
+
+  const prevTextEl = document.getElementById('materi1-prev-text');
+  const prevLabelEl = document.getElementById('materi1-prev-label');
+  const nextTextEl = document.getElementById('materi1-next-text');
+  const nextLabelEl = document.getElementById('materi1-next-label');
+
+  if (prevTextEl) prevTextEl.textContent = currentInfo.prevText;
+  if (prevLabelEl) {
+    const sub = prevLabelEl.querySelector('.nml-sub');
+    if (sub) sub.textContent = currentInfo.prevSub;
+  }
+
+  if (nextTextEl) nextTextEl.textContent = currentInfo.nextText;
+  if (nextLabelEl) {
+    const sub = nextLabelEl.querySelector('.nml-sub');
+    if (sub) sub.textContent = currentInfo.nextSub;
+    if (currentInfo.isFinish) {
+      nextLabelEl.classList.add('finish');
+    } else {
+      nextLabelEl.classList.remove('finish');
+    }
+  }
+}
+
 function switchMateri1Tab(tabNum) {
+  currentMateri1Tab = tabNum;
   for (let i = 1; i <= 4; i++) {
     const btn = document.getElementById(`mtab1-btn-${i}`);
     const panel = document.getElementById(`mtab1-panel-${i}`);
@@ -151,6 +296,8 @@ function switchMateri1Tab(tabNum) {
 }
 
 function switchMateri1Step(tabNum, stepNum) {
+  currentMateri1Tab = tabNum;
+  currentMateri1Step = stepNum;
   activeMateriSteps[tabNum] = stepNum;
   for (let s = 1; s <= 2; s++) {
     const stepBtn = document.getElementById(`mstep-${tabNum}-btn-${s}`);
@@ -169,6 +316,7 @@ function switchMateri1Step(tabNum, stepNum) {
   const box = document.getElementById('content-materi-1');
   if (box) box.scrollTop = 0;
 
+  updateMateri1Nav();
   playSynthSound('click');
 }
 
@@ -1127,13 +1275,14 @@ function initStage4() {
     container.appendChild(card);
   });
 
-  // Attach drag events to all blocks and slots
+  // Attach drag and click events to all blocks and slots
   document.querySelectorAll('.algo-block').forEach(b => {
     b.addEventListener('dragstart', onAlgoDragStart);
     b.addEventListener('dragend', onAlgoDragEnd);
     b.addEventListener('touchstart', onAlgoTouchStart, { passive: false });
     b.addEventListener('touchmove', onAlgoTouchMove, { passive: false });
     b.addEventListener('touchend', onAlgoTouchEnd);
+    b.addEventListener('click', onAlgoBlockClick);
   });
 
   document.querySelectorAll('.algo-slot').forEach(s => {
@@ -1146,6 +1295,18 @@ function initStage4() {
     s.addEventListener('drop', onAlgoSlotDrop);
     s.addEventListener('click', () => clearAlgoSlot(s));
   });
+}
+
+function onAlgoBlockClick(e) {
+  const block = e.currentTarget;
+  if (block.classList.contains('used')) return;
+  const challengeCard = block.closest('.algo-challenge');
+  if (!challengeCard) return;
+  const emptySlot = challengeCard.querySelector('.algo-slot:not(.filled)');
+  if (emptySlot) {
+    fillAlgoSlot(emptySlot, block);
+    playSynthSound('click');
+  }
 }
 
 function onAlgoDragStart(e) {
@@ -1286,7 +1447,7 @@ function checkStage4() {
       text: 'Luar biasa, Arsitek Rumah Cerdas! Kamu telah menguasai 4 Fondasi Berpikir Komputasional dengan bintang sempurna ⭐ 4/4!',
       type: 'success',
       actions: [
-        { label: 'Lanjut ke Latihan Evaluasi ▶', cls: 'btn btn-primary', onClick: 'closeGameModal(); goToPage("latihan-intro");' }
+        { label: 'Lanjut ke Latihan Evaluasi ▶', cls: 'btn btn-primary', onClick: "closeGameModal(); goToPage('latihan-intro');" }
       ]
     });
   } else {
@@ -1329,19 +1490,33 @@ function showGameModal(config) {
   const card = document.getElementById('game-modal-card');
   if (!modal || !card) return;
 
-  let actionsHtml = '';
-  if (config.actions) {
-    actionsHtml = config.actions.map(a =>
-      `<button class="${a.cls || 'btn btn-primary'}" onclick="${a.onClick}">${a.label}</button>`
-    ).join('');
-  }
-
   card.innerHTML = `
     <div class="gm-icon">${config.icon || 'ℹ️'}</div>
     <div class="gm-title ${config.type || ''}">${config.title || ''}</div>
     <div class="gm-text">${config.text || ''}</div>
-    <div class="gm-actions">${actionsHtml}</div>
+    <div class="gm-actions" id="gm-actions-container"></div>
   `;
+
+  const actionsContainer = card.querySelector('#gm-actions-container');
+  if (config.actions && actionsContainer) {
+    config.actions.forEach(a => {
+      const btn = document.createElement('button');
+      btn.className = a.cls || 'btn btn-primary';
+      btn.textContent = a.label;
+      if (typeof a.onClick === 'function') {
+        btn.addEventListener('click', a.onClick);
+      } else if (typeof a.onClick === 'string') {
+        btn.addEventListener('click', () => {
+          try {
+            new Function(a.onClick)();
+          } catch (err) {
+            console.error('Error executing modal action:', err);
+          }
+        });
+      }
+      actionsContainer.appendChild(btn);
+    });
+  }
 
   modal.classList.add('show');
 }

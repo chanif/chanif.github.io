@@ -241,6 +241,107 @@ a {
   transform: scale(0.95);
 }
 
+/* Compound Navigation Button on Page 6 (Materi 1 Dynamic Tab Navigator) */
+.nav-bottom.nav-materi-compound {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 35;
+}
+
+.nav-bottom.left.nav-materi-compound {
+  left: 32px;
+}
+
+.nav-bottom.right.nav-materi-compound {
+  right: 32px;
+}
+
+.nav-materi-label {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+  border: 2.5px solid var(--teal);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  max-width: 340px;
+}
+
+.nav-materi-label:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 172, 193, 0.32);
+  border-color: var(--teal-dark);
+  background: #f0fdfa;
+}
+
+.nav-materi-label:active {
+  transform: scale(0.97);
+}
+
+.nav-materi-label .nml-sub {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: var(--teal-dark);
+  text-transform: uppercase;
+}
+
+.nav-materi-label .nml-main {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-materi-label.right {
+  text-align: right;
+  border-color: #0288D1;
+  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+}
+
+.nav-materi-label.right .nml-sub {
+  color: #0288D1;
+}
+
+.nav-materi-label.right .nml-main {
+  color: #01579b;
+}
+
+.nav-materi-label.finish {
+  border-color: #f57f17;
+  background: linear-gradient(135deg, #fff8e1 0%, #ffe082 100%);
+  animation: pulseFinish 1.8s infinite;
+}
+
+.nav-materi-label.finish .nml-sub {
+  color: #e65100;
+}
+
+.nav-materi-label.finish .nml-main {
+  color: #bf360c;
+}
+
+@keyframes pulseFinish {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 127, 23, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(245, 127, 23, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 127, 23, 0);
+  }
+}
+
 /* MULAI Button (Large & Tactile) */
 .btn-mulai {
   display: inline-flex;

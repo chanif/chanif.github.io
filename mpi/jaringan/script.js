@@ -148,6 +148,18 @@ function goToPage(pageId) {
   newPage.classList.add('active');
   currentPage = pageId;
 
+  // Stop all playing videos and audios when navigating to any page
+  document.querySelectorAll('video').forEach(v => {
+    try {
+      v.pause();
+    } catch (e) {}
+  });
+  document.querySelectorAll('audio').forEach(a => {
+    try {
+      a.pause();
+    } catch (e) {}
+  });
+
   // Update Testing Page Indicator if is_testing is active
   updateTestingIndicator(pageId);
 
@@ -169,8 +181,64 @@ function goToPage(pageId) {
 }
 
 // ==================== MATERI 1 TABBED NAVIGATION ====================
+let currentMateri1Tab = 1;
+
+const MATERI1_TABS = [
+  {
+    tab: 1,
+    prevText: 'Daftar Materi',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: '2. Router & Cara Kerja',
+    nextSub: 'TAB BERIKUTNYA',
+    isFinish: false
+  },
+  {
+    tab: 2,
+    prevText: '1. Paket Data & Anatomi',
+    prevSub: 'TAB SEBELUMNYA',
+    nextText: '3. Rute Dinamis & Reassembly',
+    nextSub: 'TAB BERIKUTNYA',
+    isFinish: false
+  },
+  {
+    tab: 3,
+    prevText: '2. Router & Cara Kerja',
+    prevSub: 'TAB SEBELUMNYA',
+    nextText: 'Video: Perjalanan Paket Data 🎬',
+    nextSub: 'SELESAI MATERI',
+    isFinish: true
+  }
+];
+
+function updateMateri1Nav() {
+  const info = MATERI1_TABS.find(t => t.tab === currentMateri1Tab);
+  if (!info) return;
+
+  const prevTextEl = document.getElementById('materi1-prev-text');
+  const prevLabelEl = document.getElementById('materi1-prev-label');
+  const nextTextEl = document.getElementById('materi1-next-text');
+  const nextLabelEl = document.getElementById('materi1-next-label');
+
+  if (prevTextEl) prevTextEl.textContent = info.prevText;
+  if (prevLabelEl) {
+    const sub = prevLabelEl.querySelector('.nml-sub');
+    if (sub) sub.textContent = info.prevSub;
+  }
+
+  if (nextTextEl) nextTextEl.textContent = info.nextText;
+  if (nextLabelEl) {
+    const sub = nextLabelEl.querySelector('.nml-sub');
+    if (sub) sub.textContent = info.nextSub;
+    if (info.isFinish) {
+      nextLabelEl.classList.add('finish');
+    } else {
+      nextLabelEl.classList.remove('finish');
+    }
+  }
+}
 
 function switchMateri1Tab(tabNum) {
+  currentMateri1Tab = tabNum;
   for (let i = 1; i <= 3; i++) {
     const btn = document.getElementById(`mtab1-btn-${i}`);
     const panel = document.getElementById(`mtab1-panel-${i}`);
@@ -183,9 +251,23 @@ function switchMateri1Tab(tabNum) {
       else panel.classList.remove('active');
     }
   }
+
+  // Reset scroll to top
+  const box = document.querySelector('#page-materi-1 .content-box');
+  if (box) box.scrollTop = 0;
+
+  updateMateri1Nav();
 }
 
 function navNext() {
+  if (currentPage === 'materi-1') {
+    if (currentMateri1Tab < 3) {
+      switchMateri1Tab(currentMateri1Tab + 1);
+    } else {
+      goToPage('video');
+    }
+    return;
+  }
   const idx = LINEAR_PAGES.indexOf(currentPage);
   if (idx === -1) return;
   if (idx < LINEAR_PAGES.length - 1) {
@@ -194,6 +276,14 @@ function navNext() {
 }
 
 function navPrev() {
+  if (currentPage === 'materi-1') {
+    if (currentMateri1Tab > 1) {
+      switchMateri1Tab(currentMateri1Tab - 1);
+    } else {
+      goToPage('materi-list');
+    }
+    return;
+  }
   const idx = LINEAR_PAGES.indexOf(currentPage);
   if (idx === -1) return;
   if (idx > 0) {
