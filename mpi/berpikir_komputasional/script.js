@@ -59,6 +59,41 @@ function applyConfig() {
     if (lKem && cfg.logos.header_left) lKem.src = cfg.logos.header_left;
     const lSob = document.getElementById('logo-sobat-cover');
     if (lSob && cfg.logos.header_right) lSob.src = cfg.logos.header_right;
+
+    // Footer Logos di Halaman Kredit
+    if (Array.isArray(cfg.logos.footer_logos)) {
+      const kLogos = document.querySelectorAll('#kredit-logos img');
+      cfg.logos.footer_logos.forEach((src, idx) => {
+        if (kLogos[idx] && src) kLogos[idx].src = src;
+      });
+    }
+  }
+
+  // Assets (Video & Foto Pengembang)
+  if (cfg.assets) {
+    // Video Materi
+    if (cfg.assets.video_src) {
+      const videoEl = document.getElementById('main-video');
+      if (videoEl) {
+        const sourceEl = videoEl.querySelector('source');
+        if (sourceEl) {
+          sourceEl.src = cfg.assets.video_src;
+        } else {
+          videoEl.src = cfg.assets.video_src;
+        }
+        videoEl.load();
+      }
+    }
+
+    // Foto Pengembang
+    if (cfg.assets.dev_photo_1) {
+      const p1 = document.querySelector('#dev-photo-1 img');
+      if (p1) p1.src = cfg.assets.dev_photo_1;
+    }
+    if (cfg.assets.dev_photo_2) {
+      const p2 = document.querySelector('#dev-photo-2 img');
+      if (p2) p2.src = cfg.assets.dev_photo_2;
+    }
   }
 }
 

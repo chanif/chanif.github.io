@@ -24,7 +24,7 @@ window.MPI_CONFIG = {
     background: {
         // Path gambar latar belakang ruang kelas (mendukung JPG, PNG, WEBP, SVG)
         // Kosongkan ('') jika ingin menggunakan latar belakang animasi SVG internal
-        image: 'assets/bg-jaringan-orange.png',
+        image: 'assets/bg_berpikir_komputasional.png',
 
         // Mode tampilan background ('cover', 'contain', '100% 100%')
         size: 'cover',
@@ -71,7 +71,7 @@ window.MPI_CONFIG = {
         dev_photo_2: 'assets/ilyas.jpeg',
 
         // Video materi lokal (offline ready)
-        video_src: 'assets/video/jaringan.mp4',
+        video_src: 'assets/video/berpikir_komputasional.mp4',
     },
 
     // ------------------------------------------------------------
