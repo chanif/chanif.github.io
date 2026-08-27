@@ -1689,7 +1689,7 @@ function closeGameModal() {
 
 const EVAL_ANSWERS = {
   A1: 'B', A2: 'C', A3: 'B', A4: 'B', A5: 'C',
-  B1: 'salah', B2: 'benar', B3: 'benar', B4: 'salah', B5: 'benar', B6: 'benar'
+  B1: 'salah', B2: 'benar', B3: 'benar', B4: 'benar', B5: 'benar'
 };
 
 const MATCH_ANSWERS = {
@@ -1721,25 +1721,22 @@ const MATCH_PAIR_THEMES = {
 };
 
 const SEQ_CORRECT_ORDER = [
-  'Sensor Cahaya merasakan tingkat terang/gelap di sekitar teras rumah.',
-  'Data pembacaan cahaya dikirim ke komputer mini (mikrokontroler).',
-  'Komputer mini mengecek aturan logika: apakah saat ini gelap?',
-  'Jika gelap, komputer mini mengirim perintah "nyalakan" ke saklar otomatis (relay).',
-  'Saklar otomatis menghubungkan aliran listrik ke lampu teras.',
-  'Lampu teras menyala otomatis menerangi halaman rumah di malam hari.'
+  'Sensor Cahaya mendeteksi tingkat intensitas terang atau gelap di teras rumah.',
+  'Data pembacaan intensitas cahaya dikirim menuju komputer mini (mikrokontroler).',
+  'Komputer mini mengevaluasi aturan logika kondisional (JIKA gelap).',
+  'Komputer mini mengirimkan sinyal perintah aktif ke saklar otomatis (relay).',
+  'Aliran listrik terhubung dan lampu teras otomatis menyala menerangi halaman.'
 ];
 
 let evalUserAnswers = {};
 let matchState = { selectedLeft: null, pairs: {} };
-let evalSectionInited = { C: false, D: false, E: false };
-let evalRuleSelected = null;
+let evalSectionInited = { C: false, D: false };
 let currentShuffledRight = null;
 
 function startEval() {
   evalUserAnswers = {};
   matchState = { selectedLeft: null, pairs: {} };
-  evalSectionInited = { C: false, D: false, E: false };
-  evalRuleSelected = null;
+  evalSectionInited = { C: false, D: false };
   currentShuffledRight = null;
 
   // 1. Reset Bagian A
@@ -1764,14 +1761,7 @@ function startEval() {
   const seqList = document.getElementById('seq-list');
   if (seqList) seqList.innerHTML = '';
 
-  // 5. Reset Bagian E
-  document.querySelectorAll('.rule-option-card').forEach(c => c.classList.remove('selected'));
-  const sendBtn = document.getElementById('btn-send-eval');
-  if (sendBtn) sendBtn.disabled = true;
-  const fb = document.getElementById('sim-feedback-eval');
-  if (fb) fb.classList.remove('show');
-
-  // 6. Reset Halaman Rekap & Progress Steps
+  // 5. Reset Halaman Rekap & Progress Steps
   const recapCard = document.getElementById('recap-card');
   if (recapCard) recapCard.innerHTML = '';
   const recapSection = document.getElementById('eval-section-recap');
@@ -1789,7 +1779,7 @@ function nextEvalSection(sectionId) {
   const section = document.getElementById('eval-section-' + sectionId);
   if (section) section.classList.add('active');
 
-  const steps = ['A', 'B', 'C', 'D', 'E'];
+  const steps = ['A', 'B', 'C', 'D'];
   document.querySelectorAll('.eval-progress .step').forEach(s => {
     s.classList.remove('active', 'done');
     const stepId = s.dataset.step;
@@ -2258,14 +2248,14 @@ function closeEvalSimFeedback() {
 
 // ---------- SUBMIT EVALUATION RECAP ----------
 function submitEval() {
-  const scores = { A: 0, B: 0, C: 0, D: 0, E: 0 };
+  const scores = { A: 0, B: 0, C: 0, D: 0 };
 
   for (let i = 1; i <= 5; i++) {
     const key = 'A' + i;
     if (evalUserAnswers[key] === EVAL_ANSWERS[key]) scores.A++;
   }
 
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 5; i++) {
     const key = 'B' + i;
     if (evalUserAnswers[key] === EVAL_ANSWERS[key]) scores.B++;
   }
@@ -2275,16 +2265,12 @@ function submitEval() {
   }
 
   const seqItems = document.querySelectorAll('#seq-list .seq-item');
-  let seqCorrect = true;
   seqItems.forEach((item, i) => {
-    if (parseInt(item.dataset.correctIdx) !== i) seqCorrect = false;
+    if (parseInt(item.dataset.correctIdx) === i) scores.D++;
   });
-  if (seqCorrect && seqItems.length === 6) scores.D = 1;
 
-  if (evalSimFirstAttemptCorrect || evalRuleSelected === 'b') scores.E = 1;
-
-  const total = scores.A + scores.B + scores.C + scores.D + scores.E;
-  const maxTotal = 18;
+  const total = scores.A + scores.B + scores.C + scores.D;
+  const maxTotal = 20;
   const percentage = Math.round((total / maxTotal) * 100);
 
   let msgClass, msgText;
@@ -2308,10 +2294,9 @@ function submitEval() {
 
     <div class="recap-details">
       <span class="recap-badge a">Bagian A: ${scores.A}/5</span>
-      <span class="recap-badge b">Bagian B: ${scores.B}/6</span>
+      <span class="recap-badge b">Bagian B: ${scores.B}/5</span>
       <span class="recap-badge c">Bagian C: ${scores.C}/5</span>
-      <span class="recap-badge d">Bagian D: ${scores.D}/1</span>
-      <span class="recap-badge e">Bagian E: ${scores.E}/1</span>
+      <span class="recap-badge d">Bagian D: ${scores.D}/5</span>
     </div>
 
     <div class="recap-msg ${msgClass}">${msgText}</div>
@@ -2329,6 +2314,8 @@ function submitEval() {
   if (percentage >= 60) {
     playSynthSound('victory');
     spawnConfetti();
+  } else {
+    playSynthSound('incorrect');
   }
 }
 
