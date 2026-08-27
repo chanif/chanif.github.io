@@ -129,6 +129,7 @@ function updateTestingIndicator(pageId) {
 }
 
 const LINEAR_PAGES = [
+  'cover', 'menu', 'petunjuk', 'tujuan', 'materi-list',
   'materi-1', 'video', 'tarik-jawaban', 'materi-3',
   'permainan-intro', 'permainan', 'latihan-intro', 'latihan',
   'rangkuman', 'referensi', 'pengembang', 'pj-penyunting',
@@ -167,6 +168,9 @@ function goToPage(pageId) {
   const scrollables = newPage.querySelectorAll('.scrollable');
   scrollables.forEach(el => el.scrollTop = 0);
 
+  // Update global compound navigation labels across all pages
+  updateGlobalNavButtons(pageId);
+
   // Lazy initialize interactive modules on page entry
   if (pageId === 'materi-1') switchMateri1Tab(1);
   if (pageId === 'tarik-jawaban') initDragDrop();
@@ -176,6 +180,166 @@ function goToPage(pageId) {
     const activeSec = document.querySelector('.eval-section.active');
     if (!activeSec || activeSec.id === 'eval-section-recap') {
       startEval();
+    }
+  }
+}
+
+// ==================== GLOBAL COMPOUND NAVIGATION MAP ====================
+const JARINGAN_PAGE_NAV_MAP = {
+  'menu': {
+    prevText: 'Cover / Beranda',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Petunjuk Penggunaan',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'petunjuk': {
+    prevText: 'Menu Utama',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Tujuan Pembelajaran',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'tujuan': {
+    prevText: 'Petunjuk Penggunaan',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Daftar Pilihan Materi',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'materi-list': {
+    prevText: 'Tujuan Pembelajaran',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Materi 1: Konsep Jaringan & Router',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'video': {
+    prevText: 'Materi 1: Konsep Jaringan & Router',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Aktivitas: Menjodohkan Istilah',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'tarik-jawaban': {
+    prevText: 'Video Pembelajaran',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Materi 2: Keunggulan Packet Switching',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'materi-3': {
+    prevText: 'Aktivitas Menjodohkan Istilah',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Pengantar Packet Commander Game',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'permainan-intro': {
+    prevText: 'Materi 2: Packet Switching',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Mulai Packet Commander Game',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'permainan': {
+    prevText: 'Pengantar Game',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Pengantar Latihan Evaluasi',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'latihan-intro': {
+    prevText: 'Packet Commander Game',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Mulai Latihan Evaluasi',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'latihan': {
+    prevText: 'Pengantar Latihan',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Rangkuman & Refleksi',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'rangkuman': {
+    prevText: 'Latihan Evaluasi',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Referensi & Daftar Pustaka',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'referensi': {
+    prevText: 'Rangkuman & Refleksi',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Profil Pengembang',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'pengembang': {
+    prevText: 'Referensi & Daftar Pustaka',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Penanggung Jawab & Tim',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'pj-penyunting': {
+    prevText: 'Profil Pengembang',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Motto',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'kutipan': {
+    prevText: 'Penanggung Jawab & Tim',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Kredit Media & Hak Cipta',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'kredit': {
+    prevText: 'Motto',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Kembali ke Beranda 🏠',
+    nextSub: 'SELESAI PEMBELAJARAN',
+    isFinish: true
+  }
+};
+
+function updateGlobalNavButtons(pageId) {
+  if (pageId === 'cover') return;
+  if (pageId === 'materi-1') {
+    updateMateri1Nav();
+    return;
+  }
+
+  const navInfo = JARINGAN_PAGE_NAV_MAP[pageId];
+  if (!navInfo) return;
+
+  const pageEl = document.getElementById('page-' + pageId);
+  if (!pageEl) return;
+
+  // Left Nav Button & Label
+  const leftNav = pageEl.querySelector('.nav-bottom.left');
+  if (leftNav && navInfo.prevText) {
+    leftNav.classList.add('nav-materi-compound');
+    let labelEl = leftNav.querySelector('.nav-materi-label');
+    if (!labelEl) {
+      labelEl = document.createElement('div');
+      labelEl.className = 'nav-materi-label left';
+      labelEl.onclick = () => navPrev();
+      leftNav.appendChild(labelEl);
+    }
+    labelEl.innerHTML = `
+      <span class="nml-sub">${navInfo.prevSub || 'HALAMAN SEBELUMNYA'}</span>
+      <strong class="nml-main">${navInfo.prevText}</strong>
+    `;
+  }
+
+  // Right Nav Button & Label
+  const rightNav = pageEl.querySelector('.nav-bottom.right');
+  if (rightNav && navInfo.nextText) {
+    rightNav.classList.add('nav-materi-compound');
+    let labelEl = rightNav.querySelector('.nav-materi-label');
+    if (!labelEl) {
+      labelEl = document.createElement('div');
+      labelEl.className = 'nav-materi-label right';
+      labelEl.onclick = () => navNext();
+      rightNav.insertBefore(labelEl, rightNav.firstChild);
+    }
+    labelEl.innerHTML = `
+      <span class="nml-sub">${navInfo.nextSub || 'HALAMAN BERIKUTNYA'}</span>
+      <strong class="nml-main">${navInfo.nextText}</strong>
+    `;
+    if (navInfo.isFinish) {
+      labelEl.classList.add('finish');
+    } else {
+      labelEl.classList.remove('finish');
     }
   }
 }
@@ -351,221 +515,288 @@ function initVideo() {
 }
 
 
-// ==================== DRAG & DROP (TARIK JAWABAN) ====================
+// ==================== MENJODOHKAN ISTILAH (HALAMAN 8) ====================
 
-const DD_DATA = [
-  { term: 'Paket Data', def: 'Bagian kecil hasil pemecahan data asli yang dikirim melalui jaringan', id: 'paket-data' },
-  { term: 'Payload', def: 'Bagian paket berisi potongan data/isi asli yang dikirim', id: 'payload' },
-  { term: 'Router', def: 'Perangkat yang mengarahkan paket data ke rute tercepat/tersedia', id: 'router' },
-  { term: 'Rute Dinamis', def: 'Kemampuan jaringan mencari jalur baru saat jalur utama terganggu', id: 'rute-dinamis' },
-  { term: 'Packet Switching', def: 'Metode pengiriman data dengan memecahnya menjadi paket-paket kecil', id: 'packet-switching' },
+const MATCH_P8_DATA = [
+  { id: '1', term: 'Paket Data', def: 'Bagian kecil hasil pemecahan data asli yang dikirim melalui jaringan' },
+  { id: '2', term: 'Payload', def: 'Bagian paket berisi potongan data/isi asli yang dikirim' },
+  { id: '3', term: 'Router', def: 'Perangkat yang mengarahkan paket data ke rute tercepat/tersedia' },
+  { id: '4', term: 'Rute Dinamis', def: 'Kemampuan jaringan mencari jalur baru saat jalur utama terganggu' },
+  { id: '5', term: 'Packet Switching', def: 'Metode pengiriman data dengan memecahnya menjadi paket-paket kecil' },
 ];
 
-let ddInitialized = false;
+const MATCH_P8_THEMES = {
+  '1': { color: '#0288d1', bg: '#e1f5fe', border: '#0288d1', label: '1' },
+  '2': { color: '#7b1fa2', bg: '#f3e5f5', border: '#8e24aa', label: '2' },
+  '3': { color: '#e65100', bg: '#fff3e0', border: '#fb8c00', label: '3' },
+  '4': { color: '#2e7d32', bg: '#e8f5e9', border: '#43a047', label: '4' },
+  '5': { color: '#c2185b', bg: '#fce4ec', border: '#d81b60', label: '5' },
+};
 
-function initDragDrop() {
-  if (ddInitialized) return;
-  ddInitialized = true;
+let matchP8State = {
+  selectedLeft: null,
+  pairs: {} // { leftId: rightId }
+};
+let shuffledRightP8 = null;
 
-  const termsCol = document.getElementById('dd-terms');
-  const defsCol = document.getElementById('dd-definitions');
+function initMatchP8() {
+  const leftCol = document.getElementById('match-left-p8');
+  const rightCol = document.getElementById('match-right-p8');
+  if (!leftCol || !rightCol) return;
 
-  // Keep h3 header
-  termsCol.innerHTML = '<h3>Istilah</h3>';
-  defsCol.innerHTML = '<h3>Definisi</h3>';
+  leftCol.innerHTML = '';
+  rightCol.innerHTML = '';
 
-  const shuffledTerms = [...DD_DATA].sort(() => Math.random() - 0.5);
-  const shuffledDefs = [...DD_DATA].sort(() => Math.random() - 0.5);
+  if (!shuffledRightP8) {
+    shuffledRightP8 = [...MATCH_P8_DATA].sort(() => Math.random() - 0.5);
+  }
 
-  shuffledTerms.forEach(item => {
+  MATCH_P8_DATA.forEach(item => {
     const el = document.createElement('div');
-    el.className = 'dd-item';
-    el.draggable = true;
+    el.className = 'match-item';
+    el.id = `match-p8-left-${item.id}`;
     el.dataset.id = item.id;
-    el.textContent = item.term;
-    el.addEventListener('dragstart', onDragStart);
-    el.addEventListener('dragend', onDragEnd);
-    el.addEventListener('touchstart', onTouchStart, { passive: false });
-    el.addEventListener('touchmove', onTouchMove, { passive: false });
-    el.addEventListener('touchend', onTouchEnd);
-    termsCol.appendChild(el);
+    el.dataset.side = 'left';
+    el.onclick = (e) => {
+      if (e.target.closest('.match-unpair-btn')) {
+        e.stopPropagation();
+        unpairMatchP8(item.id);
+        return;
+      }
+      onMatchP8Click('left', item.id);
+    };
+    leftCol.appendChild(el);
   });
 
-  shuffledDefs.forEach(item => {
-    const zone = document.createElement('div');
-    zone.className = 'dd-drop-zone';
-    zone.dataset.id = item.id;
-    zone.textContent = item.def;
-    zone.addEventListener('dragover', onDragOver);
-    zone.addEventListener('dragenter', onDragEnter);
-    zone.addEventListener('dragleave', onDragLeave);
-    zone.addEventListener('drop', onDrop);
-    defsCol.appendChild(zone);
+  shuffledRightP8.forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'match-item';
+    el.id = `match-p8-right-${item.id}`;
+    el.dataset.id = item.id;
+    el.dataset.side = 'right';
+    el.onclick = (e) => {
+      if (e.target.closest('.match-unpair-btn')) {
+        e.stopPropagation();
+        const pairedLeft = Object.keys(matchP8State.pairs).find(k => matchP8State.pairs[k] === item.id);
+        if (pairedLeft) unpairMatchP8(pairedLeft);
+        return;
+      }
+      onMatchP8Click('right', item.id);
+    };
+    rightCol.appendChild(el);
   });
+
+  renderMatchP8UI();
 }
 
-let draggedItem = null;
+function renderMatchP8UI() {
+  MATCH_P8_DATA.forEach(item => {
+    const el = document.getElementById(`match-p8-left-${item.id}`);
+    if (!el) return;
+    const isSelected = matchP8State.selectedLeft === item.id;
+    const pairedRight = matchP8State.pairs[item.id];
+    const theme = MATCH_P8_THEMES[item.id] || MATCH_P8_THEMES['1'];
 
-function onDragStart(e) {
-  draggedItem = e.target;
-  e.target.classList.add('dragging');
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/plain', e.target.dataset.id);
-}
-
-function onDragEnd(e) {
-  e.target.classList.remove('dragging');
-  document.querySelectorAll('.dd-drop-zone').forEach(z => z.classList.remove('over'));
-}
-
-function onDragOver(e) {
-  e.preventDefault();
-  e.dataTransfer.dropEffect = 'move';
-}
-
-function onDragEnter(e) {
-  e.preventDefault();
-  e.currentTarget.classList.add('over');
-}
-
-function onDragLeave(e) {
-  e.currentTarget.classList.remove('over');
-}
-
-function onDrop(e) {
-  e.preventDefault();
-  const zone = e.currentTarget;
-  zone.classList.remove('over');
-
-  if (!draggedItem) return;
-  if (zone.classList.contains('filled')) return;
-
-  const placed = document.createElement('span');
-  placed.className = 'dd-placed';
-  placed.textContent = draggedItem.textContent;
-  placed.dataset.id = draggedItem.dataset.id;
-
-  const defText = zone.textContent;
-  zone.innerHTML = '';
-  const defSpan = document.createElement('span');
-  defSpan.style.cssText = 'display:block;font-size:16px;color:var(--text-body);margin-bottom:6px;line-height:1.4;';
-  defSpan.textContent = defText;
-  zone.appendChild(defSpan);
-  zone.appendChild(placed);
-  zone.classList.add('filled');
-
-  draggedItem.style.display = 'none';
-  draggedItem = null;
-}
-
-// Touch drag support
-let touchDragEl = null;
-let touchClone = null;
-
-function onTouchStart(e) {
-  touchDragEl = e.currentTarget;
-  e.preventDefault();
-
-  touchClone = touchDragEl.cloneNode(true);
-  touchClone.style.position = 'fixed';
-  touchClone.style.zIndex = '1000';
-  touchClone.style.opacity = '0.85';
-  touchClone.style.pointerEvents = 'none';
-  touchClone.style.width = touchDragEl.offsetWidth + 'px';
-  document.body.appendChild(touchClone);
-
-  const touch = e.touches[0];
-  touchClone.style.left = (touch.clientX - touchDragEl.offsetWidth / 2) + 'px';
-  touchClone.style.top = (touch.clientY - 25) + 'px';
-  touchDragEl.classList.add('dragging');
-}
-
-function onTouchMove(e) {
-  if (!touchClone) return;
-  e.preventDefault();
-  const touch = e.touches[0];
-  touchClone.style.left = (touch.clientX - touchClone.offsetWidth / 2) + 'px';
-  touchClone.style.top = (touch.clientY - 25) + 'px';
-
-  const elem = document.elementFromPoint(touch.clientX, touch.clientY);
-  document.querySelectorAll('.dd-drop-zone').forEach(z => z.classList.remove('over'));
-  if (elem) {
-    const zone = elem.classList.contains('dd-drop-zone') ? elem : elem.closest('.dd-drop-zone');
-    if (zone && !zone.classList.contains('filled')) zone.classList.add('over');
-  }
-}
-
-function onTouchEnd(e) {
-  if (!touchClone || !touchDragEl) return;
-
-  const touch = e.changedTouches[0];
-  const elem = document.elementFromPoint(touch.clientX, touch.clientY);
-
-  document.body.removeChild(touchClone);
-  touchClone = null;
-  touchDragEl.classList.remove('dragging');
-
-  if (elem) {
-    const zone = elem.classList.contains('dd-drop-zone') ? elem : elem.closest('.dd-drop-zone');
-    if (zone && !zone.classList.contains('filled')) {
-      draggedItem = touchDragEl;
-      onDrop({ preventDefault: () => {}, currentTarget: zone });
+    el.className = 'match-item' + (isSelected ? ' selected' : '') + (pairedRight ? ' matched' : '');
+    if (pairedRight) {
+      el.style.setProperty('--pair-color', theme.color);
+      el.style.setProperty('--pair-bg', theme.bg);
+      el.style.setProperty('--pair-border', theme.border);
+      el.innerHTML = `
+        <div class="match-item-content">
+          <span><strong>${item.term}</strong></span>
+        </div>
+        <span class="match-badge">🔗 #${theme.label} <span class="match-unpair-btn" title="Batalkan pasangan">✕</span></span>
+        <span class="match-anchor-dot"></span>
+      `;
+    } else {
+      el.removeAttribute('style');
+      el.innerHTML = `
+        <div class="match-item-content">
+          <span><strong>${item.term}</strong></span>
+        </div>
+        <span class="match-anchor-dot"></span>
+      `;
     }
+  });
+
+  if (shuffledRightP8) {
+    shuffledRightP8.forEach(item => {
+      const el = document.getElementById(`match-p8-right-${item.id}`);
+      if (!el) return;
+      const pairedLeft = Object.keys(matchP8State.pairs).find(k => matchP8State.pairs[k] === item.id);
+      const theme = pairedLeft ? (MATCH_P8_THEMES[pairedLeft] || MATCH_P8_THEMES['1']) : null;
+
+      el.className = 'match-item' + (pairedLeft ? ' matched' : '');
+      if (pairedLeft && theme) {
+        el.style.setProperty('--pair-color', theme.color);
+        el.style.setProperty('--pair-bg', theme.bg);
+        el.style.setProperty('--pair-border', theme.border);
+        el.innerHTML = `
+          <span class="match-anchor-dot"></span>
+          <span class="match-badge">🔗 #${theme.label} <span class="match-unpair-btn" title="Batalkan pasangan">✕</span></span>
+          <div class="match-item-content">
+            <span>${item.def}</span>
+          </div>
+        `;
+      } else {
+        el.removeAttribute('style');
+        el.innerHTML = `
+          <span class="match-anchor-dot"></span>
+          <div class="match-item-content">
+            <span>${item.def}</span>
+          </div>
+        `;
+      }
+    });
   }
-  touchDragEl = null;
+
+  setTimeout(drawMatchP8Lines, 20);
 }
 
-function resetDragDrop() {
-  ddInitialized = false;
-  const scoreBox = document.getElementById('dd-score-box');
-  if (scoreBox) scoreBox.style.display = 'none';
-  initDragDrop();
-}
-
-function checkDragDrop() {
-  const zones = document.querySelectorAll('#dd-definitions .dd-drop-zone');
-  let allFilled = true;
-  let correctCount = 0;
-  const total = zones.length;
-
-  zones.forEach(zone => {
-    const placed = zone.querySelector('.dd-placed');
-    if (!placed) {
-      allFilled = false;
+function onMatchP8Click(side, id) {
+  if (side === 'left') {
+    if (matchP8State.pairs[id]) {
+      delete matchP8State.pairs[id];
+      matchP8State.selectedLeft = id;
+      playSynthSound('click');
+      renderMatchP8UI();
       return;
     }
+    if (matchP8State.selectedLeft === id) {
+      matchP8State.selectedLeft = null;
+      playSynthSound('click');
+      renderMatchP8UI();
+      return;
+    }
+    matchP8State.selectedLeft = id;
+    playSynthSound('click');
+    renderMatchP8UI();
+  } else if (side === 'right') {
+    if (matchP8State.selectedLeft !== null) {
+      const leftId = matchP8State.selectedLeft;
+      const existingLeft = Object.keys(matchP8State.pairs).find(k => matchP8State.pairs[k] === id);
+      if (existingLeft && existingLeft !== leftId) {
+        delete matchP8State.pairs[existingLeft];
+      }
+      matchP8State.pairs[leftId] = id;
+      matchP8State.selectedLeft = null;
+      playSynthSound('packet_arrive');
+      renderMatchP8UI();
+    } else {
+      const pairedLeft = Object.keys(matchP8State.pairs).find(k => matchP8State.pairs[k] === id);
+      if (pairedLeft) {
+        delete matchP8State.pairs[pairedLeft];
+        playSynthSound('click');
+        renderMatchP8UI();
+      }
+    }
+  }
+}
 
-    const isCorrect = placed.dataset.id === zone.dataset.id;
-    if (isCorrect) correctCount++;
-    zone.classList.remove('correct', 'incorrect');
-    zone.classList.add(isCorrect ? 'correct' : 'incorrect');
-  });
+function unpairMatchP8(leftId) {
+  if (matchP8State.pairs[leftId]) {
+    delete matchP8State.pairs[leftId];
+    playSynthSound('click');
+    renderMatchP8UI();
+  }
+}
 
-  const scoreBox = document.getElementById('dd-score-box');
-  const scoreBadge = document.getElementById('dd-score-badge');
-  const scoreText = document.getElementById('dd-score-text');
+function resetMatchP8() {
+  matchP8State = { selectedLeft: null, pairs: {} };
+  const scoreBox = document.getElementById('match-p8-score-box');
+  if (scoreBox) scoreBox.style.display = 'none';
+  playSynthSound('click');
+  renderMatchP8UI();
+}
 
-  if (!allFilled) {
-    alert('Silakan pasangkan semua istilah terlebih dahulu!');
-    if (scoreBox) scoreBox.style.display = 'none';
+function checkMatchP8() {
+  const pairedCount = Object.keys(matchP8State.pairs).length;
+  if (pairedCount === 0) {
+    alert('Silakan hubungkan minimal satu pasangan terlebih dahulu!');
     return;
   }
 
-  const score = Math.round((correctCount / total) * 100);
-
-  if (scoreBox && scoreBadge && scoreText) {
-    scoreBadge.textContent = `🏆 Skor: ${score}`;
-    if (correctCount === total) {
-      scoreText.textContent = `Sempurna! ${correctCount} dari ${total} Pasangan Benar! 🎉`;
-      spawnConfetti();
-      playSynthSound('success');
-    } else {
-      scoreText.textContent = `${correctCount} dari ${total} Benar. Cek kotak berwarna merah dan perbaiki! 💡`;
-      playSynthSound('error');
+  let correct = 0;
+  MATCH_P8_DATA.forEach(item => {
+    if (matchP8State.pairs[item.id] === item.id) {
+      correct++;
     }
+  });
+
+  const score = Math.round((correct / MATCH_P8_DATA.length) * 100);
+  const scoreBox = document.getElementById('match-p8-score-box');
+  const badge = document.getElementById('match-p8-score-badge');
+  const text = document.getElementById('match-p8-score-text');
+
+  if (scoreBox && badge && text) {
     scoreBox.style.display = 'flex';
+    badge.textContent = `🏆 Skor: ${score}`;
+    text.textContent = `${correct} dari ${MATCH_P8_DATA.length} Pasangan Benar! ${correct === MATCH_P8_DATA.length ? '🎉 Luar Biasa!' : 'Semangat Belajar!'}`;
+  }
+
+  if (score >= 80) {
+    playSynthSound('success');
+    spawnConfetti();
+  } else {
+    playSynthSound('click');
   }
 }
+
+function drawMatchP8Lines() {
+  const container = document.getElementById('match-container-p8');
+  const svg = document.getElementById('match-svg-layer-p8');
+  if (!container || !svg) return;
+
+  svg.innerHTML = '';
+  const containerRect = container.getBoundingClientRect();
+  if (containerRect.width === 0 || containerRect.height === 0) return;
+
+  Object.entries(matchP8State.pairs).forEach(([leftId, rightId]) => {
+    const leftEl = document.getElementById(`match-p8-left-${leftId}`);
+    const rightEl = document.getElementById(`match-p8-right-${rightId}`);
+    if (!leftEl || !rightEl) return;
+
+    const leftRect = leftEl.getBoundingClientRect();
+    const rightRect = rightEl.getBoundingClientRect();
+
+    const x1 = leftRect.right - containerRect.left;
+    const y1 = leftRect.top + leftRect.height / 2 - containerRect.top;
+    const x2 = rightRect.left - containerRect.left;
+    const y2 = rightRect.top + rightRect.height / 2 - containerRect.top;
+
+    const theme = MATCH_P8_THEMES[leftId] || MATCH_P8_THEMES['1'];
+    const midX = (x1 + x2) / 2;
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', `M ${x1},${y1} C ${midX},${y1} ${midX},${y2} ${x2},${y2}`);
+    path.setAttribute('stroke', theme.border);
+    path.setAttribute('stroke-width', '4');
+    path.setAttribute('stroke-dasharray', '8 4');
+    path.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('fill', 'none');
+    svg.appendChild(path);
+
+    const c1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c1.setAttribute('cx', x1);
+    c1.setAttribute('cy', y1);
+    c1.setAttribute('r', '5');
+    c1.setAttribute('fill', theme.color);
+    svg.appendChild(c1);
+
+    const c2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c2.setAttribute('cx', x2);
+    c2.setAttribute('cy', y2);
+    c2.setAttribute('r', '5');
+    c2.setAttribute('fill', theme.color);
+    svg.appendChild(c2);
+  });
+}
+
+// Aliases for compatibility
+function initDragDrop() { initMatchP8(); }
+function resetDragDrop() { resetMatchP8(); }
+function checkDragDrop() { checkMatchP8(); }
 
 
 // ==================== NETWORK SIMULATION ====================
@@ -2024,7 +2255,7 @@ function spawnConfetti() {
 
 const EVAL_ANSWERS = {
   A1: 'B', A2: 'C', A3: 'B', A4: 'B', A5: 'C',
-  B1: 'salah', B2: 'benar', B3: 'benar', B4: 'salah', B5: 'salah', B6: 'benar',
+  B1: 'salah', B2: 'benar', B3: 'benar', B4: 'salah', B5: 'benar',
 };
 
 const MATCH_ANSWERS = {
@@ -2033,21 +2264,20 @@ const MATCH_ANSWERS = {
 
 const SEQ_CORRECT_ORDER = [
   'Foto dipecah menjadi beberapa paket data kecil',
-  'Setiap paket diberi header berisi alamat pengirim, alamat tujuan, dan nomor urut',
-  'Paket-paket dikirim melalui jaringan lewat jalur yang bisa berbeda-beda',
-  'Router mengarahkan setiap paket ke rute tercepat yang tersedia',
-  'Jika satu rute rusak/macet, paket otomatis mencari rute alternatif',
-  'Semua paket sampai di penerima dan disusun ulang sesuai nomor urut menjadi foto utuh'
+  'Setiap paket diberi header berisi alamat pengirim, tujuan, dan nomor urut',
+  'Paket dikirim melalui jaringan dan diarahkan oleh router ke rute terbaik',
+  'Jika satu rute mengalami gangguan, paket otomatis mencari rute alternatif',
+  'Semua paket sampai di penerima dan disusun kembali sesuai nomor urut menjadi foto utuh'
 ];
 
 let evalUserAnswers = {};
 let matchState = { selectedLeft: null, pairs: {} };
-let evalSectionInited = { C: false, D: false, E: false };
+let evalSectionInited = { C: false, D: false };
 
 function startEval() {
   evalUserAnswers = {};
   matchState = { selectedLeft: null, pairs: {} };
-  evalSectionInited = { C: false, D: false, E: false };
+  evalSectionInited = { C: false, D: false };
   currentShuffledRight = null;
 
   // 1. Reset Bagian A (Pilihan Ganda): Hapus semua pilihan yang terpilih
@@ -2072,10 +2302,7 @@ function startEval() {
   const seqList = document.getElementById('seq-list');
   if (seqList) seqList.innerHTML = '';
 
-  // 5. Reset Bagian E (Simulasi Praktik): Reset topology, router, path, & feedback
-  initEvalSimulation();
-
-  // 6. Reset Halaman Rekap & Progress Steps
+  // 5. Reset Halaman Rekap & Progress Steps
   const recapCard = document.getElementById('recap-card');
   if (recapCard) recapCard.innerHTML = '';
   const recapSection = document.getElementById('eval-section-recap');
@@ -2085,7 +2312,7 @@ function startEval() {
     s.classList.remove('active', 'done');
   });
 
-  // 7. Mulai kembali dari Bagian A
+  // 6. Mulai kembali dari Bagian A
   nextEvalSection('A');
 }
 
@@ -2094,7 +2321,7 @@ function nextEvalSection(sectionId) {
   const section = document.getElementById('eval-section-' + sectionId);
   if (section) section.classList.add('active');
 
-  const steps = ['A', 'B', 'C', 'D', 'E'];
+  const steps = ['A', 'B', 'C', 'D'];
   document.querySelectorAll('.eval-progress .step').forEach(s => {
     s.classList.remove('active', 'done');
     const stepId = s.dataset.step;
@@ -2112,10 +2339,6 @@ function nextEvalSection(sectionId) {
     }
   }
   if (sectionId === 'D' && !evalSectionInited.D) initSeqSection();
-  if (sectionId === 'E' && !evalSectionInited.E) {
-    initSimulation('eval');
-    evalSectionInited.E = true;
-  }
 
   const evalBox = document.getElementById('eval-box');
   if (evalBox) evalBox.scrollTop = 0;
@@ -2546,14 +2769,14 @@ function updateSeqNumbers() {
 // ==================== SUBMIT EVALUATION ====================
 
 function submitEval() {
-  const scores = { A: 0, B: 0, C: 0, D: 0, E: 0 };
+  const scores = { A: 0, B: 0, C: 0, D: 0 };
 
   for (let i = 1; i <= 5; i++) {
     const key = 'A' + i;
     if (evalUserAnswers[key] === EVAL_ANSWERS[key]) scores.A++;
   }
 
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 5; i++) {
     const key = 'B' + i;
     if (evalUserAnswers[key] === EVAL_ANSWERS[key]) scores.B++;
   }
@@ -2563,16 +2786,12 @@ function submitEval() {
   }
 
   const seqItems = document.querySelectorAll('#seq-list .seq-item');
-  let seqCorrect = true;
   seqItems.forEach((item, i) => {
-    if (parseInt(item.dataset.correctIdx) !== i) seqCorrect = false;
+    if (parseInt(item.dataset.correctIdx) === i) scores.D++;
   });
-  if (seqCorrect) scores.D = 1;
 
-  if (simState.eval.firstAttemptCorrect) scores.E = 1;
-
-  const total = scores.A + scores.B + scores.C + scores.D + scores.E;
-  const maxTotal = 18;
+  const total = scores.A + scores.B + scores.C + scores.D;
+  const maxTotal = 20;
   const percentage = Math.round((total / maxTotal) * 100);
 
   let msgClass, msgText;
@@ -2596,10 +2815,9 @@ function submitEval() {
 
     <div class="recap-details">
       <span class="recap-badge a">Bagian A: ${scores.A}/5</span>
-      <span class="recap-badge b">Bagian B: ${scores.B}/6</span>
+      <span class="recap-badge b">Bagian B: ${scores.B}/5</span>
       <span class="recap-badge c">Bagian C: ${scores.C}/5</span>
-      <span class="recap-badge d">Bagian D: ${scores.D}/1</span>
-      <span class="recap-badge e">Bagian E: ${scores.E}/1</span>
+      <span class="recap-badge d">Bagian D: ${scores.D}/5</span>
     </div>
 
     <div class="recap-msg ${msgClass}">${msgText}</div>
@@ -2625,11 +2843,23 @@ document.addEventListener('DOMContentLoaded', function() {
   goToPage('cover');
 
   window.addEventListener('resize', () => {
+    if (currentPage === 'tarik-jawaban') {
+      drawMatchP8Lines();
+    }
     const secC = document.getElementById('eval-section-C');
     if (secC && secC.classList.contains('active')) {
       drawMatchLines();
     }
   });
+
+  const tarikBox = document.getElementById('content-tarik-jawaban');
+  if (tarikBox) {
+    tarikBox.addEventListener('scroll', () => {
+      if (currentPage === 'tarik-jawaban') {
+        drawMatchP8Lines();
+      }
+    });
+  }
 
   const evalBox = document.getElementById('eval-box');
   if (evalBox) {
@@ -2640,4 +2870,29 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+
+  // Unified click handler for top & bottom compound navigations
+  document.addEventListener('click', function(e) {
+    const navTop = e.target.closest('.nav-top');
+    if (navTop) {
+      const btn = navTop.querySelector('.nav-circle');
+      if (btn && e.target !== btn && !btn.contains(e.target)) {
+        btn.click();
+      }
+    }
+
+    const leftCompound = e.target.closest('.nav-bottom.left.nav-materi-compound');
+    if (leftCompound && e.target === leftCompound) {
+      const arrow = leftCompound.querySelector('.nav-arrow');
+      if (arrow) arrow.click();
+      else navPrev();
+    }
+
+    const rightCompound = e.target.closest('.nav-bottom.right.nav-materi-compound');
+    if (rightCompound && e.target === rightCompound) {
+      const arrow = rightCompound.querySelector('.nav-arrow');
+      if (arrow) arrow.click();
+      else navNext();
+    }
+  });
 });

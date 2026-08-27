@@ -114,6 +114,9 @@ function goToPage(pageId) {
     } catch (e) {}
   });
 
+  // Update global compound navigation labels across all pages
+  updateGlobalNavButtons(pageId);
+
   // Lazy initialize interactive modules on page entry
   if (pageId === 'materi-1') switchMateri1Tab(1);
   if (pageId === 'tarik-jawaban') initSmartHomeActivity();
@@ -123,6 +126,160 @@ function goToPage(pageId) {
     const activeSec = document.querySelector('.eval-section.active');
     if (!activeSec || activeSec.id === 'eval-section-recap') {
       startEval();
+    }
+  }
+}
+
+// ==================== GLOBAL COMPOUND NAVIGATION MAP ====================
+const BERPIKIR_PAGE_NAV_MAP = {
+  'menu': {
+    prevText: 'Cover / Beranda',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Petunjuk Penggunaan',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'petunjuk': {
+    prevText: 'Menu Utama',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Tujuan Pembelajaran',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'tujuan': {
+    prevText: 'Petunjuk Penggunaan',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Materi Pembelajaran',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'materi-list': {
+    prevText: 'Tujuan Pembelajaran',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Materi 1: 4 Fondasi BK',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'video': {
+    prevText: 'Materi 1: 4 Fondasi BK',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Aktivitas: Rancang Rumah Cerdas',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'tarik-jawaban': {
+    prevText: 'Video Pembelajaran',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Tantangan Berpikir Komputasional',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'permainan-intro': {
+    prevText: 'Aktivitas Rumah Cerdas',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Mulai Tantangan BK (4 Tahap)',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'permainan': {
+    prevText: 'Pengantar Tantangan',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Pengantar Latihan Evaluasi',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'latihan-intro': {
+    prevText: 'Tantangan Berpikir Komputasional',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Mulai Latihan Evaluasi',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'latihan': {
+    prevText: 'Pengantar Latihan',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Rangkuman & Refleksi',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'rangkuman': {
+    prevText: 'Latihan Evaluasi',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Referensi & Daftar Pustaka',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'referensi': {
+    prevText: 'Rangkuman & Refleksi',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Profil Pengembang',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'pengembang': {
+    prevText: 'Referensi & Daftar Pustaka',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Penanggung Jawab & Tim',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'pj-penyunting': {
+    prevText: 'Profil Pengembang',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Motto',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'kutipan': {
+    prevText: 'Penanggung Jawab & Tim',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Kredit Media & Hak Cipta',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'kredit': {
+    prevText: 'Motto',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Kembali ke Beranda 🏠',
+    nextSub: 'SELESAI PEMBELAJARAN',
+    isFinish: true
+  }
+};
+
+function updateGlobalNavButtons(pageId) {
+  if (pageId === 'cover') return;
+  if (pageId === 'materi-1') {
+    updateMateri1Nav();
+    return;
+  }
+
+  const navInfo = BERPIKIR_PAGE_NAV_MAP[pageId];
+  if (!navInfo) return;
+
+  const pageEl = document.getElementById('page-' + pageId);
+  if (!pageEl) return;
+
+  // Left Nav Button & Label
+  const leftNav = pageEl.querySelector('.nav-bottom.left');
+  if (leftNav && navInfo.prevText) {
+    leftNav.classList.add('nav-materi-compound');
+    let labelEl = leftNav.querySelector('.nav-materi-label');
+    if (!labelEl) {
+      labelEl = document.createElement('div');
+      labelEl.className = 'nav-materi-label left';
+      labelEl.onclick = () => navPrev();
+      leftNav.appendChild(labelEl);
+    }
+    labelEl.innerHTML = `
+      <span class="nml-sub">${navInfo.prevSub || 'HALAMAN SEBELUMNYA'}</span>
+      <strong class="nml-main">${navInfo.prevText}</strong>
+    `;
+  }
+
+  // Right Nav Button & Label
+  const rightNav = pageEl.querySelector('.nav-bottom.right');
+  if (rightNav && navInfo.nextText) {
+    rightNav.classList.add('nav-materi-compound');
+    let labelEl = rightNav.querySelector('.nav-materi-label');
+    if (!labelEl) {
+      labelEl = document.createElement('div');
+      labelEl.className = 'nav-materi-label right';
+      labelEl.onclick = () => navNext();
+      rightNav.insertBefore(labelEl, rightNav.firstChild);
+    }
+    labelEl.innerHTML = `
+      <span class="nml-sub">${navInfo.nextSub || 'HALAMAN BERIKUTNYA'}</span>
+      <strong class="nml-main">${navInfo.nextText}</strong>
+    `;
+    if (navInfo.isFinish) {
+      labelEl.classList.add('finish');
+    } else {
+      labelEl.classList.remove('finish');
     }
   }
 }
@@ -157,7 +314,7 @@ function navPrev() {
       }
       switchMateri1Step(prevStepInfo.tab, prevStepInfo.step);
     } else {
-      goToPage('petunjuk');
+      goToPage('materi-list');
     }
     return;
   }
@@ -2215,4 +2372,29 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+
+  // Unified click handler for top & bottom compound navigations
+  document.addEventListener('click', function(e) {
+    const navTop = e.target.closest('.nav-top');
+    if (navTop) {
+      const btn = navTop.querySelector('.nav-circle');
+      if (btn && e.target !== btn && !btn.contains(e.target)) {
+        btn.click();
+      }
+    }
+
+    const leftCompound = e.target.closest('.nav-bottom.left.nav-materi-compound');
+    if (leftCompound && e.target === leftCompound) {
+      const arrow = leftCompound.querySelector('.nav-arrow');
+      if (arrow) arrow.click();
+      else navPrev();
+    }
+
+    const rightCompound = e.target.closest('.nav-bottom.right.nav-materi-compound');
+    if (rightCompound && e.target === rightCompound) {
+      const arrow = rightCompound.querySelector('.nav-arrow');
+      if (arrow) arrow.click();
+      else navNext();
+    }
+  });
 });
