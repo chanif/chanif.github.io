@@ -56,7 +56,7 @@ window.MPI_CONFIG = {
         // 4 Logo Berjajar di Halaman Kredit/Penutup (Urut dari Kiri ke Kanan)
         footer_logos: [
             'assets/Logo Tutwuri Kemendikdasmen.png',
-            'assets/Logo Sobat SMP 2025.png',
+            'assets/Logo-Sobat-SMP-2025.png',
             'assets/Logo Pendidikan Bermutu.png',
             'assets/Logo Ramah.png',
         ],
