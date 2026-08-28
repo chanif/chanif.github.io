@@ -16,7 +16,7 @@ window.MPI_CONFIG = {
     // ------------------------------------------------------------
     // 1 = Tampilkan nomor halaman di bawah tengah (untuk mempermudah koreksi/revisi)
     // 0 = Mode produksi/normal (nomor halaman disembunyikan)
-    is_testing: 1,
+    is_testing: 0,
 
     // ------------------------------------------------------------
     // 1. LATAR BELAKANG (BACKGROUND)
@@ -24,7 +24,7 @@ window.MPI_CONFIG = {
     background: {
         // Path gambar latar belakang ruang kelas (mendukung JPG, PNG, WEBP, SVG)
         // Kosongkan ('') jika ingin menggunakan latar belakang animasi SVG internal
-        image: 'assets/bg_berpikir_komputasional.png',
+        image: 'assets/bg_berpikir_komputasional_v3.png',
 
         // Mode tampilan background ('cover', 'contain', '100% 100%')
         size: 'cover',
