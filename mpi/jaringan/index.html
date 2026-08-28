@@ -31,6 +31,22 @@
 
   <div id="app">
 
+    <!-- ============================== TOP-RIGHT CONTROLS (ZOOM & MATERI SHORTCUT) ============================== -->
+    <div class="top-controls-right" id="top-controls-right">
+      <!-- Materi Button (Active only on Pages 6, 7, 8, 9) -->
+      <div class="nav-btn-materi" id="btn-top-materi" onclick="goToPage('materi-list')" title="Kembali ke Menu Materi" style="display: none;">
+        <span class="nav-label">MATERI</span>
+        <button class="nav-circle" id="circle-top-materi" aria-label="Menu Materi">📖</button>
+      </div>
+
+      <!-- Zoom Controls Widget -->
+      <div class="zoom-widget" id="zoom-widget" title="Atur Ukuran Tampilan">
+        <button class="zoom-btn" onclick="zoomOut()" id="btn-zoom-out" title="Perkecil Tampilan (Zoom Out)" aria-label="Zoom Out">−</button>
+        <button class="zoom-level-text" onclick="resetZoom()" id="btn-zoom-reset" title="Klik untuk Reset Zoom (100%)" aria-label="Reset Zoom">100%</button>
+        <button class="zoom-btn" onclick="zoomIn()" id="btn-zoom-in" title="Perbesar Tampilan (Zoom In)" aria-label="Zoom In">+</button>
+      </div>
+    </div>
+
     <!-- ============================== PAGE 1: COVER ============================== -->
     <section id="page-cover" class="page active">
       <div class="logo-top left">

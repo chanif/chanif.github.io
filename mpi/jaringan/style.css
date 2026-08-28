@@ -45,14 +45,16 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
 }
 
 body {
   font-family: var(--font-body);
   color: var(--text-dark);
   overflow: hidden;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: #e8ddd3;
   user-select: none;
   -webkit-user-select: none;
@@ -85,8 +87,8 @@ a {
 /* ---------- App Stage Container ---------- */
 #app {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -219,6 +221,160 @@ a {
 
 .nav-top:active .nav-label {
   transform: translateX(2px) scale(0.98);
+}
+
+/* ---------- Top-Right Controls Bar (Zoom & Shortcut Materi) ---------- */
+.top-controls-right {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  user-select: none;
+  pointer-events: auto;
+  transition: all var(--transition);
+}
+
+.top-controls-right.on-cover {
+  top: auto;
+  bottom: 24px;
+  right: 32px;
+}
+
+/* Symmetrical Top-Right MATERI Button */
+.nav-btn-materi {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform var(--transition);
+}
+
+.nav-btn-materi .nav-circle {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 38px;
+  font-weight: 800;
+  box-shadow: 0 6px 20px var(--shadow-lg);
+  border: 4px solid var(--white);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.nav-btn-materi .nav-label {
+  background: var(--white);
+  color: var(--teal-dark);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 26px;
+  padding: 12px 30px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 18px var(--shadow);
+  letter-spacing: 0.8px;
+  border: 2.5px solid rgba(0, 172, 193, 0.25);
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition);
+}
+
+.nav-btn-materi:hover .nav-circle {
+  background: var(--teal-dark);
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px var(--shadow-lg);
+}
+
+.nav-btn-materi:hover .nav-label {
+  background: #f0fdfa;
+  color: var(--teal-dark);
+  border-color: var(--teal);
+  transform: translateX(-4px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 172, 193, 0.32);
+}
+
+.nav-btn-materi:active .nav-circle {
+  transform: scale(0.96);
+}
+
+.nav-btn-materi:active .nav-label {
+  transform: translateX(-2px) scale(0.98);
+}
+
+/* Zoom Widget */
+.zoom-widget {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2.5px solid rgba(0, 172, 193, 0.35);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 18px var(--shadow);
+  padding: 6px 8px;
+  gap: 6px;
+  user-select: none;
+  transition: all var(--transition);
+}
+
+.zoom-widget:hover {
+  border-color: var(--teal);
+  box-shadow: 0 8px 24px rgba(0, 172, 193, 0.3);
+}
+
+.zoom-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
+  font-size: 24px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2.5px solid var(--white);
+  box-shadow: 0 3px 10px rgba(0, 172, 193, 0.35);
+  cursor: pointer;
+  line-height: 1;
+  transition: transform var(--transition), background var(--transition);
+}
+
+.zoom-btn:hover {
+  background: var(--teal-dark);
+  transform: scale(1.12);
+}
+
+.zoom-btn:active {
+  transform: scale(0.92);
+}
+
+.zoom-level-text {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--teal-dark);
+  padding: 4px 10px;
+  min-width: 62px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  transition: all var(--transition);
+  background: transparent;
+  border: none;
+}
+
+.zoom-level-text:hover {
+  background: #e0f7fa;
+  color: var(--teal-deep);
+  transform: scale(1.05);
 }
 
 /* Bottom Navigation Arrows (◀ / ▶ - Extra Large & Ultra Tactile) */
@@ -3949,137 +4105,442 @@ a {
   }
 }
 
-/* ---------- Responsive Scaling for Smaller Displays ---------- */
-@media (max-width: 1200px) {
-  #page-cover .cover-title {
-    font-size: 46px;
-  }
+/* ---------- Custom Scrollbars for High-Density Screens ---------- */
+.scrollable,
+.content-box,
+.petunjuk-scroll,
+.eval-box,
+.eval-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--teal) rgba(0, 0, 0, 0.06);
+}
 
-  .title-bar {
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--teal);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--teal-dark);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN SYSTEM (ALL DEVICES & RESOLUTIONS)
+   ============================================================ */
+
+/* ---------- Standard Laptops (Width < 1400px OR Height < 850px) ---------- */
+@media (max-width: 1400px), (max-height: 850px) {
+  /* Navigation Bar Top & Controls */
+  .nav-top,
+  .top-controls-right {
+    top: 16px;
+  }
+  .nav-top { left: 20px; gap: 10px; }
+  .top-controls-right { right: 20px; gap: 10px; }
+
+  .nav-top .nav-circle,
+  .nav-btn-materi .nav-circle {
+    width: 60px;
+    height: 60px;
     font-size: 28px;
-    padding: 10px 40px;
+    border-width: 3px;
   }
 
-  .content-box {
-    padding: 36px 36px 24px;
+  .nav-top .nav-label,
+  .nav-btn-materi .nav-label {
+    font-size: 18px;
+    padding: 8px 20px;
   }
 
-  .content-box p,
-  .content-box li {
+  .zoom-widget {
+    padding: 4px 6px;
+    gap: 4px;
+  }
+
+  .zoom-btn {
+    width: 36px;
+    height: 36px;
     font-size: 18px;
   }
 
-  .menu-grid {
-    gap: 16px;
+  .zoom-level-text {
+    font-size: 13px;
+    min-width: 48px;
+    padding: 2px 4px;
   }
 
-  .menu-card {
-    padding: 18px 14px;
-    min-height: 170px;
+  /* Navigation Bar Bottom */
+  .nav-bottom {
+    bottom: 14px;
   }
-
-  .menu-card .card-icon {
-    font-size: 76px;
-  }
-
-  .menu-card .card-label {
-    font-size: 20px;
-  }
-
-  .materi-card .card-title {
-    font-size: 21px;
-  }
-
-  .materi-card .card-desc {
-    font-size: 15px;
-  }
-
-  .materi-card .card-thumb {
-    width: 180px;
-    min-width: 180px;
-  }
+  .nav-bottom.left { left: 20px; }
+  .nav-bottom.right { right: 20px; }
 
   .nav-arrow {
-    width: 62px;
-    height: 62px;
+    width: 68px;
+    height: 68px;
+    font-size: 32px;
+    border-width: 3.5px;
+  }
+
+  .nav-materi-label {
+    padding: 6px 16px;
+    max-width: 260px;
+  }
+
+  .nav-materi-label .nml-main {
+    font-size: 13px;
+  }
+
+  .nav-materi-label .nml-sub {
+    font-size: 9.5px;
+  }
+
+  /* Title Bar */
+  .title-bar {
     font-size: 26px;
+    padding: 8px 36px;
+    margin-bottom: 12px;
+  }
+
+  /* Cover Page */
+  .logo-top img {
+    height: 72px;
+  }
+  #page-cover .cover-center {
+    margin-top: 0;
+  }
+  #page-cover .cover-title {
+    margin-bottom: 6px;
+  }
+  #page-cover .cover-title-main {
+    font-size: 60px;
+    letter-spacing: 1px;
+    text-shadow:
+      -2px -2px 0 var(--white),
+      2px -2px 0 var(--white),
+      -2px 2px 0 var(--white),
+      2px 2px 0 var(--white),
+      0 6px 16px rgba(0, 0, 0, 0.22);
+  }
+  #page-cover .cover-title-sub {
+    font-size: 46px;
+    margin-top: 2px;
+    letter-spacing: 0.8px;
+    text-shadow:
+      -2px -2px 0 var(--white),
+      2px -2px 0 var(--white),
+      -2px 2px 0 var(--white),
+      2px 2px 0 var(--white),
+      0 5px 14px rgba(0, 0, 0, 0.2);
+  }
+  #page-cover .cover-subtitle {
+    font-size: 18px;
+    padding: 6px 30px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+    border-width: 2.5px;
+  }
+  #page-cover .btn-mulai {
+    margin-top: 18px;
+    padding: 10px 38px 10px 14px;
+    border-width: 3.5px;
+  }
+  #page-cover .btn-mulai .play-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+  #page-cover .btn-mulai .mulai-text {
+    font-size: 26px;
+    letter-spacing: 1.5px;
+  }
+
+  /* Menu Page */
+  #page-menu .title-bar {
+    margin-bottom: 12px;
+  }
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 880px;
+    width: 90%;
+  }
+  .menu-card {
+    padding: 14px 10px;
+    min-height: 120px;
+    border-radius: 16px;
+  }
+  .menu-card .card-icon {
+    font-size: 48px;
+  }
+  .menu-card .card-label {
+    font-size: 16px;
+  }
+
+  /* Page 5 (Materi List) — Jaringan Komputer 2x2 Horizontal Cards */
+  #page-materi-list .title-bar {
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 28px;
+    padding: 8px 42px;
+  }
+  #page-materi-list .materi-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    max-width: 920px;
+    width: 94%;
+    margin: 0 auto;
+  }
+  #page-materi-list .materi-card {
+    flex-direction: row;
+    align-items: center;
+    border-radius: 16px;
+    border-width: 2.5px;
+    height: 120px;
+    overflow: hidden;
+  }
+  #page-materi-list .materi-card .card-thumb {
+    width: 140px;
+    min-width: 140px;
+    height: 100%;
+    border-radius: 12px 0 0 12px;
+  }
+  #page-materi-list .materi-card .card-badge {
+    top: 6px;
+    left: 6px;
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  #page-materi-list .materi-card .card-body {
+    padding: 8px 14px;
+    text-align: left;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  #page-materi-list .materi-card .card-title {
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 3px;
+    line-height: 1.25;
+  }
+  #page-materi-list .materi-card .card-desc {
+    font-size: 12.5px;
+    text-align: left;
+    line-height: 1.35;
+  }
+
+  /* Standard Content Boxes */
+  .content-box {
+    padding: 18px 28px 14px;
+    min-height: 280px;
+    max-height: calc(100vh - 160px);
+    border-radius: 20px;
   }
 }
 
-@media (max-width: 900px) {
-  .content-columns {
-    grid-template-columns: 1fr;
+/* ---------- Ultra-Compact Screen Heights (Height <= 700px) ---------- */
+@media (max-height: 700px) {
+  .nav-top,
+  .top-controls-right {
+    top: 10px;
+  }
+  .nav-top { left: 14px; }
+  .top-controls-right { right: 14px; }
+
+  .nav-top .nav-circle,
+  .nav-btn-materi .nav-circle {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
   }
 
-  .content-img-text {
-    grid-template-columns: 1fr;
+  .nav-top .nav-label,
+  .nav-btn-materi .nav-label {
+    font-size: 14px;
+    padding: 5px 14px;
   }
 
-  .video-layout {
-    grid-template-columns: 1fr;
+  .zoom-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
   }
 
-  .dev-layout {
-    grid-template-columns: 1fr;
-    text-align: center;
+  .zoom-level-text {
+    font-size: 12px;
+    min-width: 42px;
   }
 
-  .dev-photo {
-    margin: 0 auto;
+  .nav-bottom {
+    bottom: 10px;
+  }
+  .nav-bottom.left { left: 14px; }
+  .nav-bottom.right { right: 14px; }
+
+  .nav-arrow {
+    width: 54px;
+    height: 54px;
+    font-size: 24px;
   }
 
-  .pj-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .menu-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .menu-card .card-icon {
-    font-size: 64px;
-  }
-
-  .petunjuk-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .materi-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .materi-card {
-    flex-direction: column;
-  }
-
-  .materi-card .card-thumb {
-    width: 100%;
-    min-width: 100%;
-    height: 180px;
-    border-radius: 20px 20px 0 0;
-  }
-
-  .rangkuman-points {
-    flex-direction: column;
-  }
-
-  .match-container {
-    grid-template-columns: 1fr;
-  }
-
-  .dd-container {
-    grid-template-columns: 1fr;
-  }
-
-  #page-cover .cover-title {
-    font-size: 36px;
-  }
-
-  .badge-fase {
-    right: 20px;
+  .title-bar {
+    font-size: 22px;
+    padding: 5px 28px;
+    margin-bottom: 8px;
   }
 
   .logo-top img {
-    height: 50px;
+    height: 56px;
+  }
+  #page-cover .cover-title-main {
+    font-size: 48px;
+  }
+  #page-cover .cover-title-sub {
+    font-size: 36px;
+  }
+  #page-cover .cover-subtitle {
+    font-size: 15px;
+    padding: 4px 22px;
+  }
+  #page-cover .btn-mulai {
+    margin-top: 12px;
+    padding: 8px 30px 8px 10px;
+  }
+  #page-cover .btn-mulai .play-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  #page-cover .btn-mulai .mulai-text {
+    font-size: 22px;
+  }
+
+  #page-materi-list .materi-card {
+    height: 105px;
+  }
+  #page-materi-list .materi-card .card-thumb {
+    width: 120px;
+    min-width: 120px;
+  }
+  #page-materi-list .materi-card .card-title {
+    font-size: 14.5px;
+  }
+  #page-materi-list .materi-card .card-desc {
+    font-size: 11.5px;
+  }
+
+  .content-box {
+    padding: 12px 20px 10px;
+    min-height: 240px;
+    max-height: calc(100vh - 130px);
+  }
+
+  .testing-page-indicator {
+    bottom: 6px;
+    font-size: 11.5px;
+    padding: 3px 12px;
+  }
+}
+
+/* ---------- Mobile / Tablet Scrolling Support (< 800px Width) ---------- */
+@media (max-width: 800px) {
+  .page {
+    overflow-y: auto !important;
+    justify-content: flex-start !important;
+    padding: 65px 14px 85px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testing-page-indicator {
+    bottom: 6px;
+    font-size: 11px;
+    padding: 2px 10px;
+  }
+
+  .nav-top .nav-label,
+  .nav-btn-materi .nav-label,
+  .nav-materi-label {
+    display: none !important;
+  }
+
+  .logo-top img {
+    height: 45px;
+  }
+
+  #page-cover .cover-title-main {
+    font-size: 36px;
+  }
+  #page-cover .cover-title-sub {
+    font-size: 28px;
+  }
+  #page-cover .cover-subtitle {
+    font-size: 14px;
+    padding: 4px 18px;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    width: 100% !important;
+  }
+
+  #page-materi-list .materi-cards {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 480px !important;
+  }
+
+  #page-materi-list .materi-card {
+    flex-direction: row !important;
+    height: auto !important;
+    min-height: 90px !important;
+  }
+
+  #page-materi-list .materi-card .card-thumb {
+    width: 100px !important;
+    min-width: 100px !important;
+    height: 90px !important;
+    border-radius: 12px 0 0 12px !important;
+  }
+
+  #page-materi-list .materi-card .card-body {
+    padding: 6px 10px !important;
+  }
+
+  #page-materi-list .materi-card .card-title {
+    font-size: 14px !important;
+  }
+
+  #page-materi-list .materi-card .card-desc {
+    font-size: 11px !important;
+  }
+
+  .content-columns,
+  .content-img-text,
+  .video-layout,
+  .dev-layout,
+  .pj-layout,
+  .match-container,
+  .dd-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  .content-box {
+    max-height: none !important;
+    width: 100% !important;
   }
 }

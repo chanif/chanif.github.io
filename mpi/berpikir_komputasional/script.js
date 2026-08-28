@@ -95,6 +95,78 @@ function applyConfig() {
       if (p2) p2.src = cfg.assets.dev_photo_2;
     }
   }
+
+  updateTopControls(currentPage);
+}
+
+// ==================== ZOOM CONTROLS ENGINE ====================
+let currentZoom = parseFloat(localStorage.getItem('mpi_zoom_level')) || 1.0;
+
+function setAppZoom(zoomLevel) {
+  zoomLevel = Math.round(zoomLevel * 100) / 100;
+  if (zoomLevel < 0.70) zoomLevel = 0.70;
+  if (zoomLevel > 1.30) zoomLevel = 1.30;
+  currentZoom = zoomLevel;
+
+  try {
+    localStorage.setItem('mpi_zoom_level', currentZoom.toString());
+  } catch (e) {}
+
+  const zoomPct = Math.round(currentZoom * 100);
+
+  // Apply zoom natively to body (Chrome, Edge, Safari, Opera, modern Firefox)
+  document.body.style.zoom = currentZoom;
+  document.documentElement.style.setProperty('--app-zoom', currentZoom);
+
+  // Update UI indicators
+  const zoomTexts = document.querySelectorAll('.zoom-level-text');
+  zoomTexts.forEach(el => {
+    el.textContent = `${zoomPct}%`;
+    el.title = zoomPct === 100 ? 'Zoom Normal (100%)' : 'Klik untuk Reset Zoom ke 100%';
+  });
+
+  // Re-draw dynamic lines after zoom change
+  setTimeout(() => {
+    const secC = document.getElementById('eval-section-C');
+    if (secC && secC.classList.contains('active') && typeof drawMatchLines === 'function') {
+      drawMatchLines();
+    }
+  }, 100);
+}
+
+function zoomIn() {
+  setAppZoom(currentZoom + 0.05);
+}
+
+function zoomOut() {
+  setAppZoom(currentZoom - 0.05);
+}
+
+function resetZoom() {
+  setAppZoom(1.0);
+}
+
+// ==================== TOP CONTROLS (MATERI & ZOOM) ====================
+const MATERI_SUBPAGES = ['materi-1', 'video', 'tarik-jawaban'];
+
+function updateTopControls(pageId) {
+  const topControls = document.getElementById('top-controls-right');
+  const btnMateri = document.getElementById('btn-top-materi');
+  if (!topControls) return;
+
+  if (pageId === 'cover') {
+    topControls.classList.add('on-cover');
+  } else {
+    topControls.classList.remove('on-cover');
+  }
+
+  if (btnMateri) {
+    if (MATERI_SUBPAGES.includes(pageId)) {
+      btnMateri.style.display = 'inline-flex';
+    } else {
+      btnMateri.style.display = 'none';
+    }
+  }
 }
 
 function updateTestingIndicator(pageId) {
@@ -132,6 +204,7 @@ function goToPage(pageId) {
   currentPage = pageId;
 
   updateTestingIndicator(pageId);
+  updateTopControls(pageId);
 
   // Reset scroll to top
   const scrollables = newPage.querySelectorAll('.scrollable');
@@ -2376,6 +2449,7 @@ function spawnConfetti() {
 // ==================== INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', function() {
   applyConfig();
+  setAppZoom(currentZoom);
   goToPage('cover');
 
   window.addEventListener('resize', () => {
@@ -2400,6 +2474,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const navTop = e.target.closest('.nav-top');
     if (navTop) {
       const btn = navTop.querySelector('.nav-circle');
+      if (btn && e.target !== btn && !btn.contains(e.target)) {
+        btn.click();
+      }
+    }
+
+    const navMateri = e.target.closest('.nav-btn-materi');
+    if (navMateri) {
+      const btn = navMateri.querySelector('.nav-circle');
       if (btn && e.target !== btn && !btn.contains(e.target)) {
         btn.click();
       }
