@@ -381,13 +381,13 @@
     </section>
 
     <!-- SECTION: TANTANGAN BERPIKIR KOMPUTASIONAL (4 TAHAP LENGKAP) -->
-    <section id="tantangan-bk" class="bg-white rounded-3xl border-2 border-indigo-200 p-6 md:p-8 shadow-md space-y-6">
+    <section id="tantangan-bk" class="bg-white rounded-3xl border-2 border-indigo-200 p-6 md:p-8 shadow-md space-y-8">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
             <div class="flex items-center gap-3">
                 <span class="text-3xl">🎮</span>
                 <div>
                     <h2 class="font-heading font-extrabold text-2xl text-slate-900">Tantangan 4 Tahap Berpikir Komputasional</h2>
-                    <p class="text-xs text-slate-500">Uji kemampuan analitis di setiap fondasi BK secara bertahap</p>
+                    <p class="text-xs text-slate-500">Uji kemampuan analitis di setiap fondasi BK secara bertahap langsung ke bawah</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
@@ -397,56 +397,54 @@
             </div>
         </div>
 
-        <!-- Stage Tabs -->
-        <div class="flex gap-2 overflow-x-auto pb-2 text-xs font-bold">
-            <button onclick="switchGameStage(1)" id="tab-stage-1" class="px-4 py-2 rounded-xl bg-indigo-600 text-white shadow-sm transition">
-                1. Dekomposisi
-            </button>
-            <button onclick="switchGameStage(2)" id="tab-stage-2" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
-                2. Abstraksi
-            </button>
-            <button onclick="switchGameStage(3)" id="tab-stage-3" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
-                3. Pengenalan Pola
-            </button>
-            <button onclick="switchGameStage(4)" id="tab-stage-4" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
-                4. Algoritma
-            </button>
-        </div>
-
         <!-- STAGE 1: DEKOMPOSISI -->
-        <div id="stage-panel-1" class="space-y-4">
+        <div id="stage-panel-1" class="space-y-4 pt-2">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-indigo-100 text-indigo-800 font-extrabold text-xs rounded-full">Tahap 1</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Dekomposisi — Memilah Komponen Sistem</h3>
+            </div>
             <div class="p-4 bg-indigo-50/60 rounded-2xl border border-indigo-100 text-xs text-indigo-900">
-                <strong>Instruksi Tahap 1:</strong> Kelompokkan setiap komponen di bawah ini ke kategori yang tepat: <strong>INPUT (Sensor)</strong>, <strong>PROSES (Otak Mini)</strong>, atau <strong>OUTPUT (Aktuator)</strong>.
+                <strong>Instruksi:</strong> Kelompokkan setiap komponen di bawah ini ke kategori yang tepat: <strong>INPUT (Sensor)</strong>, <strong>PROSES (Otak Mini)</strong>, atau <strong>OUTPUT (Aktuator)</strong>.
             </div>
             <div class="grid sm:grid-cols-3 gap-3" id="decomp-pool">
                 <!-- Items populated by JS -->
             </div>
-            <div class="text-right">
-                <button onclick="checkStage1()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+                <div id="stage-feedback-1" class="hidden p-3 rounded-xl text-xs font-bold w-full sm:w-auto flex-1"></div>
+                <button onclick="checkStage1()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow ml-auto">
                     ✓ Periksa Tahap 1
                 </button>
             </div>
         </div>
 
         <!-- STAGE 2: ABSTRAKSI -->
-        <div id="stage-panel-2" class="hidden space-y-4">
+        <div id="stage-panel-2" class="space-y-4 pt-4 border-t border-slate-100">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-indigo-100 text-indigo-800 font-extrabold text-xs rounded-full">Tahap 2</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Abstraksi — Menyaring Informasi Esensial</h3>
+            </div>
             <div class="p-4 bg-indigo-50/60 rounded-2xl border border-indigo-100 text-xs text-indigo-900">
-                <strong>Skenario Tahap 2:</strong> Kamu sedang merancang <em>Lampu Kamar Otomatis</em>. Klik kartu untuk memilih data yang <strong>PENTING</strong> untuk sistem, dan biarkan kartu yang <strong>TIDAK PENTING</strong>!
+                <strong>Skenario:</strong> Kamu sedang merancang <em>Lampu Kamar Otomatis</em>. Klik kartu untuk memilih data yang <strong>PENTING</strong> untuk sistem, dan biarkan kartu yang <strong>TIDAK PENTING</strong>!
             </div>
             <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-3" id="abstraction-cards-grid">
                 <!-- Abstraction cards populated by JS -->
             </div>
-            <div class="text-right">
-                <button onclick="checkStage2()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+                <div id="stage-feedback-2" class="hidden p-3 rounded-xl text-xs font-bold w-full sm:w-auto flex-1"></div>
+                <button onclick="checkStage2()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow ml-auto">
                     ✓ Periksa Tahap 2
                 </button>
             </div>
         </div>
 
         <!-- STAGE 3: PENGENALAN POLA -->
-        <div id="stage-panel-3" class="hidden space-y-4">
+        <div id="stage-panel-3" class="space-y-4 pt-4 border-t border-slate-100">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-indigo-100 text-indigo-800 font-extrabold text-xs rounded-full">Tahap 3</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pengenalan Pola — Analisis Siklus Waktu 24 Jam</h3>
+            </div>
             <div class="p-4 bg-indigo-50/60 rounded-2xl border border-indigo-100 text-xs text-indigo-900">
-                <strong>Analisis Grafik Sensor Cahaya 24 Jam:</strong> Perhatikan pola siklus waktu dan jawab pertanyaan di bawah ini.
+                <strong>Analisis Grafik Sensor Cahaya:</strong> Perhatikan pola siklus waktu dan jawab pertanyaan di bawah ini.
             </div>
             <div class="bg-slate-900 text-white p-5 rounded-2xl space-y-3 font-mono text-xs">
                 <div class="flex justify-between text-cyan-400 font-bold text-[11px]">
@@ -491,29 +489,33 @@
                     </select>
                 </div>
             </div>
-            <div class="text-right">
-                <button onclick="checkStage3()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+                <div id="stage-feedback-3" class="hidden p-3 rounded-xl text-xs font-bold w-full sm:w-auto flex-1"></div>
+                <button onclick="checkStage3()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow ml-auto">
                     ✓ Periksa Tahap 3
                 </button>
             </div>
         </div>
 
         <!-- STAGE 4: ALGORITMA -->
-        <div id="stage-panel-4" class="hidden space-y-4">
+        <div id="stage-panel-4" class="space-y-4 pt-4 border-t border-slate-100">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-indigo-100 text-indigo-800 font-extrabold text-xs rounded-full">Tahap 4</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Algoritma — Merumuskan Aturan Logika IF-THEN</h3>
+            </div>
             <div class="p-4 bg-indigo-50/60 rounded-2xl border border-indigo-100 text-xs text-indigo-900">
-                <strong>Instruksi Tahap 4:</strong> Susun aturan logika IF-THEN untuk 3 skenario otomatisasi berikut dengan memilih opsi yang tepat.
+                <strong>Instruksi:</strong> Susun aturan logika IF-THEN untuk 3 skenario otomatisasi berikut dengan memilih opsi yang tepat.
             </div>
             <div class="space-y-3 text-xs" id="algo-challenges-container">
                 <!-- Algo challenges populated by JS -->
             </div>
-            <div class="text-right">
-                <button onclick="checkStage4()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+                <div id="stage-feedback-4" class="hidden p-3 rounded-xl text-xs font-bold w-full sm:w-auto flex-1"></div>
+                <button onclick="checkStage4()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow ml-auto">
                     ✓ Periksa Tahap 4
                 </button>
             </div>
         </div>
-
-        <div id="stage-feedback-box" class="hidden p-4 rounded-2xl text-xs font-bold"></div>
     </section>
 
     <!-- SECTION: EVALUASI LENGKAP 4 BAGIAN -->
@@ -528,17 +530,12 @@
             </div>
         </div>
 
-        <!-- Progress Steps -->
-        <div class="flex items-center justify-between bg-slate-50 p-2 rounded-2xl border border-slate-200 text-xs font-bold">
-            <button onclick="showEvalTab('A')" id="eval-tab-A" class="px-4 py-2 rounded-xl bg-amber-500 text-white shadow-sm transition">Bagian A: Pilihan Ganda (5)</button>
-            <button onclick="showEvalTab('B')" id="eval-tab-B" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian B: Benar/Salah (5)</button>
-            <button onclick="showEvalTab('C')" id="eval-tab-C" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian C: Menjodohkan (5)</button>
-            <button onclick="showEvalTab('D')" id="eval-tab-D" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian D: Mengurutkan (3)</button>
-        </div>
-
         <!-- BAGIAN A: PILIHAN GANDA -->
         <div id="eval-sec-A" class="space-y-6 text-sm">
-            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian A — Pilihan Ganda (5 Soal)</h3>
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
             
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A1">
                 <p class="font-bold text-slate-800 text-xs">1. Memecah sistem rumah pintar yang rumit menjadi komponen Sensor (Input), Komputer Mini (Proses), dan Aktuator (Output) merupakan penerapan fondasi...</p>
@@ -589,17 +586,14 @@
                     <button onclick="pickMCQ('A5','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Algoritma Percabangan</button>
                 </div>
             </div>
-
-            <div class="text-right">
-                <button onclick="showEvalTab('B')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">
-                    Lanjut ke Bagian B ▶
-                </button>
-            </div>
         </div>
 
         <!-- BAGIAN B: BENAR / SALAH -->
-        <div id="eval-sec-B" class="hidden space-y-6 text-sm">
-            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian B — Benar / Salah (5 Soal)</h3>
+        <div id="eval-sec-B" class="space-y-6 text-sm">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar / Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
 
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B1">
                 <p class="font-semibold text-slate-800 text-xs">1. Sensor bertindak sebagai perangkat output yang mengeksekusi gerakan mekanik di rumah cerdas.</p>
@@ -640,17 +634,15 @@
                     <button onclick="pickTF('B5','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
                 </div>
             </div>
-
-            <div class="flex justify-between">
-                <button onclick="showEvalTab('A')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian A</button>
-                <button onclick="showEvalTab('C')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">Lanjut ke Bagian C ▶</button>
-            </div>
         </div>
 
         <!-- BAGIAN C: MENJODOHKAN -->
-        <div id="eval-sec-C" class="hidden space-y-6 text-sm">
-            <div class="flex justify-between items-center">
-                <h3 class="font-heading font-bold text-slate-800 text-base">Bagian C — Menjodohkan (5 Pasangan)</h3>
+        <div id="eval-sec-C" class="space-y-6 text-sm">
+            <div class="flex justify-between items-center pb-2 border-b border-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                    <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan (5 Pasangan · Bobot: 25 Poin)</h3>
+                </div>
                 <button onclick="resetMatchSection()" class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold rounded-lg">🔄 Reset Pasangan</button>
             </div>
             <p class="text-xs text-slate-500">Klik istilah di sebelah kiri, lalu klik definisi yang tepat di sebelah kanan untuk menghubungkan pasangan.</p>
@@ -663,25 +655,22 @@
                     <!-- Right items -->
                 </div>
             </div>
-
-            <div class="flex justify-between">
-                <button onclick="showEvalTab('B')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian B</button>
-                <button onclick="showEvalTab('D')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">Lanjut ke Bagian D ▶</button>
-            </div>
         </div>
 
         <!-- BAGIAN D: MENGURUTKAN ALGORITMA -->
-        <div id="eval-sec-D" class="hidden space-y-6 text-sm">
-            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian D — Mengurutkan Alur Kerja Sistem Lampu Otomatis</h3>
+        <div id="eval-sec-D" class="space-y-6 text-sm">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Mengurutkan Alur Kerja Sistem Lampu Otomatis (Bobot: 25 Poin)</h3>
+            </div>
             <p class="text-xs text-slate-500">Gunakan tombol panah (▲ / ▼) untuk menyusun 5 tahapan kerja sistem lampu otomatis ke urutan yang benar dari awal hingga akhir!</p>
 
             <div class="space-y-2" id="seq-steps-container">
                 <!-- Sequence steps populated by JS -->
             </div>
 
-            <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <button onclick="showEvalTab('C')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian C</button>
-                <button onclick="submitAllEvaluation()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl transition shadow-lg flex items-center gap-2">
+            <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-end gap-4">
+                <button onclick="submitAllEvaluation()" class="w-full sm:w-auto px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-extrabold text-sm rounded-2xl transition shadow-lg flex items-center justify-center gap-2">
                     <span>📊</span> Hitung Nilai & Lihat Rekap Lengkap
                 </button>
             </div>
@@ -912,21 +901,6 @@ function checkSmartHomeActivity() {
 // ==================== 2. TANTANGAN 4 TAHAP BK ====================
 let stageStars = { 1: 0, 2: 0, 3: 0, 4: 0 };
 
-function switchGameStage(num) {
-    for (let i = 1; i <= 4; i++) {
-        document.getElementById(`tab-stage-${i}`).className = (i === num) 
-            ? 'px-4 py-2 rounded-xl bg-indigo-600 text-white shadow-sm transition' 
-            : 'px-4 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition';
-        const panel = document.getElementById(`stage-panel-${i}`);
-        if (panel) {
-            if (i === num) panel.classList.remove('hidden');
-            else panel.classList.add('hidden');
-        }
-    }
-    const fb = document.getElementById('stage-feedback-box');
-    if (fb) fb.classList.add('hidden');
-}
-
 // Stage 1 Data: Dekomposisi
 const DECOMP_ITEMS = [
     { id: 'd1', text: 'Sensor Cahaya (LDR)', icon: '📡', category: 'input' },
@@ -977,15 +951,15 @@ function checkStage1() {
         }
     });
 
-    const fb = document.getElementById('stage-feedback-box');
+    const fb = document.getElementById('stage-feedback-1');
     fb.classList.remove('hidden');
     if (correct === DECOMP_ITEMS.length) {
         stageStars[1] = 1;
         updateStarsBadge();
-        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        fb.className = 'p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
         fb.innerHTML = '⭐ Tahap 1 Selesai! Kamu berhasil mengelompokkan Dekomposisi Input, Proses, dan Output dengan 100% benar!';
     } else {
-        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        fb.className = 'p-3 rounded-xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
         fb.innerHTML = `Skor Tahap 1: ${correct}/${DECOMP_ITEMS.length} Benar. Periksa kartu yang bertanda merah!`;
     }
 }
@@ -1048,15 +1022,15 @@ function checkStage2() {
         }
     });
 
-    const fb = document.getElementById('stage-feedback-box');
+    const fb = document.getElementById('stage-feedback-2');
     fb.classList.remove('hidden');
     if (correct === ABSTRACTION_DATA.length) {
         stageStars[2] = 1;
         updateStarsBadge();
-        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        fb.className = 'p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
         fb.innerHTML = '⭐ Tahap 2 Selesai! Kamu berhasil memilah data penting dan menyaring detail non-relevan!';
     } else {
-        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        fb.className = 'p-3 rounded-xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
         fb.innerHTML = `Skor Tahap 2: ${correct}/${ABSTRACTION_DATA.length} Benar. Ingat: Untuk lampu otomatis hanya butuh data intensitas cahaya dan status malam!`;
     }
 }
@@ -1066,16 +1040,16 @@ function checkStage3() {
     const senja = document.getElementById('pattern-q-senja').value;
     const berulang = document.getElementById('pattern-q-berulang').value;
 
-    const fb = document.getElementById('stage-feedback-box');
+    const fb = document.getElementById('stage-feedback-3');
     fb.classList.remove('hidden');
 
     if (fajar === '05:30' && senja === '17:30' && berulang === 'ya') {
         stageStars[3] = 1;
         updateStarsBadge();
-        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        fb.className = 'p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
         fb.innerHTML = '⭐ Tahap 3 Selesai! Kamu memahami pola pengenalan siklus 24 jam dengan sangat akurat!';
     } else {
-        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        fb.className = 'p-3 rounded-xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
         fb.innerHTML = 'Jawaban belum tepat. Cek kembali grafik 24 jam di atas (Fajar = 05:30, Senja = 17:30, Siklus = Berulang).';
     }
 }
@@ -1161,15 +1135,15 @@ function checkStage4() {
         }
     });
 
-    const fb = document.getElementById('stage-feedback-box');
+    const fb = document.getElementById('stage-feedback-4');
     fb.classList.remove('hidden');
     if (correct === ALGO_ITEMS.length) {
         stageStars[4] = 1;
         updateStarsBadge();
-        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        fb.className = 'p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
         fb.innerHTML = '⭐ Tahap 4 Selesai! Kamu berhasil menyusun seluruh aturan algoritma otomasi dengan sempurna!';
     } else {
-        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        fb.className = 'p-3 rounded-xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
         fb.innerHTML = `Skor Tahap 4: ${correct}/${ALGO_ITEMS.length} Aturan Benar. Pilih kembali kondisi dan aksi yang tepat!`;
     }
 }
