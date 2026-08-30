@@ -346,23 +346,44 @@ const FananiTracker = (() => {
 
         // 2. Sync to Server if authenticated
         const token = getToken();
-        if (!token) return { success: true, mode: 'local' };
-
-        try {
-            const res = await fetch(`${API_BASE_URL}/submit_evaluation.php`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(payload)
-            });
-            const data = await res.json();
-            return { success: data.success, mode: 'server', data };
-        } catch (err) {
-            console.warn('[Tracker] Offline fallback for evaluation:', err);
-            return { success: true, mode: 'local_fallback' };
+        let syncResult = { success: true, mode: 'local' };
+        if (token) {
+            try {
+                const res = await fetch(`${API_BASE_URL}/submit_evaluation.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(payload)
+                });
+                syncResult = await res.json();
+            } catch (err) {
+                console.warn('[Tracker] Offline fallback for evaluation:', err);
+                syncResult = { success: true, mode: 'local_fallback' };
+            }
         }
+
+        // 3. Auto-inject or update HASIL ASESMEN FORMATIF Auth Sync Box
+        try {
+            const recap = document.getElementById('eval-recap-result');
+            if (recap) {
+                let syncBox = document.getElementById('eval-auth-sync-card');
+                if (syncBox) {
+                    syncBox.outerHTML = getAuthSyncHtml(total_score);
+                } else {
+                    const temp = document.createElement('div');
+                    temp.innerHTML = getAuthSyncHtml(total_score);
+                    if (temp.firstElementChild) {
+                        recap.appendChild(temp.firstElementChild);
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn('[Tracker] Error rendering auth sync card in eval recap:', e);
+        }
+
+        return syncResult;
     }
 
     // Save reflection note
@@ -423,7 +444,6 @@ const FananiTracker = (() => {
         };
     }
 
-    // Comprehensive Aggregator across all 96 topics (50 Informatika + 46 KKA)
     async function getAllProgressSummary() {
         const user = getUser() || { name: 'Siswa Tamu', kelas: 'Mode Mandiri' };
         const localProgress = getLocalProgress();
@@ -498,11 +518,10 @@ const FananiTracker = (() => {
         const infData = processSection(COURSE_CATALOG.informatika, 'informatika');
         const kkaData = processSection(COURSE_CATALOG.coding, 'coding');
 
-        const totalModules = 96; // 50 + 46
+        const totalModules = 96;
         const overallPercentage = Math.round((totalCompleted / totalModules) * 100);
         const averageScore = evaluatedCount > 0 ? Math.round(totalScoreSum / evaluatedCount) : 0;
 
-        // Determine Level / Rank Gamification
         let levelTitle = "Petualang Pemula 🌟";
         let levelRank = 1;
         let nextLevelThreshold = 10;
@@ -530,7 +549,6 @@ const FananiTracker = (() => {
             badgeIcon = "🚀";
         }
 
-        // Badges calculation
         const badges = [
             {
                 id: 'first_step',
@@ -607,7 +625,6 @@ const FananiTracker = (() => {
         };
     }
 
-    // Google Login API handler
     async function googleLogin(credential) {
         try {
             const res = await fetch(`${API_BASE_URL}/google_login.php`, {
@@ -627,7 +644,6 @@ const FananiTracker = (() => {
         }
     }
 
-    // Save profile API handler
     async function saveProfile(payload) {
         const fullName = payload.full_name || payload.name;
         const kelas = payload.kelas;
@@ -652,6 +668,159 @@ const FananiTracker = (() => {
         }
     }
 
+    // Determine clean relative paths across any depth in the /learn hierarchy
+    function getAppPaths() {
+        const loc = window.location.pathname.replace(/\\/g, '/');
+        let learnBase = './';
+        let progressPath = 'progress/index.html';
+        
+        if (loc.includes('/learn/informatika/') || loc.includes('/learn/coding/')) {
+            const afterLearn = loc.substring(loc.indexOf('/learn/') + 7);
+            const segments = afterLearn.split('/').filter(s => s.length > 0 && !s.endsWith('.html'));
+            const depth = segments.length;
+            const prefix = '../'.repeat(depth);
+            learnBase = prefix;
+            progressPath = prefix + 'progress/index.html';
+        } else if (loc.includes('/learn/progress/')) {
+            learnBase = '../';
+            progressPath = './index.html';
+        } else if (loc.includes('/learn/')) {
+            learnBase = './';
+            progressPath = 'progress/index.html';
+        } else {
+            learnBase = '/learn/';
+            progressPath = '/learn/progress/index.html';
+        }
+        return { learnBase, progressPath };
+    }
+
+    // Generate rich status card for HASIL ASESMEN FORMATIF
+    function getAuthSyncHtml(totalScore) {
+        const user = getUser();
+        const { learnBase, progressPath } = getAppPaths();
+        const isLogged = user && user.name && user.name !== 'Siswa Tamu';
+        const scoreVal = totalScore !== undefined ? totalScore : 100;
+
+        if (isLogged) {
+            return `
+                <div id="eval-auth-sync-card" class="mt-4 p-4 bg-emerald-950/60 border border-emerald-400/40 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-emerald-200 shadow-md">
+                    <div class="flex items-center gap-3 w-full sm:w-auto">
+                        <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center justify-center text-xl flex-shrink-0">
+                            ✅
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <strong class="text-white text-xs">Nilai & Progres Berhasil Tersimpan!</strong>
+                                <span class="px-2 py-0.5 bg-emerald-400 text-slate-950 font-extrabold text-[10px] rounded-lg">Tersinkron Guru</span>
+                            </div>
+                            <p class="text-[11px] text-emerald-300/90 mt-0.5">
+                                Tercatat atas nama <strong>${user.name}</strong> ${user.kelas ? `<span class="bg-amber-400 text-slate-950 px-1.5 py-0.2 rounded font-bold">Kelas ${user.kelas}</span>` : ''} • Nilai: <strong class="text-white">${scoreVal}/100</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <a href="${progressPath}" class="px-4 py-2 bg-gradient-to-r from-emerald-400 to-teal-300 hover:from-emerald-300 hover:to-teal-200 text-slate-950 font-extrabold rounded-xl transition text-xs flex items-center gap-1.5 shadow-md whitespace-nowrap flex-shrink-0">
+                        <span>📊</span> Buka Rapor Progress Belajar →
+                    </a>
+                </div>
+            `;
+        } else {
+            return `
+                <div id="eval-auth-sync-card" class="mt-4 p-4 bg-gradient-to-r from-amber-950/90 via-slate-900 to-amber-950/90 border-2 border-amber-400/70 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-amber-200 shadow-xl">
+                    <div class="flex items-start sm:items-center gap-3 w-full md:w-auto">
+                        <div class="w-11 h-11 rounded-2xl bg-amber-400/20 text-amber-300 border border-amber-400/40 flex items-center justify-center text-2xl flex-shrink-0">
+                            ⚠️
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <strong class="text-amber-300 text-sm font-heading font-extrabold">Perhatian: Status Mode Belajar Tamu</strong>
+                                <span class="px-2 py-0.5 bg-amber-400 text-slate-950 font-extrabold text-[10px] rounded-full">Belum Masuk Database Guru</span>
+                            </div>
+                            <p class="text-[11px] text-slate-300 leading-snug mt-1 max-w-xl">
+                                Nilai evaluasimu <strong class="text-white font-mono">(${scoreVal}/100)</strong> baru tersimpan di browser ini. <strong>Masuk dengan Akun Google</strong> agar nilaimu otomatis tercatat di rapor guru Pak Fanani!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2.5 w-full md:w-auto justify-end flex-shrink-0 flex-wrap">
+                        <a href="${learnBase}index.html#auth-status-card" class="px-4 py-2.5 bg-gradient-to-r from-amber-400 to-amber-300 hover:from-amber-300 hover:to-amber-200 text-slate-950 font-heading font-extrabold rounded-xl transition text-xs flex items-center gap-1.5 shadow-md whitespace-nowrap">
+                            <span>🔑</span> Masuk Akun Google Sekarang
+                        </a>
+                        <a href="${progressPath}" class="px-3.5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl transition text-xs whitespace-nowrap border border-white/20">
+                            📊 Lihat Rapor
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    // Auto-inject Global Auth Mini-Bar into Navbar
+    function renderNavbarAuth() {
+        const loc = window.location.pathname.replace(/\\/g, '/');
+        if (loc.endsWith('/learn/') || loc.endsWith('/learn/index.html') || loc.includes('/learn/progress/')) {
+            return;
+        }
+
+        const nav = document.querySelector('nav');
+        if (!nav) return;
+
+        let container = document.getElementById('global-auth-nav-widget');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'global-auth-nav-widget';
+            container.className = 'flex items-center gap-2';
+            
+            const rightGroup = nav.querySelector('div:last-child');
+            if (rightGroup && rightGroup !== nav) {
+                rightGroup.insertBefore(container, rightGroup.firstChild);
+            } else {
+                nav.appendChild(container);
+            }
+        }
+
+        const user = getUser();
+        const { learnBase, progressPath } = getAppPaths();
+        const isLogged = user && user.name && user.name !== 'Siswa Tamu';
+
+        if (isLogged) {
+            container.innerHTML = `
+                <div class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200/80 border border-slate-200 px-2.5 py-1 rounded-2xl transition">
+                    <div class="w-7 h-7 rounded-xl bg-slate-900 flex items-center justify-center text-xs overflow-hidden flex-shrink-0">
+                        ${user.picture ? `<img src="${user.picture}" referrerpolicy="no-referrer" class="w-full h-full object-cover rounded-xl" onerror="this.parentElement.innerHTML='🎓'">` : '🎓'}
+                    </div>
+                    <div class="text-left hidden sm:block leading-tight pr-1">
+                        <span class="text-[11px] font-extrabold text-slate-800 block truncate max-w-[120px]">${user.name}</span>
+                        <span class="text-[9px] font-extrabold text-amber-700 bg-amber-200 px-1 py-0.2 rounded">${user.kelas ? 'Kelas ' + user.kelas : 'Mandiri'}</span>
+                    </div>
+                    <a href="${progressPath}" class="px-2.5 py-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] rounded-xl transition shadow-sm flex items-center gap-1">
+                        <span>📊</span> <span class="hidden md:inline">Rapor</span>
+                    </a>
+                </div>
+            `;
+        } else {
+            container.innerHTML = `
+                <div class="flex items-center gap-1.5 bg-amber-50 border border-amber-200/90 px-2.5 py-1 rounded-2xl text-xs">
+                    <span class="text-amber-800 font-bold text-[10px] sm:text-[11px] flex items-center gap-1">
+                        <span>👤</span> <span class="hidden md:inline">Mode Tamu · </span><span class="hidden sm:inline text-amber-600">Progres Belum Disimpan</span>
+                    </span>
+                    <a href="${learnBase}index.html#auth-status-card" class="px-2 py-0.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[10px] rounded-lg transition shadow-sm whitespace-nowrap">
+                        🔑 Masuk
+                    </a>
+                    <a href="${progressPath}" class="px-2 py-0.5 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 font-bold text-[10px] rounded-lg transition whitespace-nowrap">
+                        📊 Progres
+                    </a>
+                </div>
+            `;
+        }
+    }
+
+    if (typeof window !== 'undefined') {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderNavbarAuth);
+        } else {
+            renderNavbarAuth();
+        }
+    }
+
     return {
         getToken,
         getUser,
@@ -662,7 +831,10 @@ const FananiTracker = (() => {
         getHistory,
         getAllProgressSummary,
         googleLogin,
-        saveProfile
+        saveProfile,
+        getAppPaths,
+        getAuthSyncHtml,
+        renderNavbarAuth
     };
 })();
 
