@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyek Akhir Analisis Data & Kolaborasi AI | Analisis Data KKA</title>
+    <meta name="description" content="Jalankan proyek riset analisis data end-to-end: pengumpulan 50+ data responden, pembersihan data kotor, visualisasi analitik, perumusan rekomendasi wawasan, dan presentasi data storytelling.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,148,136,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-emerald-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-teal-600 transition">
+        fanani<span class="text-teal-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition flex items-center gap-1">
+            ← Unit Analisis Data (KKA)
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#roadmap-proyek" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🗺️ 8 Tahap Roadmap</a>
+        <a href="#koneksi-ai" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🤖 Peran Kolaborasi AI</a>
+        <a href="#simulator-capstone" class="px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 hover:bg-teal-200 transition whitespace-nowrap font-bold">🎮 Capstone Dashboard Lab</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-teal-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-teal-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-teal-600 transition">Analisis Data</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">06. Proyek Analisis Data</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-teal-600 via-emerald-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 06 · Modul 06
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Proyek Akhir Analisis Data: Dari Fakta Menjadi Aksi Nyata
+            </h1>
+            <p class="text-teal-100 text-sm md:text-base leading-relaxed mb-6">
+                Waktunya mempraktikkan peran sebagai <em>Junior Data Scientist</em>! Jalankan proyek riset nyata secara berkelompok: rumuskan topik isu sekolah (seperti durasi screen time vs prestasi belajar), kumpulkan minimal 50 respon data, bersihkan dataset, buat grafik visual interaktif, manfaatkan asisten AI untuk penafsiran wawasan, dan presentasikan laporanmu.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-teal-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📊 Proyek: Riset 50+ Respon Data</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menjalankan 8 Tahapan Siklus Proyek Analisis Data</strong>
+                    <p class="text-slate-600">Mampu merencanakan dan mengeksekusi riset mulai dari perumusan pertanyaan hingga presentasi data storytelling.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengolah Dataset Riil (50+ Sampel)</strong>
+                    <p class="text-slate-600">Mengumpulkan data primer via survei, melakukan data cleaning, dan menghitung ringkasan statistik.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memanfaatkan AI Sebagai Asisten Analisis</strong>
+                    <p class="text-slate-600">Menggunakan generative AI untuk membantu interpretasi temuan pola dan menghasilkan visualisasi infografis.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menyusun Rekomendasi Nyata Berdampak</strong>
+                    <p class="text-slate-600">Menghasilkan solusi berbasis bukti data konkret untuk perbaikan lingkungan sekolah atau komunitas siswa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ROADMAP PROYEK -->
+    <section id="roadmap-proyek" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">8 Langkah Roadmap Proyek Analisis Data</h2>
+                <p class="text-xs text-slate-500">Panduan kerja terstruktur dari perumusan ide awal hingga gelar wicara (Demo Day)</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">1. Topik & Masalah</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Menentukan pertanyaan riset yang spesifik dan terukur.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">2. Desain Instrumen</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Menyusun kuesioner Google Forms dengan skala Likert terarah.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">3. Koleksi 50+ Data</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Menyebarkan kuesioner dengan persetujuan sukarela responden.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">4. Data Cleaning</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Menghapus baris duplikat dan memperbaiki data yang kosong.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">5. Analisis Statistik</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Menghitung Mean/Median serta memetakan grafik batang/garis.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">6. Temukan Insight</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Mengidentifikasi pola hubungan korelasi yang tersembunyi.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">7. Rancang Solusi</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Merumuskan 3 rekomendasi aksi nyata untuk sekolah.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">8. Data Story Pitch</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Mempresentasikan infografis hasil temuan di depan kelas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: KONEKSI AI -->
+    <section id="koneksi-ai" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Kolaborasi Manusia & Kecerdasan Artifisial (AI)</h2>
+                <p class="text-xs text-slate-500">Gunakan AI sebagai co-pilot analitik tanpa melupakan nalar kritis manusia</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-5 text-xs">
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-teal-700 block font-bold font-sans text-sm">1. AI untuk Brainstorming & Prompt</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Meminta saran LLM untuk merumuskan pilihan pertanyaan kuesioner yang objektif dan bebas dari kalimat yang menggiring opini.
+                </p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-teal-700 block font-bold font-sans text-sm">2. AI untuk Ekstraksi Wawasan Data</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Mengunggah ringkasan tabel ke AI (seperti ChatGPT / Gemini Data Analysis) untuk meminta interpretasi tren secara cepat.
+                </p>
+            </div>
+
+            <div class="p-4 bg-teal-50/70 border border-teal-200 rounded-2xl space-y-2">
+                <strong class="text-teal-900 block font-bold font-sans text-sm">3. Human-in-the-Loop Validation</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Manusia tetap memegang kendali penuh untuk memverifikasi kebenaran logika dan memastikan rekomendasi etis diterapkan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR CAPSTONE (INTERAKTIF) -->
+    <section id="simulator-capstone" class="bg-white rounded-3xl border-2 border-teal-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Interactive Capstone Research Insight Lab</h2>
+                </div>
+                <p class="text-xs text-slate-500">Pilih tema proyek akhir riset sekolah dan amati ringkasan dataset 50 sampel serta rekomendasi solusinya!</p>
+            </div>
+            <span class="px-3 py-1 bg-teal-50 text-teal-700 font-bold text-xs rounded-full border border-teal-200 self-start sm:self-auto">
+                Capstone Lab
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                <strong class="font-bold text-slate-800 block">📁 Pilih Tema Proyek Akhir Kelompok:</strong>
+                
+                <div>
+                    <select id="capstone-topic-select" onchange="updateCapstoneProject()" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl font-bold text-slate-800">
+                        <option value="screentime">1. Hubungan Screen Time HP & Nilai Rapot Siswa</option>
+                        <option value="kantin">2. Pola Sisa Makanan Kantin & Menu Terlaris</option>
+                        <option value="literasi">3. Minat Baca Buku Perpustakaan vs Nilai Bahasa</option>
+                    </select>
+                </div>
+
+                <div class="p-3 bg-white border border-slate-200 rounded-xl space-y-1 text-slate-700 text-[11px] leading-relaxed">
+                    <strong class="text-teal-700 block">Status Pengumpulan Data:</strong>
+                    <div id="capstone-sample-badge">✅ 54 Responden Terkumpul (Siswa Kelas 7, 8, 9). Data bersih tanpa missing values.</div>
+                </div>
+            </div>
+
+            <!-- Virtual Capstone Insight Display Screen -->
+            <div class="p-5 bg-slate-900 text-white rounded-2xl space-y-3 font-mono flex flex-col justify-between border border-slate-700">
+                <div class="text-[10px] text-slate-400 flex justify-between">
+                    <span>CAPSTONE INSIGHT & ACTION SUMMARY</span>
+                    <span class="text-emerald-400">● 100% COMPLETED</span>
+                </div>
+
+                <div class="space-y-2 text-[11px] my-auto">
+                    <div class="p-2.5 bg-slate-800 rounded-xl border border-slate-700">
+                        <span class="text-slate-400 text-[10px] block">TEMUAN POLA UTAMA (INSIGHT):</span>
+                        <div id="capstone-insight" class="text-xs font-extrabold text-cyan-300">
+                            Siswa dengan screen time &gt; 5 jam/hari memiliki nilai rapot rata-rata 14 poin lebih rendah dibanding siswa &lt; 2 jam.
+                        </div>
+                    </div>
+                    <div class="p-2.5 bg-slate-800 rounded-xl border border-slate-700">
+                        <span class="text-slate-400 text-[10px] block">REKOMENDASI AKSI KELOMPOK:</span>
+                        <div id="capstone-rec" class="text-xs font-extrabold text-emerald-400">
+                            Mengusulkan program "Gerakan 1 Jam Tanpa HP Sebelum Tidur" dan workshop manajemen waktu digital di sekolah.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-[10px] text-cyan-300 text-center font-sans">
+                    💡 Presentasikan data ini dengan slide infografis menarik untuk menginspirasi perubahan positif di sekolahmu.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Proyek Analisis Data</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman alur proyek analisis data end-to-end dan rubrik penilaian ilmiah (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Jumlah sampel data responden minimal yang disarankan dalam proyek analisis data sekolah agar pola korelasi terlihat representatif adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_1" value="A"> A. Minimal 50 titik data responden
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="B"> B. Cukup 1 orang teman sebangku
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Tidak butuh data sama sekali
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="D"> D. Harus 10 juta orang
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Peran yang tepat bagi teknologi Kecerdasan Artifisial (AI) dalam membantu proyek analisis data siswa adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_2" value="A"> A. Sebagai asisten produktivitas untuk membantu brainstorming pertanyaan, mengolah formula, dan menafsirkan pola grafik
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="B"> B. Memalsukan data respon kuesioner
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="C"> C. Mengerjakan seluruh tugas tanpa dipelajari siswa
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="D"> D. Mengganti peran guru di kelas
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Contoh topik proyek riset data yang sangat relevan dan bermanfaat untuk perbaikan lingkungan sekolah adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_3" value="A"> A. "Analisis Pola Pemborosan Sampah Makanan Kantin & Solusi Menu Bergizi Seimbang"
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Menghitung jumlah butir pasir di halaman
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Menonton film seharian tanpa mencatat data
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Menyalin artikel koran lama kata per kata
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Kriteria evaluasi dengan bobot terbesar dalam penilaian rubrik proyek analisis data adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_4" value="A"> A. Kualitas Kebersihan Data & Ketepatan Analisis Wawasan Pola (Insight)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Ketebalan kertas jilid laporan
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Harga laptop yang digunakan siswa
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Jumlah halaman presentasi yang mencapai 200 slide
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Format penyampaian hasil proyek akhir di hadapan teman dan guru yang paling efektif dan interaktif adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_5" value="A"> A. Presentasi Pitch Slide Infografis & Live Dashboard Canva / Google Sheets
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="B"> B. Membaca teks tabel angka dengan suara datar tanpa slide visual
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="C"> C. Diam saja di depan kelas
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="D"> D. Menyembunyikan grafik hasil temuan
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Kolaborasi kerja kelompok dalam proyek analisis data melatih pembagian peran: perancang survei, data cleaner, analis grafik, dan presenter.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Rekomendasi akhir yang baik harus bersifat abstrak, mengambang, dan tidak bisa dipraktikkan di dunia nyata.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Umpan balik (peer feedback) dari kelompok lain sangat bermanfaat untuk menyempurnakan kualitas laporan riset data.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Menyisipkan screenshot grafik visual yang jelas membantu audiens memahami temuan riset dalam hitungan detik.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Analisis data hanya boleh dilakukan oleh orang dewasa dan tidak mungkin dipelajari oleh siswa SMP.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Peran Anggota Tim Proyek Data (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Peran / Tugas Tim:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Survey Designer</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Data Cleaner</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Chart Visualizer</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Insight & Solution Lead</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Pitch Presenter</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Tanggung Jawab:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="des">Menyusun pertanyaan riset dan kuesioner Google Forms dengan skala Likert terukur</option>
+                        <option value="clean">Membersihkan data mentah dari isian ganda dan missing values di spreadsheet</option>
+                        <option value="vis">Membuat grafik batang, garis, dan diagram lingkaran di Google Sheets / Canva</option>
+                        <option value="ins">Menarik kesimpulan pola korelasi dan merumuskan saran solusi perbaikan</option>
+                        <option value="pres">Menyampaikan presentasi data storytelling di hadapan kelas dan dewan juri</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="des">Menyusun pertanyaan riset dan kuesioner Google Forms dengan skala Likert terukur</option>
+                        <option value="clean">Membersihkan data mentah dari isian ganda dan missing values di spreadsheet</option>
+                        <option value="vis">Membuat grafik batang, garis, dan diagram lingkaran di Google Sheets / Canva</option>
+                        <option value="ins">Menarik kesimpulan pola korelasi dan merumuskan saran solusi perbaikan</option>
+                        <option value="pres">Menyampaikan presentasi data storytelling di hadapan kelas dan dewan juri</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="des">Menyusun pertanyaan riset dan kuesioner Google Forms dengan skala Likert terukur</option>
+                        <option value="clean">Membersihkan data mentah dari isian ganda dan missing values di spreadsheet</option>
+                        <option value="vis">Membuat grafik batang, garis, dan diagram lingkaran di Google Sheets / Canva</option>
+                        <option value="ins">Menarik kesimpulan pola korelasi dan merumuskan saran solusi perbaikan</option>
+                        <option value="pres">Menyampaikan presentasi data storytelling di hadapan kelas dan dewan juri</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="des">Menyusun pertanyaan riset dan kuesioner Google Forms dengan skala Likert terukur</option>
+                        <option value="clean">Membersihkan data mentah dari isian ganda dan missing values di spreadsheet</option>
+                        <option value="vis">Membuat grafik batang, garis, dan diagram lingkaran di Google Sheets / Canva</option>
+                        <option value="ins">Menarik kesimpulan pola korelasi dan merumuskan saran solusi perbaikan</option>
+                        <option value="pres">Menyampaikan presentasi data storytelling di hadapan kelas dan dewan juri</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="des">Menyusun pertanyaan riset dan kuesioner Google Forms dengan skala Likert terukur</option>
+                        <option value="clean">Membersihkan data mentah dari isian ganda dan missing values di spreadsheet</option>
+                        <option value="vis">Membuat grafik batang, garis, dan diagram lingkaran di Google Sheets / Canva</option>
+                        <option value="ins">Menarik kesimpulan pola korelasi dan merumuskan saran solusi perbaikan</option>
+                        <option value="pres">Menyampaikan presentasi data storytelling di hadapan kelas dan dewan juri</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Eksekusi Proyek Capstone Analisis Data (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan jalannya proyek analisis data akhir dari pembentukan tim hingga Demo Day:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Membentuk tim kelompok dan menyepakati topik pertanyaan riset sekolah</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Merancang kuesioner digital dan mengumpulkan 50+ respon siswa secara etis</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Melakukan pembersihan data mentah dan menghitung statistik deskriptif di spreadsheet</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Menghasilkan visualisasi grafik dan merumuskan butir-butir solusi wawasan (insight)</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Mempresentasikan data story pitch di hadapan guru dan teman kelas pada Demo Day</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-teal-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-teal-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-teal-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Pengalaman End-to-End:</strong> Mengerjakan proyek data nyata dari hulu ke hilir menumbuhkan kebiasaan berpikir berbasis fakta.</p>
+            <p><strong>2. Nilai Wawasan Berdampak:</strong> Angka hanyalah simbol mati sampai kita menerjemahkannya menjadi tindakan nyata bagi sesama.</p>
+            <p><strong>3. Kolaborator Teknologi:</strong> Padukan kecerdasan algoritma komputasi dengan empati dan etika kemanusiaan.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan refleksi pengalamanmu selama menyelesaikan modul Unit Analisis Data dan keterampilan apa yang paling berkesan bagimu..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-teal-500 hover:bg-teal-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran KKA.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-ad-06';
+
+const capstoneProjects = {
+    screentime: {
+        samples: "✅ 54 Responden Terkumpul (Siswa Kelas 7, 8, 9). Data bersih tanpa missing values.",
+        insight: "Siswa dengan screen time > 5 jam/hari memiliki nilai rapot rata-rata 14 poin lebih rendah dibanding siswa < 2 jam.",
+        rec: "Mengusulkan program 'Gerakan 1 Jam Tanpa HP Sebelum Tidur' dan workshop manajemen waktu digital di sekolah."
+    },
+    kantin: {
+        samples: "✅ 62 Responden Terkumpul (Penjual Kantin & Siswa). Analisis frekuensi penjualan harian.",
+        insight: "Makanan manis berkalori tinggi menyumbang 65% penjualan saat istirahat pertama, sedangkan sayur buah hanya 8%.",
+        rec: "Membuat poster 'Gizi Seimbang' dan menyediakan paket buah potong terjangkau di stan kantin sekolah."
+    },
+    literasi: {
+        samples: "✅ 50 Responden Terkumpul (Data Perpustakaan & Nilai Bahasa Indonesia).",
+        insight: "Siswa yang membaca minimal 2 buku fiksi per bulan memiliki nilai esai menulis 25% lebih tinggi.",
+        rec: "Mendirikan pojok baca estetik di setiap sudut kelas dan program 'Peminjam Buku Teraktif Mingguan'."
+    }
+};
+
+function updateCapstoneProject() {
+    const t = document.getElementById('capstone-topic-select').value;
+    const p = capstoneProjects[t];
+    document.getElementById('capstone-sample-badge').innerText = p.samples;
+    document.getElementById('capstone-insight').innerText = p.insight;
+    document.getElementById('capstone-rec').innerText = p.rec;
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'S', tf_3: 'B', tf_4: 'B', tf_5: 'S' };
+const KEY_MATCH = { match_1: 'des', match_2: 'clean', match_3: 'vis', match_4: 'ins', match_5: 'pres' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCapstoneProject();
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

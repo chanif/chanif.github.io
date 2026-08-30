@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Vision & OpenCV | Koding Kreatif Lanjutan KKA</title>
+    <meta name="description" content="Pelajari Computer Vision dengan OpenCV (cv2): manipulasi piksel, konversi warna Grayscale, deteksi tepi Canny, deteksi wajah Haar Cascade, dan object detection YOLO.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,148,136,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-emerald-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-teal-600 transition">
+        fanani<span class="text-teal-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition flex items-center gap-1">
+            ← Unit Koding Kreatif Lanjutan (KKA)
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#anatomi-gambar" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🖼️ Piksel & Channel</a>
+        <a href="#opencv-ops" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">👁️ Operasi OpenCV & YOLO</a>
+        <a href="#simulator-cv" class="px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 hover:bg-teal-200 transition whitespace-nowrap font-bold">🎮 CV Filter & Edge Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-teal-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-teal-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-teal-600 transition">Koding Kreatif Lanjutan</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">03. Computer Vision & OpenCV</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-teal-600 via-emerald-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 07 · Modul 03
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Computer Vision: Memberi Mata Digital pada Komputer
+            </h1>
+            <p class="text-teal-100 text-sm md:text-base leading-relaxed mb-6">
+                Bagaimana mobil otonom <em>self-driving</em> mengenali rambu lalu lintas dan kamera HP membuka kunci wajah? Pelajari keajaiban <strong>Computer Vision</strong> dengan library <strong>OpenCV</strong>: konversi channel warna RGB/Grayscale, deteksi garis tepi (Canny Edge), pelacakan wajah (Haar Cascade), dan deteksi objek canggih YOLO.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-teal-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">👁️ Library: OpenCV (cv2) & YOLO</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Anatomi Gambar Digital</strong>
+                    <p class="text-slate-600">Menjelaskan konsep matriks piksel, resolusi dimensi, dan channel warna (Grayscale 1-channel, RGB 3-channel, format BGR OpenCV).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menguasai Operasi Dasar OpenCV (cv2)</strong>
+                    <p class="text-slate-600">Membaca gambar (<code>cv2.imread</code>), konversi warna (<code>cv2.cvtColor</code>), efek blur Gaussian, dan deteksi tepi (<code>cv2.Canny</code>).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Algoritma Deteksi Wajah</strong>
+                    <p class="text-slate-600">Memanfaatkan model pra-latih Haar Cascade (<code>cv2.CascadeClassifier</code>) untuk mendeteksi koordinat wajah pada foto webcam.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengenal Object Detection Modern (YOLO)</strong>
+                    <p class="text-slate-600">Memahami konsep kotak pembatas (Bounding Box) dan skor keyakinan (Confidence Score) dalam pengenalan objek real-time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ANATOMI GAMBAR -->
+    <section id="anatomi-gambar" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Bagaimana Komputer Melihat Gambar?</h2>
+                <p class="text-xs text-slate-500">Di mata prosesor, sebuah foto adalah matriks angka intensitas cahaya 0 s.d. 255</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-5 text-xs">
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl">🔲</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">1. Piksel & Nilai Intensitas</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Setiap piksel bernilai antara <strong>0 (Hitam Pekat)</strong> hingga <strong>255 (Putih Terang)</strong>.
+                </p>
+            </div>
+
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl">🎨</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">2. Tiga Channel Warna (RGB / BGR)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Gambar berwarna terdiri dari 3 lapis matriks: Red, Green, Blue. Di OpenCV, susunan default-nya adalah <strong>BGR</strong>.
+                </p>
+            </div>
+
+            <div class="p-5 bg-teal-50/70 border border-teal-200 rounded-2xl space-y-2">
+                <span class="text-3xl">📐</span>
+                <h3 class="font-heading font-bold text-teal-900 text-sm">3. Resolusi Dimensi (Width × Height)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Foto Full HD (1920×1080) memiliki lebih dari 2 juta piksel yang dihitung oleh prosesor secara paralel.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: OPENCV & YOLO -->
+    <section id="opencv-ops" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Operasi Kunci OpenCV & Arsitektur Deteksi</h2>
+                <p class="text-xs text-slate-500">Transformasi visual dari filter matematis hingga pelacakan objek cerdas</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-4 gap-4 text-xs font-mono">
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5">
+                <strong class="text-teal-700 block font-bold font-sans">cv2.cvtColor()</strong>
+                <p class="text-slate-600 text-[11px] font-sans">Mengubah gambar berwarna menjadi hitam-putih Grayscale.</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5">
+                <strong class="text-teal-700 block font-bold font-sans">cv2.Canny()</strong>
+                <p class="text-slate-600 text-[11px] font-sans">Mendeteksi kontur garis tepi bentuk fisik objek.</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5">
+                <strong class="text-teal-700 block font-bold font-sans">Haar Cascade</strong>
+                <p class="text-slate-600 text-[11px] font-sans">Model pendeteksi fitur wajah manusia (mata, hidung, mulut).</p>
+            </div>
+
+            <div class="p-4 bg-teal-50/70 border border-teal-200 rounded-2xl space-y-1.5">
+                <strong class="text-teal-900 block font-bold font-sans">YOLO (v8/v9)</strong>
+                <p class="text-slate-600 text-[11px] font-sans">You Only Look Once: deteksi objek real-time 60+ FPS.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR CV (INTERAKTIF) -->
+    <section id="simulator-cv" class="bg-white rounded-3xl border-2 border-teal-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Interactive Computer Vision Filter & Edge Studio</h2>
+                </div>
+                <p class="text-xs text-slate-500">Pilih mode filter OpenCV untuk mengamati transformasi visual kanvas piksel secara langsung!</p>
+            </div>
+            <span class="px-3 py-1 bg-teal-50 text-teal-700 font-bold text-xs rounded-full border border-teal-200 self-start sm:self-auto">
+                OpenCV Canvas
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                <strong class="font-bold text-slate-800 block">⚙️ Pilih Operasi Pemrosesan Gambar:</strong>
+                
+                <div>
+                    <select id="cv-filter-select" onchange="renderCvSimulation()" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl font-bold text-slate-800">
+                        <option value="normal">1. Normal RGB Original (Tanpa Filter)</option>
+                        <option value="gray">2. cv2.cvtColor(BGR2GRAY) - Grayscale</option>
+                        <option value="canny">3. cv2.Canny() - Deteksi Garis Tepi (Edge)</option>
+                        <option value="bbox">4. YOLO Face/Object Detection (Bounding Box)</option>
+                    </select>
+                </div>
+
+                <div class="p-3 bg-white border border-slate-200 rounded-xl space-y-1 font-mono text-[11px]">
+                    <div class="text-slate-400">// Sintaks Python OpenCV:</div>
+                    <div id="cv-code-snippet" class="text-teal-700">img = cv2.imread('robot_face.jpg')</div>
+                </div>
+            </div>
+
+            <!-- Virtual CV Camera Canvas Screen -->
+            <div class="p-5 bg-slate-900 text-white rounded-2xl space-y-3 flex flex-col justify-between items-center relative overflow-hidden h-64 border border-slate-700">
+                <div class="text-[10px] font-mono text-slate-400 flex justify-between w-full z-10">
+                    <span>OPENCV CAMERA MONITOR</span>
+                    <span id="cv-mode-badge" class="text-emerald-400 font-bold">MODE: RGB NORMAL</span>
+                </div>
+
+                <canvas id="cv-preview-canvas" width="200" height="130" class="my-auto rounded-lg shadow border border-slate-700"></canvas>
+
+                <div id="cv-info-footer" class="text-[10px] text-cyan-300 font-mono text-center z-10">
+                    Piksel: 200x130 (3 Channels: R, G, B)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Computer Vision & OpenCV</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman matriks piksel, fungsi OpenCV, deteksi tepi Canny, dan YOLO (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Urutan format susunan channel warna default yang digunakan oleh library OpenCV saat membaca file gambar berwarna adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_1" value="A"> A. BGR (Blue, Green, Red)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="B"> B. CMYK
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Grayscale 1-Bit
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="D"> D. YUV Video
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Fungsi OpenCV yang digunakan untuk mendeteksi kontur garis tepi fisik objek dalam gambar adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono font-bold">
+                        <input type="radio" name="mcq_2" value="A"> A. cv2.Canny()
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_2" value="B"> B. cv2.delete()
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_2" value="C"> C. cv2.sleep()
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_2" value="D"> D. cv2.print()
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Kotak persegi panjang yang digambar oleh model AI di sekeliling objek yang berhasil dikenali (misal: kotak di sekitar mobil atau wajah) dinamakan...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_3" value="A"> A. Bounding Box (Kotak Pembatas)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Dialog Box
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Checkbox
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Radio Button
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Teknologi Optical Character Recognition (OCR) yang dipakai di Google Lens berfungsi untuk...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_4" value="A"> A. Mengenali dan mengekstrak tulisan teks dari foto kamera menjadi teks digital yang bisa disalin
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Menghapus foto dari galeri
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Mempercepat koneksi WiFi
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Mengunci layar HP dengan sidik jari
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Arsitektur deep learning mutakhir yang sangat terkenal untuk deteksi objek real-time berkecepatan tinggi pada mobil otonom dan robot adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_5" value="A"> A. YOLO (You Only Look Once)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="B"> B. MP3 Decoder
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="C"> C. PDF Reader
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="D"> D. Bluetooth Driver
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Gambar Grayscale (abu-abu) hanya memiliki 1 channel nilai intensitas cahaya per piksel.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Nilai intensitas piksel 0 mewakili warna putih paling terang, sedangkan 255 adalah warna hitam pekat.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Fitur Face Unlock di smartphone memanfaatkan computer vision untuk mengenali kontur biometrik wajah pemilik HP.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Perintah <code>cv2.GaussianBlur()</code> digunakan untuk memberikan efek keburaman (smoothing) pada gambar guna mengurangi noise.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Komputer melihat gambar sama persis seperti manusia melihat warna lukisan tanpa membutuhkan proses angka matematika.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Fungsi OpenCV & Kegunaannya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Fungsi OpenCV:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. cv2.imread()</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. cv2.cvtColor()</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. cv2.Canny()</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. cv2.resize()</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Haar Cascade</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Kegunaan:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="read">Membaca file gambar dari penyimpanan ke dalam matriks NumPy</option>
+                        <option value="color">Mengonversi format ruang warna gambar (misal BGR ke Grayscale)</option>
+                        <option value="edge">Mendeteksi kontur garis tepi bentuk objek dalam gambar</option>
+                        <option value="resize">Mengubah resolusi ukuran lebar dan tinggi gambar</option>
+                        <option value="haar">Model classifier pra-latih untuk mendeteksi wajah manusia</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="read">Membaca file gambar dari penyimpanan ke dalam matriks NumPy</option>
+                        <option value="color">Mengonversi format ruang warna gambar (misal BGR ke Grayscale)</option>
+                        <option value="edge">Mendeteksi kontur garis tepi bentuk objek dalam gambar</option>
+                        <option value="resize">Mengubah resolusi ukuran lebar dan tinggi gambar</option>
+                        <option value="haar">Model classifier pra-latih untuk mendeteksi wajah manusia</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="read">Membaca file gambar dari penyimpanan ke dalam matriks NumPy</option>
+                        <option value="color">Mengonversi format ruang warna gambar (misal BGR ke Grayscale)</option>
+                        <option value="edge">Mendeteksi kontur garis tepi bentuk objek dalam gambar</option>
+                        <option value="resize">Mengubah resolusi ukuran lebar dan tinggi gambar</option>
+                        <option value="haar">Model classifier pra-latih untuk mendeteksi wajah manusia</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="read">Membaca file gambar dari penyimpanan ke dalam matriks NumPy</option>
+                        <option value="color">Mengonversi format ruang warna gambar (misal BGR ke Grayscale)</option>
+                        <option value="edge">Mendeteksi kontur garis tepi bentuk objek dalam gambar</option>
+                        <option value="resize">Mengubah resolusi ukuran lebar dan tinggi gambar</option>
+                        <option value="haar">Model classifier pra-latih untuk mendeteksi wajah manusia</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="read">Membaca file gambar dari penyimpanan ke dalam matriks NumPy</option>
+                        <option value="color">Mengonversi format ruang warna gambar (misal BGR ke Grayscale)</option>
+                        <option value="edge">Mendeteksi kontur garis tepi bentuk objek dalam gambar</option>
+                        <option value="resize">Mengubah resolusi ukuran lebar dan tinggi gambar</option>
+                        <option value="haar">Model classifier pra-latih untuk mendeteksi wajah manusia</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Program Deteksi Wajah OpenCV di Python (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan proses penulisan kode deteksi wajah menggunakan OpenCV:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Mengimpor library OpenCV dengan perintah <code>import cv2</code></span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Memuat model pra-latih <code>CascadeClassifier('haarcascade_frontalface_default.xml')</code></span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Membaca gambar foto atau frame webcam menggunakan <code>cv2.imread()</code></span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Mengonversi gambar ke Grayscale dan menjalankan fungsi <code>detectMultiScale()</code></span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Menggambar kotak bounding box <code>cv2.rectangle()</code> di sekitar koordinat wajah yang ditemukan</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-teal-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-teal-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-teal-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Persepsi Visual Mesin:</strong> Gambar digital adalah kumpulan jutaan angka matriks piksel yang diproses oleh algoritma matematis.</p>
+            <p><strong>2. Fleksibilitas OpenCV:</strong> Menyediakan perkakas lengkap dari filter sederhana hingga deteksi biometrik wajah.</p>
+            <p><strong>3. Dampak Nyata Computer Vision:</strong> Menggerakkan masa depan kecerdasan buatan dalam dunia medis, robotika, dan transportasi pintar.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan ide aplikasi computer vision apa yang ingin kamu buat untuk membantu kehidupan sehari-hari..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-teal-500 hover:bg-teal-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran KKA.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-adv-03';
+
+function renderCvSimulation() {
+    const mode = document.getElementById('cv-filter-select').value;
+    const cvs = document.getElementById('cv-preview-canvas');
+    const ctx = cvs.getContext('2d');
+    const badge = document.getElementById('cv-mode-badge');
+    const snippet = document.getElementById('cv-code-snippet');
+    const footer = document.getElementById('cv-info-footer');
+
+    ctx.clearRect(0, 0, cvs.width, cvs.height);
+
+    if (mode === 'normal') {
+        badge.innerText = "MODE: RGB NORMAL";
+        badge.className = "text-emerald-400 font-bold";
+        snippet.innerText = "img = cv2.imread('face.jpg')\ncv2.imshow('RGB', img)";
+        footer.innerText = "Piksel: 200x130 (3 Channels: R, G, B)";
+
+        // Draw face
+        ctx.fillStyle = '#FBBF24';
+        ctx.beginPath();
+        ctx.arc(100, 65, 45, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Eyes
+        ctx.fillStyle = '#1E293B';
+        ctx.beginPath();
+        ctx.arc(85, 55, 6, 0, 2 * Math.PI);
+        ctx.arc(115, 55, 6, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Smile
+        ctx.strokeStyle = '#BE123C';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(100, 70, 20, 0.2 * Math.PI, 0.8 * Math.PI);
+        ctx.stroke();
+
+    } else if (mode === 'gray') {
+        badge.innerText = "MODE: GRAYSCALE (1-CHANNEL)";
+        badge.className = "text-slate-300 font-bold";
+        snippet.innerText = "gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\ncv2.imshow('Gray', gray)";
+        footer.innerText = "Piksel: 200x130 (1 Channel: Intensitas 0-255)";
+
+        // Grayscale Face
+        ctx.fillStyle = '#94A3B8';
+        ctx.beginPath();
+        ctx.arc(100, 65, 45, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.fillStyle = '#1E293B';
+        ctx.beginPath();
+        ctx.arc(85, 55, 6, 0, 2 * Math.PI);
+        ctx.arc(115, 55, 6, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.strokeStyle = '#475569';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(100, 70, 20, 0.2 * Math.PI, 0.8 * Math.PI);
+        ctx.stroke();
+
+    } else if (mode === 'canny') {
+        badge.innerText = "MODE: CANNY EDGE DETECTION";
+        badge.className = "text-cyan-400 font-bold";
+        snippet.innerText = "edges = cv2.Canny(gray, threshold1=100, threshold2=200)\ncv2.imshow('Edges', edges)";
+        footer.innerText = "Piksel Biner: 0 (Latar Hitam) & 255 (Garis Putih)";
+
+        ctx.fillStyle = '#0F172A';
+        ctx.fillRect(0, 0, cvs.width, cvs.height);
+
+        ctx.strokeStyle = '#38BDF8';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(100, 65, 45, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(85, 55, 6, 0, 2 * Math.PI);
+        ctx.arc(115, 55, 6, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(100, 70, 20, 0.2 * Math.PI, 0.8 * Math.PI);
+        ctx.stroke();
+
+    } else if (mode === 'bbox') {
+        badge.innerText = "MODE: YOLO / HAAR BOUNDING BOX";
+        badge.className = "text-amber-400 font-bold";
+        snippet.innerText = "faces = face_cascade.detectMultiScale(gray, 1.1, 4)\nfor (x,y,w,h) in faces: cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)";
+        footer.innerText = "Deteksi Objek: 'Face' (Conf: 98.4%)";
+
+        // Face
+        ctx.fillStyle = '#FBBF24';
+        ctx.beginPath();
+        ctx.arc(100, 65, 45, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.fillStyle = '#1E293B';
+        ctx.beginPath();
+        ctx.arc(85, 55, 6, 0, 2 * Math.PI);
+        ctx.arc(115, 55, 6, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.strokeStyle = '#BE123C';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(100, 70, 20, 0.2 * Math.PI, 0.8 * Math.PI);
+        ctx.stroke();
+
+        // Bounding Box
+        ctx.strokeStyle = '#10B981';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(45, 12, 110, 105);
+
+        ctx.fillStyle = '#10B981';
+        ctx.fillRect(45, 0, 85, 14);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = '9px monospace';
+        ctx.fillText("Face: 98%", 48, 10);
+    }
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'S', tf_3: 'B', tf_4: 'B', tf_5: 'S' };
+const KEY_MATCH = { match_1: 'read', match_2: 'color', match_3: 'edge', match_4: 'resize', match_5: 'haar' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderCvSimulation();
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

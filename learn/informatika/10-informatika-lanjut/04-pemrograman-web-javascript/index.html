@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemrograman Web: JavaScript & DOM | Informatika Lanjut</title>
+    <meta name="description" content="Pelajari JavaScript modern: variabel let/const, fungsi arrow function, manipulasi DOM (getElementById, innerHTML, style), event listener interaktif, dan animasi web.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Unit Informatika Lanjut
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#dasar-js" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">⚡ Sintaks JavaScript</a>
+        <a href="#dom-manipulation" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🌳 DOM & Events</a>
+        <a href="#simulator-dom" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">🎮 Live DOM Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-blue-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">Informatika Lanjut</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">04. JavaScript & DOM</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🚀 Informatika Lanjut · Modul 04
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Pemrograman Web Interaktif: JavaScript & DOM
+            </h1>
+            <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-6">
+                Jika HTML adalah tulang dan CSS adalah pakaian, maka <strong>JavaScript</strong> adalah otak dan otot yang membuat halaman web hidup! Pelajari variabel modern (let/const), manipulasi Document Object Model (DOM), penanganan event tombol klik, serta animasi web interaktif.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-blue-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⚡ Bahasa: JavaScript ES6+</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Sintaks JavaScript Modern (ES6)</strong>
+                    <p class="text-slate-600">Menggunakan variabel <code>let</code> & <code>const</code>, fungsi panah (arrow function), dan template literal string.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Manipulasi Dokumen DOM</strong>
+                    <p class="text-slate-600">Mengambil elemen HTML dengan <code>document.getElementById()</code> dan mengubah teks (<code>innerText</code>) serta style CSS secara dinamis.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menangani Event Interaktif (EventListener)</strong>
+                    <p class="text-slate-600">Merespons aksi klik tombol pengguna (<code>click</code>), input form (<code>submit</code>/<code>input</code>), dan keyboard.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membangun Web Widget Interaktif</strong>
+                    <p class="text-slate-600">Membuat fitur nyata seperti Dark Mode toggle, konverter satuan, dan kalkulator nilai interaktif di browser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DASAR JS -->
+    <section id="dasar-js" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Fondasi JavaScript Modern</h2>
+                <p class="text-xs text-slate-500">Bahasa pemrograman paling populer di dunia web yang berjalan langsung di browser</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5 text-xs font-mono">
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-2xl">📦</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">1. let vs const</h3>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    <code>const phi = 3.14;</code> (Nilai tetap)<br>
+                    <code>let skor = 0;</code> (Nilai dapat berubah)<br>
+                    Hindari penggunaan <code>var</code> lama.
+                </p>
+            </div>
+
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-2xl">🎯</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">2. Arrow Function</h3>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    <code>const sapa = (nama) => {<br>
+                    &nbsp;&nbsp;return `Halo, ${nama}!`;<br>
+                    };</code>
+                </p>
+            </div>
+
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-2xl">🌲</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">3. DOM Selection</h3>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    <code>const el = document.getElementById('judul');</code><br>
+                    <code>el.style.color = 'blue';</code>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DOM MANIPULATION & EVENTS -->
+    <section id="dom-manipulation" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Cara Kerja Event Listener</h2>
+                <p class="text-xs text-slate-500">Mendengarkan dan merespons setiap interaksi jemari pengguna pada layar</p>
+            </div>
+        </div>
+
+        <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 text-xs font-mono space-y-2">
+            <div class="text-blue-700 font-bold">// 1. Tangkap tombol target di HTML:</div>
+            <div class="text-slate-800">const tombol = document.getElementById('btn-klik');</div>
+            <div class="text-blue-700 font-bold pt-2">// 2. Pasang pendengar event saat tombol diklik:</div>
+            <div class="text-slate-800">tombol.addEventListener('click', () => {</div>
+            <div class="pl-4 text-emerald-700">alert('Tombol berhasil diklik!');</div>
+            <div class="pl-4 text-emerald-700">document.body.style.backgroundColor = '#EEF2FF';</div>
+            <div class="text-slate-800">});</div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR DOM (INTERAKTIF) -->
+    <section id="simulator-dom" class="bg-white rounded-3xl border-2 border-blue-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Live DOM Manipulation Studio</h2>
+                </div>
+                <p class="text-xs text-slate-500">Ubah teks, warna, dan tema kartu elemen HTML di samping kanan menggunakan kontrol JavaScript live!</p>
+            </div>
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 font-bold text-xs rounded-full border border-blue-200 self-start sm:self-auto">
+                DOM Playground
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                <strong class="font-bold text-slate-800 block">⚡ Kontrol JavaScript Live:</strong>
+                
+                <div>
+                    <label class="text-[11px] text-slate-500 block mb-1">Ubah Teks Heading (el.innerText):</label>
+                    <input type="text" id="dom-text-input" value="Belajar JS Seru Banget!" oninput="updateDomText()" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl font-bold font-mono text-slate-800">
+                </div>
+
+                <div>
+                    <label class="text-[11px] text-slate-500 block mb-1">Ubah Warna Background (el.style.backgroundColor):</label>
+                    <div class="flex gap-2">
+                        <button onclick="changeDomBg('#3B82F6')" class="w-8 h-8 rounded-full bg-blue-500 shadow"></button>
+                        <button onclick="changeDomBg('#10B981')" class="w-8 h-8 rounded-full bg-emerald-500 shadow"></button>
+                        <button onclick="changeDomBg('#8B5CF6')" class="w-8 h-8 rounded-full bg-purple-500 shadow"></button>
+                        <button onclick="changeDomBg('#F59E0B')" class="w-8 h-8 rounded-full bg-amber-500 shadow"></button>
+                        <button onclick="changeDomBg('#0F172A')" class="w-8 h-8 rounded-full bg-slate-900 shadow"></button>
+                    </div>
+                </div>
+
+                <div>
+                    <button onclick="toggleDomLikes()" class="w-full py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold rounded-xl border border-rose-200 transition">
+                        ❤️ Tambah Like (JS Event Listener)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Target HTML Element Rendered -->
+            <div class="p-5 bg-slate-100 rounded-2xl space-y-3 flex flex-col justify-center">
+                <div class="text-[10px] text-slate-400 font-mono flex justify-between">
+                    <span>RENDERED DOM TARGET</span>
+                    <span class="text-blue-600 font-bold">#card-preview</span>
+                </div>
+                <div id="card-preview" class="p-6 bg-blue-500 text-white rounded-2xl shadow-lg space-y-2 transition-all duration-300">
+                    <h3 id="preview-heading" class="font-heading font-extrabold text-lg">Belajar JS Seru Banget!</h3>
+                    <p class="text-xs text-white/90">Elemen ini dikontrol langsung secara real-time via DOM API.</p>
+                    <div class="pt-2 text-xs font-bold bg-black/20 px-3 py-1.5 rounded-xl inline-block">
+                        ❤️ <span id="like-counter">12</span> Siswa Menyukai
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: JavaScript & DOM</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji kemampuan koding JavaScript, DOM selector, dan penanganan event (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Keyword yang digunakan dalam JavaScript modern untuk mendeklarasikan variabel yang nilainya bersifat konstan dan tidak dapat diubah adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_1" value="A"> A. const
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_1" value="B"> B. let
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_1" value="C"> C. var
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_1" value="D"> D. static
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Perintah JavaScript untuk memilih satu elemen HTML berdasarkan atribut identitas <code>id</code>-nya adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_2" value="A"> A. document.getElementById('id_elemen')
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_2" value="B"> B. document.findElement()
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_2" value="C"> C. document.searchId()
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_2" value="D"> D. document.select()
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Metode yang digunakan untuk memasang pendengar aksi interaksi pengguna (seperti klik tombol) pada suatu elemen DOM adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_3" value="A"> A. addEventListener('click', fungsi)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_3" value="B"> B. attachListener()
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_3" value="C"> C. listenTo()
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_3" value="D"> D. onAction()
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Perhatikan kode berikut: <code>const total = (a, b) => a + b;</code>. Penulisan fungsi ringkas dengan tanda panah tersebut disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="A"> A. Arrow Function
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Recursive Function
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Generator Function
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Async Function
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Tag HTML yang digunakan untuk menautkan atau menuliskan kode program JavaScript di dalam dokumen web adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_5" value="A"> A. &lt;script&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_5" value="B"> B. &lt;javascript&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_5" value="C"> C. &lt;code&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400 font-mono">
+                        <input type="radio" name="mcq_5" value="D"> D. &lt;style&gt;
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. JavaScript dan Java adalah dua bahasa pemrograman yang sama persis pencipta dan fungsinya.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Properti <code>innerHTML</code> dapat digunakan untuk memasukkan struktur tag HTML baru ke dalam sebuah elemen.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Perintah <code>console.log()</code> digunakan untuk menampilkan pesan teks di layar browser siswa secara langsung.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Melalui DOM API, JavaScript dapat mengubah warna latar belakang dan ukuran huruf elemen CSS secara dinamis.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Event <code>submit</code> pada form HTML dapat dicegah reload halamannya menggunakan perintah <code>event.preventDefault()</code>.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Properti DOM & Hasil Aksinya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Kode Properti DOM:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. el.innerText</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. el.style.display = 'none'</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. el.classList.add('active')</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. el.value</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. window.alert('Pesan')</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Aksi yang Terjadi:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="text">Mengubah isi teks murni di dalam suatu elemen HTML</option>
+                        <option value="hide">Menyembunyikan elemen agar tidak terlihat di layar</option>
+                        <option value="class">Menambahkan kelas styling CSS baru ke dalam elemen</option>
+                        <option value="val">Mengambil isi teks yang diketikkan pengguna di kotak input form</option>
+                        <option value="alert">Memunculkan kotak dialog popup pemberitahuan di peramban</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="text">Mengubah isi teks murni di dalam suatu elemen HTML</option>
+                        <option value="hide">Menyembunyikan elemen agar tidak terlihat di layar</option>
+                        <option value="class">Menambahkan kelas styling CSS baru ke dalam elemen</option>
+                        <option value="val">Mengambil isi teks yang diketikkan pengguna di kotak input form</option>
+                        <option value="alert">Memunculkan kotak dialog popup pemberitahuan di peramban</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="text">Mengubah isi teks murni di dalam suatu elemen HTML</option>
+                        <option value="hide">Menyembunyikan elemen agar tidak terlihat di layar</option>
+                        <option value="class">Menambahkan kelas styling CSS baru ke dalam elemen</option>
+                        <option value="val">Mengambil isi teks yang diketikkan pengguna di kotak input form</option>
+                        <option value="alert">Memunculkan kotak dialog popup pemberitahuan di peramban</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="text">Mengubah isi teks murni di dalam suatu elemen HTML</option>
+                        <option value="hide">Menyembunyikan elemen agar tidak terlihat di layar</option>
+                        <option value="class">Menambahkan kelas styling CSS baru ke dalam elemen</option>
+                        <option value="val">Mengambil isi teks yang diketikkan pengguna di kotak input form</option>
+                        <option value="alert">Memunculkan kotak dialog popup pemberitahuan di peramban</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="text">Mengubah isi teks murni di dalam suatu elemen HTML</option>
+                        <option value="hide">Menyembunyikan elemen agar tidak terlihat di layar</option>
+                        <option value="class">Menambahkan kelas styling CSS baru ke dalam elemen</option>
+                        <option value="val">Mengambil isi teks yang diketikkan pengguna di kotak input form</option>
+                        <option value="alert">Memunculkan kotak dialog popup pemberitahuan di peramban</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Membuat Fitur Dark Mode dengan JavaScript (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan proses penulisan logika tombol sakelar tema gelap:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Menyiapkan tombol HTML: <code>&lt;button id="btn-theme"&gt;🌙 Mode Gelap&lt;/button&gt;</code></span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Memilih elemen tombol di JS: <code>const btn = document.getElementById('btn-theme');</code></span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Memasang event listener klik: <code>btn.addEventListener('click', () => { ... });</code></span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Men-toggle kelas gelap pada body: <code>document.body.classList.toggle('dark-mode');</code></span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Memperbarui teks tombol menjadi ☀️ Mode Terang jika tema gelap aktif</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-blue-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-blue-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Interaktivitas Dinamis:</strong> JavaScript mengubah halaman web statis menjadi aplikasi web interaktif yang responsif.</p>
+            <p><strong>2. Kekuatan DOM API:</strong> Setiap tag HTML dapat diakses dan diubah secara instan tanpa perlu memuat ulang halaman peramban.</p>
+            <p><strong>3. Ekosistem Terbesar:</strong> JavaScript adalah keterampilan wajib bagi setiap pengembang front-end maupun full-stack modern di era kini.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan fitur interaktif yang ingin kamu tambahkan pada proyek website buatanmu menggunakan JavaScript..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'informatika';
+const TOPIC_ID = 'inf-lanjut-04';
+
+// Live DOM Playground Functions
+let likeCount = 12;
+
+function updateDomText() {
+    const val = document.getElementById('dom-text-input').value;
+    document.getElementById('preview-heading').innerText = val || "Contoh Judul";
+}
+
+function changeDomBg(colorHex) {
+    document.getElementById('card-preview').style.backgroundColor = colorHex;
+}
+
+function toggleDomLikes() {
+    likeCount++;
+    document.getElementById('like-counter').innerText = likeCount;
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'S', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'B' };
+const KEY_MATCH = { match_1: 'text', match_2: 'hide', match_3: 'class', match_4: 'val', match_5: 'alert' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

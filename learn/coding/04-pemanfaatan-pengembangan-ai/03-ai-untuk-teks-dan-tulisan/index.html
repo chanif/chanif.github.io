@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI untuk Teks & Penulisan Kreatif | KKA</title>
+    <meta name="description" content="Pelajari alur penulisan cerdas bersama AI: brainstorming, pembuatan outline, parafrase tone, penyuntingan tata bahasa, dan etika transparansi karya tulis.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,148,136,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-emerald-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-teal-600 transition">
+        fanani<span class="text-teal-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition flex items-center gap-1">
+            ← Unit Pemanfaatan AI (KKA)
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#workflow-menulis" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">✍️ Alur 5 Langkah</a>
+        <a href="#etika-menulis" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🛡️ Etika & Orisinalitas</a>
+        <a href="#simulator-menulis" class="px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 hover:bg-teal-200 transition whitespace-nowrap font-bold">🎮 AI Writing Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-teal-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-teal-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-teal-600 transition">Pemanfaatan AI</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">03. AI untuk Teks & Tulisan</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-teal-600 via-emerald-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 04 · Modul 03
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Pemanfaatan AI untuk Teks & Penulisan Kreatif
+            </h1>
+            <p class="text-teal-100 text-sm md:text-base leading-relaxed mb-6">
+                Jadikan model bahasa AI sebagai <em>Editor & Brainstorming Partner</em> pribadimu, bukan pengganti kemampuan berpikir! Pelajari alur penulisan 5 tahap: dari pencarian ide, pembuatan kerangka esai, penyuntingan gaya bahasa, hingga sentuhan akhir orisinalitas manusia yang otentik.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-teal-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">✍️ Peran: Asisten Brainstorming & Editing</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Peran AI sebagai Asisten Menulis</strong>
+                    <p class="text-slate-600">Mengetahui fungsi AI untuk brainstorming sudut pandang, penyusunan outline, parafrase, dan perbaikan tata bahasa.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Alur Kerja 5 Tahap (AI-Assisted Workflow)</strong>
+                    <p class="text-slate-600">Mempraktikkan alur Brainstorm → Outline → Draft Mandiri → AI Editing → Finalisasi Kemanusiaan.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menjaga Etika Akademik & Orisinalitas</strong>
+                    <p class="text-slate-600">Menghindari tindakan copy-paste total dan selalu mencantumkan transparansi penggunaan AI dalam karya tulis.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menguasai Berbagai Tools AI Teks Khusus</strong>
+                    <p class="text-slate-600">Mengenal keunggulan ChatGPT/Gemini, DeepL (terjemahan presisi), QuillBot (parafrase), dan NotebookLM (analisis dokumen).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: WORKFLOW MENULIS -->
+    <section id="workflow-menulis" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Alur Kerja 5 Tahap Menulis Cerdas Bersama AI</h2>
+                <p class="text-xs text-slate-500">Kombinasi kecepatan AI dengan kedalaman nalar dan rasa empati manusia</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-5 gap-3 text-xs">
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5 text-center">
+                <span class="text-2xl block">💡</span>
+                <strong class="text-teal-700 font-bold block">1. Brainstorm</strong>
+                <p class="text-slate-600 text-[11px]">Minta AI mengajukan 5 ide sudut pandang menarik seputar topik tugasmu.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5 text-center">
+                <span class="text-2xl block">📋</span>
+                <strong class="text-teal-700 font-bold block">2. Outline</strong>
+                <p class="text-slate-600 text-[11px]">Minta AI menyusun struktur bab: Pendahuluan, Masalah, Solusi, & Kesimpulan.</p>
+            </div>
+
+            <div class="p-4 bg-teal-50 border border-teal-200 rounded-2xl space-y-1.5 text-center">
+                <span class="text-2xl block">✍️</span>
+                <strong class="text-teal-900 font-bold block">3. Draft Mandiri</strong>
+                <p class="text-slate-600 text-[11px]">Tulis draf pertama menggunakan argumen dan pengalamanmu sendiri.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5 text-center">
+                <span class="text-2xl block">🔍</span>
+                <strong class="text-teal-700 font-bold block">4. AI Review</strong>
+                <p class="text-slate-600 text-[11px]">Minta AI memeriksa tata bahasa, kohesi paragraf, dan pilihan kosakata baku.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5 text-center">
+                <span class="text-2xl block">🌟</span>
+                <strong class="text-teal-700 font-bold block">5. Finalize</strong>
+                <p class="text-slate-600 text-[11px]">Baca ulang, cek fakta, dan pastikan suara otentik pribadimu tetap hidup.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ETIKA MENULIS -->
+    <section id="etika-menulis" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Etika & Praktik Terbaik Penulisan Berbasis AI</h2>
+                <p class="text-xs text-slate-500">Integritas akademik adalah aset terpenting seorang pelajar</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5">
+                <strong class="text-teal-700 block font-bold">1. Jangan Copy-Paste 100%</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Hasil tulisan AI seringkali monoton, berulang-ulang, dan mudah terdeteksi oleh sistem AI detector guru.</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5">
+                <strong class="text-teal-700 block font-bold">2. Wajib Cek Fakta (Anti-Halusinasi)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">AI sering membuat rujukan fiktif. Selalu verifikasi tahun peristiwa, nama tokoh, dan rumus ke sumber primer.</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5">
+                <strong class="text-teal-700 block font-bold">3. Pernyataan Transparansi</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Cantumkan catatan: <em>'Karya ini dibantu oleh AI untuk pengecekan tata bahasa dan brainstorming kerangka.'</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR MENULIS (INTERAKTIF) -->
+    <section id="simulator-menulis" class="bg-white rounded-3xl border-2 border-teal-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Interactive AI Writing & Tone Adjuster Studio</h2>
+                </div>
+                <p class="text-xs text-slate-500">Pilih gaya penulisan dan amati bagaimana AI mengubah paragraf tulisan sesuai audiens sasaranmu!</p>
+            </div>
+            <span class="px-3 py-1 bg-teal-50 text-teal-700 font-bold text-xs rounded-full border border-teal-200 self-start sm:self-auto">
+                Tone Studio
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                <strong class="font-bold text-slate-800 block">📝 Paragraf Draf Asli:</strong>
+                
+                <div class="p-3 bg-white border border-slate-200 rounded-xl text-slate-700 italic text-[11px] leading-relaxed">
+                    "AI itu keren banget dan ngebantu kita ngerjain tugas sekolah biar cepet selesai tapi jangan ampe males mikir ya temen-temen."
+                </div>
+
+                <div>
+                    <label class="font-semibold text-slate-700 block mb-1.5">Pilih Gaya Bahasa (Tone) Output:</label>
+                    <select id="tone-select" onchange="applyToneAdjustment()" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl font-bold text-slate-800">
+                        <option value="formal">1. Formal & Akademis (Untuk Esai Sekolah)</option>
+                        <option value="story">2. Naratif & Bercerita (Untuk Artikel Blog)</option>
+                        <option value="simple">3. Sederhana & Ramah Anak (Untuk Pembaca Cilik)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Tone Output Display -->
+            <div class="p-5 bg-slate-900 text-white rounded-2xl space-y-3 font-mono flex flex-col justify-between">
+                <div class="text-[10px] text-slate-400 flex justify-between">
+                    <span id="tone-badge-title">HASIL PENYUNTINGAN AI</span>
+                    <span class="text-emerald-400">● TONE REFINED</span>
+                </div>
+
+                <div id="tone-output-box" class="p-3.5 bg-slate-800 rounded-xl border border-slate-700 text-xs text-emerald-300 font-sans leading-relaxed">
+                    <!-- Injected via JS -->
+                </div>
+
+                <div class="text-[10px] text-cyan-300">
+                    💡 Perhatikan bagaimana makna inti tetap terjaga, namun pemilihan kata disesuaikan dengan konteks pembaca.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: AI untuk Teks & Tulisan</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman alur kerja penulisan dengan AI, parafrase, dan etika akademik (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Penggunaan AI yang paling tepat dan etis dalam penulisan tugas esai sekolah adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_1" value="A"> A. Menggunakan AI sebagai rekan brainstorming ide, penyusun outline, dan pemeriksa tata bahasa, sementara argumen utama ditulis sendiri
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="B"> B. Menyuruh AI menulis seluruh esai lalu langsung dikumpulkan tanpa dibaca
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Mengaku seluruh teks buatan AI sebagai karya tulisan sendiri 100%
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="D"> D. Menolak belajar menulis karena sudah ada AI
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Aplikasi AI yang terkenal sangat unggul dalam melakukan penerjemahan bahasa berakurasi tinggi dengan nuansa alami adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_2" value="A"> A. DeepL Translator
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="B"> B. Adobe Photoshop
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="C"> C. WinRAR
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="D"> D. VLC Media Player
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Mengapa kita wajib memeriksa silang (fact-check) setiap kutipan buku atau tahun sejarah yang diberikan oleh AI teks?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_3" value="A"> A. Karena AI memiliki potensi mengalami halusinasi dan mengarang data yang tidak akurat
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Karena buku di perpustakaan selalu salah
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Karena komputer tidak bisa berhitung
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Karena internet akan mati jika tidak dicek
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Perintah prompt yang efektif untuk meminta AI meringkas teks panjang artikel menjadi 3 poin utama adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_4" value="A"> A. "Ringkas artikel berikut ke dalam 3 poin utama yang ringkas dan mudah dipahami oleh siswa SMP: [teks]"
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="B"> B. "baca ini"
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="C"> C. "buatkan cerita lucu"
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="D"> D. "tolong bantu saya"
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Manfaat menyertakan 'Pernyataan Transparansi AI' di bagian catatan kaki tugas sekolah adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_5" value="A"> A. Menunjukkan kejujuran akademik dan integritas ilmiah dalam memanfaatkan teknologi secara etis
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="B"> B. Agar mendapatkan nilai 100 secara otomatis tanpa dinilai
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="C"> C. Supaya guru tidak perlu membaca isi tulisan kita
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="D"> D. Menghapus tugas dari buku catatan
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Menulis draf esai sendiri terlebih dahulu sebelum meminta AI menyunting tata bahasa membantu melatih kemampuan bernalar siswa.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Menyalin 100% teks artikel buatan AI dan mengumpulkannya atas nama sendiri termasuk bentuk pelanggaran plagiarisme digital.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. AI dapat mengubah nada bicara (tone) sebuah tulisan dari santai menjadi formal akademis secara otomatis.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Alat bantu parafrase QuillBot berfungsi untuk mencuri tulisan orang lain agar tidak ketahuan guru.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. NotebookLM dari Google memungkinkan pengguna menganalisis dan menanyakan isi dari dokumen PDF catatan belajar sendiri.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Aplikasi AI Teks & Keunggulan Spesifiknya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Tools AI Teks:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. ChatGPT / Gemini</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. DeepL Translator</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. QuillBot</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Google NotebookLM</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Grammarly</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Keunggulan:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="chat">Model serba guna untuk percakapan, ideasi kreatif, dan penjelasan materi</option>
+                        <option value="deepl">Penerjemah bahasa asing dengan tata bahasa sangat alami dan presisi</option>
+                        <option value="quill">Alat bantu parafrase struktur kalimat agar tulisan lebih variatif</option>
+                        <option value="note">Asisten riset yang menganalisis dan menjawab pertanyaan dari dokumen PDF pengguna</option>
+                        <option value="gramm">Pemeriksa tata bahasa, ejaan kata, dan gaya penulisan formal</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="chat">Model serba guna untuk percakapan, ideasi kreatif, dan penjelasan materi</option>
+                        <option value="deepl">Penerjemah bahasa asing dengan tata bahasa sangat alami dan presisi</option>
+                        <option value="quill">Alat bantu parafrase struktur kalimat agar tulisan lebih variatif</option>
+                        <option value="note">Asisten riset yang menganalisis dan menjawab pertanyaan dari dokumen PDF pengguna</option>
+                        <option value="gramm">Pemeriksa tata bahasa, ejaan kata, dan gaya penulisan formal</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="chat">Model serba guna untuk percakapan, ideasi kreatif, dan penjelasan materi</option>
+                        <option value="deepl">Penerjemah bahasa asing dengan tata bahasa sangat alami dan presisi</option>
+                        <option value="quill">Alat bantu parafrase struktur kalimat agar tulisan lebih variatif</option>
+                        <option value="note">Asisten riset yang menganalisis dan menjawab pertanyaan dari dokumen PDF pengguna</option>
+                        <option value="gramm">Pemeriksa tata bahasa, ejaan kata, dan gaya penulisan formal</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="chat">Model serba guna untuk percakapan, ideasi kreatif, dan penjelasan materi</option>
+                        <option value="deepl">Penerjemah bahasa asing dengan tata bahasa sangat alami dan presisi</option>
+                        <option value="quill">Alat bantu parafrase struktur kalimat agar tulisan lebih variatif</option>
+                        <option value="note">Asisten riset yang menganalisis dan menjawab pertanyaan dari dokumen PDF pengguna</option>
+                        <option value="gramm">Pemeriksa tata bahasa, ejaan kata, dan gaya penulisan formal</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="chat">Model serba guna untuk percakapan, ideasi kreatif, dan penjelasan materi</option>
+                        <option value="deepl">Penerjemah bahasa asing dengan tata bahasa sangat alami dan presisi</option>
+                        <option value="quill">Alat bantu parafrase struktur kalimat agar tulisan lebih variatif</option>
+                        <option value="note">Asisten riset yang menganalisis dan menjawab pertanyaan dari dokumen PDF pengguna</option>
+                        <option value="gramm">Pemeriksa tata bahasa, ejaan kata, dan gaya penulisan formal</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Alur Menulis Esai Bersama Asisten AI (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan proses penulisan esai edukatif yang benar dan etis:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Meminta AI melakukan brainstorming 5 ide topik menarik seputar tema tugas</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Memilih 1 topik dan meminta AI menyusun kerangka struktur (outline) bab</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Menuliskan draf pertama secara mandiri berdasarkan kerangka dan pemikiran sendiri</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Meminta AI meninjau (review) draf tulisan untuk mengecek ejaan kata dan kelancaran paragraf</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Membaca ulang hasil akhir, memverifikasi fakta rujukan, dan menambahkan catatan transparansi AI</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-teal-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-teal-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-teal-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. AI Sebagai Co-Writer:</strong> Manfaatkan AI untuk memperkaya sudut pandang dan memoles bahasa, bukan menyerahkan pemikiranmu.</p>
+            <p><strong>2. Orisinalitas Utama:</strong> Keunikan gagasan, pengalaman pribadi, dan kejujuran ilmiah adalah nilai tertinggi sebuah tulisan.</p>
+            <p><strong>3. Verifikasi Rujukan:</strong> Jangan pernah mengutip data dari AI sebelum memeriksa buku teks atau artikel ilmiah resmi.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan pengalamanmu menggunakan AI dalam membantu menulis tugas dan komitmen integritasmu..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-teal-500 hover:bg-teal-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran KKA.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-genai-03';
+
+const toneOutputs = {
+    formal: "Kecerdasan Artifisial (AI) merupakan inovasi teknologi yang memberikan akselerasi signifikan dalam penyelesaian tugas akademik. Namun demikian, penggunaannya harus diimbangi dengan integritas ilmiah dan ketajaman nalar kritis mandiri agar tidak menurunkan kapasitas intelektual peserta didik.",
+    story: "Di era serba canggih saat ini, kehadiran AI terasa layaknya sahabat setia yang siap membantu tugas sekolah kita dalam sekejap. Namun ingat, jangan sampai kemudahan ini membuat kita terbuai dan lupa mengasah daya pikir kita sendiri!",
+    simple: "AI itu seperti robot pintar yang bisa membantu kita belajar banyak hal seru di sekolah. Tapi ingat ya adik-adik, kita tetap harus rajin membaca dan berpikir sendiri agar semakin pintar!"
+};
+
+function applyToneAdjustment() {
+    const tone = document.getElementById('tone-select').value;
+    document.getElementById('tone-output-box').innerText = toneOutputs[tone];
+    
+    const titles = {
+        formal: "GAYA FORMAL & AKADEMIS",
+        story: "GAYA NARATIF BERKUALITAS",
+        simple: "GAYA SEDERHANA & RAMAH ANAK"
+    };
+    document.getElementById('tone-badge-title').innerText = titles[tone];
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'B', tf_3: 'B', tf_4: 'S', tf_5: 'B' };
+const KEY_MATCH = { match_1: 'chat', match_2: 'deepl', match_3: 'quill', match_4: 'note', match_5: 'gramm' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    applyToneAdjustment();
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

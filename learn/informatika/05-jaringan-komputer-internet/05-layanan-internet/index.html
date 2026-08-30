@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Internet & Mesin Pencari Cerdas | JKI Informatika</title>
+    <meta name="description" content="Pelajari aneka layanan internet: World Wide Web (WWW), anatomi URL, cara kerja Search Engine (Crawling & Indexing), trik pencarian Google tingkat lanjut, dan etika komunikasi email.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Unit Jaringan & Internet
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#ekosistem-layanan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🌐 WWW & Email</a>
+        <a href="#search-engine" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🔍 Cara Kerja Google</a>
+        <a href="#simulator-operator" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">🎮 Search Operator Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-blue-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">Jaringan Komputer & Internet</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">05. Layanan Internet</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🌐 Jaringan Komputer · Modul 05
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Layanan Internet: Menavigasi Jagat Raya Digital
+            </h1>
+            <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-6">
+                Internet menyediakan ribuan layanan mulai dari World Wide Web (WWW), surat elektronik (Email), hingga mesin pencari cerdas (Search Engine). Kuasai trik penelusuran dokumen akademik akurat dengan operator Google tingkat lanjut!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-blue-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🔍 Skill: Advanced Search Operators</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah mempelajari materi ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membedakan Internet vs World Wide Web (WWW)</strong>
+                    <p class="text-slate-600">Menjelaskan perbedaan infrastruktur fisik jaringan global (Internet) dengan layanan dokumen hiperteks web (WWW).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membedah Anatomi URL</strong>
+                    <p class="text-slate-600">Menganalisis komponen URL: Protokol (<code>https://</code>), Subdomain, Domain Utama (<code>smpn2lmg.sch.id</code>), dan Lokasi Berkas Path.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mekanisme Kerja Mesin Pencari</strong>
+                    <p class="text-slate-600">Mempelajari 3 pilar Google: Perayapan (Crawling bot), Pengindeksan (Indexing), dan Pemeringkatan (Ranking algoritma).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Trik Operator Pencarian Cepat</strong>
+                    <p class="text-slate-600">Menerapkan filter presisi <code>site:</code>, <code>filetype:pdf</code>, dan tanda kutip ganda <code>"..."</code> untuk riset tugas sekolah.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EKOSISTEM LAYANAN -->
+    <section id="ekosistem-layanan" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Layanan Populer di Ekosistem Internet</h2>
+                <p class="text-xs text-slate-500">Berbagai sarana komunikasi, edukasi, dan hiburan digital</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">🌍</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">1. World Wide Web (WWW)</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Sistem dokumen halaman web yang saling terhubung melalui tautan hyperlink dan dibuka via web browser (Chrome, Edge, Firefox).
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">✉️</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">2. Surat Elektronik (E-Mail)</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Komunikasi surat formal digital: protokol <strong>SMTP</strong> bertugas mengirim surat keluar, sedangkan <strong>IMAP/POP3</strong> mengambil surat ke kotak masuk.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">🎬</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">3. Media Streaming & Cloud</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Menonton video (YouTube/Netflix) tanpa harus mengunduh seluruh file ke hard disk terlebih dahulu berkat teknik <em>buffering chunk</em>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: CARA KERJA SEARCH ENGINE -->
+    <section id="search-engine" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">3 Tahap Mesin Pencari Google Bekerja</h2>
+                <p class="text-xs text-slate-500">Bagaimana Google menemukan jutaan informasi hanya dalam 0,2 detik?</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-5 text-xs text-slate-700">
+            <div class="p-5 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-2">
+                <span class="text-3xl">🕷️</span>
+                <strong class="text-blue-900 block font-bold text-sm">1. Crawling (Perayapan)</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Robot otomatis (Googlebot) menjelajahi seluruh tautan di internet untuk menemukan halaman website baru atau konten yang baru diperbarui.
+                </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-2">
+                <span class="text-3xl">📚</span>
+                <strong class="text-emerald-900 block font-bold text-sm">2. Indexing (Pengindeksan)</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Halaman web yang dirayapi dibedah kata kuncinya, disimpan, dan dikelompokkan ke dalam pangkalan data raksasa (Google Index Database).
+                </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-purple-50/70 border border-purple-200 space-y-2">
+                <span class="text-3xl">🏆</span>
+                <strong class="text-purple-900 block font-bold text-sm">3. Ranking (Pemeringkatan)</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Saat kamu mencari kata kunci, algoritma menghitung relevansi, kecepatan situs, dan otoritas untuk menampilkan hasil terbaik di halaman pertama.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR OPERATOR SEARCH (INTERAKTIF) -->
+    <section id="simulator-operator" class="bg-white rounded-3xl border-2 border-blue-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Advanced Search Operator Studio</h2>
+                </div>
+                <p class="text-xs text-slate-500">Pilih trik operator pencarian Google dan lihat bagaimana hasil pencarian menjadi sangat spesifik!</p>
+            </div>
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 font-bold text-xs rounded-full border border-blue-200 self-start sm:self-auto">
+                Studio Riset
+            </span>
+        </div>
+
+        <div class="space-y-4 text-xs">
+            <div class="grid sm:grid-cols-3 gap-3">
+                <button onclick="setSearchFilter('quote')" id="s-btn-quote" class="p-3 bg-blue-600 text-white font-bold rounded-xl text-left shadow transition">
+                    1. Tanda Kutip ("frasa persis")
+                </button>
+                <button onclick="setSearchFilter('site')" id="s-btn-site" class="p-3 bg-slate-100 text-slate-700 font-bold rounded-xl text-left border border-slate-200 hover:bg-slate-200 transition">
+                    2. Filter Situs (site:go.id)
+                </button>
+                <button onclick="setSearchFilter('file')" id="s-btn-file" class="p-3 bg-slate-100 text-slate-700 font-bold rounded-xl text-left border border-slate-200 hover:bg-slate-200 transition">
+                    3. Format File (filetype:pdf)
+                </button>
+            </div>
+
+            <!-- Google Search Mockup Box -->
+            <div class="p-5 bg-white rounded-2xl border-2 border-slate-200 shadow-sm space-y-3">
+                <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-300">
+                    <span class="text-slate-400">🔍</span>
+                    <span id="search-query-text" class="font-bold text-slate-800 text-xs font-mono">"algoritma berpikir komputasional"</span>
+                </div>
+
+                <div class="space-y-2 pt-1" id="search-results-container">
+                    <!-- Dynamic Search Results -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Layanan Internet</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji kemahiran menavigasi web, mesin pencari, dan etika komunikasi digital (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Jika kamu ingin mencari dokumen resmi kurikulum yang hanya berformat buku PDF di Google, operator pencarian yang tepat adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="A"> A. kurikulum informatika filetype:pdf
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="B"> B. kurikulum informatika tolong pdf
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="C"> C. download pdf gratis
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="D"> D. cari filetype=docx
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Pada alamat URL: <code>https://smpn2lmg.sch.id/learn/informatika</code>, bagian <code>https://</code> berfungsi sebagai...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="A"> A. Protokol komunikasi aman
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="B"> B. Nama domain utama
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="C"> C. Lokasi path folder di server
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="D"> D. Nama pembuat website
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Protokol jaringan yang bertugas mengirimkan email keluar (outgoing mail) dari aplikasi email ke server tujuan adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="A"> A. SMTP (Simple Mail Transfer Protocol)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="B"> B. HTTP
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="C"> C. BIOS
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="D"> D. GPU
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Untuk membatasi pencarian informasi lomba olimpiade hanya di situs resmi kementerian pemerintah Indonesia, perintah yang tepat adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="A"> A. olimpiade sains site:go.id
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="B"> B. olimpiade sains instagram.com
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="C"> C. cari olimpiade di web pemerintah
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="D"> D. olimpiade sains file:docx
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Etika penulisan email tugas yang baik kepada guru mata pelajaran adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="A"> A. Menuliskan judul subjek email dengan jelas, salam pembuka sopan, identitas nama/kelas, dan lampiran berkas terstruktur
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="B"> B. Membiarkan judul subjek kosong dan hanya melampirkan file tanpa pesan
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="C"> C. Menulis seluruh isi email dengan HURUF KAPITAL SEMUA
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="D"> D. Mengirim email pukul 02.00 malam tanpa nama pengirim
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Internet adalah jaringan fisik kabel & nirkabel global, sedangkan World Wide Web (WWW) adalah salah satu layanan dokumen yang berjalan di atas internet.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Menggunakan tanda kutip ganda ("...") pada kata pencarian Google akan memaksa Google mencari frasa kata yang persis sama urutannya.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Robot Googlebot membaca setiap halaman web secara manual satu per satu menggunakan mata manusia.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Layanan streaming video memanfaatkan teknik buffering agar penonton tidak perlu menunggu seluruh film selesai diunduh sebelum mulai menonton.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Kolom BCC (Blind Carbon Copy) pada email berguna untuk menyembunyikan alamat email penerima lain demi menjaga privasi massal.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Operator Google & Hasil Filternya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Operator Pencarian Google:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. "berpikir komputasional"</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. site:sch.id</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. filetype:pdf</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. informatika -game</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. intitle:modul</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Efek Penyaringan yang Dihasilkan:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="quote">Mencari frasa kata yang persis berurutan tanpa dipisah kata lain</option>
+                        <option value="site">Membatasi hasil pencarian hanya dari domain website sekolah</option>
+                        <option value="file">Hanya menampilkan dokumen yang berekstensi file PDF siap unduh</option>
+                        <option value="exclude">Mengecualikan kata 'game' dari semua hasil pencarian</option>
+                        <option value="title">Hanya menampilkan halaman yang memiliki kata 'modul' pada judulnya</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="quote">Mencari frasa kata yang persis berurutan tanpa dipisah kata lain</option>
+                        <option value="site">Membatasi hasil pencarian hanya dari domain website sekolah</option>
+                        <option value="file">Hanya menampilkan dokumen yang berekstensi file PDF siap unduh</option>
+                        <option value="exclude">Mengecualikan kata 'game' dari semua hasil pencarian</option>
+                        <option value="title">Hanya menampilkan halaman yang memiliki kata 'modul' pada judulnya</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="quote">Mencari frasa kata yang persis berurutan tanpa dipisah kata lain</option>
+                        <option value="site">Membatasi hasil pencarian hanya dari domain website sekolah</option>
+                        <option value="file">Hanya menampilkan dokumen yang berekstensi file PDF siap unduh</option>
+                        <option value="exclude">Mengecualikan kata 'game' dari semua hasil pencarian</option>
+                        <option value="title">Hanya menampilkan halaman yang memiliki kata 'modul' pada judulnya</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="quote">Mencari frasa kata yang persis berurutan tanpa dipisah kata lain</option>
+                        <option value="site">Membatasi hasil pencarian hanya dari domain website sekolah</option>
+                        <option value="file">Hanya menampilkan dokumen yang berekstensi file PDF siap unduh</option>
+                        <option value="exclude">Mengecualikan kata 'game' dari semua hasil pencarian</option>
+                        <option value="title">Hanya menampilkan halaman yang memiliki kata 'modul' pada judulnya</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="quote">Mencari frasa kata yang persis berurutan tanpa dipisah kata lain</option>
+                        <option value="site">Membatasi hasil pencarian hanya dari domain website sekolah</option>
+                        <option value="file">Hanya menampilkan dokumen yang berekstensi file PDF siap unduh</option>
+                        <option value="exclude">Mengecualikan kata 'game' dari semua hasil pencarian</option>
+                        <option value="title">Hanya menampilkan halaman yang memiliki kata 'modul' pada judulnya</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Menulis Email Formal Pengumpulan Tugas (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan tata cara berkirim email tugas yang sopan dari awal hingga terkirim:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Memasukkan alamat email resmi guru di kolom 'Kepada' (To)</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Menuliskan subjek email yang jelas: <code>Tugas Modul 5 TIK - Ahmad Dani - 8A</code></span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Menulis salam pembuka, maksud email, dan salam penutup santun</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Melampirkan file dokumen PDF tugas melalui tombol klip kertas (Attach File)</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Memeriksa kembali isi pesan dan menekan tombol <em>Kirim (Send)</em></span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-blue-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-blue-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Menjadi Peneliti Cerdas:</strong> Manfaatkan operator Google (<code>site:</code>, <code>filetype:</code>, tanda kutip) agar menemukan sumber referensi terpercaya dalam hitungan detik.</p>
+            <p><strong>2. Anatomi URL:</strong> Memahami struktur URL membantu kita membedakan situs resmi pemerintah/sekolah asli dari situs penipuan palsu.</p>
+            <p><strong>3. Komunikasi Profesional:</strong> Keterampilan menulis email dengan subjek baku dan bahasa santun adalah etika digital dasar yang sangat dihargai di dunia akademik.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan operator pencarian apa yang paling membantumu saat mengerjakan tugas sekolah..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'informatika';
+const TOPIC_ID = 'inf-jki-05';
+
+// Search Simulator Data
+const searchMockups = {
+    quote: {
+        query: '"berpikir komputasional 4 pilar"',
+        results: `
+            <div class="p-3 bg-blue-50/50 rounded-xl border border-blue-100 space-y-1">
+                <div class="text-[10px] text-slate-500">https://smpn2lmg.sch.id › learn › informatika</div>
+                <h4 class="text-xs font-bold text-blue-700 hover:underline cursor-pointer">Modul Berpikir Komputasional: 4 Pilar Fondasi Informatika</h4>
+                <p class="text-[11px] text-slate-600">Pelajari konsep dekomposisi, pengenalan pola, abstraksi, dan algoritma...</p>
+            </div>
+            <div class="text-[11px] text-emerald-700 font-semibold pt-1">
+                ✅ <strong>Filter Kutip Aktif:</strong> Hanya menampilkan halaman yang memuat persis urutan kata "berpikir komputasional 4 pilar".
+            </div>
+        `
+    },
+    site: {
+        query: 'jadwal asesmen nasional site:kemdikbud.go.id',
+        results: `
+            <div class="p-3 bg-emerald-50/50 rounded-xl border border-emerald-100 space-y-1">
+                <div class="text-[10px] text-slate-500">https://pusmendik.kemdikbud.go.id › anbk</div>
+                <h4 class="text-xs font-bold text-blue-700 hover:underline cursor-pointer">Jadwal Resmi Asesmen Nasional Berbasis Komputer (ANBK)</h4>
+                <p class="text-[11px] text-slate-600">Pengumuman resmi jadwal simulasi, gladi bersih, dan pelaksanaan ANBK SMP...</p>
+            </div>
+            <div class="text-[11px] text-emerald-700 font-semibold pt-1">
+                ✅ <strong>Filter Situs Aktif:</strong> Semua hasil 100% dijamin berasal dari portal resmi pemerintah (.go.id).
+            </div>
+        `
+    },
+    file: {
+        query: 'buku panduan informatika smp filetype:pdf',
+        results: `
+            <div class="p-3 bg-purple-50/50 rounded-xl border border-purple-100 space-y-1">
+                <div class="text-[10px] text-slate-500 flex items-center gap-1.5">
+                    <span class="px-1.5 py-0.2 bg-rose-100 text-rose-800 font-bold rounded text-[9px]">[PDF]</span>
+                    <span>https://buku.kemdikbud.go.id › informatika_kelas8.pdf</span>
+                </div>
+                <h4 class="text-xs font-bold text-blue-700 hover:underline cursor-pointer">Buku Siswa Informatika Kelas VIII SMP - Edisi Revisi</h4>
+                <p class="text-[11px] text-slate-600">Unduhan dokumen elektronik PDF lengkap bab 1 sampai bab 9...</p>
+            </div>
+            <div class="text-[11px] text-emerald-700 font-semibold pt-1">
+                ✅ <strong>Filter Format File Aktif:</strong> Mengeliminasi artikel blog biasa dan langsung menyajikan berkas PDF siap unduh.
+            </div>
+        `
+    }
+};
+
+function setSearchFilter(type) {
+    const s = searchMockups[type];
+    document.getElementById('search-query-text').innerText = s.query;
+    document.getElementById('search-results-container').innerHTML = s.results;
+
+    const btns = ['quote', 'site', 'file'];
+    btns.forEach(b => {
+        const btn = document.getElementById(`s-btn-${b}`);
+        if (b === type) {
+            btn.className = 'p-3 bg-blue-600 text-white font-bold rounded-xl text-left shadow transition';
+        } else {
+            btn.className = 'p-3 bg-slate-100 text-slate-700 font-bold rounded-xl text-left border border-slate-200 hover:bg-slate-200 transition';
+        }
+    });
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'B' };
+const KEY_MATCH = { match_1: 'quote', match_2: 'site', match_3: 'file', match_4: 'exclude', match_5: 'title' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setSearchFilter('quote');
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

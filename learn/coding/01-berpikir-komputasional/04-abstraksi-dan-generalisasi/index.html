@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstraksi & Generalisasi Komputasi | Koding & Kecerdasan Artifisial</title>
+    <meta name="description" content="Pelajari konsep abstraksi dan generalisasi: hierarki layer komputasi (bit -> assembly -> Python -> API AI), fungsi generik berparameter, dan pemanfaatan model black-box.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,148,136,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-emerald-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-teal-600 transition">
+        fanani<span class="text-teal-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition flex items-center gap-1">
+            ← Unit Berpikir Komputasional (KKA)
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#tingkat-abstraksi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🧱 Layer Abstraksi</a>
+        <a href="#generalisasi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🌐 Generalisasi & API</a>
+        <a href="#simulator-abstraksi" class="px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 hover:bg-teal-200 transition whitespace-nowrap font-bold">🎮 Abstraction Layer Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-teal-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-teal-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-teal-600 transition">Berpikir Komputasional</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">04. Abstraksi & Generalisasi</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-teal-600 via-emerald-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 01 · Modul 04
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Abstraksi & Generalisasi Solusi Komputasional
+            </h1>
+            <p class="text-teal-100 text-sm md:text-base leading-relaxed mb-6">
+                Abstraksi adalah kemampuan mengabaikan detail rumit yang tidak perlu dan fokus pada esensi utama. Pelajari tingkatan abstraksi komputer (dari transistor hingga antarmuka API AI modern), serta cara mengubah solusi spesifik menjadi fungsi universal yang dapat dipakai di berbagai skenario!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-teal-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🧱 Konsep: Abstraction Layers & Generic APIs</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Tingkatan Abstraksi Komputasi</strong>
+                    <p class="text-slate-600">Menjelaskan hierarki abstraksi dari level terendah (transistor & sinyal biner) hingga bahasa pemrograman tingkat tinggi (Python & UI Scratch).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Abstraksi dalam Koding</strong>
+                    <p class="text-slate-600">Menggunakan variabel (abstraksi nilai), fungsi (abstraksi serangkaian perintah), dan class (abstraksi entitas nyata).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Melakukan Generalisasi Fungsi Solusi</strong>
+                    <p class="text-slate-600">Mengubah fungsi khusus (misal hitung luas persegi panjang) menjadi fungsi generik fleksibel dengan parameter dinamis.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memanfaatkan Konsep Black-Box API AI</strong>
+                    <p class="text-slate-600">Mengintegrasikan model AI siap pakai (seperti Google Teachable Machine) melalui antarmuka input/output tanpa pusing matematika rumit di dalamnya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TINGKAT ABSTRAKSI -->
+    <section id="tingkat-abstraksi" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">4 Lapisan Abstraksi Dunia Komputasi</h2>
+                <p class="text-xs text-slate-500">Bagaimana komputer menyembunyikan kerumitan voltase listrik menjadi aplikasi yang mudah dipakai</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1.5">
+                <span class="text-2xl">⚡</span>
+                <strong class="text-slate-800 block font-bold">1. Hardware & Biner</strong>
+                <p class="text-slate-600 leading-relaxed text-[11px]">Transistor, sirkuit gerbang logika, dan tegangan listrik 0V/5V (0 dan 1).</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1.5">
+                <span class="text-2xl">⚙️</span>
+                <strong class="text-slate-800 block font-bold">2. Bahasa Assembly</strong>
+                <p class="text-slate-600 leading-relaxed text-[11px]">Instruksi dasar mesin mikroprosesor (contoh: <code>MOV EAX, 1</code>, <code>ADD</code>).</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1.5">
+                <span class="text-2xl">🐍</span>
+                <strong class="text-slate-800 block font-bold">3. High-Level Python</strong>
+                <p class="text-slate-600 leading-relaxed text-[11px]">Bahasa yang menyerupai bahasa manusia (contoh: <code>print("Halo")</code>).</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1.5">
+                <span class="text-2xl">🌐</span>
+                <strong class="text-slate-800 block font-bold">4. API & UI Grafis</strong>
+                <p class="text-slate-600 leading-relaxed text-[11px]">Tombol klik mouse, drag-and-drop blok Scratch, dan API model AI siap pakai.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: GENERALISASI -->
+    <section id="generalisasi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Generalisasi Melalui Parameterisasi</h2>
+                <p class="text-xs text-slate-500">Menciptakan satu rumus solusi serbaguna yang bisa menerima nilai apa saja</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5 text-xs font-mono">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                <strong class="text-slate-800 block font-bold">❌ Solusi Spesifik Kaku:</strong>
+                <div class="p-3 bg-white rounded-xl border border-slate-200 text-[11px] text-slate-700">
+                    def hitung_luas_persegi_sisi_5():<br>
+                    &nbsp;&nbsp;return 5 * 5<br>
+                    <span class="text-slate-400"># Hanya bisa untuk sisi 5 saja!</span>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-teal-50/70 border border-teal-200 space-y-2">
+                <strong class="text-teal-900 block font-bold">✅ Solusi Tergeneralisasi Universal:</strong>
+                <div class="p-3 bg-white rounded-xl border border-teal-200 text-[11px] text-teal-800">
+                    def hitung_luas_persegi(sisi):<br>
+                    &nbsp;&nbsp;return sisi * sisi<br>
+                    <span class="text-teal-600"># Bisa untuk sisi 10, 50, 1000!</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR ABSTRAKSI (INTERAKTIF) -->
+    <section id="simulator-abstraksi" class="bg-white rounded-3xl border-2 border-teal-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Interactive Abstraction Layer Explorer</h2>
+                </div>
+                <p class="text-xs text-slate-500">Klik setiap lapisan untuk melihat bagaimana perintah sederhana diproses pada level abstraksi yang berbeda!</p>
+            </div>
+            <span class="px-3 py-1 bg-teal-50 text-teal-700 font-bold text-xs rounded-full border border-teal-200 self-start sm:self-auto">
+                Layer Explorer
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                <strong class="font-bold text-slate-800 block">⚡ Pilih Tingkat Layer Abstraksi:</strong>
+                
+                <div class="space-y-2">
+                    <button onclick="setAbsLayer('ui')" id="btn-abs-ui" class="w-full p-2.5 bg-teal-600 text-white text-left font-bold rounded-xl shadow transition">
+                        📱 1. Layer Pengguna (UI / Tombol Klik)
+                    </button>
+                    <button onclick="setAbsLayer('python')" id="btn-abs-py" class="w-full p-2.5 bg-white text-slate-700 text-left font-semibold border border-slate-200 rounded-xl transition">
+                        🐍 2. Layer Bahasa Tinggi (Python Code)
+                    </button>
+                    <button onclick="setAbsLayer('asm')" id="btn-abs-asm" class="w-full p-2.5 bg-white text-slate-700 text-left font-semibold border border-slate-200 rounded-xl transition">
+                        ⚙️ 3. Layer Assembly (Instruksi CPU)
+                    </button>
+                    <button onclick="setAbsLayer('bin')" id="btn-abs-bin" class="w-full p-2.5 bg-white text-slate-700 text-left font-semibold border border-slate-200 rounded-xl transition">
+                        ⚡ 4. Layer Perangkat Keras (Bit Sinyal Biner)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Layer Visual Explanation -->
+            <div class="p-5 bg-slate-900 text-white rounded-2xl space-y-3 font-mono flex flex-col justify-between">
+                <div class="text-[10px] text-slate-400 flex justify-between">
+                    <span id="abs-layer-tag">LAYER TERTINGGI: USER INTERFACE</span>
+                    <span class="text-emerald-400">● ACTIVE</span>
+                </div>
+
+                <div id="abs-layer-content" class="p-4 bg-slate-800 rounded-xl border border-slate-700 space-y-2 text-xs">
+                    <!-- Injected via JS -->
+                </div>
+
+                <div id="abs-summary-hint" class="text-[10px] text-cyan-300">
+                    💡 Pengguna hanya perlu menekan satu tombol tanpa perlu tahu jutaan bit biner yang berputar di dalam chip CPU.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Abstraksi & Generalisasi</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman layer sistem komputasi, pembuatan fungsi generik, dan black-box model (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Tindakan menyaring dan menyembunyikan detail kerumitan internal yang tidak relevan agar fokus pada konsep utama disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="A"> A. Abstraksi (Abstraction)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="B"> B. Formatting
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Overclocking
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="D"> D. Defragmenting
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Di dalam pemrograman, sebuah Fungsi (Function) bertindak sebagai bentuk abstraksi dari...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="A"> A. Serangkaian baris instruksi logika yang dibungkus dengan satu nama pemanggil
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="B"> B. Kabel daya listrik komputer
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="C"> C. Kecepatan kipas prosesor
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="D"> D. Monitor layar kaca
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Konsep sistem 'Black Box' (Kotak Hitam) dalam penggunaan API AI bermakna bahwa pengembang...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="A"> A. Cukup mengetahui format input dan hasil output tanpa perlu tahu jutaan rumus matematika di dalamnya
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Harus membongkar motherboard komputer secara fisik
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Harus mewarnai casing komputer menjadi hitam pekat
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Tidak boleh menggunakan internet sama sekali
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Manakah contoh Generalisasi solusi koding yang paling tepat?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="A"> A. Membuat fungsi <code>hitung_diskon(harga, persen)</code> yang bisa menghitung potongan harga barang apa saja
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Menulis 100 fungsi terpisah untuk tiap barang di toko
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Menghapus semua tombol dari aplikasi
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Mengubah warna tulisan menjadi kuning
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Tingkat abstraksi bahasa pemrograman berikut ini yang paling dekat dengan bahasa mesin biner adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="A"> A. Bahasa Assembly (Low-Level)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="B"> B. Scratch Visual Blocks
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="C"> C. Python
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="D"> D. JavaScript
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Peta denah jalan raya adalah contoh abstraksi dunia nyata karena hanya menampilkan jalan dan nama gedung tanpa menggambar setiap pohon dan batu secara detail.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Variabel dalam koding merupakan bentuk abstraksi tempat penyimpanan nilai memori di RAM.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Generalisasi membuat kode program menjadi sangat kaku dan hanya bisa berjalan pada satu nilai data saja.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Untuk menggunakan model Google Vision AI, programmer tidak perlu memahami algoritma perkalian matriks konvolusi di dalamnya.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Semakin tinggi tingkat abstraksi suatu bahasa, kode program semakin sulit dibaca oleh manusia.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Tingkat Abstraksi & Contoh Elemennya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Tingkat Abstraksi:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Abstraksi Nilai Data</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Abstraksi Instruksi</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Abstraksi Entitas Objek</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Abstraksi Layanan Cloud</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Abstraksi Fisik</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Contoh Implementasi:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="var">Variabel bernama 'nama_siswa' penampung teks string</option>
+                        <option value="func">Fungsi 'hitung_rata_rata(nilai)' yang memuat loop dan penjumlahan</option>
+                        <option value="class">Class 'Mobil' dengan properti warna, merk, dan method maju</option>
+                        <option value="api">API 'OpenAI ChatGPT' yang membalas pesan prompt otomatis</option>
+                        <option value="transistor">Sirkuit sakelar transistor silikon yang mengalirkan voltase tegangan listrik</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="var">Variabel bernama 'nama_siswa' penampung teks string</option>
+                        <option value="func">Fungsi 'hitung_rata_rata(nilai)' yang memuat loop dan penjumlahan</option>
+                        <option value="class">Class 'Mobil' dengan properti warna, merk, dan method maju</option>
+                        <option value="api">API 'OpenAI ChatGPT' yang membalas pesan prompt otomatis</option>
+                        <option value="transistor">Sirkuit sakelar transistor silikon yang mengalirkan voltase tegangan listrik</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="var">Variabel bernama 'nama_siswa' penampung teks string</option>
+                        <option value="func">Fungsi 'hitung_rata_rata(nilai)' yang memuat loop dan penjumlahan</option>
+                        <option value="class">Class 'Mobil' dengan properti warna, merk, dan method maju</option>
+                        <option value="api">API 'OpenAI ChatGPT' yang membalas pesan prompt otomatis</option>
+                        <option value="transistor">Sirkuit sakelar transistor silikon yang mengalirkan voltase tegangan listrik</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="var">Variabel bernama 'nama_siswa' penampung teks string</option>
+                        <option value="func">Fungsi 'hitung_rata_rata(nilai)' yang memuat loop dan penjumlahan</option>
+                        <option value="class">Class 'Mobil' dengan properti warna, merk, dan method maju</option>
+                        <option value="api">API 'OpenAI ChatGPT' yang membalas pesan prompt otomatis</option>
+                        <option value="transistor">Sirkuit sakelar transistor silikon yang mengalirkan voltase tegangan listrik</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="var">Variabel bernama 'nama_siswa' penampung teks string</option>
+                        <option value="func">Fungsi 'hitung_rata_rata(nilai)' yang memuat loop dan penjumlahan</option>
+                        <option value="class">Class 'Mobil' dengan properti warna, merk, dan method maju</option>
+                        <option value="api">API 'OpenAI ChatGPT' yang membalas pesan prompt otomatis</option>
+                        <option value="transistor">Sirkuit sakelar transistor silikon yang mengalirkan voltase tegangan listrik</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Abstraksi Eksekusi Klik Tombol (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan dari lapisan abstraksi tertinggi (Pengguna) ke terendah (Fisik Perangkat):</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Siswa menekan tombol biru 'Kirim Pesan' pada layar monitor browser</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. JavaScript memanggil fungsi <code>kirimPesan()</code> berkat Event Listener</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Engine interpreter menerjemahkan fungsi menjadi instruksi kode bahasa mesin</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. CPU mengeksekusi bit-bit biner instruksi melalui register ALU</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Rangkaian gerbang logika transistor silikon menghantarkan muatan elektron voltase</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-teal-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-teal-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-teal-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Kekuatan Abstraksi:</strong> Memungkinkan manusia membangun teknologi secanggih ChatGPT tanpa harus menyusun setiap transistor secara manual.</p>
+            <p><strong>2. Fleksibilitas Generalisasi:</strong> Parameter fungsi membuat satu kode solusi dapat menyelesaikan ribuan variasi masalah serupa.</p>
+            <p><strong>3. Berpikir Efisien:</strong> Fokus pada apa yang penting (Input & Output) dan sembunyikan kerumitan yang tidak dibutuhkan.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan analogi abstraksi lain di sekitarmu (misal mengemudi mobil tanpa harus tahu cara kerja mesin pembakaran dalam)..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-teal-500 hover:bg-teal-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran KKA.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-bk-04';
+
+// Abstraction Layers Data
+const layerInfo = {
+    ui: {
+        tag: "LAYER TERTINGGI: USER INTERFACE",
+        title: "📱 Antarmuka Grafis (UI)",
+        code: '<button onclick="beliTiket()">🎟️ Beli Tiket</button>',
+        desc: "Sangat mudah dipahami manusia! Cukup sekali sentuhan jari untuk memicu seluruh proses kompleks di latar belakang."
+    },
+    python: {
+        tag: "LAYER BAHASA TINGGI: HIGH-LEVEL CODE",
+        title: "🐍 Python / JavaScript",
+        code: "def beli_tiket(user_id, harga):\n    saldo = get_saldo(user_id)\n    if saldo >= harga:\n        kurangi_saldo(user_id, harga)\n        cetak_tiket(user_id)",
+        desc: "Struktur logika yang ekspresif menyerupai kalimat bahasa Inggris sehari-hari."
+    },
+    asm: {
+        tag: "LAYER RENDAH: ASSEMBLY INSTRUCTION",
+        title: "⚙️ Assembly (Instruksi CPU)",
+        code: "MOV EAX, [EBX+10]\nCMP EAX, 50000\nJGE .lulus_bayar\nSUB EAX, 50000\nMOV [EBX+10], EAX",
+        desc: "Instruksi manipulasi memori register prosesor secara langsung."
+    },
+    bin: {
+        tag: "LAYER TERENDAH: HARDWARE LOGIC",
+        title: "⚡ Bit Biner & Tegangan Transistor",
+        code: "10111000 00000001 00000000 00000000 (5 Volt / 0 Volt)",
+        desc: "Aliran pulsa gelombang listrik mikro yang membuka-tutup miliaran gerbang silikon."
+    }
+};
+
+function setAbsLayer(layerKey) {
+    const l = layerInfo[layerKey];
+    document.getElementById('abs-layer-tag').innerText = l.tag;
+
+    const cont = document.getElementById('abs-layer-content');
+    cont.innerHTML = `
+        <div class="text-teal-300 font-bold text-xs">${l.title}</div>
+        <pre class="p-2.5 bg-slate-900 rounded-lg text-emerald-300 text-[11px] overflow-x-auto"><code>${l.code}</code></pre>
+        <div class="text-slate-300 text-[11px]">${l.desc}</div>
+    `;
+
+    ['ui', 'py', 'asm', 'bin'].forEach(k => {
+        const btn = document.getElementById(`btn-abs-${k}`);
+        if (k === layerKey || (k==='py' && layerKey==='python')) {
+            btn.className = 'w-full p-2.5 bg-teal-600 text-white text-left font-bold rounded-xl shadow transition';
+        } else {
+            btn.className = 'w-full p-2.5 bg-white text-slate-700 text-left font-semibold border border-slate-200 rounded-xl transition';
+        }
+    });
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'S' };
+const KEY_MATCH = { match_1: 'var', match_2: 'func', match_3: 'class', match_4: 'api', match_5: 'transistor' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setAbsLayer('ui');
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

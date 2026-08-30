@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data & Pengambilan Keputusan | Analisis Data KKA</title>
+    <meta name="description" content="Pelajari proses Data-Driven Decision Making (DDDM), seni Data Storytelling (Konteks, Wawasan, Rekomendasi), serta bersikap kritis terhadap bias dan keterbatasan data.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,148,136,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-emerald-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-teal-600 transition">
+        fanani<span class="text-teal-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition flex items-center gap-1">
+            ← Unit Analisis Data (KKA)
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#siklus-dddm" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🔄 6 Tahap DDDM</a>
+        <a href="#data-storytelling" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">📖 Data Storytelling</a>
+        <a href="#simulator-dddm" class="px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 hover:bg-teal-200 transition whitespace-nowrap font-bold">🎮 Decision Maker Lab</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-teal-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-teal-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-teal-600 transition">Analisis Data</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">05. Data & Pengambilan Keputusan</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-teal-600 via-emerald-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 06 · Modul 05
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Pengambilan Keputusan Berbasis Data & Storytelling
+            </h1>
+            <p class="text-teal-100 text-sm md:text-base leading-relaxed mb-6">
+                Tinggalkan keputusan berdasarkan tebakan atau perasaan semata! Pelajari metodologi <strong>Data-Driven Decision Making (DDDM)</strong> yang diterapkan perusahaan raksasa (seperti algoritma rekomendasi Netflix), kemas temuan risetmu lewat seni <strong>Data Storytelling</strong> (Konteks $\rightarrow$ Insight $\rightarrow$ Aksi Rekomendasi), dan pahami bias data.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-teal-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">💡 Fokus: DDDM, Storytelling & Bias</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Konsep DDDM (Data-Driven Decision Making)</strong>
+                    <p class="text-slate-600">Menjelaskan keunggulan mengambil keputusan berbasis bukti data rasional dibanding intuisi subjektif.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan 6 Tahap Siklus Keputusan Data</strong>
+                    <p class="text-slate-600">Menjalankan alur: Rumuskan Masalah $\rightarrow$ Kumpulkan Data $\rightarrow$ Analisis $\rightarrow$ Interpretasi $\rightarrow$ Tindakan $\rightarrow$ Evaluasi Dampak.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menguasai Keterampilan Data Storytelling</strong>
+                    <p class="text-slate-600">Menyusun alur narasi presentasi: Konteks Masalah $\rightarrow$ Temuan Wawasan (Insight) $\rightarrow$ Rekomendasi Solusi Berdampak.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengenali Keterbatasan & Potensi Bias Data</strong>
+                    <p class="text-slate-600">Kritis terhadap sampel yang tidak representatif, manipulasi statistik, dan bias algoritma pembuat keputusan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIKLUS DDDM -->
+    <section id="siklus-dddm" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">6 Langkah Alur Keputusan Berbasis Data</h2>
+                <p class="text-xs text-slate-500">Metodologi standar industri dalam merumuskan strategi berbasis bukti empiris</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">1. Define (Definisi Masalah)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Menentukan tujuan keputusan yang ingin diambil (contoh: menu kantin apa yang perlu ditambah?).</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">2. Collect (Koleksi Data)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Mengumpulkan data historis penjualan atau survei minat siswa secara lengkap.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">3. Analyze (Analisis Pola)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Menghitung menu dengan rata-rata penjualan tertinggi dan jam tersibuk pembeli.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">4. Interpret (Tafsir Wawasan)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Memahami alasan di balik angka (contoh: makanan hangat lebih laku saat cuaca hujan).</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">5. Decide (Aksi Keputusan)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Menambah stok menu favorit dan mengurangi menu yang sering tersisa basi.</p>
+            </div>
+
+            <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-1.5">
+                <strong class="text-teal-700 font-bold block">6. Evaluate (Evaluasi Hasil)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Mengevaluasi apakah keuntungan kantin meningkat dan sisa makanan berkurang.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DATA STORYTELLING -->
+    <section id="data-storytelling" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">3 Struktur Utama Data Storytelling</h2>
+                <p class="text-xs text-slate-500">Menyampaikan wawasan analitik secara memikat agar audiens tergerak mengambil tindakan</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-5 text-xs">
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-teal-700 block font-bold font-sans text-sm">1. Konteks (Context)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Jelaskan latar belakang dan urgensi masalah: "Mengapa audiens harus peduli terhadap data ini?"
+                </p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-teal-700 block font-bold font-sans text-sm">2. Wawasan (Insight)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Tunjukkan penemuan menarik dari grafik: "Fakta mengejutkan apa yang tersembunyi di balik data?"
+                </p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-teal-700 block font-bold font-sans text-sm">3. Rekomendasi (Action)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Berikan solusi nyata yang bisa segera dieksekusi: "Langkah apa yang harus kita lakukan bersama?"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR DDDM (INTERAKTIF) -->
+    <section id="simulator-dddm" class="bg-white rounded-3xl border-2 border-teal-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Interactive Canteen Data-Driven Decision Studio</h2>
+                </div>
+                <p class="text-xs text-slate-500">Pilih kondisi cuaca sekolah hari ini dan amati bagaimana sistem analitik data otomatis merekomendasikan stok menu!</p>
+            </div>
+            <span class="px-3 py-1 bg-teal-50 text-teal-700 font-bold text-xs rounded-full border border-teal-200 self-start sm:self-auto">
+                DDDM Engine
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                <strong class="font-bold text-slate-800 block">🌦️ Pilih Kondisi Cuaca Hari Ini:</strong>
+                
+                <div>
+                    <select id="dddm-weather-select" onchange="updateCanteenDecision()" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl font-bold text-slate-800">
+                        <option value="panas">1. Cuaca Panas Terik (Suhu 34°C)</option>
+                        <option value="hujan">2. Cuaca Hujan Deras Dingin (Suhu 23°C)</option>
+                    </select>
+                </div>
+
+                <div class="p-3 bg-white border border-slate-200 rounded-xl space-y-1 text-slate-700 text-[11px] leading-relaxed">
+                    <strong class="text-teal-700 block">Data Penjualan Historis:</strong>
+                    <div id="dddm-hist-desc">Saat cuaca panas terik, konsumsi minuman dingin es teh meningkat hingga 350% dibanding hari biasa.</div>
+                </div>
+            </div>
+
+            <!-- Virtual Decision Recommendation Screen -->
+            <div class="p-5 bg-slate-900 text-white rounded-2xl space-y-3 font-mono flex flex-col justify-between border border-slate-700">
+                <div class="text-[10px] text-slate-400 flex justify-between">
+                    <span>AI CANTEEN INVENTORY OPTIMIZER</span>
+                    <span class="text-emerald-400">● RECOMMENDATION READY</span>
+                </div>
+
+                <div class="space-y-2 text-[11px] my-auto">
+                    <div class="p-2.5 bg-slate-800 rounded-xl border border-slate-700 space-y-1">
+                        <span class="text-slate-400 text-[10px] block">REKOMENDASI STOK OPTIMAL:</span>
+                        <div id="dddm-rec-item" class="text-base font-extrabold text-emerald-400">
+                            🥤 Tambah Stok Es Teh (+100 Porsi) & Kurangi Sup Panas (-50%)
+                        </div>
+                    </div>
+                    <div class="text-[10px] text-slate-400" id="dddm-impact-text">
+                        Estimasi Dampak Bisnis: Keuntungan naik +35%, sisa makanan basi berkurang drastis menjadi &lt; 2%.
+                    </div>
+                </div>
+
+                <div class="text-[10px] text-cyan-300 text-center font-sans">
+                    💡 Inilah esensi DDDM: mengubah data cuaca dan riwayat penjualan menjadi keuntungan bisnis nyata.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Data & Pengambilan Keputusan</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman DDDM, struktur Data Storytelling, dan mitigasi bias data (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Pendekatan pengambilan keputusan yang berlandaskan analisis bukti data faktual daripada sekadar firasat atau intuisi subjektif disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_1" value="A"> A. Data-Driven Decision Making (DDDM)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="B"> B. Random Guessing
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Mind Reading
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="D"> D. Fortune Telling
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Contoh nyata penerapan DDDM oleh platform streaming video Netflix adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_2" value="A"> A. Menganalisis riwayat tontonan dan genre kesukaan pengguna untuk memproduksi serial film baru yang pasti diminati
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="B"> B. Menghapus semua film di hari libur
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="C"> C. Menutup akun pelanggan secara acak
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="D"> D. Mengirim surat pos ke rumah pelanggan
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Urutan narasi yang tepat dalam teknik komunikasi Data Storytelling adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_3" value="A"> A. Konteks Masalah $\rightarrow$ Wawasan Data (Insight) $\rightarrow$ Rekomendasi Aksi Nyata
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Rekomendasi $\rightarrow$ Salam Penutup $\rightarrow$ Konteks
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Wawasan $\rightarrow$ Wawasan $\rightarrow$ Wawasan
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Penutup $\rightarrow$ Pembuka $\rightarrow$ Inti
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Mengapa seorang analis data harus bersikap kritis terhadap hasil survei online?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_4" value="A"> A. Karena sampel responden bisa mengalami bias (misal: hanya responden yang memiliki akses internet cepat yang merespon)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Karena semua data survei pasti palsu
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Karena komputer tidak bisa membaca angka
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Karena spreadsheet dilarang dipakai untuk riset
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Keterampilan abad ke-21 untuk membaca, memahami, membuat argumen, dan mengkritisi data statistik disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_5" value="A"> A. Literasi Data (Data Literacy)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="B"> B. Literasi Finansial
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="C"> C. Literasi Baca Tulis
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="D"> D. Literasi Budaya
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Data Storytelling bertujuan mengubah angka-angka statistik menjadi narasi yang mudah dipahami dan menggerakkan tindakan audiens.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Tahap terakhir dalam siklus DDDM adalah mengevaluasi apakah tindakan keputusan yang diambil memberikan hasil positif.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Keputusan terbaik selalu diambil hanya berdasarkan tebakan acak tanpa perlu melihat data riwayat masa lalu.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Visualisasi grafik berfungsi sebagai bukti pendukung yang memperkuat cerita dalam presentasi data storytelling.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Seluruh angka statistik di internet dijamin 100% bebas dari bias dan tidak pernah dimanipulasi oleh siapa pun.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Elemen Keputusan & Fungsinya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Elemen DDDM:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Problem Definition</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Data Storytelling</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Actionable Recommendation</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Outcome Evaluation</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Sample Bias</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Fungsi / Definisi:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="prob">Menetapkan pertanyaan kunci yang ingin dipecahkan sebelum memulai analisis</option>
+                        <option value="story">Seni merangkai narasi data kontekstual untuk meyakinkan pemangku kepentingan</option>
+                        <option value="act">Saran langkah konkret dan dapat segera dieksekusi berdasarkan insight data</option>
+                        <option value="eval">Mengukur dampak nyata dan tingkat keberhasilan setelah keputusan dijalankan</option>
+                        <option value="bias">Ketidakseimbangan data sampel yang hanya mewakili kelompok tertentu secara sepihak</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="prob">Menetapkan pertanyaan kunci yang ingin dipecahkan sebelum memulai analisis</option>
+                        <option value="story">Seni merangkai narasi data kontekstual untuk meyakinkan pemangku kepentingan</option>
+                        <option value="act">Saran langkah konkret dan dapat segera dieksekusi berdasarkan insight data</option>
+                        <option value="eval">Mengukur dampak nyata dan tingkat keberhasilan setelah keputusan dijalankan</option>
+                        <option value="bias">Ketidakseimbangan data sampel yang hanya mewakili kelompok tertentu secara sepihak</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="prob">Menetapkan pertanyaan kunci yang ingin dipecahkan sebelum memulai analisis</option>
+                        <option value="story">Seni merangkai narasi data kontekstual untuk meyakinkan pemangku kepentingan</option>
+                        <option value="act">Saran langkah konkret dan dapat segera dieksekusi berdasarkan insight data</option>
+                        <option value="eval">Mengukur dampak nyata dan tingkat keberhasilan setelah keputusan dijalankan</option>
+                        <option value="bias">Ketidakseimbangan data sampel yang hanya mewakili kelompok tertentu secara sepihak</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="prob">Menetapkan pertanyaan kunci yang ingin dipecahkan sebelum memulai analisis</option>
+                        <option value="story">Seni merangkai narasi data kontekstual untuk meyakinkan pemangku kepentingan</option>
+                        <option value="act">Saran langkah konkret dan dapat segera dieksekusi berdasarkan insight data</option>
+                        <option value="eval">Mengukur dampak nyata dan tingkat keberhasilan setelah keputusan dijalankan</option>
+                        <option value="bias">Ketidakseimbangan data sampel yang hanya mewakili kelompok tertentu secara sepihak</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="prob">Menetapkan pertanyaan kunci yang ingin dipecahkan sebelum memulai analisis</option>
+                        <option value="story">Seni merangkai narasi data kontekstual untuk meyakinkan pemangku kepentingan</option>
+                        <option value="act">Saran langkah konkret dan dapat segera dieksekusi berdasarkan insight data</option>
+                        <option value="eval">Mengukur dampak nyata dan tingkat keberhasilan setelah keputusan dijalankan</option>
+                        <option value="bias">Ketidakseimbangan data sampel yang hanya mewakili kelompok tertentu secara sepihak</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Siklus DDDM Perbaikan Fasilitas Perpustakaan (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan proses pengambilan keputusan berbasis data di sekolah:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Merumuskan masalah: "Buku genre apa yang paling dibutuhkan siswa kelas 7-9?"</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Mengumpulkan data peminjaman buku perpustakaan selama 1 semester terakhir</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Menganalisis grafik frekuensi dan menemukan novel sains fiksi paling banyak dipinjam</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Memutuskan pengadaan buku baru dengan porsi 60% genre sains fiksi populer</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Mengevaluasi peningkatan jumlah kunjungan siswa ke perpustakaan setelah 2 bulan</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-teal-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-teal-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-teal-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Kekuatan DDDM:</strong> Data memberikan landasan objektif untuk meminimalkan risiko salah mengambil keputusan.</p>
+            <p><strong>2. Sentuhan Cerita:</strong> Padukan ketelitian angka analitik dengan narasi data storytelling yang inspiratif.</p>
+            <p><strong>3. Kewaspadaan Bias:</strong> Jangan pernah menerima kesimpulan data mentah-mentah tanpa memverifikasi sumber dan konteksnya.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan keputusan apa dalam kehidupan pribadimu (misal: jadwal belajar, tabungan) yang bisa ditingkatkan menggunakan metode DDDM..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-teal-500 hover:bg-teal-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran KKA.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-ad-05';
+
+function updateCanteenDecision() {
+    const w = document.getElementById('dddm-weather-select').value;
+    const hist = document.getElementById('dddm-hist-desc');
+    const rec = document.getElementById('dddm-rec-item');
+    const imp = document.getElementById('dddm-impact-text');
+
+    if (w === 'panas') {
+        hist.innerText = "Saat cuaca panas terik (34°C), konsumsi minuman dingin es teh meningkat hingga 350% dibanding hari biasa.";
+        rec.innerText = "🥤 Tambah Stok Es Teh (+100 Porsi) & Kurangi Sup Panas (-50%)";
+        imp.innerText = "Estimasi Dampak Bisnis: Keuntungan naik +35%, sisa makanan basi berkurang drastis menjadi < 2%.";
+    } else {
+        hist.innerText = "Saat cuaca hujan deras dingin (23°C), permintaan minuman hangat & bakso kuah meningkat hingga 400%.";
+        rec.innerText = "🍲 Tambah Stok Bakso Kuah Hangat (+80 Porsi) & Kurangi Minuman Es (-70%)";
+        imp.innerText = "Estimasi Dampak Bisnis: Antrean pembeli terlayani cepat, omzet naik +42%, kepuasan siswa maksimal.";
+    }
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'S' };
+const KEY_MATCH = { match_1: 'prob', match_2: 'story', match_3: 'act', match_4: 'eval', match_5: 'bias' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCanteenDecision();
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

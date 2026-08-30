@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event & Interaksi Pengguna | Algoritma & Pemrograman KKA</title>
+    <meta name="description" content="Pelajari event-driven programming di Scratch: keyboard control, deteksi tabrakan (collision), sistem penyiaran pesan (broadcast), dan mekanik game interaktif.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,148,136,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-emerald-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-teal-600 transition">
+        fanani<span class="text-teal-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition flex items-center gap-1">
+            ← Unit Algoritma & Pemrograman (KKA)
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#konsep-event" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">⚡ Event-Driven</a>
+        <a href="#mekanik-game" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🎮 Broadcast & Collision</a>
+        <a href="#simulator-event" class="px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 hover:bg-teal-200 transition whitespace-nowrap font-bold">🕹️ Mini Catch Game Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-teal-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-teal-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-teal-600 transition">Algoritma & Pemrograman</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">02. Event & Interaksi</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-teal-600 via-emerald-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 05 · Modul 02
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Event-Driven Programming & Interaksi Game
+            </h1>
+            <p class="text-teal-100 text-sm md:text-base leading-relaxed mb-6">
+                Bagaimana membuat game yang merespons ketikan tombol pemain dan tabrakan objek? Kuasai paradigma <em>Event-Driven Programming</em>, teknik penyiaran pesan <strong>Broadcasting</strong> antar sprite, serta deteksi tabrakan <em>Collision Sensing</em> untuk membangun game interaktif pertamamu!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-teal-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⚡ Pemicu: Keyboard, Klik, & Broadcast</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Konsep Event-Driven Programming</strong>
+                    <p class="text-slate-600">Menjelaskan bagaimana blok kode diam menunggu kejadian (event) sebelum mengeksekusi instruksi aksi.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menguasai Mekanisme Penyiaran Pesan (Broadcasting)</strong>
+                    <p class="text-slate-600">Mengoordinasikan dialog antar karakter dan pergantian level game menggunakan balok broadcast dan receive message.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Deteksi Tabrakan (Collision Detection)</strong>
+                    <p class="text-slate-600">Menggunakan balok sensor [touching sprite] dan [touching color] untuk menambah skor atau memicu Game Over.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Merancang Kontrol Pemain yang Responsif</strong>
+                    <p class="text-slate-600">Memprogram kendali gerak halus karakter menggunakan tombol panah keyboard atau pergerakan kursor mouse.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: KONSEP EVENT -->
+    <section id="konsep-event" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Anatomi Pemrograman Berbasis Peristiwa (Event)</h2>
+                <p class="text-xs text-slate-500">Program interaktif bekerja berdasarkan formula: Pemicu (Trigger) → Aksi (Action)</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-5 text-xs">
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl">⌨️</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">1. Input Keyboard</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Balok <code>when [space] key pressed</code> atau tombol panah langsung menggerakkan sprite ke atas, bawah, kiri, atau kanan saat ditekan pemain.
+                </p>
+            </div>
+
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl">🖱️</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">2. Input Mouse & Klik</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Balok <code>when this sprite clicked</code> memicu aksi interaktif seperti menekan tombol 'Play Game', membuka peti harta karun, atau menembak target.
+                </p>
+            </div>
+
+            <div class="p-5 bg-teal-50/70 border border-teal-200 rounded-2xl space-y-2">
+                <span class="text-3xl">📢</span>
+                <h3 class="font-heading font-bold text-teal-900 text-sm">3. Sinyal Broadcast</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Satu sprite dapat mengirimkan sinyal pesan rahasia (contoh: <code>broadcast "musuh_kalah"</code>) yang langsung didengarkan oleh seluruh sprite lain.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: MEKANIK GAME -->
+    <section id="mekanik-game" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Mekanik Inti Game: Deteksi Tabrakan & Skor</h2>
+                <p class="text-xs text-slate-500">Membangun aturan main (game rules) agar permainan menjadi seru dan menantang</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-teal-700 block font-bold font-sans">1. Sensor Sentuhan (Touching)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Kombinasi balok <code>if <touching [apel]?> then</code> digunakan untuk mendeteksi saat keranjang berhasil menangkap buah yang jatuh.</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-teal-700 block font-bold font-sans">2. Variabel Skor & Timer</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Saat tabrakan terjadi, variabel skor ditambah: <code>change [skor] by (1)</code> dan suara 'ding' dibunyikan.</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-teal-700 block font-bold font-sans">3. Kondisi Game Over</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">Jika waktu habis atau menyentuh bom: <code>broadcast "game_over"</code> dan tampilkan layar penutup.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR EVENT (INTERAKTIF) -->
+    <section id="simulator-event" class="bg-white rounded-3xl border-2 border-teal-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Interactive Catch Game & Event Simulator</h2>
+                </div>
+                <p class="text-xs text-slate-500">Kendalikan mangkok dengan tombol panah untuk menangkap buah bintang yang jatuh dari langit!</p>
+            </div>
+            <span class="px-3 py-1 bg-teal-50 text-teal-700 font-bold text-xs rounded-full border border-teal-200 self-start sm:self-auto">
+                Game Lab
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                <strong class="font-bold text-slate-800 block">🕹️ Kontrol Pemain (Keyboard Event):</strong>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="moveBasket(-30)" class="p-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow transition text-center">
+                        ⬅️ Gerak Kiri [Panah Kiri]
+                    </button>
+                    <button onclick="moveBasket(30)" class="p-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow transition text-center">
+                        ➡️ Gerak Kanan [Panah Kanan]
+                    </button>
+                </div>
+
+                <div class="pt-2 flex justify-between items-center text-slate-700">
+                    <button onclick="dropStarItem()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow transition">
+                        ⭐ Jatuhkan Bintang (Broadcast)
+                    </button>
+                    <button onclick="resetCatchGame()" class="px-3 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-xl transition">
+                        Reset Game
+                    </button>
+                </div>
+            </div>
+
+            <!-- Virtual Catch Game Screen -->
+            <div class="p-5 bg-slate-900 text-white rounded-2xl space-y-3 flex flex-col justify-between relative overflow-hidden h-64 border border-slate-700">
+                <div class="text-[10px] font-mono text-slate-400 flex justify-between z-10">
+                    <span>CATCH GAME STAGE</span>
+                    <span id="game-score-badge" class="text-amber-400 font-bold">SKOR: 0</span>
+                </div>
+
+                <!-- Falling Star -->
+                <div id="game-star" class="absolute text-2xl transition-all duration-700 transform" style="top: 20px; left: 120px;">
+                    ⭐
+                </div>
+
+                <!-- Player Basket -->
+                <div id="game-basket" class="absolute bottom-4 text-4xl transition-all duration-150 transform" style="left: 110px;">
+                    🥣
+                </div>
+
+                <div id="game-status-log" class="text-[10px] text-cyan-300 font-mono text-center z-10">
+                    Gunakan tombol di sebelah kiri untuk mengarahkan mangkok tepat di bawah bintang!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Event & Interaksi</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman event handling, broadcast message, dan collision sensing (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Fitur di Scratch yang memungkinkan satu sprite mengirimkan sinyal pesan ke seluruh sprite lain di panggung adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_1" value="A"> A. Broadcast Message (Penyiaran Pesan)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="B"> B. Bluetooth Pairing
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Screenshot Layar
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="D"> D. Defragmentasi Disk
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Balok sensor yang digunakan untuk mendeteksi apakah karakter game menyentuh rintangan dinding berwarna hitam adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_2" value="A"> A. <touching color [#000000]?>
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="B"> B. <mouse down?>
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="C"> C. (current hour)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="D"> D. (username)
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Kapan balok kode di bawah pemicu <code>when I receive [level_2]</code> akan dieksekusi?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_3" value="A"> A. Saat ada sprite lain yang mengirimkan perintah broadcast "level_2"
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Setiap kali komputer dinyalakan
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Hanya pada hari Minggu
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Saat tombol power ditekan
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Untuk membuat kontrol pemain bergerak ke arah kanan secara mulus saat tombol panah kanan ditekan, balok yang disusun di dalam loop forever adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_4" value="A"> A. if <key [right arrow] pressed?> then [change x by (10)]
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="B"> B. if <key [right arrow] pressed?> then [change y by (-10)]
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="C"> C. if <key [right arrow] pressed?> then [hide]
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="D"> D. if <key [right arrow] pressed?> then [stop all]
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Contoh game Scratch yang sangat cocok menggunakan event deteksi sentuhan (collision detection) adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_5" value="A"> A. Game labirin (Maze) dan Game menangkap objek jatuh (Catch Game)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="B"> B. Mengetik dokumen Microsoft Word
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="C"> C. Membuka folder File Explorer
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="D"> D. Mematikan lampu ruangan
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Satu sinyal penyiaran pesan (broadcast) dapat diterima dan memicu aksi di beberapa sprite sekaligus pada saat bersamaan.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Balok <code>when backdrop switches to [game_over]</code> dapat digunakan untuk menyembunyikan karakter pemain dan memunculkan teks kekalahan.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Program event-driven hanya bisa berjalan secara berurutan kaku dan tidak dapat merespons klik mouse pengguna.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Perintah <code>touching [mouse-pointer]?</code> dapat dimanfaatkan untuk membuat game menggambar atau game menembak target dengan kursor.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Di Scratch, kita hanya boleh membuat maksimal 1 pesan broadcast saja dalam satu proyek game.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Balok Event & Skenario Penggunaannya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Balok Event Scratch:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. when green flag clicked</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. when [space] key pressed</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. when this sprite clicked</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. broadcast [mulai_game]</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. when I receive [mulai_game]</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Skenario Penggunaan:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="flag">Memulai seluruh sistem game, inisialisasi skor 0, dan letak posisi awal</option>
+                        <option value="key">Memicu aksi karakter melompat (jump) ke udara</option>
+                        <option value="click">Memilih tombol menu 'Start' atau mengeklik koin emas di layar</option>
+                        <option value="send">Mengirimkan komando dari tombol menu ke semua musuh agar mulai bergerak</option>
+                        <option value="receive">Menerima sinyal komando lalu memulai gerakan musuh dan perhitungan timer</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="flag">Memulai seluruh sistem game, inisialisasi skor 0, dan letak posisi awal</option>
+                        <option value="key">Memicu aksi karakter melompat (jump) ke udara</option>
+                        <option value="click">Memilih tombol menu 'Start' atau mengeklik koin emas di layar</option>
+                        <option value="send">Mengirimkan komando dari tombol menu ke semua musuh agar mulai bergerak</option>
+                        <option value="receive">Menerima sinyal komando lalu memulai gerakan musuh dan perhitungan timer</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="flag">Memulai seluruh sistem game, inisialisasi skor 0, dan letak posisi awal</option>
+                        <option value="key">Memicu aksi karakter melompat (jump) ke udara</option>
+                        <option value="click">Memilih tombol menu 'Start' atau mengeklik koin emas di layar</option>
+                        <option value="send">Mengirimkan komando dari tombol menu ke semua musuh agar mulai bergerak</option>
+                        <option value="receive">Menerima sinyal komando lalu memulai gerakan musuh dan perhitungan timer</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="flag">Memulai seluruh sistem game, inisialisasi skor 0, dan letak posisi awal</option>
+                        <option value="key">Memicu aksi karakter melompat (jump) ke udara</option>
+                        <option value="click">Memilih tombol menu 'Start' atau mengeklik koin emas di layar</option>
+                        <option value="send">Mengirimkan komando dari tombol menu ke semua musuh agar mulai bergerak</option>
+                        <option value="receive">Menerima sinyal komando lalu memulai gerakan musuh dan perhitungan timer</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="flag">Memulai seluruh sistem game, inisialisasi skor 0, dan letak posisi awal</option>
+                        <option value="key">Memicu aksi karakter melompat (jump) ke udara</option>
+                        <option value="click">Memilih tombol menu 'Start' atau mengeklik koin emas di layar</option>
+                        <option value="send">Mengirimkan komando dari tombol menu ke semua musuh agar mulai bergerak</option>
+                        <option value="receive">Menerima sinyal komando lalu memulai gerakan musuh dan perhitungan timer</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Siklus Game Menangkap Apel (Catch Game) (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan logika saat objek apel jatuh dari atas hingga tertangkap keranjang:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Apel muncul di posisi atas panggung acak: [go to x: pick random (-200 to 200) y: 160]</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Apel bergerak turun ke bawah secara terus-menerus: [change y by -5] di dalam loop</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Pemain menggerakkan mangkok ke kiri/kanan untuk menghadang posisi jatuhnya apel</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Sensor mendeteksi tabrakan: [if touching (mangkok)? then change skor by 1]</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Apel memainkan suara 'Pop' dan kembali meluncur dari atas panggung</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-teal-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-teal-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-teal-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Kunci Interaktivitas:</strong> Event membuat program tidak statis, melainkan responsif terhadap aksi sentuhan manusia.</p>
+            <p><strong>2. Komunikasi Broadcast:</strong> Sinkronisasikan adegan, musik latar, dan dialog antartokoh menggunakan sinyal pesan.</p>
+            <p><strong>3. Game Mechanics:</strong> Padukan sensor tabrakan dengan variabel skor untuk menghadirkan kepuasan bermain.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan ide aturan main game interaktif yang ingin kamu buat dengan event dan broadcast..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-teal-500 hover:bg-teal-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran KKA.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-ap-02';
+
+let basketX = 110;
+let starX = 110;
+let gameScore = 0;
+
+function moveBasket(delta) {
+    basketX = Math.max(20, Math.min(220, basketX + delta));
+    document.getElementById('game-basket').style.left = `${basketX}px`;
+}
+
+function dropStarItem() {
+    const star = document.getElementById('game-star');
+    const log = document.getElementById('game-status-log');
+    starX = 30 + Math.floor(Math.random() * 180);
+    star.style.left = `${starX}px`;
+    star.style.top = '20px';
+
+    setTimeout(() => {
+        star.style.top = '175px';
+        setTimeout(() => {
+            if (Math.abs(starX - basketX) < 40) {
+                gameScore += 10;
+                document.getElementById('game-score-badge').innerText = `SKOR: ${gameScore}`;
+                log.innerText = `🎉 Berhasil! Tabrakan terdeteksi: Skor +10 (Broadcast Sent!)`;
+                log.className = "text-[10px] text-emerald-300 font-mono text-center z-10";
+            } else {
+                log.innerText = `❌ Bintang luput! Posisikan mangkok tepat di bawah bintang.`;
+                log.className = "text-[10px] text-rose-300 font-mono text-center z-10";
+            }
+        }, 700);
+    }, 50);
+}
+
+function resetCatchGame() {
+    gameScore = 0;
+    basketX = 110;
+    starX = 110;
+    document.getElementById('game-score-badge').innerText = `SKOR: 0`;
+    document.getElementById('game-basket').style.left = `110px`;
+    document.getElementById('game-star').style.top = `20px`;
+    document.getElementById('game-star').style.left = `110px`;
+    document.getElementById('game-status-log').innerText = `Permainan direset. Klik 'Jatuhkan Bintang' untuk mulai!`;
+    document.getElementById('game-status-log').className = "text-[10px] text-cyan-300 font-mono text-center z-10";
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'S' };
+const KEY_MATCH = { match_1: 'flag', match_2: 'key', match_3: 'click', match_4: 'send', match_5: 'receive' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

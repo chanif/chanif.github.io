@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengulangan & Fungsi Kustom | Algoritma & Pemrograman KKA</title>
+    <meta name="description" content="Pelajari struktur pengulangan (Repeat, Forever, Repeat-Until), seni geometri Pen Extension, blok fungsi kustom (My Blocks / DRY Principle), dan pengenalan fungsi Python.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,148,136,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-emerald-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-teal-600 transition">
+        fanani<span class="text-teal-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition flex items-center gap-1">
+            ← Unit Algoritma & Pemrograman (KKA)
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#jenis-loop" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🔁 3 Jenis Loop</a>
+        <a href="#custom-block" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🧩 Custom Blocks & DRY</a>
+        <a href="#simulator-geometri" class="px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 hover:bg-teal-200 transition whitespace-nowrap font-bold">🎮 Pen Geometry Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-teal-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-teal-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-teal-600 transition">Algoritma & Pemrograman</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">04. Pengulangan & Fungsi</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-teal-600 via-emerald-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 05 · Modul 04
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Pengulangan (Loop) & Pembuatan Fungsi Kustom
+            </h1>
+            <p class="text-teal-100 text-sm md:text-base leading-relaxed mb-6">
+                Programmer sejati pantang menulis kode yang sama berulang kali! Terapkan prinsip <strong>DRY (Don't Repeat Yourself)</strong> menggunakan 3 varian Loop Scratch (Repeat N, Forever, Repeat-Until) dan bungkus rangkaian blok menjadi <strong>Custom Blocks (Fungsi)</strong> modular yang rapi dan efisien.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-teal-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🔁 Kunci: Loop, Pen Extension, & My Blocks</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menguasai 3 Jenis Struktur Loop Scratch</strong>
+                    <p class="text-slate-600">Membedakan repeat N (pasti), forever (siklus game loop), dan repeat-until (bersyarat henti).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membuat Seni Geometri dengan Ekstensi Pen</strong>
+                    <p class="text-slate-600">Memadukan langkah gerak dan putaran derajat sudut ($360^\circ / N$) untuk menggambar poligon beraturan.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membuat Custom Block Berparameter (My Blocks)</strong>
+                    <p class="text-slate-600">Menerapkan prinsip DRY dengan merangkum sub-program menjadi satu balok fungsi modular.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengenal Konsep Fungsi (def) di Python</strong>
+                    <p class="text-slate-600">Memahami sintaks fungsi Python: <code>def gambar_persegi(ukuran):</code> untuk kemudahan pemeliharaan kode.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: JENIS LOOP -->
+    <section id="jenis-loop" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">3 Varian Pengulangan (Loop) di Scratch</h2>
+                <p class="text-xs text-slate-500">Mengotomasi instruksi yang berulang dengan ringkas dan hemat memori</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-5 text-xs">
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl">🔢</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">1. Repeat [N] (Terhitung)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Mengulang instruksi sebanyak $N$ kali tepat. Sangat ideal untuk menggambar segi empat (repeat 4) atau animasi langkah kaki.
+                </p>
+            </div>
+
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl">♾️</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">2. Forever (Tak Hingga)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Siklus abadi tanpa henti. Wajib digunakan untuk <em>Game Loop</em> utama: mendeteksi input tombol pemain dan gerakan musuh.
+                </p>
+            </div>
+
+            <div class="p-5 bg-teal-50/70 border border-teal-200 rounded-2xl space-y-2">
+                <span class="text-3xl">🛑</span>
+                <h3 class="font-heading font-bold text-teal-900 text-sm">3. Repeat Until (Bersyarat)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Mengulang terus sampai kondisi tertentu terpenuhi. Contoh: <code>repeat until <touching [garis finish]?></code>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: CUSTOM BLOCK -->
+    <section id="custom-block" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Custom Blocks & Prinsip DRY (Don't Repeat Yourself)</h2>
+                <p class="text-xs text-slate-500">Menciptakan balok fungsi buatan sendiri untuk membuat kode mudah dibaca</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5 text-xs font-mono">
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-teal-700 block font-bold font-sans">Kode Berantakan (Tanpa Fungsi):</strong>
+                <div class="p-2.5 bg-slate-800 text-rose-300 rounded-xl text-[11px] leading-relaxed">
+                    // Menggambar 3 kotak (12 baris berulang!)<br>
+                    repeat 4 [move 50, turn 90]<br>
+                    go to x: 50 y: 0<br>
+                    repeat 4 [move 50, turn 90]<br>
+                    go to x: 100 y: 0<br>
+                    repeat 4 [move 50, turn 90]
+                </div>
+            </div>
+
+            <div class="p-4 bg-teal-50/70 border border-teal-200 rounded-2xl space-y-2">
+                <strong class="text-teal-900 block font-bold font-sans">Kode Bersih (Dengan Custom Block):</strong>
+                <div class="p-2.5 bg-slate-900 text-emerald-300 rounded-xl text-[11px] leading-relaxed">
+                    define [gambar_kotak (ukuran)]<br>
+                    &nbsp;&nbsp;repeat 4 [move (ukuran), turn 90]<br><br>
+                    // Pemanggilan Bersih:<br>
+                    gambar_kotak (50)<br>
+                    gambar_kotak (100)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR GEOMETRI (INTERAKTIF) -->
+    <section id="simulator-geometri" class="bg-white rounded-3xl border-2 border-teal-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Interactive Pen Geometry & Loop Studio</h2>
+                </div>
+                <p class="text-xs text-slate-500">Pilih jumlah segi poligon dan amati bagaimana rumus Loop $(360^\circ / N)$ menggambar bentuk sempurna!</p>
+            </div>
+            <span class="px-3 py-1 bg-teal-50 text-teal-700 font-bold text-xs rounded-full border border-teal-200 self-start sm:self-auto">
+                Geometry Lab
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                <strong class="font-bold text-slate-800 block">📐 Pilih Poligon Geometri:</strong>
+                
+                <div>
+                    <label class="font-semibold text-slate-700 block mb-1">Jumlah Sisi Poligon ($N$):</label>
+                    <select id="poly-sides-select" onchange="drawPolygonCanvas()" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl font-bold text-slate-800">
+                        <option value="3">Segitiga Sama Sisi (N = 3 · Sudut: 120°)</option>
+                        <option value="4" selected>Segi Empat / Persegi (N = 4 · Sudut: 90°)</option>
+                        <option value="5">Segi Lima / Pentagon (N = 5 · Sudut: 72°)</option>
+                        <option value="6">Segi Enam / Heksagon (N = 6 · Sudut: 60°)</option>
+                        <option value="8">Segi Delapan / Oktagon (N = 8 · Sudut: 45°)</option>
+                        <option value="36">Lingkaran Penuh (N = 36 · Sudut: 10°)</option>
+                    </select>
+                </div>
+
+                <div class="p-3 bg-white border border-slate-200 rounded-xl space-y-1 font-mono text-[11px]">
+                    <div class="text-slate-400">// Algoritma Loop Scratch:</div>
+                    <div id="poly-code-box" class="text-teal-700 font-bold">
+                        repeat (4) [<br>
+                        &nbsp;&nbsp;move (60) steps<br>
+                        &nbsp;&nbsp;turn right (90) degrees<br>
+                        ]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Virtual Pen Canvas Screen -->
+            <div class="p-5 bg-slate-900 text-white rounded-2xl space-y-3 flex flex-col justify-between items-center relative overflow-hidden h-64 border border-slate-700">
+                <div class="text-[10px] font-mono text-slate-400 flex justify-between w-full z-10">
+                    <span>PEN CANVAS OUTPUT</span>
+                    <span id="poly-angle-badge" class="text-emerald-400 font-bold">SUDUT PUTAR: 90°</span>
+                </div>
+
+                <canvas id="poly-canvas" width="180" height="150" class="my-auto"></canvas>
+
+                <div class="text-[10px] text-cyan-300 font-mono text-center z-10">
+                    Rumus Derajat Putar: 360° dibagi Jumlah Sisi (N)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Pengulangan & Fungsi</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman struktur Loop, sudut putar geometri Pen, dan Custom Blocks DRY (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Untuk menggambar bentuk segitiga sama sisi menggunakan ekstensi Pen di Scratch, besar sudut putar balok <code>turn right (...) degrees</code> di dalam loop <code>repeat 3</code> adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono font-bold">
+                        <input type="radio" name="mcq_1" value="A"> A. 120 derajat (karena 360 / 3 = 120)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_1" value="B"> B. 60 derajat
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_1" value="C"> C. 90 derajat
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_1" value="D"> D. 180 derajat
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Struktur pengulangan yang paling tepat digunakan untuk menjalankan siklus utama game loop tanpa henti adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_2" value="A"> A. forever
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="B"> B. repeat (1)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="C"> C. stop all
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="D"> D. wait (10) secs
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Prinsip pemrograman penting <strong>DRY</strong> merupakan singkatan dari...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_3" value="A"> A. Don't Repeat Yourself (Jangan mengulang kode yang sama berkali-kali)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Do Run Yesterday
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Data Ready Youtube
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Delete Real Year
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Fitur di Scratch yang memungkinkan siswa membuat balok fungsi buatan sendiri dengan parameter input adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_4" value="A"> A. My Blocks (Make a Block)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Sound Editor
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Paint Backdrop
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Turbo Mode
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Penulisan sintaks pendefinisian fungsi di bahasa pemrograman Python menggunakan kata kunci...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono font-bold">
+                        <input type="radio" name="mcq_5" value="A"> A. def nama_fungsi(parameter):
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_5" value="B"> B. function nama_fungsi()
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_5" value="C"> C. make block nama_fungsi
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_5" value="D"> D. create void nama_fungsi
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Balok <code>repeat until &lt;touching [bola]?&gt;</code> akan berhenti mengulang saat sprite menyentuh bola.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Menggunakan Custom Blocks membuat program berjalan lebih lambat dan sangat dilarang dalam koding profesional.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Nested Loop adalah struktur di mana ada sebuah balok perulangan diletakkan di dalam perulangan lainnya.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Untuk menggambar lingkaran penuh, sprite harus memutar total akumulasi sudut $360^\circ$.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Di Scratch, balok Custom Block yang sudah dibuat tidak bisa diberi parameter input variabel sama sekali.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Bangun Poligon & Derajat Putar Loop (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Bangun Geometri Pen:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Segitiga Sama Sisi (N=3)</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Persegi / Segi Empat (N=4)</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Heksagon / Segi Enam (N=6)</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Oktagon / Segi Delapan (N=8)</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Custom Block (My Block)</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Derajat / Karakteristik:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="120">Repeat 3 kali dengan sudut putar turn right 120°</option>
+                        <option value="90">Repeat 4 kali dengan sudut putar turn right 90°</option>
+                        <option value="60">Repeat 6 kali dengan sudut putar turn right 60°</option>
+                        <option value="45">Repeat 8 kali dengan sudut putar turn right 45°</option>
+                        <option value="func">Membungkus blok kode agar modular dan dapat dipanggil ulang (DRY)</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="120">Repeat 3 kali dengan sudut putar turn right 120°</option>
+                        <option value="90">Repeat 4 kali dengan sudut putar turn right 90°</option>
+                        <option value="60">Repeat 6 kali dengan sudut putar turn right 60°</option>
+                        <option value="45">Repeat 8 kali dengan sudut putar turn right 45°</option>
+                        <option value="func">Membungkus blok kode agar modular dan dapat dipanggil ulang (DRY)</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="120">Repeat 3 kali dengan sudut putar turn right 120°</option>
+                        <option value="90">Repeat 4 kali dengan sudut putar turn right 90°</option>
+                        <option value="60">Repeat 6 kali dengan sudut putar turn right 60°</option>
+                        <option value="45">Repeat 8 kali dengan sudut putar turn right 45°</option>
+                        <option value="func">Membungkus blok kode agar modular dan dapat dipanggil ulang (DRY)</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="120">Repeat 3 kali dengan sudut putar turn right 120°</option>
+                        <option value="90">Repeat 4 kali dengan sudut putar turn right 90°</option>
+                        <option value="60">Repeat 6 kali dengan sudut putar turn right 60°</option>
+                        <option value="45">Repeat 8 kali dengan sudut putar turn right 45°</option>
+                        <option value="func">Membungkus blok kode agar modular dan dapat dipanggil ulang (DRY)</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="120">Repeat 3 kali dengan sudut putar turn right 120°</option>
+                        <option value="90">Repeat 4 kali dengan sudut putar turn right 90°</option>
+                        <option value="60">Repeat 6 kali dengan sudut putar turn right 60°</option>
+                        <option value="45">Repeat 8 kali dengan sudut putar turn right 45°</option>
+                        <option value="func">Membungkus blok kode agar modular dan dapat dipanggil ulang (DRY)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Menggambar Bunga Pola dengan Nested Loop (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan logika saat membuat karya seni generatif berbantuan Pen:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Membersihkan panggung dan menurunkan mata pena: [erase all] lalu [pen down]</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Memasang loop luar: [repeat 12] untuk memutar 12 kelopak bunga melingkar</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Memasang loop dalam: [repeat 4] dengan [move 50] dan [turn 90] untuk menggambar 1 kelopak</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Memutar sudut orientasi sprite sebesar [turn 30 degrees] sebelum kelopak berikutnya</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Mengangkat mata pena di akhir program: [pen up]</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-teal-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-teal-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-teal-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Efisiensi Pengulangan:</strong> Loop Repeat, Forever, dan Repeat-Until membuat program lebih ringkas dan terstruktur.</p>
+            <p><strong>2. Pola Geometri:</strong> Rumus rotasi $360^\circ / N$ membuka gerbang seni koding generatif yang indah.</p>
+            <p><strong>3. Modularitas Fungsi:</strong> Gunakan Custom Blocks untuk membagi program kompleks menjadi sub-tugas yang mudah dirawat.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan pengalamanmu merancang pola geometri menggunakan Loop atau membuat Custom Blocks..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-teal-500 hover:bg-teal-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran KKA.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-ap-04';
+
+function drawPolygonCanvas() {
+    const sides = parseInt(document.getElementById('poly-sides-select').value) || 4;
+    const angle = (360 / sides).toFixed(1);
+    
+    document.getElementById('poly-angle-badge').innerText = `SUDUT PUTAR: ${angle}°`;
+    document.getElementById('poly-code-box').innerHTML = `
+        repeat (${sides}) [<br>
+        &nbsp;&nbsp;move (50) steps<br>
+        &nbsp;&nbsp;turn right (${angle}) degrees<br>
+        ]
+    `;
+
+    const cvs = document.getElementById('poly-canvas');
+    const ctx = cvs.getContext('2d');
+    ctx.clearRect(0, 0, cvs.width, cvs.height);
+
+    ctx.strokeStyle = '#10B981';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+
+    const cx = cvs.width / 2;
+    const cy = cvs.height / 2;
+    const r = 50;
+
+    for (let i = 0; i <= sides; i++) {
+        const theta = (i * 2 * Math.PI / sides) - (Math.PI / 2);
+        const x = cx + r * Math.cos(theta);
+        const y = cy + r * Math.sin(theta);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'S', tf_3: 'B', tf_4: 'B', tf_5: 'S' };
+const KEY_MATCH = { match_1: '120', match_2: '90', match_3: '60', match_4: '45', match_5: 'func' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    drawPolygonCanvas();
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

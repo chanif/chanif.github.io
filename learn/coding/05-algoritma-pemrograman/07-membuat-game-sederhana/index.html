@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membuat Game Sederhana | Algoritma & Pemrograman KKA</title>
+    <meta name="description" content="Pelajari prinsip game development: siklus game loop, status permainan (state management), mekanik platformer Scratch, game teks Python, dan pengenalan library Pygame.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,148,136,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-emerald-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-teal-600 transition">
+        fanani<span class="text-teal-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition flex items-center gap-1">
+            ← Unit Algoritma & Pemrograman (KKA)
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#siklus-game-loop" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🔄 Game Loop & State</a>
+        <a href="#genre-game" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">👾 Scratch & Python Game</a>
+        <a href="#simulator-game" class="px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 hover:bg-teal-200 transition whitespace-nowrap font-bold">🎮 Number Guessing Lab</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-teal-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-teal-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-teal-600 transition">Algoritma & Pemrograman</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">07. Membuat Game Sederhana</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-teal-600 via-emerald-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 05 · Modul 07
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Prinsip Desain & Pembuatan Game Sederhana
+            </h1>
+            <p class="text-teal-100 text-sm md:text-base leading-relaxed mb-6">
+                Bermain game itu seru, tetapi membuatnya sendiri jauh lebih membanggakan! Integrasikan seluruh konsep komputasi: <em>Game Loop (Input $\rightarrow$ Update $\rightarrow$ Render)</em>, sistem nyawa & skor, gravitasi platformer di Scratch, game interaktif teks di Python, hingga pengenalan library grafis <strong>Pygame</strong>.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-teal-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🎮 Fokus: Game Loop, State & Pygame</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Arsitektur Siklus Game Loop</strong>
+                    <p class="text-slate-600">Menjelaskan alur 3 tahap berkelanjutan per frame: Tangkap Input Pengguna $\rightarrow$ Update Logika/Fisika $\rightarrow$ Gambar Layar (Render).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengelola Status Permainan (Game State Management)</strong>
+                    <p class="text-slate-600">Mengontrol transisi status menu utama, gameplay berlangsung, kondisi kalah (Game Over), dan menang (Victory).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membangun Game Berbasis Teks di Python</strong>
+                    <p class="text-slate-600">Memprogram game tebak angka (Number Guessing) dan gunting-batu-kertas memanfaatkan modul <code>random</code> dan perulangan <code>while</code>.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengenal Dasar Framework Pygame</strong>
+                    <p class="text-slate-600">Mengetahui fungsi inisialisasi jendela game (window surface), event loop, dan rendering audio visual di Python.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIKLUS GAME LOOP -->
+    <section id="siklus-game-loop" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">3 Pilar Jantung Game: Siklus Game Loop</h2>
+                <p class="text-xs text-slate-500">Berjalan 60 kali per detik (60 FPS) untuk menghadirkan animasi interaktif yang mulus</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-5 text-xs">
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl">🎮</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">1. Input Handling</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Mengecek apakah tombol panah, spasi lompat, atau sentuhan layar sedang ditekan oleh pemain.
+                </p>
+            </div>
+
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl">⚙️</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">2. Update State & Physics</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Menghitung gravitasi posisi karakter, mendeteksi tabrakan peluru dengan monster, dan menambah skor.
+                </p>
+            </div>
+
+            <div class="p-5 bg-teal-50/70 border border-teal-200 rounded-2xl space-y-2">
+                <span class="text-3xl">🖥️</span>
+                <h3 class="font-heading font-bold text-teal-900 text-sm">3. Render Output</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Menggambar ulang posisi sprite baru di layar panggung dan memainkan efek suara ledakan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: GENRE GAME -->
+    <section id="genre-game" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evolusi Proyek Game: Dari Scratch ke Python</h2>
+                <p class="text-xs text-slate-500">Pilih platform yang tepat untuk mewujudkan imajinasi kreatifmu</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-teal-700 block font-bold text-sm">1. Game Platformer Scratch</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Sangat cocok untuk game bertema petualangan visual 2D seperti Mario Bros: menggunakan variabel <code>kecepatan_y</code> untuk gravitasi lompat dan deteksi pijakan tanah.
+                </p>
+            </div>
+
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-teal-700 block font-bold text-sm">2. Game Teks & Pygame Python</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Mulai dari game logika tebak angka berbasis terminal hingga game grafis 2D arcade lengkap menggunakan library <code>pygame</code> (pip install pygame).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR GAME (INTERAKTIF) -->
+    <section id="simulator-game" class="bg-white rounded-3xl border-2 border-teal-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Interactive Python Number Guessing Game</h2>
+                </div>
+                <p class="text-xs text-slate-500">Komputer telah memilih angka rahasia antara 1 s.d. 50. Coba tebak angkanya dalam maksimal 5 kesempatan!</p>
+            </div>
+            <span class="px-3 py-1 bg-teal-50 text-teal-700 font-bold text-xs rounded-full border border-teal-200 self-start sm:self-auto">
+                Game Lab
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                <strong class="font-bold text-slate-800 block">🎲 Masukkan Tebakan Angka (1-50):</strong>
+                
+                <div class="flex gap-2">
+                    <input type="number" id="input-guess-num" min="1" max="50" value="25" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl font-bold text-slate-800">
+                    <button onclick="submitPlayerGuess()" class="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow transition whitespace-nowrap">
+                        🎯 Tebak!
+                    </button>
+                    <button onclick="initSecretNumberGame()" class="px-3 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold rounded-xl transition">
+                        Reset
+                    </button>
+                </div>
+
+                <div class="p-3 bg-white border border-slate-200 rounded-xl space-y-1 font-mono text-[11px]">
+                    <div class="text-slate-400">// Logika Python Game:</div>
+                    <div class="text-teal-700">target = random.randint(1, 50)</div>
+                    <div class="text-slate-600">while sisa_nyawa &gt; 0: cek tebakan...</div>
+                </div>
+            </div>
+
+            <!-- Virtual Game Feedback Screen -->
+            <div class="p-5 bg-slate-900 text-white rounded-2xl space-y-3 font-mono flex flex-col justify-between border border-slate-700">
+                <div class="text-[10px] text-slate-400 flex justify-between">
+                    <span>GAME CONSOLE FEEDBACK</span>
+                    <span id="guess-lives-badge" class="text-amber-400 font-bold">❤️❤️❤️❤️❤️ 5 NYAWA</span>
+                </div>
+
+                <div class="text-center py-4 space-y-2 my-auto">
+                    <div id="guess-status-icon" class="text-3xl">🤔</div>
+                    <div id="guess-feedback-text" class="text-base font-extrabold text-cyan-300">
+                        Masukkan angka tebakan pertamamu!
+                    </div>
+                </div>
+
+                <div id="guess-attempts-log" class="text-[10px] text-slate-400 text-center font-sans">
+                    Petunjuk: Komputer akan memberitahu apakah angka terlalu BESAR atau terlalu KECIL.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Membuat Game Sederhana</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman arsitektur Game Loop, modul random, dan game balancing (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Tiga fase utama yang dijalankan secara terus-menerus di dalam siklus Game Loop adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_1" value="A"> A. Input Handling $\rightarrow$ Update Physics/State $\rightarrow$ Render Output
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="B"> B. Shutdown $\rightarrow$ Restart $\rightarrow$ Sleep
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Download $\rightarrow$ Upload $\rightarrow$ Delete
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="D"> D. Copy $\rightarrow$ Cut $\rightarrow$ Paste
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Modul bawaan Python yang wajib diimpor untuk memilih angka acak atau mengacak pilihan komputer adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono font-bold">
+                        <input type="radio" name="mcq_2" value="A"> A. import random
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_2" value="B"> B. import keyboard
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_2" value="C"> C. import monitor
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_2" value="D"> D. import bluetooth
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Library open-source paling populer di ekosistem Python untuk merancang game 2D dengan grafika dan kontrol keyboard adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono font-bold">
+                        <input type="radio" name="mcq_3" value="A"> A. Pygame
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_3" value="B"> B. NumPy
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_3" value="C"> C. Pandas
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_3" value="D"> D. Scikit-learn
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Konsep 'Game Balancing' dalam perancangan game memiliki tujuan utama untuk...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_4" value="A"> A. Mengatur tingkat kesulitan permainan secara adil dan bertahap agar pemain tertantang tanpa merasa frustrasi
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Membuat game tidak bisa dimenangkan oleh siapa pun
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Menjual item game dengan harga sangat mahal
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Menghapus grafik gambar game
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Pada game Scratch platformer, efek gravitasi jatuh bebas ke tanah diprogram dengan cara...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_5" value="A"> A. Mengurangi nilai variabel kecepatan_y secara berkala: change kecepatan_y by -1
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="B"> B. Menghapus sprite dari panggung
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="C"> C. Menyalakan musik volume 100%
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_5" value="D"> D. Menutup browser Google Chrome
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. State Management mengatur perpindahan status layar dari MENU $\rightarrow$ PLAYING $\rightarrow$ GAMEOVER.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Di Python, kode <code>random.randint(1, 10)</code> dapat menghasilkan angka 11.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Playtesting (uji coba main oleh teman) sangat penting untuk menemukan bug dan mengukur keseruan game sebelum dirilis.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Game petualangan teks (Text Adventure) hanya membutuhkan perpaduan perulangan <code>while</code>, percabangan <code>if-else</code>, dan input teks pemain.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Game yang bagus harus selalu dibuat sesulit mungkin agar tidak ada satupun pemain yang bisa menyelesaikannya.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Elemen Game & Fungsinya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Elemen Game Dev:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Game Loop</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Lives / HP System</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. random.choice()</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Pygame Window</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Playtesting</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Fungsi Utama:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="loop">Siklus utama pemrosesan input, update pergerakan, dan render frame layar</option>
+                        <option value="hp">Variabel sisa nyawa pemain yang berkurang saat terkena rintangan musuh</option>
+                        <option value="rand">Fungsi Python untuk memilih elemen acak (contoh: bot memilih 'batu', 'gunting', 'kertas')</option>
+                        <option value="win">Kanvas jendela utama tempat game 2D ditampilkan di layar monitor</option>
+                        <option value="test">Proses evaluasi permainan oleh pemain nyata untuk mengukur kenyamanan dan bug</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="loop">Siklus utama pemrosesan input, update pergerakan, dan render frame layar</option>
+                        <option value="hp">Variabel sisa nyawa pemain yang berkurang saat terkena rintangan musuh</option>
+                        <option value="rand">Fungsi Python untuk memilih elemen acak (contoh: bot memilih 'batu', 'gunting', 'kertas')</option>
+                        <option value="win">Kanvas jendela utama tempat game 2D ditampilkan di layar monitor</option>
+                        <option value="test">Proses evaluasi permainan oleh pemain nyata untuk mengukur kenyamanan dan bug</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="loop">Siklus utama pemrosesan input, update pergerakan, dan render frame layar</option>
+                        <option value="hp">Variabel sisa nyawa pemain yang berkurang saat terkena rintangan musuh</option>
+                        <option value="rand">Fungsi Python untuk memilih elemen acak (contoh: bot memilih 'batu', 'gunting', 'kertas')</option>
+                        <option value="win">Kanvas jendela utama tempat game 2D ditampilkan di layar monitor</option>
+                        <option value="test">Proses evaluasi permainan oleh pemain nyata untuk mengukur kenyamanan dan bug</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="loop">Siklus utama pemrosesan input, update pergerakan, dan render frame layar</option>
+                        <option value="hp">Variabel sisa nyawa pemain yang berkurang saat terkena rintangan musuh</option>
+                        <option value="rand">Fungsi Python untuk memilih elemen acak (contoh: bot memilih 'batu', 'gunting', 'kertas')</option>
+                        <option value="win">Kanvas jendela utama tempat game 2D ditampilkan di layar monitor</option>
+                        <option value="test">Proses evaluasi permainan oleh pemain nyata untuk mengukur kenyamanan dan bug</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="loop">Siklus utama pemrosesan input, update pergerakan, dan render frame layar</option>
+                        <option value="hp">Variabel sisa nyawa pemain yang berkurang saat terkena rintangan musuh</option>
+                        <option value="rand">Fungsi Python untuk memilih elemen acak (contoh: bot memilih 'batu', 'gunting', 'kertas')</option>
+                        <option value="win">Kanvas jendela utama tempat game 2D ditampilkan di layar monitor</option>
+                        <option value="test">Proses evaluasi permainan oleh pemain nyata untuk mengukur kenyamanan dan bug</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Tahap Pembuatan Proyek Game Edukasi (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan proses perancangan game dari ide awal hingga siap dimainkan:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Menentukan ide cerita, karakter utama, dan aturan objektif kemenangan (Game Design)</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Menyiapkan aset visual sprite karakter dan musik efek suara latar</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Memprogram logika kontrol pergerakan pemain dan deteksi tabrakan rintangan</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Menambahkan sistem skor, peningkatan level, dan layar Game Over</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Melakukan playtesting bersama teman kelas dan memperbaiki bug</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-teal-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-teal-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-teal-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Inti Game Loop:</strong> Game adalah program yang terus berputar menangkap input, memperbarui dunia game, dan menampilkan grafis.</p>
+            <p><strong>2. Menghidupkan Interaktivitas:</strong> Padukan elemen visual, kontrol responsif, suara, dan keseimbangan tantangan.</p>
+            <p><strong>3. Kreativitas Pembuat:</strong> Menjadi game creator mengasah logika algoritma sekaligus daya imajinasi seni.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan konsep ide game impian yang ingin kamu wujudkan dengan koding Scratch atau Python..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-teal-500 hover:bg-teal-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran KKA.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-ap-07';
+
+let secretTarget = 0;
+let playerLives = 5;
+let isGameOver = false;
+
+function initSecretNumberGame() {
+    secretTarget = Math.floor(Math.random() * 50) + 1;
+    playerLives = 5;
+    isGameOver = false;
+    document.getElementById('guess-lives-badge').innerText = '❤️❤️❤️❤️❤️ 5 NYAWA';
+    document.getElementById('guess-status-icon').innerText = '🤔';
+    document.getElementById('guess-feedback-text').innerText = 'Komputer siap! Tebak angka 1 s.d. 50:';
+    document.getElementById('guess-feedback-text').className = 'text-base font-extrabold text-cyan-300';
+    document.getElementById('guess-attempts-log').innerText = 'Petunjuk: Komputer akan memberitahu apakah angka terlalu BESAR atau KECIL.';
+}
+
+function submitPlayerGuess() {
+    if (isGameOver) return;
+    const guess = parseInt(document.getElementById('input-guess-num').value);
+    if (isNaN(guess) || guess < 1 || guess > 50) return;
+
+    if (guess === secretTarget) {
+        document.getElementById('guess-status-icon').innerText = '🎉';
+        document.getElementById('guess-feedback-text').innerText = `Tebakanmu TEPAT (${secretTarget})! Kamu Menang!`;
+        document.getElementById('guess-feedback-text').className = 'text-base font-extrabold text-emerald-400';
+        isGameOver = true;
+        return;
+    }
+
+    playerLives--;
+    let hearts = '❤️'.repeat(playerLives) + '🖤'.repeat(5 - playerLives);
+    document.getElementById('guess-lives-badge').innerText = `${hearts} ${playerLives} NYAWA`;
+
+    if (playerLives <= 0) {
+        document.getElementById('guess-status-icon').innerText = '💥';
+        document.getElementById('guess-feedback-text').innerText = `Game Over! Angka rahasia adalah ${secretTarget}.`;
+        document.getElementById('guess-feedback-text').className = 'text-base font-extrabold text-rose-400';
+        isGameOver = true;
+        return;
+    }
+
+    if (guess < secretTarget) {
+        document.getElementById('guess-status-icon').innerText = '📈';
+        document.getElementById('guess-feedback-text').innerText = `Tebakan ${guess} terlalu KECIL! Coba angka lebih besar.`;
+        document.getElementById('guess-feedback-text').className = 'text-base font-extrabold text-amber-300';
+    } else {
+        document.getElementById('guess-status-icon').innerText = '📉';
+        document.getElementById('guess-feedback-text').innerText = `Tebakan ${guess} terlalu BESAR! Coba angka lebih kecil.`;
+        document.getElementById('guess-feedback-text').className = 'text-base font-extrabold text-amber-300';
+    }
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'S', tf_3: 'B', tf_4: 'B', tf_5: 'S' };
+const KEY_MATCH = { match_1: 'loop', match_2: 'hp', match_3: 'rand', match_4: 'win', match_5: 'test' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initSecretNumberGame();
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menyajikan Data: Tabel & Visualisasi Grafik | Analisis Data KKA</title>
+    <meta name="description" content="Pelajari seni visualisasi data yang jujur dan informatif: pemilihan jenis grafik (Bar, Line, Pie, Scatter), anatomi tabel rapi, serta deteksi grafik manipulatif (misleading charts).">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,148,136,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-emerald-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-teal-600 transition">
+        fanani<span class="text-teal-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition flex items-center gap-1">
+            ← Unit Analisis Data (KKA)
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#jenis-grafik" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">📊 Ragam Grafik</a>
+        <a href="#grafik-manipulatif" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">⚠️ Misleading Charts</a>
+        <a href="#simulator-grafik" class="px-3 py-1.5 rounded-full bg-teal-100 text-teal-800 hover:bg-teal-200 transition whitespace-nowrap font-bold">🎮 Chart Builder Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-teal-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-teal-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-teal-600 transition">Analisis Data</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">03. Menyajikan Data: Tabel & Grafik</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-teal-600 via-emerald-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 06 · Modul 03
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Penyajian Data: Tabel & Visualisasi Grafik
+            </h1>
+            <p class="text-teal-100 text-sm md:text-base leading-relaxed mb-6">
+                Satu gambar bernilai seribu kata! Ubah ribuan baris angka membosankan menjadi grafik visual yang memukau dan informatif: kuasai kapan harus menggunakan <strong>Bar Chart</strong>, <strong>Line Chart</strong>, <strong>Pie Chart</strong>, atau <strong>Scatter Plot</strong>, serta waspadai grafik manipulatif yang menyesatkan publik.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-teal-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📊 Tools: Google Sheets & Canva</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menyusun Struktur Tabel Data Profesional</strong>
+                    <p class="text-slate-600">Mengelola baris record, kolom field, penamaan header, fitur sorting (urutan), dan filtering (penyaringan).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memilih Jenis Grafik yang Tepat Sesuai Tujuan</strong>
+                    <p class="text-slate-600">Menggunakan Bar Chart untuk komparasi kategori, Line Chart untuk tren waktu, dan Pie Chart untuk proporsi.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Standar Anatomi Grafik Informatif</strong>
+                    <p class="text-slate-600">Menyertakan judul spesifik, label sumbu X dan Y, legenda warna, sumber data, dan skala sumbu mulai dari nol.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-teal-50/50 p-4 rounded-xl border border-teal-100">
+                <span class="text-teal-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mendeteksi Visualisasi Data Menyesatkan (Misleading)</strong>
+                    <p class="text-slate-600">Mengidentifikasi manipulasi sumbu Y terpotong, pemilihan data sepihak (cherry-picking), dan distorsi efek 3D.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: JENIS GRAFIK -->
+    <section id="jenis-grafik" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Panduan Memilih Jenis Grafik Visual</h2>
+                <p class="text-xs text-slate-500">Gunakan jenis grafik yang tepat agar pesan data tersampaikan secara instan</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-4 gap-4 text-xs">
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-3xl">📊</span>
+                <strong class="text-slate-800 block font-bold text-sm">1. Bar / Column Chart</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Sangat cocok untuk <strong>membandingkan nilai antarkategori</strong> berbeda (misal: jumlah siswa per ekstrakurikuler).
+                </p>
+            </div>
+
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-3xl">📈</span>
+                <strong class="text-slate-800 block font-bold text-sm">2. Line Chart (Garis)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Sangat ideal untuk <strong>menunjukkan tren perubahan dari waktu ke waktu</strong> (misal: suhu harian selama 1 minggu).
+                </p>
+            </div>
+
+            <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-3xl">🥧</span>
+                <strong class="text-slate-800 block font-bold text-sm">3. Pie Chart (Lingkaran)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Menunjukkan <strong>proporsi persentase dari total 100%</strong> (disarankan maksimal hanya 5 s.d. 6 irisan saja!).
+                </p>
+            </div>
+
+            <div class="p-5 bg-teal-50/70 border border-teal-200 rounded-2xl space-y-2">
+                <span class="text-3xl">🌌</span>
+                <strong class="text-teal-900 block font-bold text-sm">4. Scatter Plot (Sebaran)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Menunjukkan <strong>hubungan korelasi antara 2 variabel numerik</strong> (misal: durasi belajar vs nilai ujian).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: GRAFIK MANIPULATIF -->
+    <section id="grafik-manipulatif" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Waspada Visualisasi Data Menyesatkan (Misleading Charts)</h2>
+                <p class="text-xs text-slate-500">Trik manipulasi visual yang sering digunakan oknum di media massa untuk menggiring opini</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-5 text-xs">
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-rose-700 block font-bold text-sm">1. Sumbu Y Terpotong (Truncated Y-Axis)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Sumbu Y tidak dimulai dari 0 (misal mulai dari 95 ke 100) sehingga perbedaan kecil 1% terlihat seperti lonjakan raksasa 500%.
+                </p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-rose-700 block font-bold text-sm">2. Cherry-Picking Data</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Hanya menampilkan rentang waktu bulan yang nilainya menguntungkan dan menyembunyikan bulan-bulan yang mengalami penurunan drastis.
+                </p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <strong class="text-rose-700 block font-bold text-sm">3. Distorsi Perspektif 3D</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Pie chart 3D yang dimiringkan membuat potongan bagian depan tampak jauh lebih besar daripada potongan bagian belakang.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR GRAFIK (INTERAKTIF) -->
+    <section id="simulator-grafik" class="bg-white rounded-3xl border-2 border-teal-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Interactive Dynamic Chart Builder Studio</h2>
+                </div>
+                <p class="text-xs text-slate-500">Pilih jenis visualisasi untuk data peminat ekskul dan coba aktifkan sakelar 'Sumbu Y Terpotong'!</p>
+            </div>
+            <span class="px-3 py-1 bg-teal-50 text-teal-700 font-bold text-xs rounded-full border border-teal-200 self-start sm:self-auto">
+                Chart Engine
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                <strong class="font-bold text-slate-800 block">⚙️ Pengaturan Grafik:</strong>
+                
+                <div>
+                    <label class="font-semibold text-slate-700 block mb-1">Pilih Jenis Grafik:</label>
+                    <select id="chart-type-select" onchange="renderDynamicChart()" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl font-bold text-slate-800">
+                        <option value="bar">1. Bar Chart (Komparasi Kategori Ekskul)</option>
+                        <option value="line">2. Line Chart (Tren Minat)</option>
+                    </select>
+                </div>
+
+                <div class="p-3 bg-white border border-slate-200 rounded-xl space-y-2">
+                    <label class="flex items-center gap-2 font-bold text-rose-700 cursor-pointer">
+                        <input type="checkbox" id="chk-truncate-y" onchange="renderDynamicChart()" class="accent-rose-600">
+                        Simulasi Sumbu Y Terpotong (Mulai dari 35)
+                    </label>
+                    <p class="text-[10px] text-slate-500">
+                        Saat dicentang, perhatikan bagaimana perbedaan data yang sedikit tampak didramatisasi secara berlebihan!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Virtual Chart Canvas Screen -->
+            <div class="p-5 bg-slate-900 text-white rounded-2xl space-y-3 flex flex-col justify-between items-center relative overflow-hidden h-64 border border-slate-700">
+                <div class="text-[10px] font-mono text-slate-400 flex justify-between w-full z-10">
+                    <span>PEMINAT EKSKUL SISWA</span>
+                    <span id="chart-scale-badge" class="text-emerald-400 font-bold">SUMBU Y: 0 - 50</span>
+                </div>
+
+                <canvas id="demo-chart-canvas" width="220" height="140" class="my-auto"></canvas>
+
+                <div class="text-[10px] text-cyan-300 font-mono text-center z-10">
+                    Kategori: Koding (45), Robotik (40), Musik (38)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Menyajikan Data</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman pemilihan jenis grafik, anatomi tabel, dan deteksi misleading charts (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Jenis grafik yang paling tepat digunakan untuk menunjukkan perkembangan nilai rata-rata kelas dari bulan Januari hingga Juni adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_1" value="A"> A. Line Chart (Grafik Garis)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="B"> B. Pie Chart
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Donut Chart
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_1" value="D"> D. Word Cloud
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Mengapa grafik lingkaran (Pie Chart) tidak disarankan jika memiliki lebih dari 7 kategori potongan irisan?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_2" value="A"> A. Karena irisan menjadi terlalu tipis dan menyulitkan mata manusia membedakan proporsi nilai secara akurat
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="B"> B. Karena lingkaran akan berubah menjadi segitiga
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="C"> C. Karena komputer akan kehabisan warna
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_2" value="D"> D. Karena spreadsheet tidak mendukung angka lebih dari 7
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Salah satu ciri utama grafik batang yang manipulatif (misleading bar chart) adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_3" value="A"> A. Skala sumbu vertikal (Y) dipotong dan tidak dimulai dari angka nol (0)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Memiliki judul yang jelas
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Mencantumkan sumber data resmi BPS
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Menggunakan warna hijau dan biru
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Jenis grafik yang paling tepat digunakan untuk menguji apakah ada hubungan (korelasi) antara waktu penggunaan HP harian dengan nilai rapot siswa adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-bold">
+                        <input type="radio" name="mcq_4" value="A"> A. Scatter Plot (Diagram Sebaran Titik)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Pie Chart
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Diagram Venn
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Flowchart Alur
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Library visualisasi grafik paling populer di bahasa pemrograman Python untuk membuat grafik batang dan garis adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono font-bold">
+                        <input type="radio" name="mcq_5" value="A"> A. Matplotlib (import matplotlib.pyplot as plt)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_5" value="B"> B. Pygame
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_5" value="C"> C. Turtle
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-teal-400 font-mono">
+                        <input type="radio" name="mcq_5" value="D"> D. WinRAR
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Sumbu horizontal grafik batang umumnya mewakili label kategori, sedangkan sumbu vertikal mewakili nilai kuantitas angka.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Menambahkan efek 3D berlebihan pada pie chart dapat mendistorsi persepsi mata sehingga irisan kecil terlihat lebih besar.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Fitur 'Filter' pada Google Sheets digunakan untuk menyembunyikan data sementara tanpa menghapus baris asli di database.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Grafik yang baik tidak perlu mencantumkan judul dan label sumbu agar terlihat lebih artistik dan misterius.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Canva menyediakan template infografis siap pakai untuk menggabungkan data statistik dengan elemen grafis modern.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Kasus Data & Jenis Visualisasi Terbaiknya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Kasus Kebutuhan Data:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Perbandingan jumlah siswa per agama di sekolah</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Fluktuasi harga beras dari bulan ke bulan</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Proporsi persentase pembagian anggaran OSIS</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Hubungan antara tinggi badan dan berat badan</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Distribusi frekuensi rentang nilai ujian (0-50, 51-75, 76-100)</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Grafik Terbaik:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="bar">Bar / Column Chart (Grafik Batang)</option>
+                        <option value="line">Line Chart (Grafik Garis Tren)</option>
+                        <option value="pie">Pie Chart (Grafik Lingkaran Proporsi)</option>
+                        <option value="scatter">Scatter Plot (Diagram Sebaran Hubungan)</option>
+                        <option value="hist">Histogram (Distribusi Frekuensi Rentang Nilai)</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="bar">Bar / Column Chart (Grafik Batang)</option>
+                        <option value="line">Line Chart (Grafik Garis Tren)</option>
+                        <option value="pie">Pie Chart (Grafik Lingkaran Proporsi)</option>
+                        <option value="scatter">Scatter Plot (Diagram Sebaran Hubungan)</option>
+                        <option value="hist">Histogram (Distribusi Frekuensi Rentang Nilai)</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="bar">Bar / Column Chart (Grafik Batang)</option>
+                        <option value="line">Line Chart (Grafik Garis Tren)</option>
+                        <option value="pie">Pie Chart (Grafik Lingkaran Proporsi)</option>
+                        <option value="scatter">Scatter Plot (Diagram Sebaran Hubungan)</option>
+                        <option value="hist">Histogram (Distribusi Frekuensi Rentang Nilai)</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="bar">Bar / Column Chart (Grafik Batang)</option>
+                        <option value="line">Line Chart (Grafik Garis Tren)</option>
+                        <option value="pie">Pie Chart (Grafik Lingkaran Proporsi)</option>
+                        <option value="scatter">Scatter Plot (Diagram Sebaran Hubungan)</option>
+                        <option value="hist">Histogram (Distribusi Frekuensi Rentang Nilai)</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="bar">Bar / Column Chart (Grafik Batang)</option>
+                        <option value="line">Line Chart (Grafik Garis Tren)</option>
+                        <option value="pie">Pie Chart (Grafik Lingkaran Proporsi)</option>
+                        <option value="scatter">Scatter Plot (Diagram Sebaran Hubungan)</option>
+                        <option value="hist">Histogram (Distribusi Frekuensi Rentang Nilai)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Membuat Grafik Infografis di Spreadsheet (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan proses pembuatan grafik dari tabel mentah hingga siap dipublikasikan:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Memasukkan dan merapikan data tabel dengan header kolom yang jelas di Google Sheets</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Memilih (blok/highlight) rentang sel data tabel yang ingin divisualisasikan</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Mengeklik menu Insert $\rightarrow$ Chart dan memilih tipe grafik (Bar/Line) yang sesuai</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Menambahkan judul informatif, label sumbu X dan Y, serta memastikan sumbu Y mulai dari 0</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Mengekspor grafik ke format gambar PNG untuk disisipkan ke dalam laporan presentasi</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-teal-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-teal-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-teal-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Komunikasi Visual:</strong> Grafik yang tepat menyampaikan wawasan data lebih cepat dibanding teks berparagraf.</p>
+            <p><strong>2. Kejujuran Skala:</strong> Mulailah sumbu Y dari angka 0 untuk menjaga integritas dan objektivitas informasi.</p>
+            <p><strong>3. Literasi Kritis:</strong> Bersikaplah kritis saat melihat grafik di media sosial; cek sumber dan bentuk skalanya!</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan pengalamanmu mendeteksi grafik yang misleading di berita atau media sosial..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-teal-500 hover:bg-teal-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran KKA.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-ad-03';
+
+const ekskulData = [
+    { name: "Koding", val: 45 },
+    { name: "Robotik", val: 40 },
+    { name: "Musik", val: 38 }
+];
+
+function renderDynamicChart() {
+    const chartType = document.getElementById('chart-type-select').value;
+    const isTruncated = document.getElementById('chk-truncate-y').checked;
+    const cvs = document.getElementById('demo-chart-canvas');
+    const ctx = cvs.getContext('2d');
+
+    ctx.clearRect(0, 0, cvs.width, cvs.height);
+
+    const minVal = isTruncated ? 35 : 0;
+    const maxVal = 50;
+
+    document.getElementById('chart-scale-badge').innerText = isTruncated ? '⚠️ SUMBU Y: 35 - 50 (TERPOTONG)' : 'SUMBU Y: 0 - 50 (NORMAL)';
+    document.getElementById('chart-scale-badge').className = isTruncated ? 'text-rose-400 font-bold' : 'text-emerald-400 font-bold';
+
+    if (chartType === 'bar') {
+        const barWidth = 35;
+        const spacing = 35;
+        const startX = 25;
+
+        ekskulData.forEach((d, idx) => {
+            const normVal = (d.val - minVal) / (maxVal - minVal);
+            const h = normVal * 95;
+            const x = startX + idx * (barWidth + spacing);
+            const y = 120 - h;
+
+            ctx.fillStyle = idx === 0 ? '#10B981' : (idx === 1 ? '#06B6D4' : '#F59E0B');
+            ctx.fillRect(x, y, barWidth, h);
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '10px sans-serif';
+            ctx.fillText(`${d.val}`, x + 10, y - 5);
+            ctx.fillStyle = '#94A3B8';
+            ctx.fillText(d.name, x, 135);
+        });
+    } else {
+        // Line chart
+        ctx.strokeStyle = '#10B981';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+
+        ekskulData.forEach((d, idx) => {
+            const normVal = (d.val - minVal) / (maxVal - minVal);
+            const h = normVal * 95;
+            const x = 35 + idx * 75;
+            const y = 120 - h;
+
+            if (idx === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+
+        ekskulData.forEach((d, idx) => {
+            const normVal = (d.val - minVal) / (maxVal - minVal);
+            const h = normVal * 95;
+            const x = 35 + idx * 75;
+            const y = 120 - h;
+
+            ctx.fillStyle = '#38BDF8';
+            ctx.beginPath();
+            ctx.arc(x, y, 4, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '10px sans-serif';
+            ctx.fillText(`${d.val}`, x - 5, y - 8);
+            ctx.fillStyle = '#94A3B8';
+            ctx.fillText(d.name, x - 15, 135);
+        });
+    }
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'B', tf_3: 'B', tf_4: 'S', tf_5: 'B' };
+const KEY_MATCH = { match_1: 'bar', match_2: 'line', match_3: 'pie', match_4: 'scatter', match_5: 'hist' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderDynamicChart();
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

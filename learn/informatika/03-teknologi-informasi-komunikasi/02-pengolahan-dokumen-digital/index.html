@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengolahan Dokumen Digital & Mail Merge | TIK Informatika</title>
+    <meta name="description" content="Kuasai teknik penyusunan dokumen digital profesional: tata letak (layout), heading hirarki, penomoran halaman otomatis, surat massal (Mail Merge), dan konversi format berkas.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Unit TIK
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#anatomi-dokumen" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">📄 Struktur Formal</a>
+        <a href="#fitur-lanjutan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">💌 Mail Merge & Review</a>
+        <a href="#simulator-mailmerge" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">🎮 Mail Merge Simulator</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-blue-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">TIK</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">02. Pengolahan Dokumen Digital</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                📱 Teknologi Informasi & Komunikasi · Modul 02
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Pengolahan Dokumen Digital & Otomasi Surat Massal
+            </h1>
+            <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-6">
+                Menyusun dokumen bukan hanya sekadar mengetik teks! Pelajari cara menata margin baku, hierarki heading, penomoran romawi/angka otomatis, hingga mencetak ratusan surat undangan instan dengan <em>Mail Merge</em>.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-blue-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">💌 Skill: Mail Merge & Layout Standar</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu peroleh setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Format Dokumen Akademik & Formal</strong>
+                    <p class="text-slate-600">Menguasai pengaturan batas tepi (margin), ukuran kertas (A4/Letter), spasi baris (1.5 line), dan indentasi paragraf.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Heading Hirarki & Daftar Isi Otomatis</strong>
+                    <p class="text-slate-600">Menerapkan Heading 1, Heading 2, dan Navigation Pane untuk navigasi bab dan Daftar Isi otomatis.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Integrasi Surat Massal (Mail Merge)</strong>
+                    <p class="text-slate-600">Menghubungkan template surat di Word dengan tabel data penerima di Excel secara presisi dan cepat.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Manajemen File & Konversi PDF</strong>
+                    <p class="text-slate-600">Mengelola penamaan file terstruktur dan melakukan ekspor PDF tanpa merusak susunan tata letak.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ANATOMI DOKUMEN -->
+    <section id="anatomi-dokumen" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Anatomi Dokumen Formal Berstandar</h2>
+                <p class="text-xs text-slate-500">Standar baku penyusunan makalah, laporan karya tulis ilmiah, dan surat resmi</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">📐</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Standar Margin 4-4-3-3</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Standar penulisan karya tulis Indonesia: Margin <strong>Kiri 4 cm</strong> (ruang jilid), <strong>Atas 4 cm</strong>, <strong>Kanan 3 cm</strong>, dan <strong>Bawah 3 cm</strong> pada kertas ukuran A4.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">📑</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Section Break & Penomoran Halaman</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Gunakan <em>Section Break (Next Page)</em> untuk membedakan nomor romawi bawah tengah (i, ii, iii) pada halaman pengantar dan angka arab kanan atas (1, 2, 3) pada bab inti.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">🏷️</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Tata Nama File (Naming Convention)</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Hindari <code>tugas_fix_bgt.docx</code>! Gunakan format baku: <code>[Kelas]_[MataPelajaran]_[Topik]_[Nama]_[Versi]</code>, contoh: <code>8A_Informatika_MakalahTIK_Ahmad_v1.docx</code>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FITUR LANJUTAN: MAIL MERGE -->
+    <section id="fitur-lanjutan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Mail Merge: Menggabungkan Data & Surat</h2>
+                <p class="text-xs text-slate-500">Mencetak 100 surat undangan atau sertifikat dalam sekali klik</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-1.5">
+                <span class="text-2xl">📝</span>
+                <strong class="text-xs font-bold text-blue-900 block">1. Main Document</strong>
+                <p class="text-[11px] text-blue-800">Template surat di Word yang berisi teks utama dan placeholder kolom (misal: <code>&laquo;Nama&raquo;</code>).</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-1.5">
+                <span class="text-2xl">📊</span>
+                <strong class="text-xs font-bold text-emerald-900 block">2. Data Source</strong>
+                <p class="text-[11px] text-emerald-800">Tabel data di Excel yang memuat daftar nama, alamat, nomor telepon, dan nilai siswa.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-1.5">
+                <span class="text-2xl">🔗</span>
+                <strong class="text-xs font-bold text-amber-900 block">3. Insert Merge Field</strong>
+                <p class="text-[11px] text-amber-800">Menyisipkan variabel kolom data ke posisi teks template yang sesuai.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-200 space-y-1.5">
+                <span class="text-2xl">🖨️</span>
+                <strong class="text-xs font-bold text-purple-900 block">4. Finish & Merge</strong>
+                <p class="text-[11px] text-purple-800">Menghasilkan dokumen baru atau langsung mencetak semua halaman untuk setiap baris data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR MAIL MERGE (INTERAKTIF) -->
+    <section id="simulator-mailmerge" class="bg-white rounded-3xl border-2 border-blue-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">💌</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Live Mail Merge Interactive Previewer</h2>
+                </div>
+                <p class="text-xs text-slate-500">Geser data penerima untuk melihat bagaimana Word mengganti placeholder secara otomatis</p>
+            </div>
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 font-bold text-xs rounded-full border border-blue-200 self-start sm:self-auto">
+                Simulasi Otomasi
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5 text-xs">
+            <!-- Tabel Data Sumber -->
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                <strong class="font-bold text-slate-800 block">📊 Data Source (Excel Table):</strong>
+                <div class="space-y-1.5">
+                    <button onclick="selectRecipient(0)" id="rec-btn-0" class="w-full p-2 rounded-xl text-left font-bold transition bg-blue-600 text-white shadow-sm">
+                        1. Ahmad Dani (Lamongan Kota)
+                    </button>
+                    <button onclick="selectRecipient(1)" id="rec-btn-1" class="w-full p-2 rounded-xl text-left font-semibold text-slate-700 bg-white border border-slate-200 hover:bg-slate-100 transition">
+                        2. Siti Nurhaliza (Babat)
+                    </button>
+                    <button onclick="selectRecipient(2)" id="rec-btn-2" class="w-full p-2 rounded-xl text-left font-semibold text-slate-700 bg-white border border-slate-200 hover:bg-slate-100 transition">
+                        3. Budi Santoso (Tikung)
+                    </button>
+                    <button onclick="selectRecipient(3)" id="rec-btn-3" class="w-full p-2 rounded-xl text-left font-semibold text-slate-700 bg-white border border-slate-200 hover:bg-slate-100 transition">
+                        4. Rina Lestari (Paciran)
+                    </button>
+                </div>
+                <p class="text-[11px] text-slate-500 italic">Klik nama penerima untuk mengganti data di surat!</p>
+            </div>
+
+            <!-- Preview Surat Hasil Merge -->
+            <div class="md:col-span-2 p-6 bg-white rounded-2xl border-2 border-dashed border-blue-300 shadow-sm space-y-4">
+                <div class="text-center border-b border-slate-200 pb-3">
+                    <h3 class="font-heading font-extrabold text-sm text-slate-800 uppercase tracking-wide">SMP NEGERI 2 LAMONGAN</h3>
+                    <p class="text-[11px] text-slate-500">Jl. Veteran No. 1, Lamongan, Jawa Timur</p>
+                </div>
+
+                <div class="space-y-1 leading-relaxed">
+                    <p>Kepada Yth.</p>
+                    <p class="font-bold text-blue-700 text-sm" id="letter-name">Ahmad Dani</p>
+                    <p class="text-slate-600" id="letter-address">Di Lamongan Kota</p>
+                </div>
+
+                <p class="leading-relaxed text-slate-700">
+                    Dengan hormat, kami mengundang Saudara/i untuk menghadiri rapat koordinasi persiapan Ujian Praktik TIK pada hari <strong id="letter-date">Senin, 10 September 2025</strong> pukul <strong id="letter-time">08.00 WIB</strong> di Lab Komputer 1.
+                </p>
+
+                <div class="pt-4 flex justify-between items-end text-[11px] text-slate-500">
+                    <span>Kode Verifikasi: <strong id="letter-code" class="text-slate-800 font-mono">LMG-001</strong></span>
+                    <div class="text-right">
+                        <p>Kepala Lab Informatika,</p>
+                        <p class="font-bold text-slate-800 mt-6">Pak Fanani, S.Pd.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Dokumen Digital & Mail Merge</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji kemahiran formatting dan otomasi dokumen (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Mengapa batas tepi (margin) kiri pada karya tulis akademik umumnya diatur lebih lebar (4 cm) dibandingkan sisi kanan (3 cm)?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="A"> A. Memberikan ruang yang cukup untuk penjilidan buku agar teks tidak tertutup
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="B"> B. Menghemat tinta printer saat mencetak
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Agar jumlah halaman makalah menjadi lebih sedikit
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="D"> D. Menyesuaikan dengan standar ukuran monitor komputer
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Dua file utama yang wajib dipersiapkan saat akan menjalankan fitur Mail Merge adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="A"> A. File video .mp4 dan audio .mp3
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="B"> B. Main Document (Template Word) dan Data Source (Tabel Excel)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="C"> C. File presentasi PowerPoint dan browser Chrome
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="D"> D. File gambar .jpg dan installer antivirus
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Fitur di Microsoft Word yang mencatat setiap penambahan, penghapusan, atau pengeditan teks saat dokumen dikoreksi bersama guru disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="A"> A. WordArt
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Track Changes
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Drop Cap
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Watermark
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Untuk memisahkan format nomor halaman romawi (halaman pengantar) dengan nomor halaman angka arab (isi makalah), fitur yang harus digunakan adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="A"> A. Page Break biasa
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Section Break (Next Page) & nonaktifkan Link to Previous
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Mengganti jenis font di setiap halaman
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Mengubah ukuran kertas menjadi Letter
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Format berkas yang paling aman digunakan saat mengirimkan CV atau tugas akhir agar font dan tata letak tidak berantakan saat dibuka di HP guru adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="A"> A. .PDF (Portable Document Format)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="B"> B. .RTF
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="C"> C. .TXT
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="D"> D. .HTML
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Mail Merge memungkinkan kita mencetak 100 surat undangan berbeda tanpa perlu mengetik ulang isi surat 100 kali.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Daftar isi otomatis di Word dapat dibuat tanpa perlu menetapkan style Heading pada judul-judul bab.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Menekan tombol Enter berkali-kali untuk pindah ke halaman baru adalah praktik mengetik yang sangat rapi dan dianjurkan.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Penamaan file tugas sekolah yang baku memudahkan pencarian dan pengarsipan berkas di komputer guru.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Format file .PDF dapat dibuka dan dibaca di sistem operasi Windows, macOS, Android, maupun iOS.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Fitur & Fungsinya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Nama Fitur Pengolah Kata:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Heading 1 & Heading 2</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Mailings $\rightarrow$ Insert Merge Field</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Review $\rightarrow$ Track Changes</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Layout $\rightarrow$ Section Break Next Page</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. File $\rightarrow$ Export As PDF</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Kegunaan yang Sesuai:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan Fitur 1 --</option>
+                        <option value="toc">Membangun struktur hierarki judul untuk Daftar Isi otomatis</option>
+                        <option value="merge">Menyisipkan variabel nama/alamat dari tabel Excel ke surat</option>
+                        <option value="track">Merekam riwayat revisi dan coretan masukan dari guru</option>
+                        <option value="break">Memisahkan format penomoran halaman atau margin antar bab</option>
+                        <option value="pdf">Mengunci tata letak dokumen agar tidak berantakan saat dicetak</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan Fitur 2 --</option>
+                        <option value="toc">Membangun struktur hierarki judul untuk Daftar Isi otomatis</option>
+                        <option value="merge">Menyisipkan variabel nama/alamat dari tabel Excel ke surat</option>
+                        <option value="track">Merekam riwayat revisi dan coretan masukan dari guru</option>
+                        <option value="break">Memisahkan format penomoran halaman atau margin antar bab</option>
+                        <option value="pdf">Mengunci tata letak dokumen agar tidak berantakan saat dicetak</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan Fitur 3 --</option>
+                        <option value="toc">Membangun struktur hierarki judul untuk Daftar Isi otomatis</option>
+                        <option value="merge">Menyisipkan variabel nama/alamat dari tabel Excel ke surat</option>
+                        <option value="track">Merekam riwayat revisi dan coretan masukan dari guru</option>
+                        <option value="break">Memisahkan format penomoran halaman atau margin antar bab</option>
+                        <option value="pdf">Mengunci tata letak dokumen agar tidak berantakan saat dicetak</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan Fitur 4 --</option>
+                        <option value="toc">Membangun struktur hierarki judul untuk Daftar Isi otomatis</option>
+                        <option value="merge">Menyisipkan variabel nama/alamat dari tabel Excel ke surat</option>
+                        <option value="track">Merekam riwayat revisi dan coretan masukan dari guru</option>
+                        <option value="break">Memisahkan format penomoran halaman atau margin antar bab</option>
+                        <option value="pdf">Mengunci tata letak dokumen agar tidak berantakan saat dicetak</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan Fitur 5 --</option>
+                        <option value="toc">Membangun struktur hierarki judul untuk Daftar Isi otomatis</option>
+                        <option value="merge">Menyisipkan variabel nama/alamat dari tabel Excel ke surat</option>
+                        <option value="track">Merekam riwayat revisi dan coretan masukan dari guru</option>
+                        <option value="break">Memisahkan format penomoran halaman atau margin antar bab</option>
+                        <option value="pdf">Mengunci tata letak dokumen agar tidak berantakan saat dicetak</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Prosedur Pembuatan Mail Merge (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan langkah pembuatan Mail Merge dari awal hingga cetak final:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Memilih menu <em>Select Recipients $\rightarrow$ Use an Existing List</em> dan pilih file Excel</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Menyiapkan tabel data daftar penerima (Nama, Alamat) di Microsoft Excel</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Mengetik template surat utama di Microsoft Word dengan menyisakan ruang placeholder</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Klik <em>Finish & Merge $\rightarrow$ Print Documents / Edit Individual Documents</em></span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Menyisipkan <em>Insert Merge Field</em> pada posisi nama/alamat dan mengecek dengan <em>Preview Results</em></span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-blue-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-blue-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Kerapian Tata Letak:</strong> Margin 4-4-3-3 pada kertas A4, spasi 1.5, dan Section Break adalah kunci dokumen ilmiah berstandar resmi.</p>
+            <p><strong>2. Otomasi Mail Merge:</strong> Menghubungkan satu template dokumen Word dengan ribuan baris data Excel menghasilkan efisiensi waktu yang luar biasa.</p>
+            <p><strong>3. Standarisasi PDF:</strong> Selalu konversi hasil akhir dokumen ke format .PDF sebelum diserahkan untuk menjamin keaslian tata letak.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan pengalamanmu saat mencoba simulasi Mail Merge dan kesulitan apa yang pernah kamu alami saat merapikan makalah..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'informatika';
+const TOPIC_ID = 'inf-tik-02';
+
+// Simulator Mail Merge Data
+const recipients = [
+    { name: "Ahmad Dani", address: "Di Lamongan Kota", date: "Senin, 10 September 2025", time: "08.00 WIB", code: "LMG-001" },
+    { name: "Siti Nurhaliza", address: "Di Babat", date: "Senin, 10 September 2025", time: "09.30 WIB", code: "LMG-002" },
+    { name: "Budi Santoso", address: "Di Tikung", date: "Selasa, 11 September 2025", time: "08.00 WIB", code: "LMG-003" },
+    { name: "Rina Lestari", address: "Di Paciran", date: "Selasa, 11 September 2025", time: "10.00 WIB", code: "LMG-004" }
+];
+
+function selectRecipient(idx) {
+    const r = recipients[idx];
+    if (!r) return;
+
+    document.getElementById('letter-name').innerText = r.name;
+    document.getElementById('letter-address').innerText = r.address;
+    document.getElementById('letter-date').innerText = r.date;
+    document.getElementById('letter-time').innerText = r.time;
+    document.getElementById('letter-code').innerText = r.code;
+
+    for (let i = 0; i < recipients.length; i++) {
+        const btn = document.getElementById(`rec-btn-${i}`);
+        if (i === idx) {
+            btn.className = 'w-full p-2 rounded-xl text-left font-bold transition bg-blue-600 text-white shadow-sm';
+        } else {
+            btn.className = 'w-full p-2 rounded-xl text-left font-semibold text-slate-700 bg-white border border-slate-200 hover:bg-slate-100 transition';
+        }
+    }
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'B', mcq_3: 'B', mcq_4: 'B', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'S', tf_3: 'S', tf_4: 'B', tf_5: 'B' };
+const KEY_MATCH = { match_1: 'toc', match_2: 'merge', match_3: 'track', match_4: 'break', match_5: 'pdf' };
+const KEY_SEQ = { seq_B: '1', seq_C: '2', seq_A: '3', seq_E: '4', seq_D: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

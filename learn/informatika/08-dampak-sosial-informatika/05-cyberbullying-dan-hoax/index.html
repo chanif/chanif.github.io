@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pencegahan Cyberbullying & Deteksi Hoax | Dampak Sosial Informatika</title>
+    <meta name="description" content="Pelajari jenis cyberbullying (flaming, harassment, outing), perlindungan hukum UU ITE, cara menghadapi perundungan online, serta metode SIFT & cekfakta untuk membedakan hoax dan berita valid.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Unit Dampak Sosial Informatika
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#cyberbullying" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🛡️ Lawan Cyberbullying</a>
+        <a href="#deteksi-hoax" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🔍 Metode SIFT & Cek Fakta</a>
+        <a href="#simulator-hoax" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">🎮 Hoax Buster Detective Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-blue-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">Dampak Sosial Informatika</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">05. Cyberbullying & Hoax</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🌐 Dampak Sosial · Modul 05
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Pencegahan Cyberbullying & Deteksi Berita Hoax
+            </h1>
+            <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-6">
+                Jadilah pelindung di dunia digital! Kenali bentuk-bentuk perundungan siber (cyberbullying) dan langkah tanggap daruratnya, serta kuasai metode <strong>SIFT</strong> dan penelusuran gambar terbalik (Google Lens) untuk membasmi misinformasi dan hoax berbahaya.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-blue-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🛡️ Literasi: SIFT Method & Cek Fakta</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengidentifikasi Bentuk Cyberbullying</strong>
+                    <p class="text-slate-600">Mengenali tindakan flaming (ujaran kemarahan), harassment (pelecehan berulang), outing (membongkar rahasia pribadi), dan impersonation (menyamar).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Prosedur Tanggap Darurat Perundungan</strong>
+                    <p class="text-slate-600">Menjalankan langkah simpan bukti (screenshot), jangan membalas, blokir & laporkan akun (block & report), serta bercerita ke guru/orang tua.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membedakan Misinformasi, Disinformasi & Malinformasi</strong>
+                    <p class="text-slate-600">Memahami perbedaan niat di balik kabar bohong: ketidaksengajaan vs rekayasa berniat jahat vs penyalahgunaan konteks.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Metode Verifikasi SIFT</strong>
+                    <p class="text-slate-600">Mempraktikkan langkah Stop, Investigate the source, Find better coverage, dan Trace claims sebelum mempercayai atau membagikan berita.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: CYBERBULLYING -->
+    <section id="cyberbullying" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Mengenali & Melawan Tindakan Cyberbullying</h2>
+                <p class="text-xs text-slate-500">Perundungan siber memiliki dampak psikologis serius dan diatur sanksi pidananya dalam UU ITE</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1.5">
+                <span class="text-2xl">🔥</span>
+                <strong class="text-slate-800 block font-bold">1. Flaming</strong>
+                <p class="text-slate-600 leading-relaxed">Mengirimkan pesan penuh kemarahan dan kata-kata vulgar di kolom komentar atau grup publik.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1.5">
+                <span class="text-2xl">🗣️</span>
+                <strong class="text-slate-800 block font-bold">2. Harassment</strong>
+                <p class="text-slate-600 leading-relaxed">Mengirimkan pesan teror, ancaman, atau ejekan secara berulang-ulang melalui chat pribadi.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1.5">
+                <span class="text-2xl">🕵️</span>
+                <strong class="text-slate-800 block font-bold">3. Outing</strong>
+                <p class="text-slate-600 leading-relaxed">Menyebarkan rahasia, aib, atau foto pribadi seseorang tanpa izin untuk mempermalukannya.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1.5">
+                <span class="text-2xl">🎭</span>
+                <strong class="text-slate-800 block font-bold">4. Impersonation</strong>
+                <p class="text-slate-600 leading-relaxed">Membuat akun palsu mengatasnamakan orang lain untuk merusak reputasi nama baiknya.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DETEKSI HOAX & METODE SIFT -->
+    <section id="deteksi-hoax" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Metode SIFT: 4 Langkah Tangkal Hoax</h2>
+                <p class="text-xs text-slate-500">Framework literasi informasi internasional yang dirancang oleh Mike Caulfield</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+            <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-1.5">
+                <span class="text-2xl">🛑</span>
+                <strong class="text-blue-900 block font-bold">S — STOP (Berhenti)</strong>
+                <p class="text-slate-600 leading-relaxed">Jangan langsung panik atau share jika membaca judul bombastis yang memicu emosi kemarahan.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-200 space-y-1.5">
+                <span class="text-2xl">🔍</span>
+                <strong class="text-indigo-900 block font-bold">I — INVESTIGATE (Selidiki Sumber)</strong>
+                <p class="text-slate-600 leading-relaxed">Periksa siapa penulisnya, reputasi domain situs web, dan apakah ada kontak redaksi yang jelas.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-1.5">
+                <span class="text-2xl">📰</span>
+                <strong class="text-emerald-900 block font-bold">F — FIND (Cari Liputan Lain)</strong>
+                <p class="text-slate-600 leading-relaxed">Cek apakah media kredibel nasional (Kompas, Antara, CNN) juga memberitakan peristiwa tersebut.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-200 space-y-1.5">
+                <span class="text-2xl">🧭</span>
+                <strong class="text-purple-900 block font-bold">T — TRACE (Lacak Sumber Asli)</strong>
+                <p class="text-slate-600 leading-relaxed">Gunakan Google Lens untuk memverifikasi apakah foto tersebut adalah foto lama dari peristiwa lain.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR HOAX BUSTER (INTERAKTIF) -->
+    <section id="simulator-hoax" class="bg-white rounded-3xl border-2 border-blue-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Hoax Buster Detective Studio</h2>
+                </div>
+                <p class="text-xs text-slate-500">Uji ketajaman intuisimu: Bedakan apakah postingan viral berikut Fakta Nyata atau Hoax Rekayasa!</p>
+            </div>
+            <span id="hoax-counter-badge" class="px-3 py-1 bg-blue-50 text-blue-700 font-bold text-xs rounded-full border border-blue-200 self-start sm:self-auto">
+                Kasus 1 dari 3
+            </span>
+        </div>
+
+        <div class="space-y-4 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                    <strong class="text-slate-800 font-bold">Tangkapan Layar Pesan Berantai Viral:</strong>
+                </div>
+                <div id="hoax-post-box" class="p-4 bg-white rounded-xl border border-slate-300 font-semibold text-slate-800 text-sm leading-relaxed">
+                    <!-- Injected via JS -->
+                </div>
+
+                <div class="flex gap-3">
+                    <button onclick="checkHoaxAnswer(true)" class="flex-1 py-2.5 bg-rose-50 hover:bg-rose-600 text-rose-800 hover:text-white rounded-xl font-bold border border-rose-200 transition">
+                        🚨 INI BERITA HOAX / PALSU!
+                    </button>
+                    <button onclick="checkHoaxAnswer(false)" class="flex-1 py-2.5 bg-emerald-50 hover:bg-emerald-600 text-emerald-700 hover:text-white rounded-xl font-bold border border-emerald-200 transition">
+                        ✅ INI FAKTA RESMI & VALID
+                    </button>
+                </div>
+
+                <div id="hoax-feedback-box" class="hidden p-3.5 rounded-xl text-xs font-semibold"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Cyberbullying & Hoax</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji kemampuan menangani perundungan siber dan memverifikasi keaslian informasi digital (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Tindakan sengaja menyebarkan foto atau rahasia pribadi orang lain di media sosial untuk mempermalukan dan merusak reputasinya termasuk jenis cyberbullying...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="A"> A. Outing
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="B"> B. Formatting
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Debugging
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="D"> D. Defragmenting
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Langkah paling awal dan tepat yang wajib dilakukan jika kamu atau temanmu menjadi korban perundungan siber (cyberbullying) adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="A"> A. Mengambil tangkapan layar (screenshot) sebagai barang bukti dan tidak membalas dengan kata-kata kotor
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="B"> B. Membalas dengan ancaman fisik di dunia nyata
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="C"> C. Merusak smartphone sendiri
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="D"> D. Menyimpan masalah sendiri dan mengurung diri
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Informasi palsu yang sengaja dibuat dan disebarkan dengan niat buruk untuk memanipulasi opini publik atau merugikan pihak tertentu dikategorikan sebagai...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="A"> A. Disinformasi
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Open Source
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Creative Commons
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Big Data
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Fitur pencarian gambar terbalik (Reverse Image Search seperti Google Lens) sangat berguna dalam investigasi hoax untuk...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="A"> A. Melacak asal-usul pertama kali foto tersebut diunggah dan memastikan apakah konteks peristiwanya sesuai
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Menghapus foto dari internet
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Mengedit filter warna foto
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Memperbesar ukuran megapixel foto
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Situs web resmi rujukan pengecekan fakta hoax di Indonesia yang dikelola oleh komunitas Mafindo dan koalisi media adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="A"> A. turnbackhoax.id dan cekfakta.com
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="B"> B. situs download lagu bajakan
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="C"> C. grup broadcast WA tidak resmi
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="D"> D. blog gratisan tanpa kontak redaksi
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Pelaku perundungan siber (cyberbullying) dan penyebar hoax bermuatan fitnah dapat dijerat sanksi pidana menurut UU ITE di Indonesia.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Menjadi 'Bystander Pasif' (hanya menonton dan tidak menolong saat melihat teman dibully di grup) adalah sikap yang baik dan terpuji.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Pesan berantai yang mengandung kalimat 'Sebarkan ke 10 grup sekarang juga atau kamu akan sial' adalah salah satu ciri khas kabar hoax berantai.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Judul berita yang bersifat 'Clickbait' biasanya menggunakan kata-kata sensasional berlebihan yang isinya seringkali tidak sesuai kenyataan.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Huruf 'S' pada metode SIFT bermakna 'Share' (langsung bagikan ke semua teman sebelum membaca isinya).</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Bentuk Gangguan Siber & Contoh Nyatanya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Bentuk Gangguan Digital:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Flaming</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Impersonation</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Exclusion</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Misinformasi</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Disinformasi</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Contoh Kejadian:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="flaming">Menulis kata-kata kotor dan makian kasar saat kalah main game online mabar</option>
+                        <option value="impersonation">Membuat akun Instagram palsu dengan foto teman untuk menjelek-jelekkan orang lain</option>
+                        <option value="exclusion">Sengaja mengucilkan dan mendepak satu teman dari grup belajar kelas untuk memusuhinya</option>
+                        <option value="misinformasi">Membagikan berita keliru tanpa sengaja karena mengira info tersebut benar</option>
+                        <option value="disinformasi">Membuat konten rekayasa video palsu (deepfake) dengan sengaja untuk menjatuhkan lawan</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="flaming">Menulis kata-kata kotor dan makian kasar saat kalah main game online mabar</option>
+                        <option value="impersonation">Membuat akun Instagram palsu dengan foto teman untuk menjelek-jelekkan orang lain</option>
+                        <option value="exclusion">Sengaja mengucilkan dan mendepak satu teman dari grup belajar kelas untuk memusuhinya</option>
+                        <option value="misinformasi">Membagikan berita keliru tanpa sengaja karena mengira info tersebut benar</option>
+                        <option value="disinformasi">Membuat konten rekayasa video palsu (deepfake) dengan sengaja untuk menjatuhkan lawan</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="flaming">Menulis kata-kata kotor dan makian kasar saat kalah main game online mabar</option>
+                        <option value="impersonation">Membuat akun Instagram palsu dengan foto teman untuk menjelek-jelekkan orang lain</option>
+                        <option value="exclusion">Sengaja mengucilkan dan mendepak satu teman dari grup belajar kelas untuk memusuhinya</option>
+                        <option value="misinformasi">Membagikan berita keliru tanpa sengaja karena mengira info tersebut benar</option>
+                        <option value="disinformasi">Membuat konten rekayasa video palsu (deepfake) dengan sengaja untuk menjatuhkan lawan</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="flaming">Menulis kata-kata kotor dan makian kasar saat kalah main game online mabar</option>
+                        <option value="impersonation">Membuat akun Instagram palsu dengan foto teman untuk menjelek-jelekkan orang lain</option>
+                        <option value="exclusion">Sengaja mengucilkan dan mendepak satu teman dari grup belajar kelas untuk memusuhinya</option>
+                        <option value="misinformasi">Membagikan berita keliru tanpa sengaja karena mengira info tersebut benar</option>
+                        <option value="disinformasi">Membuat konten rekayasa video palsu (deepfake) dengan sengaja untuk menjatuhkan lawan</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="flaming">Menulis kata-kata kotor dan makian kasar saat kalah main game online mabar</option>
+                        <option value="impersonation">Membuat akun Instagram palsu dengan foto teman untuk menjelek-jelekkan orang lain</option>
+                        <option value="exclusion">Sengaja mengucilkan dan mendepak satu teman dari grup belajar kelas untuk memusuhinya</option>
+                        <option value="misinformasi">Membagikan berita keliru tanpa sengaja karena mengira info tersebut benar</option>
+                        <option value="disinformasi">Membuat konten rekayasa video palsu (deepfake) dengan sengaja untuk menjatuhkan lawan</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Memverifikasi Berita Meragukan (Metode SIFT) (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan proses pengecekan fakta informasi saat menerima pesan mengejutkan di medsos:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Berhenti sejenak dan menahan diri agar tidak langsung membagikan pesan (STOP)</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Menyelidiki kredibilitas akun pengirim dan situs web penyebar informasi (INVESTIGATE)</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Mencari apakah media berita resmi lainnya juga memuat informasi serupa (FIND COVERAGE)</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Menelusuri sumber foto asli menggunakan Google Lens untuk cek konteks (TRACE)</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Mengingatkan pengirim pesan dengan sopan jika info terbukti hoax atau membagikan klarifikasi</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-blue-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-blue-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Berani Bersuara (Upstander):</strong> Jangan diam ketika melihat teman mengalami perundungan daring; rangkul korban dan laporkan pelaku ke pihak berwenang.</p>
+            <p><strong>2. Saring Sebelum Sharing:</strong> Cek kebenaran berita melalui turnbackhoax.id atau Google Lens sebelum menyebarkannya ke grup keluarga/teman.</p>
+            <p><strong>3. Lingkungan Damai:</strong> Keindahan internet tercipta saat setiap penggunanya saling menghargai dan menyebarkan konten yang mencerahkan.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan komitmenmu dalam melawan cyberbullying dan pengalamanmu saat memverifikasi kabar hoax..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'informatika';
+const TOPIC_ID = 'inf-dsi-05';
+
+// Hoax Buster Data
+const hoaxCases = [
+    {
+        post: "🔴 <em>PENTING & MENDESAK:</em> Kemendikbud membagikan kuota internet gratis 100GB untuk seluruh siswa SMP se-Indonesia! Klik link bit.ly/kuota-gratis-100gb-resmi sekarang sebelum ditutup malam ini. Sebarkan ke 5 grup WA agar aktif!",
+        isHoax: true,
+        explain: "🚨 <strong>Ini Jelas HOAX & Phishing!</strong> Menggunakan tautan pemendek link (bit.ly), mendesak dengan batasan waktu malam ini, dan menyuruh sebar berantai ke 5 grup untuk mengumpulkan nomor HP/akun korban."
+    },
+    {
+        post: "📢 Pengumuman resmi dari website smpn2lmg.sch.id: Kegiatan Penilaian Akhir Semester Ganjil akan dilaksanakan mulai hari Senin tanggal 1 Desember 2025 secara daring menggunakan platform sekolah.",
+        isHoax: false,
+        explain: "✅ <strong>Ini Informasi FAKTA Valid!</strong> Berasal dari domain resmi sekolah berakhiran .sch.id yang terverifikasi resmi oleh Dinas Pendidikan."
+    },
+    {
+        post: "😱 VIRAL: Menaruh bawang merah di samping router WiFi diklaim dapat melipatgandakan kecepatan internet hingga 1000 Mbps dan menangkal radiasi berbahaya!",
+        isHoax: true,
+        explain: "🚨 <strong>Ini HOAX Konyol / Misinformasi!</strong> Kecepatan internet bergantung pada bandwidth sinyal ISP dan kabel optik, tidak ada kaitan ilmiah dengan bawang merah."
+    }
+];
+
+let curHoaxIdx = 0;
+
+function renderHoaxCase() {
+    const c = hoaxCases[curHoaxIdx];
+    document.getElementById('hoax-counter-badge').innerText = `Kasus ${curHoaxIdx + 1} dari ${hoaxCases.length}`;
+    document.getElementById('hoax-post-box').innerHTML = c.post;
+    document.getElementById('hoax-feedback-box').classList.add('hidden');
+}
+
+function checkHoaxAnswer(userChoiceIsHoax) {
+    const c = hoaxCases[curHoaxIdx];
+    const fb = document.getElementById('hoax-feedback-box');
+    fb.classList.remove('hidden');
+
+    if (userChoiceIsHoax === c.isHoax) {
+        fb.className = 'p-3.5 bg-emerald-100 text-emerald-900 border border-emerald-300 rounded-xl text-xs font-semibold';
+        fb.innerHTML = `🎉 <strong>Analisis Detektifmu Tepat!</strong> ${c.explain} <button onclick="nextHoaxCase()" class="ml-2 underline font-bold text-emerald-800">Kasus Berikutnya →</button>`;
+    } else {
+        fb.className = 'p-3.5 bg-rose-100 text-rose-900 border border-rose-300 rounded-xl text-xs font-semibold';
+        fb.innerHTML = `⚠️ <strong>Analisis Kurang Tepat.</strong> ${c.explain}`;
+    }
+}
+
+function nextHoaxCase() {
+    curHoaxIdx = (curHoaxIdx + 1) % hoaxCases.length;
+    renderHoaxCase();
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'S', tf_3: 'B', tf_4: 'B', tf_5: 'S' };
+const KEY_MATCH = { match_1: 'flaming', match_2: 'impersonation', match_3: 'exclusion', match_4: 'misinformasi', match_5: 'disinformasi' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderHoaxCase();
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

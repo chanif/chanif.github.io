@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Representasi Data Digital: Bit, Teks, Gambar & Suara | Sistem Komputer</title>
+    <meta name="description" content="Pelajari bagaimana komputer mengubah huruf, foto warna-warni, dan musik menjadi deretan angka biner 0 dan 1: Bit & Byte, ASCII, Unicode UTF-8, Piksel RGB, dan Frekuensi Audio.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Unit Sistem Komputer
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#bit-byte" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">0️⃣1️⃣ Bit & Satuan Data</a>
+        <a href="#representasi-media" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🖼️ Teks, Foto & Audio</a>
+        <a href="#simulator-encoder" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">🎮 Live ASCII & RGB Encoder</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-blue-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">Sistem Komputer</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">03. Representasi Data Digital</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🖥️ Sistem Komputer · Modul 03
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Representasi Data: Bahasa Biner di Balik Layar Digital
+            </h1>
+            <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-6">
+                Bagaimana komputer yang hanya mengerti sinyal listrik ON (1) dan OFF (0) mampu menampilkan video Full HD, lagu Spotify yang merdu, dan ribuan emoji WhatsApp? Semua berkat keajaiban *Enkoding Data Digital*!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-blue-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🔤 Standar: ASCII, UTF-8 & RGB 24-bit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Bit, Byte & Satuan Kapasitas</strong>
+                    <p class="text-slate-600">Menjelaskan konsep 1 Byte = 8 Bit dan tangga konversi kapasitas penyimpanan (KB, MB, GB, TB, PB).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Representasi Teks & Karakter</strong>
+                    <p class="text-slate-600">Mengonversi huruf ke kode ASCII biner serta memahami standar Unicode UTF-8 untuk mendukung semua bahasa dan emoji.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Representasi Gambar & Warna Piksel</strong>
+                    <p class="text-slate-600">Memahami susunan piksel layar, model warna RGB (0–255), resolusi monitor, dan estimasi ukuran file gambar.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Digitalisasi Suara & Video</strong>
+                    <p class="text-slate-600">Mempelajari laju sampling (Sampling Rate 44.1 kHz), Bit Depth, Frame Per Second (FPS), dan peran Codec.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: BIT & SATUAN DATA -->
+    <section id="bit-byte" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Bit & Tangga Kapasitas Data</h2>
+                <p class="text-xs text-slate-500">Satuan pengukuran ruang penyimpanan digital</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-4">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">💡</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">1 Bit (Binary Digit)</h3>
+                <p class="text-[11px] text-slate-600 leading-relaxed">
+                    Unit terkecil data di komputer. Hanya bernilai <strong>0</strong> (saklar mati) atau <strong>1</strong> (saklar nyala).
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">📦</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">1 Byte = 8 Bit</h3>
+                <p class="text-[11px] text-slate-600 leading-relaxed">
+                    Kumpulan 8 bit yang cukup untuk merepresentasikan 1 karakter huruf atau angka (contoh: huruf 'A' = <code>01000001</code>).
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">📈</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">Kilobyte & Megabyte</h3>
+                <p class="text-[11px] text-slate-600 leading-relaxed">
+                    <strong>1 KB</strong> = 1.024 Byte (1 paragraf teks).<br>
+                    <strong>1 MB</strong> = 1.024 KB (1 file lagu MP3 / 1 foto kamera HP).
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">💾</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">Gigabyte & Terabyte</h3>
+                <p class="text-[11px] text-slate-600 leading-relaxed">
+                    <strong>1 GB</strong> = 1.024 MB (1 film HD).<br>
+                    <strong>1 TB</strong> = 1.024 GB (kapasitas hard disk laptop modern).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TEKS, FOTO & SUARA -->
+    <section id="representasi-media" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Bagaimana Media Diubah Menjadi Angka?</h2>
+                <p class="text-xs text-slate-500">Mekanisme enkoding teks, visual, dan gelombang suara</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-5 text-xs">
+            <div class="p-5 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-2">
+                <span class="text-2xl">🔤</span>
+                <strong class="text-blue-900 block font-bold text-sm">1. Teks (ASCII & Unicode)</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Setiap tombol keyboard memiliki angka patokan. Kode ASCII: <code>'A' = 65</code>, <code>'B' = 66</code>, <code>'a' = 97</code>, spasi = 32. Unicode memperluasnya ke 140.000+ karakter aksara dunia dan emoji.
+                </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-2">
+                <span class="text-2xl">🎨</span>
+                <strong class="text-emerald-900 block font-bold text-sm">2. Gambar (Model Warna RGB)</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Layar terdiri dari jutaan titik <em>Piksel</em>. Setiap piksel memiliki 3 sub-warna: <strong>Red</strong>, <strong>Green</strong>, dan <strong>Blue</strong> bernilai 0–255. Kombinasi <code>RGB(255, 0, 0)</code> menghasilkan warna Merah menyala.
+                </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-purple-50/70 border border-purple-200 space-y-2">
+                <span class="text-2xl">🎵</span>
+                <strong class="text-purple-900 block font-bold text-sm">3. Suara (Sampling Digital)</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Gelombang suara kontinu diukur ketinggiannya sebanyak 44.100 kali per detik (Sampling Rate 44.1 kHz). Tiap titik sampel disimpan dalam angka 16-bit untuk menghasilkan kualitas audio setara CD audio.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR ENCODER (INTERAKTIF) -->
+    <section id="simulator-encoder" class="bg-white rounded-3xl border-2 border-blue-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Live ASCII & RGB Pixel Encoder</h2>
+                </div>
+                <p class="text-xs text-slate-500">Eksperimen langsung bagaimana teks diubah ke biner dan perpaduan 3 kanal RGB menghasilkan warna piksel</p>
+            </div>
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 font-bold text-xs rounded-full border border-blue-200 self-start sm:self-auto">
+                Lab Interaktif
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <!-- Lab Teks ke Biner -->
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                <strong class="font-bold text-slate-800 block">🔤 Teks $\rightarrow$ ASCII Biner Translator:</strong>
+                <div>
+                    <label class="text-[11px] text-slate-500 block mb-1">Ketik kata apa saja:</label>
+                    <input type="text" id="sim-text-input" value="FANANI" oninput="encodeTextToBinary()" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl font-bold text-slate-800 tracking-wider uppercase focus:outline-none focus:border-blue-500">
+                </div>
+
+                <div class="p-3 bg-slate-900 text-cyan-400 rounded-xl font-mono text-[11px] leading-relaxed break-all space-y-1">
+                    <div class="text-slate-400 text-[10px]">Hasil Biner 8-bit per Karakter:</div>
+                    <div id="sim-binary-output" class="font-bold"></div>
+                </div>
+            </div>
+
+            <!-- Lab RGB Pixel Mixer -->
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                <strong class="font-bold text-slate-800 block">🎨 RGB Pixel Color Mixer (24-bit True Color):</strong>
+                
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between text-red-700 font-bold">
+                        <span>Red (R): <span id="val-r">59</span></span>
+                        <input type="range" id="slider-r" min="0" max="255" value="59" oninput="updateRgbMixer()" class="w-32 accent-red-500">
+                    </div>
+                    <div class="flex items-center justify-between text-emerald-700 font-bold">
+                        <span>Green (G): <span id="val-g">130</span></span>
+                        <input type="range" id="slider-g" min="0" max="255" value="130" oninput="updateRgbMixer()" class="w-32 accent-emerald-500">
+                    </div>
+                    <div class="flex items-center justify-between text-blue-700 font-bold">
+                        <span>Blue (B): <span id="val-b">246</span></span>
+                        <input type="range" id="slider-b" min="0" max="255" value="246" oninput="updateRgbMixer()" class="w-32 accent-blue-500">
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 pt-1">
+                    <div id="pixel-preview-box" class="w-14 h-14 rounded-2xl border-2 border-white shadow-md flex-shrink-0" style="background-color: rgb(59, 130, 246)"></div>
+                    <div class="font-mono text-[11px] text-slate-700 space-y-0.5">
+                        <div>Kode CSS: <strong id="rgb-css-code" class="text-blue-700">rgb(59, 130, 246)</strong></div>
+                        <div>Kode Hex: <strong id="rgb-hex-code" class="text-purple-700">#3B82F6</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Representasi Data Digital</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman konversi biner, ASCII, model warna, dan audio digital (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Satu Byte terdiri dari gabungan berapa bit data biner?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="A"> A. 2 Bit
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="B"> B. 8 Bit
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="C"> C. 16 Bit
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="D"> D. 1024 Bit
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Dalam standar ASCII, huruf kapital 'A' memiliki kode desimal 65. Maka huruf kapital 'C' memiliki kode desimal...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="A"> A. 66
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="B"> B. 67
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="C"> C. 68
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="D"> D. 99
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Pada sistem warna RGB 24-bit, nilai warna rgb(255, 255, 255) akan menghasilkan warna...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="A"> A. Hitam Pekat
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Putih Bersih
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Merah Menyala
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Abu-abu
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Standar pengkodean karakter modern yang mampu menampilkan huruf Arab, Mandarin, Jawa Kuno, hingga ribuan Emoji di ponsel adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="A"> A. Morse Code
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Unicode (UTF-8)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Baudot Code
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Sandi Rumput
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Kecepatan perekaman gelombang audio digital standar Compact Disc (CD Audio) yang mengukur sampel sebanyak 44.100 kali per detik disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="A"> A. Sampling Rate 44.1 kHz
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="B"> B. Refresh Rate 60 Hz
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="C"> C. Bandwidth 100 Mbps
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="D"> D. Resolusi Full HD
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Semua jenis data di dalam komputer (teks, foto, lagu, video) pada akhirnya disimpan sebagai kombinasi angka biner 0 dan 1.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. 1 Gigabyte (GB) sama persis dengan 100 Kilobyte (KB).</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Nilai warna RGB rgb(0, 0, 0) berarti tidak ada cahaya yang dipancarkan piksel sehingga menghasilkan warna hitam pekat.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Semakin tinggi resolusi gambar (misal 4K vs 720p), maka jumlah piksel semakin banyak dan ukuran file berkas akan semakin besar.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. File musik terkompresi seperti MP3 mempertahankan 100% gelombang suara asli tanpa membuang frekuensi suara yang tidak terdengar manusia.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Satuan & Konsep Digital (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Istilah Representasi Data:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Bit (Binary Digit)</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Piksel (Pixel)</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Unicode UTF-8</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Frame Per Second (FPS)</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. 1 Terabyte (TB)</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Definisi yang Tepat:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="bit">Unit terkecil penyimpan nilai biner 0 atau 1</option>
+                        <option value="pixel">Elemen titik gambar terkecil pada layar monitor</option>
+                        <option value="unicode">Standar pengkodean teks universal mencakup semua bahasa & emoji</option>
+                        <option value="fps">Jumlah bingkai gambar statis yang diputar per detik pada video</option>
+                        <option value="tb">Kapasitas penyimpanan setara dengan 1.024 Gigabyte</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="bit">Unit terkecil penyimpan nilai biner 0 atau 1</option>
+                        <option value="pixel">Elemen titik gambar terkecil pada layar monitor</option>
+                        <option value="unicode">Standar pengkodean teks universal mencakup semua bahasa & emoji</option>
+                        <option value="fps">Jumlah bingkai gambar statis yang diputar per detik pada video</option>
+                        <option value="tb">Kapasitas penyimpanan setara dengan 1.024 Gigabyte</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="bit">Unit terkecil penyimpan nilai biner 0 atau 1</option>
+                        <option value="pixel">Elemen titik gambar terkecil pada layar monitor</option>
+                        <option value="unicode">Standar pengkodean teks universal mencakup semua bahasa & emoji</option>
+                        <option value="fps">Jumlah bingkai gambar statis yang diputar per detik pada video</option>
+                        <option value="tb">Kapasitas penyimpanan setara dengan 1.024 Gigabyte</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="bit">Unit terkecil penyimpan nilai biner 0 atau 1</option>
+                        <option value="pixel">Elemen titik gambar terkecil pada layar monitor</option>
+                        <option value="unicode">Standar pengkodean teks universal mencakup semua bahasa & emoji</option>
+                        <option value="fps">Jumlah bingkai gambar statis yang diputar per detik pada video</option>
+                        <option value="tb">Kapasitas penyimpanan setara dengan 1.024 Gigabyte</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="bit">Unit terkecil penyimpan nilai biner 0 atau 1</option>
+                        <option value="pixel">Elemen titik gambar terkecil pada layar monitor</option>
+                        <option value="unicode">Standar pengkodean teks universal mencakup semua bahasa & emoji</option>
+                        <option value="fps">Jumlah bingkai gambar statis yang diputar per detik pada video</option>
+                        <option value="tb">Kapasitas penyimpanan setara dengan 1.024 Gigabyte</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Besaran Kapasitas Data dari Terkecil ke Terbesar (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan satuan kapasitas berikut dari kapasitas terkecil (1) hingga kapasitas terbesar (5):</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. 1 Megabyte (MB)</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. 1 Byte (8 Bit)</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. 1 Terabyte (TB)</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. 1 Gigabyte (GB)</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. 1 Kilobyte (KB)</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-blue-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-blue-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Segala Sesuatu adalah Biner:</strong> Huruf, warna layar, hingga alunan musik diubah menjadi kombinasi 0 dan 1 agar dapat diproses oleh gerbang logika prosesor.</p>
+            <p><strong>2. Standarisasi Universal:</strong> ASCII dan Unicode menjamin teks yang diketik di Indonesia dapat terbaca persis di komputer Jepang atau Amerika Serikat.</p>
+            <p><strong>3. Kualitas vs Ukuran Berkas:</strong> Semakin tinggi resolusi foto (jumlah piksel) dan laju sampel audio, semakin jernih kualitasnya namun membutuhkan kapasitas memori lebih besar.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan pemahaman barumu mengenai bagaimana foto dan musik bisa diubah jadi biner..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'informatika';
+const TOPIC_ID = 'inf-sk-03';
+
+// Text to Binary Simulator
+function encodeTextToBinary() {
+    const text = document.getElementById('sim-text-input').value;
+    const output = document.getElementById('sim-binary-output');
+    if (!text) {
+        output.innerText = '(Ketik teks untuk melihat kode biner)';
+        return;
+    }
+    const binArr = [];
+    for (let i = 0; i < text.length; i++) {
+        const charCode = text.charCodeAt(i);
+        const bin = charCode.toString(2).padStart(8, '0');
+        binArr.push(`[${text[i]}: ${bin}]`);
+    }
+    output.innerText = binArr.join(' ');
+}
+
+// RGB Color Mixer Simulator
+function updateRgbMixer() {
+    const r = document.getElementById('slider-r').value;
+    const g = document.getElementById('slider-g').value;
+    const b = document.getElementById('slider-b').value;
+
+    document.getElementById('val-r').innerText = r;
+    document.getElementById('val-g').innerText = g;
+    document.getElementById('val-b').innerText = b;
+
+    const rgbStr = `rgb(${r}, ${g}, ${b})`;
+    document.getElementById('pixel-preview-box').style.backgroundColor = rgbStr;
+    document.getElementById('rgb-css-code').innerText = rgbStr;
+
+    const hex = "#" + ((1 << 24) + (parseInt(r) << 16) + (parseInt(g) << 8) + parseInt(b)).toString(16).slice(1).toUpperCase();
+    document.getElementById('rgb-hex-code').innerText = hex;
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'B', mcq_2: 'B', mcq_3: 'B', mcq_4: 'B', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'S', tf_3: 'B', tf_4: 'B', tf_5: 'S' };
+const KEY_MATCH = { match_1: 'bit', match_2: 'pixel', match_3: 'unicode', match_4: 'fps', match_5: 'tb' };
+const KEY_SEQ = { seq_B: '1', seq_E: '2', seq_A: '3', seq_D: '4', seq_C: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    encodeTextToBinary();
+    updateRgbMixer();
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

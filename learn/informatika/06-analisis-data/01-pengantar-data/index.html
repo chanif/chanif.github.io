@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengantar Analisis Data & Hierarki DIKW | Analisis Data Informatika</title>
+    <meta name="description" content="Pelajari konsep dasar data vs informasi vs pengetahuan (Piramida DIKW), klasifikasi data kuantitatif (diskrit/kontinu) & kualitatif (nominal/ordinal), data terstruktur vs tak terstruktur, dan Big Data 3V.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Unit Analisis Data
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#piramida-dikw" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🔺 Piramida DIKW</a>
+        <a href="#jenis-data" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">📊 Jenis & Sifat Data</a>
+        <a href="#simulator-dikw" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">🎮 DIKW Transformation Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-blue-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">Analisis Data</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">01. Pengantar Data & Hierarki DIKW</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                📊 Analisis Data · Modul 01
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Pengantar Data: Tambang Emas Abad ke-21
+            </h1>
+            <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-6">
+                "Without data, you're just another person with an opinion." Pelajari bagaimana angka mentah dan rekaman fakta bertransformasi melalui piramida DIKW menjadi informasi berharga, pengetahuan mendalam, dan kebijaksanaan pengambilan keputusan!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-blue-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🔺 Konsep: Piramida DIKW & Big Data 3V</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Hierarki Piramida DIKW</strong>
+                    <p class="text-slate-600">Menjelaskan tingkatan transformasi dari Data mentah, Informasi terkonteks, Pengetahuan (Knowledge), hingga Kebijaksanaan (Wisdom).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Klasifikasi Data Kuantitatif & Kualitatif</strong>
+                    <p class="text-slate-600">Membedakan data kuantitatif diskrit (hitungan bulat) vs kontinu (pengukuran pecahan), serta kualitatif nominal vs ordinal.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Struktur Data & Sumber Pengambilan</strong>
+                    <p class="text-slate-600">Membedakan data terstruktur tabel SQL/Excel dengan data tak terstruktur (video, audio), serta sumber data primer vs sekunder.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Karakteristik Big Data 3V</strong>
+                    <p class="text-slate-600">Menjelaskan tiga pilar utama era data masif: Volume (ukuran raksasa), Velocity (kecepatan masuk), dan Variety (ragam format).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: PIRAMIDA DIKW -->
+    <section id="piramida-dikw" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Piramida DIKW: Dari Fakta Mentah Menjadi Kebijakan</h2>
+                <p class="text-xs text-slate-500">4 tangga evolusi nilai informasi dalam sains komputasi</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-4">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">🧱</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">1. Data (Fakta Mentah)</h3>
+                <p class="text-[11px] text-slate-600 leading-relaxed">
+                    Angka atau catatan tanpa konteks. Contoh: <code>38.5</code>, <code>Lamongan</code>, <code>Ahmad</code>. Belum memiliki makna operasional.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">💡</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">2. Information (Berisi Konteks)</h3>
+                <p class="text-[11px] text-slate-600 leading-relaxed">
+                    Data yang sudah diolah dan diberi label. Contoh: "Suhu tubuh Ahmad saat ini adalah 38.5°C di UKS SMPN 2 Lamongan."
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">🧠</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">3. Knowledge (Pola & Pemahaman)</h3>
+                <p class="text-[11px] text-slate-600 leading-relaxed">
+                    Menghubungkan informasi dengan pengalaman dan aturan medis: "Suhu 38.5°C menandakan Ahmad sedang demam dan butuh istirahat."
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">👑</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">4. Wisdom (Keputusan Bijak)</h3>
+                <p class="text-[11px] text-slate-600 leading-relaxed">
+                    Tindakan masa depan yang bijaksana: "Memberikan obat penurun panas dan menghubungi orang tua agar Ahmad periksa ke dokter."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: JENIS DATA -->
+    <section id="jenis-data" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Klasifikasi & Sifat Data</h2>
+                <p class="text-xs text-slate-500">Mengenal tipe data kuantitatif angka dan kualitatif kategori</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+            <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-1.5">
+                <span class="text-2xl">🔢</span>
+                <strong class="text-blue-900 block font-bold">Kuantitatif Diskrit</strong>
+                <p class="text-slate-600 leading-relaxed">Bilangan bulat hasil menghitung benda: jumlah siswa di kelas (32 anak), jumlah laptop lab.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-1.5">
+                <span class="text-2xl">📏</span>
+                <strong class="text-emerald-900 block font-bold">Kuantitatif Kontinu</strong>
+                <p class="text-slate-600 leading-relaxed">Bilangan desimal pecahan hasil pengukuran: berat badan (48.7 kg), tinggi badan (155.3 cm).</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-1.5">
+                <span class="text-2xl">🏷️</span>
+                <strong class="text-amber-900 block font-bold">Kualitatif Nominal</strong>
+                <p class="text-slate-600 leading-relaxed">Kategori label tanpa tingkatan derajat: warna favorit (Biru, Merah), jenis kelamin, golongan darah.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-200 space-y-1.5">
+                <span class="text-2xl">🥇</span>
+                <strong class="text-purple-900 block font-bold">Kualitatif Ordinal</strong>
+                <p class="text-slate-600 leading-relaxed">Kategori yang memiliki urutan peringkat: Juara 1, 2, 3 atau Tingkat Kepuasan (Sangat Puas > Puas > Kurang).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR DIKW (INTERAKTIF) -->
+    <section id="simulator-dikw" class="bg-white rounded-3xl border-2 border-blue-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">DIKW Transformation Interactive Studio</h2>
+                </div>
+                <p class="text-xs text-slate-500">Pilih skenario kasus dan amati proses evolusi fakta mentah menuju aksi kebijaksanaan!</p>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="setDikwScenario('medis')" id="dikw-btn-med" class="px-3 py-1.5 bg-blue-600 text-white font-bold text-xs rounded-xl shadow transition">Kasus Medis UKS</button>
+                <button onclick="setDikwScenario('cuaca')" id="dikw-btn-cua" class="px-3 py-1.5 bg-slate-100 text-slate-700 font-bold text-xs rounded-xl border border-slate-200 transition">Kasus Cuaca & Hujan</button>
+                <button onclick="setDikwScenario('toko')" id="dikw-btn-tok" class="px-3 py-1.5 bg-slate-100 text-slate-700 font-bold text-xs rounded-xl border border-slate-200 transition">Kasus Kantin Sekolah</button>
+            </div>
+        </div>
+
+        <!-- Dynamic Stepper Container -->
+        <div id="dikw-stepper-box" class="space-y-3">
+            <!-- Injected via JS -->
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Pengantar Data & DIKW</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman klasifikasi data, piramida DIKW, dan karakteristik Big Data (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Urutan yang benar dari tingkatan paling dasar hingga paling tinggi pada Piramida DIKW adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="A"> A. Data $\rightarrow$ Information $\rightarrow$ Knowledge $\rightarrow$ Wisdom
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="B"> B. Wisdom $\rightarrow$ Data $\rightarrow$ Information $\rightarrow$ Knowledge
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Information $\rightarrow$ Data $\rightarrow$ Wisdom $\rightarrow$ Knowledge
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="D"> D. Knowledge $\rightarrow$ Information $\rightarrow$ Data $\rightarrow$ Wisdom
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Data 'Tinggi badan siswa: 158.4 cm' termasuk dalam jenis data...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="A"> A. Kuantitatif Kontinu (hasil pengukuran bernilai desimal)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="B"> B. Kualitatif Nominal
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="C"> C. Kuantitatif Diskrit
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="D"> D. Data Tak Terstruktur
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Contoh data kualitatif ordinal (kategori berperingkat) di bawah ini adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="A"> A. Tingkat Kepuasan Pelanggan: Sangat Puas, Puas, Cukup, Kurang
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Warna baju: Merah, Hijau, Biru
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Nomor Induk Siswa: 12345
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Jumlah sepeda motor: 15 unit
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Tiga karakteristik utama Big Data yang terkenal dengan sebutan 3V adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="A"> A. Volume, Velocity, Variety
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Voltage, Variable, Virtual
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Vector, Vision, Valid
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Voice, Video, View
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Data yang disusun rapi dalam bentuk baris dan kolom seperti tabel Excel atau database SQL disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="A"> A. Data Terstruktur (Structured Data)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="B"> B. Data Tak Terstruktur
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="C"> C. Data Biner Mentah
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="D"> D. Noise Data
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Data mentah yang berdiri sendiri tanpa keterangan konteks sudah cukup bagi manusia untuk mengambil keputusan besar.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Data sekunder adalah data yang kita peroleh dari pihak kedua seperti buku BPS atau artikel internet.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Video YouTube, rekaman suara percakapan telepon, dan foto Instagram adalah contoh data tak terstruktur (unstructured data).</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Jumlah anggota keluarga di rumah adalah contoh data kuantitatif kontinu karena bisa bernilai 3.75 orang.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Analisis data yang baik membantu sekolah atau perusahaan memprediksi tren masa depan secara akurat berbasis bukti nyata.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Konsep & Contoh Datanya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Kategori Jenis Data:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Kuantitatif Diskrit</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Kuantitatif Kontinu</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Kualitatif Nominal</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Kualitatif Ordinal</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Data Primer</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Contoh yang Sesuai:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="diskrit">Jumlah kursi di ruangan kelas (36 unit bilangan bulat)</option>
+                        <option value="kontinu">Suhu ruangan kelas yang tercatat di termometer (28.4°C)</option>
+                        <option value="nominal">Kategori hobi siswa: Membaca, Sepak Bola, Koding</option>
+                        <option value="ordinal">Tingkatan sabuk bela diri: Putih < Kuning < Hijau < Hitam</option>
+                        <option value="primer">Hasil kuesioner yang dibagikan sendiri langsung ke teman sekelas</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="diskrit">Jumlah kursi di ruangan kelas (36 unit bilangan bulat)</option>
+                        <option value="kontinu">Suhu ruangan kelas yang tercatat di termometer (28.4°C)</option>
+                        <option value="nominal">Kategori hobi siswa: Membaca, Sepak Bola, Koding</option>
+                        <option value="ordinal">Tingkatan sabuk bela diri: Putih < Kuning < Hijau < Hitam</option>
+                        <option value="primer">Hasil kuesioner yang dibagikan sendiri langsung ke teman sekelas</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="diskrit">Jumlah kursi di ruangan kelas (36 unit bilangan bulat)</option>
+                        <option value="kontinu">Suhu ruangan kelas yang tercatat di termometer (28.4°C)</option>
+                        <option value="nominal">Kategori hobi siswa: Membaca, Sepak Bola, Koding</option>
+                        <option value="ordinal">Tingkatan sabuk bela diri: Putih < Kuning < Hijau < Hitam</option>
+                        <option value="primer">Hasil kuesioner yang dibagikan sendiri langsung ke teman sekelas</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="diskrit">Jumlah kursi di ruangan kelas (36 unit bilangan bulat)</option>
+                        <option value="kontinu">Suhu ruangan kelas yang tercatat di termometer (28.4°C)</option>
+                        <option value="nominal">Kategori hobi siswa: Membaca, Sepak Bola, Koding</option>
+                        <option value="ordinal">Tingkatan sabuk bela diri: Putih < Kuning < Hijau < Hitam</option>
+                        <option value="primer">Hasil kuesioner yang dibagikan sendiri langsung ke teman sekelas</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="diskrit">Jumlah kursi di ruangan kelas (36 unit bilangan bulat)</option>
+                        <option value="kontinu">Suhu ruangan kelas yang tercatat di termometer (28.4°C)</option>
+                        <option value="nominal">Kategori hobi siswa: Membaca, Sepak Bola, Koding</option>
+                        <option value="ordinal">Tingkatan sabuk bela diri: Putih < Kuning < Hijau < Hitam</option>
+                        <option value="primer">Hasil kuesioner yang dibagikan sendiri langsung ke teman sekelas</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Transformasi Nilai Data Menjadi Kebijakan (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan proses penanganan nilai ujian siswa menurut piramida DIKW:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Tercatat angka mentah nilai ulangan: <code>45</code> di kertas absensi</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Data diolah: 'Nilai Informatika siswa Budi adalah 45 (di bawah KKM 75)'</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Menganalisis pola: Budi kesulitan di bab sistem bilangan dan sering tidak masuk</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Guru merancang program bimbingan remedial khusus konsep biner untuk Budi</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Budi berhasil memahami materi dan lulus ujian perbaikan dengan skor 85</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-blue-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-blue-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Data adalah Awal Segalanya:</strong> Angka mentah yang dikumpulkan secara jujur dan diolah terstruktur akan menjadi informasi yang sangat berguna bagi kemajuan bersama.</p>
+            <p><strong>2. Kekuatan DIKW:</strong> Pembedaan level Data, Informasi, Pengetahuan, dan Kebijaksanaan melatih kita menjadi pengambil keputusan yang logis dan kritis.</p>
+            <p><strong>3. Era Big Data:</strong> Karakteristik Volume, Velocity, dan Variety menuntut kita menguasai perangkat lunak spreadsheet dan visualisasi grafik sejak dini.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan contoh data yang kamu temukan di sekitarmu dan bagaimana kamu bisa mengubahnya menjadi informasi yang bermanfaat..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'informatika';
+const TOPIC_ID = 'inf-ad-01';
+
+// DIKW Simulator Data
+const dikwScenarios = {
+    medis: {
+        steps: [
+            { stage: "🧱 1. Data (Mentah)", text: "38.5", bg: "bg-slate-100 border-slate-300 text-slate-800" },
+            { stage: "💡 2. Information (Konteks)", text: "Suhu tubuh Ahmad yang diukur di UKS adalah 38.5°C.", bg: "bg-blue-50 border-blue-200 text-blue-900" },
+            { stage: "🧠 3. Knowledge (Pemahaman Pola)", text: "Suhu 38.5°C di atas batas normal (37°C), mengindikasikan Ahmad sedang demam infeksi.", bg: "bg-indigo-50 border-indigo-200 text-indigo-900" },
+            { stage: "👑 4. Wisdom (Keputusan)", text: "Petugas UKS memberi kompres air hangat, obat parasetamol, dan mengantar Ahmad pulang istirahat.", bg: "bg-emerald-50 border-emerald-200 text-emerald-900 font-bold" }
+        ]
+    },
+    cuaca: {
+        steps: [
+            { stage: "🧱 1. Data (Mentah)", text: "95%, 10 mm/jam, Lamongan", bg: "bg-slate-100 border-slate-300 text-slate-800" },
+            { stage: "💡 2. Information (Konteks)", text: "Kelembapan udara di Lamongan 95% dan curah hujan diprediksi 10 mm/jam sore ini.", bg: "bg-blue-50 border-blue-200 text-blue-900" },
+            { stage: "🧠 3. Knowledge (Pemahaman Pola)", text: "Kombinasi kelembapan tinggi dan awan kumulonimbus menunjukkan badai hujan lebat akan turun.", bg: "bg-indigo-50 border-indigo-200 text-indigo-900" },
+            { stage: "👑 4. Wisdom (Keputusan)", text: "Siswa membawa payung dan memindahkan kegiatan olahraga dari lapangan ke aula indoor.", bg: "bg-emerald-50 border-emerald-200 text-emerald-900 font-bold" }
+        ]
+    },
+    toko: {
+        steps: [
+            { stage: "🧱 1. Data (Mentah)", text: "Es Teh: 120, Bakso: 15, Senin", bg: "bg-slate-100 border-slate-300 text-slate-800" },
+            { stage: "💡 2. Information (Konteks)", text: "Pada hari Senin yang terik, kantin menjual 120 gelas Es Teh dan hanya 15 porsi Bakso.", bg: "bg-blue-50 border-blue-200 text-blue-900" },
+            { stage: "🧠 3. Knowledge (Pemahaman Pola)", text: "Saat cuaca panas terik, permintaan minuman dingin meningkat 400% dibanding makanan berkuah panas.", bg: "bg-indigo-50 border-indigo-200 text-indigo-900" },
+            { stage: "👑 4. Wisdom (Keputusan)", text: "Pengelola kantin menambah stok es batu dan mengurangi porsi kuah bakso di hari yang cerah.", bg: "bg-emerald-50 border-emerald-200 text-emerald-900 font-bold" }
+        ]
+    }
+};
+
+function setDikwScenario(scen) {
+    const s = dikwScenarios[scen];
+    const box = document.getElementById('dikw-stepper-box');
+
+    box.innerHTML = s.steps.map((st, i) => `
+        <div class="p-4 rounded-2xl border ${st.bg} flex items-start gap-3 shadow-sm">
+            <span class="w-6 h-6 rounded-full bg-white text-slate-800 font-bold flex items-center justify-center text-xs shadow flex-shrink-0">${i + 1}</span>
+            <div>
+                <strong class="text-xs uppercase tracking-wider block mb-1 font-heading">${st.stage}</strong>
+                <p class="text-xs leading-relaxed">${st.text}</p>
+            </div>
+        </div>
+    `).join('');
+
+    const btns = ['medis', 'cuaca', 'toko'];
+    const ids = { medis: 'dikw-btn-med', cuaca: 'dikw-btn-cua', toko: 'dikw-btn-tok' };
+    btns.forEach(b => {
+        const btn = document.getElementById(ids[b]);
+        if (b === scen) {
+            btn.className = 'px-3 py-1.5 bg-blue-600 text-white font-bold text-xs rounded-xl shadow transition';
+        } else {
+            btn.className = 'px-3 py-1.5 bg-slate-100 text-slate-700 font-bold text-xs rounded-xl border border-slate-200 transition';
+        }
+    });
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'S', tf_2: 'B', tf_3: 'B', tf_4: 'S', tf_5: 'B' };
+const KEY_MATCH = { match_1: 'diskrit', match_2: 'kontinu', match_3: 'nominal', match_4: 'ordinal', match_5: 'primer' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setDikwScenario('medis');
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

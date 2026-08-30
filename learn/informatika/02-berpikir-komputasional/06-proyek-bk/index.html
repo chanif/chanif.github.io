@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyek Mandiri Berpikir Komputasional | Belajar Bareng Pak Fanani</title>
+    <meta name="description" content="Integrasikan 4 pilar Berpikir Komputasional (Dekomposisi, Pengenalan Pola, Abstraksi, dan Algoritma) ke dalam proyek nyata pemecahan masalah di sekolah dan lingkungan sehari-hari.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Unit Berpikir Komputasional
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#tahapan-proyek" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">📋 6 Langkah Proyek</a>
+        <a href="#studi-kasus-piket" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">💡 Contoh Proyek Nyata</a>
+        <a href="#simulator-perancangan" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">🛠️ Planner Proyek BK</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-blue-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">Berpikir Komputasional</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">06. Proyek Berpikir Komputasional</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🧩 Berpikir Komputasional · Modul 06
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Proyek Berpikir Komputasional: Solusi Nyata di Sekitarmu
+            </h1>
+            <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-6">
+                Saatnya menggabungkan keempat pilar (Dekomposisi, Pola, Abstraksi, dan Algoritma) menjadi sebuah karya inovatif! Pelajari cara mengidentifikasi masalah di sekolah, menyusun rencana komputasional, hingga mempresentasikan solusinya secara percaya diri.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-blue-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 60 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🛠️ Tipe: Project-Based Learning</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang kamu peroleh dari proyek ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Integrasi 4 Pilar BK</strong>
+                    <p class="text-slate-600">Mengaplikasikan dekomposisi, pengenalan pola, abstraksi, dan algoritma secara terpadu untuk menyelesaikan masalah konkret.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Sintesis Ide Pemecahan Masalah</strong>
+                    <p class="text-slate-600">Merumuskan rancangan solusi sistematis terhadap problem sehari-hari seperti antrean kantin, jadwal piket, atau manajemen sampah sekolah.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Dokumentasi & Visualisasi Algoritma</strong>
+                    <p class="text-slate-600">Menyusun diagram alir (flowchart) dan pseudocode yang jelas agar solusi mudah dipahami dan diimplementasikan.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Komunikasi & Kolaborasi Tim</strong>
+                    <p class="text-slate-600">Menyampaikan laporan proyek dan menerima umpan balik (peer review) secara objektif dan konstruktif.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: 6 TAHAPAN PROYEK BK -->
+    <section id="tahapan-proyek" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Alur Kerja Proyek Komputasional</h2>
+                <p class="text-xs text-slate-500">6 langkah baku dari merumuskan masalah hingga mempublikasikan solusi</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">🔎</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full">Langkah 1</span>
+                </div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Identifikasi Masalah</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Pilih persoalan nyata di sekitarmu yang membutuhkan optimasi, ketertiban, atau penghematan waktu/sumber daya.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">✂️</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-indigo-100 text-indigo-800 rounded-full">Langkah 2</span>
+                </div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Dekomposisi Problem</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Pecah masalah utama menjadi 3–4 sub-masalah kecil: input data, aturan proses, penanganan kendala, dan hasil luaran.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">🔁</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-full">Langkah 3</span>
+                </div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Kenali Pola Berulang</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Amati kesamaan pola waktu kejadian, kebiasaan orang, atau frekuensi kemunculan hambatan yang berulang.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">🎯</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-amber-100 text-amber-800 rounded-full">Langkah 4</span>
+                </div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Abstraksi Informasi</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Pilah faktor penting penentu keputusan dan buang detail sepele yang tidak relevan agar model tetap sederhana.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">⚡</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-purple-100 text-purple-800 rounded-full">Langkah 5</span>
+                </div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Rancang Algoritma</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Tuliskan urutan instruksi solusi langkah-demi-langkah (pseudocode & flowchart) dengan kondisi percabangan (IF-ELSE).
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">📢</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-rose-100 text-rose-800 rounded-full">Langkah 6</span>
+                </div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Presentasi & Review</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Pamerkan hasil kerja kepada teman sekelas, lakukan simulasi skenario uji, dan perbaiki berdasarkan masukan tim.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: CONTOH PROYEK NYATA -->
+    <section id="studi-kasus-piket" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Bedah Proyek: Sistem Optimasi Antrean Kantin Sekolah</h2>
+                <p class="text-xs text-slate-500">Melihat penerapan konkret 4 pilar pada masalah kemacetan jam istirahat</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-4 rounded-2xl bg-blue-50/80 border border-blue-200 space-y-2">
+                <span class="text-2xl">✂️</span>
+                <strong class="text-xs font-bold text-blue-900 block">1. Dekomposisi</strong>
+                <p class="text-[11px] text-blue-800 leading-relaxed">
+                    Dipecah menjadi: (a) Pemesanan menu, (b) Pembayaran uang pas/non-tunai, (c) Pengambilan makanan, (d) Area pengembalian piring.
+                </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-emerald-50/80 border border-emerald-200 space-y-2">
+                <span class="text-2xl">🔁</span>
+                <strong class="text-xs font-bold text-emerald-900 block">2. Pengenalan Pola</strong>
+                <p class="text-[11px] text-emerald-800 leading-relaxed">
+                    Kantin selalu macet pada 5 menit pertama bel istirahat karena 80% siswa membeli menu bakso dan es teh secara tunai.
+                </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-amber-50/80 border border-amber-200 space-y-2">
+                <span class="text-2xl">🎯</span>
+                <strong class="text-xs font-bold text-amber-900 block">3. Abstraksi</strong>
+                <p class="text-[11px] text-amber-800 leading-relaxed">
+                    <strong>Penting:</strong> Jumlah porsi menu & kecepatan kasir.<br>
+                    <strong>Abaikan:</strong> Warna baju siswa, merek sepatu, obrolan santai di meja makan.
+                </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-purple-50/80 border border-purple-200 space-y-2">
+                <span class="text-2xl">⚡</span>
+                <strong class="text-xs font-bold text-purple-900 block">4. Algoritma Solusi</strong>
+                <p class="text-[11px] text-purple-800 leading-relaxed">
+                    Buat sistem <em>Pre-Order</em> via formulir digital sebelum jam istirahat. Siswa tinggal menunjukkan kode ambil tanpa antre kasir.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR PERANCANGAN PROYEK (INTERAKTIF) -->
+    <section id="simulator-perancangan" class="bg-white rounded-3xl border-2 border-blue-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🛠️</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">Interactive Project Planner</h2>
+                </div>
+                <p class="text-xs text-slate-500">Susun draf proyek komputasionalmu sendiri secara instan</p>
+            </div>
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 font-bold text-xs rounded-full border border-blue-200 self-start sm:self-auto">
+                Eksperimen Interaktif
+            </span>
+        </div>
+
+        <div class="space-y-4 text-xs">
+            <div>
+                <label class="font-bold text-slate-700 block mb-1">1. Pilih Topik Masalah:</label>
+                <select id="planner-topic" onchange="updatePlannerTemplate()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-semibold text-slate-700 focus:outline-none focus:border-blue-500">
+                    <option value="kantin">Sistem Antrean & Pemesanan Kantin Cepat</option>
+                    <option value="piket">Penjadwalan Piket Kelas Berkeadilan Otomatis</option>
+                    <option value="sampah">Sistem Pilah & Bank Sampah Sekolah</option>
+                    <option value="rute">Penentuan Rute Terpendek & Aman Berangkat Sekolah</option>
+                </select>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-4 bg-blue-50/50 rounded-xl border border-blue-100 space-y-1.5">
+                    <label class="font-bold text-blue-900 flex items-center gap-1.5">
+                        <span>✂️</span> Dekomposisi Komponen:
+                    </label>
+                    <textarea id="planner-dekomp" rows="3" class="w-full p-2 bg-white border border-blue-200 rounded-lg text-xs font-mono text-slate-700 focus:outline-none"></textarea>
+                </div>
+
+                <div class="p-4 bg-emerald-50/50 rounded-xl border border-emerald-100 space-y-1.5">
+                    <label class="font-bold text-emerald-900 flex items-center gap-1.5">
+                        <span>🔁</span> Pola yang Ditemukan:
+                    </label>
+                    <textarea id="planner-pola" rows="3" class="w-full p-2 bg-white border border-emerald-200 rounded-lg text-xs font-mono text-slate-700 focus:outline-none"></textarea>
+                </div>
+
+                <div class="p-4 bg-amber-50/50 rounded-xl border border-amber-100 space-y-1.5">
+                    <label class="font-bold text-amber-900 flex items-center gap-1.5">
+                        <span>🎯</span> Data Penting (Abstraksi):
+                    </label>
+                    <textarea id="planner-abst" rows="3" class="w-full p-2 bg-white border border-amber-200 rounded-lg text-xs font-mono text-slate-700 focus:outline-none"></textarea>
+                </div>
+
+                <div class="p-4 bg-purple-50/50 rounded-xl border border-purple-100 space-y-1.5">
+                    <label class="font-bold text-purple-900 flex items-center gap-1.5">
+                        <span>⚡</span> Algoritma / Aturan Solusi:
+                    </label>
+                    <textarea id="planner-algo" rows="3" class="w-full p-2 bg-white border border-purple-200 rounded-lg text-xs font-mono text-slate-700 focus:outline-none"></textarea>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+                <button onclick="generateProjectSummary()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition">
+                    ✨ Generate Ringkasan Proposal Proyek
+                </button>
+                <span id="planner-feedback" class="text-xs font-bold text-emerald-600"></span>
+            </div>
+
+            <div id="planner-output-box" class="hidden p-4 bg-slate-900 text-slate-100 rounded-2xl font-mono text-xs whitespace-pre-wrap leading-relaxed"></div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Proyek Komputasional</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman konseptual dan kesiapan metodologi proyekmu (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Langkah pertama yang paling tepat dalam merancang sebuah proyek berpikir komputasional adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="A"> A. Langsung membuat flowchart yang rumit
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="B"> B. Mengidentifikasi dan merumuskan masalah nyata dengan jelas
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="C"> C. Membeli perlengkapan robotik termahal
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="D"> D. Membagi tugas presentasi sebelum menentukan topik
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Ketika tim membedah sistem pengelolaan sampah menjadi: (1) pemilahan di kelas, (2) pengangkutan ke TPS, dan (3) penimbangan bank sampah, pilar yang sedang diterapkan adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="A"> A. Abstraksi
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="B"> B. Pengenalan Pola
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="C"> C. Dekomposisi
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="D"> D. Evaluasi
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Menemukan bahwa volume sampah plastik selalu melonjak tajam setiap hari Jumat siang merupakan contoh penerapan pilar...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="A"> A. Pengenalan Pola (Pattern Recognition)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Abstraksi
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Algoritma
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Dekomposisi
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Mengapa kita perlu melakukan Abstraksi saat merancang algoritma rute terpendek ke sekolah?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="A"> A. Agar rute terlihat lebih rumit dan keren
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Untuk membuang detail tak penting seperti warna cat pagar rumah orang dan fokus pada jarak serta kondisi jalan
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Agar kita tidak perlu menghitung jarak tempuh
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Supaya peta tidak memiliki persimpangan jalan
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Kriteria keberhasilan suatu proyek solusi komputasional yang baik adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="A"> A. Menggunakan istilah asing yang sulit dimengerti orang awam
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="B"> B. Solusinya terbukti efektif, terstruktur logis, dan dapat diulang penerapannya
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="C"> C. Diselesaikan hanya oleh ketua kelompok tanpa melibatkan anggota
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="D"> D. Tidak memerlukan pengujian atau evaluasi lapangan
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Proyek berpikir komputasional selalu wajib menggunakan komputer canggih dan tidak bisa dilakukan secara <em>unplugged</em> (kertas/manual).</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Menuliskan algoritma dalam bentuk pseudocode membantu orang lain memahami logika solusi sebelum dikoding menjadi program nyata.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Tahap abstraksi berarti kita harus memasukkan seluruh informasi sekecil apapun ke dalam dokumen solusi.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Pembagian tugas sub-masalah secara paralel kepada anggota tim merupakan manfaat langsung dari teknik dekomposisi.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. <em>Peer review</em> (penilaian rekan sejawat) bertujuan untuk saling menjatuhkan nilai kelompok lain.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Pilar & Aksi Proyek (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Aksi Proyek:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Membagi kepanitiaan acara bazar sekolah</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Mengetahui tren jam kunjungan perpustakaan</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Menghapus data warna baju pengunjung perpus</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Menulis langkah pendaftaran anggota baru</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Menguji coba alur peminjaman buku ke 10 siswa</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Konsep yang Tepat:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan Aksi 1 --</option>
+                        <option value="dekomposisi">Dekomposisi</option>
+                        <option value="pola">Pengenalan Pola</option>
+                        <option value="abstraksi">Abstraksi</option>
+                        <option value="algoritma">Algoritma</option>
+                        <option value="evaluasi">Evaluasi & Pengujian</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan Aksi 2 --</option>
+                        <option value="dekomposisi">Dekomposisi</option>
+                        <option value="pola">Pengenalan Pola</option>
+                        <option value="abstraksi">Abstraksi</option>
+                        <option value="algoritma">Algoritma</option>
+                        <option value="evaluasi">Evaluasi & Pengujian</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan Aksi 3 --</option>
+                        <option value="dekomposisi">Dekomposisi</option>
+                        <option value="pola">Pengenalan Pola</option>
+                        <option value="abstraksi">Abstraksi</option>
+                        <option value="algoritma">Algoritma</option>
+                        <option value="evaluasi">Evaluasi & Pengujian</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan Aksi 4 --</option>
+                        <option value="dekomposisi">Dekomposisi</option>
+                        <option value="pola">Pengenalan Pola</option>
+                        <option value="abstraksi">Abstraksi</option>
+                        <option value="algoritma">Algoritma</option>
+                        <option value="evaluasi">Evaluasi & Pengujian</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
+                        <option value="">-- Pasangan Aksi 5 --</option>
+                        <option value="dekomposisi">Dekomposisi</option>
+                        <option value="pola">Pengenalan Pola</option>
+                        <option value="abstraksi">Abstraksi</option>
+                        <option value="algoritma">Algoritma</option>
+                        <option value="evaluasi">Evaluasi & Pengujian</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Siklus Proyek Komputasional (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan 5 tahapan pelaksanaan proyek berikut dari awal (1) hingga akhir (5):</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Mempresentasikan solusi & menerima masukan perbaikan</span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Merumuskan dan memilih topik permasalahan nyata</span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Mendekomposisi dan mengenali pola masalah</span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Merancang aturan algoritma & flowchart solusi</span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Melakukan abstraksi untuk membuang variabel tak perlu</span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-blue-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA (MULTI-ATTEMPT RECAP) -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-blue-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Berpikir Komputasional Bukan Cuma Soal Koding:</strong> BK adalah cara berpikir terstruktur untuk memecahkan persoalan apapun di dunia nyata secara efektif.</p>
+            <p><strong>2. Kunci Kolaborasi:</strong> Melalui dekomposisi dan abstraksi, tim dapat berbagi beban kerja secara proporsional dan transparan.</p>
+            <p><strong>3. Solusi yang Berkelanjutan:</strong> Algoritma yang baik harus jelas, memiliki awal dan akhir, serta dapat diterapkan berulang kali untuk kasus serupa.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan tantangan terbesar yang kamu rasakan saat merancang proyek komputasional dan ide solusi apa yang ingin kamu wujudkan..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Mandiri.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'informatika';
+const TOPIC_ID = 'inf-bk-06';
+
+// Planner Template Data
+const plannerData = {
+    kantin: {
+        dekomp: "- Pemesanan menu makanan\n- Sistem bayar non-tunai / uang pas\n- Pengambilan makanan berurutan\n- Area pengembalian piring kotor",
+        pola: "- Lonjakan pengunjung terjadi pada menit 0-10 istirahat\n- Menu favorit: Bakso & Es Teh (80% pesanan)",
+        abst: "FOKUS: Waktu tunggu per siswa, ketersediaan porsi.\nABAIKAN: Warna baju siswa, merek sepatu.",
+        algo: "1. Siswa pesan via e-form 15 menit sebelum bel.\n2. Kantin siapkan porsi siap ambil.\n3. Siswa scan kode ambil tanpa antre kasir."
+    },
+    piket: {
+        dekomp: "- Pembagian tugas (sapu, pel, papan tulis, buang sampah)\n- Rotasi hari Senin - Jumat\n- Monitoring checklist kebersihan harian",
+        pola: "- Hari Senin & Jumat ruangan lebih kotor setelah upacara & senam\n- Sebagian siswa sering izin ekstrakurikuler di hari tertentu",
+        abst: "FOKUS: Keseimbangan jumlah siswa laki/perempuan per hari.\nABAIKAN: Minat hobi siswa.",
+        algo: "1. Urutkan absen siswa.\n2. Bagi rata ke dalam 5 kelompok hari (Senin-Jumat).\n3. Pasang aturan: Jika tidak hadir, tugas digantikan besoknya."
+    },
+    sampah: {
+        dekomp: "- Pemilahan organik vs plastik di tiap kelas\n- Jadwal pengangkutan harian ke Bank Sampah\n- Penimbangan & pencatatan poin tabungan kelas",
+        pola: "- Botol plastik air mineral mendominasi 70% total sampah harian\n- Kotak sampah sering meluap saat jam pulang sekolah",
+        abst: "FOKUS: Berat botol plastik & kertas per kelas.\nABAIKAN: Merek minuman kemasan.",
+        algo: "1. Siswa buang sampah sesuai kategori warna tempat sampah.\n2. Petugas kelas timbang di Bank Sampah tiap Jumat.\n3. Kelas poin tertinggi dapat reward bulanan."
+    },
+    rute: {
+        dekomp: "- Titik awal rumah & titik akhir gerbang sekolah\n- Identifikasi persimpangan rawan macet / lampu merah\n- Mode transportasi: Sepeda ontel / jalan kaki / motor",
+        pola: "- Jalan protokol selalu macet pukul 06.30 - 06.50 WIB\n- Gang kecil pemukiman lebih aman untuk pesepeda",
+        abst: "FOKUS: Jarak tempuh & tingkat keselamatan jalan.\nABAIKAN: Toko-toko di sepanjang jalan yang tidak relevan.",
+        algo: "1. Mulai dari rumah pukul 06.15 WIB.\n2. Pilih jalur gang pemukiman untuk hindari lampu merah utama.\n3. Tiba di sekolah 15 menit sebelum bel berbunyi."
+    }
+};
+
+function updatePlannerTemplate() {
+    const val = document.getElementById('planner-topic').value;
+    const t = plannerData[val];
+    if (t) {
+        document.getElementById('planner-dekomp').value = t.dekomp;
+        document.getElementById('planner-pola').value = t.pola;
+        document.getElementById('planner-abst').value = t.abst;
+        document.getElementById('planner-algo').value = t.algo;
+    }
+}
+
+function generateProjectSummary() {
+    const val = document.getElementById('planner-topic').value;
+    const dekomp = document.getElementById('planner-dekomp').value;
+    const pola = document.getElementById('planner-pola').value;
+    const abst = document.getElementById('planner-abst').value;
+    const algo = document.getElementById('planner-algo').value;
+
+    const out = `📋 PROPOSAL SOLUSI BERPIKIR KOMPUTASIONAL
+Topik: ${val.toUpperCase()}
+--------------------------------------------------
+[1] DEKOMPOSISI:
+${dekomp}
+
+[2] PENGENALAN POLA:
+${pola}
+
+[3] ABSTRAKSI (DATA KUNCI):
+${abst}
+
+[4] ALGORITMA EKSEKUSI:
+${algo}
+--------------------------------------------------
+Status: Siap dipresentasikan ke kelompok dan guru pengampu!`;
+
+    const box = document.getElementById('planner-output-box');
+    box.innerText = out;
+    box.classList.remove('hidden');
+    document.getElementById('planner-feedback').innerText = '✅ Proposal berhasil disusun!';
+}
+
+// Evaluasi Formatif Answer Keys
+const KEY_MCQ = { mcq_1: 'B', mcq_2: 'C', mcq_3: 'A', mcq_4: 'B', mcq_5: 'B' };
+const KEY_TF = { tf_1: 'S', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'S' };
+const KEY_MATCH = { match_1: 'dekomposisi', match_2: 'pola', match_3: 'abstraksi', match_4: 'algoritma', match_5: 'evaluasi' };
+const KEY_SEQ = { seq_B: '1', seq_C: '2', seq_E: '3', seq_D: '4', seq_A: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    // Bagian A (5 Soal - @5 Poin = 25)
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    // Bagian B (5 Soal - @5 Poin = 25)
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    // Bagian C (5 Soal - @5 Poin = 25)
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    // Bagian D (5 Soal - @5 Poin = 25)
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    // Display Badge
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    // Submit Tracker
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updatePlannerTemplate();
+    loadHistory();
+});
+</script>
+
+</body>
+</html>

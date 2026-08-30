@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemrograman Berorientasi Objek (OOP) Python | Informatika Lanjut</title>
+    <meta name="description" content="Pelajari konsep Object-Oriented Programming (OOP): Class, Object, Constructor __init__, self parameter, Inheritance (Pewarisan), Encapsulation, dan Polymorphism di Python.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Unit Informatika Lanjut
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#konsep-oop" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🧩 Class & Object</a>
+        <a href="#pilar-oop" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🏛️ 4 Pilar OOP</a>
+        <a href="#simulator-oop" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">🎮 RPG Class Factory Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-blue-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">Informatika Lanjut</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">02. OOP Python</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-blue-600 via-indigo-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🚀 Informatika Lanjut · Modul 02
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Pemrograman Berorientasi Objek (OOP) di Python
+            </h1>
+            <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-6">
+                Tingkatkan kemampuan kodingmu dari prosedural sederhana ke paradigma industri modern! Pelajari bagaimana membuat <strong>Class (Cetak Biru)</strong>, mencetak <strong>Object</strong>, mendefinisikan constructor <code>__init__</code>, serta menerapkan prinsip Pewarisan (Inheritance) dan Enkapsulasi!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-blue-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🐍 Paradigma: Class, Object, __init__</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Perbedaan Prosedural vs OOP</strong>
+                    <p class="text-slate-600">Menjelaskan keunggulan membungkus variabel (atribut) dan fungsi (method) ke dalam satu kesatuan objek.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mendefinisikan Class & Constructor __init__</strong>
+                    <p class="text-slate-600">Menulis class Python lengkap dengan parameter <code>self</code> dan inisialisasi properti objek baru.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Pewarisan (Inheritance)</strong>
+                    <p class="text-slate-600">Membuat Subclass anak yang mewarisi sifat dan method dari Superclass induk (contoh: Class <code>Warrior</code> turunan dari <code>Hero</code>).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Konsep Enkapsulasi & Polimorfisme</strong>
+                    <p class="text-slate-600">Melindungi atribut privat agar tidak diubah sembarangan dan mendefinisikan method yang memiliki banyak bentuk.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: KONSEP OOP -->
+    <section id="konsep-oop" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Analogi Cetak Biru (Class) & Bangunan Nyata (Object)</h2>
+                <p class="text-xs text-slate-500">Memahami konsep dasar bagaimana objek diciptakan di dalam memori program</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5 text-xs">
+            <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-3xl">📐</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">1. Class (Cetak Biru / Blueprint)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Kerangka acuan atau cetakan pabrik yang mendefinisikan atribut apa saja yang dimiliki serta aksi (method) apa yang bisa dilakukan.<br>
+                    <em>Contoh:</em> <code>class Mobil:</code> memiliki atribut warna, kecepatan, dan method <code>maju()</code>, <code>rem()</code>.
+                </p>
+            </div>
+
+            <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-3xl">🚗</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">2. Object / Instance (Benda Nyata)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Hasil cetakan konkret nyata yang menempati ruang memori RAM, dengan nilai atribut yang spesifik dan unik.<br>
+                    <em>Contoh:</em> <code>mobil_andi = Mobil("Merah", 120)</code> dan <code>mobil_budi = Mobil("Hitam", 180)</code>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: 4 PILAR OOP -->
+    <section id="pilar-oop" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">4 Pilar Utama Object-Oriented Programming</h2>
+                <p class="text-xs text-slate-500">Prinsip arsitektur perangkat lunak skala enterprise</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+            <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-1.5">
+                <span class="text-2xl">🔒</span>
+                <strong class="text-blue-900 block font-bold">1. Encapsulation</strong>
+                <p class="text-slate-600 leading-relaxed">Membungkus data dan menyembunyikan variabel internal agar tidak dimodifikasi langsung dari luar.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-1.5">
+                <span class="text-2xl">🧬</span>
+                <strong class="text-emerald-900 block font-bold">2. Inheritance</strong>
+                <p class="text-slate-600 leading-relaxed">Mewariskan properti dan method dari class induk (Parent) ke class turunan (Child).</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-1.5">
+                <span class="text-2xl">🎭</span>
+                <strong class="text-amber-900 block font-bold">3. Polymorphism</strong>
+                <p class="text-slate-600 leading-relaxed">Satu nama method yang dapat memiliki perilaku berbeda pada class turunan yang berbeda.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-200 space-y-1.5">
+                <span class="text-2xl">💡</span>
+                <strong class="text-purple-900 block font-bold">4. Abstraction</strong>
+                <p class="text-slate-600 leading-relaxed">Menyembunyikan detail kerumitan internal dan hanya menampilkan fungsi penting kepada pengguna.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR OOP (INTERAKTIF) -->
+    <section id="simulator-oop" class="bg-white rounded-3xl border-2 border-blue-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎮</span>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-900">RPG Character Class Factory Studio</h2>
+                </div>
+                <p class="text-xs text-slate-500">Cetak objek Hero baru dari blueprint Class Python dan uji method aksinya secara interaktif!</p>
+            </div>
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 font-bold text-xs rounded-full border border-blue-200 self-start sm:self-auto">
+                Studio Objek
+            </span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                <strong class="font-bold text-slate-800 block">⚙️ Parameter Constructor <code>__init__</code>:</strong>
+                
+                <div>
+                    <label class="text-[11px] text-slate-500 block mb-1">Nama Karakter:</label>
+                    <input type="text" id="oop-hero-name" value="Gatotkaca" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl font-bold font-mono text-slate-800">
+                </div>
+
+                <div>
+                    <label class="text-[11px] text-slate-500 block mb-1">Pilih Role / Class:</label>
+                    <select id="oop-hero-role" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl font-bold font-mono text-slate-800">
+                        <option value="Warrior">Warrior (Darah Tinggi / HP: 1000)</option>
+                        <option value="Mage">Mage (Serangan Sihir / Magic: 250)</option>
+                        <option value="Archer">Archer (Kecepatan Panah / Speed: 95)</option>
+                    </select>
+                </div>
+
+                <div class="flex gap-2">
+                    <button onclick="instantiateHero()" class="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow transition">
+                        ⚡ Cetak Objek (Instantiate)
+                    </button>
+                    <button onclick="heroAttack()" id="btn-hero-atk" disabled class="px-4 py-2.5 bg-slate-300 text-slate-500 font-bold rounded-xl transition">
+                        ⚔️ Hero.serang()
+                    </button>
+                </div>
+            </div>
+
+            <!-- Python Class Code & Object State -->
+            <div class="p-5 bg-slate-900 text-white rounded-2xl space-y-3 font-mono">
+                <div class="text-[10px] text-slate-400 flex justify-between">
+                    <span>LIVE PYTHON OBJECT IN MEMORY</span>
+                    <span id="oop-status-badge" class="text-rose-400">Belum Dicetak</span>
+                </div>
+                <div id="oop-trace-box" class="p-3.5 bg-slate-800 rounded-xl border border-slate-700 space-y-1 text-[11px]">
+                    <div class="text-purple-300 font-bold">class Hero:</div>
+                    <div class="pl-4 text-slate-400">def __init__(self, nama, role):</div>
+                    <div class="pl-8 text-slate-500">self.nama = nama</div>
+                    <div class="pl-8 text-slate-500">self.role = role</div>
+                </div>
+                <div id="oop-action-log" class="text-[10px] text-emerald-400">
+                    💡 Klik tombol "Cetak Objek" untuk membuat instance baru di RAM.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN: MCQ, T/F, MATCHING, SEQUENCING) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: OOP Python</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahaman Class, Object, Constructor, dan Pewarisan (Total Skor: 100)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Metode khusus (Constructor) dalam bahasa Python yang otomatis dipanggil saat sebuah objek baru pertama kali diciptakan adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="A"> A. def __init__(self):
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="B"> B. def create():
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="C"> C. def start():
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_1" value="D"> D. def main():
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Parameter <code>self</code> pada penulisan method di dalam class Python berfungsi untuk...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="A"> A. Merujuk ke objek instance yang sedang aktif memanggil method tersebut
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="B"> B. Menghapus objek dari memori
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="C"> C. Menghentikan program
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_2" value="D"> D. Mengubah font tulisan
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Konsep di mana sebuah class anak (Subclass) dapat mewarisi seluruh atribut dan method dari class induk (Superclass) dinamakan...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="A"> A. Inheritance (Pewarisan)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="B"> B. Encapsulation
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="C"> C. Overclocking
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_3" value="D"> D. Defragmenter
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Perhatikan kode: <code>class Siswa: pass</code> dilanjutkan <code>andi = Siswa()</code>. Variabel <code>andi</code> dalam istilah OOP disebut sebagai...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="A"> A. Object / Instance dari Class Siswa
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="B"> B. Keyword bawaan Python
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="C"> C. Library eksternal
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_4" value="D"> D. Operator aritmatika
+                    </label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/60 space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Di Python, penulisan nama variabel atribut yang diawali dua garis bawah (seperti <code>self.__pin</code>) bertujuan untuk...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="A"> A. Menjadikan atribut tersebut bersifat privat (Encapsulation) agar tidak mudah diakses langsung dari luar
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="B"> B. Memperbesar ukuran teks
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="C"> C. Menghapus class
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-blue-400">
+                        <input type="radio" name="mcq_5" value="D"> D. Mempercepat koneksi internet
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">1. Dari satu Class blueprint yang sama, kita bisa menciptakan ratusan Object instance yang berbeda-beda nilainya.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_1" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">2. Method di dalam class Python adalah sebuah fungsi biasa yang terikat pada class tersebut dan memiliki parameter pertama <code>self</code>.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_2" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">3. Polimorfisme memungkinkan class turunan memiliki method dengan nama yang sama persis namun melakukan aksi yang disesuaikan (Override).</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_3" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">4. Penulisan nama Class di Python menurut konvensi PEP 8 sebaiknya menggunakan format CamelCase (contoh: <code>MobilSport</code>).</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_4" value="S"> S</label>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                    <span class="text-slate-700">5. Pemrograman berorientasi objek (OOP) hanya bisa digunakan untuk membuat game dan tidak bisa untuk aplikasi bisnis atau web.</span>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="B"> B</label>
+                        <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="tf_5" value="S"> S</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Istilah OOP & Contoh Kodenya (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Konsep OOP:</p>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Deklarasi Class</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Constructor __init__</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Instansiasi Objek</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Pemanggilan Method</div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Inheritance (Pewarisan)</div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="font-bold text-slate-700">Pilih Baris Kode Python:</p>
+                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700 font-mono">
+                        <option value="">-- Pasangan 1 --</option>
+                        <option value="class">class Hero:</option>
+                        <option value="init">def __init__(self, nama): self.nama = nama</option>
+                        <option value="instance">player1 = Hero("Lancelot")</option>
+                        <option value="method">player1.serang()</option>
+                        <option value="inheritance">class Mage(Hero):</option>
+                    </select>
+
+                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700 font-mono">
+                        <option value="">-- Pasangan 2 --</option>
+                        <option value="class">class Hero:</option>
+                        <option value="init">def __init__(self, nama): self.nama = nama</option>
+                        <option value="instance">player1 = Hero("Lancelot")</option>
+                        <option value="method">player1.serang()</option>
+                        <option value="inheritance">class Mage(Hero):</option>
+                    </select>
+
+                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700 font-mono">
+                        <option value="">-- Pasangan 3 --</option>
+                        <option value="class">class Hero:</option>
+                        <option value="init">def __init__(self, nama): self.nama = nama</option>
+                        <option value="instance">player1 = Hero("Lancelot")</option>
+                        <option value="method">player1.serang()</option>
+                        <option value="inheritance">class Mage(Hero):</option>
+                    </select>
+
+                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700 font-mono">
+                        <option value="">-- Pasangan 4 --</option>
+                        <option value="class">class Hero:</option>
+                        <option value="init">def __init__(self, nama): self.nama = nama</option>
+                        <option value="instance">player1 = Hero("Lancelot")</option>
+                        <option value="method">player1.serang()</option>
+                        <option value="inheritance">class Mage(Hero):</option>
+                    </select>
+
+                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700 font-mono">
+                        <option value="">-- Pasangan 5 --</option>
+                        <option value="class">class Hero:</option>
+                        <option value="init">def __init__(self, nama): self.nama = nama</option>
+                        <option value="instance">player1 = Hero("Lancelot")</option>
+                        <option value="method">player1.serang()</option>
+                        <option value="inheritance">class Mage(Hero):</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Urutan Merancang Class Rekening Bank OOP (Bobot: 25 Poin)</h3>
+            </div>
+
+            <p class="text-xs text-slate-600">Urutkan proses penulisan class sistem perbankan:</p>
+
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">A. Mendefinisikan class: <code>class RekeningBank:</code></span>
+                    <select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">B. Membuat constructor <code>def __init__(self, pemilik, saldo_awal):</code></span>
+                    <select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">C. Menambahkan method <code>def setor(self, jumlah): self.saldo += jumlah</code></span>
+                    <select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">D. Menginstansiasi objek nasabah: <code>akun_budi = RekeningBank("Budi", 500000)</code></span>
+                    <select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-slate-700">E. Memanggil method setor: <code>akun_budi.setor(100000)</code></span>
+                    <select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold">
+                        <option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-blue-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-blue-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Struktur Nyata:</strong> OOP memetakan entitas dunia nyata (seperti Siswa, Mobil, Produk Toko) menjadi struktur kode yang logis dan mudah dipahami.</p>
+            <p><strong>2. Efisiensi Pewarisan:</strong> Dengan Inheritance, kita tidak perlu mengulang penulisan kode atribut dasar berkali-kali pada class sejenis.</p>
+            <p><strong>3. Skalabilitas Kode:</strong> Aplikasi besar dengan ratusan ribu baris kode dapat dirawat dengan mudah berkat modularitas OOP.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan contoh class dunia nyata yang ingin kamu rancang beserta atribut dan method-nya..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
+</footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'informatika';
+const TOPIC_ID = 'inf-lanjut-02';
+
+// OOP Simulator Logic
+let activeHero = null;
+
+function instantiateHero() {
+    const name = document.getElementById('oop-hero-name').value.trim() || 'Hero Tanpa Nama';
+    const role = document.getElementById('oop-hero-role').value;
+
+    activeHero = {
+        name: name,
+        role: role,
+        hp: role === 'Warrior' ? 1000 : (role === 'Mage' ? 600 : 750),
+        power: role === 'Mage' ? 250 : 120
+    };
+
+    document.getElementById('oop-status-badge').innerText = "● Terinstansiasi di RAM";
+    document.getElementById('oop-status-badge').className = "text-emerald-400 font-bold";
+
+    const traceBox = document.getElementById('oop-trace-box');
+    traceBox.innerHTML = `
+        <div class="text-yellow-300 font-bold"># Objek Tercipta:</div>
+        <div>hero1 = Hero(nama="${activeHero.name}", role="${activeHero.role}")</div>
+        <div class="text-cyan-400">hero1.hp = ${activeHero.hp}</div>
+        <div class="text-cyan-400">hero1.power = ${activeHero.power}</div>
+    `;
+
+    document.getElementById('oop-action-log').innerHTML = `🎉 Objek <strong>${activeHero.name}</strong> (${activeHero.role}) berhasil diciptakan! Tombol aksi aktif.`;
+    const btnAtk = document.getElementById('btn-hero-atk');
+    btnAtk.disabled = false;
+    btnAtk.className = "px-4 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl shadow transition";
+}
+
+function heroAttack() {
+    if (!activeHero) return;
+    document.getElementById('oop-action-log').innerHTML = `⚔️ Method <strong>${activeHero.name}.serang()</strong> dipanggil! Menghasilkan serangan damage <strong>${activeHero.power} poin</strong>!`;
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'B', tf_2: 'B', tf_3: 'B', tf_4: 'B', tf_5: 'S' };
+const KEY_MATCH = { match_1: 'class', match_2: 'init', match_3: 'instance', match_4: 'method', match_5: 'inheritance' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadHistory();
+});
+</script>
+
+</body>
+</html>
