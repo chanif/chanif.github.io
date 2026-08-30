@@ -82,17 +82,17 @@
                         </span>
                     </div>
 
-                    <div class="space-y-1.5">
+                    <div class="space-y-2">
                         <div class="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs font-bold text-amber-300">
                             <span id="student-level-title">Petualang Pemula 🌟</span>
                         </div>
-                        <h1 class="text-2xl md:text-3xl font-extrabold font-heading text-white" id="student-name-display">
-                            Siswa Hebat
+                        <h1 class="text-2xl md:text-3xl font-extrabold font-heading text-white flex flex-wrap items-center gap-2.5" id="student-name-display">
+                            <span>Siswa Hebat</span>
                         </h1>
-                        <p class="text-xs text-slate-300 flex items-center justify-center sm:justify-start gap-2" id="student-detail-info">
+                        <p class="text-xs text-slate-300 flex flex-wrap items-center justify-center sm:justify-start gap-2" id="student-detail-info">
                             <span>🏫 SMP Negeri 2 Lamongan</span>
                             <span>•</span>
-                            <span id="student-kelas-display">Kelas Mandiri</span>
+                            <span id="student-kelas-display" class="font-medium text-slate-300">Mode Mandiri</span>
                         </p>
                     </div>
                 </div>
@@ -309,13 +309,42 @@
             const { user, stats, badges, catalog } = progressData;
 
             // 1. Render User Header
-            if (user && user.name) {
-                document.getElementById('student-name-display').innerText = user.name;
-                document.getElementById('student-kelas-display').innerText = user.kelas ? `Kelas ${user.kelas}` : 'Mode Mandiri';
+            if (user && user.name && user.name !== 'Siswa Tamu') {
+                const classNameText = user.kelas ? `Kelas ${user.kelas}` : 'Mode Mandiri';
+                const classBadgeHtml = user.kelas 
+                    ? `<span class="inline-flex items-center px-3 py-1 bg-gradient-to-r from-amber-400 to-amber-300 text-slate-950 font-extrabold text-xs md:text-sm rounded-xl shadow-md border border-amber-300/90 tracking-wide">Kelas ${user.kelas}</span>` 
+                    : `<span class="inline-flex items-center px-2.5 py-0.5 bg-white/15 text-slate-200 font-bold text-xs rounded-xl border border-white/20">Mode Mandiri</span>`;
+
+                document.getElementById('student-name-display').innerHTML = `
+                    <span>${user.name}</span>
+                    ${classBadgeHtml}
+                `;
+                
+                document.getElementById('student-detail-info').innerHTML = `
+                    <span>🏫 SMP Negeri 2 Lamongan</span>
+                    ${user.email ? `<span>•</span><span class="text-slate-300 font-mono text-[11px]">${user.email}</span>` : ''}
+                `;
+
                 if (user.picture) {
-                    document.getElementById('student-avatar-box').innerHTML = `<img src="${user.picture}" class="w-full h-full object-cover">`;
+                    document.getElementById('student-avatar-box').innerHTML = `
+                        <img src="${user.picture}" referrerpolicy="no-referrer" alt="${user.name}" class="w-full h-full object-cover rounded-[22px]" onerror="this.parentElement.innerHTML='🎓'">
+                    `;
+                } else {
+                    document.getElementById('student-avatar-box').innerHTML = '🎓';
                 }
+            } else {
+                document.getElementById('student-name-display').innerHTML = `
+                    <span>Siswa Tamu</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 bg-white/15 text-slate-200 font-bold text-xs rounded-xl border border-white/20">Mode Mandiri</span>
+                `;
+                document.getElementById('student-detail-info').innerHTML = `
+                    <span>🏫 SMP Negeri 2 Lamongan</span>
+                    <span>•</span>
+                    <a href="../index.html" class="text-amber-300 hover:text-amber-200 font-bold underline transition">🔑 Masuk dengan Google untuk sinkronkan nilai & foto</a>
+                `;
+                document.getElementById('student-avatar-box').innerHTML = '🎓';
             }
+
             document.getElementById('student-level-title').innerText = stats.level_title;
             document.getElementById('student-rank-badge-icon').innerText = stats.badge_icon;
 

@@ -258,7 +258,24 @@ const FananiTracker = (() => {
 
     function getUser() {
         try {
-            return JSON.parse(localStorage.getItem('fanani_user') || 'null');
+            const user = JSON.parse(localStorage.getItem('fanani_user') || 'null');
+            if (user) {
+                if (!user.picture) {
+                    const token = getToken();
+                    if (token) {
+                        try {
+                            const b64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+                            const p = JSON.parse(decodeURIComponent(atob(b64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')));
+                            if (p && p.picture) {
+                                user.picture = p.picture;
+                                localStorage.setItem('fanani_user', JSON.stringify(user));
+                            }
+                        } catch(e) {}
+                    }
+                }
+                return user;
+            }
+            return null;
         } catch (e) {
             return null;
         }

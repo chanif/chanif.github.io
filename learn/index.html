@@ -406,7 +406,7 @@
             renderUserStatus();
         } else {
             // New user or missing class: Show Profile Modal
-            document.getElementById('modal-avatar-preview').innerHTML = picture ? `<img src="${picture}" class="w-full h-full object-cover">` : '🎓';
+            document.getElementById('modal-avatar-preview').innerHTML = picture ? `<img src="${picture}" referrerpolicy="no-referrer" class="w-full h-full object-cover rounded-xl" onerror="this.parentElement.innerHTML='🎓'">` : '🎓';
             document.getElementById('modal-email-preview').innerText = `Terhubung sebagai ${email}. Silakan lengkapi nama & kelasmu:`;
             document.getElementById('profile-input-name').value = fullName || gName;
             document.getElementById('profile-modal').classList.remove('hidden');
@@ -532,7 +532,7 @@
                     badgeEl.innerText = 'Akun Siswa Aktif';
                     badgeEl.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800';
                     detailEl.innerText = `${user.email ? user.email + ' • ' : ''}Nilai latihan & catatan refleksi tersimpan di database guru`;
-                    avatarEl.innerHTML = user.picture ? `<img src="${user.picture}" class="w-full h-full object-cover">` : '🎓';
+                    avatarEl.innerHTML = user.picture ? `<img src="${user.picture}" referrerpolicy="no-referrer" class="w-full h-full object-cover rounded-full" onerror="this.parentElement.innerHTML='🎓'">` : '🎓';
                     
                     if (btnContainer) btnContainer.classList.add('hidden');
                     if (progressBtn) {
