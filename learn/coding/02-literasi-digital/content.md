@@ -1,0 +1,204 @@
+# Literasi Digital
+
+## Deskripsi
+Elemen kedua KKA yang membekali siswa dengan kemampuan memproduksi, menyebarkan, dan menggunakan konten digital secara aman, etis, dan bertanggung jawab. Fokus pada kesadaran identitas digital, keamanan siber, dan produksi konten yang bertanggung jawab.
+
+## Capaian Pembelajaran (CP) — BSKAP No. 046/H/KR/2025
+- Memahami dan mengelola identitas digital serta jejak online
+- Menerapkan praktik keamanan siber dasar untuk melindungi data pribadi
+- Membedakan informasi valid dari hoax/misinformasi
+- Memproduksi konten digital yang etis dan bertanggung jawab
+- Memahami konsep hak cipta dan lisensi Creative Commons
+
+---
+
+## Daftar Sub-Materi
+
+### 01. Identitas Digital dan Jejak Online
+- **Tujuan Pembelajaran**: Siswa memahami bahwa identitas digital adalah representasi diri di dunia maya dan berdampak jangka panjang.
+- **Materi Pokok**:
+  - Identitas digital: siapa kamu di internet?
+    - Username, avatar, bio, postingan = representasi diri
+    - Persona online vs diri di dunia nyata
+  - Jejak digital aktif:
+    - Setiap komentar, like, share, upload tersimpan
+    - Akun media sosial, blog, forum
+    - Konten yang di-tag oleh orang lain
+  - Jejak digital pasif:
+    - Cookies dan browser fingerprint
+    - Data lokasi dari HP
+    - Metadata foto (EXIF: waktu, lokasi, perangkat)
+    - Log aktivitas dari ISP
+  - Personal branding digital:
+    - Membangun reputasi positif online
+    - Portfolio digital: GitHub, blog, website pribadi
+    - LinkedIn (untuk masa depan)
+  - Audit jejak digital:
+    - Google nama sendiri
+    - Cek privacy settings semua akun
+    - Hapus konten yang tidak relevan/memalukan
+  - "Internet tidak pernah lupa":
+    - Wayback Machine, cached pages
+    - Screenshot beredar
+- **Aktivitas**:
+  - [ ] Plugged: "Digital Audit" — Google nama sendiri, cek akun media sosial, buat laporan
+  - [ ] Plugged: Cek metadata foto — apa informasi tersembunyi yang ada di foto HP kamu?
+  - [ ] Plugged: Buat rencana personal branding digital (apa yang ingin orang lihat tentangmu?)
+- **Evaluasi / Quiz**:
+  - [ ] Quiz: Identifikasi jejak aktif vs pasif (10 soal skenario)
+  - [ ] Proyek: Buat "digital resume" — halaman web/profil online yang profesional
+- **Game Interaktif**:
+  - [ ] Jejak digital tracker: simulasi — setiap tindakan online meninggalkan jejak, lihat akumulasinya
+
+### 02. Keamanan Siber Dasar
+- **Tujuan Pembelajaran**: Siswa mampu melindungi diri dari ancaman siber yang umum.
+- **Materi Pokok**:
+  - Ancaman siber umum bagi remaja:
+    - Phishing: email/pesan palsu yang meminta data pribadi
+    - Social engineering: manipulasi psikologis
+    - Malware: virus, ransomware, spyware dari download ilegal
+    - Akun diretas: password lemah atau reuse
+    - WiFi publik: man-in-the-middle attack
+  - Password security:
+    - Karakteristik password kuat: panjang > 12, campuran karakter
+    - Password unik per akun
+    - Password manager: Bitwarden (gratis), Google Password Manager
+    - Passkey: masa depan tanpa password
+  - Two-Factor Authentication (2FA):
+    - SMS (kurang aman), Authenticator app (lebih aman)
+    - Cara mengaktifkan di Google, Instagram, dll
+  - Keamanan perangkat:
+    - Update OS dan aplikasi
+    - Jangan install APK dari sumber tidak dikenal
+    - Lock screen: PIN/pattern/biometric
+    - Find My Device: jika HP hilang
+  - Keamanan browsing:
+    - HTTPS: cek gembok di address bar
+    - Jangan asal klik link pendek (bit.ly/...)
+    - Incognito mode: apa yang sebenarnya dilakukan (dan tidak dilakukan)
+  - Apa yang harus dilakukan jika kena hack:
+    - Ganti password semua akun terkait
+    - Aktifkan 2FA
+    - Lapor ke platform dan pihak berwajib
+    - Informasikan kontak bahwa akun telah diretas
+- **Aktivitas**:
+  - [ ] Plugged: Cek kekuatan password di howsecureismypassword.net
+  - [ ] Plugged: Aktifkan 2FA di akun Google
+  - [ ] Plugged: "Spot the Phishing" — identifikasi 5 email/pesan palsu vs asli
+  - [ ] Plugged: Cek haveibeenpwned.com — apakah email pernah bocor?
+- **Evaluasi / Quiz**:
+  - [ ] Quiz: Identifikasi ancaman dan tindakan pencegahan (12 soal)
+  - [ ] Quiz: Password strength — mana yang kuat, mana yang lemah?
+  - [ ] Latihan: Buat rencana keamanan siber pribadi
+- **Game Interaktif**:
+  - [ ] Phishing quiz game: screenshot email/website — asli atau palsu?
+  - [ ] Password crack race: berapa lama password kamu bisa diretas?
+
+### 03. Literasi Informasi dan Anti-Hoax
+- **Tujuan Pembelajaran**: Siswa mampu mengevaluasi kredibilitas informasi dan mendeteksi hoax/misinformasi.
+- **Materi Pokok**:
+  - Ekosistem informasi digital:
+    - Information overload: terlalu banyak informasi
+    - Echo chamber: hanya melihat informasi yang sesuai belief
+    - Filter bubble: algoritma menyaring konten berdasarkan preferensi
+  - Jenis informasi palsu:
+    - Misinformasi: salah tanpa sengaja
+    - Disinformasi: sengaja disebarkan untuk menipu
+    - Malinformasi: informasi asli tapi konteksnya salah
+    - Satire/parodi yang disalahartikan
+  - Teknik deteksi hoax — SIFT Method:
+    - **S**top: jangan langsung percaya/share
+    - **I**nvestigate the source: siapa yang membuat?
+    - **F**ind better coverage: cari sumber lain
+    - **T**race claims: lacak klaim ke sumber asli
+  - Fact-checking tools:
+    - turnbackhoax.id (Indonesia)
+    - cekfakta.com (Indonesia)
+    - Google Reverse Image Search / Google Lens
+    - Snopes, FactCheck.org (internasional)
+  - Clickbait anatomy: mengapa judul bombastis bekerja
+  - AI-generated content:
+    - Deepfake: video/audio palsu yang realistis
+    - AI-generated text: cara mendeteksi
+    - AI-generated images: tanda-tanda (jari aneh, teks blur)
+  - Tanggung jawab: jangan menyebarkan sebelum memverifikasi
+- **Aktivitas**:
+  - [ ] Plugged: "Hoax Hunter" — verifikasi 10 berita/gambar/video menggunakan fact-checking tools
+  - [ ] Plugged: Reverse image search — temukan sumber asli gambar viral
+  - [ ] Plugged: Identifikasi konten yang mungkin dibuat AI (teks, gambar)
+  - [ ] Unplugged: Debat terstruktur: "Apakah platform harus bertanggung jawab atas hoax yang tersebar?"
+- **Evaluasi / Quiz**:
+  - [ ] Quiz: Hoax or Fact? (10 soal dengan berita/gambar nyata)
+  - [ ] Quiz: Langkah verifikasi yang tepat untuk skenario tertentu
+  - [ ] Proyek: Buat infografis "Cara Mengenali Hoax" untuk disebarkan ke keluarga
+- **Game Interaktif**:
+  - [ ] Hoax detector game: swipe kiri (hoax) atau kanan (fakta) — seperti Tinder tapi untuk berita
+
+### 04. Produksi Konten Digital Etis
+- **Tujuan Pembelajaran**: Siswa mampu membuat dan membagikan konten digital secara kreatif dan bertanggung jawab.
+- **Materi Pokok**:
+  - Menjadi kreator, bukan hanya konsumen:
+    - Dari konsumsi pasif → produksi aktif
+    - Jenis konten: blog, video, podcast, infografis, social media
+  - Etika produksi konten:
+    - Akurasi: pastikan informasi benar
+    - Orisinalitas: jangan plagiat
+    - Credit: berikan atribusi untuk sumber
+    - Sensitivitas: pertimbangkan dampak pada pembaca
+    - Consent: minta izin sebelum memposting foto/video orang lain
+  - Teknik storytelling digital:
+    - Hook: menarik perhatian di 3 detik pertama
+    - Struktur: masalah → solusi → call to action
+    - Visual: gunakan gambar dan video berkualitas
+  - Platform dan tools:
+    - Blog: WordPress, Medium, Blogger
+    - Video: YouTube, TikTok (dengan bijak)
+    - Infografis: Canva, Visme
+    - Podcast: Anchor, Spotify for Podcasters
+  - Interaksi positif di media sosial:
+    - Komentar yang membangun
+    - Apresiasi karya orang lain
+    - Tidak ikut-ikutan cancel culture tanpa verifikasi
+- **Aktivitas**:
+  - [ ] Plugged: Buat blog post edukatif tentang topik informatika (minimal 500 kata)
+  - [ ] Plugged: Buat video pendek (1-2 menit) tutorial/explainer tentang topik KKA
+  - [ ] Plugged: Buat infografis tentang statistik menarik menggunakan Canva
+- **Evaluasi / Quiz**:
+  - [ ] Quiz: Identifikasi pelanggaran etika produksi konten (8 soal)
+  - [ ] Proyek: Buat konten digital original untuk platform pilihan sendiri
+
+### 05. Hak Cipta dan Lisensi Creative Commons
+- **Tujuan Pembelajaran**: Siswa memahami hak cipta digital dan mampu menggunakan serta memberikan lisensi Creative Commons.
+- **Materi Pokok**:
+  - Review hak cipta:
+    - Copyright otomatis saat karya dibuat
+    - Berlaku untuk: foto, video, musik, tulisan, software, desain
+    - Fair use: pendidikan, kritik, parodi (dengan batasan)
+  - Creative Commons (CC) detail:
+    - CC BY: bebas digunakan, wajib credit
+    - CC BY-SA: share alike — turunan harus berlisensi sama
+    - CC BY-NC: non-commercial only
+    - CC BY-ND: no derivatives — tidak boleh diubah
+    - CC BY-NC-SA: non-commercial + share alike
+    - CC BY-NC-ND: paling ketat (credit, non-commercial, tidak boleh ubah)
+    - CC0: public domain, bebas total
+  - Cara menemukan konten berlisensi bebas:
+    - Google Images → Tools → Creative Commons licenses
+    - Unsplash, Pexels, Pixabay (foto)
+    - Wikimedia Commons (berbagai media)
+    - YouTube Audio Library, Free Music Archive (musik)
+    - GitHub (software open source)
+  - Cara memberikan lisensi CC pada karya sendiri:
+    - Pilih lisensi di creativecommons.org/choose
+    - Cantumkan badge/teks lisensi
+  - Open source software:
+    - MIT, GPL, Apache license (konsep dasar)
+    - Mengapa open source penting
+- **Aktivitas**:
+  - [ ] Plugged: Cari 10 gambar berlisensi CC untuk proyek sekolah — catat lisensi dan atribusinya
+  - [ ] Plugged: Buat karya digital (gambar/tulisan) dan berikan lisensi CC
+  - [ ] Plugged: Review lisensi 5 software yang sering digunakan — open source atau proprietary?
+- **Evaluasi / Quiz**:
+  - [ ] Quiz: Identifikasi jenis CC license dan apa yang diizinkan (10 soal)
+  - [ ] Praktik: Diberikan skenario penggunaan konten, tentukan apakah legal
+  - [ ] Proyek: Buat "library sumber daya legal" — kumpulkan link sumber konten gratis

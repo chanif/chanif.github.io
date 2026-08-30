@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstraksi: Memilah Informasi Esensial | Berpikir Komputasional</title>
+    <meta name="description" content="Pelajari pilar Abstraksi dalam Berpikir Komputasional: fokus pada informasi penting, analogi peta navigasi, penyederhanaan data komputasi, simulator filter data, evaluasi 4 bagian.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(245,158,11,0.2);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-amber-100 selection:text-amber-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-amber-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-orange-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-amber-600 transition">
+        fanani<span class="text-amber-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../../" class="text-sm font-semibold text-slate-600 hover:text-amber-600 transition flex items-center gap-1">
+            ← Modul Informatika
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-amber-50 hover:text-amber-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#konsep-abstraksi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-amber-50 hover:text-amber-600 transition whitespace-nowrap">🎯 Konsep Abstraksi</a>
+        <a href="#abstraksi-it" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-amber-50 hover:text-amber-600 transition whitespace-nowrap">💻 Abstraksi dalam IT</a>
+        <a href="#aktivitas-filter" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">🎮 Filter Data Esensial</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-amber-50 hover:text-amber-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-amber-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-amber-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-amber-600 transition">Berpikir Komputasional</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">03. Abstraksi</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-amber-600 via-orange-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🎯 Berpikir Komputasional · Modul 03
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Abstraksi: Fokus pada Informasi Esensial & Penting
+            </h1>
+            <p class="text-amber-100 text-sm md:text-base leading-relaxed mb-6">
+                Dunia nyata penuh dengan jutaan detail rumit. Dengan teknik <em>Abstraksi</em>, kita menyaring informasi kunci yang benar-benar kita butuhkan dan membuang detail yang tidak penting agar masalah menjadi sangat sederhana untuk diselesaikan!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-amber-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🗺️ Analogi: Peta Navigasi & UI</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 18 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-amber-50/50 p-4 rounded-xl border border-amber-100">
+                <span class="text-amber-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Prinsip Abstraksi</strong>
+                    <p class="text-slate-600">Menjelaskan arti memilah informasi esensial dan mengabaikan rincian yang tidak relevan dengan tujuan akhir.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-amber-50/50 p-4 rounded-xl border border-amber-100">
+                <span class="text-amber-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menganalisis Tingkatan Abstraksi</strong>
+                    <p class="text-slate-600">Membedakan representasi konkret dunia nyata dengan model skematis/simbolik (seperti peta MRT atau flowchart).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-amber-50/50 p-4 rounded-xl border border-amber-100">
+                <span class="text-amber-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Abstraksi Data dalam Komputasi</strong>
+                    <p class="text-slate-600">Merancang struktur tabel basis data yang hanya menyimpan kolom esensial untuk memproses transaksi.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-amber-50/50 p-4 rounded-xl border border-amber-100">
+                <span class="text-amber-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menyederhanakan Pemecahan Masalah</strong>
+                    <p class="text-slate-600">Mencegah informasi berlebih (*information overload*) agar algoritma solusi menjadi ringkas dan cepat dieksekusi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: KONSEP ABSTRAKSI -->
+    <section id="konsep-abstraksi" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Hakikat Abstraksi: Fokus pada Esensi</h2>
+                <p class="text-xs text-slate-500">Menyingkirkan kebisingan detail untuk melihat inti persoalan</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">🗺️</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Analogi Peta Navigasi</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Peta Google Maps tidak menggambarkan setiap pohon, batu jalanan, atau warna cat pagar rumah. Peta hanya menampilkan <strong>nama jalan, arah belokan, dan kepadatan lalu lintas</strong> karena itulah informasi esensial untuk sampai ke tujuan!
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">🏥</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Data Pasien Rumah Sakit</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Saat dokter memeriksa pasien, data esensial yang dicatat adalah <strong>tekanan darah, suhu tubuh, dan riwayat alergi</strong>. Warna baju yang dipakai atau merek sepatu pasien diabaikan karena tidak relevan untuk pengobatan.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">🚗</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menyetir Mobil</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Pengemudi cukup memahami <strong>setir, pedal gas, rem, dan persneling</strong> tanpa perlu memikirkan ribuan rumus kimia pembakaran bensin dan aliran oli di dalam blok silinder mesin mobil.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ABSTRAKSI DALAM IT -->
+    <section id="abstraksi-it" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-orange-100 text-orange-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Penerapan Abstraksi dalam Pemrograman & UI</h2>
+                <p class="text-xs text-slate-500">Bagaimana programmer membuat sistem kompleks menjadi sangat mudah dipakai</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-1.5">
+                <span class="text-2xl">📦</span>
+                <strong class="text-xs font-bold text-amber-900 block">1. Variabel dalam Koding</strong>
+                <p class="text-[11px] text-amber-800 leading-relaxed">Variabel <code>skor = 100</code> adalah bentuk abstraksi dari ribuan tegangan voltase listrik biner pada chip memori RAM fisik komputer.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-orange-50/70 border border-orange-200 space-y-1.5">
+                <span class="text-2xl">🖲️</span>
+                <strong class="text-xs font-bold text-orange-900 block">2. Ikon Antarmuka (GUI)</strong>
+                <p class="text-[11px] text-orange-800 leading-relaxed">Ikon tempat sampah 🗑️ menyembunyikan proses kompleks sistem operasi dalam menghapus alokasi blok memori di harddisk.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-1.5">
+                <span class="text-2xl">🗄️</span>
+                <strong class="text-xs font-bold text-amber-900 block">3. Model Basis Data Siswa</strong>
+                <p class="text-[11px] text-amber-800 leading-relaxed">Tabel Database Siswa hanya menyimpan <code>NIS, Nama, Kelas, Nilai</code> dan mengabaikan informasi warna rambut atau makanan favorit.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FILTER DATA ESENSIAL INTERAKTIF -->
+    <section id="aktivitas-filter" class="bg-white rounded-3xl border-2 border-amber-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+                <span class="text-3xl">🎮</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Aktivitas: Filter Abstraksi Data Siswa Baru</h2>
+                    <p class="text-xs text-slate-500">Tentukan apakah setiap data berikut termasuk <strong>Esensial (Wajib Simpan di Database Sekolah)</strong> atau <strong>Detail Tidak Relevan (Abaikan)</strong>!</p>
+                </div>
+            </div>
+            <button onclick="checkFilterActivity()" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl shadow transition">
+                ✓ Periksa Hasil Abstraksi
+            </button>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2" data-fitem="1" data-correct="esensial">
+                <span class="font-bold text-slate-800 block">1. Nomor Induk Siswa Nasional (NISN) & Nama Lengkap</span>
+                <select id="fact-1" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold">
+                    <option value="">-- Pilih Kategori --</option>
+                    <option value="esensial">Wajib Esensial (Simpan di Database)</option>
+                    <option value="abaikan">Detail Tidak Relevan (Abaikan)</option>
+                </select>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2" data-fitem="2" data-correct="abaikan">
+                <span class="font-bold text-slate-800 block">2. Warna Sepatu dan Model Potongan Rambut Siswa</span>
+                <select id="fact-2" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold">
+                    <option value="">-- Pilih Kategori --</option>
+                    <option value="esensial">Wajib Esensial (Simpan di Database)</option>
+                    <option value="abaikan">Detail Tidak Relevan (Abaikan)</option>
+                </select>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2" data-fitem="3" data-correct="esensial">
+                <span class="font-bold text-slate-800 block">3. Nomor WhatsApp Orang Tua / Kontak Darurat</span>
+                <select id="fact-3" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold">
+                    <option value="">-- Pilih Kategori --</option>
+                    <option value="esensial">Wajib Esensial (Simpan di Database)</option>
+                    <option value="abaikan">Detail Tidak Relevan (Abaikan)</option>
+                </select>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2" data-fitem="4" data-correct="abaikan">
+                <span class="font-bold text-slate-800 block">4. Judul Film Kartun Favorit yang Pernah Ditonton</span>
+                <select id="fact-4" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold">
+                    <option value="">-- Pilih Kategori --</option>
+                    <option value="esensial">Wajib Esensial (Simpan di Database)</option>
+                    <option value="abaikan">Detail Tidak Relevan (Abaikan)</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="filter-game-feedback" class="hidden p-4 rounded-2xl text-xs font-bold"></div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF 4 BAGIAN -->
+    <section id="evaluasi" class="bg-white rounded-3xl border-2 border-amber-200 p-6 md:p-10 shadow-md space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+                <span class="text-3xl">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Latihan Evaluasi Formatif (18 Poin)</h2>
+                    <p class="text-xs text-slate-500">Uji pemahaman abstraksi dan penyaringan informasi melalui 4 bagian evaluasi</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="flex items-center justify-between bg-slate-50 p-2 rounded-2xl border border-slate-200 text-xs font-bold">
+            <button onclick="showEvalTab('A')" id="eval-tab-A" class="px-4 py-2 rounded-xl bg-amber-500 text-white shadow-sm transition">Bagian A: Pilihan Ganda (5)</button>
+            <button onclick="showEvalTab('B')" id="eval-tab-B" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian B: Benar/Salah (5)</button>
+            <button onclick="showEvalTab('C')" id="eval-tab-C" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian C: Menjodohkan (5)</button>
+            <button onclick="showEvalTab('D')" id="eval-tab-D" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian D: Mengurutkan (5)</button>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA -->
+        <div id="eval-sec-A" class="space-y-6 text-sm">
+            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian A — Pilihan Ganda (5 Soal)</h3>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A1">
+                <p class="font-bold text-slate-800 text-xs">1. Pengertian Abstraksi dalam Berpikir Komputasional adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A1','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Mengabaikan semua informasi penting</button>
+                    <button onclick="pickMCQ('A1','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Memilih dan berfokus pada informasi penting esensial serta mengabaikan detail yang tidak relevan</button>
+                    <button onclick="pickMCQ('A1','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Menuliskan kode program sepanjang mungkin</button>
+                    <button onclick="pickMCQ('A1','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Menggambar lukisan abstrak di kanvas</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A2">
+                <p class="font-bold text-slate-800 text-xs">2. Contoh abstraksi yang sering kita gunakan saat bepergian adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A2','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Melihat peta rute jalan raya tanpa perlu melihat gambar setiap daun pohon di pinggir jalan</button>
+                    <button onclick="pickMCQ('A2','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Menghitung jumlah helai rambut sopir bus</button>
+                    <button onclick="pickMCQ('A2','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Menghafal seluruh nomor plat mobil yang lewat</button>
+                    <button onclick="pickMCQ('A2','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Memotret semua kerikil jalanan</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A3">
+                <p class="font-bold text-slate-800 text-xs">3. Mengapa abstraksi sangat diperlukan saat membuat program komputer?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A3','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Agar kode program fokus memproses data yang relevan, lebih cepat berjalan, dan hemat memori</button>
+                    <button onclick="pickMCQ('A3','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Supaya komputer bekerja lebih lambat</button>
+                    <button onclick="pickMCQ('A3','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Agar pengguna kebingungan membaca aplikasi</button>
+                    <button onclick="pickMCQ('A3','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Tidak ada fungsinya sama sekali</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A4">
+                <p class="font-bold text-slate-800 text-xs">4. Dalam sistem absensi siswa digital, data manakah yang TIDAK PERLU disimpan (detail tidak relevan)?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A4','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Merek tas ransel dan warna kaos kaki siswa</button>
+                    <button onclick="pickMCQ('A4','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Tanggal dan jam kedatangan siswa</button>
+                    <button onclick="pickMCQ('A4','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Nomor Induk Siswa (NIS)</button>
+                    <button onclick="pickMCQ('A4','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Status Kehadiran (Hadir/Sakit/Izin)</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A5">
+                <p class="font-bold text-slate-800 text-xs">5. Penggunaan ikon mikrofon 🎙️ pada aplikasi pesan suara adalah contoh abstraksi antarmuka karena...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A5','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Menyederhanakan proses rumit perekaman gelombang audio menjadi satu tombol klik sederhana</button>
+                    <button onclick="pickMCQ('A5','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Menghapus rekaman audio dari database</button>
+                    <button onclick="pickMCQ('A5','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Mengubah suara manusia menjadi suara robot</button>
+                    <button onclick="pickMCQ('A5','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Mematikan mikrofon perangkat</button>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <button onclick="showEvalTab('B')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    Lanjut ke Bagian B ▶
+                </button>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH -->
+        <div id="eval-sec-B" class="hidden space-y-6 text-sm">
+            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian B — Benar / Salah (5 Soal)</h3>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B1">
+                <p class="font-semibold text-slate-800 text-xs">1. Abstraksi berarti menyimpan seluruh data sekecil apapun ke dalam memori komputer tanpa memilahnya.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B1','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B1','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B2">
+                <p class="font-semibold text-slate-800 text-xs">2. Denah jalur kereta bawah tanah (MRT) menyederhanakan rute menjadi garis lurus agar mudah dibaca penumpang.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B2','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B2','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B3">
+                <p class="font-semibold text-slate-800 text-xs">3. Semakin banyak detail tidak penting yang disaring, semakin fokus kita pada pemecahan masalah inti.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B3','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B3','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B4">
+                <p class="font-semibold text-slate-800 text-xs">4. Variabel dalam koding menyembunyikan alamat fisik memori biner dari pembuat program.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B4','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B4','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B5">
+                <p class="font-semibold text-slate-800 text-xs">5. Abstraksi membuat pengguna awam tidak perlu memahami rangkaian sirkuit elektronik untuk menggunakan kalkulator.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B5','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B5','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="flex justify-between">
+                <button onclick="showEvalTab('A')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian A</button>
+                <button onclick="showEvalTab('C')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">Lanjut ke Bagian C ▶</button>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN -->
+        <div id="eval-sec-C" class="hidden space-y-6 text-sm">
+            <div class="flex justify-between items-center">
+                <h3 class="font-heading font-bold text-slate-800 text-base">Bagian C — Menjodohkan Sistem & Bentuk Abstraksinya (5 Pasangan)</h3>
+                <button onclick="resetMatchSection()" class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold rounded-lg">🔄 Reset Pasangan</button>
+            </div>
+            <p class="text-xs text-slate-500">Klik konsep sistem di sebelah kiri, lalu klik model abstraksinya di sebelah kanan untuk menghubungkan pasangan.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 relative">
+                <div class="space-y-2.5" id="match-col-left">
+                    <!-- Left items -->
+                </div>
+                <div class="space-y-2.5" id="match-col-right">
+                    <!-- Right items -->
+                </div>
+            </div>
+
+            <div class="flex justify-between">
+                <button onclick="showEvalTab('B')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian B</button>
+                <button onclick="showEvalTab('D')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">Lanjut ke Bagian D ▶</button>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: MENGURUTKAN TINGKATAN ABSTRAKSI -->
+        <div id="eval-sec-D" class="hidden space-y-6 text-sm">
+            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian D — Mengurutkan Tingkatan Representasi dari Sangat Konkret ke Sangat Abstrak</h3>
+            <p class="text-xs text-slate-500">Gunakan tombol panah (▲ / ▼) untuk menyusun 5 tingkatan representasi data dari paling mendetail fisik hingga paling abstrak!</p>
+
+            <div class="space-y-2" id="seq-steps-container">
+                <!-- Sequence steps populated by JS -->
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <button onclick="showEvalTab('C')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian C</button>
+                <button onclick="submitAllEvaluation()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl transition shadow-lg flex items-center gap-2">
+                    <span>📊</span> Hitung Nilai & Lihat Rekap Lengkap
+                </button>
+            </div>
+        </div>
+
+        <!-- HASIL REKAP EVALUASI -->
+        <div id="eval-recap-result" class="hidden p-6 md:p-8 rounded-3xl bg-slate-900 text-white space-y-6">
+            <!-- Dynamically populated recap -->
+        </div>
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-amber-950 text-white rounded-3xl p-8 md:p-10 shadow-xl space-y-8">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-3xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-amber-300">Rangkuman Materi & Refleksi</h2>
+                <p class="text-xs text-slate-300">Poin penting yang wajib diingat dan catatan pemahamanmu</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 text-xs leading-relaxed text-slate-300">
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-amber-300 block mb-1 text-sm">🎯 Inti Abstraksi:</strong>
+                Abstraksi adalah kemampuan menyaring dan menyederhanakan data kompleks dengan hanya berfokus pada apa yang penting.
+            </div>
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-amber-300 block mb-1 text-sm">💡 Menghilangkan Kebisingan:</strong>
+                Membuang detail yang tidak relevan mencegah kebingungan sistem dan menghemat daya komputasi.
+            </div>
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-amber-300 block mb-1 text-sm">💻 Kunci Desain IT:</strong>
+                Mulai dari ikon tombol aplikasi hingga model database sekolah, semuanya dibangun menggunakan prinsip abstraksi.
+            </div>
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-amber-300 block mb-1 text-sm">🚀 Langkah ke Algoritma:</strong>
+                Dengan masalah yang sudah diabstraksi secara jelas, kita dapat menyusun langkah-langkah instruksi logis (Algoritma).
+            </div>
+        </div>
+
+        <!-- Form Refleksi Siswa -->
+        <div class="p-5 bg-white/5 rounded-2xl border border-white/10 space-y-3">
+            <label class="font-bold text-white text-xs block">
+                💭 Refleksi Siswa: Berikan 1 contoh abstraksi yang kamu temui pada aplikasi smartphone yang paling sering kamu pakai sehari-hari!
+            </label>
+            <textarea id="refleksi-text" rows="3" class="w-full p-3 bg-black/30 border border-white/20 rounded-xl text-white text-xs focus:outline-none focus:border-amber-400" placeholder="Tuliskan catatan refleksimu di sini..."></textarea>
+            <div class="flex justify-end">
+                <button onclick="saveStudentReflection()" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+            </div>
+        </div>
+
+        <!-- Completion Footer -->
+        <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <p class="text-xs text-slate-400">Selesai mempelajari modul ini?</p>
+                <p class="text-sm font-bold text-white">Tandai progress belajarmu agar tercatat!</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button id="btn-complete" onclick="markComplete()" class="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md flex items-center gap-2">
+                    <span>✓</span> Tandai Selesai Modul
+                </button>
+                <a href="../04-algoritma-dan-pseudocode/index.html" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl transition">
+                    Materi Berikutnya (Algoritma & Pseudocode) →
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-16 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
+</footer>
+
+<!-- Interactive Scripts -->
+<script>
+// 1. Aktivitas Filter Abstraksi
+function checkFilterActivity() {
+    let correct = 0;
+    const items = [
+        { id: 1, val: document.getElementById('fact-1').value, exp: 'esensial' },
+        { id: 2, val: document.getElementById('fact-2').value, exp: 'abaikan' },
+        { id: 3, val: document.getElementById('fact-3').value, exp: 'esensial' },
+        { id: 4, val: document.getElementById('fact-4').value, exp: 'abaikan' }
+    ];
+
+    items.forEach(it => {
+        const card = document.querySelector(`[data-fitem="${it.id}"]`);
+        if (it.val === it.exp) {
+            correct++;
+            card.className = 'p-4 bg-emerald-50 rounded-2xl border-2 border-emerald-300 space-y-2';
+        } else {
+            card.className = 'p-4 bg-red-50 rounded-2xl border-2 border-red-300 space-y-2';
+        }
+    });
+
+    const fb = document.getElementById('filter-game-feedback');
+    fb.classList.remove('hidden');
+    if (correct === items.length) {
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        fb.innerHTML = '🎉 Sempurna! Kamu telah memahami dengan tepat mana data esensial yang wajib disimpan vs mana detail yang bisa diabstraksikan!';
+    } else {
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        fb.innerHTML = `Skor: ${correct}/${items.length} Benar. Periksa pilihan yang bertanda merah!`;
+    }
+}
+
+// 2. Evaluasi Formatif 4 Bagian
+let evalAnswers = {};
+let matchPairs = {};
+let selectedLeftMatch = null;
+
+const MATCH_DATA_LEFT = [
+    { id: '1', text: 'Peta Jalur MRT' },
+    { id: '2', text: 'Tabel Database Siswa' },
+    { id: '3', text: 'Ikon Keranjang Belanja 🛒' },
+    { id: '4', text: 'Pedal Gas & Rem Mobil' },
+    { id: '5', text: 'Variabel Nilai Matematika' }
+];
+
+const MATCH_DATA_RIGHT = [
+    { id: 'a', text: 'Menyederhanakan alur transaksi checkout barang menjadi satu tombol' },
+    { id: 'b', text: 'Menyajikan rute stasiun sebagai garis lurus tanpa detail jalanan fisik' },
+    { id: 'c', text: 'Menyimpan NIS dan Nama tanpa mencatat warna baju kesukaan siswa' },
+    { id: 'd', text: 'Menyimpan nilai angka tanpa perlu tahu chip sirkuit RAM mana yang terisi' },
+    { id: 'e', text: 'Mengendalikan laju kendaraan tanpa perlu mengerti rumus pembakaran bensin mesin' }
+];
+
+const MATCH_CORRECT = { '1': 'b', '2': 'c', '3': 'a', '4': 'e', '5': 'd' };
+
+let currentSeqSteps = [
+    'Tabel Database Ringkas (Kolom ID, Nama, Skor).',
+    'Siswa Nyata di Kelas (Fisik, Suara, Pakaian, Hobi).',
+    'Ikon Antarmuka Digital Aplikasi Guru.',
+    'Kartu Pelajar Fisik (Foto, NIS, Tanggal Lahir).',
+    'Variabel Kode Program (int totalSiswa = 32).'
+];
+
+const SEQ_CORRECT = [
+    'Siswa Nyata di Kelas (Fisik, Suara, Pakaian, Hobi).',
+    'Kartu Pelajar Fisik (Foto, NIS, Tanggal Lahir).',
+    'Tabel Database Ringkas (Kolom ID, Nama, Skor).',
+    'Ikon Antarmuka Digital Aplikasi Guru.',
+    'Variabel Kode Program (int totalSiswa = 32).'
+];
+
+function showEvalTab(tabId) {
+    ['A','B','C','D'].forEach(t => {
+        document.getElementById(`eval-tab-${t}`).className = (t === tabId)
+            ? 'px-4 py-2 rounded-xl bg-amber-500 text-white shadow-sm transition'
+            : 'px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition';
+        const sec = document.getElementById(`eval-sec-${t}`);
+        if (sec) {
+            if (t === tabId) sec.classList.remove('hidden');
+            else sec.classList.add('hidden');
+        }
+    });
+}
+
+function pickMCQ(q, val, btn) {
+    evalAnswers[q] = val;
+    const parent = btn.parentElement;
+    parent.querySelectorAll('button').forEach(b => b.className = 'p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition');
+    btn.className = 'p-2.5 bg-amber-100 border-2 border-amber-400 text-amber-900 font-bold rounded-xl text-left';
+}
+
+function pickTF(q, val, btn) {
+    evalAnswers[q] = val;
+    const parent = btn.parentElement;
+    parent.querySelectorAll('button').forEach(b => b.className = 'px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100');
+    btn.className = 'px-4 py-1.5 bg-amber-500 text-white font-bold rounded-lg text-xs';
+}
+
+function initMatching() {
+    const leftCol = document.getElementById('match-col-left');
+    const rightCol = document.getElementById('match-col-right');
+    leftCol.innerHTML = '';
+    rightCol.innerHTML = '';
+
+    MATCH_DATA_LEFT.forEach(item => {
+        const d = document.createElement('div');
+        d.id = `match-l-${item.id}`;
+        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400 transition text-xs font-bold text-slate-700 select-none';
+        d.onclick = () => selectLeftMatch(item.id);
+        d.innerHTML = `<span>${item.id}. ${item.text}</span>`;
+        leftCol.appendChild(d);
+    });
+
+    MATCH_DATA_RIGHT.forEach(item => {
+        const d = document.createElement('div');
+        d.id = `match-r-${item.id}`;
+        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400 transition text-xs text-slate-700 select-none';
+        d.onclick = () => selectRightMatch(item.id);
+        d.innerHTML = `<span>• ${item.text}</span>`;
+        rightCol.appendChild(d);
+    });
+}
+
+function selectLeftMatch(id) {
+    selectedLeftMatch = id;
+    MATCH_DATA_LEFT.forEach(item => {
+        const el = document.getElementById(`match-l-${item.id}`);
+        if (item.id === id) {
+            el.className = 'p-3 bg-amber-100 border-2 border-amber-500 text-amber-900 font-bold rounded-xl cursor-pointer select-none';
+        } else if (matchPairs[item.id]) {
+            el.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-bold rounded-xl cursor-pointer select-none';
+        } else {
+            el.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer select-none text-xs font-bold text-slate-700';
+        }
+    });
+}
+
+function selectRightMatch(rId) {
+    if (!selectedLeftMatch) return;
+    matchPairs[selectedLeftMatch] = rId;
+
+    const leftEl = document.getElementById(`match-l-${selectedLeftMatch}`);
+    leftEl.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-bold rounded-xl cursor-pointer select-none flex justify-between items-center';
+    leftEl.innerHTML = `<span>${leftEl.innerText}</span> <span class="text-[10px] bg-emerald-200 px-2 py-0.5 rounded font-mono">🔗 #${selectedLeftMatch}</span>`;
+
+    const rightEl = document.getElementById(`match-r-${rId}`);
+    rightEl.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-medium rounded-xl cursor-pointer select-none flex justify-between items-center';
+
+    selectedLeftMatch = null;
+}
+
+function resetMatchSection() {
+    matchPairs = {};
+    selectedLeftMatch = null;
+    initMatching();
+}
+
+function initSequence() {
+    renderSequence();
+}
+
+function renderSequence() {
+    const container = document.getElementById('seq-steps-container');
+    container.innerHTML = '';
+    currentSeqSteps.forEach((step, idx) => {
+        const d = document.createElement('div');
+        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between gap-3 text-xs';
+        d.innerHTML = `
+            <span class="font-bold text-slate-400 w-6 font-mono">${idx + 1}.</span>
+            <span class="flex-1 font-semibold text-slate-700">${step}</span>
+            <div class="flex gap-1">
+                <button onclick="moveSeq(${idx}, -1)" class="w-6 h-6 rounded bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-600 hover:bg-slate-100 ${idx === 0 ? 'opacity-30 cursor-not-allowed' : ''}">▲</button>
+                <button onclick="moveSeq(${idx}, 1)" class="w-6 h-6 rounded bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-600 hover:bg-slate-100 ${idx === currentSeqSteps.length - 1 ? 'opacity-30 cursor-not-allowed' : ''}">▼</button>
+            </div>
+        `;
+        container.appendChild(d);
+    });
+}
+
+function moveSeq(idx, dir) {
+    const target = idx + dir;
+    if (target < 0 || target >= currentSeqSteps.length) return;
+    const temp = currentSeqSteps[idx];
+    currentSeqSteps[idx] = currentSeqSteps[target];
+    currentSeqSteps[target] = temp;
+    renderSequence();
+}
+
+function submitAllEvaluation() {
+    let scoreA = 0;
+    const keyA = { A1: 'B', A2: 'A', A3: 'A', A4: 'A', A5: 'A' };
+    Object.keys(keyA).forEach(k => { if (evalAnswers[k] === keyA[k]) scoreA += 5; });
+
+    let scoreB = 0;
+    const keyB = { B1: 'salah', B2: 'benar', B3: 'benar', B4: 'benar', B5: 'benar' };
+    Object.keys(keyB).forEach(k => { if (evalAnswers[k] === keyB[k]) scoreB += 5; });
+
+    let scoreC = 0;
+    Object.keys(MATCH_CORRECT).forEach(k => {
+        if (matchPairs[k] === MATCH_CORRECT[k]) scoreC += 5;
+    });
+
+    let scoreD = 0;
+    currentSeqSteps.forEach((s, idx) => {
+        if (s === SEQ_CORRECT[idx]) scoreD += 5;
+    });
+
+    const totalRaw = scoreA + scoreB + scoreC + scoreD; // Max: 25+25+25+25 = 100
+    const totalPct = Math.round(totalRaw);
+
+    const recap = document.getElementById('eval-recap-result');
+    recap.classList.remove('hidden');
+    recap.scrollIntoView({ behavior: 'smooth' });
+
+    recap.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+            <div>
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest block mb-1">HASIL ASESMEN FORMATIF</span>
+                <h3 class="font-heading font-extrabold text-3xl text-white">Nilai Akhir: ${totalPct} / 100</h3>
+            </div>
+            <span class="px-5 py-2 rounded-2xl text-sm font-extrabold ${totalPct >= 80 ? 'bg-emerald-500 text-white' : 'bg-amber-500 text-white'}">
+                ${totalPct >= 80 ? '🏆 Sangat Baik (Tuntas)' : '📖 Perlu Penguatan'}
+            </span>
+        </div>
+
+        <div class="grid sm:grid-cols-4 gap-3 text-center text-xs">
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian A (MCQ)</span>
+                <strong class="text-base text-amber-300">${scoreA} / 25</strong>
+            </div>
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian B (B/S)</span>
+                <strong class="text-base text-amber-300">${scoreB} / 25</strong>
+            </div>
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian C (Jodohkan)</span>
+                <strong class="text-base text-amber-300">${scoreC} / 25</strong>
+            </div>
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian D (Urutan)</span>
+                <strong class="text-base text-amber-300">${scoreD} / 25</strong>
+            </div>
+        </div>
+
+        <div id="eval-history-box" class="p-4 bg-white/5 rounded-2xl border border-white/10 text-xs text-slate-300">
+            <span class="text-[10px] uppercase tracking-wider text-amber-400 font-bold block mb-1">Riwayat Pengerjaan Evaluasi Siswa:</span>
+            <div id="eval-history-list" class="space-y-1"></div>
+        </div>
+
+        <p class="text-xs text-slate-300 leading-relaxed">
+            ${totalPct >= 80 
+                ? 'Selamat! Kamu telah menguasai konsep dan teknik Abstraksi informasi dengan sangat baik. Tuliskan refleksimu di bawah ini!' 
+                : 'Bagus! Kamu sudah berusaha. Silakan pelajari kembali konsep Abstraksi di atas dan ulangi evaluasi untuk mencapai hasil maksimal.'}
+        </p>
+    `;
+
+    // Sync to Database & LocalStorage via FananiTracker
+    if (window.FananiTracker) {
+        FananiTracker.submitEvaluation({
+            subject: 'informatika',
+            topic_id: 'inf-bk-03-abstraksi',
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalPct,
+            answers: { evalAnswers, matchPairs, currentSeqSteps }
+        }).then(res => {
+            renderHistoryList();
+        });
+    }
+}
+
+async function renderHistoryList() {
+    if (!window.FananiTracker) return;
+    const hist = await FananiTracker.getHistory('informatika', 'inf-bk-03-abstraksi');
+    const el = document.getElementById('eval-history-list');
+    if (!el || !hist.attempts) return;
+
+    if (hist.attempts.length === 0) {
+        el.innerHTML = '<span class="text-slate-400">Belum ada riwayat pengerjaan sebelumnya.</span>';
+        return;
+    }
+
+    el.innerHTML = hist.attempts.map((att, i) => `
+        <div class="flex justify-between items-center bg-black/20 px-3 py-1.5 rounded-lg text-[11px]">
+            <span>Percobaan #${att.attempt_number || (i+1)} (${new Date(att.created_at || Date.now()).toLocaleDateString()})</span>
+            <strong class="text-amber-300 font-mono">Nilai: ${Math.round(att.total_score)}/100</strong>
+        </div>
+    `).join('');
+}
+
+function saveStudentReflection() {
+    const val = document.getElementById('refleksi-text').value;
+    if (!val.trim()) {
+        alert('Tuliskan catatan refleksimu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        FananiTracker.saveReflection('informatika', 'inf-bk-03-abstraksi', val).then(() => {
+            alert('Catatan refleksi berhasil disimpan ke database!');
+        });
+    } else {
+        localStorage.setItem('refl_inf-bk-03-abstraksi', val);
+        alert('Catatan refleksi berhasil disimpan!');
+    }
+}
+
+function markComplete() {
+    if (window.FananiTracker) {
+        FananiTracker.markCompleted('informatika', 'inf-bk-03-abstraksi').then(() => {
+            const btn = document.getElementById('btn-complete');
+            btn.innerHTML = '✓ Modul Berhasil Dituntaskan!';
+            btn.className = 'px-5 py-2.5 bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md cursor-default';
+            alert('Selamat! Progress belajar modul ini telah berhasil disimpan ke database.');
+        });
+    } else {
+        const btn = document.getElementById('btn-complete');
+        btn.innerHTML = '✓ Modul Berhasil Dituntaskan!';
+        btn.className = 'px-5 py-2.5 bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md cursor-default';
+        alert('Modul ditandai selesai!');
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
+    initSequence();
+
+    if (window.FananiTracker) {
+        FananiTracker.getHistory('informatika', 'inf-bk-03-abstraksi').then(h => {
+            if (h.reflection_text) {
+                document.getElementById('refleksi-text').value = h.reflection_text;
+            }
+            if (h.is_completed) {
+                const btn = document.getElementById('btn-complete');
+                if (btn) {
+                    btn.innerHTML = '✓ Modul Berhasil Dituntaskan!';
+                    btn.className = 'px-5 py-2.5 bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md cursor-default';
+                }
+            }
+        });
+    }
+});
+</script>
+<script src="../../../js/tracker.js"></script>
+
+</body>
+</html>

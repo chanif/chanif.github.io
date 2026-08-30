@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berpikir Komputasional: Algoritma di Balik Rumah Cerdas (IoT) | Pak Fanani</title>
+    <meta name="description" content="Media Pembelajaran Lengkap Berpikir Komputasional: Penerapan 4 Fondasi (Dekomposisi, Abstraksi, Pola, Algoritma) pada Rumah Cerdas IoT. Dilengkapi aktivitas rancang IoT, 4 tahap tantangan BK, evaluasi lengkap 4 bagian, dan refleksi belajar.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(14,165,233,0.18);}
+        .match-line{stroke-dasharray:6 4;animation:dash 1.5s linear infinite;}
+        @keyframes dash{to{stroke-dashoffset:-20;}}
+        .slot-target.drag-over{border-color:#0284c7;background-color:#e0f2fe;}
+        .slot-target.filled{background-color:#f0fdf4;border-color:#22c55e;}
+        .slot-target.wrong{background-color:#fef2f2;border-color:#ef4444;}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-cyan-100 selection:text-cyan-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-cyan-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-cyan-600 transition">
+        fanani<span class="text-cyan-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../../" class="text-sm font-semibold text-slate-600 hover:text-cyan-600 transition flex items-center gap-1">
+            ← Modul Informatika
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-cyan-50 hover:text-cyan-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#fondasi-bk" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-cyan-50 hover:text-cyan-600 transition whitespace-nowrap">🧠 4 Fondasi BK</a>
+        <a href="#video-materi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-cyan-50 hover:text-cyan-600 transition whitespace-nowrap">🎬 Video</a>
+        <a href="#aktivitas-rancang" class="px-3 py-1.5 rounded-full bg-cyan-100 text-cyan-800 hover:bg-cyan-200 transition whitespace-nowrap font-bold">🏠 Rancang Smart Home</a>
+        <a href="#tantangan-bk" class="px-3 py-1.5 rounded-full bg-indigo-100 text-indigo-800 hover:bg-indigo-200 transition whitespace-nowrap font-bold">🎮 4 Tahap BK</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Lengkap</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-cyan-50 hover:text-cyan-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-cyan-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-cyan-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-cyan-600 transition">Berpikir Komputasional</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">Studi Kasus Rumah Cerdas (IoT)</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-cyan-700 via-teal-700 to-indigo-800 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                💡 Informatika SMP · Fase D (Kelas IX)
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Berpikir Komputasional: Algoritma di Balik Rumah Cerdas (IoT)
+            </h1>
+            <p class="text-cyan-100 text-sm md:text-base leading-relaxed mb-6">
+                Pelajari bagaimana 4 fondasi berpikir komputasional (*Dekomposisi, Abstraksi, Pengenalan Pola, dan Algoritma*) bekerja secara harmonis mengendalikan sensor, mikrokontroler, dan aktuator pada sistem rumah pintar (*Internet of Things*).
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-cyan-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Estimasi: 60–90 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🏠 Praktik: Drag & Drop Smart Home</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🎮 Tantangan: 4 Tahap BK</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 18 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran & Capaian</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-cyan-50/50 p-4 rounded-xl border border-cyan-100">
+                <span class="text-cyan-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami 4 Fondasi Berpikir Komputasional</strong>
+                    <p class="text-slate-600">Mengidentifikasi konsep Dekomposisi, Abstraksi, Pengenalan Pola, dan Algoritma sebagai metode pemecahan masalah sistematis.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-cyan-50/50 p-4 rounded-xl border border-cyan-100">
+                <span class="text-cyan-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Dekomposisi Sistem IoT</strong>
+                    <p class="text-slate-600">Memecah sistem rumah cerdas menjadi subsistem terstruktur: <em>Input (Sensor) ➔ Proses (Mikrokontroler) ➔ Output (Aktuator)</em>.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-cyan-50/50 p-4 rounded-xl border border-cyan-100">
+                <span class="text-cyan-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Abstraksi & Pengenalan Pola</strong>
+                    <p class="text-slate-600">Menyaring variabel data lingkungan esensial (suhu, cahaya) dan mendeteksi siklus berulang (fajar/senja) untuk otomatisasi mandiri.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-cyan-50/50 p-4 rounded-xl border border-cyan-100">
+                <span class="text-cyan-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Merancang Logika Kondisional (IF-THEN)</strong>
+                    <p class="text-slate-600">Menyusun aturan logika tunggal, majemuk (IF-AND-THEN), dan percabangan (IF-ELSE) untuk mengendalikan perangkat fisik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: 4 FONDASI BERPIKIR KOMPUTASIONAL (MATERI LENGKAP) -->
+    <section id="fondasi-bk" class="space-y-8">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-cyan-100 text-cyan-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">4 Fondasi Berpikir Komputasional pada Rumah Cerdas</h2>
+                <p class="text-xs text-slate-500">Kupas tuntas konsep dan penerapannya di dunia nyata</p>
+            </div>
+        </div>
+
+        <!-- 4 Fondasi Tabs / Cards -->
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- 1. Dekomposisi -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm card-hover space-y-4">
+                <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                    <span class="text-3xl p-2.5 bg-blue-50 text-blue-600 rounded-xl">🧩</span>
+                    <div>
+                        <h3 class="font-heading font-bold text-lg text-slate-800">1. Dekomposisi</h3>
+                        <p class="text-xs text-slate-400">Memecah Masalah Kompleks</p>
+                    </div>
+                </div>
+                <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                    <p><strong>Pengertian:</strong> Memecah masalah, sistem, atau proses yang besar dan rumit menjadi bagian-bagian atau subsistem yang lebih kecil, sederhana, dan terfokus sehingga lebih mudah dianalisis serta diselesaikan.</p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <strong class="text-blue-800 block mb-1">🏠 Penerapan pada Rumah Cerdas (IoT):</strong>
+                        Rumah pintar dipecah menjadi 3 subsistem utama:
+                        <ul class="list-disc pl-4 mt-1 space-y-0.5 text-slate-700">
+                            <li><strong>Input (Sensor):</strong> Mengindera kondisi fisik sekitar (Sensor Suhu, Cahaya LDR, Gerak PIR, Gas).</li>
+                            <li><strong>Proses (Otak):</strong> Komputer mini / mikrokontroler yang mengolah data dan menjalankan algoritma.</li>
+                            <li><strong>Output (Aktuator):</strong> Perangkat pelaksana aksi fisik (Lampu LED, Relay AC, Motor Tirai, Pompa Air).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Abstraksi -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm card-hover space-y-4">
+                <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                    <span class="text-3xl p-2.5 bg-amber-50 text-amber-600 rounded-xl">🔍</span>
+                    <div>
+                        <h3 class="font-heading font-bold text-lg text-slate-800">2. Abstraksi</h3>
+                        <p class="text-xs text-slate-400">Fokus pada Informasi Esensial</p>
+                    </div>
+                </div>
+                <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                    <p><strong>Pengertian:</strong> Menyaring dan memilah informasi untuk hanya berfokus pada data esensial yang penting dan relevan, serta mengabaikan detail-detail fisik yang tidak berpengaruh pada solusi.</p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <strong class="text-amber-800 block mb-1">🏠 Penerapan pada Rumah Cerdas (IoT):</strong>
+                        Saat merancang <em>lampu kamar tidur otomatis</em>:
+                        <ul class="list-disc pl-4 mt-1 space-y-0.5 text-slate-700">
+                            <li><strong>Data Penting (Diolah):</strong> Tingkat intensitas cahaya (Lux) dan status ada orang (PIR).</li>
+                            <li><strong>Detail Non-Esensial (Dibuang):</strong> Warna cat dinding kamar, merk sprei kasur, poster dinding, atau jumlah sepatu di rak.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Pengenalan Pola -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm card-hover space-y-4">
+                <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                    <span class="text-3xl p-2.5 bg-emerald-50 text-emerald-600 rounded-xl">📈</span>
+                    <div>
+                        <h3 class="font-heading font-bold text-lg text-slate-800">3. Pengenalan Pola</h3>
+                        <p class="text-xs text-slate-400">Mendeteksi Keteraturan & Siklus</p>
+                    </div>
+                </div>
+                <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                    <p><strong>Pengertian:</strong> Mengenali kesamaan pola, tren keteraturan, atau siklus berulang pada data/lingkungan untuk merancang solusi otomatis yang dapat digunakan berulang kali.</p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <strong class="text-emerald-800 block mb-1">🏠 Penerapan pada Rumah Cerdas (IoT):</strong>
+                        Sensor cahaya merekam pola 24 jam setiap hari:
+                        <ul class="list-disc pl-4 mt-1 space-y-0.5 text-slate-700">
+                            <li><strong>Fajar (05.30):</strong> Cahaya matahari mulai naik ➔ Lampu taman otomatis mati.</li>
+                            <li><strong>Senja (17.30):</strong> Cahaya matahari turun di bawah 50 Lux ➔ Lampu teras otomatis menyala.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Algoritma -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm card-hover space-y-4">
+                <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                    <span class="text-3xl p-2.5 bg-purple-50 text-purple-600 rounded-xl">⚡</span>
+                    <div>
+                        <h3 class="font-heading font-bold text-lg text-slate-800">4. Perancangan Algoritma</h3>
+                        <p class="text-xs text-slate-400">Menyusun Aturan Logika (IF-THEN)</p>
+                    </div>
+                </div>
+                <div class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                    <p><strong>Pengertian:</strong> Menyusun urutan langkah instruksi logis dan aturan pengambilan keputusan yang presisi dan tidak ambigu untuk dieksekusi oleh komputer.</p>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <strong class="text-purple-800 block mb-1">🏠 Penerapan pada Rumah Cerdas (IoT):</strong>
+                        Aturan logika kondisional untuk aksi mandiri mesin:
+                        <ul class="list-disc pl-4 mt-1 space-y-0.5 text-slate-700 font-mono">
+                            <li><strong>Tunggal:</strong> JIKA (Cahaya &lt; 50) MAKA { Nyalakan Lampu }</li>
+                            <li><strong>Majemuk:</strong> JIKA (Suhu &gt; 30°C DAN Ada Orang) MAKA { Putar Kipas }</li>
+                            <li><strong>Percabangan:</strong> JIKA (Pintu Sah) MAKA { Buka } JIKA_TIDAK { Bunyikan Alarm }</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: VIDEO PEMBELAJARAN -->
+    <section id="video-materi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 mb-2">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-bold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Video Pembelajaran</h2>
+                <p class="text-xs text-slate-500">Simak penjelasan visual penerapan Berpikir Komputasional pada Rumah Cerdas</p>
+            </div>
+        </div>
+
+        <div class="aspect-video w-full bg-slate-900 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center relative">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/rgZvZGHah1Y?si=ersNe6K6cqmznc1b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <p class="text-xs text-slate-400 italic text-center">
+            Tip: Tonton video untuk memahami bagaimana sensor mendeteksi perubahan dan aktuator merespons instruksi logika.
+        </p>
+    </section>
+
+    <!-- SECTION: AKTIVITAS RANCANG RUMAH CERDAS (DRAG & DROP RUANGAN) -->
+    <section id="aktivitas-rancang" class="bg-white rounded-3xl border-2 border-cyan-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+                <span class="text-3xl">🏠</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Aktivitas: Rancang Rumah Cerdas</h2>
+                    <p class="text-xs text-slate-500">Pasangkan komponen Sensor (Input) dan Aktuator (Output) ke ruangan yang tepat sesuai kebutuhan!</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="resetSmartHomeActivity()" class="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition">
+                    🔄 Reset
+                </button>
+                <button onclick="checkSmartHomeActivity()" class="px-4 py-1.5 bg-cyan-600 hover:bg-cyan-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    ✓ Periksa Jawaban
+                </button>
+            </div>
+        </div>
+
+        <!-- Palet Komponen Chip (Bisa di-klik atau di-drag) -->
+        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Pilih / Drag Komponen ke Kotak Ruangan:</span>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="chips-palette">
+                <div draggable="true" ondragstart="onChipDragStart(event)" onclick="selectPaletteChip('sensor-cahaya')" data-component="sensor-cahaya" data-type="sensor" class="chip-item p-2.5 bg-white border border-cyan-200 rounded-xl text-xs font-semibold text-slate-700 flex items-center gap-2 cursor-pointer hover:border-cyan-400 hover:shadow-sm transition select-none">
+                    <span>📡</span> <span>Sensor Cahaya</span>
+                </div>
+                <div draggable="true" ondragstart="onChipDragStart(event)" onclick="selectPaletteChip('sensor-suhu')" data-component="sensor-suhu" data-type="sensor" class="chip-item p-2.5 bg-white border border-cyan-200 rounded-xl text-xs font-semibold text-slate-700 flex items-center gap-2 cursor-pointer hover:border-cyan-400 hover:shadow-sm transition select-none">
+                    <span>🌡️</span> <span>Sensor Suhu</span>
+                </div>
+                <div draggable="true" ondragstart="onChipDragStart(event)" onclick="selectPaletteChip('sensor-gerak')" data-component="sensor-gerak" data-type="sensor" class="chip-item p-2.5 bg-white border border-cyan-200 rounded-xl text-xs font-semibold text-slate-700 flex items-center gap-2 cursor-pointer hover:border-cyan-400 hover:shadow-sm transition select-none">
+                    <span>🚶</span> <span>Sensor Gerak</span>
+                </div>
+                <div draggable="true" ondragstart="onChipDragStart(event)" onclick="selectPaletteChip('sensor-gas')" data-component="sensor-gas" data-type="sensor" class="chip-item p-2.5 bg-white border border-cyan-200 rounded-xl text-xs font-semibold text-slate-700 flex items-center gap-2 cursor-pointer hover:border-cyan-400 hover:shadow-sm transition select-none">
+                    <span>💨</span> <span>Sensor Gas</span>
+                </div>
+                <div draggable="true" ondragstart="onChipDragStart(event)" onclick="selectPaletteChip('lampu-led')" data-component="lampu-led" data-type="actuator" class="chip-item p-2.5 bg-white border border-indigo-200 rounded-xl text-xs font-semibold text-slate-700 flex items-center gap-2 cursor-pointer hover:border-indigo-400 hover:shadow-sm transition select-none">
+                    <span>💡</span> <span>Lampu LED</span>
+                </div>
+                <div draggable="true" ondragstart="onChipDragStart(event)" onclick="selectPaletteChip('kipas-angin')" data-component="kipas-angin" data-type="actuator" class="chip-item p-2.5 bg-white border border-indigo-200 rounded-xl text-xs font-semibold text-slate-700 flex items-center gap-2 cursor-pointer hover:border-indigo-400 hover:shadow-sm transition select-none">
+                    <span>🌀</span> <span>Kipas Angin</span>
+                </div>
+                <div draggable="true" ondragstart="onChipDragStart(event)" onclick="selectPaletteChip('alarm-buzzer')" data-component="alarm-buzzer" data-type="actuator" class="chip-item p-2.5 bg-white border border-indigo-200 rounded-xl text-xs font-semibold text-slate-700 flex items-center gap-2 cursor-pointer hover:border-indigo-400 hover:shadow-sm transition select-none">
+                    <span>🔔</span> <span>Alarm / Buzzer</span>
+                </div>
+                <div draggable="true" ondragstart="onChipDragStart(event)" onclick="selectPaletteChip('ventilasi')" data-component="ventilasi" data-type="actuator" class="chip-item p-2.5 bg-white border border-indigo-200 rounded-xl text-xs font-semibold text-slate-700 flex items-center gap-2 cursor-pointer hover:border-indigo-400 hover:shadow-sm transition select-none">
+                    <span>🪟</span> <span>Ventilasi Otomatis</span>
+                </div>
+            </div>
+            <p id="active-chip-hint" class="text-[11px] text-cyan-700 font-medium hidden">
+                👉 Klik slot target pada ruangan di bawah untuk memasang komponen yang dipilih.
+            </p>
+        </div>
+
+        <!-- 4 Ruangan Grid -->
+        <div class="grid sm:grid-cols-2 gap-4">
+            <!-- Room 1: Kamar Tidur -->
+            <div class="room-card bg-slate-50/70 p-4 rounded-2xl border border-slate-200 space-y-3" data-room="kamar-tidur">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-sm text-slate-800 flex items-center gap-1.5">🛏️ Kamar Tidur</span>
+                    <span class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">Lampu Otomatis saat Gelap</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="slot-target p-3 bg-white border-2 border-dashed border-cyan-200 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer" data-room="kamar-tidur" data-slot-type="sensor" ondragover="onSlotDragOver(event)" ondrop="onSlotDrop(event)" onclick="onSlotClick(this)">
+                        <span class="text-[11px] text-slate-400">📡 Pasang Sensor</span>
+                    </div>
+                    <div class="slot-target p-3 bg-white border-2 border-dashed border-indigo-200 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer" data-room="kamar-tidur" data-slot-type="actuator" ondragover="onSlotDragOver(event)" ondrop="onSlotDrop(event)" onclick="onSlotClick(this)">
+                        <span class="text-[11px] text-slate-400">⚡ Pasang Aktuator</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room 2: Ruang Tamu -->
+            <div class="room-card bg-slate-50/70 p-4 rounded-2xl border border-slate-200 space-y-3" data-room="ruang-tamu">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-sm text-slate-800 flex items-center gap-1.5">🛋️ Ruang Tamu</span>
+                    <span class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">Kipas Otomatis saat Panas & Ada Orang</span>
+                </div>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                    <div class="slot-target p-3 bg-white border-2 border-dashed border-cyan-200 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer" data-room="ruang-tamu" data-slot-type="sensor" ondragover="onSlotDragOver(event)" ondrop="onSlotDrop(event)" onclick="onSlotClick(this)">
+                        <span class="text-[10px] text-slate-400">📡 Sensor 1</span>
+                    </div>
+                    <div class="slot-target p-3 bg-white border-2 border-dashed border-cyan-200 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer" data-room="ruang-tamu" data-slot-type="sensor" ondragover="onSlotDragOver(event)" ondrop="onSlotDrop(event)" onclick="onSlotClick(this)">
+                        <span class="text-[10px] text-slate-400">📡 Sensor 2</span>
+                    </div>
+                    <div class="slot-target p-3 bg-white border-2 border-dashed border-indigo-200 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer" data-room="ruang-tamu" data-slot-type="actuator" ondragover="onSlotDragOver(event)" ondrop="onSlotDrop(event)" onclick="onSlotClick(this)">
+                        <span class="text-[10px] text-slate-400">⚡ Aktuator</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room 3: Teras -->
+            <div class="room-card bg-slate-50/70 p-4 rounded-2xl border border-slate-200 space-y-3" data-room="teras">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-sm text-slate-800 flex items-center gap-1.5">🚪 Teras / Pintu Depan</span>
+                    <span class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">Alarm saat Ada Gerakan Penyusup</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="slot-target p-3 bg-white border-2 border-dashed border-cyan-200 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer" data-room="teras" data-slot-type="sensor" ondragover="onSlotDragOver(event)" ondrop="onSlotDrop(event)" onclick="onSlotClick(this)">
+                        <span class="text-[11px] text-slate-400">📡 Pasang Sensor</span>
+                    </div>
+                    <div class="slot-target p-3 bg-white border-2 border-dashed border-indigo-200 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer" data-room="teras" data-slot-type="actuator" ondragover="onSlotDragOver(event)" ondrop="onSlotDrop(event)" onclick="onSlotClick(this)">
+                        <span class="text-[11px] text-slate-400">⚡ Pasang Aktuator</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room 4: Dapur -->
+            <div class="room-card bg-slate-50/70 p-4 rounded-2xl border border-slate-200 space-y-3" data-room="dapur">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-sm text-slate-800 flex items-center gap-1.5">🍳 Dapur</span>
+                    <span class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">Deteksi Kebocoran Gas & Buang Udara</span>
+                </div>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                    <div class="slot-target p-3 bg-white border-2 border-dashed border-cyan-200 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer" data-room="dapur" data-slot-type="sensor" ondragover="onSlotDragOver(event)" ondrop="onSlotDrop(event)" onclick="onSlotClick(this)">
+                        <span class="text-[10px] text-slate-400">📡 Sensor Gas</span>
+                    </div>
+                    <div class="slot-target p-3 bg-white border-2 border-dashed border-indigo-200 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer" data-room="dapur" data-slot-type="actuator" ondragover="onSlotDragOver(event)" ondrop="onSlotDrop(event)" onclick="onSlotClick(this)">
+                        <span class="text-[10px] text-slate-400">⚡ Aktuator 1</span>
+                    </div>
+                    <div class="slot-target p-3 bg-white border-2 border-dashed border-indigo-200 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer" data-room="dapur" data-slot-type="actuator" ondragover="onSlotDragOver(event)" ondrop="onSlotDrop(event)" onclick="onSlotClick(this)">
+                        <span class="text-[10px] text-slate-400">⚡ Aktuator 2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="smart-home-feedback" class="hidden p-4 rounded-2xl text-xs font-bold"></div>
+    </section>
+
+    <!-- SECTION: TANTANGAN BERPIKIR KOMPUTASIONAL (4 TAHAP LENGKAP) -->
+    <section id="tantangan-bk" class="bg-white rounded-3xl border-2 border-indigo-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+                <span class="text-3xl">🎮</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Tantangan 4 Tahap Berpikir Komputasional</h2>
+                    <p class="text-xs text-slate-500">Uji kemampuan analitis di setiap fondasi BK secara bertahap</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span id="game-stars-badge" class="px-3.5 py-1.5 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-extrabold rounded-xl">
+                    ⭐ Total Bintang: 0 / 4
+                </span>
+            </div>
+        </div>
+
+        <!-- Stage Tabs -->
+        <div class="flex gap-2 overflow-x-auto pb-2 text-xs font-bold">
+            <button onclick="switchGameStage(1)" id="tab-stage-1" class="px-4 py-2 rounded-xl bg-indigo-600 text-white shadow-sm transition">
+                1. Dekomposisi
+            </button>
+            <button onclick="switchGameStage(2)" id="tab-stage-2" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                2. Abstraksi
+            </button>
+            <button onclick="switchGameStage(3)" id="tab-stage-3" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                3. Pengenalan Pola
+            </button>
+            <button onclick="switchGameStage(4)" id="tab-stage-4" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                4. Algoritma
+            </button>
+        </div>
+
+        <!-- STAGE 1: DEKOMPOSISI -->
+        <div id="stage-panel-1" class="space-y-4">
+            <div class="p-4 bg-indigo-50/60 rounded-2xl border border-indigo-100 text-xs text-indigo-900">
+                <strong>Instruksi Tahap 1:</strong> Kelompokkan setiap komponen di bawah ini ke kategori yang tepat: <strong>INPUT (Sensor)</strong>, <strong>PROSES (Otak Mini)</strong>, atau <strong>OUTPUT (Aktuator)</strong>.
+            </div>
+            <div class="grid sm:grid-cols-3 gap-3" id="decomp-pool">
+                <!-- Items populated by JS -->
+            </div>
+            <div class="text-right">
+                <button onclick="checkStage1()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    ✓ Periksa Tahap 1
+                </button>
+            </div>
+        </div>
+
+        <!-- STAGE 2: ABSTRAKSI -->
+        <div id="stage-panel-2" class="hidden space-y-4">
+            <div class="p-4 bg-indigo-50/60 rounded-2xl border border-indigo-100 text-xs text-indigo-900">
+                <strong>Skenario Tahap 2:</strong> Kamu sedang merancang <em>Lampu Kamar Otomatis</em>. Klik kartu untuk memilih data yang <strong>PENTING</strong> untuk sistem, dan biarkan kartu yang <strong>TIDAK PENTING</strong>!
+            </div>
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-3" id="abstraction-cards-grid">
+                <!-- Abstraction cards populated by JS -->
+            </div>
+            <div class="text-right">
+                <button onclick="checkStage2()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    ✓ Periksa Tahap 2
+                </button>
+            </div>
+        </div>
+
+        <!-- STAGE 3: PENGENALAN POLA -->
+        <div id="stage-panel-3" class="hidden space-y-4">
+            <div class="p-4 bg-indigo-50/60 rounded-2xl border border-indigo-100 text-xs text-indigo-900">
+                <strong>Analisis Grafik Sensor Cahaya 24 Jam:</strong> Perhatikan pola siklus waktu dan jawab pertanyaan di bawah ini.
+            </div>
+            <div class="bg-slate-900 text-white p-5 rounded-2xl space-y-3 font-mono text-xs">
+                <div class="flex justify-between text-cyan-400 font-bold text-[11px]">
+                    <span>00:00 (Malam)</span>
+                    <span>06:00 (Fajar)</span>
+                    <span>12:00 (Siang Terik)</span>
+                    <span>18:00 (Senja)</span>
+                    <span>24:00</span>
+                </div>
+                <div class="h-20 bg-slate-800 rounded-xl flex items-end p-2 gap-1 relative overflow-hidden">
+                    <div class="w-1/4 h-2 bg-indigo-500 rounded" title="00:00 - 06:00 (Gelap 0-20 Lux)"></div>
+                    <div class="w-1/4 h-16 bg-amber-400 rounded" title="06:00 - 12:00 (Terang Naik 100-500 Lux)"></div>
+                    <div class="w-1/4 h-16 bg-amber-400 rounded" title="12:00 - 18:00 (Terang Turun 500-100 Lux)"></div>
+                    <div class="w-1/4 h-2 bg-indigo-500 rounded" title="18:00 - 24:00 (Gelap 0-20 Lux)"></div>
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700 block">🌅 Jam berapa cahaya mulai terang (fajar)?</label>
+                    <select id="pattern-q-fajar" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-semibold">
+                        <option value="">-- Pilih --</option>
+                        <option value="04:00">04:00</option>
+                        <option value="05:30">05:30</option>
+                        <option value="07:00">07:00</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700 block">🌇 Jam berapa cahaya mulai gelap (senja)?</label>
+                    <select id="pattern-q-senja" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-semibold">
+                        <option value="">-- Pilih --</option>
+                        <option value="15:00">15:00</option>
+                        <option value="17:30">17:30</option>
+                        <option value="19:00">19:00</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700 block">🔁 Apakah pola ini berulang setiap hari?</label>
+                    <select id="pattern-q-berulang" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs font-semibold">
+                        <option value="">-- Pilih --</option>
+                        <option value="ya">Ya, berulang setiap hari</option>
+                        <option value="tidak">Tidak, hanya terjadi sekali</option>
+                    </select>
+                </div>
+            </div>
+            <div class="text-right">
+                <button onclick="checkStage3()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    ✓ Periksa Tahap 3
+                </button>
+            </div>
+        </div>
+
+        <!-- STAGE 4: ALGORITMA -->
+        <div id="stage-panel-4" class="hidden space-y-4">
+            <div class="p-4 bg-indigo-50/60 rounded-2xl border border-indigo-100 text-xs text-indigo-900">
+                <strong>Instruksi Tahap 4:</strong> Susun aturan logika IF-THEN untuk 3 skenario otomatisasi berikut dengan memilih opsi yang tepat.
+            </div>
+            <div class="space-y-3 text-xs" id="algo-challenges-container">
+                <!-- Algo challenges populated by JS -->
+            </div>
+            <div class="text-right">
+                <button onclick="checkStage4()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    ✓ Periksa Tahap 4
+                </button>
+            </div>
+        </div>
+
+        <div id="stage-feedback-box" class="hidden p-4 rounded-2xl text-xs font-bold"></div>
+    </section>
+
+    <!-- SECTION: EVALUASI LENGKAP 4 BAGIAN -->
+    <section id="evaluasi" class="bg-white rounded-3xl border-2 border-amber-200 p-6 md:p-10 shadow-md space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+                <span class="text-3xl">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Latihan Evaluasi Menyeluruh (18 Poin)</h2>
+                    <p class="text-xs text-slate-500">Uji penguasaan materi secara menyeluruh melalui 4 bagian evaluasi</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="flex items-center justify-between bg-slate-50 p-2 rounded-2xl border border-slate-200 text-xs font-bold">
+            <button onclick="showEvalTab('A')" id="eval-tab-A" class="px-4 py-2 rounded-xl bg-amber-500 text-white shadow-sm transition">Bagian A: Pilihan Ganda (5)</button>
+            <button onclick="showEvalTab('B')" id="eval-tab-B" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian B: Benar/Salah (5)</button>
+            <button onclick="showEvalTab('C')" id="eval-tab-C" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian C: Menjodohkan (5)</button>
+            <button onclick="showEvalTab('D')" id="eval-tab-D" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian D: Mengurutkan (3)</button>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA -->
+        <div id="eval-sec-A" class="space-y-6 text-sm">
+            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian A — Pilihan Ganda (5 Soal)</h3>
+            
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A1">
+                <p class="font-bold text-slate-800 text-xs">1. Memecah sistem rumah pintar yang rumit menjadi komponen Sensor (Input), Komputer Mini (Proses), dan Aktuator (Output) merupakan penerapan fondasi...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A1','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Abstraksi</button>
+                    <button onclick="pickMCQ('A1','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Dekomposisi</button>
+                    <button onclick="pickMCQ('A1','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Pengenalan Pola</button>
+                    <button onclick="pickMCQ('A1','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Algoritma</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A2">
+                <p class="font-bold text-slate-800 text-xs">2. Saat merancang sistem lampu teras otomatis, programmer hanya fokus pada kondisi gelap/terang dan mengabaikan warna cat dinding atau perabot. Konsep ini disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A2','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Pengenalan Pola</button>
+                    <button onclick="pickMCQ('A2','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Dekomposisi</button>
+                    <button onclick="pickMCQ('A2','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Abstraksi</button>
+                    <button onclick="pickMCQ('A2','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Kompilasi</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A3">
+                <p class="font-bold text-slate-800 text-xs">3. Komponen dalam sistem Rumah Cerdas yang bertindak sebagai "indera" untuk membaca perubahan kondisi lingkungan fisik sekitar adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A3','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Aktuator (Lampu / Kipas)</button>
+                    <button onclick="pickMCQ('A3','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Sensor (Cahaya / Suhu / Gerak)</button>
+                    <button onclick="pickMCQ('A3','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Baterai Cadangan</button>
+                    <button onclick="pickMCQ('A3','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Kabel Penghubung</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A4">
+                <p class="font-bold text-slate-800 text-xs">4. Penulisan aturan logika kondisional yang paling tepat untuk menyalakan kipas angin hanya jika suhu ruangan lebih dari 30°C adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A4','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. JIKA Suhu &lt; 30°C MAKA Nyalakan Kipas</button>
+                    <button onclick="pickMCQ('A4','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. JIKA Suhu &gt; 30°C MAKA Nyalakan Kipas</button>
+                    <button onclick="pickMCQ('A4','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. JIKA Kipas Berputar MAKA Suhu 30°C</button>
+                    <button onclick="pickMCQ('A4','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. JIKA Tidak Ada Orang MAKA Nyalakan Kipas</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A5">
+                <p class="font-bold text-slate-800 text-xs">5. Sistem mendeteksi matahari selalu terbenam pukul 18.00 dan suhu meningkat pukul 12.00–14.00 setiap hari. Kemampuan mengenali siklus ini adalah contoh...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A5','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Dekomposisi</button>
+                    <button onclick="pickMCQ('A5','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Abstraksi</button>
+                    <button onclick="pickMCQ('A5','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Pengenalan Pola (Pattern Recognition)</button>
+                    <button onclick="pickMCQ('A5','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Algoritma Percabangan</button>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <button onclick="showEvalTab('B')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    Lanjut ke Bagian B ▶
+                </button>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH -->
+        <div id="eval-sec-B" class="hidden space-y-6 text-sm">
+            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian B — Benar / Salah (5 Soal)</h3>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B1">
+                <p class="font-semibold text-slate-800 text-xs">1. Sensor bertindak sebagai perangkat output yang mengeksekusi gerakan mekanik di rumah cerdas.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B1','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B1','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B2">
+                <p class="font-semibold text-slate-800 text-xs">2. Komputer mini (mikrokontroler) berfungsi sebagai otak pemroses yang mengeksekusi aturan logika.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B2','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B2','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B3">
+                <p class="font-semibold text-slate-800 text-xs">3. Prinsip Abstraksi membantu komputer menghemat memori karena hanya mengolah data penting.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B3','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B3','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B4">
+                <p class="font-semibold text-slate-800 text-xs">4. Pada logika majemuk (JIKA - DAN - MAKA), semua syarat kondisi harus bernilai benar agar aksi berjalan.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B4','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B4','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B5">
+                <p class="font-semibold text-slate-800 text-xs">5. Lampu LED, kipas angin, dan sirine buzzer adalah contoh perangkat aktuator (output).</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B5','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B5','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="flex justify-between">
+                <button onclick="showEvalTab('A')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian A</button>
+                <button onclick="showEvalTab('C')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">Lanjut ke Bagian C ▶</button>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN -->
+        <div id="eval-sec-C" class="hidden space-y-6 text-sm">
+            <div class="flex justify-between items-center">
+                <h3 class="font-heading font-bold text-slate-800 text-base">Bagian C — Menjodohkan (5 Pasangan)</h3>
+                <button onclick="resetMatchSection()" class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold rounded-lg">🔄 Reset Pasangan</button>
+            </div>
+            <p class="text-xs text-slate-500">Klik istilah di sebelah kiri, lalu klik definisi yang tepat di sebelah kanan untuk menghubungkan pasangan.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 relative" id="matching-board">
+                <div class="space-y-2.5" id="match-col-left">
+                    <!-- Left items -->
+                </div>
+                <div class="space-y-2.5" id="match-col-right">
+                    <!-- Right items -->
+                </div>
+            </div>
+
+            <div class="flex justify-between">
+                <button onclick="showEvalTab('B')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian B</button>
+                <button onclick="showEvalTab('D')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">Lanjut ke Bagian D ▶</button>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: MENGURUTKAN ALGORITMA -->
+        <div id="eval-sec-D" class="hidden space-y-6 text-sm">
+            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian D — Mengurutkan Alur Kerja Sistem Lampu Otomatis</h3>
+            <p class="text-xs text-slate-500">Gunakan tombol panah (▲ / ▼) untuk menyusun 5 tahapan kerja sistem lampu otomatis ke urutan yang benar dari awal hingga akhir!</p>
+
+            <div class="space-y-2" id="seq-steps-container">
+                <!-- Sequence steps populated by JS -->
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <button onclick="showEvalTab('C')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian C</button>
+                <button onclick="submitAllEvaluation()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl transition shadow-lg flex items-center gap-2">
+                    <span>📊</span> Hitung Nilai & Lihat Rekap Lengkap
+                </button>
+            </div>
+        </div>
+
+        <!-- HASIL REKAP EVALUASI -->
+        <div id="eval-recap-result" class="hidden p-6 md:p-8 rounded-3xl bg-slate-900 text-white space-y-6">
+            <!-- Dynamically populated recap -->
+        </div>
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-8 md:p-10 shadow-xl space-y-8">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-3xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-cyan-300">Rangkuman Materi & Refleksi</h2>
+                <p class="text-xs text-slate-300">Poin penting yang wajib diingat dan catatan pemahamanmu</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 text-xs leading-relaxed text-slate-300">
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-cyan-300 block mb-1 text-sm">🧩 Dekomposisi Sistem IoT:</strong>
+                Membagi sistem rumah cerdas menjadi subsistem Sensor (pengukur input fisik), Mikrokontroler (pengolah logika), dan Aktuator (pelaksana aksi fisik).
+            </div>
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-cyan-300 block mb-1 text-sm">🔍 Abstraksi & Pola:</strong>
+                Fokus hanya pada variabel esensial (suhu, cahaya) dan mengenali pola 24 jam berulang untuk memicu otomatisasi mandiri mesin.
+            </div>
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-cyan-300 block mb-1 text-sm">⚡ Aturan Logika IF-THEN:</strong>
+                Dasar otomasi modern. Setiap keputusan aktuator dieksekusi secara otomatis berdasarkan terpenuhinya syarat variabel lingkungan.
+            </div>
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-cyan-300 block mb-1 text-sm">🏆 Penerapan Masa Depan:</strong>
+                Fondasi berpikir komputasional ini dapat kamu gunakan untuk merancang smart agriculture, robotika, dan kota pintar (*smart city*).
+            </div>
+        </div>
+
+        <!-- Form Refleksi Siswa -->
+        <div class="p-5 bg-white/5 rounded-2xl border border-white/10 space-y-3">
+            <label class="font-bold text-white text-xs block">
+                💭 Refleksi Siswa: Menurutmu, inovasi otomatisasi cerdas apa lagi di rumah atau sekolahmu yang dapat dibuat menggunakan 4 fondasi Berpikir Komputasional?
+            </label>
+            <textarea id="refleksi-text" rows="3" class="w-full p-3 bg-black/30 border border-white/20 rounded-xl text-white text-xs focus:outline-none focus:border-cyan-400" placeholder="Tuliskan ide kreatifmu di sini... (cth: Penyiram tanaman otomatis dengan sensor kelembapan tanah dan solar cell)"></textarea>
+            <div class="flex justify-end">
+                <button onclick="saveStudentReflection()" class="px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+            </div>
+        </div>
+
+        <!-- Completion Footer -->
+        <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <p class="text-xs text-slate-400">Selesai mempelajari modul ini?</p>
+                <p class="text-sm font-bold text-white">Tandai progress belajarmu agar tercatat!</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button id="btn-complete" onclick="markComplete()" class="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md flex items-center gap-2">
+                    <span>✓</span> Tandai Selesai Modul
+                </button>
+                <a href="../../" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl transition">
+                    Kembali ke Modul →
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-16 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
+</footer>
+
+<!-- Interactive Scripts -->
+<script>
+// ==================== 1. AKTIVITAS RANCANG RUMAH CERDAS ====================
+const COMPONENT_DATA = {
+  'sensor-cahaya': { name: 'Sensor Cahaya', icon: '📡', type: 'sensor' },
+  'sensor-suhu': { name: 'Sensor Suhu', icon: '🌡️', type: 'sensor' },
+  'sensor-gerak': { name: 'Sensor Gerak', icon: '🚶', type: 'sensor' },
+  'sensor-gas': { name: 'Sensor Gas', icon: '💨', type: 'sensor' },
+  'lampu-led': { name: 'Lampu LED', icon: '💡', type: 'actuator' },
+  'kipas-angin': { name: 'Kipas Angin', icon: '🌀', type: 'actuator' },
+  'alarm-buzzer': { name: 'Alarm / Buzzer', icon: '🔔', type: 'actuator' },
+  'ventilasi': { name: 'Ventilasi Otomatis', icon: '🪟', type: 'actuator' }
+};
+
+const ROOM_CORRECT = {
+  'kamar-tidur': { sensors: ['sensor-cahaya'], actuators: ['lampu-led'] },
+  'ruang-tamu': { sensors: ['sensor-suhu', 'sensor-gerak'], actuators: ['kipas-angin'] },
+  'teras': { sensors: ['sensor-gerak'], actuators: ['alarm-buzzer'] },
+  'dapur': { sensors: ['sensor-gas'], actuators: ['alarm-buzzer', 'ventilasi'] }
+};
+
+let selectedPaletteChip = null;
+let currentDraggedChip = null;
+
+function selectPaletteChip(key) {
+    selectedPaletteChip = key;
+    document.querySelectorAll('.chip-item').forEach(c => {
+        if (c.dataset.component === key) {
+            c.classList.add('ring-2', 'ring-cyan-500', 'bg-cyan-50');
+        } else {
+            c.classList.remove('ring-2', 'ring-cyan-500', 'bg-cyan-50');
+        }
+    });
+    document.getElementById('active-chip-hint').classList.remove('hidden');
+}
+
+function onChipDragStart(e) {
+    currentDraggedChip = e.currentTarget.dataset.component;
+    e.dataTransfer.setData('text/plain', currentDraggedChip);
+}
+
+function onSlotDragOver(e) {
+    e.preventDefault();
+    e.currentTarget.classList.add('drag-over');
+}
+
+function onSlotDrop(e) {
+    e.preventDefault();
+    const slot = e.currentTarget;
+    slot.classList.remove('drag-over');
+    const compKey = currentDraggedChip || e.dataTransfer.getData('text/plain');
+    if (!compKey || !COMPONENT_DATA[compKey]) return;
+    placeComponentInSlot(slot, compKey);
+}
+
+function onSlotClick(slot) {
+    if (selectedPaletteChip) {
+        placeComponentInSlot(slot, selectedPaletteChip);
+    }
+}
+
+function placeComponentInSlot(slot, compKey) {
+    const comp = COMPONENT_DATA[compKey];
+    if (slot.dataset.slotType !== comp.type) {
+        alert(`Perangkat "${comp.name}" adalah ${comp.type.toUpperCase()}, tidak bisa dipasang di slot ${slot.dataset.slotType.toUpperCase()}!`);
+        return;
+    }
+    slot.dataset.assigned = compKey;
+    slot.className = 'slot-target p-2.5 bg-emerald-50 border-2 border-emerald-300 rounded-xl min-h-[50px] flex items-center justify-between text-xs font-bold text-slate-700 filled';
+    slot.innerHTML = `
+        <span class="flex items-center gap-1.5"><span>${comp.icon}</span> <span>${comp.name}</span></span>
+        <button onclick="event.stopPropagation(); clearSlot(this.closest('.slot-target'))" class="text-slate-400 hover:text-red-500 font-bold ml-1">✕</button>
+    `;
+}
+
+function clearSlot(slot) {
+    delete slot.dataset.assigned;
+    slot.className = 'slot-target p-3 bg-white border-2 border-dashed border-slate-200 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer';
+    slot.innerHTML = `<span class="text-[11px] text-slate-400">${slot.dataset.slotType === 'sensor' ? '📡 Pasang Sensor' : '⚡ Pasang Aktuator'}</span>`;
+}
+
+function resetSmartHomeActivity() {
+    document.querySelectorAll('.slot-target').forEach(clearSlot);
+    const fb = document.getElementById('smart-home-feedback');
+    fb.classList.add('hidden');
+}
+
+function checkSmartHomeActivity() {
+    const rooms = document.querySelectorAll('.room-card');
+    let totalSlots = 0;
+    let correctCount = 0;
+
+    rooms.forEach(room => {
+        const roomKey = room.dataset.room;
+        const expected = ROOM_CORRECT[roomKey];
+        if (!expected) return;
+
+        const sensorSlots = room.querySelectorAll('.slot-target[data-slot-type="sensor"]');
+        const actuatorSlots = room.querySelectorAll('.slot-target[data-slot-type="actuator"]');
+
+        const assignedSensors = [];
+        sensorSlots.forEach(s => {
+            totalSlots++;
+            if (s.dataset.assigned) assignedSensors.push({ slot: s, key: s.dataset.assigned });
+            else s.className = 'slot-target p-3 bg-red-50 border-2 border-dashed border-red-300 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer wrong';
+        });
+
+        const expectedSensors = [...expected.sensors];
+        assignedSensors.forEach(item => {
+            const idx = expectedSensors.indexOf(item.key);
+            if (idx !== -1) {
+                correctCount++;
+                expectedSensors.splice(idx, 1);
+                item.slot.className = 'slot-target p-2.5 bg-emerald-50 border-2 border-emerald-400 rounded-xl min-h-[50px] flex items-center justify-between text-xs font-bold text-slate-700 filled';
+            } else {
+                item.slot.className = 'slot-target p-2.5 bg-red-50 border-2 border-red-400 rounded-xl min-h-[50px] flex items-center justify-between text-xs font-bold text-slate-700 wrong';
+            }
+        });
+
+        const assignedActuators = [];
+        actuatorSlots.forEach(s => {
+            totalSlots++;
+            if (s.dataset.assigned) assignedActuators.push({ slot: s, key: s.dataset.assigned });
+            else s.className = 'slot-target p-3 bg-red-50 border-2 border-dashed border-red-300 rounded-xl min-h-[50px] flex items-center justify-center text-center cursor-pointer wrong';
+        });
+
+        const expectedActuators = [...expected.actuators];
+        assignedActuators.forEach(item => {
+            const idx = expectedActuators.indexOf(item.key);
+            if (idx !== -1) {
+                correctCount++;
+                expectedActuators.splice(idx, 1);
+                item.slot.className = 'slot-target p-2.5 bg-emerald-50 border-2 border-emerald-400 rounded-xl min-h-[50px] flex items-center justify-between text-xs font-bold text-slate-700 filled';
+            } else {
+                item.slot.className = 'slot-target p-2.5 bg-red-50 border-2 border-red-400 rounded-xl min-h-[50px] flex items-center justify-between text-xs font-bold text-slate-700 wrong';
+            }
+        });
+    });
+
+    const fb = document.getElementById('smart-home-feedback');
+    fb.classList.remove('hidden');
+    const score = Math.round((correctCount / totalSlots) * 100);
+    if (correctCount === totalSlots) {
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        fb.innerHTML = `🎉 Sempurna! Skor: 100/100 (${correctCount}/${totalSlots} komponen terpasang tepat pada posisinya!)`;
+    } else {
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        fb.innerHTML = `Skor: ${score}/100 (${correctCount}/${totalSlots} Benar). Periksa kembali slot yang berwarna merah!`;
+    }
+}
+
+// ==================== 2. TANTANGAN 4 TAHAP BK ====================
+let stageStars = { 1: 0, 2: 0, 3: 0, 4: 0 };
+
+function switchGameStage(num) {
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById(`tab-stage-${i}`).className = (i === num) 
+            ? 'px-4 py-2 rounded-xl bg-indigo-600 text-white shadow-sm transition' 
+            : 'px-4 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition';
+        const panel = document.getElementById(`stage-panel-${i}`);
+        if (panel) {
+            if (i === num) panel.classList.remove('hidden');
+            else panel.classList.add('hidden');
+        }
+    }
+    const fb = document.getElementById('stage-feedback-box');
+    if (fb) fb.classList.add('hidden');
+}
+
+// Stage 1 Data: Dekomposisi
+const DECOMP_ITEMS = [
+    { id: 'd1', text: 'Sensor Cahaya (LDR)', icon: '📡', category: 'input' },
+    { id: 'd2', text: 'Sensor Suhu DHT22', icon: '🌡️', category: 'input' },
+    { id: 'd3', text: 'Sensor Gerak (PIR)', icon: '🚶', category: 'input' },
+    { id: 'd4', text: 'Komputer Mini (Mikrokontroler)', icon: '🧠', category: 'proses' },
+    { id: 'd5', text: 'Lampu LED Teras', icon: '💡', category: 'output' },
+    { id: 'd6', text: 'Kipas Angin Kamar', icon: '🌀', category: 'output' },
+    { id: 'd7', text: 'Sirine Alarm', icon: '🔔', category: 'output' }
+];
+let userDecomp = {};
+
+function initStage1() {
+    const pool = document.getElementById('decomp-pool');
+    pool.innerHTML = '';
+    DECOMP_ITEMS.forEach(item => {
+        const d = document.createElement('div');
+        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-between gap-2';
+        d.id = `decomp-item-${item.id}`;
+        d.innerHTML = `
+            <span class="font-bold text-slate-700 text-xs">${item.icon} ${item.text}</span>
+            <div class="flex gap-1 text-[10px] font-bold">
+                <button onclick="setDecomp('${item.id}', 'input', this)" class="flex-1 py-1 rounded bg-white border border-slate-200 hover:bg-cyan-50">INPUT</button>
+                <button onclick="setDecomp('${item.id}', 'proses', this)" class="flex-1 py-1 rounded bg-white border border-slate-200 hover:bg-indigo-50">PROSES</button>
+                <button onclick="setDecomp('${item.id}', 'output', this)" class="flex-1 py-1 rounded bg-white border border-slate-200 hover:bg-emerald-50">OUTPUT</button>
+            </div>
+        `;
+        pool.appendChild(d);
+    });
+}
+
+function setDecomp(id, cat, btn) {
+    userDecomp[id] = cat;
+    const parent = btn.parentElement;
+    parent.querySelectorAll('button').forEach(b => b.className = 'flex-1 py-1 rounded bg-white border border-slate-200 hover:bg-slate-100');
+    btn.className = 'flex-1 py-1 rounded bg-indigo-600 text-white font-bold';
+}
+
+function checkStage1() {
+    let correct = 0;
+    DECOMP_ITEMS.forEach(item => {
+        const card = document.getElementById(`decomp-item-${item.id}`);
+        if (userDecomp[item.id] === item.category) {
+            correct++;
+            card.className = 'p-3 bg-emerald-50 border-2 border-emerald-300 rounded-xl flex flex-col justify-between gap-2';
+        } else {
+            card.className = 'p-3 bg-red-50 border-2 border-red-300 rounded-xl flex flex-col justify-between gap-2';
+        }
+    });
+
+    const fb = document.getElementById('stage-feedback-box');
+    fb.classList.remove('hidden');
+    if (correct === DECOMP_ITEMS.length) {
+        stageStars[1] = 1;
+        updateStarsBadge();
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        fb.innerHTML = '⭐ Tahap 1 Selesai! Kamu berhasil mengelompokkan Dekomposisi Input, Proses, dan Output dengan 100% benar!';
+    } else {
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        fb.innerHTML = `Skor Tahap 1: ${correct}/${DECOMP_ITEMS.length} Benar. Periksa kartu yang bertanda merah!`;
+    }
+}
+
+// Stage 2 Data: Abstraksi
+const ABSTRACTION_DATA = [
+    { id: 'a1', text: 'Tingkat Cahaya Ruangan (Lux)', icon: '☀️', important: true },
+    { id: 'a2', text: 'Status Siang / Malam', icon: '🌙', important: true },
+    { id: 'a3', text: 'Status Lampu (Nyala / Mati)', icon: '💡', important: true },
+    { id: 'a4', text: 'Warna Cat Tembok Kamar', icon: '🎨', important: false },
+    { id: 'a5', text: 'Merk & Ukuran Kasur', icon: '🛏️', important: false },
+    { id: 'a6', text: 'Motif Gorden Jendela', icon: '🪟', important: false },
+    { id: 'a7', text: 'Poster di Dinding', icon: '🖼️', important: false },
+    { id: 'a8', text: 'Jumlah Sepatu di Rak', icon: '👟', important: false }
+];
+let userAbstraction = {};
+
+function initStage2() {
+    const grid = document.getElementById('abstraction-cards-grid');
+    grid.innerHTML = '';
+    ABSTRACTION_DATA.forEach(card => {
+        const d = document.createElement('div');
+        d.className = 'p-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl text-center cursor-pointer transition select-none';
+        d.id = `abs-card-${card.id}`;
+        d.onclick = () => toggleAbstraction(card.id);
+        d.innerHTML = `
+            <span class="text-2xl block mb-1">${card.icon}</span>
+            <span class="text-xs font-bold text-slate-700 block">${card.text}</span>
+            <span id="abs-tag-${card.id}" class="text-[10px] font-bold text-slate-400 mt-1 inline-block">ABAIKAN</span>
+        `;
+        grid.appendChild(d);
+    });
+}
+
+function toggleAbstraction(id) {
+    userAbstraction[id] = !userAbstraction[id];
+    const card = document.getElementById(`abs-card-${id}`);
+    const tag = document.getElementById(`abs-tag-${id}`);
+    if (userAbstraction[id]) {
+        card.className = 'p-3.5 bg-amber-50 border-2 border-amber-400 rounded-xl text-center cursor-pointer transition select-none shadow-sm';
+        tag.className = 'text-[10px] font-extrabold text-amber-700 mt-1 inline-block';
+        tag.innerText = '✓ PENTING (DIPILIH)';
+    } else {
+        card.className = 'p-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl text-center cursor-pointer transition select-none';
+        tag.className = 'text-[10px] font-bold text-slate-400 mt-1 inline-block';
+        tag.innerText = 'ABAIKAN';
+    }
+}
+
+function checkStage2() {
+    let correct = 0;
+    ABSTRACTION_DATA.forEach(c => {
+        const isChosen = !!userAbstraction[c.id];
+        const card = document.getElementById(`abs-card-${c.id}`);
+        if (isChosen === c.important) {
+            correct++;
+            card.className = 'p-3.5 bg-emerald-50 border-2 border-emerald-400 rounded-xl text-center';
+        } else {
+            card.className = 'p-3.5 bg-red-50 border-2 border-red-400 rounded-xl text-center';
+        }
+    });
+
+    const fb = document.getElementById('stage-feedback-box');
+    fb.classList.remove('hidden');
+    if (correct === ABSTRACTION_DATA.length) {
+        stageStars[2] = 1;
+        updateStarsBadge();
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        fb.innerHTML = '⭐ Tahap 2 Selesai! Kamu berhasil memilah data penting dan menyaring detail non-relevan!';
+    } else {
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        fb.innerHTML = `Skor Tahap 2: ${correct}/${ABSTRACTION_DATA.length} Benar. Ingat: Untuk lampu otomatis hanya butuh data intensitas cahaya dan status malam!`;
+    }
+}
+
+function checkStage3() {
+    const fajar = document.getElementById('pattern-q-fajar').value;
+    const senja = document.getElementById('pattern-q-senja').value;
+    const berulang = document.getElementById('pattern-q-berulang').value;
+
+    const fb = document.getElementById('stage-feedback-box');
+    fb.classList.remove('hidden');
+
+    if (fajar === '05:30' && senja === '17:30' && berulang === 'ya') {
+        stageStars[3] = 1;
+        updateStarsBadge();
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        fb.innerHTML = '⭐ Tahap 3 Selesai! Kamu memahami pola pengenalan siklus 24 jam dengan sangat akurat!';
+    } else {
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        fb.innerHTML = 'Jawaban belum tepat. Cek kembali grafik 24 jam di atas (Fajar = 05:30, Senja = 17:30, Siklus = Berulang).';
+    }
+}
+
+// Stage 4 Data: Algoritma
+const ALGO_ITEMS = [
+    {
+        id: 'c1',
+        title: '1. Lampu Teras Otomatis (Logika Tunggal)',
+        expectedCondition: 'cahaya-gelap',
+        expectedAction: 'nyala-lampu',
+        condOptions: [
+            { val: 'cahaya-gelap', label: 'Cahaya &lt; 50 Lux (Gelap)' },
+            { val: 'suhu-dingin', label: 'Suhu &lt; 20°C' }
+        ],
+        actOptions: [
+            { val: 'nyala-lampu', label: 'Nyalakan Lampu Teras' },
+            { val: 'mati-kipas', label: 'Matikan Kipas' }
+        ]
+    },
+    {
+        id: 'c2',
+        title: '2. Kipas Angin Hemat Energi (Logika Majemuk)',
+        expectedCondition: 'suhu-panas-orang',
+        expectedAction: 'putar-kipas',
+        condOptions: [
+            { val: 'suhu-panas-orang', label: 'Suhu &gt; 30°C DAN Ada Orang' },
+            { val: 'hujan-deras', label: 'Hujan Deras' }
+        ],
+        actOptions: [
+            { val: 'putar-kipas', label: 'Putar Kipas Angin' },
+            { val: 'buka-pintu', label: 'Buka Pintu' }
+        ]
+    },
+    {
+        id: 'c3',
+        title: '3. Alarm Keamanan Pintu (Logika Percabangan)',
+        expectedCondition: 'buka-tanpa-kartu',
+        expectedAction: 'bunyi-alarm',
+        condOptions: [
+            { val: 'buka-tanpa-kartu', label: 'Pintu Terbuka Tanpa Kartu Sah' },
+            { val: 'pagi-hari', label: 'Waktu Pagi Hari' }
+        ],
+        actOptions: [
+            { val: 'bunyi-alarm', label: 'Bunyikan Alarm Sirine' },
+            { val: 'siram-tanaman', label: 'Siram Tanaman' }
+        ]
+    }
+];
+
+function initStage4() {
+    const container = document.getElementById('algo-challenges-container');
+    container.innerHTML = '';
+    ALGO_ITEMS.forEach(c => {
+        const d = document.createElement('div');
+        d.className = 'p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-2';
+        d.innerHTML = `
+            <strong class="text-slate-800 block">${c.title}</strong>
+            <div class="flex flex-col sm:flex-row items-center gap-2 font-mono text-[11px]">
+                <span class="font-bold text-indigo-700">JIKA</span>
+                <select id="algo-cond-${c.id}" class="p-1.5 bg-white border border-slate-300 rounded text-xs font-sans w-full sm:w-auto">
+                    <option value="">-- Pilih Kondisi --</option>
+                    ${c.condOptions.map(o => `<option value="${o.val}">${o.label}</option>`).join('')}
+                </select>
+                <span class="font-bold text-indigo-700">MAKA</span>
+                <select id="algo-act-${c.id}" class="p-1.5 bg-white border border-slate-300 rounded text-xs font-sans w-full sm:w-auto">
+                    <option value="">-- Pilih Aksi --</option>
+                    ${c.actOptions.map(o => `<option value="${o.val}">${o.label}</option>`).join('')}
+                </select>
+            </div>
+        `;
+        container.appendChild(d);
+    });
+}
+
+function checkStage4() {
+    let correct = 0;
+    ALGO_ITEMS.forEach(c => {
+        const cond = document.getElementById(`algo-cond-${c.id}`).value;
+        const act = document.getElementById(`algo-act-${c.id}`).value;
+        if (cond === c.expectedCondition && act === c.expectedAction) {
+            correct++;
+        }
+    });
+
+    const fb = document.getElementById('stage-feedback-box');
+    fb.classList.remove('hidden');
+    if (correct === ALGO_ITEMS.length) {
+        stageStars[4] = 1;
+        updateStarsBadge();
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        fb.innerHTML = '⭐ Tahap 4 Selesai! Kamu berhasil menyusun seluruh aturan algoritma otomasi dengan sempurna!';
+    } else {
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        fb.innerHTML = `Skor Tahap 4: ${correct}/${ALGO_ITEMS.length} Aturan Benar. Pilih kembali kondisi dan aksi yang tepat!`;
+    }
+}
+
+function updateStarsBadge() {
+    const total = Object.values(stageStars).reduce((a,b)=>a+b, 0);
+    document.getElementById('game-stars-badge').innerText = `⭐ Total Bintang: ${total} / 4`;
+}
+
+// ==================== 3. EVALUASI LENGKAP 4 BAGIAN ====================
+let evalAnswers = {};
+let matchPairs = {};
+let selectedLeftMatch = null;
+
+const MATCH_DATA_LEFT = [
+    { id: '1', text: 'Sensor Cahaya LDR' },
+    { id: '2', text: 'Komputer Mini (Mikrokontroler)' },
+    { id: '3', text: 'Aktuator (Relay / Penggerak)' },
+    { id: '4', text: 'Logika JIKA - MAKA' },
+    { id: '5', text: 'Abstraksi Data' }
+];
+
+const MATCH_DATA_RIGHT = [
+    { id: 'a', text: 'Saklar otomatis yang menghubungkan listrik ke perangkat fisik' },
+    { id: 'b', text: 'Membaca tingkat terang/gelap di sekitar ruangan (seperti mata)' },
+    { id: 'c', text: 'Menyaring data penting yang dibutuhkan dan membuang detail non-relevan' },
+    { id: 'd', text: 'Otak kecil yang memproses data dan menjalankan aturan logika' },
+    { id: 'e', text: 'Aturan terstruktur untuk mengambil keputusan otomatis berdasarkan kondisi' }
+];
+
+const MATCH_CORRECT = { '1': 'b', '2': 'd', '3': 'a', '4': 'e', '5': 'c' };
+
+let currentSeqSteps = [
+    'Komputer mini mengirimkan sinyal perintah aktif ke saklar otomatis (relay).',
+    'Sensor Cahaya mendeteksi tingkat intensitas terang atau gelap di teras rumah.',
+    'Aliran listrik terhubung dan lampu teras otomatis menyala menerangi halaman.',
+    'Data pembacaan intensitas cahaya dikirim menuju komputer mini (mikrokontroler).',
+    'Komputer mini mengevaluasi aturan logika kondisional (JIKA gelap).'
+];
+
+const SEQ_CORRECT = [
+    'Sensor Cahaya mendeteksi tingkat intensitas terang atau gelap di teras rumah.',
+    'Data pembacaan intensitas cahaya dikirim menuju komputer mini (mikrokontroler).',
+    'Komputer mini mengevaluasi aturan logika kondisional (JIKA gelap).',
+    'Komputer mini mengirimkan sinyal perintah aktif ke saklar otomatis (relay).',
+    'Aliran listrik terhubung dan lampu teras otomatis menyala menerangi halaman.'
+];
+
+function showEvalTab(tabId) {
+    ['A','B','C','D'].forEach(t => {
+        document.getElementById(`eval-tab-${t}`).className = (t === tabId)
+            ? 'px-4 py-2 rounded-xl bg-amber-500 text-white shadow-sm transition'
+            : 'px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition';
+        const sec = document.getElementById(`eval-sec-${t}`);
+        if (sec) {
+            if (t === tabId) sec.classList.remove('hidden');
+            else sec.classList.add('hidden');
+        }
+    });
+}
+
+function pickMCQ(q, val, btn) {
+    evalAnswers[q] = val;
+    const parent = btn.parentElement;
+    parent.querySelectorAll('button').forEach(b => b.className = 'p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition');
+    btn.className = 'p-2.5 bg-amber-100 border-2 border-amber-400 text-amber-900 font-bold rounded-xl text-left';
+}
+
+function pickTF(q, val, btn) {
+    evalAnswers[q] = val;
+    const parent = btn.parentElement;
+    parent.querySelectorAll('button').forEach(b => b.className = 'px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100');
+    btn.className = 'px-4 py-1.5 bg-amber-500 text-white font-bold rounded-lg text-xs';
+}
+
+function initMatching() {
+    const leftCol = document.getElementById('match-col-left');
+    const rightCol = document.getElementById('match-col-right');
+    leftCol.innerHTML = '';
+    rightCol.innerHTML = '';
+
+    MATCH_DATA_LEFT.forEach(item => {
+        const d = document.createElement('div');
+        d.id = `match-l-${item.id}`;
+        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400 transition text-xs font-bold text-slate-700 select-none';
+        d.onclick = () => selectLeftMatch(item.id);
+        d.innerHTML = `<span>${item.id}. ${item.text}</span>`;
+        leftCol.appendChild(d);
+    });
+
+    MATCH_DATA_RIGHT.forEach(item => {
+        const d = document.createElement('div');
+        d.id = `match-r-${item.id}`;
+        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400 transition text-xs text-slate-700 select-none';
+        d.onclick = () => selectRightMatch(item.id);
+        d.innerHTML = `<span>• ${item.text}</span>`;
+        rightCol.appendChild(d);
+    });
+}
+
+function selectLeftMatch(id) {
+    selectedLeftMatch = id;
+    MATCH_DATA_LEFT.forEach(item => {
+        const el = document.getElementById(`match-l-${item.id}`);
+        if (item.id === id) {
+            el.className = 'p-3 bg-amber-100 border-2 border-amber-500 text-amber-900 font-bold rounded-xl cursor-pointer select-none';
+        } else if (matchPairs[item.id]) {
+            el.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-bold rounded-xl cursor-pointer select-none';
+        } else {
+            el.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer select-none text-xs font-bold text-slate-700';
+        }
+    });
+}
+
+function selectRightMatch(rId) {
+    if (!selectedLeftMatch) return;
+    matchPairs[selectedLeftMatch] = rId;
+
+    const leftEl = document.getElementById(`match-l-${selectedLeftMatch}`);
+    leftEl.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-bold rounded-xl cursor-pointer select-none flex justify-between items-center';
+    leftEl.innerHTML = `<span>${leftEl.innerText}</span> <span class="text-[10px] bg-emerald-200 px-2 py-0.5 rounded font-mono">🔗 #${selectedLeftMatch}</span>`;
+
+    const rightEl = document.getElementById(`match-r-${rId}`);
+    rightEl.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-medium rounded-xl cursor-pointer select-none flex justify-between items-center';
+
+    selectedLeftMatch = null;
+}
+
+function resetMatchSection() {
+    matchPairs = {};
+    selectedLeftMatch = null;
+    initMatching();
+}
+
+function initSequence() {
+    renderSequence();
+}
+
+function renderSequence() {
+    const container = document.getElementById('seq-steps-container');
+    container.innerHTML = '';
+    currentSeqSteps.forEach((step, idx) => {
+        const d = document.createElement('div');
+        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between gap-3 text-xs';
+        d.innerHTML = `
+            <span class="font-bold text-slate-400 w-6 font-mono">${idx + 1}.</span>
+            <span class="flex-1 font-semibold text-slate-700">${step}</span>
+            <div class="flex gap-1">
+                <button onclick="moveSeq(${idx}, -1)" class="w-6 h-6 rounded bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-600 hover:bg-slate-100 ${idx === 0 ? 'opacity-30 cursor-not-allowed' : ''}">▲</button>
+                <button onclick="moveSeq(${idx}, 1)" class="w-6 h-6 rounded bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-600 hover:bg-slate-100 ${idx === currentSeqSteps.length - 1 ? 'opacity-30 cursor-not-allowed' : ''}">▼</button>
+            </div>
+        `;
+        container.appendChild(d);
+    });
+}
+
+function moveSeq(idx, dir) {
+    const target = idx + dir;
+    if (target < 0 || target >= currentSeqSteps.length) return;
+    const temp = currentSeqSteps[idx];
+    currentSeqSteps[idx] = currentSeqSteps[target];
+    currentSeqSteps[target] = temp;
+    renderSequence();
+}
+
+function submitAllEvaluation() {
+    let scoreA = 0;
+    const keyA = { A1: 'B', A2: 'C', A3: 'B', A4: 'B', A5: 'C' };
+    Object.keys(keyA).forEach(k => { if (evalAnswers[k] === keyA[k]) scoreA += 5; });
+
+    let scoreB = 0;
+    const keyB = { B1: 'salah', B2: 'benar', B3: 'benar', B4: 'benar', B5: 'benar' };
+    Object.keys(keyB).forEach(k => { if (evalAnswers[k] === keyB[k]) scoreB += 5; });
+
+    let scoreC = 0;
+    Object.keys(MATCH_CORRECT).forEach(k => {
+        if (matchPairs[k] === MATCH_CORRECT[k]) scoreC += 5;
+    });
+
+    let scoreD = 0;
+    currentSeqSteps.forEach((s, idx) => {
+        if (s === SEQ_CORRECT[idx]) scoreD += 5;
+    });
+
+    const totalRaw = scoreA + scoreB + scoreC + scoreD; // Max: 25+25+25+25 = 100
+    const totalPct = Math.round(totalRaw);
+
+    const recap = document.getElementById('eval-recap-result');
+    recap.classList.remove('hidden');
+    recap.scrollIntoView({ behavior: 'smooth' });
+
+    recap.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+            <div>
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest block mb-1">HASIL ASESMEN FORMATIF</span>
+                <h3 class="font-heading font-extrabold text-3xl text-white">Nilai Akhir: ${totalPct} / 100</h3>
+            </div>
+            <span class="px-5 py-2 rounded-2xl text-sm font-extrabold ${totalPct >= 80 ? 'bg-emerald-500 text-white' : 'bg-amber-500 text-white'}">
+                ${totalPct >= 80 ? '🏆 Sangat Baik (Tuntas)' : '📖 Perlu Penguatan'}
+            </span>
+        </div>
+
+        <div class="grid sm:grid-cols-4 gap-3 text-center text-xs">
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian A (MCQ)</span>
+                <strong class="text-base text-cyan-300">${scoreA} / 25</strong>
+            </div>
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian B (B/S)</span>
+                <strong class="text-base text-cyan-300">${scoreB} / 25</strong>
+            </div>
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian C (Jodohkan)</span>
+                <strong class="text-base text-cyan-300">${scoreC} / 25</strong>
+            </div>
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian D (Urutan)</span>
+                <strong class="text-base text-cyan-300">${scoreD} / 25</strong>
+            </div>
+        </div>
+
+        <div id="eval-history-box" class="p-4 bg-white/5 rounded-2xl border border-white/10 text-xs text-slate-300">
+            <span class="text-[10px] uppercase tracking-wider text-amber-400 font-bold block mb-1">Riwayat Pengerjaan Evaluasi Siswa:</span>
+            <div id="eval-history-list" class="space-y-1"></div>
+        </div>
+
+        <p class="text-xs text-slate-300 leading-relaxed">
+            ${totalPct >= 80 
+                ? 'Selamat! Kamu telah menguasai seluruh fondasi Berpikir Komputasional dan logika sistem otomasi cerdas (IoT) dengan sangat baik. Catat refleksimu di bawah ini!' 
+                : 'Bagus! Kamu sudah berusaha. Silakan pelajari kembali materi 4 fondasi di atas dan ulangi evaluasi untuk mencapai hasil maksimal.'}
+        </p>
+    `;
+
+    // Sync to Database & LocalStorage via FananiTracker
+    if (window.FananiTracker) {
+        FananiTracker.submitEvaluation({
+            subject: 'informatika',
+            topic_id: 'inf-bk-02',
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalPct,
+            answers: { evalAnswers, matchPairs, currentSeqSteps }
+        }).then(res => {
+            renderHistoryList();
+        });
+    }
+}
+
+async function renderHistoryList() {
+    if (!window.FananiTracker) return;
+    const hist = await FananiTracker.getHistory('informatika', 'inf-bk-02');
+    const el = document.getElementById('eval-history-list');
+    if (!el || !hist.attempts) return;
+
+    if (hist.attempts.length === 0) {
+        el.innerHTML = '<span class="text-slate-400">Belum ada riwayat pengerjaan sebelumnya.</span>';
+        return;
+    }
+
+    el.innerHTML = hist.attempts.map((att, i) => `
+        <div class="flex justify-between items-center bg-black/20 px-3 py-1.5 rounded-lg text-[11px]">
+            <span>Percobaan #${att.attempt_number || (i+1)} (${new Date(att.created_at || Date.now()).toLocaleDateString()})</span>
+            <strong class="text-amber-300 font-mono">Nilai: ${Math.round(att.total_score)}/100</strong>
+        </div>
+    `).join('');
+}
+
+function saveStudentReflection() {
+    const val = document.getElementById('refleksi-text').value;
+    if (!val.trim()) {
+        alert('Tuliskan catatan refleksimu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        FananiTracker.saveReflection('informatika', 'inf-bk-02', val).then(() => {
+            alert('Catatan refleksi berhasil disimpan ke database!');
+        });
+    } else {
+        localStorage.setItem('bk_smart_home_reflection', val);
+        alert('Catatan refleksi berhasil disimpan!');
+    }
+}
+
+function markComplete() {
+    if (window.FananiTracker) {
+        FananiTracker.markCompleted('informatika', 'inf-bk-02').then(() => {
+            const btn = document.getElementById('btn-complete');
+            btn.innerHTML = '✓ Modul Berhasil Dituntaskan!';
+            btn.className = 'px-5 py-2.5 bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md cursor-default';
+            alert('Selamat! Progress belajar modul ini telah berhasil disimpan ke database.');
+        });
+    } else {
+        const btn = document.getElementById('btn-complete');
+        btn.innerHTML = '✓ Modul Berhasil Dituntaskan!';
+        btn.className = 'px-5 py-2.5 bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md cursor-default';
+        alert('Modul ditandai selesai!');
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initStage1();
+    initStage2();
+    initStage4();
+    initMatching();
+    initSequence();
+
+    if (window.FananiTracker) {
+        FananiTracker.getHistory('informatika', 'inf-bk-02').then(h => {
+            if (h.reflection_text) {
+                document.getElementById('refleksi-text').value = h.reflection_text;
+            }
+            if (h.is_completed) {
+                const btn = document.getElementById('btn-complete');
+                if (btn) {
+                    btn.innerHTML = '✓ Modul Berhasil Dituntaskan!';
+                    btn.className = 'px-5 py-2.5 bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md cursor-default';
+                }
+            }
+        });
+    }
+});
+</script>
+<script src="../../../js/tracker.js"></script>
+
+</body>
+</html>

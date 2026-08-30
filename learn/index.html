@@ -1,690 +1,535 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belajar Bareng Pak Fanani | Materi Informatika, AI & Coding</title>
-
-    <!-- SEO Meta -->
-    <meta name="description"
-        content="Kumpulan materi pelajaran Informatika, KKA (Coding & AI), tutorial coding Scratch, Python, Web, C++, MySQL, App Inventor, serta bahan workshop. Dirancang mudah dipahami oleh siapa saja.">
+    <title>Belajar Bareng Pak Fanani | Informatika, KKA & Workshop</title>
+    <meta name="description" content="Kumpulan materi pelajaran informatika, koding, dan kecerdasan artifisial (AI) bersama Pak Fanani. Dirancang agar mudah dipahami oleh siapa saja.">
     <meta name="author" content="Ach. Chanifuddin Fanani">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://fanani.my.id/learn/">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fanani.my.id/learn/">
-    <meta property="og:title" content="Belajar Bareng Pak Fanani | Materi Informatika, AI & Coding">
-    <meta property="og:description"
-        content="Materi Informatika SMP, KKA (Coding & AI), tutorial coding, dan bahan workshop dari Pak Fanani. Mudah dipahami, untuk semua jenjang.">
-    <meta property="og:image" content="https://fanani.my.id/assets/images/logo.png">
-    <meta property="og:locale" content="id_ID">
-    <meta property="og:site_name" content="Fanani">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Belajar Bareng Pak Fanani | Materi Informatika, AI & Coding">
-    <meta name="twitter:description"
-        content="Materi Informatika SMP, KKA (Coding & AI), tutorial coding, dan bahan workshop dari Pak Fanani.">
-    <meta name="twitter:image" content="https://fanani.my.id/assets/images/logo.png">
-
-    <!-- Favicon -->
-    <link rel="icon" href="https://fanani.my.id/assets/images/logo.png" type="image/png">
+    <link rel="icon" href="../assets/images/logo.png" type="image/png">
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap"
-        rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Google Identity Services (GSI) -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
     <style>
-        h1,
-        h2,
-        h3,
-        h4,
-        .font-heading {
-            font-family: 'Quicksand', sans-serif;
+        h1, h2, h3, h4, .font-heading { font-family: 'Quicksand', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        
+        .blob-shape { 
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; 
+            animation: morph 8s ease-in-out infinite;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
+        @keyframes morph {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .card-hover {
-            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .card-hover:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.12);
-        }
-
-        .section-fade {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.5s ease forwards;
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-fade:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .section-fade:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .section-fade:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .section-fade:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .section-fade:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        .section-fade:nth-child(6) {
-            animation-delay: 0.6s;
-        }
+        .card-hover { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(99, 102, 241, 0.12); }
     </style>
 </head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased overflow-x-hidden relative selection:bg-indigo-100 selection:text-indigo-900 pb-20">
 
-<body
-    class="bg-[#F8FAFC] text-slate-800 antialiased overflow-x-hidden relative selection:bg-indigo-100 selection:text-indigo-900">
+    <!-- Background decorative blobs matching root index.html -->
+    <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-200 opacity-40 blur-[100px] rounded-full pointer-events-none z-0"></div>
+    <div class="absolute top-[20%] right-[-5%] w-80 h-80 bg-amber-200 opacity-30 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-    <!-- Background decorative blobs -->
-    <div
-        class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-indigo-200 opacity-30 blur-[120px] rounded-full pointer-events-none z-0">
-    </div>
-    <div
-        class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-amber-200 opacity-25 blur-[100px] rounded-full pointer-events-none z-0">
-    </div>
-    <div
-        class="fixed top-[50%] left-[50%] w-72 h-72 bg-cyan-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0">
-    </div>
-
-    <!-- Navigation -->
+    <!-- Navigation matching root index.html structure & alignment -->
     <nav class="relative z-50 max-w-5xl mx-auto px-6 py-8 flex justify-between items-center">
-        <a href="/"
-            class="font-heading font-extrabold text-2xl text-slate-900 tracking-tight hover:text-indigo-600 transition">
+        <a href="../" class="font-heading font-extrabold text-2xl text-slate-900 tracking-tight hover:text-indigo-600 transition">
             fanani<span class="text-indigo-600">.</span>
         </a>
-        <div class="flex gap-6 font-medium text-sm text-slate-500 items-center">
-            <a href="/#about" class="hover:text-indigo-600 transition">About</a>
-            <a href="/#projects" class="hover:text-indigo-600 transition">Projects</a>
-            <a href="/learn/" class="text-indigo-600 font-bold border-b-2 border-indigo-600 pb-0.5">Learn</a>
+        <div class="flex items-center gap-6 font-medium text-sm text-slate-500">
+            <a href="../#about" class="hover:text-indigo-600 transition">About</a>
+            <a href="../#projects" class="hover:text-indigo-600 transition">Projects</a>
+            <a href="./" class="text-indigo-600 font-bold border-b-2 border-indigo-600 pb-0.5">Learn</a>
         </div>
     </nav>
 
-    <main class="relative z-10 max-w-5xl mx-auto px-6 pb-16">
+    <main class="relative z-10 max-w-5xl mx-auto px-6 space-y-8">
 
-        <!-- Header -->
-        <header class="pt-8 pb-14 text-center md:text-left">
-            <div
-                class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 font-heading font-bold px-4 py-2 rounded-full mb-6 text-sm">
-                <span>📚 Materi & Tutorial</span>
+        <!-- ========== HERO HEADER (SENADA DENGAN ROOT /INDEX.HTML) ========== -->
+        <header class="py-4 md:py-8 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            
+            <!-- KIRI: KONTEN TEKS -->
+            <div class="flex-1 text-center md:text-left order-2 md:order-1">
+                <div class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 font-heading font-bold px-4 py-2 rounded-full mb-5 text-sm">
+                    📚 Materi & Tutorial
+                </div>
+                
+                <p class="text-xs text-slate-400 italic mb-4 max-w-lg leading-relaxed mx-auto md:mx-0">
+                    This section is intentionally written in Bahasa Indonesia—a quiet dedication to my students and to advancing education, from Lamongan to wherever learning can make a difference.
+                </p>
+
+                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-4 font-heading">
+                    Belajar Bareng <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-cyan-400">Pak Fanani.</span>
+                </h1>
+
+                <p class="text-base text-slate-600 max-w-lg leading-relaxed mx-auto md:mx-0">
+                    Kumpulan materi informatika, koding & AI, serta bahan workshop. Dirancang agar mudah dipelajari dan dipahami oleh siapa saja.
+                </p>
             </div>
-            <p class="text-xs italic text-slate-400 mb-3 max-w-xl">
-                This section is intentionally written in Bahasa Indonesia—a quiet dedication to my students and to
-                advancing education, from Lamongan to wherever learning can make a difference.
-            </p>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-5 font-heading">
-                Belajar Bareng<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-cyan-400">Pak
-                    Fanani.</span>
-            </h1>
-            <p class="text-lg text-slate-500 max-w-2xl leading-relaxed">
-                Kumpulan materi pelajaran, tutorial coding sederhana, dan bahan workshop. Dirancang agar mudah dipahami
-                oleh siapa saja.
-            </p>
+
+            <!-- KANAN: GAMBAR BLOB FOTO BERSIH -->
+            <div class="order-1 md:order-2 relative w-56 h-56 md:w-72 md:h-72 flex-shrink-0">
+                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-300 to-cyan-300 blob-shape transform rotate-6 opacity-50"></div>
+                <img src="../assets/images/fanani2.jpeg" alt="Ach. Chanifuddin Fanani" class="relative w-full h-full object-cover blob-shape border-4 border-white shadow-xl z-10">
+            </div>
+
         </header>
 
-        <!-- Grid Utama: Mata Pelajaran -->
-        <div id="smp-pathway" class="grid md:grid-cols-2 gap-8">
-
-            <!-- Card: Informatika -->
-            <div class="section-fade bg-white rounded-[2rem] border border-slate-100 shadow-sm p-8 card-hover group">
-                <div
-                    class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-md">
-                    🖥️
-                </div>
-                <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-2">Informatika (SMP)</h2>
-                <p class="text-slate-500 text-sm mb-6 leading-relaxed">
-                    Berpikir komputasional, algoritma, hingga membuat program nyata. Pilih kelas sesuai tingkatanmu.
-                </p>
-
-                <div class="space-y-2 mb-6">
-                    <a href="informatika/7/"
-                        class="flex items-center gap-4 p-3 rounded-xl hover:bg-indigo-50 transition group/item border border-transparent hover:border-indigo-100">
-                        <span
-                            class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-sm font-extrabold flex-shrink-0">7</span>
-                        <div class="flex-1">
-                            <span
-                                class="block text-sm font-bold text-slate-700 group-hover/item:text-indigo-600 transition">Kelas
-                                7</span>
-                            <span class="block text-[11px] font-medium text-slate-400 mt-0.5">Fondasi Komputasional &
-                                Algoritma</span>
+        <!-- ========== AUTH STATUS CARD (FULL-WIDTH, DI ATAS MAIN CARDS) ========== -->
+        <section id="auth-status-card" class="w-full p-5 bg-white rounded-3xl border border-slate-200/80 shadow-sm transition">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                
+                <!-- Info Status Siswa -->
+                <div class="flex items-center gap-4 w-full md:w-auto">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl overflow-hidden border border-indigo-100 flex-shrink-0" id="user-avatar">
+                        👤
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 class="font-heading font-extrabold text-base text-slate-900" id="user-name-display">
+                                Mode Belajar Mandiri
+                            </h3>
+                            <span id="user-badge-status" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600">
+                                Mode Tamu
+                            </span>
                         </div>
-                        <svg class="w-4 h-4 text-slate-300 ml-auto group-hover/item:text-indigo-400 transition"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </a>
-
-                    <a href="informatika/8/"
-                        class="flex items-center gap-4 p-3 rounded-xl hover:bg-indigo-50 transition group/item border border-transparent hover:border-indigo-100">
-                        <span
-                            class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-sm font-extrabold flex-shrink-0">8</span>
-                        <div class="flex-1">
-                            <span
-                                class="block text-sm font-bold text-slate-700 group-hover/item:text-indigo-600 transition">Kelas
-                                8</span>
-                            <span class="block text-[11px] font-medium text-slate-400 mt-0.5">Logika & Pengolahan Data
-                                Dasar</span>
-                        </div>
-                        <svg class="w-4 h-4 text-slate-300 ml-auto group-hover/item:text-indigo-400 transition"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </a>
-
-                    <a href="informatika/9/"
-                        class="flex items-center gap-4 p-3 rounded-xl hover:bg-indigo-50 transition group/item border border-transparent hover:border-indigo-100">
-                        <span
-                            class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-sm font-extrabold flex-shrink-0">9</span>
-                        <div class="flex-1">
-                            <span
-                                class="block text-sm font-bold text-slate-700 group-hover/item:text-indigo-600 transition">Kelas
-                                9</span>
-                            <span class="block text-[11px] font-medium text-slate-400 mt-0.5">Kreasi Digital & Web
-                                Dasar</span>
-                        </div>
-                        <svg class="w-4 h-4 text-slate-300 ml-auto group-hover/item:text-indigo-400 transition"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </a>
+                        <p class="text-xs text-slate-400 mt-0.5" id="user-status-detail">
+                            Masuk dengan Google untuk menyinkronkan skor evaluasi dan catatan refleksimu ke database guru.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="flex flex-wrap gap-2">
-                    <span
-                        class="px-3 py-1 bg-slate-100 text-slate-600 text-[11px] font-semibold rounded-lg">Algoritma</span>
-                    <span
-                        class="px-3 py-1 bg-slate-100 text-slate-600 text-[11px] font-semibold rounded-lg">Jaringan</span>
-                    <span class="px-3 py-1 bg-slate-100 text-slate-600 text-[11px] font-semibold rounded-lg">Web
-                        Dasar</span>
+                <!-- Tombol Aksi Login / Logout -->
+                <div class="flex items-center gap-3 w-full md:w-auto justify-end flex-shrink-0" id="auth-action-container">
+                    <!-- Google Sign-In Container Rendered Dynamically -->
+                    <div id="g_id_onload"
+                         data-client_id="943852204453-qhq2hm9scnsqjl71876ee4nnnb248763.apps.googleusercontent.com"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="handleGoogleCredentialResponse"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin" 
+                         id="google-btn-wrapper"
+                         data-type="standard" 
+                         data-shape="pill" 
+                         data-theme="outline" 
+                         data-text="signin_with" 
+                         data-size="medium" 
+                         data-logo_alignment="left">
+                    </div>
+                    
+                    <!-- Fallback Google Login Trigger -->
+                    <button onclick="triggerGoogleLogin()" id="btn-custom-google" class="px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold rounded-xl text-xs shadow-sm flex items-center gap-2 transition">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+                        <span>Masuk Google</span>
+                    </button>
+                    
+                    <button id="btn-logout" onclick="handleLogout()" class="hidden px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 font-bold rounded-xl text-xs transition">
+                        Keluar
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========== 2 MAIN CARDS (ROW DIBAGI 2: INFORMATIKA & KKA) ========== -->
+        <div class="grid md:grid-cols-2 gap-6 pt-2">
+
+            <!-- KIRI: INFORMATIKA -->
+            <div class="bg-gradient-to-br from-white via-white to-blue-50/70 rounded-3xl border border-blue-100 p-7 shadow-sm card-hover flex flex-col justify-between relative overflow-hidden group">
+                <div class="space-y-5 relative z-10">
+                    <div class="flex items-center justify-between">
+                        <span class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white flex items-center justify-center text-2xl shadow-md shadow-blue-500/20">
+                            💻
+                        </span>
+                        <span class="text-xs font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                            ✨ Belajar Komputer & Logika
+                        </span>
+                    </div>
+
+                    <div>
+                        <h2 class="font-heading font-extrabold text-2xl text-slate-900 group-hover:text-blue-600 transition mb-2">
+                            Informatika
+                        </h2>
+                        <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
+                            Mulai dari cara kerja komputer, rahasia perjalanan paket data internet, trik analisis data, hingga logika berpikir komputasional untuk memecahkan berbagai masalah.
+                        </p>
+                    </div>
+
+                    <!-- Topics Badges -->
+                    <div class="space-y-2 pt-2 border-t border-slate-100">
+                        <div class="flex flex-wrap gap-1.5 text-[11px] font-medium text-slate-600">
+                            <span class="bg-slate-100/90 px-2.5 py-1 rounded-lg">🧩 Berpikir Komputasional</span>
+                            <span class="bg-slate-100/90 px-2.5 py-1 rounded-lg">🌐 Jaringan & Internet</span>
+                            <span class="bg-slate-100/90 px-2.5 py-1 rounded-lg">📊 Analisis Data</span>
+                            <span class="bg-slate-100/90 px-2.5 py-1 rounded-lg">⚡ Algoritma & Logika</span>
+                            <span class="bg-slate-100/90 px-2.5 py-1 rounded-lg">🖥️ Sistem Komputer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 relative z-10">
+                    <a href="informatika/index.html" class="w-full py-3.5 px-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-md shadow-blue-500/20 flex items-center justify-center gap-2 group-hover:translate-x-1 transition">
+                        <span>Mulai Eksplorasi Informatika</span>
+                        <span>→</span>
+                    </a>
                 </div>
             </div>
 
-            <!-- Card: KKA -->
-            <div class="section-fade bg-white rounded-[2rem] border border-slate-100 shadow-sm p-8 card-hover group">
-                <div
-                    class="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-md">
-                    🤖
-                </div>
-                <h2 class="font-heading font-extrabold text-2xl text-slate-800 mb-2">KKA (Coding & AI)</h2>
-                <p class="text-slate-500 text-sm mb-6 leading-relaxed">
-                    Eksplorasi dunia kecerdasan buatan, machine learning, generative AI, dan seni prompt engineering.
-                </p>
+            <!-- KANAN: KKA (KODING & KECERDASAN ARTIFISIAL) -->
+            <div class="bg-gradient-to-br from-white via-white to-emerald-50/70 rounded-3xl border border-emerald-100 p-7 shadow-sm card-hover flex flex-col justify-between relative overflow-hidden group">
+                <div class="space-y-5 relative z-10">
+                    <div class="flex items-center justify-between">
+                        <span class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 text-white flex items-center justify-center text-2xl shadow-md shadow-emerald-500/20">
+                            🤖
+                        </span>
+                        <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">
+                            💡 Koding, Game & AI
+                        </span>
+                    </div>
 
-                <div class="space-y-2 mb-6">
-                    <a href="kka/7/"
-                        class="flex items-center gap-4 p-3 rounded-xl hover:bg-teal-50 transition group/item border border-transparent hover:border-teal-100">
-                        <span
-                            class="w-10 h-10 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center text-sm font-extrabold flex-shrink-0">7</span>
-                        <div class="flex-1">
-                            <span
-                                class="block text-sm font-bold text-slate-700 group-hover/item:text-teal-600 transition">Kelas
-                                7</span>
-                            <span class="block text-[11px] font-medium text-slate-400 mt-0.5">Literasi AI & Pengenalan
-                                ML</span>
-                        </div>
-                        <svg class="w-4 h-4 text-slate-300 ml-auto group-hover/item:text-teal-400 transition"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </a>
+                    <div>
+                        <h2 class="font-heading font-extrabold text-2xl text-slate-900 group-hover:text-emerald-600 transition mb-2">
+                            KKA (Koding & AI)
+                        </h2>
+                        <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
+                            Asah kreativitasmu merancang game seru, bikin program interaktif, kenalan dengan dunia AI yang cerdas, hingga bereksperimen dengan proyek robotik & IoT.
+                        </p>
+                    </div>
 
-                    <a href="kka/8/"
-                        class="flex items-center gap-4 p-3 rounded-xl hover:bg-teal-50 transition group/item border border-transparent hover:border-teal-100">
-                        <span
-                            class="w-10 h-10 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center text-sm font-extrabold flex-shrink-0">8</span>
-                        <div class="flex-1">
-                            <span
-                                class="block text-sm font-bold text-slate-700 group-hover/item:text-teal-600 transition">Kelas
-                                8</span>
-                            <span class="block text-[11px] font-medium text-slate-400 mt-0.5">Generative AI & Prompt
-                                Engineering</span>
+                    <!-- Topics Badges -->
+                    <div class="space-y-2 pt-2 border-t border-slate-100">
+                        <div class="flex flex-wrap gap-1.5 text-[11px] font-medium text-slate-600">
+                            <span class="bg-slate-100/90 px-2.5 py-1 rounded-lg">🎮 Bikin Game & Koding</span>
+                            <span class="bg-slate-100/90 px-2.5 py-1 rounded-lg">🤖 Literasi & Etika AI</span>
+                            <span class="bg-slate-100/90 px-2.5 py-1 rounded-lg">💬 Prompt AI Pintar</span>
+                            <span class="bg-slate-100/90 px-2.5 py-1 rounded-lg">🐍 Belajar Python</span>
+                            <span class="bg-slate-100/90 px-2.5 py-1 rounded-lg">🛠️ Robotik & IoT</span>
                         </div>
-                        <svg class="w-4 h-4 text-slate-300 ml-auto group-hover/item:text-teal-400 transition"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </a>
-
-                    <a href="kka/9/"
-                        class="flex items-center gap-4 p-3 rounded-xl hover:bg-teal-50 transition group/item border border-transparent hover:border-teal-100">
-                        <span
-                            class="w-10 h-10 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center text-sm font-extrabold flex-shrink-0">9</span>
-                        <div class="flex-1">
-                            <span
-                                class="block text-sm font-bold text-slate-700 group-hover/item:text-teal-600 transition">Kelas
-                                9</span>
-                            <span class="block text-[11px] font-medium text-slate-400 mt-0.5">Pemanfaatan AI untuk
-                                Produktivitas</span>
-                        </div>
-                        <svg class="w-4 h-4 text-slate-300 ml-auto group-hover/item:text-teal-400 transition"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </a>
+                    </div>
                 </div>
 
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-slate-100 text-slate-600 text-[11px] font-semibold rounded-lg">Machine
-                        Learning</span>
-                    <span class="px-3 py-1 bg-slate-100 text-slate-600 text-[11px] font-semibold rounded-lg">Generative
-                        AI</span>
+                <div class="pt-6 relative z-10">
+                    <a href="coding/index.html" class="w-full py-3.5 px-5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-md shadow-emerald-500/20 flex items-center justify-center gap-2 group-hover:translate-x-1 transition">
+                        <span>Mulai Belajar Koding & AI</span>
+                        <span>→</span>
+                    </a>
                 </div>
             </div>
 
         </div>
 
-        <!-- Section: Belajar Coding: From Zero to Pro -->
-        <section class="mt-8 animate-fade-in">
-            <div
-                class="section-fade bg-gradient-to-br from-slate-800 to-slate-950 rounded-[2rem] border border-slate-700/50 shadow-xl p-8 card-hover relative overflow-hidden text-slate-100">
-                <div class="absolute top-[-30px] right-[-30px] w-48 h-48 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
-                <div class="relative z-10 flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/3">
-                        <div
-                            class="w-16 h-16 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-md">
-                            🚀
-                        </div>
-                        <h2 class="font-heading font-extrabold text-2xl text-white mb-2">Belajar Coding: From Zero to Pro</h2>
-                        <p class="text-slate-300 text-sm mb-4 leading-relaxed">
-                            Jalur belajar terstruktur dari nol hingga profesional — mulai dari logika berpikir tanpa layar, pemrograman visual, Python, hingga Full-Stack Web Development dan Machine Learning.
+        <!-- ========== SECTION WORKSHOP & PELATIHAN ========== -->
+        <section class="bg-white rounded-3xl border border-slate-200/80 p-7 shadow-sm card-hover space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-2xl bg-violet-100 text-violet-700 flex items-center justify-center text-2xl font-bold flex-shrink-0">
+                        🎓
+                    </div>
+                    <div>
+                        <h2 class="font-heading font-extrabold text-xl text-slate-900">
+                            Workshop & Materi Pelatihan
+                        </h2>
+                        <p class="text-xs text-slate-400">
+                            Dokumentasi kegiatan bimtek guru, materi pelatihan, serta modul KKA untuk Sekolah Dasar (Kelas 5 & 6).
                         </p>
-                        <a href="coding/" class="inline-flex items-center gap-2 px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold rounded-xl transition shadow-lg transform hover:-translate-y-0.5 active:translate-y-0">
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                            Belajar Coding Sekarang →
-                        </a>
-                    </div>
-
-                    <div class="md:w-2/3 w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                        <!-- Level 1: PAUD -->
-                        <a href="coding/?level=paud" class="flex flex-col p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/10 transition group relative">
-                            <div class="text-2xl mb-3">👶</div>
-                            <span class="block font-bold text-white text-sm mb-1 group-hover:text-indigo-400 transition">Level 1: PAUD</span>
-                            <span class="block text-xs text-slate-400 leading-relaxed mb-4">Bermain sambil belajar berpikir komputasional — pola, urutan, dan pemecahan masalah lewat aktivitas tanpa layar (unplugged).</span>
-                            <span class="mt-auto inline-self-start px-2.5 py-1 rounded-md text-[10px] font-bold bg-amber-500/10 text-amber-300 border border-amber-500/20 uppercase tracking-wider">Unplugged & Logika</span>
-                        </a>
-
-                        <!-- Level 2: SD -->
-                        <a href="coding/?level=sd" class="flex flex-col p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/10 transition group relative">
-                            <div class="text-2xl mb-3">🐱</div>
-                            <span class="block font-bold text-white text-sm mb-1 group-hover:text-indigo-400 transition">Level 2: SD</span>
-                            <span class="block text-xs text-slate-400 leading-relaxed mb-4">Mulai membuat program pertama dengan blok visual — menyusun logika, animasi, dan game sederhana tanpa mengetik kode.</span>
-                            <span class="mt-auto inline-self-start px-2.5 py-1 rounded-md text-[10px] font-bold bg-sky-500/10 text-sky-300 border border-sky-500/20 uppercase tracking-wider">Koding Visual (Scratch Jr)</span>
-                        </a>
-
-                        <!-- Level 3: SMP -->
-                        <a href="coding/?level=smp" class="flex flex-col p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/10 transition group relative">
-                            <div class="text-2xl mb-3">🤖</div>
-                            <span class="block font-bold text-white text-sm mb-1 group-hover:text-indigo-400 transition">Level 3: SMP</span>
-                            <span class="block text-xs text-slate-400 leading-relaxed mb-4">Membangun proyek interaktif di Scratch, belajar algoritma dasar, dan transisi pertama ke penulisan kode teks.</span>
-                            <span class="mt-auto inline-self-start px-2.5 py-1 rounded-md text-[10px] font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 uppercase tracking-wider">Scratch & Algoritma</span>
-                        </a>
-
-                        <!-- Level 4: SMA/K -->
-                        <a href="coding/?level=sma" class="flex flex-col p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/10 transition group relative">
-                            <div class="text-2xl mb-3">🐍</div>
-                            <span class="block font-bold text-white text-sm mb-1 group-hover:text-indigo-400 transition">Level 4: SMA/K</span>
-                            <span class="block text-xs text-slate-400 leading-relaxed mb-4">Menulis program Python sungguhan — variabel, logika, loop, fungsi, dan membangun mini project berbasis teks.</span>
-                            <span class="mt-auto inline-self-start px-2.5 py-1 rounded-md text-[10px] font-bold bg-blue-500/10 text-blue-300 border border-blue-500/20 uppercase tracking-wider">Python Essentials</span>
-                        </a>
-
-                        <!-- Level 5: Mahasiswa -->
-                        <a href="coding/?level=mahasiswa" class="flex flex-col p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/10 transition group relative">
-                            <div class="text-2xl mb-3">💻</div>
-                            <span class="block font-bold text-white text-sm mb-1 group-hover:text-indigo-400 transition">Level 5: Mahasiswa</span>
-                            <span class="block text-xs text-slate-400 leading-relaxed mb-4">Kuasai seluruh stack web modern — Terminal, Git, React, Node.js, Database SQL, Auth, hingga CI/CD & Deployment.</span>
-                            <span class="mt-auto inline-self-start px-2.5 py-1 rounded-md text-[10px] font-bold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 uppercase tracking-wider">Full-Stack Web Dev</span>
-                        </a>
-
-                        <!-- Level 6: Expert -->
-                        <a href="coding/?level=expert" class="flex flex-col p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/10 transition group relative">
-                            <div class="text-2xl mb-3">🧙‍♂️</div>
-                            <span class="block font-bold text-white text-sm mb-1 group-hover:text-indigo-400 transition">Level 6: Expert</span>
-                            <span class="block text-xs text-slate-400 leading-relaxed mb-4">OOP & SOLID, Struktur Data, Algoritma, System Design, Docker, Testing, Data Science, dan Deep Learning.</span>
-                            <span class="mt-auto inline-self-start px-2.5 py-1 rounded-md text-[10px] font-bold bg-purple-500/10 text-purple-300 border border-purple-500/20 uppercase tracking-wider">Software Architecture & AI</span>
-                        </a>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Section: Workshop -->
-        <section class="mt-8">
-            <div
-                class="section-fade bg-white rounded-[2rem] border border-slate-100 shadow-sm p-8 card-hover relative overflow-hidden">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-4 border-b border-slate-100 gap-4">
-                    <div>
-                        <div class="flex items-center gap-2.5 mb-1">
-                            <span class="text-2xl">🎓</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-slate-800">Materi Workshop & Pengabdian</h2>
-                        </div>
-                        <p class="text-slate-500 text-sm">Arsip materi pelatihan, modul koding, dan bahan ajar fasilitator.</p>
-                    </div>
-                    <a href="workshop/"
-                        class="text-sm font-bold text-indigo-600 hover:text-indigo-700 transition flex items-center gap-1 flex-shrink-0">
-                        Semua Workshop <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Workshop 1: Bimtek KKA SD -->
-                    <a href="workshop/2024-10-bimtek-kka-sekolah-dasar/"
-                        class="flex gap-4 p-4 rounded-xl hover:bg-indigo-50/30 border border-slate-50 hover:border-indigo-100 transition group">
-                        <span class="text-2xl flex-shrink-0">🏫</span>
-                        <div>
-                            <span class="block font-bold text-slate-700 text-sm group-hover:text-indigo-600 transition mb-0.5">Bimtek KKA SD</span>
-                            <span class="block text-[11px] text-slate-400 mb-1">Juli–Okt 2024</span>
-                            <span class="block text-xs text-slate-500 leading-relaxed">Bimbingan teknis koding & AI untuk guru sekolah dasar.</span>
-                        </div>
-                    </a>
-
-                    <!-- Workshop 2: ToT Coding Guru -->
-                    <a href="workshop/2025-10-training-of-trainer-coding/"
-                        class="flex gap-4 p-4 rounded-xl hover:bg-indigo-50/30 border border-slate-50 hover:border-indigo-100 transition group">
-                        <span class="text-2xl flex-shrink-0">👨‍🏫</span>
-                        <div>
-                            <span class="block font-bold text-slate-700 text-sm group-hover:text-indigo-600 transition mb-0.5">ToT Coding Guru</span>
-                            <span class="block text-[11px] text-slate-400 mb-1">Oktober 2025</span>
-                            <span class="block text-xs text-slate-500 leading-relaxed">Training of Trainer dasar pemrograman bagi pendidik.</span>
-                        </div>
-                    </a>
-
-                    <!-- Workshop 3: Workshop KKA PGRI -->
-                    <a href="workshop/2026-07-workshop-kka-pgri/"
-                        class="flex gap-4 p-4 rounded-xl hover:bg-amber-50/30 border border-slate-50 hover:border-amber-100 transition group">
-                        <span class="text-2xl flex-shrink-0">🤖</span>
-                        <div>
-                            <span class="block font-bold text-slate-700 text-sm group-hover:text-amber-600 transition mb-0.5">Workshop KKA PGRI</span>
-                            <span class="block text-[11px] text-slate-400 mb-1">1 Juli 2026</span>
-                            <span class="block text-xs text-slate-500 leading-relaxed">KKA Unplugged & media pembelajaran AI guru SD.</span>
-                        </div>
-                    </a>
-
-                    <!-- Workshop 4: Workshop MGMP -->
-                    <a href="workshop/2026-10-workshop-mgmp-informatika-kka/"
-                        class="flex gap-4 p-4 rounded-xl hover:bg-blue-50/30 border border-slate-50 hover:border-blue-100 transition group">
-                        <span class="text-2xl flex-shrink-0">🚀</span>
-                        <div>
-                            <span class="block font-bold text-slate-700 text-sm group-hover:text-blue-600 transition mb-0.5">MGMP IT & KKA</span>
-                            <span class="block text-[11px] text-slate-400 mb-1">Okt 2026</span>
-                            <span class="block text-xs text-slate-500 leading-relaxed">Membangun LMS mini dengan AI & GitHub Pages.</span>
-                        </div>
-                    </a>
-
-                    <!-- Workshop 5: Modul KKA SD (Dark Card) -->
-                    <div class="flex gap-4 p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all group">
-                        <span class="w-10 h-10 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-center justify-center text-xl flex-shrink-0">🎒</span>
-                        <div class="w-full">
-                            <span class="block font-bold text-white text-sm group-hover:text-indigo-400 transition mb-0.5">Modul KKA SD</span>
-                            <span class="block text-xs text-slate-400 leading-relaxed mb-3">Materi ajar resmi Koding & AI untuk Kelas 5 & 6 SD.</span>
-                            <div class="flex gap-2">
-                                <a href="workshop/materi-sd/kka-kelas-5/"
-                                    class="flex-1 bg-slate-800 hover:bg-indigo-600 text-slate-200 hover:text-white border border-slate-700 text-center text-[10px] font-bold py-1.5 rounded-lg transition">Kelas 5 SD</a>
-                                <a href="workshop/materi-sd/kka-kelas-6/"
-                                    class="flex-1 bg-slate-800 hover:bg-indigo-600 text-slate-200 hover:text-white border border-slate-700 text-center text-[10px] font-bold py-1.5 rounded-lg transition">Kelas 6 SD</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Pustaka Tutorial Mandiri (Light Grid) -->
-        <section class="mt-16 section-fade">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="w-12 h-12 bg-white border border-slate-200 rounded-2xl flex items-center justify-center text-2xl shadow-sm">
-                    📖
-                </div>
-                <div>
-                    <h2 class="font-heading font-extrabold text-2xl text-slate-800">Pustaka Tutorial Mandiri</h2>
-                    <p class="text-slate-500 text-sm mt-0.5">Modul pembelajaran mandiri per bahasa pemrograman tanpa harus terikat level.</p>
-                </div>
+                <a href="workshop/index.html" class="px-4 py-2 bg-violet-50 hover:bg-violet-100 text-violet-700 font-heading font-bold text-xs rounded-xl transition flex items-center gap-1.5 whitespace-nowrap self-start sm:self-center">
+                    <span>Semua Workshop</span>
+                    <span>→</span>
+                </a>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Scratch -->
-                <a href="tutorial/scratch/"
-                    class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-orange-500/50 hover:bg-slate-850 transition-all card-hover group">
-                    <span
-                        class="w-12 h-12 bg-orange-500/10 border border-orange-500/20 rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition">🐱</span>
-                    <div>
-                        <span class="block font-bold text-white text-sm group-hover:text-orange-400 transition">Scratch</span>
-                        <span class="block text-xs text-slate-400 mt-0.5">Koding visual tanpa teks</span>
-                    </div>
+            <div class="grid sm:grid-cols-3 gap-4 text-xs">
+                <a href="workshop/materi-sd/kka-kelas-5/index.html" class="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-100 hover:border-emerald-300 transition group block space-y-1">
+                    <span class="text-lg">🎒</span>
+                    <strong class="font-bold text-emerald-900 block group-hover:text-emerald-700">Modul KKA SD Kelas 5 & 6</strong>
+                    <p class="text-[11px] text-emerald-700 leading-relaxed">22 materi seru unplugged & plugged untuk setahun penuh.</p>
                 </a>
 
-                <!-- Web -->
-                <a href="tutorial/web/"
-                    class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-850 transition-all card-hover group">
-                    <span
-                        class="w-12 h-12 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition">🌐</span>
-                    <div>
-                        <span class="block font-bold text-white text-sm group-hover:text-indigo-400 transition">Web (HTML, CSS & JS)</span>
-                        <span class="block text-xs text-slate-400 mt-0.5">Buat website dari nol</span>
-                    </div>
+                <a href="workshop/2026-10-workshop-mgmp-informatika-kka/index.html" class="p-4 rounded-2xl bg-violet-50/50 border border-violet-100 hover:border-violet-300 transition group block space-y-1">
+                    <span class="text-lg">👥</span>
+                    <strong class="font-bold text-violet-900 block group-hover:text-violet-700">Workshop MGMP Guru</strong>
+                    <p class="text-[11px] text-violet-700 leading-relaxed">Panduan penyusunan modul ajar & integrasi AI pembelajaran.</p>
                 </a>
 
-                <!-- Python -->
-                <a href="tutorial/python/"
-                    class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-green-500/50 hover:bg-slate-850 transition-all card-hover group">
-                    <span
-                        class="w-12 h-12 bg-green-500/10 border border-green-500/20 rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition">🐍</span>
-                    <div>
-                        <span class="block font-bold text-white text-sm group-hover:text-green-400 transition">Python</span>
-                        <span class="block text-xs text-slate-400 mt-0.5">Sintaks dasar hingga proyek</span>
-                    </div>
-                </a>
-
-                <!-- C++ -->
-                <a href="tutorial/cpp/"
-                    class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-500/50 hover:bg-slate-850 transition-all card-hover group">
-                    <span
-                        class="w-12 h-12 bg-slate-500/10 border border-slate-500/20 rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition">⚡</span>
-                    <div>
-                        <span class="block font-bold text-white text-sm group-hover:text-slate-300 transition">C++ & IoT Arduino</span>
-                        <span class="block text-xs text-slate-400 mt-0.5">Kendalikan hardware nyata</span>
-                    </div>
-                </a>
-
-                <!-- App Inventor -->
-                <a href="tutorial/app-inventor/"
-                    class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/50 hover:bg-slate-850 transition-all card-hover group">
-                    <span
-                        class="w-12 h-12 bg-teal-500/10 border border-teal-500/20 rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition">📱</span>
-                    <div>
-                        <span class="block font-bold text-white text-sm group-hover:text-teal-400 transition">App Inventor</span>
-                        <span class="block text-xs text-slate-400 mt-0.5">Buat app Android sendiri</span>
-                    </div>
-                </a>
-
-                <!-- MySQL -->
-                <a href="tutorial/mysql/"
-                    class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 hover:bg-slate-850 transition-all card-hover group">
-                    <span
-                        class="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition">🗄️</span>
-                    <div>
-                        <span class="block font-bold text-white text-sm group-hover:text-blue-400 transition">MySQL & Database</span>
-                        <span class="block text-xs text-slate-400 mt-0.5">Query SQL dari nol</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Section: Tools Pendukung -->
-        <section class="mt-16 section-fade">
-            <div class="flex items-center gap-4 mb-8">
-                <div
-                    class="w-12 h-12 bg-white border border-slate-200 rounded-2xl flex items-center justify-center text-2xl shadow-sm">
-                    🧰
-                </div>
-                <div>
-                    <h2 class="font-heading font-extrabold text-2xl text-slate-800">Tools Pendukung</h2>
-                    <p class="text-slate-500 text-sm mt-0.5">Akses cepat ke platform yang sering kita gunakan di kelas
-                    </p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Tool 1: Scratch -->
-                <a href="https://scratch.mit.edu" target="_blank" rel="noopener"
-                    class="bg-white border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/10 hover:shadow-md transition-all duration-300 rounded-2xl p-4 group flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 bg-slate-50 border border-slate-100 shadow-sm text-xl flex items-center justify-center rounded-xl group-hover:scale-110 transition-transform duration-300">
-                        🐱</div>
-                    <div class="overflow-hidden">
-                        <div class="text-sm font-bold text-slate-700 group-hover:text-indigo-600 transition truncate">
-                            Scratch</div>
-                        <div class="text-[10px] text-slate-400 truncate">Visual Coding</div>
-                    </div>
-                </a>
-
-                <!-- Tool 2: Python -->
-                <a href="https://www.programiz.com/python-programming/online-compiler" target="_blank" rel="noopener"
-                    class="bg-white border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/10 hover:shadow-md transition-all duration-300 rounded-2xl p-4 group flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 bg-slate-50 border border-slate-100 shadow-sm text-xl flex items-center justify-center rounded-xl group-hover:scale-110 transition-transform duration-300">
-                        🐍</div>
-                    <div class="overflow-hidden">
-                        <div class="text-sm font-bold text-slate-700 group-hover:text-indigo-600 transition truncate">
-                            Python</div>
-                        <div class="text-[10px] text-slate-400 truncate">Online Compiler</div>
-                    </div>
-                </a>
-
-                <!-- Tool 3: Teachable Machine -->
-                <a href="https://teachablemachine.withgoogle.com/" target="_blank" rel="noopener"
-                    class="bg-white border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/10 hover:shadow-md transition-all duration-300 rounded-2xl p-4 group flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 bg-slate-50 border border-slate-100 shadow-sm text-xl flex items-center justify-center rounded-xl group-hover:scale-110 transition-transform duration-300">
-                        📷</div>
-                    <div class="overflow-hidden">
-                        <div class="text-sm font-bold text-slate-700 group-hover:text-indigo-600 transition truncate">
-                            Teachable Machine</div>
-                        <div class="text-[10px] text-slate-400 truncate">Eksperimen AI</div>
-                    </div>
-                </a>
-
-                <!-- Tool 4: MIT App Inventor -->
-                <a href="https://appinventor.mit.edu/" target="_blank" rel="noopener"
-                    class="bg-white border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/10 hover:shadow-md transition-all duration-300 rounded-2xl p-4 group flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 bg-slate-50 border border-slate-100 shadow-sm text-xl flex items-center justify-center rounded-xl group-hover:scale-110 transition-transform duration-300">
-                        📱</div>
-                    <div class="overflow-hidden">
-                        <div class="text-sm font-bold text-slate-700 group-hover:text-indigo-600 transition truncate">
-                            MIT App Inventor</div>
-                        <div class="text-[10px] text-slate-400 truncate">Android Builder</div>
-                    </div>
-                </a>
-
-                <!-- Tool 5: Blockly Games -->
-                <a href="https://blockly.games/" target="_blank" rel="noopener"
-                    class="bg-white border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/10 hover:shadow-md transition-all duration-300 rounded-2xl p-4 group flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 bg-slate-50 border border-slate-100 shadow-sm text-xl flex items-center justify-center rounded-xl group-hover:scale-110 transition-transform duration-300">
-                        🧩</div>
-                    <div class="overflow-hidden">
-                        <div class="text-sm font-bold text-slate-700 group-hover:text-indigo-600 transition truncate">
-                            Blockly Games</div>
-                        <div class="text-[10px] text-slate-400 truncate">Puzzle Logika Coding</div>
-                    </div>
-                </a>
-
-                <!-- Tool 6: Machine Learning for Kids -->
-                <a href="https://machinelearningforkids.co.uk/" target="_blank" rel="noopener"
-                    class="bg-white border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/10 hover:shadow-md transition-all duration-300 rounded-2xl p-4 group flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 bg-slate-50 border border-slate-100 shadow-sm text-xl flex items-center justify-center rounded-xl group-hover:scale-110 transition-transform duration-300">
-                        🧠</div>
-                    <div class="overflow-hidden">
-                        <div class="text-sm font-bold text-slate-700 group-hover:text-indigo-600 transition truncate">ML
-                            for Kids</div>
-                        <div class="text-[10px] text-slate-400 truncate">Latih Model AI Sendiri</div>
-                    </div>
-                </a>
-
-                <!-- Tool 7: Tinkercad -->
-                <a href="https://www.tinkercad.com/" target="_blank" rel="noopener"
-                    class="bg-white border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/10 hover:shadow-md transition-all duration-300 rounded-2xl p-4 group flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 bg-slate-50 border border-slate-100 shadow-sm text-xl flex items-center justify-center rounded-xl group-hover:scale-110 transition-transform duration-300">
-                        🔌</div>
-                    <div class="overflow-hidden">
-                        <div class="text-sm font-bold text-slate-700 group-hover:text-indigo-600 transition truncate">
-                            Tinkercad</div>
-                        <div class="text-[10px] text-slate-400 truncate">Simulasi IoT & Arduino</div>
-                    </div>
-                </a>
-
-                <!-- Tool 8: Quick, Draw! -->
-                <a href="https://quickdraw.withgoogle.com/" target="_blank" rel="noopener"
-                    class="bg-white border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/10 hover:shadow-md transition-all duration-300 rounded-2xl p-4 group flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 bg-slate-50 border border-slate-100 shadow-sm text-xl flex items-center justify-center rounded-xl group-hover:scale-110 transition-transform duration-300">
-                        🖍️</div>
-                    <div class="overflow-hidden">
-                        <div class="text-sm font-bold text-slate-700 group-hover:text-indigo-600 transition truncate">
-                            Quick, Draw!</div>
-                        <div class="text-[10px] text-slate-400 truncate">Eksperimen AI Visual</div>
-                    </div>
+                <a href="workshop/2026-07-tot-kka-pgri/index.html" class="p-4 rounded-2xl bg-amber-50/50 border border-amber-100 hover:border-amber-300 transition group block space-y-1">
+                    <span class="text-lg">📜</span>
+                    <strong class="font-bold text-amber-900 block group-hover:text-amber-700">ToT & Workshop KKA PGRI</strong>
+                    <p class="text-[11px] text-amber-700 leading-relaxed">Pelatihan fasilitator Koding & Kecerdasan Artifisial.</p>
                 </a>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-        <div
-            class="max-w-5xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-            <div>
-                &copy; 2026 Ach. Chanifuddin Fanani.
+    <!-- ========== MODAL LENGKAPI PROFIL SISWA BARU (SETELAH GOOGLE LOGIN) ========== -->
+    <div id="profile-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 md:p-8 max-w-sm w-full shadow-2xl border border-slate-100 space-y-5 text-center relative">
+            <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl mx-auto overflow-hidden border border-indigo-100" id="modal-avatar-preview">
+                🎓
             </div>
-            <div class="flex items-center gap-4">
-                <a href="/" class="hover:text-indigo-600 transition font-medium">← Kembali ke Portfolio</a>
-                <a href="https://github.com/chanif" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-50 text-slate-700 hover:text-indigo-600 hover:bg-indigo-50 transition font-medium border border-slate-100">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M12 .5C5.73.5.99 5.24.99 11.5c0 4.62 3 8.55 7.17 9.94.52.1.71-.23.71-.51 0-.25-.01-.92-.01-1.8-2.92.64-3.54-1.4-3.54-1.4-.48-1.22-1.17-1.55-1.17-1.55-.96-.66.07-.65.07-.65 1.06.07 1.62 1.09 1.62 1.09.94 1.62 2.47 1.15 3.07.88.09-.69.37-1.15.67-1.41-2.33-.26-4.78-1.17-4.78-5.2 0-1.15.41-2.08 1.08-2.81-.11-.27-.47-1.36.1-2.83 0 0 .88-.28 2.88 1.07A9.85 9.85 0 0 1 12 6.8c.89.004 1.79.12 2.63.35 2-.36 2.88-1.07 2.88-1.07.57 1.47.21 2.56.1 2.83.67.73 1.08 1.66 1.08 2.81 0 4.04-2.46 4.93-4.8 5.19.38.33.72.98.72 1.98 0 1.43-.01 2.58-.01 2.93 0 .28.19.61.72.51C20.01 20.05 23 16.12 23 11.5 23 5.24 18.27.5 12 .5z" />
-                    </svg>
-                    GitHub
-                </a>
+            <div>
+                <h3 class="font-heading font-extrabold text-xl text-slate-900">Lengkapi Profil Siswa</h3>
+                <p class="text-xs text-slate-500 mt-1" id="modal-email-preview">Konfirmasikan nama lengkap dan kelasmu untuk mencatat nilai evaluasi.</p>
+            </div>
+            
+            <div class="space-y-3 text-left">
+                <div>
+                    <label class="text-[11px] font-bold text-slate-700 block mb-1">Nama Lengkap Siswa:</label>
+                    <input type="text" id="profile-input-name" placeholder="Nama Lengkap..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                </div>
+                
+                <div>
+                    <label class="text-[11px] font-bold text-slate-700 block mb-1">Pilih Kelas (7A - 9K):</label>
+                    <select id="profile-input-kelas" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                        <option value="">-- Pilih Kelas --</option>
+                        <!-- Kelas 7 -->
+                        <optgroup label="Kelas 7">
+                            <option value="7A">Kelas 7A</option>
+                            <option value="7B">Kelas 7B</option>
+                            <option value="7C">Kelas 7C</option>
+                            <option value="7D">Kelas 7D</option>
+                            <option value="7E">Kelas 7E</option>
+                            <option value="7F">Kelas 7F</option>
+                            <option value="7G">Kelas 7G</option>
+                            <option value="7H">Kelas 7H</option>
+                            <option value="7I">Kelas 7I</option>
+                            <option value="7J">Kelas 7J</option>
+                            <option value="7K">Kelas 7K</option>
+                        </optgroup>
+                        <!-- Kelas 8 -->
+                        <optgroup label="Kelas 8">
+                            <option value="8A">Kelas 8A</option>
+                            <option value="8B">Kelas 8B</option>
+                            <option value="8C">Kelas 8C</option>
+                            <option value="8D">Kelas 8D</option>
+                            <option value="8E">Kelas 8E</option>
+                            <option value="8F">Kelas 8F</option>
+                            <option value="8G">Kelas 8G</option>
+                            <option value="8H">Kelas 8H</option>
+                            <option value="8I">Kelas 8I</option>
+                            <option value="8J">Kelas 8J</option>
+                            <option value="8K">Kelas 8K</option>
+                        </optgroup>
+                        <!-- Kelas 9 -->
+                        <optgroup label="Kelas 9">
+                            <option value="9A">Kelas 9A</option>
+                            <option value="9B">Kelas 9B</option>
+                            <option value="9C">Kelas 9C</option>
+                            <option value="9D">Kelas 9D</option>
+                            <option value="9E">Kelas 9E</option>
+                            <option value="9F">Kelas 9F</option>
+                            <option value="9G">Kelas 9G</option>
+                            <option value="9H">Kelas 9H</option>
+                            <option value="9I">Kelas 9I</option>
+                            <option value="9J">Kelas 9J</option>
+                            <option value="9K">Kelas 9K</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <button onclick="saveStudentProfileCompletion()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-heading font-bold text-xs rounded-xl transition shadow mt-2">
+                    Simpan Profil & Mulai Belajar
+                </button>
             </div>
         </div>
+    </div>
+
+    <footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+        <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Mandiri.</p>
     </footer>
 
-</body>
+    <script src="js/tracker.js"></script>
+    <script>
+    // Decode JWT Payload from Google Token
+    function parseJwt(token) {
+        try {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        } catch(e) {
+            return null;
+        }
+    }
 
+    let pendingGooglePayload = null;
+
+    // Handle Google Sign-in Callback
+    async function handleGoogleCredentialResponse(response) {
+        const payload = parseJwt(response.credential);
+        if (!payload) return;
+
+        pendingGooglePayload = payload;
+        const googleId = payload.sub;
+        const email = payload.email;
+        const gName = payload.name;
+        const picture = payload.picture;
+
+        // Try authenticating with backend
+        let serverUser = null;
+        if (window.FananiTracker && FananiTracker.googleLogin) {
+            const res = await FananiTracker.googleLogin(response.credential);
+            if (res.success && res.user) {
+                serverUser = res.user;
+            }
+        }
+
+        // Check if existing user in localStorage or Server DB
+        const storedUser = localStorage.getItem('fanani_user');
+        let userObj = serverUser || (storedUser ? JSON.parse(storedUser) : null);
+
+        const fullName = userObj ? (userObj.full_name || userObj.name) : null;
+        const kelas = userObj ? userObj.kelas : null;
+
+        if (fullName && kelas) {
+            // Existing user with complete profile
+            const completeUser = {
+                google_id: googleId,
+                name: fullName,
+                kelas: kelas,
+                email: email,
+                picture: picture,
+                profile_completed: true
+            };
+            localStorage.setItem('fanani_user', JSON.stringify(completeUser));
+            localStorage.setItem('fanani_auth_token', response.credential);
+            renderUserStatus();
+        } else {
+            // New user or missing class: Show Profile Modal
+            document.getElementById('modal-avatar-preview').innerHTML = picture ? `<img src="${picture}" class="w-full h-full object-cover">` : '🎓';
+            document.getElementById('modal-email-preview').innerText = `Terhubung sebagai ${email}. Silakan lengkapi nama & kelasmu:`;
+            document.getElementById('profile-input-name').value = fullName || gName;
+            document.getElementById('profile-modal').classList.remove('hidden');
+        }
+    }
+
+    // Trigger Google Sign-In Prompt
+    function triggerGoogleLogin() {
+        if (window.google && google.accounts && google.accounts.id) {
+            google.accounts.id.prompt();
+        } else {
+            // Local dev / fallback prompt
+            const mockName = prompt("Simulasi Login Google (Mode Lokal):\nMasukkan nama lengkap siswa:", "Ahmad Siswa");
+            if (mockName) {
+                pendingGooglePayload = {
+                    sub: 'local_g_' + Date.now(),
+                    name: mockName,
+                    email: mockName.toLowerCase().replace(/\s+/g, '') + '@smpn2lmg.sch.id',
+                    picture: ''
+                };
+                document.getElementById('modal-avatar-preview').innerHTML = '🎓';
+                document.getElementById('modal-email-preview').innerText = `Terhubung sebagai ${pendingGooglePayload.email}`;
+                document.getElementById('profile-input-name').value = mockName;
+                document.getElementById('profile-modal').classList.remove('hidden');
+            }
+        }
+    }
+
+    // Save Completed Profile (Name & Kelas 7A - 9K)
+    function saveStudentProfileCompletion() {
+        const name = document.getElementById('profile-input-name').value.trim();
+        const kelas = document.getElementById('profile-input-kelas').value;
+
+        if (!name) {
+            alert('Silakan masukkan nama lengkap siswa!');
+            return;
+        }
+        if (!kelas) {
+            alert('Silakan pilih kelasmu (7A - 9K)!');
+            return;
+        }
+
+        const userObj = {
+            google_id: pendingGooglePayload ? pendingGooglePayload.sub : 'guest_' + Date.now(),
+            name: name,
+            kelas: kelas,
+            email: pendingGooglePayload ? pendingGooglePayload.email : '',
+            picture: pendingGooglePayload ? pendingGooglePayload.picture : '',
+            profile_completed: true,
+            updated_at: new Date().toISOString()
+        };
+
+        localStorage.setItem('fanani_user', JSON.stringify(userObj));
+        document.getElementById('profile-modal').classList.add('hidden');
+        renderUserStatus();
+
+        // Optional server profile sync if FananiTracker available
+        if (window.FananiTracker && FananiTracker.saveProfile) {
+            FananiTracker.saveProfile(userObj);
+        }
+    }
+
+    // Render User Status in UI
+    function renderUserStatus() {
+        try {
+            const userJson = localStorage.getItem('fanani_user');
+            const nameEl = document.getElementById('user-name-display');
+            const detailEl = document.getElementById('user-status-detail');
+            const avatarEl = document.getElementById('user-avatar');
+            const badgeEl = document.getElementById('user-badge-status');
+            const customGoogleBtn = document.getElementById('btn-custom-google');
+            const googleBtnWrapper = document.getElementById('google-btn-wrapper');
+            const logoutBtn = document.getElementById('btn-logout');
+
+            if (userJson) {
+                const user = JSON.parse(userJson);
+                if (user && user.name && user.kelas) {
+                    nameEl.innerText = `${user.name} (${user.kelas})`;
+                    badgeEl.innerText = 'Akun Siswa Aktif';
+                    badgeEl.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800';
+                    detailEl.innerText = `${user.email ? user.email + ' • ' : ''}Nilai latihan & catatan refleksi tersimpan di database guru`;
+                    avatarEl.innerHTML = user.picture ? `<img src="${user.picture}" class="w-full h-full object-cover">` : '🎓';
+                    
+                    if (customGoogleBtn) customGoogleBtn.classList.add('hidden');
+                    if (googleBtnWrapper) googleBtnWrapper.classList.add('hidden');
+                    if (logoutBtn) logoutBtn.classList.remove('hidden');
+                    return;
+                }
+            }
+
+            // Default guest state
+            nameEl.innerText = 'Mode Belajar Mandiri';
+            badgeEl.innerText = 'Mode Tamu';
+            badgeEl.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600';
+            detailEl.innerText = 'Masuk dengan Google untuk menyinkronkan skor evaluasi dan catatan refleksimu ke database guru.';
+            avatarEl.innerHTML = '👤';
+            if (customGoogleBtn) customGoogleBtn.classList.remove('hidden');
+            if (googleBtnWrapper) googleBtnWrapper.classList.remove('hidden');
+            if (logoutBtn) logoutBtn.classList.add('hidden');
+        } catch(e){}
+    }
+
+    function handleLogout() {
+        localStorage.removeItem('fanani_user');
+        localStorage.removeItem('fanani_auth_token');
+        renderUserStatus();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderUserStatus();
+    });
+    </script>
+
+</body>
 </html>

@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apa Itu Informatika & 8 Pilar Kurikulum Merdeka | Pak Fanani</title>
+    <meta name="description" content="Pelajari hakikat ilmu Informatika, perbedaannya dengan TIK biasa, 8 elemen utama Kurikulum Merdeka, aktivitas interaktif 8 pilar, evaluasi formatif 4 bagian, dan catatan refleksi.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.18);}
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Modul Informatika
+        </a>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#definisi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">💡 Definisi Informatika</a>
+        <a href="#vs-tik" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">⚖️ Informatika vs TIK</a>
+        <a href="#delapan-elemen" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🏛️ 8 Elemen Utama</a>
+        <a href="#aktivitas-elemen" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">🎮 Eksplorasi 8 Pilar</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-blue-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">Pengantar Informatika</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">Apa Itu Informatika?</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-blue-600 via-indigo-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                📖 Pengantar Informatika · Modul 01
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Apa Itu Informatika & 8 Pilar Fondasi Abad ke-21
+            </h1>
+            <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-6">
+                Informatika bukan sekadar belajar mengetik di keyboard atau mengoperasikan aplikasi, melainkan ilmu terstruktur tentang bagaimana informasi diproses, dimodelkan, dan diotomasi untuk menyelesaikan persoalan dunia nyata.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-blue-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🏛️ Materi: 8 Pilar Kurikulum Merdeka</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 18 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Definisi Informatika</strong>
+                    <p class="text-slate-600">Menjelaskan hakikat ilmu informatika sebagai disiplin studi pengolahan data dan informasi terstruktur secara komputasional.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membedakan Informatika vs TIK</strong>
+                    <p class="text-slate-600">Menganalisis perbedaan mendasar antara peranan pengguna alat (*user/consumer*) dengan pencipta solusi (*creator/computational thinker*).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengenal 8 Elemen Informatika</strong>
+                    <p class="text-slate-600">Mengidentifikasi 8 pilar utama: BK, TIK, SK, JKI, AD, AP, DSI, dan PLB dalam Kurikulum Merdeka.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Literasi Digital Bertanggung Jawab</strong>
+                    <p class="text-slate-600">Menumbuhkan kesadaran etika, keamanan digital, dan kolaborasi dalam ekosistem digital modern.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DEFINISI INFORMATIKA -->
+    <section id="definisi" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Hakikat Ilmu Informatika</h2>
+                <p class="text-xs text-slate-500">Mengenal ilmu di balik transformasi teknologi digital</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">💡</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Apa itu Informatika?</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    <strong>Informatika (Informatics)</strong> adalah bidang ilmu mengenai struktur, sifat, dan interaksi dari beberapa sistem yang dipakai untuk mengumpulkan data, memproses dan menyimpan hasil pemrosesan data, serta menampilkannya dalam bentuk informasi.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">🧠</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Landasan Berpikir</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Landasan utama informatika adalah <strong>Berpikir Komputasional (Computational Thinking)</strong> — yaitu kemampuan bernalar untuk merumuskan persoalan dan solusinya secara terstruktur sehingga dapat dieksekusi secara efektif oleh manusia atau mesin.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-3xl block mb-1">🌍</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Peran di Abad ke-21</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Di era kecerdasan buatan (AI) dan otomatisasi, informatika menjadi literasi mendasar setara membaca, menulis, dan berhitung. Informatika memberdayakanmu menjadi <em>pencipta teknologi</em>, bukan hanya penonton pasif.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: INFORMATIKA VS TIK -->
+    <section id="vs-tik" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Perbedaan: Informatika vs TIK</h2>
+                <p class="text-xs text-slate-500">Mengapa Informatika lebih luas daripada sekadar pelajaran komputer biasa?</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Box TIK -->
+            <div class="p-5 rounded-2xl border-2 border-slate-200 bg-slate-50/60 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-slate-800 text-sm flex items-center gap-2"><span>🖥️</span> TIK (Teknologi Informasi & Komunikasi)</span>
+                    <span class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-bold">Fokus Pengguna / Tool</span>
+                </div>
+                <ul class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                    <li class="flex items-start gap-2"><span>•</span> <span>Berfokus pada <strong>cara memakai perangkat lunak</strong> (cth: mengetik di Word, membuat tabel di Excel, presentasi di PPT).</span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span>Siswa diposisikan sebagai <strong>pemakai (user)</strong> teknologi yang sudah jadi.</span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span>Menjawab pertanyaan: <em>"Bagaimana cara menggunakan aplikasi ini?"</em></span></li>
+                </ul>
+            </div>
+
+            <!-- Box Informatika -->
+            <div class="p-5 rounded-2xl border-2 border-blue-200 bg-blue-50/60 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-blue-900 text-sm flex items-center gap-2"><span>💡</span> Informatika (Informatics)</span>
+                    <span class="text-[10px] bg-blue-200 text-blue-800 px-2 py-0.5 rounded font-bold">Fokus Sains & Logika Solusi</span>
+                </div>
+                <ul class="text-xs text-blue-800 space-y-2 leading-relaxed">
+                    <li class="flex items-start gap-2"><span>•</span> <span>Mempelajari <strong>prinsip keilmuan, algoritma, struktur data, logika sistem, dan komputasi</strong> di balik aplikasi.</span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span>Siswa dilatih menjadi <strong>pencipta (creator)</strong> solusi dan pemikir komputasional.</span></li>
+                    <li class="flex items-start gap-2"><span>•</span> <span>Menjawab pertanyaan: <em>"Bagaimana cara merancang sistem otomatis untuk memecahkan problem ini?"</em></span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: 8 ELEMEN INFORMATIKA KURIKULUM MERDEKA -->
+    <section id="delapan-elemen" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-cyan-100 text-cyan-800 flex items-center justify-center text-xl font-extrabold">3</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">8 Elemen Pilar Informatika (Kurikulum Merdeka)</h2>
+                <p class="text-xs text-slate-500">Bangunan keilmuan lengkap yang dipelajari di jenjang SMP</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- 1. BK -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-2xl">🧠</span>
+                <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded block w-max">PILAR 1</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">Berpikir Komputasional (BK)</h3>
+                <p class="text-[11px] text-slate-500 leading-relaxed">Metode pemecahan masalah dengan Dekomposisi, Abstraksi, Pola, dan Algoritma.</p>
+            </div>
+
+            <!-- 2. TIK -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-2xl">💻</span>
+                <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded block w-max">PILAR 2</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">Teknologi Informasi & Komunikasi (TIK)</h3>
+                <p class="text-[11px] text-slate-500 leading-relaxed">Pemanfaatan aplikasi perkantoran, integrasi konten, dan pengelolaan file digital.</p>
+            </div>
+
+            <!-- 3. SK -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-2xl">⚙️</span>
+                <span class="text-[10px] font-bold text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded block w-max">PILAR 3</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">Sistem Komputer (SK)</h3>
+                <p class="text-[11px] text-slate-500 leading-relaxed">Mekanisme kerja perangkat keras (hardware), software, sistem operasi, dan bilangan biner.</p>
+            </div>
+
+            <!-- 4. JKI -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-2xl">🌐</span>
+                <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-2 py-0.5 rounded block w-max">PILAR 4</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">Jaringan Komputer & Internet (JKI)</h3>
+                <p class="text-[11px] text-slate-500 leading-relaxed">Packet switching, router, protokol TCP/IP, web browser, dan keamanan jaringan.</p>
+            </div>
+
+            <!-- 5. AD -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-2xl">📊</span>
+                <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded block w-max">PILAR 5</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">Analisis Data (AD)</h3>
+                <p class="text-[11px] text-slate-500 leading-relaxed">Pengumpulan data, pengolahan spreadsheet, visualisasi grafik, dan interpretasi informasi.</p>
+            </div>
+
+            <!-- 6. AP -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-2xl">📝</span>
+                <span class="text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded block w-max">PILAR 6</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">Algoritma & Pemrograman (AP)</h3>
+                <p class="text-[11px] text-slate-500 leading-relaxed">Pemrograman visual blok (Scratch) hingga koding teks (Python) dan logika kontrol.</p>
+            </div>
+
+            <!-- 7. DSI -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-2xl">🛡️</span>
+                <span class="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded block w-max">PILAR 7</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">Dampak Sosial Informatika (DSI)</h3>
+                <p class="text-[11px] text-slate-500 leading-relaxed">Etika digital, rekam jejak digital, hukum hak cipta, privasi data, dan anti-hoaks.</p>
+            </div>
+
+            <!-- 8. PLB -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm card-hover space-y-2">
+                <span class="text-2xl">🚀</span>
+                <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded block w-max">PILAR 8</span>
+                <h3 class="font-heading font-bold text-slate-800 text-xs">Praktik Lintas Bidang (PLB)</h3>
+                <p class="text-[11px] text-slate-500 leading-relaxed">Kolaborasi menciptakan proyek karya teknologi nyata untuk memecahkan problem sosial.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: AKTIVITAS EKSPLORASI 8 PILAR -->
+    <section id="aktivitas-elemen" class="bg-white rounded-3xl border-2 border-blue-200 p-6 md:p-8 shadow-md space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+                <span class="text-3xl">🎮</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Aktivitas: Tebak Pilar Elemen Informatika</h2>
+                    <p class="text-xs text-slate-500">Pilih pilar elemen yang tepat untuk setiap contoh kegiatan di bawah ini</p>
+                </div>
+            </div>
+            <button onclick="checkPillarActivity()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow transition">
+                ✓ Periksa Jawaban
+            </button>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-xs" id="pillar-activity-pool">
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2" data-pitem="1" data-correct="AP">
+                <span class="font-bold text-slate-800 block">1. Membuat game animasi kucing menangkap tikus menggunakan blok Scratch</span>
+                <select id="pact-1" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold">
+                    <option value="">-- Pilih Pilar Elemen --</option>
+                    <option value="BK">BK (Berpikir Komputasional)</option>
+                    <option value="SK">SK (Sistem Komputer)</option>
+                    <option value="AP">AP (Algoritma & Pemrograman)</option>
+                    <option value="DSI">DSI (Dampak Sosial Informatika)</option>
+                </select>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2" data-pitem="2" data-correct="JKI">
+                <span class="font-bold text-slate-800 block">2. Menghubungkan laptop ke WiFi sekolah dan memeriksa alamat IP router</span>
+                <select id="pact-2" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold">
+                    <option value="">-- Pilih Pilar Elemen --</option>
+                    <option value="JKI">JKI (Jaringan Komputer & Internet)</option>
+                    <option value="AD">AD (Analisis Data)</option>
+                    <option value="TIK">TIK (Teknologi Informasi & Komunikasi)</option>
+                    <option value="PLB">PLB (Praktik Lintas Bidang)</option>
+                </select>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2" data-pitem="3" data-correct="AD">
+                <span class="font-bold text-slate-800 block">3. Menghitung rata-rata nilai kelas dan membuat diagram batang di spreadsheet</span>
+                <select id="pact-3" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold">
+                    <option value="">-- Pilih Pilar Elemen --</option>
+                    <option value="SK">SK (Sistem Komputer)</option>
+                    <option value="AD">AD (Analisis Data)</option>
+                    <option value="BK">BK (Berpikir Komputasional)</option>
+                    <option value="DSI">DSI (Dampak Sosial Informatika)</option>
+                </select>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2" data-pitem="4" data-correct="DSI">
+                <span class="font-bold text-slate-800 block">4. Mempelajari aturan undang-undang perlindungan data pribadi dan bahaya cyberbullying</span>
+                <select id="pact-4" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold">
+                    <option value="">-- Pilih Pilar Elemen --</option>
+                    <option value="DSI">DSI (Dampak Sosial Informatika)</option>
+                    <option value="AP">AP (Algoritma & Pemrograman)</option>
+                    <option value="TIK">TIK (Teknologi Informasi & Komunikasi)</option>
+                    <option value="SK">SK (Sistem Komputer)</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="pillar-feedback-box" class="hidden p-4 rounded-2xl text-xs font-bold"></div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF 4 BAGIAN -->
+    <section id="evaluasi" class="bg-white rounded-3xl border-2 border-amber-200 p-6 md:p-10 shadow-md space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+                <span class="text-3xl">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Latihan Evaluasi Formatif (18 Poin)</h2>
+                    <p class="text-xs text-slate-500">Uji penguasaan konsep pengantar informatika melalui 4 bagian evaluasi</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="flex items-center justify-between bg-slate-50 p-2 rounded-2xl border border-slate-200 text-xs font-bold">
+            <button onclick="showEvalTab('A')" id="eval-tab-A" class="px-4 py-2 rounded-xl bg-amber-500 text-white shadow-sm transition">Bagian A: Pilihan Ganda (5)</button>
+            <button onclick="showEvalTab('B')" id="eval-tab-B" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian B: Benar/Salah (5)</button>
+            <button onclick="showEvalTab('C')" id="eval-tab-C" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian C: Menjodohkan (5)</button>
+            <button onclick="showEvalTab('D')" id="eval-tab-D" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition">Bagian D: Mengurutkan (5)</button>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA -->
+        <div id="eval-sec-A" class="space-y-6 text-sm">
+            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian A — Pilihan Ganda (5 Soal)</h3>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A1">
+                <p class="font-bold text-slate-800 text-xs">1. Definisi yang paling tepat mengenai ilmu Informatika adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A1','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Ilmu tentang cara merakit dan memperbaiki layar monitor rusak</button>
+                    <button onclick="pickMCQ('A1','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Ilmu tentang pengolahan informasi dan komputasi pada sistem komputasi</button>
+                    <button onclick="pickMCQ('A1','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Kumpulan game online untuk hiburan</button>
+                    <button onclick="pickMCQ('A1','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Cara berbelanja barang di marketplace</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A2">
+                <p class="font-bold text-slate-800 text-xs">2. Perbedaan utama antara pelajaran TIK dan Informatika adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A2','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. TIK fokus pada pemakai aplikasi, Informatika fokus pada prinsip sains komputasi dan kreasi solusi</button>
+                    <button onclick="pickMCQ('A2','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. TIK menggunakan komputer, Informatika tidak boleh memakai komputer</button>
+                    <button onclick="pickMCQ('A2','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. TIK khusus untuk gamer, Informatika khusus untuk desainer</button>
+                    <button onclick="pickMCQ('A2','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Tidak ada perbedaan sama sekali</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A3">
+                <p class="font-bold text-slate-800 text-xs">3. Pilar informatika yang melatih kemampuan menyelesaikan masalah dengan cara memecah menjadi sub-masalah dan membuat algoritma adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A3','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Jaringan Komputer & Internet</button>
+                    <button onclick="pickMCQ('A3','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Berpikir Komputasional (BK)</button>
+                    <button onclick="pickMCQ('A3','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Sistem Komputer</button>
+                    <button onclick="pickMCQ('A3','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Dampak Sosial Informatika</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A4">
+                <p class="font-bold text-slate-800 text-xs">4. Pilar yang mempelajari etika berinternet, jejak digital, hukum hak cipta, dan keamanan privasi adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A4','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Analisis Data (AD)</button>
+                    <button onclick="pickMCQ('A4','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Dampak Sosial Informatika (DSI)</button>
+                    <button onclick="pickMCQ('A4','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Praktik Lintas Bidang (PLB)</button>
+                    <button onclick="pickMCQ('A4','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Algoritma & Pemrograman (AP)</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3" data-q="A5">
+                <p class="font-bold text-slate-800 text-xs">5. Mengapa belajar informatika penting bagi generasi muda di masa depan?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                    <button onclick="pickMCQ('A5','A',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">A. Agar bisa bermain game seharian tanpa batas</button>
+                    <button onclick="pickMCQ('A5','B',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">B. Agar mampu bernalar kritis dan menciptakan solusi teknologi untuk membantu sesama</button>
+                    <button onclick="pickMCQ('A5','C',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">C. Agar tidak perlu belajar matematika lagi</button>
+                    <button onclick="pickMCQ('A5','D',this)" class="p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition">D. Hanya untuk mereka yang ingin bekerja di toko komputer</button>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <button onclick="showEvalTab('B')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    Lanjut ke Bagian B ▶
+                </button>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH -->
+        <div id="eval-sec-B" class="hidden space-y-6 text-sm">
+            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian B — Benar / Salah (5 Soal)</h3>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B1">
+                <p class="font-semibold text-slate-800 text-xs">1. Belajar informatika hanya bisa dilakukan jika ada perangkat komputer menyala di depan kita (plugged).</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B1','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B1','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B2">
+                <p class="font-semibold text-slate-800 text-xs">2. Berpikir Komputasional dapat diterapkan untuk memecahkan persoalan sehari-hari di luar komputer.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B2','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B2','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B3">
+                <p class="font-semibold text-slate-800 text-xs">3. Elemen Praktik Lintas Bidang (PLB) menggabungkan berbagai pengetahuan informatika untuk proyek nyata.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B3','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B3','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B4">
+                <p class="font-semibold text-slate-800 text-xs">4. Analisis Data (AD) hanya berkaitan dengan menghafal angka tanpa perlu visualisasi grafik.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B4','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B4','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3" data-q="B5">
+                <p class="font-semibold text-slate-800 text-xs">5. Memahami Dampak Sosial Informatika (DSI) membuat kita menjadi warganet yang bijak dan beretika.</p>
+                <div class="flex gap-2">
+                    <button onclick="pickTF('B5','benar',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Benar</button>
+                    <button onclick="pickTF('B5','salah',this)" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100">Salah</button>
+                </div>
+            </div>
+
+            <div class="flex justify-between">
+                <button onclick="showEvalTab('A')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian A</button>
+                <button onclick="showEvalTab('C')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">Lanjut ke Bagian C ▶</button>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN -->
+        <div id="eval-sec-C" class="hidden space-y-6 text-sm">
+            <div class="flex justify-between items-center">
+                <h3 class="font-heading font-bold text-slate-800 text-base">Bagian C — Menjodohkan (5 Pasangan Elemen)</h3>
+                <button onclick="resetMatchSection()" class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold rounded-lg">🔄 Reset Pasangan</button>
+            </div>
+            <p class="text-xs text-slate-500">Klik istilah di sebelah kiri, lalu klik deskripsi yang tepat di sebelah kanan untuk menghubungkan pasangan.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 relative">
+                <div class="space-y-2.5" id="match-col-left">
+                    <!-- Left items -->
+                </div>
+                <div class="space-y-2.5" id="match-col-right">
+                    <!-- Right items -->
+                </div>
+            </div>
+
+            <div class="flex justify-between">
+                <button onclick="showEvalTab('B')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian B</button>
+                <button onclick="showEvalTab('D')" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl transition shadow">Lanjut ke Bagian D ▶</button>
+            </div>
+        </div>
+
+        <!-- BAGIAN D: MENGURUTKAN ALUR PENYELESAIAN MASALAH -->
+        <div id="eval-sec-D" class="hidden space-y-6 text-sm">
+            <h3 class="font-heading font-bold text-slate-800 text-base">Bagian D — Mengurutkan Siklus Rekayasa Solusi Informatika</h3>
+            <p class="text-xs text-slate-500">Gunakan tombol panah (▲ / ▼) untuk menyusun 5 tahapan pemecahan masalah dengan informatika dari awal hingga akhir!</p>
+
+            <div class="space-y-2" id="seq-steps-container">
+                <!-- Sequence steps populated by JS -->
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <button onclick="showEvalTab('C')" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-bold rounded-xl">◀ Bagian C</button>
+                <button onclick="submitAllEvaluation()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl transition shadow-lg flex items-center gap-2">
+                    <span>📊</span> Hitung Nilai & Lihat Rekap Lengkap
+                </button>
+            </div>
+        </div>
+
+        <!-- HASIL REKAP EVALUASI -->
+        <div id="eval-recap-result" class="hidden p-6 md:p-8 rounded-3xl bg-slate-900 text-white space-y-6">
+            <!-- Dynamically populated recap -->
+        </div>
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-8 md:p-10 shadow-xl space-y-8">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-3xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-blue-300">Rangkuman Materi & Refleksi</h2>
+                <p class="text-xs text-slate-300">Poin penting yang wajib diingat dan catatan pemahamanmu</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 text-xs leading-relaxed text-slate-300">
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-blue-300 block mb-1 text-sm">💡 Hakikat Informatika:</strong>
+                Informatika adalah ilmu sains dan rekayasa pengolahan data otomatis dengan Berpikir Komputasional sebagai fondasi utama bernalarnya.
+            </div>
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-blue-300 block mb-1 text-sm">🏛️ 8 Pilar Fondasi:</strong>
+                Mencakup BK, TIK, SK, JKI, AD, AP, DSI, dan PLB yang saling terhubung membentuk kompetensi digital utuh.
+            </div>
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-blue-300 block mb-1 text-sm">🚀 Menjadi Kreator Solusi:</strong>
+                Tujuan utama belajar informatika adalah memberdayakanmu menciptakan aplikasi, menganalisis data, dan mengatasi masalah nyata.
+            </div>
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                <strong class="text-blue-300 block mb-1 text-sm">🛡️ Etika & Warganet Bijak:</strong>
+                Kecakapan digital wajib diimbangi tanggung jawab moral, keamanan privasi, dan kepedulian sosial.
+            </div>
+        </div>
+
+        <!-- Form Refleksi Siswa -->
+        <div class="p-5 bg-white/5 rounded-2xl border border-white/10 space-y-3">
+            <label class="font-bold text-white text-xs block">
+                💭 Refleksi Siswa: Dari 8 elemen pilar Informatika yang telah dipelajari, elemen mana yang paling ingin kamu dalami dan mengapa?
+            </label>
+            <textarea id="refleksi-text" rows="3" class="w-full p-3 bg-black/30 border border-white/20 rounded-xl text-white text-xs focus:outline-none focus:border-blue-400" placeholder="Tuliskan catatan refleksimu di sini... (misal: Saya sangat tertarik dengan Algoritma & Pemrograman karena ingin membuat game edukasi sendiri)"></textarea>
+            <div class="flex justify-end">
+                <button onclick="saveStudentReflection()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+            </div>
+        </div>
+
+        <!-- Completion Footer -->
+        <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <p class="text-xs text-slate-400">Selesai mempelajari modul ini?</p>
+                <p class="text-sm font-bold text-white">Tandai progress belajarmu agar tercatat!</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button id="btn-complete" onclick="markComplete()" class="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md flex items-center gap-2">
+                    <span>✓</span> Tandai Selesai Modul
+                </button>
+                <a href="../02-sejarah-perkembangan/index.html" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl transition">
+                    Materi Berikutnya (Sejarah IT) →
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-16 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
+</footer>
+
+<!-- Interactive Scripts -->
+<script>
+// 1. Aktivitas 8 Pilar
+function checkPillarActivity() {
+    let correct = 0;
+    const items = [
+        { id: 1, val: document.getElementById('pact-1').value, exp: 'AP' },
+        { id: 2, val: document.getElementById('pact-2').value, exp: 'JKI' },
+        { id: 3, val: document.getElementById('pact-3').value, exp: 'AD' },
+        { id: 4, val: document.getElementById('pact-4').value, exp: 'DSI' }
+    ];
+
+    items.forEach(it => {
+        const card = document.querySelector(`[data-pitem="${it.id}"]`);
+        if (it.val === it.exp) {
+            correct++;
+            card.className = 'p-4 bg-emerald-50 rounded-2xl border-2 border-emerald-300 space-y-2';
+        } else {
+            card.className = 'p-4 bg-red-50 rounded-2xl border-2 border-red-300 space-y-2';
+        }
+    });
+
+    const fb = document.getElementById('pillar-feedback-box');
+    fb.classList.remove('hidden');
+    if (correct === items.length) {
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+        fb.innerHTML = '🎉 Luar Biasa! Kamu berhasil mengidentifikasi 4 pilar elemen informatika dengan 100% benar!';
+    } else {
+        fb.className = 'p-4 rounded-2xl text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300';
+        fb.innerHTML = `Skor: ${correct}/${items.length} Benar. Periksa kartu yang bertanda merah!`;
+    }
+}
+
+// 2. Evaluasi Lengkap 4 Bagian
+let evalAnswers = {};
+let matchPairs = {};
+let selectedLeftMatch = null;
+
+const MATCH_DATA_LEFT = [
+    { id: '1', text: 'Berpikir Komputasional (BK)' },
+    { id: '2', text: 'Sistem Komputer (SK)' },
+    { id: '3', text: 'Jaringan Komputer & Internet (JKI)' },
+    { id: '4', text: 'Analisis Data (AD)' },
+    { id: '5', text: 'Dampak Sosial Informatika (DSI)' }
+];
+
+const MATCH_DATA_RIGHT = [
+    { id: 'a', text: 'Mekanisme kerja perangkat keras, sistem operasi, dan bilangan biner' },
+    { id: 'b', text: 'Landasan bernalar terstruktur: Dekomposisi, Abstraksi, Pola, dan Algoritma' },
+    { id: 'c', text: 'Etika digital, perlindungan privasi data, hukum hak cipta, dan anti-hoaks' },
+    { id: 'd', text: 'Packet switching, router, protokol TCP/IP, dan keamanan jaringan' },
+    { id: 'e', text: 'Pengumpulan data, pengolahan spreadsheet, dan visualisasi grafik informasi' }
+];
+
+const MATCH_CORRECT = { '1': 'b', '2': 'a', '3': 'd', '4': 'e', '5': 'c' };
+
+let currentSeqSteps = [
+    'Menuliskan kode program atau instruksi algoritma (Koding / Implementasi).',
+    'Menguji dan mengevaluasi apakah solusi bekerja efektif (Testing & Debugging).',
+    'Memahami dan merumuskan inti permasalahan nyata (Analisis Masalah).',
+    'Menerapkan dan membagikan solusi untuk membantu pengguna (Deployment).',
+    'Merancang alur langkah solusi secara terstruktur (Desain Algoritma).'
+];
+
+const SEQ_CORRECT = [
+    'Memahami dan merumuskan inti permasalahan nyata (Analisis Masalah).',
+    'Merancang alur langkah solusi secara terstruktur (Desain Algoritma).',
+    'Menuliskan kode program atau instruksi algoritma (Koding / Implementasi).',
+    'Menguji dan mengevaluasi apakah solusi bekerja efektif (Testing & Debugging).',
+    'Menerapkan dan membagikan solusi untuk membantu pengguna (Deployment).'
+];
+
+function showEvalTab(tabId) {
+    ['A','B','C','D'].forEach(t => {
+        document.getElementById(`eval-tab-${t}`).className = (t === tabId)
+            ? 'px-4 py-2 rounded-xl bg-amber-500 text-white shadow-sm transition'
+            : 'px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 transition';
+        const sec = document.getElementById(`eval-sec-${t}`);
+        if (sec) {
+            if (t === tabId) sec.classList.remove('hidden');
+            else sec.classList.add('hidden');
+        }
+    });
+}
+
+function pickMCQ(q, val, btn) {
+    evalAnswers[q] = val;
+    const parent = btn.parentElement;
+    parent.querySelectorAll('button').forEach(b => b.className = 'p-2.5 bg-white border border-slate-200 rounded-xl text-left hover:border-amber-400 transition');
+    btn.className = 'p-2.5 bg-amber-100 border-2 border-amber-400 text-amber-900 font-bold rounded-xl text-left';
+}
+
+function pickTF(q, val, btn) {
+    evalAnswers[q] = val;
+    const parent = btn.parentElement;
+    parent.querySelectorAll('button').forEach(b => b.className = 'px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold hover:bg-slate-100');
+    btn.className = 'px-4 py-1.5 bg-amber-500 text-white font-bold rounded-lg text-xs';
+}
+
+function initMatching() {
+    const leftCol = document.getElementById('match-col-left');
+    const rightCol = document.getElementById('match-col-right');
+    leftCol.innerHTML = '';
+    rightCol.innerHTML = '';
+
+    MATCH_DATA_LEFT.forEach(item => {
+        const d = document.createElement('div');
+        d.id = `match-l-${item.id}`;
+        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400 transition text-xs font-bold text-slate-700 select-none';
+        d.onclick = () => selectLeftMatch(item.id);
+        d.innerHTML = `<span>${item.id}. ${item.text}</span>`;
+        leftCol.appendChild(d);
+    });
+
+    MATCH_DATA_RIGHT.forEach(item => {
+        const d = document.createElement('div');
+        d.id = `match-r-${item.id}`;
+        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400 transition text-xs text-slate-700 select-none';
+        d.onclick = () => selectRightMatch(item.id);
+        d.innerHTML = `<span>• ${item.text}</span>`;
+        rightCol.appendChild(d);
+    });
+}
+
+function selectLeftMatch(id) {
+    selectedLeftMatch = id;
+    MATCH_DATA_LEFT.forEach(item => {
+        const el = document.getElementById(`match-l-${item.id}`);
+        if (item.id === id) {
+            el.className = 'p-3 bg-amber-100 border-2 border-amber-500 text-amber-900 font-bold rounded-xl cursor-pointer select-none';
+        } else if (matchPairs[item.id]) {
+            el.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-bold rounded-xl cursor-pointer select-none';
+        } else {
+            el.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer select-none text-xs font-bold text-slate-700';
+        }
+    });
+}
+
+function selectRightMatch(rId) {
+    if (!selectedLeftMatch) return;
+    matchPairs[selectedLeftMatch] = rId;
+
+    const leftEl = document.getElementById(`match-l-${selectedLeftMatch}`);
+    leftEl.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-bold rounded-xl cursor-pointer select-none flex justify-between items-center';
+    leftEl.innerHTML = `<span>${leftEl.innerText}</span> <span class="text-[10px] bg-emerald-200 px-2 py-0.5 rounded font-mono">🔗 #${selectedLeftMatch}</span>`;
+
+    const rightEl = document.getElementById(`match-r-${rId}`);
+    rightEl.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-medium rounded-xl cursor-pointer select-none flex justify-between items-center';
+
+    selectedLeftMatch = null;
+}
+
+function resetMatchSection() {
+    matchPairs = {};
+    selectedLeftMatch = null;
+    initMatching();
+}
+
+function initSequence() {
+    renderSequence();
+}
+
+function renderSequence() {
+    const container = document.getElementById('seq-steps-container');
+    container.innerHTML = '';
+    currentSeqSteps.forEach((step, idx) => {
+        const d = document.createElement('div');
+        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between gap-3 text-xs';
+        d.innerHTML = `
+            <span class="font-bold text-slate-400 w-6 font-mono">${idx + 1}.</span>
+            <span class="flex-1 font-semibold text-slate-700">${step}</span>
+            <div class="flex gap-1">
+                <button onclick="moveSeq(${idx}, -1)" class="w-6 h-6 rounded bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-600 hover:bg-slate-100 ${idx === 0 ? 'opacity-30 cursor-not-allowed' : ''}">▲</button>
+                <button onclick="moveSeq(${idx}, 1)" class="w-6 h-6 rounded bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-600 hover:bg-slate-100 ${idx === currentSeqSteps.length - 1 ? 'opacity-30 cursor-not-allowed' : ''}">▼</button>
+            </div>
+        `;
+        container.appendChild(d);
+    });
+}
+
+function moveSeq(idx, dir) {
+    const target = idx + dir;
+    if (target < 0 || target >= currentSeqSteps.length) return;
+    const temp = currentSeqSteps[idx];
+    currentSeqSteps[idx] = currentSeqSteps[target];
+    currentSeqSteps[target] = temp;
+    renderSequence();
+}
+
+function submitAllEvaluation() {
+    let scoreA = 0;
+    const keyA = { A1: 'B', A2: 'A', A3: 'B', A4: 'B', A5: 'B' };
+    Object.keys(keyA).forEach(k => { if (evalAnswers[k] === keyA[k]) scoreA += 5; });
+
+    let scoreB = 0;
+    const keyB = { B1: 'salah', B2: 'benar', B3: 'benar', B4: 'salah', B5: 'benar' };
+    Object.keys(keyB).forEach(k => { if (evalAnswers[k] === keyB[k]) scoreB += 5; });
+
+    let scoreC = 0;
+    Object.keys(MATCH_CORRECT).forEach(k => {
+        if (matchPairs[k] === MATCH_CORRECT[k]) scoreC += 5;
+    });
+
+    let scoreD = 0;
+    currentSeqSteps.forEach((s, idx) => {
+        if (s === SEQ_CORRECT[idx]) scoreD += 5;
+    });
+
+    const totalRaw = scoreA + scoreB + scoreC + scoreD; // Max: 25+25+25+25 = 100
+    const totalPct = Math.round(totalRaw);
+
+    const recap = document.getElementById('eval-recap-result');
+    recap.classList.remove('hidden');
+    recap.scrollIntoView({ behavior: 'smooth' });
+
+    recap.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+            <div>
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest block mb-1">HASIL ASESMEN FORMATIF</span>
+                <h3 class="font-heading font-extrabold text-3xl text-white">Nilai Akhir: ${totalPct} / 100</h3>
+            </div>
+            <span class="px-5 py-2 rounded-2xl text-sm font-extrabold ${totalPct >= 80 ? 'bg-emerald-500 text-white' : 'bg-amber-500 text-white'}">
+                ${totalPct >= 80 ? '🏆 Sangat Baik (Tuntas)' : '📖 Perlu Penguatan'}
+            </span>
+        </div>
+
+        <div class="grid sm:grid-cols-4 gap-3 text-center text-xs">
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian A (MCQ)</span>
+                <strong class="text-base text-blue-300">${scoreA} / 25</strong>
+            </div>
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian B (B/S)</span>
+                <strong class="text-base text-blue-300">${scoreB} / 25</strong>
+            </div>
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian C (Jodohkan)</span>
+                <strong class="text-base text-blue-300">${scoreC} / 25</strong>
+            </div>
+            <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                <span class="text-slate-400 block text-[10px]">Bagian D (Urutan)</span>
+                <strong class="text-base text-blue-300">${scoreD} / 25</strong>
+            </div>
+        </div>
+
+        <div id="eval-history-box" class="p-4 bg-white/5 rounded-2xl border border-white/10 text-xs text-slate-300">
+            <span class="text-[10px] uppercase tracking-wider text-amber-400 font-bold block mb-1">Riwayat Pengerjaan Evaluasi Siswa:</span>
+            <div id="eval-history-list" class="space-y-1"></div>
+        </div>
+
+        <p class="text-xs text-slate-300 leading-relaxed">
+            ${totalPct >= 80 
+                ? 'Selamat! Kamu telah memahami hakikat ilmu Informatika dan 8 elemen utamanya dengan sangat baik. Tuliskan refleksimu di bawah ini!' 
+                : 'Bagus! Kamu sudah berusaha. Silakan pelajari kembali konsep 8 pilar di atas dan ulangi evaluasi untuk mencapai nilai maksimal.'}
+        </p>
+    `;
+
+    // Sync to Database & LocalStorage via FananiTracker
+    if (window.FananiTracker) {
+        FananiTracker.submitEvaluation({
+            subject: 'informatika',
+            topic_id: 'inf-intro-01',
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalPct,
+            answers: { evalAnswers, matchPairs, currentSeqSteps }
+        }).then(res => {
+            renderHistoryList();
+        });
+    }
+}
+
+async function renderHistoryList() {
+    if (!window.FananiTracker) return;
+    const hist = await FananiTracker.getHistory('informatika', 'inf-intro-01');
+    const el = document.getElementById('eval-history-list');
+    if (!el || !hist.attempts) return;
+
+    if (hist.attempts.length === 0) {
+        el.innerHTML = '<span class="text-slate-400">Belum ada riwayat pengerjaan sebelumnya.</span>';
+        return;
+    }
+
+    el.innerHTML = hist.attempts.map((att, i) => `
+        <div class="flex justify-between items-center bg-black/20 px-3 py-1.5 rounded-lg text-[11px]">
+            <span>Percobaan #${att.attempt_number || (i+1)} (${new Date(att.created_at || Date.now()).toLocaleDateString()})</span>
+            <strong class="text-amber-300 font-mono">Nilai: ${Math.round(att.total_score)}/100</strong>
+        </div>
+    `).join('');
+}
+
+function saveStudentReflection() {
+    const val = document.getElementById('refleksi-text').value;
+    if (!val.trim()) {
+        alert('Tuliskan catatan refleksimu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        FananiTracker.saveReflection('informatika', 'inf-intro-01', val).then(() => {
+            alert('Catatan refleksi berhasil disimpan ke database!');
+        });
+    } else {
+        localStorage.setItem('refl_inf-intro-01', val);
+        alert('Catatan refleksi berhasil disimpan!');
+    }
+}
+
+function markComplete() {
+    if (window.FananiTracker) {
+        FananiTracker.markCompleted('informatika', 'inf-intro-01').then(() => {
+            const btn = document.getElementById('btn-complete');
+            btn.innerHTML = '✓ Modul Berhasil Dituntaskan!';
+            btn.className = 'px-5 py-2.5 bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md cursor-default';
+            alert('Selamat! Progress belajar modul ini telah berhasil disimpan ke database.');
+        });
+    } else {
+        const btn = document.getElementById('btn-complete');
+        btn.innerHTML = '✓ Modul Berhasil Dituntaskan!';
+        btn.className = 'px-5 py-2.5 bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md cursor-default';
+        alert('Modul ditandai selesai!');
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
+    initSequence();
+
+    if (window.FananiTracker) {
+        FananiTracker.getHistory('informatika', 'inf-intro-01').then(h => {
+            if (h.reflection_text) {
+                document.getElementById('refleksi-text').value = h.reflection_text;
+            }
+            if (h.is_completed) {
+                const btn = document.getElementById('btn-complete');
+                if (btn) {
+                    btn.innerHTML = '✓ Modul Berhasil Dituntaskan!';
+                    btn.className = 'px-5 py-2.5 bg-emerald-600 text-white text-xs font-bold rounded-xl transition shadow-md cursor-default';
+                }
+            }
+        });
+    }
+});
+</script>
+<script src="../../../js/tracker.js"></script>
+
+</body>
+</html>
