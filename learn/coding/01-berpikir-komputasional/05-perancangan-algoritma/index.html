@@ -408,65 +408,7 @@
                 <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
                 <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Algoritma & Kompleksitas/Karakternya (5 Pasangan · Bobot: 25 Poin)</h3>
             </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Nama Algoritma:</p>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Linear Search</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Binary Search</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Bubble Sort</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Greedy Algorithm</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Divide and Conquer</div>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Pilih Karakteristik:</p>
-                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 1 --</option>
-                        <option value="linear">Mengecek data satu per satu secara berurutan O(N)</option>
-                        <option value="binary">Membagi dua ruang pencarian data terurut secara logaritmik O(log N)</option>
-                        <option value="bubble">Mengapungkan elemen terbesar ke kanan lewat penukaran berpasangan</option>
-                        <option value="greedy">Memilih keputusan terbaik secara cepat pada setiap langkah saat ini</option>
-                        <option value="divide">Membagi masalah besar menjadi sub-masalah kecil, lalu menggabungkan hasilnya</option>
-                    </select>
-
-                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 2 --</option>
-                        <option value="linear">Mengecek data satu per satu secara berurutan O(N)</option>
-                        <option value="binary">Membagi dua ruang pencarian data terurut secara logaritmik O(log N)</option>
-                        <option value="bubble">Mengapungkan elemen terbesar ke kanan lewat penukaran berpasangan</option>
-                        <option value="greedy">Memilih keputusan terbaik secara cepat pada setiap langkah saat ini</option>
-                        <option value="divide">Membagi masalah besar menjadi sub-masalah kecil, lalu menggabungkan hasilnya</option>
-                    </select>
-
-                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 3 --</option>
-                        <option value="linear">Mengecek data satu per satu secara berurutan O(N)</option>
-                        <option value="binary">Membagi dua ruang pencarian data terurut secara logaritmik O(log N)</option>
-                        <option value="bubble">Mengapungkan elemen terbesar ke kanan lewat penukaran berpasangan</option>
-                        <option value="greedy">Memilih keputusan terbaik secara cepat pada setiap langkah saat ini</option>
-                        <option value="divide">Membagi masalah besar menjadi sub-masalah kecil, lalu menggabungkan hasilnya</option>
-                    </select>
-
-                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 4 --</option>
-                        <option value="linear">Mengecek data satu per satu secara berurutan O(N)</option>
-                        <option value="binary">Membagi dua ruang pencarian data terurut secara logaritmik O(log N)</option>
-                        <option value="bubble">Mengapungkan elemen terbesar ke kanan lewat penukaran berpasangan</option>
-                        <option value="greedy">Memilih keputusan terbaik secara cepat pada setiap langkah saat ini</option>
-                        <option value="divide">Membagi masalah besar menjadi sub-masalah kecil, lalu menggabungkan hasilnya</option>
-                    </select>
-
-                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 5 --</option>
-                        <option value="linear">Mengecek data satu per satu secara berurutan O(N)</option>
-                        <option value="binary">Membagi dua ruang pencarian data terurut secara logaritmik O(log N)</option>
-                        <option value="bubble">Mengapungkan elemen terbesar ke kanan lewat penukaran berpasangan</option>
-                        <option value="greedy">Memilih keputusan terbaik secara cepat pada setiap langkah saat ini</option>
-                        <option value="divide">Membagi masalah besar menjadi sub-masalah kecil, lalu menggabungkan hasilnya</option>
-                    </select>
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
@@ -626,6 +568,23 @@ function runSearchRace() {
 }
 
 // Answer Keys
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Linear Search'}, {'id': '2', 'text': 'Binary Search'}, {'id': '3', 'text': 'Bubble Sort'}, {'id': '4', 'text': 'Greedy Algorithm'}, {'id': '5', 'text': 'Divide and Conquer'}];
+const MATCH_DATA_RIGHT = [{'id': 'linear', 'text': 'Mengecek data satu per satu secara berurutan O(N)'}, {'id': 'binary', 'text': 'Membagi dua ruang pencarian data terurut secara logaritmik O(log N)'}, {'id': 'bubble', 'text': 'Mengapungkan elemen terbesar ke kanan lewat penukaran berpasangan'}, {'id': 'greedy', 'text': 'Memilih keputusan terbaik secara cepat pada setiap langkah saat ini'}, {'id': 'divide', 'text': 'Membagi masalah besar menjadi sub-masalah kecil, lalu menggabungkan hasilnya'}];
+const MATCH_CORRECT = {'1': 'linear', '2': 'binary', '3': 'bubble', '4': 'greedy', '5': 'divide'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
 const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
 const KEY_TF = { tf_1: 'B', tf_2: 'S', tf_3: 'B', tf_4: 'B', tf_5: 'B' };
 const KEY_MATCH = { match_1: 'linear', match_2: 'binary', match_3: 'bubble', match_4: 'greedy', match_5: 'divide' };
@@ -649,11 +608,11 @@ async function submitQuizEvaluasi() {
         if (val === KEY_TF[k]) scoreB += 5;
     }
 
-    for (let k in KEY_MATCH) {
-        const el = document.getElementById(k);
-        const val = el ? el.value : '';
-        answers[k] = val;
-        if (val === KEY_MATCH[k]) scoreC += 5;
+        const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
     }
 
     for (let k in KEY_SEQ) {
@@ -726,6 +685,7 @@ async function loadHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
     runSearchRace();
     loadHistory();
 });

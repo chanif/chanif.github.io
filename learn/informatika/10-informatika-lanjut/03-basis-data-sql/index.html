@@ -441,65 +441,7 @@
                 <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
                 <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Kata Kunci SQL & Fungsinya (5 Pasangan · Bobot: 25 Poin)</h3>
             </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Kata Kunci SQL:</p>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. INSERT INTO</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. UPDATE ... SET</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. DELETE FROM</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. AVG(kolom)</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. LIMIT n</div>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Pilih Penjelasan Fungsi:</p>
-                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 1 --</option>
-                        <option value="insert">Menambahkan baris rekaman baru ke dalam tabel</option>
-                        <option value="update">Memperbarui nilai pada kolom yang sudah ada</option>
-                        <option value="delete">Menghapus baris rekaman dari tabel</option>
-                        <option value="avg">Menghitung nilai rata-rata angka numerik dari satu kolom</option>
-                        <option value="limit">Membatasi jumlah baris hasil query yang ditampilkan</option>
-                    </select>
-
-                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 2 --</option>
-                        <option value="insert">Menambahkan baris rekaman baru ke dalam tabel</option>
-                        <option value="update">Memperbarui nilai pada kolom yang sudah ada</option>
-                        <option value="delete">Menghapus baris rekaman dari tabel</option>
-                        <option value="avg">Menghitung nilai rata-rata angka numerik dari satu kolom</option>
-                        <option value="limit">Membatasi jumlah baris hasil query yang ditampilkan</option>
-                    </select>
-
-                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 3 --</option>
-                        <option value="insert">Menambahkan baris rekaman baru ke dalam tabel</option>
-                        <option value="update">Memperbarui nilai pada kolom yang sudah ada</option>
-                        <option value="delete">Menghapus baris rekaman dari tabel</option>
-                        <option value="avg">Menghitung nilai rata-rata angka numerik dari satu kolom</option>
-                        <option value="limit">Membatasi jumlah baris hasil query yang ditampilkan</option>
-                    </select>
-
-                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 4 --</option>
-                        <option value="insert">Menambahkan baris rekaman baru ke dalam tabel</option>
-                        <option value="update">Memperbarui nilai pada kolom yang sudah ada</option>
-                        <option value="delete">Menghapus baris rekaman dari tabel</option>
-                        <option value="avg">Menghitung nilai rata-rata angka numerik dari satu kolom</option>
-                        <option value="limit">Membatasi jumlah baris hasil query yang ditampilkan</option>
-                    </select>
-
-                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 5 --</option>
-                        <option value="insert">Menambahkan baris rekaman baru ke dalam tabel</option>
-                        <option value="update">Memperbarui nilai pada kolom yang sudah ada</option>
-                        <option value="delete">Menghapus baris rekaman dari tabel</option>
-                        <option value="avg">Menghitung nilai rata-rata angka numerik dari satu kolom</option>
-                        <option value="limit">Membatasi jumlah baris hasil query yang ditampilkan</option>
-                    </select>
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
@@ -653,6 +595,23 @@ function runSqlQuery(type) {
 }
 
 // Answer Keys
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'INSERT INTO'}, {'id': '2', 'text': 'UPDATE ... SET'}, {'id': '3', 'text': 'DELETE FROM'}, {'id': '4', 'text': 'AVG(kolom)'}, {'id': '5', 'text': 'LIMIT n'}];
+const MATCH_DATA_RIGHT = [{'id': 'insert', 'text': 'Menambahkan baris rekaman baru ke dalam tabel'}, {'id': 'update', 'text': 'Memperbarui nilai pada kolom yang sudah ada'}, {'id': 'delete', 'text': 'Menghapus baris rekaman dari tabel'}, {'id': 'avg', 'text': 'Menghitung nilai rata-rata angka numerik dari satu kolom'}, {'id': 'limit', 'text': 'Membatasi jumlah baris hasil query yang ditampilkan'}];
+const MATCH_CORRECT = {'1': 'insert', '2': 'update', '3': 'delete', '4': 'avg', '5': 'limit'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
 const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
 const KEY_TF = { tf_1: 'B', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'S' };
 const KEY_MATCH = { match_1: 'insert', match_2: 'update', match_3: 'delete', match_4: 'avg', match_5: 'limit' };
@@ -676,11 +635,11 @@ async function submitQuizEvaluasi() {
         if (val === KEY_TF[k]) scoreB += 5;
     }
 
-    for (let k in KEY_MATCH) {
-        const el = document.getElementById(k);
-        const val = el ? el.value : '';
-        answers[k] = val;
-        if (val === KEY_MATCH[k]) scoreC += 5;
+    const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
     }
 
     for (let k in KEY_SEQ) {
@@ -753,6 +712,7 @@ async function loadHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
     runSqlQuery('all');
     loadHistory();
 });

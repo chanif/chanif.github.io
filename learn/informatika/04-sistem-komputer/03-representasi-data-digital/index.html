@@ -440,65 +440,7 @@
                 <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
                 <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Satuan & Konsep Digital (5 Pasangan · Bobot: 25 Poin)</h3>
             </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Istilah Representasi Data:</p>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Bit (Binary Digit)</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Piksel (Pixel)</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Unicode UTF-8</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Frame Per Second (FPS)</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. 1 Terabyte (TB)</div>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Pilih Definisi yang Tepat:</p>
-                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 1 --</option>
-                        <option value="bit">Unit terkecil penyimpan nilai biner 0 atau 1</option>
-                        <option value="pixel">Elemen titik gambar terkecil pada layar monitor</option>
-                        <option value="unicode">Standar pengkodean teks universal mencakup semua bahasa & emoji</option>
-                        <option value="fps">Jumlah bingkai gambar statis yang diputar per detik pada video</option>
-                        <option value="tb">Kapasitas penyimpanan setara dengan 1.024 Gigabyte</option>
-                    </select>
-
-                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 2 --</option>
-                        <option value="bit">Unit terkecil penyimpan nilai biner 0 atau 1</option>
-                        <option value="pixel">Elemen titik gambar terkecil pada layar monitor</option>
-                        <option value="unicode">Standar pengkodean teks universal mencakup semua bahasa & emoji</option>
-                        <option value="fps">Jumlah bingkai gambar statis yang diputar per detik pada video</option>
-                        <option value="tb">Kapasitas penyimpanan setara dengan 1.024 Gigabyte</option>
-                    </select>
-
-                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 3 --</option>
-                        <option value="bit">Unit terkecil penyimpan nilai biner 0 atau 1</option>
-                        <option value="pixel">Elemen titik gambar terkecil pada layar monitor</option>
-                        <option value="unicode">Standar pengkodean teks universal mencakup semua bahasa & emoji</option>
-                        <option value="fps">Jumlah bingkai gambar statis yang diputar per detik pada video</option>
-                        <option value="tb">Kapasitas penyimpanan setara dengan 1.024 Gigabyte</option>
-                    </select>
-
-                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 4 --</option>
-                        <option value="bit">Unit terkecil penyimpan nilai biner 0 atau 1</option>
-                        <option value="pixel">Elemen titik gambar terkecil pada layar monitor</option>
-                        <option value="unicode">Standar pengkodean teks universal mencakup semua bahasa & emoji</option>
-                        <option value="fps">Jumlah bingkai gambar statis yang diputar per detik pada video</option>
-                        <option value="tb">Kapasitas penyimpanan setara dengan 1.024 Gigabyte</option>
-                    </select>
-
-                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 5 --</option>
-                        <option value="bit">Unit terkecil penyimpan nilai biner 0 atau 1</option>
-                        <option value="pixel">Elemen titik gambar terkecil pada layar monitor</option>
-                        <option value="unicode">Standar pengkodean teks universal mencakup semua bahasa & emoji</option>
-                        <option value="fps">Jumlah bingkai gambar statis yang diputar per detik pada video</option>
-                        <option value="tb">Kapasitas penyimpanan setara dengan 1.024 Gigabyte</option>
-                    </select>
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
@@ -641,6 +583,23 @@ function updateRgbMixer() {
 }
 
 // Answer Keys
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Bit (Binary Digit)'}, {'id': '2', 'text': 'Piksel (Pixel)'}, {'id': '3', 'text': 'Unicode UTF-8'}, {'id': '4', 'text': 'Frame Per Second (FPS)'}, {'id': '5', 'text': '1 Terabyte (TB)'}];
+const MATCH_DATA_RIGHT = [{'id': 'bit', 'text': 'Unit terkecil penyimpan nilai biner 0 atau 1'}, {'id': 'pixel', 'text': 'Elemen titik gambar terkecil pada layar monitor'}, {'id': 'unicode', 'text': 'Standar pengkodean teks universal mencakup semua bahasa & emoji'}, {'id': 'fps', 'text': 'Jumlah bingkai gambar statis yang diputar per detik pada video'}, {'id': 'tb', 'text': 'Kapasitas penyimpanan setara dengan 1.024 Gigabyte'}];
+const MATCH_CORRECT = {'1': 'bit', '2': 'pixel', '3': 'unicode', '4': 'fps', '5': 'tb'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
 const KEY_MCQ = { mcq_1: 'B', mcq_2: 'B', mcq_3: 'B', mcq_4: 'B', mcq_5: 'A' };
 const KEY_TF = { tf_1: 'B', tf_2: 'S', tf_3: 'B', tf_4: 'B', tf_5: 'S' };
 const KEY_MATCH = { match_1: 'bit', match_2: 'pixel', match_3: 'unicode', match_4: 'fps', match_5: 'tb' };
@@ -664,11 +623,11 @@ async function submitQuizEvaluasi() {
         if (val === KEY_TF[k]) scoreB += 5;
     }
 
-    for (let k in KEY_MATCH) {
-        const el = document.getElementById(k);
-        const val = el ? el.value : '';
-        answers[k] = val;
-        if (val === KEY_MATCH[k]) scoreC += 5;
+    const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
     }
 
     for (let k in KEY_SEQ) {
@@ -741,6 +700,7 @@ async function loadHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
     encodeTextToBinary();
     updateRgbMixer();
     loadHistory();

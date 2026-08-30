@@ -838,6 +838,303 @@ const FananiTracker = (() => {
     };
 })();
 
+/**
+ * ============================================================
+ * FananiMatcher — Interactive SVG Connector Matching Engine
+ * Features: Visual bezier curves, distinct pair colors, individual ✕ cancel
+ * ============================================================
+ */
+const FananiMatcher = {
+    instances: {},
+
+    create(config) {
+        const container = document.getElementById(config.containerId);
+        if (!container) return null;
+
+        const instance = {
+            id: config.containerId,
+            container: container,
+            leftItems: config.leftItems || [],
+            rightItems: config.rightItems || [],
+            correctPairs: config.correctPairs || {},
+            pairs: {}, // { leftId: rightId }
+            selectedLeft: null,
+            onPairChange: config.onPairChange || null
+        };
+
+        this.instances[config.containerId] = instance;
+        this.render(instance);
+        return instance;
+    },
+
+    getPairs(containerId) {
+        const instance = this.instances[containerId];
+        return instance ? instance.pairs : {};
+    },
+
+    render(instance) {
+        const container = instance.container;
+        container.classList.add('relative', 'w-full', 'select-none');
+
+        const pairStyles = [
+            { border: 'border-emerald-400', bg: 'bg-emerald-50/80', text: 'text-emerald-950', badge: 'bg-emerald-100 text-emerald-800 border-emerald-300', hex: '#10b981' },
+            { border: 'border-sky-400', bg: 'bg-sky-50/80', text: 'text-sky-950', badge: 'bg-sky-100 text-sky-800 border-sky-300', hex: '#0284c7' },
+            { border: 'border-purple-400', bg: 'bg-purple-50/80', text: 'text-purple-950', badge: 'bg-purple-100 text-purple-800 border-purple-300', hex: '#8b5cf6' },
+            { border: 'border-amber-400', bg: 'bg-amber-50/80', text: 'text-amber-950', badge: 'bg-amber-100 text-amber-800 border-amber-300', hex: '#d97706' },
+            { border: 'border-rose-400', bg: 'bg-rose-50/80', text: 'text-rose-950', badge: 'bg-rose-100 text-rose-800 border-rose-300', hex: '#e11d48' }
+        ];
+
+        const pairedCount = Object.keys(instance.pairs).length;
+        const totalItems = instance.leftItems.length;
+
+        container.innerHTML = `
+            <div class="flex items-center justify-between gap-2 pb-3 mb-2 border-b border-slate-100 text-xs">
+                <div class="flex items-center gap-2">
+                    <span class="px-2.5 py-0.5 rounded-full font-extrabold text-[11px] ${pairedCount === totalItems ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-700'}">
+                        🔗 Terpasang: ${pairedCount} / ${totalItems}
+                    </span>
+                    <span class="text-slate-400 hidden sm:inline">Klik item kiri lalu klik pasangan yang cocok di kanan</span>
+                </div>
+                <button type="button" onclick="FananiMatcher.reset('${instance.id}')" class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg text-xs transition flex items-center gap-1">
+                    <span>🔄</span> Reset Semua
+                </button>
+            </div>
+            
+            <div class="relative grid md:grid-cols-2 gap-6 items-start py-1" id="${instance.id}-grid">
+                <!-- SVG Canvas for Connector Lines -->
+                <svg id="${instance.id}-svg" class="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible"></svg>
+                
+                <!-- Left Column -->
+                <div class="space-y-3 relative z-20" id="${instance.id}-col-left">
+                    ${instance.leftItems.map((item, idx) => {
+                        const rId = instance.pairs[item.id];
+                        const isPaired = !!rId;
+                        const isSelected = instance.selectedLeft === item.id;
+                        const pairIdx = isPaired ? Object.keys(instance.pairs).indexOf(item.id) % pairStyles.length : -1;
+                        const style = isPaired ? pairStyles[pairIdx] : null;
+                        
+                        let cardClass = "p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 text-xs ";
+                        if (isSelected) {
+                            cardClass += "bg-amber-100 border-2 border-amber-500 text-amber-950 shadow-md scale-[1.01]";
+                        } else if (isPaired) {
+                            cardClass += `${style.bg} border-2 ${style.border} ${style.text} font-bold shadow-sm`;
+                        } else {
+                            cardClass += "bg-slate-50 hover:bg-white border-slate-200 hover:border-amber-400 text-slate-800 font-medium hover:shadow-sm";
+                        }
+                        
+                        return `
+                            <div data-match-left="${item.id}" onclick="FananiMatcher.selectLeft('${instance.id}', '${item.id}')" class="${cardClass}">
+                                <div class="flex items-center gap-2.5 flex-1 min-w-0">
+                                    <span class="w-6 h-6 rounded-xl ${isPaired ? style.badge : isSelected ? 'bg-amber-200 text-amber-900 border-amber-400' : 'bg-slate-200 text-slate-700'} flex items-center justify-center font-bold text-[11px] flex-shrink-0 border">
+                                        ${idx + 1}
+                                    </span>
+                                    <span class="leading-snug">${item.text}</span>
+                                </div>
+                                <div class="flex items-center gap-1.5 flex-shrink-0">
+                                    ${isPaired ? `
+                                        <button type="button" onclick="event.stopPropagation(); FananiMatcher.removePair('${instance.id}', '${item.id}')" title="Hapus Jawaban Ini" class="w-6 h-6 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-700 font-extrabold text-xs flex items-center justify-center transition border border-rose-300 shadow-sm">
+                                            ✕
+                                        </button>
+                                    ` : `
+                                        <div class="w-3.5 h-3.5 rounded-full ${isSelected ? 'bg-amber-500 ring-4 ring-amber-200 animate-pulse' : 'bg-slate-300'} border-2 border-white shadow-sm"></div>
+                                    `}
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+                
+                <!-- Right Column -->
+                <div class="space-y-3 relative z-20" id="${instance.id}-col-right">
+                    ${instance.rightItems.map((item) => {
+                        const lId = Object.keys(instance.pairs).find(k => instance.pairs[k] === item.id);
+                        const isPaired = !!lId;
+                        const pairIdx = isPaired ? Object.keys(instance.pairs).indexOf(lId) % pairStyles.length : -1;
+                        const style = isPaired ? pairStyles[pairIdx] : null;
+                        
+                        let cardClass = "p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 text-xs ";
+                        if (isPaired) {
+                            cardClass += `${style.bg} border-2 ${style.border} ${style.text} font-bold shadow-sm`;
+                        } else {
+                            cardClass += "bg-slate-50 hover:bg-white border-slate-200 hover:border-amber-400 text-slate-800 font-medium hover:shadow-sm";
+                        }
+                        
+                        return `
+                            <div data-match-right="${item.id}" onclick="FananiMatcher.selectRight('${instance.id}', '${item.id}')" class="${cardClass}">
+                                <div class="flex items-center gap-1.5 flex-shrink-0">
+                                    ${isPaired ? `
+                                        <button type="button" onclick="event.stopPropagation(); FananiMatcher.removePair('${instance.id}', '${lId}')" title="Hapus Jawaban Ini" class="w-6 h-6 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-700 font-extrabold text-xs flex items-center justify-center transition border border-rose-300 shadow-sm">
+                                            ✕
+                                        </button>
+                                    ` : `
+                                        <div class="w-3.5 h-3.5 rounded-full bg-slate-300 border-2 border-white shadow-sm"></div>
+                                    `}
+                                </div>
+                                <div class="flex-1 min-w-0 leading-snug">
+                                    <span>${item.text}</span>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `;
+
+        setTimeout(() => this.drawLines(instance), 40);
+    },
+
+    selectLeft(instanceId, leftId) {
+        const instance = this.instances[instanceId];
+        if (!instance) return;
+
+        if (instance.selectedLeft === leftId) {
+            instance.selectedLeft = null;
+        } else {
+            instance.selectedLeft = leftId;
+        }
+        this.render(instance);
+    },
+
+    selectRight(instanceId, rightId) {
+        const instance = this.instances[instanceId];
+        if (!instance) return;
+
+        if (!instance.selectedLeft) {
+            const lId = Object.keys(instance.pairs).find(k => instance.pairs[k] === rightId);
+            if (lId) {
+                this.removePair(instanceId, lId);
+            }
+            return;
+        }
+
+        // Disconnect previous matching using this right item
+        Object.keys(instance.pairs).forEach(k => {
+            if (instance.pairs[k] === rightId) {
+                delete instance.pairs[k];
+            }
+        });
+
+        // Set pair
+        instance.pairs[instance.selectedLeft] = rightId;
+        instance.selectedLeft = null;
+
+        if (instance.onPairChange) {
+            instance.onPairChange(instance.pairs);
+        }
+
+        this.render(instance);
+    },
+
+    removePair(instanceId, leftId) {
+        const instance = this.instances[instanceId];
+        if (!instance) return;
+        delete instance.pairs[leftId];
+        if (instance.selectedLeft === leftId) instance.selectedLeft = null;
+        if (instance.onPairChange) {
+            instance.onPairChange(instance.pairs);
+        }
+        this.render(instance);
+    },
+
+    reset(instanceId) {
+        const instance = this.instances[instanceId];
+        if (!instance) return;
+        instance.pairs = {};
+        instance.selectedLeft = null;
+        if (instance.onPairChange) {
+            instance.onPairChange(instance.pairs);
+        }
+        this.render(instance);
+    },
+
+    drawLines(instance) {
+        const grid = document.getElementById(`${instance.id}-grid`);
+        const svg = document.getElementById(`${instance.id}-svg`);
+        if (!grid || !svg) return;
+
+        const gRect = grid.getBoundingClientRect();
+        if (gRect.width === 0) return;
+
+        svg.setAttribute('viewBox', `0 0 ${gRect.width} ${gRect.height}`);
+        svg.style.width = `${gRect.width}px`;
+        svg.style.height = `${gRect.height}px`;
+        svg.innerHTML = '';
+
+        const pairColors = ['#10b981', '#0284c7', '#8b5cf6', '#d97706', '#e11d48'];
+        const leftKeys = Object.keys(instance.pairs);
+
+        leftKeys.forEach((lId, idx) => {
+            const rId = instance.pairs[lId];
+            if (!rId) return;
+
+            const lEl = grid.querySelector(`[data-match-left="${lId}"]`);
+            const rEl = grid.querySelector(`[data-match-right="${rId}"]`);
+            if (!lEl || !rEl) return;
+
+            const lRect = lEl.getBoundingClientRect();
+            const rRect = rEl.getBoundingClientRect();
+
+            const color = pairColors[idx % pairColors.length];
+            const isSideBySide = rRect.left > lRect.right - 10;
+
+            if (isSideBySide) {
+                const x1 = lRect.right - gRect.left - 4;
+                const y1 = lRect.top + lRect.height / 2 - gRect.top;
+                const x2 = rRect.left - gRect.left + 4;
+                const y2 = rRect.top + rRect.height / 2 - gRect.top;
+
+                const dx = Math.max(30, (x2 - x1) * 0.5);
+                const pathD = `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`;
+
+                // Glow
+                const glow = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                glow.setAttribute('d', pathD);
+                glow.setAttribute('stroke', color);
+                glow.setAttribute('stroke-width', '7');
+                glow.setAttribute('stroke-linecap', 'round');
+                glow.setAttribute('fill', 'none');
+                glow.setAttribute('opacity', '0.2');
+                svg.appendChild(glow);
+
+                // Main Line
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('d', pathD);
+                path.setAttribute('stroke', color);
+                path.setAttribute('stroke-width', '3.5');
+                path.setAttribute('stroke-linecap', 'round');
+                path.setAttribute('fill', 'none');
+                path.setAttribute('opacity', '0.9');
+                svg.appendChild(path);
+
+                // Endpoints
+                const dot1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                dot1.setAttribute('cx', x1);
+                dot1.setAttribute('cy', y1);
+                dot1.setAttribute('r', '4.5');
+                dot1.setAttribute('fill', color);
+                svg.appendChild(dot1);
+
+                const dot2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                dot2.setAttribute('cx', x2);
+                dot2.setAttribute('cy', y2);
+                dot2.setAttribute('r', '4.5');
+                dot2.setAttribute('fill', color);
+                svg.appendChild(dot2);
+            }
+        });
+    }
+};
+
+window.addEventListener('resize', () => {
+    if (window.FananiMatcher && window.FananiMatcher.instances) {
+        Object.keys(window.FananiMatcher.instances).forEach(id => {
+            window.FananiMatcher.drawLines(window.FananiMatcher.instances[id]);
+        });
+    }
+});
+
 if (typeof window !== 'undefined') {
     window.FananiTracker = FananiTracker;
+    window.FananiMatcher = FananiMatcher;
 }
+

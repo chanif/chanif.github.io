@@ -410,65 +410,7 @@
                 <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
                 <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Tahapan Proyek & Output Hasilnya (5 Pasangan · Bobot: 25 Poin)</h3>
             </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Tahapan Kerja Proyek:</p>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Desain Instrumen</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Pengumpulan Data</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Pembersihan Data</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Visualisasi Grafik</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Laporan & Presentasi</div>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Pilih Output Dokumen yang Dihasilkan:</p>
-                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 1 --</option>
-                        <option value="form">Link kuesioner Google Forms berisi 10 butir pertanyaan skala Likert</option>
-                        <option value="raw">File spreadsheet mentah berisi 50 baris jawaban responden</option>
-                        <option value="clean">Tabel data rapi tanpa baris kosong dan data ganda yang tereliminasi</option>
-                        <option value="chart">Diagram batang dan diagram lingkaran beranotasi label persentase</option>
-                        <option value="slide">Slide infografis Canva dan rekomendasi aksi nyata untuk sekolah</option>
-                    </select>
-
-                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 2 --</option>
-                        <option value="form">Link kuesioner Google Forms berisi 10 butir pertanyaan skala Likert</option>
-                        <option value="raw">File spreadsheet mentah berisi 50 baris jawaban responden</option>
-                        <option value="clean">Tabel data rapi tanpa baris kosong dan data ganda yang tereliminasi</option>
-                        <option value="chart">Diagram batang dan diagram lingkaran beranotasi label persentase</option>
-                        <option value="slide">Slide infografis Canva dan rekomendasi aksi nyata untuk sekolah</option>
-                    </select>
-
-                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 3 --</option>
-                        <option value="form">Link kuesioner Google Forms berisi 10 butir pertanyaan skala Likert</option>
-                        <option value="raw">File spreadsheet mentah berisi 50 baris jawaban responden</option>
-                        <option value="clean">Tabel data rapi tanpa baris kosong dan data ganda yang tereliminasi</option>
-                        <option value="chart">Diagram batang dan diagram lingkaran beranotasi label persentase</option>
-                        <option value="slide">Slide infografis Canva dan rekomendasi aksi nyata untuk sekolah</option>
-                    </select>
-
-                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 4 --</option>
-                        <option value="form">Link kuesioner Google Forms berisi 10 butir pertanyaan skala Likert</option>
-                        <option value="raw">File spreadsheet mentah berisi 50 baris jawaban responden</option>
-                        <option value="clean">Tabel data rapi tanpa baris kosong dan data ganda yang tereliminasi</option>
-                        <option value="chart">Diagram batang dan diagram lingkaran beranotasi label persentase</option>
-                        <option value="slide">Slide infografis Canva dan rekomendasi aksi nyata untuk sekolah</option>
-                    </select>
-
-                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 5 --</option>
-                        <option value="form">Link kuesioner Google Forms berisi 10 butir pertanyaan skala Likert</option>
-                        <option value="raw">File spreadsheet mentah berisi 50 baris jawaban responden</option>
-                        <option value="clean">Tabel data rapi tanpa baris kosong dan data ganda yang tereliminasi</option>
-                        <option value="chart">Diagram batang dan diagram lingkaran beranotasi label persentase</option>
-                        <option value="slide">Slide infografis Canva dan rekomendasi aksi nyata untuk sekolah</option>
-                    </select>
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
@@ -643,6 +585,23 @@ function setProjectPlan(key) {
 }
 
 // Answer Keys
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Desain Instrumen'}, {'id': '2', 'text': 'Pengumpulan Data'}, {'id': '3', 'text': 'Pembersihan Data'}, {'id': '4', 'text': 'Visualisasi Grafik'}, {'id': '5', 'text': 'Laporan & Presentasi'}];
+const MATCH_DATA_RIGHT = [{'id': 'form', 'text': 'Link kuesioner Google Forms berisi 10 butir pertanyaan skala Likert'}, {'id': 'raw', 'text': 'File spreadsheet mentah berisi 50 baris jawaban responden'}, {'id': 'clean', 'text': 'Tabel data rapi tanpa baris kosong dan data ganda yang tereliminasi'}, {'id': 'chart', 'text': 'Diagram batang dan diagram lingkaran beranotasi label persentase'}, {'id': 'slide', 'text': 'Slide infografis Canva dan rekomendasi aksi nyata untuk sekolah'}];
+const MATCH_CORRECT = {'1': 'form', '2': 'raw', '3': 'clean', '4': 'chart', '5': 'slide'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
 const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
 const KEY_TF = { tf_1: 'S', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'B' };
 const KEY_MATCH = { match_1: 'form', match_2: 'raw', match_3: 'clean', match_4: 'chart', match_5: 'slide' };
@@ -666,11 +625,11 @@ async function submitQuizEvaluasi() {
         if (val === KEY_TF[k]) scoreB += 5;
     }
 
-    for (let k in KEY_MATCH) {
-        const el = document.getElementById(k);
-        const val = el ? el.value : '';
-        answers[k] = val;
-        if (val === KEY_MATCH[k]) scoreC += 5;
+    const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
     }
 
     for (let k in KEY_SEQ) {
@@ -743,6 +702,7 @@ async function loadHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
     setProjectPlan('tidur');
     loadHistory();
 });

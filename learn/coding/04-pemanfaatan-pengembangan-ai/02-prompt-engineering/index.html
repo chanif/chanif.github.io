@@ -1,198 +1,438 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Seni prompt engineering: cara memberi instruksi yang efektif kepada AI. Teknik zero-shot, few-shot, chain-of-thought prompting, dan tips menghasilkan output AI yang berkualitas.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Seni Prompt Engineering | KKA Kelas 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Engineering: Seni Memerintah AI 🎯 | Koding & Kecerdasan Artifisial</title>
+    <meta name="description" content="Teknik Prompt Engineering untuk siswa SMP: rumus CLEAR (Context, Limitation, Example, Action, Role).">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.3rem;color:#1e293b;margin-top:1.75rem;margin-bottom:.6rem;}
-        .prose p{line-height:1.8;margin-bottom:.9rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .callout{border-left:4px solid;padding:.9rem 1.1rem;border-radius:0 .75rem .75rem 0;margin:1rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}
-        .callout-warn{background:#fff7ed;border-color:#f97316;}
-        .prompt-bad{background:#fef2f2;border:1px solid #fca5a5;border-radius:.75rem;padding:.75rem 1rem;font-family:'Inter',monospace;font-size:.85rem;color:#991b1b;}
-        .prompt-good{background:#f0fdf4;border:1px solid #86efac;border-radius:.75rem;padding:.75rem 1rem;font-family:'Inter',monospace;font-size:.85rem;color:#166534;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(139,92,246,0.25);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-pink-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-pink-600 hover:underline">← KKA Kelas 8</a>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-purple-100 selection:text-purple-900 pb-24">
+
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-purple-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-purple-600 transition">
+        fanani<span class="text-purple-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-purple-600 transition flex items-center gap-1">
+            ← Unit Pemanfaatan & Pengembangan AI
+        </a>
+    </div>
 </nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">KKA</a><span>/</span>
-        <a href="../" class="hover:text-pink-600">Kelas 8</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 2</span>
+
+<!-- Sticky Sub-Nav -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#materi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">💡 Materi Asyik</a>
+        <a href="#simulator" class="px-3 py-1.5 rounded-full bg-purple-100 text-purple-800 hover:bg-purple-200 transition whitespace-nowrap font-bold">🎮 Tantangan Interaktif</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
     </div>
-    <div class="bg-gradient-to-br from-pink-500 to-rose-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-36 h-36 bg-white opacity-5 rounded-full -translate-y-6 translate-x-6"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 2 · Prompt</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Seni Prompt Engineering 💬</h1>
-            <p class="text-pink-100 leading-relaxed max-w-2xl">Cara kamu "berbicara" dengan AI menentukan kualitas hasilnya. Pelajari teknik memberi instruksi yang tepat agar AI memberikan output terbaik!</p>
-        </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-purple-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-purple-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-purple-600 transition">Pemanfaatan & Pengembangan AI</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">02. Prompt Engineering: Seni Memerintah AI 🎯</span>
     </div>
-    <div class="prose max-w-none">
-        <h2>Apa Itu Prompt Engineering?</h2>
-        <p><strong>Prompt Engineering</strong> adalah seni dan ilmu merancang instruksi (prompt) yang efektif untuk AI agar menghasilkan output yang kamu inginkan. Prompt adalah teks yang kamu tulis untuk "memerintah" AI — dan cara penulisannya sangat menentukan kualitas hasilnya.</p>
 
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🎯 Analogi Sederhana</p>
-            <p class="text-purple-700 text-sm">Bayangkan AI seperti koki berbintang yang sangat pintar tapi hanya memasak persis sesuai pesanan. Kalau kamu pesan "masak makanan enak" — hasilnya tidak jelas. Tapi kalau kamu pesan "masak nasi goreng spesial dengan telur mata sapi, sambal level 2, dan taburan bawang goreng" — hasilnya sempurna!</p>
-        </div>
-
-        <h2>Perbandingan Prompt Buruk vs Baik</h2>
-        <div class="not-prose space-y-4 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <p class="font-heading font-bold text-slate-700 mb-3">✍️ Membuat Teks</p>
-                <div class="grid md:grid-cols-2 gap-3">
-                    <div>
-                        <p class="text-xs font-bold text-red-500 mb-1.5">❌ Prompt Buruk</p>
-                        <div class="prompt-bad">Buatkan esai</div>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-green-600 mb-1.5">✅ Prompt Baik</p>
-                        <div class="prompt-good">Tulis esai persuasif 3 paragraf tentang manfaat olahraga pagi untuk pelajar SMP, gunakan bahasa yang mudah dipahami dan sertakan data statistik</div>
-                    </div>
-                </div>
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-purple-600 via-indigo-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 04 · Modul 02
             </div>
-                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <p class="font-heading font-bold text-slate-700 mb-3">🧮 Soal Matematika</p>
-                <div class="grid md:grid-cols-2 gap-3">
-                    <div>
-                        <p class="text-xs font-bold text-red-500 mb-1.5">❌ Prompt Buruk</p>
-                        <div class="prompt-bad">Bantu saya matematika</div>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-green-600 mb-1.5">✅ Prompt Baik</p>
-                        <div class="prompt-good">Jelaskan cara menghitung luas segitiga siku-siku dengan alas 8 cm dan tinggi 6 cm. Tampilkan langkah-langkah secara berurutan dengan rumusnya</div>
-                    </div>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <p class="font-heading font-bold text-slate-700 mb-3">🎨 Membuat Gambar</p>
-                <div class="grid md:grid-cols-2 gap-3">
-                    <div>
-                        <p class="text-xs font-bold text-red-500 mb-1.5">❌ Prompt Buruk</p>
-                        <div class="prompt-bad">Gambar kucing</div>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-green-600 mb-1.5">✅ Prompt Baik</p>
-                        <div class="prompt-good">A cute orange tabby cat sitting on a wooden desk, reading a book, cartoon style, soft warm lighting, pastel colors</div>
-                    </div>
-                </div>
-            </div>
-                    </div>
-
-        <h2>Teknik Prompt Engineering</h2>
-        <div class="not-prose grid md:grid-cols-3 gap-4 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="text-3xl mb-2">⚡</div>
-                <p class="font-heading font-bold text-slate-800 mb-1">Zero-Shot</p>
-                <p class="text-slate-500 text-xs mb-3">Langsung minta AI melakukan tugas tanpa contoh. Cocok untuk tugas sederhana.</p>
-                <div class="bg-slate-50 rounded-xl p-3 text-xs text-slate-600 italic">"Terjemahkan kalimat berikut ke bahasa Inggris: Saya suka belajar."</div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="text-3xl mb-2">📋</div>
-                <p class="font-heading font-bold text-slate-800 mb-1">Few-Shot</p>
-                <p class="text-slate-500 text-xs mb-3">Berikan 2-3 contoh sebelum meminta AI melakukan tugas serupa. Hasilnya lebih konsisten.</p>
-                <div class="bg-slate-50 rounded-xl p-3 text-xs text-slate-600 italic">"Ubah kalimat positif jadi negatif. Contoh: Saya lapar → Saya tidak lapar. Sekarang: Dia rajin →"</div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="text-3xl mb-2">🔗</div>
-                <p class="font-heading font-bold text-slate-800 mb-1">Chain of Thought</p>
-                <p class="text-slate-500 text-xs mb-3">Minta AI berpikir step-by-step. Sangat berguna untuk soal logika dan matematika.</p>
-                <div class="bg-slate-50 rounded-xl p-3 text-xs text-slate-600 italic">"Selesaikan soal ini langkah demi langkah: Jika ada 24 apel dibagi 4 keranjang..."</div>
-            </div>
-                    </div>
-
-        <h2>Formula Prompt yang Efektif</h2>
-        <p>Gunakan formula <strong>RCTF</strong> untuk membuat prompt yang solid:</p>
-        <div class="not-prose bg-slate-800 rounded-2xl p-6 my-4">
-            <div class="grid md:grid-cols-2 gap-4">
-                                                <div class="flex gap-3 items-start">
-                    <div class="w-10 h-10 bg-pink-600 text-white rounded-xl flex items-center justify-center font-heading font-extrabold flex-shrink-0">R</div>
-                    <div>
-                        <p class="font-heading font-bold text-white text-sm">Role (Peran)</p>
-                        <p class="text-slate-200 text-xs mt-0.5">Berikan peran pada AI: "Kamu adalah guru matematika SMP yang sabar..."</p>
-                    </div>
-                </div>
-                                <div class="flex gap-3 items-start">
-                    <div class="w-10 h-10 bg-rose-600 text-white rounded-xl flex items-center justify-center font-heading font-extrabold flex-shrink-0">C</div>
-                    <div>
-                        <p class="font-heading font-bold text-white text-sm">Context (Konteks)</p>
-                        <p class="text-slate-200 text-xs mt-0.5">Jelaskan situasinya: "Saya siswa kelas 8 yang sedang belajar persamaan linear"</p>
-                    </div>
-                </div>
-                                <div class="flex gap-3 items-start">
-                    <div class="w-10 h-10 bg-orange-500 text-white rounded-xl flex items-center justify-center font-heading font-extrabold flex-shrink-0">T</div>
-                    <div>
-                        <p class="font-heading font-bold text-white text-sm">Task (Tugas)</p>
-                        <p class="text-slate-200 text-xs mt-0.5">Minta tugasnya dengan jelas: "Jelaskan cara menyelesaikan 2x + 5 = 15"</p>
-                    </div>
-                </div>
-                                <div class="flex gap-3 items-start">
-                    <div class="w-10 h-10 bg-amber-500 text-white rounded-xl flex items-center justify-center font-heading font-extrabold flex-shrink-0">F</div>
-                    <div>
-                        <p class="font-heading font-bold text-white text-sm">Format (Format)</p>
-                        <p class="text-slate-200 text-xs mt-0.5">Tentukan format output: "dalam 5 langkah bernomor, gunakan bahasa sederhana"</p>
-                    </div>
-                </div>
-                            </div>
-            <div class="mt-5 bg-slate-700 rounded-xl p-4">
-                <p class="text-xs text-white font-bold mb-2">💡 Contoh Prompt RCTF Lengkap:</p>
-                <p class="text-pink-200 text-sm italic">"Kamu adalah guru bahasa Indonesia yang kreatif (R). Saya siswa kelas 8 yang perlu membuat puisi untuk tugas sekolah (C). Bantu saya membuat puisi tentang persahabatan (T). Buat dalam 3 bait, masing-masing 4 baris, dengan rima ABAB (F)."</p>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Prompt Engineering: Seni Memerintah AI 🎯 🚀
+            </h1>
+            <p class="text-purple-100 text-sm md:text-base leading-relaxed mb-6">
+                Kunci utama mendapatkan jawaban super pintar dari AI adalah cara bertanya yang tepat! Kuasai teknik prompt engineering seperti ahli!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-purple-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 40 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">💡 Level: Kelas 7 SMP (Seru & Mudah)</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
             </div>
         </div>
+    </section>
 
-        <div class="callout callout-tip">
-            <p class="font-heading font-bold text-green-800 mb-1">✅ Tips Praktis Prompt Engineering</p>
-            <ul class="text-green-700 text-sm mt-1 mb-0">
-                <li>Jika hasil kurang memuaskan, perbaiki prompt dan coba lagi — jangan menyerah!</li>
-                <li>Minta AI untuk menjelaskan langkah-langkah jika jawabannya tidak jelas</li>
-                <li>Gunakan kata "jangan" untuk melarang hal yang tidak diinginkan: "Jangan gunakan istilah teknis"</li>
-                <li>Tentukan panjang output: "dalam maksimal 3 kalimat" atau "buat daftar 5 poin"</li>
-            </ul>
+    <!-- SECTION: TUJUAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Setelah mempelajari materi ini, kamu akan bisa:</p>
+            </div>
         </div>
-
-        <div class="callout callout-info">
-            <p class="font-heading font-bold text-blue-800 mb-1">🔬 Latihan Sekarang!</p>
-            <p class="text-blue-700 text-sm">Buka <strong>Gemini (gemini.google.com)</strong> atau <strong>ChatGPT (chat.openai.com)</strong>. Coba buat prompt menggunakan formula RCTF untuk meminta AI membantu kamu memahami materi pelajaran favoritmu. Bandingkan hasilnya dengan prompt biasa!</p>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">01.</span><div><strong class="text-slate-800 block mb-0.5">Memahami Prompt Engineering</strong><p class="text-slate-600">Mengetahui seni dan teknik merancang instruksi teks agar AI memberikan hasil terbaik.</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">02.</span><div><strong class="text-slate-800 block mb-0.5">Rumus Prompt CLEAR</strong><p class="text-slate-600">Menerapkan Role (Peran), Task (Tugas), Context (Konteks), dan Format pada prompt.</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">03.</span><div><strong class="text-slate-800 block mb-0.5">Iterasi & Perbaikan Prompt</strong><p class="text-slate-600">Menyempurnakan instruksi jika jawaban AI pertama belum sesuai harapan.</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">04.</span><div><strong class="text-slate-800 block mb-0.5">Few-shot Prompting</strong><p class="text-slate-600">Memberikan 1-2 contoh format kepada AI agar hasilnya konsisten.</p></div></div>
+            
         </div>
+    </section>
 
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Prompt Engineering adalah seni merancang instruksi yang efektif untuk AI</li>
-            <li>Prompt yang spesifik dan detail menghasilkan output yang jauh lebih baik</li>
-            <li>Teknik: Zero-Shot (langsung), Few-Shot (dengan contoh), Chain of Thought (step-by-step)</li>
-            <li>Formula RCTF: Role + Context + Task + Format</li>
-            <li>Terus berlatih — prompt engineering semakin baik dengan pengalaman!</li>
-        </ul>
+    <!-- SECTION: MATERI -->
+    <div id="materi" class="space-y-12">
+        
+            <section class="space-y-4">
+                <h2 class="font-heading font-extrabold text-xl text-slate-900">Perbedaan Prompt Lemah vs Prompt Juara 🏆</h2>
+                <div class="grid md:grid-cols-2 gap-4 text-xs">
+                    <div class="p-4 bg-red-50 border border-red-200 rounded-2xl space-y-1">
+                        <strong class="text-rose-900 font-bold block">❌ Prompt Lemah (Hasil Biasa Saja):</strong>
+                        <p class="text-rose-800 font-mono bg-white p-2 rounded-lg">"Jelaskan tentang fotosintesis."</p>
+                        <p class="text-slate-600 text-[11px]">Hasilnya akan panjang lebar, memakai istilah universitas yang bikin pusing!</p>
+                    </div>
+                    <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-1">
+                        <strong class="text-emerald-900 font-bold block">✅ Prompt Juara (Hasil Keren & Tepat Sasaran):</strong>
+                        <p class="text-emerald-800 font-mono bg-white p-2 rounded-lg">"Bertindaklah sebagai guru IPA yang seru. Jelaskan proses fotosintesis untuk anak kelas 7 SMP dalam 3 poin sederhana, gunakan analogi pabrik memasak makanan, dan sertakan emoji!"</p>
+                        <p class="text-slate-600 text-[11px]">Hasilnya akan sangat mudah dipahami, singkat, dan menyenangkan!</p>
+                    </div>
+                </div>
+            </section>
+            
     </div>
-    <div class="flex justify-between mt-12 gap-4">
-        <a href="../01-apa-itu-generative-ai/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-200 text-slate-700 rounded-2xl shadow-sm hover:border-pink-300 transition">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold">Apa Itu Generative AI?</p></div>
-        </a>
-        <a href="../03-ai-untuk-gambar-suara/" class="flex items-center gap-3 px-5 py-3 bg-pink-600 text-white rounded-2xl shadow hover:bg-pink-700 transition">
-            <div class="text-right"><p class="text-[10px] text-pink-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">AI untuk Gambar & Suara</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </a>
-    </div>
+
+    <!-- SECTION: SIMULATOR / TANTANGAN -->
+    <section id="simulator" class="bg-white rounded-3xl border-2 border-purple-200 p-6 md:p-8 shadow-md space-y-6">
+        
+            <h2 class="font-heading font-extrabold text-xl text-slate-900">🎮 Tantangan: Tebak Elemen Prompt</h2>
+            <div class="p-4 bg-slate-50 border rounded-2xl text-xs space-y-2">
+                <p class="font-bold text-slate-800">Potongan prompt: <em>"Buatkan dalam bentuk tabel 3 kolom yang berisi No, Nama Planet, dan Ciri Utama."</em> Bagian ini berfungsi sebagai...</p>
+                <div class="flex gap-2">
+                    <button onclick="checkSim(1, 'fmt', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-bold flex-1">A. Format Output</button>
+                    <button onclick="checkSim(1, 'rol', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-bold flex-1">B. Penetapan Peran (Role)</button>
+                </div>
+                <div id="sim-fb" class="text-[11px] font-bold hidden"></div>
+            </div>
+            
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Prompt Engineering: Seni Memerintah AI 🎯</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahamanmu secara mandiri (Total Nilai: 100 Poin)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+            
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Apa yang dimaksud dengan Prompt Engineering?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="A"> A. Keterampilan merancang instruksi yang jelas dan efektif agar AI memberikan respons optimal</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="B"> B. Memperbaiki mesin komputer yang rusak</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="C"> C. Memasang kabel jaringan wifi sekolah</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="D"> D. Menginstal ulang sistem operasi Windows</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Mengapa menetapkan 'Peran / Role' (misal: Bertindaklah sebagai koki profesional) pada prompt sangat bermanfaat?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="A"> A. Membantu AI menyesuaikan gaya bahasa, sudut pandang, dan kedalaman penjelasannya</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="B"> B. Menghemat baterai laptop</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="C"> C. Membuat AI mengetik lebih lambat</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="D"> D. Menghapus riwayat pencarian otomatis</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Teknik memberikan contoh format sebelum meminta AI menjawab disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="A"> A. Few-shot Prompting</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="B"> B. Hard Resetting</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="C"> C. Slow Motion</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="D"> D. Blue Screen Error</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Jika jawaban AI pertama terlalu panjang dan berbelit-belit, apa yang harus kamu lakukan?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="A"> A. Lakukan iterasi: beri prompt lanjutan seperti 'Buat ringkasannya dalam 3 poin pendek'</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="B"> B. Marah dan membanting mouse</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="C"> C. Mematikan sakelar listrik rumah</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="D"> D. Langsung menyerah dan tidak belajar lagi</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Batasan (Constraint) dalam prompt berfungsi untuk...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="A"> A. Menentukan batasan seperti jumlah kata, bahasa yang dipakai, atau hal yang dilarang muncul</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="B"> B. Mengunci layar komputer dengan password</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="C"> C. Membatasi kuota internet sekolah</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="D"> D. Mengubah warna tema komputer menjadi hitam</label>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+            <div class="space-y-3 text-xs">
+                
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">1. Prompt yang spesifik dan detail menghasilkan respons AI yang jauh lebih memuaskan.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_1" value="B"> B</label><label><input type="radio" name="tf_1" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">2. Menentukan target pembaca (misal: untuk siswa kelas 7) membantu AI menyederhanakan bahasanya.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_2" value="B"> B</label><label><input type="radio" name="tf_2" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">3. Kita tidak boleh mengoreksi atau meminta revisi jika jawaban AI pertama kurang tepat.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_3" value="B"> B</label><label><input type="radio" name="tf_3" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">4. Format output bisa diminta dalam bentuk poin, tabel, puisi, atau kode program.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_4" value="B"> B</label><label><input type="radio" name="tf_4" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">5. Keterampilan prompt engineering sangat berguna untuk produktivitas di era kecerdasan artifisial.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_5" value="B"> B</label><label><input type="radio" name="tf_5" value="S"> S</label></div></div>
+            
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Konsep & Penjelasan (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+            <div id="matching-game-container"></div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Mengurutkan Langkah Alur Kerja (Bobot: 25 Poin)</h3>
+            </div>
+            <div class="space-y-2 text-xs">
+                
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">A. Tentukan peran AI (misal: 'Kamu adalah tutor Biologi SMP yang ramah')</span><select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">B. Tuliskan tugas inti yang ingin diselesaikan secara spesifik</span><select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">C. Tambahkan konteks dan batasan format (misal: 'Jelaskan dalam 3 poin dengan analogi')</span><select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">D. Kirim prompt dan evaluasi apakah jawaban AI sudah sesuai target</span><select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">E. Berikan prompt lanjutan untuk menyempurnakan bagian yang kurang (Iterasi)</span><select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-purple-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-purple-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-purple-200">Poin penting yang wajib kamu ingat</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            
+            <p><strong>1. Jelaskan dengan Jelas:</strong> AI butuh instruksi yang spesifik untuk memberi hasil maksimal.</p>
+            <p><strong>2. Gunakan Elemen Lengkap:</strong> Role + Task + Context + Format + Constraint.</p>
+            <p><strong>3. Jangan Takut Revisi:</strong> Lakukan percakapan lanjutan jika hasil pertama belum sempurna.</p>
+            
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan pengalaman belajarmu: hal baru apa yang paling menarik dari materi ini?..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-purple-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-purple-500 hover:bg-purple-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
 </main>
-<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
-    </div>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — Fanani's Class. Platform Pembelajaran KKA.</p>
 </footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-genai-02';
+
+function checkSim(q, ch, btn){
+                const fb = document.getElementById('sim-fb');
+                fb.classList.remove('hidden');
+                if(ch==='fmt'){ fb.className='text-emerald-600 text-[11px] font-bold'; fb.innerText='✅ Benar! Menentukan format tabel membantu AI merapikan jawaban.'; }
+                else { fb.className='text-rose-600 text-[11px] font-bold'; fb.innerText='❌ Kurang tepat, potongan tersebut menentukan format output tabel.'; }
+            }
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Role (Peran)'}, {'id': '2', 'text': 'Task (Tugas)'}, {'id': '3', 'text': 'Context (Konteks)'}, {'id': '4', 'text': 'Constraint (Batasan)'}, {'id': '5', 'text': 'Output Format'}];
+const MATCH_DATA_RIGHT = [{'id': 'cst', 'text': "Aturan pembatas seperti 'maksimal 100 kata dan tanpa istilah teknis'"}, {'id': 'rol', 'text': "Identitas keahlian AI seperti 'Bertindaklah sebagai pemandu wisata'"}, {'id': 'tsk', 'text': "Perintah inti yang harus dikerjakan seperti 'Tuliskan daftar 5 museum'"}, {'id': 'fmt', 'text': "Bentuk susunan hasil seperti 'Buat dalam tabel 3 kolom'"}, {'id': 'ctx', 'text': "Informasi latar belakang seperti 'Untuk liburan edukasi keluarga'"}];
+const MATCH_CORRECT = {'1': 'rol', '2': 'tsk', '3': 'ctx', '4': 'cst', '5': 'fmt'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'S', tf_2: 'B', tf_3: 'B', tf_4: 'S', tf_5: 'B' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
+    loadHistory();
+});
+</script>
+
 </body>
 </html>

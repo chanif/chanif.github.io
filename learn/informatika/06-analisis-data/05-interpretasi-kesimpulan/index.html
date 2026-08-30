@@ -403,65 +403,7 @@
                 <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
                 <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Istilah Analisis & Fungsinya (5 Pasangan · Bobot: 25 Poin)</h3>
             </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Istilah Sains Data:</p>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Mean (Rata-rata)</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Median (Nilai Tengah)</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Outlier (Nilai Ekstrem)</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Korelasi</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Kausalitas</div>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Pilih Definisi yang Tepat:</p>
-                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 1 --</option>
-                        <option value="mean">Hasil penjumlahan seluruh nilai data dibagi dengan banyaknya sampel</option>
-                        <option value="median">Titik tengah pemisah 50% data bawah dan 50% data atas setelah diurutkan</option>
-                        <option value="outlier">Angka janggal yang terlampau jauh berbeda dari kelompok data mayoritas</option>
-                        <option value="korelasi">Hubungan keterikatan pola pergerakan antara dua variabel data</option>
-                        <option value="kausalitas">Hubungan nyata di mana perubahan variabel A secara langsung menyebabkan perubahan variabel B</option>
-                    </select>
-
-                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 2 --</option>
-                        <option value="mean">Hasil penjumlahan seluruh nilai data dibagi dengan banyaknya sampel</option>
-                        <option value="median">Titik tengah pemisah 50% data bawah dan 50% data atas setelah diurutkan</option>
-                        <option value="outlier">Angka janggal yang terlampau jauh berbeda dari kelompok data mayoritas</option>
-                        <option value="korelasi">Hubungan keterikatan pola pergerakan antara dua variabel data</option>
-                        <option value="kausalitas">Hubungan nyata di mana perubahan variabel A secara langsung menyebabkan perubahan variabel B</option>
-                    </select>
-
-                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 3 --</option>
-                        <option value="mean">Hasil penjumlahan seluruh nilai data dibagi dengan banyaknya sampel</option>
-                        <option value="median">Titik tengah pemisah 50% data bawah dan 50% data atas setelah diurutkan</option>
-                        <option value="outlier">Angka janggal yang terlampau jauh berbeda dari kelompok data mayoritas</option>
-                        <option value="korelasi">Hubungan keterikatan pola pergerakan antara dua variabel data</option>
-                        <option value="kausalitas">Hubungan nyata di mana perubahan variabel A secara langsung menyebabkan perubahan variabel B</option>
-                    </select>
-
-                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 4 --</option>
-                        <option value="mean">Hasil penjumlahan seluruh nilai data dibagi dengan banyaknya sampel</option>
-                        <option value="median">Titik tengah pemisah 50% data bawah dan 50% data atas setelah diurutkan</option>
-                        <option value="outlier">Angka janggal yang terlampau jauh berbeda dari kelompok data mayoritas</option>
-                        <option value="korelasi">Hubungan keterikatan pola pergerakan antara dua variabel data</option>
-                        <option value="kausalitas">Hubungan nyata di mana perubahan variabel A secara langsung menyebabkan perubahan variabel B</option>
-                    </select>
-
-                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 5 --</option>
-                        <option value="mean">Hasil penjumlahan seluruh nilai data dibagi dengan banyaknya sampel</option>
-                        <option value="median">Titik tengah pemisah 50% data bawah dan 50% data atas setelah diurutkan</option>
-                        <option value="outlier">Angka janggal yang terlampau jauh berbeda dari kelompok data mayoritas</option>
-                        <option value="korelasi">Hubungan keterikatan pola pergerakan antara dua variabel data</option>
-                        <option value="kausalitas">Hubungan nyata di mana perubahan variabel A secara langsung menyebabkan perubahan variabel B</option>
-                    </select>
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
@@ -617,6 +559,23 @@ function nextCaseDet() {
 }
 
 // Answer Keys
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Mean (Rata-rata)'}, {'id': '2', 'text': 'Median (Nilai Tengah)'}, {'id': '3', 'text': 'Outlier (Nilai Ekstrem)'}, {'id': '4', 'text': 'Korelasi'}, {'id': '5', 'text': 'Kausalitas'}];
+const MATCH_DATA_RIGHT = [{'id': 'mean', 'text': 'Hasil penjumlahan seluruh nilai data dibagi dengan banyaknya sampel'}, {'id': 'median', 'text': 'Titik tengah pemisah 50% data bawah dan 50% data atas setelah diurutkan'}, {'id': 'outlier', 'text': 'Angka janggal yang terlampau jauh berbeda dari kelompok data mayoritas'}, {'id': 'korelasi', 'text': 'Hubungan keterikatan pola pergerakan antara dua variabel data'}, {'id': 'kausalitas', 'text': 'Hubungan nyata di mana perubahan variabel A secara langsung menyebabkan perubahan variabel B'}];
+const MATCH_CORRECT = {'1': 'mean', '2': 'median', '3': 'outlier', '4': 'korelasi', '5': 'kausalitas'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
 const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
 const KEY_TF = { tf_1: 'B', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'B' };
 const KEY_MATCH = { match_1: 'mean', match_2: 'median', match_3: 'outlier', match_4: 'korelasi', match_5: 'kausalitas' };
@@ -640,11 +599,11 @@ async function submitQuizEvaluasi() {
         if (val === KEY_TF[k]) scoreB += 5;
     }
 
-    for (let k in KEY_MATCH) {
-        const el = document.getElementById(k);
-        const val = el ? el.value : '';
-        answers[k] = val;
-        if (val === KEY_MATCH[k]) scoreC += 5;
+    const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
     }
 
     for (let k in KEY_SEQ) {
@@ -717,6 +676,7 @@ async function loadHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
     renderCaseDet();
     loadHistory();
 });

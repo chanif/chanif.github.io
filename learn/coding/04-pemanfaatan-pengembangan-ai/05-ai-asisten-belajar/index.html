@@ -1,172 +1,431 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI sebagai asisten belajar: cara memanfaatkan ChatGPT, Gemini, dan Copilot untuk riset, merangkum materi pelajaran, membuat jadwal belajar, dan diskusi interaktif.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>AI sebagai Asisten Belajar | KKA Kelas 9</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Asisten Belajar Pribadi 📚🤖 | Koding & Kecerdasan Artifisial</title>
+    <meta name="description" content="Panduan belajar mandiri dengan AI untuk siswa SMP: teknik bertanya konsep sulit, simulasi kuis latihan, dan membuat jadwal belajar cerdas.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.3rem;color:#1e293b;margin-top:1.75rem;margin-bottom:.6rem;}
-        .prose p{line-height:1.8;margin-bottom:.9rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .callout{border-left:4px solid;padding:.9rem 1.1rem;border-radius:0 .75rem .75rem 0;margin:1rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}
-        .callout-warn{background:#fff7ed;border-color:#f97316;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(139,92,246,0.25);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-cyan-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-cyan-600 hover:underline">← KKA Kelas 9</a>
-</nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">KKA</a><span>/</span>
-        <a href="../" class="hover:text-cyan-600">Kelas 9</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 1</span>
-    </div>
-    <div class="bg-gradient-to-br from-cyan-500 to-teal-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-36 h-36 bg-white opacity-5 rounded-full -translate-y-6 translate-x-6"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 1 · Produktivitas</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">AI sebagai Asisten Belajar 📚</h1>
-            <p class="text-cyan-100 leading-relaxed max-w-2xl">Gemini, ChatGPT, Copilot — jadikan mereka tutor pribadimu! Pelajari cara memanfaatkan AI untuk riset, merangkum materi, dan belajar lebih efektif.</p>
-        </div>
-    </div>
-    <div class="prose max-w-none">
-        <h2>AI sebagai Tutor Pribadi 24 Jam</h2>
-        <p>Bayangkan punya guru pribadi yang selalu siap menjawab pertanyaanmu kapan saja, sabar menjelaskan berulang kali dengan cara berbeda, dan tidak pernah menghakimi. Itulah yang AI bisa lakukan untukmu sebagai <strong>asisten belajar</strong>!</p>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-purple-100 selection:text-purple-900 pb-24">
 
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🎓 Kelas 9 = Tahun Paling Sibuk</p>
-            <p class="text-purple-700 text-sm">Ujian, tugas menumpuk, persiapan SMA — AI bisa membantumu lebih efisien. Bukan untuk menyontek, tapi untuk <em>belajar lebih cerdas</em>. Pelajar yang menggunakan AI dengan benar bisa belajar 2-3x lebih efisien!</p>
-        </div>
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-purple-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-        <h2>5 Cara Memanfaatkan AI untuk Belajar</h2>
-        <div class="not-prose space-y-3 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="flex gap-3 items-start mb-2">
-                    <div class="w-9 h-9 bg-cyan-600 text-white rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">1</div>
-                    <div>
-                        <p class="font-heading font-bold text-slate-800">📖 Merangkum Materi Panjang</p>
-                        <p class="text-slate-500 text-sm mt-0.5">Copy paste teks panjang dari buku atau artikel, lalu minta AI: "Rangkum materi ini dalam 5 poin utama yang mudah dipahami siswa SMP"</p>
-                    </div>
-                </div>
-                <div class="bg-cyan-50 rounded-xl p-3 text-xs text-cyan-700 italic ml-12">💬 Contoh prompt: "Tolong rangkum bab fotosintesis ini dalam 5 poin penting, gunakan bahasa yang mudah dipahami"</div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="flex gap-3 items-start mb-2">
-                    <div class="w-9 h-9 bg-cyan-600 text-white rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">2</div>
-                    <div>
-                        <p class="font-heading font-bold text-slate-800">❓ Tanya Konsep yang Belum Dipahami</p>
-                        <p class="text-slate-500 text-sm mt-0.5">Jika penjelasan buku terlalu rumit, minta AI menjelaskan ulang dengan analogi atau bahasa yang lebih sederhana</p>
-                    </div>
-                </div>
-                <div class="bg-cyan-50 rounded-xl p-3 text-xs text-cyan-700 italic ml-12">💬 Contoh prompt: "Jelaskan konsep sel eukariot dan prokariot seperti menjelaskan ke anak SMP, gunakan analogi sehari-hari"</div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="flex gap-3 items-start mb-2">
-                    <div class="w-9 h-9 bg-cyan-600 text-white rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">3</div>
-                    <div>
-                        <p class="font-heading font-bold text-slate-800">📝 Membuat Soal Latihan</p>
-                        <p class="text-slate-500 text-sm mt-0.5">Minta AI membuat soal latihan berdasarkan materi yang kamu pelajari. Berguna sekali untuk persiapan ujian!</p>
-                    </div>
-                </div>
-                <div class="bg-cyan-50 rounded-xl p-3 text-xs text-cyan-700 italic ml-12">💬 Contoh prompt: "Buatkan 10 soal pilihan ganda tentang persamaan kuadrat untuk level kelas 9, lengkap dengan kunci jawaban"</div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="flex gap-3 items-start mb-2">
-                    <div class="w-9 h-9 bg-cyan-600 text-white rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">4</div>
-                    <div>
-                        <p class="font-heading font-bold text-slate-800">🔍 Riset dan Pengumpulan Informasi</p>
-                        <p class="text-slate-500 text-sm mt-0.5">Gunakan AI sebagai titik awal riset — kumpulkan informasi dasar, lalu verifikasi dengan sumber terpercaya seperti ensiklopedia atau situs resmi</p>
-                    </div>
-                </div>
-                <div class="bg-cyan-50 rounded-xl p-3 text-xs text-cyan-700 italic ml-12">💬 Contoh prompt: "Berikan overview tentang sejarah kemerdekaan Indonesia, sebutkan tokoh-tokoh penting dan peran mereka"</div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="flex gap-3 items-start mb-2">
-                    <div class="w-9 h-9 bg-cyan-600 text-white rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">5</div>
-                    <div>
-                        <p class="font-heading font-bold text-slate-800">📅 Membuat Jadwal Belajar</p>
-                        <p class="text-slate-500 text-sm mt-0.5">Ceritakan situasimu dan minta AI membuatkan jadwal belajar yang realistis dan terstruktur</p>
-                    </div>
-                </div>
-                <div class="bg-cyan-50 rounded-xl p-3 text-xs text-cyan-700 italic ml-12">💬 Contoh prompt: "Ujian saya 2 minggu lagi, ada 5 mata pelajaran. Bantu buat jadwal belajar 2 jam per hari yang efektif"</div>
-            </div>
-                    </div>
-
-        <h2>Perbandingan: Belajar Biasa vs Belajar dengan AI</h2>
-        <div class="not-prose overflow-x-auto my-4">
-            <table class="w-full text-sm border-collapse">
-                <thead>
-                    <tr class="bg-cyan-600 text-white">
-                        <th class="text-left p-3 rounded-tl-xl font-heading">Skenario</th>
-                        <th class="text-left p-3 font-heading">Tanpa AI</th>
-                        <th class="text-left p-3 rounded-tr-xl font-heading">Dengan AI</th>
-                    </tr>
-                </thead>
-                <tbody>
-                                                            <tr class="bg-white border-b border-slate-100">
-                        <td class="p-3 font-semibold text-slate-700">Tidak paham konsep</td>
-                        <td class="p-3 text-slate-500 text-xs">Tunggu guru esok hari atau bingung sendiri</td>
-                        <td class="p-3 text-cyan-700 text-xs font-medium">Tanya AI kapan saja, dapatkan penjelasan langsung</td>
-                    </tr>
-                                        <tr class="bg-slate-50 border-b border-slate-100">
-                        <td class="p-3 font-semibold text-slate-700">Buat ringkasan 20 hal</td>
-                        <td class="p-3 text-slate-500 text-xs">1-2 jam membaca dan mencatat manual</td>
-                        <td class="p-3 text-cyan-700 text-xs font-medium">10 menit: AI merangkum, kamu verifikasi dan pelajari</td>
-                    </tr>
-                                        <tr class="bg-white border-b border-slate-100">
-                        <td class="p-3 font-semibold text-slate-700">Latihan soal</td>
-                        <td class="p-3 text-slate-500 text-xs">Terbatas pada soal di buku yang sudah dikerjakan</td>
-                        <td class="p-3 text-cyan-700 text-xs font-medium">Minta AI buat variasi soal tak terbatas</td>
-                    </tr>
-                                        <tr class="bg-slate-50 border-b border-slate-100">
-                        <td class="p-3 font-semibold text-slate-700">Riset tugas</td>
-                        <td class="p-3 text-slate-500 text-xs">Buka banyak tab browser, baca panjang-panjang</td>
-                        <td class="p-3 text-cyan-700 text-xs font-medium">AI berikan overview, kamu dalami dan verifikasi</td>
-                    </tr>
-                                    </tbody>
-            </table>
-        </div>
-
-        <div class="callout callout-warn">
-            <p class="font-heading font-bold text-orange-800 mb-1">⚠️ Garis Batas yang Penting</p>
-            <p class="text-orange-700 text-sm"><strong>Boleh:</strong> Minta AI menjelaskan konsep, buat soal latihan, rangkum materi untuk dipelajari ulang<br><strong>Tidak Boleh:</strong> Copy-paste jawaban AI sebagai tugas tanpa memahami isinya. Ini bukan belajar — ini curang dan merugikan dirimu sendiri jangka panjang!</p>
-        </div>
-
-        <div class="callout callout-info">
-            <p class="font-heading font-bold text-blue-800 mb-1">🚀 Coba Sekarang!</p>
-            <p class="text-blue-700 text-sm">Buka <strong>Gemini (gemini.google.com)</strong> — gratis dengan akun Google. Pilih satu mata pelajaran yang kamu anggap sulit hari ini. Tulis pertanyaan spesifik dan minta AI menjelaskan dengan analogi yang mudah dipahami.</p>
-        </div>
-
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>AI bisa menjadi tutor pribadi 24 jam yang sabar dan tidak menghakimi</li>
-            <li>5 cara terbaik: merangkum materi, tanya konsep, buat soal latihan, riset, jadwal belajar</li>
-            <li>Gunakan AI untuk <em>memahami</em>, bukan sekadar mendapatkan jawaban</li>
-            <li>Verifikasi fakta penting yang diberikan AI dengan sumber terpercaya</li>
-        </ul>
-    </div>
-    <div class="flex justify-between mt-12 gap-4">
-        <div></div>
-        <a href="../02-integrasi-ai-di-aplikasi/" class="flex items-center gap-3 px-5 py-3 bg-cyan-600 text-white rounded-2xl shadow hover:bg-cyan-700 transition">
-            <div class="text-right"><p class="text-[10px] text-cyan-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Integrasi AI di Aplikasi</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-purple-600 transition">
+        fanani<span class="text-purple-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-purple-600 transition flex items-center gap-1">
+            ← Unit Pemanfaatan & Pengembangan AI
         </a>
     </div>
-</main>
-<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
+</nav>
+
+<!-- Sticky Sub-Nav -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#materi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">💡 Materi Asyik</a>
+        <a href="#simulator" class="px-3 py-1.5 rounded-full bg-purple-100 text-purple-800 hover:bg-purple-200 transition whitespace-nowrap font-bold">🎮 Tantangan Interaktif</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
     </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-purple-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-purple-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-purple-600 transition">Pemanfaatan & Pengembangan AI</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">05. AI Asisten Belajar Pribadi 📚🤖</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-purple-600 via-indigo-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 04 · Modul 05
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                AI Asisten Belajar Pribadi 📚🤖 🚀
+            </h1>
+            <p class="text-purple-100 text-sm md:text-base leading-relaxed mb-6">
+                Punya guru les pribadi yang siap menjawab pertanyaanmu 24 jam sehari! Pelajari teknik belajar super efektif bersama asisten AI!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-purple-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 40 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">💡 Level: Kelas 7 SMP (Seru & Mudah)</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Setelah mempelajari materi ini, kamu akan bisa:</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">01.</span><div><strong class="text-slate-800 block mb-0.5">Tanya Konsep Bertingkat</strong><p class="text-slate-600">Meminta AI menjelaskan topik dari analogi sederhana hingga penjelasan sains lengkap.</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">02.</span><div><strong class="text-slate-800 block mb-0.5">Membuat Latihan Kuis Mandiri</strong><p class="text-slate-600">Meminta AI menguji pemahamanmu dengan 5 soal kuis sebelum ulangan sekolah.</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">03.</span><div><strong class="text-slate-800 block mb-0.5">Partner Latihan Bahasa Asing</strong><p class="text-slate-600">Berlatih percakapan bahasa Inggris sehari-hari dengan koreksi tata bahasa otomatis.</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">04.</span><div><strong class="text-slate-800 block mb-0.5">Manajemen Waktu Belajar</strong><p class="text-slate-600">Menyusun jadwal belajar persiapan ujian menggunakan teknik Pomodoro bersama AI.</p></div></div>
+            
+        </div>
+    </section>
+
+    <!-- SECTION: MATERI -->
+    <div id="materi" class="space-y-12">
+        
+            <section class="space-y-4">
+                <h2 class="font-heading font-extrabold text-xl text-slate-900">3 Trik Belajar Pintar Bersama AI 🎓</h2>
+                <div class="grid sm:grid-cols-3 gap-3 text-xs">
+                    <div class="p-3.5 bg-purple-50 rounded-xl border border-purple-200 space-y-1"><strong class="text-purple-900 font-bold block">1. Teknik 'Jelaskan Seperti Anak Umur 10 Tahun'</strong><p class="text-purple-800 text-[11px]">Jika materi IPA/Matematika terlalu rumit di buku, minta AI menyederhanakannya dengan perumpamaan kartun.</p></div>
+                    <div class="p-3.5 bg-indigo-50 rounded-xl border border-indigo-200 space-y-1"><strong class="text-indigo-900 font-bold block">2. Uji Aku dengan Kuis Seru</strong><p class="text-indigo-800 text-[11px]">Ketik: <em>"Beri aku 3 soal kuis tentang kerajaan Majapahit, lalu periksa jawabanku!"</em></p></div>
+                    <div class="p-3.5 bg-blue-50 rounded-xl border border-blue-200 space-y-1"><strong class="text-blue-900 font-bold block">3. Latihan Percakapan Bahasa Inggris</strong><p class="text-blue-800 text-[11px]">Ketik: <em>"Ayo pura-pura kamu kasir restoran di London, dan aku pembeli yang memesan makanan."</em></p></div>
+                </div>
+            </section>
+            
+    </div>
+
+    <!-- SECTION: SIMULATOR / TANTANGAN -->
+    <section id="simulator" class="bg-white rounded-3xl border-2 border-purple-200 p-6 md:p-8 shadow-md space-y-6">
+        
+            <h2 class="font-heading font-extrabold text-xl text-slate-900">🎮 Tantangan: Mode Belajar AI</h2>
+            <div class="p-4 bg-slate-50 border rounded-2xl text-xs space-y-2">
+                <p class="font-bold text-slate-800">Manakah prompt yang paling efektif untuk menguji kesiapanmu menghadapi ulangan IPA besok?</p>
+                <div class="flex gap-2">
+                    <button onclick="checkSim(1, 'A', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-bold flex-1 text-left">A. "Beri aku 5 soal latihan pilihan ganda bab kalor kelas 7 satu per satu, dan beri tahu apakah jawabanku benar beserta alasannya!"</button>
+                    <button onclick="checkSim(1, 'B', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-bold flex-1 text-left">B. "Tuliskan seluruh isi buku IPA kelas 7."</button>
+                </div>
+                <div id="sim-fb" class="text-[11px] font-bold hidden"></div>
+            </div>
+            
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: AI Asisten Belajar Pribadi 📚🤖</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahamanmu secara mandiri (Total Nilai: 100 Poin)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+            
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Manfaat utama menggunakan AI sebagai asisten belajar pribadi adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="A"> A. Kita bisa bertanya kapan saja dan meminta penjelasan diulang berkali-kali tanpa takut dimarahi</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="B"> B. Kita tidak perlu lagi datang ke sekolah</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="C"> C. Guru tidak perlu mengajar lagi</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="D"> D. Buku pelajaran boleh dibakar</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Cara melatih percakapan bahasa Inggris bersama AI yang paling seru adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="A"> A. Melakukan roleplay simulasi percakapan nyata (misal: di bandara atau restoran)</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="B"> B. Menyuruh AI diam tanpa bersuara</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="C"> C. Mengetik bahasa daerah saja</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="D"> D. Menghapus kamus bahasa Inggris</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Metode belajar 'Active Recall' dengan bantuan AI dapat dilakukan dengan cara...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="A"> A. Meminta AI memberi kuis tebak-tebakan konsep untuk menguji daya ingat kita</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="B"> B. Tidur di depan layar laptop</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="C"> C. Membaca teks yang sama 100 kali tanpa jeda</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="D"> D. Menonton video game seharian</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Jika penjelasan rumus dari AI terasa masih membingungkan, prompt lanjutan yang tepat adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="A"> A. 'Bisa tolong beri contoh kasus nyata dalam kehidupan sehari-hari anak SMP?'</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="B"> B. 'Kamu bodoh sekali'</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="C"> C. 'Tutup aplikasi sekarang juga'</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="D"> D. 'Saya tidak mau belajar lagi'</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Mengapa kita tetap perlu mengecek materi ke buku pelajaran resmi sekolah?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="A"> A. Untuk memastikan informasi AI sesuai dengan kurikulum resmi dan bebas dari halusinasi data</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="B"> B. Agar buku paket tidak berdebu</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="C"> C. Karena buku lebih berat daripada HP</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="D"> D. Agar tas sekolah terasa berat</label>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+            <div class="space-y-3 text-xs">
+                
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">1. AI asisten belajar bisa menyesuaikan gaya penjelasannya sesuai tingkat pemahaman siswa.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_1" value="B"> B</label><label><input type="radio" name="tf_1" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">2. Belajar interaktif dengan tanya jawab membuat materi pelajaran lebih mudah diingat.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_2" value="B"> B</label><label><input type="radio" name="tf_2" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">3. AI bisa menggantikan peran guru di sekolah secara utuh dalam mendidik karakter siswa.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_3" value="B"> B</label><label><input type="radio" name="tf_3" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">4. Kita bisa meminta AI membuatkan jadwal belajar persiapan ujian semester.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_4" value="B"> B</label><label><input type="radio" name="tf_4" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">5. Kunci sukses belajar dengan AI adalah rasa ingin tahu dan keberanian bertanya aktif.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_5" value="B"> B</label><label><input type="radio" name="tf_5" value="S"> S</label></div></div>
+            
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Konsep & Penjelasan (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+            <div id="matching-game-container"></div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Mengurutkan Langkah Alur Kerja (Bobot: 25 Poin)</h3>
+            </div>
+            <div class="space-y-2 text-xs">
+                
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">A. Membuka bab materi pelajaran yang ingin dipelajari (misal: Sistem Tata Surya)</span><select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">B. Meminta AI menjelaskan bagian yang paling sulit dipahami dengan analogi seru</span><select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">C. Menuliskan rangkuman poin penting di buku catatan pribadi</span><select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">D. Meminta AI memberikan 5 soal kuis latihan untuk menguji ingatan mandiri</span><select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">E. Mendiskusikan hasil belajar dengan guru atau teman sekelas di sekolah</span><select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-purple-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-purple-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-purple-200">Poin penting yang wajib kamu ingat</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            
+            <p><strong>1. Belajar Interaktif:</strong> AI adalah teman diskusi yang sabar dan selalu siap membantumu memahami materi.</p>
+            <p><strong>2. Uji Diri Sendiri:</strong> Gunakan fitur kuis AI untuk melatih kesiapan ulangan sekolah.</p>
+            <p><strong>3. Rajin Berlatih:</strong> Kombinasikan penjelasan AI dengan catatan tanganmu sendiri.</p>
+            
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan pengalaman belajarmu: hal baru apa yang paling menarik dari materi ini?..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-purple-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-purple-500 hover:bg-purple-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — Fanani's Class. Platform Pembelajaran KKA.</p>
 </footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-genai-05';
+
+function checkSim(q, ch, btn){
+                const fb = document.getElementById('sim-fb');
+                fb.classList.remove('hidden');
+                if(ch==='A'){ fb.className='text-emerald-600 text-[11px] font-bold'; fb.innerText='✅ Luar biasa! Mengerjakan soal interaktif satu per satu adalah metode belajar aktif terbaik.'; }
+                else { fb.className='text-rose-600 text-[11px] font-bold'; fb.innerText='❌ Kurang efektif. Meminta teks panjang hanya membuat kita malas membaca.'; }
+            }
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Roleplay Conversation'}, {'id': '2', 'text': 'Quiz Generator'}, {'id': '3', 'text': 'Feynman Technique'}, {'id': '4', 'text': 'Grammar Checker'}, {'id': '5', 'text': 'Study Planner'}];
+const MATCH_DATA_RIGHT = [{'id': 'fey', 'text': 'Menjelaskan kembali konsep sulit kepada AI dengan bahasa sederhana'}, {'id': 'grm', 'text': 'Meminta AI mengoreksi susunan kalimat dan ejaan bahasa Inggris'}, {'id': 'rol', 'text': 'Simulasi percakapan peran untuk melatih keterampilan berbicara'}, {'id': 'pln', 'text': 'Menyusun jadwal waktu belajar harian yang terstruktur'}, {'id': 'qiz', 'text': 'Membuat soal latihan interaktif untuk menguji pemahaman'}];
+const MATCH_CORRECT = {'1': 'rol', '2': 'qiz', '3': 'fey', '4': 'grm', '5': 'pln'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'S', tf_2: 'B', tf_3: 'B', tf_4: 'S', tf_5: 'B' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
+    loadHistory();
+});
+</script>
+
 </body>
 </html>

@@ -1,185 +1,432 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI untuk gambar dan suara: membuat ilustrasi dari teks dengan Stable Diffusion/Canva AI, konversi suara ke teks, text-to-speech, dan eksplorasi musik dengan AI.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>AI untuk Gambar & Suara | KKA Kelas 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI untuk Gambar & Multimedia 🎨🖼️ | Koding & Kecerdasan Artifisial</title>
+    <meta name="description" content="Materi kreasi seni dengan AI: Text-to-Image prompt, gaya seni (anime, 3D render, watercolor), dan etika hak cipta gambar AI.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.3rem;color:#1e293b;margin-top:1.75rem;margin-bottom:.6rem;}
-        .prose p{line-height:1.8;margin-bottom:.9rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .callout{border-left:4px solid;padding:.9rem 1.1rem;border-radius:0 .75rem .75rem 0;margin:1rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}
-        .callout-warn{background:#fff7ed;border-color:#f97316;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(139,92,246,0.25);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-pink-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-pink-600 hover:underline">← KKA Kelas 8</a>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-purple-100 selection:text-purple-900 pb-24">
+
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-purple-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-purple-600 transition">
+        fanani<span class="text-purple-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-purple-600 transition flex items-center gap-1">
+            ← Unit Pemanfaatan & Pengembangan AI
+        </a>
+    </div>
 </nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">KKA</a><span>/</span>
-        <a href="../" class="hover:text-pink-600">Kelas 8</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 3</span>
+
+<!-- Sticky Sub-Nav -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#materi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">💡 Materi Asyik</a>
+        <a href="#simulator" class="px-3 py-1.5 rounded-full bg-purple-100 text-purple-800 hover:bg-purple-200 transition whitespace-nowrap font-bold">🎮 Tantangan Interaktif</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
     </div>
-    <div class="bg-gradient-to-br from-pink-500 to-rose-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-36 h-36 bg-white opacity-5 rounded-full -translate-y-6 translate-x-6"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 3 · Generatif</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">AI untuk Gambar & Suara 🎨</h1>
-            <p class="text-pink-100 leading-relaxed max-w-2xl">Buat gambar dari teks, ubah suara jadi teks, dan hasilkan musik dengan AI! Eksplorasi kreativitas digitalmu dengan teknologi generatif terkini.</p>
-        </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-purple-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-purple-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-purple-600 transition">Pemanfaatan & Pengembangan AI</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">04. AI untuk Gambar & Multimedia 🎨🖼️</span>
     </div>
-    <div class="prose max-w-none">
-        <h2>AI dan Kreativitas Visual</h2>
-        <p>Salah satu kemampuan AI generatif yang paling menakjubkan adalah kemampuannya menciptakan gambar dari deskripsi teks. Teknologi ini disebut <strong>Text-to-Image AI</strong> dan sudah mengubah dunia desain secara fundamental.</p>
 
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🎨 Bayangkan Ini!</p>
-            <p class="text-purple-700 text-sm">Kamu mengetik: <em>"lukisan seorang anak bermain layang-layang di pantai saat matahari terbenam, gaya seni watercolor, warna hangat"</em> — dalam 10 detik, AI menghasilkan gambar indah sesuai deskripsimu. Tidak perlu bisa menggambar!</p>
-        </div>
-
-        <h2>Tools AI untuk Gambar</h2>
-        <div class="not-prose grid md:grid-cols-2 gap-4 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="flex justify-between items-start mb-2">
-                    <div class="flex items-center gap-2">
-                        <span class="text-2xl">🎨</span>
-                        <p class="font-heading font-bold text-slate-800">DALL-E 3</p>
-                    </div>
-                    <div class="flex gap-1">
-                        <span class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">OpenAI</span>
-                        <span class="text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full">Gratis</span>                    </div>
-                </div>
-                <p class="text-slate-500 text-sm">Terintegrasi di ChatGPT Plus. Sangat baik untuk gambar realistis dan seni digital. Bisa diakses gratis terbatas melalui Bing Image Creator.</p>
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-purple-600 via-indigo-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 04 · Modul 04
             </div>
-                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="flex justify-between items-start mb-2">
-                    <div class="flex items-center gap-2">
-                        <span class="text-2xl">🔥</span>
-                        <p class="font-heading font-bold text-slate-800">Adobe Firefly</p>
-                    </div>
-                    <div class="flex gap-1">
-                        <span class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">Adobe</span>
-                        <span class="text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full">Gratis</span>                    </div>
-                </div>
-                <p class="text-slate-500 text-sm">AI gambar dari Adobe yang aman untuk penggunaan komersial. Terintegrasi di Photoshop dan Express. Tersedia versi gratis.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="flex justify-between items-start mb-2">
-                    <div class="flex items-center gap-2">
-                        <span class="text-2xl">🌌</span>
-                        <p class="font-heading font-bold text-slate-800">Midjourney</p>
-                    </div>
-                    <div class="flex gap-1">
-                        <span class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">Midjourney Inc</span>
-                                            </div>
-                </div>
-                <p class="text-slate-500 text-sm">Menghasilkan gambar artistik berkualitas tinggi. Diakses via Discord. Hanya tersedia berbayar setelah masa trial.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
-                <div class="flex justify-between items-start mb-2">
-                    <div class="flex items-center gap-2">
-                        <span class="text-2xl">💫</span>
-                        <p class="font-heading font-bold text-slate-800">Stable Diffusion</p>
-                    </div>
-                    <div class="flex gap-1">
-                        <span class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">Open Source</span>
-                        <span class="text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full">Gratis</span>                    </div>
-                </div>
-                <p class="text-slate-500 text-sm">Model AI gambar open source yang bisa dijalankan di komputermu sendiri. Gratis, fleksibel, tapi membutuhkan GPU kuat.</p>
-            </div>
-                    </div>
-
-        <h2>Teknik Prompt untuk Gambar AI</h2>
-        <p>Membuat gambar AI yang bagus memerlukan teknik prompt khusus. Beberapa elemen penting dalam image prompt:</p>
-        <div class="not-prose bg-slate-800 rounded-2xl p-6 my-4">
-            <p class="font-heading font-bold text-white mb-4">🖼️ Struktur Image Prompt</p>
-            <div class="grid md:grid-cols-2 gap-3">
-                                                <div class="bg-slate-700 rounded-xl p-3">
-                    <p class="font-heading font-bold text-white text-sm mb-1">Subjek</p>
-                    <p class="text-pink-300 text-xs italic font-medium">"a young student", "a cat", "sunset over the sea"</p>
-                </div>
-                                <div class="bg-slate-700 rounded-xl p-3">
-                    <p class="font-heading font-bold text-white text-sm mb-1">Gaya Seni</p>
-                    <p class="text-rose-300 text-xs italic font-medium">"oil painting", "watercolor", "3D render", "anime style", "photorealistic"</p>
-                </div>
-                                <div class="bg-slate-700 rounded-xl p-3">
-                    <p class="font-heading font-bold text-white text-sm mb-1">Pencahayaan</p>
-                    <p class="text-orange-300 text-xs italic font-medium">"golden hour lighting", "soft studio light", "dramatic shadows"</p>
-                </div>
-                                <div class="bg-slate-700 rounded-xl p-3">
-                    <p class="font-heading font-bold text-white text-sm mb-1">Kualitas</p>
-                    <p class="text-amber-300 text-xs italic font-medium">"highly detailed", "8K resolution", "sharp focus", "masterpiece"</p>
-                </div>
-                            </div>
-            <div class="mt-4 bg-pink-900/40 rounded-xl p-3 border border-pink-500/30">
-                <p class="text-pink-200 text-xs font-bold mb-1">💡 Contoh Prompt Lengkap:</p>
-                <p class="text-pink-100 text-sm italic">"A young Indonesian student reading under a banyan tree, warm afternoon sunlight filtering through leaves, watercolor illustration style, soft pastel colors, highly detailed, peaceful atmosphere"</p>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                AI untuk Gambar & Multimedia 🎨🖼️ 🚀
+            </h1>
+            <p class="text-purple-100 text-sm md:text-base leading-relaxed mb-6">
+                Ubah imajinasi liar jadi lukisan nyata! Pelajari cara membuat gambar, ilustrasi presentasi, dan musik menggunakan AI kreatif!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-purple-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 40 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">💡 Level: Kelas 7 SMP (Seru & Mudah)</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
             </div>
         </div>
+    </section>
 
-        <h2>AI untuk Suara & Audio</h2>
-        <div class="not-prose grid md:grid-cols-3 gap-4 my-5">
-                                    <div class="bg-white border bg-purple-50 border-purple-200 rounded-2xl p-5 shadow-sm">
-                <div class="text-3xl mb-2">🎵</div>
-                <p class="font-heading font-bold text-slate-800 mb-1">Text-to-Music</p>
-                <p class="text-slate-500 text-xs">AI menghasilkan lagu lengkap dari teks. Coba Suno.ai — ketikkan "lagu pop ceria tentang persahabatan" dan AI akan membuatnya!</p>
+    <!-- SECTION: TUJUAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Setelah mempelajari materi ini, kamu akan bisa:</p>
             </div>
-                        <div class="bg-white border bg-blue-50 border-blue-200 rounded-2xl p-5 shadow-sm">
-                <div class="text-3xl mb-2">🗣️</div>
-                <p class="font-heading font-bold text-slate-800 mb-1">Text-to-Speech</p>
-                <p class="text-slate-500 text-xs">Ubah teks jadi suara manusia yang alami. Digunakan di audiobook, asisten virtual, dan aksesibilitas. Coba ElevenLabs atau Google TTS.</p>
-            </div>
-                        <div class="bg-white border bg-green-50 border-green-200 rounded-2xl p-5 shadow-sm">
-                <div class="text-3xl mb-2">📝</div>
-                <p class="font-heading font-bold text-slate-800 mb-1">Speech-to-Text</p>
-                <p class="text-slate-500 text-xs">Ubah ucapan jadi teks otomatis. Google Docs sudah punya fitur ini! Sangat berguna untuk membuat catatan tanpa mengetik.</p>
-            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">01.</span><div><strong class="text-slate-800 block mb-0.5">Membuat Prompt Visual</strong><p class="text-slate-600">Menyusun deskripsi subjek, latar belakang, pencahayaan, dan gaya artistik.</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">02.</span><div><strong class="text-slate-800 block mb-0.5">Eksplorasi Gaya Seni</strong><p class="text-slate-600">Mencoba gaya anime, foto realistis, lukisan cat air, dan animasi 3D Pixar.</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">03.</span><div><strong class="text-slate-800 block mb-0.5">Editing Gambar Berbasis AI</strong><p class="text-slate-600">Inpainting (mengganti objek) dan outpainting (memperluas latar belakang).</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">04.</span><div><strong class="text-slate-800 block mb-0.5">Etika & Hak Cipta Gambar</strong><p class="text-slate-600">Menghargai karya seniman manusia dan tidak membuat konten visual menyesatkan.</p></div></div>
+            
+        </div>
+    </section>
+
+    <!-- SECTION: MATERI -->
+    <div id="materi" class="space-y-12">
+        
+            <section class="space-y-4">
+                <h2 class="font-heading font-extrabold text-xl text-slate-900">Rumus Ajaib Membuat Gambar AI 🎨</h2>
+                <div class="p-4 bg-purple-50 border border-purple-200 rounded-2xl text-xs space-y-2">
+                    <p class="font-bold text-purple-900">[Subjek Utama] + [Aktivitas / Pose] + [Latar Belakang] + [Pencahayaan] + [Gaya Seni]</p>
+                    <div class="bg-white p-3 rounded-xl border font-mono text-[11px] text-slate-700">
+                        Contoh: "Seekor kelinci memakai jaket jeans, sedang membaca buku di bawah pohon sakura berangin, cahaya matahari terbenam keemasan, gaya animasi 3D lucu."
                     </div>
-
-        <div class="callout callout-warn">
-            <p class="font-heading font-bold text-orange-800 mb-1">⚠️ Hati-Hati: Deepfake!</p>
-            <p class="text-orange-700 text-sm">AI bisa membuat gambar wajah orang, suara, bahkan video yang terlihat dan terdengar sangat nyata padahal palsu — inilah <strong>deepfake</strong>. Menggunakannya untuk menipu orang atau menyebar hoaks adalah <strong>tindakan tidak etis dan bisa melanggar hukum</strong>. Selalu gunakan AI dengan bertanggung jawab!</p>
-        </div>
-
-        <div class="callout callout-info">
-            <p class="font-heading font-bold text-blue-800 mb-1">🎵 Coba Sekarang — Buat Musikmu!</p>
-            <p class="text-blue-700 text-sm">Buka <strong>suno.com</strong> (gratis, tanpa login). Ketikkan deskripsi musik yang kamu mau — genre, suasana, tema lagu. Dalam 30 detik, AI akan membuat lagu lengkap dengan vokal! Bagikan hasilnya dengan teman sekelasmu.</p>
-        </div>
-
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Text-to-Image AI mengubah deskripsi teks menjadi gambar — DALL-E, Firefly, Midjourney</li>
-            <li>Image prompt yang baik menyertakan: subjek, gaya seni, pencahayaan, dan kualitas</li>
-            <li>AI audio bisa membuat musik (Suno), mengubah teks jadi suara, dan suara jadi teks</li>
-            <li>Deepfake berbahaya — gunakan AI kreatif secara bertanggung jawab</li>
-        </ul>
+                </div>
+            </section>
+            
     </div>
-    <div class="flex justify-between mt-12 gap-4">
-        <a href="../02-seni-prompt-engineering/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-200 text-slate-700 rounded-2xl shadow-sm hover:border-pink-300 transition">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold">Seni Prompt Engineering</p></div>
-        </a>
-        <a href="../04-etika-dan-halusinasi-ai/" class="flex items-center gap-3 px-5 py-3 bg-pink-600 text-white rounded-2xl shadow hover:bg-pink-700 transition">
-            <div class="text-right"><p class="text-[10px] text-pink-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Etika & Halusinasi AI</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </a>
-    </div>
+
+    <!-- SECTION: SIMULATOR / TANTANGAN -->
+    <section id="simulator" class="bg-white rounded-3xl border-2 border-purple-200 p-6 md:p-8 shadow-md space-y-6">
+        
+            <h2 class="font-heading font-extrabold text-xl text-slate-900">🎮 Tantangan: Tebak Gaya Seni Visual</h2>
+            <div class="p-4 bg-slate-50 border rounded-2xl text-xs space-y-2">
+                <p class="font-bold text-slate-800">Jika kamu ingin gambar tampak seperti jepretan kamera DSLR sungguhan dengan detail pori-pori dan pantulan cahaya asli, gaya apa yang kamu ketik?</p>
+                <div class="flex gap-2">
+                    <button onclick="checkSim(1, 'photo', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-bold flex-1">A. Photorealistic / Realistic Photography</button>
+                    <button onclick="checkSim(1, 'pixel', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-bold flex-1">B. 8-Bit Pixel Art Game</button>
+                </div>
+                <div id="sim-fb" class="text-[11px] font-bold hidden"></div>
+            </div>
+            
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: AI untuk Gambar & Multimedia 🎨🖼️</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahamanmu secara mandiri (Total Nilai: 100 Poin)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
+            </div>
+        </div>
+
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+            
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Teknologi AI yang mengubah kalimat deskripsi menjadi karya gambar visual disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="A"> A. Text-to-Image Generation</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="B"> B. Harddisk Format</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="C"> C. Bluetooth Scanner</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="D"> D. Audio Recorder</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Elemen manakah yang membuat gambar AI terlihat lebih dramatis dan estetik?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="A"> A. Penataan pencahayaan (Lighting) seperti golden hour atau cinematic light</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="B"> B. Mengetik nama teman sekelas sebanyak 50 kali</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="C"> C. Menutup layar dengan kain</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="D"> D. Menghapus browser internet</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Fitur AI yang berfungsi menghapus atau mengganti bagian tertentu dari sebuah gambar disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="A"> A. Inpainting</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="B"> B. Screen Capture</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="C"> C. Disk Defragmenter</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="D"> D. Task Manager</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Manfaat positif penggunaan AI gambar bagi siswa saat membuat presentasi kelompok adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="A"> A. Membuat ilustrasi visual materi yang menarik dan sesuai tema presentasi</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="B"> B. Menghindari belajar dan bermain game seharian</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="C"> C. Membuat foto palsu untuk membully teman</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="D"> D. Memperlambat koneksi wifi sekolah</label>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Hal yang TIDAK BOLEH dilakukan dengan generator gambar AI adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="A"> A. Membuat foto fitnah / deepfake wajah orang lain tanpa izin</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="B"> B. Membuat poster sains tentang tata surya</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="C"> C. Mendesain logo klub robotik sekolah</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="D"> D. Membuat stiker karakter kartun orisinal</label>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+            <div class="space-y-3 text-xs">
+                
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">1. Generator gambar AI menciptakan lukisan baru dari nol berdasarkan teks prompt.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_1" value="B"> B</label><label><input type="radio" name="tf_1" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">2. Gaya seni seperti anime, watercolor, dan 3D render bisa dimasukkan ke dalam prompt.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_2" value="B"> B</label><label><input type="radio" name="tf_2" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">3. Generator gambar AI hanya bisa menggambar bentuk persegi hitam putih.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_3" value="B"> B</label><label><input type="radio" name="tf_3" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">4. Kita dilarang membuat gambar palsu yang dapat merugikan nama baik seseorang.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_4" value="B"> B</label><label><input type="radio" name="tf_4" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">5. Kualitas gambar yang dihasilkan sangat dipengaruhi oleh detail deskripsi prompt.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_5" value="B"> B</label><label><input type="radio" name="tf_5" value="S"> S</label></div></div>
+            
+            </div>
+        </div>
+
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Konsep & Penjelasan (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+            <div id="matching-game-container"></div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Mengurutkan Langkah Alur Kerja (Bobot: 25 Poin)</h3>
+            </div>
+            <div class="space-y-2 text-xs">
+                
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">A. Membayangkan konsep objek dan suasana gambar yang ingin diwujudkan</span><select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">B. Menuliskan prompt lengkap dengan subjek, latar, pencahayaan, dan gaya artistik</span><select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">C. AI memproses deskripsi dan membuat 4 variasi gambar dalam hitungan detik</span><select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">D. Memilih variasi gambar terbaik dan melakukan penyempurnaan (Upscaling / Inpainting)</span><select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">E. Menyimpan gambar resolusi tinggi untuk bahan tugas presentasi sekolah</span><select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-purple-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-purple-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-purple-200">Poin penting yang wajib kamu ingat</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            
+            <p><strong>1. Imajinasi Visual:</strong> AI memungkinkanmu menjadi seniman digital tanpa perlu jago melukis manual.</p>
+            <p><strong>2. Rincian Prompt:</strong> Subjek + Aksi + Latar + Pencahayaan + Gaya Seni = Hasil Luar Biasa.</p>
+            <p><strong>3. Gunakan Bijak:</strong> Jangan buat konten hoaks atau merugikan orang lain.</p>
+            
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan pengalaman belajarmu: hal baru apa yang paling menarik dari materi ini?..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-purple-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-purple-500 hover:bg-purple-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
 </main>
-<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
-    </div>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — Fanani's Class. Platform Pembelajaran KKA.</p>
 </footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-genai-04';
+
+function checkSim(q, ch, btn){
+                const fb = document.getElementById('sim-fb');
+                fb.classList.remove('hidden');
+                if(ch==='photo'){ fb.className='text-emerald-600 text-[11px] font-bold'; fb.innerText='✅ Hebat! Photorealistic adalah kata kunci untuk hasil foto nyata.'; }
+                else { fb.className='text-rose-600 text-[11px] font-bold'; fb.innerText='❌ Kurang tepat, pixel art akan menghasilkan gambar kotak-kotak game jadul.'; }
+            }
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Photorealistic'}, {'id': '2', 'text': 'Watercolor'}, {'id': '3', 'text': 'Inpainting'}, {'id': '4', 'text': 'Cinematic Lighting'}, {'id': '5', 'text': 'Aspect Ratio'}];
+const MATCH_DATA_RIGHT = [{'id': 'wc', 'text': 'Gaya lukisan menggunakan sapuan cat air lembut'}, {'id': 'ar', 'text': 'Perbandingan ukuran lebar dan tinggi gambar (misal 16:9 atau 1:1)'}, {'id': 'pr', 'text': 'Gaya visual yang tampak nyata persis hasil foto kamera asli'}, {'id': 'inp', 'text': 'Fitur AI untuk mengedit atau mengganti objek tertentu pada foto'}, {'id': 'cl', 'text': 'Pencahayaan dramatis seperti dalam adegan film bioskop'}];
+const MATCH_CORRECT = {'1': 'pr', '2': 'wc', '3': 'inp', '4': 'cl', '5': 'ar'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'S', tf_2: 'B', tf_3: 'B', tf_4: 'S', tf_5: 'B' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
+    loadHistory();
+});
+</script>
+
 </body>
 </html>

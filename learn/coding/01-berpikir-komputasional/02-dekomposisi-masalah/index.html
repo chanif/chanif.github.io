@@ -416,65 +416,7 @@
                 <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
                 <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Modul Sistem & Tanggung Jawab Kerjanya (5 Pasangan · Bobot: 25 Poin)</h3>
             </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Nama Modul Komputasi:</p>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Input Controller</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Physics / Collision Engine</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. AI Inference Engine</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Persistence Storage (Database)</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. UI / Sound Renderer</div>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Pilih Tanggung Jawab:</p>
-                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 1 --</option>
-                        <option value="input">Menangkap aksi tombol spasi atau sentuhan layar dari pengguna gawai</option>
-                        <option value="physics">Menghitung kalkulasi gravitasi, pantulan bola, dan tabrakan objek</option>
-                        <option value="ai">Mengeksekusi model neural network untuk menghasilkan prediksi probabilitas</option>
-                        <option value="db">Menyimpan data skor tertinggi dan profil pemain secara permanen ke memori</option>
-                        <option value="render">Menggambar sprite animasi grafis ke kanvas layar dan memutar efek suara</option>
-                    </select>
-
-                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 2 --</option>
-                        <option value="input">Menangkap aksi tombol spasi atau sentuhan layar dari pengguna gawai</option>
-                        <option value="physics">Menghitung kalkulasi gravitasi, pantulan bola, dan tabrakan objek</option>
-                        <option value="ai">Mengeksekusi model neural network untuk menghasilkan prediksi probabilitas</option>
-                        <option value="db">Menyimpan data skor tertinggi dan profil pemain secara permanen ke memori</option>
-                        <option value="render">Menggambar sprite animasi grafis ke kanvas layar dan memutar efek suara</option>
-                    </select>
-
-                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 3 --</option>
-                        <option value="input">Menangkap aksi tombol spasi atau sentuhan layar dari pengguna gawai</option>
-                        <option value="physics">Menghitung kalkulasi gravitasi, pantulan bola, dan tabrakan objek</option>
-                        <option value="ai">Mengeksekusi model neural network untuk menghasilkan prediksi probabilitas</option>
-                        <option value="db">Menyimpan data skor tertinggi dan profil pemain secara permanen ke memori</option>
-                        <option value="render">Menggambar sprite animasi grafis ke kanvas layar dan memutar efek suara</option>
-                    </select>
-
-                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 4 --</option>
-                        <option value="input">Menangkap aksi tombol spasi atau sentuhan layar dari pengguna gawai</option>
-                        <option value="physics">Menghitung kalkulasi gravitasi, pantulan bola, dan tabrakan objek</option>
-                        <option value="ai">Mengeksekusi model neural network untuk menghasilkan prediksi probabilitas</option>
-                        <option value="db">Menyimpan data skor tertinggi dan profil pemain secara permanen ke memori</option>
-                        <option value="render">Menggambar sprite animasi grafis ke kanvas layar dan memutar efek suara</option>
-                    </select>
-
-                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 5 --</option>
-                        <option value="input">Menangkap aksi tombol spasi atau sentuhan layar dari pengguna gawai</option>
-                        <option value="physics">Menghitung kalkulasi gravitasi, pantulan bola, dan tabrakan objek</option>
-                        <option value="ai">Mengeksekusi model neural network untuk menghasilkan prediksi probabilitas</option>
-                        <option value="db">Menyimpan data skor tertinggi dan profil pemain secara permanen ke memori</option>
-                        <option value="render">Menggambar sprite animasi grafis ke kanvas layar dan memutar efek suara</option>
-                    </select>
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
@@ -625,6 +567,23 @@ function setDecompScenario(scenKey) {
 }
 
 // Answer Keys
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Input Controller'}, {'id': '2', 'text': 'Physics / Collision Engine'}, {'id': '3', 'text': 'AI Inference Engine'}, {'id': '4', 'text': 'Persistence Storage (Database)'}, {'id': '5', 'text': 'UI / Sound Renderer'}];
+const MATCH_DATA_RIGHT = [{'id': 'input', 'text': 'Menangkap aksi tombol spasi atau sentuhan layar dari pengguna gawai'}, {'id': 'physics', 'text': 'Menghitung kalkulasi gravitasi, pantulan bola, dan tabrakan objek'}, {'id': 'ai', 'text': 'Mengeksekusi model neural network untuk menghasilkan prediksi probabilitas'}, {'id': 'db', 'text': 'Menyimpan data skor tertinggi dan profil pemain secara permanen ke memori'}, {'id': 'render', 'text': 'Menggambar sprite animasi grafis ke kanvas layar dan memutar efek suara'}];
+const MATCH_CORRECT = {'1': 'input', '2': 'physics', '3': 'ai', '4': 'db', '5': 'render'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
 const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
 const KEY_TF = { tf_1: 'S', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'B' };
 const KEY_MATCH = { match_1: 'input', match_2: 'physics', match_3: 'ai', match_4: 'db', match_5: 'render' };
@@ -648,11 +607,11 @@ async function submitQuizEvaluasi() {
         if (val === KEY_TF[k]) scoreB += 5;
     }
 
-    for (let k in KEY_MATCH) {
-        const el = document.getElementById(k);
-        const val = el ? el.value : '';
-        answers[k] = val;
-        if (val === KEY_MATCH[k]) scoreC += 5;
+        const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
     }
 
     for (let k in KEY_SEQ) {
@@ -725,6 +684,7 @@ async function loadHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
     setDecompScenario('game');
     loadHistory();
 });

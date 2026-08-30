@@ -418,65 +418,7 @@
                 <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
                 <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Properti DOM & Hasil Aksinya (5 Pasangan · Bobot: 25 Poin)</h3>
             </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Kode Properti DOM:</p>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. el.innerText</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. el.style.display = 'none'</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. el.classList.add('active')</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. el.value</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. window.alert('Pesan')</div>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Pilih Aksi yang Terjadi:</p>
-                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 1 --</option>
-                        <option value="text">Mengubah isi teks murni di dalam suatu elemen HTML</option>
-                        <option value="hide">Menyembunyikan elemen agar tidak terlihat di layar</option>
-                        <option value="class">Menambahkan kelas styling CSS baru ke dalam elemen</option>
-                        <option value="val">Mengambil isi teks yang diketikkan pengguna di kotak input form</option>
-                        <option value="alert">Memunculkan kotak dialog popup pemberitahuan di peramban</option>
-                    </select>
-
-                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 2 --</option>
-                        <option value="text">Mengubah isi teks murni di dalam suatu elemen HTML</option>
-                        <option value="hide">Menyembunyikan elemen agar tidak terlihat di layar</option>
-                        <option value="class">Menambahkan kelas styling CSS baru ke dalam elemen</option>
-                        <option value="val">Mengambil isi teks yang diketikkan pengguna di kotak input form</option>
-                        <option value="alert">Memunculkan kotak dialog popup pemberitahuan di peramban</option>
-                    </select>
-
-                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 3 --</option>
-                        <option value="text">Mengubah isi teks murni di dalam suatu elemen HTML</option>
-                        <option value="hide">Menyembunyikan elemen agar tidak terlihat di layar</option>
-                        <option value="class">Menambahkan kelas styling CSS baru ke dalam elemen</option>
-                        <option value="val">Mengambil isi teks yang diketikkan pengguna di kotak input form</option>
-                        <option value="alert">Memunculkan kotak dialog popup pemberitahuan di peramban</option>
-                    </select>
-
-                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 4 --</option>
-                        <option value="text">Mengubah isi teks murni di dalam suatu elemen HTML</option>
-                        <option value="hide">Menyembunyikan elemen agar tidak terlihat di layar</option>
-                        <option value="class">Menambahkan kelas styling CSS baru ke dalam elemen</option>
-                        <option value="val">Mengambil isi teks yang diketikkan pengguna di kotak input form</option>
-                        <option value="alert">Memunculkan kotak dialog popup pemberitahuan di peramban</option>
-                    </select>
-
-                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 5 --</option>
-                        <option value="text">Mengubah isi teks murni di dalam suatu elemen HTML</option>
-                        <option value="hide">Menyembunyikan elemen agar tidak terlihat di layar</option>
-                        <option value="class">Menambahkan kelas styling CSS baru ke dalam elemen</option>
-                        <option value="val">Mengambil isi teks yang diketikkan pengguna di kotak input form</option>
-                        <option value="alert">Memunculkan kotak dialog popup pemberitahuan di peramban</option>
-                    </select>
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
@@ -601,6 +543,23 @@ function toggleDomLikes() {
 }
 
 // Answer Keys
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'el.innerText'}, {'id': '2', 'text': "el.style.display = 'none'"}, {'id': '3', 'text': "el.classList.add('active')"}, {'id': '4', 'text': 'el.value'}, {'id': '5', 'text': "window.alert('Pesan')"}];
+const MATCH_DATA_RIGHT = [{'id': 'text', 'text': 'Mengubah isi teks murni di dalam suatu elemen HTML'}, {'id': 'hide', 'text': 'Menyembunyikan elemen agar tidak terlihat di layar'}, {'id': 'class', 'text': 'Menambahkan kelas styling CSS baru ke dalam elemen'}, {'id': 'val', 'text': 'Mengambil isi teks yang diketikkan pengguna di kotak input form'}, {'id': 'alert', 'text': 'Memunculkan kotak dialog popup pemberitahuan di peramban'}];
+const MATCH_CORRECT = {'1': 'text', '2': 'hide', '3': 'class', '4': 'val', '5': 'alert'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
 const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
 const KEY_TF = { tf_1: 'S', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'B' };
 const KEY_MATCH = { match_1: 'text', match_2: 'hide', match_3: 'class', match_4: 'val', match_5: 'alert' };
@@ -624,11 +583,11 @@ async function submitQuizEvaluasi() {
         if (val === KEY_TF[k]) scoreB += 5;
     }
 
-    for (let k in KEY_MATCH) {
-        const el = document.getElementById(k);
-        const val = el ? el.value : '';
-        answers[k] = val;
-        if (val === KEY_MATCH[k]) scoreC += 5;
+    const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
     }
 
     for (let k in KEY_SEQ) {
@@ -701,6 +660,7 @@ async function loadHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
     loadHistory();
 });
 </script>

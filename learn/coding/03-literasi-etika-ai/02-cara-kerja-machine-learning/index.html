@@ -1,185 +1,454 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Konsep machine learning: supervised learning, unsupervised learning, data latih dan data uji, overfitting, dan bagaimana mesin bisa belajar dari contoh-contoh yang diberikan.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Konsep Machine Learning | KKA Kelas 7</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cara Kerja Machine Learning 🧠 | Koding & Kecerdasan Artifisial</title>
+    <meta name="description" content="Konsep Machine Learning untuk siswa SMP kelas 7: belajar dari data, supervised vs unsupervised learning, dan analogi melatih model AI.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .prose strong{color:#1e293b;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(139,92,246,0.25);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-violet-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-violet-600 hover:underline">← KKA Kelas 7</a>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-purple-100 selection:text-purple-900 pb-24">
+
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-purple-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-purple-600 transition">
+        fanani<span class="text-purple-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-purple-600 transition flex items-center gap-1">
+            ← Unit Literasi & Etika AI
+        </a>
+    </div>
 </nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Learn</a><span>/</span>
-        <a href="../../" class="hover:text-violet-600">KKA</a><span>/</span>
-        <a href="../" class="hover:text-violet-600">Kelas 7</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 2</span>
+
+<!-- Sticky Sub-Nav -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#materi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">💡 Materi Asyik</a>
+        <a href="#simulator" class="px-3 py-1.5 rounded-full bg-purple-100 text-purple-800 hover:bg-purple-200 transition whitespace-nowrap font-bold">🎮 Tantangan Interaktif</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
     </div>
-    <div class="bg-gradient-to-br from-violet-500 to-purple-700 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 2 · ML</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Konsep Machine Learning 🧠</h1>
-            <p class="text-violet-100 leading-relaxed max-w-2xl">Bagaimana caranya mesin bisa "belajar"? Tidak ada sihir di sini — hanya data, pola, dan latihan berulang. Yuk kupas konsepnya dengan cara yang mudah!</p>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../learn/" class="hover:text-purple-600 transition">Learn</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-purple-600 transition">KKA</a>
+        <span>/</span>
+        <a href="../" class="hover:text-purple-600 transition">Literasi & Etika AI</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">02. Cara Kerja Machine Learning 🧠</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-purple-600 via-indigo-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🤖 KKA · Unit 03 · Modul 02
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Cara Kerja Machine Learning 🧠 🚀
+            </h1>
+            <p class="text-purple-100 text-sm md:text-base leading-relaxed mb-6">
+                Bagaimana komputer bisa belajar tanpa diprogram langkah demi langkah? Pelajari konsep seru Machine Learning seperti melatih hewan peliharaan!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-purple-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 40 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">💡 Level: Kelas 7 SMP (Seru & Mudah)</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
         </div>
-    </div>
-    <div class="prose max-w-none">
-        <h2>Bedanya AI Biasa vs Machine Learning</h2>
-        <p>Ada dua cara membuat AI:</p>
-        <div class="not-prose grid md:grid-cols-2 gap-4 my-5">
-            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
-                <p class="font-heading font-extrabold text-slate-700 text-lg mb-2">📋 AI Berbasis Aturan</p>
-                <p class="text-slate-600 text-sm mb-3">Programmer menulis aturan satu per satu:</p>
-                <div class="bg-slate-800 text-slate-100 rounded-lg p-3 text-xs font-mono">
-                    <p>JIKA warna merah → lampu berhenti</p>
-                    <p>JIKA warna hijau → lampu jalan</p>
-                    <p>JIKA suhu > 37.5 → demam</p>
-                </div>
-                <p class="text-slate-500 text-xs mt-2">Masalah: tidak bisa menangani situasi yang tidak ada aturannya!</p>
+    </section>
+
+    <!-- SECTION: TUJUAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Setelah mempelajari materi ini, kamu akan bisa:</p>
             </div>
-            <div class="bg-violet-50 border border-violet-200 rounded-xl p-5">
-                <p class="font-heading font-extrabold text-violet-700 text-lg mb-2">🧠 Machine Learning</p>
-                <p class="text-violet-600 text-sm mb-3">Mesin diberi banyak contoh, lalu "mencari sendiri" polanya:</p>
-                <div class="bg-violet-100 rounded-lg p-3 text-xs text-violet-800">
-                    <p>📷 Lihat 1000 foto kucing → "Oh, ini pola kucing"</p>
-                    <p>📷 Lihat 1000 foto anjing → "Oh, ini pola anjing"</p>
-                    <p>❓ Foto baru → "Ini kucing! 97% yakin"</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">01.</span><div><strong class="text-slate-800 block mb-0.5">Memahami Konsep Belajar Mesin</strong><p class="text-slate-600">Mengerti bahwa Machine Learning adalah cara komputer menemukan pola sendiri dari contoh data.</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">02.</span><div><strong class="text-slate-800 block mb-0.5">3 Jenis Pembelajaran AI</strong><p class="text-slate-600">Mengenal Supervised, Unsupervised, dan Reinforcement Learning.</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">03.</span><div><strong class="text-slate-800 block mb-0.5">Pentingnya Data Latihan</strong><p class="text-slate-600">Menyadari jika data latihannya salah, tebakan AI juga keliru (Garbage In, Garbage Out).</p></div></div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100"><span class="text-purple-700 font-extrabold text-sm">04.</span><div><strong class="text-slate-800 block mb-0.5">Uji Akurasi Model AI</strong><p class="text-slate-600">Menguji seberapa tepat tebakan model AI terhadap data baru.</p></div></div>
+            
+        </div>
+    </section>
+
+    <!-- SECTION: MATERI -->
+    <div id="materi" class="space-y-12">
+        
+            <section class="space-y-6">
+                <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center text-xl font-extrabold">1</span><div><h2 class="font-heading font-extrabold text-2xl text-slate-900">Analogi Seru: Mengajari Adik vs Melatih AI 🐱</h2><p class="text-xs text-slate-500">Kenapa kita tidak perlu menuliskan jutaan aturan?</p></div></div>
+                <div class="grid md:grid-cols-2 gap-5 text-xs">
+                    <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2"><strong class="text-slate-800 text-sm block">🖥️ Koding Tradisional (Zaman Dulu)</strong><p class="text-slate-600 leading-relaxed">Kamu harus menulis rumus kaku: <em>"Jika ada 2 telinga segitiga dan punya kumis maka kucing."</em> Kalau kucingnya terpotong foto, kodingan langsung gagal!</p></div>
+                    <div class="p-5 bg-purple-50 rounded-2xl border border-purple-200 shadow-sm space-y-2"><strong class="text-purple-900 text-sm block">🧠 Machine Learning (Zaman AI Sekarang)</strong><p class="text-purple-800 leading-relaxed">Kamu cukup masukkan 10.000 foto kucing. Komputer akan <strong>mencari sendiri ciri-ciri rahasia</strong> yang membedakan kucing dari hewan lain secara otomatis!</p></div>
                 </div>
-                <p class="text-violet-500 text-xs mt-2">Keunggulan: bisa menemukan pola yang tidak terpikirkan manusia!</p>
+            </section>
+            
+    </div>
+
+    <!-- SECTION: SIMULATOR / TANTANGAN -->
+    <section id="simulator" class="bg-white rounded-3xl border-2 border-purple-200 p-6 md:p-8 shadow-md space-y-6">
+        
+            <h2 class="font-heading font-extrabold text-xl text-slate-900">🎮 Game: Tebak Tipe Machine Learning</h2>
+            <div class="grid sm:grid-cols-3 gap-4 text-xs">
+                <div class="p-4 bg-slate-50 rounded-2xl border space-y-3">
+                    <p class="font-bold text-slate-800">1. AI belajar main catur dengan diberi hadiah (+1 poin) saat menang dan penalti saat kalah.</p>
+                    <div class="flex flex-col gap-1">
+                        <button onclick="checkSim(1, 'RL', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-semibold text-left">A. Reinforcement Learning</button>
+                        <button onclick="checkSim(1, 'SL', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-semibold text-left">B. Supervised Learning</button>
+                    </div>
+                    <div id="sim-fb-1" class="text-[11px] font-bold hidden"></div>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-2xl border space-y-3">
+                    <p class="font-bold text-slate-800">2. Menunjukkan 5.000 foto apel berlabel 'Apel' dan 5.000 foto jeruk berlabel 'Jeruk'.</p>
+                    <div class="flex flex-col gap-1">
+                        <button onclick="checkSim(2, 'SL', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-semibold text-left">A. Supervised Learning (Berlabel)</button>
+                        <button onclick="checkSim(2, 'UL', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-semibold text-left">B. Unsupervised Learning</button>
+                    </div>
+                    <div id="sim-fb-2" class="text-[11px] font-bold hidden"></div>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-2xl border space-y-3">
+                    <p class="font-bold text-slate-800">3. AI mengelompokkan pelanggan toko berdasarkan kebiasaan belanja tanpa diberi tahu kategorinya.</p>
+                    <div class="flex flex-col gap-1">
+                        <button onclick="checkSim(3, 'UL', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-semibold text-left">A. Unsupervised Learning (Clustering)</button>
+                        <button onclick="checkSim(3, 'RL', this)" class="p-2 bg-white hover:bg-purple-100 border rounded-lg font-semibold text-left">B. Reinforcement Learning</button>
+                    </div>
+                    <div id="sim-fb-3" class="text-[11px] font-bold hidden"></div>
+                </div>
+            </div>
+            
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📝</span>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Cara Kerja Machine Learning 🧠</h2>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Uji pemahamanmu secara mandiri (Total Nilai: 100 Poin)</p>
+            </div>
+            <div class="px-4 py-2 bg-amber-50 border border-amber-200 rounded-2xl text-center self-start sm:self-auto">
+                <span class="text-[10px] text-amber-700 font-bold uppercase block tracking-wider">Target Kelulusan</span>
+                <span class="text-sm font-extrabold text-amber-900">Minimal 70 Poin</span>
             </div>
         </div>
 
-        <h2>Cara Mesin "Belajar"</h2>
-        <p>Proses machine learning mirip dengan cara manusia belajar — dengan mencoba, salah, dan memperbaiki diri:</p>
-        <div class="not-prose space-y-3 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
-                <div class="w-9 h-9 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">1</div>
-                <div>
-                    <p class="font-heading font-bold text-slate-700">📦 Kumpulkan Data</p>
-                    <p class="text-slate-500 text-sm mt-1">Mesin membutuhkan banyak contoh. Untuk mengenali wajah, butuh ribuan foto wajah. Untuk deteksi spam, butuh ribuan email.</p>
+        <!-- BAGIAN A: PILIHAN GANDA (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian A</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Pilihan Ganda (5 Soal · Bobot: 25 Poin)</h3>
+            </div>
+            
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">1. Apa perbedaan utama Machine Learning dengan koding biasa?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="A"> A. Machine Learning belajar mengenali pola dari data contoh secara otomatis</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="B"> B. Machine Learning tidak memakai komputer sama sekali</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="C"> C. Koding biasa hanya bisa digunakan untuk menyalakan senter</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_1" value="D"> D. Machine Learning hanya bekerja di luar angkasa</label>
                 </div>
             </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
-                <div class="w-9 h-9 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">2</div>
-                <div>
-                    <p class="font-heading font-bold text-slate-700">🏷️ Beri Label (Training)</p>
-                    <p class="text-slate-500 text-sm mt-1">Setiap data diberi label: "ini kucing", "ini bukan kucing". Proses ini disebut supervised learning.</p>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">2. Pada Supervised Learning, data yang dimasukkan ke AI wajib memiliki...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="A"> A. Label atau kunci jawaban yang jelas (contoh: gambar + nama bendanya)</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="B"> B. Password rahasia dari guru</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="C"> C. Warna warni neon menyala</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_2" value="D"> D. Ukuran file tepat 1 Gigabyte</label>
                 </div>
             </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
-                <div class="w-9 h-9 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">3</div>
-                <div>
-                    <p class="font-heading font-bold text-slate-700">🔄 Latih Model</p>
-                    <p class="text-slate-500 text-sm mt-1">Komputer menganalisis semua data berlabel, mencari pola matematis. Proses ini bisa memakan waktu jam bahkan hari!</p>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">3. Istilah 'Garbage In, Garbage Out' pada dunia AI memiliki arti...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="A"> A. Jika data yang dipakai melatih AI buruk/salah, maka hasil tebakan AI juga akan buruk/salah</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="B"> B. Komputer harus dibuang ke tempat sampah jika rusak</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="C"> C. AI hanya bisa mengenali jenis-jenis sampah daur ulang</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_3" value="D"> D. AI bisa membersihkan sampah di kamar tidurmu</label>
                 </div>
             </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
-                <div class="w-9 h-9 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">4</div>
-                <div>
-                    <p class="font-heading font-bold text-slate-700">🧪 Uji dengan Data Baru</p>
-                    <p class="text-slate-500 text-sm mt-1">Model diuji dengan data yang belum pernah dilihat sebelumnya. Seberapa akurat tebaknya?</p>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">4. Metode Machine Learning di mana AI belajar melalui sistem hadiah (reward) dan hukuman (penalty) disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="A"> A. Reinforcement Learning</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="B"> B. Manual Programming</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="C"> C. Data Copy Paste</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_4" value="D"> D. Memory Card Storage</label>
                 </div>
             </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
-                <div class="w-9 h-9 bg-violet-100 text-violet-700 rounded-xl flex items-center justify-center font-heading font-extrabold text-sm flex-shrink-0">5</div>
-                <div>
-                    <p class="font-heading font-bold text-slate-700">✅ Gunakan!</p>
-                    <p class="text-slate-500 text-sm mt-1">Jika sudah akurat, model siap digunakan — itulah AI yang kita pakai sehari-hari!</p>
+            <div class="p-4 rounded-xl bg-slate-50 border space-y-2 text-xs">
+                <p class="font-bold text-slate-800">5. Mengapa kita perlu menguji model AI dengan 'Testing Data' yang baru?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="A"> A. Untuk memastikan AI benar-benar pintar mengenali objek baru, bukan cuma menghafal data latihan</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="B"> B. Agar kapasitas memori komputer cepat penuh</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="C"> C. Karena data latihan akan hilang setelah 5 menit</label>
+                    <label class="p-2 bg-white border rounded-lg cursor-pointer"><input type="radio" name="mcq_5" value="D"> D. Hanya untuk formalitas tugas sekolah</label>
                 </div>
             </div>
-                    </div>
-
-        <h2>Jenis-jenis Machine Learning</h2>
-        <div class="not-prose grid md:grid-cols-3 gap-3 my-5">
-                                    <div class="bg-blue-50 border-blue-200 border rounded-xl p-4">
-                <div class="text-3xl mb-2">👨‍🏫</div>
-                <p class="font-heading font-bold text-blue-700 text-sm mb-1">Supervised Learning</p>
-                <p class="text-slate-600 text-xs mb-2">Belajar dari data yang sudah diberi label. Seperti belajar dengan guru yang punya kunci jawaban.</p>
-                <p class="text-slate-400 text-xs"><strong>Contoh:</strong> Filter spam, pengenal gambar, prediksi harga</p>
-            </div>
-                        <div class="bg-emerald-50 border-emerald-200 border rounded-xl p-4">
-                <div class="text-3xl mb-2">🔍</div>
-                <p class="font-heading font-bold text-emerald-700 text-sm mb-1">Unsupervised Learning</p>
-                <p class="text-slate-600 text-xs mb-2">Mencari pola sendiri dari data tanpa label. Seperti mengelompokkan benda tanpa tahu namanya.</p>
-                <p class="text-slate-400 text-xs"><strong>Contoh:</strong> Segmentasi pelanggan, deteksi anomali</p>
-            </div>
-                        <div class="bg-amber-50 border-amber-200 border rounded-xl p-4">
-                <div class="text-3xl mb-2">🎮</div>
-                <p class="font-heading font-bold text-amber-700 text-sm mb-1">Reinforcement Learning</p>
-                <p class="text-slate-600 text-xs mb-2">Belajar dari reward dan punishment. Seperti melatih hewan dengan hadiah dan hukuman.</p>
-                <p class="text-slate-400 text-xs"><strong>Contoh:</strong> AI main game, robot, mobil otonom</p>
-            </div>
-                    </div>
-
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🎯 Analogi Sederhana</p>
-            <p class="text-purple-700 text-sm">Supervised Learning = belajar dengan buku pelajaran yang ada jawabannya. Unsupervised = pilah-pilah sendiri buku tak berlabel. Reinforcement = belajar main game, makin jago makin dapat poin!</p>
+            
         </div>
 
-        <h2>Machine Learning di Sekitar Kita</h2>
-        <div class="not-prose grid grid-cols-2 md:grid-cols-4 gap-3 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
-                <div class="text-3xl mb-2">🎵</div>
-                <p class="font-heading font-bold text-slate-700 text-xs">Rekomendasi Musik</p>
-                <p class="text-slate-400 text-xs mt-1">Spotify / YouTube</p>
+        <!-- BAGIAN B: BENAR / SALAH (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full">Bagian B</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Benar atau Salah (5 Soal · Bobot: 25 Poin)</h3>
             </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
-                <div class="text-3xl mb-2">📷</div>
-                <p class="font-heading font-bold text-slate-700 text-xs">Filter Wajah</p>
-                <p class="text-slate-400 text-xs mt-1">TikTok / Instagram</p>
+            <div class="space-y-3 text-xs">
+                
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">1. Machine Learning membutuhkan data contoh untuk mempelajari pola.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_1" value="B"> B</label><label><input type="radio" name="tf_1" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">2. Pada Supervised Learning, model AI belajar sendiri tanpa perlu ada label nama pada datanya.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_2" value="B"> B</label><label><input type="radio" name="tf_2" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">3. AI bermain game seperti catur sering menggunakan metode Reinforcement Learning.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_3" value="B"> B</label><label><input type="radio" name="tf_3" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">4. Model AI yang dilatih dengan 10 foto saja sudah dijamin memiliki akurasi 100% sempurna.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_4" value="B"> B</label><label><input type="radio" name="tf_4" value="S"> S</label></div></div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-center justify-between gap-4"><span class="text-slate-700">5. Akurasi model diukur dari persentase tebakan AI yang benar saat diuji dengan data baru.</span><div class="flex gap-2 flex-shrink-0"><label><input type="radio" name="tf_5" value="B"> B</label><label><input type="radio" name="tf_5" value="S"> S</label></div></div>
+            
             </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
-                <div class="text-3xl mb-2">🛡️</div>
-                <p class="font-heading font-bold text-slate-700 text-xs">Filter Spam</p>
-                <p class="text-slate-400 text-xs mt-1">Gmail</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
-                <div class="text-3xl mb-2">🗣️</div>
-                <p class="font-heading font-bold text-slate-700 text-xs">Asisten Suara</p>
-                <p class="text-slate-400 text-xs mt-1">Google / Siri</p>
-            </div>
-                    </div>
+        </div>
 
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Machine Learning = cara membuat AI yang belajar dari data, bukan dari aturan manual</li>
-            <li>Prosesnya: kumpulkan data → beri label → latih → uji → gunakan!</li>
-            <li>Tiga jenis: Supervised (dengan guru), Unsupervised (mandiri), Reinforcement (coba-coba)</li>
-            <li>ML sudah ada di mana-mana: musik, filter foto, email, asisten suara!</li>
-        </ul>
-    </div>
-    <div class="flex justify-between mt-12 gap-4">
-        <a href="../01-pengenalan-ai/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
-            <svg class="w-5 h-5 text-slate-400 group-hover:text-violet-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Pengenalan AI</p></div>
-        </a>
-        <a href="../03-teachable-machine/" class="flex items-center gap-3 px-5 py-3 bg-violet-600 text-white rounded-2xl shadow hover:bg-violet-700 transition">
-            <div class="text-right"><p class="text-[10px] text-violet-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Teachable Machine</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </a>
-    </div>
+        <!-- BAGIAN C: MENJODOHKAN (5 Soal - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Konsep & Penjelasan (5 Pasangan · Bobot: 25 Poin)</h3>
+            </div>
+            <div id="matching-game-container"></div>
+        </div>
+
+        <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 font-extrabold text-xs rounded-full">Bagian D</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Mengurutkan Langkah Alur Kerja (Bobot: 25 Poin)</h3>
+            </div>
+            <div class="space-y-2 text-xs">
+                
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">A. Mengumpulkan data contoh yang banyak dan bersih (Data Collection)</span><select id="seq_A" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">B. Memberi label dan membersihkan data yang rusak (Data Preprocessing)</span><select id="seq_B" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">C. Melatih model AI menemukan pola matematika dari data (Model Training)</span><select id="seq_C" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">D. Menguji akurasi tebakan model dengan data uji baru (Model Testing)</span><select id="seq_D" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200"><span class="text-slate-700">E. Menerapkan model AI ke dalam aplikasi nyata untuk membantu pengguna (Deployment)</span><select id="seq_E" class="p-1.5 bg-white border border-slate-300 rounded font-bold"><option value="">Urutan</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+            
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-purple-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-purple-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-purple-200">Poin penting yang wajib kamu ingat</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            
+            <p><strong>1. Belajar dari Pola:</strong> Machine Learning membuat komputer cerdas dengan mencari pola dari ribuan contoh data.</p>
+            <p><strong>2. 3 Pendekatan:</strong> Supervised (dengan label), Unsupervised (tanpa label), dan Reinforcement (hadiah & penalti).</p>
+            <p><strong>3. Kualitas Data Nomor 1:</strong> Data yang bersih, beragam, dan banyak menghasilkan AI yang akurat.</p>
+            
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Tuliskan pengalaman belajarmu: hal baru apa yang paling menarik dari materi ini?..." class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-purple-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-purple-500 hover:bg-purple-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
 </main>
-<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Learn</a>
-    </div>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — Fanani's Class. Platform Pembelajaran KKA.</p>
 </footer>
+
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'coding';
+const TOPIC_ID = 'kka-ai-02';
+
+function checkSim(q, choice, btn) {
+    const key = { 1: 'RL', 2: 'SL', 3: 'UL' };
+    const fb = document.getElementById(`sim-fb-${q}`);
+    fb.classList.remove('hidden');
+    if (choice === key[q]) {
+        fb.className = 'text-[11px] font-bold text-emerald-600';
+        fb.innerText = '✅ Tepat sekali! Pilihan jawabanmu benar.';
+    } else {
+        fb.className = 'text-[11px] font-bold text-rose-600';
+        fb.innerText = '❌ Kurang tepat, yuk coba pilih opsi lainnya!';
+    }
+}
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Training Data'}, {'id': '2', 'text': 'Supervised Learning'}, {'id': '3', 'text': 'Unsupervised Learning'}, {'id': '4', 'text': 'Reinforcement Learning'}, {'id': '5', 'text': 'Testing Data'}];
+const MATCH_DATA_RIGHT = [{'id': 'test', 'text': 'Data baru untuk menguji seberapa pintar model AI'}, {'id': 'train', 'text': 'Kumpulan data contoh untuk melatih model AI'}, {'id': 'rl', 'text': 'Belajar mandiri lewat sistem hadiah skor & hukuman'}, {'id': 'sl', 'text': 'Belajar dengan data yang memiliki label kunci jawaban'}, {'id': 'ul', 'text': 'Belajar mencari pola dan mengelompokkan data tanpa label'}];
+const MATCH_CORRECT = {'1': 'train', '2': 'sl', '3': 'ul', '4': 'rl', '5': 'test'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
+// Answer Keys
+const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
+const KEY_TF = { tf_1: 'S', tf_2: 'B', tf_3: 'B', tf_4: 'S', tf_5: 'B' };
+const KEY_SEQ = { seq_A: '1', seq_B: '2', seq_C: '3', seq_D: '4', seq_E: '5' };
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_SEQ[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
+    loadHistory();
+});
+</script>
+
 </body>
 </html>

@@ -399,23 +399,11 @@
 
         <!-- BAGIAN C: MENJODOHKAN -->
         <div id="eval-sec-C" class="space-y-6 text-sm">
-            <div class="flex justify-between items-center pb-2 border-b border-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
-                    <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Simbol Flowchart & Artinya (Bobot: 25 Poin)</h3>
-                </div>
-                <button onclick="resetMatchSection()" class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold rounded-lg">🔄 Reset Pasangan</button>
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan 5 Pasangan Elemen (Bobot: 25 Poin)</h3>
             </div>
-            <p class="text-xs text-slate-500">Klik bentuk simbol di sebelah kiri, lalu klik fungsi maknanya di sebelah kanan untuk menghubungkan pasangan.</p>
-
-            <div class="grid md:grid-cols-2 gap-4 relative">
-                <div class="space-y-2.5" id="match-col-left">
-                    <!-- Left items -->
-                </div>
-                <div class="space-y-2.5" id="match-col-right">
-                    <!-- Right items -->
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: MENGURUTKAN PSEUDOCODE -->
@@ -600,62 +588,17 @@ function pickTF(q, val, btn) {
 }
 
 function initMatching() {
-    const leftCol = document.getElementById('match-col-left');
-    const rightCol = document.getElementById('match-col-right');
-    leftCol.innerHTML = '';
-    rightCol.innerHTML = '';
-
-    MATCH_DATA_LEFT.forEach(item => {
-        const d = document.createElement('div');
-        d.id = `match-l-${item.id}`;
-        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400 transition text-xs font-bold text-slate-700 select-none';
-        d.onclick = () => selectLeftMatch(item.id);
-        d.innerHTML = `<span>${item.id}. ${item.text}</span>`;
-        leftCol.appendChild(d);
-    });
-
-    MATCH_DATA_RIGHT.forEach(item => {
-        const d = document.createElement('div');
-        d.id = `match-r-${item.id}`;
-        d.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:border-amber-400 transition text-xs text-slate-700 select-none';
-        d.onclick = () => selectRightMatch(item.id);
-        d.innerHTML = `<span>• ${item.text}</span>`;
-        rightCol.appendChild(d);
-    });
-}
-
-function selectLeftMatch(id) {
-    selectedLeftMatch = id;
-    MATCH_DATA_LEFT.forEach(item => {
-        const el = document.getElementById(`match-l-${item.id}`);
-        if (item.id === id) {
-            el.className = 'p-3 bg-amber-100 border-2 border-amber-500 text-amber-900 font-bold rounded-xl cursor-pointer select-none';
-        } else if (matchPairs[item.id]) {
-            el.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-bold rounded-xl cursor-pointer select-none';
-        } else {
-            el.className = 'p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer select-none text-xs font-bold text-slate-700';
-        }
-    });
-}
-
-function selectRightMatch(rId) {
-    if (!selectedLeftMatch) return;
-    matchPairs[selectedLeftMatch] = rId;
-
-    const leftEl = document.getElementById(`match-l-${selectedLeftMatch}`);
-    leftEl.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-bold rounded-xl cursor-pointer select-none flex justify-between items-center';
-    leftEl.innerHTML = `<span>${leftEl.innerText}</span> <span class="text-[10px] bg-emerald-200 px-2 py-0.5 rounded font-mono">🔗 #${selectedLeftMatch}</span>`;
-
-    const rightEl = document.getElementById(`match-r-${rId}`);
-    rightEl.className = 'p-3 bg-emerald-50 border-2 border-emerald-400 text-emerald-900 font-medium rounded-xl cursor-pointer select-none flex justify-between items-center';
-
-    selectedLeftMatch = null;
-}
-
-function resetMatchSection() {
-    matchPairs = {};
-    selectedLeftMatch = null;
-    initMatching();
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT,
+            onPairChange: (pairs) => {
+                matchPairs = pairs;
+            }
+        });
+    }
 }
 
 function initSequence() {

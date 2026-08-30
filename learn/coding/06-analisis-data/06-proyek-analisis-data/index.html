@@ -445,65 +445,7 @@
                 <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
                 <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Peran Anggota Tim Proyek Data (5 Pasangan · Bobot: 25 Poin)</h3>
             </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Peran / Tugas Tim:</p>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Survey Designer</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Data Cleaner</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Chart Visualizer</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Insight & Solution Lead</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Pitch Presenter</div>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Pilih Tanggung Jawab:</p>
-                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 1 --</option>
-                        <option value="des">Menyusun pertanyaan riset dan kuesioner Google Forms dengan skala Likert terukur</option>
-                        <option value="clean">Membersihkan data mentah dari isian ganda dan missing values di spreadsheet</option>
-                        <option value="vis">Membuat grafik batang, garis, dan diagram lingkaran di Google Sheets / Canva</option>
-                        <option value="ins">Menarik kesimpulan pola korelasi dan merumuskan saran solusi perbaikan</option>
-                        <option value="pres">Menyampaikan presentasi data storytelling di hadapan kelas dan dewan juri</option>
-                    </select>
-
-                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 2 --</option>
-                        <option value="des">Menyusun pertanyaan riset dan kuesioner Google Forms dengan skala Likert terukur</option>
-                        <option value="clean">Membersihkan data mentah dari isian ganda dan missing values di spreadsheet</option>
-                        <option value="vis">Membuat grafik batang, garis, dan diagram lingkaran di Google Sheets / Canva</option>
-                        <option value="ins">Menarik kesimpulan pola korelasi dan merumuskan saran solusi perbaikan</option>
-                        <option value="pres">Menyampaikan presentasi data storytelling di hadapan kelas dan dewan juri</option>
-                    </select>
-
-                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 3 --</option>
-                        <option value="des">Menyusun pertanyaan riset dan kuesioner Google Forms dengan skala Likert terukur</option>
-                        <option value="clean">Membersihkan data mentah dari isian ganda dan missing values di spreadsheet</option>
-                        <option value="vis">Membuat grafik batang, garis, dan diagram lingkaran di Google Sheets / Canva</option>
-                        <option value="ins">Menarik kesimpulan pola korelasi dan merumuskan saran solusi perbaikan</option>
-                        <option value="pres">Menyampaikan presentasi data storytelling di hadapan kelas dan dewan juri</option>
-                    </select>
-
-                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 4 --</option>
-                        <option value="des">Menyusun pertanyaan riset dan kuesioner Google Forms dengan skala Likert terukur</option>
-                        <option value="clean">Membersihkan data mentah dari isian ganda dan missing values di spreadsheet</option>
-                        <option value="vis">Membuat grafik batang, garis, dan diagram lingkaran di Google Sheets / Canva</option>
-                        <option value="ins">Menarik kesimpulan pola korelasi dan merumuskan saran solusi perbaikan</option>
-                        <option value="pres">Menyampaikan presentasi data storytelling di hadapan kelas dan dewan juri</option>
-                    </select>
-
-                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 5 --</option>
-                        <option value="des">Menyusun pertanyaan riset dan kuesioner Google Forms dengan skala Likert terukur</option>
-                        <option value="clean">Membersihkan data mentah dari isian ganda dan missing values di spreadsheet</option>
-                        <option value="vis">Membuat grafik batang, garis, dan diagram lingkaran di Google Sheets / Canva</option>
-                        <option value="ins">Menarik kesimpulan pola korelasi dan merumuskan saran solusi perbaikan</option>
-                        <option value="pres">Menyampaikan presentasi data storytelling di hadapan kelas dan dewan juri</option>
-                    </select>
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
@@ -637,6 +579,23 @@ function updateCapstoneProject() {
 }
 
 // Answer Keys
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Survey Designer'}, {'id': '2', 'text': 'Data Cleaner'}, {'id': '3', 'text': 'Chart Visualizer'}, {'id': '4', 'text': 'Insight & Solution Lead'}, {'id': '5', 'text': 'Pitch Presenter'}];
+const MATCH_DATA_RIGHT = [{'id': 'des', 'text': 'Menyusun pertanyaan riset dan kuesioner Google Forms dengan skala Likert terukur'}, {'id': 'clean', 'text': 'Membersihkan data mentah dari isian ganda dan missing values di spreadsheet'}, {'id': 'vis', 'text': 'Membuat grafik batang, garis, dan diagram lingkaran di Google Sheets / Canva'}, {'id': 'ins', 'text': 'Menarik kesimpulan pola korelasi dan merumuskan saran solusi perbaikan'}, {'id': 'pres', 'text': 'Menyampaikan presentasi data storytelling di hadapan kelas dan dewan juri'}];
+const MATCH_CORRECT = {'1': 'des', '2': 'clean', '3': 'vis', '4': 'ins', '5': 'pres'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
 const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
 const KEY_TF = { tf_1: 'B', tf_2: 'S', tf_3: 'B', tf_4: 'B', tf_5: 'S' };
 const KEY_MATCH = { match_1: 'des', match_2: 'clean', match_3: 'vis', match_4: 'ins', match_5: 'pres' };
@@ -660,11 +619,11 @@ async function submitQuizEvaluasi() {
         if (val === KEY_TF[k]) scoreB += 5;
     }
 
-    for (let k in KEY_MATCH) {
-        const el = document.getElementById(k);
-        const val = el ? el.value : '';
-        answers[k] = val;
-        if (val === KEY_MATCH[k]) scoreC += 5;
+        const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
     }
 
     for (let k in KEY_SEQ) {
@@ -737,6 +696,7 @@ async function loadHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
     updateCapstoneProject();
     loadHistory();
 });

@@ -417,65 +417,7 @@
                 <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
                 <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Tingkat Abstraksi & Contoh Elemennya (5 Pasangan · Bobot: 25 Poin)</h3>
             </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Tingkat Abstraksi:</p>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Abstraksi Nilai Data</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Abstraksi Instruksi</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Abstraksi Entitas Objek</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Abstraksi Layanan Cloud</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Abstraksi Fisik</div>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Pilih Contoh Implementasi:</p>
-                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 1 --</option>
-                        <option value="var">Variabel bernama 'nama_siswa' penampung teks string</option>
-                        <option value="func">Fungsi 'hitung_rata_rata(nilai)' yang memuat loop dan penjumlahan</option>
-                        <option value="class">Class 'Mobil' dengan properti warna, merk, dan method maju</option>
-                        <option value="api">API 'OpenAI ChatGPT' yang membalas pesan prompt otomatis</option>
-                        <option value="transistor">Sirkuit sakelar transistor silikon yang mengalirkan voltase tegangan listrik</option>
-                    </select>
-
-                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 2 --</option>
-                        <option value="var">Variabel bernama 'nama_siswa' penampung teks string</option>
-                        <option value="func">Fungsi 'hitung_rata_rata(nilai)' yang memuat loop dan penjumlahan</option>
-                        <option value="class">Class 'Mobil' dengan properti warna, merk, dan method maju</option>
-                        <option value="api">API 'OpenAI ChatGPT' yang membalas pesan prompt otomatis</option>
-                        <option value="transistor">Sirkuit sakelar transistor silikon yang mengalirkan voltase tegangan listrik</option>
-                    </select>
-
-                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 3 --</option>
-                        <option value="var">Variabel bernama 'nama_siswa' penampung teks string</option>
-                        <option value="func">Fungsi 'hitung_rata_rata(nilai)' yang memuat loop dan penjumlahan</option>
-                        <option value="class">Class 'Mobil' dengan properti warna, merk, dan method maju</option>
-                        <option value="api">API 'OpenAI ChatGPT' yang membalas pesan prompt otomatis</option>
-                        <option value="transistor">Sirkuit sakelar transistor silikon yang mengalirkan voltase tegangan listrik</option>
-                    </select>
-
-                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 4 --</option>
-                        <option value="var">Variabel bernama 'nama_siswa' penampung teks string</option>
-                        <option value="func">Fungsi 'hitung_rata_rata(nilai)' yang memuat loop dan penjumlahan</option>
-                        <option value="class">Class 'Mobil' dengan properti warna, merk, dan method maju</option>
-                        <option value="api">API 'OpenAI ChatGPT' yang membalas pesan prompt otomatis</option>
-                        <option value="transistor">Sirkuit sakelar transistor silikon yang mengalirkan voltase tegangan listrik</option>
-                    </select>
-
-                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 5 --</option>
-                        <option value="var">Variabel bernama 'nama_siswa' penampung teks string</option>
-                        <option value="func">Fungsi 'hitung_rata_rata(nilai)' yang memuat loop dan penjumlahan</option>
-                        <option value="class">Class 'Mobil' dengan properti warna, merk, dan method maju</option>
-                        <option value="api">API 'OpenAI ChatGPT' yang membalas pesan prompt otomatis</option>
-                        <option value="transistor">Sirkuit sakelar transistor silikon yang mengalirkan voltase tegangan listrik</option>
-                    </select>
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
@@ -632,6 +574,23 @@ function setAbsLayer(layerKey) {
 }
 
 // Answer Keys
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Abstraksi Nilai Data'}, {'id': '2', 'text': 'Abstraksi Instruksi'}, {'id': '3', 'text': 'Abstraksi Entitas Objek'}, {'id': '4', 'text': 'Abstraksi Layanan Cloud'}, {'id': '5', 'text': 'Abstraksi Fisik'}];
+const MATCH_DATA_RIGHT = [{'id': 'var', 'text': "Variabel bernama 'nama_siswa' penampung teks string"}, {'id': 'func', 'text': "Fungsi 'hitung_rata_rata(nilai)' yang memuat loop dan penjumlahan"}, {'id': 'class', 'text': "Class 'Mobil' dengan properti warna, merk, dan method maju"}, {'id': 'api', 'text': "API 'OpenAI ChatGPT' yang membalas pesan prompt otomatis"}, {'id': 'transistor', 'text': 'Sirkuit sakelar transistor silikon yang mengalirkan voltase tegangan listrik'}];
+const MATCH_CORRECT = {'1': 'var', '2': 'func', '3': 'class', '4': 'api', '5': 'transistor'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
 const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
 const KEY_TF = { tf_1: 'B', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'S' };
 const KEY_MATCH = { match_1: 'var', match_2: 'func', match_3: 'class', match_4: 'api', match_5: 'transistor' };
@@ -655,11 +614,11 @@ async function submitQuizEvaluasi() {
         if (val === KEY_TF[k]) scoreB += 5;
     }
 
-    for (let k in KEY_MATCH) {
-        const el = document.getElementById(k);
-        const val = el ? el.value : '';
-        answers[k] = val;
-        if (val === KEY_MATCH[k]) scoreC += 5;
+        const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
     }
 
     for (let k in KEY_SEQ) {
@@ -732,6 +691,7 @@ async function loadHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
     setAbsLayer('ui');
     loadHistory();
 });

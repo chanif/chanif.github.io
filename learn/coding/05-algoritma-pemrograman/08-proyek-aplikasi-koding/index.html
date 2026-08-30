@@ -432,65 +432,7 @@
                 <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
                 <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Tahap SDLC & Kegiatan Kerjanya (5 Pasangan · Bobot: 25 Poin)</h3>
             </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Tahap SDLC:</p>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Requirements Gathering</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. UI / UX Design</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Implementation (Coding)</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Testing & Debugging</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Documentation (README)</div>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Pilih Aktivitas:</p>
-                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 1 --</option>
-                        <option value="req">Mewawancarai calon pengguna untuk menentukan fitur utama aplikasi</option>
-                        <option value="ui">Membuat sketsa tata letak tombol dan alur navigasi aplikasi</option>
-                        <option value="code">Menulis sintaks logika algoritma di editor kode</option>
-                        <option value="test">Menjalankan pengujian untuk mendeteksi error input dan memperbaiki bug</option>
-                        <option value="doc">Menulis buku panduan teks pengoperasian aplikasi</option>
-                    </select>
-
-                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 2 --</option>
-                        <option value="req">Mewawancarai calon pengguna untuk menentukan fitur utama aplikasi</option>
-                        <option value="ui">Membuat sketsa tata letak tombol dan alur navigasi aplikasi</option>
-                        <option value="code">Menulis sintaks logika algoritma di editor kode</option>
-                        <option value="test">Menjalankan pengujian untuk mendeteksi error input dan memperbaiki bug</option>
-                        <option value="doc">Menulis buku panduan teks pengoperasian aplikasi</option>
-                    </select>
-
-                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 3 --</option>
-                        <option value="req">Mewawancarai calon pengguna untuk menentukan fitur utama aplikasi</option>
-                        <option value="ui">Membuat sketsa tata letak tombol dan alur navigasi aplikasi</option>
-                        <option value="code">Menulis sintaks logika algoritma di editor kode</option>
-                        <option value="test">Menjalankan pengujian untuk mendeteksi error input dan memperbaiki bug</option>
-                        <option value="doc">Menulis buku panduan teks pengoperasian aplikasi</option>
-                    </select>
-
-                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 4 --</option>
-                        <option value="req">Mewawancarai calon pengguna untuk menentukan fitur utama aplikasi</option>
-                        <option value="ui">Membuat sketsa tata letak tombol dan alur navigasi aplikasi</option>
-                        <option value="code">Menulis sintaks logika algoritma di editor kode</option>
-                        <option value="test">Menjalankan pengujian untuk mendeteksi error input dan memperbaiki bug</option>
-                        <option value="doc">Menulis buku panduan teks pengoperasian aplikasi</option>
-                    </select>
-
-                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 5 --</option>
-                        <option value="req">Mewawancarai calon pengguna untuk menentukan fitur utama aplikasi</option>
-                        <option value="ui">Membuat sketsa tata letak tombol dan alur navigasi aplikasi</option>
-                        <option value="code">Menulis sintaks logika algoritma di editor kode</option>
-                        <option value="test">Menjalankan pengujian untuk mendeteksi error input dan memperbaiki bug</option>
-                        <option value="doc">Menulis buku panduan teks pengoperasian aplikasi</option>
-                    </select>
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
@@ -620,6 +562,23 @@ function generateRandomPassword() {
 }
 
 // Answer Keys
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Requirements Gathering'}, {'id': '2', 'text': 'UI / UX Design'}, {'id': '3', 'text': 'Implementation (Coding)'}, {'id': '4', 'text': 'Testing & Debugging'}, {'id': '5', 'text': 'Documentation (README)'}];
+const MATCH_DATA_RIGHT = [{'id': 'req', 'text': 'Mewawancarai calon pengguna untuk menentukan fitur utama aplikasi'}, {'id': 'ui', 'text': 'Membuat sketsa tata letak tombol dan alur navigasi aplikasi'}, {'id': 'code', 'text': 'Menulis sintaks logika algoritma di editor kode'}, {'id': 'test', 'text': 'Menjalankan pengujian untuk mendeteksi error input dan memperbaiki bug'}, {'id': 'doc', 'text': 'Menulis buku panduan teks pengoperasian aplikasi'}];
+const MATCH_CORRECT = {'1': 'req', '2': 'ui', '3': 'code', '4': 'test', '5': 'doc'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
 const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
 const KEY_TF = { tf_1: 'B', tf_2: 'B', tf_3: 'S', tf_4: 'B', tf_5: 'B' };
 const KEY_MATCH = { match_1: 'req', match_2: 'ui', match_3: 'code', match_4: 'test', match_5: 'doc' };
@@ -643,11 +602,11 @@ async function submitQuizEvaluasi() {
         if (val === KEY_TF[k]) scoreB += 5;
     }
 
-    for (let k in KEY_MATCH) {
-        const el = document.getElementById(k);
-        const val = el ? el.value : '';
-        answers[k] = val;
-        if (val === KEY_MATCH[k]) scoreC += 5;
+        const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
     }
 
     for (let k in KEY_SEQ) {
@@ -720,6 +679,7 @@ async function loadHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
     generateRandomPassword();
     loadHistory();
 });

@@ -410,65 +410,7 @@
                 <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 font-extrabold text-xs rounded-full">Bagian C</span>
                 <h3 class="font-heading font-bold text-slate-800 text-sm">Menjodohkan Metode Riset & Kasus yang Tepat (5 Pasangan · Bobot: 25 Poin)</h3>
             </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 text-xs">
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Metode Pengumpulan Data:</p>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">1. Kuesioner Google Forms</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">2. Observasi Langsung</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">3. Wawancara Mendalam</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">4. Eksperimen Terkontrol</div>
-                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">5. Data Sekunder</div>
-                </div>
-
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-700">Pilih Kasus yang Paling Sesuai:</p>
-                    <select id="match_1" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 1 --</option>
-                        <option value="forms">Mengumpulkan pilihan menu kantin favorit dari 300 siswa secara serempak</option>
-                        <option value="obs">Menghitung jumlah sampah plastik di lapangan sekolah setelah jam istirahat</option>
-                        <option value="interv">Menanyakan motivasi dan strategi belajar juara olimpiade sains secara tatap muka</option>
-                        <option value="exp">Menguji pengaruh suhu air terhadap kecepatan pertumbuhan kecambah di lab IPA</option>
-                        <option value="sec">Mengunduh data jumlah penduduk Lamongan dari website resmi BPS</option>
-                    </select>
-
-                    <select id="match_2" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 2 --</option>
-                        <option value="forms">Mengumpulkan pilihan menu kantin favorit dari 300 siswa secara serempak</option>
-                        <option value="obs">Menghitung jumlah sampah plastik di lapangan sekolah setelah jam istirahat</option>
-                        <option value="interv">Menanyakan motivasi dan strategi belajar juara olimpiade sains secara tatap muka</option>
-                        <option value="exp">Menguji pengaruh suhu air terhadap kecepatan pertumbuhan kecambah di lab IPA</option>
-                        <option value="sec">Mengunduh data jumlah penduduk Lamongan dari website resmi BPS</option>
-                    </select>
-
-                    <select id="match_3" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 3 --</option>
-                        <option value="forms">Mengumpulkan pilihan menu kantin favorit dari 300 siswa secara serempak</option>
-                        <option value="obs">Menghitung jumlah sampah plastik di lapangan sekolah setelah jam istirahat</option>
-                        <option value="interv">Menanyakan motivasi dan strategi belajar juara olimpiade sains secara tatap muka</option>
-                        <option value="exp">Menguji pengaruh suhu air terhadap kecepatan pertumbuhan kecambah di lab IPA</option>
-                        <option value="sec">Mengunduh data jumlah penduduk Lamongan dari website resmi BPS</option>
-                    </select>
-
-                    <select id="match_4" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 4 --</option>
-                        <option value="forms">Mengumpulkan pilihan menu kantin favorit dari 300 siswa secara serempak</option>
-                        <option value="obs">Menghitung jumlah sampah plastik di lapangan sekolah setelah jam istirahat</option>
-                        <option value="interv">Menanyakan motivasi dan strategi belajar juara olimpiade sains secara tatap muka</option>
-                        <option value="exp">Menguji pengaruh suhu air terhadap kecepatan pertumbuhan kecambah di lab IPA</option>
-                        <option value="sec">Mengunduh data jumlah penduduk Lamongan dari website resmi BPS</option>
-                    </select>
-
-                    <select id="match_5" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-semibold text-slate-700">
-                        <option value="">-- Pasangan 5 --</option>
-                        <option value="forms">Mengumpulkan pilihan menu kantin favorit dari 300 siswa secara serempak</option>
-                        <option value="obs">Menghitung jumlah sampah plastik di lapangan sekolah setelah jam istirahat</option>
-                        <option value="interv">Menanyakan motivasi dan strategi belajar juara olimpiade sains secara tatap muka</option>
-                        <option value="exp">Menguji pengaruh suhu air terhadap kecepatan pertumbuhan kecambah di lab IPA</option>
-                        <option value="sec">Mengunduh data jumlah penduduk Lamongan dari website resmi BPS</option>
-                    </select>
-                </div>
-            </div>
+            <div id="matching-game-container"></div>
         </div>
 
         <!-- BAGIAN D: PENGURUTAN LANGKAH (5 Langkah - 25 Poin) -->
@@ -624,6 +566,23 @@ function nextCase() {
 }
 
 // Answer Keys
+
+// Data Menjodohkan
+const MATCH_DATA_LEFT = [{'id': '1', 'text': 'Kuesioner Google Forms'}, {'id': '2', 'text': 'Observasi Langsung'}, {'id': '3', 'text': 'Wawancara Mendalam'}, {'id': '4', 'text': 'Eksperimen Terkontrol'}, {'id': '5', 'text': 'Data Sekunder'}];
+const MATCH_DATA_RIGHT = [{'id': 'forms', 'text': 'Mengumpulkan pilihan menu kantin favorit dari 300 siswa secara serempak'}, {'id': 'obs', 'text': 'Menghitung jumlah sampah plastik di lapangan sekolah setelah jam istirahat'}, {'id': 'interv', 'text': 'Menanyakan motivasi dan strategi belajar juara olimpiade sains secara tatap muka'}, {'id': 'exp', 'text': 'Menguji pengaruh suhu air terhadap kecepatan pertumbuhan kecambah di lab IPA'}, {'id': 'sec', 'text': 'Mengunduh data jumlah penduduk Lamongan dari website resmi BPS'}];
+const MATCH_CORRECT = {'1': 'forms', '2': 'obs', '3': 'interv', '4': 'exp', '5': 'sec'};
+
+function initMatching() {
+    if (window.FananiMatcher) {
+        FananiMatcher.create({
+            containerId: 'matching-game-container',
+            leftItems: MATCH_DATA_LEFT,
+            rightItems: MATCH_DATA_RIGHT,
+            correctPairs: MATCH_CORRECT
+        });
+    }
+}
+
 const KEY_MCQ = { mcq_1: 'A', mcq_2: 'A', mcq_3: 'A', mcq_4: 'A', mcq_5: 'A' };
 const KEY_TF = { tf_1: 'B', tf_2: 'S', tf_3: 'B', tf_4: 'S', tf_5: 'B' };
 const KEY_MATCH = { match_1: 'forms', match_2: 'obs', match_3: 'interv', match_4: 'exp', match_5: 'sec' };
@@ -647,11 +606,11 @@ async function submitQuizEvaluasi() {
         if (val === KEY_TF[k]) scoreB += 5;
     }
 
-    for (let k in KEY_MATCH) {
-        const el = document.getElementById(k);
-        const val = el ? el.value : '';
-        answers[k] = val;
-        if (val === KEY_MATCH[k]) scoreC += 5;
+    const matchedPairs = window.FananiMatcher ? FananiMatcher.getPairs('matching-game-container') : {};
+    for (let k in MATCH_CORRECT) {
+        const val = matchedPairs[k] || '';
+        answers['match_' + k] = val;
+        if (val === MATCH_CORRECT[k]) scoreC += 5;
     }
 
     for (let k in KEY_SEQ) {
@@ -724,6 +683,7 @@ async function loadHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMatching();
     renderCase();
     loadHistory();
 });
