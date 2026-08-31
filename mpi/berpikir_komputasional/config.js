@@ -53,8 +53,13 @@ window.MPI_CONFIG = {
         // Header Cover (Pojok Kanan Atas)
         header_right: '',
 
-        // Logo Berjajar di Halaman Kredit/Penutup
-        footer_logos: [],
+        // 4 Logo Berjajar di Halaman Kredit/Penutup (Urut dari Kiri ke Kanan)
+        footer_logos: [
+            'assets/Logo Tutwuri Kemendikdasmen.png',
+            'assets/Logo-Sobat-SMP-2025.png',
+            'assets/Logo Pendidikan Bermutu.png',
+            'assets/Logo Ramah.png',
+        ],
     },
 
     // ------------------------------------------------------------
@@ -108,6 +113,6 @@ window.MPI_CONFIG = {
         phase: 'Fase D',
         author: 'Ach. Chanifuddin Fanani, S.Pd.',
         institution: 'SMP Negeri 2 Lamongan',
-        publisher: 'SMP Negeri 2 Lamongan',
+        publisher: 'Direktorat Sekolah Menengah Pertama — Kemendikdasmen',
     }
 };
