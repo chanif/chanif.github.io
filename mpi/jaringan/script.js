@@ -41,17 +41,11 @@ function applyConfig() {
   }
 
   // Footer Logos
-  if (cfg.logos && cfg.logos.footer_logos && Array.isArray(cfg.logos.footer_logos)) {
-    const footerContainer = document.getElementById('kredit-logos');
-    if (footerContainer) {
-      footerContainer.innerHTML = '';
-      cfg.logos.footer_logos.forEach(src => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = 'Logo Institusi';
-        footerContainer.appendChild(img);
-      });
-    }
+  if (cfg.logos && Array.isArray(cfg.logos.footer_logos) && cfg.logos.footer_logos.length > 0) {
+    const kLogos = document.querySelectorAll('#kredit-logos img');
+    cfg.logos.footer_logos.forEach((src, idx) => {
+      if (kLogos[idx] && src) kLogos[idx].src = src;
+    });
   }
 
   // Apply Developer Photos if configured
