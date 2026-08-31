@@ -150,15 +150,7 @@ function resetZoom() {
 const MATERI_SUBPAGES = ['materi-1', 'video', 'tarik-jawaban'];
 
 function updateTopControls(pageId) {
-  const topControls = document.getElementById('top-controls-right');
   const btnMateri = document.getElementById('btn-top-materi');
-  if (!topControls) return;
-
-  if (pageId === 'cover') {
-    topControls.classList.add('on-cover');
-  } else {
-    topControls.classList.remove('on-cover');
-  }
 
   if (btnMateri) {
     if (MATERI_SUBPAGES.includes(pageId)) {
