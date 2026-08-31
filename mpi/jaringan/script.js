@@ -133,6 +133,7 @@ function resetZoom() {
 const MATERI_SUBPAGES = ['materi-1', 'video', 'tarik-jawaban', 'materi-3'];
 
 function updateTopControls(pageId) {
+  const topControls = document.getElementById('top-controls-right');
   const btnMateri = document.getElementById('btn-top-materi');
 
   if (btnMateri) {
@@ -140,6 +141,14 @@ function updateTopControls(pageId) {
       btnMateri.style.display = 'inline-flex';
     } else {
       btnMateri.style.display = 'none';
+    }
+  }
+
+  if (topControls) {
+    if (pageId === 'cover') {
+      topControls.classList.add('on-cover');
+    } else {
+      topControls.classList.remove('on-cover');
     }
   }
 }
