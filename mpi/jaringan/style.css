@@ -31,6 +31,7 @@
   --radius-pill: 999px;
 
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-scale: 1.0;
 }
 
 /* ---------- Reset & Base ---------- */
@@ -377,6 +378,38 @@ a {
   transform: scale(1.05);
 }
 
+/* Font Size Widget Styling */
+.font-widget {
+  border-color: rgba(2, 136, 209, 0.35);
+}
+
+.font-widget:hover {
+  border-color: var(--blue);
+  box-shadow: 0 8px 24px rgba(2, 136, 209, 0.3);
+}
+
+.font-widget .zoom-btn {
+  background: var(--blue);
+  font-size: 14px;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  letter-spacing: -0.5px;
+}
+
+.font-widget .zoom-btn:hover {
+  background: #01579b;
+}
+
+.font-widget .font-level-text {
+  color: var(--blue);
+  font-size: 15px;
+}
+
+.font-widget .font-level-text:hover {
+  background: #e1f5fe;
+  color: #01579b;
+}
+
 /* Bottom Navigation Arrows (◀ / ▶ - Extra Large & Ultra Tactile) */
 .nav-bottom {
   position: absolute;
@@ -672,7 +705,7 @@ body.zoom-sub-100 .content-box.narrow {
 }
 
 .content-box p {
-  font-size: 20px;
+  font-size: calc(20px * var(--font-scale, 1.0));
   line-height: 1.75;
   color: var(--text-body);
   margin-bottom: 12px;
@@ -684,7 +717,7 @@ body.zoom-sub-100 .content-box.narrow {
 
 .content-box ol,
 .content-box ul {
-  font-size: 20px;
+  font-size: calc(20px * var(--font-scale, 1.0));
   line-height: 1.75;
   color: var(--text-body);
   margin-left: 24px;
@@ -725,14 +758,14 @@ body.zoom-sub-100 .content-box.narrow {
 
 .content-col h3 {
   font-family: var(--font-heading);
-  font-size: 24px;
+  font-size: calc(24px * var(--font-scale, 1.0));
   color: var(--teal-dark);
   margin-bottom: 14px;
 }
 
 .content-col p,
 .content-col li {
-  font-size: 19px;
+  font-size: calc(19px * var(--font-scale, 1.0));
   line-height: 1.7;
 }
 
@@ -1350,13 +1383,13 @@ body.zoom-sub-100 .content-box.narrow {
 }
 
 #page-materi-1 .materi-subcard-title {
-  font-size: 16px;
+  font-size: calc(16px * var(--font-scale, 1.0));
   font-weight: 700;
   margin-bottom: 2px;
 }
 
 #page-materi-1 .materi-subcard-desc {
-  font-size: 14.5px !important;
+  font-size: calc(14.5px * var(--font-scale, 1.0)) !important;
   line-height: 1.4 !important;
   margin-bottom: 0 !important;
   color: var(--text-body);
@@ -1372,7 +1405,7 @@ body.zoom-sub-100 .content-box.narrow {
 
 #page-materi-1 .materi-analogi-box p {
   margin-bottom: 0 !important;
-  font-size: 15px !important;
+  font-size: calc(15px * var(--font-scale, 1.0)) !important;
   line-height: 1.45 !important;
   color: #006064;
 }
@@ -1387,7 +1420,7 @@ body.zoom-sub-100 .content-box.narrow {
 
 #page-materi-1 .materi-highlight-box p {
   margin-bottom: 0 !important;
-  font-size: 15px !important;
+  font-size: calc(15px * var(--font-scale, 1.0)) !important;
   line-height: 1.45 !important;
   color: #01579b;
 }
