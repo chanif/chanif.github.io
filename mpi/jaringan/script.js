@@ -142,8 +142,8 @@ let currentFontScale = parseFloat(localStorage.getItem('mpi_font_scale')) || 1.0
 
 function setAppFontScale(scale) {
   scale = Math.round(scale * 100) / 100;
-  if (scale < 0.80) scale = 0.80;
-  if (scale > 1.40) scale = 1.40;
+  if (scale < 0.70) scale = 0.70;
+  if (scale > 1.50) scale = 1.50;
   currentFontScale = scale;
 
   try {
