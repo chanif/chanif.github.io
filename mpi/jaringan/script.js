@@ -821,6 +821,9 @@ function drawMatchP8Lines() {
   const containerRect = container.getBoundingClientRect();
   if (containerRect.width === 0 || containerRect.height === 0) return;
 
+  const scaleX = (containerRect.width > 0 && container.offsetWidth > 0) ? (containerRect.width / container.offsetWidth) : 1;
+  const scaleY = (containerRect.height > 0 && container.offsetHeight > 0) ? (containerRect.height / container.offsetHeight) : 1;
+
   Object.entries(matchP8State.pairs).forEach(([leftId, rightId]) => {
     const leftEl = document.getElementById(`match-p8-left-${leftId}`);
     const rightEl = document.getElementById(`match-p8-right-${rightId}`);
@@ -829,10 +832,10 @@ function drawMatchP8Lines() {
     const leftRect = leftEl.getBoundingClientRect();
     const rightRect = rightEl.getBoundingClientRect();
 
-    const x1 = leftRect.right - containerRect.left;
-    const y1 = leftRect.top + leftRect.height / 2 - containerRect.top;
-    const x2 = rightRect.left - containerRect.left;
-    const y2 = rightRect.top + rightRect.height / 2 - containerRect.top;
+    const x1 = (leftRect.right - containerRect.left) / scaleX;
+    const y1 = (leftRect.top + leftRect.height / 2 - containerRect.top) / scaleY;
+    const x2 = (rightRect.left - containerRect.left) / scaleX;
+    const y2 = (rightRect.top + rightRect.height / 2 - containerRect.top) / scaleY;
 
     const theme = MATCH_P8_THEMES[leftId] || MATCH_P8_THEMES['1'];
     const midX = (x1 + x2) / 2;
@@ -2649,6 +2652,9 @@ function drawMatchLines() {
   const containerRect = container.getBoundingClientRect();
   if (containerRect.width === 0 || containerRect.height === 0) return;
 
+  const scaleX = (containerRect.width > 0 && container.offsetWidth > 0) ? (containerRect.width / container.offsetWidth) : 1;
+  const scaleY = (containerRect.height > 0 && container.offsetHeight > 0) ? (containerRect.height / container.offsetHeight) : 1;
+
   Object.entries(matchState.pairs).forEach(([leftId, rightId]) => {
     const leftEl = document.getElementById(`match-left-${leftId}`);
     const rightEl = document.getElementById(`match-right-${rightId}`);
@@ -2657,10 +2663,10 @@ function drawMatchLines() {
     const leftRect = leftEl.getBoundingClientRect();
     const rightRect = rightEl.getBoundingClientRect();
 
-    const x1 = leftRect.right - containerRect.left;
-    const y1 = leftRect.top + leftRect.height / 2 - containerRect.top;
-    const x2 = rightRect.left - containerRect.left;
-    const y2 = rightRect.top + rightRect.height / 2 - containerRect.top;
+    const x1 = (leftRect.right - containerRect.left) / scaleX;
+    const y1 = (leftRect.top + leftRect.height / 2 - containerRect.top) / scaleY;
+    const x2 = (rightRect.left - containerRect.left) / scaleX;
+    const y2 = (rightRect.top + rightRect.height / 2 - containerRect.top) / scaleY;
 
     const theme = MATCH_PAIR_THEMES[leftId] || MATCH_PAIR_THEMES['1'];
     const midX = (x1 + x2) / 2;
