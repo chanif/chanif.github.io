@@ -75,7 +75,7 @@ Flat 2D vector infographic illustration representing the 4 pillars of Computatio
 **Nama aset:** `packet-switching.jpg` / `materi2-logika.jpg`
 **Dipakai di:** Menu Materi 2 (Logika Kondisional)
 ```
-Flat vector educational diagram of a Smart Home IoT ecosystem: On the left, sensors (Light LDR sensor, Temperature thermometer DHT11, PIR motion sensor); In the center, a smiling microcontroller chip (ESP32 / Arduino brain); On the right, actuators (Smart ceiling light glowing, electric fan spinning, security siren buzzer). Glowing data lines connecting them with IF-THEN logic badges. Clean, modern flat vector, 16:9 aspect ratio, colorful and educational.
+Flat vector educational diagram of a Smart Home IoT ecosystem: On the left, sensors (Light LDR sensor, Temperature thermometer DHT11, PIR motion sensor); In the center, a smiling microcontroller chip (Smart MCU Brain); On the right, actuators (Smart ceiling light glowing, electric fan spinning, security siren buzzer). Glowing data lines connecting them with IF-THEN logic badges. Clean, modern flat vector, 16:9 aspect ratio, colorful and educational.
 ```
 
 ### 3.3 Ikon Sensor Cahaya (LDR)
@@ -90,7 +90,7 @@ Flat vector icon of a photoresistor LDR light sensor with sun and moon icons bes
 Flat vector icon of a digital temperature and humidity sensor module with a thermometer graphic, colored blue-to-red gradient bar, clean vector, transparent background, 1:1 square.
 ```
 
-### 3.5 Ikon Mikrokontroler (ESP32/Arduino Brain)
+### 3.5 Ikon Mikrokontroler (Smart MCU Brain)
 **Nama aset:** `icon-mikrokontroler.png`
 ```
 Flat vector icon of a friendly modern microchip microcontroller, with glowing brain circuits in the center and pin connectors, teal and neon cyan glow (#00ACC1, #4DD0E1), transparent background, 1:1 square.
