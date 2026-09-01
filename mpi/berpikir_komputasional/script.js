@@ -155,6 +155,49 @@ function resetZoom() {
   setAppZoom(1.0);
 }
 
+// ==================== FONT SIZE CONTROLS ENGINE ====================
+let currentFontScale = parseFloat(localStorage.getItem('mpi_font_scale')) || 1.0;
+
+function setAppFontScale(scale) {
+  scale = Math.round(scale * 100) / 100;
+  if (scale < 0.70) scale = 0.70;
+  if (scale > 1.50) scale = 1.50;
+  currentFontScale = scale;
+
+  try {
+    localStorage.setItem('mpi_font_scale', currentFontScale.toString());
+  } catch (e) {}
+
+  const fontPct = Math.round(currentFontScale * 100);
+  document.documentElement.style.setProperty('--font-scale', currentFontScale);
+
+  const fontTexts = document.querySelectorAll('.font-level-text');
+  fontTexts.forEach(el => {
+    el.textContent = `${fontPct}%`;
+    el.title = fontPct === 100 ? 'Ukuran Teks Normal (100%)' : 'Klik untuk Reset Ukuran Teks (100%)';
+  });
+
+  // Re-draw dynamic lines if text size changes card heights
+  setTimeout(() => {
+    const secC = document.getElementById('eval-section-C');
+    if (secC && secC.classList.contains('active') && typeof drawMatchLines === 'function') {
+      drawMatchLines();
+    }
+  }, 60);
+}
+
+function fontIn() {
+  setAppFontScale(currentFontScale + 0.05);
+}
+
+function fontOut() {
+  setAppFontScale(currentFontScale - 0.05);
+}
+
+function resetFont() {
+  setAppFontScale(1.0);
+}
+
 // ==================== TOP CONTROLS (MATERI & ZOOM) ====================
 const MATERI_SUBPAGES = ['materi-1', 'video', 'tarik-jawaban'];
 
@@ -2463,6 +2506,7 @@ function spawnConfetti() {
 document.addEventListener('DOMContentLoaded', function() {
   applyConfig();
   setAppZoom(currentZoom);
+  setAppFontScale(currentFontScale);
   goToPage('cover');
 
   window.addEventListener('resize', () => {
