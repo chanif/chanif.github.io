@@ -2502,12 +2502,108 @@ function spawnConfetti() {
   }
 }
 
+// ==================== SWIPE GESTURE NAVIGATION ====================
+function initSwipeNavigation() {
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartTime = 0;
+  let isSwiping = false;
+
+  const minSwipeDistance = 50; // px minimum horizontal distance
+  const maxSwipeTime = 800; // ms maximum gesture duration
+
+  function shouldIgnoreSwipe(target) {
+    if (!target || !(target instanceof Element)) return false;
+
+    // Check if open modal is active
+    const activeModal = document.querySelector('.game-modal.show, .game-modal-overlay.show');
+    if (activeModal && activeModal.contains(target)) return true;
+
+    // Ignore interactive UI elements with their own dragging/swiping/drawing/typing
+    const interactiveSelector = [
+      'input',
+      'textarea',
+      'select',
+      'button',
+      'video',
+      'audio',
+      'canvas',
+      '.video-container',
+      '.video-controls',
+      '.component-chip',
+      '.room-slot',
+      '.decomp-item',
+      '.decomp-category',
+      '.algo-block',
+      '.seq-item',
+      '.match-item',
+      '.match-col',
+      '.match-column',
+      '#game-canvas',
+      '.game-canvas',
+      '.interactive-game',
+      '.game-board',
+      '.qc-panel',
+      '#quick-controls-panel',
+      '.no-swipe',
+      '[data-no-swipe="true"]'
+    ].join(', ');
+
+    return !!target.closest(interactiveSelector);
+  }
+
+  document.addEventListener('touchstart', function(e) {
+    if (e.touches.length !== 1) {
+      isSwiping = false;
+      return;
+    }
+
+    if (shouldIgnoreSwipe(e.target)) {
+      isSwiping = false;
+      return;
+    }
+
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchStartTime = Date.now();
+    isSwiping = true;
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    if (!isSwiping || e.changedTouches.length === 0) return;
+    isSwiping = false;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const touchEndTime = Date.now();
+
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    const deltaTime = touchEndTime - touchStartTime;
+
+    const absX = Math.abs(deltaX);
+    const absY = Math.abs(deltaY);
+
+    // Validate swipe: sufficient distance, timely gesture, predominantly horizontal
+    if (deltaTime <= maxSwipeTime && absX >= minSwipeDistance && absX > absY * 1.3) {
+      if (deltaX < 0) {
+        // Swiped left (finger moved right -> left): navigate to NEXT page
+        navNext();
+      } else {
+        // Swiped right (finger moved left -> right): navigate to PREVIOUS page
+        navPrev();
+      }
+    }
+  }, { passive: true });
+}
+
 // ==================== INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', function() {
   applyConfig();
   setAppZoom(currentZoom);
   setAppFontScale(currentFontScale);
   goToPage('cover');
+  initSwipeNavigation();
 
   window.addEventListener('resize', () => {
     const secC = document.getElementById('eval-section-C');
