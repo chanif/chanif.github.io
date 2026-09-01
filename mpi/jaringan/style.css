@@ -655,6 +655,22 @@ a {
   max-width: 900px;
 }
 
+/* Dynamic display logic: when zoom < 100%, content-box takes 85% of Viewport Width */
+body.zoom-sub-100 .content-box {
+  width: 85% !important;
+  max-width: none !important;
+}
+
+body.zoom-sub-100 .content-box.wide {
+  width: 88% !important;
+  max-width: none !important;
+}
+
+body.zoom-sub-100 .content-box.narrow {
+  width: 70% !important;
+  max-width: none !important;
+}
+
 .content-box p {
   font-size: 20px;
   line-height: 1.75;

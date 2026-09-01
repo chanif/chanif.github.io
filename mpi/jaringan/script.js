@@ -97,6 +97,15 @@ function setAppZoom(zoomLevel) {
   document.body.style.zoom = currentZoom;
   document.documentElement.style.setProperty('--app-zoom', currentZoom);
 
+  // Toggle class for dynamic width expansion when zoom < 100%
+  if (currentZoom < 1.0) {
+    document.body.classList.add('zoom-sub-100');
+    document.documentElement.classList.add('zoom-sub-100');
+  } else {
+    document.body.classList.remove('zoom-sub-100');
+    document.documentElement.classList.remove('zoom-sub-100');
+  }
+
   // Update UI indicators
   const zoomTexts = document.querySelectorAll('.zoom-level-text');
   zoomTexts.forEach(el => {
