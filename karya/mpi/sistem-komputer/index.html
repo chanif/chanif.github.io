@@ -604,59 +604,33 @@
 
       <div class="title-bar">Video Pembelajaran: Siklus Mesin CPU</div>
 
-      <div class="content-box wide scrollable">
-        <div class="content-columns" style="align-items:center;">
-          <!-- Kolom Kiri: Video Player -->
-          <div class="content-col" style="justify-content:center;align-items:center;">
-            <div class="video-layout" style="width:100%;">
-              <div class="video-wrapper" id="video-wrapper" style="width:100%;height:320px;">
-                <video controls preload="metadata" id="main-video" style="width:100%;height:100%;border-radius:14px;object-fit:cover;">
-                  <source id="main-video-source" src="assets/video/jaringan.mp4" type="video/mp4">
-                  Browser kamu tidak mendukung pemutaran video langsung.
-                </video>
-                <div class="video-fallback" id="video-fallback" style="display: none;">
-                  <span class="fallback-icon">🎬</span>
-                  <p><strong>Video Pembelajaran Belum Tersedia</strong></p>
-                  <p style="font-size:13px;color:#94a3b8;margin-top:4px;">Pastikan file video berada di path yang ditentukan pada <code>config.js</code>.</p>
-                </div>
-              </div>
+      <div class="content-box wide">
+        <div class="video-layout">
+          <div class="video-wrapper" id="video-wrapper">
+            <video controls preload="metadata" id="main-video">
+              <source id="main-video-source" src="assets/video/jaringan.mp4" type="video/mp4">
+              Browser kamu tidak mendukung pemutaran video langsung.
+            </video>
+            <div class="video-fallback" id="video-fallback" style="display: none;">
+              <span class="fallback-icon">🎬</span>
+              <p><strong>Video Pembelajaran Belum Tersedia</strong></p>
+              <p style="font-size:14px;color:#94a3b8;margin-top:6px;">Pastikan file video berada di path yang ditentukan pada <code>config.js</code>.</p>
             </div>
           </div>
 
-          <!-- Kolom Kanan: Panduan & Poin Pengamatan -->
-          <div class="content-col">
-            <h3>🔍 Panduan Menonton Video</h3>
-            <p>Saksikan tayangan animasi di sebelah kiri dengan memperhatikan poin-poin berikut:</p>
-
-            <div class="petunjuk-card" style="background:#fff;border-color:rgba(0,172,193,0.35);margin-bottom:14px;">
-              <div class="petunjuk-item">
-                <div class="nav-mini-num">1</div>
-                <div>
-                  <strong>Alur Data dari Peranti Masukan</strong>
-                  <p>Perhatikan bagaimana perintah input dialirkan melalui bus data menuju memori RAM.</p>
-                </div>
-              </div>
-              <div class="petunjuk-item">
-                <div class="nav-mini-num">2</div>
-                <div>
-                  <strong>Kerja Cepat Control Unit &amp; ALU</strong>
-                  <p>Amati instruksi dijemput (Fetch), diterjemahkan (Decode), dan dihitung seketika oleh ALU (Execute).</p>
-                </div>
-              </div>
-              <div class="petunjuk-item">
-                <div class="nav-mini-num">3</div>
-                <div>
-                  <strong>Penyajian Hasil ke Layar Monitor</strong>
-                  <p>Lihat hasil pengolahan dikirimkan ke kartu grafis dan tampil instan di monitor pengguna.</p>
-                </div>
-              </div>
+          <div class="video-summary">
+            <h3>🔍 Panduan Pengamatan Video:</h3>
+            <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:8px;margin-top:14px;border:2px solid rgba(0,172,193,0.25);">
+              <p style="margin-bottom:4px;font-weight:700;color:var(--teal-dark);">⚡ 1. Aliran Instruksi &amp; Data</p>
+              <p style="font-size:15px;color:var(--text-body);margin-bottom:0;line-height:1.4;">Perhatikan bagaimana paket data dan instruksi bergerak dari memori menuju unit pemroses secara teratur.</p>
             </div>
-
-            <div class="video-summary" style="padding:12px 16px;background:#f0fdf4;border:2px solid #86efac;border-radius:12px;">
-              <h4 style="margin:0 0 4px 0;font-size:15px;color:#166534;">💡 Fakta Komputasi Cepat:</h4>
-              <p style="font-size:14px;color:#14532d;margin:0;line-height:1.5;">
-                Seluruh proses di video tersebut terjadi dalam skala <strong>nanodetik</strong> (sepersejuta milidetik), sehingga di mata manusia tampak berjalan instan!
-              </p>
+            <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:8px;border:2px solid rgba(0,172,193,0.25);">
+              <p style="margin-bottom:4px;font-weight:700;color:var(--teal-dark);">⚙️ 2. Pemrosesan &amp; Kendali Otomatis</p>
+              <p style="font-size:15px;color:var(--text-body);margin-bottom:0;line-height:1.4;">Amati unit kendali yang mengarahkan operasi secara presisi tanpa ada data yang tertukar atau hilang.</p>
+            </div>
+            <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;border:2px solid rgba(0,172,193,0.25);">
+              <p style="margin-bottom:4px;font-weight:700;color:var(--teal-dark);">🖥️ 3. Hasil Cepat &amp; Instan</p>
+              <p style="font-size:15px;color:var(--text-body);margin-bottom:0;line-height:1.4;">Proses komputasi berlangsung dalam hitungan nanodetik sehingga langsung tersaji di layar pengguna.</p>
             </div>
           </div>
         </div>
