@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MPI — Jaringan Komputer: Perjalanan Paket Data | Informatika Kelas VIII Fase D</title>
+  <meta name="description"
+    content="Media Pembelajaran Interaktif (MPI) tentang Jaringan Komputer — Perjalanan Paket Data untuk mata pelajaran Informatika Kelas VIII SMP Fase D.">
+  <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="style.css?v=8">
+</head>
+
+<body>
+
+  <!-- ============================== CLASSROOM BACKGROUND ============================== -->
+  <div class="classroom-bg" id="classroom-bg">
+    <svg viewBox="0 0 1536 804" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- SVG fallback wall & furniture if image is missing -->
+      <rect width="1536" height="804" fill="#f0e6dc" />
+      <rect y="0" width="1536" height="560" fill="#ede0d4" />
+      <rect y="520" width="1536" height="8" fill="#d4c4b0" rx="2" />
+      <rect y="528" width="1536" height="276" fill="#c8a882" />
+      <rect x="80" y="60" width="200" height="280" rx="8" fill="#b3e5fc" stroke="#a08060" stroke-width="6" />
+      <rect x="380" y="60" width="200" height="280" rx="8" fill="#b3e5fc" stroke="#a08060" stroke-width="6" />
+      <rect x="700" y="80" width="440" height="260" rx="6" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="5" />
+      <circle cx="1280" cy="140" r="36" fill="#fff" stroke="#795548" stroke-width="4" />
+    </svg>
+  </div>
+
+  <div id="app">
+
+    <!-- ============================== TOP-RIGHT / BOTTOM-RIGHT CONTROLS (ZOOM & MATERI SHORTCUT) ============================== -->
+    <div class="top-controls-right on-cover" id="top-controls-right">
+      <!-- Materi Button (Active only on Pages 6, 7, 8, 9) -->
+      <div class="nav-btn-materi" id="btn-top-materi" onclick="goToPage('materi-list')" title="Kembali ke Menu Materi" style="display: none;">
+        <span class="nav-label">MATERI</span>
+        <button class="nav-circle" id="circle-top-materi" aria-label="Menu Materi">📖</button>
+      </div>
+
+      <!-- Unified Stacked Quick Controls Card (Zoom & Font) -->
+      <div class="quick-controls-card" id="quick-controls-card" title="Pengaturan Tampilan & Ukuran Teks">
+        <!-- Row 1: Zoom Controls -->
+        <div class="qc-row" id="qc-row-zoom" title="Atur Ukuran Tampilan Layar">
+          <span class="qc-label-icon" title="Zoom Layar">🔍</span>
+          <button class="qc-btn qc-zoom-btn" onclick="zoomOut()" id="btn-zoom-out" title="Perkecil Layar (Zoom Out)" aria-label="Zoom Out">−</button>
+          <button class="qc-val-text zoom-level-text" onclick="resetZoom()" id="btn-zoom-reset" title="Klik untuk Reset Zoom ke 100%" aria-label="Reset Zoom">100%</button>
+          <button class="qc-btn qc-zoom-btn" onclick="zoomIn()" id="btn-zoom-in" title="Perbesar Layar (Zoom In)" aria-label="Zoom In">+</button>
+        </div>
+
+        <div class="qc-divider"></div>
+
+        <!-- Row 2: Font Controls -->
+        <div class="qc-row" id="qc-row-font" title="Atur Ukuran Huruf / Teks">
+          <span class="qc-label-icon font-icon" title="Ukuran Teks">Aa</span>
+          <button class="qc-btn qc-font-btn" onclick="fontOut()" id="btn-font-out" title="Perkecil Huruf (A−)" aria-label="Font Smaller">A−</button>
+          <button class="qc-val-text font-level-text" onclick="resetFont()" id="btn-font-reset" title="Klik untuk Reset Huruf ke 100%" aria-label="Reset Font">100%</button>
+          <button class="qc-btn qc-font-btn" onclick="fontIn()" id="btn-font-in" title="Perbesar Huruf (A+)" aria-label="Font Larger">A+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== PAGE 1: COVER ============================== -->
+    <section id="page-cover" class="page active">
+      <div class="logo-top left">
+        <img src="assets/kemendikdasmen lengkap.png" alt="Logo Kemendikdasmen" id="logo-kemendikdasmen-cover">
+      </div>
+      <div class="logo-top right">
+        <img src="assets/sobat + bermutu + ramah.png" alt="Logo Sobat SMP" id="logo-sobat-cover">
+      </div>
+
+      <div class="cover-center">
+        <h1 class="cover-title">
+          <span class="cover-title-main">Jaringan Komputer</span>
+          <span class="cover-title-sub">Perjalanan Paket Data</span>
+        </h1>
+        <div>
+          <span class="cover-subtitle">Informatika — Kelas VIII / Fase D</span>
+        </div>
+        <button class="btn-mulai" onclick="goToPage('menu')" id="btn-cover-mulai">
+          <span class="play-icon">▶</span>
+          <span class="mulai-text">MULAI</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 2: MENU UTAMA ============================== -->
+    <section id="page-menu" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('cover')" id="btn-menu-beranda">🏠</button>
+        <span class="nav-label">BERANDA</span>
+      </div>
+
+      <div class="title-bar" id="title-menu">Menu</div>
+      <div style="height:12px"></div>
+
+      <div class="menu-grid" id="menu-grid">
+        <div class="menu-card" onclick="goToPage('petunjuk')" id="card-petunjuk">
+          <span class="card-icon">💡</span>
+          <span class="card-label">Petunjuk</span>
+        </div>
+        <div class="menu-card" onclick="goToPage('tujuan')" id="card-tujuan">
+          <span class="card-icon">🎯</span>
+          <span class="card-label">Tujuan Pembelajaran</span>
+        </div>
+        <div class="menu-card" onclick="goToPage('materi-list')" id="card-materi">
+          <span class="card-icon">📖</span>
+          <span class="card-label">Materi</span>
+        </div>
+        <div class="menu-card" onclick="goToPage('permainan-intro')" id="card-permainan">
+          <span class="card-icon">🎲</span>
+          <span class="card-label">Permainan</span>
+        </div>
+        <div class="menu-card" onclick="goToPage('latihan-intro')" id="card-latihan">
+          <span class="card-icon">📝</span>
+          <span class="card-label">Latihan</span>
+        </div>
+        <div class="menu-card" onclick="goToPage('rangkuman')" id="card-rangkuman">
+          <span class="card-icon">📋</span>
+          <span class="card-label">Rangkuman</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 3: PETUNJUK ============================== -->
+    <section id="page-petunjuk" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-petunjuk-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Petunjuk Penggunaan</div>
+      <div class="content-box wide" id="content-petunjuk" style="padding: 24px 36px 35px;">
+        <p style="font-size: 20px; font-weight: 700; color: var(--teal-dark); text-align: center; margin-bottom: 16px;">
+          💡 Panduan Singkat Menggunakan Media Pembelajaran Interaktif (MPI)
+        </p>
+
+        <div class="petunjuk-grid">
+          <!-- Kolom 1: Navigasi Tombol -->
+          <div class="petunjuk-card">
+            <h3 class="petunjuk-card-title">🧭 Tombol Navigasi</h3>
+            <div class="petunjuk-item">
+              <div class="nav-mini-btn">🏠</div>
+              <div>
+                <strong>BERANDA</strong>
+                <p>Kembali ke halaman sampul utama (cover) kapan saja.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-btn">☰</div>
+              <div>
+                <strong>MENU</strong>
+                <p>Membuka menu utama untuk memilih topik materi atau aktivitas.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-btn">◀</div>
+              <div>
+                <strong>SEBELUMNYA (Panah Kiri)</strong>
+                <p>Berpindah ke materi atau halaman sebelumnya.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-btn">▶</div>
+              <div>
+                <strong>SELANJUTNYA (Panah Kanan)</strong>
+                <p>Melanjutkan ke materi atau tantangan berikutnya.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom 2: Alur Pembelajaran -->
+          <div class="petunjuk-card">
+            <h3 class="petunjuk-card-title">🎯 Alur Pembelajaran</h3>
+            <div class="petunjuk-item">
+              <div class="nav-mini-num">1</div>
+              <div>
+                <strong>Pelajari Materi &amp; Video</strong>
+                <p>Pahami konsep paket data &amp; router, simak video animasi, dan coba aktivitas menjodohkan istilah.
+                </p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-num">2</div>
+              <div>
+                <strong>Mainkan Permainan</strong>
+                <p>Simulasikan rute pengiriman paket data dan tentukan jalur alternatif pada Packet Commander Game.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-num">3</div>
+              <div>
+                <strong>Kerjakan Latihan</strong>
+                <p>Uji pemahamanmu lewat soal evaluasi interaktif dan dapatkan rekapitulasi skormu.</p>
+              </div>
+            </div>
+            <div class="petunjuk-item">
+              <div class="nav-mini-num">4</div>
+              <div>
+                <strong>Rangkuman &amp; Refleksi</strong>
+                <p>Baca ringkasan inti materi, tuliskan refleksi belajarmu, dan selesaikan seluruh pembelajaran.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-petunjuk-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Menu Utama</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Tujuan Pembelajaran</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-petunjuk-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 4: TUJUAN PEMBELAJARAN ============================== -->
+    <section id="page-tujuan" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-tujuan-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Tujuan Pembelajaran</div>
+      <div class="content-box wide" id="content-tujuan" style="padding: 28px 44px 40px;">
+        <p style="margin-bottom:18px;font-size:22px;font-weight:700;color:var(--teal-dark);text-align:center;">
+          🎯 Setelah mengikuti pembelajaran interaktif ini, kamu diharapkan mampu:
+        </p>
+        <div class="tujuan-list">
+          <div class="tujuan-item">
+            <span class="tujuan-num">1</span>
+            <span class="tujuan-text">Menjelaskan <strong>konsep dasar jaringan komputer</strong> dan fungsinya dalam
+              kehidupan sehari-hari.</span>
+          </div>
+          <div class="tujuan-item">
+            <span class="tujuan-num">2</span>
+            <span class="tujuan-text">Mendeskripsikan <strong>proses pemecahan data</strong> menjadi paket-paket kecil
+              (<em>packetization</em>) untuk dikirimkan melalui jaringan.</span>
+          </div>
+          <div class="tujuan-item">
+            <span class="tujuan-num">3</span>
+            <span class="tujuan-text">Menganalisis <strong>peran router</strong> sebagai pengarah lalu lintas data
+              (<em>routing</em>) dalam jaringan.</span>
+          </div>
+          <div class="tujuan-item">
+            <span class="tujuan-num">4</span>
+            <span class="tujuan-text">Mensimulasikan <strong>pengambilan keputusan rute alternatif</strong> ketika
+              terjadi gangguan atau server down pada jaringan.</span>
+          </div>
+          <div class="tujuan-item">
+            <span class="tujuan-num">5</span>
+            <span class="tujuan-text">Menyimpulkan <strong>keunggulan sistem pengiriman berbasis paket</strong>
+              (<em>packet switching</em>) dibandingkan pengiriman file utuh.</span>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-tujuan-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Petunjuk Penggunaan</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Daftar Pilihan Materi</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-tujuan-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 5: MATERI (DAFTAR) ============================== -->
+    <section id="page-materi-list" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-materilist-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Materi</div>
+
+      <div class="materi-cards" id="materi-cards">
+        <!-- Kartu 1: Teori 1 -->
+        <div class="materi-card" onclick="goToPage('materi-1')" id="card-materi1">
+          <div class="card-thumb">
+            <span class="card-badge" style="background:#00838F;">📖 Teori 1</span>
+            <img src="assets/router.jpg" alt="Konsep Paket Data & Router">
+          </div>
+          <div class="card-body">
+            <div class="card-title">Konsep Paket Data &amp; Router</div>
+            <div class="card-desc">Pelajari anatomi paket data (header &amp; payload) serta peran router pengarah rute
+              terbaik.</div>
+          </div>
+        </div>
+
+        <!-- Kartu 2: Video -->
+        <div class="materi-card" onclick="goToPage('video')" id="card-video">
+          <div class="card-thumb">
+            <span class="card-badge" style="background:#e65100;">🎬 Video</span>
+            <img src="assets/orange_cat.jpg" alt="Simulasi Perjalanan Paket Data">
+          </div>
+          <div class="card-body">
+            <div class="card-title">Simulasi Perjalanan Paket</div>
+            <div class="card-desc">Saksikan animasi interaktif bagaimana paket data dipecah, dirutekan, dan dirakit
+              kembali.</div>
+          </div>
+        </div>
+
+        <!-- Kartu 3: Aktivitas (Tarik Jawaban) -->
+        <div class="materi-card" onclick="goToPage('tarik-jawaban')" id="card-materi2">
+          <div class="card-thumb">
+            <span class="card-badge" style="background:#0288D1;">🎯 Aktivitas</span>
+            <img src="assets/puzzle.jpg" alt="Tarik Jawaban — Cocokkan Istilah">
+          </div>
+          <div class="card-body">
+            <div class="card-title">Tarik Jawaban: Cocokkan Istilah</div>
+            <div class="card-desc">Uji pemahaman istilah penting jaringan komputer lewat permainan seret dan cocokkan.
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartu 4: Teori 2 -->
+        <div class="materi-card" onclick="goToPage('materi-3')" id="card-materi3">
+          <div class="card-thumb">
+            <span class="card-badge" style="background:#7b1fa2;">🚀 Teori 2</span>
+            <img src="assets/branch.jpg" alt="Keunggulan Packet Switching">
+          </div>
+          <div class="card-body">
+            <div class="card-title">Keunggulan Packet Switching</div>
+            <div class="card-desc">Pahami alasan teknologi paket data lebih efisien, paralel, dan tahan terhadap
+              gangguan.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-materilist-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Tujuan Pembelajaran</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Materi 1: Konsep Jaringan &amp; Router</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-materilist-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 6: MATERI 1 (TABBED MODEL) ============================== -->
+    <section id="page-materi-1" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi1-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Materi 1: Konsep Jaringan, Paket Data &amp; Router</div>
+
+      <div class="content-box wide scrollable">
+        <!-- Tab Navigation Bar -->
+        <div class="materi-tabs-nav" id="materi1-tabs-nav">
+          <button class="materi-tab-btn active" onclick="switchMateri1Tab(1)" id="mtab1-btn-1">
+            <span class="mtab-icon">📦</span>
+            <span class="mtab-title">1. Paket Data &amp; Anatomi</span>
+          </button>
+          <button class="materi-tab-btn" onclick="switchMateri1Tab(2)" id="mtab1-btn-2">
+            <span class="mtab-icon">🚦</span>
+            <span class="mtab-title">2. Router &amp; Cara Kerja</span>
+          </button>
+          <button class="materi-tab-btn" onclick="switchMateri1Tab(3)" id="mtab1-btn-3">
+            <span class="mtab-icon">🔀</span>
+            <span class="mtab-title">3. Rute Dinamis &amp; Reassembly</span>
+          </button>
+        </div>
+
+        <!-- ==================== PANEL TAB 1: PAKET DATA & ANATOMI ==================== -->
+        <div class="materi-tab-panel active" id="mtab1-panel-1">
+          <div class="content-columns">
+            <!-- Kolom Kiri: Konsep Dasar & Alasan Pemecahan -->
+            <div class="content-col">
+              <h3>🌐 1. Apa Itu Jaringan Komputer?</h3>
+              <p>
+                <strong>Jaringan Komputer</strong> adalah sistem yang menghubungkan miliaran perangkat digital (HP,
+                laptop, server, smart TV) di seluruh dunia agar dapat saling <strong>berbagi koneksi internet, data,
+                  pesan chat, video, dan berkas</strong> secara instan.
+              </p>
+
+              <h3>✂️ 2. Mengapa Data Harus Dipecah?</h3>
+              <p>
+                Saat kamu mengirim foto 5 MB di chat, file tersebut <strong>TIDAK PERNAH dikirim utuh segumpal</strong>
+                di kabel internet, melainkan dipotong menjadi ribuan serpihan kecil bernama <strong>PAKET DATA</strong>
+                (<em>Packetization</em>).
+              </p>
+
+              <div class="materi-analogi-box">
+                <p>
+                  💡 <strong>Analogi Lemari Rakit (Knockdown):</strong> Jauh lebih mudah dan aman mengangkut 4 kotak kardus
+                  potongan lemari di mobil daripada mengangkut 1 lemari kayu raksasa yang sudah jadi!
+                </p>
+              </div>
+            </div>
+
+            <!-- Kolom Kanan: 3 Komponen Anatomi Paket Data -->
+            <div class="content-col">
+              <h3>💌 3. Anatomi Paket Data (Analogi Amplop Surat)</h3>
+              <p>Setiap paket data yang meluncur di jaringan memiliki 3 komponen utama:</p>
+
+              <div class="materi-subcard-list">
+                <!-- 1. Header -->
+                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                  <div class="materi-subcard-title" style="color: var(--teal-dark);">🏷️ 1. HEADER (Kepala Paket):</div>
+                  <p class="materi-subcard-desc">
+                    Berisi <strong>Alamat IP Pengirim &amp; Penerima</strong>, serta <strong>Nomor Urut Paket</strong>
+                    (mis. <em>"Paket #2 dari 4"</em>) agar komputer penerima dapat merakitnya kembali tanpa tertukar.
+                  </p>
+                </div>
+
+                <!-- 2. Payload -->
+                <div class="materi-subcard" style="border-color: rgba(2,136,209,0.45);">
+                  <div class="materi-subcard-title" style="color: #0288D1;">📄 2. PAYLOAD (Muatan / Isi Data):</div>
+                  <p class="materi-subcard-desc">
+                    Berisi potongan data asli yang dikirimkan (misalnya ribuan byte piksel foto kucing atau potongan
+                    teks pesan).
+                  </p>
+                </div>
+
+                <!-- 3. Trailer -->
+                <div class="materi-subcard" style="border-color: rgba(123,31,162,0.45);">
+                  <div class="materi-subcard-title" style="color: #7b1fa2;">🔖 3. TRAILER / CHECKSUM (Ekor Paket):</div>
+                  <p class="materi-subcard-desc">
+                    Berisi kode verifikasi error (<em>Error Checking</em>) untuk memastikan data tidak rusak atau korup
+                    selama melintasi kabel sinyal.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== PANEL TAB 2: ROUTER & CARA KERJA ==================== -->
+        <div class="materi-tab-panel" id="mtab1-panel-2">
+          <div class="content-columns">
+            <!-- Kolom Kiri: Mengenal Router -->
+            <div class="content-col">
+              <h3>🚦 1. Apa Itu Router?</h3>
+              <p>
+                <strong>Router</strong> adalah perangkat keras jaringan cerdas yang berfungsi sebagai <strong>"Polisi
+                  Lalu Lintas Digital"</strong>. Di internet terdapat jutaan persimpangan kabel dan nirkabel, dan router
+                bertugas mengarahkan setiap paket data ke jalur tercepat yang tidak macet.
+              </p>
+
+              <h3>🏠 2. Peran Router di Rumah &amp; Sekolah</h3>
+              <p>
+                Router di rumahmu menghubungkan seluruh perangkat di dalam rumah (HP, laptop, Smart TV) ke satu saluran
+                internet global dari ISP (penyedia internet) secara bersamaan tanpa saling bertabrakan (Network Address
+                Translation / NAT).
+              </p>
+
+              <div class="materi-highlight-box">
+                <p>
+                  ✨ <strong>Cerdas &amp; Cepat:</strong> Router mampu membaca, memverifikasi alamat, dan meneruskan
+                  ribuan paket data dalam hitungan mikrodetik!
+                </p>
+              </div>
+            </div>
+
+            <!-- Kolom Kanan: 3 Tahap Kerja Router -->
+            <div class="content-col">
+              <h3>🧭 3. Tiga Tahap Router Memproses Paket</h3>
+              <p>Setiap kali paket data tiba di router, terjadi 3 tahapan otomatis:</p>
+
+              <div class="materi-subcard-list">
+                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                  <div class="materi-subcard-title" style="color: var(--teal-dark);">🔍 1. Inspeksi Alamat Header:</div>
+                  <p class="materi-subcard-desc">
+                    Router membuka dan membaca <strong>Alamat IP Tujuan</strong> yang tertera pada Header paket data.
+                  </p>
+                </div>
+
+                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                  <div class="materi-subcard-title" style="color: var(--teal-dark);">🗺️ 2. Cek Routing Table (Peta
+                    Digital):</div>
+                  <p class="materi-subcard-desc">
+                    Router mencocokkan alamat dengan tabel rute digital untuk menghitung jalur terpendek dan tercepat
+                    yang tidak macet (mirip algoritma navigasi peta digital / GPS).
+                  </p>
+                </div>
+
+                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                  <div class="materi-subcard-title" style="color: var(--teal-dark);">🚀 3. Meneruskan Paket
+                    (Forwarding):</div>
+                  <p class="materi-subcard-desc">
+                    Paket dioper ke router tetangga berikutnya (<em>Next Hop</em>) hingga akhirnya tiba di komputer
+                    tujuan.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== PANEL TAB 3: RUTE DINAMIS & REASSEMBLY ==================== -->
+        <div class="materi-tab-panel" id="mtab1-panel-3">
+          <div class="content-columns">
+            <!-- Kolom Kiri: Rute Dinamis & Toleransi Gangguan -->
+            <div class="content-col">
+              <h3>🔀 1. Kehebatan Rute Dinamis (Dynamic Routing)</h3>
+              <p>
+                Topologi internet dirancang berbentuk jaring laba-laba (Mesh Topology), artinya selalu ada lebih dari
+                satu jalan untuk menuju tujuan yang sama.
+              </p>
+
+              <div class="materi-subcard" style="border-color: rgba(198,40,40,0.35); margin-bottom: 10px;">
+                <div class="materi-subcard-title" style="color: #c62828;">🛡️ Tahan Gangguan (Fault Tolerance):</div>
+                <p class="materi-subcard-desc">
+                  Jika salah satu jalur putus atau router mengalami gangguan (Server Down / RTO), router otomatis
+                  membelokkan paket ke <strong>jalur alternatif yang lancar</strong> tanpa membuat internet mati total!
+                </p>
+              </div>
+
+              <div class="materi-subcard" style="border-color: rgba(2,136,209,0.35);">
+                <div class="materi-subcard-title" style="color: #0288D1;">⚡ Transmisi Paralel (Multi-Path):</div>
+                <p class="materi-subcard-desc">
+                  4 paket dari foto yang sama bisa melesat bersamaan lewat 4 jalur berbeda (kabel darat, serat optik
+                  bawah laut, hingga sinyal satelit).
+                </p>
+              </div>
+            </div>
+
+            <!-- Kolom Kanan: Proses Perakitan Kembali (Packet Reassembly) -->
+            <div class="content-col">
+              <h3>🧩 2. Perakitan Kembali di Penerima (Reassembly)</h3>
+              <p>
+                Karena paket data menempuh rute yang berbeda-beda, paket bisa saja <strong>tiba tidak berurutan</strong>
+                (Out of Order) — misalnya Paket #3 tiba lebih awal daripada Paket #1.
+              </p>
+
+              <div class="materi-subcard-list">
+                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                  <div class="materi-subcard-title" style="color: var(--teal-dark);">📥 1. Menampung di Buffer:</div>
+                  <p class="materi-subcard-desc">
+                    Komputer penerima menampung setiap paket yang baru tiba ke dalam memori antrean (Buffer Memory).
+                  </p>
+                </div>
+
+                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                  <div class="materi-subcard-title" style="color: var(--teal-dark);">🔢 2. Membaca Header Nomor Urut:
+                  </div>
+                  <p class="materi-subcard-desc">
+                    Komputer membaca nomor urut (#1, #2, #3, #4) pada masing-masing Header paket.
+                  </p>
+                </div>
+
+                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                  <div class="materi-subcard-title" style="color: var(--teal-dark);">🖼️ 3. Merakit Foto Utuh 100%:
+                  </div>
+                  <p class="materi-subcard-desc">
+                    Semua potongan piksel disatukan kembali secara presisi menjadi foto kucing yang utuh dan siap
+                    ditampilkan di layar!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-materi1-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" id="materi1-prev-label" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main" id="materi1-prev-text">Daftar Materi</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" id="materi1-next-label" onclick="navNext()">
+          <span class="nml-sub">TAB BERIKUTNYA</span>
+          <strong class="nml-main" id="materi1-next-text">2. Router &amp; Cara Kerja</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-materi1-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 7: VIDEO ============================== -->
+    <section id="page-video" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-video-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Video: Perjalanan Paket Data</div>
+      <div class="content-box wide">
+        <div class="video-layout">
+          <div class="video-wrapper" id="video-wrapper">
+            <video controls preload="metadata" id="main-video">
+              <source id="main-video-source" src="assets/video/jaringan.mp4" type="video/mp4">
+              Browser kamu tidak mendukung pemutaran video langsung.
+            </video>
+            <div class="video-fallback" id="video-fallback" style="display: none;">
+              <span class="fallback-icon">🎬</span>
+              <p><strong>Video Pembelajaran Belum Tersedia</strong></p>
+              <p style="font-size:14px;color:#94a3b8;margin-top:6px;">Pastikan file video berada di path yang ditentukan
+                pada <code>config.js</code>.</p>
+            </div>
+          </div>
+          <div class="video-summary">
+            <h3>🎬 Poin Penting Video:</h3>
+            <div
+              style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:7px; margin-top:15px;border:2px solid rgba(0,172,193,0.25);">
+              <p style="margin-bottom:4px;"><strong>📦 1. Pemecahan Data</strong></p>
+              <p style="font-size:15px;color:var(--text-body);margin-bottom:0;">File dibagi menjadi paket data kecil
+                (Header + Payload) agar efisien saat melintasi jaringan.</p>
+            </div>
+            <div
+              style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:7px;border:2px solid rgba(0,172,193,0.25);">
+              <p style="margin-bottom:4px;"><strong>🚦 2. Peran Router</strong></p>
+              <p style="font-size:15px;color:var(--text-body);margin-bottom:0;">Mengarahkan tiap paket data ke rute
+                tercepat dan paling lancar menuju alamat tujuan.</p>
+            </div>
+            <div
+              style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;border:2px solid rgba(0,172,193,0.25);">
+              <p style="margin-bottom:4px;"><strong>🔀 3. Rute Dinamis</strong></p>
+              <p style="font-size:15px;color:var(--text-body);margin-bottom:0;">Kemampuan jaringan otomatis mengalihkan
+                paket saat jalur utama terganggu atau server down.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-video-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Materi 1: Konsep Jaringan &amp; Router</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Aktivitas: Merakit Paket Data</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-video-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 8: TARIK JAWABAN ============================== -->
+    <section id="page-tarik-jawaban" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-tarik-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Aktivitas: Menjodohkan Istilah Jaringan</div>
+      <div class="content-box wide scrollable" id="content-tarik-jawaban">
+        <p class="instruction"
+          style="font-size:18px;font-weight:700;color:var(--teal-dark);text-align:center;margin-bottom:10px;">
+          🎯 Klik istilah di sebelah kiri, lalu klik definisi yang tepat di sebelah kanan untuk menghubungkan garis!
+        </p>
+
+        <div class="match-container" id="match-container-p8">
+          <svg class="match-svg-layer" id="match-svg-layer-p8"></svg>
+          <div class="match-left" id="match-left-p8"></div>
+          <div class="match-right" id="match-right-p8"></div>
+        </div>
+
+        <div class="dd-score-box" id="match-p8-score-box" style="display:none;margin-top:10px;">
+          <span class="dd-score-badge" id="match-p8-score-badge">🏆 Skor: 100</span>
+          <span class="dd-score-text" id="match-p8-score-text">5 dari 5 Pasangan Benar! 🎉</span>
+        </div>
+
+        <div class="dd-actions" style="margin-top:12px;display:flex;gap:12px;justify-content:center;">
+          <button class="btn btn-secondary" onclick="resetMatchP8()" id="btn-match-p8-reset">🔄 Reset Pasangan</button>
+          <button class="btn btn-primary" onclick="checkMatchP8()" id="btn-match-p8-check">✅ Periksa Jawaban</button>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-tarik-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Video Pembelajaran</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Materi 2: Keunggulan Packet Switching</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-tarik-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 9: MATERI 3 (TEORI 2) ============================== -->
+    <section id="page-materi-3" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi3-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Materi 2: Keunggulan Packet Switching</div>
+      <div class="content-box wide scrollable">
+        <div class="content-img-text">
+          <div class="content-img-box">
+            <img src="assets/packet-switching.jpg" alt="Ilustrasi Packet Switching Jaringan Komputer">
+          </div>
+          <div>
+            <h3 style="font-family:var(--font-heading);font-size:25px;color:var(--teal-dark);margin-bottom:12px;">4
+              Tahapan Pengiriman Data &amp; 3 Keunggulan Utamanya</h3>
+            <p style="margin-bottom:12px;font-size:18px;">Teknologi pengiriman data di seluruh dunia menggunakan metode
+              <strong>Packet Switching</strong> dengan 4 tahapan berurutan:
+            </p>
+
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
+              <div
+                style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">
+                1. Dipecah Menjadi Paket</div>
+              <div
+                style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">
+                2. Diberi Header &amp; No. Urut</div>
+              <div
+                style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">
+                3. Dirutekan via Router</div>
+              <div
+                style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">
+                4. Dirakit Ulang di Tujuan</div>
+            </div>
+
+            <div
+              style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:10px;border:2px solid rgba(0,172,193,0.3);box-shadow:0 4px 12px var(--shadow-light);">
+              <p style="margin-bottom:2px;font-size:18px;"><strong>⚡ 1. Efisiensi Tinggi (Bisa Berbagi Jalur /
+                  Multi-User)</strong></p>
+              <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">Jalur internet tidak dimonopoli satu
+                orang. Ribuan siswa bisa mengirim foto bersamaan karena paket-paket kecil bisa menyelip bergantian di
+                jalur yang sama.</p>
+            </div>
+
+            <div
+              style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:10px;border:2px solid rgba(0,172,193,0.3);box-shadow:0 4px 12px var(--shadow-light);">
+              <p style="margin-bottom:2px;font-size:18px;"><strong>🛡️ 2. Andal &amp; Tahan Gangguan (Fault
+                  Tolerance)</strong></p>
+              <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">Jika ada kabel putus di tengah jalan,
+                hanya paket yang hilang yang perlu dikirim ulang, <em>bukan seluruh file 5 MB dari awal!</em></p>
+            </div>
+
+            <div
+              style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;border:2px solid rgba(0,172,193,0.3);box-shadow:0 4px 12px var(--shadow-light);">
+              <p style="margin-bottom:2px;font-size:18px;"><strong>🚀 3. Kecepatan Paralel Super Cepat</strong></p>
+              <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">Paket data dapat dikirim secara
+                bersamaan melalui berbagai rute berbeda, lalu langsung disusun kembali di komputer penerima dalam
+                milidetik.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-materi3-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Aktivitas Merakit Paket</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Pengantar Packet Commander Game</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-materi3-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 10: PERMAINAN (INTRO) ============================== -->
+    <section id="page-permainan-intro" class="page intro-page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-permainan-intro-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="intro-card-box">
+        <div class="intro-side-icon left">🎮</div>
+        <div class="intro-side-icon right">🏆</div>
+
+        <h2 class="sticker-text intro-title">Permainan — Packet Commander</h2>
+        <p class="intro-desc">
+          Uji keahlianmu sebagai pengatur rute jaringan komputer handal!<br>
+          Taklukkan 3 Misi Tantangan: <strong>Rute Alternatif</strong> saat Server Down, <strong>Bagi Beban
+            Jalur</strong> (Load Balancing), hingga <strong>Perakitan Kembali Foto</strong> (Packet Reassembly)!
+        </p>
+
+        <button class="btn-mulai" onclick="goToPage('permainan')" id="btn-permainan-mulai">
+          <span class="play-icon">▶</span>
+          <span class="mulai-text">MULAI MAIN</span>
+        </button>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-permainan-intro-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Materi 2: Packet Switching</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Mulai Packet Commander Game</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-permainan-intro-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 11: PERMAINAN (KONTEN) ============================== -->
+    <section id="page-permainan" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-permainan-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Permainan — Packet Commander</div>
+      <div class="content-box wide game-main-box" id="game-main-box">
+        <!-- Game Header: Level Selector Tabs + HUD Stats -->
+        <div class="game-header">
+          <div class="game-level-tabs">
+            <button class="game-tab active" onclick="switchGameLevel(1)" id="game-tab-1">
+              <span class="tab-badge">Misi 1</span>
+              <span class="tab-title">Rute Alternatif</span>
+              <span class="tab-stars" id="stars-lvl-1">⭐ 0/1</span>
+            </button>
+            <button class="game-tab locked" onclick="switchGameLevel(2)" id="game-tab-2">
+              <span class="tab-badge">Misi 2</span>
+              <span class="tab-title">Bagi Beban (Load Balance)</span>
+              <span class="tab-stars" id="stars-lvl-2">🔒</span>
+            </button>
+            <button class="game-tab locked" onclick="switchGameLevel(3)" id="game-tab-3">
+              <span class="tab-badge">Misi 3</span>
+              <span class="tab-title">Mesh Dinamis &amp; Reassembly</span>
+              <span class="tab-stars" id="stars-lvl-3">🔒</span>
+            </button>
+          </div>
+
+          <div class="game-hud">
+            <div class="hud-item">
+              <span class="hud-label">TOTAL BINTANG</span>
+              <span class="hud-val star-val" id="game-total-stars">⭐ 0/3</span>
+            </div>
+            <div class="hud-item">
+              <span class="hud-label">STATUS JALUR</span>
+              <span class="hud-val status-badge ready" id="game-net-status">🟢 Siap</span>
+            </div>
+            <div class="hud-item">
+              <span class="hud-label">LATENCY</span>
+              <span class="hud-val latency-badge" id="game-latency">⏱️ 0 ms</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instruction Bar -->
+        <div class="game-mission-info" id="game-mission-info">
+          <span class="mission-icon" id="game-mission-icon">🎯</span>
+          <span class="mission-text" id="game-mission-desc">Tentukan rute transmisi paket data foto kucing!</span>
+        </div>
+
+        <!-- Main Game Stage: 3-column Layout (Sender Panel | Topology SVG | Receiver Panel) -->
+        <div class="game-stage-wrapper">
+          <!-- 1. Sender Panel (Left) -->
+          <div class="game-side-panel sender-panel" id="game-sender-panel">
+            <div class="side-panel-header">
+              <span class="side-icon">💻</span>
+              <span class="side-title">Pengirim</span>
+            </div>
+            <div class="side-preview-box">
+              <div class="cat-preview-frame">
+                <img src="assets/cat.jpg" alt="Foto Kucing Asli" class="cat-preview-img">
+                <div class="photo-overlay-grid">
+                  <span>#1</span><span>#2</span>
+                  <span>#3</span><span>#4</span>
+                </div>
+              </div>
+              <div class="photo-info-badge">📦 4 Paket Data</div>
+            </div>
+          </div>
+
+          <!-- 2. Interactive SVG Network Canvas (Center) -->
+          <div class="game-canvas" id="game-canvas">
+            <svg id="game-svg-layer" viewBox="0 0 880 340" preserveAspectRatio="xMidYMid meet"></svg>
+            <div id="game-packets-layer"></div>
+          </div>
+
+          <!-- 3. Receiver Reassembly Panel (Right) -->
+          <div class="game-side-panel receiver-panel" id="game-receiver-panel">
+            <div class="side-panel-header">
+              <span class="side-icon">💻</span>
+              <span class="side-title">Penerima</span>
+            </div>
+            <div class="side-preview-box">
+              <div class="rx-puzzle-grid" id="rx-puzzle-grid">
+                <div class="rx-slot" id="rx-slot-1" data-slot="1" onclick="clickReceiverSlot(1)"><span
+                    class="slot-badge">#1</span></div>
+                <div class="rx-slot" id="rx-slot-2" data-slot="2" onclick="clickReceiverSlot(2)"><span
+                    class="slot-badge">#2</span></div>
+                <div class="rx-slot" id="rx-slot-3" data-slot="3" onclick="clickReceiverSlot(3)"><span
+                    class="slot-badge">#3</span></div>
+                <div class="rx-slot" id="rx-slot-4" data-slot="4" onclick="clickReceiverSlot(4)"><span
+                    class="slot-badge">#4</span></div>
+              </div>
+              <div class="rx-status" id="rx-status-label">Menunggu 4 paket...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Misi 2 Control Deck: Load Balancer (Visible only in Level 2) -->
+        <div class="game-deck" id="game-deck-loadbalance" style="display:none;">
+          <div class="deck-title">🎛️ Atur Rute Setiap Paket (Kapasitas Maksimal tiap Jalur = <strong>2 Paket</strong>):
+          </div>
+          <div class="packet-routes-grid">
+            <div class="packet-route-card" id="prc-1">
+              <span class="pkt-badge">📦 Paket 1</span>
+              <div class="pkt-selector">
+                <button class="btn-pkt-path active" onclick="setPacketPath(1, 'A')" id="btn-p1-a">Jalur A
+                  (Atas)</button>
+                <button class="btn-pkt-path" onclick="setPacketPath(1, 'B')" id="btn-p1-b">Jalur B (Bawah)</button>
+              </div>
+            </div>
+            <div class="packet-route-card" id="prc-2">
+              <span class="pkt-badge">📦 Paket 2</span>
+              <div class="pkt-selector">
+                <button class="btn-pkt-path active" onclick="setPacketPath(2, 'A')" id="btn-p2-a">Jalur A
+                  (Atas)</button>
+                <button class="btn-pkt-path" onclick="setPacketPath(2, 'B')" id="btn-p2-b">Jalur B (Bawah)</button>
+              </div>
+            </div>
+            <div class="packet-route-card" id="prc-3">
+              <span class="pkt-badge">📦 Paket 3</span>
+              <div class="pkt-selector">
+                <button class="btn-pkt-path active" onclick="setPacketPath(3, 'A')" id="btn-p3-a">Jalur A
+                  (Atas)</button>
+                <button class="btn-pkt-path" onclick="setPacketPath(3, 'B')" id="btn-p3-b">Jalur B (Bawah)</button>
+              </div>
+            </div>
+            <div class="packet-route-card" id="prc-4">
+              <span class="pkt-badge">📦 Paket 4</span>
+              <div class="pkt-selector">
+                <button class="btn-pkt-path active" onclick="setPacketPath(4, 'A')" id="btn-p4-a">Jalur A
+                  (Atas)</button>
+                <button class="btn-pkt-path" onclick="setPacketPath(4, 'B')" id="btn-p4-b">Jalur B (Bawah)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Misi 3 Interactive Deck: Dynamic Mesh Route Allocation & Buffer Reassembly -->
+        <div class="game-deck" id="game-deck-mesh" style="display:none;">
+          <!-- Step 1: Mesh Route Config per Packet -->
+          <div id="mesh-config-deck">
+            <div class="deck-title">
+              🔀 <strong>Tabel Routing Mesh Dinamis:</strong> Tentukan rute tiap paket data foto. Hindari antrean pada
+              Jalur Express (kapasitas 1 paket)!
+            </div>
+            <div class="mesh-pkt-routes-grid">
+              <!-- Paket 1 -->
+              <div class="mesh-pkt-card" id="mpc-1">
+                <div class="mesh-pkt-header">
+                  <span class="pkt-badge" style="background:#00ACC1;color:#fff;padding:1px 6px;border-radius:6px;">📦
+                    Paket #1</span>
+                  <span class="pkt-target-hint">Kuadran Kiri-Atas</span>
+                </div>
+                <select class="mesh-route-select" id="select-m-p1" onchange="updateMeshPacketRoute(1, this.value)">
+                  <option value="1" selected>⚡ R1➔R3 Express (35ms | Max 1)</option>
+                  <option value="2">🚦 R1➔R4 Transit (75ms | Max 2)</option>
+                  <option value="3">🔀 R2➔R4 Cross (90ms | Max 2)</option>
+                  <option value="4">📡 R2➔R5 Satelit (160ms | Max 2)</option>
+                </select>
+              </div>
+
+              <!-- Paket 2 -->
+              <div class="mesh-pkt-card" id="mpc-2">
+                <div class="mesh-pkt-header">
+                  <span class="pkt-badge" style="background:#0288D1;color:#fff;padding:1px 6px;border-radius:6px;">📦
+                    Paket #2</span>
+                  <span class="pkt-target-hint">Kuadran Kanan-Atas</span>
+                </div>
+                <select class="mesh-route-select" id="select-m-p2" onchange="updateMeshPacketRoute(2, this.value)">
+                  <option value="1" selected>⚡ R1➔R3 Express (35ms | Max 1)</option>
+                  <option value="2">🚦 R1➔R4 Transit (75ms | Max 2)</option>
+                  <option value="3">🔀 R2➔R4 Cross (90ms | Max 2)</option>
+                  <option value="4">📡 R2➔R5 Satelit (160ms | Max 2)</option>
+                </select>
+              </div>
+
+              <!-- Paket 3 -->
+              <div class="mesh-pkt-card" id="mpc-3">
+                <div class="mesh-pkt-header">
+                  <span class="pkt-badge" style="background:#7b1fa2;color:#fff;padding:1px 6px;border-radius:6px;">📦
+                    Paket #3</span>
+                  <span class="pkt-target-hint">Kuadran Kiri-Bawah</span>
+                </div>
+                <select class="mesh-route-select" id="select-m-p3" onchange="updateMeshPacketRoute(3, this.value)">
+                  <option value="1" selected>⚡ R1➔R3 Express (35ms | Max 1)</option>
+                  <option value="2">🚦 R1➔R4 Transit (75ms | Max 2)</option>
+                  <option value="3">🔀 R2➔R4 Cross (90ms | Max 2)</option>
+                  <option value="4">📡 R2➔R5 Satelit (160ms | Max 2)</option>
+                </select>
+              </div>
+
+              <!-- Paket 4 -->
+              <div class="mesh-pkt-card" id="mpc-4">
+                <div class="mesh-pkt-header">
+                  <span class="pkt-badge" style="background:#e65100;color:#fff;padding:1px 6px;border-radius:6px;">📦
+                    Paket #4</span>
+                  <span class="pkt-target-hint">Kuadran Kanan-Bawah</span>
+                </div>
+                <select class="mesh-route-select" id="select-m-p4" onchange="updateMeshPacketRoute(4, this.value)">
+                  <option value="1" selected>⚡ R1➔R3 Express (35ms | Max 1)</option>
+                  <option value="2">🚦 R1➔R4 Transit (75ms | Max 2)</option>
+                  <option value="3">🔀 R2➔R4 Cross (90ms | Max 2)</option>
+                  <option value="4">📡 R2➔R5 Satelit (160ms | Max 2)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Interactive Buffer Inbox (Active after transmission) -->
+          <div id="mesh-inbox-deck" style="display:none;">
+            <div
+              style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+              <div class="deck-title" style="color:#0288D1; margin-bottom:0;">
+                🧩 <strong>Tantangan Header Reassembly:</strong> Klik kartu paket di bawah (atau klik Kuadran monitor)
+                untuk langsung merakit foto kucing:
+              </div>
+              <button class="btn-game"
+                style="background:#e0f2fe; color:#0288D1; border:1.5px solid #0288D1; padding:6px 16px; font-size:13.5px;"
+                onclick="autoAssembleAllBufferPackets()">⚡ Rakit Semua Otomatis</button>
+            </div>
+            <div class="mesh-inbox-grid" id="mesh-inbox-grid">
+              <!-- Dynamic packet cards rendered here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Toolbar -->
+        <div class="game-toolbar">
+          <button class="btn-game btn-reset" onclick="resetCurrentGameLevel()" id="btn-game-reset">🔄 Reset
+            Jalur</button>
+          <button class="btn-game btn-transmit" onclick="launchGameTransmission()" id="btn-game-transmit">🚀 Kirim Paket
+            Data</button>
+          <button class="btn-game btn-hint" onclick="showGameHint()" id="btn-game-hint">💡 Bantuan</button>
+        </div>
+
+        <!-- Feedback & Victory Modal -->
+        <div class="game-modal" id="game-modal">
+          <div class="game-modal-card" id="game-modal-card"></div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-permainan-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Pengantar Game</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Pengantar Latihan Evaluasi</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-permainan-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 12: LATIHAN (INTRO) ============================== -->
+    <section id="page-latihan-intro" class="page intro-page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-latihan-intro-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="intro-card-box">
+        <div class="intro-side-icon left">💡</div>
+        <div class="intro-side-icon right">🎯</div>
+
+        <h2 class="sticker-text intro-title">Latihan Evaluasi</h2>
+        <p class="intro-desc">
+          Uji pemahamanmu secara menyeluruh melalui <br>5 jenis tantangan interaktif:<br>
+          Pilihan Ganda, Benar/Salah, Menjodohkan, Mengurutkan Proses, dan Simulasi Praktik!
+        </p>
+
+        <button class="btn-mulai" onclick="goToPage('latihan');startEval()" id="btn-latihan-mulai">
+          <span class="play-icon">▶</span>
+          <span class="mulai-text">MULAI LATIHAN</span>
+        </button>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-latihan-intro-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Packet Commander Game</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Mulai Latihan Evaluasi</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-latihan-intro-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 13: LATIHAN (KONTEN) ============================== -->
+    <section id="page-latihan" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-latihan-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Latihan</div>
+      <div class="content-box wide scrollable" id="eval-box">
+        <!-- Progress Indicator -->
+        <div class="eval-progress" id="eval-progress">
+          <div class="step active" data-step="A">A</div>
+          <div class="step" data-step="B">B</div>
+          <div class="step" data-step="C">C</div>
+          <div class="step" data-step="D">D</div>
+        </div>
+
+        <div class="eval-container" id="eval-container">
+          <!-- ===== BAGIAN A: PILIHAN GANDA ===== -->
+          <div class="eval-section active" id="eval-section-A">
+            <div class="eval-section-title">📝 Bagian A — Pilihan Ganda (5 Soal)</div>
+
+            <div class="mcq-question" data-q="A1">
+              <div class="q-text">1. Apa fungsi utama jaringan komputer?</div>
+              <div class="mcq-options">
+                <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span>
+                  Menyimpan data secara permanen</div>
+                <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span>
+                  Menghubungkan perangkat agar bisa saling bertukar data</div>
+                <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span>
+                  Mempercepat proses booting komputer</div>
+                <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span>
+                  Mengganti fungsi hard disk</div>
+              </div>
+            </div>
+
+            <div class="mcq-question" data-q="A2">
+              <div class="q-text">2. Saat kamu mengirim foto lewat aplikasi chat, foto tersebut sebenarnya...</div>
+              <div class="mcq-options">
+                <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span>
+                  Dikirim utuh dalam satu waktu</div>
+                <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span>
+                  Disimpan dulu di server sebelum dibuka penerima</div>
+                <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span>
+                  Dipecah menjadi paket-paket kecil lalu disusun kembali di penerima</div>
+                <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span>
+                  Diubah menjadi teks lalu dikembalikan jadi gambar</div>
+              </div>
+            </div>
+
+            <div class="mcq-question" data-q="A3">
+              <div class="q-text">3. Bagian paket data yang berisi alamat pengirim, alamat tujuan, dan nomor urut
+                disebut...</div>
+              <div class="mcq-options">
+                <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span>
+                  Payload</div>
+                <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span>
+                  Header</div>
+                <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span>
+                  Router</div>
+                <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span>
+                  Bandwidth</div>
+              </div>
+            </div>
+
+            <div class="mcq-question" data-q="A4">
+              <div class="q-text">4. Peran router dalam jaringan komputer paling tepat digambarkan sebagai...</div>
+              <div class="mcq-options">
+                <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span>
+                  Tempat penyimpanan data sementara</div>
+                <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span>
+                  Perangkat yang mengarahkan paket data ke rute terbaik</div>
+                <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span>
+                  Aplikasi pengirim pesan</div>
+                <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span> Alat
+                  pengukur kecepatan internet</div>
+              </div>
+            </div>
+
+            <div class="mcq-question" data-q="A5">
+              <div class="q-text">5. Berikut ini yang BUKAN keunggulan sistem <em>packet switching</em> dibanding
+                pengiriman file utuh adalah...</div>
+              <div class="mcq-options">
+                <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span>
+                  Lebih efisien karena jalur bisa dipakai bergantian oleh banyak pengguna</div>
+                <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span>
+                  Lebih tahan gangguan karena hanya paket yang terdampak yang perlu dialihkan</div>
+                <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span> Data
+                  pasti terkirim lebih cepat walau tanpa router</div>
+                <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span>
+                  Paket bisa dikirim lewat jalur berbeda secara paralel</div>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:20px;">
+              <button class="btn btn-primary" onclick="nextEvalSection('B')">Lanjut ke Bagian B ▶</button>
+            </div>
+          </div>
+
+          <!-- ===== BAGIAN B: BENAR/SALAH ===== -->
+          <div class="eval-section" id="eval-section-B">
+            <div class="eval-section-title">✅❌ Bagian B — Benar / Salah (5 Soal)</div>
+
+            <div class="tf-question" data-q="B1">
+              <div class="q-text">1. Data yang dikirim melalui jaringan selalu dikirim dalam bentuk utuh tanpa dipecah.
+              </div>
+              <div class="tf-buttons">
+                <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+                <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+              </div>
+            </div>
+
+            <div class="tf-question" data-q="B2">
+              <div class="q-text">2. Setiap paket data memiliki nomor urut agar bisa disusun kembali di penerima.</div>
+              <div class="tf-buttons">
+                <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+                <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+              </div>
+            </div>
+
+            <div class="tf-question" data-q="B3">
+              <div class="q-text">3. Router bertugas mengarahkan paket data ke rute tercepat yang tersedia.</div>
+              <div class="tf-buttons">
+                <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+                <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+              </div>
+            </div>
+
+            <div class="tf-question" data-q="B4">
+              <div class="q-text">4. Jika satu rute mengalami gangguan, seluruh proses pengiriman data akan berhenti
+                total.</div>
+              <div class="tf-buttons">
+                <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+                <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+              </div>
+            </div>
+
+            <div class="tf-question" data-q="B5">
+              <div class="q-text">5. Packet switching membuat jaringan lebih tahan terhadap gangguan dibanding mengirim
+                file utuh.</div>
+              <div class="tf-buttons">
+                <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
+                <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:20px;display:flex;gap:12px;justify-content:center;">
+              <button class="btn btn-secondary" onclick="nextEvalSection('A')">◀ Bagian A</button>
+              <button class="btn btn-primary" onclick="nextEvalSection('C')">Lanjut ke Bagian C ▶</button>
+            </div>
+          </div>
+
+          <!-- ===== BAGIAN C: MENJODOHKAN ===== -->
+          <div class="eval-section" id="eval-section-C">
+            <div class="eval-section-title">🔗 Bagian C — Menjodohkan (5 Pasangan)</div>
+            <p class="instruction">Klik istilah di sebelah kiri, lalu klik definisi yang tepat di sebelah kanan untuk
+              menghubungkan. Kamu bisa mengklik kartu/tombol ✕ untuk <strong>membatalkan atau mengoreksi</strong>
+              pasangan.</p>
+
+            <div class="match-container" id="match-container">
+              <svg class="match-svg-layer" id="match-svg-layer"></svg>
+              <div class="match-left" id="match-left"></div>
+              <div class="match-right" id="match-right"></div>
+            </div>
+
+            <div style="text-align:center;margin-top:22px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+              <button class="btn btn-secondary" onclick="nextEvalSection('B')">◀ Bagian B</button>
+              <button class="btn btn-warning" onclick="resetMatchPairs()" style="font-size:16px;">🔄 Reset
+                Pasangan</button>
+              <button class="btn btn-primary" onclick="nextEvalSection('D')">Lanjut ke Bagian D ▶</button>
+            </div>
+          </div>
+
+          <!-- ===== BAGIAN D: DRAG & DROP MENGURUTKAN ===== -->
+          <div class="eval-section" id="eval-section-D">
+            <div class="eval-section-title">📊 Bagian D — Mengurutkan Proses (5 Tahap)</div>
+            <p class="instruction">Seret kotak-kotak tahapan berikut ke urutan proses transmisi data yang benar dari
+              awal hingga akhir.</p>
+
+            <div class="seq-list" id="seq-list"></div>
+
+            <div style="text-align:center;margin-top:24px;display:flex;gap:12px;justify-content:center;">
+              <button class="btn btn-secondary" onclick="nextEvalSection('C')">◀ Bagian C</button>
+              <button class="btn btn-success" onclick="submitEval()" id="btn-submit-eval">📊 Lihat Hasil
+                Evaluasi</button>
+            </div>
+          </div>
+
+          <!-- ===== REKAP SKOR ===== -->
+          <div class="eval-section" id="eval-section-recap">
+            <div class="recap-card" id="recap-card"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-latihan-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Pengantar Latihan</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Rangkuman &amp; Refleksi</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-latihan-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 14: RANGKUMAN ============================== -->
+    <section id="page-rangkuman" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-rangkuman-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Rangkuman</div>
+      <div class="content-box wide scrollable">
+        <div class="rangkuman-points">
+          <div class="rangkuman-point">
+            <span class="rp-icon">📦</span>
+            <span class="rp-text">Data dipecah menjadi <strong>paket-paket kecil</strong> agar pengiriman lebih efisien
+              dan andal.</span>
+          </div>
+          <div class="rangkuman-point">
+            <span class="rp-icon">🚦</span>
+            <span class="rp-text"><strong>Router</strong> berperan sebagai pengarah lalu lintas yang menentukan jalur
+              terbaik untuk tiap paket.</span>
+          </div>
+          <div class="rangkuman-point">
+            <span class="rp-icon">🔀</span>
+            <span class="rp-text">Jaringan bersifat <strong>dinamis</strong> — selalu mencari rute alternatif jika ada
+              rute utama yang terganggu.</span>
+          </div>
+        </div>
+
+        <div class="refleksi-box">
+          <div class="refleksi-q">💭 Refleksi: Tuliskan di buku catatanmu — Mengapa memecah data menjadi paket-paket
+            kecil lebih menguntungkan daripada mengirimkan satu file utuh sekaligus?</div>
+          <textarea id="refleksi-input" placeholder="Tulis catatan refleksimu di sini..."></textarea>
+        </div>
+
+        <div class="badge-completion">🏆 Kamu sudah menjadi Packet Explorer!</div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-rangkuman-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Latihan Evaluasi</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Referensi &amp; Daftar Pustaka</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-rangkuman-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 15: REFERENSI ============================== -->
+    <section id="page-referensi" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-referensi-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Referensi</div>
+      <div class="content-box scrollable">
+        <ol>
+          <li style="margin-bottom:12px;"><strong>Kurikulum Merdeka</strong> — Capaian Pembelajaran Informatika Fase D,
+            Kementerian Pendidikan Dasar dan Menengah Republik Indonesia.</li>
+          <li style="margin-bottom:12px;"><strong>Buku Siswa Informatika Kelas VIII</strong> — Bab Jaringan Komputer dan
+            Internet, Pusat Perbukuan Kemendikdasmen.</li>
+          <li style="margin-bottom:12px;"><strong>Tanenbaum, A. S., &amp; Wetherall, D. J. (2011)</strong>. <em>Computer
+              Networks</em> (5th Edition). Pearson Education.</li>
+          <li style="margin-bottom:12px;"><strong>Kurose, J. F., &amp; Ross, K. W. (2021)</strong>. <em>Computer
+              Networking: A Top-Down Approach</em> (8th Edition). Pearson.</li>
+          <li><strong>Storyboard MPI Informatika</strong> — "Jaringan Komputer: Perjalanan Paket Data", Tim Pengembang
+            SMP Negeri 2 Lamongan, 2025.</li>
+        </ol>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-referensi-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Rangkuman &amp; Refleksi</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Profil Pengembang</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-referensi-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 16: PENGEMBANG ============================== -->
+    <section id="page-pengembang" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-pengembang-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Pengembang</div>
+      <div class="content-box scrollable">
+        <!-- Developer 1 -->
+        <div class="dev-card">
+          <div class="dev-layout">
+            <div class="dev-photo" id="dev-photo-1">
+              <img src="assets/fanani.jpg" alt="Foto Ach. Chanifuddin Fanani, S.Pd." onerror="this.outerHTML='👨‍💻'">
+            </div>
+            <div class="dev-fields">
+              <div class="dev-field">
+                <span class="field-label">Nama :</span>
+                <span class="field-value">Ach. Chanifuddin Fanani, S.Pd.</span>
+              </div>
+              <div class="dev-field">
+                <span class="field-label">Instansi :</span>
+                <span class="field-value">SMP Negeri 2 Lamongan</span>
+              </div>
+              <div class="dev-field">
+                <span class="field-label">Email :</span>
+                <span class="field-value">chanifuddin@gmail.com</span>
+              </div>
+              <div class="dev-field">
+                <span class="field-label">Tautan :</span>
+                <span class="field-value" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+                  <a href="https://instagram.com/qaneev" target="_blank"
+                    style="display:inline-flex;align-items:center;gap:8px;color:var(--text-dark);text-decoration:none;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      style="vertical-align:middle;border-radius:6px;flex-shrink:0;">
+                      <defs>
+                        <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+                          <stop offset="0%" stop-color="#fdf497" />
+                          <stop offset="5%" stop-color="#fdf497" />
+                          <stop offset="45%" stop-color="#fd5949" />
+                          <stop offset="60%" stop-color="#d6249f" />
+                          <stop offset="90%" stop-color="#285AEB" />
+                        </radialGradient>
+                      </defs>
+                      <rect width="24" height="24" rx="6" fill="url(#ig-grad)" />
+                      <rect x="5.5" y="5.5" width="13" height="13" rx="3.5" stroke="white" stroke-width="1.6"
+                        fill="none" />
+                      <circle cx="12" cy="12" r="3.2" stroke="white" stroke-width="1.6" fill="none" />
+                      <circle cx="15.8" cy="8.2" r="0.9" fill="white" />
+                    </svg>
+                    <span>@qaneev</span>
+                  </a>
+                  <span style="color:rgba(0,0,0,0.25);">|</span>
+                  <a href="https://fanani.my.id" target="_blank"
+                    style="display:inline-flex;align-items:center;gap:6px;color:var(--text-dark);text-decoration:none;">
+                    <span>🌐</span>
+                    <span>fanani.my.id</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Developer 2 -->
+        <div class="dev-card">
+          <div class="dev-layout">
+            <div class="dev-photo" id="dev-photo-2">
+              <img src="assets/ilyas.jpeg" alt="Foto Akhmad Ilyas Yudansyah" onerror="this.outerHTML='👨‍🔧'">
+            </div>
+            <div class="dev-fields">
+              <div class="dev-field">
+                <span class="field-label">Nama :</span>
+                <span class="field-value">Akhmad Ilyas Yudansyah</span>
+              </div>
+              <div class="dev-field">
+                <span class="field-label">Instansi :</span>
+                <span class="field-value">SMP Negeri 2 Lamongan</span>
+              </div>
+              <div class="dev-field">
+                <span class="field-label">Email :</span>
+                <span class="field-value">akhmadilyasyudansyah@gmail.com</span>
+              </div>
+              <div class="dev-field">
+                <span class="field-label">Tautan :</span>
+                <span class="field-value" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+                  <a href="https://www.instagram.com/ilyassyd_/" target="_blank"
+                    style="display:inline-flex;align-items:center;gap:8px;color:var(--text-dark);text-decoration:none;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      style="vertical-align:middle;border-radius:6px;flex-shrink:0;">
+                      <defs>
+                        <radialGradient id="ig-grad-2" cx="30%" cy="107%" r="150%">
+                          <stop offset="0%" stop-color="#fdf497" />
+                          <stop offset="5%" stop-color="#fdf497" />
+                          <stop offset="45%" stop-color="#fd5949" />
+                          <stop offset="60%" stop-color="#d6249f" />
+                          <stop offset="90%" stop-color="#285AEB" />
+                        </radialGradient>
+                      </defs>
+                      <rect width="24" height="24" rx="6" fill="url(#ig-grad-2)" />
+                      <rect x="5.5" y="5.5" width="13" height="13" rx="3.5" stroke="white" stroke-width="1.6"
+                        fill="none" />
+                      <circle cx="12" cy="12" r="3.2" stroke="white" stroke-width="1.6" fill="none" />
+                      <circle cx="15.8" cy="8.2" r="0.9" fill="white" />
+                    </svg>
+                    <span>@ilyassyd_</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-pengembang-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Referensi &amp; Daftar Pustaka</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Penanggung Jawab &amp; Tim</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-pengembang-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 17: PJ & PENYUNTING ============================== -->
+    <section id="page-pj-penyunting" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-pj-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="content-box wide scrollable" style="padding-top:24px;">
+        <div class="pj-layout">
+          <div class="pj-column">
+            <div class="title-bar" style="font-size:20px;padding:8px 32px;">Penanggung Jawab</div>
+            <div style="height:20px"></div>
+            <div class="pj-list">
+              <div class="pj-item">
+                <div class="pj-name">1. Dr. Maulani Mega Hapsari, S.IP, M.A.</div>
+                <div class="pj-role">Direktur SMP — Kemendikdasmen</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">2. Roelly Herdyanto, S.E., M.Si.</div>
+                <div class="pj-role">Kasubag Tata Usaha Direktorat SMP</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">3. Cepy Lukman Rusdiana, S.Kom., M.Si</div>
+                <div class="pj-role">Kasubdit Fasilitasi Sarana &amp; Prasarana Tatakelola Direktorat SMP</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">4. Hendro Sucipto, S.Kom</div>
+                <div class="pj-role">Pejabat Pembuat Komitmen Direktorat SMP</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pj-column">
+            <div class="title-bar" style="font-size:20px;padding:8px 32px;">Penyunting</div>
+            <div style="height:20px"></div>
+            <div class="pj-list">
+              <div class="pj-item">
+                <div class="pj-name">1. Dra. Nikensari, M.Ed</div>
+                <div class="pj-role">Direktorat SMP</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">2. Dr. Noris Rahmatullah, S.T., M.T</div>
+                <div class="pj-role">Direktorat SMP</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">3. Johan Winarni, S.P., M.Pd</div>
+                <div class="pj-role">Direktorat SMP</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">4. Rindhy Anthika Nadya, S.Kom</div>
+                <div class="pj-role">Direktorat SMP</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">5. Kunto Imbar Nursetyo, M.Pd.</div>
+                <div class="pj-role">Universitas Negeri Jakarta</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">6. Syifa Aulia Usman</div>
+                <div class="pj-role">Universitas Negeri Jakarta</div>
+              </div>
+              <div class="pj-item">
+                <div class="pj-name">7. Fadia Meyra Mukti</div>
+                <div class="pj-role">Universitas Negeri Jakarta</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-pj-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Profil Pengembang</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Motto</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-pj-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 18: KUTIPAN/MOTTO ============================== -->
+    <section id="page-kutipan" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-kutipan-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="content-box wide kutipan-container"
+        style="min-height:640px;height:640px;justify-content:center;align-items:center;text-align:center;position:relative;">
+        <div class="kutipan-card-hero">
+          <div class="kutipan-quote-mark left">“</div>
+          <div class="kutipan-quote-mark right">”</div>
+
+          <h2 class="kutipan-text">BERKARYA UNTUK NEGERI MELALUI DIGITALISASI PEMBELAJARAN INOVATIF BERDAMPAK</h2>
+
+          <div class="kutipan-divider">
+            <span class="kd-line"></span>
+            <span class="kd-star">✦ 🌟 ✦</span>
+            <span class="kd-line"></span>
+          </div>
+
+          <p class="kutipan-subtag">— Bersama Memajukan Pendidikan Indonesia yang Bermutu dan Berkarakter —</p>
+        </div>
+
+        <div class="kutipan-pillars-row">
+          <div class="kutipan-pillar-card">
+            <div class="pillar-icon-box p-cyan">💡</div>
+            <div class="pillar-content">
+              <h4>Inovatif &amp; Kreatif</h4>
+              <p>Mendorong pembelajaran interaktif berbasis teknologi jaringan cerdas</p>
+            </div>
+          </div>
+
+          <div class="kutipan-pillar-card">
+            <div class="pillar-icon-box p-gold">🎯</div>
+            <div class="pillar-content">
+              <h4>Bermutu &amp; Relevan</h4>
+              <p>Menyajikan materi esensial sesuai kurikulum masa depan</p>
+            </div>
+          </div>
+
+          <div class="kutipan-pillar-card">
+            <div class="pillar-icon-box p-green">🌟</div>
+            <div class="pillar-content">
+              <h4>Karakter Berdaya</h4>
+              <p>Membentuk generasi pembelajar mandiri dan bernalar kritis</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-kutipan-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Penanggung Jawab &amp; Tim</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Kredit Media &amp; Hak Cipta</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-kutipan-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 19: KREDIT/PENUTUP ============================== -->
+    <section id="page-kredit" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('cover')" id="btn-kredit-beranda">🏠</button>
+        <span class="nav-label">BERANDA</span>
+      </div>
+
+      <div class="content-box wide"
+        style="min-height:640px;height:640px;justify-content:center;align-items:center;text-align:center;padding:40px 60px;">
+        <div class="logo-row" id="kredit-logos">
+          <img src="assets/Logo Tutwuri Kemendikdasmen.png" alt="Logo Tut Wuri Handayani">
+          <img src="assets/Logo-Sobat-SMP-2025.png" alt="Logo Sobat SMP 2025">
+          <img src="assets/Logo Pendidikan Bermutu.png" alt="Logo Pendidikan Bermutu">
+          <img src="assets/Logo Ramah.png" alt="Logo Ramah">
+        </div>
+
+        <div class="kredit-divider"></div>
+
+        <div class="kredit-text">
+          <p class="kredit-title">KEMENTERIAN PENDIDIKAN DASAR DAN MENENGAH</p>
+          <p class="kredit-ditjen">DIREKTORAT JENDERAL PENDIDIKAN ANAK USIA DINI, PENDIDIKAN DASAR, DAN PENDIDIKAN
+            NONFORMAL DAN INFORMAL</p>
+          <p class="kredit-smp">DIREKTORAT SEKOLAH MENENGAH PERTAMA</p>
+        </div>
+
+        <div style="margin-top:28px;">
+          <button class="btn btn-primary" onclick="goToPage('cover')" id="btn-kredit-selesai"
+            style="font-size:22px;padding:14px 44px;border-radius:var(--radius-pill);box-shadow:0 8px 24px rgba(0,172,193,0.45);">
+            🏠 Selesai &amp; Kembali ke Beranda
+          </button>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-kredit-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Motto</strong>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /app -->
+
+  <!-- Scripts -->
+  <script src="config.js?v=8"></script>
+  <script src="script.js?v=8"></script>
+</body>
+
+</html>
