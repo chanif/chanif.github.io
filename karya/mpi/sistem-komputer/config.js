@@ -13,7 +13,7 @@ window.MPI_CONFIG = {
     // ------------------------------------------------------------
     // 1 = Tampilkan nomor halaman di bawah tengah (untuk mempermudah koreksi/revisi)
     // 0 = Mode produksi/normal (nomor halaman disembunyikan)
-    is_testing: 0,
+    is_testing: 1,
 
     // ------------------------------------------------------------
     // 1. LATAR BELAKANG (BACKGROUND)
@@ -65,7 +65,7 @@ window.MPI_CONFIG = {
     assets: {
         // Foto Pengembang di Halaman Pengembang
         dev_photo_1: 'assets/fanani.jpg',
-        dev_photo_2: 'assets/ilyas.jpeg',
+        dev_photo_2: '',
 
         // Video materi lokal (offline ready)
         video_src: 'assets/video/jaringan.mp4',

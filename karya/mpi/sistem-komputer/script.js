@@ -225,9 +225,8 @@ const PAGE_INDEX_MAP = {
   'rangkuman': 14,
   'referensi': 15,
   'pengembang': 16,
-  'pj-penyunting': 17,
-  'kutipan': 18,
-  'kredit': 19
+  'kutipan': 17,
+  'kredit': 18
 };
 
 function updateTestingIndicator(pageId) {
@@ -247,7 +246,7 @@ function updateTestingIndicator(pageId) {
   }
 
   const pageNum = PAGE_INDEX_MAP[pageId] || '?';
-  indicator.innerHTML = `<span>Halaman ${pageNum} / 19</span>`;
+  indicator.innerHTML = `<span>Halaman ${pageNum} / 18</span>`;
   indicator.style.display = 'block';
 }
 
@@ -255,7 +254,7 @@ const LINEAR_PAGES = [
   'cover', 'menu', 'petunjuk', 'tujuan', 'materi-list',
   'materi-1', 'video', 'tarik-jawaban', 'materi-3',
   'permainan-intro', 'permainan', 'latihan-intro', 'latihan',
-  'rangkuman', 'referensi', 'pengembang', 'pj-penyunting',
+  'rangkuman', 'referensi', 'pengembang',
   'kutipan', 'kredit'
 ];
 
@@ -391,17 +390,11 @@ const JARINGAN_PAGE_NAV_MAP = {
   'pengembang': {
     prevText: 'Referensi & Daftar Pustaka',
     prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Penanggung Jawab & Tim',
-    nextSub: 'HALAMAN BERIKUTNYA'
-  },
-  'pj-penyunting': {
-    prevText: 'Profil Pengembang',
-    prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Motto',
+    nextText: 'Motto / Kutipan Inspirasi',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'kutipan': {
-    prevText: 'Penanggung Jawab & Tim',
+    prevText: 'Profil Pengembang',
     prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Kredit Media & Hak Cipta',
     nextSub: 'HALAMAN BERIKUTNYA'
@@ -474,25 +467,25 @@ let currentMateri1Tab = 1;
 const MATERI1_TABS = [
   {
     tab: 1,
-    prevText: 'Daftar Materi',
+    prevText: 'Daftar Pilihan Materi',
     prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: '2. Router & Cara Kerja',
+    nextText: '2. CPU & Memori (RAM vs SSD)',
     nextSub: 'TAB BERIKUTNYA',
     isFinish: false
   },
   {
     tab: 2,
-    prevText: '1. Paket Data & Anatomi',
+    prevText: '1. Model Von Neumann',
     prevSub: 'TAB SEBELUMNYA',
-    nextText: '3. Rute Dinamis & Reassembly',
+    nextText: '3. Perangkat Lunak (OS & Aplikasi)',
     nextSub: 'TAB BERIKUTNYA',
     isFinish: false
   },
   {
     tab: 3,
-    prevText: '2. Router & Cara Kerja',
+    prevText: '2. CPU & Memori (RAM vs SSD)',
     prevSub: 'TAB SEBELUMNYA',
-    nextText: 'Video: Perjalanan Paket Data 🎬',
+    nextText: 'Video: Siklus Mesin CPU 🎬',
     nextSub: 'SELESAI MATERI',
     isFinish: true
   }
