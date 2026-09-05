@@ -1,8 +1,8 @@
-# 🔬 Lab Sistem Komputer — Eksplorasi Digital Interaktif
+# 🔬 Lab Perakitan Komputer — Simulasi Virtual Interaktif
 
 ## Lab Maya untuk Festival Biru Putih 2026
 
-**Tagline:** *"Masuk ke dalam komputer, bereksperimen, dan temukan cara kerjanya!"*
+**Tagline:** *"Rakit, uji, dan pahami cara kerja komputer dari dalam!"*
 
 **Mata Pelajaran:** Informatika  
 **Fase/Kelas:** Fase D (Kelas VII–IX SMP)  
@@ -27,14 +27,14 @@ Karakteristik Lab Maya:
 
 ### B. Kriteria Pedagogik Wajib
 
-| # | Kriteria | Status |
-|---|----------|--------|
-| a | Merepresentasikan objek, alat, atau proses laboratorium secara visual | ✅ Toggle biner, slider RGB, grid pixel, komponen PC |
-| b | Simulasi interaktif dua arah — pengguna memilih alat, mengatur variabel, menjalankan eksperimen mandiri | ✅ Semua modul interaktif dua arah |
-| c | Alur kerja/prosedur yang logis dan sistematis | ✅ 5 modul berurutan dari sederhana ke kompleks |
-| d | Pertanyaan pemantik studi kasus yang relevan | ✅ Di awal setiap modul |
-| e | Umpan balik interaktif: perubahan warna, hasil pengukuran, dll ditampilkan langsung | ✅ Real-time visual feedback di setiap modul |
-| f | Mendukung kompetensi psikomotorik dan prosedural | ✅ Toggle, slider, klik, drag — semua hands-on |
+| # | Kriteria | Implementasi |
+|---|----------|-------------|
+| a | Merepresentasikan objek, alat, atau proses laboratorium secara visual | ✅ Komponen PC (CPU, RAM, SSD, GPU, PSU, motherboard) divisualisasikan 2D |
+| b | Simulasi interaktif dua arah — pengguna memilih alat, mengatur variabel, menjalankan eksperimen mandiri | ✅ Drag komponen, klik tombol POWER, atur konfigurasi |
+| c | Alur kerja/prosedur yang logis dan sistematis | ✅ Teori → Prosedur → Simulasi → LKPD |
+| d | Pertanyaan pemantik studi kasus yang relevan | ✅ Di halaman teori dan di awal setiap simulasi |
+| e | Umpan balik interaktif: perubahan visual/audio/teks ditampilkan langsung | ✅ Animasi boot, error message, LED indikator |
+| f | Mendukung kompetensi psikomotorik dan prosedural | ✅ Drag & drop komponen = simulasi perakitan hands-on |
 
 ### C. Struktur Wajib
 
@@ -42,19 +42,19 @@ Karakteristik Lab Maya:
 |---|----------|------------|
 | 1 | **Laman Muka** | Judul, tujuan pembelajaran, petunjuk penggunaan Lab Maya |
 | 2 | **Panduan** | Instruksi/panduan langkah demi langkah untuk menjalankan eksperimen |
-| 3 | **Aktivitas Interaktif** | Area utama simulasi/eksperimen (minimal 1 aktivitas interaktif dinamis) — kita buat **5 modul** |
-| 4 | **Indikator Progres** | "Modul 1 dari 5" / progress bar |
+| 3 | **Aktivitas Interaktif** | Area utama simulasi/eksperimen (minimal 1 aktivitas interaktif dinamis) — kita buat **3 simulasi** |
+| 4 | **Indikator Progres** | Progress bar atau indikator langkah |
 | 5 | **Navigasi Ulang** | Setiap tahapan dapat diakses kembali tanpa mengulang dari awal |
 
 ### D. Simulasi & Interaksi Wajib
 
 | # | Aspek | Standar |
 |---|-------|---------|
-| 1 | **Minimal Interaksi** | ≥ 3 interaksi (kita punya 5 modul, masing-masing dengan banyak interaksi) |
-| 2 | **Pengaturan Variabel** | Siswa memilih alat, mengatur variabel, menjalankan simulasi mandiri |
-| 3 | **Alur Logis** | Sesuai prinsip keilmuan (bilangan biner, warna digital, resolusi, komponen PC) |
+| 1 | **Minimal Interaksi** | ≥ 3 interaksi (3 simulasi: Rakit PC, Binary Switch, RGB Mixer) |
+| 2 | **Pengaturan Variabel** | Siswa memilih komponen, mengatur konfigurasi, menjalankan simulasi mandiri |
+| 3 | **Alur Logis** | Sesuai prinsip keilmuan (komponen PC, bilangan biner, warna digital) |
 | 4 | **Respons Real-time** | Visual/audio/teks langsung saat variabel diubah |
-| 5 | **Eksplorasi Lanjutan** | Membandingkan skenario berbeda / membuat simulasi spesifik |
+| 5 | **Eksplorasi Lanjutan** | Membandingkan skenario berbeda (PC gaming vs kantor, resolusi tinggi vs rendah) |
 | 6 | **Pertanyaan Penerapan** | Studi kasus, soal penerapan, pertanyaan reflektif |
 
 ### E. Fungsionalitas & Stabilitas Wajib
@@ -111,132 +111,293 @@ Karakteristik Lab Maya:
 
 ### Konsep Utama
 
-Siswa "masuk ke dalam komputer" dan bereksperimen langsung dengan komponen-komponen fundamental: **bagaimana komputer menyimpan angka, warna, gambar, dan bagaimana komponen-komponen bekerja sama**. Setiap modul memberikan "aha moment" yang membuat konsep abstrak menjadi nyata.
-
-### 🧠 Fitur Pembeda: "Jurnal Eksperimen" (Asesmen Terintegrasi)
-
-> **Ini yang membuat asesmen terasa ORGANIK, bukan "ditempelkan".**
-
-Setiap modul memiliki **Jurnal Eksperimen** di panel samping yang harus diisi siswa SELAMA eksperimen berlangsung — bukan di akhir:
-
-| Komponen Jurnal | Kapan Muncul | Contoh |
-|----------------|--------------|--------|
-| **Hipotesis** | Sebelum eksperimen | "Menurutmu, berapa angka desimal jika semua lampu dinyalakan?" → siswa isi jawaban |
-| **Pengamatan** | Selama eksperimen | "Catat: ketika kamu menyalakan lampu ke-3, angka berubah dari ___ menjadi ___" |
-| **Tantangan Inline** | Di tengah eksperimen | "Sekarang coba: buat angka 42!" — sistem cek otomatis apakah benar |
-| **Kesimpulan** | Setelah eksperimen | "Dari eksperimenmu, apa hubungan antara jumlah lampu (bit) dan angka terbesar yang bisa dibuat?" |
-
-**Mengapa ini kritis:**
-- **Skor Asesmen (10%)** naik signifikan — asesmen menyatu dengan eksperimen, bukan terpisah
-- Siswa **menulis observasi sendiri** = higher-order thinking (C4–C5)
-- Juri melihat: "Lab ini bukan cuma klik-klik, siswa benar-benar **melakukan metode ilmiah**!"
-- Hipotesis → Eksperimen → Pengamatan → Kesimpulan = **alur lab yang sesungguhnya**
+Lab virtual **perakitan komputer** di mana siswa memahami komponen-komponen PC, fungsinya, dan bagaimana mereka bekerja sama. Fokus utama adalah **simulasi merakit PC**, didukung oleh dua simulasi pendukung yang menunjukkan bagaimana data diproses di dalam komputer (biner dan warna digital).
 
 ### 📚 Pemetaan CP & TP Informatika
 
-| Modul | Elemen CP | Tujuan Pembelajaran (TP) |
-|-------|-----------|-------------------------|
-| 1. Binary | SK (Sistem Komputer) | Peserta didik memahami **sistem bilangan biner** sebagai dasar representasi data dalam komputer |
-| 2. RGB | SK | Peserta didik memahami bagaimana komputer **merepresentasikan warna** menggunakan model RGB |
-| 3. Pixel Art | SK | Peserta didik memahami bagaimana komputer **menyimpan dan menampilkan gambar** digital |
-| 4. Rakit PC | SK | Peserta didik memahami **fungsi dan peran** komponen utama komputer (CPU, RAM, penyimpanan, GPU) |
-| 5. Resolusi | SK | Peserta didik memahami konsep **resolusi, pixel, dan ukuran file** serta pengaruhnya terhadap kualitas gambar |
+| Bagian | Elemen CP | Tujuan Pembelajaran (TP) |
+|--------|-----------|-------------------------|
+| Teori & Simulasi Utama | SK (Sistem Komputer) | Peserta didik memahami **fungsi dan peran** komponen utama komputer (CPU, RAM, penyimpanan, GPU, PSU, motherboard) dan mampu merakit sistem komputer secara virtual |
+| Simulasi Pendukung 1 | SK | Peserta didik memahami **sistem bilangan biner** sebagai dasar representasi data dalam komputer |
+| Simulasi Pendukung 2 | SK | Peserta didik memahami bagaimana komputer **merepresentasikan warna** menggunakan model RGB |
 
-### 5 Modul Eksperimen
+---
 
-#### Modul 1: 🔦 Binary Light Switch — Bahasa Rahasia Komputer
+## 📄 Struktur Halaman
+
+### Alur Navigasi
+
+```
+1. HALAMAN MUKA ──→ 2. TEORI ──→ 3. PROSEDUR ──→ 4. SIMULASI (menu) ──→ 5. LKPD ──→ 6. PENGEMBANG ──→ 7. REFERENSI
+                                                     ├── 4a. Rakit Komputer (UTAMA)
+                                                     ├── 4b. Binary Light Switch (pendukung)
+                                                     └── 4c. RGB Color Mixer (pendukung)
+```
+
+---
+
+### Halaman 1: HALAMAN MUKA (Cover)
+
+| Elemen | Detail |
+|--------|--------|
+| **Judul** | Lab Perakitan Komputer — Simulasi Virtual Interaktif |
+| **Subjudul** | Informatika · Fase D · Kelas VIII SMP |
+| **Tujuan Pembelajaran** | Ringkasan singkat TP yang akan dicapai |
+| **Tombol** | "Mulai Eksplorasi" |
+| **Info** | Nama kreator, nama sekolah, logo Kemendikdasmen |
+| **Navigasi** | Tidak ada prev/next (halaman pertama) |
+
+---
+
+### Halaman 2: TEORI
+
+Materi teori tentang komponen-komponen komputer. Disajikan dengan tab atau scroll section.
+
+#### Konten Teori:
+
+| Sub-bab | Materi | Visual |
+|---------|--------|--------|
+| **2.1 Apa Itu Komputer?** | Definisi komputer, perbedaan hardware vs software, sejarah singkat | Infografis timeline komputer |
+| **2.2 Komponen Utama** | Penjelasan per komponen: | |
+| — CPU (Prosesor) | Otak komputer: ALU (hitung), Control Unit (kendali), Clock Speed | Ilustrasi CPU dengan label bagian |
+| — RAM | Memori kerja sementara (volatil), analogi: meja kerja | Ilustrasi RAM stick |
+| — Penyimpanan (SSD/HDD) | Memori permanen (non-volatil), analogi: lemari arsip | Perbandingan SSD vs HDD |
+| — GPU (Kartu Grafis) | Pemroses gambar & video, kenapa penting untuk game/editing | Ilustrasi GPU |
+| — Motherboard | Papan sirkuit penghubung semua komponen | Diagram motherboard dengan label slot |
+| — PSU (Power Supply) | Pemasok daya listrik ke semua komponen | Ilustrasi PSU |
+| — Perangkat I/O | Input (keyboard, mouse, mic) & Output (monitor, speaker, printer) | Ikon perangkat I/O |
+| **2.3 Bagaimana Komputer Bekerja?** | Siklus: Input → Proses (CPU+RAM) → Output → Simpan (Storage) | Diagram alur siklus |
+| **2.4 Bilangan Biner** | Cara komputer menyimpan data: 0 dan 1, bit & byte, contoh konversi | Tabel konversi biner-desimal |
+| **2.5 Representasi Warna** | Model RGB, bagaimana layar menampilkan jutaan warna | Diagram RGB additive |
+
+**Pertanyaan Pemantik** (di awal halaman teori):
+> *"Pernahkah kamu membuka casing komputer? Apa saja yang ada di dalamnya? Apa yang terjadi jika salah satu komponen dihilangkan?"*
+
+---
+
+### Halaman 3: PROSEDUR
+
+Panduan langkah demi langkah **sebelum** siswa memulai simulasi. Format visual step-by-step.
+
+| Langkah | Instruksi | Ikon |
+|---------|-----------|------|
+| 1 | Baca teori tentang komponen komputer terlebih dahulu | 📖 |
+| 2 | Masuk ke menu **Simulasi** | 🔬 |
+| 3 | Mulai dari **Simulasi Utama: Rakit Komputer** | 🖥️ |
+| 4 | Drag komponen dari panel samping ke slot motherboard yang benar | 🎯 |
+| 5 | Klik tombol **POWER** untuk menguji rakitanmu | ⚡ |
+| 6 | Amati hasilnya: berhasil boot atau muncul error? | 👀 |
+| 7 | Eksplorasi: coba rakit tanpa beberapa komponen — apa yang terjadi? | 🔍 |
+| 8 | Lanjut ke **Simulasi Pendukung** untuk memahami cara kerja data | 💡 |
+| 9 | Isi **LKPD** untuk menguji pemahamanmu | 📝 |
+
+**Tips:**
+> *"Tidak perlu takut salah! Lab ini dirancang untuk bereksperimen. Coba, amati, dan pelajari dari hasilnya."*
+
+---
+
+### Halaman 4: SIMULASI (Menu)
+
+Halaman menu untuk memilih simulasi. Tiga kartu simulasi:
+
+| # | Simulasi | Status | Deskripsi |
+|---|----------|--------|-----------|
+| ⭐ | **Rakit Komputer** | UTAMA | Drag & drop komponen ke motherboard, uji coba boot |
+| 💡 | **Binary Light Switch** | Pendukung | Toggle lampu biner, pahami cara komputer menyimpan angka |
+| 🎨 | **RGB Color Mixer** | Pendukung | Campur warna digital, pahami cara layar menampilkan warna |
+
+---
+
+### Halaman 4a: SIMULASI UTAMA — Rakit Komputer (Build Your Own PC)
+
+Ini adalah **inti lab maya** — simulasi perakitan komputer virtual.
+
+#### Layout:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│ [← Kembali ke Menu]                  Langkah: 1 dari 3            │
+├──────────────────────┬──────────────────────────────────────────────┤
+│                      │                                              │
+│   PANEL KOMPONEN     │         AREA MOTHERBOARD                     │
+│                      │                                              │
+│  ┌──────────┐        │    ┌─────────────────────────────────┐      │
+│  │   CPU     │ ←drag │    │                                 │      │
+│  └──────────┘        │    │     [CPU Socket]                │      │
+│  ┌──────────┐        │    │                                 │      │
+│  │   RAM     │ ←drag │    │     [RAM Slot 1] [RAM Slot 2]   │      │
+│  └──────────┘        │    │                                 │      │
+│  ┌──────────┐        │    │     [GPU Slot (PCIe)]           │      │
+│  │   SSD     │ ←drag │    │                                 │      │
+│  └──────────┘        │    │     [Storage Port (SATA/M.2)]   │      │
+│  ┌──────────┐        │    │                                 │      │
+│  │   GPU     │ ←drag │    │     [PSU Connector]             │      │
+│  └──────────┘        │    │                                 │      │
+│  ┌──────────┐        │    └─────────────────────────────────┘      │
+│  │   PSU     │ ←drag │                                              │
+│  └──────────┘        │    [⚡ POWER]    [🔄 RESET]                  │
+│                      │                                              │
+│  INFO KOMPONEN:      ├──────────────────────────────────────────────┤
+│  (muncul saat hover) │  STATUS / LOG:                               │
+│  "CPU adalah..."     │  > Menunggu komponen...                      │
+│                      │  > CPU terpasang ✅                           │
+│                      │  > RAM terpasang ✅                           │
+└──────────────────────┴──────────────────────────────────────────────┘
+```
+
+#### Fitur Detail:
+
+| Fitur | Detail |
+|-------|--------|
+| **Drag & Drop** | Drag komponen dari panel kiri ke slot yang benar di motherboard |
+| **Info Hover** | Hover di komponen → popup penjelasan fungsi komponen |
+| **Snap-to-Slot** | Komponen menempel ke slot yang benar, menolak slot yang salah |
+| **Indikator** | Slot terisi → berubah hijau. Slot kosong → tetap abu-abu |
+| **Tombol POWER** | Klik untuk menguji rakitan. Jika lengkap → animasi boot. Jika tidak → error message realistis |
+| **Tombol RESET** | Kembalikan semua komponen ke panel samping |
+| **Status Log** | Panel bawah menampilkan log perakitan dan hasil boot |
+
+#### Skenario Boot:
+
+| Kondisi | Respons Visual |
+|---------|---------------|
+| Semua komponen terpasang | ✅ Animasi boot sequence → layar "Welcome!" → pesan sukses |
+| Tanpa CPU | ❌ "CRITICAL ERROR: No CPU detected. Komputer tidak bisa memproses instruksi apa pun." |
+| Tanpa RAM | ❌ "BEEP BEEP BEEP! No RAM detected. Komputer tidak punya memori kerja untuk menjalankan program." |
+| Tanpa Storage | ⚠️ "WARNING: No boot device found. Komputer hidup tapi tidak bisa memuat sistem operasi." |
+| Tanpa GPU | ⚠️ "No display output. Layar gelap — komputer bekerja tapi tidak bisa menampilkan gambar." (kecuali CPU punya integrated graphics) |
+| Tanpa PSU | ❌ "No power. Tidak ada daya listrik. Komputer tidak hidup sama sekali." |
+
+#### Eksplorasi Lanjutan:
+
+| Skenario | Instruksi |
+|----------|-----------|
+| **PC Gaming** | "Rakit komputer untuk bermain game! Komponen mana yang paling penting?" → GPU harus kuat |
+| **PC Kantor** | "Rakit komputer untuk kerja kantoran (Word, Excel). Apa yang bisa dihemat?" → GPU bisa basic |
+| **PC Editing Video** | "Rakit komputer untuk editing video 4K. Apa yang harus diprioritaskan?" → RAM besar + GPU + CPU kuat |
+
+#### Koneksi Dunia Nyata:
+> *"Tahukah kamu? Laptop yang kamu pakai punya semua komponen ini — hanya dalam ukuran sangat kecil. CPU laptop setebal koin dan berisi 10 miliar transistor — lebih banyak dari jumlah manusia di bumi!"*
+
+---
+
+### Halaman 4b: SIMULASI PENDUKUNG — Binary Light Switch
+
+Simulasi pendukung untuk memahami bagaimana komputer **menyimpan data** (angka) menggunakan bilangan biner.
+
 | Aspek | Detail |
 |-------|--------|
 | **Pertanyaan Pemantik** | "Bagaimana komputer yang hanya mengenal 0 dan 1 bisa menyimpan angka besar seperti 255?" |
 | **Eksperimen** | 8 toggle switch (lampu) ON/OFF → angka desimal berubah real-time |
 | **Interaksi** | Klik toggle → lampu nyala/mati → angka berubah instant |
 | **Visual** | 8 LED lamp (merah=0, hijau=1) dengan label bit value (128, 64, 32, 16, 8, 4, 2, 1) |
-| **Tantangan Inline** | "Nyalakan lampu untuk angka 42!", "Buat angka 100!", "Buat angka terbesar yang bisa!" — **validasi otomatis** |
-| **Respons Real-time** | Angka desimal + biner update instant saat toggle ditekan |
-| **Konsep** | Bilangan biner ↔ desimal, representasi data digital |
-| **Eksplorasi Lanjutan** | Coba konversi nama menjadi biner menggunakan tabel ASCII sederhana |
-| **Jurnal Eksperimen** | Hipotesis: "Berapa angka jika semua lampu nyala?" → Pengamatan: catat 3 percobaan → Kesimpulan: rumus angka maksimal |
-| **🌍 Koneksi Dunia Nyata** | "Tahukah kamu? Semua data di HP-mu — foto, chat WhatsApp, lagu Spotify — semuanya disimpan sebagai deretan angka 0 dan 1. Sebuah foto selfie = sekitar 8 juta angka biner!" |
+| **Tantangan** | "Nyalakan lampu untuk angka 42!", "Buat angka 100!", "Buat angka terbesar!" — validasi otomatis |
+| **Respons Real-time** | Angka desimal + biner update instant |
+| **Konsep** | Bilangan biner ↔ desimal, representasi data digital, bit & byte |
+| **Koneksi Dunia Nyata** | "Semua data di HP-mu — foto, chat WhatsApp, lagu Spotify — disimpan sebagai deretan 0 dan 1." |
 
-#### Modul 2: 🎨 RGB Color Mixer — Laboratorium Warna Digital
+**Hubungan dengan Simulasi Utama:**
+> *"Di simulasi Rakit PC, kamu memasang RAM. RAM menyimpan data sementara dalam bilangan biner persis seperti lampu-lampu ini. RAM 8GB punya sekitar 68 miliar 'lampu' biner!"*
+
+---
+
+### Halaman 4c: SIMULASI PENDUKUNG — RGB Color Mixer
+
+Simulasi pendukung untuk memahami bagaimana komputer **menampilkan warna** di layar.
+
 | Aspek | Detail |
 |-------|--------|
 | **Pertanyaan Pemantik** | "Layar HP-mu punya jutaan warna. Bagaimana komputer membuat semua warna itu hanya dari 3 warna dasar?" |
 | **Eksperimen** | 3 slider (Merah 0–255, Hijau 0–255, Biru 0–255) → preview warna berubah real-time |
-| **Interaksi** | Geser slider → preview besar berubah warna + kode hex/RGB muncul |
-| **Visual** | 3 slider besar berwarna (merah, hijau, biru) + preview warna besar + kode warna |
-| **Tantangan Inline** | "Buat warna kuning!", "Buat warna ungu!", "Buat 3 warna berbeda yang serasi" — **cek warna otomatis dengan toleransi** |
+| **Interaksi** | Geser slider → preview berubah warna + kode hex/RGB muncul |
+| **Visual** | 3 slider besar + preview warna besar + kode warna |
+| **Tantangan** | "Buat warna kuning!", "Buat warna ungu!", "Buat 3 warna berbeda yang serasi" — validasi otomatis dengan toleransi |
 | **Respons Real-time** | Preview warna, kode RGB, kode HEX semua update instant |
-| **Konsep** | Representasi warna digital, model RGB, campuran warna cahaya ≠ cat |
-| **Eksplorasi Lanjutan** | Bandingkan: campuran warna cahaya (aditif) vs cat (subtraktif) — kenapa berbeda? |
-| **Jurnal Eksperimen** | Hipotesis: "Apa yang terjadi jika R=255, G=255, B=0?" → Pengamatan: catat 5 campuran warna → Kesimpulan: pola campuran warna cahaya |
-| **🌍 Koneksi Dunia Nyata** | "Tahukah kamu? Desainer Instagram, TikTok, dan semua aplikasi HP-mu memilih warna menggunakan kode RGB persis seperti yang kamu pakai di lab ini. Warna biru Instagram = RGB(0, 149, 246)!" |
+| **Konsep** | Representasi warna digital, model RGB, campuran warna cahaya |
+| **Koneksi Dunia Nyata** | "Desainer Instagram dan TikTok memilih warna pakai kode RGB seperti ini. Warna biru Instagram = RGB(0, 149, 246)!" |
 
-#### Modul 3: 🖼️ Pixel Art Studio — Melukis dengan Angka
-| Aspek | Detail |
-|-------|--------|
-| **Pertanyaan Pemantik** | "Semua foto di HP-mu sebenarnya hanya kumpulan kotak kecil berwarna. Bagaimana komputer menyimpan gambar?" |
-| **Eksperimen** | Grid 8×8 pixel → klik pixel → pilih warna → gambar terbentuk → kode biner muncul di samping |
-| **Interaksi** | Klik pixel → warnai + di panel samping tampil deretan angka biner/RGB per baris |
-| **Visual** | Canvas grid dengan palet warna, panel kode biner/data di samping |
-| **Tantangan Inline** | "Gambar emoji senyum!", "Gambar huruf A!", "Gambar bentuk simetris!" — panel menunjukkan berapa byte yang terpakai |
-| **Respons Real-time** | Grid berubah + kode data update per-pixel + counter ukuran data |
-| **Konsep** | Kodifikasi data visual, pixel = unit terkecil gambar, bitmap |
-| **Eksplorasi Lanjutan** | Hitung: berapa byte data yang dibutuhkan untuk gambar 8×8 ini? Bagaimana jika 100×100? |
-| **Jurnal Eksperimen** | Hipotesis: "Gambar yang lebih detail butuh lebih banyak data?" → Buat 2 gambar (sederhana vs detail) → Bandingkan ukuran data |
-| **🌍 Koneksi Dunia Nyata** | "Tahukah kamu? Layar HP-mu berukuran ±2340×1080 pixel = 2,5 juta pixel. Setiap pixel punya 3 nilai warna (R,G,B). Jadi 1 frame layar HP = 7,5 juta angka yang berubah 60 kali per detik!" |
+**Hubungan dengan Simulasi Utama:**
+> *"Di simulasi Rakit PC, kamu memasang GPU. GPU adalah komponen yang mengolah jutaan warna RGB ini 60 kali per detik untuk menampilkan gambar di layar monitor."*
 
-#### Modul 4: 🖥️ Rakit Komputer — Build Your Own PC
-| Aspek | Detail |
-|-------|--------|
-| **Pertanyaan Pemantik** | "Apa saja yang ada di dalam komputer? Apa yang terjadi jika satu komponen dihilangkan?" |
-| **Eksperimen** | Drag komponen (CPU, RAM, SSD, GPU, PSU) ke motherboard → coba nyalakan |
-| **Interaksi** | Drag & drop komponen ke slot yang benar → klik tombol POWER → lihat hasilnya |
-| **Visual** | Motherboard 2D dengan slot berlabel, komponen di panel samping, animasi booting/error |
-| **Tantangan Inline** | "Rakit komputer lengkap!", "Apa yang terjadi tanpa RAM?", "Apa yang terjadi tanpa CPU?" — **error message realistis** |
-| **Respons Real-time** | Slot terisi → indikator hijau. Klik POWER → animasi boot / error message sesuai komponen yang hilang |
-| **Konsep** | Komponen utama komputer, fungsi masing-masing, interdependensi |
-| **Eksplorasi Lanjutan** | Bandingkan spesifikasi: komputer gaming vs komputer kantor — apa bedanya? Drag komponen yang tepat untuk masing-masing kebutuhan |
-| **Jurnal Eksperimen** | Hipotesis: "Komponen mana yang paling penting?" → Coba nyalakan tanpa tiap komponen → Catat error yang muncul → Ranking komponen |
-| **🌍 Koneksi Dunia Nyata** | "Tahukah kamu? Laptop yang kamu pakai sekarang punya semua komponen ini — hanya dalam ukuran sangat kecil. CPU laptop setebal koin dan berisi 10 miliar transistor — lebih banyak dari jumlah manusia di bumi!" |
+---
 
-#### Modul 5: 🔍 Zoom & Resolusi — Rahasia di Balik Foto
-| Aspek | Detail |
-|-------|--------|
-| **Pertanyaan Pemantik** | "Kenapa foto WhatsApp kadang pecah/buram? Apa hubungannya dengan ukuran file?" |
-| **Eksperimen** | Gambar sample → zoom slider (1×, 10×, 50×, 100×) → terlihat pixel → slider resolusi (tinggi→rendah) |
-| **Interaksi** | Slider zoom + slider resolusi → preview berubah real-time |
-| **Visual** | Gambar utama + panel info (resolusi, jumlah pixel, estimasi ukuran file) + perbandingan side-by-side |
-| **Tantangan Inline** | "Zoom sampai terlihat pixel!", "Turunkan resolusi — kapan gambar mulai tidak jelas?", "Bandingkan 3 resolusi" — **side-by-side comparison** |
-| **Respons Real-time** | Preview gambar berubah + info pixel/ukuran file update |
-| **Konsep** | Resolusi, ukuran file, kompresi, trade-off kualitas vs ukuran |
-| **Eksplorasi Lanjutan** | Hitung: foto 1920×1080 dengan 3 byte per pixel = berapa MB? Kenapa file JPEG lebih kecil dari BMP? |
-| **Jurnal Eksperimen** | Hipotesis: "Resolusi 2× lebih tinggi = ukuran file 2× lebih besar?" → Catat 4 resolusi dan ukurannya → Temukan pola (hubungan kuadratik!) |
-| **🌍 Koneksi Dunia Nyata** | "Tahukah kamu? WhatsApp otomatis menurunkan resolusi foto yang kamu kirim dari ±12 MP menjadi ±1 MP untuk menghemat kuota. Itulah kenapa foto WA sering terlihat buram saat di-zoom!" |
+### Halaman 5: LKPD (Lembar Kerja Peserta Didik)
 
-### Asesmen Terintegrasi: Alur Per Modul
+Model evaluasi mengikuti format MPI Sistem Komputer yang sudah ada: **3 bagian dengan tipe soal berbeda**.
 
-Setiap modul mengikuti alur lab ilmiah yang lengkap — asesmen terjadi **di dalam** proses, bukan di akhir:
+#### Bagian A: Pilihan Ganda (5 soal)
 
-```
-┌──────────────────┐     ┌────────────────┐     ┌──────────────────┐     ┌───────────────────┐     ┌──────────────────┐
-│ 1. PERTANYAAN    │ →→→ │ 2. HIPOTESIS    │ →→→ │ 3. EKSPERIMEN    │ →→→ │ 4. TANTANGAN      │ →→→ │ 5. KESIMPULAN    │
-│    PEMANTIK      │     │    (Jurnal)     │     │    BEBAS         │     │    INLINE (cek)   │     │    (Jurnal)      │
-└──────────────────┘     └────────────────┘     └──────────────────┘     └───────────────────┘     └──────────────────┘
-     [Asesmen]          [Asesmen]             [Eksplorasi]          [Asesmen]                [Asesmen]
-```
+Topik: Komponen komputer, fungsi, dan perakitan.
 
-### Pertanyaan Reflektif Lanjutan
+| # | Contoh Soal | Opsi |
+|---|-------------|------|
+| 1 | Komponen komputer yang berfungsi sebagai "otak" untuk memproses instruksi adalah... | A. RAM  B. CPU  C. SSD  D. GPU |
+| 2 | Apa yang terjadi jika komputer dinyalakan tanpa RAM terpasang? | A. Normal  B. Layar gelap  C. Tidak bisa boot + bunyi beep  D. Lambat saja |
+| 3 | Manakah yang termasuk memori non-volatil (data tidak hilang saat mati)? | A. RAM  B. Cache  C. SSD  D. Register |
+| 4 | Berapa angka desimal dari bilangan biner 00101010? | A. 22  B. 42  C. 52  D. 84 |
+| 5 | Warna kuning di layar komputer dihasilkan dari campuran... | A. Merah + Biru  B. Merah + Hijau  C. Hijau + Biru  D. Merah + Hijau + Biru |
 
-Selain Jurnal Eksperimen inline, setiap modul memiliki 1–2 pertanyaan studi kasus **kontekstual**:
+**Mekanisme:** Klik opsi → langsung validasi benar/salah + penjelasan. Skor otomatis.
 
-| Modul | Pertanyaan Studi Kasus |
-|-------|------------------------|
-| Binary | "Kalkulator HP-mu bisa menghitung angka sampai miliaran. Berapa bit minimum yang dibutuhkan? (Petunjuk: 2^n)" |
-| RGB | "Seorang desainer diminta membuat logo sekolah digital. Ia harus menyebutkan warna persis ke programmer. Bagaimana cara menyampaikan warna yang tepat agar tidak salah?" |
-| Pixel Art | "Foto kelas berukuran 4000×3000 pixel dengan 3 byte per pixel. Berapa ukuran file-nya? Muat tidak untuk dikirim lewat email (maks 25 MB)?" |
-| Rakit PC | "Temanmu ingin beli laptop untuk editing video 4K. Komponen apa yang harus diutamakan? Jelaskan alasanmu!" |
-| Resolusi | "Guru mengirim foto soal ujian lewat WhatsApp tapi tulisannya tidak bisa dibaca. Apa penyebabnya? Apa solusi terbaik?" |
+#### Bagian B: Benar atau Salah (5 soal)
+
+| # | Pernyataan | Jawaban |
+|---|-----------|---------|
+| 1 | CPU adalah komponen yang menyimpan data secara permanen. | ❌ Salah (itu fungsi SSD/HDD) |
+| 2 | RAM adalah memori volatil — datanya hilang saat komputer dimatikan. | ✅ Benar |
+| 3 | GPU hanya dibutuhkan untuk bermain game. | ❌ Salah (juga untuk editing video, desain, tampilan layar) |
+| 4 | Bilangan biner 11111111 sama dengan angka desimal 255. | ✅ Benar |
+| 5 | Motherboard adalah komponen yang memasok daya listrik ke komputer. | ❌ Salah (itu fungsi PSU) |
+
+**Mekanisme:** Tombol Benar/Salah → validasi + penjelasan singkat.
+
+#### Bagian C: Menjodohkan / Drag-and-Drop (5 pasang)
+
+Cocokkan komponen dengan fungsinya (drag garis atau klik-pasangkan):
+
+| Komponen | Fungsi |
+|----------|--------|
+| CPU | Otak pemroses instruksi utama komputer |
+| RAM | Memori kerja sementara berkecepatan tinggi |
+| SSD | Menyimpan data, program, dan OS secara permanen |
+| GPU | Mengolah dan menampilkan gambar di layar |
+| PSU | Memasok daya listrik ke seluruh komponen |
+
+**Mekanisme:** Sama seperti MPI — klik komponen di kiri → klik fungsi di kanan → garis penghubung terbentuk. Validasi setelah semua terpasang.
+
+#### Halaman Hasil LKPD:
+
+| Elemen | Detail |
+|--------|--------|
+| **Skor per bagian** | Bagian A: _/5, Bagian B: _/5, Bagian C: _/5 |
+| **Total skor** | _/15 (persentase) |
+| **Feedback** | Pesan berdasarkan skor (Sempurna / Hebat / Perlu Belajar Lagi) |
+| **Review jawaban** | Bisa lihat jawaban benar + penjelasan untuk yang salah |
+| **Tombol Ulangi** | Reset semua jawaban dan coba lagi |
+
+---
+
+### Halaman 6: PENGEMBANG
+
+| Elemen | Detail |
+|--------|--------|
+| **Foto** | Foto pengembang |
+| **Nama** | Chanif Fanani, S.Pd. |
+| **Sekolah** | [Nama SMP] |
+| **Kontak** | Email / website |
+| **Deskripsi** | Singkat tentang pengembang |
+
+---
+
+### Halaman 7: REFERENSI
+
+| # | Referensi |
+|---|-----------|
+| 1 | Capaian Pembelajaran Informatika Fase D — Kemendikdasmen |
+| 2 | Buku Informatika SMP Kelas VIII (Penerbit resmi) |
+| 3 | Referensi keilmuan tentang arsitektur komputer |
+| 4 | Sumber aset (gambar, font, audio) yang digunakan |
+| 5 | Lisensi & kredit |
 
 ---
 
@@ -249,18 +410,37 @@ karya/lab-maya/
 ├── index.html           ← Entry point (SPA)
 ├── style.css            ← Semua styling
 ├── script.js            ← Logika simulasi utama
-├── config.js            ← Konfigurasi (teks, label, tantangan)
+├── config.js            ← Konfigurasi (teks, label, soal LKPD)
 ├── specification.md     ← Dokumen ini
 ├── assets/
-│   ├── images/          ← Ilustrasi, ikon, background
-│   │   ├── components/  ← Gambar komponen PC (CPU, RAM, SSD, dll)
+│   ├── images/          ← Ilustrasi & ikon
+│   │   ├── components/  ← Gambar komponen PC (CPU, RAM, SSD, GPU, PSU, motherboard)
 │   │   ├── ui/          ← Tombol, ikon, indikator
-│   │   └── samples/     ← Gambar sample untuk modul resolusi
+│   │   └── teori/       ← Ilustrasi untuk halaman teori
 │   ├── audio/           ← Sound effects
-│   │   └── sfx/         ← Klik, toggle, boot, error
-│   └── fonts/           ← Font lokal
+│   │   └── sfx/         ← Boot chime, error beep, toggle click, slider swoosh
+│   └── fonts/           ← Font lokal (download, tidak CDN)
 └── panduan/
     └── panduan-penggunaan.pdf  ← User guide (WAJIB)
+```
+
+### Struktur Halaman SPA
+
+```javascript
+// Halaman-halaman dalam Lab Maya
+const LINEAR_PAGES = [
+  'cover',           // Halaman 1: Halaman Muka
+  'teori',           // Halaman 2: Teori
+  'prosedur',        // Halaman 3: Prosedur
+  'simulasi-menu',   // Halaman 4: Menu Simulasi
+  'sim-rakit-pc',    // Halaman 4a: Rakit Komputer (UTAMA)
+  'sim-binary',      // Halaman 4b: Binary Light Switch (pendukung)
+  'sim-rgb',         // Halaman 4c: RGB Color Mixer (pendukung)
+  'lkpd-intro',      // Halaman 5: Pengantar LKPD
+  'lkpd',            // Halaman 5: LKPD (3 bagian)
+  'pengembang',      // Halaman 6: Pengembang
+  'referensi'        // Halaman 7: Referensi
+];
 ```
 
 ### Pendekatan Teknis
@@ -269,20 +449,26 @@ karya/lab-maya/
 |-------|---------|
 | **Arsitektur** | Single Page Application (SPA) — semua dalam 1 `index.html` |
 | **Navigasi** | Section-based dengan `goToPage()` — pola yang sama dengan MPI |
-| **Rendering** | Canvas API (untuk pixel art & zoom) + DOM (untuk toggle, slider, drag) |
-| **Styling** | Vanilla CSS — tema gelap lab/neon, warna aksen biru-hijau-ungu |
-| **Animasi** | CSS transitions (toggle, slider) + Canvas (pixel, zoom) + requestAnimationFrame |
-| **Drag & Drop** | HTML5 Drag & Drop API + pointer events (touch-friendly) |
+| **Rendering** | DOM untuk semua simulasi (drag-drop, toggle, slider) |
+| **Styling** | Vanilla CSS — tema gelap lab/neon, warna aksen biru-hijau |
+| **Animasi** | CSS transitions + JavaScript requestAnimationFrame |
+| **Drag & Drop** | Pointer Events (touch-friendly) |
+| **LKPD** | Sistem evaluasi identik dengan MPI: Bagian A (PG), B (B/S), C (Menjodohkan) |
 | **Responsif** | CSS media queries, rasio 16:9, fallback untuk layar kecil |
-| **State** | JavaScript object untuk progres modul, jawaban tantangan |
+| **State** | JavaScript object untuk state simulasi dan jawaban LKPD |
 
 ### Referensi Arsitektur
 
 Gunakan pola arsitektur yang sama dengan MPI Sistem Komputer:
-- `config.js` → konfigurasi global (judul, teks, tantangan, label)
-- `script.js` → logika navigasi + engine simulasi per modul
+- `config.js` → konfigurasi global (judul, teks, soal LKPD, data komponen)
+- `script.js` → logika navigasi + engine simulasi + evaluasi LKPD
 - `style.css` → design system, animasi, responsive layout
 - `index.html` → semua section/page dalam 1 file
+
+**Untuk LKPD**, gunakan kode evaluasi MPI sebagai referensi langsung:
+- Bagian A (Pilihan Ganda) → sama dengan MPI
+- Bagian B (Benar/Salah) → sama dengan MPI
+- Bagian C (Menjodohkan) → gunakan `MATCH_P8_DATA` pattern dari MPI
 
 ---
 
@@ -303,35 +489,36 @@ Error:      #EF4444 (Merah — error/salah)
 
 ### Tipografi
 
-- **Heading:** Font modern, tech-feel (Google Fonts: Space Grotesk / Outfit)
-- **Body:** Font clean (Google Fonts: Inter / Plus Jakarta Sans)
-- **Monospace:** Untuk tampilan kode/angka biner (JetBrains Mono / Fira Code)
-- Semua font di-download dan disimpan lokal (tidak boleh CDN)
+- **Heading:** Font modern, tech-feel (Space Grotesk / Outfit) — download lokal
+- **Body:** Font clean (Inter / Plus Jakarta Sans) — download lokal
+- **Monospace:** Untuk tampilan kode/angka biner (JetBrains Mono / Fira Code) — download lokal
 
 ### Gaya Visual
 
 - **Dark theme** dengan aksen neon — nuansa laboratorium digital
 - Elemen interaktif menyala/glow saat aktif
+- Komponen PC bergaya **flat 2D** yang bersih dan berlabel
+- Motherboard ditampilkan **top-down view** dengan slot berlabel
 - Toggle switch bergaya LED — hijau = ON, merah = OFF
 - Slider bergaya instrumen lab — dengan label angka
-- Grid pixel art — garis tipis, warna latar gelap
-- Motherboard — tampilan 2D top-down yang bersih dan berlabel
-- Animasi smooth: transition pada toggle, slider, drag-drop
+- Animasi smooth: transition pada drag-drop, toggle, slider
 
 ---
 
 ## ✅ Checklist Kepatuhan Juknis
 
-- [ ] Laman Muka dengan judul, tujuan, petunjuk penggunaan
-- [ ] Panduan langkah demi langkah untuk eksperimen
-- [ ] Minimal 3 interaksi eksplorasi lanjutan (kita punya 5 modul)
-- [ ] Simulasi interaktif dua arah (mengatur variabel → lihat hasil)
-- [ ] Alur logis dan sistematis
-- [ ] Pertanyaan pemantik studi kasus per modul
-- [ ] Umpan balik real-time (visual/audio/teks)
-- [ ] Indikator progres ("Modul X dari 5")
-- [ ] Navigasi ulang (kembali ke modul sebelumnya tanpa reset)
-- [ ] Visual 2D yang jelas, proporsional, realistis
+- [ ] Halaman Muka dengan judul, tujuan, petunjuk penggunaan
+- [ ] Halaman Teori dengan materi komponen komputer
+- [ ] Halaman Prosedur dengan langkah demi langkah
+- [ ] Minimal 3 interaksi eksplorasi lanjutan (3 simulasi)
+- [ ] Simulasi interaktif dua arah (drag komponen → boot PC)
+- [ ] Alur logis dan sistematis (teori → prosedur → simulasi → LKPD)
+- [ ] Pertanyaan pemantik di halaman teori
+- [ ] Umpan balik real-time (boot animation, error messages, LED toggle)
+- [ ] Indikator progres (langkah, breadcrumb)
+- [ ] Navigasi ulang (kembali ke halaman sebelumnya tanpa reset)
+- [ ] LKPD dengan 3 tipe soal (PG, B/S, Menjodohkan) — min 3 soal per bagian
+- [ ] Visual 2D yang jelas, proporsional
 - [ ] Tombol/alat/indikator mudah dikenali (label & ikon)
 - [ ] Error-free, respons ≤ 2 detik
 - [ ] Lintas perangkat (laptop, tablet, smartphone)
@@ -343,54 +530,74 @@ Error:      #EF4444 (Merah — error/salah)
 - [ ] File .zip ≤ 150 MB (target < 25 MB)
 - [ ] PDF panduan penggunaan & penjelasan teknis
 - [ ] Video demo ≤ 3 menit (MP4)
-- [ ] Pertanyaan reflektif / soal penerapan per modul
 - [ ] Aset orisinal / royalty-free / CC BY-SA 4.0
 - [ ] Aset AI-generated diberi keterangan + dokumen prompting
 - [ ] Materi selaras dengan CP & TP Informatika SMP
+- [ ] Halaman Pengembang (profil kreator)
+- [ ] Halaman Referensi (sumber materi, aset, lisensi)
 
 ---
 
 ## 🗺️ Roadmap Pengerjaan
 
 ### Fase 1: Fondasi (Hari 1–2)
-- [ ] Setup struktur file
-- [ ] Buat `config.js` dan design system di `style.css`
-- [ ] Buat Laman Muka (judul, tujuan, petunjuk)
-- [ ] Buat halaman Panduan
-- [ ] Buat navigasi SPA + indikator progres modul
-- [ ] Buat menu modul dengan progress tracking
+- [ ] Setup struktur file (index.html, style.css, script.js, config.js)
+- [ ] Buat design system di `style.css` (dark theme, palet warna, tipografi)
+- [ ] Buat Halaman 1: Halaman Muka (cover)
+- [ ] Buat navigasi SPA (goToPage) + indikator halaman
+- [ ] Buat Halaman 3: Prosedur (step-by-step)
 
-### Fase 2: Modul Simulasi (Hari 3–7)
-- [ ] Modul 1: Binary Light Switch (toggle + konversi biner-desimal)
-- [ ] Modul 2: RGB Color Mixer (3 slider + preview + kode warna)
-- [ ] Modul 3: Pixel Art Studio (canvas grid + palet + kode data)
-- [ ] Modul 4: Rakit Komputer (drag & drop komponen + simulasi boot)
-- [ ] Modul 5: Zoom & Resolusi (slider zoom + slider resolusi + preview)
-- [ ] Pertanyaan reflektif dan tantangan per modul
+### Fase 2: Konten Teori (Hari 3)
+- [ ] Buat Halaman 2: Teori (tab/scroll section)
+- [ ] Ilustrasi komponen PC (bisa SVG/CSS atau gambar)
+- [ ] Diagram alur kerja komputer
 
-### Fase 3: Polish (Hari 8–9)
-- [ ] Sound effects (toggle click, slider swoosh, boot chime, error buzz)
-- [ ] Animasi dan transisi (LED glow, color fade, boot sequence)
-- [ ] Eksplorasi lanjutan per modul
+### Fase 3: Simulasi Utama (Hari 4–6)
+- [ ] Buat Halaman 4: Menu Simulasi
+- [ ] Buat Halaman 4a: Rakit Komputer
+  - [ ] Panel komponen (drag source)
+  - [ ] Motherboard dengan slot (drop target)
+  - [ ] Snap-to-slot logic
+  - [ ] Info hover per komponen
+  - [ ] Tombol POWER + skenario boot/error
+  - [ ] Tombol RESET
+  - [ ] Eksplorasi lanjutan (PC Gaming vs Kantor vs Editing)
+
+### Fase 4: Simulasi Pendukung (Hari 7–8)
+- [ ] Buat Halaman 4b: Binary Light Switch
+  - [ ] 8 toggle switch + konversi biner-desimal
+  - [ ] Tantangan inline dengan validasi otomatis
+- [ ] Buat Halaman 4c: RGB Color Mixer
+  - [ ] 3 slider + preview warna + kode RGB/HEX
+  - [ ] Tantangan inline dengan validasi warna
+
+### Fase 5: LKPD & Pelengkap (Hari 9–10)
+- [ ] Buat Halaman 5: LKPD
+  - [ ] Bagian A: Pilihan Ganda (5 soal)
+  - [ ] Bagian B: Benar/Salah (5 soal)
+  - [ ] Bagian C: Menjodohkan (5 pasang)
+  - [ ] Halaman Hasil (skor + review + ulangi)
+- [ ] Buat Halaman 6: Pengembang
+- [ ] Buat Halaman 7: Referensi
+
+### Fase 6: Polish & Deliverable (Hari 11–12)
+- [ ] Sound effects (boot chime, error beep, toggle click)
+- [ ] Animasi (boot sequence, LED glow, drag feedback)
 - [ ] Responsive testing (laptop, tablet, phone)
-- [ ] Halaman Profil Kreator
-
-### Fase 4: Deliverable (Hari 10)
-- [ ] Buat PDF panduan penggunaan + penjelasan teknis simulasi
-- [ ] Rekam video demo (3 menit)
 - [ ] Testing final di Chrome, Firefox, Safari, Edge
+- [ ] Buat PDF panduan penggunaan + penjelasan teknis
+- [ ] Rekam video demo (3 menit)
 - [ ] Package .zip dan validasi ukuran
 
 ---
 
 ## 📝 Catatan Penting untuk Implementasi
 
-1. **Lab Maya ≠ Game** — Tidak ada sistem skor, bintang, atau kompetisi. Fokus pada **eksplorasi dan penemuan**. Siswa bereksperimen dengan tempo mereka sendiri.
-2. **Jurnal Eksperimen = asesmen organik** — Panel jurnal di samping area eksperimen yang diisi SELAMA proses. Bukan soal terpisah di akhir. Alur: Hipotesis → Eksperimen → Pengamatan → Kesimpulan = metode ilmiah.
-3. **Tantangan Inline = asesmen interaktif** — "Buat angka 42!" atau "Buat warna kuning!" dengan validasi otomatis. Ini asesmen yang terasa seperti eksperimen, bukan ujian.
-4. **Setiap modul harus bisa diakses ulang** — Navigasi non-linear. Siswa bisa kembali ke modul sebelumnya tanpa kehilangan progres/data jurnal.
-5. **Respons harus real-time** — Slider digeser → warna berubah INSTANT. Toggle ditekan → angka berubah INSTANT. Tidak boleh ada delay.
-6. **Koneksi Dunia Nyata di setiap modul** — Panel "Tahukah Kamu?" yang menghubungkan konsep lab dengan gadget/aplikasi yang dipakai siswa sehari-hari (WhatsApp, Instagram, HP, laptop). Ini meningkatkan skor Kontekstualisasi (5%).
-7. **Semua aset offline** — Font, gambar, audio — semua lokal. Tidak boleh ada CDN atau URL eksternal.
-8. **Canvas API untuk modul visual** — Pixel Art dan Zoom Resolusi paling baik menggunakan HTML5 Canvas untuk performa.
-9. **Perbedaan kunci dengan MPI** — Lab Maya lebih "hands-on" dan "eksperimental". MPI lebih "materi terstruktur". Pastikan nuansa "laboratorium" terasa kuat — ada alat yang bisa diotak-atik, variabel yang bisa diubah, dan hasil yang bisa diamati.
+1. **Fokus utama = Rakit Komputer** — Ini simulasi yang harus paling matang dan paling dipoles. Binary dan RGB adalah pendukung untuk memperkaya pemahaman.
+2. **Lab Maya ≠ Game** — Tidak ada sistem skor/bintang di simulasi. LKPD terpisah untuk evaluasi. Fokus simulasi adalah **eksplorasi dan penemuan**.
+3. **LKPD = format evaluasi MPI** — Gunakan kode evaluasi MPI Sistem Komputer sebagai referensi langsung. Bagian A (PG), B (B/S), C (Menjodohkan) dengan validasi otomatis dan halaman hasil.
+4. **Setiap simulasi harus terhubung** — Simulasi pendukung (Binary, RGB) harus dihubungkan secara naratif ke simulasi utama (Rakit PC). Contoh: "RAM menyimpan data dalam biner" → link ke Binary Switch.
+5. **Error message harus edukatif** — Saat PC tidak bisa boot karena komponen hilang, pesan error harus menjelaskan MENGAPA komponen itu penting, bukan hanya "error".
+6. **Semua aset offline** — Font, gambar, audio — semua lokal. Tidak boleh ada CDN atau URL eksternal.
+7. **Touch-friendly** — Drag & drop komponen harus bekerja di layar sentuh (gunakan Pointer Events).
+8. **Eksplorasi Lanjutan di Rakit PC** — Skenario PC Gaming vs Kantor vs Editing adalah "eksplorasi lanjutan" yang diminta juknis. Implementasikan sebagai mode/skenario yang bisa dipilih.
