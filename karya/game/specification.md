@@ -100,6 +100,60 @@
 
 **Gaya Visual:** MasterChef-style competition — dapur profesional, bahan-bahan colorful, animasi memasak.
 
+### 🧠 Fitur Pembeda: "Mode Algoritma" (Toggle View)
+
+> **Ini yang membuat Chef Algorithm BUKAN sekadar cooking game.**
+
+Di setiap level, setelah siswa menyelesaikan tantangan masak, tersedia tombol **"🔍 Lihat Algoritmanya"** yang menampilkan pseudo-code dari apa yang baru saja mereka lakukan:
+
+```
+// Level 1 — Setelah siswa menyusun urutan masak:
+ALGORITMA Nasi_Goreng
+  LANGKAH 1: Cuci bahan
+  LANGKAH 2: Potong bawang
+  LANGKAH 3: Tumis bumbu
+  LANGKAH 4: Masukkan nasi
+  LANGKAH 5: Aduk rata
+  LANGKAH 6: Sajikan
+
+// Level 2 — Setelah siswa memilih cabang resep:
+JIKA tamu = vegetarian MAKA
+  bahan ← tahu
+JIKA TIDAK MAKA
+  bahan ← ayam
+
+// Level 3 — Setelah siswa menggunakan loop:
+ULANGI 10 KALI
+  masak(nasi_goreng)
+  sajikan()
+```
+
+**Mengapa ini kritis:**
+- Mengatasi kelemahan "ini belajar masak atau coding?" — juri langsung lihat: **"Oh, ini mengajarkan algoritma!"**
+- Meningkatkan skor **Akurasi Keilmuan** (15%) secara signifikan
+- Meningkatkan **Orisinalitas** — tidak ada cooking game lain yang punya dual-view seperti ini
+- Siswa mendapat **"aha moment"**: "Ternyata tadi aku sudah membuat algoritma!"
+
+### 📚 Pemetaan CP & TP Informatika
+
+| Level | Elemen CP | Tujuan Pembelajaran (TP) |
+|-------|-----------|-------------------------|
+| 1 | AP (Algoritma & Pemrograman) | Peserta didik mampu menyusun langkah-langkah penyelesaian masalah secara **sekuensial** (berurutan) |
+| 2 | AP + BK | Peserta didik mampu menggunakan **logika kondisional** (JIKA-MAKA) untuk membuat keputusan berdasarkan kondisi |
+| 3 | AP | Peserta didik mampu mengidentifikasi pola berulang dan menggunakan **perulangan (loop)** untuk efisiensi |
+| 4 | BK (Berpikir Komputasional) | Peserta didik mampu **mendekomposisi** masalah kompleks menjadi sub-masalah yang lebih sederhana |
+
+### 🌍 Kontekstualisasi "Tahukah Kamu?"
+
+Di setiap Recap Konsep, tampilkan fakta menarik yang menghubungkan konsep dengan kehidupan nyata:
+
+| Level | Tahukah Kamu? |
+|-------|---------------|
+| 1 | "Aplikasi ojek online seperti Gojek & Grab menggunakan **algoritma sekuensial** untuk menentukan langkah-langkah dari menerima order → navigasi → ambil makanan → antar ke pelanggan." |
+| 2 | "Instagram menggunakan **logika IF-ELSE** ratusan kali per detik: JIKA usia < 13 → tolak pendaftaran. JIKA postingan mengandung kekerasan → hapus otomatis." |
+| 3 | "Spotify memutar **loop** 30 juta lagu setiap hari untuk 500 juta pengguna. Tanpa loop, programmer harus menulis kode untuk setiap lagu satu per satu!" |
+| 4 | "Tim pengembang Minecraft **mendekomposisi** game raksasa mereka menjadi modul kecil: modul terrain, modul crafting, modul monster — masing-masing dikerjakan tim berbeda secara paralel." |
+
 ### Alur Permainan (4 Level)
 
 #### Level 1: **Susun Resep Nasi Goreng** 🥉
@@ -111,6 +165,7 @@
 | **Konsep Informatika** | **Algoritma sekuensial** — urutan langkah penting, tukar urutan = gagal |
 | **Feedback** | ✅ Urutan benar → animasi masak step-by-step. ❌ Salah → efek gagal + penjelasan |
 | **Skor** | Bintang berdasarkan jumlah percobaan (1× = ⭐⭐⭐, 2× = ⭐⭐, 3× = ⭐) |
+| **Recap Konsep** | Setelah selesai: tampilkan pseudo-code + "Tahukah Kamu?" + tombol Mode Algoritma |
 
 #### Level 2: **Resep Bercabang** 🥈
 | Aspek | Detail |
@@ -121,6 +176,7 @@
 | **Konsep Informatika** | **Logika kondisional IF-ELSE** — keputusan berdasarkan kondisi |
 | **Feedback** | ✅ Cabang benar → tamu senang + bintang. ❌ Salah → tamu kecewa + penjelasan |
 | **Variasi** | 3 skenario berbeda (vegetarian, alergi, porsi diet) |
+| **Recap Konsep** | Setelah selesai: flowchart berubah jadi pseudo-code IF-ELSE + contoh nyata dari aplikasi sehari-hari |
 
 #### Level 3: **Masak 10 Porsi Efisien** 🥇
 | Aspek | Detail |
@@ -130,6 +186,7 @@
 | **Konsep Informatika** | **Perulangan / Loop** — efisiensi dengan repetisi |
 | **Feedback** | Counter animasi: porsi 1 selesai... porsi 2... sampai 10 |
 | **Bonus** | Bisa set jumlah porsi sendiri (5, 10, 20) — lihat loop berjalan |
+| **Recap Konsep** | Bandingkan: menulis 10× vs ULANGI(10) — berapa "baris kode" yang dihemat? + contoh loop di kehidupan nyata |
 
 #### Level 4: **Tantangan Waktu — 3 Menu Sekaligus!** 🏆
 | Aspek | Detail |
@@ -139,6 +196,7 @@
 | **Konsep Informatika** | **Dekomposisi & paralelisme** — pecah masalah besar jadi bagian kecil |
 | **Feedback** | Animasi 3 asisten bekerja bersamaan → timer countdown → selesai/gagal |
 | **Skor** | Bintang berdasarkan sisa waktu (cepat = lebih banyak bintang) |
+| **Recap Konsep** | Diagram dekomposisi: "Masalah besar → sub-masalah" + contoh nyata: bagaimana tim developer membuat aplikasi besar |
 
 ### Sistem Penilaian & Reward
 
@@ -154,12 +212,12 @@
 
 | # | Halaman | Fungsi |
 |---|---------|--------|
-| 1 | **Cover / Laman Muka** | Judul, tujuan pembelajaran, tombol MULAI, info kreator |
-| 2 | **Panduan / Tutorial** | Cara bermain, penjelasan mekanisme, tombol navigasi |
+| 1 | **Cover / Laman Muka** | Judul, tujuan pembelajaran, CP/TP yang dicakup, tombol MULAI, info kreator |
+| 2 | **Panduan / Tutorial** | Cara bermain, penjelasan mekanisme, penjelasan Mode Algoritma |
 | 3 | **Menu Level** | Pilih level 1–4 (level terkunci sampai sebelumnya selesai) |
 | 4 | **Level 1–4** | Area permainan utama (masing-masing) |
-| 5 | **Hasil Per-Level** | Skor + bintang + feedback setelah selesai level |
-| 6 | **Hasil Akhir** | Rangkuman keseluruhan setelah semua level selesai |
+| 5 | **Recap Konsep Per-Level** | Skor + bintang + pseudo-code + "Tahukah Kamu?" + Mode Algoritma toggle |
+| 6 | **Hasil Akhir** | Rangkuman seluruh level: skor total + konsep yang dipelajari + lencana |
 | 7 | **Profil Kreator** | Info pengembang (nama, sekolah, kontak) |
 
 ---
@@ -303,5 +361,18 @@ Success:   #2ECC71 (Hijau — benar/selesai)
 1. **Semua aset harus offline** — tidak boleh ada CDN, Google Fonts via URL, atau aset eksternal lainnya. Font harus di-download dan disimpan lokal.
 2. **Touch-friendly** — semua drag & drop harus bekerja di layar sentuh (gunakan pointer events, bukan hanya mouse events).
 3. **Asesmen terintegrasi** — bintang dan skor per level = evaluasi otomatis yang memenuhi kriteria asesmen (10% dari bobot substansi).
-4. **Konsep informatika harus tersembunyi** — juri (dan siswa) melihat "masak" bukan "coding". Istilah teknis hanya muncul di recap/penjelasan.
+4. **Konsep informatika: hidden during play, explicit during recap** — saat bermain, siswa hanya melihat "masak". Di Recap Konsep, istilah informatika muncul eksplisit dengan pseudo-code. Ini strategi agar juri melihat **kedua sisi**: keseruan gameplay DAN kedalaman keilmuan.
 5. **Gunakan pola yang sama dengan MPI** — arsitektur SPA, config-driven, section-based navigation sudah terbukti berhasil.
+6. **Mode Algoritma = pembeda utama** — fitur toggle yang menampilkan pseudo-code di samping aksi masak. Ini yang membuat game ini BUKAN sekadar cooking game. Pastikan fitur ini terlihat jelas dan bisa diakses kapan saja.
+7. **Recap Konsep wajib ada di setiap level** — halaman recap setelah level selesai harus menampilkan: (a) pseudo-code, (b) istilah informatika eksplisit, (c) "Tahukah Kamu?" kontekstualisasi, (d) mapping ke CP/TP.
+
+---
+
+## ⚠️ Mitigasi Risiko Pengembangan
+
+| Risiko | Dampak | Mitigasi |
+|--------|--------|----------|
+| Level 4 (paralel) terlalu kompleks | Tertunda, bug banyak | Sederhanakan: cukup assign task ke asisten, tidak perlu simulasi real-time penuh. Buat sebagai flowchart drag-drop, bukan animasi paralel |
+| Terlalu banyak aset ilustrasi | Ukuran .zip membengkak | Gunakan SVG + CSS illustration sebanyak mungkin. Ilustrasi bitmap hanya untuk elemen utama (bahan makanan) |
+| Drag & drop tidak work di mobile | Gagal di kriteria lintas perangkat | Selalu gunakan Pointer Events (bukan Mouse Events). Test di touch device SEBELUM polish |
+| Juri tidak lihat "informatikanya" | Skor akurasi keilmuan rendah | Mode Algoritma + Recap Konsep = safety net. Pastikan pseudo-code selalu tersedia |
