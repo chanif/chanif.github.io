@@ -215,9 +215,9 @@ const PAGE_INDEX_MAP = {
   'tujuan': 4,
   'materi-list': 5,
   'materi-1': 6,
-  'video': 7,
-  'tarik-jawaban': 8,
-  'materi-3': 9,
+  'materi-2': 7,
+  'materi-3': 8,
+  'tarik-jawaban': 9,
   'permainan-intro': 10,
   'permainan': 11,
   'latihan-intro': 12,
@@ -225,8 +225,7 @@ const PAGE_INDEX_MAP = {
   'rangkuman': 14,
   'referensi': 15,
   'pengembang': 16,
-  'kutipan': 17,
-  'kredit': 18
+  'kredit': 17
 };
 
 function updateTestingIndicator(pageId) {
@@ -246,16 +245,15 @@ function updateTestingIndicator(pageId) {
   }
 
   const pageNum = PAGE_INDEX_MAP[pageId] || '?';
-  indicator.innerHTML = `<span>Halaman ${pageNum} / 18</span>`;
+  indicator.innerHTML = `<span>Halaman ${pageNum} / 17</span>`;
   indicator.style.display = 'block';
 }
 
 const LINEAR_PAGES = [
   'cover', 'menu', 'petunjuk', 'tujuan', 'materi-list',
-  'materi-1', 'video', 'tarik-jawaban', 'materi-3',
+  'materi-1', 'materi-2', 'materi-3', 'tarik-jawaban',
   'permainan-intro', 'permainan', 'latihan-intro', 'latihan',
-  'rangkuman', 'referensi', 'pengembang',
-  'kutipan', 'kredit'
+  'rangkuman', 'referensi', 'pengembang', 'kredit'
 ];
 
 let currentPage = 'cover';
@@ -295,9 +293,8 @@ function goToPage(pageId) {
   updateGlobalNavButtons(pageId);
 
   // Lazy initialize interactive modules on page entry
-  if (pageId === 'materi-1') switchMateri1Tab(1);
-  if (pageId === 'tarik-jawaban') initDragDrop();
-  if (pageId === 'video') initVideo();
+  if (pageId === 'materi-2') initVideo();
+  if (pageId === 'tarik-jawaban') initMatchP8();
   if (pageId === 'permainan') initPacketCommanderGame();
   if (pageId === 'latihan') {
     const activeSec = document.querySelector('.eval-section.active');
@@ -330,31 +327,37 @@ const JARINGAN_PAGE_NAV_MAP = {
   'materi-list': {
     prevText: 'Tujuan Pembelajaran',
     prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Materi 1: Arsitektur & Hardware',
+    nextText: 'Materi 1: Anatomi Hardware',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
-  'video': {
-    prevText: 'Materi 1: Arsitektur & Hardware',
+  'materi-1': {
+    prevText: 'Daftar Pilihan Materi',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Materi 2: Otak Komputer & Alur Data',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'materi-2': {
+    prevText: 'Materi 1: Anatomi Hardware',
+    prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Materi 3: Sistem Operasi & Kolaborasi',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'materi-3': {
+    prevText: 'Materi 2: Otak Komputer & Alur Data',
     prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Aktivitas: Menjodohkan Hardware',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'tarik-jawaban': {
-    prevText: 'Video Pembelajaran',
+    prevText: 'Materi 3: Sistem Operasi',
     prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Materi 2: Bilangan Biner',
-    nextSub: 'HALAMAN BERIKUTNYA'
-  },
-  'materi-3': {
-    prevText: 'Aktivitas Menjodohkan Hardware',
-    prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Pengantar Simulator Sistem Komputer',
+    nextText: 'Pengantar Simulator Komputer',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'permainan-intro': {
-    prevText: 'Materi 2: Bilangan Biner',
+    prevText: 'Aktivitas: Menjodohkan Hardware',
     prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Mulai Simulator Sistem Komputer',
+    nextText: 'Mulai Simulator Komputer',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'permainan': {
@@ -390,17 +393,11 @@ const JARINGAN_PAGE_NAV_MAP = {
   'pengembang': {
     prevText: 'Referensi & Daftar Pustaka',
     prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Motto / Kutipan Inspirasi',
-    nextSub: 'HALAMAN BERIKUTNYA'
-  },
-  'kutipan': {
-    prevText: 'Profil Pengembang',
-    prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Kredit Media & Hak Cipta',
+    nextText: 'Kredit Media & Penutup',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'kredit': {
-    prevText: 'Motto',
+    prevText: 'Profil Pengembang',
     prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Kembali ke Beranda 🏠',
     nextSub: 'SELESAI PEMBELAJARAN',
@@ -410,10 +407,6 @@ const JARINGAN_PAGE_NAV_MAP = {
 
 function updateGlobalNavButtons(pageId) {
   if (pageId === 'cover') return;
-  if (pageId === 'materi-1') {
-    updateMateri1Nav();
-    return;
-  }
 
   const navInfo = JARINGAN_PAGE_NAV_MAP[pageId];
   if (!navInfo) return;
@@ -461,94 +454,7 @@ function updateGlobalNavButtons(pageId) {
   }
 }
 
-// ==================== MATERI 1 TABBED NAVIGATION ====================
-let currentMateri1Tab = 1;
-
-const MATERI1_TABS = [
-  {
-    tab: 1,
-    prevText: 'Daftar Pilihan Materi',
-    prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: '2. CPU & Memori (RAM vs SSD)',
-    nextSub: 'TAB BERIKUTNYA',
-    isFinish: false
-  },
-  {
-    tab: 2,
-    prevText: '1. Model Von Neumann',
-    prevSub: 'TAB SEBELUMNYA',
-    nextText: '3. Perangkat Lunak (OS & Aplikasi)',
-    nextSub: 'TAB BERIKUTNYA',
-    isFinish: false
-  },
-  {
-    tab: 3,
-    prevText: '2. CPU & Memori (RAM vs SSD)',
-    prevSub: 'TAB SEBELUMNYA',
-    nextText: 'Video: Siklus Mesin CPU 🎬',
-    nextSub: 'SELESAI MATERI',
-    isFinish: true
-  }
-];
-
-function updateMateri1Nav() {
-  const info = MATERI1_TABS.find(t => t.tab === currentMateri1Tab);
-  if (!info) return;
-
-  const prevTextEl = document.getElementById('materi1-prev-text');
-  const prevLabelEl = document.getElementById('materi1-prev-label');
-  const nextTextEl = document.getElementById('materi1-next-text');
-  const nextLabelEl = document.getElementById('materi1-next-label');
-
-  if (prevTextEl) prevTextEl.textContent = info.prevText;
-  if (prevLabelEl) {
-    const sub = prevLabelEl.querySelector('.nml-sub');
-    if (sub) sub.textContent = info.prevSub;
-  }
-
-  if (nextTextEl) nextTextEl.textContent = info.nextText;
-  if (nextLabelEl) {
-    const sub = nextLabelEl.querySelector('.nml-sub');
-    if (sub) sub.textContent = info.nextSub;
-    if (info.isFinish) {
-      nextLabelEl.classList.add('finish');
-    } else {
-      nextLabelEl.classList.remove('finish');
-    }
-  }
-}
-
-function switchMateri1Tab(tabNum) {
-  currentMateri1Tab = tabNum;
-  for (let i = 1; i <= 3; i++) {
-    const btn = document.getElementById(`mtab1-btn-${i}`);
-    const panel = document.getElementById(`mtab1-panel-${i}`);
-    if (btn) {
-      if (i === tabNum) btn.classList.add('active');
-      else btn.classList.remove('active');
-    }
-    if (panel) {
-      if (i === tabNum) panel.classList.add('active');
-      else panel.classList.remove('active');
-    }
-  }
-
-  // Reset scroll to top
-  const box = document.querySelector('#page-materi-1 .content-box');
-  if (box) box.scrollTop = 0;
-
-  updateMateri1Nav();
-}
-
 function navNext() {
-  if (currentPage === 'materi-1') {
-    if (currentMateri1Tab < 3) {
-      switchMateri1Tab(currentMateri1Tab + 1);
-    } else {
-      goToPage('video');
-    }
-    return;
-  }
   const idx = LINEAR_PAGES.indexOf(currentPage);
   if (idx === -1) return;
   if (idx < LINEAR_PAGES.length - 1) {
@@ -557,14 +463,6 @@ function navNext() {
 }
 
 function navPrev() {
-  if (currentPage === 'materi-1') {
-    if (currentMateri1Tab > 1) {
-      switchMateri1Tab(currentMateri1Tab - 1);
-    } else {
-      goToPage('materi-list');
-    }
-    return;
-  }
   const idx = LINEAR_PAGES.indexOf(currentPage);
   if (idx === -1) return;
   if (idx > 0) {
@@ -1765,13 +1663,13 @@ const MATCH_LEFT_DATA = [
   { id: '2', text: 'ALU (Arithmetic Logic Unit)' },
   { id: '3', text: 'RAM (Random Access Memory)' },
   { id: '4', text: 'ROM / BIOS' },
-  { id: '5', text: 'Sistem Bilangan Biner' }
+  { id: '5', text: 'Sistem Operasi (OS)' }
 ];
 
 const MATCH_RIGHT_DATA = [
   { id: 'a', text: 'Memori baca-saja yang menyimpan instruksi booting awal komputer' },
   { id: 'b', text: 'Otak utama komputer pengendali seluruh pemrosesan instruksi' },
-  { id: 'c', text: 'Sistem representasi data digital menggunakan dua simbol: 0 dan 1' },
+  { id: 'c', text: 'Perangkat lunak pengendali seluruh sumber daya hardware dan aplikasi' },
   { id: 'd', text: 'Komponen CPU yang khusus melakukan kalkulasi aritmatika dan logika' },
   { id: 'e', text: 'Memori utama tempat program yang sedang berjalan disimpan sementara' }
 ];

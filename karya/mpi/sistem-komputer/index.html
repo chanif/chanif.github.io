@@ -176,8 +176,8 @@
             <div class="petunjuk-item">
               <div class="nav-mini-num">1</div>
               <div>
-                <strong>Pelajari Materi &amp; Video</strong>
-                <p>Pahami 4 pilar perangkat keras (Von Neumann), perangkat lunak, dan bilangan biner melalui penjelasan visual.
+                <strong>Pelajari 3 Sub-Materi</strong>
+                <p>Pahami anatomi perangkat keras, cara kerja CPU &amp; memori, serta peran sistem operasi melalui penjelasan visual dan video interaktif.
                 </p>
               </div>
             </div>
@@ -185,14 +185,14 @@
               <div class="nav-mini-num">2</div>
               <div>
                 <strong>Mainkan Permainan</strong>
-                <p>Rakit komputer impianmu di lab virtual dan pecahkan sandi sakelar lampu biner 8-bit.</p>
+                <p>Rakit komponen komputer di lab virtual dan amati alur eksekusi siklus mesin CPU.</p>
               </div>
             </div>
             <div class="petunjuk-item">
               <div class="nav-mini-num">3</div>
               <div>
                 <strong>Kerjakan Latihan</strong>
-                <p>Uji pemahamanmu lewat 10 soal evaluasi interaktif dan dapatkan rekapitulasi skormu.</p>
+                <p>Uji pemahamanmu lewat soal evaluasi interaktif dan dapatkan rekapitulasi skormu.</p>
               </div>
             </div>
             <div class="petunjuk-item">
@@ -236,23 +236,19 @@
         <div class="tujuan-list">
           <div class="tujuan-item">
             <span class="tujuan-num">1</span>
-            <span class="tujuan-text">Menjelaskan <strong>arsitektur Von Neumann &amp; mekanisme internal komputer</strong> (interaksi CPU, RAM, ROM, penyimpanan sekunder, dan peranti I/O).</span>
+            <span class="tujuan-text">Mengidentifikasi dan mengelompokkan <strong>4 komponen utama perangkat keras</strong> (peranti masukan, pemroses, penyimpanan, dan keluaran) beserta perannya dalam sistem komputer.</span>
           </div>
           <div class="tujuan-item">
             <span class="tujuan-num">2</span>
-            <span class="tujuan-text">Menjelaskan fungsi dan peran <strong>Sistem Operasi (OS)</strong> dalam mengelola perangkat keras dan menjembatani pengguna dengan program aplikasi.</span>
+            <span class="tujuan-text">Menjelaskan <strong>mekanisme kerja internal komputer</strong> dalam memproses data (interaksi antara CPU, memori utama/RAM, dan media penyimpanan).</span>
           </div>
           <div class="tujuan-item">
             <span class="tujuan-num">3</span>
-            <span class="tujuan-text">Mengilustrasikan <strong>siklus mesin CPU</strong> (<em>Fetch, Decode, Execute, Store</em>) serta perbedaan karakteristik memori utama (<em>volatile</em>) dan penyimpanan sekunder (<em>non-volatile</em>).</span>
+            <span class="tujuan-text">Menganalisis fungsi dan peran <strong>Sistem Operasi (Operating System)</strong> dalam mengelola perangkat keras dan menjembatani pengguna dengan aplikasi serta brainware.</span>
           </div>
           <div class="tujuan-item">
             <span class="tujuan-num">4</span>
-            <span class="tujuan-text">Menganalisis dan mempraktikkan <strong>kodifikasi bilangan biner 8-bit</strong> untuk merepresentasikan angka, kode karakter teks (ASCII), dan warna digital RGB.</span>
-          </div>
-          <div class="tujuan-item">
-            <span class="tujuan-num">5</span>
-            <span class="tujuan-text">Mensimulasikan <strong>perakitan komponen sistem komputer</strong> hingga siap beroperasi serta memahami prosedur penanganan kendala dasar (<em>troubleshooting</em>).</span>
+            <span class="tujuan-text">Mensimulasikan <strong>perakitan komponen sistem komputer</strong> hingga siap beroperasi serta mendiagnosis kendala fungsi dasar (<em>troubleshooting</em>).</span>
           </div>
         </div>
       </div>
@@ -281,52 +277,40 @@
 
       <div class="title-bar">Materi</div>
 
-      <div class="materi-cards" id="materi-cards">
-        <!-- Kartu 1: Teori 1 -->
+      <div class="materi-cards" id="materi-cards" style="grid-template-columns: repeat(3, 1fr);">
+        <!-- Kartu 1: Sub-Materi 1 -->
         <div class="materi-card" onclick="goToPage('materi-1')" id="card-materi1">
           <div class="card-thumb">
-            <span class="card-badge" style="background:#00838F;">📖 Teori 1</span>
-            <img src="assets/router.jpg" alt="Arsitektur Komputer & OS">
+            <span class="card-badge" style="background:#00838F;">🖥️ Bagian 1</span>
+            <img src="assets/router.jpg" alt="Anatomi Perangkat Keras Komputer">
           </div>
           <div class="card-body">
-            <div class="card-title">Arsitektur Komputer &amp; OS</div>
-            <div class="card-desc">Pelajari 4 pilar Von Neumann (Input, Process, Storage, Output) serta fungsi krusial Sistem Operasi.</div>
+            <div class="card-title">Anatomi Perangkat Keras</div>
+            <div class="card-desc">Kenali 4 pilar utama sistem komputer: Masukan, Pemroses, Penyimpanan, dan Keluaran dengan analogi dapur.</div>
           </div>
         </div>
 
-        <!-- Kartu 2: Video -->
-        <div class="materi-card" onclick="goToPage('video')" id="card-video">
+        <!-- Kartu 2: Sub-Materi 2 -->
+        <div class="materi-card" onclick="goToPage('materi-2')" id="card-materi2">
           <div class="card-thumb">
-            <span class="card-badge" style="background:#e65100;">🎬 Siklus Kerja</span>
-            <img src="assets/orange_cat.jpg" alt="Siklus Mesin CPU & Memori">
+            <span class="card-badge" style="background:#e65100;">🧠 Bagian 2</span>
+            <img src="assets/orange_cat.jpg" alt="Otak Komputer & Alur Pemrosesan">
           </div>
           <div class="card-body">
-            <div class="card-title">Siklus Mesin CPU &amp; Memori</div>
-            <div class="card-desc">Saksikan alur kerja pemrosesan instruksi Fetch-Decode-Execute dan interaksi RAM dengan penyimpanan.</div>
+            <div class="card-title">Otak Komputer &amp; Alur Data</div>
+            <div class="card-desc">Pahami cara kerja CPU, siklus mesin Fetch-Decode-Execute, perbedaan RAM vs SSD, serta saksikan video animasi.</div>
           </div>
         </div>
 
-        <!-- Kartu 3: Aktivitas (Tarik Jawaban) -->
-        <div class="materi-card" onclick="goToPage('tarik-jawaban')" id="card-materi2">
-          <div class="card-thumb">
-            <span class="card-badge" style="background:#0288D1;">🧩 Aktivitas</span>
-            <img src="assets/puzzle.jpg" alt="Tarik Jawaban — Klasifikasi Hardware">
-          </div>
-          <div class="card-body">
-            <div class="card-title">Tarik Jawaban: Klasifikasi Hardware</div>
-            <div class="card-desc">Latih pemahamanmu dengan mengelompokkan berbagai peranti keras sesuai kategori fungsinya.</div>
-          </div>
-        </div>
-
-        <!-- Kartu 4: Teori 2 -->
+        <!-- Kartu 3: Sub-Materi 3 -->
         <div class="materi-card" onclick="goToPage('materi-3')" id="card-materi3">
           <div class="card-thumb">
-            <span class="card-badge" style="background:#7b1fa2;">🔢 Teori 2</span>
-            <img src="assets/branch.jpg" alt="Representasi Data & Bilangan Biner">
+            <span class="card-badge" style="background:#0288D1;">⚙️ Bagian 3</span>
+            <img src="assets/branch.jpg" alt="Sistem Operasi & Kolaborasi Sistem">
           </div>
           <div class="card-body">
-            <div class="card-title">Representasi Data &amp; Bilangan Biner</div>
-            <div class="card-desc">Pahami logika transistor listrik, representasi biner 8-bit, serta kodifikasi teks ASCII dan warna.</div>
+            <div class="card-title">Sistem Operasi &amp; Kolaborasi</div>
+            <div class="card-desc">Pelajari peran Sistem Operasi sebagai manajer peranti keras serta sinergi segitiga Hardware, Software, dan Brainware.</div>
           </div>
         </div>
       </div>
@@ -341,181 +325,86 @@
       <div class="nav-bottom right nav-materi-compound">
         <div class="nav-materi-label right" onclick="navNext()">
           <span class="nml-sub">HALAMAN BERIKUTNYA</span>
-          <strong class="nml-main">Materi 1: Arsitektur &amp; Hardware</strong>
+          <strong class="nml-main">Materi 1: Anatomi Hardware</strong>
         </div>
         <button class="nav-arrow" onclick="navNext()" id="btn-materilist-next" title="Selanjutnya">▶</button>
       </div>
     </section>
 
-    <!-- ============================== PAGE 6: MATERI 1 (TABBED MODEL) ============================== -->
+    <!-- ============================== PAGE 6: MATERI 1 (ANATOMI HARDWARE) ============================== -->
     <section id="page-materi-1" class="page">
       <div class="nav-top">
         <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi1-menu">☰</button>
         <span class="nav-label">MENU</span>
       </div>
 
-      <div class="title-bar">Materi 1: Arsitektur &amp; Perangkat Keras Komputer</div>
+      <div class="title-bar">Materi 1: Anatomi Perangkat Keras Komputer</div>
 
       <div class="content-box wide scrollable">
-        <!-- Tab Navigation Bar -->
-        <div class="materi-tabs-nav" id="materi1-tabs-nav">
-          <button class="materi-tab-btn active" onclick="switchMateri1Tab(1)" id="mtab1-btn-1">
-            <span class="mtab-icon">🖥️</span>
-            <span class="mtab-title">1. Model Von Neumann</span>
-          </button>
-          <button class="materi-tab-btn" onclick="switchMateri1Tab(2)" id="mtab1-btn-2">
-            <span class="mtab-icon">🧠</span>
-            <span class="mtab-title">2. CPU &amp; Memori (RAM vs SSD)</span>
-          </button>
-          <button class="materi-tab-btn" onclick="switchMateri1Tab(3)" id="mtab1-btn-3">
-            <span class="mtab-icon">⚙️</span>
-            <span class="mtab-title">3. Perangkat Lunak (OS &amp; Aplikasi)</span>
-          </button>
-        </div>
+        <div class="content-columns">
+          <!-- Kolom Kiri: Konsep & Analogi -->
+          <div class="content-col">
+            <h3>🖥️ 1. Apa Itu Sistem Komputer?</h3>
+            <p>
+              <strong>Sistem Komputer</strong> adalah kombinasi terpadu dari <strong>Perangkat Keras (Hardware)</strong>, <strong>Perangkat Lunak (Software)</strong>, dan <strong>Pengguna (Brainware)</strong> yang bekerja sama mengolah data menjadi informasi berharga.
+            </p>
 
-        <!-- ==================== PANEL TAB 1: MODEL VON NEUMANN ==================== -->
-        <div class="materi-tab-panel active" id="mtab1-panel-1">
-          <div class="content-columns">
-            <!-- Kolom Kiri: Konsep Dasar 4 Pilar -->
-            <div class="content-col">
-              <h3>🖥️ 1. Apa Itu Sistem Komputer?</h3>
-              <p>
-                <strong>Sistem Komputer</strong> adalah kombinasi terpadu dari <strong>Perangkat Keras (Hardware)</strong>, <strong>Perangkat Lunak (Software)</strong>, dan <strong>Pengguna (Brainware)</strong> yang bekerja sama mengolah data menjadi informasi berharga.
+            <h3>🍳 2. Analogi Dapur Restoran</h3>
+            <div class="materi-analogi-box" style="margin-top: 10px;">
+              <p style="margin-bottom:8px;">
+                💡 <strong>Bagaimana Komputer Bekerja Mirip Dapur:</strong>
               </p>
-
-              <h3>🏛️ 2. Arsitektur Von Neumann</h3>
-              <p>
-                Hampir seluruh komputer modern (dari laptop hingga smartphone) mengadopsi <strong>Model Von Neumann</strong> dengan 4 pilar utama:
-              </p>
-
-              <div class="materi-analogi-box">
-                <p>
-                  💡 <strong>Analogi Koki Memasak:</strong> Bahan mentah masuk melalui <em>Input</em>, dimasak oleh koki di <em>CPU</em> menggunakan meja kerja <em>RAM</em> dan lemari bumbu <em>Storage</em>, lalu disajikan di piring <em>Output</em>!
-                </p>
-              </div>
+              <ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.6; color: var(--text-dark);">
+                <li><strong>Masukan (Input):</strong> Pelayan mencatat pesanan pelanggan dari meja.</li>
+                <li><strong>Pemroses (CPU):</strong> Koki meracik bumbu dan memasak bahan makanan.</li>
+                <li><strong>Penyimpanan (Storage/RAM):</strong> Meja racik koki (RAM) dan lemari pendingin bahan baku (SSD/Harddisk).</li>
+                <li><strong>Keluaran (Output):</strong> Piring hidangan lezat siap santap yang disajikan ke meja tamu!</li>
+              </ul>
             </div>
 
-            <!-- Kolom Kanan: 4 Pilar Komponen -->
-            <div class="content-col">
-              <h3>📦 3. Empat Pilar Perangkat Keras</h3>
-              <p>Berikut adalah 4 kelompok perangkat keras dalam sistem komputasi:</p>
-
-              <div class="materi-subcard-list">
-                <!-- 1. Input -->
-                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
-                  <div class="materi-subcard-title" style="color: var(--teal-dark);">⌨️ 1. INPUT DEVICE (Masukan):</div>
-                  <p class="materi-subcard-desc">
-                    Memasukkan data dan instruksi manusia ke dalam komputer. Contoh: <strong>Keyboard, Mouse, Mikrofon, Scanner, dan Layar Sentuh</strong>.
-                  </p>
-                </div>
-
-                <!-- 2. Processing -->
-                <div class="materi-subcard" style="border-color: rgba(2,136,209,0.45);">
-                  <div class="materi-subcard-title" style="color: #0288D1;">🧠 2. PROCESSING DEVICE (Pemroses):</div>
-                  <p class="materi-subcard-desc">
-                    Otak komputer yang melakukan perhitungan logika dan matematika. Contoh: <strong>CPU (Processor), ALU, dan Motherboard</strong>.
-                  </p>
-                </div>
-
-                <!-- 3. Output -->
-                <div class="materi-subcard" style="border-color: rgba(123,31,162,0.45);">
-                  <div class="materi-subcard-title" style="color: #7b1fa2;">🖥️ 3. OUTPUT DEVICE (Keluaran):</div>
-                  <p class="materi-subcard-desc">
-                    Menyajikan hasil pengolahan data agar dapat dipahami manusia. Contoh: <strong>Layar Monitor, Speaker, dan Printer</strong>.
-                  </p>
-                </div>
-              </div>
+            <div class="materi-highlight-box" style="margin-top:16px;">
+              <p>
+                ✨ <strong>Satu Kesatuan:</strong> Jika salah satu bagian hilang, komputer tidak dapat beroperasi normal—sama seperti restoran tanpa koki atau tanpa pelayan!
+              </p>
             </div>
           </div>
-        </div>
 
-        <!-- ==================== PANEL TAB 2: CPU & MEMORI ==================== -->
-        <div class="materi-tab-panel" id="mtab1-panel-2">
-          <div class="content-columns">
-            <!-- Kolom Kiri: Mengenal CPU -->
-            <div class="content-col">
-              <h3>🧠 1. CPU: Otak Sang Komputer</h3>
-              <p>
-                <strong>Central Processing Unit (CPU)</strong> mengeksekusi triliunan instruksi per detik. Di dalamnya terdapat dua unit inti:
-              </p>
-              <p>
-                • <strong>ALU (Arithmetic Logic Unit):</strong> Mesin hitung yang melakukan operasi matematika (+, -, x, /) dan logika (AND, OR, NOT).<br>
-                • <strong>CU (Control Unit):</strong> Dirigen yang mengatur lalu lintas instruksi antar-komponen.
-              </p>
+          <!-- Kolom Kanan: 4 Pilar Komponen -->
+          <div class="content-col">
+            <h3>📦 3. Empat Pilar Perangkat Keras</h3>
+            <p>Setiap perangkat fisik komputer dikelompokkan ke dalam salah satu dari 4 pilar fungsi berikut:</p>
 
-              <div class="materi-highlight-box">
-                <p>
-                  ✨ <strong>Kecepatan Gigahertz (GHz):</strong> Processor 3.5 GHz mampu melakukan 3,5 miliar siklus instruksi dalam 1 detik!
-                </p>
-              </div>
-            </div>
-
-            <!-- Kolom Kanan: RAM vs SSD -->
-            <div class="content-col">
-              <h3>⚡ 2. Pertarungan: RAM vs SSD / Harddisk</h3>
-              <p>Jangan tertukar! Inilah perbedaan mendasar kedua jenis memori ini:</p>
-
-              <div class="materi-subcard-list">
-                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
-                  <div class="materi-subcard-title" style="color: var(--teal-dark);">⚡ RAM (Random Access Memory):</div>
-                  <p class="materi-subcard-desc">
-                    <strong>Volatile (Sementara).</strong> Tempat menampung aplikasi yang sedang aktif dibuka. Saat komputer dimatikan, seluruh data di RAM hilang seketika. Kecepatannya luar biasa tinggi!
-                  </p>
-                </div>
-
-                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
-                  <div class="materi-subcard-title" style="color: var(--teal-dark);">💾 SSD / Harddisk (Penyimpanan):</div>
-                  <p class="materi-subcard-desc">
-                    <strong>Non-Volatile (Permanen).</strong> Lemari berkas untuk menyimpan file tugas, foto, video, dan sistem operasi. Data tetap tersimpan aman walau listrik mati total.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ==================== PANEL TAB 3: PERANGKAT LUNAK (OS & APLIKASI) ==================== -->
-        <div class="materi-tab-panel" id="mtab1-panel-3">
-          <div class="content-columns">
-            <!-- Kolom Kiri: Sistem Operasi -->
-            <div class="content-col">
-              <h3>⚙️ 1. Sistem Operasi (Operating System)</h3>
-              <p>
-                Perangkat keras tanpa software hanyalah tumpukan logam mati. <strong>Sistem Operasi (OS)</strong> adalah perangkat lunak fondasi yang mengelola perangkat keras dan menyediakan antarmuka bagi pengguna.
-              </p>
-
-              <div class="materi-subcard" style="border-color: rgba(2,136,209,0.35); margin-bottom: 10px;">
-                <div class="materi-subcard-title" style="color: #0288D1;">🪟 Contoh Sistem Operasi Populer:</div>
+            <div class="materi-subcard-list">
+              <!-- 1. Input -->
+              <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                <div class="materi-subcard-title" style="color: var(--teal-dark);">⌨️ 1. PERANTI MASUKAN (INPUT):</div>
                 <p class="materi-subcard-desc">
-                  • <strong>Windows &amp; macOS:</strong> Standar di laptop dan komputer meja.<br>
-                  • <strong>Android &amp; iOS:</strong> Standar sistem operasi pada smartphone dan tablet.<br>
-                  • <strong>Linux:</strong> Banyak digunakan untuk server internet dan keamanan data.
+                  Memasukkan data, teks, suara, atau perintah manusia ke komputer. Contoh: <strong>Keyboard, Mouse, Mikrofon, Scanner, dan Layar Sentuh</strong>.
                 </p>
               </div>
-            </div>
 
-            <!-- Kolom Kanan: Perangkat Lunak Aplikasi -->
-            <div class="content-col">
-              <h3>📱 2. Perangkat Lunak Aplikasi</h3>
-              <p>
-                Program yang dirancang spesifik untuk membantu manusia menyelesaikan pekerjaan tertentu:
-              </p>
+              <!-- 2. Processing -->
+              <div class="materi-subcard" style="border-color: rgba(2,136,209,0.45);">
+                <div class="materi-subcard-title" style="color: #0288D1;">🧠 2. PERANTI PEMROSES (CPU / PROCESSOR):</div>
+                <p class="materi-subcard-desc">
+                  Otak pengolah yang mengeksekusi perhitungan logika dan instruksi program. Contoh: <strong>Processor (Intel/AMD/ARM) dan Motherboard</strong>.
+                </p>
+              </div>
 
-              <div class="materi-subcard-list">
-                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
-                  <div class="materi-subcard-title" style="color: var(--teal-dark);">🌐 Aplikasi Penjelajah Web (Browser):</div>
-                  <p class="materi-subcard-desc">Contoh: Chrome, Edge, Firefox untuk berselancar di internet.</p>
-                </div>
+              <!-- 3. Storage -->
+              <div class="materi-subcard" style="border-color: rgba(0,131,143,0.45);">
+                <div class="materi-subcard-title" style="color: #00838F;">💾 3. PERANTI PENYIMPANAN (STORAGE &amp; MEMORY):</div>
+                <p class="materi-subcard-desc">
+                  Menyimpan berkas data dan instruksi sistem, baik sementara maupun permanen. Contoh: <strong>RAM (memori kerja) serta SSD / Harddisk (penyimpanan arsip)</strong>.
+                </p>
+              </div>
 
-                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
-                  <div class="materi-subcard-title" style="color: var(--teal-dark);">📄 Aplikasi Pengolah Kata &amp; Angka:</div>
-                  <p class="materi-subcard-desc">Contoh: Microsoft Word, Excel, Google Docs untuk mengerjakan tugas sekolah.</p>
-                </div>
-
-                <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
-                  <div class="materi-subcard-title" style="color: var(--teal-dark);">🎨 Aplikasi Kreatif &amp; Hiburan:</div>
-                  <p class="materi-subcard-desc">Contoh: Canva, Photoshop, dan game edukasi interaktif.</p>
-                </div>
+              <!-- 4. Output -->
+              <div class="materi-subcard" style="border-color: rgba(123,31,162,0.45);">
+                <div class="materi-subcard-title" style="color: #7b1fa2;">🖥️ 4. PERANTI KELUARAN (OUTPUT):</div>
+                <p class="materi-subcard-desc">
+                  Menyajikan hasil pengolahan data agar dapat dipahami dan dinikmati manusia. Contoh: <strong>Layar Monitor, Speaker, dan Printer</strong>.
+                </p>
               </div>
             </div>
           </div>
@@ -524,64 +413,194 @@
 
       <div class="nav-bottom left nav-materi-compound">
         <button class="nav-arrow" onclick="navPrev()" id="btn-materi1-prev" title="Sebelumnya">◀</button>
-        <div class="nav-materi-label left" id="materi1-prev-label" onclick="navPrev()">
+        <div class="nav-materi-label left" onclick="navPrev()">
           <span class="nml-sub">HALAMAN SEBELUMNYA</span>
-          <strong class="nml-main" id="materi1-prev-text">Daftar Pilihan Materi</strong>
+          <strong class="nml-main">Daftar Pilihan Materi</strong>
         </div>
       </div>
       <div class="nav-bottom right nav-materi-compound">
-        <div class="nav-materi-label right" id="materi1-next-label" onclick="navNext()">
-          <span class="nml-sub">TAB BERIKUTNYA</span>
-          <strong class="nml-main" id="materi1-next-text">2. CPU &amp; Memori (RAM vs SSD)</strong>
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Materi 2: Otak Komputer &amp; Alur Data</strong>
         </div>
         <button class="nav-arrow" onclick="navNext()" id="btn-materi1-next" title="Selanjutnya">▶</button>
       </div>
     </section>
 
-    <!-- ============================== PAGE 7: VIDEO ============================== -->
-    <section id="page-video" class="page">
+    <!-- ============================== PAGE 7: MATERI 2 (CPU, MEMORI & VIDEO) ============================== -->
+    <section id="page-materi-2" class="page">
       <div class="nav-top">
-        <button class="nav-circle" onclick="goToPage('menu')" id="btn-video-menu">☰</button>
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi2-menu">☰</button>
         <span class="nav-label">MENU</span>
       </div>
 
-      <div class="title-bar">Video: Siklus Mesin CPU &amp; Memori</div>
-      <div class="content-box wide">
-        <div class="video-layout">
-          <div class="video-wrapper" id="video-wrapper">
-            <video controls preload="metadata" id="main-video">
-              <source id="main-video-source" src="assets/video/jaringan.mp4" type="video/mp4">
-              Browser kamu tidak mendukung pemutaran video langsung.
-            </video>
-            <div class="video-fallback" id="video-fallback" style="display: none;">
-              <span class="fallback-icon">🎬</span>
-              <p><strong>Video Pembelajaran Belum Tersedia</strong></p>
-              <p style="font-size:14px;color:#94a3b8;margin-top:6px;">Pastikan file video berada di path yang ditentukan pada <code>config.js</code>.</p>
+      <div class="title-bar">Materi 2: Otak Komputer &amp; Alur Pemrosesan Data</div>
+
+      <div class="content-box wide scrollable">
+        <div class="content-columns">
+          <!-- Kolom Kiri: Teori CPU, Siklus Mesin, RAM vs SSD -->
+          <div class="content-col">
+            <h3>🧠 1. CPU: Otak Sang Komputer</h3>
+            <p>
+              <strong>Central Processing Unit (CPU)</strong> mengeksekusi miliaran instruksi per detik. Di dalamnya terdapat unit inti:
+            </p>
+            <p style="font-size:15px;margin-bottom:12px;">
+              • <strong>ALU (Arithmetic Logic Unit):</strong> Mesin hitung yang melakukan operasi matematika (+, -, ×, ÷) dan logika (AND, OR, NOT).<br>
+              • <strong>CU (Control Unit):</strong> Dirigen yang mengatur lalu lintas instruksi antar-komponen.<br>
+              • <strong>Register:</strong> Memori ultra-cepat tepat di dalam prosesor untuk menampung data yang sedang dihitung.
+            </p>
+
+            <h3>🔄 2. Siklus Mesin CPU (Machine Cycle)</h3>
+            <div style="background:var(--white);border-radius:var(--radius-md);padding:12px 16px;margin-bottom:14px;border:2px solid rgba(0,172,193,0.35);">
+              <p style="font-size:14px;margin-bottom:4px;"><strong>1. Fetch (Jemput):</strong> CU mengambil instruksi dari memori RAM.</p>
+              <p style="font-size:14px;margin-bottom:4px;"><strong>2. Decode (Terjemahkan):</strong> CU menguraikan kode perintah.</p>
+              <p style="font-size:14px;margin-bottom:4px;"><strong>3. Execute (Eksekusi):</strong> ALU menjalankan perhitungan instruksi.</p>
+              <p style="font-size:14px;margin-bottom:0;"><strong>4. Store (Simpan):</strong> Hasil dituliskan kembali ke RAM atau layar.</p>
+            </div>
+
+            <h3>⚡ 3. Pertarungan: RAM vs SSD</h3>
+            <div class="materi-subcard-list">
+              <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                <div class="materi-subcard-title" style="color: var(--teal-dark);">⚡ RAM (Random Access Memory):</div>
+                <p class="materi-subcard-desc">
+                  <strong>Volatile (Sementara).</strong> Ruang kerja aplikasi aktif. Data hilang seketika saat listrik padam. Kecepatannya luar biasa tinggi!
+                </p>
+              </div>
+
+              <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                <div class="materi-subcard-title" style="color: var(--teal-dark);">💾 SSD / Harddisk (Penyimpanan):</div>
+                <p class="materi-subcard-desc">
+                  <strong>Non-Volatile (Permanen).</strong> Lemari berkas untuk menyimpan sistem operasi, aplikasi, foto, dan tugas sekolah secara aman.
+                </p>
+              </div>
             </div>
           </div>
-          <div class="video-summary">
-            <h3>🎬 Poin Penting Alur Kerja CPU:</h3>
-            <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:7px; margin-top:15px;border:2px solid rgba(0,172,193,0.25);">
-              <p style="margin-bottom:4px;"><strong>📥 1. Fetch &amp; Decode (Ambil &amp; Terjemahkan)</strong></p>
-              <p style="font-size:15px;color:var(--text-body);margin-bottom:0;">Control Unit (CU) mengambil instruksi dari RAM lalu menguraikan jenis operasinya.</p>
-            </div>
-            <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:7px;border:2px solid rgba(0,172,193,0.25);">
-              <p style="margin-bottom:4px;"><strong>🧠 2. Execute (Eksekusi oleh ALU)</strong></p>
-              <p style="font-size:15px;color:var(--text-body);margin-bottom:0;">Arithmetic Logic Unit (ALU) menghitung angka atau mengeksekusi logika instruksi secepat kilat.</p>
-            </div>
-            <div style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;border:2px solid rgba(0,172,193,0.25);">
-              <p style="margin-bottom:4px;"><strong>💾 3. Store (Simpan ke Memori)</strong></p>
-              <p style="font-size:15px;color:var(--text-body);margin-bottom:0;">Hasil perhitungan dituliskan kembali ke RAM atau dikirimkan ke perangkat keluaran (Monitor).</p>
+
+          <!-- Kolom Kanan: Video Pembelajaran Interaktif -->
+          <div class="content-col">
+            <h3>🎬 4. Video Simulasi Alur Kerja CPU</h3>
+            <p>Saksikan animasi pergerakan data dari input melalui bus sistem menuju CPU dan memori:</p>
+
+            <div class="video-layout" style="display:flex;flex-direction:column;gap:12px;margin-top:6px;">
+              <div class="video-wrapper" id="video-wrapper" style="width:100%;height:240px;">
+                <video controls preload="metadata" id="main-video" style="width:100%;height:100%;border-radius:12px;object-fit:cover;">
+                  <source id="main-video-source" src="assets/video/jaringan.mp4" type="video/mp4">
+                  Browser kamu tidak mendukung pemutaran video langsung.
+                </video>
+                <div class="video-fallback" id="video-fallback" style="display: none;">
+                  <span class="fallback-icon">🎬</span>
+                  <p><strong>Video Pembelajaran Belum Tersedia</strong></p>
+                  <p style="font-size:13px;color:#94a3b8;margin-top:4px;">Pastikan file video berada di path yang ditentukan pada <code>config.js</code>.</p>
+                </div>
+              </div>
+
+              <div class="video-summary" style="padding:12px 14px;background:#f0fdf4;border:2px solid #86efac;border-radius:12px;">
+                <h4 style="margin:0 0 6px 0;font-size:15px;color:#166534;">💡 Fakta Kecepatan Komputer:</h4>
+                <p style="font-size:14px;color:#14532d;margin:0;line-height:1.5;">
+                  Processor modern berkecepatan <strong>3.5 GHz</strong> mampu melakukan <strong>3,5 miliar siklus</strong> perhitungan dalam kurun waktu <strong>satu detik saja!</strong>
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="nav-bottom left nav-materi-compound">
-        <button class="nav-arrow" onclick="navPrev()" id="btn-video-prev" title="Sebelumnya">◀</button>
+        <button class="nav-arrow" onclick="navPrev()" id="btn-materi2-prev" title="Sebelumnya">◀</button>
         <div class="nav-materi-label left" onclick="navPrev()">
           <span class="nml-sub">HALAMAN SEBELUMNYA</span>
-          <strong class="nml-main">Materi 1: Arsitektur &amp; Hardware</strong>
+          <strong class="nml-main">Materi 1: Anatomi Hardware</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Materi 3: Sistem Operasi &amp; Kolaborasi</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-materi2-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 8: MATERI 3 (SISTEM OPERASI & KOLABORASI) ============================== -->
+    <section id="page-materi-3" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi3-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Materi 3: Sistem Operasi &amp; Kolaborasi Sistem</div>
+
+      <div class="content-box wide scrollable">
+        <div class="content-columns">
+          <!-- Kolom Kiri: Peran OS -->
+          <div class="content-col">
+            <h3>⚙️ 1. Apa Itu Sistem Operasi (OS)?</h3>
+            <p>
+              Jika perangkat keras adalah badan/raga, maka <strong>Sistem Operasi (Operating System)</strong> adalah <strong>jiwa/nyawa</strong> yang menggerakkannya. Tanpa OS, laptop tercanggih hanyalah tumpukan logam silikon yang tidak dapat menyala atau menerima perintah.
+            </p>
+
+            <div class="materi-subcard-list" style="margin-top:12px;">
+              <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                <div class="materi-subcard-title" style="color: var(--teal-dark);">🎛️ 1. Manajer Sumber Daya Hardware:</div>
+                <p class="materi-subcard-desc">Mengatur jatah waktu CPU, pembagian ruang memori RAM, dan akses baca/tulis ke media penyimpanan.</p>
+              </div>
+
+              <div class="materi-subcard" style="border-color: rgba(2,136,209,0.45);">
+                <div class="materi-subcard-title" style="color: #0288D1;">🖼️ 2. Antarmuka Grafis (GUI):</div>
+                <p class="materi-subcard-desc">Menyediakan tampilan visual ikon, jendela (windows), dan kursor mouse sehingga komputer ramah digunakan manusia tanpa perlu mengetik baris kode perintah rumit.</p>
+              </div>
+
+              <div class="materi-subcard" style="border-color: rgba(123,31,162,0.45);">
+                <div class="materi-subcard-title" style="color: #7b1fa2;">📱 3. Contoh Sistem Operasi Terkenal:</div>
+                <p class="materi-subcard-desc"><strong>Microsoft Windows, Linux (Ubuntu), macOS</strong> (untuk komputer/laptop), serta <strong>Android dan iOS</strong> (untuk ponsel pintar).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Segitiga Emas Hardware-Software-Brainware -->
+          <div class="content-col">
+            <h3>🔺 2. Segitiga Emas: Sinergi Sistem Komputer</h3>
+            <p>Sistem komputasi tidak akan pernah berhasil jika salah satu dari 3 pilar ini tidak ada:</p>
+
+            <div style="background:#f8fafc;border:2px solid #cbd5e1;border-radius:14px;padding:16px;margin-bottom:14px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                <span style="font-size:24px;">💻</span>
+                <div>
+                  <strong style="color:#0f172a;font-size:15px;">1. Perangkat Keras (Hardware)</strong>
+                  <p style="margin:2px 0 0;font-size:13px;color:#64748b;">Penyedia tenaga fisik dan sirkuit listrik pengolah data.</p>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                <span style="font-size:24px;">💿</span>
+                <div>
+                  <strong style="color:#0288D1;font-size:15px;">2. Perangkat Lunak (Software)</strong>
+                  <p style="margin:2px 0 0;font-size:13px;color:#64748b;">Sistem Operasi + Program Aplikasi yang memuat logika perintah.</p>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <span style="font-size:24px;">🧑‍💻</span>
+                <div>
+                  <strong style="color:#00838F;font-size:15px;">3. Pengguna (Brainware)</strong>
+                  <p style="margin:2px 0 0;font-size:13px;color:#64748b;">Manusia berakal yang memberi tujuan instruksi dan memanfaatkan informasi.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="materi-highlight-box">
+              <p>
+                🔌 <strong>Tahukah Kamu? — Peran Driver Perangkat:</strong><br>
+                Saat mencolokkan printer atau flashdisk baru, OS membutuhkan program kecil bernama <em>Driver</em> sebagai "penerjemah bahasa" antara sistem operasi dan peranti keras baru tersebut!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-materi3-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Materi 2: Otak Komputer &amp; Alur Data</strong>
         </div>
       </div>
       <div class="nav-bottom right nav-materi-compound">
@@ -589,11 +608,11 @@
           <span class="nml-sub">HALAMAN BERIKUTNYA</span>
           <strong class="nml-main">Aktivitas: Menjodohkan Hardware</strong>
         </div>
-        <button class="nav-arrow" onclick="navNext()" id="btn-video-next" title="Selanjutnya">▶</button>
+        <button class="nav-arrow" onclick="navNext()" id="btn-materi3-next" title="Selanjutnya">▶</button>
       </div>
     </section>
 
-    <!-- ============================== PAGE 8: TARIK JAWABAN ============================== -->
+    <!-- ============================== PAGE 9: TARIK JAWABAN (AKTIVITAS) ============================== -->
     <section id="page-tarik-jawaban" class="page">
       <div class="nav-top">
         <button class="nav-circle" onclick="goToPage('menu')" id="btn-tarik-menu">☰</button>
@@ -628,77 +647,7 @@
         <button class="nav-arrow" onclick="navPrev()" id="btn-tarik-prev" title="Sebelumnya">◀</button>
         <div class="nav-materi-label left" onclick="navPrev()">
           <span class="nml-sub">HALAMAN SEBELUMNYA</span>
-          <strong class="nml-main">Video Pembelajaran</strong>
-        </div>
-      </div>
-      <div class="nav-bottom right nav-materi-compound">
-        <div class="nav-materi-label right" onclick="navNext()">
-          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
-          <strong class="nml-main">Materi 2: Bahasa Biner 0 &amp; 1</strong>
-        </div>
-        <button class="nav-arrow" onclick="navNext()" id="btn-tarik-next" title="Selanjutnya">▶</button>
-      </div>
-    </section>
-
-    <!-- ============================== PAGE 9: MATERI 3 (TEORI 2) ============================== -->
-    <section id="page-materi-3" class="page">
-      <div class="nav-top">
-        <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi3-menu">☰</button>
-        <span class="nav-label">MENU</span>
-      </div>
-
-      <div class="title-bar">Materi 2: Bahasa Biner &amp; Representasi Data</div>
-      <div class="content-box wide scrollable">
-        <div class="content-img-text">
-          <div class="content-img-box">
-            <img src="assets/branch.jpg" alt="Ilustrasi Bilangan Biner Komputer">
-          </div>
-          <div>
-            <h3 style="font-family:var(--font-heading);font-size:25px;color:var(--teal-dark);margin-bottom:12px;">Transistor, Bit &amp; Byte, serta Nilai Tempat Pangkat 2</h3>
-            <p style="margin-bottom:12px;font-size:18px;">Komputer menyimpan seluruh foto, lagu, dan teks menggunakan <strong>Bilangan Biner (0 dan 1)</strong>:
-            </p>
-
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
-              <div
-                style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">
-                1. Sinyal Listrik: ON/OFF</div>
-              <div
-                style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">
-                2. 1 Byte = 8 Bit</div>
-              <div
-                style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">
-                3. Bobot Nilai: 128 s.d 1</div>
-              <div
-                style="background:#e0f7fa;border:2px solid var(--teal);border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--teal-dark);">
-                4. Kode Huruf &amp; Warna</div>
-            </div>
-
-            <div
-              style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:10px;border:2px solid rgba(0,172,193,0.3);box-shadow:0 4px 12px var(--shadow-light);">
-              <p style="margin-bottom:2px;font-size:18px;"><strong>💡 1. Transistor Listrik (0 = Mati, 1 = Hidup)</strong></p>
-              <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">Di dalam processor terdapat miliaran transistor sakelar listrik mini. Transistor yang mati bernilai 0, dan yang dialiri arus listrik bernilai 1.</p>
-            </div>
-
-            <div
-              style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:10px;border:2px solid rgba(0,172,193,0.3);box-shadow:0 4px 12px var(--shadow-light);">
-              <p style="margin-bottom:2px;font-size:18px;"><strong>🔢 2. Nilai Tempat 8-Bit (Kelipatan 2)</strong></p>
-              <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">Setiap bit memiliki bobot dari kanan ke kiri: 1, 2, 4, 8, 16, 32, 64, 128. Contoh biner <code>00001010</code> = 8 + 2 = 10 desimal!</p>
-            </div>
-
-            <div
-              style="background:var(--white);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:10px;border:2px solid rgba(0,172,193,0.3);box-shadow:0 4px 12px var(--shadow-light);">
-              <p style="margin-bottom:2px;font-size:18px;"><strong>🎨 3. Mewakili Huruf &amp; Warna Digital</strong></p>
-              <p style="font-size:16px;color:var(--text-body);margin-bottom:0;">Dalam standar kode ASCII, biner <code>01000001</code> mewakili huruf <strong>'A'</strong>. Dan perpaduan 3 Byte biner menghasilkan jutaan spektrum warna RGB di layar monitor!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="nav-bottom left nav-materi-compound">
-        <button class="nav-arrow" onclick="navPrev()" id="btn-materi3-prev" title="Sebelumnya">◀</button>
-        <div class="nav-materi-label left" onclick="navPrev()">
-          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
-          <strong class="nml-main">Aktivitas Menjodohkan Hardware</strong>
+          <strong class="nml-main">Materi 3: Sistem Operasi</strong>
         </div>
       </div>
       <div class="nav-bottom right nav-materi-compound">
@@ -706,7 +655,7 @@
           <span class="nml-sub">HALAMAN BERIKUTNYA</span>
           <strong class="nml-main">Pengantar Simulator Sistem Komputer</strong>
         </div>
-        <button class="nav-arrow" onclick="navNext()" id="btn-materi3-next" title="Selanjutnya">▶</button>
+        <button class="nav-arrow" onclick="navNext()" id="btn-tarik-next" title="Selanjutnya">▶</button>
       </div>
     </section>
 
@@ -723,10 +672,9 @@
 
         <h2 class="sticker-text intro-title">Permainan — Simulator Sistem Komputer</h2>
         <p class="intro-desc">
-          Jadilah teknisi komputer handal! Taklukkan 3 Misi Interaktif:<br>
+          Jadilah teknisi komputer handal! Taklukkan tantangan di lab virtual:<br>
           <strong>Rakit Komputer</strong> (Pasang CPU, RAM, SSD, PSU &amp; Uji Nyala POST),<br>
-          <strong>Sakelar Biner 8-Bit</strong> (Konversi Biner ke Desimal &amp; Teks ASCII),<br>
-          hingga <strong>Siklus Mesin CPU</strong> (Fetch, Decode, Execute, Store)!
+          hingga amati bagaimana <strong>Siklus Mesin CPU</strong> (Fetch, Decode, Execute, Store) memproses data secara real-time!
         </p>
 
         <button class="btn-mulai" onclick="goToPage('permainan')" id="btn-permainan-mulai">
@@ -739,7 +687,7 @@
         <button class="nav-arrow" onclick="navPrev()" id="btn-permainan-intro-prev" title="Sebelumnya">◀</button>
         <div class="nav-materi-label left" onclick="navPrev()">
           <span class="nml-sub">HALAMAN SEBELUMNYA</span>
-          <strong class="nml-main">Materi 2: Bilangan Biner</strong>
+          <strong class="nml-main">Aktivitas Menjodohkan Hardware</strong>
         </div>
       </div>
       <div class="nav-bottom right nav-materi-compound">
@@ -1128,30 +1076,30 @@
             </div>
 
             <div class="mcq-question" data-q="A3">
-              <div class="q-text">3. Dalam sistem biner, representasi bit '1' dan '0' pada komputer secara fisik diwujudkan melalui...</div>
+              <div class="q-text">3. Perangkat lunak yang bertindak sebagai jembatan utama pengelola sumber daya perangkat keras dan penghubung dengan program aplikasi adalah...</div>
               <div class="mcq-options">
                 <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span>
-                  Warna kabel dan jalur sirkuit pada motherboard</div>
+                  Web Browser</div>
                 <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span>
-                  Ada atau tidaknya aliran tegangan listrik pada sakelar mikroskopis transistor</div>
+                  Sistem Operasi (Operating System)</div>
                 <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span>
-                  Kecepatan putaran bilah kipas pendingin CPU</div>
+                  Aplikasi Pengolah Angka</div>
                 <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span>
-                  Ketukan mekanik pada papan ketik (keyboard)</div>
+                  Antivirus</div>
               </div>
             </div>
 
             <div class="mcq-question" data-q="A4">
-              <div class="q-text">4. Bilangan biner 8-bit <code>00001010</code> jika dikonversikan ke dalam bilangan desimal bernilai...</div>
+              <div class="q-text">4. Manakah kelompok perangkat berikut yang semuanya tergolong sebagai Peranti Masukan (Input Device)?</div>
               <div class="mcq-options">
                 <div class="mcq-option" data-val="A" onclick="selectMCQ(this)"><span class="option-letter">A</span>
-                  8</div>
+                  Monitor, Speaker, dan Printer</div>
                 <div class="mcq-option" data-val="B" onclick="selectMCQ(this)"><span class="option-letter">B</span>
-                  10 (karena 8 + 2 = 10)</div>
+                  Keyboard, Mouse, dan Scanner</div>
                 <div class="mcq-option" data-val="C" onclick="selectMCQ(this)"><span class="option-letter">C</span>
-                  12</div>
+                  Processor, RAM, dan Motherboard</div>
                 <div class="mcq-option" data-val="D" onclick="selectMCQ(this)"><span class="option-letter">D</span>
-                  16</div>
+                  Harddisk, Flashdisk, dan SSD</div>
               </div>
             </div>
 
@@ -1195,7 +1143,7 @@
             </div>
 
             <div class="tf-question" data-q="B3">
-              <div class="q-text">3. Satu Byte data digital terdiri dari kombinasi 8 digit biner (Bit).</div>
+              <div class="q-text">3. Sistem Operasi (seperti Windows, Linux, atau Android) bertugas mengatur alokasi memori kerja dan waktu prosesor bagi aplikasi yang aktif.</div>
               <div class="tf-buttons">
                 <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
                 <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
@@ -1203,7 +1151,7 @@
             </div>
 
             <div class="tf-question" data-q="B4">
-              <div class="q-text">4. Bilangan biner <code>00000100</code> jika dikonversi bernilai desimal 8.</div>
+              <div class="q-text">4. Media penyimpanan sekunder SSD memiliki kecepatan transfer data yang lebih tinggi dibandingkan memori kerja RAM.</div>
               <div class="tf-buttons">
                 <button class="tf-btn" data-val="benar" onclick="selectTF(this)">Benar</button>
                 <button class="tf-btn" data-val="salah" onclick="selectTF(this)">Salah</button>
@@ -1290,15 +1238,15 @@
         <div class="rangkuman-points">
           <div class="rangkuman-point">
             <span class="rp-icon">🖥️</span>
-            <span class="rp-text"><strong>Arsitektur Von Neumann</strong> membagi komputer menjadi 3 pilar: Perangkat Masukan (Input), Unit Pemroses (CPU) &amp; Memori Utama, serta Perangkat Keluaran (Output).</span>
+            <span class="rp-text"><strong>4 Pilar Komponen Sistem Komputer</strong>: Sistem komputer terdiri dari Perangkat Masukan (Input), Pemroses (CPU), Penyimpanan (Storage/RAM), dan Perangkat Keluaran (Output) yang bekerja saling terhubung.</span>
           </div>
           <div class="rangkuman-point">
             <span class="rp-icon">⚙️</span>
             <span class="rp-text"><strong>CPU dan Memori</strong> bekerja secara harmonis dalam siklus mesin (Fetch, Decode, Execute, Store). RAM menyediakan ruang kerja cepat sementara, dan SSD menyimpan data permanen.</span>
           </div>
           <div class="rangkuman-point">
-            <span class="rp-icon">💡</span>
-            <span class="rp-text"><strong>Dunia Digital Berbasis Biner</strong>. Seluruh data kompleks (teks, audio, gambar resolusi tinggi) pada tingkat sirkuit terdalam tersusun dari kombinasi bit 0 dan 1 pada sakelar transistor.</span>
+            <span class="rp-icon">🌐</span>
+            <span class="rp-text"><strong>Sistem Operasi sebagai Nyawa Komputer</strong>: Tanpa Sistem Operasi, komputer tidak dapat digunakan. OS menjembatani interaksi antara komponen fisik hardware, program aplikasi, dan pengguna (Brainware).</span>
           </div>
         </div>
 
@@ -1435,80 +1383,13 @@
       <div class="nav-bottom right nav-materi-compound">
         <div class="nav-materi-label right" onclick="navNext()">
           <span class="nml-sub">HALAMAN BERIKUTNYA</span>
-          <strong class="nml-main">Motto / Kutipan Inspirasi</strong>
+          <strong class="nml-main">Kredit Media &amp; Penutup</strong>
         </div>
         <button class="nav-arrow" onclick="navNext()" id="btn-pengembang-next" title="Selanjutnya">▶</button>
       </div>
     </section>
 
-    <!-- ============================== PAGE 17: KUTIPAN/MOTTO ============================== -->
-    <section id="page-kutipan" class="page">
-      <div class="nav-top">
-        <button class="nav-circle" onclick="goToPage('menu')" id="btn-kutipan-menu">☰</button>
-        <span class="nav-label">MENU</span>
-      </div>
-
-      <div class="content-box wide kutipan-container"
-        style="min-height:640px;height:640px;justify-content:center;align-items:center;text-align:center;position:relative;">
-        <div class="kutipan-card-hero">
-          <div class="kutipan-quote-mark left">“</div>
-          <div class="kutipan-quote-mark right">”</div>
-
-          <h2 class="kutipan-text">BERKARYA UNTUK NEGERI MELALUI DIGITALISASI PEMBELAJARAN INOVATIF BERDAMPAK</h2>
-
-          <div class="kutipan-divider">
-            <span class="kd-line"></span>
-            <span class="kd-star">✦ 🌟 ✦</span>
-            <span class="kd-line"></span>
-          </div>
-
-          <p class="kutipan-subtag">— Bersama Memajukan Pendidikan Indonesia yang Bermutu dan Berkarakter —</p>
-        </div>
-
-        <div class="kutipan-pillars-row">
-          <div class="kutipan-pillar-card">
-            <div class="pillar-icon-box p-cyan">💡</div>
-            <div class="pillar-content">
-              <h4>Inovatif &amp; Kreatif</h4>
-              <p>Mendorong pembelajaran interaktif pemahaman arsitektur dan sistem digital</p>
-            </div>
-          </div>
-
-          <div class="kutipan-pillar-card">
-            <div class="pillar-icon-box p-gold">🎯</div>
-            <div class="pillar-content">
-              <h4>Bermutu &amp; Relevan</h4>
-              <p>Menyajikan materi esensial sesuai kurikulum masa depan</p>
-            </div>
-          </div>
-
-          <div class="kutipan-pillar-card">
-            <div class="pillar-icon-box p-green">🌟</div>
-            <div class="pillar-content">
-              <h4>Karakter Berdaya</h4>
-              <p>Membentuk generasi pembelajar mandiri dan bernalar kritis</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="nav-bottom left nav-materi-compound">
-        <button class="nav-arrow" onclick="navPrev()" id="btn-kutipan-prev" title="Sebelumnya">◀</button>
-        <div class="nav-materi-label left" onclick="navPrev()">
-          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
-          <strong class="nml-main">Profil Pengembang</strong>
-        </div>
-      </div>
-      <div class="nav-bottom right nav-materi-compound">
-        <div class="nav-materi-label right" onclick="navNext()">
-          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
-          <strong class="nml-main">Kredit Media &amp; Hak Cipta</strong>
-        </div>
-        <button class="nav-arrow" onclick="navNext()" id="btn-kutipan-next" title="Selanjutnya">▶</button>
-      </div>
-    </section>
-
-    <!-- ============================== PAGE 18: KREDIT/PENUTUP ============================== -->
+    <!-- ============================== PAGE 17: KREDIT/PENUTUP ============================== -->
     <section id="page-kredit" class="page">
       <div class="nav-top">
         <button class="nav-circle" onclick="goToPage('cover')" id="btn-kredit-beranda">🏠</button>
@@ -1545,7 +1426,7 @@
         <button class="nav-arrow" onclick="navPrev()" id="btn-kredit-prev" title="Sebelumnya">◀</button>
         <div class="nav-materi-label left" onclick="navPrev()">
           <span class="nml-sub">HALAMAN SEBELUMNYA</span>
-          <strong class="nml-main">Motto</strong>
+          <strong class="nml-main">Profil Pengembang</strong>
         </div>
       </div>
     </section>
