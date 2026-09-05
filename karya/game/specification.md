@@ -1,32 +1,13 @@
-# 🍳 Chef Algorithm — Petualangan Masak Digital
+# 🍳 Chef Algorithm — Lomba Masak Digital
 
 ## Gim Edukasi untuk Festival Biru Putih 2026
 
-**Tagline:** *"Susun resep lezatmu, pahami rahasia komputasi di baliknya!"*
+**Tagline:** *"Susun resep, atur langkah, sajikan tepat waktu!"*
 
 **Mata Pelajaran:** Informatika  
 **Fase/Kelas:** Fase D (Kelas VII–IX SMP)  
 **Elemen CP:** Algoritma & Pemrograman (AP) + Berpikir Komputasional (BK)  
 **Kreator:** Chanif Fanani, S.Pd.  
-**Inspirasi Karya Penyelenggara:** Mengadopsi prinsip desain dari karya resmi Kemendikdasmen (*Ular Tangga Edukasi*) — interaktif, visual ceria, kaya animasi & ikon, serta bahasa yang ramah orang awam.
-
----
-
-## 🌟 Benchmark & Rujukan Resmi Penyelenggara
-
-Sebagai acuan standar kualitas yang disukai juri dan penyelenggara lomba, rancangan gim ini menelaah dan mengadopsi kekuatan dari karya resmi Kemendikdasmen:  
-🔗 **Rujukan:** `https://cdn.murid.kemendikdasmen.go.id/konten-interaktif/UlarTangga_1f4da2ba3531250a27f8353457180581/index.html`
-
-### 💡 Poin-Poin Kunci yang Diadopsi:
-1. **Penuh Ikon & Emoticon Visual (Icon-Rich UI):** Tidak ada tombol atau informasi yang hanya berupa teks kaku. Semua elemen dilengkapi ikon ekspresif (👨‍🍳, 🍳, 🔪, 🧂, 🍲, ⏱️, 🏆, ⭐, 💡, 📜) sehingga ramah anak dan menarik sejak detik pertama.
-2. **Bahasa Ramah & Mudah Dipahami (Awam-Friendly):** Istilah komputasi disajikan secara kontekstual dengan padanan bahasa sehari-hari yang renyah dan santai, bukan jargon teoritis yang membosankan.
-3. **Animasi Hidup & Dinamis (Lively Micro-Animations):**
-   - Efek lentur/bounce saat menekan tombol dan memindahkan bahan.
-   - Efek goyang (shake) lembut disertai tips penyemangat saat langkah belum tepat.
-   - Efek partikel, uap panas berputar, kilauan bintang, dan hujan kembang api (confetti) saat berhasil menyelesaikan misi.
-   - *Progress bar* dan indikator langkah dengan garis transisi warna dinamis.
-4. **Alur Bertahap yang Rapi:** Setup profil/karakter chef yang menyenangkan ➔ Panduan ringkas ➔ Panggung game interaktif ➔ Modal kemenangan yang membanggakan.
-5. **Feedback Audio-Visual Spontan:** Setiap sentuhan menghasilkan respons suara dan visual yang memuaskan (*satisfying click, sizzle, ding, fanfare*).
 
 ---
 
@@ -34,238 +15,364 @@ Sebagai acuan standar kualitas yang disukai juri dan penyelenggara lomba, rancan
 
 ### A. Definisi & Karakteristik (BAB III Juknis)
 
-- Gim Edukasi = bahan ajar yang mengintegrasikan gamifikasi untuk mendukung pencapaian tujuan pembelajaran.
-- Memiliki **alur penyelesaian misi (pathway)** yang jelas dan terstruktur dari awal hingga akhir.
-- Terdapat **instruksi awal yang jelas**, **sistem skor/bintang**, dan **hasil akhir** apresiatif.
-- Interaksi bervariasi: drag & drop bahan masak, percabangan interaktif, susun blok pengulangan, pembagian tugas asisten.
+- Gim Edukasi = bahan ajar yang mengintegrasikan gamifikasi untuk mendukung pencapaian tujuan pembelajaran
+- Memiliki **alur penyelesaian misi (pathway)** yang jelas dari awal hingga akhir
+- Terdapat **instruksi awal**, **sistem skor/poin**, dan **hasil akhir** yang ditampilkan jelas
+- Eksplorasi berbasis konsep keilmuan tertentu
+- Interaksi berupa: drag & drop, puzzle, menjodohkan, atau mekanisme permainan lainnya
 
 ### B. Struktur & Komponen Wajib
 
-| # | Komponen | Implementasi di Chef Algorithm |
-|---|----------|--------------------------------|
-| 1 | **Laman Muka** | Cover ceria: judul bernuansa dapur digital, profil chef, tujuan pembelajaran, tombol MULAI 🚀 |
-| 2 | **Panduan Bermain** | Tutorial interaktif bergambar dengan bahasa sederhana & ilustrasi animasi |
-| 3 | **Aktivitas/Misi** | 4 Level tantangan memasak kuliner Nusantara yang seru & bermakna |
-| 4 | **Misi (Pathway)** | Peta jalur dapur bertahap: *Dapur Pemula* ➔ *Dapur Kafe* ➔ *Katering Pesta* ➔ *Dapur Restoran Bintang 5* |
-| 5 | **Indikator Progres** | Level aktif, perolehan bintang (⭐), waktu tersisa (⏱️), dan status masakan |
-| 6 | **Hasil Akhir** | Modal kemenangan meriah: skor akumulasi, lencana gelar Chef, ulasan konsep, dan tombol main lagi 🏆 |
+| # | Komponen | Keterangan |
+|---|----------|------------|
+| 1 | **Laman Muka** | Halaman pembuka: judul gim, tujuan pembelajaran, tombol mulai yang jelas |
+| 2 | **Panduan** | Instruksi/tutorial cara bermain SEBELUM memulai gim utama |
+| 3 | **Aktivitas/Misi** | Aktivitas atau misi permainan yang relevan dengan materi pembelajaran |
+| 4 | **Misi (Pathway)** | Alur penyelesaian misi yang jelas dan terstruktur |
+| 5 | **Indikator Progres** | Level, nyawa, jumlah misi tersisa, poin, atau progress bar |
+| 6 | **Hasil Akhir** | Tampilan hasil akhir atau skor yang jelas sebagai apresiasi pencapaian |
 
 ### C. Mekanisme Permainan Wajib
 
-| # | Aspek | Standar Juknis & Implementasi |
-|---|-------|-------------------------------|
-| 1 | **Minimal Tantangan** | ≥ 3 level (Disediakan **4 Level Misi Bertahap**) |
-| 2 | **Jenis Gamifikasi** | Misi berbasis skenario nyata di dapur resto dengan tantangan waktu dan akurasi |
-| 3 | **Mekanisme Dinamis** | Drag & drop bahan, sambung kartu logika, slider putaran porsi, dan manajemen tim |
-| 4 | **Navigasi Intuitif** | Tombol selalu berlabel jelas dengan ikon, dapat mengulang level tanpa error |
+| # | Aspek | Standar |
+|---|-------|---------|
+| 1 | **Minimal Tantangan** | ≥ 3 interaksi/tantangan relevan (3 level berbeda / 3 misi) |
+| 2 | **Jenis Gamifikasi** | Berbasis peristiwa, tantangan, eksplorasi kontekstual, pemecahan masalah |
+| 3 | **Mekanisme Dinamis** | Drag & drop, fill in the blank, mencocokkan, mengurutkan, menghubungkan, memilih jawaban |
+| 4 | **Navigasi Intuitif** | Pengguna bisa memahami langkah berikutnya secara mandiri |
 
 ### D. Umpan Balik & Reward Wajib
 
-| # | Aspek | Standar Juknis & Implementasi |
-|---|-------|-------------------------------|
-| 1 | **Respons Instan** | Efek suara mendesis (sizzle), potongan pisau (chop), dan visual kompor menyala real-time |
-| 2 | **Penghargaan** | Bintang emas (⭐ 1–3), piala pencapaian, gelar chef kehormatan |
-| 3 | **Hasil Akhir** | Kartu rapor chef yang memotivasi + rangkuman fakta unik teknologi |
+| # | Aspek | Standar |
+|---|-------|---------|
+| 1 | **Respons Instan** | Setiap interaksi → respons langsung (visual dan/atau audio) |
+| 2 | **Penghargaan** | Sistem reward yang mendorong melanjutkan permainan |
+| 3 | **Hasil Akhir** | Skor/hasil akhir ditampilkan jelas sebagai apresiasi |
 
-### E. Fungsionalitas & Format File (Kepatuhan Penuh)
+### E. Fungsionalitas & Stabilitas Wajib
+
+| # | Aspek | Standar |
+|---|-------|---------|
+| 1 | **Bug-free** | Berjalan lancar tanpa kesalahan, tidak ada tautan mati, transisi antar-level mulus |
+| 2 | **Waktu Muat** | ≤ 5 detik per level |
+| 3 | **Lintas Perangkat** | Berfungsi di laptop, tablet, dan smartphone |
+| 4 | **Audio Visual** | Animasi & suara memperkuat suasana, tidak berlebihan |
+| 5 | **Konsistensi Visual** | Elemen visual konsisten, kontras tinggi, teks mudah dibaca |
+| 6 | **Rasio Layar** | **16:9** |
+
+### F. Format & Spesifikasi File
 
 | # | Aspek | Spesifikasi |
 |---|-------|-------------|
-| 1 | Format Aplikasi | HTML5 (SPA — Single Page Application) |
-| 2 | Rasio Layar | **16:9** (Optimal di laptop/proyektor, tetap fleksibel di tablet & smartphone) |
-| 3 | Kecepatan Muat | ≤ 3 detik (ringan, tanpa lag, bebas ketergantungan luar) |
-| 4 | Dependensi | **100% Offline** (Hanya HTML, CSS, JavaScript lokal; font & ikon lokal/SVG; tanpa CDN) |
-| 5 | Paket Pengumpulan | File .ZIP ≤ 150 MB (Target sangat ringkas: < 20 MB) |
-| 6 | Dokumen Pendukung | Panduan Penggunaan (PDF) + Video Demo Gameplay (MP4 ≤ 3 Menit) — **WAJIB** |
+| 1 | Format | HTML5 (SPA — Single Page Application) |
+| 2 | Pengumpulan | .ZIP dengan struktur folder jelas |
+| 3 | Ukuran | ≤ 150 MB (termasuk semua aset, panduan, video demo) |
+| 4 | File Panduan | PDF berisi panduan penggunaan (user guide) — **WAJIB** |
+| 5 | Video Demo | Maksimal 3 menit, format MP4 — **WAJIB** |
+| 6 | Dependensi | Hanya HTML, CSS, JavaScript standar. **TANPA plugin/URL eksternal** |
+| 7 | Entry point | `index.html` di root directory .zip |
+| 8 | Redirect | **TIDAK BOLEH** redirect ke halaman lain |
+
+### G. Kriteria Penilaian
+
+| Aspek | Bobot | Indikator |
+|-------|-------|-----------|
+| **Substansi** | **60%** | Kesesuaian Kurikulum (15%), Akurasi Keilmuan (15%), Kedalaman Materi (10%), Kemandirian Belajar (10%), Asesmen Terintegrasi (10%) |
+| **Media** | **25%** | Fungsionalitas Gim (8%), Kualitas Visual & Audio (5%), Mekanisme Permainan (4%), Sistem Umpan Balik (4%), Navigasi & Instruksi (4%) |
+| **Inovasi & Kreativitas** | **15%** | Orisinalitas (5%), Kontekstualisasi (5%), Daya Tarik (5%) |
+
+### H. Ketentuan Umum
+
+- ✅ Karya **orisinal**, belum pernah dipublikasikan
+- ✅ Tidak mengandung unsur SARA, pornografi, politik
+- ✅ Aset AI-generated harus dituliskan keterangan + dokumen prompting
+- ✅ Aset eksternal harus royalty-free atau CC BY-SA 4.0 (dicantumkan sumbernya)
+- ✅ Tidak ada watermark selain logo instansi dan logo Kemendikdasmen
+- ✅ Logo Kemendikdasmen (Tut Wuri Handayani) **boleh** dicantumkan
 
 ---
 
-## 🗣️ Glosarium Istilah: Dari Konsep Kaku Menjadi Bahasa Akrab
+## 🎮 Desain Game
 
-Agar gim terasa **menyenangkan, ramah anak, dan mudah dipahami orang awam**, seluruh istilah komputasi disajikan dalam dua lapisan: bahasa sehari-hari saat bermain, dan bahasa keilmuan saat sesi ulasan konsep.
+### Konsep Utama
 
-| Istilah Kaku Informatika | Bahasa Akrab di Gim (Mudah Dipahami) | Penjelasan Simpel untuk Siswa/Orang Awam |
-|--------------------------|--------------------------------------|-----------------------------------------|
-| **Algoritma Sekuensial** | 📋 **Langkah Berurutan (Resep Rapi)** | Memasak harus runtut satu per satu. Kalau bumbu belum ditumis tapi nasi sudah masuk, rasanya jadi aneh! |
-| **Logika Kondisional (IF-ELSE)** | 🔀 **Pilihan Selera (Jika ... Maka ...)** | Menyesuaikan masakan dengan pesanan tamu. *JIKA* tamu vegetarian, *MAKA* ganti daging dengan tahu gurih! |
-| **Perulangan (Looping / Iterasi)** | 🔁 **Putaran Kilat (Otomatis & Cepat)** | Memasak 10 porsi tidak perlu menulis resep 10 kali. Cukup gunakan perintah: *Ulangi 10 kali*! |
-| **Dekomposisi Masalah** | 🧩 **Bagi Tugas (Kerja Bareng Tim)** | Mengerjakan pesanan besar sekaligus itu bikin pusing. Pecah jadi tugas kecil: satu orang cuci, satu potong, satu masak! |
-| **Debugging / Error Handling** | 🔍 **Cek Resep & Perbaiki Masakan** | Mencari tahu mengapa masakan gosong atau tumpah, lalu membetulkan urutan yang keliru! |
+**Analogi:** Resep masak = Algoritma. Siswa bermain sebagai chef digital yang harus menyelesaikan misi memasak menggunakan konsep informatika secara natural.
 
----
+**Gaya Visual:** MasterChef-style competition — dapur profesional, bahan-bahan colorful, animasi memasak.
 
-## 🎮 Rancang Bangun 4 Misi Permainan
+### 🧠 Fitur Pembeda: "Mode Algoritma" (Toggle View)
 
-Setiap misi mengombinasikan visual dapur interaktif di sisi kiri dengan panel instruksi dan aksi di sisi kanan (gaya split-screen 16:9 yang rapi).
+> **Ini yang membuat Chef Algorithm BUKAN sekadar cooking game.**
+
+Di setiap level, setelah siswa menyelesaikan tantangan masak, tersedia tombol **"🔍 Lihat Algoritmanya"** yang menampilkan pseudo-code dari apa yang baru saja mereka lakukan:
 
 ```
-+-----------------------------------------------------------------------------------+
-| 👨‍🍳 CHEF ALGORITHM    [Level 1: Nasi Goreng Juara]   ⭐ ⭐ ⭐   ⏱️ 01:45   🔊 [ON] |
-+---------------------------------------------------+-------------------------------+
-|                                                   | 📋 PANEL MISI & INSTRUKSI     |
-|             PANGGUNG DAPUR INTERAKTIF             |                               |
-|                                                   | "Yuk susun langkah memasak    |
-|   +-------------------------------------------+   |  nasi goreng yang benar!"     |
-|   |  🍳 Kompor & Wajan (Animasi Uap & Api)     |   |                               |
-|   |                                           |   | 💡 Tips Chef:                 |
-|   |  [ Slot 1 ] -> [ Slot 2 ] -> [ Slot 3 ]   |   | Tumis bumbu dulu sebelum      |
-|   |                                           |   | memasukkan nasi ya!           |
-|   +-------------------------------------------+   |                               |
-|                                                   | 🔘 [ Cek Masakan 🍳 ]         |
-|   Bahan & Aksi (Dapat Digeser/Diklik):            | 🔍 [ Intip Kode Rahasia 💻 ]  |
-|   [ 🧅 Bumbu ] [ 🍚 Nasi ] [ 🔪 Potong ]         |                               |
-|   [ 🍳 Tumis ] [ 🍽️ Piring ]                     | 📜 Catatan Masak:             |
-|                                                   | > Bumbu sudah disiapkan...    |
-+---------------------------------------------------+-------------------------------+
+// Level 1 — Setelah siswa menyusun urutan masak:
+ALGORITMA Nasi_Goreng
+  LANGKAH 1: Cuci bahan
+  LANGKAH 2: Potong bawang
+  LANGKAH 3: Tumis bumbu
+  LANGKAH 4: Masukkan nasi
+  LANGKAH 5: Aduk rata
+  LANGKAH 6: Sajikan
+
+// Level 2 — Setelah siswa memilih cabang resep:
+JIKA tamu = vegetarian MAKA
+  bahan ← tahu
+JIKA TIDAK MAKA
+  bahan ← ayam
+
+// Level 3 — Setelah siswa menggunakan loop:
+ULANGI 10 KALI
+  masak(nasi_goreng)
+  sajikan()
 ```
 
+**Mengapa ini kritis:**
+- Mengatasi kelemahan "ini belajar masak atau coding?" — juri langsung lihat: **"Oh, ini mengajarkan algoritma!"**
+- Meningkatkan skor **Akurasi Keilmuan** (15%) secara signifikan
+- Meningkatkan **Orisinalitas** — tidak ada cooking game lain yang punya dual-view seperti ini
+- Siswa mendapat **"aha moment"**: "Ternyata tadi aku sudah membuat algoritma!"
+
+### 📚 Pemetaan CP & TP Informatika
+
+| Level | Elemen CP | Tujuan Pembelajaran (TP) |
+|-------|-----------|-------------------------|
+| 1 | AP (Algoritma & Pemrograman) | Peserta didik mampu menyusun langkah-langkah penyelesaian masalah secara **sekuensial** (berurutan) |
+| 2 | AP + BK | Peserta didik mampu menggunakan **logika kondisional** (JIKA-MAKA) untuk membuat keputusan berdasarkan kondisi |
+| 3 | AP | Peserta didik mampu mengidentifikasi pola berulang dan menggunakan **perulangan (loop)** untuk efisiensi |
+| 4 | BK (Berpikir Komputasional) | Peserta didik mampu **mendekomposisi** masalah kompleks menjadi sub-masalah yang lebih sederhana |
+
+### 🌍 Kontekstualisasi "Tahukah Kamu?"
+
+Di setiap Recap Konsep, tampilkan fakta menarik yang menghubungkan konsep dengan kehidupan nyata:
+
+| Level | Tahukah Kamu? |
+|-------|---------------|
+| 1 | "Aplikasi ojek online seperti Gojek & Grab menggunakan **algoritma sekuensial** untuk menentukan langkah-langkah dari menerima order → navigasi → ambil makanan → antar ke pelanggan." |
+| 2 | "Instagram menggunakan **logika IF-ELSE** ratusan kali per detik: JIKA usia < 13 → tolak pendaftaran. JIKA postingan mengandung kekerasan → hapus otomatis." |
+| 3 | "Spotify memutar **loop** 30 juta lagu setiap hari untuk 500 juta pengguna. Tanpa loop, programmer harus menulis kode untuk setiap lagu satu per satu!" |
+| 4 | "Tim pengembang Minecraft **mendekomposisi** game raksasa mereka menjadi modul kecil: modul terrain, modul crafting, modul monster — masing-masing dikerjakan tim berbeda secara paralel." |
+
+### Alur Permainan (4 Level)
+
+#### Level 1: **Susun Resep Nasi Goreng** 🥉
+| Aspek | Detail |
+|-------|--------|
+| **Misi** | Drag & drop langkah masak ke urutan yang benar |
+| **Langkah** | Cuci bahan → Potong → Tumis bumbu → Masukkan nasi → Aduk → Sajikan |
+| **Mekanisme** | Drag & drop kartu langkah ke slot urutan |
+| **Konsep Informatika** | **Algoritma sekuensial** — urutan langkah penting, tukar urutan = gagal |
+| **Feedback** | ✅ Urutan benar → animasi masak step-by-step. ❌ Salah → efek gagal + penjelasan |
+| **Skor** | Bintang berdasarkan jumlah percobaan (1× = ⭐⭐⭐, 2× = ⭐⭐, 3× = ⭐) |
+| **Recap Konsep** | Setelah selesai: tampilkan pseudo-code + "Tahukah Kamu?" + tombol Mode Algoritma |
+
+#### Level 2: **Resep Bercabang** 🥈
+| Aspek | Detail |
+|-------|--------|
+| **Misi** | Masak untuk tamu dengan preferensi berbeda |
+| **Skenario** | "JIKA tamu vegetarian → pakai tahu. JIKA TIDAK → pakai ayam." |
+| **Mekanisme** | Flowchart visual — siswa pilih cabang yang benar dari IF-ELSE diagram |
+| **Konsep Informatika** | **Logika kondisional IF-ELSE** — keputusan berdasarkan kondisi |
+| **Feedback** | ✅ Cabang benar → tamu senang + bintang. ❌ Salah → tamu kecewa + penjelasan |
+| **Variasi** | 3 skenario berbeda (vegetarian, alergi, porsi diet) |
+| **Recap Konsep** | Setelah selesai: flowchart berubah jadi pseudo-code IF-ELSE + contoh nyata dari aplikasi sehari-hari |
+
+#### Level 3: **Masak 10 Porsi Efisien** 🥇
+| Aspek | Detail |
+|-------|--------|
+| **Misi** | Punya resep 1 porsi. Harus masak 10 porsi tanpa menulis ulang 10×. |
+| **Mekanisme** | Siswa menyusun "resep otomatis" menggunakan blok ULANGI (loop) |
+| **Konsep Informatika** | **Perulangan / Loop** — efisiensi dengan repetisi |
+| **Feedback** | Counter animasi: porsi 1 selesai... porsi 2... sampai 10 |
+| **Bonus** | Bisa set jumlah porsi sendiri (5, 10, 20) — lihat loop berjalan |
+| **Recap Konsep** | Bandingkan: menulis 10× vs ULANGI(10) — berapa "baris kode" yang dihemat? + contoh loop di kehidupan nyata |
+
+#### Level 4: **Tantangan Waktu — 3 Menu Sekaligus!** 🏆
+| Aspek | Detail |
+|-------|--------|
+| **Misi** | 3 menu harus selesai sebelum timer habis. Terlalu banyak untuk 1 orang! |
+| **Mekanisme** | Pecah tugas ke 3 asisten: assign "cuci", "potong", "masak" → jalankan paralel |
+| **Konsep Informatika** | **Dekomposisi & paralelisme** — pecah masalah besar jadi bagian kecil |
+| **Feedback** | Animasi 3 asisten bekerja bersamaan → timer countdown → selesai/gagal |
+| **Skor** | Bintang berdasarkan sisa waktu (cepat = lebih banyak bintang) |
+| **Recap Konsep** | Diagram dekomposisi: "Masalah besar → sub-masalah" + contoh nyata: bagaimana tim developer membuat aplikasi besar |
+
+### Sistem Penilaian & Reward
+
+| Elemen | Detail |
+|--------|--------|
+| **Bintang** | 1–3 bintang per level (berdasarkan performa) |
+| **Skor** | Akumulatif dari semua level (0–1000) |
+| **Lencana** | "Chef Pemula" → "Chef Handal" → "Master Chef" → "Chef Legend" |
+| **Progress Bar** | Visual di layar utama menunjukkan progres keseluruhan |
+| **Halaman Hasil** | Ringkasan skor + bintang + lencana + waktu total |
+
+### Halaman yang Harus Ada
+
+| # | Halaman | Fungsi |
+|---|---------|--------|
+| 1 | **Cover / Laman Muka** | Judul, tujuan pembelajaran, CP/TP yang dicakup, tombol MULAI, info kreator |
+| 2 | **Panduan / Tutorial** | Cara bermain, penjelasan mekanisme, penjelasan Mode Algoritma |
+| 3 | **Menu Level** | Pilih level 1–4 (level terkunci sampai sebelumnya selesai) |
+| 4 | **Level 1–4** | Area permainan utama (masing-masing) |
+| 5 | **Recap Konsep Per-Level** | Skor + bintang + pseudo-code + "Tahukah Kamu?" + Mode Algoritma toggle |
+| 6 | **Hasil Akhir** | Rangkuman seluruh level: skor total + konsep yang dipelajari + lencana |
+| 7 | **Profil Kreator** | Info pengembang (nama, sekolah, kontak) |
+
 ---
 
-### Misi 1: 🥉 Nasi Goreng Juara — "Langkah Berurutan"
-- **Tantangan:** Menyusun kartu aksi memasak ke atas meja saji sesuai urutan yang logis.
-- **Pilihan Kartu:** 
-  1. 🧽 Cuci bahan bersih-bersih
-  2. 🔪 Iris bawang & cabai
-  3. 🍳 Panaskan wajan & tumis bumbu
-  4. 🍚 Masukkan nasi putih
-  5. 🥄 Aduk hingga matang merata
-  6. 🍽️ Sajikan di atas piring hangat
-- **Interaksi & Animasi:** 
-  - Drag atau klik kartu ke slot bernomor.
-  - Kartu bergeser dengan efek halus (smooth spring).
-  - Saat tombol *Cek Masakan* ditekan, wajan mendesis `psssshhh~`, api kompor menyala ceria, dan uap harum mengepul.
-  - Jika urutan salah (misal: nasi dimasukkan sebelum wajan dipanaskan), muncul karakter chef tersenyum bingung: *"Aduh, wajannya masih dingin, nasinya belum matang! Yuk tukar urutannya!"* (Kartu yang keliru bergetar lembut merah).
-- **Apresiasi & Edukasi:**
-  - Bintang emas ⭐⭐⭐ jika berhasil dalam 1–2 kali percobaan.
-  - Ulasan Singkat: *"Hebat! Kamu baru saja menyusun sebuah **Algoritma Sekuensial**, yaitu runtunan langkah yang harus dilakukan berurutan agar hasilnya sukses!"*
+## 🏗️ Arsitektur Teknis
 
----
-
-### Misi 2: 🥈 Sup Ayam atau Tahu? — "Pilihan Selera (Jika-Maka)"
-- **Tantangan:** Menyiapkan pesanan pelanggan yang datang silih berganti dengan selera berbeda.
-- **Skenario Pelanggan:**
-  - 👦 *Tamu 1:* "Saya mau sup ayam hangat, banyak sayurnya!"
-  - 👧 *Tamu 2:* "Saya vegetarian, tidak boleh ada daging sama sekali!"
-  - 🧓 *Tamu 3:* "Porsinya sedikit saja ya, lagi diet!"
-- **Interaksi & Animasi:**
-  - Papan logika bercabang visual berbentuk jalur garpu lucu dengan ikon:  
-    `❓ Cek Tamu ➔ [ JIKA Vegetarian ] ➔ 🥣 Tahu Sutra | [ JIKA TIDAK ] ➔ 🍗 Daging Ayam`
-  - Siswa mengarahkan sakelar jalur rel bahan makanan menuju mangkuk pelanggan.
-  - Tamu tersenyum lebar dan memberikan jempol 👍 jika mangkuk sup sesuai dengan preferensinya.
-- **Apresiasi & Edukasi:**
-  - Ulasan Singkat: *"Keren! Komputer di HP-mu juga berpikir seperti ini. Contohnya saat membuka kunci layar: **JIKA** password benar ➔ **MAKA** layar terbuka, **JIKA TIDAK** ➔ muncul peringatan salah!"*
-
----
-
-### Misi 3: 🥇 Katering 20 Kotak — "Putaran Kilat (Ulangi/Loop)"
-- **Tantangan:** Ada pesanan mendadak untuk 20 kotak bekal sekolah. Tidak mungkin menyusun 20 kali resep satu per satu!
-- **Interaksi & Animasi:**
-  - Siswa menggunakan tuas putaran ajaib bertuliskan:  
-    `🔁 ULANGI SEBANYAK [ 10 ] KALI ➔ [ 🍱 Masukkan Lauk & Nasi ]`
-  - Siswa menyesuaikan angka target dengan tombol plus/minus (`➕` / `➖`).
-  - Animasi konveyor katering berjalan cepat: kotak-kotak makanan terisi secara otomatis satu demi satu disertai bunyi denting gembira (*ting-ting-ting!*).
-  - Penghitung kotak bertambah dari 1 sampai 20 dengan bar progres warna-warni.
-- **Apresiasi & Edukasi:**
-  - Ulasan Singkat: *"Bayangkan kalau harus klik 20 kali! Dengan **Perulangan (Loop)**, cukup satu perintah dan sistem akan mengerjakan sisanya dengan kilat tanpa lelah."*
-
----
-
-### Misi 4: 🏆 Restoran Bintang 5 — "Bagi Tugas Tim (Dekomposisi)"
-- **Tantangan:** Jam makan siang tiba! Ada 3 pesanan sekaligus: Nasi Goreng, Es Teh Manis, dan Pisang Goreng Keju. Waktu hanya 60 detik!
-- **Interaksi & Animasi:**
-  - Ada 3 meja kerja dengan 3 koki asisten:
-    - 👨‍🍳 *Koki Andi (Spesialis Potong & Cuci)*
-    - 👩‍🍳 *Koki Siti (Spesialis Masak Kompor)*
-    - 🧑‍🍳 *Koki Budi (Spesialis Minuman & Penyajian)*
-  - Siswa membagi kartu tugas ke masing-masing asisten dengan tepat agar semua pesanan selesai berbarengan sebelum waktu habis.
-  - Timer bar dinamis berubah warna (Hijau ➔ Kuning ➔ Oranye ➔ Merah) diiringi detak jam yang memacu semangat.
-- **Apresiasi & Edukasi:**
-  - Ulasan Singkat: *"Masalah besar jadi terasa ringan saat kita **Dekomposisi** (pecah jadi bagian-bagian kecil) dan dikerjakan bersama. Begitulah cara programmer membuat aplikasi raksasa seperti game dan media sosial!"*
-
----
-
-## 🔍 Fitur Unggulan: "Mode Intip Kode Rahasia" 💻
-
-Di setiap level, siswa dan juri dapat menekan tombol **"🔍 Intip Kode Rahasia"** kapan saja. Fitur ini membuka laci interaktif yang menampilkan bagaimana aksi masak diterjemahkan ke dalam bahasa logika komputasi sederhana:
+### Struktur File
 
 ```
-// Resep Masakmu Versi Komputer:
-MULAI
-  Siapkan wajan
-  Tumis(bumbu, minyak)
-  Masukkan(nasi_putih)
-  JIKA rasa == "kurang asin" MAKA
-    Tambahkan(garam)
-  Sajikan(di_piring)
-SELESAI
+karya/game/
+├── index.html          ← Entry point (SPA)
+├── style.css           ← Semua styling
+├── script.js           ← Logika game utama
+├── config.js           ← Konfigurasi game (skor, level, teks)
+├── specification.md    ← Dokumen ini
+├── assets/
+│   ├── images/         ← Ilustrasi bahan, dapur, karakter
+│   │   ├── kitchen/    ← Background & elemen dapur
+│   │   ├── ingredients/← Bahan-bahan masakan
+│   │   ├── characters/ ← Chef, asisten, tamu
+│   │   └── ui/         ← Tombol, ikon, badge
+│   ├── audio/          ← Sound effects
+│   │   ├── sfx/        ← Sizzle, ding, chop, dll
+│   │   └── bgm/        ← Background music per level
+│   └── fonts/          ← Font custom (jika ada)
+└── panduan/
+    └── panduan-penggunaan.pdf  ← User guide (WAJIB)
 ```
 
-> **Keunggulan untuk Penilaian:** Fitur ini menjamin bahwa unsur **Akurasi Keilmuan (15%)** dan **Kedalaman Materi (10%)** tetap terpancar kuat di hadapan dewan juri, tanpa sedikit pun mengurangi kesenangan siswa saat bermain.
+### Pendekatan Teknis
+
+| Aspek | Pilihan |
+|-------|---------|
+| **Arsitektur** | Single Page Application (SPA) — semua dalam 1 `index.html` |
+| **Navigasi** | Section-based dengan `goToPage()` — sama seperti MPI yang sudah ada |
+| **Styling** | Vanilla CSS — dark theme dapur, gradien warm (oranye, merah, kuning) |
+| **Animasi** | CSS transitions + JavaScript (requestAnimationFrame) |
+| **Drag & Drop** | HTML5 Drag & Drop API atau pointer events (touch-friendly) |
+| **Audio** | Web Audio API untuk SFX, `<audio>` tag untuk BGM |
+| **Responsif** | CSS media queries, rasio 16:9, fallback untuk layar kecil |
+| **State** | JavaScript object untuk state game (skor, level unlocked, bintang) |
+
+### Referensi Arsitektur
+
+Gunakan pola arsitektur yang sama dengan MPI Sistem Komputer:
+- `config.js` → konfigurasi global (judul, teks, skor max, dll)
+- `script.js` → logika navigasi, game engine per level, state management
+- `style.css` → design system, animasi, responsive layout
+- `index.html` → semua section/page dalam 1 file
 
 ---
 
-## 🎨 Panduan Visual, Ikon & Desain Audio
+## 📐 Panduan Desain Visual
 
-### 1. Palet Warna Ceria & Menyenangkan
-- **Warna Utama (Dapur & Kehangatan):** `#FF6B35` (Oranye ceria) & `#F7C948` (Kuning keemasan)
-- **Warna Aksen & Sukses:** `#2ECC71` (Hijau mint segar)
-- **Warna Perhatian & Timer:** `#E63946` (Merah cabai)
-- **Warna Latar & Kartu:** `#FFFDF9` (Krem bersih) & `#2C3E50` (Navy lembut untuk teks kontras tinggi)
+### Palet Warna
 
-### 2. Pustaka Ikon & Emoticon yang Melimpah
-- **Status & Navigasi:** 🏠 (Beranda), ▶️ (Mulai), 🔄 (Ulangi), ⏭️ (Lanjut), 💡 (Petunjuk), ⚙️ (Pengaturan), 🔊 (Suara Aktif), 🔇 (Hening)
-- **Karakter & Emosi:** 👨‍🍳 (Chef Utama), 👩‍🍳 (Asisten), 😋 (Puas/Enak), 🤔 (Berpikir), 🥳 (Menang)
-- **Bahan & Alat:** 🍳, 🥣, 🔪, 🥄, 🍚, 🍗, 🧅, 🧄, 🥕, 🧂, 🍱, 🍽️
-- **Prestasi:** ⭐ (Bintang Emas), 🏆 (Piala Juara), 🎖️ (Lencana Kehormatan), 🎉 (Perayaan)
-
-### 3. Efek Suara (Web Audio API Berbasis Sintesis Lokal / File Ringan)
-- `click.mp3` ➔ Suara ketukan tombol empuk & renyah.
-- `chop.mp3` ➔ Suara pisau memotong bahan (*tuk-tuk-tuk*).
-- `sizzle.mp3` ➔ Suara bumbu masuk wajan panas.
-- `correct.mp3` ➔ Denting ceria nada mayor saat jawaban tepat.
-- `wrong.mp3` ➔ Suara dengung bersahabat (tidak mengejutkan) mengajak mencoba lagi.
-- `fanfare.mp3` ➔ Nada terompet kemenangan di akhir misi.
-
----
-
-## 🏆 Halaman Hasil Akhir & Apresiasi Prestasi
-
-Setelah menyelesaikan seluruh rangkaian misi, pemain disambut dengan **Layar Pesta Juara**:
-1. **Animasi Kemenangan:** Hujan konfeti warna-warni dan chef melompat gembira.
-2. **Kartu Gelar Chef:**
-   - 🌟 Skor 900–1000: *"Master Chef Komputasi"*
-   - ⭐ Skor 750–899: *"Chef Handal Algoritma"*
-   - ✨ Skor < 750: *"Chef Bintang Berbakat"*
-3. **Papan Rangkuman:**
-   - Total Bintang yang Dikumpulkan (Maksimal 12 ⭐)
-   - Waktu Penyelesaian Keseluruhan
-   - Daftar 4 Konsep Hebat yang Berhasil Dikuasai
-4. **Tombol Interaktif:**
-   - 🔄 *Main Lagi & Tingkatkan Skor*
-   - 📜 *Lihat Rapor Belajar & Fakta Unik*
-   - 👨‍💻 *Profil Pengembang*
-
----
-
-## 🗺️ Rencana Implementasi Bertahap
-
-```mermaid
-graph TD
-    A["Fase 1: Kerangka & Desain Ceria<br/>(Setup SPA 16:9, CSS Design System, Koleksi Ikon)"] --> B["Fase 2: Mesin Permainan 4 Level<br/>(Drag-drop langkah, logika IF-ELSE, loop slider, bagi tugas)"]
-    B --> C["Fase 3: Animasi, Audio & Fitur Intip Kode<br/>(Bounce, confetti, suara sfx, toggle pseudo-code)"]
-    C --> D["Fase 4: Hasil Akhir & Evaluasi Apresiatif<br/>(Skor, bintang, lencana juara, profil pembuat)"]
-    D --> E["Fase 5: Validasi & Final Packaging<br/>(Uji coba responsif, PDF panduan, video demo 3 menit)"]
+```
+Primary:   #FF6B35 (Oranye hangat — api/kompor)
+Secondary: #F7C948 (Kuning emas — bintang/reward)  
+Accent:    #E63946 (Merah — tombol/alert)
+Dark:      #1D1D1D (Hitam dapur profesional)
+Light:     #FFF8F0 (Krem hangat — background)
+Success:   #2ECC71 (Hijau — benar/selesai)
 ```
 
+### Tipografi
+
+- **Heading:** Font bold, playful (Google Fonts: Fredoka One / Baloo 2)
+- **Body:** Font clean (Google Fonts: Nunito / Quicksand)
+- **Ukuran:** Proporsional, mudah dibaca di layar kecil
+
+### Gaya Ilustrasi
+
+- **Flat design** dengan sentuhan 2.5D
+- Warna-warna hangat (dapur, makanan, api)
+- Karakter chef bergaya cartoon/chibi
+- Bahan makanan dengan style kawaii/cute
+- Animasi smooth (microinteraction saat hover, klik, drag)
+
 ---
 
-## ✅ Checklist Kepatuhan & Keunggulan Gim
+## ✅ Checklist Kepatuhan Juknis
 
-- [x] Sesuai tema dan kriteria Juknis Festival Biru Putih 2026
-- [x] Mengadopsi kekuatan karya resmi penyelenggara Kemendikdasmen (*Ular Tangga Edukasi*)
-- [x] Penuh dengan ikon ekspresif di setiap sudut antarmuka
-- [x] Animasi mikro yang hidup, halus, dan memuaskan
-- [x] Bahasa sangat ramah, hangat, dan mudah dipahami orang awam
-- [x] Konsep komputasi tetap akurat melalui fitur *Intip Kode Rahasia*
-- [x] 100% mandiri secara teknis (offline, tanpa dependensi CDN eksternal)
-- [x] Siap dikemas dalam paket rapi beserta panduan PDF dan video demo
+- [ ] Laman Muka dengan judul, tujuan, tombol mulai
+- [ ] Panduan/tutorial sebelum mulai gim
+- [ ] Minimal 3 tantangan/level (kita buat 4)
+- [ ] Mekanisme dinamis: drag & drop, fill-in, pilih jawaban
+- [ ] Navigasi intuitif
+- [ ] Respons instan setiap interaksi (visual + audio)
+- [ ] Sistem reward (bintang, lencana, skor)
+- [ ] Hasil akhir/skor ditampilkan jelas
+- [ ] Bug-free, loading ≤ 5 detik
+- [ ] Lintas perangkat (laptop, tablet, smartphone)
+- [ ] Rasio 16:9
+- [ ] SPA — tidak redirect ke halaman lain
+- [ ] Tidak ada URL/aset eksternal
+- [ ] index.html di root directory
+- [ ] File .zip ≤ 150 MB (target < 25 MB)
+- [ ] PDF panduan penggunaan
+- [ ] Video demo ≤ 3 menit (MP4)
+- [ ] Aset orisinal / royalty-free / CC BY-SA 4.0
+- [ ] Aset AI-generated diberi keterangan + dokumen prompting
+- [ ] Materi selaras dengan CP & TP Informatika SMP
+
+---
+
+## 🗺️ Roadmap Pengerjaan
+
+### Fase 1: Fondasi (Hari 1–2)
+- [ ] Setup struktur file
+- [ ] Buat `config.js` dan design system di `style.css`
+- [ ] Buat halaman Cover / Laman Muka
+- [ ] Buat halaman Panduan/Tutorial
+- [ ] Buat halaman Menu Level dengan progress tracking
+- [ ] Buat navigasi SPA (goToPage)
+
+### Fase 2: Game Engine (Hari 3–5)
+- [ ] Level 1: Drag & drop urutan resep
+- [ ] Level 2: Flowchart IF-ELSE visual
+- [ ] Level 3: Loop builder
+- [ ] Level 4: Dekomposisi + timer
+- [ ] Sistem skor, bintang, dan state management
+
+### Fase 3: Polish (Hari 6–7)
+- [ ] Sound effects dan background music
+- [ ] Animasi dan transisi
+- [ ] Halaman Hasil Per-Level dan Hasil Akhir
+- [ ] Halaman Profil Kreator
+- [ ] Responsive testing (laptop, tablet, phone)
+
+### Fase 4: Deliverable (Hari 8)
+- [ ] Buat PDF panduan penggunaan
+- [ ] Rekam video demo (3 menit)
+- [ ] Testing final di Chrome, Firefox, Safari, Edge
+- [ ] Package .zip dan validasi ukuran
+
+---
+
+## 📝 Catatan Penting untuk Implementasi
+
+1. **Semua aset harus offline** — tidak boleh ada CDN, Google Fonts via URL, atau aset eksternal lainnya. Font harus di-download dan disimpan lokal.
+2. **Touch-friendly** — semua drag & drop harus bekerja di layar sentuh (gunakan pointer events, bukan hanya mouse events).
+3. **Asesmen terintegrasi** — bintang dan skor per level = evaluasi otomatis yang memenuhi kriteria asesmen (10% dari bobot substansi).
+4. **Konsep informatika: hidden during play, explicit during recap** — saat bermain, siswa hanya melihat "masak". Di Recap Konsep, istilah informatika muncul eksplisit dengan pseudo-code. Ini strategi agar juri melihat **kedua sisi**: keseruan gameplay DAN kedalaman keilmuan.
+5. **Gunakan pola yang sama dengan MPI** — arsitektur SPA, config-driven, section-based navigation sudah terbukti berhasil.
+6. **Mode Algoritma = pembeda utama** — fitur toggle yang menampilkan pseudo-code di samping aksi masak. Ini yang membuat game ini BUKAN sekadar cooking game. Pastikan fitur ini terlihat jelas dan bisa diakses kapan saja.
+7. **Recap Konsep wajib ada di setiap level** — halaman recap setelah level selesai harus menampilkan: (a) pseudo-code, (b) istilah informatika eksplisit, (c) "Tahukah Kamu?" kontekstualisasi, (d) mapping ke CP/TP.
+
+---
+
+## ⚠️ Mitigasi Risiko Pengembangan
+
+| Risiko | Dampak | Mitigasi |
+|--------|--------|----------|
+| Level 4 (paralel) terlalu kompleks | Tertunda, bug banyak | Sederhanakan: cukup assign task ke asisten, tidak perlu simulasi real-time penuh. Buat sebagai flowchart drag-drop, bukan animasi paralel |
+| Terlalu banyak aset ilustrasi | Ukuran .zip membengkak | Gunakan SVG + CSS illustration sebanyak mungkin. Ilustrasi bitmap hanya untuk elemen utama (bahan makanan) |
+| Drag & drop tidak work di mobile | Gagal di kriteria lintas perangkat | Selalu gunakan Pointer Events (bukan Mouse Events). Test di touch device SEBELUM polish |
+| Juri tidak lihat "informatikanya" | Skor akurasi keilmuan rendah | Mode Algoritma + Recap Konsep = safety net. Pastikan pseudo-code selalu tersedia |
