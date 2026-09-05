@@ -68,7 +68,7 @@ window.MPI_CONFIG = {
     assets: {
         // Foto Pengembang di Halaman Pengembang
         dev_photo_1: 'assets/fanani.jpg',
-        dev_photo_2: 'assets/ilyas.jpeg',
+        dev_photo_2: '',
 
         // Video materi lokal (offline ready)
         video_src: 'assets/video/berpikir_komputasional.mp4',
