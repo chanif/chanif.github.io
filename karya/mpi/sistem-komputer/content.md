@@ -22,36 +22,34 @@
 
 ---
 
-## 🗺️ 2. Peta Alur Halaman MPI (Total 16 Halaman Efektif)
+## 🗺️ 2. Peta Alur Halaman MPI (Total 18 Halaman)
 
-Tidak lagi memaksakan struktur template MPI Jaringan. Alur dirancang mengalir alami:
+Struktur modul dirancang proporsional dengan 5 sub materi terintegrasi:
 
 ```
 [1. Cover] 
    └── [2. Menu Utama]
           ├── [3. Petunjuk Penggunaan]
           ├── [4. Tujuan Pembelajaran]
-          ├── [5. Menu Pilihan Materi]
-          │      ├── [6. Materi 1: Anatomi Perangkat Keras]
-          │      ├── [7. Materi 2: Cara Kerja CPU & Memori]
-          │      │      └── (Termasuk Media Video Siklus Kerja)
-          │      └── [8. Materi 3: Sistem Operasi & Kolaborasi]
-          │             └── [9. Aktivitas Interaktif: Kelompokkan Komponen]
-          ├── [10. Permainan Intro] ── [11. Simulasi Rakit Komputer]
-          ├── [12. Latihan Intro] ── [13. Evaluasi (PG, B/S, Jodohkan)]
-          ├── [14. Rangkuman & Refleksi]
-          ├── [15. Referensi & Daftar Pustaka]
-          ├── [16. Profil Pengembang]
-          └── [17. Kredit & Penutup Kemendikdasmen]
+          ├── [5. Menu Pilihan Materi] (5 Sub-Materi Terpilih)
+          │      ├── [6. Sub 1 (Teori 1): Anatomi Perangkat Keras]
+          │      ├── [7. Sub 2 (Teori 2): Otak Komputer & Alur Data CPU]
+          │      ├── [8. Sub 3 (Video): Video Animasi Siklus Mesin CPU]
+          │      ├── [9. Sub 4 (Teori 3): Sistem Operasi & Kolaborasi]
+          │      └── [10. Sub 5 (Latihan): Menjodohkan Fungsi Hardware]
+          ├── [11. Permainan Intro] ── [12. Simulasi Rakit Komputer]
+          ├── [13. Latihan Intro] ── [14. Evaluasi (PG, B/S, Jodohkan, Alur Boot)]
+          ├── [15. Rangkuman & Refleksi]
+          ├── [16. Referensi & Daftar Pustaka]
+          ├── [17. Profil Pengembang]
+          └── [18. Kredit & Penutup Kemendikdasmen]
 ```
-
-*(Halaman 17 "Kutipan/Motto" yang sebelumnya ada dihapus sesuai arahan user, sehingga halaman langsung mengalir ke Penutup Resmi).*
 
 ---
 
-## 📚 3. Rincian Materi Per Sub-Bab (3 Sub-Materi Utama)
+## 📚 3. Rincian Materi Per Sub-Bab (5 Sub-Materi)
 
-### 🖥️ Sub-Materi 1: Anatomi Perangkat Keras Komputer
+### 🖥️ Sub-Materi 1: Anatomi Perangkat Keras Komputer (Teori 1)
 *Fokus: Mengenal wujud fisik dan fungsi 4 kelompok perangkat keras.*
 
 #### A. Konsep Sistem Komputer
@@ -103,12 +101,19 @@ Mengapa komputer butuh dua jenis memori yang berbeda?
 | **Fungsi Utama** | Meja kerja aplikasi yang sedang dibuka | Lemari arsip berkas, foto, dan sistem operasi |
 | **Kapasitas Khas** | 8 GB – 32 GB | 256 GB – 2.000 GB (2 TB) |
 
-#### D. Media Video Interaktif
-Video berdurasi singkat (~2 menit) disematkan langsung untuk memperlihatkan animasi visual partikel data mengalir dari keyboard ➔ RAM ➔ CPU ➔ Monitor.
+---
+
+### 🎬 Sub-Materi 3: Video Animasi Siklus Mesin CPU (Video Mandiri)
+*Fokus: Visualisasi pergerakan data dari input, bus memori, pemrosesan CPU, hingga monitor.*
+- Video berdurasi singkat (~2 menit) ditempatkan pada panggung khusus yang lega.
+- Dilengkapi poin penting pengamatan:
+  1. Pengiriman data input melalui bus sistem ke RAM.
+  2. Pengambilan (Fetch), penguraian kode (Decode), dan perhitungan (Execute) oleh ALU/CU.
+  3. Pengiriman hasil keluaran ke kartu grafis dan layar monitor.
 
 ---
 
-### ⚙️ Sub-Materi 3: Sistem Operasi & Kolaborasi Sistem
+### ⚙️ Sub-Materi 4: Sistem Operasi & Kolaborasi Sistem (Teori 3)
 *Fokus: Mengapa komputer butuh perangkat lunak dan bagaimana ketiganya berinteraksi.*
 
 #### A. Apa Itu Sistem Operasi (OS)?
@@ -127,24 +132,27 @@ Sistem komputer hanya bisa bekerja jika ketiga unsur ini bersinergi:
 
 ---
 
-## 🎮 4. Rancangan Aktivitas & Evaluasi
+### 🎯 Sub-Materi 5: Latihan Interaktif Menjodohkan Hardware (Aktivitas)
+*Fokus: Menguji pemahaman fungsi hardware dengan aktivitas menjodohkan interaktif.*
+- Menghubungkan istilah hardware (CPU, RAM, SSD, Motherboard, I/O) dengan fungsi utamanya.
+- Menampilkan garis koneksi SVG dinamis, penilaian instan, dan umpan balik suara.
 
-### A. Aktivitas 1: Klasifikasi Komponen (Tarik Jawaban)
-- Menampilkan 6 kartu komponen acak (misal: Webcam, SSD, Core i7, Speaker, Barcode Scanner, RAM).
-- Siswa mengelompokkan ke 4 kotak kategori: **[Masukan]**, **[Pemroses]**, **[Penyimpanan]**, **[Keluaran]**.
-- Umpan balik langsung dengan visual kartu menempel rapi dan suara konfirmasi.
+---
 
-### B. Aktivitas 2 (Permainan Utama): Lab Perakitan PC
+## 🎮 4. Permainan & Evaluasi Pembelajaran
+
+### A. Permainan Utama: Simulator Perakitan PC
 - Siswa merakit PC virtual: memasang Processor ke socket motherboard, memasang keping RAM, menyambungkan kabel SSD, memasang kartu grafis (GPU), dan Power Supply.
 - Tombol **"Nyalakan PC"**:
-  - Jika rakitan lengkap & benar ➔ PC menyala, monitor menampilkan layar desktop Windows/Linux, kipas berputar!
-  - Jika ada komponen vital terlewat (misal RAM lupa dipasang) ➔ Muncul bunyi *beep code error* dan tips diagnosis masalah (*troubleshooting*).
+  - Jika rakitan lengkap & benar ➔ PC menyala, monitor menampilkan layar desktop, kipas berputar!
+  - Jika ada komponen vital terlewat ➔ Muncul tips diagnosis masalah (*troubleshooting*).
 
-### C. Evaluasi / Latihan (10 Butir Terstandar Kemendikdasmen)
-- **Bagian A (Pilihan Ganda - 4 butir):** Konsep 4 pilar, fungsi ALU, perbedaan RAM vs SSD, peran OS.
-- **Bagian B (Benar / Salah - 3 butir):** Karakteristik memori volatile, peran CPU clock, fungsi driver perangkat.
-- **Bagian C (Menjodohkan / Matching - 3 butir):** Menghubungkan nama komponen dengan analogi/peran kuncinya.
-- **Hasil Akhir:** Nilai 0–100, apresiasi bintang, ulasan kunci jawaban, tombol coba lagi.
+### B. Evaluasi / Latihan (4 Bagian Terpadu)
+- **Bagian A (Pilihan Ganda - 5 butir):** Konsep 4 pilar, fungsi ALU, perbedaan RAM vs SSD, peran OS.
+- **Bagian B (Benar / Salah - 5 butir):** Karakteristik memori volatile, peran CPU clock, fungsi driver perangkat.
+- **Bagian C (Menjodohkan / Matching - 5 butir):** Menghubungkan nama komponen dengan analogi/peran kuncinya.
+- **Bagian D (Mengurutkan / Sequencing - 5 langkah):** Mengurutkan tahapan alur proses booting komputer.
+- **Hasil Akhir:** Rekapitulasi skor, apresiasi bintang, animasi konfeti, dan tombol coba lagi.
 
 ---
 
@@ -152,9 +160,12 @@ Sistem komputer hanya bisa bekerja jika ketiga unsur ini bersinergi:
 
 | Catatan User | Status Analisis & Solusi Baru |
 |---|---|
-| **TP No 4 (Biner 8-bit)** | ❌ **Dihapus total.** MPI difokuskan pada hardware, alur data CPU/memori, dan OS. Materi biner dialihkan ke Lab Maya. |
+| **Cover Title Sub Font Size** | ✅ **Diubah menjadi `font-size: calc(90px * var(--font-scale, 1.0))`** sesuai permintaan user. |
+| **Jumlah Sub-Materi Halaman 5** | 💡 **Dibuat menjadi 5 Sub-Materi Terpadu** (1. Anatomi Hardware, 2. Otak Komputer & Alur Data, 3. Video Animasi CPU, 4. Sistem Operasi & Kolaborasi, 5. Latihan Menjodohkan Hardware). |
+| **Video Mandiri** | 🎬 **Memiliki halaman tersendiri (Halaman 8)** sehingga tidak berdesakan dengan teori CPU/RAM dan nyaman dipelajari. |
+| **Sub untuk Latihan** | 🎯 **Halaman 10 (Menjodohkan Hardware) menjadi Sub ke-5** latihan interaktif langsung. |
+| **TP No 4 (Biner 8-bit)** | ❌ **Dihapus total.** MPI difokuskan pada hardware, alur data CPU/memori, dan OS. |
 | **Istilah Von Neumann** | 🔄 **Disederhanakan.** Di Halaman 3 & 4 diganti dengan *"4 Pilar Komponen Sistem Komputer"* dan *"Siklus Pengolahan Data"*. Lebih ramah siswa SMP. |
-| **Jumlah Sub-Materi Halaman 5** | 💡 **Diubah menjadi 3 Sub-Materi Tematik** (1. Anatomi Hardware, 2. Otak Komputer & Alur Data, 3. Sistem Operasi & Kolaborasi). Jauh lebih pas, proporsional, dan tidak meniru mentah-mentah MPI Jaringan. |
-| **Halaman 6 (Materi 1 - Tab)** | 🎨 **Tidak lagi dipaksakan 3 tab.** Materi 1 disajikan sebagai kartu interaktif 4 Pilar Perangkat Keras yang jernih, lega, dan nyaman dibaca. |
-| **Halaman 17 (Kutipan/Motto)** | ❌ **Dihapus.** Alur navigasi melompat langsung dari Halaman 16 (Pengembang) ke Penutup/Kredit Kemendikdasmen. Total halaman menjadi 17 halaman terpadu. |
+| **Halaman 6 (Materi 1 - Tab)** | 🎨 **Bebas tab bertumpuk.** Materi 1 disajikan sebagai kartu interaktif 4 Pilar Perangkat Keras yang jernih dan lega. |
+| **Halaman 17 Lama (Kutipan/Motto)** | ❌ **Dihapus.** Dari Profil Pengembang langsung menuju Penutup/Kredit Kemendikdasmen. Total halaman menjadi 18 halaman terpadu. |
 | **Navigasi Halaman 1 (Cover)** | ✅ **Sudah bersih tanpa tombol prev/next liar.** |

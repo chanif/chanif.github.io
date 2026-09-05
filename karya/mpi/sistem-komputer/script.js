@@ -216,16 +216,17 @@ const PAGE_INDEX_MAP = {
   'materi-list': 5,
   'materi-1': 6,
   'materi-2': 7,
-  'materi-3': 8,
-  'tarik-jawaban': 9,
-  'permainan-intro': 10,
-  'permainan': 11,
-  'latihan-intro': 12,
-  'latihan': 13,
-  'rangkuman': 14,
-  'referensi': 15,
-  'pengembang': 16,
-  'kredit': 17
+  'video': 8,
+  'materi-3': 9,
+  'tarik-jawaban': 10,
+  'permainan-intro': 11,
+  'permainan': 12,
+  'latihan-intro': 13,
+  'latihan': 14,
+  'rangkuman': 15,
+  'referensi': 16,
+  'pengembang': 17,
+  'kredit': 18
 };
 
 function updateTestingIndicator(pageId) {
@@ -245,13 +246,13 @@ function updateTestingIndicator(pageId) {
   }
 
   const pageNum = PAGE_INDEX_MAP[pageId] || '?';
-  indicator.innerHTML = `<span>Halaman ${pageNum} / 17</span>`;
+  indicator.innerHTML = `<span>Halaman ${pageNum} / 18</span>`;
   indicator.style.display = 'block';
 }
 
 const LINEAR_PAGES = [
   'cover', 'menu', 'petunjuk', 'tujuan', 'materi-list',
-  'materi-1', 'materi-2', 'materi-3', 'tarik-jawaban',
+  'materi-1', 'materi-2', 'video', 'materi-3', 'tarik-jawaban',
   'permainan-intro', 'permainan', 'latihan-intro', 'latihan',
   'rangkuman', 'referensi', 'pengembang', 'kredit'
 ];
@@ -293,7 +294,7 @@ function goToPage(pageId) {
   updateGlobalNavButtons(pageId);
 
   // Lazy initialize interactive modules on page entry
-  if (pageId === 'materi-2') initVideo();
+  if (pageId === 'video') initVideo();
   if (pageId === 'tarik-jawaban') initMatchP8();
   if (pageId === 'permainan') initPacketCommanderGame();
   if (pageId === 'latihan') {
@@ -339,13 +340,19 @@ const JARINGAN_PAGE_NAV_MAP = {
   'materi-2': {
     prevText: 'Materi 1: Anatomi Hardware',
     prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Video: Simulasi Siklus CPU',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'video': {
+    prevText: 'Materi 2: Otak Komputer & Alur Data',
+    prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Materi 3: Sistem Operasi & Kolaborasi',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'materi-3': {
-    prevText: 'Materi 2: Otak Komputer & Alur Data',
+    prevText: 'Video: Simulasi Siklus CPU',
     prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Aktivitas: Menjodohkan Hardware',
+    nextText: 'Latihan: Menjodohkan Hardware',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'tarik-jawaban': {
@@ -355,7 +362,7 @@ const JARINGAN_PAGE_NAV_MAP = {
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'permainan-intro': {
-    prevText: 'Aktivitas: Menjodohkan Hardware',
+    prevText: 'Latihan: Menjodohkan Hardware',
     prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Mulai Simulator Komputer',
     nextSub: 'HALAMAN BERIKUTNYA'

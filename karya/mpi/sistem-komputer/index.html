@@ -176,8 +176,8 @@
             <div class="petunjuk-item">
               <div class="nav-mini-num">1</div>
               <div>
-                <strong>Pelajari 3 Sub-Materi</strong>
-                <p>Pahami anatomi perangkat keras, cara kerja CPU &amp; memori, serta peran sistem operasi melalui penjelasan visual dan video interaktif.
+                <strong>Pelajari 5 Sub-Materi</strong>
+                <p>Pahami anatomi hardware, otak komputer, saksikan video animasi alur data CPU, peran sistem operasi, serta coba latihan interaktif.
                 </p>
               </div>
             </div>
@@ -277,40 +277,64 @@
 
       <div class="title-bar">Materi</div>
 
-      <div class="materi-cards" id="materi-cards" style="grid-template-columns: repeat(3, 1fr);">
-        <!-- Kartu 1: Sub-Materi 1 -->
+      <div class="materi-cards grid-5" id="materi-cards">
+        <!-- Kartu 1: Sub 1 (Teori 1) -->
         <div class="materi-card" onclick="goToPage('materi-1')" id="card-materi1">
           <div class="card-thumb">
-            <span class="card-badge" style="background:#00838F;">🖥️ Bagian 1</span>
+            <span class="card-badge" style="background:#00838F;">🖥️ Teori 1</span>
             <img src="assets/router.jpg" alt="Anatomi Perangkat Keras Komputer">
           </div>
           <div class="card-body">
-            <div class="card-title">Anatomi Perangkat Keras</div>
-            <div class="card-desc">Kenali 4 pilar utama sistem komputer: Masukan, Pemroses, Penyimpanan, dan Keluaran dengan analogi dapur.</div>
+            <div class="card-title">Anatomi Hardware</div>
+            <div class="card-desc">4 pilar utama komputer: Masukan, Pemroses, Penyimpanan, &amp; Keluaran dengan analogi dapur.</div>
           </div>
         </div>
 
-        <!-- Kartu 2: Sub-Materi 2 -->
+        <!-- Kartu 2: Sub 2 (Teori 2) -->
         <div class="materi-card" onclick="goToPage('materi-2')" id="card-materi2">
           <div class="card-thumb">
-            <span class="card-badge" style="background:#e65100;">🧠 Bagian 2</span>
+            <span class="card-badge" style="background:#e65100;">🧠 Teori 2</span>
             <img src="assets/orange_cat.jpg" alt="Otak Komputer & Alur Pemrosesan">
           </div>
           <div class="card-body">
-            <div class="card-title">Otak Komputer &amp; Alur Data</div>
-            <div class="card-desc">Pahami cara kerja CPU, siklus mesin Fetch-Decode-Execute, perbedaan RAM vs SSD, serta saksikan video animasi.</div>
+            <div class="card-title">Otak Komputer</div>
+            <div class="card-desc">Arsitektur CPU (ALU, CU, Register), siklus mesin Fetch-Decode-Execute, serta RAM vs SSD.</div>
           </div>
         </div>
 
-        <!-- Kartu 3: Sub-Materi 3 -->
+        <!-- Kartu 3: Sub 3 (Video) -->
+        <div class="materi-card" onclick="goToPage('video')" id="card-video">
+          <div class="card-thumb">
+            <span class="card-badge" style="background:#c2185b;">🎬 Video</span>
+            <img src="assets/puzzle.jpg" alt="Video Simulasi Siklus Mesin CPU">
+          </div>
+          <div class="card-body">
+            <div class="card-title">Video Animasi CPU</div>
+            <div class="card-desc">Saksikan animasi interaktif pergerakan data dari input, bus memori, hingga pemrosesan CPU.</div>
+          </div>
+        </div>
+
+        <!-- Kartu 4: Sub 4 (Teori 3) -->
         <div class="materi-card" onclick="goToPage('materi-3')" id="card-materi3">
           <div class="card-thumb">
-            <span class="card-badge" style="background:#0288D1;">⚙️ Bagian 3</span>
+            <span class="card-badge" style="background:#0288D1;">⚙️ Teori 3</span>
             <img src="assets/branch.jpg" alt="Sistem Operasi & Kolaborasi Sistem">
           </div>
           <div class="card-body">
-            <div class="card-title">Sistem Operasi &amp; Kolaborasi</div>
-            <div class="card-desc">Pelajari peran Sistem Operasi sebagai manajer peranti keras serta sinergi segitiga Hardware, Software, dan Brainware.</div>
+            <div class="card-title">Sistem Operasi</div>
+            <div class="card-desc">Peran OS pengendali hardware, GUI ramah manusia, serta sinergi Hardware, Software, &amp; Brainware.</div>
+          </div>
+        </div>
+
+        <!-- Kartu 5: Sub 5 (Latihan) -->
+        <div class="materi-card" onclick="goToPage('tarik-jawaban')" id="card-materi4">
+          <div class="card-thumb">
+            <span class="card-badge" style="background:#2e7d32;">🎯 Latihan</span>
+            <img src="assets/router.jpg" alt="Latihan Menjodohkan Hardware">
+          </div>
+          <div class="card-body">
+            <div class="card-title">Latihan Hardware</div>
+            <div class="card-desc">Uji pemahamanmu secara langsung lewat permainan interaktif menjodohkan fungsi komponen komputer.</div>
           </div>
         </div>
       </div>
@@ -427,7 +451,7 @@
       </div>
     </section>
 
-    <!-- ============================== PAGE 7: MATERI 2 (CPU, MEMORI & VIDEO) ============================== -->
+    <!-- ============================== PAGE 7: MATERI 2 (CPU & MEMORI) ============================== -->
     <section id="page-materi-2" class="page">
       <div class="nav-top">
         <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi2-menu">☰</button>
@@ -438,68 +462,71 @@
 
       <div class="content-box wide scrollable">
         <div class="content-columns">
-          <!-- Kolom Kiri: Teori CPU, Siklus Mesin, RAM vs SSD -->
+          <!-- Kolom Kiri: Teori CPU & Siklus Mesin -->
           <div class="content-col">
             <h3>🧠 1. CPU: Otak Sang Komputer</h3>
             <p>
-              <strong>Central Processing Unit (CPU)</strong> mengeksekusi miliaran instruksi per detik. Di dalamnya terdapat unit inti:
+              <strong>Central Processing Unit (CPU)</strong> mengeksekusi miliaran instruksi setiap detik. Tiga komponen inti di dalamnya:
             </p>
-            <p style="font-size:15px;margin-bottom:12px;">
-              • <strong>ALU (Arithmetic Logic Unit):</strong> Mesin hitung yang melakukan operasi matematika (+, -, ×, ÷) dan logika (AND, OR, NOT).<br>
-              • <strong>CU (Control Unit):</strong> Dirigen yang mengatur lalu lintas instruksi antar-komponen.<br>
-              • <strong>Register:</strong> Memori ultra-cepat tepat di dalam prosesor untuk menampung data yang sedang dihitung.
-            </p>
-
-            <h3>🔄 2. Siklus Mesin CPU (Machine Cycle)</h3>
-            <div style="background:var(--white);border-radius:var(--radius-md);padding:12px 16px;margin-bottom:14px;border:2px solid rgba(0,172,193,0.35);">
-              <p style="font-size:14px;margin-bottom:4px;"><strong>1. Fetch (Jemput):</strong> CU mengambil instruksi dari memori RAM.</p>
-              <p style="font-size:14px;margin-bottom:4px;"><strong>2. Decode (Terjemahkan):</strong> CU menguraikan kode perintah.</p>
-              <p style="font-size:14px;margin-bottom:4px;"><strong>3. Execute (Eksekusi):</strong> ALU menjalankan perhitungan instruksi.</p>
-              <p style="font-size:14px;margin-bottom:0;"><strong>4. Store (Simpan):</strong> Hasil dituliskan kembali ke RAM atau layar.</p>
+            <div class="materi-subcard-list" style="margin-bottom: 12px;">
+              <div class="materi-subcard" style="border-color: rgba(2,136,209,0.45);">
+                <div class="materi-subcard-title" style="color: #0288D1;">🧮 ALU (Arithmetic Logic Unit):</div>
+                <p class="materi-subcard-desc">Mesin hitung yang melakukan kalkulasi matematika (+, -, ×, ÷) dan perbandingan logika (AND, OR, NOT, &gt;, &lt;).</p>
+              </div>
+              <div class="materi-subcard" style="border-color: rgba(0,131,143,0.45);">
+                <div class="materi-subcard-title" style="color: var(--teal-dark);">🚦 CU (Control Unit):</div>
+                <p class="materi-subcard-desc">Dirigen pengatur lalu lintas data yang menjemput instruksi dan mengatur sinkronisasi kerja seluruh komponen.</p>
+              </div>
+              <div class="materi-subcard" style="border-color: rgba(123,31,162,0.45);">
+                <div class="materi-subcard-title" style="color: #7b1fa2;">⚡ Register:</div>
+                <p class="materi-subcard-desc">Memori kerja internal berkecepatan ultra-tinggi tepat di dalam prosesor untuk menampung data yang sedang dihitung.</p>
+              </div>
             </div>
 
-            <h3>⚡ 3. Pertarungan: RAM vs SSD</h3>
-            <div class="materi-subcard-list">
-              <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
-                <div class="materi-subcard-title" style="color: var(--teal-dark);">⚡ RAM (Random Access Memory):</div>
-                <p class="materi-subcard-desc">
-                  <strong>Volatile (Sementara).</strong> Ruang kerja aplikasi aktif. Data hilang seketika saat listrik padam. Kecepatannya luar biasa tinggi!
-                </p>
-              </div>
-
-              <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
-                <div class="materi-subcard-title" style="color: var(--teal-dark);">💾 SSD / Harddisk (Penyimpanan):</div>
-                <p class="materi-subcard-desc">
-                  <strong>Non-Volatile (Permanen).</strong> Lemari berkas untuk menyimpan sistem operasi, aplikasi, foto, dan tugas sekolah secara aman.
-                </p>
-              </div>
+            <h3>🔄 2. Siklus Mesin CPU (Machine Cycle)</h3>
+            <p>Setiap instruksi program dijalankan melalui 4 tahap siklus berulang:</p>
+            <div style="background:var(--white);border-radius:var(--radius-md);padding:12px 16px;border:2px solid rgba(0,172,193,0.35);">
+              <p style="font-size:14px;margin-bottom:4px;"><strong>1. Fetch (Jemput):</strong> Control Unit mengambil kode instruksi dari memori RAM.</p>
+              <p style="font-size:14px;margin-bottom:4px;"><strong>2. Decode (Terjemahkan):</strong> Control Unit menguraikan maksud perintah jadi sinyal kontrol.</p>
+              <p style="font-size:14px;margin-bottom:4px;"><strong>3. Execute (Eksekusi):</strong> ALU menjalankan perhitungan aritmatika/logika instruksi.</p>
+              <p style="font-size:14px;margin-bottom:0;"><strong>4. Store (Simpan):</strong> Hasil operasi dituliskan kembali ke register atau RAM.</p>
             </div>
           </div>
 
-          <!-- Kolom Kanan: Video Pembelajaran Interaktif -->
+          <!-- Kolom Kanan: RAM vs SSD & Kecepatan Clock -->
           <div class="content-col">
-            <h3>🎬 4. Video Simulasi Alur Kerja CPU</h3>
-            <p>Saksikan animasi pergerakan data dari input melalui bus sistem menuju CPU dan memori:</p>
+            <h3>⚡ 3. Pertarungan: RAM vs SSD</h3>
+            <p>Sering tertukar antara RAM dan Penyimpanan? Kenali perbedaannya:</p>
 
-            <div class="video-layout" style="display:flex;flex-direction:column;gap:12px;margin-top:6px;">
-              <div class="video-wrapper" id="video-wrapper" style="width:100%;height:240px;">
-                <video controls preload="metadata" id="main-video" style="width:100%;height:100%;border-radius:12px;object-fit:cover;">
-                  <source id="main-video-source" src="assets/video/jaringan.mp4" type="video/mp4">
-                  Browser kamu tidak mendukung pemutaran video langsung.
-                </video>
-                <div class="video-fallback" id="video-fallback" style="display: none;">
-                  <span class="fallback-icon">🎬</span>
-                  <p><strong>Video Pembelajaran Belum Tersedia</strong></p>
-                  <p style="font-size:13px;color:#94a3b8;margin-top:4px;">Pastikan file video berada di path yang ditentukan pada <code>config.js</code>.</p>
-                </div>
-              </div>
-
-              <div class="video-summary" style="padding:12px 14px;background:#f0fdf4;border:2px solid #86efac;border-radius:12px;">
-                <h4 style="margin:0 0 6px 0;font-size:15px;color:#166534;">💡 Fakta Kecepatan Komputer:</h4>
-                <p style="font-size:14px;color:#14532d;margin:0;line-height:1.5;">
-                  Processor modern berkecepatan <strong>3.5 GHz</strong> mampu melakukan <strong>3,5 miliar siklus</strong> perhitungan dalam kurun waktu <strong>satu detik saja!</strong>
+            <div class="materi-subcard-list" style="margin-bottom:12px;">
+              <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
+                <div class="materi-subcard-title" style="color: var(--teal-dark);">⚡ RAM (Random Access Memory):</div>
+                <p class="materi-subcard-desc">
+                  <strong>Volatile (Sementara).</strong> Tempat meletakkan aplikasi aktif. Bila komputer dimatikan, isi RAM terhapus bersih. Kecepatannya sangat tinggi!
                 </p>
               </div>
+
+              <div class="materi-subcard" style="border-color: rgba(230,81,0,0.45);">
+                <div class="materi-subcard-title" style="color: #e65100;">💾 SSD / Harddisk (Penyimpanan Sekunder):</div>
+                <p class="materi-subcard-desc">
+                  <strong>Non-Volatile (Permanen).</strong> Lemari arsip tempat sistem operasi, aplikasi, foto, dan berkas tugas tersimpan aman meski tanpa daya listrik.
+                </p>
+              </div>
+            </div>
+
+            <div class="materi-analogi-box" style="margin-bottom:12px;">
+              <p style="margin:0;font-size:14px;line-height:1.5;">
+                📖 <strong>Analogi Belajar di Meja:</strong><br>
+                • <strong>RAM</strong> adalah permukaan mejamu—buku yang sedang terbuka dan dibaca.<br>
+                • <strong>SSD</strong> adalah rak bukumu—semua koleksi buku tersimpan rapi di sana.
+              </p>
+            </div>
+
+            <div class="materi-highlight-box">
+              <p style="margin:0;font-size:14px;line-height:1.5;">
+                💡 <strong>Tahukah Kamu? — Kecepatan Gigahertz (GHz):</strong><br>
+                Processor berkecepatan <strong>3.5 GHz</strong> mampu mengeksekusi hingga <strong>3,5 miliar siklus</strong> perhitungan dalam kurun waktu <strong>satu detik saja!</strong>
+              </p>
             </div>
           </div>
         </div>
@@ -515,13 +542,96 @@
       <div class="nav-bottom right nav-materi-compound">
         <div class="nav-materi-label right" onclick="navNext()">
           <span class="nml-sub">HALAMAN BERIKUTNYA</span>
-          <strong class="nml-main">Materi 3: Sistem Operasi &amp; Kolaborasi</strong>
+          <strong class="nml-main">Video: Simulasi Siklus CPU</strong>
         </div>
         <button class="nav-arrow" onclick="navNext()" id="btn-materi2-next" title="Selanjutnya">▶</button>
       </div>
     </section>
 
-    <!-- ============================== PAGE 8: MATERI 3 (SISTEM OPERASI & KOLABORASI) ============================== -->
+    <!-- ============================== PAGE 8: VIDEO PEMBELAJARAN ============================== -->
+    <section id="page-video" class="page">
+      <div class="nav-top">
+        <button class="nav-circle" onclick="goToPage('menu')" id="btn-video-menu">☰</button>
+        <span class="nav-label">MENU</span>
+      </div>
+
+      <div class="title-bar">Video Pembelajaran: Siklus Mesin CPU</div>
+
+      <div class="content-box wide scrollable">
+        <div class="content-columns" style="align-items:center;">
+          <!-- Kolom Kiri: Video Player -->
+          <div class="content-col" style="justify-content:center;align-items:center;">
+            <div class="video-layout" style="width:100%;">
+              <div class="video-wrapper" id="video-wrapper" style="width:100%;height:320px;">
+                <video controls preload="metadata" id="main-video" style="width:100%;height:100%;border-radius:14px;object-fit:cover;">
+                  <source id="main-video-source" src="assets/video/jaringan.mp4" type="video/mp4">
+                  Browser kamu tidak mendukung pemutaran video langsung.
+                </video>
+                <div class="video-fallback" id="video-fallback" style="display: none;">
+                  <span class="fallback-icon">🎬</span>
+                  <p><strong>Video Pembelajaran Belum Tersedia</strong></p>
+                  <p style="font-size:13px;color:#94a3b8;margin-top:4px;">Pastikan file video berada di path yang ditentukan pada <code>config.js</code>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Panduan & Poin Pengamatan -->
+          <div class="content-col">
+            <h3>🔍 Panduan Menonton Video</h3>
+            <p>Saksikan tayangan animasi di sebelah kiri dengan memperhatikan poin-poin berikut:</p>
+
+            <div class="petunjuk-card" style="background:#fff;border-color:rgba(0,172,193,0.35);margin-bottom:14px;">
+              <div class="petunjuk-item">
+                <div class="nav-mini-num">1</div>
+                <div>
+                  <strong>Alur Data dari Peranti Masukan</strong>
+                  <p>Perhatikan bagaimana perintah input dialirkan melalui bus data menuju memori RAM.</p>
+                </div>
+              </div>
+              <div class="petunjuk-item">
+                <div class="nav-mini-num">2</div>
+                <div>
+                  <strong>Kerja Cepat Control Unit &amp; ALU</strong>
+                  <p>Amati instruksi dijemput (Fetch), diterjemahkan (Decode), dan dihitung seketika oleh ALU (Execute).</p>
+                </div>
+              </div>
+              <div class="petunjuk-item">
+                <div class="nav-mini-num">3</div>
+                <div>
+                  <strong>Penyajian Hasil ke Layar Monitor</strong>
+                  <p>Lihat hasil pengolahan dikirimkan ke kartu grafis dan tampil instan di monitor pengguna.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="video-summary" style="padding:12px 16px;background:#f0fdf4;border:2px solid #86efac;border-radius:12px;">
+              <h4 style="margin:0 0 4px 0;font-size:15px;color:#166534;">💡 Fakta Komputasi Cepat:</h4>
+              <p style="font-size:14px;color:#14532d;margin:0;line-height:1.5;">
+                Seluruh proses di video tersebut terjadi dalam skala <strong>nanodetik</strong> (sepersejuta milidetik), sehingga di mata manusia tampak berjalan instan!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom left nav-materi-compound">
+        <button class="nav-arrow" onclick="navPrev()" id="btn-video-prev" title="Sebelumnya">◀</button>
+        <div class="nav-materi-label left" onclick="navPrev()">
+          <span class="nml-sub">HALAMAN SEBELUMNYA</span>
+          <strong class="nml-main">Materi 2: Otak Komputer &amp; Alur Data</strong>
+        </div>
+      </div>
+      <div class="nav-bottom right nav-materi-compound">
+        <div class="nav-materi-label right" onclick="navNext()">
+          <span class="nml-sub">HALAMAN BERIKUTNYA</span>
+          <strong class="nml-main">Materi 3: Sistem Operasi &amp; Kolaborasi</strong>
+        </div>
+        <button class="nav-arrow" onclick="navNext()" id="btn-video-next" title="Selanjutnya">▶</button>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 9: MATERI 3 (SISTEM OPERASI & KOLABORASI) ============================== -->
     <section id="page-materi-3" class="page">
       <div class="nav-top">
         <button class="nav-circle" onclick="goToPage('menu')" id="btn-materi3-menu">☰</button>
@@ -600,26 +710,26 @@
         <button class="nav-arrow" onclick="navPrev()" id="btn-materi3-prev" title="Sebelumnya">◀</button>
         <div class="nav-materi-label left" onclick="navPrev()">
           <span class="nml-sub">HALAMAN SEBELUMNYA</span>
-          <strong class="nml-main">Materi 2: Otak Komputer &amp; Alur Data</strong>
+          <strong class="nml-main">Video: Simulasi Siklus CPU</strong>
         </div>
       </div>
       <div class="nav-bottom right nav-materi-compound">
         <div class="nav-materi-label right" onclick="navNext()">
           <span class="nml-sub">HALAMAN BERIKUTNYA</span>
-          <strong class="nml-main">Aktivitas: Menjodohkan Hardware</strong>
+          <strong class="nml-main">Latihan: Menjodohkan Hardware</strong>
         </div>
         <button class="nav-arrow" onclick="navNext()" id="btn-materi3-next" title="Selanjutnya">▶</button>
       </div>
     </section>
 
-    <!-- ============================== PAGE 9: TARIK JAWABAN (AKTIVITAS) ============================== -->
+    <!-- ============================== PAGE 10: TARIK JAWABAN (LATIHAN) ============================== -->
     <section id="page-tarik-jawaban" class="page">
       <div class="nav-top">
         <button class="nav-circle" onclick="goToPage('menu')" id="btn-tarik-menu">☰</button>
         <span class="nav-label">MENU</span>
       </div>
 
-      <div class="title-bar">Aktivitas: Menjodohkan Fungsi Hardware Komputer</div>
+      <div class="title-bar">Latihan: Menjodohkan Fungsi Hardware Komputer</div>
       <div class="content-box wide scrollable" id="content-tarik-jawaban">
         <p class="instruction"
           style="font-size:18px;font-weight:700;color:var(--teal-dark);text-align:center;margin-bottom:10px;">
