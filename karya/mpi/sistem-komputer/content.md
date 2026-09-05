@@ -24,19 +24,20 @@
 
 ## 🗺️ 2. Peta Alur Halaman MPI (Total 18 Halaman)
 
-Struktur modul dirancang proporsional dengan 5 sub materi terintegrasi:
+Modul dirancang dengan ritme pedagogis selang-seling interaktif (*interleaving*) agar siswa tidak jenuh:  
+**Teori ➔ Latihan Interaktif ➔ Teori ➔ Video Animasi ➔ Teori**
 
 ```
 [1. Cover] 
    └── [2. Menu Utama]
           ├── [3. Petunjuk Penggunaan]
           ├── [4. Tujuan Pembelajaran]
-          ├── [5. Menu Pilihan Materi] (5 Sub-Materi Terpilih)
+          ├── [5. Menu Pilihan Materi] (5 Sub-Materi Berimbang)
           │      ├── [6. Sub 1 (Teori 1): Anatomi Perangkat Keras]
-          │      ├── [7. Sub 2 (Teori 2): Otak Komputer & Alur Data CPU]
-          │      ├── [8. Sub 3 (Video): Video Animasi Siklus Mesin CPU]
-          │      ├── [9. Sub 4 (Teori 3): Sistem Operasi & Kolaborasi]
-          │      └── [10. Sub 5 (Latihan): Menjodohkan Fungsi Hardware]
+          │      ├── [7. Sub 2 (Latihan): Menjodohkan Fungsi Hardware] 🎮
+          │      ├── [8. Sub 3 (Teori 2): Otak Komputer & Alur Data CPU]
+          │      ├── [9. Sub 4 (Video): Video Animasi Siklus Mesin CPU] 🎬
+          │      └── [10. Sub 5 (Teori 3): Sistem Operasi & Kolaborasi]
           ├── [11. Permainan Intro] ── [12. Simulasi Rakit Komputer]
           ├── [13. Latihan Intro] ── [14. Evaluasi (PG, B/S, Jodohkan, Alur Boot)]
           ├── [15. Rangkuman & Refleksi]
@@ -56,86 +57,62 @@ Struktur modul dirancang proporsional dengan 5 sub materi terintegrasi:
 Komputer bukan sekadar satu kotak benda, melainkan sebuah **SISTEM**—kesatuan dari komponen yang saling terhubung untuk menerima data, mengolahnya, dan menghasilkan informasi berguna.
 
 #### B. 4 Pilar Perangkat Keras (Hardware)
-Alih-alih menggunakan istilah kaku *Arsitektur Von Neumann*, materi disajikan dengan **Analogi Dapur Restoran**:
-1. **Peranti Masukan (Input Device):**
-   - *Fungsi:* Pintu masuk instruksi dan data dari manusia ke komputer.
-   - *Contoh:* Keyboard, Mouse, Mikrofon, Scanner, Touchscreen.
-   - *Analogi:* Pelayan yang mencatat pesanan pelanggan dan mengantarkannya ke dapur.
-2. **Peranti Pemroses (Processing Device - CPU):**
-   - *Fungsi:* Mengolah data, melakukan perhitungan logika, dan mengeksekusi instruksi.
-   - *Contoh:* Processor (CPU), Motherboard.
-   - *Analogi:* Koki utama yang meracik bumbu dan memasak bahan makanan.
-3. **Peranti Penyimpanan (Storage & Memory):**
-   - *Fungsi:* Menyimpan instruksi program dan data pengguna, baik sementara maupun jangka panjang.
-   - *Contoh:* RAM, ROM, SSD, Harddisk, Flashdisk.
-   - *Analogi:* Meja racik koki (RAM) dan lemari pendingin bahan makanan (SSD).
-4. **Peranti Keluaran (Output Device):**
-   - *Fungsi:* Menampilkan atau mengeluarkan hasil pengolahan data agar dapat dipahami manusia.
-   - *Contoh:* Monitor, Speaker, Printer, Proyektor.
-   - *Analogi:* Piring saji hangat yang dihidangkan ke meja makan tamu.
+Materi disajikan dengan **Analogi Dapur Restoran**:
+1. **Peranti Masukan (Input Device):** Pelayan yang mencatat pesanan pelanggan dari meja. *(Keyboard, Mouse, Mikrofon, Scanner)*.
+2. **Peranti Pemroses (Processing Device - CPU):** Koki utama yang meracik bumbu dan memasak bahan makanan. *(CPU, Motherboard)*.
+3. **Peranti Penyimpanan (Storage & Memory):** Meja racik koki (RAM) dan lemari pendingin bahan makanan (SSD/Harddisk).
+4. **Peranti Keluaran (Output Device):** Piring saji hangat yang dihidangkan ke meja makan tamu. *(Monitor, Speaker, Printer)*.
 
 ---
 
-### 🧠 Sub-Materi 2: Otak Komputer & Alur Pemrosesan (CPU & Memori)
+### 🎯 Sub-Materi 2: Latihan Interaktif Menjodohkan Hardware (Latihan 1)
+*Fokus: Langsung menguji dan memperkuat pemahaman 4 pilar hardware selagi materi masih segar.*
+- Siswa menghubungkan kartu istilah hardware (CPU, RAM, SSD, Motherboard, I/O) dengan fungsi/peran utamanya.
+- Garis koneksi SVG interaktif, umpan balik suara, dan skor evaluasi langsung.
+
+---
+
+### 🧠 Sub-Materi 3: Otak Komputer & Alur Pemrosesan (Teori 2)
 *Fokus: Memahami bagaimana mesin berpikir dan mengolah instruksi.*
 
 #### A. Anatomi CPU (Central Processing Unit)
-CPU adalah mikrokontroler canggih bernilai triliunan transistor. Di dalamnya terdapat unit inti:
-- **ALU (Arithmetic Logic Unit):** Kalkulator super cepat untuk hitungan matematika (+, -, ×, ÷) dan logika (BENAR/SALAH).
-- **CU (Control Unit):** Mandor pengatur lalu lintas yang memandu ke mana data harus dikirim.
-- **Register:** Memori mini berkecepatan cahaya tepat di dalam CPU untuk memegang data yang sedang dihitung detik itu juga.
+- **ALU (Arithmetic Logic Unit):** Kalkulator super cepat untuk hitungan matematika (+, -, ×, ÷) dan logika.
+- **CU (Control Unit):** Mandor pengatur lalu lintas data yang menjemput instruksi.
+- **Register:** Memori kerja internal berkecepatan ultra-tinggi tepat di dalam prosesor.
 
-#### B. Siklus Mesin (Machine Cycle): 3 Langkah Abadi
-Bagaimana komputer menjalankan perintah ketikan kita?
-1. **Fetch (Jemput):** CU mengambil instruksi kode dari RAM.
-2. **Decode (Terjemahkan):** CU menerjemahkan instruksi menjadi sinyal listrik biner.
-3. **Execute (Eksekusi):** ALU menjalankan perintah (misal: menjumlahkan angka).
-4. **Store (Simpan):** Hasil perhitungan ditulis kembali ke RAM atau layar.
+#### B. Siklus Mesin (Machine Cycle): 4 Tahap Berulang
+1. **Fetch (Jemput):** CU mengambil instruksi dari RAM.
+2. **Decode (Terjemahkan):** CU menguraikan maksud kode perintah.
+3. **Execute (Eksekusi):** ALU menjalankan kalkulasi perintah.
+4. **Store (Simpan):** Hasil dituliskan kembali ke RAM atau layar.
 
 #### C. Pertarungan: RAM vs SSD / Harddisk
-Mengapa komputer butuh dua jenis memori yang berbeda?
-| Aspek | RAM (Random Access Memory) | SSD / Harddisk (Storage) |
-|---|---|---|
-| **Sifat Data** | **Volatile** (Hilang total saat listrik mati) | **Non-Volatile** (Tersimpan permanen) |
-| **Kecepatan** | Ekstrem cepat (akses langsung ke CPU) | Lebih lambat dibanding RAM |
-| **Fungsi Utama** | Meja kerja aplikasi yang sedang dibuka | Lemari arsip berkas, foto, dan sistem operasi |
-| **Kapasitas Khas** | 8 GB – 32 GB | 256 GB – 2.000 GB (2 TB) |
+- **RAM:** Volatil (sementara), kecepatan luar biasa tinggi, analogi meja kerja aktif.
+- **SSD:** Non-volatil (permanen), kapasitas besar, analogi lemari arsip buku.
+- **Clock Speed:** Processor 3.5 GHz melakukan 3,5 miliar siklus per detik!
 
 ---
 
-### 🎬 Sub-Materi 3: Video Animasi Siklus Mesin CPU (Video Mandiri)
-*Fokus: Visualisasi pergerakan data dari input, bus memori, pemrosesan CPU, hingga monitor.*
+### 🎬 Sub-Materi 4: Video Animasi Siklus Mesin CPU (Video)
+*Fokus: Visualisasi dinamis pergerakan data dari input, bus memori, pemrosesan CPU, hingga monitor.*
 - Video berdurasi singkat (~2 menit) ditempatkan pada panggung khusus yang lega.
-- Dilengkapi poin penting pengamatan:
+- Panduan pengamatan:
   1. Pengiriman data input melalui bus sistem ke RAM.
   2. Pengambilan (Fetch), penguraian kode (Decode), dan perhitungan (Execute) oleh ALU/CU.
-  3. Pengiriman hasil keluaran ke kartu grafis dan layar monitor.
+  3. Penyajian hasil keluaran ke kartu grafis dan layar monitor.
 
 ---
 
-### ⚙️ Sub-Materi 4: Sistem Operasi & Kolaborasi Sistem (Teori 3)
+### ⚙️ Sub-Materi 5: Sistem Operasi & Kolaborasi Sistem (Teori 3)
 *Fokus: Mengapa komputer butuh perangkat lunak dan bagaimana ketiganya berinteraksi.*
 
 #### A. Apa Itu Sistem Operasi (OS)?
-Jika perangkat keras adalah raga/badan, maka Sistem Operasi adalah **jiwa/nyawa** yang menggerakkannya. Tanpa OS, laptop tercanggih sekalipun hanyalah tumpukan logam dan silikon mati.
-- **Fungsi Utama OS:**
-  1. *Manajemen Perangkat:* Mengatur CPU, memori, keyboard, dan layar.
-  2. *Antarmuka Pengguna (GUI):* Menyediakan ikon, jendela, dan kursor agar pengguna tidak perlu mengetik baris perintah kode.
-  3. *Manajemen Berkas:* Mengatur folder, penyimpanan file, dan izin keamanan.
-- **Contoh OS Populer:** Microsoft Windows, Linux (Ubuntu), macOS, Android, iOS.
+Jika perangkat keras adalah raga/badan, maka Sistem Operasi adalah **jiwa/nyawa** yang menggerakkannya.
+- **Fungsi Utama OS:** Manajemen sumber daya hardware, Antarmuka Grafis (GUI), dan Manajemen berkas file.
+- **Contoh OS:** Windows, Linux, macOS, Android, iOS.
 
 #### B. Segitiga Emas: Hardware + Software + Brainware
-Sistem komputer hanya bisa bekerja jika ketiga unsur ini bersinergi:
-1. **Hardware (Perangkat Keras):** Komponen fisik penyedia daya komputasi.
-2. **Software (Perangkat Lunak):** Kumpulan instruksi digital (Sistem Operasi + Program Aplikasi).
-3. **Brainware (Pengguna):** Manusia yang memberikan tujuan, data masukan, dan memanfaatkan hasil informasi.
-
----
-
-### 🎯 Sub-Materi 5: Latihan Interaktif Menjodohkan Hardware (Aktivitas)
-*Fokus: Menguji pemahaman fungsi hardware dengan aktivitas menjodohkan interaktif.*
-- Menghubungkan istilah hardware (CPU, RAM, SSD, Motherboard, I/O) dengan fungsi utamanya.
-- Menampilkan garis koneksi SVG dinamis, penilaian instan, dan umpan balik suara.
+Sinergi mutlak antara komponen fisik (Hardware), program logika (Software), dan manusia berakal (Brainware), serta peran program *Driver* sebagai penerjemah.
 
 ---
 

@@ -215,10 +215,10 @@ const PAGE_INDEX_MAP = {
   'tujuan': 4,
   'materi-list': 5,
   'materi-1': 6,
-  'materi-2': 7,
-  'video': 8,
-  'materi-3': 9,
-  'tarik-jawaban': 10,
+  'tarik-jawaban': 7,
+  'materi-2': 8,
+  'video': 9,
+  'materi-3': 10,
   'permainan-intro': 11,
   'permainan': 12,
   'latihan-intro': 13,
@@ -252,7 +252,7 @@ function updateTestingIndicator(pageId) {
 
 const LINEAR_PAGES = [
   'cover', 'menu', 'petunjuk', 'tujuan', 'materi-list',
-  'materi-1', 'materi-2', 'video', 'materi-3', 'tarik-jawaban',
+  'materi-1', 'tarik-jawaban', 'materi-2', 'video', 'materi-3',
   'permainan-intro', 'permainan', 'latihan-intro', 'latihan',
   'rangkuman', 'referensi', 'pengembang', 'kredit'
 ];
@@ -294,8 +294,8 @@ function goToPage(pageId) {
   updateGlobalNavButtons(pageId);
 
   // Lazy initialize interactive modules on page entry
-  if (pageId === 'video') initVideo();
   if (pageId === 'tarik-jawaban') initMatchP8();
+  if (pageId === 'video') initVideo();
   if (pageId === 'permainan') initPacketCommanderGame();
   if (pageId === 'latihan') {
     const activeSec = document.querySelector('.eval-section.active');
@@ -334,11 +334,17 @@ const JARINGAN_PAGE_NAV_MAP = {
   'materi-1': {
     prevText: 'Daftar Pilihan Materi',
     prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Latihan: Menjodohkan Hardware',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'tarik-jawaban': {
+    prevText: 'Materi 1: Anatomi Hardware',
+    prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Materi 2: Otak Komputer & Alur Data',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'materi-2': {
-    prevText: 'Materi 1: Anatomi Hardware',
+    prevText: 'Latihan: Menjodohkan Hardware',
     prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Video: Simulasi Siklus CPU',
     nextSub: 'HALAMAN BERIKUTNYA'
@@ -352,17 +358,11 @@ const JARINGAN_PAGE_NAV_MAP = {
   'materi-3': {
     prevText: 'Video: Simulasi Siklus CPU',
     prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Latihan: Menjodohkan Hardware',
-    nextSub: 'HALAMAN BERIKUTNYA'
-  },
-  'tarik-jawaban': {
-    prevText: 'Materi 3: Sistem Operasi',
-    prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Pengantar Simulator Komputer',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'permainan-intro': {
-    prevText: 'Latihan: Menjodohkan Hardware',
+    prevText: 'Materi 3: Sistem Operasi & Kolaborasi',
     prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Mulai Simulator Komputer',
     nextSub: 'HALAMAN BERIKUTNYA'
