@@ -22,7 +22,7 @@
 
 ---
 
-## 🗺️ 2. Peta Alur Halaman MPI (Total 18 Halaman)
+## 🗺️ 2. Peta Alur Halaman MPI (Total 19 Halaman)
 
 Modul dirancang dengan ritme pedagogis selang-seling interaktif (*interleaving*) agar siswa tidak jenuh:  
 **Teori ➔ Latihan Interaktif ➔ Teori ➔ Video Animasi ➔ Teori**
@@ -43,7 +43,8 @@ Modul dirancang dengan ritme pedagogis selang-seling interaktif (*interleaving*)
           ├── [15. Rangkuman & Refleksi]
           ├── [16. Referensi & Daftar Pustaka]
           ├── [17. Profil Pengembang]
-          └── [18. Kredit & Penutup Kemendikdasmen]
+          ├── [18. Motto / Kutipan Inspirasi & 3 Pilar Pendidikan]
+          └── [19. Kredit & Penutup Kemendikdasmen]
 ```
 
 ---
