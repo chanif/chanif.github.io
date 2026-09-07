@@ -1873,14 +1873,14 @@ function showGameHint() {
     showGameModal({
       icon: '💡',
       title: 'Bantuan Misi 3',
-      text: 'Ketika kipas PC menyala normal tetapi monitor gelap dan motherboard membunyikan Beep panjang berulang, penyebab utamanya hampir selalu adalah masalah kontak pada modul RAM yang kotor atau kurang kencang terpasang!',
+      text: 'Pahami sinyal diagnostik kode bunyi Beep pada tahap inisialisasi awal BIOS (POST). Bunyi Beep berulang umumnya mengindikasikan kegagalan komunikasi modul memori kerja (RAM). Jangan lupa utamakan prosedur keselamatan kerja (K3) listrik sebelum menyentuh komponen fisik.',
       actions: [{ text: 'Mengerti', primary: true, onClick: closeGameModal }]
     });
   } else if (computerGame.currentLevel === 4) {
     showGameModal({
       icon: '💡',
       title: 'Bantuan Misi 4',
-      text: 'Perhatikan Task Manager: CPU 24% dan SSD masih 320 GB bebas. Masalah utama (bottleneck) adalah RAM yang menyentuh 98% akibat terlalu banyak tab dan aplikasi terbuka bersamaan. Solusinya adalah membebaskan RAM atau menambah keping RAM!',
+      text: 'Bandingkan ketiga indikator pada panel Task Manager: CPU, Memori (RAM), dan Penyimpanan SSD. Komponen manakah yang persentase bebannya paling kritis mendekati 100%? Tentukan tindakan yang segera membebaskan beban komponen tersebut dan opsi ekspansi fisiknya.',
       actions: [{ text: 'Mengerti', primary: true, onClick: closeGameModal }]
     });
   }
