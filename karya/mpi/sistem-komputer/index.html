@@ -797,25 +797,30 @@
           <div class="game-level-tabs">
             <button class="game-tab active" onclick="switchGameLevel(1)" id="game-tab-1">
               <span class="tab-badge">Misi 1</span>
-              <span class="tab-title">Rakit Motherboard</span>
+              <span class="tab-title">Rakit Komputer</span>
               <span class="tab-stars" id="stars-lvl-1">⭐ 0/1</span>
             </button>
             <button class="game-tab locked" onclick="switchGameLevel(2)" id="game-tab-2">
               <span class="tab-badge">Misi 2</span>
-              <span class="tab-title">Sakelar Biner 8-Bit</span>
+              <span class="tab-title">Sakelar Biner</span>
               <span class="tab-stars" id="stars-lvl-2">🔒</span>
             </button>
             <button class="game-tab locked" onclick="switchGameLevel(3)" id="game-tab-3">
               <span class="tab-badge">Misi 3</span>
-              <span class="tab-title">Siklus Mesin CPU</span>
+              <span class="tab-title">Kasus 1: Layar Gelap</span>
               <span class="tab-stars" id="stars-lvl-3">🔒</span>
+            </button>
+            <button class="game-tab locked" onclick="switchGameLevel(4)" id="game-tab-4">
+              <span class="tab-badge">Misi 4</span>
+              <span class="tab-title">Kasus 2: Memori Penuh</span>
+              <span class="tab-stars" id="stars-lvl-4">🔒</span>
             </button>
           </div>
 
           <div class="game-hud">
             <div class="hud-item">
               <span class="hud-label">TOTAL BINTANG</span>
-              <span class="hud-val star-val" id="game-total-stars">⭐ 0/3</span>
+              <span class="hud-val star-val" id="game-total-stars">⭐ 0/4</span>
             </div>
             <div class="hud-item">
               <span class="hud-label">STATUS SISTEM</span>
@@ -831,114 +836,159 @@
         <!-- Instruction Bar -->
         <div class="game-mission-info" id="game-mission-info">
           <span class="mission-icon" id="game-mission-icon">🔧</span>
-          <span class="mission-text" id="game-mission-desc">Misi 1: Klik komponen di rak kiri untuk memasangnya ke soket Motherboard yang tepat!</span>
+          <span class="mission-text" id="game-mission-desc">Misi 1: Pilih 4 komponen yang kompatibel dari rak untuk dirakit ke Motherboard, lalu uji nyala!</span>
         </div>
 
-        <!-- ==================== STAGE 1: RAKIT MOTHERBOARD ==================== -->
+        <!-- ==================== STAGE 1: RAKIT KOMPUTER BERDASARKAN SPESIFIKASI ==================== -->
         <div class="game-stage-panel" id="game-stage-panel-1" style="display:block;">
           <div class="game-stage-wrapper" style="gap:16px;">
             <!-- 1. Component Inventory (Left) -->
-            <div class="game-side-panel sender-panel" style="width:230px;min-width:210px;">
-              <div class="side-panel-header">
-                <span class="side-icon">📦</span>
-                <span class="side-title">Rak Komponen</span>
+            <div class="game-side-panel sender-panel" style="width:250px;min-width:240px;">
+              <div class="side-panel-header" style="justify-content:space-between;width:100%;border-bottom:1px solid #e0f2fe;padding-bottom:6px;">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span class="side-icon">📦</span>
+                  <span class="side-title" style="font-size:14px;">Rak Komponen</span>
+                </div>
+                <span style="font-size:10.5px;color:#0288d1;font-weight:700;">(Pilih 4 Kompatibel)</span>
               </div>
-              <div style="padding:10px;display:flex;flex-direction:column;gap:8px;" id="pc-inventory-list">
-                <div class="pc-item-card" id="inv-cpu" onclick="selectOrMountComponent('cpu')" style="background:#fff;border:2px solid #00ACC1;border-radius:10px;padding:8px 10px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all 0.2s;">
-                  <span style="font-size:24px;">🧠</span>
-                  <div style="text-align:left;">
-                    <div style="font-weight:700;font-size:13px;color:#006064;">CPU Processor</div>
-                    <div style="font-size:11px;color:#64748b;" id="inv-cpu-status">Belum Terpasang</div>
+              <div class="pc-inventory-scroll" id="pc-inventory-list" style="width:100%;">
+                <!-- Dynamic or Pre-rendered Inventory Items -->
+                <div class="inv-comp-card" id="inv-cpu_good" onclick="selectOrMountComponent('cpu_good')">
+                  <img src="assets/comp_cpu_good.jpg" class="inv-comp-thumb" alt="CPU Multi-Core">
+                  <div class="inv-comp-info">
+                    <div class="inv-comp-title">CPU Multi-Core</div>
+                    <span class="inv-comp-tag compat">Soket LGA</span>
+                    <div class="inv-comp-status" id="inv-cpu_good-status">Siap Pasang</div>
                   </div>
                 </div>
 
-                <div class="pc-item-card" id="inv-ram" onclick="selectOrMountComponent('ram')" style="background:#fff;border:2px solid #0288D1;border-radius:10px;padding:8px 10px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all 0.2s;">
-                  <span style="font-size:24px;">⚡</span>
-                  <div style="text-align:left;">
-                    <div style="font-weight:700;font-size:13px;color:#01579B;">RAM 16 GB</div>
-                    <div style="font-size:11px;color:#64748b;" id="inv-ram-status">Belum Terpasang</div>
+                <div class="inv-comp-card" id="inv-cpu_bad" onclick="selectOrMountComponent('cpu_bad')">
+                  <img src="assets/comp_cpu_bad.jpg" class="inv-comp-thumb" alt="CPU Jadul Rusak">
+                  <div class="inv-comp-info">
+                    <div class="inv-comp-title">CPU Jadul (Pin Patah)</div>
+                    <span class="inv-comp-tag bad">Cacat Fisik</span>
+                    <div class="inv-comp-status" id="inv-cpu_bad-status">Siap Pasang</div>
                   </div>
                 </div>
 
-                <div class="pc-item-card" id="inv-ssd" onclick="selectOrMountComponent('ssd')" style="background:#fff;border:2px solid #7B1FA2;border-radius:10px;padding:8px 10px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all 0.2s;">
-                  <span style="font-size:24px;">💾</span>
-                  <div style="text-align:left;">
-                    <div style="font-weight:700;font-size:13px;color:#4A148C;">SSD NVMe 512GB</div>
-                    <div style="font-size:11px;color:#64748b;" id="inv-ssd-status">Belum Terpasang</div>
+                <div class="inv-comp-card" id="inv-ram_good" onclick="selectOrMountComponent('ram_good')">
+                  <img src="assets/comp_ram_good.jpg" class="inv-comp-thumb" alt="RAM DDR4">
+                  <div class="inv-comp-info">
+                    <div class="inv-comp-title">RAM 16GB DDR4</div>
+                    <span class="inv-comp-tag compat">Slot DDR4</span>
+                    <div class="inv-comp-status" id="inv-ram_good-status">Siap Pasang</div>
                   </div>
                 </div>
 
-                <div class="pc-item-card" id="inv-psu" onclick="selectOrMountComponent('psu')" style="background:#fff;border:2px solid #E65100;border-radius:10px;padding:8px 10px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all 0.2s;">
-                  <span style="font-size:24px;">🔌</span>
-                  <div style="text-align:left;">
-                    <div style="font-weight:700;font-size:13px;color:#BF360C;">Power Supply (PSU)</div>
-                    <div style="font-size:11px;color:#64748b;" id="inv-psu-status">Belum Terpasang</div>
+                <div class="inv-comp-card" id="inv-ram_bad" onclick="selectOrMountComponent('ram_bad')">
+                  <img src="assets/comp_ram_bad.jpg" class="inv-comp-thumb" alt="RAM DDR1 Jadul">
+                  <div class="inv-comp-info">
+                    <div class="inv-comp-title">RAM DDR1 Jadul</div>
+                    <span class="inv-comp-tag bad">Notch Salah</span>
+                    <div class="inv-comp-status" id="inv-ram_bad-status">Siap Pasang</div>
+                  </div>
+                </div>
+
+                <div class="inv-comp-card" id="inv-ssd_good" onclick="selectOrMountComponent('ssd_good')">
+                  <img src="assets/comp_ssd_good.jpg" class="inv-comp-thumb" alt="SSD NVMe M.2">
+                  <div class="inv-comp-info">
+                    <div class="inv-comp-title">SSD NVMe 512GB</div>
+                    <span class="inv-comp-tag compat">Slot M.2 PCIe</span>
+                    <div class="inv-comp-status" id="inv-ssd_good-status">Siap Pasang</div>
+                  </div>
+                </div>
+
+                <div class="inv-comp-card" id="inv-floppy_bad" onclick="selectOrMountComponent('floppy_bad')">
+                  <img src="assets/comp_floppy_bad.jpg" class="inv-comp-thumb" alt="Disket Floppy">
+                  <div class="inv-comp-info">
+                    <div class="inv-comp-title">Disket Floppy 1.44MB</div>
+                    <span class="inv-comp-tag bad">Media Kuno</span>
+                    <div class="inv-comp-status" id="inv-floppy_bad-status">Siap Pasang</div>
+                  </div>
+                </div>
+
+                <div class="inv-comp-card" id="inv-psu_good" onclick="selectOrMountComponent('psu_good')">
+                  <img src="assets/comp_psu_good.jpg" class="inv-comp-thumb" alt="PSU 550W">
+                  <div class="inv-comp-info">
+                    <div class="inv-comp-title">PSU 550W 80+</div>
+                    <span class="inv-comp-tag compat">Daya Stabil</span>
+                    <div class="inv-comp-status" id="inv-psu_good-status">Siap Pasang</div>
+                  </div>
+                </div>
+
+                <div class="inv-comp-card" id="inv-charger_bad" onclick="selectOrMountComponent('charger_bad')">
+                  <img src="assets/comp_charger_bad.jpg" class="inv-comp-thumb" alt="Charger HP 10W">
+                  <div class="inv-comp-info">
+                    <div class="inv-comp-title">Adaptor HP 10W</div>
+                    <span class="inv-comp-tag bad">Daya Lemah</span>
+                    <div class="inv-comp-status" id="inv-charger_bad-status">Siap Pasang</div>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- 2. Motherboard Visual Board (Center) -->
-            <div class="game-canvas" style="flex:1;background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);border-radius:16px;border:3px solid #334155;padding:16px;position:relative;min-height:320px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div class="game-canvas" style="flex:1;background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);border-radius:16px;border:3px solid #334155;padding:14px;position:relative;min-height:320px;display:flex;flex-direction:column;justify-content:space-between;">
               <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #334155;padding-bottom:6px;">
-                <span style="color:#38bdf8;font-weight:800;font-size:14px;letter-spacing:1px;">🖥️ MOTHERBOARD ATX GAMING SERIES</span>
-                <span style="background:#0f172a;color:#a855f7;border:1px solid #7e22ce;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;">SOCKET LGA / DDR4 / NVMe</span>
+                <span style="color:#38bdf8;font-weight:800;font-size:13.5px;letter-spacing:0.8px;">🖥️ MOTHERBOARD ATX GAMING SERIES</span>
+                <span style="background:#0f172a;color:#a855f7;border:1px solid #7e22ce;padding:2px 8px;border-radius:6px;font-size:10.5px;font-weight:700;">SOCKET LGA / DDR4 / NVMe / ATX-24P</span>
               </div>
 
               <!-- Sockets Layout Grid -->
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;">
                 <!-- Socket CPU -->
-                <div id="socket-cpu" onclick="clickMotherboardSocket('cpu')" style="background:rgba(255,255,255,0.06);border:2px dashed #38bdf8;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all 0.3s;min-height:95px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                  <span style="font-size:28px;" id="socket-cpu-icon">🔲</span>
-                  <span style="color:#e2e8f0;font-weight:700;font-size:13px;margin-top:4px;" id="socket-cpu-label">Soket CPU</span>
-                  <span style="color:#94a3b8;font-size:10.5px;" id="socket-cpu-desc">Klik untuk memasang CPU</span>
+                <div id="socket-cpu" class="mb-socket-slot" onclick="clickMotherboardSocket('cpu')">
+                  <span style="font-size:24px;" id="socket-cpu-icon">🔲</span>
+                  <span style="color:#e2e8f0;font-weight:700;font-size:12px;margin-top:2px;" id="socket-cpu-label">Soket CPU LGA</span>
+                  <span style="color:#94a3b8;font-size:10px;" id="socket-cpu-desc">Klik untuk memasang CPU</span>
                 </div>
 
                 <!-- Socket RAM -->
-                <div id="socket-ram" onclick="clickMotherboardSocket('ram')" style="background:rgba(255,255,255,0.06);border:2px dashed #0288D1;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all 0.3s;min-height:95px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                  <span style="font-size:28px;" id="socket-ram-icon">🔲</span>
-                  <span style="color:#e2e8f0;font-weight:700;font-size:13px;margin-top:4px;" id="socket-ram-label">Slot RAM DDR4</span>
-                  <span style="color:#94a3b8;font-size:10.5px;" id="socket-ram-desc">Klik untuk memasang RAM</span>
+                <div id="socket-ram" class="mb-socket-slot" onclick="clickMotherboardSocket('ram')">
+                  <span style="font-size:24px;" id="socket-ram-icon">🔲</span>
+                  <span style="color:#e2e8f0;font-weight:700;font-size:12px;margin-top:2px;" id="socket-ram-label">Slot RAM DDR4</span>
+                  <span style="color:#94a3b8;font-size:10px;" id="socket-ram-desc">Klik untuk memasang RAM</span>
                 </div>
 
-                <!-- Socket SSD -->
-                <div id="socket-ssd" onclick="clickMotherboardSocket('ssd')" style="background:rgba(255,255,255,0.06);border:2px dashed #a855f7;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all 0.3s;min-height:95px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                  <span style="font-size:28px;" id="socket-ssd-icon">🔲</span>
-                  <span style="color:#e2e8f0;font-weight:700;font-size:13px;margin-top:4px;" id="socket-ssd-label">Slot M.2 NVMe SSD</span>
-                  <span style="color:#94a3b8;font-size:10.5px;" id="socket-ssd-desc">Klik untuk memasang SSD</span>
+                <!-- Socket Storage -->
+                <div id="socket-ssd" class="mb-socket-slot" onclick="clickMotherboardSocket('ssd')">
+                  <span style="font-size:24px;" id="socket-ssd-icon">🔲</span>
+                  <span style="color:#e2e8f0;font-weight:700;font-size:12px;margin-top:2px;" id="socket-ssd-label">Slot Storage (NVMe/Drive)</span>
+                  <span style="color:#94a3b8;font-size:10px;" id="socket-ssd-desc">Klik untuk memasang Media Storage</span>
                 </div>
 
                 <!-- Socket PSU -->
-                <div id="socket-psu" onclick="clickMotherboardSocket('psu')" style="background:rgba(255,255,255,0.06);border:2px dashed #f97316;border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all 0.3s;min-height:95px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                  <span style="font-size:28px;" id="socket-psu-icon">🔲</span>
-                  <span style="color:#e2e8f0;font-weight:700;font-size:13px;margin-top:4px;" id="socket-psu-label">Konektor Daya ATX 24-Pin</span>
-                  <span style="color:#94a3b8;font-size:10.5px;" id="socket-psu-desc">Klik untuk pasang kabel PSU</span>
+                <div id="socket-psu" class="mb-socket-slot" onclick="clickMotherboardSocket('psu')">
+                  <span style="font-size:24px;" id="socket-psu-icon">🔲</span>
+                  <span style="color:#e2e8f0;font-weight:700;font-size:12px;margin-top:2px;" id="socket-psu-label">Konektor Daya Catu Daya</span>
+                  <span style="color:#94a3b8;font-size:10px;" id="socket-psu-desc">Klik untuk pasang sumber daya</span>
                 </div>
               </div>
 
               <!-- Board Status Footnote -->
-              <div style="background:rgba(0,0,0,0.3);border-radius:8px;padding:6px 12px;display:flex;justify-content:space-between;align-items:center;">
+              <div style="background:rgba(0,0,0,0.35);border-radius:8px;padding:6px 12px;display:flex;justify-content:space-between;align-items:center;">
                 <span style="color:#94a3b8;font-size:11px;" id="mb-progress-text">Terpasang: 0 dari 4 Komponen</span>
                 <span id="mb-power-led" style="display:inline-flex;align-items:center;gap:4px;color:#ef4444;font-weight:700;font-size:11px;">● Daya Mati</span>
               </div>
             </div>
 
             <!-- 3. Diagnostic Screen (Right) -->
-            <div class="game-side-panel receiver-panel" style="width:250px;min-width:230px;">
+            <div class="game-side-panel receiver-panel" style="width:250px;min-width:240px;">
               <div class="side-panel-header">
                 <span class="side-icon">🖥️</span>
-                <span class="side-title">Monitor Pengujian</span>
+                <span class="side-title" style="font-size:14px;">Monitor POST BIOS</span>
               </div>
-              <div style="padding:12px;display:flex;flex-direction:column;justify-content:space-between;height:calc(100% - 45px);">
+              <div style="padding:10px 0;display:flex;flex-direction:column;justify-content:space-between;height:calc(100% - 40px);width:100%;">
                 <!-- CRT Terminal Screen -->
-                <div id="post-screen" style="background:#020617;border:2px solid #334155;border-radius:8px;padding:10px;font-family:monospace;font-size:11px;color:#22c55e;min-height:165px;max-height:180px;overflow-y:auto;text-align:left;line-height:1.4;">
+                <div id="post-screen" style="background:#020617;border:2px solid #334155;border-radius:8px;padding:10px;font-family:monospace;font-size:11px;color:#22c55e;min-height:190px;max-height:205px;overflow-y:auto;text-align:left;line-height:1.45;">
                   <div>[BIOS v2.4] Standby...</div>
-                  <div style="color:#64748b;">Menunggu semua komponen terpasang di motherboard...</div>
+                  <div style="color:#64748b;">Pesanan Spek: PC Lab Sekolah Modern (LGA, DDR4, NVMe, PSU 500W+).</div>
+                  <div style="color:#64748b;margin-top:4px;">Pasang 4 komponen di motherboard, lalu uji tombol power.</div>
                 </div>
 
                 <!-- Big Power Button -->
-                <button class="btn btn-primary" onclick="testPowerOnPC()" id="btn-power-on" style="margin-top:10px;width:100%;font-weight:800;font-size:13.5px;padding:10px;border-radius:8px;opacity:0.6;" disabled>
-                  ⚡ TEKAN TOMBOL POWER
+                <button class="btn btn-primary" onclick="testPowerOnPC()" id="btn-power-on" style="margin-top:8px;width:100%;font-weight:800;font-size:13px;padding:10px;border-radius:8px;opacity:0.6;" disabled>
+                  ⚡ PASANG 4 KOMPONEN DULU
                 </button>
               </div>
             </div>
@@ -952,12 +1002,12 @@
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-bottom:1.5px solid #e2e8f0;padding-bottom:12px;margin-bottom:16px;">
               <div>
                 <span style="font-size:12px;color:#64748b;font-weight:700;text-transform:uppercase;">🎯 Target Tantangan:</span>
-                <div style="font-size:22px;font-weight:800;color:#006064;" id="bin-target-title">Bentuk Huruf 'A' (Desimal 65)</div>
+                <div style="font-size:20px;font-weight:800;color:#006064;" id="bin-target-title">Tantangan 1: Desimal 27</div>
               </div>
               <div style="display:flex;gap:8px;">
-                <button class="btn btn-secondary" style="font-size:12.5px;padding:6px 12px;" onclick="switchBinaryChallenge(1)">Tantangan 1: 42</button>
-                <button class="btn btn-secondary" style="font-size:12.5px;padding:6px 12px;" onclick="switchBinaryChallenge(2)">Tantangan 2: 65 ('A')</button>
-                <button class="btn btn-secondary" style="font-size:12.5px;padding:6px 12px;" onclick="switchBinaryChallenge(3)">Tantangan 3: 155</button>
+                <button class="btn btn-secondary" style="font-size:12px;padding:6px 10px;" onclick="switchBinaryChallenge(1)">Tantangan 1: 27</button>
+                <button class="btn btn-secondary" style="font-size:12px;padding:6px 10px;" onclick="switchBinaryChallenge(2)">Tantangan 2: 75 ('K')</button>
+                <button class="btn btn-secondary" style="font-size:12px;padding:6px 10px;" onclick="switchBinaryChallenge(3)">Tantangan 3: 200</button>
               </div>
             </div>
 
@@ -966,7 +1016,7 @@
               <!-- Rendered dynamically by JS (128, 64, 32, 16, 8, 4, 2, 1) -->
             </div>
 
-            <!-- Live Calculation & Character Decoder -->
+            <!-- Live Calculation & Character Decoder (TETAP DITAMPILKAN SESUAI ARAHAN) -->
             <div style="background:#f8fafc;border:1.5px solid #cbd5e1;border-radius:10px;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
               <div style="font-family:monospace;font-size:14px;color:#334155;" id="bin-calc-formula">
                 Kalkulasi: 0 + 0 + 0 + 0 + 0 + 0 + 0 + 0 = <strong>0</strong>
@@ -986,58 +1036,172 @@
           </div>
         </div>
 
-        <!-- ==================== STAGE 3: SIKLUS MESIN CPU ==================== -->
+        <!-- ==================== STAGE 3: KASUS TEKNISI 1 (LAYAR GELAP & BEEP) ==================== -->
         <div class="game-stage-panel" id="game-stage-panel-3" style="display:none;">
-          <div style="background:var(--white);border-radius:14px;border:2px solid #00ACC1;padding:18px;margin-bottom:12px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+          <div class="trouble-split-layout">
+            <!-- Left: Incident Photo & Audio -->
+            <div class="trouble-left-col">
+              <div class="trouble-media-card">
+                <img src="assets/trouble_screen_beep.jpg" class="trouble-media-img" alt="Komputer Layar Gelap No Signal">
+              </div>
+
+              <div class="trouble-report-box">
+                <div class="trouble-report-row">
+                  <span>Unit Komputer:</span>
+                  <strong>Lab Station #4</strong>
+                </div>
+                <div class="trouble-report-row">
+                  <span>Lampu Daya (LED):</span>
+                  <strong style="color:#0288d1;">● Biru Menyala Normal</strong>
+                </div>
+                <div class="trouble-report-row">
+                  <span>Kipas CPU &amp; Casing:</span>
+                  <strong style="color:#16a34a;">● Berputar Lancar</strong>
+                </div>
+                <div class="trouble-report-row">
+                  <span>Tampilan Monitor:</span>
+                  <strong style="color:#dc2626;">● Layar Hitam (NO SIGNAL)</strong>
+                </div>
+                <div class="trouble-report-row">
+                  <span>Speaker Motherboard:</span>
+                  <strong style="color:#dc2626;">🔊 BEEP PANJANG BERULANG</strong>
+                </div>
+              </div>
+
+              <button class="btn-sound-beep" onclick="toggleBeepSound()" id="btn-play-beep">
+                🔊 Dengarkan Bunyi Beep Motherboard
+              </button>
+            </div>
+
+            <!-- Right: Interactive Diagnosis & Actions -->
+            <div class="trouble-right-col">
               <div>
-                <span style="font-size:12px;color:#64748b;font-weight:700;">PROGRAM DI MEMORI RAM:</span>
-                <div style="font-size:20px;font-weight:800;color:#006064;">Instruksi: ADD R1, R2 (Hitung 15 + 25)</div>
+                <div class="trouble-question-title">🛠️ Analisis Gejala &amp; Tindakan Teknisi</div>
+                <div class="trouble-question-desc">
+                  Komputer menyala dan kipas berputar, tapi layar monitor tidak menampilkan apa pun dan terdengar bunyi beep panjang berulang. Berdasarkan kode POST BIOS, tindakan perbaikan apa yang tepat?
+                </div>
+
+                <div class="trouble-options-list" id="t3-options-list">
+                  <div class="trouble-option-btn" id="btn-t3-opt-0" onclick="selectTroubleOption(3, 0)">
+                    <span class="trouble-option-letter">A</span>
+                    <span>Ganti kabel daya listrik (power cord) monitor dengan kabel baru karena mengira monitor kehabisan listrik.</span>
+                  </div>
+                  <div class="trouble-option-btn" id="btn-t3-opt-1" onclick="selectTroubleOption(3, 1)">
+                    <span class="trouble-option-letter">B</span>
+                    <span>Format ulang harddisk dan pasang ulang sistem operasi Windows karena menduga ada virus perangkat lunak.</span>
+                  </div>
+                  <div class="trouble-option-btn" id="btn-t3-opt-2" onclick="selectTroubleOption(3, 2)">
+                    <span class="trouble-option-letter">C</span>
+                    <span><strong>Matikan daya listrik, lepas modul RAM, bersihkan pin konektor emas dari debu/oksidasi dengan penghapus pensil, lalu pasang kembali ke slot DDR4 dengan kencang.</strong></span>
+                  </div>
+                  <div class="trouble-option-btn" id="btn-t3-opt-3" onclick="selectTroubleOption(3, 3)">
+                    <span class="trouble-option-letter">D</span>
+                    <span>Ganti mouse dan keyboard USB dengan model nirkabel (wireless).</span>
+                  </div>
+                </div>
               </div>
-              <div style="display:flex;gap:8px;">
-                <button class="btn btn-secondary" onclick="stepCpuCycle()" id="btn-cpu-step">▶ Langkah Berikutnya</button>
-                <button class="btn btn-primary" onclick="autoRunCpuCycle()" id="btn-cpu-autorun">⚡ Jalankan Otomatis</button>
+
+              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e2e8f0;padding-top:10px;">
+                <span id="t3-feedback-text" style="font-size:12px;color:#64748b;font-weight:700;">Pilih salah satu opsi tindakan di atas.</span>
+                <button class="btn btn-primary" onclick="executeTroubleCase1()" id="btn-execute-t3" style="font-weight:800;padding:8px 22px;border-radius:8px;">
+                  🔧 Lakukan Tindakan Perbaikan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== STAGE 4: KASUS TEKNISI 2 (MEMORI PENUH & KINERJA) ==================== -->
+        <div class="game-stage-panel" id="game-stage-panel-4" style="display:none;">
+          <div class="trouble-split-layout">
+            <!-- Left: Mini Task Manager & Illustration -->
+            <div class="trouble-left-col">
+              <div class="taskmgr-box" id="t4-taskmgr-widget">
+                <div class="taskmgr-header">
+                  <span>📊 DIAGNOSTIK KINERJA SISTEM (TASK MANAGER)</span>
+                  <span style="color:#38bdf8;">OS WINDOWS 11</span>
+                </div>
+
+                <!-- CPU Row -->
+                <div class="taskmgr-row">
+                  <div class="taskmgr-row-header">
+                    <span>Prosesor (CPU)</span>
+                    <span style="color:#10b981;" id="t4-cpu-val">24% (Normal)</span>
+                  </div>
+                  <div class="taskmgr-bar-bg">
+                    <div class="taskmgr-bar-fill safe" id="t4-cpu-bar" style="width:24%;"></div>
+                  </div>
+                </div>
+
+                <!-- RAM Row (Bottleneck) -->
+                <div class="taskmgr-row">
+                  <div class="taskmgr-row-header">
+                    <span>Memori Kerja (RAM)</span>
+                    <span style="color:#ef4444;font-weight:800;" id="t4-ram-val">98% (15.7 GB / 16 GB Terpakai) ⚠️</span>
+                  </div>
+                  <div class="taskmgr-bar-bg">
+                    <div class="taskmgr-bar-fill danger" id="t4-ram-bar" style="width:98%;"></div>
+                  </div>
+                </div>
+
+                <!-- SSD Storage Row -->
+                <div class="taskmgr-row">
+                  <div class="taskmgr-row-header">
+                    <span>Penyimpanan (SSD C:)</span>
+                    <span style="color:#10b981;" id="t4-ssd-val">35% (Sisa 320 GB Bebas)</span>
+                  </div>
+                  <div class="taskmgr-bar-bg">
+                    <div class="taskmgr-bar-fill safe" id="t4-ssd-bar" style="width:35%;"></div>
+                  </div>
+                </div>
+
+                <!-- Alert Message -->
+                <div class="taskmgr-warning-banner" id="t4-warning-banner">
+                  <span>⚠️</span>
+                  <span>Notifikasi OS: "Out of Virtual Memory - Kinerja Sistem Terhenti (Freeze)"</span>
+                </div>
+              </div>
+
+              <!-- Context Illustration Image -->
+              <div style="height:140px;border-radius:10px;overflow:hidden;border:1.5px solid #cbd5e1;background:#0f172a;margin-top:8px;">
+                <img src="assets/trouble_task_manager.jpg" class="trouble-media-img" alt="Task Manager Diagnostik">
               </div>
             </div>
 
-            <!-- 4 Pipeline Stations -->
-            <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:14px;margin-bottom:16px;" id="cpu-pipeline-grid">
-              <!-- 1. Fetch -->
-              <div class="cpu-stage-box" id="cpu-stage-fetch" style="background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:14px 10px;text-align:center;transition:all 0.3s;">
-                <span style="font-size:28px;">📥</span>
-                <div style="font-weight:800;font-size:14px;color:#006064;margin-top:6px;">1. FETCH</div>
-                <div style="font-size:11.5px;color:#64748b;margin-top:4px;">Control Unit mengambil kode instruksi dari alamat RAM</div>
-                <span class="status-tag" id="status-tag-fetch" style="display:inline-block;margin-top:8px;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:#e2e8f0;color:#64748b;">Menunggu</span>
+            <!-- Right: Performance Bottleneck Analysis -->
+            <div class="trouble-right-col">
+              <div>
+                <div class="trouble-question-title">⚡ Analisis Leher Botol (Bottleneck) &amp; Solusi Multitasking</div>
+                <div class="trouble-question-desc">
+                  Siswa membuka 25 tab riset web, aplikasi video editing, dan software presentasi secara bersamaan. Komputer mengalami lag parah dan kursor macet. Berdasarkan data Task Manager di samping, komponen manakah yang kehabisan kapasitas dan apa langkah optimasi terbaik?
+                </div>
+
+                <div class="trouble-options-list" id="t4-options-list">
+                  <div class="trouble-option-btn" id="btn-t4-opt-0" onclick="selectTroubleOption(4, 0)">
+                    <span class="trouble-option-letter">A</span>
+                    <span>Hapus semua file dokumen dan video tugas di SSD karena menduga ruang penyimpanan data penuh.</span>
+                  </div>
+                  <div class="trouble-option-btn" id="btn-t4-opt-1" onclick="selectTroubleOption(4, 1)">
+                    <span class="trouble-option-letter">B</span>
+                    <span>Beli prosesor (CPU) baru dengan jumlah inti (core) lebih banyak karena mengira prosesornya lambat.</span>
+                  </div>
+                  <div class="trouble-option-btn" id="btn-t4-opt-2" onclick="selectTroubleOption(4, 2)">
+                    <span class="trouble-option-letter">C</span>
+                    <span><strong>Tutup tab browser dan aplikasi berat yang tidak digunakan untuk membebaskan ruang memori, serta tambahkan keping RAM fisik agar kapasitas memori kerja multitasking mencukupi.</strong></span>
+                  </div>
+                  <div class="trouble-option-btn" id="btn-t4-opt-3" onclick="selectTroubleOption(4, 3)">
+                    <span class="trouble-option-letter">D</span>
+                    <span>Ganti layar monitor dengan refresh rate 144Hz agar animasi kembali mulus.</span>
+                  </div>
+                </div>
               </div>
 
-              <!-- 2. Decode -->
-              <div class="cpu-stage-box" id="cpu-stage-decode" style="background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:14px 10px;text-align:center;transition:all 0.3s;">
-                <span style="font-size:28px;">🔍</span>
-                <div style="font-weight:800;font-size:14px;color:#0288D1;margin-top:6px;">2. DECODE</div>
-                <div style="font-size:11.5px;color:#64748b;margin-top:4px;">Instruksi diurai menjadi Opcode (ADD) dan Operand (15 &amp; 25)</div>
-                <span class="status-tag" id="status-tag-decode" style="display:inline-block;margin-top:8px;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:#e2e8f0;color:#64748b;">Menunggu</span>
+              <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e2e8f0;padding-top:10px;">
+                <span id="t4-feedback-text" style="font-size:12px;color:#64748b;font-weight:700;">Pilih salah satu solusi optimasi di atas.</span>
+                <button class="btn btn-primary" onclick="executeTroubleCase2()" id="btn-execute-t4" style="font-weight:800;padding:8px 22px;border-radius:8px;">
+                  🚀 Terapkan Solusi Kinerja
+                </button>
               </div>
-
-              <!-- 3. Execute -->
-              <div class="cpu-stage-box" id="cpu-stage-execute" style="background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:14px 10px;text-align:center;transition:all 0.3s;">
-                <span style="font-size:28px;">🧠</span>
-                <div style="font-weight:800;font-size:14px;color:#7b1fa2;margin-top:6px;">3. EXECUTE</div>
-                <div style="font-size:11.5px;color:#64748b;margin-top:4px;">ALU menghitung hasil aritmatika: 15 + 25 = 40</div>
-                <span class="status-tag" id="status-tag-execute" style="display:inline-block;margin-top:8px;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:#e2e8f0;color:#64748b;">Menunggu</span>
-              </div>
-
-              <!-- 4. Store -->
-              <div class="cpu-stage-box" id="cpu-stage-store" style="background:#f8fafc;border:2px solid #cbd5e1;border-radius:12px;padding:14px 10px;text-align:center;transition:all 0.3s;">
-                <span style="font-size:28px;">💾</span>
-                <div style="font-weight:800;font-size:14px;color:#2e7d32;margin-top:6px;">4. STORE</div>
-                <div style="font-size:11.5px;color:#64748b;margin-top:4px;">Hasil angka 40 disimpan ke register/RAM dan dikirim ke Monitor</div>
-                <span class="status-tag" id="status-tag-store" style="display:inline-block;margin-top:8px;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:#e2e8f0;color:#64748b;">Menunggu</span>
-              </div>
-            </div>
-
-            <!-- Step Description Banner -->
-            <div style="background:#f1f5f9;border-radius:8px;padding:10px 14px;font-size:13px;color:#334155;text-align:center;" id="cpu-cycle-desc">
-              Klik <strong>"Langkah Berikutnya"</strong> atau <strong>"Jalankan Otomatis"</strong> untuk memulai eksekusi siklus mesin CPU!
             </div>
           </div>
         </div>

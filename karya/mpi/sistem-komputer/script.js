@@ -946,30 +946,35 @@ function playSynthSound(type) {
 let computerGame = {
   currentLevel: 1,
   unlockedLevel: 1,
-  stars: { 1: 0, 2: 0, 3: 0 },
+  stars: { 1: 0, 2: 0, 3: 0, 4: 0 },
 
-  // Misi 1: Rakit Motherboard
+  // Misi 1: Rakit Komputer Spesifikasi & Kompatibilitas
   m1: {
-    mounted: { cpu: false, ram: false, ssd: false, psu: false },
-    selected: null,
+    mounted: { cpu: null, ram: null, ssd: null, psu: null },
     powered: false
   },
 
   // Misi 2: Sakelar Biner 8-Bit (Bobot: 128, 64, 32, 16, 8, 4, 2, 1)
   m2: {
     bits: [0, 0, 0, 0, 0, 0, 0, 0],
-    challengeIdx: 2, // Default: Tantangan 2 (65 = 'A')
+    challengeIdx: 1,
     challenges: [
-      { id: 1, title: "Bentuk Angka Desimal 42", targetDec: 42, targetChar: "*", hint: "Aktifkan sakelar 32, 8, dan 2 (32 + 8 + 2 = 42)" },
-      { id: 2, title: "Bentuk Huruf 'A' (Desimal 65)", targetDec: 65, targetChar: "A", hint: "Aktifkan sakelar 64 dan 1 (64 + 1 = 65)" },
-      { id: 3, title: "Bentuk Angka Desimal 155", targetDec: 155, targetChar: "›", hint: "Aktifkan sakelar 128, 16, 8, 2, dan 1 (128 + 16 + 8 + 2 + 1 = 155)" }
+      { id: 1, title: "Bentuk Angka Desimal 27", targetDec: 27, hint: "Aktifkan sakelar 16, 8, 2, dan 1 (16 + 8 + 2 + 1 = 27)" },
+      { id: 2, title: "Bentuk Huruf 'K' (Desimal 75)", targetDec: 75, hint: "Aktifkan sakelar 64, 8, 2, dan 1 (64 + 8 + 2 + 1 = 75)" },
+      { id: 3, title: "Bentuk Angka Desimal 200", targetDec: 200, hint: "Aktifkan sakelar 128, 64, dan 8 (128 + 64 + 8 = 200)" }
     ]
   },
 
-  // Misi 3: Siklus Mesin CPU
+  // Misi 3: Kasus Teknisi 1 (Layar Gelap & Bunyi Beep)
   m3: {
-    step: 0, // 0: Idle, 1: Fetch, 2: Decode, 3: Execute, 4: Store
-    autoTimer: null
+    selectedOption: null,
+    isBeeping: false,
+    beepInterval: null
+  },
+
+  // Misi 4: Kasus Teknisi 2 (Analisis Kinerja: RAM 98% vs Storage)
+  m4: {
+    selectedOption: null
   }
 };
 
@@ -983,11 +988,11 @@ function initPacketCommanderGame() {
 }
 
 function updateGameHUD() {
-  const totalStars = (computerGame.stars[1] ? 1 : 0) + (computerGame.stars[2] ? 1 : 0) + (computerGame.stars[3] ? 1 : 0);
+  const totalStars = (computerGame.stars[1] ? 1 : 0) + (computerGame.stars[2] ? 1 : 0) + (computerGame.stars[3] ? 1 : 0) + (computerGame.stars[4] ? 1 : 0);
   const starsEl = document.getElementById('game-total-stars');
-  if (starsEl) starsEl.textContent = `⭐ ${totalStars}/3`;
+  if (starsEl) starsEl.textContent = `⭐ ${totalStars}/4`;
 
-  for (let lvl = 1; lvl <= 3; lvl++) {
+  for (let lvl = 1; lvl <= 4; lvl++) {
     const tab = document.getElementById(`game-tab-${lvl}`);
     const tabStars = document.getElementById(`stars-lvl-${lvl}`);
     if (!tab) continue;
@@ -1014,8 +1019,11 @@ function updateGameHUD() {
       statusEl.textContent = computerGame.stars[2] ? '🟢 Biner Valid' : '🔵 Mode Input';
       latencyEl.textContent = '⏱️ Real-time';
     } else if (computerGame.currentLevel === 3) {
-      statusEl.textContent = computerGame.m3.step === 4 ? '🟢 Siklus Sukses' : '🟣 CPU Ready';
-      latencyEl.textContent = computerGame.m3.step > 0 ? `Tahap ${computerGame.m3.step}/4` : '⚡ Standby';
+      statusEl.textContent = computerGame.stars[3] ? '🟢 RAM Normal' : '🔴 Layar Blank';
+      latencyEl.textContent = computerGame.stars[3] ? '⚡ Signal OK' : '🔊 Beep Code';
+    } else if (computerGame.currentLevel === 4) {
+      statusEl.textContent = computerGame.stars[4] ? '🟢 Kinerja Pulih' : '⚠️ RAM 98% (Lag)';
+      latencyEl.textContent = computerGame.stars[4] ? '⚡ Optimal' : '⚠️ Bottleneck';
     }
   }
 }
@@ -1032,6 +1040,11 @@ function switchGameLevel(lvl) {
     return;
   }
 
+  // Hentikan beep jika keluar dari level 3
+  if (computerGame.currentLevel === 3 && lvl !== 3) {
+    stopBeepSound();
+  }
+
   computerGame.currentLevel = lvl;
   playSynthSound('click');
   updateGameHUD();
@@ -1042,112 +1055,130 @@ function renderCurrentStageUI() {
   const p1 = document.getElementById('game-stage-panel-1');
   const p2 = document.getElementById('game-stage-panel-2');
   const p3 = document.getElementById('game-stage-panel-3');
+  const p4 = document.getElementById('game-stage-panel-4');
   const descEl = document.getElementById('game-mission-desc');
   const iconEl = document.getElementById('game-mission-icon');
 
   if (p1) p1.style.display = computerGame.currentLevel === 1 ? 'block' : 'none';
   if (p2) p2.style.display = computerGame.currentLevel === 2 ? 'block' : 'none';
   if (p3) p3.style.display = computerGame.currentLevel === 3 ? 'block' : 'none';
+  if (p4) p4.style.display = computerGame.currentLevel === 4 ? 'block' : 'none';
 
   if (computerGame.currentLevel === 1) {
     if (iconEl) iconEl.textContent = '🔧';
-    if (descEl) descEl.textContent = 'Misi 1: Pasang CPU, RAM, SSD, dan PSU ke Motherboard, lalu tekan tombol Power On!';
+    if (descEl) descEl.textContent = 'Misi 1: Pilih 4 komponen yang kompatibel (CPU, RAM, Storage, PSU) ke Motherboard, lalu uji nyala!';
     updateM1UI();
   } else if (computerGame.currentLevel === 2) {
     if (iconEl) iconEl.textContent = '💡';
-    if (descEl) descEl.textContent = 'Misi 2: Atur sakelar 8-bit (1/0) agar menghasilkan nilai desimal / karakter target yang diminta!';
+    if (descEl) descEl.textContent = 'Misi 2: Atur sakelar 8-bit (1/0) agar kalkulasi menghasilkan nilai desimal / karakter yang diminta!';
     renderBinarySwitches();
     updateBinaryDisplay();
   } else if (computerGame.currentLevel === 3) {
+    if (iconEl) iconEl.textContent = '🛠️';
+    if (descEl) descEl.textContent = 'Misi 3: Kasus Teknisi 1 — Analisis komputer blank dengan kode beep panjang berulang dan tentukan perbaikannya!';
+    renderTroubleCase1UI();
+  } else if (computerGame.currentLevel === 4) {
     if (iconEl) iconEl.textContent = '⚡';
-    if (descEl) descEl.textContent = 'Misi 3: Jalankan Siklus Mesin CPU untuk memproses instruksi ADD R1, R2 (15 + 25 = 40)!';
-    renderCpuStepUI();
+    if (descEl) descEl.textContent = 'Misi 4: Kasus Teknisi 2 — Analisis grafik Task Manager saat sistem freeze, temukan bottleneck dan solusi multitasking!';
+    renderTroubleCase2UI();
   }
 }
 
-// ==================== MISI 1: RAKIT MOTHERBOARD ====================
+// ==================== MISI 1: RAKIT MOTHERBOARD ENHANCED ====================
 
-const M1_COMPONENTS = {
-  cpu: { name: 'CPU Processor', socket: 'socket-cpu', icon: '🧠', color: '#00ACC1' },
-  ram: { name: 'RAM 16 GB DDR4', socket: 'socket-ram', icon: '⚡', color: '#0288D1' },
-  ssd: { name: 'SSD NVMe 512GB', socket: 'socket-ssd', icon: '💾', color: '#7B1FA2' },
-  psu: { name: 'Power Supply 550W', socket: 'socket-psu', icon: '🔌', color: '#E65100' }
+const M1_CATALOG = {
+  cpu_good: { slot: 'cpu', name: 'CPU Multi-Core', tag: 'Soket LGA', isGood: true, img: 'assets/comp_cpu_good.jpg' },
+  cpu_bad: { slot: 'cpu', name: 'CPU Jadul (Pin Patah)', tag: 'Cacat Fisik', isGood: false, img: 'assets/comp_cpu_bad.jpg', error: 'Pin prosessor patah/bengkok! Terjadi korsleting inisialisasi prosessor!' },
+  ram_good: { slot: 'ram', name: 'RAM 16GB DDR4', tag: 'Slot DDR4', isGood: true, img: 'assets/comp_ram_good.jpg' },
+  ram_bad: { slot: 'ram', name: 'RAM DDR1 Jadul', tag: 'Notch Salah', isGood: false, img: 'assets/comp_ram_bad.jpg', error: 'Posisi notch DDR1 tidak cocok dengan slot DDR4! Slot menolak modul jadul ini!' },
+  ssd_good: { slot: 'ssd', name: 'SSD NVMe 512GB', tag: 'Slot M.2 PCIe', isGood: true, img: 'assets/comp_ssd_good.jpg' },
+  floppy_bad: { slot: 'ssd', name: 'Disket Floppy 1.44MB', tag: 'Media Kuno', isGood: false, img: 'assets/comp_floppy_bad.jpg', error: 'Media disket tidak kompatibel dengan slot M.2 NVMe dan kapasitasnya terlalu kecil!' },
+  psu_good: { slot: 'psu', name: 'PSU 550W 80+', tag: 'Daya Stabil', isGood: true, img: 'assets/comp_psu_good.jpg' },
+  charger_bad: { slot: 'psu', name: 'Adaptor HP 10W', tag: 'Daya Lemah', isGood: false, img: 'assets/comp_charger_bad.jpg', error: 'Daya 10W terlalu kecil! Sirkuit motherboard membutuhkan catu daya ATX standar!' }
 };
 
-function selectOrMountComponent(compKey) {
-  if (computerGame.m1.mounted[compKey]) {
-    computerGame.m1.mounted[compKey] = false;
+function selectOrMountComponent(itemKey) {
+  const item = M1_CATALOG[itemKey];
+  if (!item) return;
+
+  // Jika item ini sudah terpasang di soketnya, lepas kembali
+  if (computerGame.m1.mounted[item.slot] === itemKey) {
+    computerGame.m1.mounted[item.slot] = null;
     computerGame.m1.powered = false;
-    computerGame.m1.selected = null;
     playSynthSound('click');
     updateM1UI();
     return;
   }
 
-  computerGame.m1.mounted[compKey] = true;
-  computerGame.m1.selected = null;
+  // Pasang item ke soket yang sesuai
+  computerGame.m1.mounted[item.slot] = itemKey;
+  computerGame.m1.powered = false;
   playSynthSound('packet_arrive');
   updateM1UI();
 }
 
-function clickMotherboardSocket(socketType) {
-  if (computerGame.m1.mounted[socketType]) {
-    computerGame.m1.mounted[socketType] = false;
+function clickMotherboardSocket(slotType) {
+  if (computerGame.m1.mounted[slotType]) {
+    computerGame.m1.mounted[slotType] = null;
     computerGame.m1.powered = false;
     playSynthSound('click');
     updateM1UI();
-    return;
   }
-
-  computerGame.m1.mounted[socketType] = true;
-  playSynthSound('packet_arrive');
-  updateM1UI();
 }
 
 function updateM1UI() {
   let countMounted = 0;
 
-  Object.keys(M1_COMPONENTS).forEach(key => {
-    const isMounted = computerGame.m1.mounted[key];
-    if (isMounted) countMounted++;
-
-    const invEl = document.getElementById(`inv-${key}`);
-    const invStatus = document.getElementById(`inv-${key}-status`);
-    if (invEl && invStatus) {
+  // Update Inventory Cards
+  Object.keys(M1_CATALOG).forEach(key => {
+    const item = M1_CATALOG[key];
+    const isMounted = computerGame.m1.mounted[item.slot] === key;
+    const cardEl = document.getElementById(`inv-${key}`);
+    const statusEl = document.getElementById(`inv-${key}-status`);
+    if (cardEl && statusEl) {
       if (isMounted) {
-        invEl.style.background = '#e0f2fe';
-        invEl.style.borderColor = '#0288d1';
-        invStatus.textContent = '✅ Terpasang di Soket';
-        invStatus.style.color = '#0288d1';
-        invStatus.style.fontWeight = '700';
+        cardEl.classList.add('mounted');
+        statusEl.textContent = '✅ Terpasang di Soket';
+        statusEl.style.color = '#0288d1';
+        statusEl.style.fontWeight = '700';
       } else {
-        invEl.style.background = '#fff';
-        invEl.style.borderColor = M1_COMPONENTS[key].color;
-        invStatus.textContent = 'Belum Terpasang (Klik)';
-        invStatus.style.color = '#64748b';
-        invStatus.style.fontWeight = 'normal';
+        cardEl.classList.remove('mounted');
+        statusEl.textContent = 'Siap Pasang (Klik)';
+        statusEl.style.color = '#64748b';
+        statusEl.style.fontWeight = 'normal';
       }
     }
+  });
 
-    const socketEl = document.getElementById(`socket-${key}`);
-    const socketIcon = document.getElementById(`socket-${key}-icon`);
-    const socketDesc = document.getElementById(`socket-${key}-desc`);
-    if (socketEl && socketIcon && socketDesc) {
-      if (isMounted) {
-        socketEl.style.background = 'rgba(2, 136, 209, 0.2)';
-        socketEl.style.borderStyle = 'solid';
-        socketEl.style.borderColor = '#38bdf8';
-        socketIcon.textContent = M1_COMPONENTS[key].icon;
-        socketDesc.textContent = '✅ Terkunci Kuat (Klik lepas)';
-        socketDesc.style.color = '#38bdf8';
-      } else {
-        socketEl.style.background = 'rgba(255, 255, 255, 0.06)';
-        socketEl.style.borderStyle = 'dashed';
-        socketEl.style.borderColor = M1_COMPONENTS[key].color;
-        socketIcon.textContent = '🔲';
-        socketDesc.textContent = `Klik untuk memasang ${key.toUpperCase()}`;
-        socketDesc.style.color = '#94a3b8';
-      }
+  // Update 4 Sockets
+  const slots = ['cpu', 'ram', 'ssd', 'psu'];
+  slots.forEach(slot => {
+    const mountedKey = computerGame.m1.mounted[slot];
+    const socketEl = document.getElementById(`socket-${slot}`);
+    if (!socketEl) return;
+
+    if (mountedKey) {
+      countMounted++;
+      const item = M1_CATALOG[mountedKey];
+      socketEl.className = `mb-socket-slot filled ${item.isGood ? '' : 'bad-comp'}`;
+      socketEl.innerHTML = `
+        <img src="${item.img}" class="socket-thumb-img" alt="${item.name}">
+        <span style="color:#ffffff;font-weight:700;font-size:11.5px;line-height:1.2;">${item.name}</span>
+        <span style="color:${item.isGood ? '#38bdf8' : '#f87171'};font-size:10px;margin-top:2px;">${item.isGood ? '✅ Terpasang (Klik lepas)' : '⚠️ Cek Kompatibilitas'}</span>
+      `;
+    } else {
+      socketEl.className = 'mb-socket-slot';
+      const defaultLabels = {
+        cpu: 'Soket CPU LGA',
+        ram: 'Slot RAM DDR4',
+        ssd: 'Slot M.2 NVMe SSD',
+        psu: 'Konektor Catu Daya ATX'
+      };
+      socketEl.innerHTML = `
+        <span style="font-size:24px;">🔲</span>
+        <span style="color:#e2e8f0;font-weight:700;font-size:12px;margin-top:2px;">${defaultLabels[slot]}</span>
+        <span style="color:#94a3b8;font-size:10px;">Klik item di rak untuk pasang</span>
+      `;
     }
   });
 
@@ -1163,13 +1194,13 @@ function updateM1UI() {
     if (countMounted === 4) {
       powerBtn.removeAttribute('disabled');
       powerBtn.style.opacity = '1';
-      powerBtn.style.boxShadow = '0 0 16px rgba(0, 172, 193, 0.6)';
-      powerBtn.textContent = computerGame.m1.powered ? '⚡ KOMPUTER NYALA (RESTART)' : '⚡ TEKAN TOMBOL POWER (UJI NYALA)';
+      powerBtn.style.boxShadow = '0 0 16px rgba(0, 172, 193, 0.7)';
+      powerBtn.textContent = '⚡ TEKAN TOMBOL POWER (UJI NYALA)';
     } else {
       powerBtn.setAttribute('disabled', 'true');
       powerBtn.style.opacity = '0.5';
       powerBtn.style.boxShadow = 'none';
-      powerBtn.textContent = '⚡ PASANG SEMUA KOMPONEN DULU';
+      powerBtn.textContent = `⚡ PASANG 4 KOMPONEN DULU (${countMounted}/4)`;
     }
 
     if (computerGame.m1.powered) {
@@ -1186,48 +1217,74 @@ function testPowerOnPC() {
   const postScreen = document.getElementById('post-screen');
   if (!postScreen) return;
 
-  computerGame.m1.powered = true;
   playSynthSound('transmit');
-
   postScreen.innerHTML = `
-    <div style="color:#38bdf8;">[POWER ON] Aliran daya dari PSU stabil...</div>
-    <div style="color:#f59e0b;">[BIOS POST] Memeriksa perangkat keras...</div>
+    <div style="color:#38bdf8;">[POWER ON] Menyalakan arus listrik catu daya...</div>
+    <div style="color:#f59e0b;">[BIOS POST] Memulai Power-On Self Test...</div>
   `;
 
-  setTimeout(() => {
-    playSynthSound('packet_arrive');
-    postScreen.innerHTML += `
-      <div>[CPU] Processor detected: Multi-core OK</div>
-      <div>[RAM] 16384 MB Dual-Channel OK</div>
-      <div>[SSD] NVMe Storage Boot Sector detected</div>
-    `;
-    postScreen.scrollTop = postScreen.scrollHeight;
-  }, 700);
+  const m = computerGame.m1.mounted;
+  const isAllGood = m.cpu === 'cpu_good' && m.ram === 'ram_good' && m.ssd === 'ssd_good' && m.psu === 'psu_good';
 
   setTimeout(() => {
-    playSynthSound('success');
-    spawnConfetti();
-    postScreen.innerHTML += `
-      <div style="color:#22c55e;font-weight:bold;margin-top:4px;">[SUCCESS] BOOTING SELESAI! OS LOADED! 🎉</div>
-      <div style="color:#a855f7;">Komputer siap digunakan siswa!</div>
-    `;
-    postScreen.scrollTop = postScreen.scrollHeight;
+    if (isAllGood) {
+      computerGame.m1.powered = true;
+      playSynthSound('success');
+      spawnConfetti();
 
-    computerGame.stars[1] = 1;
-    if (computerGame.unlockedLevel < 2) computerGame.unlockedLevel = 2;
-    updateGameHUD();
-    updateM1UI();
+      postScreen.innerHTML += `
+        <div style="color:#22c55e;">[CPU] Processor detected: Multi-Core LGA OK</div>
+        <div style="color:#22c55e;">[RAM] 16384 MB DDR4 Dual-Channel OK</div>
+        <div style="color:#22c55e;">[SSD] NVMe PCIe High-Speed Boot Sector OK</div>
+        <div style="color:#22c55e;">[PSU] 550W 80+ Rail 12V Stable OK</div>
+        <div style="color:#38bdf8;font-weight:bold;margin-top:4px;">[SUCCESS] POST 100% LULUS! OS LOADED! 🎉</div>
+      `;
+      postScreen.scrollTop = postScreen.scrollHeight;
 
-    showGameModal({
-      icon: '🏆',
-      title: 'Perakitan Komputer Berhasil!',
-      text: 'Luar biasa! Kamu berhasil merakit seluruh komponen esensial (CPU, RAM, SSD, dan PSU). Komputer lulus uji POST BIOS dan siap digunakan!',
-      stars: '⭐ Misi 1 Selesai!',
-      actions: [
-        { text: 'Lanjut ke Misi 2 (Sakelar Biner) ▶', primary: true, onClick: () => { closeGameModal(); switchGameLevel(2); } }
-      ]
-    });
-  }, 1600);
+      computerGame.stars[1] = 1;
+      if (computerGame.unlockedLevel < 2) computerGame.unlockedLevel = 2;
+      updateGameHUD();
+      updateM1UI();
+
+      showGameModal({
+        icon: '🏆',
+        title: 'Perakitan Komputer Berhasil!',
+        text: 'Hebat sekali! Kamu memilih seluruh 4 komponen yang kompatibel dan berkualitas tinggi. Komputer lolos uji POST BIOS dan siap digunakan siswa lab!',
+        stars: '⭐ Misi 1 Selesai!',
+        actions: [
+          { text: 'Lanjut ke Misi 2 (Sakelar Biner) ▶', primary: true, onClick: () => { closeGameModal(); switchGameLevel(2); } }
+        ]
+      });
+    } else {
+      computerGame.m1.powered = false;
+      playSynthSound('error');
+
+      // Ambil detail error komponen yang salah
+      const errors = [];
+      ['cpu', 'ram', 'ssd', 'psu'].forEach(slot => {
+        const itemKey = m[slot];
+        if (itemKey && !M1_CATALOG[itemKey].isGood) {
+          errors.push(M1_CATALOG[itemKey].error);
+        }
+      });
+
+      errors.forEach(err => {
+        postScreen.innerHTML += `<div style="color:#ef4444;margin-top:2px;">[POST ERROR] ${err}</div>`;
+      });
+      postScreen.innerHTML += `<div style="color:#f59e0b;margin-top:4px;">[HALT] Sistem dihentikan. Ganti komponen yang salah dan uji kembali!</div>`;
+      postScreen.scrollTop = postScreen.scrollHeight;
+
+      updateM1UI();
+
+      showGameModal({
+        icon: '⚠️',
+        title: 'Uji POST BIOS Gagal!',
+        titleClass: 'error',
+        text: `Ditemukan komponen yang tidak kompatibel atau rusak:<br><ul style="text-align:left;padding-left:20px;color:#b91c1c;margin-top:8px;">${errors.map(e => `<li>${e}</li>`).join('')}</ul><br>Lepas komponen tersebut dan pasang komponen yang sesuai spesifikasi!`,
+        actions: [{ text: 'Perbaiki Komponen', primary: true, onClick: closeGameModal }]
+      });
+    }
+  }, 900);
 }
 
 // ==================== MISI 2: SAKELAR BINER 8-BIT ====================
@@ -1309,14 +1366,14 @@ function updateBinaryDisplay() {
 
 function switchBinaryChallenge(num) {
   computerGame.m2.challengeIdx = num;
-  const challenge = computerGame.m2.challenges.find(c => c.id === num) || computerGame.m2.challenges[1];
+  const challenge = computerGame.m2.challenges.find(c => c.id === num) || computerGame.m2.challenges[0];
   const titleEl = document.getElementById('bin-target-title');
-  if (titleEl) titleEl.textContent = challenge.title;
+  if (titleEl) titleEl.textContent = `${challenge.title}`;
   playSynthSound('click');
 }
 
 function verifyBinarySolution() {
-  const challenge = computerGame.m2.challenges.find(c => c.id === computerGame.m2.challengeIdx) || computerGame.m2.challenges[1];
+  const challenge = computerGame.m2.challenges.find(c => c.id === computerGame.m2.challengeIdx) || computerGame.m2.challenges[0];
   let sum = 0;
   BINARY_WEIGHTS.forEach((w, idx) => {
     if (computerGame.m2.bits[idx] === 1) sum += w;
@@ -1335,7 +1392,7 @@ function verifyBinarySolution() {
       text: `Kombinasi biner yang kamu susun berhasil menghasilkan nilai desimal <strong>${sum}</strong> (${challenge.title})! Kamu memahami prinsip transistor dan bit digital!`,
       stars: '⭐ Misi 2 Selesai!',
       actions: [
-        { text: 'Lanjut ke Misi 3 (Siklus CPU) ▶', primary: true, onClick: () => { closeGameModal(); switchGameLevel(3); } }
+        { text: 'Lanjut ke Misi 3 (Kasus 1: Layar Gelap) ▶', primary: true, onClick: () => { closeGameModal(); switchGameLevel(3); } }
       ]
     });
   } else {
@@ -1349,116 +1406,228 @@ function verifyBinarySolution() {
   }
 }
 
-// ==================== MISI 3: SIKLUS MESIN CPU ====================
+// ==================== MISI 3: KASUS TEKNISI 1 (LAYAR GELAP & BEEP) ====================
 
-const CPU_STAGES = [
-  { id: 'fetch', label: 'FETCH (Ambil)', desc: 'Control Unit (CU) mengambil instruksi "ADD R1, R2" dari alamat memori RAM.' },
-  { id: 'decode', label: 'DECODE (Terjemahkan)', desc: 'CU menerjemahkan kode instruksi: Opcode ADD (Penjumlahan) dengan angka 15 dan 25.' },
-  { id: 'execute', label: 'EXECUTE (Hitung)', desc: 'Arithmetic Logic Unit (ALU) mengeksekusi perhitungan: 15 + 25 = 40 secepat kilat.' },
-  { id: 'store', label: 'STORE (Simpan)', desc: 'Hasil perhitungan 40 disimpan kembali ke register memori RAM dan ditampilkan ke Monitor!' }
-];
+let beepAudioInterval = null;
 
-function renderCpuStepUI() {
-  const currentStep = computerGame.m3.step;
-  const descBanner = document.getElementById('cpu-cycle-desc');
-
-  CPU_STAGES.forEach((stage, idx) => {
-    const stepNum = idx + 1;
-    const box = document.getElementById(`cpu-stage-${stage.id}`);
-    const tag = document.getElementById(`status-tag-${stage.id}`);
-    if (!box || !tag) return;
-
-    if (currentStep === stepNum) {
-      box.style.background = '#e0f7fa';
-      box.style.borderColor = '#00ACC1';
-      box.style.transform = 'scale(1.04)';
-      tag.style.background = '#00ACC1';
-      tag.style.color = '#fff';
-      tag.textContent = 'Sedang Berjalan ⚡';
-    } else if (currentStep > stepNum) {
-      box.style.background = '#f0fdf4';
-      box.style.borderColor = '#22c55e';
-      box.style.transform = 'scale(1.0)';
-      tag.style.background = '#dcfce7';
-      tag.style.color = '#15803d';
-      tag.textContent = 'Selesai ✅';
-    } else {
-      box.style.background = '#f8fafc';
-      box.style.borderColor = '#cbd5e1';
-      box.style.transform = 'scale(1.0)';
-      tag.style.background = '#e2e8f0';
-      tag.style.color = '#64748b';
-      tag.textContent = 'Menunggu';
-    }
-  });
-
-  if (descBanner) {
-    if (currentStep === 0) {
-      descBanner.innerHTML = 'Klik <strong>"Langkah Berikutnya"</strong> atau <strong>"Jalankan Otomatis"</strong> untuk memulai siklus instruksi CPU!';
-    } else {
-      const activeStage = CPU_STAGES[currentStep - 1];
-      descBanner.innerHTML = `<strong>Tahap ${currentStep}: ${activeStage.label}</strong> — ${activeStage.desc}`;
-    }
+function toggleBeepSound() {
+  if (computerGame.m3.isBeeping) {
+    stopBeepSound();
+  } else {
+    startBeepSound();
   }
 }
 
-function stepCpuCycle() {
-  if (computerGame.m3.step >= 4) {
-    resetCpuCycle();
+function startBeepSound() {
+  computerGame.m3.isBeeping = true;
+  const btn = document.getElementById('btn-play-beep');
+  if (btn) {
+    btn.innerHTML = '⏹️ Hentikan Bunyi Beep';
+    btn.style.background = '#fecaca';
+  }
+  playMotherboardBeepPattern();
+  if (beepAudioInterval) clearInterval(beepAudioInterval);
+  beepAudioInterval = setInterval(playMotherboardBeepPattern, 1800);
+}
+
+function stopBeepSound() {
+  computerGame.m3.isBeeping = false;
+  if (beepAudioInterval) {
+    clearInterval(beepAudioInterval);
+    beepAudioInterval = null;
+  }
+  const btn = document.getElementById('btn-play-beep');
+  if (btn) {
+    btn.innerHTML = '🔊 Dengarkan Bunyi Beep Motherboard';
+    btn.style.background = '#fee2e2';
+  }
+}
+
+function playMotherboardBeepPattern() {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    const now = ctx.currentTime;
+    for (let i = 0; i < 3; i++) {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(880, now + (i * 0.45));
+      gain.gain.setValueAtTime(0.18, now + (i * 0.45));
+      gain.gain.setValueAtTime(0.01, now + (i * 0.45) + 0.32);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now + (i * 0.45));
+      osc.stop(now + (i * 0.45) + 0.34);
+    }
+  } catch (e) {}
+}
+
+function selectTroubleOption(stage, optIdx) {
+  if (stage === 3) {
+    computerGame.m3.selectedOption = optIdx;
+    for (let i = 0; i < 4; i++) {
+      const btn = document.getElementById(`btn-t3-opt-${i}`);
+      if (btn) btn.classList.toggle('selected', i === optIdx);
+    }
+    const feedbackText = document.getElementById('t3-feedback-text');
+    if (feedbackText) feedbackText.textContent = `Opsi ${['A', 'B', 'C', 'D'][optIdx]} dipilih. Klik 'Lakukan Tindakan Perbaikan'.`;
+  } else if (stage === 4) {
+    computerGame.m4.selectedOption = optIdx;
+    for (let i = 0; i < 4; i++) {
+      const btn = document.getElementById(`btn-t4-opt-${i}`);
+      if (btn) btn.classList.toggle('selected', i === optIdx);
+    }
+    const feedbackText = document.getElementById('t4-feedback-text');
+    if (feedbackText) feedbackText.textContent = `Opsi ${['A', 'B', 'C', 'D'][optIdx]} dipilih. Klik 'Terapkan Solusi Kinerja'.`;
+  }
+  playSynthSound('click');
+}
+
+function renderTroubleCase1UI() {
+  const optIdx = computerGame.m3.selectedOption;
+  for (let i = 0; i < 4; i++) {
+    const btn = document.getElementById(`btn-t3-opt-${i}`);
+    if (btn) btn.classList.toggle('selected', i === optIdx);
+  }
+}
+
+function executeTroubleCase1() {
+  const opt = computerGame.m3.selectedOption;
+  if (opt === null) {
+    playSynthSound('error');
+    showGameModal({
+      icon: '💡',
+      title: 'Pilih Tindakan',
+      text: 'Silakan pilih salah satu opsi tindakan perbaikan (A, B, C, atau D) terlebih dahulu!',
+      actions: [{ text: 'Mengerti', primary: true, onClick: closeGameModal }]
+    });
     return;
   }
 
-  computerGame.m3.step++;
-  playSynthSound('hop');
-  renderCpuStepUI();
-  updateGameHUD();
+  // Opsi C (Index 2) adalah jawaban tepat
+  if (opt === 2) {
+    stopBeepSound();
+    playSynthSound('success');
+    spawnConfetti();
+    computerGame.stars[3] = 1;
+    if (computerGame.unlockedLevel < 4) computerGame.unlockedLevel = 4;
+    updateGameHUD();
 
-  if (computerGame.m3.step === 4) {
-    setTimeout(() => {
-      playSynthSound('victory');
-      spawnConfetti();
-      computerGame.stars[3] = 1;
-      updateGameHUD();
-
-      showGameModal({
-        icon: '🏆',
-        title: 'Selamat! Kamu Teknisi Komputer Sejati!',
-        text: 'Luar biasa! Kamu telah menuntaskan seluruh 3 Misi: Merakit Komputer, Memecahkan Kode Biner, dan Mengamati Siklus Mesin CPU secara detail!',
-        stars: '⭐⭐⭐ SEMPURNA 3/3 BINTANG!',
-        actions: [
-          { text: 'Lanjut ke Latihan Evaluasi 📝', primary: true, onClick: () => { closeGameModal(); goToPage('latihan-intro'); } }
-        ]
-      });
-    }, 600);
+    showGameModal({
+      icon: '🎉',
+      title: 'Diagnosa Tepat! Masalah Terpecahkan!',
+      text: 'Luar biasa! Bunyi Beep panjang berulang saat menyalakan PC adalah kode standar BIOS untuk kegagalan komunikasi RAM (kotor/longgar). Setelah pin dibersihkan dan dipasang kencang, monitor langsung menerima sinyal dan BIOS berfungsi normal!',
+      stars: '⭐ Misi 3 Selesai!',
+      actions: [
+        { text: 'Lanjut ke Misi 4 (Kasus 2: Memori Penuh) ▶', primary: true, onClick: () => { closeGameModal(); switchGameLevel(4); } }
+      ]
+    });
+  } else {
+    playSynthSound('error');
+    const explanations = [
+      'Kabel power monitor tidak bermasalah karena lampu monitor menyala normal mendeteksi sinyal.',
+      'Sistem belum masuk tahap memuat Windows/OS, sehingga instal ulang OS tidak menyelesaikan masalah POST hardware ini.',
+      '',
+      'Mouse dan keyboard tidak berhubungan dengan kegagalan inisialisasi tampilan awal BIOS.'
+    ];
+    showGameModal({
+      icon: '❌',
+      title: 'Tindakan Belum Tepat',
+      titleClass: 'error',
+      text: `${explanations[opt]}<br><br><em>Petunjuk: Perhatikan gejala bunyi BEEP panjang berulang dari motherboard, komponen internal apakah yang paling sering mengalami masalah kontak pin?</em>`,
+      actions: [{ text: 'Coba Analisis Ulang', primary: true, onClick: closeGameModal }]
+    });
   }
 }
 
-function autoRunCpuCycle() {
-  resetCpuCycle();
-  let step = 0;
-  const interval = setInterval(() => {
-    step++;
-    if (step <= 4) {
-      stepCpuCycle();
-    } else {
-      clearInterval(interval);
-    }
-  }, 900);
+// ==================== MISI 4: KASUS TEKNISI 2 (MEMORI PENUH & KINERJA) ====================
+
+function renderTroubleCase2UI() {
+  const optIdx = computerGame.m4.selectedOption;
+  for (let i = 0; i < 4; i++) {
+    const btn = document.getElementById(`btn-t4-opt-${i}`);
+    if (btn) btn.classList.toggle('selected', i === optIdx);
+  }
 }
 
-function resetCpuCycle() {
-  computerGame.m3.step = 0;
-  renderCpuStepUI();
-  updateGameHUD();
+function executeTroubleCase2() {
+  const opt = computerGame.m4.selectedOption;
+  if (opt === null) {
+    playSynthSound('error');
+    showGameModal({
+      icon: '💡',
+      title: 'Pilih Solusi',
+      text: 'Silakan pilih salah satu opsi solusi optimasi kinerja (A, B, C, atau D) terlebih dahulu!',
+      actions: [{ text: 'Mengerti', primary: true, onClick: closeGameModal }]
+    });
+    return;
+  }
+
+  // Opsi C (Index 2) adalah jawaban tepat
+  if (opt === 2) {
+    playSynthSound('victory');
+    spawnConfetti();
+
+    // Animasi Task Manager pulih
+    const ramBar = document.getElementById('t4-ram-bar');
+    const ramVal = document.getElementById('t4-ram-val');
+    const warnBanner = document.getElementById('t4-warning-banner');
+
+    if (ramBar) {
+      ramBar.style.width = '36%';
+      ramBar.className = 'taskmgr-bar-fill safe';
+    }
+    if (ramVal) {
+      ramVal.textContent = '36% (5.8 GB / 16 GB - Lancar)';
+      ramVal.style.color = '#10b981';
+    }
+    if (warnBanner) {
+      warnBanner.style.background = 'rgba(16, 185, 129, 0.18)';
+      warnBanner.style.borderColor = '#10b981';
+      warnBanner.style.color = '#6ee7b7';
+      warnBanner.innerHTML = '<span>✅</span><span>Sistem Optimal: Ruang RAM Cukup, Bebas Hambatan (No Lag)</span>';
+    }
+
+    computerGame.stars[4] = 1;
+    updateGameHUD();
+
+    showGameModal({
+      icon: '🏆',
+      title: 'Sempurna! Kamu Master Sistem Komputer!',
+      titleClass: 'victory',
+      stars: '⭐⭐⭐⭐ 4/4 BINTANG SEMPURNA!',
+      text: 'Analisis kamu 100% tepat! RAM adalah memori kerja sementara. Saat multitasking membuka banyak tab, RAM 98% menjadi leher botol (bottleneck), sedangkan SSD masih 320GB bebas. Menutup tab latar belakang dan menambah kapasitas RAM langsung memulihkan kecepatan komputer!<br><br>Kamu telah menuntaskan seluruh 4 tantangan sistem komputer dengan gemilang!',
+      actions: [
+        { text: 'Lanjut ke Latihan Evaluasi 📝', primary: true, onClick: () => { closeGameModal(); goToPage('latihan-intro'); } }
+      ]
+    });
+  } else {
+    playSynthSound('error');
+    const explanations = [
+      'Menghapus file di SSD tidak akan menyelesaikan masalah karena SSD masih memiliki 320 GB ruang bebas. Yang penuh adalah memori kerja RAM (98%)!',
+      'Penggunaan CPU hanya 24% (sangat santai), sehingga mengganti CPU bukan solusi yang tepat.',
+      '',
+      'Monitor tidak berpengaruh terhadap kapasitas memori kerja komputer.'
+    ];
+    showGameModal({
+      icon: '❌',
+      title: 'Analisis Belum Tepat',
+      titleClass: 'error',
+      text: `${explanations[opt]}<br><br><em>Petunjuk: Perhatikan baris RAM di Task Manager yang menyala merah 98%. RAM menyimpan data aplikasi yang sedang aktif berjalan.</em>`,
+      actions: [{ text: 'Coba Analisis Ulang', primary: true, onClick: closeGameModal }]
+    });
+  }
 }
 
 function resetCurrentGameLevel() {
   if (computerGame.currentLevel === 1) {
-    computerGame.m1.mounted = { cpu: false, ram: false, ssd: false, psu: false };
+    computerGame.m1.mounted = { cpu: null, ram: null, ssd: null, psu: null };
     computerGame.m1.powered = false;
     const postScreen = document.getElementById('post-screen');
     if (postScreen) {
-      postScreen.innerHTML = `<div>[BIOS v2.4] Standby...</div><div style="color:#64748b;">Menunggu semua komponen terpasang di motherboard...</div>`;
+      postScreen.innerHTML = `<div>[BIOS v2.4] Standby...</div><div style="color:#64748b;">Pesanan Spek: PC Lab Sekolah Modern (LGA, DDR4, NVMe, PSU 500W+).</div><div style="color:#64748b;margin-top:4px;">Pasang 4 komponen di motherboard, lalu uji tombol power.</div>`;
     }
     updateM1UI();
   } else if (computerGame.currentLevel === 2) {
@@ -1466,7 +1635,33 @@ function resetCurrentGameLevel() {
     renderBinarySwitches();
     updateBinaryDisplay();
   } else if (computerGame.currentLevel === 3) {
-    resetCpuCycle();
+    stopBeepSound();
+    computerGame.m3.selectedOption = null;
+    renderTroubleCase1UI();
+    const fb = document.getElementById('t3-feedback-text');
+    if (fb) fb.textContent = 'Pilih salah satu opsi tindakan di atas.';
+  } else if (computerGame.currentLevel === 4) {
+    computerGame.m4.selectedOption = null;
+    renderTroubleCase2UI();
+    const fb = document.getElementById('t4-feedback-text');
+    if (fb) fb.textContent = 'Pilih salah satu solusi optimasi di atas.';
+    const ramBar = document.getElementById('t4-ram-bar');
+    const ramVal = document.getElementById('t4-ram-val');
+    const warnBanner = document.getElementById('t4-warning-banner');
+    if (ramBar) {
+      ramBar.style.width = '98%';
+      ramBar.className = 'taskmgr-bar-fill danger';
+    }
+    if (ramVal) {
+      ramVal.textContent = '98% (15.7 GB / 16 GB Terpakai) ⚠️';
+      ramVal.style.color = '#ef4444';
+    }
+    if (warnBanner) {
+      warnBanner.style.background = 'rgba(239, 68, 68, 0.18)';
+      warnBanner.style.borderColor = '#ef4444';
+      warnBanner.style.color = '#fca5a5';
+      warnBanner.innerHTML = '<span>⚠️</span><span>Notifikasi OS: "Out of Virtual Memory - Kinerja Sistem Terhenti (Freeze)"</span>';
+    }
   }
   playSynthSound('click');
 }
@@ -1476,11 +1671,11 @@ function showGameHint() {
     showGameModal({
       icon: '💡',
       title: 'Bantuan Misi 1',
-      text: 'Klik setiap kartu komponen di rak kiri (CPU, RAM, SSD, PSU) atau klik langsung kotak soket bergaris putus-putus pada motherboard. Setelah keempatnya terpasang, tombol POWER akan menyala!',
+      text: 'Pilihlah 4 komponen yang modern dan sesuai spesifikasi motherboard: CPU Multi-Core Socket LGA, RAM DDR4, SSD M.2 NVMe, dan PSU 550W. Hati-hati dengan komponen jadul atau rusak seperti CPU pin bengkok, RAM DDR1, floppy disk, dan charger HP!',
       actions: [{ text: 'Mengerti', primary: true, onClick: closeGameModal }]
     });
   } else if (computerGame.currentLevel === 2) {
-    const challenge = computerGame.m2.challenges.find(c => c.id === computerGame.m2.challengeIdx) || computerGame.m2.challenges[1];
+    const challenge = computerGame.m2.challenges.find(c => c.id === computerGame.m2.challengeIdx) || computerGame.m2.challenges[0];
     showGameModal({
       icon: '💡',
       title: 'Bantuan Misi 2',
@@ -1491,7 +1686,14 @@ function showGameHint() {
     showGameModal({
       icon: '💡',
       title: 'Bantuan Misi 3',
-      text: 'Klik tombol "Langkah Berikutnya" untuk mengamati setiap perpindahan data dari RAM ke CU, ALU, dan Monitor, atau klik "Jalankan Otomatis" untuk animasi penuh!',
+      text: 'Ketika kipas PC menyala normal tetapi monitor gelap dan motherboard membunyikan Beep panjang berulang, penyebab utamanya hampir selalu adalah masalah kontak pada modul RAM yang kotor atau kurang kencang terpasang!',
+      actions: [{ text: 'Mengerti', primary: true, onClick: closeGameModal }]
+    });
+  } else if (computerGame.currentLevel === 4) {
+    showGameModal({
+      icon: '💡',
+      title: 'Bantuan Misi 4',
+      text: 'Perhatikan Task Manager: CPU 24% dan SSD masih 320 GB bebas. Masalah utama (bottleneck) adalah RAM yang menyentuh 98% akibat terlalu banyak tab dan aplikasi terbuka bersamaan. Solusinya adalah membebaskan RAM atau menambah keping RAM!',
       actions: [{ text: 'Mengerti', primary: true, onClick: closeGameModal }]
     });
   }
