@@ -1077,35 +1077,90 @@
             <!-- Right: Interactive Diagnosis & Actions -->
             <div class="trouble-right-col">
               <div>
-                <div class="trouble-question-title">🛠️ Analisis Gejala &amp; Tindakan Teknisi</div>
+                <div class="trouble-question-title">🛠️ Susun Prosedur SOP Perbaikan Teknisi (Pilih Beberapa Tindakan)</div>
                 <div class="trouble-question-desc">
-                  Komputer menyala dan kipas berputar, tapi layar monitor tidak menampilkan apa pun dan terdengar bunyi beep panjang berulang. Berdasarkan kode POST BIOS, tindakan perbaikan apa yang tepat?
+                  Komputer menyala &amp; kipas berputar, tapi layar gelap NO SIGNAL dan terdengar bunyi BEEP panjang berulang (POST memory error). Pilih tindakan SOP perbaikan yang tepat, aman, dan berurutan:
                 </div>
 
-                <div class="trouble-options-list" id="t3-options-list">
-                  <div class="trouble-option-btn" id="btn-t3-opt-0" onclick="selectTroubleOption(3, 0)">
-                    <span class="trouble-option-letter">A</span>
-                    <span>Ganti kabel daya listrik (power cord) monitor dengan kabel baru karena mengira monitor kehabisan listrik.</span>
+                <div class="action-checklist-grid" id="t3-actions-grid">
+                  <!-- Action 1: Matikan Listrik -->
+                  <div class="action-check-card" id="btn-t3-act-0" onclick="toggleTroubleAction(3, 0)">
+                    <div class="action-checkbox" id="chk-t3-0">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">🔌 Matikan Daya &amp; Cabut Kabel Listrik</span>
+                        <span class="action-badge k3">Keselamatan K3</span>
+                      </div>
+                      <div class="action-card-desc">Putus aliran daya listrik sebelum membuka casing untuk mencegah sengatan listrik &amp; korsleting.</div>
+                    </div>
                   </div>
-                  <div class="trouble-option-btn" id="btn-t3-opt-1" onclick="selectTroubleOption(3, 1)">
-                    <span class="trouble-option-letter">B</span>
-                    <span>Format ulang harddisk dan pasang ulang sistem operasi Windows karena menduga ada virus perangkat lunak.</span>
+
+                  <!-- Action 2: Lepas RAM -->
+                  <div class="action-check-card" id="btn-t3-act-1" onclick="toggleTroubleAction(3, 1)">
+                    <div class="action-checkbox" id="chk-t3-1">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">🔓 Buka Pengunci &amp; Lepas Modul RAM</span>
+                        <span class="action-badge hardware">Hardware</span>
+                      </div>
+                      <div class="action-card-desc">Buka klip pengait slot DDR4 di sisi motherboard dan tarik perlahan keping RAM keluar.</div>
+                    </div>
                   </div>
-                  <div class="trouble-option-btn" id="btn-t3-opt-2" onclick="selectTroubleOption(3, 2)">
-                    <span class="trouble-option-letter">C</span>
-                    <span>Matikan daya listrik, lepas modul RAM, bersihkan pin konektor emas dari debu/oksidasi dengan penghapus pensil, lalu pasang kembali ke slot DDR4 dengan kencang.</span>
+
+                  <!-- Action 3: Bersihkan Pin Emas -->
+                  <div class="action-check-card" id="btn-t3-act-2" onclick="toggleTroubleAction(3, 2)">
+                    <div class="action-checkbox" id="chk-t3-2">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">🧹 Bersihkan Pin Konektor Emas RAM</span>
+                        <span class="action-badge clean">Pembersihan</span>
+                      </div>
+                      <div class="action-card-desc">Gosok lembut pin kontak emas dengan penghapus pensil halus untuk mengikis lapisan debu/oksidasi isolator.</div>
+                    </div>
                   </div>
-                  <div class="trouble-option-btn" id="btn-t3-opt-3" onclick="selectTroubleOption(3, 3)">
-                    <span class="trouble-option-letter">D</span>
-                    <span>Ganti mouse dan keyboard USB dengan model nirkabel (wireless).</span>
+
+                  <!-- Action 4: Pasang Kembali Rapat -->
+                  <div class="action-check-card" id="btn-t3-act-3" onclick="toggleTroubleAction(3, 3)">
+                    <div class="action-checkbox" id="chk-t3-3">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">🔒 Pasang Kembali RAM Hingga Bunyi 'Klik'</span>
+                        <span class="action-badge hardware">Pemasangan</span>
+                      </div>
+                      <div class="action-card-desc">Posisikan celah notch sejajar dan tekan kedua ujung modul RAM secara merata hingga pengunci otomatis mengunci rapat.</div>
+                    </div>
+                  </div>
+
+                  <!-- Action 5 (Pengecoh): Lepas Pendingin CPU -->
+                  <div class="action-check-card" id="btn-t3-act-4" onclick="toggleTroubleAction(3, 4)">
+                    <div class="action-checkbox" id="chk-t3-4">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">⚠️ Lepas Heatsink Kipas Pendingin CPU</span>
+                        <span class="action-badge warning">Berbahaya</span>
+                      </div>
+                      <div class="action-card-desc">Mencopot pendingin prosesor tanpa ada indikasi overheat prosesor berisiko merusak pasta termal.</div>
+                    </div>
+                  </div>
+
+                  <!-- Action 6 (Pengecoh): Format SSD & Install OS -->
+                  <div class="action-check-card" id="btn-t3-act-5" onclick="toggleTroubleAction(3, 5)">
+                    <div class="action-checkbox" id="chk-t3-5">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">❌ Format Ulang SSD &amp; Instal Ulang OS</span>
+                        <span class="action-badge warning">Salah Sasaran</span>
+                      </div>
+                      <div class="action-card-desc">Sistem komputer belum melewati tahap inisialisasi hardware POST BIOS, masalah bukan pada software atau data SSD.</div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e2e8f0;padding-top:10px;">
-                <span id="t3-feedback-text" style="font-size:12px;color:#64748b;font-weight:700;">Pilih salah satu opsi tindakan di atas.</span>
+                <span id="t3-feedback-text" style="font-size:12px;color:#64748b;font-weight:700;">Centang tindakan yang tepat (Pilih beberapa), lalu jalankan SOP.</span>
                 <button class="btn btn-primary" onclick="executeTroubleCase1()" id="btn-execute-t3" style="font-weight:800;padding:8px 22px;border-radius:8px;">
-                  🔧 Lakukan Tindakan Perbaikan
+                  ⚡ Jalankan SOP Perbaikan Hardware
                 </button>
               </div>
             </div>
@@ -1172,35 +1227,90 @@
             <!-- Right: Performance Bottleneck Analysis -->
             <div class="trouble-right-col">
               <div>
-                <div class="trouble-question-title">⚡ Analisis Leher Botol (Bottleneck) &amp; Solusi Multitasking</div>
+                <div class="trouble-question-title">⚡ Paket Rencana Optimasi Kinerja Multitasking (Pilih Beberapa Tindakan)</div>
                 <div class="trouble-question-desc">
-                  Siswa membuka 25 tab riset web, aplikasi video editing, dan software presentasi secara bersamaan. Komputer mengalami lag parah dan kursor macet. Berdasarkan data Task Manager di samping, komponen manakah yang kehabisan kapasitas dan apa langkah optimasi terbaik?
+                  Komputer mengalami lag parah dan kursor macet saat multitasking. Data Task Manager menunjukkan RAM 98% (Kritis), sedangkan CPU 24% dan SSD 320GB bebas. Pilih kombinasi langkah solusi yang paling efektif:
                 </div>
 
-                <div class="trouble-options-list" id="t4-options-list">
-                  <div class="trouble-option-btn" id="btn-t4-opt-0" onclick="selectTroubleOption(4, 0)">
-                    <span class="trouble-option-letter">A</span>
-                    <span>Hapus semua file dokumen dan video tugas di SSD karena menduga ruang penyimpanan data penuh.</span>
+                <div class="action-checklist-grid" id="t4-actions-grid">
+                  <!-- Action 1: End Task Tab Browser -->
+                  <div class="action-check-card" id="btn-t4-act-0" onclick="toggleTroubleAction(4, 0)">
+                    <div class="action-checkbox" id="chk-t4-0">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">🛑 'End Task' Tab Browser &amp; Proses Rakus RAM</span>
+                        <span class="action-badge os">Solusi Instan</span>
+                      </div>
+                      <div class="action-card-desc">Segera menutup 20+ tab dan aplikasi background yang tidak aktif untuk membebaskan ruang memori kerja yang macet.</div>
+                    </div>
                   </div>
-                  <div class="trouble-option-btn" id="btn-t4-opt-1" onclick="selectTroubleOption(4, 1)">
-                    <span class="trouble-option-letter">B</span>
-                    <span>Beli prosesor (CPU) baru dengan jumlah inti (core) lebih banyak karena mengira prosesornya lambat.</span>
+
+                  <!-- Action 2: Kelola Startup Apps -->
+                  <div class="action-check-card" id="btn-t4-act-1" onclick="toggleTroubleAction(4, 1)">
+                    <div class="action-checkbox" id="chk-t4-1">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">⚙️ Nonaktifkan Startup Apps yang Tidak Perlu</span>
+                        <span class="action-badge os">Perawatan OS</span>
+                      </div>
+                      <div class="action-card-desc">Mencegah aplikasi berat berjalan otomatis saat Windows baru dinyalakan agar konsumsi RAM awal tetap hemat.</div>
+                    </div>
                   </div>
-                  <div class="trouble-option-btn" id="btn-t4-opt-2" onclick="selectTroubleOption(4, 2)">
-                    <span class="trouble-option-letter">C</span>
-                    <span>Tutup tab browser dan aplikasi berat yang tidak digunakan untuk membebaskan ruang memori, serta tambahkan keping RAM fisik agar kapasitas memori kerja multitasking mencukupi.</span>
+
+                  <!-- Action 3: Upgrade RAM Fisik -->
+                  <div class="action-check-card" id="btn-t4-act-2" onclick="toggleTroubleAction(4, 2)">
+                    <div class="action-checkbox" id="chk-t4-2">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">➕ Pasang Modul RAM Tambahan (Upgrade 32GB)</span>
+                        <span class="action-badge hardware">Solusi Hardware</span>
+                      </div>
+                      <div class="action-card-desc">Menambah keping RAM fisik di motherboard untuk memperluas meja kerja komputer agar leluasa multitasking jangka panjang.</div>
+                    </div>
                   </div>
-                  <div class="trouble-option-btn" id="btn-t4-opt-3" onclick="selectTroubleOption(4, 3)">
-                    <span class="trouble-option-letter">D</span>
-                    <span>Ganti layar monitor dengan refresh rate 144Hz agar animasi kembali mulus.</span>
+
+                  <!-- Action 4 (Pengecoh): Hapus Dokumen SSD -->
+                  <div class="action-check-card" id="btn-t4-act-3" onclick="toggleTroubleAction(4, 3)">
+                    <div class="action-checkbox" id="chk-t4-3">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">🗑️ Hapus Dokumen &amp; Foto Pribadi di SSD</span>
+                        <span class="action-badge warning">Salah Sasaran</span>
+                      </div>
+                      <div class="action-card-desc">SSD masih memiliki 320 GB ruang bebas; menghapus file arsip tidak akan menambah kapasitas memori kerja RAM aktif.</div>
+                    </div>
+                  </div>
+
+                  <!-- Action 5 (Pengecoh): Ganti CPU 16-Core -->
+                  <div class="action-check-card" id="btn-t4-act-4" onclick="toggleTroubleAction(4, 4)">
+                    <div class="action-checkbox" id="chk-t4-4">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">💸 Ganti Prosesor CPU dengan Model 16-Core</span>
+                        <span class="action-badge warning">Pemborosan</span>
+                      </div>
+                      <div class="action-card-desc">Penggunaan CPU hanya 24% (sangat santai); mengganti CPU tidak menyelesaikan kekurangan kapasitas RAM.</div>
+                    </div>
+                  </div>
+
+                  <!-- Action 6 (Pengecoh): Ganti Monitor 4K -->
+                  <div class="action-check-card" id="btn-t4-act-5" onclick="toggleTroubleAction(4, 5)">
+                    <div class="action-checkbox" id="chk-t4-5">✓</div>
+                    <div class="action-card-body">
+                      <div class="action-card-top">
+                        <span class="action-card-title">📺 Ganti Monitor dengan Layar Resolusi 4K</span>
+                        <span class="action-badge warning">Tidak Terkait</span>
+                      </div>
+                      <div class="action-card-desc">Monitor adalah peranti keluaran (output visual) dan resolusi 4K justru akan membebani kartu grafis, bukan mengatasi RAM.</div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e2e8f0;padding-top:10px;">
-                <span id="t4-feedback-text" style="font-size:12px;color:#64748b;font-weight:700;">Pilih salah satu solusi optimasi di atas.</span>
+                <span id="t4-feedback-text" style="font-size:12px;color:#64748b;font-weight:700;">Centang paket solusi yang tepat (Pilih beberapa), lalu terapkan.</span>
                 <button class="btn btn-primary" onclick="executeTroubleCase2()" id="btn-execute-t4" style="font-weight:800;padding:8px 22px;border-radius:8px;">
-                  🚀 Terapkan Solusi Kinerja
+                  🚀 Terapkan Paket Optimasi Kinerja
                 </button>
               </div>
             </div>

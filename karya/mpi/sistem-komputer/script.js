@@ -973,16 +973,16 @@ let computerGame = {
     ]
   },
 
-  // Misi 3: Kasus Teknisi 1 (Layar Gelap & Bunyi Beep)
+  // Misi 3: Kasus Teknisi 1 (SOP Hardware: Layar Gelap & Bunyi Beep)
   m3: {
-    selectedOption: null,
+    selectedActions: [],
     isBeeping: false,
     beepInterval: null
   },
 
-  // Misi 4: Kasus Teknisi 2 (Analisis Kinerja: RAM 98% vs Storage)
+  // Misi 4: Kasus Teknisi 2 (Paket Optimasi Kinerja: RAM 98% vs Storage)
   m4: {
-    selectedOption: null
+    selectedActions: []
   }
 };
 
@@ -1562,161 +1562,254 @@ function playMotherboardBeepPattern() {
   } catch (e) {}
 }
 
-function selectTroubleOption(stage, optIdx) {
-  if (stage === 3) {
-    computerGame.m3.selectedOption = optIdx;
-    for (let i = 0; i < 4; i++) {
-      const btn = document.getElementById(`btn-t3-opt-${i}`);
-      if (btn) btn.classList.toggle('selected', i === optIdx);
-    }
-    const feedbackText = document.getElementById('t3-feedback-text');
-    if (feedbackText) feedbackText.textContent = `Opsi ${['A', 'B', 'C', 'D'][optIdx]} dipilih. Klik 'Lakukan Tindakan Perbaikan'.`;
-  } else if (stage === 4) {
-    computerGame.m4.selectedOption = optIdx;
-    for (let i = 0; i < 4; i++) {
-      const btn = document.getElementById(`btn-t4-opt-${i}`);
-      if (btn) btn.classList.toggle('selected', i === optIdx);
-    }
-    const feedbackText = document.getElementById('t4-feedback-text');
-    if (feedbackText) feedbackText.textContent = `Opsi ${['A', 'B', 'C', 'D'][optIdx]} dipilih. Klik 'Terapkan Solusi Kinerja'.`;
+function toggleTroubleAction(stage, actIdx) {
+  const m = stage === 3 ? computerGame.m3 : computerGame.m4;
+  if (!m.selectedActions) m.selectedActions = [];
+
+  const foundIdx = m.selectedActions.indexOf(actIdx);
+  if (foundIdx > -1) {
+    m.selectedActions.splice(foundIdx, 1);
+  } else {
+    m.selectedActions.push(actIdx);
   }
+
   playSynthSound('click');
+
+  if (stage === 3) {
+    renderTroubleCase1UI();
+  } else {
+    renderTroubleCase2UI();
+  }
 }
 
 function renderTroubleCase1UI() {
-  const optIdx = computerGame.m3.selectedOption;
-  for (let i = 0; i < 4; i++) {
-    const btn = document.getElementById(`btn-t3-opt-${i}`);
-    if (btn) btn.classList.toggle('selected', i === optIdx);
+  const selected = computerGame.m3.selectedActions || [];
+  for (let i = 0; i < 6; i++) {
+    const card = document.getElementById(`btn-t3-act-${i}`);
+    const chk = document.getElementById(`chk-t3-${i}`);
+    const isSel = selected.includes(i);
+    if (card) card.classList.toggle('selected', isSel);
+    if (chk) chk.textContent = isSel ? '✓' : '';
+  }
+
+  const feedback = document.getElementById('t3-feedback-text');
+  if (feedback) {
+    if (selected.length === 0) {
+      feedback.textContent = 'Centang tindakan yang tepat (Pilih beberapa), lalu jalankan SOP.';
+      feedback.style.color = '#64748b';
+    } else {
+      feedback.textContent = `${selected.length} tindakan SOP dipilih. Klik 'Jalankan SOP Perbaikan Hardware'.`;
+      feedback.style.color = '#0288d1';
+    }
   }
 }
 
 function executeTroubleCase1() {
-  const opt = computerGame.m3.selectedOption;
-  if (opt === null) {
+  const selected = computerGame.m3.selectedActions || [];
+  if (selected.length === 0) {
     playSynthSound('error');
     showGameModal({
       icon: '💡',
-      title: 'Pilih Tindakan',
-      text: 'Silakan pilih salah satu opsi tindakan perbaikan (A, B, C, atau D) terlebih dahulu!',
+      title: 'Pilih Prosedur SOP',
+      text: 'Centang minimal beberapa tindakan SOP perbaikan perangkat keras terlebih dahulu!',
       actions: [{ text: 'Mengerti', primary: true, onClick: closeGameModal }]
     });
     return;
   }
 
-  // Opsi C (Index 2) adalah jawaban tepat
-  if (opt === 2) {
-    stopBeepSound();
-    playSynthSound('success');
-    spawnConfetti();
-    computerGame.stars[3] = 1;
-    if (computerGame.unlockedLevel < 4) computerGame.unlockedLevel = 4;
-    updateGameHUD();
+  // Aksi 4: Heatsink CPU (Berbahaya)
+  // Aksi 5: Format SSD (Salah Sasaran)
+  const hasDangerCpu = selected.includes(4);
+  const hasWrongFormat = selected.includes(5);
+  const hasCleanRam = selected.includes(2);
+  const hasReseatRam = selected.includes(3);
+  const hasSafety = selected.includes(0);
 
-    showGameModal({
-      icon: '🎉',
-      title: 'Diagnosa Tepat! Masalah Terpecahkan!',
-      text: 'Luar biasa! Bunyi Beep panjang berulang saat menyalakan PC adalah kode standar BIOS untuk kegagalan komunikasi RAM (kotor/longgar). Setelah pin dibersihkan dan dipasang kencang, monitor langsung menerima sinyal dan BIOS berfungsi normal!',
-      stars: '⭐ Misi 3 Selesai!',
-      actions: [
-        { text: 'Lanjut ke Misi 4 (Kasus 2: Memori Penuh) ▶', primary: true, onClick: () => { closeGameModal(); switchGameLevel(4); } }
-      ]
-    });
-  } else {
+  if (hasDangerCpu) {
     playSynthSound('error');
-    const explanations = [
-      'Kabel power monitor tidak bermasalah karena lampu monitor menyala normal mendeteksi sinyal.',
-      'Sistem belum masuk tahap memuat Windows/OS, sehingga instal ulang OS tidak menyelesaikan masalah POST hardware ini.',
-      '',
-      'Mouse dan keyboard tidak berhubungan dengan kegagalan inisialisasi tampilan awal BIOS.'
-    ];
+    showGameModal({
+      icon: '⚠️',
+      title: 'Tindakan Berbahaya Terdeteksi',
+      titleClass: 'error',
+      text: '<strong>Jangan mencopot heatsink pendingin CPU!</strong><br><br>Komputer mengalami masalah kegagalan inisialisasi RAM (bunyi Beep POST), bukan kelebihan panas CPU. Melepas pendingin prosesor tanpa alasan berisiko merusak pasta termal dan soket CPU!',
+      actions: [{ text: 'Tinjau Ulang Prosedur', primary: true, onClick: closeGameModal }]
+    });
+    return;
+  }
+
+  if (hasWrongFormat) {
+    playSynthSound('error');
     showGameModal({
       icon: '❌',
-      title: 'Tindakan Belum Tepat',
+      title: 'Tindakan Salah Sasaran',
       titleClass: 'error',
-      text: `${explanations[opt]}<br><br><em>Petunjuk: Perhatikan gejala bunyi BEEP panjang berulang dari motherboard, komponen internal apakah yang paling sering mengalami masalah kontak pin?</em>`,
-      actions: [{ text: 'Coba Analisis Ulang', primary: true, onClick: closeGameModal }]
+      text: '<strong>Memformat SSD atau instal ulang OS tidak menyelesaikan masalah!</strong><br><br>Komputer bahkan belum berhasil melewati tahap inisialisasi BIOS (*Power-On Self-Test*). Kerusakan ada pada kontak fisik RAM, bukan pada sistem operasi Windows atau data file!',
+      actions: [{ text: 'Tinjau Ulang Prosedur', primary: true, onClick: closeGameModal }]
     });
+    return;
   }
+
+  if (!hasCleanRam || !hasReseatRam) {
+    playSynthSound('error');
+    showGameModal({
+      icon: '💡',
+      title: 'Langkah Kunci Terlewat',
+      text: 'Prosedur kamu belum menyertakan langkah inti penanganan modul RAM!<br><br><em>Petunjuk: Bunyi Beep panjang berulang mengindikasikan konektor pin RAM kotor/teroksidasi. Pastikan kamu memilih tindakan membersihkan pin emas RAM dan memasangnya kembali hingga terkunci rapat.</em>',
+      actions: [{ text: 'Lengkapi Prosedur', primary: true, onClick: closeGameModal }]
+    });
+    return;
+  }
+
+  // Sukses! Prosedur SOP tepat dan aman
+  stopBeepSound();
+  playSynthSound('success');
+  spawnConfetti();
+  computerGame.stars[3] = 1;
+  if (computerGame.unlockedLevel < 4) computerGame.unlockedLevel = 4;
+  updateGameHUD();
+
+  const safetyNote = hasSafety ? 'Langkah keselamatan K3 mematikan arus listrik juga kamu jalankan dengan sangat disiplin!' : '';
+
+  showGameModal({
+    icon: '🎉',
+    title: 'SOP Teknisi Berhasil Dijalankan!',
+    text: `Luar biasa! Prosedur yang kamu susun 100% tepat dan profesional! ${safetyNote}<br><br>Setelah kotoran dan oksidasi pada pin emas RAM dibersihkan, modul terpasang kencang di slot DDR4. Saat tombol daya dinyalakan kembali, <strong>bunyi Beep motherboard langsung hilang dan layar monitor menampilkan BIOS secara normal</strong>!`,
+    stars: '⭐ Misi 3 Selesai!',
+    actions: [
+      { text: 'Lanjut ke Misi 4 (Kasus 2: Optimasi Multitasking) ▶', primary: true, onClick: () => { closeGameModal(); switchGameLevel(4); } }
+    ]
+  });
 }
 
 // ==================== MISI 4: KASUS TEKNISI 2 (MEMORI PENUH & KINERJA) ====================
 
 function renderTroubleCase2UI() {
-  const optIdx = computerGame.m4.selectedOption;
-  for (let i = 0; i < 4; i++) {
-    const btn = document.getElementById(`btn-t4-opt-${i}`);
-    if (btn) btn.classList.toggle('selected', i === optIdx);
+  const selected = computerGame.m4.selectedActions || [];
+  for (let i = 0; i < 6; i++) {
+    const card = document.getElementById(`btn-t4-act-${i}`);
+    const chk = document.getElementById(`chk-t4-${i}`);
+    const isSel = selected.includes(i);
+    if (card) card.classList.toggle('selected', isSel);
+    if (chk) chk.textContent = isSel ? '✓' : '';
+  }
+
+  const feedback = document.getElementById('t4-feedback-text');
+  if (feedback) {
+    if (selected.length === 0) {
+      feedback.textContent = 'Centang paket solusi yang tepat (Pilih beberapa), lalu terapkan.';
+      feedback.style.color = '#64748b';
+    } else {
+      feedback.textContent = `${selected.length} langkah solusi dipilih. Klik 'Terapkan Paket Optimasi Kinerja'.`;
+      feedback.style.color = '#0288d1';
+    }
   }
 }
 
 function executeTroubleCase2() {
-  const opt = computerGame.m4.selectedOption;
-  if (opt === null) {
+  const selected = computerGame.m4.selectedActions || [];
+  if (selected.length === 0) {
     playSynthSound('error');
     showGameModal({
       icon: '💡',
-      title: 'Pilih Solusi',
-      text: 'Silakan pilih salah satu opsi solusi optimasi kinerja (A, B, C, atau D) terlebih dahulu!',
+      title: 'Pilih Paket Solusi',
+      text: 'Centang minimal beberapa tindakan optimasi kinerja multitasking terlebih dahulu!',
       actions: [{ text: 'Mengerti', primary: true, onClick: closeGameModal }]
     });
     return;
   }
 
-  // Opsi C (Index 2) adalah jawaban tepat
-  if (opt === 2) {
-    playSynthSound('victory');
-    spawnConfetti();
+  const hasDeleteSsd = selected.includes(3);
+  const hasBuyCpu = selected.includes(4);
+  const hasBuyMonitor = selected.includes(5);
+  const hasEndTask = selected.includes(0);
+  const hasStartup = selected.includes(1);
+  const hasUpgradeRam = selected.includes(2);
 
-    // Animasi Task Manager pulih
-    const ramBar = document.getElementById('t4-ram-bar');
-    const ramVal = document.getElementById('t4-ram-val');
-    const warnBanner = document.getElementById('t4-warning-banner');
-
-    if (ramBar) {
-      ramBar.style.width = '36%';
-      ramBar.className = 'taskmgr-bar-fill safe';
-    }
-    if (ramVal) {
-      ramVal.textContent = '36% (5.8 GB / 16 GB - Lancar)';
-      ramVal.style.color = '#10b981';
-    }
-    if (warnBanner) {
-      warnBanner.style.background = 'rgba(16, 185, 129, 0.18)';
-      warnBanner.style.borderColor = '#10b981';
-      warnBanner.style.color = '#6ee7b7';
-      warnBanner.innerHTML = '<span>✅</span><span>Sistem Optimal: Ruang RAM Cukup, Bebas Hambatan (No Lag)</span>';
-    }
-
-    computerGame.stars[4] = 1;
-    updateGameHUD();
-
-    showGameModal({
-      icon: '🏆',
-      title: 'Sempurna! Kamu Master Sistem Komputer!',
-      titleClass: 'victory',
-      stars: '⭐⭐⭐⭐ 4/4 BINTANG SEMPURNA!',
-      text: 'Analisis kamu 100% tepat! RAM adalah memori kerja sementara. Saat multitasking membuka banyak tab, RAM 98% menjadi leher botol (bottleneck), sedangkan SSD masih 320GB bebas. Menutup tab latar belakang dan menambah kapasitas RAM langsung memulihkan kecepatan komputer!<br><br>Kamu telah menuntaskan seluruh 4 tantangan sistem komputer dengan gemilang!',
-      actions: [
-        { text: 'Lanjut ke Latihan Evaluasi 📝', primary: true, onClick: () => { closeGameModal(); goToPage('latihan-intro'); } }
-      ]
-    });
-  } else {
+  if (hasDeleteSsd) {
     playSynthSound('error');
-    const explanations = [
-      'Menghapus file di SSD tidak akan menyelesaikan masalah karena SSD masih memiliki 320 GB ruang bebas. Yang penuh adalah memori kerja RAM (98%)!',
-      'Penggunaan CPU hanya 24% (sangat santai), sehingga mengganti CPU bukan solusi yang tepat.',
-      '',
-      'Monitor tidak berpengaruh terhadap kapasitas memori kerja komputer.'
-    ];
     showGameModal({
       icon: '❌',
-      title: 'Analisis Belum Tepat',
+      title: 'Tindakan Keliru & Berisiko',
       titleClass: 'error',
-      text: `${explanations[opt]}<br><br><em>Petunjuk: Perhatikan baris RAM di Task Manager yang menyala merah 98%. RAM menyimpan data aplikasi yang sedang aktif berjalan.</em>`,
-      actions: [{ text: 'Coba Analisis Ulang', primary: true, onClick: closeGameModal }]
+      text: '<strong>Menghapus dokumen di SSD adalah tindakan salah sasaran!</strong><br><br>Perhatikan data Task Manager: ruang kosong SSD (C:) masih <strong>320 GB Bebas</strong>. Yang kehabisan ruang adalah <strong>Memori Kerja RAM (98%)</strong>, bukan media penyimpanan data!',
+      actions: [{ text: 'Tinjau Ulang Solusi', primary: true, onClick: closeGameModal }]
     });
+    return;
   }
+
+  if (hasBuyCpu) {
+    playSynthSound('error');
+    showGameModal({
+      icon: '💸',
+      title: 'Pemborosan / Salah Sasaran',
+      titleClass: 'error',
+      text: '<strong>Mengganti CPU tidak akan mengatasi masalah ini!</strong><br><br>Penggunaan CPU saat ini hanya <strong>24% (sangat santai)</strong>. Prosesor tidak mengalami kelebihan beban (*bottleneck*). Yang macet adalah antrean memori kerja RAM!',
+      actions: [{ text: 'Tinjau Ulang Solusi', primary: true, onClick: closeGameModal }]
+    });
+    return;
+  }
+
+  if (hasBuyMonitor) {
+    playSynthSound('error');
+    showGameModal({
+      icon: '📺',
+      title: 'Solusi Tidak Berhubungan',
+      titleClass: 'error',
+      text: 'Monitor adalah peranti keluaran (*output visual*), bukan memori kerja komputer. Mengganti monitor tidak menambah kapasitas RAM.',
+      actions: [{ text: 'Tinjau Ulang Solusi', primary: true, onClick: closeGameModal }]
+    });
+    return;
+  }
+
+  // Harus memilih minimal 2 dari 3 solusi yang benar (End Task, Startup, Upgrade RAM)
+  const correctCount = (hasEndTask ? 1 : 0) + (hasStartup ? 1 : 0) + (hasUpgradeRam ? 1 : 0);
+  if (correctCount < 2) {
+    playSynthSound('error');
+    showGameModal({
+      icon: '💡',
+      title: 'Solusi Belum Lengkap',
+      text: 'Pilihlah kombinasi solusi yang komprehensif! Setidaknya gabungkan solusi instan (*End Task*) dengan solusi jangka panjang (*Kelola Startup Apps* atau *Upgrade RAM Fisik*).',
+      actions: [{ text: 'Lengkapi Pilihan', primary: true, onClick: closeGameModal }]
+    });
+    return;
+  }
+
+  // Sukses! Animasi Task Manager pulih
+  playSynthSound('victory');
+  spawnConfetti();
+
+  const ramBar = document.getElementById('t4-ram-bar');
+  const ramVal = document.getElementById('t4-ram-val');
+  const warnBanner = document.getElementById('t4-warning-banner');
+
+  if (ramBar) {
+    ramBar.style.width = '32%';
+    ramBar.className = 'taskmgr-bar-fill safe';
+  }
+  if (ramVal) {
+    ramVal.textContent = '32% (5.1 GB / 16 GB - Lancar Mulus)';
+    ramVal.style.color = '#10b981';
+  }
+  if (warnBanner) {
+    warnBanner.style.background = 'rgba(16, 185, 129, 0.18)';
+    warnBanner.style.borderColor = '#10b981';
+    warnBanner.style.color = '#6ee7b7';
+    warnBanner.innerHTML = '<span>✅</span><span>Sistem Optimal: Ruang RAM Sangat Lega, Bebas Hambatan (No Lag)</span>';
+  }
+
+  computerGame.stars[4] = 1;
+  updateGameHUD();
+
+  showGameModal({
+    icon: '🏆',
+    title: 'Sempurna! Kamu Master Sistem Komputer!',
+    titleClass: 'victory',
+    stars: '⭐⭐⭐⭐ 4/4 BINTANG SEMPURNA!',
+    text: 'Analisis kamu 100% tepat! Kombinasi menutup proses rakus memori di Task Manager dan merencanakan upgrade RAM melipatgandakan performa kerja komputer!<br><br>Beban RAM langsung turun drastis ke <strong>32% (Aman)</strong> dan komputer kembali berjalan sangat mulus!<br><br>Selamat! Kamu telah menuntaskan seluruh 4 tantangan sistem komputer dengan predikat Ahli Perangkat Keras!',
+    actions: [
+      { text: 'Lanjut ke Latihan Evaluasi 📝', primary: true, onClick: () => { closeGameModal(); goToPage('latihan-intro'); } }
+    ]
+  });
 }
 
 function resetCurrentGameLevel() {
@@ -1734,15 +1827,11 @@ function resetCurrentGameLevel() {
     updateBinaryDisplay();
   } else if (computerGame.currentLevel === 3) {
     stopBeepSound();
-    computerGame.m3.selectedOption = null;
+    computerGame.m3.selectedActions = [];
     renderTroubleCase1UI();
-    const fb = document.getElementById('t3-feedback-text');
-    if (fb) fb.textContent = 'Pilih salah satu opsi tindakan di atas.';
   } else if (computerGame.currentLevel === 4) {
-    computerGame.m4.selectedOption = null;
+    computerGame.m4.selectedActions = [];
     renderTroubleCase2UI();
-    const fb = document.getElementById('t4-feedback-text');
-    if (fb) fb.textContent = 'Pilih salah satu solusi optimasi di atas.';
     const ramBar = document.getElementById('t4-ram-bar');
     const ramVal = document.getElementById('t4-ram-val');
     const warnBanner = document.getElementById('t4-warning-banner');
