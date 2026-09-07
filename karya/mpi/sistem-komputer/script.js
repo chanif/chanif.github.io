@@ -1643,7 +1643,7 @@ function executeTroubleCase1() {
       icon: '❌',
       title: 'Tindakan Salah Sasaran',
       titleClass: 'error',
-      text: '<strong>Memformat SSD atau instal ulang OS tidak menyelesaikan masalah!</strong><br><br>Komputer bahkan belum berhasil melewati tahap inisialisasi BIOS (*Power-On Self-Test*). Kerusakan ada pada kontak fisik RAM, bukan pada sistem operasi Windows atau data file!',
+      text: '<strong>Memformat SSD atau instal ulang OS tidak menyelesaikan masalah!</strong><br><br>Komputer bahkan belum berhasil melewati tahap inisialisasi BIOS (<b>Power-On Self-Test</b>). Kerusakan ada pada kontak fisik RAM, bukan pada sistem operasi Windows atau data file!',
       actions: [{ text: 'Tinjau Ulang Prosedur', primary: true, onClick: closeGameModal }]
     });
     return;
@@ -1743,7 +1743,7 @@ function executeTroubleCase2() {
       icon: '💸',
       title: 'Pemborosan / Salah Sasaran',
       titleClass: 'error',
-      text: '<strong>Mengganti CPU tidak akan mengatasi masalah ini!</strong><br><br>Penggunaan CPU saat ini hanya <strong>24% (sangat santai)</strong>. Prosesor tidak mengalami kelebihan beban (*bottleneck*). Yang macet adalah antrean memori kerja RAM!',
+      text: '<strong>Mengganti CPU tidak akan mengatasi masalah ini!</strong><br><br>Penggunaan CPU saat ini hanya <strong>24% (sangat santai)</strong>. Prosesor tidak mengalami kelebihan beban (<b>bottleneck</b>). Yang macet adalah antrean memori kerja RAM!',
       actions: [{ text: 'Tinjau Ulang Solusi', primary: true, onClick: closeGameModal }]
     });
     return;
@@ -1755,7 +1755,7 @@ function executeTroubleCase2() {
       icon: '📺',
       title: 'Solusi Tidak Berhubungan',
       titleClass: 'error',
-      text: 'Monitor adalah peranti keluaran (*output visual*), bukan memori kerja komputer. Mengganti monitor tidak menambah kapasitas RAM.',
+      text: 'Monitor adalah peranti keluaran (<b>output visual</b>), bukan memori kerja komputer. Mengganti monitor tidak menambah kapasitas RAM.',
       actions: [{ text: 'Tinjau Ulang Solusi', primary: true, onClick: closeGameModal }]
     });
     return;
@@ -1768,7 +1768,7 @@ function executeTroubleCase2() {
     showGameModal({
       icon: '💡',
       title: 'Solusi Belum Lengkap',
-      text: 'Pilihlah kombinasi solusi yang komprehensif! Setidaknya gabungkan solusi instan (*End Task*) dengan solusi jangka panjang (*Kelola Startup Apps* atau *Upgrade RAM Fisik*).',
+      text: 'Pilihlah kombinasi solusi yang komprehensif! Setidaknya gabungkan solusi instan (<b>End Task</b>) dengan solusi jangka panjang (<b>Kelola Startup Apps</b> atau <b>Upgrade RAM Fisik</b>).',
       actions: [{ text: 'Lengkapi Pilihan', primary: true, onClick: closeGameModal }]
     });
     return;
