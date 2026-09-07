@@ -21,7 +21,7 @@ window.MPI_CONFIG = {
     background: {
         // Path gambar latar belakang ruang kelas (mendukung JPG, PNG, WEBP, SVG)
         // Kosongkan ('') jika ingin menggunakan latar belakang animasi SVG internal
-        image: 'assets/sistem_komputer_2.jpg',
+        image: 'assets/sistem_komputer.jpg',
 
         // Mode tampilan background ('cover', 'contain', '100% 100%')
         size: 'cover',

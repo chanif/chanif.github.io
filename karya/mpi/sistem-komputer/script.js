@@ -225,9 +225,10 @@ const PAGE_INDEX_MAP = {
   'latihan': 14,
   'rangkuman': 15,
   'referensi': 16,
-  'pengembang': 17,
-  'kutipan': 18,
-  'kredit': 19
+  'prompt-ai': 17,
+  'pengembang': 18,
+  'kutipan': 19,
+  'kredit': 20
 };
 
 function updateTestingIndicator(pageId) {
@@ -247,7 +248,7 @@ function updateTestingIndicator(pageId) {
   }
 
   const pageNum = PAGE_INDEX_MAP[pageId] || '?';
-  indicator.innerHTML = `<span>Halaman ${pageNum} / 19</span>`;
+  indicator.innerHTML = `<span>Halaman ${pageNum} / 20</span>`;
   indicator.style.display = 'block';
 }
 
@@ -255,7 +256,7 @@ const LINEAR_PAGES = [
   'cover', 'menu', 'petunjuk', 'tujuan', 'materi-list',
   'materi-1', 'tarik-jawaban', 'materi-2', 'video', 'materi-3',
   'permainan-intro', 'permainan', 'latihan-intro', 'latihan',
-  'rangkuman', 'referensi', 'pengembang', 'kutipan', 'kredit'
+  'rangkuman', 'referensi', 'prompt-ai', 'pengembang', 'kutipan', 'kredit'
 ];
 
 let currentPage = 'cover';
@@ -395,11 +396,17 @@ const JARINGAN_PAGE_NAV_MAP = {
   'referensi': {
     prevText: 'Rangkuman & Refleksi',
     prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Dokumentasi Prompt AI',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'prompt-ai': {
+    prevText: 'Referensi & Daftar Pustaka',
+    prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Profil Pengembang',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'pengembang': {
-    prevText: 'Referensi & Daftar Pustaka',
+    prevText: 'Dokumentasi Prompt AI',
     prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Motto / Kutipan Inspirasi',
     nextSub: 'HALAMAN BERIKUTNYA'
