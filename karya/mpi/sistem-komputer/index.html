@@ -843,7 +843,7 @@
         <div class="game-stage-panel" id="game-stage-panel-1" style="display:block;">
           <div class="game-stage-wrapper" style="gap:16px;">
             <!-- 1. Component Inventory (Left) -->
-            <div class="game-side-panel sender-panel" style="width:250px;min-width:240px;">
+            <div class="game-side-panel sender-panel" style="width:290px;min-width:290px;">
               <div class="side-panel-header" style="justify-content:space-between;width:100%;border-bottom:1px solid #e0f2fe;padding-bottom:6px;">
                 <div style="display:flex;align-items:center;gap:6px;">
                   <span class="side-icon">📦</span>
@@ -973,7 +973,7 @@
             </div>
 
             <!-- 3. Diagnostic Screen (Right) -->
-            <div class="game-side-panel receiver-panel" style="width:250px;min-width:240px;">
+            <div class="game-side-panel receiver-panel" style="width:290px;min-width:290px;">
               <div class="side-panel-header">
                 <span class="side-icon">🖥️</span>
                 <span class="side-title" style="font-size:14px;">Monitor POST BIOS</span>
@@ -1003,11 +1003,12 @@
               <div>
                 <span style="font-size:12px;color:#64748b;font-weight:700;text-transform:uppercase;">🎯 Target Tantangan:</span>
                 <div style="font-size:20px;font-weight:800;color:#006064;" id="bin-target-title">Tantangan 1: Desimal 27</div>
+                <div style="font-size:11.5px;color:#059669;font-weight:700;margin-top:2px;" id="bin-mission-status">💡 Kerjakan 1 tantangan untuk menyelesaikan Misi 2 (Tersedia 3 tantangan)</div>
               </div>
-              <div style="display:flex;gap:8px;">
-                <button class="btn btn-secondary" style="font-size:12px;padding:6px 10px;" onclick="switchBinaryChallenge(1)">Tantangan 1: 27</button>
-                <button class="btn btn-secondary" style="font-size:12px;padding:6px 10px;" onclick="switchBinaryChallenge(2)">Tantangan 2: 75 ('K')</button>
-                <button class="btn btn-secondary" style="font-size:12px;padding:6px 10px;" onclick="switchBinaryChallenge(3)">Tantangan 3: 200</button>
+              <div style="display:flex;gap:8px;" id="bin-challenge-btns">
+                <button class="btn btn-secondary active" id="btn-bin-ch-1" style="font-size:12px;padding:6px 10px;font-weight:700;" onclick="switchBinaryChallenge(1)">Tantangan 1: 27</button>
+                <button class="btn btn-secondary" id="btn-bin-ch-2" style="font-size:12px;padding:6px 10px;font-weight:700;" onclick="switchBinaryChallenge(2)">Tantangan 2: 75 ('K')</button>
+                <button class="btn btn-secondary" id="btn-bin-ch-3" style="font-size:12px;padding:6px 10px;font-weight:700;" onclick="switchBinaryChallenge(3)">Tantangan 3: 200</button>
               </div>
             </div>
 
@@ -1092,7 +1093,7 @@
                   </div>
                   <div class="trouble-option-btn" id="btn-t3-opt-2" onclick="selectTroubleOption(3, 2)">
                     <span class="trouble-option-letter">C</span>
-                    <span><strong>Matikan daya listrik, lepas modul RAM, bersihkan pin konektor emas dari debu/oksidasi dengan penghapus pensil, lalu pasang kembali ke slot DDR4 dengan kencang.</strong></span>
+                    <span>Matikan daya listrik, lepas modul RAM, bersihkan pin konektor emas dari debu/oksidasi dengan penghapus pensil, lalu pasang kembali ke slot DDR4 dengan kencang.</span>
                   </div>
                   <div class="trouble-option-btn" id="btn-t3-opt-3" onclick="selectTroubleOption(3, 3)">
                     <span class="trouble-option-letter">D</span>
@@ -1187,7 +1188,7 @@
                   </div>
                   <div class="trouble-option-btn" id="btn-t4-opt-2" onclick="selectTroubleOption(4, 2)">
                     <span class="trouble-option-letter">C</span>
-                    <span><strong>Tutup tab browser dan aplikasi berat yang tidak digunakan untuk membebaskan ruang memori, serta tambahkan keping RAM fisik agar kapasitas memori kerja multitasking mencukupi.</strong></span>
+                    <span>Tutup tab browser dan aplikasi berat yang tidak digunakan untuk membebaskan ruang memori, serta tambahkan keping RAM fisik agar kapasitas memori kerja multitasking mencukupi.</span>
                   </div>
                   <div class="trouble-option-btn" id="btn-t4-opt-3" onclick="selectTroubleOption(4, 3)">
                     <span class="trouble-option-letter">D</span>
@@ -1574,7 +1575,22 @@
 
         <!-- Grid of Prompt Cards -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left;">
-          <!-- Item 1 -->
+          <!-- Item 1: Background Utama -->
+          <div class="prompt-ai-card" style="background:#ffffff;border:1.5px solid #00ACC1;border-radius:12px;padding:10px 14px;display:flex;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:all 0.2s;grid-column: span 2;">
+            <img src="assets/sistem_komputer.jpg" style="width:115px;height:74px;border-radius:8px;object-fit:cover;border:1.5px solid #00ACC1;flex-shrink:0;" alt="Background Sistem Komputer">
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+                <strong style="font-size:13px;color:#006064;">Gambar Latar Belakang Utama MPI (Ekosistem Sistem Komputer)</strong>
+                <span style="background:#e0f7fa;color:#006064;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;border:1px solid #b2ebf2;">Background Visual MPI</span>
+              </div>
+              <div style="font-size:11px;color:#64748b;margin-bottom:4px;">Aset: <code>assets/sistem_komputer.jpg</code></div>
+              <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:6px 8px;font-family:monospace;font-size:10.5px;color:#334155;line-height:1.35;max-height:55px;overflow-y:auto;">
+                Isometric 3D concept illustration of a futuristic computer system, featuring a glowing central CPU processor chip at the center of golden printed circuit board (PCB) traces overlaid on a subtle world map floor. Surrounding computer hardware components connected by bus circuit lines include a detailed motherboard, RAM stick, M.2 SSD storage with floating software icons, graphics card GPU, gaming controller, keyboard, mouse, and floating holographic UI displays with code and analytics charts. Tiny stylized human 3D figures (users and programmers) interacting with digital screens, cloud computing, and software interfaces. Warm golden ambient lighting, modern high-tech educational tech aesthetic, clean render, 16:9 aspect ratio.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
           <div class="prompt-ai-card" style="background:#ffffff;border:1.5px solid #cbd5e1;border-radius:12px;padding:10px 12px;display:flex;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:all 0.2s;">
             <img src="assets/comp_cpu_good.jpg" style="width:68px;height:68px;border-radius:8px;object-fit:cover;border:1px solid #e2e8f0;flex-shrink:0;" alt="CPU Multi-Core">
             <div style="flex:1;min-width:0;">

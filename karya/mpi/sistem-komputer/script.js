@@ -965,10 +965,11 @@ let computerGame = {
   m2: {
     bits: [0, 0, 0, 0, 0, 0, 0, 0],
     challengeIdx: 1,
+    completed: { 1: false, 2: false, 3: false },
     challenges: [
-      { id: 1, title: "Bentuk Angka Desimal 27", targetDec: 27, hint: "Aktifkan sakelar 16, 8, 2, dan 1 (16 + 8 + 2 + 1 = 27)" },
-      { id: 2, title: "Bentuk Huruf 'K' (Desimal 75)", targetDec: 75, hint: "Aktifkan sakelar 64, 8, 2, dan 1 (64 + 8 + 2 + 1 = 75)" },
-      { id: 3, title: "Bentuk Angka Desimal 200", targetDec: 200, hint: "Aktifkan sakelar 128, 64, dan 8 (128 + 64 + 8 = 200)" }
+      { id: 1, title: "Tantangan 1: Desimal 27", targetDec: 27, hint: "Aktifkan sakelar 16, 8, 2, dan 1 (16 + 8 + 2 + 1 = 27)" },
+      { id: 2, title: "Tantangan 2: Huruf 'K' (Desimal 75)", targetDec: 75, hint: "Aktifkan sakelar 64, 8, 2, dan 1 (64 + 8 + 2 + 1 = 75)" },
+      { id: 3, title: "Tantangan 3: Desimal 200", targetDec: 200, hint: "Aktifkan sakelar 128, 64, dan 8 (128 + 64 + 8 = 200)" }
     ]
   },
 
@@ -1077,9 +1078,10 @@ function renderCurrentStageUI() {
     updateM1UI();
   } else if (computerGame.currentLevel === 2) {
     if (iconEl) iconEl.textContent = '💡';
-    if (descEl) descEl.textContent = 'Misi 2: Atur sakelar 8-bit (1/0) agar kalkulasi menghasilkan nilai desimal / karakter yang diminta!';
+    if (descEl) descEl.textContent = 'Misi 2: Atur sakelar 8-bit (1/0) agar kalkulasi menghasilkan nilai desimal / karakter yang diminta! (Dikerjakan 1 tantangan sudah dianggap selesai)';
     renderBinarySwitches();
     updateBinaryDisplay();
+    updateBinaryChallengeButtonsUI();
   } else if (computerGame.currentLevel === 3) {
     if (iconEl) iconEl.textContent = '🛠️';
     if (descEl) descEl.textContent = 'Misi 3: Kasus Teknisi 1 — Analisis komputer blank dengan kode beep panjang berulang dan tentukan perbaikannya!';
@@ -1371,11 +1373,54 @@ function updateBinaryDisplay() {
   }
 }
 
+function updateBinaryChallengeButtonsUI() {
+  const m2 = computerGame.m2;
+  if (!m2) return;
+
+  for (let i = 1; i <= 3; i++) {
+    const btn = document.getElementById(`btn-bin-ch-${i}`);
+    if (!btn) continue;
+    const isDone = m2.completed && m2.completed[i];
+    const isActive = m2.challengeIdx === i;
+
+    let label = '';
+    if (i === 1) label = 'Tantangan 1: 27';
+    else if (i === 2) label = "Tantangan 2: 75 ('K')";
+    else if (i === 3) label = 'Tantangan 3: 200';
+
+    btn.textContent = isDone ? `${label} ✅` : label;
+    if (isActive) {
+      btn.classList.add('active');
+      btn.style.background = '#00ACC1';
+      btn.style.color = '#ffffff';
+      btn.style.borderColor = '#00838f';
+    } else {
+      btn.classList.remove('active');
+      btn.style.background = isDone ? '#e0f2fe' : '';
+      btn.style.color = isDone ? '#0369a1' : '';
+      btn.style.borderColor = isDone ? '#7dd3fc' : '';
+    }
+  }
+
+  const statusEl = document.getElementById('bin-mission-status');
+  if (statusEl) {
+    const totalDone = Object.values(m2.completed || {}).filter(Boolean).length;
+    if (totalDone > 0) {
+      statusEl.innerHTML = `✅ <strong>Status: Misi 2 Tuntas!</strong> (${totalDone} dari 3 tantangan selesai dikerjakan — kamu bebas lanjut ke Misi 3 atau menyelesaikan tantangan lainnya).`;
+      statusEl.style.color = '#059669';
+    } else {
+      statusEl.innerHTML = `💡 <em>Kerjakan 1 tantangan untuk menyelesaikan Misi 2 (Tersedia 3 tantangan).</em>`;
+      statusEl.style.color = '#0288d1';
+    }
+  }
+}
+
 function switchBinaryChallenge(num) {
   computerGame.m2.challengeIdx = num;
   const challenge = computerGame.m2.challenges.find(c => c.id === num) || computerGame.m2.challenges[0];
   const titleEl = document.getElementById('bin-target-title');
   if (titleEl) titleEl.textContent = `${challenge.title}`;
+  updateBinaryChallengeButtonsUI();
   playSynthSound('click');
 }
 
@@ -1389,19 +1434,65 @@ function verifyBinarySolution() {
   if (sum === challenge.targetDec) {
     playSynthSound('success');
     spawnConfetti();
+
+    // Catat tantangan ini selesai
+    if (!computerGame.m2.completed) computerGame.m2.completed = {};
+    computerGame.m2.completed[challenge.id] = true;
+
+    // KETENTUAN USER: Dikerjakan 1 tantangan juga SUDAH DIANGGAP SELESAI
     computerGame.stars[2] = 1;
     if (computerGame.unlockedLevel < 3) computerGame.unlockedLevel = 3;
     updateGameHUD();
+    updateBinaryChallengeButtonsUI();
 
-    showGameModal({
-      icon: '🎉',
-      title: 'Tepat Sekali! Kode Biner Valid!',
-      text: `Kombinasi biner yang kamu susun berhasil menghasilkan nilai desimal <strong>${sum}</strong> (${challenge.title})! Kamu memahami prinsip transistor dan bit digital!`,
-      stars: '⭐ Misi 2 Selesai!',
-      actions: [
-        { text: 'Lanjut ke Misi 3 (Kasus 1: Layar Gelap) ▶', primary: true, onClick: () => { closeGameModal(); switchGameLevel(3); } }
-      ]
-    });
+    const totalDone = Object.values(computerGame.m2.completed).filter(Boolean).length;
+    const actions = [];
+    const nextUncompleted = [1, 2, 3].find(id => !computerGame.m2.completed[id]);
+
+    if (nextUncompleted) {
+      const nextChallenge = computerGame.m2.challenges.find(c => c.id === nextUncompleted);
+      actions.push({
+        text: `Coba ${nextChallenge.title} 🎯`,
+        primary: true,
+        onClick: () => {
+          closeGameModal();
+          switchBinaryChallenge(nextUncompleted);
+        }
+      });
+      actions.push({
+        text: 'Lanjut ke Misi 3 (Kasus 1: Layar Gelap) ▶',
+        primary: false,
+        onClick: () => {
+          closeGameModal();
+          switchGameLevel(3);
+        }
+      });
+
+      showGameModal({
+        icon: '🎉',
+        title: 'Tepat Sekali! Kode Biner Valid!',
+        text: `Kombinasi biner yang kamu susun berhasil menghasilkan nilai desimal <strong>${sum}</strong> (${challenge.title})!<br><br>🌟 <strong>Misi 2 sudah dianggap selesai</strong> (karena 1 tantangan berhasil dituntaskan &amp; Misi 3 telah terbuka).<br>Kamu bebas mencoba tantangan berikutnya atau langsung melanjutkan ke Misi 3!`,
+        stars: `⭐ Misi 2 Tuntas (${totalDone}/3 Tantangan Diselesaikan)`,
+        actions: actions
+      });
+    } else {
+      actions.push({
+        text: 'Lanjut ke Misi 3 (Kasus 1: Layar Gelap) ▶',
+        primary: true,
+        onClick: () => {
+          closeGameModal();
+          switchGameLevel(3);
+        }
+      });
+
+      showGameModal({
+        icon: '🏆',
+        title: 'Luar Biasa! Semua 3 Tantangan Selesai!',
+        text: `Kamu berhasil menuntaskan <strong>seluruh 3 tantangan biner</strong> (Desimal 27, Huruf 'K', dan Desimal 200) dengan sempurna! Pemahamanmu mengenai sakelar transistor dan bit digital sangat mengesankan!`,
+        stars: '⭐⭐ Misi 2 Tuntas Sempurna (3/3)',
+        actions: actions
+      });
+    }
   } else {
     playSynthSound('error');
     showGameModal({
