@@ -18,6 +18,7 @@
 - **Nama Sekolah**   : [Contoh: SMP Negeri 1 Lamongan]
 - **File Logo**      : `logo.png` (letakkan satu folder dengan index.html)
 - **File Foto Guru** : `foto-guru.jpg` (letakkan satu folder dengan index.html)
+- **File Background**: `bg-ruang-kelas.jpg` (letakkan satu folder dengan index.html)
 
 ---
 
@@ -43,6 +44,11 @@
 
 6. **Rasio layar 16:9** terkunci, responsif, dan bebas scroll antar halaman (tidak perlu scroll panjang ke bawah).
 
+7. **Background foto ruang kelas** (`bg-ruang-kelas.jpg`) digunakan sebagai latar belakang keseluruhan aplikasi:
+   - `body { background: url('bg-ruang-kelas.jpg') center/cover no-repeat fixed; }`
+   - Di atas background foto, tambahkan overlay semi-transparan agar konten tetap terbaca: `background: rgba(255,255,255,0.82)`
+   - Fallback jika file tidak ada: gunakan warna latar `#f0f9ff` (biru muda cerah).
+
 ---
 
 ## 📱 BAGIAN 3 — STRUKTUR HALAMAN (7 HALAMAN BERURUTAN)
@@ -54,7 +60,7 @@ Aplikasi navigasi satu halaman (SPA) dengan 7 halaman berurutan:
 2. **Menu Utama** — 6 kartu besar ikon dengan teks jelas:
    - 📖 Petunjuk & Tujuan
    - 📚 Materi Utama
-   - ⚡ Simulasi Interaktif [Unggulan]
+   - ⚡ Simulasi Interaktif
    - 📝 Kuis Evaluasi
    - 👨‍🏫 Profil Guru
    - 💡 Fakta Menarik
@@ -63,7 +69,7 @@ Aplikasi navigasi satu halaman (SPA) dengan 7 halaman berurutan:
 
 4. **Materi Utama** — Minimal 4–6 kartu konsep dengan penjelasan dan ilustrasi emoji/grafis.
 
-5. **Simulasi Interaktif (Unggulan "WAH")** — Animasi visual interaktif yang relevan dengan materi (bisa berupa slider, klik-klik, animasi proses, dll). Sertakan suara sintetis dan tombol aksi besar.
+5. **Simulasi Interaktif** — Animasi visual interaktif yang relevan dengan materi (bisa berupa slider, klik-klik, animasi proses, dll). Sertakan suara sintetis dan tombol aksi besar.
 
 6. **Kuis Evaluasi** — Minimal 3 jenis soal:
    - Bagian A: 3 soal Pilihan Ganda (huruf besar, 30 poin)
@@ -77,4 +83,4 @@ Aplikasi navigasi satu halaman (SPA) dengan 7 halaman berurutan:
 
 ## 💻 BAGIAN 4 — PERINTAH KE AI
 
-"Tolong buatkan kode program lengkap untuk Media Pembelajaran Interaktif (MPI) sesuai spesifikasi di atas. Hasilkan **1 blok kode HTML utuh** tanpa terpotong. Gunakan warna cerah ceria, huruf BESAR (min. 14px konten, 24px judul), rasio layar 16:9 responsif, cover profesional dengan tombol '▶ MULAI' berpendar, simulasi interaktif yang visual dan bersuara sintetis Web Audio API, serta kuis evaluasi 3 format (PG + Menjodohkan SVG + Benar/Salah). Pastikan logo dan foto guru dimuat dengan fallback otomatis jika file tidak tersedia."
+"Tolong buatkan kode program lengkap untuk Media Pembelajaran Interaktif (MPI) sesuai spesifikasi di atas. Hasilkan **1 blok kode HTML utuh** tanpa terpotong. Gunakan warna cerah ceria, huruf BESAR (min. 14px konten, 24px judul), rasio layar 16:9 responsif, cover profesional dengan tombol '▶ MULAI' berpendar, simulasi interaktif yang visual dan bersuara sintetis Web Audio API, serta kuis evaluasi 3 format (PG + Menjodohkan SVG + Benar/Salah). Pastikan logo dan foto guru dimuat dengan fallback otomatis jika file tidak tersedia. Gunakan `bg-ruang-kelas.jpg` sebagai background body dengan overlay putih semi-transparan (rgba 255,255,255,0.82) agar konten tetap terbaca, dengan fallback warna `#f0f9ff`."
