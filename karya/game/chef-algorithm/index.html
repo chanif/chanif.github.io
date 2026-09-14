@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Chef Algorithm — Lomba Masak Digital | Gim Edukasi Informatika Fase D</title>
+  <meta name="description"
+    content="Gim Edukasi Informatika: Susun resep, atur langkah, sajikan tepat waktu! Belajar Algoritma Sekuensial, IF-ELSE, Loop, dan Dekomposisi melalui permainan memasak interaktif.">
+  <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+
+<body>
+
+  <!-- ============================== KITCHEN BACKGROUND ============================== -->
+  <div class="kitchen-bg" id="kitchen-bg"></div>
+
+  <!-- ============================== MOBILE ROTATE OVERLAY ============================== -->
+  <div class="rotate-device-overlay" id="rotate-device-overlay">
+    <div class="rotate-card">
+      <div class="rotate-icon">📱</div>
+      <h3>Putar Layar ke Lanskap (16:9)</h3>
+      <p>Gim Chef Algorithm dirancang dalam rasio aspek <b>16:9 Landscape</b>. Miringkan ponsel Anda ke posisi tidur untuk mulai bermain!</p>
+    </div>
+  </div>
+
+  <!-- ============================== ZOOM / FONT CONTROLS ============================== -->
+  <div class="quick-controls" id="quick-controls">
+    <div class="qc-row">
+      <span class="qc-label">🔍</span>
+      <button class="qc-btn" onclick="zoomOut()" title="Perkecil">−</button>
+      <button class="qc-val" onclick="resetZoom()" id="zoom-val">100%</button>
+      <button class="qc-btn" onclick="zoomIn()" title="Perbesar">+</button>
+    </div>
+    <div class="qc-divider"></div>
+    <div class="qc-row">
+      <span class="qc-label" style="font-size:0.7rem">Aa</span>
+      <button class="qc-btn" onclick="fontOut()" title="Kecilkan Teks">A−</button>
+      <button class="qc-val" onclick="resetFont()" id="font-val">100%</button>
+      <button class="qc-btn" onclick="fontIn()" title="Besarkan Teks">A+</button>
+    </div>
+  </div>
+
+  <div id="app">
+
+    <!-- ============================== PAGE 1: COVER ============================== -->
+    <section id="page-cover" class="page active">
+      <div class="content-box cover-page">
+        <div class="cover-logos">
+          <img src="assets/kemendikdasmen lengkap.png" alt="Logo Kemendikdasmen" id="logo-left">
+          <img src="assets/sobat + bermutu + ramah.png" alt="Logo Sobat SMP" id="logo-right">
+        </div>
+
+        <div class="cover-main-content">
+          <div class="cover-hero-box">
+            <img src="assets/characters/chef-main.png" alt="Chef Algorithm Cilik" class="cover-hero-img">
+          </div>
+          <div class="cover-info">
+            <h1 class="cover-title">Chef Algorithm</h1>
+            <p class="cover-subtitle">🍳 Lomba Masak Digital</p>
+            <p class="cover-tagline">"Susun resep, atur langkah, sajikan tepat waktu!"</p>
+
+            <div class="cover-objectives" id="cover-objectives">
+              <h3>🎯 Tujuan Pembelajaran (Fase D SMP)</h3>
+              <ul id="cover-tp-list">
+                <!-- Populated by JS from config -->
+              </ul>
+            </div>
+
+            <div class="cover-meta">
+              <span>📚 Informatika</span>
+              <span>•</span>
+              <span>📐 Fase D (Kelas VII–IX)</span>
+              <span>•</span>
+              <span>🧮 Algoritma & Berpikir Komputasional</span>
+            </div>
+
+            <button class="btn-mulai" onclick="goToPage('panduan')">
+              ▶ MULAI BERMAIN
+            </button>
+          </div>
+        </div>
+
+        <div style="margin-top: 4px; font-size: 0.75rem; color: var(--c-text-dim);">
+          Kreator: Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 2: PANDUAN ============================== -->
+    <section id="page-panduan" class="page">
+      <div class="content-box scrollable">
+        <div class="page-title-bar">
+          <button class="ptb-back" onclick="goToPage('cover')" title="Kembali">◀</button>
+          <div class="ptb-text">
+            <h2>📖 Panduan Bermain</h2>
+            <p>Pelajari cara bermain sebelum memulai petualangan memasak!</p>
+          </div>
+        </div>
+        <div class="tutorial-grid" id="tutorial-grid">
+          <!-- Populated by JS from config -->
+        </div>
+        <div class="action-row">
+          <button class="btn btn-primary btn-lg" onclick="goToPage('menu-level')">
+            🎮 Mulai Bermain!
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 3: MENU LEVEL ============================== -->
+    <section id="page-menu-level" class="page">
+      <div class="content-box">
+        <div class="page-title-bar">
+          <button class="ptb-back" onclick="goToPage('panduan')" title="Kembali">◀</button>
+          <div class="ptb-text">
+            <h2>🗺️ Pilih Level</h2>
+            <p>Selesaikan level secara berurutan untuk membuka level berikutnya</p>
+          </div>
+        </div>
+        <div class="level-grid" id="level-grid">
+          <!-- Populated by JS -->
+        </div>
+        <div class="progress-section" id="progress-section">
+          <div class="progress-bar-outer">
+            <div class="progress-bar-inner" id="progress-bar-fill" style="width: 0%"></div>
+          </div>
+          <span class="progress-label" id="progress-label">0 / 4 level selesai</span>
+          <div>
+            <div class="badge-display" id="badge-display">👨‍🍳 Chef Pemula</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 4: LEVEL 1 — SUSUN RESEP (SPLIT 2-KOLOM ZERO SCROLL) ============================== -->
+    <section id="page-level-1" class="page">
+      <div class="content-box">
+        <div class="game-header">
+          <div class="gh-left">
+            <span class="gh-level-badge">🥉 Level 1</span>
+            <span class="gh-title" id="l1-title">Susun Resep Nasi Goreng</span>
+          </div>
+          <div class="gh-right">
+            <span class="gh-attempts" id="l1-attempts">Percobaan: 0</span>
+          </div>
+        </div>
+        <div class="game-briefing" id="l1-briefing">
+          <!-- From config -->
+        </div>
+
+        <div class="l1-workspace">
+          <!-- Left: Available Steps -->
+          <div class="l1-pool-col">
+            <div class="col-header">
+              <span class="col-title">📦 Bahan & Langkah Tersedia</span>
+              <span class="col-hint">Klik atau Seret kartu</span>
+            </div>
+            <div class="drag-zone" id="l1-drag-zone">
+              <!-- Step cards populated by JS -->
+            </div>
+          </div>
+
+          <!-- Middle Arrow -->
+          <div class="l1-flow-indicator">➔</div>
+
+          <!-- Right: Recipe Board (7 Ordered Slots) -->
+          <div class="l1-board-col">
+            <div class="col-header">
+              <span class="col-title">📋 Papan Urutan Resep (Langkah 1–7)</span>
+              <span class="col-hint">Klik kartu di slot untuk membatalkan</span>
+            </div>
+            <div class="drop-zone" id="l1-drop-zone">
+              <!-- Drop slots populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="action-row compact-action">
+          <button class="btn btn-ghost btn-sm" onclick="resetLevel1()">🔄 Reset Urutan</button>
+          <button class="btn btn-primary btn-md" id="l1-check-btn" onclick="checkLevel1()" disabled>✅ Cek Resep Nasi Goreng</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 5: RECAP 1 ============================== -->
+    <section id="page-recap-1" class="page">
+      <div class="content-box">
+        <div class="recap-header">
+          <div class="recap-result-icon">🎉</div>
+          <div class="recap-result-text">Level 1 Selesai!</div>
+          <div class="recap-stars" id="recap-1-stars">⭐⭐⭐</div>
+          <div class="recap-score" id="recap-1-score">Skor: 250</div>
+        </div>
+
+        <div class="pseudocode-box">
+          <span class="pb-label">🔍 Mode Algoritma</span>
+          <pre id="recap-1-pseudocode"></pre>
+        </div>
+
+        <div class="funfact-box">
+          <div class="ff-label">💡 Tahukah Kamu?</div>
+          <div class="ff-text" id="recap-1-funfact"></div>
+        </div>
+
+        <div class="cptp-box" id="recap-1-cptp">
+          <!-- CP/TP info -->
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary btn-sm" onclick="goToPage('menu-level')">🗺️ Menu Level</button>
+          <button class="btn btn-primary btn-md" onclick="goToPage('level-2')" id="recap-1-next">▶ Level Berikutnya</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 6: LEVEL 2 — RESEP BERCABANG (COUNTER) ============================== -->
+    <section id="page-level-2" class="page">
+      <div class="content-box">
+        <div class="game-header">
+          <div class="gh-left">
+            <span class="gh-level-badge">🥈 Level 2</span>
+            <span class="gh-title" id="l2-title">Resep Bercabang</span>
+          </div>
+          <span class="gh-attempts" id="l2-progress">Skenario: 1 / 3</span>
+        </div>
+        <div class="game-briefing" id="l2-briefing"></div>
+
+        <div id="l2-scenario-area">
+          <!-- Scenario dynamically rendered -->
+        </div>
+
+        <div class="action-row" id="l2-action-row" style="display:none;">
+          <button class="btn btn-primary btn-md" id="l2-next-btn" onclick="nextScenario()">▶ Skenario Berikutnya</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 7: RECAP 2 ============================== -->
+    <section id="page-recap-2" class="page">
+      <div class="content-box">
+        <div class="recap-header">
+          <div class="recap-result-icon">🎉</div>
+          <div class="recap-result-text">Level 2 Selesai!</div>
+          <div class="recap-stars" id="recap-2-stars">⭐⭐⭐</div>
+          <div class="recap-score" id="recap-2-score">Skor: 250</div>
+        </div>
+
+        <div class="pseudocode-box">
+          <span class="pb-label">🔍 Mode Algoritma</span>
+          <pre id="recap-2-pseudocode"></pre>
+        </div>
+
+        <div class="funfact-box">
+          <div class="ff-label">💡 Tahukah Kamu?</div>
+          <div class="ff-text" id="recap-2-funfact"></div>
+        </div>
+
+        <div class="cptp-box" id="recap-2-cptp"></div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary btn-sm" onclick="goToPage('menu-level')">🗺️ Menu Level</button>
+          <button class="btn btn-primary btn-md" onclick="goToPage('level-3')" id="recap-2-next">▶ Level Berikutnya</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 8: LEVEL 3 — LOOP BUILDER ============================== -->
+    <section id="page-level-3" class="page">
+      <div class="content-box">
+        <div class="game-header">
+          <div class="gh-left">
+            <span class="gh-level-badge">🥇 Level 3</span>
+            <span class="gh-title" id="l3-title">Masak Porsi Efisien</span>
+          </div>
+        </div>
+        <div class="game-briefing" id="l3-briefing"></div>
+
+        <div class="loop-container">
+          <!-- Left: Manual (problem) -->
+          <div class="loop-manual-side">
+            <div class="loop-section-title">
+              <span>❌ Cara Manual (Menulis Ulang)</span>
+            </div>
+            <div class="loop-recipe-list" id="l3-manual-list">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+          <!-- Right: Smart (loop) -->
+          <div class="loop-smart-side">
+            <div class="loop-section-title">
+              <span>✅ Cara Pintar (Loop / Perulangan)</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--c-text-muted); margin-bottom: 6px;">Pilih target porsi masakan:</p>
+            <div class="loop-count-selector" id="l3-count-selector">
+              <!-- Buttons populated by JS -->
+            </div>
+            <div class="loop-code-preview" id="l3-code-preview"></div>
+            <button class="btn btn-success btn-md" id="l3-run-btn" onclick="runLoop()">▶ Jalankan Loop Otomatis!</button>
+            <div class="loop-animation-bar" id="l3-animation" style="display:none; margin-top: 8px;">
+              <div class="loop-counter-display" id="l3-counter">Porsi 0 / 10</div>
+              <div class="loop-progress-bar">
+                <div class="loop-progress-bar-fill" id="l3-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="loop-savings" id="l3-savings" style="display:none;">
+              <div>
+                <div class="ls-number bad" id="l3-lines-manual">50</div>
+                <div class="ls-label">Baris (Manual)</div>
+              </div>
+              <div style="font-size:1.2rem; font-weight:800; color:var(--c-text-dim); margin-top:6px;">vs</div>
+              <div>
+                <div class="ls-number good" id="l3-lines-loop">3</div>
+                <div class="ls-label">Baris (Loop)</div>
+              </div>
+              <div>
+                <div class="ls-number good" id="l3-lines-saved">47</div>
+                <div class="ls-label">Baris Dihemat!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 9: RECAP 3 ============================== -->
+    <section id="page-recap-3" class="page">
+      <div class="content-box">
+        <div class="recap-header">
+          <div class="recap-result-icon">🎉</div>
+          <div class="recap-result-text">Level 3 Selesai!</div>
+          <div class="recap-stars" id="recap-3-stars">⭐⭐⭐</div>
+          <div class="recap-score" id="recap-3-score">Skor: 250</div>
+        </div>
+
+        <div class="pseudocode-box">
+          <span class="pb-label">🔍 Mode Algoritma</span>
+          <pre id="recap-3-pseudocode"></pre>
+        </div>
+
+        <div class="funfact-box">
+          <div class="ff-label">💡 Tahukah Kamu?</div>
+          <div class="ff-text" id="recap-3-funfact"></div>
+        </div>
+
+        <div class="cptp-box" id="recap-3-cptp"></div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary btn-sm" onclick="goToPage('menu-level')">🗺️ Menu Level</button>
+          <button class="btn btn-primary btn-md" onclick="goToPage('level-4')" id="recap-3-next">▶ Level Berikutnya</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 10: LEVEL 4 — DEKOMPOSISI (HORIZONTAL STATIONS) ============================== -->
+    <section id="page-level-4" class="page">
+      <div class="content-box">
+        <div class="game-header">
+          <div class="gh-left">
+            <span class="gh-level-badge">🏆 Level 4</span>
+            <span class="gh-title" id="l4-title">Tantangan Waktu — Dekomposisi!</span>
+          </div>
+        </div>
+        <div class="game-briefing" id="l4-briefing"></div>
+
+        <div class="timer-section" id="l4-timer-section" style="display:none;">
+          <div class="timer-display" id="l4-timer">00:45</div>
+          <div class="timer-bar">
+            <div class="timer-bar-fill" id="l4-timer-fill" style="width: 100%"></div>
+          </div>
+        </div>
+
+        <div class="l4-workspace" id="l4-decomp-layout">
+          <!-- 3 Assistant Workstations Side-by-Side -->
+          <div class="l4-assistants-row" id="l4-assistants">
+            <!-- Assistant cards populated by JS -->
+          </div>
+
+          <!-- Bottom Tray: Available Tasks -->
+          <div class="l4-tasks-tray">
+            <div class="tray-header">
+              <span class="tray-title">📋 Tugas Dapur yang Harus Dibagi (Klik atau Seret ke Stasiun Asisten)</span>
+            </div>
+            <div class="task-pool" id="l4-task-pool">
+              <!-- Task chips populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="action-row compact-action">
+          <button class="btn btn-ghost btn-sm" onclick="resetLevel4()">🔄 Reset Pembagian</button>
+          <button class="btn btn-primary btn-md" id="l4-start-btn" onclick="startLevel4Timer()" disabled>⚡ Mulai Memasak Bersamaan!</button>
+        </div>
+
+        <div class="parallel-animation" id="l4-parallel-anim" style="display:none;">
+          <!-- Parallel tracks rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 11: RECAP 4 ============================== -->
+    <section id="page-recap-4" class="page">
+      <div class="content-box">
+        <div class="recap-header">
+          <div class="recap-result-icon">🎉</div>
+          <div class="recap-result-text">Level 4 Selesai!</div>
+          <div class="recap-stars" id="recap-4-stars">⭐⭐⭐</div>
+          <div class="recap-score" id="recap-4-score">Skor: 250</div>
+        </div>
+
+        <div class="pseudocode-box">
+          <span class="pb-label">🔍 Mode Algoritma</span>
+          <pre id="recap-4-pseudocode"></pre>
+        </div>
+
+        <div class="funfact-box">
+          <div class="ff-label">💡 Tahukah Kamu?</div>
+          <div class="ff-text" id="recap-4-funfact"></div>
+        </div>
+
+        <div class="cptp-box" id="recap-4-cptp"></div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary btn-sm" onclick="goToPage('menu-level')">🗺️ Menu Level</button>
+          <button class="btn btn-gold btn-md" onclick="goToPage('hasil')">🏆 Lihat Hasil Akhir</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 12: HASIL AKHIR ============================== -->
+    <section id="page-hasil" class="page">
+      <div class="content-box">
+        <div class="results-summary">
+          <img src="assets/characters/chef-main.png" alt="Chef Hero" class="results-chef-img" id="results-chef-img">
+          <div class="results-badge-name" id="results-badge-name">Chef Pemula</div>
+          <div class="results-total-score" id="results-total-score">0</div>
+          <div class="results-total-label">Total Skor Permainan</div>
+        </div>
+
+        <div class="results-levels" id="results-levels">
+          <!-- Level summaries rendered by JS -->
+        </div>
+
+        <div class="results-concepts">
+          <h3>📚 Konsep Algoritma & Berpikir Komputasional yang Dikuasai:</h3>
+          <div>
+            <span class="results-concept-tag">1. Algoritma Sekuensial (Urutan Langkah)</span>
+            <span class="results-concept-tag">2. Percabangan Kondisional (JIKA-MAKA)</span>
+            <span class="results-concept-tag">3. Perulangan Efisien (Looping)</span>
+            <span class="results-concept-tag">4. Dekomposisi & Pemrosesan Paralel</span>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary btn-sm" onclick="goToPage('menu-level')">🔄 Main Lagi</button>
+          <button class="btn btn-primary btn-md" onclick="goToPage('pengembang')">👤 Profil Kreator</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PAGE 13: PENGEMBANG ============================== -->
+    <section id="page-pengembang" class="page">
+      <div class="content-box scrollable">
+        <div class="page-title-bar">
+          <button class="ptb-back" onclick="goToPage('hasil')" title="Kembali">◀</button>
+          <div class="ptb-text">
+            <h2>👤 Profil Pengembang</h2>
+            <p>Informasi Pengembang Gim Edukasi Informatika</p>
+          </div>
+        </div>
+        <div class="dev-card">
+          <img src="assets/fanani.jpg" alt="Foto Pengembang" class="dev-photo" id="dev-photo">
+          <div>
+            <div class="dev-name" id="dev-name">Ach. Chanifuddin Fanani, S.Pd.</div>
+            <div class="dev-role" id="dev-role">Guru Informatika & Kecerdasan Artifisial (KKA)</div>
+            <div class="dev-school" id="dev-school">SMP Negeri 2 Lamongan</div>
+            <div class="dev-description" id="dev-desc">
+              Full-Stack Developer sejak 2013 dan pengajar Informatika yang berdedikasi untuk menciptakan media pembelajaran interaktif yang inovatif, ramah anak, dan menyenangkan.
+            </div>
+          </div>
+        </div>
+        <div class="footer-logos" id="footer-logos">
+          <img src="assets/Logo Tutwuri Kemendikdasmen.png" alt="Logo Kemendikdasmen">
+          <img src="assets/Logo-Sobat-SMP-2025.png" alt="Logo Sobat SMP">
+          <img src="assets/Logo Pendidikan Bermutu.png" alt="Logo Pendidikan Bermutu">
+          <img src="assets/Logo Ramah.png" alt="Logo Ramah">
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============================== TESTING INDICATOR ============================== -->
+  <div class="testing-indicator" id="testing-indicator" style="display:none;"></div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
