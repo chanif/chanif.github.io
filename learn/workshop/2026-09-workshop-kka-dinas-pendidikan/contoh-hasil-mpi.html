@@ -174,34 +174,34 @@
     .page::-webkit-scrollbar-thumb { background: rgba(0, 172, 193, 0.3); border-radius: 999px; }
 
     /* ============================================================
-       TOP HEADER LOGOS & BADGES BAR (Cover Page)
+       INTEGRATED MENU HEADER & BRANDING (No separate cover)
        ============================================================ */
-    .cover-top-bar {
+    .menu-header-bar {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid rgba(0, 172, 193, 0.3);
+      padding: clamp(6px, 1vh, 10px) clamp(12px, 1.8vw, 20px);
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(10px);
       z-index: 30;
     }
 
     .school-capsule {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 2px solid rgba(0, 172, 193, 0.35);
-      padding: 6px 18px 6px 10px;
-      border-radius: var(--radius-pill);
-      box-shadow: var(--shadow-sm);
-      backdrop-filter: blur(8px);
+      gap: 10px;
     }
 
     .school-logo {
-      height: clamp(38px, 5.2vh, 52px);
+      height: clamp(34px, 4.6vh, 46px);
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.12));
     }
 
     .school-text {
@@ -211,322 +211,73 @@
     }
 
     .school-sup {
-      font-size: clamp(9px, 1.1vh, 11px);
+      font-size: clamp(8.5px, 1.05vh, 10.5px);
       font-weight: 700;
       color: var(--teal-dark);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
     }
 
     .school-name {
       font-family: var(--font-heading);
-      font-size: clamp(13px, 1.6vh, 17px);
+      font-size: clamp(12px, 1.5vh, 16px);
       font-weight: 800;
       color: var(--text-dark);
       letter-spacing: 0.2px;
     }
 
-    .partner-capsules-group {
+    .menu-center-title {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .partner-badge {
-      font-size: clamp(10px, 1.2vh, 12px);
-      font-weight: 800;
-      padding: 6px 14px;
+      background: linear-gradient(135deg, rgba(224, 247, 250, 0.8) 0%, rgba(240, 253, 244, 0.8) 100%);
+      border: 1.5px solid rgba(0, 172, 193, 0.35);
+      padding: 5px 18px;
       border-radius: var(--radius-pill);
-      box-shadow: var(--shadow-sm);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      letter-spacing: 0.3px;
-      border: 2px solid transparent;
-      backdrop-filter: blur(8px);
-    }
-
-    .badge-merdeka {
-      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-      color: var(--blue-dark);
-      border-color: #7dd3fc;
-    }
-
-    .badge-bermutu {
-      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-      color: #92400e;
-      border-color: #fcd34d;
-    }
-
-    .badge-fase-d {
-      background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%);
-      color: var(--teal-deep);
-      border-color: #5eead4;
-    }
-
-    /* ============================================================
-       COVER CENTER BRANDING (Rich 3D Sticker Outline + Side Badges)
-       ============================================================ */
-    .cover-layout-grid {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: clamp(10px, 2vw, 24px);
-      width: 100%;
-      margin: auto 0;
-      padding: clamp(4px, 1vh, 14px) 0;
-    }
-
-    /* Side Decorative Visual Anchor Cards (Left & Right) */
-    .cover-side-card {
-      background: rgba(255, 255, 255, 0.88);
-      border: 2px solid rgba(0, 172, 193, 0.28);
-      border-radius: var(--radius-md);
-      padding: clamp(10px, 1.6vh, 16px) clamp(12px, 1.6vw, 18px);
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      backdrop-filter: blur(8px);
-      transition: transform 0.3s;
-    }
-
-    .cover-side-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--teal);
-    }
-
-    .cover-side-card.left {
-      justify-self: end;
-      text-align: right;
-      border-right: 4px solid var(--teal);
-    }
-
-    .cover-side-card.right {
-      justify-self: start;
-      text-align: left;
-      border-left: 4px solid var(--orange);
-    }
-
-    .side-card-icon {
-      font-size: clamp(24px, 3.4vh, 32px);
-    }
-
-    .side-card-title {
       font-family: var(--font-heading);
-      font-size: clamp(12px, 1.5vh, 15px);
       font-weight: 800;
-      color: var(--text-dark);
+      font-size: clamp(12px, 1.55vh, 15.5px);
+      color: var(--teal-deep);
+      box-shadow: var(--shadow-sm);
     }
 
-    .side-card-stat {
-      font-size: clamp(13px, 1.7vh, 17px);
-      font-weight: 800;
-      color: var(--teal-dark);
-    }
-
-    .side-card-desc {
-      font-size: clamp(10px, 1.2vh, 12px);
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    @media (max-width: 1024px) {
-      .cover-layout-grid {
-        grid-template-columns: 1fr;
-      }
-      .cover-side-card {
-        display: none;
-      }
-    }
-
-    .cover-center {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .cover-topic-pill {
+    .menu-teacher-capsule {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: linear-gradient(90deg, rgba(224, 247, 250, 0.95), rgba(240, 253, 250, 0.95));
-      border: 2px solid rgba(0, 172, 193, 0.4);
-      padding: 6px 22px;
-      border-radius: var(--radius-pill);
-      font-size: clamp(11px, 1.4vh, 13.5px);
-      font-weight: 800;
-      color: var(--teal-deep);
-      box-shadow: var(--shadow-sm);
-      margin-bottom: clamp(6px, 1.4vh, 14px);
-      letter-spacing: 1px;
-    }
-
-    .topic-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 0 10px var(--teal);
-      animation: pulseDot 2s infinite;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.4); opacity: 0.6; }
-    }
-
-    /* Signature Sticker Outline Text Shadow */
-    .cover-title {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      line-height: 1.08;
-      margin-bottom: clamp(10px, 1.8vh, 18px);
-    }
-
-    .cover-title-main {
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: clamp(2.2rem, 5.6vw, 4.6rem);
-      color: #00838F;
-      text-shadow:
-        -4px -4px 0 #ffffff,
-        4px -4px 0 #ffffff,
-        -4px 4px 0 #ffffff,
-        4px 4px 0 #ffffff,
-        -5px 0 0 #ffffff,
-        5px 0 0 #ffffff,
-        0 -5px 0 #ffffff,
-        0 5px 0 #ffffff,
-        0 12px 28px rgba(0, 96, 100, 0.32);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .cover-title-sub {
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: clamp(1.3rem, 3.4vw, 2.7rem);
-      color: #E65100;
-      text-shadow:
-        -3.5px -3.5px 0 #ffffff,
-        3.5px -3.5px 0 #ffffff,
-        -3.5px 3.5px 0 #ffffff,
-        3.5px 3.5px 0 #ffffff,
-        -4px 0 0 #ffffff,
-        4px 0 0 #ffffff,
-        0 -4px 0 #ffffff,
-        0 4px 0 #ffffff,
-        0 9px 22px rgba(230, 81, 0, 0.28);
-      letter-spacing: 1px;
-      margin-top: clamp(4px, 0.8vh, 8px);
-    }
-
-    .cover-subtitle-pill {
-      display: inline-block;
-      background: linear-gradient(135deg, #00ACC1 0%, #00838F 100%);
-      color: #ffffff;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: clamp(13px, 1.7vh, 18px);
-      padding: clamp(6px, 1vh, 10px) clamp(24px, 3.4vw, 46px);
-      border-radius: var(--radius-pill);
-      box-shadow: 0 8px 24px rgba(0, 172, 193, 0.4);
-      border: 3.5px solid #ffffff;
-      letter-spacing: 1px;
-      margin-top: clamp(4px, 0.8vh, 10px);
-    }
-
-    /* ============================================================
-       THE ICONIC "▶ MULAI" BUTTON (KEMENDIKDASMEN STYLE)
-       ============================================================ */
-    .btn-mulai {
-      margin-top: clamp(14px, 2.6vh, 32px);
-      display: inline-flex;
-      align-items: center;
-      gap: clamp(12px, 1.8vw, 20px);
-      padding: clamp(8px, 1.2vh, 12px) clamp(34px, 4.2vw, 60px) clamp(8px, 1.2vh, 12px) clamp(10px, 1.4vw, 16px);
       background: #ffffff;
-      border: 4.5px solid var(--teal);
+      border: 1.5px solid #e2e8f0;
+      padding: 3px 12px 3px 4px;
       border-radius: var(--radius-pill);
-      box-shadow:
-        0 14px 38px rgba(0, 172, 193, 0.45),
-        0 0 0 4.5px rgba(255, 255, 255, 0.95);
       cursor: pointer;
-      user-select: none;
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
-      animation: pulseGlow 2.5s infinite ease-in-out;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .btn-mulai:hover {
-      transform: translateY(-5px) scale(1.06);
-      box-shadow:
-        0 20px 50px rgba(0, 172, 193, 0.65),
-        0 0 0 5.5px rgba(255, 255, 255, 1);
+    .menu-teacher-capsule:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+      background: #f0fdfa;
     }
 
-    .btn-mulai:active {
-      transform: translateY(1px) scale(0.97);
-    }
-
-    .btn-mulai .play-icon-circle {
-      width: clamp(52px, 7.2vh, 70px);
-      height: clamp(52px, 7.2vh, 70px);
+    .menu-teacher-avatar {
+      width: clamp(26px, 3.6vh, 32px);
+      height: clamp(26px, 3.6vh, 32px);
       border-radius: 50%;
-      background: linear-gradient(135deg, #00ACC1 0%, #00838F 100%);
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: clamp(22px, 3vh, 32px);
-      padding-left: 4px;
-      box-shadow: 0 4px 16px rgba(0, 172, 193, 0.55);
-      border: 3px solid #ffffff;
+      object-fit: cover;
+      border: 2px solid var(--teal);
     }
 
-    .btn-mulai .mulai-label {
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: clamp(22px, 3.4vh, 34px);
-      color: var(--teal-deep);
-      letter-spacing: 3px;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% {
-        box-shadow:
-          0 14px 38px rgba(0, 172, 193, 0.45),
-          0 0 0 4.5px rgba(255, 255, 255, 0.95);
-      }
-      50% {
-        box-shadow:
-          0 18px 50px rgba(0, 172, 193, 0.7),
-          0 0 0 7px rgba(77, 208, 225, 0.85);
-      }
-    }
-
-    /* Cover Footer Bar */
-    .cover-bottom-bar {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: clamp(6px, 1.2vh, 12px);
-      border-top: 1.5px solid rgba(0, 172, 193, 0.2);
-      font-size: clamp(10px, 1.2vh, 12px);
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .cover-bottom-bar strong {
+    .menu-teacher-name {
+      font-size: clamp(10.5px, 1.25vh, 12.5px);
+      font-weight: 700;
       color: var(--text-dark);
-      font-weight: 800;
+    }
+
+    .menu-header-right {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
 
     /* ============================================================
@@ -845,22 +596,72 @@
     }
 
     /* ============================================================
-       SIMULATOR PARU-PARU INTERAKTIF "WAH" (PAGE 5)
+       SIMULATOR FISIOLOGI & ALVEOLUS CANGGIH (PAGE 4)
        ============================================================ */
+    .sim-mode-tabs-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 2px solid rgba(0, 172, 193, 0.3);
+      border-radius: var(--radius-pill);
+      padding: 3px 6px;
+      box-shadow: var(--shadow-sm);
+      margin: 0 auto clamp(6px, 1vh, 10px) auto;
+      width: fit-content;
+    }
+
+    .sim-mode-tab-btn {
+      padding: 5px 16px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: transparent;
+      font-family: var(--font-heading);
+      font-size: clamp(11px, 1.35vh, 13px);
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .sim-mode-tab-btn:hover {
+      color: var(--teal-deep);
+      background: rgba(0, 172, 193, 0.08);
+    }
+
+    .sim-mode-tab-btn.active {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 172, 193, 0.35);
+    }
+
+    .sim-view-panel {
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+    .sim-view-panel.active {
+      display: block;
+    }
+
     .sim-grid {
       display: grid;
       grid-template-columns: 1fr 1.15fr;
-      gap: clamp(14px, 2vw, 28px);
+      gap: clamp(12px, 1.8vw, 22px);
       width: 100%;
       height: 100%;
       align-items: center;
     }
 
     .sim-visual-box {
-      background: radial-gradient(circle at center, #ffffff 40%, #f0fdfa 100%);
-      border: 3px solid rgba(0, 172, 193, 0.35);
+      background: radial-gradient(circle at center, #ffffff 35%, #f0fdfa 100%);
+      border: 2.5px solid rgba(0, 172, 193, 0.35);
       border-radius: var(--radius-lg);
-      padding: 16px;
+      padding: clamp(10px, 1.4vh, 16px);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -868,42 +669,43 @@
       position: relative;
       box-shadow: var(--shadow-md);
       height: 100%;
-      min-height: 280px;
+      min-height: 275px;
     }
 
     .sim-status-pill {
       position: absolute;
-      top: 12px;
-      left: 14px;
+      top: 10px;
+      left: 12px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.95);
       border: 2px solid rgba(0, 172, 193, 0.3);
-      padding: 4px 14px;
+      padding: 3px 12px;
       border-radius: var(--radius-pill);
-      font-size: clamp(11px, 1.3vh, 13px);
+      font-size: clamp(10.5px, 1.25vh, 12.5px);
       font-weight: 800;
       box-shadow: var(--shadow-sm);
+      z-index: 10;
     }
 
     .status-dot {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
     }
 
     .lung-left, .lung-right {
-      transition: all 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
       transform-origin: center top;
     }
 
     .diaphragm-path {
-      transition: all 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .ribcage-outline {
-      transition: all 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
       transform-origin: center;
     }
 
@@ -922,7 +724,7 @@
       fill: #0284C7;
     }
     .state-inhale .ribcage-outline {
-      transform: scale(1.10);
+      transform: scale(1.12);
       stroke: #0284C7;
     }
 
@@ -939,7 +741,7 @@
       fill: #E11D48;
     }
     .state-exhale .ribcage-outline {
-      transform: scale(0.98);
+      transform: scale(0.97);
       stroke: #CBD5E1;
     }
 
@@ -953,43 +755,191 @@
       50% { opacity: 1; }
       100% { transform: translateY(-30px); opacity: 0; }
     }
-    .particle-down { animation: airDown 1.1s infinite ease-in; }
-    .particle-up { animation: airUp 1.1s infinite ease-out; }
+    .particle-down { animation: airDown 1s infinite ease-in; }
+    .particle-up { animation: airUp 1s infinite ease-out; }
 
+    /* Interactive Manual Slider */
+    .sim-slider-box {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1.5px solid rgba(0, 172, 193, 0.3);
+      border-radius: var(--radius-md);
+      padding: 6px 12px;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sim-slider-label {
+      font-size: clamp(10px, 1.15vh, 12px);
+      font-weight: 800;
+      color: var(--teal-deep);
+      white-space: nowrap;
+    }
+
+    .sim-range-input {
+      flex: 1;
+      accent-color: var(--teal);
+      cursor: pointer;
+    }
+
+    /* Mechanism & Activity Selectors */
+    .mech-row {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .mech-btn {
+      flex: 1;
+      padding: 6px 8px;
+      border-radius: var(--radius-md);
+      border: 2px solid #cbd5e1;
+      background: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(11px, 1.3vh, 13px);
+      color: var(--text-body);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .mech-btn.active {
+      border-color: var(--teal);
+      background: #f0fdfa;
+      color: var(--teal-deep);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .activity-row {
+      display: flex;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .act-preset-btn {
+      flex: 1;
+      padding: 4px 6px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid #e2e8f0;
+      background: #ffffff;
+      font-family: var(--font-body);
+      font-size: clamp(9.5px, 1.1vh, 11.5px);
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .act-preset-btn.active {
+      border-color: #0284c7;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 800;
+    }
+
+    /* Telemetry Card & Dynamic Gauges */
     .telemetry-card {
       background: #ffffff;
       border: 2px solid rgba(0, 172, 193, 0.25);
       border-radius: var(--radius-md);
-      padding: clamp(10px, 1.5vh, 16px);
+      padding: clamp(8px, 1.2vh, 12px);
       box-shadow: var(--shadow-sm);
     }
 
     .telemetry-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: clamp(6px, 1vw, 10px);
-      margin-top: 8px;
+      gap: clamp(6px, 0.8vw, 8px);
+      margin-top: 6px;
     }
 
     .tel-item {
       background: #f8fafc;
       border: 1.5px solid #e2e8f0;
-      border-radius: 12px;
-      padding: clamp(6px, 1vh, 10px);
+      border-radius: 10px;
+      padding: clamp(4px, 0.8vh, 8px) 8px;
     }
 
     .tel-label {
-      font-size: clamp(10px, 1.1vh, 12px);
+      font-size: clamp(9.5px, 1.05vh, 11px);
       color: var(--text-muted);
       font-weight: 600;
       display: block;
     }
 
     .tel-value {
-      font-size: clamp(12px, 1.4vh, 14px);
+      font-size: clamp(11.5px, 1.35vh, 13.5px);
       color: var(--text-dark);
       font-weight: 800;
       margin-top: 2px;
+    }
+
+    /* Organ Interactive Hotspot Tooltips */
+    .organ-tag {
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 800;
+      fill: var(--teal-deep);
+      background: rgba(255,255,255,0.9);
+      transition: all 0.2s;
+    }
+    .organ-tag:hover {
+      fill: #0284c7;
+      font-size: 11px;
+    }
+
+    /* Micro Alveolus View Specifics */
+    .alveolus-micro-box {
+      background: radial-gradient(circle at center, #ffffff 40%, #fff1f2 100%);
+      border: 2.5px solid rgba(244, 63, 94, 0.35);
+      border-radius: var(--radius-lg);
+      padding: clamp(10px, 1.4vh, 16px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: var(--shadow-md);
+      height: 100%;
+      min-height: 275px;
+    }
+
+    .micro-steps-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .micro-step-card {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: clamp(6px, 1vh, 9px) 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .micro-step-card:hover {
+      border-color: #f43f5e;
+      background: #fff1f2;
+    }
+
+    .micro-step-card.active {
+      border-color: #e11d48;
+      background: #ffe4e6;
+      box-shadow: var(--shadow-sm);
     }
 
     /* ============================================================
@@ -1129,117 +1079,48 @@
     <div id="stage-16-9">
 
       <!-- ============================================================
-           PAGE 1: COVER (KEMENDIKDASMEN / FESTIVAL MPI PROFESSIONAL STANDARD)
+           BERANDA / MENU UTAMA TERPADU (INTEGRASI LATAR BELAKANG)
            ============================================================ -->
-      <section id="page-cover" class="page active">
+      <section id="page-menu" class="page active">
         
-        <!-- Header Logos Bar -->
-        <div class="cover-top-bar">
-          <!-- Left: SMPN 2 Lamongan Official Capsule -->
+        <!-- Header Terpadu: Identitas Sekolah, Judul Mapel & Aksesibilitas -->
+        <div class="menu-header-bar">
           <div class="school-capsule">
-            <img src="logo-smp-negeri-2-lamongan.png" alt="Logo SMPN 2 Lamongan" class="school-logo" onerror="this.style.display='none';">
+            <img src="logo-smp-negeri-2-lamongan.png" alt="Logo Sekolah" class="school-logo" onerror="this.style.display='none';">
             <div class="school-text">
-              <span class="school-sup">DINAS PENDIDIKAN KABUPATEN LAMONGAN</span>
+              <span class="school-sup">Dinas Pendidikan Kabupaten Lamongan</span>
               <span class="school-name">SMP NEGERI 2 LAMONGAN</span>
             </div>
           </div>
 
-          <!-- Right: Official Partnership & Curriculum Badges -->
-          <div class="partner-capsules-group">
-            <span class="partner-badge badge-merdeka">📘 Kurikulum Merdeka</span>
-            <span class="partner-badge badge-bermutu">✨ #PendidikanBermutu</span>
-            <span class="partner-badge badge-fase-d">🎯 Fase D · Kelas VIII</span>
-          </div>
-        </div>
-
-        <!-- Center Branding: Rich Grid with Side Visual Cards -->
-        <div class="cover-layout-grid">
-          
-          <!-- Left Anchor Card -->
-          <div class="cover-side-card left">
-            <span class="side-card-icon">🫁</span>
-            <span class="side-card-title">Kapasitas Paru-Paru</span>
-            <span class="side-card-stat">±500 mL Udara Tidal</span>
-            <span class="side-card-desc">Oksigenasi Otomatis Tubuh</span>
-          </div>
-
-          <!-- Main Center Title & Button -->
-          <div class="cover-center">
-            <div class="cover-topic-pill">
-              <span class="topic-dot"></span>
-              <span>MEDIA PEMBELAJARAN INTERAKTIF (MPI) IPA SMP</span>
-            </div>
-
-            <div class="cover-title">
-              <span class="cover-title-main">SISTEM PERNAPASAN</span>
-              <span class="cover-title-sub">Mekanisme & Organ Tubuh Manusia</span>
-            </div>
-
-            <div>
-              <span class="cover-subtitle-pill">IPA — Kelas VIII / Fase D</span>
-            </div>
-
-            <!-- The Iconic Kemendikdasmen "▶ MULAI" Button -->
-            <button class="btn-mulai" onclick="playSound('click'); goToPage('menu')" id="btn-cover-mulai" title="Klik untuk Mulai Pembelajaran">
-              <div class="play-icon-circle">▶</div>
-              <span class="mulai-label">MULAI</span>
-            </button>
-          </div>
-
-          <!-- Right Anchor Card -->
-          <div class="cover-side-card right">
-            <span class="side-card-icon">⚡</span>
-            <span class="side-card-title">Metabolisme Sel</span>
-            <span class="side-card-stat">Pasokan O₂ & Energi ATP</span>
-            <span class="side-card-desc">Difusi Kapiler Alveolus</span>
-          </div>
-
-        </div>
-
-        <!-- Bottom Credit Bar -->
-        <div class="cover-bottom-bar">
-          <div>
-            👨‍🏫 Guru Pengembang: <strong>Ach. Chanifuddin Fanani, S.Pd.</strong> · SMP Negeri 2 Lamongan
-          </div>
-          <div>
-            🌟 Pembelajaran Bermakna · <strong>Kurikulum Merdeka Fase D</strong>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- ============================================================
-           PAGE 2: MENU UTAMA (DASHBOARD KARTU 3D)
-           ============================================================ -->
-      <section id="page-menu" class="page">
-        
-        <div class="top-nav-bar">
-          <div class="nav-left-group">
-            <button class="nav-pill-btn" onclick="playSound('click'); goToPage('cover')" title="Kembali ke Halaman Sampul">
-              <span class="nav-circle-icon">🏠</span>
-              <span class="nav-btn-text">BERANDA</span>
-            </button>
-          </div>
-
-          <div class="title-bar-pill">
+          <div class="menu-center-title">
             <span>🫁</span>
-            <span>Menu Utama Pembelajaran</span>
+            <span>SISTEM PERNAPASAN MANUSIA</span>
+            <span style="font-size: clamp(9.5px, 1.15vh, 11.5px); color: var(--text-muted); font-weight: 700; border-left: 1.5px solid rgba(0,172,193,0.35); padding-left: 8px;">IPA Fase D / Kelas VIII</span>
           </div>
 
-          <!-- Quick Accessibility Card -->
-          <div class="quick-controls-card" title="Pengaturan Tampilan & Huruf">
-            <div class="qc-row">
-              <span class="qc-label-icon">🔍</span>
-              <button class="qc-btn" onclick="changeZoom(-0.1)" title="Zoom Out">−</button>
-              <span class="qc-val-text" id="qc-zoom-text">100%</span>
-              <button class="qc-btn" onclick="changeZoom(0.1)" title="Zoom In">+</button>
+          <div class="menu-header-right">
+            <!-- Quick Controls -->
+            <div class="quick-controls-card" title="Pengaturan Tampilan & Huruf">
+              <div class="qc-row">
+                <span class="qc-label-icon">🔍</span>
+                <button class="qc-btn" onclick="changeZoom(-0.1)" title="Zoom Out">−</button>
+                <span class="qc-val-text" id="qc-zoom-text">100%</span>
+                <button class="qc-btn" onclick="changeZoom(0.1)" title="Zoom In">+</button>
+              </div>
+              <div class="qc-divider"></div>
+              <div class="qc-row">
+                <span class="qc-label-icon font-icon">Aa</span>
+                <button class="qc-btn font-btn" onclick="changeFont(-0.1)" title="Perkecil Huruf">A−</button>
+                <span class="qc-val-text" id="qc-font-text">100%</span>
+                <button class="qc-btn font-btn" onclick="changeFont(0.1)" title="Perbesar Huruf">A+</button>
+              </div>
             </div>
-            <div class="qc-divider"></div>
-            <div class="qc-row">
-              <span class="qc-label-icon font-icon">Aa</span>
-              <button class="qc-btn font-btn" onclick="changeFont(-0.1)" title="Perkecil Huruf">A−</button>
-              <span class="qc-val-text" id="qc-font-text">100%</span>
-              <button class="qc-btn font-btn" onclick="changeFont(0.1)" title="Perbesar Huruf">A+</button>
+
+            <!-- Mini Guru Pill -->
+            <div class="menu-teacher-capsule" onclick="playSound('click'); goToPage('profil')" title="Lihat Profil Guru Pengembang">
+              <img src="fanani.jpg" alt="Ach. Chanifuddin Fanani, S.Pd." class="menu-teacher-avatar" onerror="this.style.display='none';">
+              <span class="menu-teacher-name">Pak Fanani, S.Pd.</span>
             </div>
           </div>
         </div>
@@ -1262,26 +1143,25 @@
               <p class="menu-tile-desc">Hidung, trakea, paru-paru, hingga kantung alveolus</p>
             </div>
 
-            <!-- Tile 3: FITUR UNGGULAN "WAH" -->
+            <!-- Tile 3: SIMULASI -->
             <div class="menu-tile" onclick="playSound('click'); goToPage('simulasi')" style="border-color: var(--teal); background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 100%);">
-              <span class="menu-badge-highlight">Unggulan</span>
               <div class="menu-tile-icon-box" style="background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%);">🌬️</div>
               <h3 class="menu-tile-title" style="color: var(--teal-deep);">Simulator Paru-Paru</h3>
-              <p class="menu-tile-desc">Simulasi interaktif inspirasi & ekspirasi real-time</p>
+              <p class="menu-tile-desc">Simulasi interaktif inspirasi, ekspirasi, &amp; mikroskop alveolus</p>
             </div>
 
             <!-- Tile 4: EVALUASI LENGKAP -->
             <div class="menu-tile" onclick="playSound('click'); goToPage('kuis')">
               <div class="menu-tile-icon-box" style="background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);">📝</div>
               <h3 class="menu-tile-title">Evaluasi Multi-Format</h3>
-              <p class="menu-tile-desc">Pilihan Ganda, Menjodohkan Garis, & Benar/Salah</p>
+              <p class="menu-tile-desc">Pilihan Ganda, Menjodohkan Garis, &amp; Benar/Salah</p>
             </div>
 
             <!-- Tile 5: PROFIL GURU -->
             <div class="menu-tile" onclick="playSound('click'); goToPage('profil')">
               <div class="menu-tile-icon-box" style="background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 100%);">👨‍🏫</div>
               <h3 class="menu-tile-title">Profil Guru</h3>
-              <p class="menu-tile-desc">Profil fasilitator & narasumber pengembang media</p>
+              <p class="menu-tile-desc">Profil fasilitator &amp; narasumber pengembang media</p>
             </div>
 
             <!-- Tile 6: FAKTA UNIK -->
@@ -1295,9 +1175,12 @@
         </div>
 
         <!-- Bottom Guidance -->
-        <div class="bottom-nav-bar" style="justify-content: center;">
-          <span style="font-size: clamp(11.5px, 1.4vh, 13.5px); color: var(--text-muted); font-weight: 600;">
+        <div class="bottom-nav-bar" style="justify-content: space-between; padding: 6px 14px;">
+          <span style="font-size: clamp(11px, 1.35vh, 13px); color: var(--text-muted); font-weight: 600;">
             💡 Sentuh atau klik salah satu kartu modul di atas untuk membuka materi
+          </span>
+          <span style="font-size: clamp(10.5px, 1.2vh, 12px); color: var(--teal-deep); font-weight: 700;">
+            📘 Kurikulum Merdeka · Pembelajaran Bermakna SMP
           </span>
         </div>
 
@@ -1483,145 +1366,313 @@
             ← Petunjuk
           </button>
           <button class="btn-nav-action btn-nav-primary" onclick="playSound('click'); goToPage('simulasi')">
-            Buka Simulator Paru-Paru "WAH" →
+            Buka Simulator Interaktif →
           </button>
         </div>
 
       </section>
 
       <!-- ============================================================
-           PAGE 5: SIMULATOR PARU-PARU & DIAFRAGMA "WAH"
+           PAGE 4: SIMULATOR FISIOLOGI & ALVEOLUS — ADVANCED
            ============================================================ -->
       <section id="page-simulasi" class="page">
         
         <div class="top-nav-bar">
           <div class="nav-left-group">
             <button class="nav-pill-btn" onclick="playSound('click'); goToPage('menu')">
-              <span class="nav-circle-icon">☰</span>
+              <span class="nav-circle-icon">🏠</span>
               <span class="nav-btn-text">MENU</span>
             </button>
           </div>
 
-          <div class="title-bar-pill">
-            <span>🌬️</span>
-            <span>Simulator Paru-Paru & Diafragma Interaktif</span>
+          <!-- Mode Switcher Tabs -->
+          <div class="sim-mode-tabs-bar">
+            <button id="tab-sim-macro" class="sim-mode-tab-btn active" onclick="switchSimView('macro')">
+              <span>🫁</span> <span>Mekanisme Paru (Makro)</span>
+            </button>
+            <button id="tab-sim-micro" class="sim-mode-tab-btn" onclick="switchSimView('micro')">
+              <span>🔬</span> <span>Mikroskop Alveolus (Mikro)</span>
+            </button>
           </div>
 
-          <!-- Auto-Breathe Button -->
-          <div>
-            <button onclick="toggleAutoBreathe()" id="auto-breathe-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: #ecfdf5; border: 2px solid #6ee7b7; border-radius: var(--radius-pill); font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: #065f46; cursor: pointer; box-shadow: var(--shadow-sm);">
+          <!-- Sound Toggle & Auto Button -->
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button onclick="toggleAudioMute()" id="btn-audio-toggle" style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; background:#f0fdfa; border:2px solid #99f6e4; border-radius:var(--radius-pill); font-family:var(--font-heading); font-weight:700; font-size:12px; color:var(--teal-deep); cursor:pointer; box-shadow:var(--shadow-sm);">
+              <span id="audio-icon">🔊</span> <span id="audio-label">Suara: ON</span>
+            </button>
+            <button onclick="toggleAutoBreathe()" id="auto-breathe-btn" style="display:inline-flex; align-items:center; gap:6px; padding:6px 16px; background:#ecfdf5; border:2px solid #6ee7b7; border-radius:var(--radius-pill); font-family:var(--font-heading); font-weight:800; font-size:12px; color:#065f46; cursor:pointer; box-shadow:var(--shadow-sm);">
               <span>▶</span> <span id="auto-label">Napas Otomatis: OFF</span>
             </button>
           </div>
         </div>
 
         <div class="content-workspace">
-          <div class="sim-grid">
-            
-            <!-- Kolom Kiri: Visualisasi Anatomi SVG -->
-            <div id="sim-display-box" class="sim-visual-box state-exhale">
+          
+          <!-- PANEL 1: MAKRO — MEKANISME PARU, TULANG RUSUK & DIAFRAGMA -->
+          <div id="sim-panel-macro" class="sim-view-panel active">
+            <div class="sim-grid">
               
-              <div class="sim-status-pill">
-                <span id="gas-dot" class="status-dot" style="background: var(--rose);"></span>
-                <span id="gas-label">Fase Ekspirasi: Udara Keluar</span>
-              </div>
-
-              <!-- Interactive SVG Canvas -->
-              <svg viewBox="0 0 300 320" style="width: clamp(210px, 28vh, 280px); height: auto; overflow: visible;">
-                <!-- Batang Trakea -->
-                <rect x="142" y="10" width="16" height="75" rx="4" fill="#CBD5E1" stroke="#94A3B8" stroke-width="2"/>
-                <!-- Cincin Tulang Rawan -->
-                <line x1="140" y1="22" x2="160" y2="22" stroke="#64748B" stroke-width="2"/>
-                <line x1="140" y1="36" x2="160" y2="36" stroke="#64748B" stroke-width="2"/>
-                <line x1="140" y1="50" x2="160" y2="50" stroke="#64748B" stroke-width="2"/>
-                <line x1="140" y1="64" x2="160" y2="64" stroke="#64748B" stroke-width="2"/>
-
-                <!-- Partikel Aliran Gas -->
-                <g id="air-particles">
-                  <circle cx="150" cy="25" r="4.5" fill="#0EA5E9" class="particle-down"/>
-                  <circle cx="150" cy="50" r="4.5" fill="#0EA5E9" class="particle-down"/>
-                  <circle cx="150" cy="75" r="4.5" fill="#0EA5E9" class="particle-down"/>
-                </g>
-
-                <!-- Percabangan Bronkus -->
-                <path d="M 150,85 L 115,115 M 150,85 L 185,115" stroke="#94A3B8" stroke-width="6" stroke-linecap="round" fill="none"/>
-
-                <!-- Kerangka Rusuk -->
-                <path class="ribcage-outline" d="M 50,110 C 25,180 35,240 70,260 M 250,110 C 275,180 265,240 230,260" stroke="#CBD5E1" stroke-width="5" stroke-dasharray="8 6" fill="none" stroke-linecap="round"/>
-
-                <!-- Paru-Paru Kanan Visual -->
-                <path class="lung-right" d="M 180,110 C 240,110 250,180 235,230 C 220,250 185,245 170,225 C 160,205 160,130 180,110 Z" fill="#FB7185" opacity="0.92" stroke="#E11D48" stroke-width="2"/>
-
-                <!-- Paru-Paru Kiri Visual -->
-                <path class="lung-left" d="M 120,110 C 60,110 50,180 65,230 C 80,250 115,245 130,225 C 140,205 140,130 120,110 Z" fill="#FB7185" opacity="0.92" stroke="#E11D48" stroke-width="2"/>
-
-                <!-- Otot Diafragma -->
-                <path class="diaphragm-path" d="M 30,270 Q 150,210 270,270" fill="#E11D48" opacity="0.88"/>
-                <text x="150" y="306" font-size="12" font-weight="800" fill="#475569" text-anchor="middle" font-family="Fredoka">SEKAT OTOT DIAFRAGMA</text>
-              </svg>
-
-              <div style="display: flex; justify-content: space-between; width: 100%; padding: 0 20px; font-size: 11px; font-weight: 800; color: var(--text-muted);">
-                <span>Paru Kanan</span>
-                <span>Paru Kiri</span>
-              </div>
-            </div>
-
-            <!-- Kolom Kanan: Tombol Kontrol & Telemetri Real-Time -->
-            <div style="display: flex; flex-direction: column; gap: clamp(10px, 1.4vh, 16px);">
-              
-              <!-- Action Buttons -->
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <button onclick="setBreatheMode('inhale')" id="btn-inhale" style="padding: clamp(10px, 1.4vh, 14px); background: #ffffff; border: 2.5px solid #38bdf8; border-radius: var(--radius-md); font-family: var(--font-heading); font-weight: 800; font-size: clamp(13px, 1.6vh, 15px); color: var(--blue-dark); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; box-shadow: var(--shadow-sm); transition: all 0.2s;">
-                  <span style="font-size: 24px;">📥 🫁</span>
-                  <span>1. Tarik Napas (Inspirasi)</span>
-                  <span style="font-size: 10px; color: #0284c7; font-weight: 600;">Diafragma mendatar ke bawah</span>
-                </button>
-
-                <button onclick="setBreatheMode('exhale')" id="btn-exhale" style="padding: clamp(10px, 1.4vh, 14px); background: #fff1f2; border: 2.5px solid #f43f5e; border-radius: var(--radius-md); font-family: var(--font-heading); font-weight: 800; font-size: clamp(13px, 1.6vh, 15px); color: #9f1239; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; box-shadow: var(--shadow-sm); transition: all 0.2s;">
-                  <span style="font-size: 24px;">📤 💨</span>
-                  <span>2. Hembuskan (Ekspirasi)</span>
-                  <span style="font-size: 10px; color: #e11d48; font-weight: 600;">Diafragma melengkung naik</span>
-                </button>
-              </div>
-
-              <!-- Papan Telemetri Fisika/Biologi -->
-              <div class="telemetry-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1.5px solid #f1f5f9; padding-bottom: 6px;">
-                  <strong style="font-family: var(--font-heading); font-size: clamp(12px, 1.5vh, 15px); color: var(--text-dark);">📊 Analisis Tekanan & Organ Real-Time</strong>
-                  <span id="telemetry-badge" style="background: #ffe4e6; color: #9f1239; padding: 2px 10px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 800;">Fase Ekspirasi</span>
+              <!-- Left Column: Interactive Anatomi SVG -->
+              <div id="sim-display-box" class="sim-visual-box state-exhale">
+                
+                <div class="sim-status-pill">
+                  <span id="gas-dot" class="status-dot" style="background: var(--rose);"></span>
+                  <span id="gas-label">Fase Ekspirasi: Udara Keluar (CO₂)</span>
+                  <span id="rate-badge" style="background:#f1f5f9; padding:2px 8px; border-radius:999px; font-size:10px; margin-left:4px; color:var(--text-muted);">14 bpm</span>
                 </div>
 
-                <div class="telemetry-grid">
-                  <div class="tel-item">
-                    <span class="tel-label">Otot Diafragma:</span>
-                    <div id="tel-diaphragm" class="tel-value">Relaksasi (Melengkung naik)</div>
-                  </div>
-                  <div class="tel-item">
-                    <span class="tel-label">Volume Rongga Dada:</span>
-                    <div id="tel-chest" class="tel-value">Mengecil kembali normal</div>
-                  </div>
-                  <div class="tel-item">
-                    <span class="tel-label">Tekanan Rongga Dada:</span>
-                    <div id="tel-pressure" class="tel-value">Meningkat (&gt; Tekanan Luar)</div>
-                  </div>
-                  <div class="tel-item">
-                    <span class="tel-label">Arah Aliran Udara:</span>
-                    <div id="tel-flow" class="tel-value">CO₂ terdorong keluar</div>
-                  </div>
+                <!-- Interactive SVG Canvas -->
+                <svg viewBox="0 0 300 300" style="width: clamp(200px, 26vh, 260px); height: auto; overflow: visible;">
+                  <!-- Batang Trakea -->
+                  <rect x="142" y="10" width="16" height="70" rx="4" fill="#CBD5E1" stroke="#94A3B8" stroke-width="2" class="organ-hotspot" onclick="showOrganTip('trakea')"/>
+                  <!-- Cincin Tulang Rawan -->
+                  <line x1="140" y1="22" x2="160" y2="22" stroke="#64748B" stroke-width="2"/>
+                  <line x1="140" y1="36" x2="160" y2="36" stroke="#64748B" stroke-width="2"/>
+                  <line x1="140" y1="50" x2="160" y2="50" stroke="#64748B" stroke-width="2"/>
+                  <line x1="140" y1="64" x2="160" y2="64" stroke="#64748B" stroke-width="2"/>
+
+                  <!-- Partikel Aliran Gas -->
+                  <g id="air-particles">
+                    <circle cx="150" cy="65" r="4.5" fill="#F43F5E" class="particle-up"/>
+                    <circle cx="150" cy="45" r="4.5" fill="#F43F5E" class="particle-up"/>
+                    <circle cx="150" cy="25" r="4.5" fill="#F43F5E" class="particle-up"/>
+                  </g>
+
+                  <!-- Percabangan Bronkus -->
+                  <path d="M 150,80 L 115,110 M 150,80 L 185,110" stroke="#94A3B8" stroke-width="6" stroke-linecap="round" fill="none" class="organ-hotspot" onclick="showOrganTip('bronkus')"/>
+
+                  <!-- Kerangka Rusuk (Mekar saat inspirasi) -->
+                  <path id="ribcage-svg" class="ribcage-outline organ-hotspot" d="M 50,105 C 25,175 35,235 70,255 M 250,105 C 275,175 265,235 230,255" stroke="#CBD5E1" stroke-width="5" stroke-dasharray="8 6" fill="none" stroke-linecap="round" onclick="showOrganTip('rusuk')"/>
+
+                  <!-- Paru-Paru Kanan Visual -->
+                  <path id="lung-right-svg" class="lung-right organ-hotspot" d="M 180,105 C 240,105 250,175 235,225 C 220,245 185,240 170,220 C 160,200 160,125 180,105 Z" fill="#FB7185" opacity="0.92" stroke="#E11D48" stroke-width="2" onclick="showOrganTip('paru')"/>
+
+                  <!-- Paru-Paru Kiri Visual -->
+                  <path id="lung-left-svg" class="lung-left organ-hotspot" d="M 120,105 C 60,105 50,175 65,225 C 80,245 115,240 130,220 C 140,200 140,125 120,105 Z" fill="#FB7185" opacity="0.92" stroke="#E11D48" stroke-width="2" onclick="showOrganTip('paru')"/>
+
+                  <!-- Sekat Otot Diafragma -->
+                  <path id="diaphragm-svg" class="diaphragm-path organ-hotspot" d="M 30,265 Q 150,205 270,265" fill="#E11D48" opacity="0.9" onclick="showOrganTip('diafragma')"/>
+                  
+                  <!-- Organ Labels -->
+                  <text x="150" y="295" font-size="11" font-weight="800" fill="#475569" text-anchor="middle" font-family="Fredoka">SEKAT DIAFRAGMA (KLIK)</text>
+                </svg>
+
+                <!-- Organ Tip Popover -->
+                <div id="organ-tip-banner" style="display:none; width:94%; background:#ffffff; border:1.5px solid var(--teal); border-radius:var(--radius-md); padding:4px 10px; font-size:11px; color:var(--teal-deep); text-align:center; box-shadow:var(--shadow-sm); margin-top:4px;">
+                  <span id="organ-tip-text"></span>
+                </div>
+
+                <!-- Slider Kontraksi Manual -->
+                <div class="sim-slider-box">
+                  <span class="sim-slider-label">Tarik Diafragma Manual:</span>
+                  <input type="range" id="sim-manual-slider" min="0" max="100" value="0" oninput="onManualSliderInput(this.value)" class="sim-range-input" title="Geser untuk mengontraksikan diafragma">
+                  <span id="slider-pct-label" style="font-weight:800; font-size:11px; color:var(--teal-deep); min-width:32px;">0%</span>
                 </div>
               </div>
 
-              <!-- Kunci Pemahaman Hukum Boyle -->
-              <div style="background: #f0fdfa; border: 1.5px solid #99f6e4; border-radius: var(--radius-md); padding: clamp(8px, 1.2vh, 12px); font-size: clamp(11px, 1.3vh, 13px); color: var(--teal-deep); display: flex; gap: 10px; align-items: flex-start;">
-                <span style="font-size: 20px;">💡</span>
+              <!-- Right Column: Mechanics, Activity Presets, Buttons & Telemetry -->
+              <div style="display:flex; flex-direction:column; gap:clamp(6px, 1vh, 10px);">
+                
+                <!-- Mechanism Selector -->
                 <div>
-                  <strong>Hukum Boyle:</strong> Volume dan tekanan berbanding terbalik. Saat rongga dada membesar, tekanan paru-paru anjlok ke bawah tekanan atmosfer, sehingga udara luar terhisap masuk secara spontan!
+                  <div style="font-size:11px; font-weight:700; color:var(--text-muted); margin-bottom:4px;">Pilih Jenis Mekanisme Pernapasan:</div>
+                  <div class="mech-row">
+                    <button class="mech-btn active" id="mech-perut" onclick="setBreatheMech('perut')">
+                      <span>🫁</span> <span>Pernapasan Perut (Diafragma)</span>
+                    </button>
+                    <button class="mech-btn" id="mech-dada" onclick="setBreatheMech('dada')">
+                      <span>🦴</span> <span>Pernapasan Dada (Otot Rusuk)</span>
+                    </button>
+                  </div>
                 </div>
+
+                <!-- Activity Presets -->
+                <div>
+                  <div style="font-size:11px; font-weight:700; color:var(--text-muted); margin-bottom:4px;">Ritme Aktivitas Fisik Tubuh:</div>
+                  <div class="activity-row">
+                    <button class="act-preset-btn active" id="act-santai" onclick="setActivityPreset('santai')">
+                      🛌 Santai (14 bpm · 500 mL)
+                    </button>
+                    <button class="act-preset-btn" id="act-jalan" onclick="setActivityPreset('jalan')">
+                      🚶 Jalan (22 bpm · 850 mL)
+                    </button>
+                    <button class="act-preset-btn" id="act-lari" onclick="setActivityPreset('lari')">
+                      🏃 Lari (36 bpm · 1.600 mL)
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Action Inhale & Exhale Buttons -->
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                  <button onclick="setBreatheMode('inhale')" id="btn-inhale" style="padding:clamp(6px, 1vh, 10px); background:#ffffff; border:2.5px solid #38bdf8; border-radius:var(--radius-md); font-family:var(--font-heading); font-weight:800; font-size:clamp(12px, 1.4vh, 14px); color:var(--blue-dark); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:var(--shadow-sm); transition:all 0.2s;">
+                    <span>📥</span> <span>Tarik Napas (Inspirasi)</span>
+                  </button>
+
+                  <button onclick="setBreatheMode('exhale')" id="btn-exhale" style="padding:clamp(6px, 1vh, 10px); background:#fff1f2; border:2.5px solid #f43f5e; border-radius:var(--radius-md); font-family:var(--font-heading); font-weight:800; font-size:clamp(12px, 1.4vh, 14px); color:#9f1239; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:var(--shadow-sm); transition:all 0.2s;">
+                    <span>📤</span> <span>Hembuskan (Ekspirasi)</span>
+                  </button>
+                </div>
+
+                <!-- Telemetry Dashboard -->
+                <div class="telemetry-card">
+                  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1.5px solid #f1f5f9; padding-bottom:4px;">
+                    <strong style="font-family:var(--font-heading); font-size:clamp(11.5px, 1.35vh, 13.5px); color:var(--text-dark);">📊 Instrumen Telemetri Real-Time</strong>
+                    <span id="telemetry-badge" style="background:#ffe4e6; color:#9f1239; padding:2px 8px; border-radius:var(--radius-pill); font-size:10.5px; font-weight:800;">Ekspirasi Aktif</span>
+                  </div>
+
+                  <div class="telemetry-grid">
+                    <div class="tel-item">
+                      <span class="tel-label">Tekanan Intrapulmonal:</span>
+                      <div id="tel-pressure" class="tel-value" style="color:var(--rose);">763 mmHg (+3 vs 760 Patm)</div>
+                    </div>
+                    <div class="tel-item">
+                      <span class="tel-label">Volume Udara Paru:</span>
+                      <div id="tel-volume" class="tel-value" style="color:var(--blue-dark);">500 mL (Tidal Istirahat)</div>
+                    </div>
+                    <div class="tel-item">
+                      <span class="tel-label">Kondisi Otot Aktif:</span>
+                      <div id="tel-diaphragm" class="tel-value">Relaksasi (Melengkung naik)</div>
+                    </div>
+                    <div class="tel-item">
+                      <span class="tel-label">Aliran Gas:</span>
+                      <div id="tel-flow" class="tel-value">CO₂ terdorong keluar</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Hukum Boyle Callout -->
+                <div style="background:#f0fdfa; border:1.5px solid #99f6e4; border-radius:var(--radius-md); padding:clamp(6px, 0.9vh, 8px) 10px; font-size:clamp(10.5px, 1.2vh, 12px); color:var(--teal-deep); display:flex; gap:8px; align-items:center;">
+                  <span style="font-size:18px;">💡</span>
+                  <div>
+                    <strong>Hukum Boyle (P × V = Konstan):</strong> Saat rongga dada membesar, tekanan paru anjlok ke bawah 760 mmHg, sehingga udara luar terhisap masuk seketika!
+                  </div>
+                </div>
+
               </div>
 
             </div>
-
           </div>
+
+          <!-- PANEL 2: MIKRO — MIKROSKOP PERTUKARAN GAS ALVEOLUS & KAPILER -->
+          <div id="sim-panel-micro" class="sim-view-panel">
+            <div class="sim-grid">
+              
+              <!-- Left Column: Alveolus & Capillary Microscopic SVG -->
+              <div class="alveolus-micro-box">
+                <div class="sim-status-pill" style="border-color:#f43f5e; background:rgba(255,255,255,0.96);">
+                  <span class="status-dot" style="background:#e11d48;"></span>
+                  <span>Difusi Gas O₂ &amp; CO₂ di Dinding Alveolus</span>
+                </div>
+
+                <svg viewBox="0 0 320 280" style="width:clamp(230px, 30vh, 290px); height:auto; overflow:visible;">
+                  <!-- Rongga Alveolus (Kantung Udara) -->
+                  <circle cx="160" cy="115" r="72" fill="#E0F7FA" stroke="#00ACC1" stroke-width="4" opacity="0.9"/>
+                  <!-- Sel Epitel Pipih Alveolus -->
+                  <circle cx="160" cy="115" r="69" fill="none" stroke="#B2EBF2" stroke-width="2" stroke-dasharray="6 4"/>
+                  
+                  <text x="160" y="95" font-family="Fredoka" font-size="12" font-weight="800" fill="#00838F" text-anchor="middle">RONGGA ALVEOLUS</text>
+                  <text x="160" y="112" font-family="Poppins" font-size="10" font-weight="700" fill="#0284C7" text-anchor="middle">Kaya O₂ (pO₂ = 104 mmHg)</text>
+                  <text x="160" y="127" font-family="Poppins" font-size="9.5" font-weight="600" fill="#64748B" text-anchor="middle">Membran Difusi Selapis Tipis</text>
+
+                  <!-- Pembuluh Kapiler Mengelilingi Alveolus -->
+                  <path d="M 20,230 C 90,230 90,195 160,195 C 230,195 230,230 300,230" fill="none" stroke="#FECDD3" stroke-width="26" stroke-linecap="round"/>
+                  <path d="M 20,230 C 90,230 90,195 160,195 C 230,195 230,230 300,230" fill="none" stroke="#F43F5E" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 4"/>
+                  
+                  <text x="50" y="258" font-family="Poppins" font-size="9.5" font-weight="800" fill="#9F1239">← Dari Jantung (Kaya CO₂)</text>
+                  <text x="270" y="258" font-family="Poppins" font-size="9.5" font-weight="800" fill="#059669" text-anchor="end">Ke Jantung (Kaya O₂) →</text>
+
+                  <!-- Eritrosit 1 (Masuk: Warna Ungu-Biru, Kurang O₂, Banyak CO₂) -->
+                  <g class="erythrocyte-flow-1">
+                    <circle cx="55" cy="230" r="9" fill="#6366F1" stroke="#4338CA" stroke-width="1.5"/>
+                    <text x="55" y="233" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">CO₂</text>
+                  </g>
+
+                  <!-- Eritrosit 2 (Zona Difusi: Tengah Bertransisi) -->
+                  <g class="erythrocyte-flow-2">
+                    <circle cx="160" cy="195" r="9" fill="#F43F5E" stroke="#BE123C" stroke-width="1.5"/>
+                    <text x="160" y="198" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">HbO₂</text>
+                  </g>
+
+                  <!-- Eritrosit 3 (Keluar: Merah Segar, Kaya Oksigen) -->
+                  <g class="erythrocyte-flow-3">
+                    <circle cx="265" cy="230" r="9" fill="#EF4444" stroke="#B91C1C" stroke-width="1.5"/>
+                    <text x="265" y="233" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">O₂</text>
+                  </g>
+
+                  <!-- Difusi Molekul Gas O2 (Biru Turun dari Alveolus ke Kapiler) -->
+                  <g id="micro-o2-diff">
+                    <circle cx="150" cy="148" r="4" fill="#0284C7"/>
+                    <circle cx="150" cy="165" r="4" fill="#0284C7"/>
+                    <path d="M 150,140 L 150,172" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="3 2"/>
+                    <text x="135" y="162" font-size="9" font-weight="800" fill="#0284C7">O₂</text>
+                  </g>
+
+                  <!-- Difusi Molekul Gas CO2 (Merah Naik dari Kapiler ke Alveolus) -->
+                  <g id="micro-co2-diff">
+                    <circle cx="175" cy="170" r="4" fill="#E11D48"/>
+                    <circle cx="175" cy="152" r="4" fill="#E11D48"/>
+                    <path d="M 175,178 L 175,145" stroke="#E11D48" stroke-width="1.5" stroke-dasharray="3 2"/>
+                    <text x="190" y="162" font-size="9" font-weight="800" fill="#E11D48">CO₂</text>
+                  </g>
+                </svg>
+
+                <div style="font-size:10.5px; color:var(--text-muted); font-weight:700; margin-top:2px;">
+                  🔴 Eritrosit berubah warna dari ungu (kaya CO₂) menjadi merah segar (kaya O₂)
+                </div>
+              </div>
+
+              <!-- Right Column: Step-by-Step Gas Exchange Interactive Walk -->
+              <div style="display:flex; flex-direction:column; gap:clamp(6px, 1vh, 10px);">
+                
+                <div style="font-size:11px; font-weight:800; color:var(--text-dark);">
+                  Langkah Terperinci Pertukaran Gas (Klik untuk Jelajahi):
+                </div>
+
+                <div class="micro-steps-bar">
+                  <div class="micro-step-card active" id="mstep-1" onclick="setMicroStep(1)">
+                    <span style="font-size:20px;">1️⃣</span>
+                    <div>
+                      <strong style="font-size:11.5px; color:var(--text-dark); display:block;">Inspirasi Udara Segar</strong>
+                      <span style="font-size:10.5px; color:var(--text-muted);">Udara kaya O₂ mengisi ratusan juta kantung alveolus.</span>
+                    </div>
+                  </div>
+
+                  <div class="micro-step-card" id="mstep-2" onclick="setMicroStep(2)">
+                    <span style="font-size:20px;">2️⃣</span>
+                    <div>
+                      <strong style="font-size:11.5px; color:var(--text-dark); display:block;">Difusi Menembus Membran</strong>
+                      <span style="font-size:10.5px; color:var(--text-muted);">O₂ melintasi dinding sel tipis alveolus &amp; kapiler secara pasif.</span>
+                    </div>
+                  </div>
+
+                  <div class="micro-step-card" id="mstep-3" onclick="setMicroStep(3)">
+                    <span style="font-size:20px;">3️⃣</span>
+                    <div>
+                      <strong style="font-size:11.5px; color:var(--text-dark); display:block;">Pengikatan Oksihemoglobin</strong>
+                      <span style="font-size:10.5px; color:var(--text-muted);">Hb + 4O₂ → Hb(O₂)₄ di dalam sel darah merah (eritrosit).</span>
+                    </div>
+                  </div>
+
+                  <div class="micro-step-card" id="mstep-4" onclick="setMicroStep(4)">
+                    <span style="font-size:20px;">4️⃣</span>
+                    <div>
+                      <strong style="font-size:11.5px; color:var(--text-dark); display:block;">Pelepasan &amp; Ekspirasi CO₂</strong>
+                      <span style="font-size:10.5px; color:var(--text-muted);">CO₂ berdifusi balik ke rongga alveolus untuk dihembus keluar.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step Details Box -->
+                <div id="micro-explanation-card" style="background:#ffffff; border:1.5px solid #fed7aa; border-radius:var(--radius-md); padding:8px 12px; font-size:11px; color:var(--text-body); line-height:1.45; box-shadow:var(--shadow-sm);">
+                  <strong style="color:var(--orange);" id="mstep-title">1. Inspirasi Udara Segar</strong>
+                  <p id="mstep-desc" style="margin-top:2px;">Saat kita menarik napas, udara luar bertekanan tinggi masuk melewati hidung, trakea, dan bronkiolus, hingga mengisi kantung alveolus dengan konsentrasi oksigen (pO₂ = 104 mmHg) yang jauh lebih tinggi daripada kapiler darah.</p>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
         <div class="bottom-nav-bar">
@@ -1863,7 +1914,24 @@
   <script>
     // --- 1. Audio Synthesizer (Web Audio API 100% Offline) ---
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let isAudioMuted = false;
+
+    function toggleAudioMute() {
+      isAudioMuted = !isAudioMuted;
+      const icon = document.getElementById('audio-icon');
+      const label = document.getElementById('audio-label');
+      if (isAudioMuted) {
+        if (icon) icon.innerText = '🔇';
+        if (label) label.innerText = 'Suara: MUTE';
+      } else {
+        if (icon) icon.innerText = '🔊';
+        if (label) label.innerText = 'Suara: ON';
+        playSound('click');
+      }
+    }
+
     function playSound(type) {
+      if (isAudioMuted) return;
       try {
         if (audioCtx.state === 'suspended') audioCtx.resume();
         const now = audioCtx.currentTime;
@@ -1885,25 +1953,27 @@
           osc.type = 'sine';
           osc.connect(gain);
           gain.connect(audioCtx.destination);
-          osc.frequency.setValueAtTime(120, now);
-          osc.frequency.linearRampToValueAtTime(260, now + 0.7);
+          const baseFreq = currentPreset === 'lari' ? 170 : (currentPreset === 'jalan' ? 140 : 110);
+          osc.frequency.setValueAtTime(baseFreq, now);
+          osc.frequency.linearRampToValueAtTime(baseFreq * 2.1, now + 0.65);
           gain.gain.setValueAtTime(0.02, now);
-          gain.gain.linearRampToValueAtTime(0.18, now + 0.35);
-          gain.gain.linearRampToValueAtTime(0.01, now + 0.75);
+          gain.gain.linearRampToValueAtTime(0.18, now + 0.32);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.7);
           osc.start(now);
-          osc.stop(now + 0.75);
+          osc.stop(now + 0.7);
         } else if (type === 'exhale') {
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           osc.type = 'triangle';
           osc.connect(gain);
           gain.connect(audioCtx.destination);
-          osc.frequency.setValueAtTime(240, now);
-          osc.frequency.linearRampToValueAtTime(100, now + 0.7);
+          const baseFreq = currentPreset === 'lari' ? 290 : (currentPreset === 'jalan' ? 250 : 210);
+          osc.frequency.setValueAtTime(baseFreq, now);
+          osc.frequency.linearRampToValueAtTime(baseFreq * 0.45, now + 0.65);
           gain.gain.setValueAtTime(0.15, now);
-          gain.gain.linearRampToValueAtTime(0.01, now + 0.75);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.7);
           osc.start(now);
-          osc.stop(now + 0.75);
+          osc.stop(now + 0.7);
         } else if (type === 'correct') {
           const osc1 = audioCtx.createOscillator();
           const osc2 = audioCtx.createOscillator();
@@ -1911,8 +1981,8 @@
           osc1.connect(gain);
           osc2.connect(gain);
           gain.connect(audioCtx.destination);
-          osc1.frequency.setValueAtTime(523.25, now); // C5
-          osc2.frequency.setValueAtTime(659.25, now + 0.1); // E5
+          osc1.frequency.setValueAtTime(523.25, now);
+          osc2.frequency.setValueAtTime(659.25, now + 0.1);
           gain.gain.setValueAtTime(0.2, now);
           gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
           osc1.start(now);
@@ -1968,78 +2038,131 @@
       document.getElementById('qc-zoom-text').innerText = Math.round(curZoomScale * 100) + '%';
     }
 
-    // --- 4. Simulator Paru-Paru & Diafragma ---
+    // --- 4. Advanced Physiology Simulator Engine ---
     let breatheState = 'exhale';
     let autoInterval = null;
+    let currentMech = 'perut'; // 'perut' or 'dada'
+    let currentPreset = 'santai'; // 'santai', 'jalan', 'lari'
 
-    function setBreatheMode(mode) {
-      breatheState = mode;
+    const presetData = {
+      santai: { bpm: 14, vol: 500, interval: 2300, pDelta: 3 },
+      jalan:  { bpm: 22, vol: 850, interval: 1500, pDelta: 5 },
+      lari:   { bpm: 36, vol: 1600, interval: 950, pDelta: 9 }
+    };
+
+    function switchSimView(viewName) {
+      playSound('click');
+      document.querySelectorAll('.sim-view-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.sim-mode-tab-btn').forEach(b => b.classList.remove('active'));
+      const pnl = document.getElementById('sim-panel-' + viewName);
+      const tab = document.getElementById('tab-sim-' + viewName);
+      if (pnl) pnl.classList.add('active');
+      if (tab) tab.classList.add('active');
+    }
+
+    function setBreatheMech(mech) {
+      playSound('click');
+      currentMech = mech;
+      document.getElementById('mech-perut').classList.toggle('active', mech === 'perut');
+      document.getElementById('mech-dada').classList.toggle('active', mech === 'dada');
+      applyContractionLevel(breatheState === 'inhale' ? 100 : 0);
+    }
+
+    function setActivityPreset(preset) {
+      playSound('click');
+      currentPreset = preset;
+      ['santai', 'jalan', 'lari'].forEach(p => {
+        const btn = document.getElementById('act-' + p);
+        if (btn) btn.classList.toggle('active', p === preset);
+      });
+      document.getElementById('rate-badge').innerText = `${presetData[preset].bpm} bpm`;
+      if (autoInterval) {
+        clearInterval(autoInterval);
+        autoInterval = setInterval(() => {
+          setBreatheMode(breatheState === 'inhale' ? 'exhale' : 'inhale');
+        }, presetData[preset].interval);
+      }
+      applyContractionLevel(breatheState === 'inhale' ? 100 : 0);
+    }
+
+    function onManualSliderInput(val) {
+      const pct = parseInt(val, 10);
+      document.getElementById('slider-pct-label').innerText = pct + '%';
+      if (autoInterval) {
+        toggleAutoBreathe();
+      }
+      applyContractionLevel(pct);
+    }
+
+    function applyContractionLevel(pct) {
       const box = document.getElementById('sim-display-box');
       const dot = document.getElementById('gas-dot');
       const label = document.getElementById('gas-label');
       const badge = document.getElementById('telemetry-badge');
-      const btnInhale = document.getElementById('btn-inhale');
-      const btnExhale = document.getElementById('btn-exhale');
-
-      const telDiaphragm = document.getElementById('tel-diaphragm');
-      const telChest = document.getElementById('tel-chest');
-      const telPressure = document.getElementById('tel-pressure');
-      const telFlow = document.getElementById('tel-flow');
       const particles = document.getElementById('air-particles');
+      const lungL = document.getElementById('lung-left-svg');
+      const lungR = document.getElementById('lung-right-svg');
+      const diaphragm = document.getElementById('diaphragm-svg');
+      const ribcage = document.getElementById('ribcage-svg');
+      const cfg = presetData[currentPreset];
 
-      if (mode === 'inhale') {
-        playSound('inhale');
+      const scale = 0.92 + (0.32 * (pct / 100));
+      const dY = (pct / 100) * 85;
+      const dCurve = 205 + dY;
+
+      if (lungL) lungL.style.transform = `scale(${scale}) translate(${-6 * (pct/100)}px, ${4 * (pct/100)}px)`;
+      if (lungR) lungR.style.transform = `scale(${scale}) translate(${6 * (pct/100)}px, ${4 * (pct/100)}px)`;
+      if (diaphragm) diaphragm.setAttribute('d', `M 30,265 Q 150,${dCurve} 270,265`);
+      if (ribcage) ribcage.style.transform = `scale(${0.97 + (currentMech === 'dada' ? 0.16 : 0.08) * (pct / 100)})`;
+
+      const curVol = Math.round((pct / 100) * cfg.vol);
+      const diffP = Math.round(((pct - 50) / 50) * cfg.pDelta);
+      const curP = 760 - diffP;
+
+      document.getElementById('tel-volume').innerText = `${curVol} mL (${cfg.bpm} bpm)`;
+      document.getElementById('tel-pressure').innerText = `${curP} mmHg (${curP - 760 > 0 ? '+' : ''}${curP - 760} vs 760 Patm)`;
+
+      if (pct >= 50) {
         box.classList.remove('state-exhale');
         box.classList.add('state-inhale');
-
         dot.style.background = '#0284c7';
         label.innerText = 'Fase Inspirasi: Udara Masuk (O₂)';
         badge.style.background = '#e0f2fe';
         badge.style.color = '#0369a1';
-        badge.innerText = 'Fase Inspirasi Aktif';
-
-        btnInhale.style.background = '#e0f2fe';
-        btnInhale.style.borderColor = '#0284c7';
-        btnExhale.style.background = '#ffffff';
-        btnExhale.style.borderColor = '#cbd5e1';
-
-        telDiaphragm.innerText = 'Kontraksi (Mendatar ke bawah)';
-        telChest.innerText = 'Membesar maksimal';
-        telPressure.innerText = 'Turun tajam (< Tekanan Luar)';
-        telFlow.innerText = 'Oksigen (O₂) tersedot masuk';
-
+        badge.innerText = 'Inspirasi Aktif';
+        document.getElementById('tel-diaphragm').innerText = currentMech === 'perut' ? 'Diafragma Kontraksi (Mendatar)' : 'Otot Rusuk Kontraksi (Terangkat)';
+        document.getElementById('tel-flow').innerText = 'Oksigen (O₂) tersedot masuk paru';
         particles.innerHTML = `
           <circle cx="150" cy="25" r="4.5" fill="#0EA5E9" class="particle-down"/>
-          <circle cx="150" cy="50" r="4.5" fill="#0EA5E9" class="particle-down"/>
-          <circle cx="150" cy="75" r="4.5" fill="#0EA5E9" class="particle-down"/>
+          <circle cx="150" cy="45" r="4.5" fill="#0EA5E9" class="particle-down"/>
+          <circle cx="150" cy="65" r="4.5" fill="#0EA5E9" class="particle-down"/>
         `;
       } else {
-        playSound('exhale');
         box.classList.remove('state-inhale');
         box.classList.add('state-exhale');
-
         dot.style.background = '#e11d48';
         label.innerText = 'Fase Ekspirasi: Udara Keluar (CO₂)';
         badge.style.background = '#ffe4e6';
         badge.style.color = '#9f1239';
-        badge.innerText = 'Fase Ekspirasi Aktif';
-
-        btnExhale.style.background = '#fff1f2';
-        btnExhale.style.borderColor = '#f43f5e';
-        btnInhale.style.background = '#ffffff';
-        btnInhale.style.borderColor = '#cbd5e1';
-
-        telDiaphragm.innerText = 'Relaksasi (Melengkung naik)';
-        telChest.innerText = 'Mengecil kembali normal';
-        telPressure.innerText = 'Meningkat (> Tekanan Luar)';
-        telFlow.innerText = 'Karbondioksida (CO₂) terdorong keluar';
-
+        badge.innerText = 'Ekspirasi Aktif';
+        document.getElementById('tel-diaphragm').innerText = currentMech === 'perut' ? 'Diafragma Relaksasi (Melengkung naik)' : 'Otot Rusuk Relaksasi (Menurun)';
+        document.getElementById('tel-flow').innerText = 'Karbondioksida (CO₂) terhembus keluar';
         particles.innerHTML = `
-          <circle cx="150" cy="75" r="4.5" fill="#F43F5E" class="particle-up"/>
-          <circle cx="150" cy="50" r="4.5" fill="#F43F5E" class="particle-up"/>
+          <circle cx="150" cy="65" r="4.5" fill="#F43F5E" class="particle-up"/>
+          <circle cx="150" cy="45" r="4.5" fill="#F43F5E" class="particle-up"/>
           <circle cx="150" cy="25" r="4.5" fill="#F43F5E" class="particle-up"/>
         `;
       }
+    }
+
+    function setBreatheMode(mode) {
+      breatheState = mode;
+      const slider = document.getElementById('sim-manual-slider');
+      const val = mode === 'inhale' ? 100 : 0;
+      if (slider) slider.value = val;
+      document.getElementById('slider-pct-label').innerText = val + '%';
+      playSound(mode);
+      applyContractionLevel(val);
     }
 
     function toggleAutoBreathe() {
@@ -2059,7 +2182,59 @@
         setBreatheMode(breatheState === 'inhale' ? 'exhale' : 'inhale');
         autoInterval = setInterval(() => {
           setBreatheMode(breatheState === 'inhale' ? 'exhale' : 'inhale');
-        }, 2200);
+        }, presetData[currentPreset].interval);
+      }
+    }
+
+    // --- Organ Callout Tips ---
+    const organInfoData = {
+      trakea: "🫁 <strong>Trakea (Batang Tenggorokan):</strong> Tabung kaku berdiameter ±2 cm yang tersusun dari cincin tulang rawan huruf C dan epitel bersilia untuk menyaring debu halus.",
+      bronkus: "🌿 <strong>Bronkus:</strong> Cabang utama dari trakea yang mengarahkan udara terpisah ke paru kanan dan paru kiri.",
+      paru: "🫁 <strong>Paru-Paru:</strong> Organ berpori berisi ±300 juta kantung alveolus dengan luas permukaan total setara lapangan bulu tangkis!",
+      diafragma: "🛡️ <strong>Sekat Diafragma:</strong> Otot kubah paling krusial. Saat mendatar (kontraksi), volume rongga dada membesar vertikal memicu tarikan napas.",
+      rusuk: "🦴 <strong>Tulang Rusuk & Otot Interkostal:</strong> Bergerak naik dan ke arah luar saat otot interkostal luar berkontraksi, memperluas diameter horizontal dada."
+    };
+
+    function showOrganTip(organ) {
+      playSound('click');
+      const banner = document.getElementById('organ-tip-banner');
+      const text = document.getElementById('organ-tip-text');
+      if (banner && text) {
+        banner.style.display = 'block';
+        text.innerHTML = organInfoData[organ] || '';
+      }
+    }
+
+    // --- Microscopic Alveolus Walk Steps ---
+    const microStepsData = [
+      {
+        title: "1. Inspirasi Udara Segar",
+        desc: "Saat menarik napas, udara luar kaya oksigen memasuki alveolus dengan tekanan parsial tinggi (pO₂ = 104 mmHg), jauh melampaui kadar oksigen di pembuluh darah kapiler sekitar."
+      },
+      {
+        title: "2. Difusi Oksigen Menembus Membran Selapis",
+        desc: "Dinding alveolus dan kapiler darah masing-masing hanya setebal 1 lapis sel epitel pipih (±0,5 mikrometer). Gas O₂ meluncur spontan menembus membran dari konsentrasi tinggi ke rendah."
+      },
+      {
+        title: "3. Pengikatan Oksihemoglobin oleh Sel Darah Merah",
+        desc: "Oksigen yang masuk ke plasma darah langsung diikat oleh Hemoglobin eritrosit: Hb + 4O₂ → Hb(O₂)₄. Sel darah yang semula ungu kebiruan (deoksigenasi) seketika berubah merah segar!"
+      },
+      {
+        title: "4. Pelepasan & Ekspirasi Karbondioksida (CO₂)",
+        desc: "Di waktu yang bersamaan, tekanan CO₂ di kapiler lebih tinggi (pCO₂ = 45 mmHg) daripada di alveolus (40 mmHg). Gas CO₂ terdorong keluar ke alveolus untuk segera dihembuskan saat ekspirasi."
+      }
+    ];
+
+    function setMicroStep(stepNum) {
+      playSound('click');
+      for (let i = 1; i <= 4; i++) {
+        const card = document.getElementById('mstep-' + i);
+        if (card) card.classList.toggle('active', i === stepNum);
+      }
+      const data = microStepsData[stepNum - 1];
+      if (data) {
+        document.getElementById('mstep-title').innerText = data.title;
+        document.getElementById('mstep-desc').innerText = data.desc;
       }
     }
 

@@ -51,36 +51,42 @@
 
 ---
 
-## 📱 BAGIAN 3 — STRUKTUR HALAMAN (7 HALAMAN BERURUTAN)
+## 📱 BAGIAN 3 — STRUKTUR HALAMAN (6 HALAMAN BERURUTAN)
 
-Aplikasi navigasi satu halaman (SPA) dengan 7 halaman berurutan:
+Aplikasi navigasi satu halaman (SPA) tanpa halaman cover splash terpisah, sehingga foto latar belakang ruang kelas (`bg-ruang-kelas.jpg`) langsung menyatu secara elegan dengan konten sejak awal dibuka:
 
-1. **Cover** — Logo sekolah di sudut, nama mata pelajaran dan materi besar di tengah, tombol **"▶ MULAI"** mencolok, nama guru di bawah.
+1. **Menu Utama (Beranda Terpadu)** — Tampilan beranda langsung saat aplikasi dibuka:
+   - Header terpadu: logo sekolah (`logo.png`), identitas dinas & sekolah, judul mapel & materi pokok, tombol kontrol font/zoom, dan kartu identitas guru.
+   - 6 kartu modul interaktif yang jelas dan mudah diklik:
+     - 📖 Petunjuk & Tujuan
+     - 📚 Materi Utama
+     - ⚡ Simulasi Interaktif
+     - 📝 Kuis Evaluasi
+     - 👨‍🏫 Profil Guru
+     - 💡 Fakta Menarik
 
-2. **Menu Utama** — 6 kartu besar ikon dengan teks jelas:
-   - 📖 Petunjuk & Tujuan
-   - 📚 Materi Utama
-   - ⚡ Simulasi Interaktif
-   - 📝 Kuis Evaluasi
-   - 👨‍🏫 Profil Guru
-   - 💡 Fakta Menarik
+2. **Petunjuk & Tujuan** — Petunjuk belajar dan capaian/tujuan pembelajaran (TP).
 
-3. **Petunjuk & Tujuan** — Cara menggunakan media dan tujuan pembelajaran yang jelas.
+3. **Materi Utama** — Minimal 4–6 kartu konsep dengan penjelasan dan ilustrasi visual tematik.
 
-4. **Materi Utama** — Minimal 4–6 kartu konsep dengan penjelasan dan ilustrasi emoji/grafis.
+4. **Simulasi Interaktif (Canggih & Edukatif)** — Simulasi visual real-time multi-fitur:
+   - Mode mekanisme ganda: Pernapasan Perut (Otot Diafragma) vs Pernapasan Dada (Otot Antartulang Rusuk / Interkostal).
+   - Kontrol ritme aktivitas fisik: Istirahat (santai), Jalan Kaki, dan Olahraga Cepat (kecepatan animasi dan volume tidal beradaptasi).
+   - Slider interaktif untuk menarik diafragma / kontraksi manual (0%–100%) dengan respons visual instan.
+   - Papan instrumen telemetri real-time: volume udara (mL), tekanan intrapulmonal vs atmosfer (mmHg), kondisi otot (kontraksi/relaksasi), dan visualisasi Hukum Boyle.
+   - Tampilan mikroskopis pertukaran gas di kantung alveolus & kapiler darah (difusi O₂ dan CO₂ pada hemoglobin eritrosit).
+   - Efek suara sintetis hembusan napas (Web Audio API) yang realistis dengan tombol mute/unmute.
 
-5. **Simulasi Interaktif** — Animasi visual interaktif yang relevan dengan materi (bisa berupa slider, klik-klik, animasi proses, dll). Sertakan suara sintetis dan tombol aksi besar.
-
-6. **Kuis Evaluasi** — Minimal 3 jenis soal:
+5. **Kuis Evaluasi** — Minimal 3 jenis soal:
    - Bagian A: 3 soal Pilihan Ganda (huruf besar, 30 poin)
    - Bagian B: 4 pasang Menjodohkan dengan garis SVG interaktif (40 poin)
    - Bagian C: 3 soal Benar/Salah (30 poin)
-   - Halaman hasil: skor total, rincian, tombol ulangi
+   - Halaman hasil: skor total (0–100), rincian poin per bagian, dan tombol ulangi kuis.
 
-7. **Profil Guru** — Foto guru (`foto-guru.jpg`), nama, sekolah, dan kata motivasi.
+6. **Profil Guru** — Foto guru (`foto-guru.jpg`), nama lengkap beserta gelar, sekolah, dan kutipan motivasi pembelajaran.
 
 ---
 
 ## 💻 BAGIAN 4 — PERINTAH KE AI
 
-"Tolong buatkan kode program lengkap untuk Media Pembelajaran Interaktif (MPI) sesuai spesifikasi di atas. Hasilkan **1 blok kode HTML utuh** tanpa terpotong. Gunakan warna cerah ceria, huruf BESAR (min. 14px konten, 24px judul), rasio layar 16:9 responsif, cover profesional dengan tombol '▶ MULAI' berpendar, simulasi interaktif yang visual dan bersuara sintetis Web Audio API, serta kuis evaluasi 3 format (PG + Menjodohkan SVG + Benar/Salah). Pastikan logo dan foto guru dimuat dengan fallback otomatis jika file tidak tersedia. Gunakan `bg-ruang-kelas.jpg` sebagai background body dengan overlay putih semi-transparan (rgba 255,255,255,0.82) agar konten tetap terbaca, dengan fallback warna `#f0f9ff`."
+"Tolong buatkan kode program lengkap untuk Media Pembelajaran Interaktif (MPI) sesuai spesifikasi di atas. Hasilkan **1 blok kode HTML utuh** tanpa terpotong. Gunakan warna cerah ceria, huruf BESAR (min. 14px konten, 24px judul), rasio layar 16:9 responsif. **Jangan buat cover terpisah**, jadikan Menu Utama sebagai beranda terpadu dengan header logo sekolah & identitas yang langsung menyatu elegan dengan background ruang kelas (`bg-ruang-kelas.jpg` dengan overlay semi-transparan `rgba(255,255,255,0.82)` dan fallback `#f0f9ff`). Buatkan **simulasi interaktif canggih** (mode mekanisme diafragma vs dada, slider ritme aktivitas fisik, slider kontrol manual tarikan diafragma, telemetri tekanan & volume Hukum Boyle, tampilan mikroskopis pertukaran gas alveolus, dan audio sintetis Web Audio API). Sertakan kuis evaluasi 3 format (PG + Menjodohkan garis SVG + Benar/Salah). Pastikan logo dan foto guru dimuat dengan fallback protektif jika file tidak ada."
