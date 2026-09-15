@@ -14,8 +14,8 @@
 - **Fase / Kelas**   : [Contoh: Fase D — Kelas VII / VIII / IX SMP]
 - **Materi Pokok**   : [Contoh: Sistem Pernapasan Manusia / Teorema Pythagoras / Teks Prosedur / Bentang Alam & Benua / Algoritma & Pemrograman]
 - **Tujuan Belajar** : [Rumuskan tujuan pembelajaran sesuai Capaian Pembelajaran (CP) Fase D mata pelajaran Anda]
-- **Nama Guru**      : [Nama Lengkap + Gelar — Contoh: Edy Santoso, S.Pd.]
-- **Nama Sekolah**   : [Contoh: SMP Negeri 1 Lamongan]
+- **Nama Guru**      : [Nama Lengkap + Gelar Anda — Contoh: Edy Santoso, S.Pd.]
+- **Nama Sekolah**   : [Nama Sekolah Anda — Contoh: SMP Negeri 1 Lamongan]
 - **File Logo**      : [Bebas — lampirkan file logo sekolah Anda, AI otomatis menyesuaikan nama file]
 - **File Foto Guru** : [Bebas — lampirkan file foto guru, AI otomatis menyesuaikan nama file]
 - **File Background**: `bg-ruang-kelas.jpg` (atau lampirkan gambar latar pilihan Anda)
@@ -82,9 +82,9 @@
 Aplikasi dibangun dengan arsitektur Single Page Application (SPA) 7 halaman berpindah instan (semua halaman pas 1 pandangan layar tanpa scroll):
 
 ### 1. Halaman 1: Sampul / Beranda (*Cover*)
-- **Header Atas**: Kapsul resmi identitas instansi / nama sekolah, logo sekolah berukuran tinggi 50–68px, dinas pendidikan, serta badge kemitraan (*Kurikulum Merdeka*, *Fase D*).
+- **Header Atas**: Kapsul resmi identitas instansi / nama sekolah (WAJIB mengambil nilai **Nama Sekolah** yang diisi pengguna di Bagian 1, DILARANG memakai nama sekolah paten/hardcoded), logo sekolah berukuran tinggi 50–68px, dinas pendidikan, serta badge kemitraan (*Kurikulum Merdeka*, *Fase D*).
 - **Bagian Tengah Terfokus**: Judul materi besar dengan gaya stiker 3D kontras, subtopik penjelasan berhuruf proporsional, dan **Tombol "▶ MULAI"** berpendar (*pulsing glow effect*) yang memikat perhatian siswa tanpa kartu samping.
-- **Footer Bawah**: Baris identitas guru pengembang media dan semboyan pembelajaran dengan font jelas.
+- **Footer Bawah**: Baris identitas guru pengembang media (mengambil **Nama Guru** dan **Nama Sekolah** dari Bagian 1) serta semboyan pembelajaran dengan font jelas.
 
 ### 2. Halaman 2: Menu Utama (*Dashboard Modul*)
 - Grid 6 kartu menu berdimensi 3D dengan **wadah ikon besar (66–88px)**, judul tegas berukuran `15–20px`, dan deskripsi singkat terbaca jelas:
@@ -125,8 +125,8 @@ Aplikasi dibangun dengan arsitektur Single Page Application (SPA) 7 halaman berp
 ### 7. Halaman 7: Profil Guru Pengembang
 - Kartu profil proporsional memuat:
   - **Foto guru berukuran besar** dalam bingkai lingkaran berdiameter `130–175px` dengan border gradien dan bayangan timbul.
-  - Nama lengkap dan gelar dengan font tebal `20–24px`.
-  - Jabatan/tugas dan asal sekolah dengan font `13–15px`.
+  - Nama lengkap dan gelar pendidik (mengambil **Nama Guru** dari Bagian 1) dengan font tebal `20–24px`.
+  - Asal sekolah (mengambil **Nama Sekolah** dari Bagian 1) dan jabatan/tugas guru dengan font `13–15px`.
   - Kutipan motivasi inspiratif bagi pendidikan.
 
 ---
@@ -145,7 +145,8 @@ Salin teks berikut ini ke AI:
 >    - Ukuran teks proporsional dan tegas: baseline panggung `15px`, konten & penjelasan `13px–16px` (`font-weight: 600`), judul kartu `15px–20px`, judul halaman `16px–22px`, judul sampul `clamp(2.8rem, 6.8vw, 5.2rem)`.
 >    - Pertahankan ukuran gambar dan elemen visual tetap besar & menarik: wadah ikon (*icon-box*) `66px–88px` (emoji `34px–46px`), foto profil guru diameter `130px–175px`, logo sekolah tinggi `50px–68px`.
 >    - Ilustrasi SVG diagram pada materi dan simulasi/aktivitas dibuat dominan (tinggi `260px–420px`, lebar 100%) dengan garis diagram tebal (`stroke-width: 4px–6px`) dan label teks SVG berukuran `13px–15px` di dalam kotak label (*pill badge*) putih agar bebas tumpang tindih teks dan tidak meluber keluar layar.
-> 4. Konten materi, simulasi interaktif SVG, dan instrumen kuis evaluasi **WAJIB menyesuaikan mata pelajaran dan materi pokok** yang dicantumkan pada Bagian 1.
+> 4. **IDENTITAS RESMI DINAMIS (DILARANG HARDCODE)**:
+>    - Nama Sekolah, Nama Guru, Mata Pelajaran, Materi Pokok, dan Tujuan Belajar **WAJIB MENGGUNAKAN DATA DARI BAGIAN 1** yang telah diisi pengguna. DILARANG menggunakan nama sekolah atau nama guru bawaan contoh.
 > 5. Halaman cover terpusat dengan tombol '▶ MULAI' berpendar tanpa kartu samping.
 > 6. Halaman 3 berjudul 'Tujuan Pembelajaran' (kartu terpusat memuat indikator TP Kurikulum Merdeka, tanpa petunjuk penggunaan media/praktikum).
 > 7. Efek suara 100% menggunakan Web Audio API sintetis (tanpa file MP3 eksternal).
