@@ -28,45 +28,44 @@
    - Hasil akhir harus berupa **1 file `index.html`** utuh tanpa ketergantungan file luar (CSS di dalam `<style>`, Javascript di dalam `<script>`).
    - Bebas pustaka/library eksternal (tidak memerlukan CDN atau framework).
 
-2. **Penyatuan Latar Belakang & Panggung 16:9 (*Seamless Background Stage*):**
+2. **Penyatuan Latar Belakang & Panggung 16:9 Pas Layar Bebas Scroll (*No-Scroll 16:9 Fit*):**
    - Background utama halaman menggunakan `bg-ruang-kelas.jpg`:
      `body { background: url('bg-ruang-kelas.jpg') center/cover no-repeat fixed; }`
      Diberi lapisan overlay semi-transparan `rgba(240, 249, 255, 0.82)` agar konten tetap sangat kontras dan mudah dibaca. Fallback bila gambar tidak ada: latar `#f0f9ff`.
    - **Wadah `#stage-16-9` harus transparan tanpa border dan tanpa box-shadow**:
-     `#stage-16-9 { background: transparent; border: none; box-shadow: none; border-radius: 0; aspect-ratio: 16 / 9; }`
+     `#stage-16-9 { background: transparent; border: none; box-shadow: none; border-radius: 0; aspect-ratio: 16 / 9; overflow: hidden; }`
      sehingga konten menyatu harmonis dengan pemandangan kelas, tidak tampak seperti kotak kaku yang terpotong.
+   - **WAJIB BEBAS SCROLL VERTIKAL (*Zero Scrollbar*)**: Setiap halaman harus muat pas (*fit*) dalam 1 pandangan layar 16:9 pada proyektor/laptop. Dilarang membuat tata letak atau teks yang terlalu panjang ke bawah hingga memicu scrollbar vertikal. Gunakan padding proporsional `clamp(10px, 1.8vh, 18px)` dan `overflow: hidden` agar rapi dan pas.
    - **Ukuran font dasar panggung (*baseline font-size*)**:
-     `#stage-16-9 { font-size: calc(18px * var(--font-scale, 1.0)); }`
+     `#stage-16-9 { font-size: calc(15px * var(--font-scale, 1.0)); }`
 
-3. **Ikon & Icon-Box Berukuran EKSTRA BESAR (Jumbo Scale Icons):**
-   - **DILARANG menggunakan ikon kecil standar web biasa (16px–24px)**.
-   - **Wadah Ikon Menu & Kartu Materi (*Icon Box*)**: Wajib berukuran besar `width: clamp(72px, 10vh, 96px); height: clamp(72px, 10vh, 96px); border-radius: 26px;` dengan ukuran emoji/ikon di dalamnya `font-size: clamp(38px, 5.5vh, 54px);`.
-   - **Ikon Navigasi & Tombol Kontrol**: Berada di dalam lingkaran `clamp(44px, 5.6vh, 54px)` dengan font/ikon `clamp(20px, 2.6vh, 26px)`.
-   - **Ikon Status & Evaluasi (Piala, Bintang, Ceklis)**: Berukuran `clamp(48px, 6.5vh, 68px)` agar memberikan dampak visual yang kuat dan menyenangkan bagi siswa.
+3. **Ikon & Icon-Box Berukuran Besar & Proporsional:**
+   - **Wadah Ikon Menu & Kartu Materi (*Icon Box*)**: Berukuran besar dan tegas `width: clamp(66px, 9vh, 88px); height: clamp(66px, 9vh, 88px); border-radius: 22px;` dengan ukuran emoji/ikon di dalamnya `font-size: clamp(34px, 4.8vh, 46px);`.
+   - **Ikon Navigasi & Tombol Kontrol**: Berada di dalam lingkaran `clamp(40px, 5.2vh, 48px)` dengan font/ikon `clamp(18px, 2.3vh, 23px)`.
+   - **Ikon Status & Evaluasi (Piala, Bintang, Ceklis)**: Berukuran `clamp(44px, 6vh, 60px)` dengan bayangan lembut.
 
-4. **Ilustrasi & Grafis SVG Vektor Berukuran JUMBO (*Full-Canvas Dominant SVG*):**
-   - **DILARANG membuat SVG kecil/sempit seperti perangko!**
-   - **Dimensi Kanvas SVG**: Pada halaman materi dan simulator interaktif, diagram SVG **WAJIB MENJADI SAJIAN VISUAL UTAMA YANG MENGISI RUANG**, dengan tinggi minimal `height: clamp(320px, 48vh, 520px);` dan lebar `100%` (atau `min-width: 550px`).
-   - **Garis & Objek Tebal**: Elemen organ, lintasan gerak, dan pembuluh darah harus digambar tebal (`stroke-width: 5px` sampai `9px`) dengan warna gradien yang cerah dan tajam. Partikel dan sel eritrosit berukuran besar (`r="14"` sampai `r="24"`).
-   - **Label Teks SVG Ekstra Besar & Bebas Tabrakan (*Zero Overlapping*)**:
-     - Ukuran teks di dalam SVG wajib besar: `font-size="16px"` sampai `font-size="20px"` dengan `font-weight="800"`.
-     - Setiap teks WAJIB dibungkus dalam kotak label berlatar belakang kontras (*pill badge* dengan `<rect rx="8" fill="white" stroke="..." stroke-width="2"/>`) dengan koordinat yang terpisah aman dari garis anatomi sehingga terbaca sempurna dari baris belakang kelas.
+4. **Ilustrasi & Grafis SVG Vektor Berukuran Dominan (*Balanced Dominant SVG*):**
+   - **Dimensi Kanvas SVG**: Pada halaman materi dan simulator interaktif, diagram SVG tetap menjadi sajian visual utama yang proporsional, dengan tinggi `height: clamp(260px, 38vh, 420px);` dan lebar `100%` agar pas tanpa mendorong konten keluar layar.
+   - **Garis & Objek Jelas**: Elemen organ, lintasan gerak, dan pembuluh darah digambar dengan ketebalan proporsional (`stroke-width: 4px` sampai `6px`) dan warna gradien tajam. Partikel dan sel eritrosit berukuran `r="12"` sampai `r="18"`.
+   - **Label Teks SVG Jelas & Bebas Tabrakan (*Zero Overlapping*)**:
+     - Ukuran teks di dalam SVG: `font-size="13px"` sampai `font-size="15px"` dengan `font-weight="800"`.
+     - Setiap label teks WAJIB dibungkus dalam kotak label berlatar putih kontras (*pill badge* dengan `<rect rx="6" fill="white" stroke="..." stroke-width="1.5"/>`) dengan koordinat terpisah rapi dari garis gambar.
    - **Animasi SVG Halus**: Beri animasi SVG seperti aliran garis putus-putus (`stroke-dashoffset`), partikel mengalir, dan denyut organ (*pulsing scale*).
 
-5. **Gambar & Foto Berukuran Dominan & Terlihat Jelas:**
-   - **Logo Sekolah**: Tinggi minimal `clamp(55px, 7.5vh, 75px)`, ditempatkan pada kapsul resmi di header atas dengan bayangan lembut.
-   - **Foto Profil Guru**: Berbentuk lingkaran besar berdiameter `clamp(150px, 22vh, 210px)` dengan bingkai border bergradien tebal `5px–6px` dan efek bayangan timbul (*drop-shadow*).
-   - **Kartu Materi / Media Bergambar**: Area visual (gambar atau diagram SVG) harus mengambil porsi minimal 50% dari total area kartu, bukan thumbnail kecil di sudut.
+5. **Gambar & Foto Berukuran Dominan (Pertahankan Ukuran Bagus):**
+   - **Logo Sekolah**: Tinggi `clamp(50px, 6.8vh, 68px)`, ditempatkan pada kapsul resmi di header atas dengan bayangan lembut.
+   - **Foto Profil Guru**: Berbentuk lingkaran berdiameter `clamp(130px, 18vh, 175px)` dengan bingkai border bergradien tebal `4px–5px` dan efek bayangan timbul (*drop-shadow*).
+   - **Kartu Materi Bergambar**: Area visual (gambar atau diagram SVG) mengambil porsi seimbang 40%–50% dari tinggi kartu.
 
-6. **Tipografi Ekstra Besar & Tebal Ramah Proyektor Layar Lebar (*High Legibility*):**
-   - Standar ukuran teks harus terbaca sangat jelas dari kejauhan:
-     - **Judul Sampul Utama**: `clamp(3.5rem, 8.5vw, 6.8rem)` dengan efek stiker 3D teks berlapis (*white outline shadow* 5px–6px tebal).
-     - **Subjudul Sampul**: `clamp(1.8rem, 4.2vw, 3.6rem)` tebal dan kontras.
-     - **Judul Halaman / Title Bar**: `clamp(20px, 2.8vh, 28px)` font tebal di dalam pill badge bergradien.
-     - **Judul Kartu Menu & Kartu Konsep**: `clamp(18px, 2.5vh, 25px)` dengan `font-weight: 800`.
-     - **Teks Penjelasan & Paragraf Konten**: `clamp(16px, 2.1vh, 20px)` dengan `font-weight: 600` dan line-height `1.6` (DILARANG teks tipis berukuran 12px–13px).
-     - **Tombol & Pilihan Jawaban Soal**: `clamp(16px, 2.2vh, 22px)` dengan padding lega `14px 28px` agar nyaman dioperasikan di layar sentuh proyektor atau tablet.
-     - **Tombol "▶ MULAI" Raksasa**: Lingkaran play `clamp(68px, 9.5vh, 92px)` dengan ikon play `clamp(32px, 4.5vh, 46px)`, dan teks label `clamp(30px, 4.8vh, 48px)`.
+6. **Tipografi Proporsional Ramah Proyektor (Skala 80% Nyaman Bebas Scroll):**
+   - Ukuran teks diatur pas, nyaman dibaca, dan tidak memicu scroll vertikal:
+     - **Judul Sampul Utama**: `clamp(2.8rem, 6.8vw, 5.2rem)` dengan efek stiker 3D teks berlapis (*white outline shadow* 4px–5px).
+     - **Subjudul Sampul**: `clamp(1.4rem, 3.2vw, 2.6rem)` tebal dan kontras.
+     - **Judul Halaman / Title Bar**: `clamp(16px, 2.2vh, 22px)` font tebal di dalam pill badge bergradien.
+     - **Judul Kartu Menu & Kartu Konsep**: `clamp(15px, 2vh, 20px)` dengan `font-weight: 800`.
+     - **Teks Penjelasan & Paragraf Konten**: `clamp(13px, 1.65vh, 16px)` dengan `font-weight: 600` dan line-height `1.45–1.5` (ringkas, padat, dan pas dalam wadah).
+     - **Tombol & Pilihan Jawaban Soal**: `clamp(13.5px, 1.8vh, 17px)` dengan padding lega `10px 22px`.
+     - **Tombol "▶ MULAI"**: Lingkaran play `clamp(60px, 8.5vh, 80px)` dengan ikon play `clamp(26px, 3.6vh, 36px)`, dan teks label `clamp(24px, 3.8vh, 36px)`.
 
 7. **Audio Efek Suara 100% Offline (Web Audio API Synthesizer):**
    - Dilarang keras menautkan file MP3 eksternal. Gunakan osilator sintetis bawaan browser untuk efek klik tombol (*frequency sweep* 450Hz–880Hz), bunyi jawaban benar (akor nada ceria C-E-G), bunyi salah (nada rendah), serta simulasi desah tarikan dan hembusan napas.
@@ -80,18 +79,18 @@
 
 ## 📱 BAGIAN 3 — STRUKTUR HALAMAN (7 MODUL PEMBELAJARAN LENGKAP)
 
-Aplikasi dibangun dengan arsitektur Single Page Application (SPA) 7 halaman berpindah instan:
+Aplikasi dibangun dengan arsitektur Single Page Application (SPA) 7 halaman berpindah instan (semua halaman pas 1 pandangan layar tanpa scroll):
 
 ### 1. Halaman 1: Sampul / Beranda (*Cover*)
-- **Header Atas**: Kapsul resmi nama sekolah (`SMP Negeri 2 Lamongan`), logo sekolah berukuran besar (tinggi min. 55–75px), dinas pendidikan, serta badge kemitraan (*Kurikulum Merdeka*, *Fase D*).
-- **Bagian Tengah Terfokus**: Judul materi raksasa dengan gaya stiker 3D kontras, subtopik penjelasan berhuruf besar, dan **Tombol "▶ MULAI" Raksasa** berputar/berdenyut (*pulsing glow effect*) yang memikat perhatian siswa. Tidak perlu ada kartu samping yang mengganggu konsentrasi.
+- **Header Atas**: Kapsul resmi nama sekolah (`SMP Negeri 2 Lamongan`), logo sekolah berukuran tinggi 50–68px, dinas pendidikan, serta badge kemitraan (*Kurikulum Merdeka*, *Fase D*).
+- **Bagian Tengah Terfokus**: Judul materi besar dengan gaya stiker 3D kontras, subtopik penjelasan berhuruf proporsional, dan **Tombol "▶ MULAI"** berpendar (*pulsing glow effect*) yang memikat perhatian siswa tanpa kartu samping.
 - **Footer Bawah**: Baris identitas guru pengembang media dan semboyan pembelajaran dengan font jelas.
 
 ### 2. Halaman 2: Menu Utama (*Dashboard Modul*)
-- Grid 6 kartu menu berdimensi 3D dengan **wadah ikon jumbo (72–96px)**, judul tegas berukuran `18–25px`, dan deskripsi singkat terbaca jelas:
+- Grid 6 kartu menu berdimensi 3D dengan **wadah ikon besar (66–88px)**, judul tegas berukuran `15–20px`, dan deskripsi singkat terbaca jelas:
   1. 🎯 **Tujuan Pembelajaran** (Capaian & indikator kompetensi siswa)
   2. 🧬 **Materi Pembelajaran** (Eksplorasi organ/konsep kunci dengan diagram)
-  3. 🌬️ **Simulator Interaktif** (Laboratorium virtual makro & mikro ber-SVG besar)
+  3. 🌬️ **Simulator Interaktif** (Laboratorium virtual makro & mikro ber-SVG)
   4. 📝 **Evaluasi Multi-Format** (3 jenis instrumen uji pemahaman berbobot 100 poin)
   5. 👨‍🏫 **Profil Guru** (Informasi fasilitator pendidik dengan foto besar)
   6. 💡 **Fakta Sains Menarik** (Pop-up interaktif info sains menakjubkan)
@@ -99,32 +98,32 @@ Aplikasi dibangun dengan arsitektur Single Page Application (SPA) 7 halaman berp
 
 ### 3. Halaman 3: Tujuan Pembelajaran
 - Menampilkan kartu tunggal **Tujuan Pembelajaran (TP)** yang luas, fokus, dan terpusat:
-  - Butir-butir indikator ketercapaian tujuan pembelajaran yang spesifik, operasional, dan terukur dengan tipografi besar `16–20px` dan ikon poin tematik.
-  - Tidak perlu petunjuk penggunaan media atau petunjuk praktikum agar siswa langsung fokus pada target kompetensi yang harus dikuasai.
+  - Butir-butir indikator ketercapaian tujuan pembelajaran yang spesifik, operasional, dan terukur dengan tipografi `13.5–16px` dan ikon poin tematik.
+  - Pas dalam 1 layar tanpa memicu scroll vertikal.
 
 ### 4. Halaman 4: Materi Inti Pembelajaran
 - Grid kartu konsep materi (minimal 4–6 organ/konsep pokok) dengan:
   - **Ikon dan ilustrasi grafis besar** di setiap kartu.
-  - Judul tebal berukuran besar `18–24px`.
-  - Paragraf penjelasan sains yang lugas, bermakna, dan mudah dibaca dari jarak jauh (font `16–19px`, `font-weight: 600`).
+  - Judul tebal berukuran `15–20px`.
+  - Paragraf penjelasan sains yang ringkas, bernas, dan mudah dipahami siswa (font `13–16px`, `font-weight: 600`).
 
 ### 5. Halaman 5: Simulator Interaktif (Makro & Mikro)
-- Memiliki tab pengalih tampilan dua mode dengan **kanvas diagram SVG berukuran JUMBO (tinggi 320–520px)**:
-  - **Mode Makro (Anatomi Mekanika)**: Diagram SVG vektor dinamis berukuran besar yang merespons tombol aksi *Tarik Napas* dan *Hembuskan Napas*, slider manual, selektor mekanisme pernapasan (perut vs dada), serta kartu telemetri angka real-time yang besar dan jelas.
-  - **Mode Mikro (Mikroskopik Pertukaran Gas)**: Infografis SVG penampang melintang berstruktur 3 zona terpisah berukuran besar (Rongga Alveolus, Membran Difusi Beranimasi, dan Pembuluh Kapiler Darah dengan sel eritrosit bersirkulasi tebal). Dilengkapi 4 kartu langkah penuntun yang jika diklik memberikan sorotan bercahaya (*glow highlight*) pada bagian diagram yang sesuai. Teks label SVG wajib menggunakan kotak badge berlatar belakang putih agar bebas dari tabrakan garis.
+- Memiliki tab pengalih tampilan dua mode dengan **kanvas diagram SVG proporsional (tinggi 260–420px)**:
+  - **Mode Makro (Anatomi Mekanika)**: Diagram SVG vektor dinamis yang merespons tombol aksi *Tarik Napas* dan *Hembuskan Napas*, slider manual, selektor mekanisme pernapasan, serta telemetri angka real-time.
+  - **Mode Mikro (Mikroskopik Pertukaran Gas)**: Infografis SVG penampang melintang 3 zona terpisah (Rongga Alveolus, Membran Difusi, dan Pembuluh Kapiler Darah dengan sel eritrosit bersirkulasi). Dilengkapi 4 kartu langkah penuntun yang jika diklik memberikan sorotan bercahaya (*glow highlight*). Teks label SVG menggunakan kotak badge putih (`13–15px`) agar bebas tabrakan garis dan tidak meluber keluar panggung.
 
 ### 6. Halaman 6: Evaluasi Multi-Format (Skor Total: 100 Poin)
-- Instrumen asesmen formatif 3 babak bertahap dengan tombol dan kartu jawaban berukuran besar:
-  - **Babak A (Pilihan Ganda - 30 Poin)**: 3 soal kontekstual dengan 4 opsi tombol besar ber-padding lega, umpan balik langsung (*instant feedback*), dan suara apresiasi.
-  - **Babak B (Menjodohkan Garis SVG - 40 Poin)**: 4 pasang kartu konsep kiri dan fungsi kanan berukuran besar. Siswa mengklik pasangan dan sistem otomatis menggambar garis SVG animasi interaktif yang menghubungkan keduanya.
-  - **Babak C (Benar / Salah - 30 Poin)**: 3 pernyataan analisis kritis dengan tombol besar **✓ BENAR** dan **✗ SALAH**.
-  - **Babak D (Rekapitulasi Skor)**: Piala animasi besar (min. 64px), nilai total (0–100), rincian poin per babak, kalimat motivasi pencapaian, dan tombol reset evaluasi.
+- Instrumen asesmen formatif 3 babak bertahap dengan tata letak pas 1 layar:
+  - **Babak A (Pilihan Ganda - 30 Poin)**: 3 soal kontekstual dengan 4 opsi tombol pas dan umpan balik langsung.
+  - **Babak B (Menjodohkan Garis SVG - 40 Poin)**: 4 pasang kartu konsep kiri dan fungsi kanan. Sistem otomatis menggambar garis SVG animasi interaktif penghubung keduanya.
+  - **Babak C (Benar / Salah - 30 Poin)**: 3 pernyataan analisis kritis dengan tombol **✓ BENAR** dan **✗ SALAH**.
+  - **Babak D (Rekapitulasi Skor)**: Piala animasi (min. 50px), nilai total (0–100), rincian poin per babak, dan tombol reset.
 
 ### 7. Halaman 7: Profil Guru Pengembang
-- Kartu profil luas memuat:
-  - **Foto guru berukuran besar** dalam bingkai lingkaran berdiameter `150–210px` dengan border gradien tebal dan bayangan timbul.
-  - Nama lengkap dan gelar dengan font besar tebal `24–30px`.
-  - Jabatan/tugas dan asal sekolah dengan font `16–18px`.
+- Kartu profil proporsional memuat:
+  - **Foto guru berukuran besar** dalam bingkai lingkaran berdiameter `130–175px` dengan border gradien dan bayangan timbul.
+  - Nama lengkap dan gelar dengan font tebal `20–24px`.
+  - Jabatan/tugas dan asal sekolah dengan font `13–15px`.
   - Kutipan motivasi inspiratif bagi pendidikan.
 
 ---
@@ -137,15 +136,14 @@ Salin teks berikut ini ke AI:
 > 
 > Syarat mutlak yang wajib dipenuhi:
 > 1. Gunakan warna cerah ceria dengan background `bg-ruang-kelas.jpg` ber-overlay putih transparan. `#stage-16-9` harus transparan tanpa border dan tanpa box-shadow agar menyatu dengan background.
-> 2. **SKALA VISUAL WAJIB JUMBO & BOLD (SANGAT PENTING)**:
->    - DILARANG menggunakan teks kecil (12–13px) atau ikon sempit.
->    - Huruf konten & penjelasan berukuran BESAR: minimal `16px–20px` (font-weight: 600) agar terbaca jelas dari baris belakang kelas melalui proyektor.
->    - Judul sampul raksasa ber-outline putih stiker 3D tebal (`clamp(3.5rem, 8.5vw, 6.8rem)`).
->    - Wadah ikon (*icon-box*) berukuran besar `72px–96px` dengan ukuran emoji/ikon `38px–54px`.
->    - Ilustrasi grafis dan diagram SVG pada materi dan simulator WAJIB BERUKURAN BESAR (tinggi kanvas SVG minimal `320px–520px`, lebar penuh 100%) dengan garis organ tebal (`stroke-width: 5px–8px`), partikel besar, dan label teks SVG berukuran `16px–20px` di dalam kotak label (*pill badge*) berlatar putih agar bebas tumpang tindih.
->    - Foto profil guru berukuran besar (lingkaran diameter `150px–210px`) dan logo sekolah tinggi minimal `55px–75px`.
-> 3. Halaman cover terpusat dengan tombol '▶ MULAI' raksasa berpendar tanpa kartu samping.
-> 4. Halaman 3 berjudul 'Tujuan Pembelajaran' (kartu terpusat memuat indikator TP Kurikulum Merdeka, tanpa petunjuk penggunaan media/praktikum).
-> 5. Efek suara 100% menggunakan Web Audio API sintetis (tanpa file MP3 eksternal).
-> 6. Evaluasi formatif 3 jenis (Pilihan Ganda + Menjodohkan Garis SVG interaktif + Benar/Salah) berbobot total 100 poin dengan tombol-tombol pilihan berukuran besar.
-> 7. Deteksi nama file gambar/logo/foto yang dilampirkan pengguna secara otomatis dan sesuaikan referensi `src`-nya di kode HTML dengan penanganan error fallback."
+> 2. **PAS 1 PANDANGAN LAYAR 16:9 BEBAS SCROLL (SANGAT PENTING)**:
+>    - Seluruh tampilan dan konten di setiap modul wajib muat pas dalam panggung rasio 16:9 **tanpa memicu scrollbar vertikal**. Gunakan `overflow: hidden`, padding terukur (`clamp(10px, 1.8vh, 18px)`), dan tata letak flex/grid efisien.
+> 3. **SKALA TIPOGRAFI & ELEMEN VISUAL PROPORSIONAL**:
+>    - Ukuran teks proporsional dan tegas: baseline panggung `15px`, konten & penjelasan `13px–16px` (`font-weight: 600`), judul kartu `15px–20px`, judul halaman `16px–22px`, judul sampul `clamp(2.8rem, 6.8vw, 5.2rem)`.
+>    - Pertahankan ukuran gambar dan elemen visual tetap besar & menarik: wadah ikon (*icon-box*) `66px–88px` (emoji `34px–46px`), foto profil guru diameter `130px–175px`, logo sekolah tinggi `50px–68px`.
+>    - Ilustrasi SVG diagram pada materi dan simulator dibuat dominan (tinggi `260px–420px`, lebar 100%) dengan garis organ tebal (`stroke-width: 4px–6px`) dan label teks SVG berukuran `13px–15px` di dalam kotak label (*pill badge*) putih agar bebas tumpang tindih teks dan tidak meluber keluar layar.
+> 4. Halaman cover terpusat dengan tombol '▶ MULAI' berpendar tanpa kartu samping.
+> 5. Halaman 3 berjudul 'Tujuan Pembelajaran' (kartu terpusat memuat indikator TP Kurikulum Merdeka, tanpa petunjuk penggunaan media/praktikum).
+> 6. Efek suara 100% menggunakan Web Audio API sintetis (tanpa file MP3 eksternal).
+> 7. Evaluasi formatif 3 jenis (Pilihan Ganda + Menjodohkan Garis SVG interaktif + Benar/Salah) berbobot total 100 poin.
+> 8. Deteksi nama file gambar/logo/foto yang dilampirkan pengguna secara otomatis dan sesuaikan referensi `src`-nya di kode HTML dengan penanganan error fallback."
