@@ -120,20 +120,15 @@
       width: min(100vw - 16px, calc((100vh - 16px) * 16 / 9));
       height: min(100vh - 16px, calc((100vw - 16px) * 9 / 16));
       aspect-ratio: 16 / 9;
-      background:
-        radial-gradient(circle at 10% 15%, rgba(224, 247, 250, 0.7) 0%, transparent 40%),
-        radial-gradient(circle at 90% 85%, rgba(254, 243, 199, 0.6) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(240, 253, 250, 0.5) 0%, transparent 70%),
-        #ffffff;
-      border-radius: clamp(16px, 2.2vw, 28px);
-      box-shadow:
-        0 24px 60px -10px rgba(15, 23, 42, 0.32),
-        0 0 0 3.5px rgba(0, 172, 193, 0.45);
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      border: none;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       transition: transform 0.25s ease;
-      font-size: calc(15px * var(--font-scale, 1.0));
+      font-size: calc(17px * var(--font-scale, 1.0));
     }
 
     @media (max-width: 860px) {
@@ -142,6 +137,8 @@
         height: 100vh;
         border-radius: 0;
         box-shadow: none;
+        background: transparent;
+        border: none;
       }
     }
 
@@ -153,7 +150,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      padding: clamp(16px, 2.8vh, 28px) clamp(20px, 3.2vw, 36px);
+      padding: clamp(14px, 2.4vh, 26px) clamp(18px, 2.8vw, 36px);
       display: none;
       flex-direction: column;
       justify-content: space-between;
@@ -174,34 +171,35 @@
     .page::-webkit-scrollbar-thumb { background: rgba(0, 172, 193, 0.3); border-radius: 999px; }
 
     /* ============================================================
-       INTEGRATED MENU HEADER & BRANDING (No separate cover)
+       TOP HEADER LOGOS & BADGES BAR (Cover Page)
        ============================================================ */
-    .menu-header-bar {
+    .cover-top-bar {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 2px solid rgba(0, 172, 193, 0.3);
-      padding: clamp(6px, 1vh, 10px) clamp(12px, 1.8vw, 20px);
-      border-radius: var(--radius-pill);
-      box-shadow: var(--shadow-sm);
-      backdrop-filter: blur(10px);
+      gap: 16px;
       z-index: 30;
+      position: relative;
     }
 
     .school-capsule {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2.5px solid rgba(0, 172, 193, 0.35);
+      padding: 8px 22px 8px 12px;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(8px);
     }
 
     .school-logo {
-      height: clamp(34px, 4.6vh, 46px);
+      height: clamp(48px, 6.8vh, 68px);
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.12));
+      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.16));
     }
 
     .school-text {
@@ -211,7 +209,7 @@
     }
 
     .school-sup {
-      font-size: clamp(8.5px, 1.05vh, 10.5px);
+      font-size: clamp(10.5px, 1.35vh, 13px);
       font-weight: 700;
       color: var(--teal-dark);
       letter-spacing: 0.8px;
@@ -220,64 +218,252 @@
 
     .school-name {
       font-family: var(--font-heading);
-      font-size: clamp(12px, 1.5vh, 16px);
+      font-size: clamp(16px, 2.2vh, 22px);
       font-weight: 800;
       color: var(--text-dark);
-      letter-spacing: 0.2px;
+      letter-spacing: 0.3px;
     }
 
-    .menu-center-title {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, rgba(224, 247, 250, 0.8) 0%, rgba(240, 253, 244, 0.8) 100%);
-      border: 1.5px solid rgba(0, 172, 193, 0.35);
-      padding: 5px 18px;
-      border-radius: var(--radius-pill);
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: clamp(12px, 1.55vh, 15.5px);
-      color: var(--teal-deep);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .menu-teacher-capsule {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      padding: 3px 12px 3px 4px;
-      border-radius: var(--radius-pill);
-      cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .menu-teacher-capsule:hover {
-      border-color: var(--teal);
-      transform: translateY(-2px);
-      background: #f0fdfa;
-    }
-
-    .menu-teacher-avatar {
-      width: clamp(26px, 3.6vh, 32px);
-      height: clamp(26px, 3.6vh, 32px);
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--teal);
-    }
-
-    .menu-teacher-name {
-      font-size: clamp(10.5px, 1.25vh, 12.5px);
-      font-weight: 700;
-      color: var(--text-dark);
-    }
-
-    .menu-header-right {
+    .partner-capsules-group {
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .partner-badge {
+      font-size: clamp(12px, 1.55vh, 15px);
+      font-weight: 800;
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.3px;
+      border: 2px solid transparent;
+      backdrop-filter: blur(8px);
+    }
+
+    .badge-merdeka {
+      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+      color: var(--blue-dark);
+      border-color: #7dd3fc;
+    }
+
+    .badge-bermutu {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      color: #92400e;
+      border-color: #fcd34d;
+    }
+
+    .badge-fase-d {
+      background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%);
+      color: var(--teal-deep);
+      border-color: #5eead4;
+    }
+
+    /* ============================================================
+       COVER CENTER BRANDING (Rich 3D Sticker Outline)
+       ============================================================ */
+    .cover-layout-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: auto 0;
+      padding: clamp(6px, 1.2vh, 16px) 0;
+      text-align: center;
+    }
+
+    .cover-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      max-width: 960px;
+    }
+
+    .cover-topic-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(90deg, rgba(224, 247, 250, 0.96), rgba(240, 253, 250, 0.96));
+      border: 2.5px solid rgba(0, 172, 193, 0.45);
+      padding: 8px 26px;
+      border-radius: var(--radius-pill);
+      font-size: clamp(13px, 1.65vh, 16.5px);
+      font-weight: 800;
+      color: var(--teal-deep);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: clamp(8px, 1.4vh, 16px);
+      letter-spacing: 1.2px;
+    }
+
+    .topic-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 12px var(--teal);
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+    }
+
+    /* Signature Sticker Outline Text Shadow */
+    .cover-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.06;
+      margin-bottom: clamp(10px, 1.8vh, 18px);
+    }
+
+    .cover-title-main {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(3rem, 7.6vw, 6.2rem);
+      color: #00838F;
+      text-shadow:
+        -4.5px -4.5px 0 #ffffff,
+        4.5px -4.5px 0 #ffffff,
+        -4.5px 4.5px 0 #ffffff,
+        4.5px 4.5px 0 #ffffff,
+        -6px 0 0 #ffffff,
+        6px 0 0 #ffffff,
+        0 -6px 0 #ffffff,
+        0 6px 0 #ffffff,
+        0 14px 34px rgba(0, 96, 100, 0.35);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .cover-title-sub {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(1.6rem, 4vw, 3.4rem);
+      color: #E65100;
+      text-shadow:
+        -4px -4px 0 #ffffff,
+        4px -4px 0 #ffffff,
+        -4px 4px 0 #ffffff,
+        4px 4px 0 #ffffff,
+        -5px 0 0 #ffffff,
+        5px 0 0 #ffffff,
+        0 -5px 0 #ffffff,
+        0 5px 0 #ffffff,
+        0 10px 26px rgba(230, 81, 0, 0.3);
+      letter-spacing: 1.5px;
+      margin-top: clamp(6px, 1vh, 12px);
+    }
+
+    .cover-subtitle-pill {
+      display: inline-block;
+      background: linear-gradient(135deg, #00ACC1 0%, #00838F 100%);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(15px, 2.1vh, 22px);
+      padding: clamp(8px, 1.2vh, 12px) clamp(28px, 4vw, 54px);
+      border-radius: var(--radius-pill);
+      box-shadow: 0 10px 28px rgba(0, 172, 193, 0.45);
+      border: 4px solid #ffffff;
+      letter-spacing: 1px;
+      margin-top: clamp(6px, 1vh, 12px);
+    }
+
+    /* ============================================================
+       THE ICONIC "▶ MULAI" BUTTON (KEMENDIKDASMEN STYLE)
+       ============================================================ */
+    .btn-mulai {
+      margin-top: clamp(18px, 3vh, 38px);
+      display: inline-flex;
+      align-items: center;
+      gap: clamp(14px, 2vw, 24px);
+      padding: clamp(10px, 1.5vh, 15px) clamp(44px, 5.2vw, 75px) clamp(10px, 1.5vh, 15px) clamp(12px, 1.6vw, 20px);
+      background: #ffffff;
+      border: 5px solid var(--teal);
+      border-radius: var(--radius-pill);
+      box-shadow:
+        0 16px 44px rgba(0, 172, 193, 0.48),
+        0 0 0 5px rgba(255, 255, 255, 0.95);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+      animation: pulseGlow 2.5s infinite ease-in-out;
+    }
+
+    .btn-mulai:hover {
+      transform: translateY(-6px) scale(1.07);
+      box-shadow:
+        0 24px 56px rgba(0, 172, 193, 0.7),
+        0 0 0 6.5px rgba(255, 255, 255, 1);
+    }
+
+    .btn-mulai:active {
+      transform: translateY(1px) scale(0.97);
+    }
+
+    .btn-mulai .play-icon-circle {
+      width: clamp(62px, 8.8vh, 85px);
+      height: clamp(62px, 8.8vh, 85px);
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00ACC1 0%, #00838F 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(28px, 3.8vh, 40px);
+      padding-left: 5px;
+      box-shadow: 0 5px 20px rgba(0, 172, 193, 0.6);
+      border: 3.5px solid #ffffff;
+    }
+
+    .btn-mulai .mulai-label {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(28px, 4.4vh, 44px);
+      color: var(--teal-deep);
+      letter-spacing: 3.5px;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow:
+          0 16px 44px rgba(0, 172, 193, 0.48),
+          0 0 0 5px rgba(255, 255, 255, 0.95);
+      }
+      50% {
+        box-shadow:
+          0 20px 56px rgba(0, 172, 193, 0.75),
+          0 0 0 8px rgba(77, 208, 225, 0.85);
+      }
+    }
+
+    /* Cover Footer Bar */
+    .cover-bottom-bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: clamp(10px, 1.5vh, 18px);
+      border-top: 2px solid rgba(0, 172, 193, 0.25);
+      font-size: clamp(12.5px, 1.55vh, 15px);
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .cover-bottom-bar strong {
+      color: var(--text-dark);
+      font-weight: 800;
     }
 
     /* ============================================================
@@ -288,7 +474,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 16px;
       z-index: 35;
       position: relative;
     }
@@ -296,16 +482,16 @@
     .nav-left-group {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .nav-pill-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: #ffffff;
-      border: 2px solid rgba(0, 172, 193, 0.35);
-      padding: 4px 16px 4px 6px;
+      border: 2.5px solid rgba(0, 172, 193, 0.35);
+      padding: 6px 20px 6px 8px;
       border-radius: var(--radius-pill);
       box-shadow: var(--shadow-sm);
       cursor: pointer;
@@ -317,7 +503,7 @@
       background: #f0fdfa;
       border-color: var(--teal);
       transform: translateY(-2px) scale(1.04);
-      box-shadow: 0 6px 18px rgba(0, 172, 193, 0.3);
+      box-shadow: 0 8px 22px rgba(0, 172, 193, 0.35);
     }
 
     .nav-pill-btn:active {
@@ -325,24 +511,24 @@
     }
 
     .nav-circle-icon {
-      width: clamp(34px, 4.4vh, 42px);
-      height: clamp(34px, 4.4vh, 42px);
+      width: clamp(40px, 5.2vh, 50px);
+      height: clamp(40px, 5.2vh, 50px);
       border-radius: 50%;
       background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: clamp(14px, 1.8vh, 18px);
+      font-size: clamp(18px, 2.3vh, 23px);
       font-weight: 800;
-      border: 2px solid #ffffff;
-      box-shadow: 0 2px 8px rgba(0, 172, 193, 0.4);
+      border: 2.5px solid #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 172, 193, 0.45);
     }
 
     .nav-btn-text {
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: clamp(12px, 1.4vh, 15px);
+      font-size: clamp(14px, 1.7vh, 17.5px);
       color: var(--teal-deep);
       letter-spacing: 0.8px;
     }
@@ -352,14 +538,14 @@
       color: #ffffff;
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: clamp(15px, 2.2vh, 22px);
-      padding: clamp(6px, 1vh, 10px) clamp(20px, 2.6vw, 36px);
+      font-size: clamp(17px, 2.4vh, 25px);
+      padding: clamp(8px, 1.2vh, 12px) clamp(24px, 3vw, 42px);
       border-radius: var(--radius-pill);
-      border: 3px solid #ffffff;
-      box-shadow: 0 6px 18px rgba(0, 172, 193, 0.35);
+      border: 3.5px solid #ffffff;
+      box-shadow: 0 8px 24px rgba(0, 172, 193, 0.4);
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       letter-spacing: 0.5px;
       white-space: nowrap;
     }
@@ -370,11 +556,11 @@
       background: rgba(255, 255, 255, 0.95);
       border: 2px solid rgba(0, 172, 193, 0.35);
       border-radius: 14px;
-      padding: 4px 8px;
-      gap: 3px;
+      padding: 6px 12px;
+      gap: 4px;
       box-shadow: var(--shadow-sm);
       backdrop-filter: blur(8px);
-      min-width: clamp(130px, 12vw, 165px);
+      min-width: clamp(145px, 13.5vw, 185px);
     }
 
     .qc-row {
@@ -385,22 +571,22 @@
     }
 
     .qc-label-icon {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
       color: var(--teal-dark);
-      width: 20px;
+      width: 22px;
       text-align: center;
     }
 
     .qc-btn {
-      width: clamp(24px, 3vh, 28px);
-      height: clamp(24px, 3vh, 28px);
+      width: clamp(26px, 3.2vh, 32px);
+      height: clamp(26px, 3.2vh, 32px);
       border-radius: 50%;
       border: 1.5px solid #ffffff;
       background: var(--teal);
       color: #ffffff;
       font-weight: 800;
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1;
       display: flex;
       align-items: center;
@@ -453,9 +639,9 @@
     .menu-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: clamp(12px, 1.8vw, 22px);
+      gap: clamp(16px, 2.2vw, 26px);
       width: 100%;
-      max-width: 1140px;
+      max-width: 1180px;
       margin: 0 auto;
     }
 
@@ -463,7 +649,7 @@
       background: rgba(255, 255, 255, 0.95);
       border: 2.5px solid rgba(0, 172, 193, 0.25);
       border-radius: var(--radius-lg);
-      padding: clamp(14px, 2.4vh, 26px) clamp(12px, 1.6vw, 20px);
+      padding: clamp(18px, 2.6vh, 28px) clamp(16px, 2vw, 24px);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -489,30 +675,30 @@
     }
 
     .menu-tile-icon-box {
-      width: clamp(56px, 8vh, 76px);
-      height: clamp(56px, 8vh, 76px);
-      border-radius: 22px;
+      width: clamp(66px, 9.2vh, 90px);
+      height: clamp(66px, 9.2vh, 90px);
+      border-radius: 26px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: clamp(30px, 4.4vh, 44px);
-      margin-bottom: clamp(8px, 1.2vh, 14px);
+      font-size: clamp(34px, 4.8vh, 50px);
+      margin-bottom: clamp(10px, 1.4vh, 16px);
       box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
-      border: 2px solid rgba(255, 255, 255, 0.8);
+      border: 2.5px solid rgba(255, 255, 255, 0.85);
     }
 
     .menu-tile-title {
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: clamp(15px, 2vh, 20px);
+      font-size: clamp(17px, 2.3vh, 23px);
       color: var(--text-dark);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .menu-tile-desc {
-      font-size: clamp(11.5px, 1.4vh, 13.5px);
+      font-size: clamp(13px, 1.6vh, 15.5px);
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.45;
       font-weight: 500;
     }
 
@@ -522,9 +708,9 @@
       right: 12px;
       background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
       color: #ffffff;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 800;
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: var(--radius-pill);
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -546,19 +732,19 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding-top: clamp(6px, 1vh, 12px);
-      border-top: 1.5px solid rgba(0, 172, 193, 0.18);
+      padding-top: clamp(8px, 1.2vh, 14px);
+      border-top: 2px solid rgba(0, 172, 193, 0.2);
     }
 
     .btn-nav-action {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: clamp(8px, 1.2vh, 12px) clamp(20px, 2.5vw, 30px);
+      gap: 12px;
+      padding: clamp(10px, 1.4vh, 15px) clamp(24px, 3vw, 38px);
       border-radius: var(--radius-pill);
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: clamp(12px, 1.5vh, 15px);
+      font-size: clamp(14px, 1.75vh, 18px);
       cursor: pointer;
       user-select: none;
       transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -601,29 +787,29 @@
     .sim-mode-tabs-bar {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.92);
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.95);
       border: 2px solid rgba(0, 172, 193, 0.3);
       border-radius: var(--radius-pill);
-      padding: 3px 6px;
+      padding: 4px 8px;
       box-shadow: var(--shadow-sm);
       margin: 0 auto clamp(6px, 1vh, 10px) auto;
       width: fit-content;
     }
 
     .sim-mode-tab-btn {
-      padding: 5px 16px;
+      padding: 7px 20px;
       border-radius: var(--radius-pill);
       border: none;
       background: transparent;
       font-family: var(--font-heading);
-      font-size: clamp(11px, 1.35vh, 13px);
+      font-size: clamp(13px, 1.6vh, 15.5px);
       font-weight: 700;
       color: var(--text-muted);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
@@ -678,20 +864,20 @@
       left: 12px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: rgba(255, 255, 255, 0.95);
       border: 2px solid rgba(0, 172, 193, 0.3);
-      padding: 3px 12px;
+      padding: 5px 16px;
       border-radius: var(--radius-pill);
-      font-size: clamp(10.5px, 1.25vh, 12.5px);
+      font-size: clamp(12px, 1.45vh, 15px);
       font-weight: 800;
       box-shadow: var(--shadow-sm);
       z-index: 10;
     }
 
     .status-dot {
-      width: 9px;
-      height: 9px;
+      width: 11px;
+      height: 11px;
       border-radius: 50%;
     }
 
@@ -762,18 +948,18 @@
     .sim-slider-box {
       width: 100%;
       background: rgba(255, 255, 255, 0.95);
-      border: 1.5px solid rgba(0, 172, 193, 0.3);
+      border: 2px solid rgba(0, 172, 193, 0.35);
       border-radius: var(--radius-md);
-      padding: 6px 12px;
+      padding: 8px 14px;
       margin-top: 8px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       box-shadow: var(--shadow-sm);
     }
 
     .sim-slider-label {
-      font-size: clamp(10px, 1.15vh, 12px);
+      font-size: clamp(12px, 1.45vh, 14.5px);
       font-weight: 800;
       color: var(--teal-deep);
       white-space: nowrap;
@@ -781,6 +967,7 @@
 
     .sim-range-input {
       flex: 1;
+      height: 8px;
       accent-color: var(--teal);
       cursor: pointer;
     }
@@ -788,25 +975,25 @@
     /* Mechanism & Activity Selectors */
     .mech-row {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       width: 100%;
     }
 
     .mech-btn {
       flex: 1;
-      padding: 6px 8px;
+      padding: clamp(8px, 1.2vh, 12px) clamp(10px, 1.2vw, 14px);
       border-radius: var(--radius-md);
       border: 2px solid #cbd5e1;
       background: #ffffff;
       font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: clamp(11px, 1.3vh, 13px);
+      font-weight: 800;
+      font-size: clamp(13px, 1.6vh, 15.5px);
       color: var(--text-body);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
       transition: all 0.2s;
     }
 
@@ -819,18 +1006,18 @@
 
     .activity-row {
       display: flex;
-      gap: 6px;
+      gap: 8px;
       width: 100%;
     }
 
     .act-preset-btn {
       flex: 1;
-      padding: 4px 6px;
+      padding: clamp(6px, 1vh, 9px) 10px;
       border-radius: var(--radius-pill);
-      border: 1.5px solid #e2e8f0;
+      border: 2px solid #e2e8f0;
       background: #ffffff;
       font-family: var(--font-body);
-      font-size: clamp(9.5px, 1.1vh, 11.5px);
+      font-size: clamp(11.5px, 1.4vh, 13.5px);
       font-weight: 700;
       color: var(--text-muted);
       cursor: pointer;
@@ -850,42 +1037,42 @@
       background: #ffffff;
       border: 2px solid rgba(0, 172, 193, 0.25);
       border-radius: var(--radius-md);
-      padding: clamp(8px, 1.2vh, 12px);
+      padding: clamp(10px, 1.4vh, 14px);
       box-shadow: var(--shadow-sm);
     }
 
     .telemetry-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: clamp(6px, 0.8vw, 8px);
-      margin-top: 6px;
+      gap: clamp(8px, 1vw, 12px);
+      margin-top: 8px;
     }
 
     .tel-item {
       background: #f8fafc;
       border: 1.5px solid #e2e8f0;
-      border-radius: 10px;
-      padding: clamp(4px, 0.8vh, 8px) 8px;
+      border-radius: 12px;
+      padding: clamp(6px, 1vh, 10px) 12px;
     }
 
     .tel-label {
-      font-size: clamp(9.5px, 1.05vh, 11px);
+      font-size: clamp(11.5px, 1.35vh, 13px);
       color: var(--text-muted);
-      font-weight: 600;
+      font-weight: 700;
       display: block;
     }
 
     .tel-value {
-      font-size: clamp(11.5px, 1.35vh, 13.5px);
+      font-size: clamp(13px, 1.6vh, 15.5px);
       color: var(--text-dark);
       font-weight: 800;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     /* Organ Interactive Hotspot Tooltips */
     .organ-tag {
       cursor: pointer;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 800;
       fill: var(--teal-deep);
       background: rgba(255,255,255,0.9);
@@ -893,7 +1080,7 @@
     }
     .organ-tag:hover {
       fill: #0284c7;
-      font-size: 11px;
+      font-size: 12px;
     }
 
     /* Micro Alveolus View Specifics */
@@ -901,7 +1088,7 @@
       background: radial-gradient(circle at center, #ffffff 40%, #fff1f2 100%);
       border: 2.5px solid rgba(244, 63, 94, 0.35);
       border-radius: var(--radius-lg);
-      padding: clamp(10px, 1.4vh, 16px);
+      padding: clamp(8px, 1.2vh, 14px);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -909,26 +1096,45 @@
       position: relative;
       box-shadow: var(--shadow-md);
       height: 100%;
-      min-height: 275px;
+      min-height: 280px;
+    }
+
+    @keyframes dashMoveDown {
+      0% { stroke-dashoffset: 24; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes dashMoveUp {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 24; }
+    }
+    .flow-dash-down {
+      animation: dashMoveDown 1.2s linear infinite;
+    }
+    .flow-dash-up {
+      animation: dashMoveUp 1.2s linear infinite;
+    }
+    .highlight-step-glow {
+      filter: drop-shadow(0 0 12px rgba(225, 29, 72, 0.6)) !important;
+      transition: filter 0.3s ease;
     }
 
     .micro-steps-bar {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       width: 100%;
     }
 
     .micro-step-card {
       background: #ffffff;
       border: 2px solid #e2e8f0;
-      border-radius: 12px;
-      padding: clamp(6px, 1vh, 9px) 12px;
+      border-radius: 14px;
+      padding: clamp(8px, 1.2vh, 12px) 14px;
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .micro-step-card:hover {
@@ -948,19 +1154,19 @@
     .eval-stages-bar {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: #f1f5f9;
-      padding: 4px;
+      padding: 5px;
       border-radius: var(--radius-pill);
-      border: 1.5px solid #e2e8f0;
+      border: 2px solid #e2e8f0;
     }
 
     .eval-stage-btn {
-      padding: 5px 16px;
+      padding: 6px 18px;
       border-radius: var(--radius-pill);
       font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: clamp(11.5px, 1.35vh, 13.5px);
+      font-weight: 800;
+      font-size: clamp(13px, 1.55vh, 15px);
       color: var(--text-muted);
       border: none;
       background: transparent;
@@ -979,10 +1185,10 @@
       color: #ffffff;
       font-family: var(--font-heading);
       font-weight: 800;
-      font-size: clamp(12px, 1.4vh, 14px);
-      padding: 6px 18px;
+      font-size: clamp(14px, 1.7vh, 17px);
+      padding: 7px 22px;
       border-radius: var(--radius-pill);
-      border: 2px solid #ffffff;
+      border: 2.5px solid #ffffff;
       box-shadow: var(--shadow-sm);
     }
 
@@ -991,28 +1197,28 @@
       background: #ffffff;
       border: 2.5px solid rgba(0, 172, 193, 0.35);
       border-radius: var(--radius-lg);
-      padding: clamp(14px, 2vh, 22px);
+      padding: clamp(16px, 2.2vh, 26px);
       box-shadow: var(--shadow-md);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 250px;
+      min-height: 260px;
     }
 
     .match-col {
       width: 44%;
       display: flex;
       flex-direction: column;
-      gap: clamp(8px, 1.2vh, 12px);
+      gap: clamp(10px, 1.4vh, 14px);
       z-index: 20;
     }
 
     .match-card {
       background: #f8fafc;
       border: 2px solid #cbd5e1;
-      border-radius: 14px;
-      padding: clamp(8px, 1.2vh, 12px) clamp(10px, 1.2vw, 14px);
-      font-size: clamp(12px, 1.4vh, 14px);
+      border-radius: 16px;
+      padding: clamp(10px, 1.4vh, 15px) clamp(12px, 1.4vw, 18px);
+      font-size: clamp(13.5px, 1.65vh, 16.5px);
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
@@ -1079,48 +1285,100 @@
     <div id="stage-16-9">
 
       <!-- ============================================================
-           BERANDA / MENU UTAMA TERPADU (INTEGRASI LATAR BELAKANG)
+           PAGE 1: COVER (KEMENDIKDASMEN / FESTIVAL MPI PROFESSIONAL STANDARD)
            ============================================================ -->
-      <section id="page-menu" class="page active">
+      <section id="page-cover" class="page active">
         
-        <!-- Header Terpadu: Identitas Sekolah, Judul Mapel & Aksesibilitas -->
-        <div class="menu-header-bar">
+        <!-- Header Logos Bar -->
+        <div class="cover-top-bar">
+          <!-- Left: SMPN 2 Lamongan Official Capsule -->
           <div class="school-capsule">
-            <img src="logo-smp-negeri-2-lamongan.png" alt="Logo Sekolah" class="school-logo" onerror="this.style.display='none';">
+            <img src="logo-smp-negeri-2-lamongan.png" alt="Logo SMPN 2 Lamongan" class="school-logo" onerror="this.style.display='none';">
             <div class="school-text">
-              <span class="school-sup">Dinas Pendidikan Kabupaten Lamongan</span>
+              <span class="school-sup">DINAS PENDIDIKAN KABUPATEN LAMONGAN</span>
               <span class="school-name">SMP NEGERI 2 LAMONGAN</span>
             </div>
           </div>
 
-          <div class="menu-center-title">
-            <span>🫁</span>
-            <span>SISTEM PERNAPASAN MANUSIA</span>
-            <span style="font-size: clamp(9.5px, 1.15vh, 11.5px); color: var(--text-muted); font-weight: 700; border-left: 1.5px solid rgba(0,172,193,0.35); padding-left: 8px;">IPA Fase D / Kelas VIII</span>
+          <!-- Right: Official Partnership & Curriculum Badges -->
+          <div class="partner-capsules-group">
+            <span class="partner-badge badge-merdeka">📘 Kurikulum Merdeka</span>
+            <span class="partner-badge badge-bermutu">✨ #PendidikanBermutu</span>
+            <span class="partner-badge badge-fase-d">🎯 Fase D · Kelas VIII</span>
           </div>
+        </div>
 
-          <div class="menu-header-right">
-            <!-- Quick Controls -->
-            <div class="quick-controls-card" title="Pengaturan Tampilan & Huruf">
-              <div class="qc-row">
-                <span class="qc-label-icon">🔍</span>
-                <button class="qc-btn" onclick="changeZoom(-0.1)" title="Zoom Out">−</button>
-                <span class="qc-val-text" id="qc-zoom-text">100%</span>
-                <button class="qc-btn" onclick="changeZoom(0.1)" title="Zoom In">+</button>
-              </div>
-              <div class="qc-divider"></div>
-              <div class="qc-row">
-                <span class="qc-label-icon font-icon">Aa</span>
-                <button class="qc-btn font-btn" onclick="changeFont(-0.1)" title="Perkecil Huruf">A−</button>
-                <span class="qc-val-text" id="qc-font-text">100%</span>
-                <button class="qc-btn font-btn" onclick="changeFont(0.1)" title="Perbesar Huruf">A+</button>
-              </div>
+        <!-- Center Branding: Grand Focused Title & Action Button -->
+        <div class="cover-layout-grid">
+          
+          <div class="cover-center">
+            <div class="cover-topic-pill">
+              <span class="topic-dot"></span>
+              <span>MEDIA PEMBELAJARAN INTERAKTIF (MPI) IPA SMP</span>
             </div>
 
-            <!-- Mini Guru Pill -->
-            <div class="menu-teacher-capsule" onclick="playSound('click'); goToPage('profil')" title="Lihat Profil Guru Pengembang">
-              <img src="fanani.jpg" alt="Ach. Chanifuddin Fanani, S.Pd." class="menu-teacher-avatar" onerror="this.style.display='none';">
-              <span class="menu-teacher-name">Pak Fanani, S.Pd.</span>
+            <div class="cover-title">
+              <span class="cover-title-main">SISTEM PERNAPASAN</span>
+              <span class="cover-title-sub">Mekanisme & Organ Tubuh Manusia</span>
+            </div>
+
+            <div>
+              <span class="cover-subtitle-pill">IPA — Kelas VIII / Fase D</span>
+            </div>
+
+            <!-- The Iconic Kemendikdasmen "▶ MULAI" Button -->
+            <button class="btn-mulai" onclick="playSound('click'); goToPage('menu')" id="btn-cover-mulai" title="Klik untuk Mulai Pembelajaran">
+              <div class="play-icon-circle">▶</div>
+              <span class="mulai-label">MULAI</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Bottom Credit Bar -->
+        <div class="cover-bottom-bar">
+          <div>
+            👨‍🏫 Guru Pengembang: <strong>Ach. Chanifuddin Fanani, S.Pd.</strong> · SMP Negeri 2 Lamongan
+          </div>
+          <div>
+            🌟 Pembelajaran Bermakna · <strong>Kurikulum Merdeka Fase D</strong>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ============================================================
+           PAGE 2: MENU UTAMA (DASHBOARD KARTU 3D)
+           ============================================================ -->
+      <section id="page-menu" class="page">
+        
+        <div class="top-nav-bar">
+          <div class="nav-left-group">
+            <button class="nav-pill-btn" onclick="playSound('click'); goToPage('cover')" title="Kembali ke Halaman Sampul">
+              <span class="nav-circle-icon">🏠</span>
+              <span class="nav-btn-text">BERANDA</span>
+            </button>
+          </div>
+
+          <div class="title-bar-pill">
+            <span>🫁</span>
+            <span>Menu Utama Pembelajaran</span>
+          </div>
+
+          <!-- Quick Accessibility Card -->
+          <div class="quick-controls-card" title="Pengaturan Tampilan & Huruf">
+            <div class="qc-row">
+              <span class="qc-label-icon">🔍</span>
+              <button class="qc-btn" onclick="changeZoom(-0.1)" title="Zoom Out">−</button>
+              <span class="qc-val-text" id="qc-zoom-text">100%</span>
+              <button class="qc-btn" onclick="changeZoom(0.1)" title="Zoom In">+</button>
+            </div>
+            <div class="qc-divider"></div>
+            <div class="qc-row">
+              <span class="qc-label-icon font-icon">Aa</span>
+              <button class="qc-btn font-btn" onclick="changeFont(-0.1)" title="Perkecil Huruf">A−</button>
+              <span class="qc-val-text" id="qc-font-text">100%</span>
+              <button class="qc-btn font-btn" onclick="changeFont(0.1)" title="Perbesar Huruf">A+</button>
             </div>
           </div>
         </div>
@@ -1131,9 +1389,9 @@
             
             <!-- Tile 1 -->
             <div class="menu-tile" onclick="playSound('click'); goToPage('petunjuk')">
-              <div class="menu-tile-icon-box" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">📖</div>
-              <h3 class="menu-tile-title">Petunjuk & TP</h3>
-              <p class="menu-tile-desc">Tujuan pembelajaran dan petunjuk petualangan belajar</p>
+              <div class="menu-tile-icon-box" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">🎯</div>
+              <h3 class="menu-tile-title">Tujuan Pembelajaran</h3>
+              <p class="menu-tile-desc">Capaian pembelajaran dan alur petualangan sains</p>
             </div>
 
             <!-- Tile 2 -->
@@ -1201,55 +1459,46 @@
 
           <div class="title-bar-pill">
             <span>🎯</span>
-            <span>Petunjuk & Capaian Pembelajaran</span>
+            <span>Tujuan Pembelajaran</span>
           </div>
 
           <div></div>
         </div>
 
         <div class="content-workspace">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 24px); width: 100%; max-width: 1100px; margin: auto;">
+          <div style="width: 100%; max-width: 880px; margin: auto;">
             
-            <!-- Box 1: Tujuan Pembelajaran -->
-            <div style="background: #ffffff; border: 2.5px solid #bae6fd; border-radius: var(--radius-lg); padding: clamp(14px, 2.2vh, 22px); box-shadow: var(--shadow-sm);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                <span style="font-size: 26px;">🎯</span>
-                <h3 style="font-family: var(--font-heading); font-size: clamp(15px, 2vh, 19px); font-weight: 800; color: var(--blue-dark);">Tujuan Pembelajaran (TP)</h3>
+            <!-- Kartu Tunggal: Tujuan Pembelajaran (Fokus Penuh) -->
+            <div style="background: #ffffff; border: 2.5px solid #bae6fd; border-radius: var(--radius-lg); padding: clamp(20px, 3vh, 32px) clamp(22px, 3vw, 36px); box-shadow: var(--shadow-md);">
+              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #f0fdfa; padding-bottom: 14px; margin-bottom: 18px;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                  <span style="font-size: 38px;">🎯</span>
+                  <div>
+                    <h3 style="font-family: var(--font-heading); font-size: clamp(20px, 2.6vh, 26px); font-weight: 800; color: var(--blue-dark);">Tujuan Pembelajaran (TP)</h3>
+                    <span style="font-size: clamp(12px, 1.4vh, 14px); color: var(--text-muted); font-weight: 600;">Capaian Pembelajaran IPA Fase D · SMP Kelas VIII</span>
+                  </div>
+                </div>
+                <span style="background: #e0f2fe; color: var(--blue-dark); font-weight: 800; font-size: clamp(11.5px, 1.35vh, 13.5px); padding: 5px 14px; border-radius: var(--radius-pill); border: 1.5px solid #bae6fd;">
+                  📘 Kurikulum Merdeka
+                </span>
               </div>
-              <ul style="display: flex; flex-direction: column; gap: 10px; font-size: clamp(12px, 1.4vh, 14px); line-height: 1.5; color: var(--text-body); font-weight: 500;">
-                <li style="display: flex; gap: 8px;">
-                  <strong style="color: var(--teal);">✓</strong>
-                  <span>Mengidentifikasi urutan organ pernapasan mulai dari rongga hidung hingga kantung alveolus.</span>
-                </li>
-                <li style="display: flex; gap: 8px;">
-                  <strong style="color: var(--teal);">✓</strong>
-                  <span>Menganalisis mekanisme pernapasan dada dan perut (fase inspirasi dan ekspirasi).</span>
-                </li>
-                <li style="display: flex; gap: 8px;">
-                  <strong style="color: var(--teal);">✓</strong>
-                  <span>Membuktikan Hukum Boyle dalam pergerakan diafragma dan perubahan tekanan udara paru-paru.</span>
-                </li>
-              </ul>
-            </div>
 
-            <!-- Box 2: Petunjuk Eksplorasi -->
-            <div style="background: #ffffff; border: 2.5px solid #99f6e4; border-radius: var(--radius-lg); padding: clamp(14px, 2.2vh, 22px); box-shadow: var(--shadow-sm);">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                <span style="font-size: 26px;">💡</span>
-                <h3 style="font-family: var(--font-heading); font-size: clamp(15px, 2vh, 19px); font-weight: 800; color: var(--teal-deep);">Petunjuk Praktikum Virtual</h3>
-              </div>
-              <ul style="display: flex; flex-direction: column; gap: 10px; font-size: clamp(12px, 1.4vh, 14px); line-height: 1.5; color: var(--text-body); font-weight: 500;">
-                <li style="display: flex; gap: 8px;">
-                  <strong style="color: var(--orange);">1.</strong>
-                  <span>Pelajari 6 organ pada modul <strong>Organ Pernapasan</strong> beserta fungsi spesifiknya.</span>
+              <ul style="display: flex; flex-direction: column; gap: clamp(12px, 1.6vh, 16px); font-size: clamp(14px, 1.75vh, 16.5px); line-height: 1.55; color: var(--text-body); font-weight: 500;">
+                <li style="display: flex; gap: 12px; align-items: flex-start;">
+                  <strong style="color: var(--teal); font-size: 20px; line-height: 1.3;">✓</strong>
+                  <span><strong>Mengidentifikasi Struktur Organ:</strong> Menjelaskan urutan dan fungsi organ sistem pernapasan manusia mulai dari rongga hidung, trakea, paru-paru, hingga kantung alveolus.</span>
                 </li>
-                <li style="display: flex; gap: 8px;">
-                  <strong style="color: var(--orange);">2.</strong>
-                  <span>Buka <strong>Simulator Paru-Paru</strong> dan klik <em>Tarik Napas</em> atau <em>Hembuskan</em> untuk mengamati kontraksi diafragma.</span>
+                <li style="display: flex; gap: 12px; align-items: flex-start;">
+                  <strong style="color: var(--teal); font-size: 20px; line-height: 1.3;">✓</strong>
+                  <span><strong>Menganalisis Mekanisme Pernapasan:</strong> Membedakan fase inspirasi (tarik napas) dan ekspirasi (hembus napas) pada pernapasan dada dan pernapasan perut.</span>
                 </li>
-                <li style="display: flex; gap: 8px;">
-                  <strong style="color: var(--orange);">3.</strong>
-                  <span>Kerjakan <strong>Evaluasi Multi-Format</strong> (Pilihan Ganda, Menjodohkan Garis Interaktif, dan Benar/Salah).</span>
+                <li style="display: flex; gap: 12px; align-items: flex-start;">
+                  <strong style="color: var(--teal); font-size: 20px; line-height: 1.3;">✓</strong>
+                  <span><strong>Membuktikan Prinsip Fisiologi (Hukum Boyle):</strong> Menganalisis keterkaitan antara kontraksi sekat diafragma, perubahan volume rongga dada, dan penurunan tekanan intrapulmonal.</span>
+                </li>
+                <li style="display: flex; gap: 12px; align-items: flex-start;">
+                  <strong style="color: var(--teal); font-size: 20px; line-height: 1.3;">✓</strong>
+                  <span><strong>Menganalisis Pertukaran Gas di Alveolus:</strong> Menjelaskan mekanisme difusi gas O₂ dan CO₂ menembus membran respirasi serta pengikatan hemoglobin pada sel darah merah.</span>
                 </li>
               </ul>
             </div>
@@ -1290,70 +1539,70 @@
         </div>
 
         <div class="content-workspace">
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.4vw, 16px); width: 100%; max-width: 1150px; margin: auto;">
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.8vw, 22px); width: 100%; max-width: 1180px; margin: auto;">
             
             <!-- Organ 1 -->
-            <div style="background: #ffffff; border: 2px solid #bae6fd; border-radius: var(--radius-md); padding: clamp(10px, 1.5vh, 16px); box-shadow: var(--shadow-sm);">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-size: 24px;">👃</span>
-                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(13px, 1.6vh, 16px); color: var(--blue-dark);">1. Rongga Hidung</h4>
+            <div style="background: #ffffff; border: 2.5px solid #bae6fd; border-radius: var(--radius-lg); padding: clamp(14px, 1.8vh, 20px); box-shadow: var(--shadow-sm);">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <span style="font-size: 32px;">👃</span>
+                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(15.5px, 1.95vh, 19.5px); color: var(--blue-dark);">1. Rongga Hidung</h4>
               </div>
-              <p style="font-size: clamp(11px, 1.3vh, 13px); color: var(--text-body); line-height: 1.45; font-weight: 500;">
+              <p style="font-size: clamp(12.5px, 1.5vh, 15px); color: var(--text-body); line-height: 1.5; font-weight: 500;">
                 Pintu masuk utama udara. Mengandung <strong>rambut hidung</strong> (menyaring debu), <strong>lendir</strong> (menjebak kuman), dan <strong>konka</strong> (menghangatkan & melembapkan udara).
               </p>
             </div>
 
             <!-- Organ 2 -->
-            <div style="background: #ffffff; border: 2px solid #99f6e4; border-radius: var(--radius-md); padding: clamp(10px, 1.5vh, 16px); box-shadow: var(--shadow-sm);">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-size: 24px;">🎋</span>
-                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(13px, 1.6vh, 16px); color: var(--teal-deep);">2. Batang Trakea</h4>
+            <div style="background: #ffffff; border: 2.5px solid #99f6e4; border-radius: var(--radius-lg); padding: clamp(14px, 1.8vh, 20px); box-shadow: var(--shadow-sm);">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <span style="font-size: 32px;">🎋</span>
+                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(15.5px, 1.95vh, 19.5px); color: var(--teal-deep);">2. Batang Trakea</h4>
               </div>
-              <p style="font-size: clamp(11px, 1.3vh, 13px); color: var(--text-body); line-height: 1.45; font-weight: 500;">
+              <p style="font-size: clamp(12.5px, 1.5vh, 15px); color: var(--text-body); line-height: 1.5; font-weight: 500;">
                 Pipa tulang rawan berbentuk huruf C. Dilapisi <strong>sel epitel bersilia</strong> yang selalu bergetar menyapu partikel kotoran ke arah luar melalui batuk atau bersin.
               </p>
             </div>
 
             <!-- Organ 3 -->
-            <div style="background: #ffffff; border: 2px solid #a7f3d0; border-radius: var(--radius-md); padding: clamp(10px, 1.5vh, 16px); box-shadow: var(--shadow-sm);">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-size: 24px;">🌿</span>
-                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(13px, 1.6vh, 16px); color: var(--emerald);">3. Bronkus & Cabangnya</h4>
+            <div style="background: #ffffff; border: 2.5px solid #a7f3d0; border-radius: var(--radius-lg); padding: clamp(14px, 1.8vh, 20px); box-shadow: var(--shadow-sm);">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <span style="font-size: 32px;">🌿</span>
+                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(15.5px, 1.95vh, 19.5px); color: var(--emerald);">3. Bronkus & Cabangnya</h4>
               </div>
-              <p style="font-size: clamp(11px, 1.3vh, 13px); color: var(--text-body); line-height: 1.45; font-weight: 500;">
+              <p style="font-size: clamp(12.5px, 1.5vh, 15px); color: var(--text-body); line-height: 1.5; font-weight: 500;">
                 Percabangan trakea ke paru-paru kanan dan kiri. Bercabang lagi menjadi saluran yang semakin halus (*bronkiolus*) menyerupai ranting pohon.
               </p>
             </div>
 
             <!-- Organ 4 -->
-            <div style="background: #ffffff; border: 2px solid #fecdd3; border-radius: var(--radius-md); padding: clamp(10px, 1.5vh, 16px); box-shadow: var(--shadow-sm);">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-size: 24px;">🍇</span>
-                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(13px, 1.6vh, 16px); color: var(--rose);">4. Alveolus (Kantung Gas)</h4>
+            <div style="background: #ffffff; border: 2.5px solid #fecdd3; border-radius: var(--radius-lg); padding: clamp(14px, 1.8vh, 20px); box-shadow: var(--shadow-sm);">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <span style="font-size: 32px;">🍇</span>
+                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(15.5px, 1.95vh, 19.5px); color: var(--rose);">4. Alveolus (Kantung Gas)</h4>
               </div>
-              <p style="font-size: clamp(11px, 1.3vh, 13px); color: var(--text-body); line-height: 1.45; font-weight: 500;">
+              <p style="font-size: clamp(12.5px, 1.5vh, 15px); color: var(--text-body); line-height: 1.5; font-weight: 500;">
                 Kantung udara mikroskopis tipis yang diselimuti kapiler darah. Tempat terjadinya <strong>difusi gas</strong>: Oksigen (O₂) diikat sel darah dan CO₂ dilepas ke udara.
               </p>
             </div>
 
             <!-- Organ 5 -->
-            <div style="background: #ffffff; border: 2px solid #ddd6fe; border-radius: var(--radius-md); padding: clamp(10px, 1.5vh, 16px); box-shadow: var(--shadow-sm);">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-size: 24px;">🫁</span>
-                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(13px, 1.6vh, 16px); color: var(--violet);">5. Paru-Paru (Pulmo)</h4>
+            <div style="background: #ffffff; border: 2.5px solid #ddd6fe; border-radius: var(--radius-lg); padding: clamp(14px, 1.8vh, 20px); box-shadow: var(--shadow-sm);">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <span style="font-size: 32px;">🫁</span>
+                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(15.5px, 1.95vh, 19.5px); color: var(--violet);">5. Paru-Paru (Pulmo)</h4>
               </div>
-              <p style="font-size: clamp(11px, 1.3vh, 13px); color: var(--text-body); line-height: 1.45; font-weight: 500;">
+              <p style="font-size: clamp(12.5px, 1.5vh, 15px); color: var(--text-body); line-height: 1.5; font-weight: 500;">
                 Organ elastis dalam rongga dada. Paru-paru kanan terdiri atas 3 gelambir (lobus), sedangkan paru-paru kiri memiliki 2 gelambir untuk memberikan ruang bagi posisi jantung.
               </p>
             </div>
 
             <!-- Organ 6 -->
-            <div style="background: #ffffff; border: 2px solid #fed7aa; border-radius: var(--radius-md); padding: clamp(10px, 1.5vh, 16px); box-shadow: var(--shadow-sm);">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-size: 24px;">🛡️</span>
-                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(13px, 1.6vh, 16px); color: var(--orange);">6. Otot Diafragma</h4>
+            <div style="background: #ffffff; border: 2.5px solid #fed7aa; border-radius: var(--radius-lg); padding: clamp(14px, 1.8vh, 20px); box-shadow: var(--shadow-sm);">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <span style="font-size: 32px;">🛡️</span>
+                <h4 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(15.5px, 1.95vh, 19.5px); color: var(--orange);">6. Otot Diafragma</h4>
               </div>
-              <p style="font-size: clamp(11px, 1.3vh, 13px); color: var(--text-body); line-height: 1.45; font-weight: 500;">
+              <p style="font-size: clamp(12.5px, 1.5vh, 15px); color: var(--text-body); line-height: 1.5; font-weight: 500;">
                 Sekat otot berbentuk kubah antara rongga dada dan perut. Otot utama yang memicu ekspansi rongga dada secara otomatis saat menarik dan menghembuskan napas.
               </p>
             </div>
@@ -1363,7 +1612,7 @@
 
         <div class="bottom-nav-bar">
           <button class="btn-nav-action btn-nav-secondary" onclick="playSound('click'); goToPage('petunjuk')">
-            ← Petunjuk
+            ← Tujuan Pembelajaran
           </button>
           <button class="btn-nav-action btn-nav-primary" onclick="playSound('click'); goToPage('simulasi')">
             Buka Simulator Interaktif →
@@ -1396,12 +1645,12 @@
           </div>
 
           <!-- Sound Toggle & Auto Button -->
-          <div style="display:flex; align-items:center; gap:8px;">
-            <button onclick="toggleAudioMute()" id="btn-audio-toggle" style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; background:#f0fdfa; border:2px solid #99f6e4; border-radius:var(--radius-pill); font-family:var(--font-heading); font-weight:700; font-size:12px; color:var(--teal-deep); cursor:pointer; box-shadow:var(--shadow-sm);">
-              <span id="audio-icon">🔊</span> <span id="audio-label">Suara: ON</span>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <button onclick="toggleAudioMute()" id="btn-audio-toggle" style="display:inline-flex; align-items:center; gap:8px; padding:8px 16px; background:#f0fdfa; border:2px solid #99f6e4; border-radius:var(--radius-pill); font-family:var(--font-heading); font-weight:800; font-size:clamp(12.5px, 1.5vh, 14.5px); color:var(--teal-deep); cursor:pointer; box-shadow:var(--shadow-sm); transition:transform 0.2s;">
+              <span id="audio-icon" style="font-size:16px;">🔊</span> <span id="audio-label">Suara: ON</span>
             </button>
-            <button onclick="toggleAutoBreathe()" id="auto-breathe-btn" style="display:inline-flex; align-items:center; gap:6px; padding:6px 16px; background:#ecfdf5; border:2px solid #6ee7b7; border-radius:var(--radius-pill); font-family:var(--font-heading); font-weight:800; font-size:12px; color:#065f46; cursor:pointer; box-shadow:var(--shadow-sm);">
-              <span>▶</span> <span id="auto-label">Napas Otomatis: OFF</span>
+            <button onclick="toggleAutoBreathe()" id="auto-breathe-btn" style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; background:#ecfdf5; border:2px solid #6ee7b7; border-radius:var(--radius-pill); font-family:var(--font-heading); font-weight:800; font-size:clamp(12.5px, 1.5vh, 14.5px); color:#065f46; cursor:pointer; box-shadow:var(--shadow-sm); transition:transform 0.2s;">
+              <span style="font-size:14px;">▶</span> <span id="auto-label">Napas Otomatis: OFF</span>
             </button>
           </div>
         </div>
@@ -1418,11 +1667,11 @@
                 <div class="sim-status-pill">
                   <span id="gas-dot" class="status-dot" style="background: var(--rose);"></span>
                   <span id="gas-label">Fase Ekspirasi: Udara Keluar (CO₂)</span>
-                  <span id="rate-badge" style="background:#f1f5f9; padding:2px 8px; border-radius:999px; font-size:10px; margin-left:4px; color:var(--text-muted);">14 bpm</span>
+                  <span id="rate-badge" style="background:#f1f5f9; padding:3px 10px; border-radius:999px; font-size:11.5px; margin-left:6px; color:var(--text-muted); font-weight:800;">14 bpm</span>
                 </div>
 
-                <!-- Interactive SVG Canvas -->
-                <svg viewBox="0 0 300 300" style="width: clamp(200px, 26vh, 260px); height: auto; overflow: visible;">
+                <!-- Interactive SVG Canvas (Lebih Besar & Jelas) -->
+                <svg viewBox="0 0 300 300" style="width: clamp(240px, 31vh, 320px); height: auto; overflow: visible;">
                   <!-- Batang Trakea -->
                   <rect x="142" y="10" width="16" height="70" rx="4" fill="#CBD5E1" stroke="#94A3B8" stroke-width="2" class="organ-hotspot" onclick="showOrganTip('trakea')"/>
                   <!-- Cincin Tulang Rawan -->
@@ -1433,9 +1682,9 @@
 
                   <!-- Partikel Aliran Gas -->
                   <g id="air-particles">
-                    <circle cx="150" cy="65" r="4.5" fill="#F43F5E" class="particle-up"/>
-                    <circle cx="150" cy="45" r="4.5" fill="#F43F5E" class="particle-up"/>
-                    <circle cx="150" cy="25" r="4.5" fill="#F43F5E" class="particle-up"/>
+                    <circle cx="150" cy="65" r="5" fill="#F43F5E" class="particle-up"/>
+                    <circle cx="150" cy="45" r="5" fill="#F43F5E" class="particle-up"/>
+                    <circle cx="150" cy="25" r="5" fill="#F43F5E" class="particle-up"/>
                   </g>
 
                   <!-- Percabangan Bronkus -->
@@ -1454,11 +1703,11 @@
                   <path id="diaphragm-svg" class="diaphragm-path organ-hotspot" d="M 30,265 Q 150,205 270,265" fill="#E11D48" opacity="0.9" onclick="showOrganTip('diafragma')"/>
                   
                   <!-- Organ Labels -->
-                  <text x="150" y="295" font-size="11" font-weight="800" fill="#475569" text-anchor="middle" font-family="Fredoka">SEKAT DIAFRAGMA (KLIK)</text>
+                  <text x="150" y="295" font-size="13" font-weight="800" fill="#334155" text-anchor="middle" font-family="Fredoka">SEKAT DIAFRAGMA (KLIK)</text>
                 </svg>
 
                 <!-- Organ Tip Popover -->
-                <div id="organ-tip-banner" style="display:none; width:94%; background:#ffffff; border:1.5px solid var(--teal); border-radius:var(--radius-md); padding:4px 10px; font-size:11px; color:var(--teal-deep); text-align:center; box-shadow:var(--shadow-sm); margin-top:4px;">
+                <div id="organ-tip-banner" style="display:none; width:94%; background:#ffffff; border:2px solid var(--teal); border-radius:var(--radius-md); padding:6px 12px; font-size:clamp(12px, 1.4vh, 14px); color:var(--teal-deep); text-align:center; box-shadow:var(--shadow-sm); margin-top:4px;">
                   <span id="organ-tip-text"></span>
                 </div>
 
@@ -1466,29 +1715,29 @@
                 <div class="sim-slider-box">
                   <span class="sim-slider-label">Tarik Diafragma Manual:</span>
                   <input type="range" id="sim-manual-slider" min="0" max="100" value="0" oninput="onManualSliderInput(this.value)" class="sim-range-input" title="Geser untuk mengontraksikan diafragma">
-                  <span id="slider-pct-label" style="font-weight:800; font-size:11px; color:var(--teal-deep); min-width:32px;">0%</span>
+                  <span id="slider-pct-label" style="font-weight:800; font-size:13.5px; color:var(--teal-deep); min-width:38px;">0%</span>
                 </div>
               </div>
 
               <!-- Right Column: Mechanics, Activity Presets, Buttons & Telemetry -->
-              <div style="display:flex; flex-direction:column; gap:clamp(6px, 1vh, 10px);">
+              <div style="display:flex; flex-direction:column; gap:clamp(8px, 1.2vh, 12px);">
                 
                 <!-- Mechanism Selector -->
                 <div>
-                  <div style="font-size:11px; font-weight:700; color:var(--text-muted); margin-bottom:4px;">Pilih Jenis Mekanisme Pernapasan:</div>
+                  <div style="font-size:clamp(12px, 1.45vh, 14px); font-weight:800; color:var(--text-dark); margin-bottom:5px;">Pilih Jenis Mekanisme Pernapasan:</div>
                   <div class="mech-row">
                     <button class="mech-btn active" id="mech-perut" onclick="setBreatheMech('perut')">
-                      <span>🫁</span> <span>Pernapasan Perut (Diafragma)</span>
+                      <span style="font-size:18px;">🫁</span> <span>Pernapasan Perut (Diafragma)</span>
                     </button>
                     <button class="mech-btn" id="mech-dada" onclick="setBreatheMech('dada')">
-                      <span>🦴</span> <span>Pernapasan Dada (Otot Rusuk)</span>
+                      <span style="font-size:18px;">🦴</span> <span>Pernapasan Dada (Otot Rusuk)</span>
                     </button>
                   </div>
                 </div>
 
                 <!-- Activity Presets -->
                 <div>
-                  <div style="font-size:11px; font-weight:700; color:var(--text-muted); margin-bottom:4px;">Ritme Aktivitas Fisik Tubuh:</div>
+                  <div style="font-size:clamp(12px, 1.45vh, 14px); font-weight:800; color:var(--text-dark); margin-bottom:5px;">Ritme Aktivitas Fisik Tubuh:</div>
                   <div class="activity-row">
                     <button class="act-preset-btn active" id="act-santai" onclick="setActivityPreset('santai')">
                       🛌 Santai (14 bpm · 500 mL)
@@ -1503,21 +1752,21 @@
                 </div>
 
                 <!-- Action Inhale & Exhale Buttons -->
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                  <button onclick="setBreatheMode('inhale')" id="btn-inhale" style="padding:clamp(6px, 1vh, 10px); background:#ffffff; border:2.5px solid #38bdf8; border-radius:var(--radius-md); font-family:var(--font-heading); font-weight:800; font-size:clamp(12px, 1.4vh, 14px); color:var(--blue-dark); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:var(--shadow-sm); transition:all 0.2s;">
-                    <span>📥</span> <span>Tarik Napas (Inspirasi)</span>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                  <button onclick="setBreatheMode('inhale')" id="btn-inhale" style="padding:clamp(10px, 1.4vh, 14px); background:#ffffff; border:2.5px solid #38bdf8; border-radius:var(--radius-md); font-family:var(--font-heading); font-weight:800; font-size:clamp(14px, 1.7vh, 17px); color:var(--blue-dark); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:var(--shadow-sm); transition:all 0.2s;">
+                    <span style="font-size:18px;">📥</span> <span>Tarik Napas (Inspirasi)</span>
                   </button>
 
-                  <button onclick="setBreatheMode('exhale')" id="btn-exhale" style="padding:clamp(6px, 1vh, 10px); background:#fff1f2; border:2.5px solid #f43f5e; border-radius:var(--radius-md); font-family:var(--font-heading); font-weight:800; font-size:clamp(12px, 1.4vh, 14px); color:#9f1239; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:var(--shadow-sm); transition:all 0.2s;">
-                    <span>📤</span> <span>Hembuskan (Ekspirasi)</span>
+                  <button onclick="setBreatheMode('exhale')" id="btn-exhale" style="padding:clamp(10px, 1.4vh, 14px); background:#fff1f2; border:2.5px solid #f43f5e; border-radius:var(--radius-md); font-family:var(--font-heading); font-weight:800; font-size:clamp(14px, 1.7vh, 17px); color:#9f1239; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:var(--shadow-sm); transition:all 0.2s;">
+                    <span style="font-size:18px;">📤</span> <span>Hembuskan (Ekspirasi)</span>
                   </button>
                 </div>
 
                 <!-- Telemetry Dashboard -->
                 <div class="telemetry-card">
-                  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1.5px solid #f1f5f9; padding-bottom:4px;">
-                    <strong style="font-family:var(--font-heading); font-size:clamp(11.5px, 1.35vh, 13.5px); color:var(--text-dark);">📊 Instrumen Telemetri Real-Time</strong>
-                    <span id="telemetry-badge" style="background:#ffe4e6; color:#9f1239; padding:2px 8px; border-radius:var(--radius-pill); font-size:10.5px; font-weight:800;">Ekspirasi Aktif</span>
+                  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1.5px solid #f1f5f9; padding-bottom:6px;">
+                    <strong style="font-family:var(--font-heading); font-size:clamp(13px, 1.6vh, 16px); color:var(--text-dark);">📊 Instrumen Telemetri Real-Time</strong>
+                    <span id="telemetry-badge" style="background:#ffe4e6; color:#9f1239; padding:3px 10px; border-radius:var(--radius-pill); font-size:11.5px; font-weight:800;">Ekspirasi Aktif</span>
                   </div>
 
                   <div class="telemetry-grid">
@@ -1541,8 +1790,8 @@
                 </div>
 
                 <!-- Hukum Boyle Callout -->
-                <div style="background:#f0fdfa; border:1.5px solid #99f6e4; border-radius:var(--radius-md); padding:clamp(6px, 0.9vh, 8px) 10px; font-size:clamp(10.5px, 1.2vh, 12px); color:var(--teal-deep); display:flex; gap:8px; align-items:center;">
-                  <span style="font-size:18px;">💡</span>
+                <div style="background:#f0fdfa; border:2px solid #99f6e4; border-radius:var(--radius-md); padding:clamp(8px, 1.2vh, 12px) 14px; font-size:clamp(12px, 1.45vh, 14.5px); color:var(--teal-deep); display:flex; gap:10px; align-items:center;">
+                  <span style="font-size:22px;">💡</span>
                   <div>
                     <strong>Hukum Boyle (P × V = Konstan):</strong> Saat rongga dada membesar, tekanan paru anjlok ke bawah 760 mmHg, sehingga udara luar terhisap masuk seketika!
                   </div>
@@ -1559,113 +1808,184 @@
               
               <!-- Left Column: Alveolus & Capillary Microscopic SVG -->
               <div class="alveolus-micro-box">
-                <div class="sim-status-pill" style="border-color:#f43f5e; background:rgba(255,255,255,0.96);">
+                <div class="sim-status-pill" style="border-color:#f43f5e; background:rgba(255,255,255,0.96); position:static; margin-bottom:6px;">
                   <span class="status-dot" style="background:#e11d48;"></span>
                   <span>Difusi Gas O₂ &amp; CO₂ di Dinding Alveolus</span>
                 </div>
 
-                <svg viewBox="0 0 320 280" style="width:clamp(230px, 30vh, 290px); height:auto; overflow:visible;">
-                  <!-- Rongga Alveolus (Kantung Udara) -->
-                  <circle cx="160" cy="115" r="72" fill="#E0F7FA" stroke="#00ACC1" stroke-width="4" opacity="0.9"/>
-                  <!-- Sel Epitel Pipih Alveolus -->
-                  <circle cx="160" cy="115" r="69" fill="none" stroke="#B2EBF2" stroke-width="2" stroke-dasharray="6 4"/>
+                <!-- Infografis Presisi Mikroskop Alveolus: Zero Overlapping & High Legibility -->
+                <svg viewBox="0 0 420 330" style="width: 100%; max-width: 440px; height: auto; overflow: visible;">
+                  <defs>
+                    <!-- Gradien Rongga Alveolus -->
+                    <linearGradient id="grad-alveolus" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#E0F7FA" stop-opacity="0.95"/>
+                      <stop offset="100%" stop-color="#B2EBF2" stop-opacity="0.5"/>
+                    </linearGradient>
+
+                    <!-- Gradien Kapiler Darah -->
+                    <linearGradient id="grad-capillary" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#EEF2FF" stop-opacity="0.95"/>
+                      <stop offset="50%" stop-color="#FDF2F8" stop-opacity="0.95"/>
+                      <stop offset="100%" stop-color="#FEF2F2" stop-opacity="0.95"/>
+                    </linearGradient>
+
+                    <!-- Marker Panah O2 (Biru Turun) -->
+                    <marker id="arrow-o2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                      <path d="M 0,0 L 6,3 L 0,6 Z" fill="#0284C7"/>
+                    </marker>
+
+                    <!-- Marker Panah CO2 (Merah Naik) -->
+                    <marker id="arrow-co2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                      <path d="M 0,0 L 6,3 L 0,6 Z" fill="#E11D48"/>
+                    </marker>
+
+                    <!-- Marker Panah Aliran Darah -->
+                    <marker id="arrow-blood" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
+                      <path d="M 0,0 L 5,2.5 L 0,5 Z" fill="#94A3B8"/>
+                    </marker>
+                  </defs>
+
+                  <!-- 1. AREA ATAS: RONGGA ALVEOLUS (KANTUNG UDARA) -->
+                  <path id="svg-alveolus-dome" d="M 20,132 C 20,38 100,14 210,14 C 320,14 400,38 400,132 Z" fill="url(#grad-alveolus)" stroke="#00ACC1" stroke-width="3"/>
                   
-                  <text x="160" y="95" font-family="Fredoka" font-size="12" font-weight="800" fill="#00838F" text-anchor="middle">RONGGA ALVEOLUS</text>
-                  <text x="160" y="112" font-family="Poppins" font-size="10" font-weight="700" fill="#0284C7" text-anchor="middle">Kaya O₂ (pO₂ = 104 mmHg)</text>
-                  <text x="160" y="127" font-family="Poppins" font-size="9.5" font-weight="600" fill="#64748B" text-anchor="middle">Membran Difusi Selapis Tipis</text>
+                  <!-- Dinding Epitel Pipih Alveolus (Garis Selapis Berbintik) -->
+                  <path d="M 22,132 C 22,41 101,17 210,17 C 319,17 398,41 398,132" fill="none" stroke="#00838F" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6"/>
 
-                  <!-- Pembuluh Kapiler Mengelilingi Alveolus -->
-                  <path d="M 20,230 C 90,230 90,195 160,195 C 230,195 230,230 300,230" fill="none" stroke="#FECDD3" stroke-width="26" stroke-linecap="round"/>
-                  <path d="M 20,230 C 90,230 90,195 160,195 C 230,195 230,230 300,230" fill="none" stroke="#F43F5E" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 4"/>
+                  <!-- Badge Judul Rongga Alveolus -->
+                  <rect x="125" y="24" width="170" height="26" rx="13" fill="#00838F"/>
+                  <text x="210" y="42" font-family="Fredoka" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">RONGGA ALVEOLUS</text>
                   
-                  <text x="50" y="258" font-family="Poppins" font-size="9.5" font-weight="800" fill="#9F1239">← Dari Jantung (Kaya CO₂)</text>
-                  <text x="270" y="258" font-family="Poppins" font-size="9.5" font-weight="800" fill="#059669" text-anchor="end">Ke Jantung (Kaya O₂) →</text>
+                  <!-- Label Parameter Tekanan Oksigen -->
+                  <rect x="105" y="58" width="210" height="22" rx="11" fill="rgba(255,255,255,0.94)" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text x="210" y="73" font-family="Poppins" font-size="11" font-weight="700" fill="#0284C7" text-anchor="middle">Kaya Oksigen (pO₂ = 104 mmHg)</text>
 
-                  <!-- Eritrosit 1 (Masuk: Warna Ungu-Biru, Kurang O₂, Banyak CO₂) -->
-                  <g class="erythrocyte-flow-1">
-                    <circle cx="55" cy="230" r="9" fill="#6366F1" stroke="#4338CA" stroke-width="1.5"/>
-                    <text x="55" y="233" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">CO₂</text>
+                  <!-- 2. AREA TENGAH: MEMBRAN DIFUSI RESPIRASI -->
+                  <!-- Strip Membran Difusi -->
+                  <rect x="15" y="138" width="390" height="14" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+                  <line x1="20" y1="145" x2="400" y2="145" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+                  <!-- Badge Label Membran di Sebelah Kiri -->
+                  <rect x="25" y="116" width="128" height="20" rx="6" fill="#FFFFFF" stroke="#64748B" stroke-width="1.5"/>
+                  <text x="89" y="130" font-family="Poppins" font-size="10" font-weight="800" fill="#475569" text-anchor="middle">Membran Difusi (±0,5 µm)</text>
+
+                  <!-- DIFUSI O2 (SISI KIRI-TENGAH) -->
+                  <g id="micro-o2-diff" class="gas-diff-flow">
+                    <!-- Keterangan Gerak -->
+                    <text x="175" y="86" font-family="Poppins" font-size="9.5" font-weight="800" fill="#0284C7" text-anchor="middle">Difusi O₂ Masuk ↓</text>
+                    <!-- Panah Aliran Gas O2 Turun -->
+                    <path class="flow-dash-down" d="M 175,92 L 175,172" stroke="#0284C7" stroke-width="3" stroke-dasharray="6 3" marker-end="url(#arrow-o2)"/>
+                    <!-- Badge Molekul Gas O2 -->
+                    <circle cx="175" cy="120" r="13" fill="#0284C7" stroke="#FFFFFF" stroke-width="2.5"/>
+                    <text x="175" y="124" font-family="Poppins" font-size="10.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">O₂</text>
                   </g>
 
-                  <!-- Eritrosit 2 (Zona Difusi: Tengah Bertransisi) -->
-                  <g class="erythrocyte-flow-2">
-                    <circle cx="160" cy="195" r="9" fill="#F43F5E" stroke="#BE123C" stroke-width="1.5"/>
-                    <text x="160" y="198" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">HbO₂</text>
+                  <!-- DIFUSI CO2 (SISI KANAN-TENGAH) -->
+                  <g id="micro-co2-diff" class="gas-diff-flow">
+                    <!-- Keterangan Gerak -->
+                    <text x="245" y="86" font-family="Poppins" font-size="9.5" font-weight="800" fill="#E11D48" text-anchor="middle">↑ Difusi CO₂ Keluar</text>
+                    <!-- Panah Aliran Gas CO2 Naik -->
+                    <path class="flow-dash-up" d="M 245,172 L 245,92" stroke="#E11D48" stroke-width="3" stroke-dasharray="6 3" marker-end="url(#arrow-co2)"/>
+                    <!-- Badge Molekul Gas CO2 -->
+                    <circle cx="245" cy="120" r="13" fill="#E11D48" stroke="#FFFFFF" stroke-width="2.5"/>
+                    <text x="245" y="124" font-family="Poppins" font-size="9.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">CO₂</text>
                   </g>
 
-                  <!-- Eritrosit 3 (Keluar: Merah Segar, Kaya Oksigen) -->
-                  <g class="erythrocyte-flow-3">
-                    <circle cx="265" cy="230" r="9" fill="#EF4444" stroke="#B91C1C" stroke-width="1.5"/>
-                    <text x="265" y="233" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">O₂</text>
+                  <!-- 3. AREA BAWAH: PEMBULUH DARAH KAPILER & ERITROSIT -->
+                  <!-- Saluran Pembuluh Kapiler -->
+                  <rect id="svg-capillary-tube" x="15" y="158" width="390" height="88" rx="16" fill="url(#grad-capillary)" stroke="#FDA4AF" stroke-width="2.5"/>
+
+                  <!-- Panah Arah Aliran Darah di Kapiler -->
+                  <path d="M 112,202 L 135,202" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow-blood)"/>
+                  <path d="M 285,202 L 308,202" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow-blood)"/>
+
+                  <!-- SEL DARAH MERAH (ERITROSIT) 1: KIRI (MASUK, DEOKSIGENASI) -->
+                  <g id="erythrocyte-1" transform="translate(68, 202)">
+                    <ellipse cx="0" cy="0" rx="28" ry="22" fill="#4F46E5" stroke="#3730A3" stroke-width="2.5"/>
+                    <ellipse cx="0" cy="0" rx="14" ry="10" fill="#4338CA"/>
+                    <text x="0" y="4" font-family="Poppins" font-size="11" font-weight="800" fill="#FFFFFF" text-anchor="middle">Hb</text>
                   </g>
 
-                  <!-- Difusi Molekul Gas O2 (Biru Turun dari Alveolus ke Kapiler) -->
-                  <g id="micro-o2-diff">
-                    <circle cx="150" cy="148" r="4" fill="#0284C7"/>
-                    <circle cx="150" cy="165" r="4" fill="#0284C7"/>
-                    <path d="M 150,140 L 150,172" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="3 2"/>
-                    <text x="135" y="162" font-size="9" font-weight="800" fill="#0284C7">O₂</text>
+                  <!-- SEL DARAH MERAH (ERITROSIT) 2: TENGAH (ZONA REAKSI Hb + 4O2) -->
+                  <g id="erythrocyte-2" transform="translate(210, 202)">
+                    <ellipse cx="0" cy="0" rx="30" ry="23" fill="#BE185D" stroke="#9D174D" stroke-width="2.5"/>
+                    <ellipse cx="0" cy="0" rx="15" ry="11" fill="#9D174D"/>
+                    <text x="0" y="4" font-family="Poppins" font-size="11" font-weight="800" fill="#FFFFFF" text-anchor="middle">HbO₂</text>
                   </g>
 
-                  <!-- Difusi Molekul Gas CO2 (Merah Naik dari Kapiler ke Alveolus) -->
-                  <g id="micro-co2-diff">
-                    <circle cx="175" cy="170" r="4" fill="#E11D48"/>
-                    <circle cx="175" cy="152" r="4" fill="#E11D48"/>
-                    <path d="M 175,178 L 175,145" stroke="#E11D48" stroke-width="1.5" stroke-dasharray="3 2"/>
-                    <text x="190" y="162" font-size="9" font-weight="800" fill="#E11D48">CO₂</text>
+                  <!-- SEL DARAH MERAH (ERITROSIT) 3: KANAN (KELUAR, TEROKSIGENASI) -->
+                  <g id="erythrocyte-3" transform="translate(352, 202)">
+                    <ellipse cx="0" cy="0" rx="28" ry="22" fill="#EF4444" stroke="#B91C1C" stroke-width="2.5"/>
+                    <ellipse cx="0" cy="0" rx="14" ry="10" fill="#DC2626"/>
+                    <text x="0" y="4" font-family="Poppins" font-size="11" font-weight="800" fill="#FFFFFF" text-anchor="middle">O₂</text>
                   </g>
+
+                  <!-- LABEL KETERANGAN KAPILER DI BAWAH SALURAN -->
+                  <!-- Kiri: Dari Jantung (Kaya CO2) -->
+                  <rect x="20" y="258" width="96" height="38" rx="8" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1.5"/>
+                  <text x="68" y="274" font-family="Poppins" font-size="9.5" font-weight="800" fill="#4338CA" text-anchor="middle">← Dari Tubuh</text>
+                  <text x="68" y="288" font-family="Poppins" font-size="9" font-weight="700" fill="#6366F1" text-anchor="middle">(Kaya CO₂)</text>
+
+                  <!-- Tengah: Reaksi Kimia Hemoglobin -->
+                  <rect id="badge-reaction-card" x="135" y="258" width="150" height="38" rx="8" fill="#FDF2F8" stroke="#FBCFE8" stroke-width="1.5"/>
+                  <text x="210" y="274" font-family="Poppins" font-size="10" font-weight="800" fill="#BE185D" text-anchor="middle">Reaksi Oksihemoglobin:</text>
+                  <text x="210" y="289" font-family="Poppins" font-size="10" font-weight="800" fill="#9D174D" text-anchor="middle">Hb + 4O₂ ⇌ Hb(O₂)₄</text>
+
+                  <!-- Kanan: Ke Tubuh (Kaya O2) -->
+                  <rect x="304" y="258" width="96" height="38" rx="8" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+                  <text x="352" y="274" font-family="Poppins" font-size="9.5" font-weight="800" fill="#B91C1C" text-anchor="middle">Ke Jantung →</text>
+                  <text x="352" y="288" font-family="Poppins" font-size="9" font-weight="700" fill="#EF4444" text-anchor="middle">(Kaya O₂)</text>
                 </svg>
 
-                <div style="font-size:10.5px; color:var(--text-muted); font-weight:700; margin-top:2px;">
-                  🔴 Eritrosit berubah warna dari ungu (kaya CO₂) menjadi merah segar (kaya O₂)
+                <div style="font-size:clamp(11.5px, 1.4vh, 13.5px); color:var(--text-muted); font-weight:700; margin-top:6px; text-align:center;">
+                  🔴 Eritrosit berubah warna dari ungu (Hb tereduksi) menjadi merah segar (Hb teroksigenasi)
                 </div>
               </div>
 
               <!-- Right Column: Step-by-Step Gas Exchange Interactive Walk -->
-              <div style="display:flex; flex-direction:column; gap:clamp(6px, 1vh, 10px);">
+              <div style="display:flex; flex-direction:column; gap:clamp(8px, 1.2vh, 12px);">
                 
-                <div style="font-size:11px; font-weight:800; color:var(--text-dark);">
+                <div style="font-size:clamp(12.5px, 1.5vh, 14.5px); font-weight:800; color:var(--text-dark);">
                   Langkah Terperinci Pertukaran Gas (Klik untuk Jelajahi):
                 </div>
 
                 <div class="micro-steps-bar">
                   <div class="micro-step-card active" id="mstep-1" onclick="setMicroStep(1)">
-                    <span style="font-size:20px;">1️⃣</span>
+                    <span style="font-size:24px;">1️⃣</span>
                     <div>
-                      <strong style="font-size:11.5px; color:var(--text-dark); display:block;">Inspirasi Udara Segar</strong>
-                      <span style="font-size:10.5px; color:var(--text-muted);">Udara kaya O₂ mengisi ratusan juta kantung alveolus.</span>
+                      <strong style="font-size:clamp(12.5px, 1.5vh, 14.5px); color:var(--text-dark); display:block;">Inspirasi Udara Segar</strong>
+                      <span style="font-size:clamp(11px, 1.3vh, 13px); color:var(--text-muted);">Udara kaya O₂ mengisi ratusan juta kantung alveolus.</span>
                     </div>
                   </div>
 
                   <div class="micro-step-card" id="mstep-2" onclick="setMicroStep(2)">
-                    <span style="font-size:20px;">2️⃣</span>
+                    <span style="font-size:24px;">2️⃣</span>
                     <div>
-                      <strong style="font-size:11.5px; color:var(--text-dark); display:block;">Difusi Menembus Membran</strong>
-                      <span style="font-size:10.5px; color:var(--text-muted);">O₂ melintasi dinding sel tipis alveolus &amp; kapiler secara pasif.</span>
+                      <strong style="font-size:clamp(12.5px, 1.5vh, 14.5px); color:var(--text-dark); display:block;">Difusi Menembus Membran</strong>
+                      <span style="font-size:clamp(11px, 1.3vh, 13px); color:var(--text-muted);">O₂ melintasi dinding sel tipis alveolus &amp; kapiler secara pasif.</span>
                     </div>
                   </div>
 
                   <div class="micro-step-card" id="mstep-3" onclick="setMicroStep(3)">
-                    <span style="font-size:20px;">3️⃣</span>
+                    <span style="font-size:24px;">3️⃣</span>
                     <div>
-                      <strong style="font-size:11.5px; color:var(--text-dark); display:block;">Pengikatan Oksihemoglobin</strong>
-                      <span style="font-size:10.5px; color:var(--text-muted);">Hb + 4O₂ → Hb(O₂)₄ di dalam sel darah merah (eritrosit).</span>
+                      <strong style="font-size:clamp(12.5px, 1.5vh, 14.5px); color:var(--text-dark); display:block;">Pengikatan Oksihemoglobin</strong>
+                      <span style="font-size:clamp(11px, 1.3vh, 13px); color:var(--text-muted);">Hb + 4O₂ → Hb(O₂)₄ di dalam sel darah merah (eritrosit).</span>
                     </div>
                   </div>
 
                   <div class="micro-step-card" id="mstep-4" onclick="setMicroStep(4)">
-                    <span style="font-size:20px;">4️⃣</span>
+                    <span style="font-size:24px;">4️⃣</span>
                     <div>
-                      <strong style="font-size:11.5px; color:var(--text-dark); display:block;">Pelepasan &amp; Ekspirasi CO₂</strong>
-                      <span style="font-size:10.5px; color:var(--text-muted);">CO₂ berdifusi balik ke rongga alveolus untuk dihembus keluar.</span>
+                      <strong style="font-size:clamp(12.5px, 1.5vh, 14.5px); color:var(--text-dark); display:block;">Pelepasan &amp; Ekspirasi CO₂</strong>
+                      <span style="font-size:clamp(11px, 1.3vh, 13px); color:var(--text-muted);">CO₂ berdifusi balik ke rongga alveolus untuk dihembus keluar.</span>
                     </div>
                   </div>
                 </div>
 
                 <!-- Step Details Box -->
-                <div id="micro-explanation-card" style="background:#ffffff; border:1.5px solid #fed7aa; border-radius:var(--radius-md); padding:8px 12px; font-size:11px; color:var(--text-body); line-height:1.45; box-shadow:var(--shadow-sm);">
-                  <strong style="color:var(--orange);" id="mstep-title">1. Inspirasi Udara Segar</strong>
-                  <p id="mstep-desc" style="margin-top:2px;">Saat kita menarik napas, udara luar bertekanan tinggi masuk melewati hidung, trakea, dan bronkiolus, hingga mengisi kantung alveolus dengan konsentrasi oksigen (pO₂ = 104 mmHg) yang jauh lebih tinggi daripada kapiler darah.</p>
+                <div id="micro-explanation-card" style="background:#ffffff; border:2px solid #fed7aa; border-radius:var(--radius-md); padding:10px 14px; font-size:clamp(12px, 1.45vh, 14.5px); color:var(--text-body); line-height:1.5; box-shadow:var(--shadow-sm);">
+                  <strong style="color:var(--orange); font-size:clamp(13px, 1.6vh, 15.5px);" id="mstep-title">1. Inspirasi Udara Segar</strong>
+                  <p id="mstep-desc" style="margin-top:3px;">Saat kita menarik napas, udara luar bertekanan tinggi masuk melewati hidung, trakea, dan bronkiolus, hingga mengisi kantung alveolus dengan konsentrasi oksigen (pO₂ = 104 mmHg) yang jauh lebih tinggi daripada kapiler darah.</p>
                 </div>
 
               </div>
@@ -1715,30 +2035,30 @@
         <div class="content-workspace">
           
           <!-- STAGE 1: PILIHAN GANDA -->
-          <div id="stage-pg" class="eval-stage" style="width: 100%; max-width: 800px; margin: auto;">
-            <div style="background: #ffffff; border: 2.5px solid #ddd6fe; border-radius: var(--radius-lg); padding: clamp(14px, 2.4vh, 24px); box-shadow: var(--shadow-md);">
-              <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 800; color: var(--text-muted); margin-bottom: 8px;">
+          <div id="stage-pg" class="eval-stage" style="width: 100%; max-width: 860px; margin: auto;">
+            <div style="background: #ffffff; border: 2.5px solid #ddd6fe; border-radius: var(--radius-lg); padding: clamp(16px, 2.6vh, 28px); box-shadow: var(--shadow-md);">
+              <div style="display: flex; justify-content: space-between; font-size: clamp(13px, 1.6vh, 15.5px); font-weight: 800; color: var(--text-muted); margin-bottom: 10px;">
                 <span id="q-counter">Soal 1 dari 3</span>
-                <span style="color: var(--violet); background: #f5f3ff; padding: 2px 10px; border-radius: var(--radius-pill);">Bobot: 30 Poin (10 Poin / Soal)</span>
+                <span style="color: var(--violet); background: #f5f3ff; padding: 4px 14px; border-radius: var(--radius-pill);">Bobot: 30 Poin (10 Poin / Soal)</span>
               </div>
 
-              <p id="q-text" style="font-family: var(--font-heading); font-size: clamp(15px, 2vh, 19px); font-weight: 800; color: var(--text-dark); line-height: 1.4; margin-bottom: 14px;">
+              <p id="q-text" style="font-family: var(--font-heading); font-size: clamp(18px, 2.4vh, 23px); font-weight: 800; color: var(--text-dark); line-height: 1.45; margin-bottom: 16px;">
                 1. Peristiwa apa yang terjadi pada otot diafragma saat seseorang menarik napas (inspirasi)?
               </p>
 
-              <div id="q-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <div id="q-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
                 <!-- Pilihan Jawaban dirender via JavaScript -->
               </div>
 
-              <div id="q-feedback" style="min-height: 24px; margin-top: 10px; font-size: 13px; font-weight: 800; text-align: center;"></div>
+              <div id="q-feedback" style="min-height: 28px; margin-top: 12px; font-size: clamp(14px, 1.7vh, 17px); font-weight: 800; text-align: center;"></div>
             </div>
           </div>
 
           <!-- STAGE 2: MENJODOHKAN DENGAN GARIS SVG -->
-          <div id="stage-matching" class="eval-stage" style="display: none; width: 100%; max-width: 900px; margin: auto;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: var(--text-muted);">
+          <div id="stage-matching" class="eval-stage" style="display: none; width: 100%; max-width: 960px; margin: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: clamp(13px, 1.6vh, 15.5px); font-weight: 700; color: var(--text-dark);">
               <span>👉 Klik satu <strong>Organ (Kiri)</strong>, lalu klik <strong>Fungsi yang Cocok (Kanan)</strong> untuk menarik garis!</span>
-              <span style="background: #e0f2fe; color: var(--blue-dark); padding: 2px 10px; border-radius: var(--radius-pill);">Bobot: 40 Poin</span>
+              <span style="background: #e0f2fe; color: var(--blue-dark); padding: 4px 14px; border-radius: var(--radius-pill); font-weight: 800;">Bobot: 40 Poin</span>
             </div>
 
             <div id="matching-board" class="matching-board-box">
@@ -1749,98 +2069,98 @@
               <div class="match-col">
                 <div onclick="selectMatchLeft(0)" id="match-left-0" class="match-card">
                   <span>👃 1. Rongga Hidung</span>
-                  <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--blue);"></span>
+                  <span style="width: 14px; height: 14px; border-radius: 50%; background: var(--blue);"></span>
                 </div>
                 <div onclick="selectMatchLeft(1)" id="match-left-1" class="match-card">
                   <span>🎋 2. Batang Trakea</span>
-                  <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--blue);"></span>
+                  <span style="width: 14px; height: 14px; border-radius: 50%; background: var(--blue);"></span>
                 </div>
                 <div onclick="selectMatchLeft(2)" id="match-left-2" class="match-card">
                   <span>🍇 3. Kantung Alveolus</span>
-                  <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--blue);"></span>
+                  <span style="width: 14px; height: 14px; border-radius: 50%; background: var(--blue);"></span>
                 </div>
                 <div onclick="selectMatchLeft(3)" id="match-left-3" class="match-card">
                   <span>🛡️ 4. Otot Diafragma</span>
-                  <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--blue);"></span>
+                  <span style="width: 14px; height: 14px; border-radius: 50%; background: var(--blue);"></span>
                 </div>
               </div>
 
               <!-- Kolom Kanan: Fungsi Organ -->
               <div class="match-col">
                 <div onclick="selectMatchRight(0)" id="match-right-0" class="match-card">
-                  <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--teal); margin-right: 8px;"></span>
+                  <span style="width: 14px; height: 14px; border-radius: 50%; background: var(--teal); margin-right: 10px;"></span>
                   <span>Tempat difusi O₂ & CO₂ pada kapiler darah</span>
                 </div>
                 <div onclick="selectMatchRight(1)" id="match-right-1" class="match-card">
-                  <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--teal); margin-right: 8px;"></span>
+                  <span style="width: 14px; height: 14px; border-radius: 50%; background: var(--teal); margin-right: 10px;"></span>
                   <span>Sekat kubah penggerak pernapasan perut</span>
                 </div>
                 <div onclick="selectMatchRight(2)" id="match-right-2" class="match-card">
-                  <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--teal); margin-right: 8px;"></span>
+                  <span style="width: 14px; height: 14px; border-radius: 50%; background: var(--teal); margin-right: 10px;"></span>
                   <span>Menyaring kotoran, melembapkan & menghangatkan udara</span>
                 </div>
                 <div onclick="selectMatchRight(3)" id="match-right-3" class="match-card">
-                  <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--teal); margin-right: 8px;"></span>
+                  <span style="width: 14px; height: 14px; border-radius: 50%; background: var(--teal); margin-right: 10px;"></span>
                   <span>Pipa cincin tulang rawan bersilia pendorong debu</span>
                 </div>
               </div>
             </div>
 
-            <div id="matching-feedback" style="min-height: 20px; text-align: center; font-size: 13px; font-weight: 800; margin-top: 6px;"></div>
+            <div id="matching-feedback" style="min-height: 24px; text-align: center; font-size: clamp(14px, 1.7vh, 17px); font-weight: 800; margin-top: 8px;"></div>
           </div>
 
           <!-- STAGE 3: BENAR / SALAH -->
-          <div id="stage-bs" class="eval-stage" style="display: none; width: 100%; max-width: 800px; margin: auto;">
-            <div style="background: #ffffff; border: 2.5px solid #a7f3d0; border-radius: var(--radius-lg); padding: clamp(14px, 2.4vh, 24px); box-shadow: var(--shadow-md);">
-              <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 800; color: var(--text-muted); margin-bottom: 8px;">
+          <div id="stage-bs" class="eval-stage" style="display: none; width: 100%; max-width: 860px; margin: auto;">
+            <div style="background: #ffffff; border: 2.5px solid #a7f3d0; border-radius: var(--radius-lg); padding: clamp(16px, 2.6vh, 28px); box-shadow: var(--shadow-md);">
+              <div style="display: flex; justify-content: space-between; font-size: clamp(13px, 1.6vh, 15.5px); font-weight: 800; color: var(--text-muted); margin-bottom: 10px;">
                 <span id="bs-counter">Pernyataan 1 dari 3</span>
-                <span style="color: var(--emerald); background: #ecfdf5; padding: 2px 10px; border-radius: var(--radius-pill);">Bobot: 30 Poin (10 Poin / Soal)</span>
+                <span style="color: var(--emerald); background: #ecfdf5; padding: 4px 14px; border-radius: var(--radius-pill);">Bobot: 30 Poin (10 Poin / Soal)</span>
               </div>
 
-              <p id="bs-text" style="font-family: var(--font-heading); font-size: clamp(15px, 2vh, 19px); font-weight: 800; color: var(--text-dark); line-height: 1.4; margin-bottom: 16px;">
+              <p id="bs-text" style="font-family: var(--font-heading); font-size: clamp(18px, 2.4vh, 23px); font-weight: 800; color: var(--text-dark); line-height: 1.45; margin-bottom: 18px;">
                 <!-- Teks pernyataan B/S -->
               </p>
 
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-                <button onclick="answerBS(true)" style="padding: clamp(10px, 1.6vh, 16px); background: #ecfdf5; border: 2.5px solid #34d399; border-radius: var(--radius-md); font-family: var(--font-heading); font-weight: 800; font-size: clamp(14px, 1.8vh, 18px); color: #065f46; cursor: pointer; box-shadow: var(--shadow-sm); transition: all 0.2s;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <button onclick="answerBS(true)" style="padding: clamp(14px, 2vh, 20px); background: #ecfdf5; border: 3px solid #34d399; border-radius: var(--radius-md); font-family: var(--font-heading); font-weight: 800; font-size: clamp(17px, 2.3vh, 22px); color: #065f46; cursor: pointer; box-shadow: var(--shadow-sm); transition: all 0.2s;">
                   ✓ BENAR
                 </button>
-                <button onclick="answerBS(false)" style="padding: clamp(10px, 1.6vh, 16px); background: #fff1f2; border: 2.5px solid #f43f5e; border-radius: var(--radius-md); font-family: var(--font-heading); font-weight: 800; font-size: clamp(14px, 1.8vh, 18px); color: #9f1239; cursor: pointer; box-shadow: var(--shadow-sm); transition: all 0.2s;">
+                <button onclick="answerBS(false)" style="padding: clamp(14px, 2vh, 20px); background: #fff1f2; border: 3px solid #f43f5e; border-radius: var(--radius-md); font-family: var(--font-heading); font-weight: 800; font-size: clamp(17px, 2.3vh, 22px); color: #9f1239; cursor: pointer; box-shadow: var(--shadow-sm); transition: all 0.2s;">
                   ✗ SALAH
                 </button>
               </div>
 
-              <div id="bs-feedback" style="min-height: 24px; margin-top: 10px; font-size: 13px; font-weight: 800; text-align: center;"></div>
+              <div id="bs-feedback" style="min-height: 28px; margin-top: 12px; font-size: clamp(14px, 1.7vh, 17px); font-weight: 800; text-align: center;"></div>
             </div>
           </div>
 
           <!-- STAGE 4: HASIL REKAPITULASI AKHIR -->
-          <div id="stage-result" class="eval-stage" style="display: none; width: 100%; max-width: 650px; margin: auto; text-align: center;">
-            <div style="background: #ffffff; border: 2.5px solid #99f6e4; border-radius: var(--radius-lg); padding: clamp(16px, 2.6vh, 28px); box-shadow: var(--shadow-lg);">
-              <div style="font-size: 46px; margin-bottom: 4px;">🏆</div>
-              <h3 style="font-family: var(--font-heading); font-size: clamp(18px, 2.4vh, 24px); font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Rekapitulasi Evaluasi Formatif</h3>
+          <div id="stage-result" class="eval-stage" style="display: none; width: 100%; max-width: 700px; margin: auto; text-align: center;">
+            <div style="background: #ffffff; border: 2.5px solid #99f6e4; border-radius: var(--radius-lg); padding: clamp(18px, 2.8vh, 32px); box-shadow: var(--shadow-lg);">
+              <div style="font-size: 60px; margin-bottom: 6px;">🏆</div>
+              <h3 style="font-family: var(--font-heading); font-size: clamp(22px, 3vh, 28px); font-weight: 800; color: var(--text-dark); margin-bottom: 14px;">Rekapitulasi Evaluasi Formatif</h3>
 
-              <div style="background: linear-gradient(135deg, #e0f2fe 0%, #ccfbf1 100%); border: 2px solid #5eead4; border-radius: var(--radius-md); padding: 12px; margin-bottom: 14px;">
-                <span style="font-size: 11px; font-weight: 800; color: var(--teal-deep); text-transform: uppercase; letter-spacing: 0.5px;">Skor Akhir Siswa</span>
-                <div id="final-total-score" style="font-family: var(--font-heading); font-size: clamp(32px, 4.4vh, 46px); font-weight: 800; color: var(--teal-deep); margin-top: 2px;">0 / 100</div>
+              <div style="background: linear-gradient(135deg, #e0f2fe 0%, #ccfbf1 100%); border: 2.5px solid #5eead4; border-radius: var(--radius-md); padding: 14px; margin-bottom: 16px;">
+                <span style="font-size: 13px; font-weight: 800; color: var(--teal-deep); text-transform: uppercase; letter-spacing: 0.8px;">Skor Akhir Siswa</span>
+                <div id="final-total-score" style="font-family: var(--font-heading); font-size: clamp(40px, 5.5vh, 56px); font-weight: 800; color: var(--teal-deep); margin-top: 4px;">0 / 100</div>
               </div>
 
-              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; font-size: 12px; font-weight: 800; margin-bottom: 14px;">
-                <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 8px;">
-                  <span style="color: var(--text-muted); font-size: 10px; display: block;">Pilihan Ganda</span>
-                  <span id="score-part-pg" style="color: var(--violet); font-size: 14px;">0 / 30</span>
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 13px; font-weight: 800; margin-bottom: 16px;">
+                <div style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 10px;">
+                  <span style="color: var(--text-muted); font-size: 11.5px; display: block;">Pilihan Ganda</span>
+                  <span id="score-part-pg" style="color: var(--violet); font-size: 17px;">0 / 30</span>
                 </div>
-                <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 8px;">
-                  <span style="color: var(--text-muted); font-size: 10px; display: block;">Menjodohkan</span>
-                  <span id="score-part-match" style="color: var(--blue); font-size: 14px;">0 / 40</span>
+                <div style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 10px;">
+                  <span style="color: var(--text-muted); font-size: 11.5px; display: block;">Menjodohkan</span>
+                  <span id="score-part-match" style="color: var(--blue); font-size: 17px;">0 / 40</span>
                 </div>
-                <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 8px;">
-                  <span style="color: var(--text-muted); font-size: 10px; display: block;">Benar / Salah</span>
-                  <span id="score-part-bs" style="color: var(--emerald); font-size: 14px;">0 / 30</span>
+                <div style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 10px;">
+                  <span style="color: var(--text-muted); font-size: 11.5px; display: block;">Benar / Salah</span>
+                  <span id="score-part-bs" style="color: var(--emerald); font-size: 17px;">0 / 30</span>
                 </div>
               </div>
 
-              <p id="final-verdict" style="font-size: clamp(12px, 1.4vh, 14px); color: var(--text-body); font-weight: 600; line-height: 1.45;"></p>
+              <p id="final-verdict" style="font-size: clamp(14.5px, 1.85vh, 18px); color: var(--text-body); font-weight: 600; line-height: 1.5;"></p>
             </div>
           </div>
 
@@ -1879,18 +2199,18 @@
         </div>
 
         <div class="content-workspace">
-          <div style="background: #ffffff; border: 2.5px solid #fecdd3; border-radius: var(--radius-lg); padding: clamp(16px, 2.8vh, 32px); max-width: 620px; width: 100%; margin: auto; text-align: center; box-shadow: var(--shadow-lg);">
+          <div style="background: #ffffff; border: 2.5px solid #fecdd3; border-radius: var(--radius-lg); padding: clamp(20px, 3.2vh, 36px); max-width: 680px; width: 100%; margin: auto; text-align: center; box-shadow: var(--shadow-lg);">
             
-            <div style="position: relative; width: clamp(90px, 13vh, 120px); height: clamp(90px, 13vh, 120px); margin: 0 auto 12px;">
-              <img src="fanani.jpg" alt="Ach. Chanifuddin Fanani, S.Pd." style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--teal); box-shadow: var(--shadow-md);" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%2300ACC1\'/%3E%3Ctext x=\'50%25\' y=\'55%25\' font-size=\'44\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3E%F0%9F%91%A8%E2%80%8D%F0%9F%8F%AB%3C/text%3E%3C/svg%3E';">
-              <div style="position: absolute; bottom: 0; right: 0; background: var(--teal); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; border: 2.5px solid #fff; box-shadow: var(--shadow-sm);">✨</div>
+            <div style="position: relative; width: clamp(120px, 17vh, 165px); height: clamp(120px, 17vh, 165px); margin: 0 auto 16px;">
+              <img src="fanani.jpg" alt="Ach. Chanifuddin Fanani, S.Pd." style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4.5px solid var(--teal); box-shadow: var(--shadow-md);" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%2300ACC1\'/%3E%3Ctext x=\'50%25\' y=\'55%25\' font-size=\'44\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3E%F0%9F%91%A8%E2%80%8D%F0%9F%8F%AB%3C/text%3E%3C/svg%3E';">
+              <div style="position: absolute; bottom: 4px; right: 4px; background: var(--teal); color: #fff; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; border: 3px solid #fff; box-shadow: var(--shadow-sm);">✨</div>
             </div>
 
-            <h3 style="font-family: var(--font-heading); font-size: clamp(18px, 2.5vh, 25px); font-weight: 800; color: var(--text-dark);">Ach. Chanifuddin Fanani, S.Pd.</h3>
-            <p style="font-size: clamp(12px, 1.4vh, 15px); font-weight: 800; color: var(--teal-dark); margin-top: 2px;">Fasilitator Workshop KKA & Praktisi Pembelajaran Digital</p>
-            <p style="font-size: clamp(11px, 1.3vh, 13px); color: var(--text-muted); font-weight: 600; margin-top: 2px;">SMP Negeri 2 Lamongan · Jawa Timur</p>
+            <h3 style="font-family: var(--font-heading); font-size: clamp(23px, 3.2vh, 30px); font-weight: 800; color: var(--text-dark);">Ach. Chanifuddin Fanani, S.Pd.</h3>
+            <p style="font-size: clamp(14px, 1.75vh, 17.5px); font-weight: 800; color: var(--teal-dark); margin-top: 4px;">Fasilitator Workshop KKA & Praktisi Pembelajaran Digital</p>
+            <p style="font-size: clamp(13px, 1.55vh, 16px); color: var(--text-muted); font-weight: 600; margin-top: 3px;">SMP Negeri 2 Lamongan · Jawa Timur</p>
 
-            <blockquote style="font-size: clamp(11px, 1.3vh, 13px); color: var(--text-body); font-style: italic; line-height: 1.5; margin-top: 14px; padding-top: 12px; border-top: 1.5px solid #f1f5f9; font-weight: 500;">
+            <blockquote style="font-size: clamp(13.5px, 1.7vh, 16.5px); color: var(--text-body); font-style: italic; line-height: 1.55; margin-top: 16px; padding-top: 16px; border-top: 2px solid #f1f5f9; font-weight: 500;">
               "Memberdayakan rekan pendidik melalui pembuatan Media Pembelajaran Interaktif (MPI): mentransformasi gagasan pedagogik menjadi media belajar bermutu tinggi yang memikat peserta didik tanpa terbebani kendala pengkodean teknis."
             </blockquote>
 
@@ -2236,6 +2556,26 @@
         document.getElementById('mstep-title').innerText = data.title;
         document.getElementById('mstep-desc').innerText = data.desc;
       }
+
+      // Reset semua sorotan visual di SVG
+      const dome = document.getElementById('svg-alveolus-dome');
+      const o2Diff = document.getElementById('micro-o2-diff');
+      const co2Diff = document.getElementById('micro-co2-diff');
+      const rbc2 = document.getElementById('erythrocyte-2');
+      const rxCard = document.getElementById('badge-reaction-card');
+
+      [dome, o2Diff, co2Diff, rbc2, rxCard].forEach(el => {
+        if (el) el.classList.remove('highlight-step-glow');
+      });
+
+      // Beri sorotan sesuai langkah aktif
+      if (stepNum === 1 && dome) dome.classList.add('highlight-step-glow');
+      if (stepNum === 2 && o2Diff) o2Diff.classList.add('highlight-step-glow');
+      if (stepNum === 3) {
+        if (rbc2) rbc2.classList.add('highlight-step-glow');
+        if (rxCard) rxCard.classList.add('highlight-step-glow');
+      }
+      if (stepNum === 4 && co2Diff) co2Diff.classList.add('highlight-step-glow');
     }
 
     // --- 5. Fakta Unik Pop-Up ---
@@ -2351,21 +2691,23 @@
 
       d.options.forEach((opt, idx) => {
         const btn = document.createElement('button');
-        btn.style.padding = '12px 16px';
+        btn.style.padding = 'clamp(14px, 1.8vh, 18px) clamp(16px, 1.8vw, 22px)';
         btn.style.background = '#ffffff';
-        btn.style.border = '2px solid #e2e8f0';
-        btn.style.borderRadius = '14px';
+        btn.style.border = '2.5px solid #e2e8f0';
+        btn.style.borderRadius = '16px';
         btn.style.textAlign = 'left';
         btn.style.fontFamily = 'var(--font-body)';
-        btn.style.fontSize = 'clamp(12px, 1.4vh, 14px)';
+        btn.style.fontSize = 'clamp(14.5px, 1.85vh, 17.5px)';
         btn.style.fontWeight = '700';
+        btn.style.lineHeight = '1.4';
         btn.style.color = 'var(--text-dark)';
         btn.style.cursor = 'pointer';
         btn.style.transition = 'all 0.2s';
+        btn.style.boxShadow = 'var(--shadow-sm)';
         btn.innerText = `${String.fromCharCode(65 + idx)}. ${opt}`;
 
-        btn.onmouseover = () => { if (!pgAnswered[curPGIdx]) btn.style.borderColor = 'var(--violet)'; };
-        btn.onmouseout = () => { if (!pgAnswered[curPGIdx]) btn.style.borderColor = '#e2e8f0'; };
+        btn.onmouseover = () => { if (!pgAnswered[curPGIdx]) { btn.style.borderColor = 'var(--violet)'; btn.style.transform = 'translateY(-2px)'; } };
+        btn.onmouseout = () => { if (!pgAnswered[curPGIdx]) { btn.style.borderColor = '#e2e8f0'; btn.style.transform = 'none'; } };
 
         btn.onclick = () => {
           if (pgAnswered[curPGIdx]) return;
