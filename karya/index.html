@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karya · Experimental Creations | Pak Fanani</title>
+    <meta name="description" content="Koleksi karya digital eksperimental dan belum selesai — game edukasi, laboratorium maya, dan media pembelajaran interaktif oleh Ach. Chanifuddin Fanani, S.Pd.">
+    <meta name="author" content="Ach. Chanifuddin Fanani">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://fanani.my.id/karya/">
+    <link rel="icon" href="../assets/images/logo.png" type="image/png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        h1, h2, h3, h4, .font-heading { font-family: 'Quicksand', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+
+        .blob-shape {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            34%  { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            67%  { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+        }
+
+        .card-hover { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(99, 102, 241, 0.12); }
+
+        .badge-wip {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            border: 1px solid #fcd34d;
+        }
+        .badge-done {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased overflow-x-hidden relative selection:bg-indigo-100 selection:text-indigo-900 pb-20">
+
+    <!-- Background decorative blobs -->
+    <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-200 opacity-40 blur-[100px] rounded-full pointer-events-none z-0"></div>
+    <div class="absolute top-[20%] right-[-5%] w-80 h-80 bg-amber-200 opacity-30 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="relative z-50 max-w-5xl mx-auto px-6 py-8 flex justify-between items-center">
+        <a href="../" class="font-heading font-extrabold text-2xl text-slate-900 tracking-tight hover:text-indigo-600 transition">
+            fanani<span class="text-indigo-600">.</span>
+        </a>
+        <div class="flex items-center gap-6 font-medium text-sm text-slate-500">
+            <a href="../#about" class="hover:text-indigo-600 transition">About</a>
+            <a href="../#projects" class="hover:text-indigo-600 transition">Projects</a>
+            <a href="../learn/" class="hover:text-indigo-600 transition">Learn</a>
+            <a href="./" class="text-indigo-600 font-bold border-b-2 border-indigo-600 pb-0.5">Karya</a>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-5xl mx-auto px-6 space-y-8">
+
+        <!-- HERO HEADER -->
+        <header class="py-4 md:py-8 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div class="flex-1 text-center md:text-left order-2 md:order-1">
+                <div class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 font-heading font-bold px-4 py-2 rounded-full mb-5 text-sm">
+                    &#129514; Karya &amp; Eksperimen Digital
+                </div>
+                <p class="text-xs text-slate-400 italic mb-4 max-w-lg leading-relaxed mx-auto md:mx-0">
+                    These are experimental and often unfinished creations — honest works in progress, built with curiosity and a love for learning.
+                </p>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-2 font-heading">
+                    Karya<span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-cyan-400">.</span>
+                </h1>
+                <p class="text-base md:text-lg font-heading font-semibold text-slate-400 mb-4 italic">
+                    Experimental Creations
+                </p>
+                <p class="text-sm text-slate-600 max-w-lg leading-relaxed mx-auto md:mx-0">
+                    Kumpulan karya digital eksperimental — game edukasi, laboratorium maya, dan media pembelajaran interaktif. Masih dalam proses, tapi dibuat sepenuh hati.
+                </p>
+                <p class="text-xs text-slate-400 max-w-lg leading-relaxed mx-auto md:mx-0 mt-1">
+                    A collection of experimental digital works — educational games, virtual labs, and interactive learning media. Unfinished, but made with full intention.
+                </p>
+            </div>
+            <div class="order-1 md:order-2 relative w-56 h-56 md:w-72 md:h-72 flex-shrink-0">
+                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-300 to-cyan-300 blob-shape transform rotate-6 opacity-50"></div>
+                <img src="../assets/images/fanani2.jpg" alt="Ach. Chanifuddin Fanani" class="relative w-full h-full object-cover blob-shape border-4 border-white shadow-xl z-10">
+            </div>
+        </header>
+
+        <!-- DISCLAIMER -->
+        <div class="w-full p-4 bg-amber-50 border border-amber-200/80 rounded-2xl flex items-start gap-3">
+            <span class="text-lg flex-shrink-0 mt-0.5">&#9879;&#65039;</span>
+            <div>
+                <p class="text-xs font-bold text-amber-800 mb-0.5">Catatan: Karya Eksperimental &amp; Belum Final</p>
+                <p class="text-[11px] text-amber-700 leading-relaxed">
+                    Karya-karya di sini bersifat eksperimental dan sebagian masih dalam pengembangan. Dibuat untuk eksplorasi, prototipe, dan pembelajaran — bukan produk final yang dipoles sempurna.
+                </p>
+                <p class="text-[10px] text-amber-500 leading-relaxed mt-1 italic">
+                    Works listed here are experimental and partially unfinished. Made for exploration, prototyping, and learning — not polished final products.
+                </p>
+            </div>
+        </div>
+
+        <!-- DAFTAR 5 KARYA -->
+        <section class="space-y-5">
+
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200/80 pb-4">
+                <div>
+                    <h2 class="text-2xl font-extrabold font-heading text-slate-900">
+                        Daftar Karya <span class="text-slate-400 font-normal text-lg italic ml-1">/ Works</span>
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-0.5">5 karya digital &middot; 5 experimental digital works</p>
+                </div>
+            </div>
+
+            <!-- KARYA 1: Chef Algorithm -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm card-hover overflow-hidden">
+                <div class="flex flex-col sm:flex-row">
+                    <div class="sm:w-2 w-full h-2 sm:h-auto bg-gradient-to-b from-orange-400 to-amber-500 flex-shrink-0 rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none"></div>
+                    <div class="flex-1 p-6 flex flex-col sm:flex-row gap-5">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-orange-400 to-amber-500 text-white flex items-center justify-center text-2xl shadow-md shadow-orange-200 flex-shrink-0">
+                            &#127859;
+                        </div>
+                        <div class="flex-1 space-y-2.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-orange-600">Gim Edukasi &middot; Educational Game</span>
+                                <span class="badge-done text-[10px] font-bold px-2 py-0.5 rounded-full">&#10003; Selesai / Done</span>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-extrabold text-lg text-slate-900">Chef Algorithm: Lomba Masak Digital</h3>
+                                <p class="text-xs text-slate-400 italic">Chef Algorithm: The Digital Cooking Contest</p>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Petualangan logika algoritma melalui analogi memasak nusantara. Selesaikan misi sekuensial, percabangan IF-ELSE, perulangan Loop, hingga dekomposisi paralel dalam 4 level misi.
+                            </p>
+                            <p class="text-[11px] text-slate-400 leading-relaxed italic">
+                                A logic algorithm adventure through Indonesian cooking analogies. Complete sequential missions, IF-ELSE branching, loops, and parallel decomposition across 4 levels.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] font-semibold pt-1">
+                                <span class="bg-orange-50 border border-orange-100 px-2 py-0.5 rounded-lg text-orange-700">Algoritma</span>
+                                <span class="bg-orange-50 border border-orange-100 px-2 py-0.5 rounded-lg text-orange-700">Gamifikasi</span>
+                                <span class="bg-orange-50 border border-orange-100 px-2 py-0.5 rounded-lg text-orange-700">SPA &middot; 16:9</span>
+                                <span class="bg-orange-50 border border-orange-100 px-2 py-0.5 rounded-lg text-orange-700">Drag &amp; Drop</span>
+                            </div>
+                        </div>
+                        <div class="flex sm:flex-col gap-2 items-start sm:items-end justify-end flex-shrink-0 sm:min-w-[140px]">
+                            <a href="game/chef-algorithm/index.html" class="px-4 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-heading font-bold text-xs rounded-2xl shadow shadow-orange-200 transition whitespace-nowrap flex items-center gap-1.5">
+                                &#128640; <span>Buka Karya</span>
+                            </a>
+                            <a href="game/index.html" class="px-4 py-2 bg-orange-50 hover:bg-orange-100 text-orange-600 font-medium text-xs rounded-xl border border-orange-200/80 transition whitespace-nowrap">
+                                Portal Game &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KARYA 2: Lab Perakitan Komputer -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm card-hover overflow-hidden">
+                <div class="flex flex-col sm:flex-row">
+                    <div class="sm:w-2 w-full h-2 sm:h-auto bg-gradient-to-b from-cyan-500 to-sky-600 flex-shrink-0 rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none"></div>
+                    <div class="flex-1 p-6 flex flex-col sm:flex-row gap-5">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-sky-600 text-white flex items-center justify-center text-2xl shadow-md shadow-cyan-200 flex-shrink-0">
+                            &#128421;&#65039;
+                        </div>
+                        <div class="flex-1 space-y-2.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-600">Laboratorium Maya &middot; Virtual Lab</span>
+                                <span class="badge-done text-[10px] font-bold px-2 py-0.5 rounded-full">&#10003; Selesai / Done</span>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-extrabold text-lg text-slate-900">Lab Perakitan Komputer &amp; Biner</h3>
+                                <p class="text-xs text-slate-400 italic">Computer Assembly &amp; Binary Virtual Lab</p>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Simulasi praktikum mandiri merakit perangkat keras (arsitektur Von Neumann), sakelar biner 8-bit, dan representasi sub-piksel warna RGB. Dilengkapi audio POST boot sequence nyata.
+                            </p>
+                            <p class="text-[11px] text-slate-400 leading-relaxed italic">
+                                Self-directed lab simulation: assemble PC hardware (Von Neumann arch), toggle 8-bit binary switches, and explore RGB sub-pixel color mixing — with real POST boot audio.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] font-semibold pt-1">
+                                <span class="bg-cyan-50 border border-cyan-100 px-2 py-0.5 rounded-lg text-cyan-700">Sistem Komputer</span>
+                                <span class="bg-cyan-50 border border-cyan-100 px-2 py-0.5 rounded-lg text-cyan-700">Biner &amp; Hex</span>
+                                <span class="bg-cyan-50 border border-cyan-100 px-2 py-0.5 rounded-lg text-cyan-700">Web Audio API</span>
+                                <span class="bg-cyan-50 border border-cyan-100 px-2 py-0.5 rounded-lg text-cyan-700">LKPD Digital</span>
+                            </div>
+                        </div>
+                        <div class="flex sm:flex-col gap-2 items-start sm:items-end justify-end flex-shrink-0 sm:min-w-[140px]">
+                            <a href="lab-maya/perakitan-komputer/index.html" class="px-4 py-2.5 bg-gradient-to-r from-cyan-500 to-sky-600 hover:from-cyan-600 hover:to-sky-700 text-white font-heading font-bold text-xs rounded-2xl shadow shadow-cyan-200 transition whitespace-nowrap flex items-center gap-1.5">
+                                &#128640; <span>Buka Karya</span>
+                            </a>
+                            <a href="lab-maya/index.html" class="px-4 py-2 bg-cyan-50 hover:bg-cyan-100 text-cyan-600 font-medium text-xs rounded-xl border border-cyan-200/80 transition whitespace-nowrap">
+                                Portal Lab &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KARYA 3: MPI Jaringan Komputer -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm card-hover overflow-hidden">
+                <div class="flex flex-col sm:flex-row">
+                    <div class="sm:w-2 w-full h-2 sm:h-auto bg-gradient-to-b from-indigo-500 to-purple-600 flex-shrink-0 rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none"></div>
+                    <div class="flex-1 p-6 flex flex-col sm:flex-row gap-5">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center text-2xl shadow-md shadow-indigo-200 flex-shrink-0">
+                            &#127760;
+                        </div>
+                        <div class="flex-1 space-y-2.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600">Media Pembelajaran Interaktif &middot; MPI</span>
+                                <span class="badge-done text-[10px] font-bold px-2 py-0.5 rounded-full">&#10003; Selesai / Done</span>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-extrabold text-lg text-slate-900">MPI Jaringan Komputer</h3>
+                                <p class="text-xs text-slate-400 italic">Interactive Learning Media: Computer Networks</p>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Memvisualisasikan mekanisme pengiriman paket data melewati router secara real-time. Dilengkapi simulasi interaktif, narasi audio edukatif, dan kuis formatif evaluasi mandiri.
+                            </p>
+                            <p class="text-[11px] text-slate-400 leading-relaxed italic">
+                                Visualizes how data packets travel across routers in real-time. Includes interactive simulation, educational audio narration, and a self-assessment formative quiz.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] font-semibold pt-1">
+                                <span class="bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-lg text-indigo-700">Jaringan Internet</span>
+                                <span class="bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-lg text-indigo-700">Packet Switching</span>
+                                <span class="bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-lg text-indigo-700">Simulasi Real-Time</span>
+                                <span class="bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-lg text-indigo-700">Kuis Interaktif</span>
+                            </div>
+                        </div>
+                        <div class="flex sm:flex-col gap-2 items-start sm:items-end justify-end flex-shrink-0 sm:min-w-[140px]">
+                            <a href="mpi/jaringan/index.html" class="px-4 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-heading font-bold text-xs rounded-2xl shadow shadow-indigo-200 transition whitespace-nowrap flex items-center gap-1.5">
+                                &#128640; <span>Buka Karya</span>
+                            </a>
+                            <a href="mpi/index.html" class="px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 font-medium text-xs rounded-xl border border-indigo-200/80 transition whitespace-nowrap">
+                                Portal MPI &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KARYA 4: MPI Berpikir Komputasional -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm card-hover overflow-hidden">
+                <div class="flex flex-col sm:flex-row">
+                    <div class="sm:w-2 w-full h-2 sm:h-auto bg-gradient-to-b from-emerald-500 to-teal-600 flex-shrink-0 rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none"></div>
+                    <div class="flex-1 p-6 flex flex-col sm:flex-row gap-5">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center text-2xl shadow-md shadow-emerald-200 flex-shrink-0">
+                            &#129513;
+                        </div>
+                        <div class="flex-1 space-y-2.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600">Media Pembelajaran Interaktif &middot; MPI</span>
+                                <span class="badge-wip text-[10px] font-bold px-2 py-0.5 rounded-full">&#9881;&#65039; Dalam Pengerjaan / WIP</span>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-extrabold text-lg text-slate-900">MPI Berpikir Komputasional</h3>
+                                <p class="text-xs text-slate-400 italic">Interactive Learning Media: Computational Thinking</p>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Eksplorasi 4 pilar berpikir komputasional (dekomposisi, pengenalan pola, abstraksi, algoritma) melalui studi kasus IoT Smart Home interaktif yang menyenangkan.
+                            </p>
+                            <p class="text-[11px] text-slate-400 leading-relaxed italic">
+                                Explore the 4 pillars of computational thinking (decomposition, pattern recognition, abstraction, algorithm) through an engaging interactive IoT Smart Home case study.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] font-semibold pt-1">
+                                <span class="bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-lg text-emerald-700">4 Pilar CT</span>
+                                <span class="bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-lg text-emerald-700">Smart Home IoT</span>
+                                <span class="bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-lg text-emerald-700">Dekomposisi</span>
+                                <span class="bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-lg text-emerald-700">Abstraksi</span>
+                            </div>
+                        </div>
+                        <div class="flex sm:flex-col gap-2 items-start sm:items-end justify-end flex-shrink-0 sm:min-w-[140px]">
+                            <a href="mpi/berpikir_komputasional/index.html" class="px-4 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-heading font-bold text-xs rounded-2xl shadow shadow-emerald-200 transition whitespace-nowrap flex items-center gap-1.5">
+                                &#128640; <span>Buka Karya</span>
+                            </a>
+                            <a href="mpi/index.html" class="px-4 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-600 font-medium text-xs rounded-xl border border-emerald-200/80 transition whitespace-nowrap">
+                                Portal MPI &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KARYA 5: MPI Sistem Komputer -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm card-hover overflow-hidden">
+                <div class="flex flex-col sm:flex-row">
+                    <div class="sm:w-2 w-full h-2 sm:h-auto bg-gradient-to-b from-violet-500 to-fuchsia-600 flex-shrink-0 rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none"></div>
+                    <div class="flex-1 p-6 flex flex-col sm:flex-row gap-5">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white flex items-center justify-center text-2xl shadow-md shadow-violet-200 flex-shrink-0">
+                            &#128190;
+                        </div>
+                        <div class="flex-1 space-y-2.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-violet-600">Media Pembelajaran Interaktif &middot; MPI</span>
+                                <span class="badge-wip text-[10px] font-bold px-2 py-0.5 rounded-full">&#9881;&#65039; Dalam Pengerjaan / WIP</span>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-extrabold text-lg text-slate-900">MPI Sistem Komputer</h3>
+                                <p class="text-xs text-slate-400 italic">Interactive Learning Media: Computer Systems</p>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Media pembelajaran interaktif untuk memahami komponen-komponen sistem komputer, cara kerja CPU, memori, dan perangkat I/O secara visual dan simulatif.
+                            </p>
+                            <p class="text-[11px] text-slate-400 leading-relaxed italic">
+                                Interactive learning media for understanding computer system components, how CPUs work, memory, and I/O devices — visually and through simulation.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] font-semibold pt-1">
+                                <span class="bg-violet-50 border border-violet-100 px-2 py-0.5 rounded-lg text-violet-700">Sistem Komputer</span>
+                                <span class="bg-violet-50 border border-violet-100 px-2 py-0.5 rounded-lg text-violet-700">CPU &amp; Memori</span>
+                                <span class="bg-violet-50 border border-violet-100 px-2 py-0.5 rounded-lg text-violet-700">Perangkat I/O</span>
+                                <span class="bg-violet-50 border border-violet-100 px-2 py-0.5 rounded-lg text-violet-700">Visualisasi</span>
+                            </div>
+                        </div>
+                        <div class="flex sm:flex-col gap-2 items-start sm:items-end justify-end flex-shrink-0 sm:min-w-[140px]">
+                            <a href="mpi/sistem-komputer/index.html" class="px-4 py-2.5 bg-gradient-to-r from-violet-500 to-fuchsia-600 hover:from-violet-600 hover:to-fuchsia-700 text-white font-heading font-bold text-xs rounded-2xl shadow shadow-violet-200 transition whitespace-nowrap flex items-center gap-1.5">
+                                &#128640; <span>Buka Karya</span>
+                            </a>
+                            <a href="mpi/index.html" class="px-4 py-2 bg-violet-50 hover:bg-violet-100 text-violet-600 font-medium text-xs rounded-xl border border-violet-200/80 transition whitespace-nowrap">
+                                Portal MPI &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- QUICK LINKS -->
+        <div class="flex flex-wrap gap-4 justify-center text-xs text-slate-500 pt-2">
+            <a href="../" class="hover:text-indigo-600 font-semibold underline">&#127968; Beranda / Home</a>
+            <span>&bull;</span>
+            <a href="../learn/" class="hover:text-indigo-600 font-semibold underline">&#128218; Platform Belajar / Learn</a>
+            <span>&bull;</span>
+            <a href="../learn/workshop/2026-09-workshop-kka-dinas-pendidikan/" class="hover:text-indigo-600 font-semibold underline">&#128640; Workshop Vibe Coding</a>
+        </div>
+
+    </main>
+
+    <footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+        <p>&copy; 2026 Ach. Chanifuddin Fanani, S.Pd. &mdash; SMP Negeri 2 Lamongan.</p>
+        <p class="italic mt-0.5">Karya Eksperimental &middot; Experimental Creations</p>
+    </footer>
+
+</body>
+</html>
