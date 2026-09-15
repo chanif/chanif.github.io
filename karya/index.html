@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -21,17 +21,6 @@
         body { font-family: 'Inter', sans-serif; }
         html { scroll-behavior: smooth; }
 
-        .blob-shape {
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            animation: morph 8s ease-in-out infinite;
-        }
-
-        @keyframes morph {
-            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-            34%  { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-            67%  { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
-        }
-
         .card-hover { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
         .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(99, 102, 241, 0.12); }
 
@@ -44,6 +33,95 @@
             background: linear-gradient(135deg, #d1fae5, #a7f3d0);
             color: #065f46;
             border: 1px solid #6ee7b7;
+        }
+
+        /* === CODE TERMINAL === */
+        #code-terminal {
+            background: #0f1117;
+            border-radius: 16px;
+            border: 1px solid rgba(99,102,241,0.25);
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 24px 48px -12px rgba(0,0,0,0.5), 0 0 60px rgba(99,102,241,0.12);
+            font-family: 'JetBrains Mono', 'Fira Mono', 'Courier New', monospace;
+            font-size: 11.5px;
+            line-height: 1.75;
+            overflow: hidden;
+            width: 100%;
+        }
+        .terminal-bar {
+            background: #1c1f2b;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .terminal-dot {
+            width: 11px; height: 11px;
+            border-radius: 50%;
+        }
+        .terminal-body {
+            padding: 16px 18px;
+            min-height: 230px;
+            position: relative;
+        }
+        .code-line {
+            display: flex;
+            gap: 12px;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        .code-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .ln { color: #3d4158; user-select: none; min-width: 18px; text-align: right; }
+        .c-keyword  { color: #c792ea; }
+        .c-func     { color: #82aaff; }
+        .c-string   { color: #c3e88d; }
+        .c-num      { color: #f78c6c; }
+        .c-comment  { color: #546e7a; font-style: italic; }
+        .c-var      { color: #89ddff; }
+        .c-punct    { color: #89ddff; }
+        .c-plain    { color: #d4d4d4; }
+        .c-label    { color: #ffcb6b; }
+
+        #terminal-label {
+            font-size: 10px;
+            font-family: 'Inter', sans-serif;
+            color: #546e7a;
+            padding: 8px 18px 12px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cursor-blink {
+            display: inline-block;
+            width: 7px; height: 13px;
+            background: #6366f1;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            border-radius: 1px;
+            margin-left: 2px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .terminal-progress {
+            display: flex;
+            gap: 4px;
+            margin-left: auto;
+        }
+        .terminal-progress span {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #2a2d3e;
+            transition: background 0.4s;
+        }
+        .terminal-progress span.active {
+            background: #6366f1;
         }
     </style>
 </head>
@@ -69,31 +147,59 @@
     <main class="relative z-10 max-w-5xl mx-auto px-6 space-y-8">
 
         <!-- HERO HEADER -->
-        <header class="py-4 md:py-8 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div class="flex-1 text-center md:text-left order-2 md:order-1">
+        <header class="py-4 md:py-8 flex flex-col md:flex-row items-start gap-8 md:gap-12">
+
+            <!-- KIRI: TEKS -->
+            <div class="flex-1 pt-2">
                 <div class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 font-heading font-bold px-4 py-2 rounded-full mb-5 text-sm">
                     &#129514; Karya &amp; Eksperimen Digital
                 </div>
-                <p class="text-xs text-slate-400 italic mb-4 max-w-lg leading-relaxed mx-auto md:mx-0">
-                    These are experimental and often unfinished creations — honest works in progress, built with curiosity and a love for learning.
-                </p>
-                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-2 font-heading">
+
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-2 font-heading">
                     Karya<span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-cyan-400">.</span>
                 </h1>
-                <p class="text-base md:text-lg font-heading font-semibold text-slate-400 mb-4 italic">
+                <p class="text-base md:text-lg font-heading font-semibold text-slate-400 mb-5 italic">
                     Experimental Creations
                 </p>
-                <p class="text-sm text-slate-600 max-w-lg leading-relaxed mx-auto md:mx-0">
+
+                <p class="text-sm text-slate-600 max-w-md leading-relaxed">
                     Kumpulan karya digital eksperimental — game edukasi, laboratorium maya, dan media pembelajaran interaktif. Masih dalam proses, tapi dibuat sepenuh hati.
                 </p>
-                <p class="text-xs text-slate-400 max-w-lg leading-relaxed mx-auto md:mx-0 mt-1">
-                    A collection of experimental digital works — educational games, virtual labs, and interactive learning media. Unfinished, but made with full intention.
+                <p class="text-xs text-slate-400 max-w-md leading-relaxed mt-1">
+                    Educational games, virtual labs, and interactive learning media. Unfinished, but made with full intention.
                 </p>
+
+                <div class="flex flex-wrap gap-2 mt-6 text-[11px] font-semibold">
+                    <span class="bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full shadow-sm">&#127859; Chef Algorithm</span>
+                    <span class="bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full shadow-sm">&#128421; Lab Perakitan</span>
+                    <span class="bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full shadow-sm">&#127760; Jaringan Komputer</span>
+                    <span class="bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full shadow-sm">&#129513; Berpikir Komputasional</span>
+                    <span class="bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full shadow-sm">&#128190; Sistem Komputer</span>
+                </div>
             </div>
-            <div class="order-1 md:order-2 relative w-56 h-56 md:w-72 md:h-72 flex-shrink-0">
-                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-300 to-cyan-300 blob-shape transform rotate-6 opacity-50"></div>
-                <img src="../assets/images/fanani2.jpg" alt="Ach. Chanifuddin Fanani" class="relative w-full h-full object-cover blob-shape border-4 border-white shadow-xl z-10">
+
+            <!-- KANAN: ANIMATED CODE TERMINAL -->
+            <div class="w-full md:w-[420px] flex-shrink-0">
+                <div id="code-terminal">
+                    <!-- Title bar -->
+                    <div class="terminal-bar">
+                        <span class="terminal-dot" style="background:#ff5f57"></span>
+                        <span class="terminal-dot" style="background:#febc2e"></span>
+                        <span class="terminal-dot" style="background:#28c840"></span>
+                        <span style="color:#546e7a;font-size:10px;margin-left:8px;font-family:monospace" id="terminal-filename">chef-algorithm.js</span>
+                    </div>
+                    <!-- Code body -->
+                    <div class="terminal-body" id="terminal-body"></div>
+                    <!-- Footer -->
+                    <div id="terminal-label">
+                        <span style="color:#6366f1">&#9679;</span>
+                        <span id="terminal-desc">Chef Algorithm &mdash; Gim Edukasi</span>
+                        <span class="cursor-blink"></span>
+                        <div class="terminal-progress" id="terminal-progress"></div>
+                    </div>
+                </div>
             </div>
+
         </header>
 
         <!-- DISCLAIMER -->
@@ -349,6 +455,157 @@
         <p>&copy; 2026 Ach. Chanifuddin Fanani, S.Pd. &mdash; SMP Negeri 2 Lamongan.</p>
         <p class="italic mt-0.5">Karya Eksperimental &middot; Experimental Creations</p>
     </footer>
+
+    <script>
+    // === ANIMATED CODE TERMINAL ===
+    const snippets = [
+        {
+            file: 'chef-algorithm.js',
+            desc: 'Chef Algorithm — Gim Edukasi Algoritma',
+            lines: [
+                `<span class="c-comment">// Chef Algorithm: 4 misi logika memasak</span>`,
+                `<span class="c-keyword">const</span> <span class="c-var">misi</span> <span class="c-punct">=</span> <span class="c-punct">{</span>`,
+                `&nbsp;&nbsp;<span class="c-label">level1</span><span class="c-punct">:</span> <span class="c-string">'Sekuensial'</span><span class="c-punct">,</span>`,
+                `&nbsp;&nbsp;<span class="c-label">level2</span><span class="c-punct">:</span> <span class="c-string">'Percabangan IF-ELSE'</span><span class="c-punct">,</span>`,
+                `&nbsp;&nbsp;<span class="c-label">level3</span><span class="c-punct">:</span> <span class="c-string">'Perulangan Loop'</span><span class="c-punct">,</span>`,
+                `&nbsp;&nbsp;<span class="c-label">level4</span><span class="c-punct">:</span> <span class="c-string">'Dekomposisi Paralel'</span>`,
+                `<span class="c-punct">};</span>`,
+                `<span class="c-keyword">function</span> <span class="c-func">masakResep</span><span class="c-punct">(</span><span class="c-var">bahan</span><span class="c-punct">)</span> <span class="c-punct">{</span>`,
+                `&nbsp;&nbsp;<span class="c-keyword">if</span> <span class="c-punct">(</span><span class="c-var">bahan</span><span class="c-punct">.</span><span class="c-func">siap</span><span class="c-punct">)</span> <span class="c-keyword">return</span> <span class="c-string">'⭐ Berhasil!'</span><span class="c-punct">;</span>`,
+                `<span class="c-punct">}</span>`,
+            ]
+        },
+        {
+            file: 'perakitan-komputer.js',
+            desc: 'Lab Perakitan Komputer — Virtual Lab',
+            lines: [
+                `<span class="c-comment">// Von Neumann Architecture Simulator</span>`,
+                `<span class="c-keyword">class</span> <span class="c-func">KomputerVonNeumann</span> <span class="c-punct">{</span>`,
+                `&nbsp;&nbsp;<span class="c-func">constructor</span><span class="c-punct">()</span> <span class="c-punct">{</span>`,
+                `&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-keyword">this</span><span class="c-punct">.</span><span class="c-var">cpu</span>    <span class="c-punct">=</span> <span class="c-keyword">null</span><span class="c-punct">;</span>`,
+                `&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-keyword">this</span><span class="c-punct">.</span><span class="c-var">memory</span> <span class="c-punct">=</span> <span class="c-keyword">new</span> <span class="c-func">Array</span><span class="c-punct">(</span><span class="c-num">256</span><span class="c-punct">);</span>`,
+                `&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-keyword">this</span><span class="c-punct">.</span><span class="c-var">binary</span> <span class="c-punct">=</span> <span class="c-string">'00000000'</span><span class="c-punct">;</span>`,
+                `&nbsp;&nbsp;<span class="c-punct">}</span>`,
+                `&nbsp;&nbsp;<span class="c-func">boot</span><span class="c-punct">()</span> <span class="c-punct">{</span>`,
+                `&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-comment">// POST: Power-On Self Test 🖥️</span>`,
+                `&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-func">playBootBeep</span><span class="c-punct">();</span>`,
+                `&nbsp;&nbsp;<span class="c-punct">}</span>`,
+                `<span class="c-punct">}</span>`,
+            ]
+        },
+        {
+            file: 'jaringan-komputer.js',
+            desc: 'MPI Jaringan Komputer — Simulasi Paket',
+            lines: [
+                `<span class="c-comment">// Packet Switching Simulation</span>`,
+                `<span class="c-keyword">async function</span> <span class="c-func">kirimPaket</span><span class="c-punct">(</span><span class="c-var">data</span><span class="c-punct">,</span> <span class="c-var">tujuan</span><span class="c-punct">)</span> <span class="c-punct">{</span>`,
+                `&nbsp;&nbsp;<span class="c-keyword">const</span> <span class="c-var">paket</span> <span class="c-punct">=</span> <span class="c-func">enkapsulasi</span><span class="c-punct">(</span><span class="c-var">data</span><span class="c-punct">);</span>`,
+                `&nbsp;&nbsp;<span class="c-keyword">const</span> <span class="c-var">rute</span>  <span class="c-punct">=</span> <span class="c-func">routing</span><span class="c-punct">(</span><span class="c-var">tujuan</span><span class="c-punct">);</span>`,
+                `&nbsp;&nbsp;<span class="c-keyword">for</span> <span class="c-punct">(</span><span class="c-keyword">const</span> <span class="c-var">router</span> <span class="c-keyword">of</span> <span class="c-var">rute</span><span class="c-punct">)</span> <span class="c-punct">{</span>`,
+                `&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-keyword">await</span> <span class="c-var">router</span><span class="c-punct">.</span><span class="c-func">forward</span><span class="c-punct">(</span><span class="c-var">paket</span><span class="c-punct">);</span>`,
+                `&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-func">animatePacket</span><span class="c-punct">(</span><span class="c-var">router</span><span class="c-punct">);</span>`,
+                `&nbsp;&nbsp;<span class="c-punct">}</span>`,
+                `&nbsp;&nbsp;<span class="c-keyword">return</span> <span class="c-string">'🌐 Paket Tiba!'</span><span class="c-punct">;</span>`,
+                `<span class="c-punct">}</span>`,
+            ]
+        },
+        {
+            file: 'berpikir-komputasional.js',
+            desc: 'MPI Berpikir Komputasional — 4 Pilar CT',
+            lines: [
+                `<span class="c-comment">// 4 Pilar Computational Thinking</span>`,
+                `<span class="c-keyword">const</span> <span class="c-var">smartHome</span> <span class="c-punct">=</span> <span class="c-keyword">new</span> <span class="c-func">IoTSmartHome</span><span class="c-punct">();</span>`,
+                ``,
+                `<span class="c-comment">// 1️⃣ Dekomposisi</span>`,
+                `<span class="c-keyword">const</span> <span class="c-var">bagian</span> <span class="c-punct">=</span> <span class="c-var">smartHome</span><span class="c-punct">.</span><span class="c-func">dekomposisi</span><span class="c-punct">();</span>`,
+                `<span class="c-comment">// 2️⃣ Pengenalan Pola</span>`,
+                `<span class="c-keyword">const</span> <span class="c-var">pola</span> <span class="c-punct">=</span> <span class="c-func">temukaPola</span><span class="c-punct">(</span><span class="c-var">bagian</span><span class="c-punct">);</span>`,
+                `<span class="c-comment">// 3️⃣ Abstraksi</span>`,
+                `<span class="c-keyword">const</span> <span class="c-var">model</span> <span class="c-punct">=</span> <span class="c-func">abstraksi</span><span class="c-punct">(</span><span class="c-var">pola</span><span class="c-punct">);</span>`,
+                `<span class="c-comment">// 4️⃣ Algoritma</span>`,
+                `<span class="c-var">smartHome</span><span class="c-punct">.</span><span class="c-func">jalankan</span><span class="c-punct">(</span><span class="c-var">model</span><span class="c-punct">);</span>`,
+            ]
+        },
+        {
+            file: 'sistem-komputer.js',
+            desc: 'MPI Sistem Komputer — CPU & Memori',
+            lines: [
+                `<span class="c-comment">// Computer Systems Visualizer</span>`,
+                `<span class="c-keyword">class</span> <span class="c-func">CPU</span> <span class="c-punct">{</span>`,
+                `&nbsp;&nbsp;<span class="c-func">fetch</span><span class="c-punct">(</span><span class="c-var">addr</span><span class="c-punct">)</span> <span class="c-punct">{</span>`,
+                `&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-keyword">return</span> <span class="c-var">RAM</span><span class="c-punct">[</span><span class="c-var">addr</span><span class="c-punct">];</span> <span class="c-comment">// Fetch</span>`,
+                `&nbsp;&nbsp;<span class="c-punct">}</span>`,
+                `&nbsp;&nbsp;<span class="c-func">decode</span><span class="c-punct">(</span><span class="c-var">instruksi</span><span class="c-punct">)</span> <span class="c-punct">{</span>`,
+                `&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-keyword">return</span> <span class="c-var">CU</span><span class="c-punct">.</span><span class="c-func">parse</span><span class="c-punct">(</span><span class="c-var">instruksi</span><span class="c-punct">);</span>`,
+                `&nbsp;&nbsp;<span class="c-punct">}</span>`,
+                `&nbsp;&nbsp;<span class="c-func">execute</span><span class="c-punct">(</span><span class="c-var">op</span><span class="c-punct">)</span> <span class="c-punct">{</span>`,
+                `&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-var">ALU</span><span class="c-punct">.</span><span class="c-func">compute</span><span class="c-punct">(</span><span class="c-var">op</span><span class="c-punct">);</span>`,
+                `&nbsp;&nbsp;<span class="c-punct">}</span>`,
+                `<span class="c-punct">}</span>`,
+            ]
+        }
+    ];
+
+    let currentSnippet = 0;
+    let lineTimers = [];
+
+    function clearTimers() {
+        lineTimers.forEach(t => clearTimeout(t));
+        lineTimers = [];
+    }
+
+    function renderSnippet(idx) {
+        clearTimers();
+        const s = snippets[idx];
+        const body = document.getElementById('terminal-body');
+        const desc = document.getElementById('terminal-desc');
+        const fname = document.getElementById('terminal-filename');
+        const prog = document.getElementById('terminal-progress');
+
+        // Update meta
+        desc.textContent = s.desc;
+        fname.textContent = s.file;
+
+        // Update progress dots
+        prog.querySelectorAll('span').forEach((el, i) => {
+            el.classList.toggle('active', i === idx);
+        });
+
+        // Clear body
+        body.innerHTML = '';
+
+        // Build & stagger lines
+        s.lines.forEach((html, i) => {
+            const row = document.createElement('div');
+            row.className = 'code-line';
+            row.innerHTML = `<span class="ln">${i + 1}</span><span class="c-plain">${html}</span>`;
+            body.appendChild(row);
+
+            const t = setTimeout(() => row.classList.add('visible'), 80 + i * 110);
+            lineTimers.push(t);
+        });
+    }
+
+    function initTerminal() {
+        // Build progress dots
+        const prog = document.getElementById('terminal-progress');
+        snippets.forEach((_, i) => {
+            const dot = document.createElement('span');
+            if (i === 0) dot.classList.add('active');
+            prog.appendChild(dot);
+        });
+
+        renderSnippet(0);
+
+        // Auto cycle every 5s
+        setInterval(() => {
+            currentSnippet = (currentSnippet + 1) % snippets.length;
+            renderSnippet(currentSnippet);
+        }, 5000);
+    }
+
+    document.addEventListener('DOMContentLoaded', initTerminal);
+    </script>
 
 </body>
 </html>
