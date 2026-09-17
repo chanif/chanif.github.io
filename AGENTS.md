@@ -5,9 +5,11 @@ Folder-folder berikut sengaja disediakan sebagai fallback / kompatibilitas mundu
 - `karya/`
 - `mpi/`
 - `learn/`
+- `algo/`
+- `intel_fti/`
 
 ### Panduan untuk Agent / AI Assistant:
-- **Abaikan ketiga folder tersebut (`karya/`, `mpi/`, dan `learn/`). Anggap tidak ada dalam cakupan pengembangan proyek ini.**
+- **Abaikan seluruh folder tersebut (`karya/`, `mpi/`, `learn/`, `algo/`, dan `intel_fti/`). Anggap tidak ada dalam cakupan pengembangan proyek ini.**
 - **Jangan memodifikasi, me-refactor, atau menambahkan file baru** ke dalam folder-folder tersebut kecuali diminta secara eksplisit oleh pengguna.
 - **Jangan menyertakan** folder-folder tersebut dalam perutean aktif, sitemap baru, atau audit struktur web.
 - **Pengembangan Aktif:**
