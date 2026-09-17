@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop KKA Dinas Pendidikan — Vibe Coding MPI Guru SMP | Pak Fanani</title>
+    <meta name="description" content="Workshop KKA Guru SMP oleh Ach. Chanifuddin Fanani, S.Pd. — Buat media pembelajaran interaktif (MPI) dengan AI lalu publish ke GitHub Pages.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+        h1, h2, h3, h4, .font-heading { font-family: 'Quicksand', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
+        .code-box {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            overflow-x: auto;
+            max-width: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+        code {
+            word-break: break-word;
+        }
+        .step-connector {
+            border-left: 2px dashed #C7D2FE;
+            margin-left: 1.5rem;
+            padding-left: 2rem;
+            margin-top: -0.5rem;
+            padding-top: 1.5rem;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Ambient Gradients -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" style="background: radial-gradient(circle at top left, rgba(199, 210, 254, 0.4) 0%, transparent 50%), radial-gradient(circle at 95% 20%, rgba(165, 243, 252, 0.3) 0%, transparent 45%);"></div>
+
+    <!-- Navigation -->
+    <nav class="relative z-50 max-w-5xl mx-auto w-full px-4 sm:px-6 py-5 sm:py-6 flex justify-between items-center border-b border-slate-200/60">
+        <a href="../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-indigo-600 transition flex items-center gap-1.5">
+            fanani<span class="text-indigo-600">.</span>
+        </a>
+        <div class="flex items-center gap-4 text-xs md:text-sm font-semibold text-slate-600">
+            <a href="../" class="hover:text-indigo-600 transition">← Kembali ke Workshop</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-20 flex-1 space-y-10 sm:space-y-14 overflow-hidden">
+
+        <!-- Hero Section -->
+        <header class="bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-900 rounded-3xl p-5 sm:p-8 md:p-12 text-white border border-indigo-500/20 shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 rounded-3xl pointer-events-none" style="background: radial-gradient(circle at 100% 100%, rgba(6, 182, 212, 0.15) 0%, transparent 60%);"></div>
+            <div class="relative z-10 space-y-5 max-w-3xl">
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-indigo-500/25 text-indigo-200 border border-indigo-400/30 text-xs font-bold px-3 py-1 rounded-full">
+                        🏛️ KKA · Dinas Pendidikan Lamongan
+                    </span>
+                    <span class="bg-white/10 text-white/90 text-xs font-bold px-3 py-1 rounded-full">
+                        ⚡ Vibe Coding + GitHub Pages
+                    </span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-extrabold font-heading text-white leading-tight">
+                    Vibe Coding MPI & Publikasi ke GitHub Pages 🚀
+                </h1>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+                    Bimbingan teknis praktis bagi Guru SMP dalam merancang Media Pembelajaran Interaktif (MPI) berbasis web berbantuan Generative AI (Claude / Gemini) serta mempublikasikannya secara daring melalui <strong class="text-white">GitHub Pages</strong>.
+                </p>
+                <div class="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 pt-2">
+                    <a href="contoh-hasil-mpi.html" target="_blank" class="px-5 sm:px-6 py-3.5 bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg transition flex items-center justify-center gap-2 text-center">
+                        <span>🎮 Pratinjau Contoh Hasil MPI</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                    <a href="#langkah-1" class="px-5 sm:px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-heading font-bold text-sm rounded-2xl border border-white/20 transition text-center justify-center flex items-center">
+                        📋 Pelajari Langkah Pertama
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Overview Steps -->
+        <section class="space-y-3">
+            <h2 class="font-heading font-extrabold text-2xl text-slate-800 text-center">
+                📍 Alur Pelaksanaan Workshop
+            </h2>
+            <p class="text-xs md:text-sm text-slate-500 text-center max-w-lg mx-auto">
+                Lima tahapan sistematis perancangan hingga publikasi media pembelajaran interaktif secara daring:
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3 pt-2">
+                <a href="#langkah-1" class="bg-white rounded-2xl border border-slate-200 p-4 text-center shadow-sm hover:border-indigo-300 hover:shadow-md transition space-y-1">
+                    <div class="text-2xl">📁</div>
+                    <div class="font-heading font-bold text-xs text-slate-700">1. Persiapan Folder</div>
+                </a>
+                <a href="#langkah-2" class="bg-white rounded-2xl border border-slate-200 p-4 text-center shadow-sm hover:border-indigo-300 hover:shadow-md transition space-y-1">
+                    <div class="text-2xl">🤖</div>
+                    <div class="font-heading font-bold text-xs text-slate-700">2. Pembuatan MPI via AI</div>
+                </a>
+                <a href="#langkah-3" class="bg-white rounded-2xl border border-slate-200 p-4 text-center shadow-sm hover:border-indigo-300 hover:shadow-md transition space-y-1">
+                    <div class="text-2xl">🐙</div>
+                    <div class="font-heading font-bold text-xs text-slate-700">3. Registrasi GitHub</div>
+                </a>
+                <a href="#langkah-4" class="bg-white rounded-2xl border border-slate-200 p-4 text-center shadow-sm hover:border-indigo-300 hover:shadow-md transition space-y-1">
+                    <div class="text-2xl">🌐</div>
+                    <div class="font-heading font-bold text-xs text-slate-700">4. Konfigurasi Pages</div>
+                </a>
+                <a href="#langkah-5" class="col-span-2 md:col-span-1 bg-white rounded-2xl border border-slate-200 p-4 text-center shadow-sm hover:border-indigo-300 hover:shadow-md transition space-y-1">
+                    <div class="text-2xl">⬆️</div>
+                    <div class="font-heading font-bold text-xs text-slate-700">5. Publikasi Berkas</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ── LANGKAH 1 ── -->
+        <section id="langkah-1" class="space-y-6 scroll-mt-6">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center font-heading font-extrabold text-xl flex-shrink-0 shadow-lg shadow-indigo-500/30">1</div>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl md:text-2xl text-slate-900">📁 Siapkan Folder Kerja</h2>
+                    <p class="text-xs text-slate-500">Siapkan bahan dan berkas aset pembelajaran sebelum berinteraksi dengan AI.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200/80 p-4 sm:p-6 md:p-8 shadow-sm space-y-5">
+                <p class="text-sm text-slate-700 leading-relaxed">
+                    Buat satu folder kerja baru di komputer atau laptop Anda (misalnya di Desktop dengan nama materi Anda), lalu masukkan berkas-berkas berikut ke dalamnya:
+                </p>
+
+                <!-- Folder Structure -->
+                <div class="bg-slate-900 text-slate-100 rounded-2xl p-4 sm:p-5 code-box text-xs sm:text-sm leading-loose border border-slate-800 overflow-x-auto max-w-full">
+                    <div class="text-indigo-400 font-bold mb-1">📁 MPI_MataPelajaran_Materi/</div>
+                    <div class="ml-2 sm:ml-4 space-y-1">
+                        <div><span class="text-slate-500">├── </span><span class="text-emerald-400 font-semibold">logo-sekolah.png</span><span class="text-slate-500"> &nbsp;← Logo sekolah</span></div>
+                        <div><span class="text-slate-500">├── </span><span class="text-emerald-400 font-semibold">foto-guru.jpg</span><span class="text-slate-500"> &nbsp;&nbsp;&nbsp;&nbsp;← Foto profil guru</span></div>
+                        <div><span class="text-slate-500">├── </span><span class="text-sky-400 font-semibold">bg-ruang-kelas.jpg</span><span class="text-slate-500"> ← Latar belakang kelas</span></div>
+                        <div><span class="text-slate-500">└── </span><span class="text-yellow-400 font-semibold">spesifikasi.md</span><span class="text-slate-500"> &nbsp;&nbsp;&nbsp;&nbsp;← Acuan prompt AI</span></div>
+                    </div>
+                    <div class="mt-2 text-slate-400 text-xs">* Berkas <span class="text-yellow-300 font-mono">index.html</span> akan ditambahkan ke folder ini setelah selesai diunduh dari AI (Langkah 2).</div>
+                </div>
+
+                <!-- 4 items side by side -->
+                <div class="grid md:grid-cols-4 gap-4">
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 space-y-2">
+                        <div class="text-2xl">🖼️</div>
+                        <div class="font-heading font-bold text-sm text-emerald-800">Logo Sekolah</div>
+                        <p class="text-xs text-emerald-700 leading-relaxed">
+                            Logo resmi instansi/sekolah Anda. Format dan nama berkas bebas (PNG, JPG, dll.).
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 space-y-2">
+                        <div class="text-2xl">👤</div>
+                        <div class="font-heading font-bold text-sm text-blue-800">Foto Profil Guru</div>
+                        <p class="text-xs text-blue-700 leading-relaxed">
+                            Foto resmi Anda untuk kartu profil pengembang. Format dan nama berkas bebas.
+                        </p>
+                    </div>
+                    <div class="bg-sky-50 border border-sky-200 rounded-2xl p-4 space-y-2">
+                        <div class="text-2xl">🏫</div>
+                        <div class="font-heading font-bold text-sm text-sky-800">bg-ruang-kelas.jpg</div>
+                        <p class="text-xs text-sky-700 leading-relaxed">
+                            Gambar latar ruang kelas. <a href="bg-ruang-kelas.jpg" download class="underline font-semibold">Unduh di sini</a>.
+                        </p>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 space-y-2">
+                        <div class="text-2xl">📋</div>
+                        <div class="font-heading font-bold text-sm text-amber-800">spesifikasi.md</div>
+                        <p class="text-xs text-amber-700 leading-relaxed">
+                            Dokumen acuan prompt AI. <a href="spesifikasi.md" download class="underline font-semibold">Unduh di sini</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tips Fleksibel Gambar -->
+                <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-4 flex gap-3">
+                    <span class="text-xl flex-shrink-0">💡</span>
+                    <p class="text-xs text-indigo-800 leading-relaxed">
+                        <strong>Fleksibel & Otomatis:</strong> Nama berkas foto dan logo tidak wajib diubah menjadi <code class="bg-indigo-100 px-1 rounded font-mono">logo.png</code> atau <code class="bg-indigo-100 px-1 rounded font-mono">foto-guru.jpg</code>. Karena seluruh berkas gambar akan diunggah bersamaan ke chat AI, sistem AI akan secara otomatis mendeteksi nama berkas asli Anda dan menyelaraskannya ke dalam kode program MPI.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── LANGKAH 2 ── -->
+        <section id="langkah-2" class="space-y-6 scroll-mt-6">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-cyan-600 text-white rounded-2xl flex items-center justify-center font-heading font-extrabold text-xl flex-shrink-0 shadow-lg shadow-cyan-500/30">2</div>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl md:text-2xl text-slate-900">🤖 Buat MPI dengan AI</h2>
+                    <p class="text-xs text-slate-500">Lengkapi spesifikasi, unggah berkas ke AI, lalu unduh hasilnya.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200/80 p-4 sm:p-6 md:p-8 shadow-sm space-y-6">
+
+                <!-- Sub-step A: Isi spesifikasi -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 bg-slate-800 text-white rounded-xl flex items-center justify-center font-heading font-bold text-xs flex-shrink-0">A</div>
+                        <h3 class="font-heading font-bold text-base text-slate-800">Sesuaikan Dokumen <code class="bg-slate-100 px-2 py-0.5 rounded-lg text-indigo-600 text-sm">spesifikasi.md</code></h3>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed ml-0 sm:ml-9">
+                        Buka berkas <code class="bg-slate-100 px-1.5 py-0.5 rounded text-indigo-600">spesifikasi.md</code> menggunakan Notepad, lalu sesuaikan data pada <strong>Bagian 1</strong> berdasarkan mata pelajaran, topik materi, dan identitas Anda. Bagian 2, 3, dan 4 merupakan standar sistem dan tidak perlu diubah.
+                    </p>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 ml-0 sm:ml-9 code-box text-xs text-slate-700 leading-relaxed space-y-1 overflow-x-auto max-w-full">
+                        <div class="text-slate-400 font-semibold mb-2">— CONTOH BAGIAN YANG DISESUAIKAN —</div>
+                        <div>- <strong>Mata Pelajaran</strong> : <span class="text-emerald-700">IPA</span></div>
+                        <div>- <strong>Fase / Kelas</strong> &nbsp;&nbsp;&nbsp;: <span class="text-emerald-700">Fase D — Kelas VIII</span></div>
+                        <div>- <strong>Materi Pokok</strong> &nbsp;&nbsp;: <span class="text-emerald-700">Sistem Pernapasan Manusia</span></div>
+                        <div>- <strong>Tujuan Belajar</strong> : <span class="text-emerald-700">Peserta didik mampu menganalisis sistem pernapasan manusia serta mekanisme pernapasan dada dan perut</span></div>
+                        <div>- <strong>Nama Guru</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="text-emerald-700">Edy Santoso, S.Pd.</span></div>
+                        <div>- <strong>Nama Sekolah</strong> &nbsp;: <span class="text-emerald-700">SMP Negeri 1 Lamongan</span></div>
+                    </div>
+                </div>
+
+                <hr class="border-slate-100">
+
+                <!-- Sub-step B: Pilih AI -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 bg-slate-800 text-white rounded-xl flex items-center justify-center font-heading font-bold text-xs flex-shrink-0">B</div>
+                        <h3 class="font-heading font-bold text-base text-slate-800">Pilih Platform AI: Claude (Rekomendasi Utama) atau Gemini</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 ml-0 sm:ml-9">
+                        Untuk efisiensi kerja yang maksimal, <strong>Claude (Anthropic) sangat disarankan</strong> karena menyediakan panel interaktif (Artifacts) yang memungkinkan pratinjau langsung serta fitur unduh berkas <code class="bg-slate-100 px-1 rounded text-xs font-mono">.html</code> utuh secara mandiri.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4 ml-0 sm:ml-9">
+                        <a href="https://claude.ai" target="_blank" class="group flex items-start gap-3 bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100/60 border-2 border-orange-400 hover:border-orange-500 rounded-2xl p-4 transition shadow-sm hover:shadow-md relative overflow-hidden">
+                            <div class="absolute top-2 right-2 bg-orange-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                                ⭐ Rekomendasi Utama
+                            </div>
+                            <div class="text-3xl mt-0.5">🔶</div>
+                            <div class="pr-6">
+                                <div class="font-heading font-bold text-sm text-orange-900 group-hover:text-orange-950">Claude (Anthropic)</div>
+                                <div class="text-xs text-orange-700 font-mono mb-1.5 font-semibold">claude.ai</div>
+                                <p class="text-xs text-orange-800 leading-relaxed">
+                                    <strong>Pilihan Terbaik:</strong> Dilengkapi panel <em>Artifacts</em> di sebelah kanan dengan tombol unduh berkas HTML langsung. Menghasilkan kode visual, efek suara Web Audio API, dan simulasi sains interaktif secara utuh.
+                                </p>
+                            </div>
+                        </a>
+                        <a href="https://gemini.google.com" target="_blank" class="group flex items-start gap-3 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 hover:border-blue-400 rounded-2xl p-4 transition">
+                            <div class="text-2xl mt-0.5">✦</div>
+                            <div>
+                                <div class="font-heading font-bold text-sm text-blue-800 group-hover:text-blue-900">Google Gemini</div>
+                                <div class="text-xs text-blue-600 font-mono mb-1.5">gemini.google.com</div>
+                                <p class="text-xs text-blue-700 leading-relaxed">
+                                    <strong>Alternatif Praktis:</strong> Cukup masuk dengan akun Google pribadi Anda. Kode hasil generasi disalin menggunakan tombol <em>Copy code</em> lalu disimpan melalui Notepad.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <hr class="border-slate-100">
+
+                <!-- Sub-step C: Upload spesifikasi & gambar -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 bg-slate-800 text-white rounded-xl flex items-center justify-center font-heading font-bold text-xs flex-shrink-0">C</div>
+                        <h3 class="font-heading font-bold text-base text-slate-800">Unggah Berkas <code class="bg-slate-100 px-2 py-0.5 rounded-lg text-indigo-600 text-sm">spesifikasi.md</code> & Berkas Gambar ke AI</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 ml-0 sm:ml-9 leading-relaxed">
+                        Lampirkan berkas spesifikasi bersama seluruh gambar dari folder kerja Anda secara langsung ke dalam sesi percakapan AI:
+                    </p>
+                    <div class="ml-0 sm:ml-9 space-y-2.5 text-sm text-slate-600">
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-400 font-mono text-xs mt-0.5">1.</span>
+                            <span>Akses platform <a href="https://claude.ai" target="_blank" class="text-orange-700 font-bold underline">claude.ai</a> (atau Gemini) pada browser Anda.</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-400 font-mono text-xs mt-0.5">2.</span>
+                            <span>Klik ikon <strong>Lampiran</strong> (tombol klip kertas 📎 atau tanda tambah <kbd class="bg-slate-200 px-1.5 py-0.5 rounded text-xs font-mono font-bold">+</kbd>) pada kolom pesan.</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-400 font-mono text-xs mt-0.5">3.</span>
+                            <div>
+                                <span>Pilih dan unggah bersamaan berkas-berkas dari folder kerja Anda:</span>
+                                <div class="bg-slate-100 border border-slate-200 rounded-xl p-2.5 mt-1.5 text-xs text-slate-700 space-y-1 font-mono">
+                                    <div>📎 <span class="font-bold text-indigo-700">spesifikasi.md</span> (panduan acuan MPI)</div>
+                                    <div>🖼️ <span class="font-bold text-emerald-700">Logo sekolah Anda</span> (format apa pun)</div>
+                                    <div>👤 <span class="font-bold text-emerald-700">Foto profil guru</span> (format apa pun)</div>
+                                    <div>🏫 <span class="font-bold text-emerald-700">bg-ruang-kelas.jpg</span> (latar belakang kelas)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-400 font-mono text-xs mt-0.5">4.</span>
+                            <div class="w-full">
+                                <span>Ketikkan prompt instruksi singkat berikut pada kolom chat:</span>
+                                <div class="bg-slate-900 text-emerald-300 font-mono rounded-xl p-3 text-xs mt-1.5 leading-relaxed border border-slate-800 select-all">
+                                    Buatkan media pembelajaran interaktif (MPI) dalam 1 file HTML lengkap berdasarkan spesifikasi.md dan berkas gambar terlampir.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-400 font-mono text-xs mt-0.5">5.</span>
+                            <span>Tekan <kbd class="bg-slate-200 px-2 py-0.5 rounded text-xs font-mono font-bold">Enter</kbd> dan tunggu sekitar <strong>30–60 detik</strong> selagi AI menyusun aplikasi MPI Anda.</span>
+                        </div>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 ml-0 sm:ml-9 flex gap-3">
+                        <span class="text-xl flex-shrink-0">✨</span>
+                        <p class="text-xs text-emerald-800 leading-relaxed">
+                            <strong>Keuntungan Melampirkan Gambar:</strong> Dengan melihat berkas visual Anda secara langsung, AI dapat menentukan skema warna yang harmonis dengan logo sekolah serta memastikan pemanggilan nama berkas di dalam kode HTML presisi secara otomatis.
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="border-slate-100">
+
+                <!-- Sub-step D: Download & Pindahkan -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 bg-slate-800 text-white rounded-xl flex items-center justify-center font-heading font-bold text-xs flex-shrink-0">D</div>
+                        <h3 class="font-heading font-bold text-base text-slate-800">Unduh Berkas HTML → Simpan ke Folder Kerja sebagai <code class="bg-slate-100 px-2 py-0.5 rounded-lg text-emerald-600 text-sm">index.html</code></h3>
+                    </div>
+                    <p class="text-sm text-slate-600 ml-0 sm:ml-9 leading-relaxed">
+                        Gunakan alur pengunduhan langsung yang praktis dan terbebas dari kesalahan salin kode:
+                    </p>
+                    <div class="ml-0 sm:ml-9 space-y-2.5 text-sm text-slate-600">
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-400 font-mono text-xs mt-0.5">1.</span>
+                            <span><strong>Pada Claude:</strong> Panel <em>Artifacts</em> di sebelah kanan layar akan menyajikan pratinjau interaktif MPI Anda. Klik tombol <strong>Download</strong> (ikon panah unduh 📥 pada sudut atas panel Artifacts). Berkas HTML akan tersimpan di folder <em>Downloads</em> komputer Anda.</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-400 font-mono text-xs mt-0.5">2.</span>
+                            <span>Buka folder <strong>Downloads</strong> di laptop Anda, temukan berkas HTML yang baru diunduh, lalu ubah namanya (<em>Rename</em>) menjadi <code class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-mono font-bold">index.html</code>.</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-400 font-mono text-xs mt-0.5">3.</span>
+                            <span><strong>Pindahkan Berkas:</strong> Pindahkan (<em>Cut / Ctrl+X</em>) berkas <code class="font-mono text-xs bg-slate-100 px-1 rounded">index.html</code> tersebut ke dalam folder kerja Anda (<code class="font-mono text-xs bg-slate-100 px-1 rounded">MPI_MataPelajaran_Materi</code>) berdampingan dengan berkas gambar.</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-400 font-mono text-xs mt-0.5">4.</span>
+                            <span><em>(Opsi jika menggunakan Gemini)</em>: Klik tombol <strong>"Copy code"</strong> → buka Notepad → tempel (<kbd class="bg-slate-200 px-1 rounded text-xs font-mono">Ctrl+V</kbd>) → pilih <strong>File → Save As</strong> → ubah <em>Save as type</em> menjadi <strong>All Files (*.*)</strong> → simpan dengan nama <code class="bg-slate-100 px-1 rounded text-xs font-mono font-bold">index.html</code> ke folder kerja Anda.</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-400 font-mono text-xs mt-0.5">5.</span>
+                            <span><strong>Uji Coba Hasil:</strong> Klik ganda (double-click) berkas <code class="bg-slate-100 px-1.5 py-0.5 rounded text-indigo-600 font-semibold">index.html</code> pada folder kerja Anda. Aplikasi MPI interaktif Anda akan langsung terbuka dan siap digunakan di browser! 🎉</span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-2xl p-4 ml-0 sm:ml-9 code-box text-xs text-indigo-200 leading-loose overflow-x-auto max-w-full">
+                        <div class="text-slate-400 mb-1">Struktur folder kerja Anda saat ini:</div>
+                        <div class="text-slate-500">📁 MPI_MataPelajaran_Materi/</div>
+                        <div class="ml-4"><span class="text-slate-600">├── </span><span class="text-emerald-400 font-semibold">[berkas logo sekolah Anda]</span></div>
+                        <div class="ml-4"><span class="text-slate-600">├── </span><span class="text-emerald-400 font-semibold">[berkas foto profil guru]</span></div>
+                        <div class="ml-4"><span class="text-slate-600">├── </span><span class="text-emerald-400 font-semibold">bg-ruang-kelas.jpg</span></div>
+                        <div class="ml-4"><span class="text-slate-600">├── </span><span class="text-slate-500">spesifikasi.md</span></div>
+                        <div class="ml-4"><span class="text-slate-600">└── </span><span class="text-yellow-400 font-bold">index.html</span><span class="text-slate-400"> &nbsp;← Berkas MPI utama hasil unduhan dari AI ✓</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── LANGKAH 3 ── -->
+        <section id="langkah-3" class="space-y-6 scroll-mt-6">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-slate-800 text-white rounded-2xl flex items-center justify-center font-heading font-extrabold text-xl flex-shrink-0 shadow-lg">3</div>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl md:text-2xl text-slate-900">🐙 Registrasi Akun GitHub</h2>
+                    <p class="text-xs text-slate-500">Platform penyimpanan berkas digital untuk mempublikasikan website media pembelajaran secara daring.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200/80 p-4 sm:p-6 md:p-8 shadow-sm space-y-5">
+                <p class="text-sm text-slate-700 leading-relaxed">
+                    <strong>GitHub</strong> merupakan platform pengelolaan dan penyimpanan berkas digital yang dilengkapi layanan <strong>GitHub Pages</strong>. Melalui fitur ini, dokumen web MPI Anda dipublikasikan secara daring sehingga dapat diakses siswa maupun pendidik melalui tautan internet.
+                </p>
+
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="w-6 h-6 bg-slate-700 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</div>
+                        <div class="text-sm text-slate-700 leading-relaxed">
+                            Buka tautan pendaftaran <a href="https://github.com/signup" target="_blank" class="text-indigo-600 font-semibold underline">github.com/signup</a> pada peramban laptop Anda.
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="w-6 h-6 bg-slate-700 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</div>
+                        <div class="space-y-1">
+                            <p class="text-sm text-slate-700">Lengkapi formulir pendaftaran akun:</p>
+                            <ul class="text-xs text-slate-600 space-y-1 ml-2">
+                                <li>• <strong>Email:</strong> gunakan alamat email aktif Anda (misalnya akun Google pribadi)</li>
+                                <li>• <strong>Password:</strong> tentukan kata sandi yang aman dan mudah diingat</li>
+                                <li>• <strong>Username:</strong> nama pengguna ini akan menjadi bagian dari alamat website utama Anda!</li>
+                            </ul>
+                            <div class="mt-2 bg-rose-50 border border-rose-200 rounded-xl p-3 flex gap-2">
+                                <span class="text-red-500 flex-shrink-0">⚠️</span>
+                                <p class="text-xs text-rose-800">
+                                    <strong>Ketentuan Username:</strong> Wajib menggunakan huruf kecil seluruhnya tanpa spasi, serta hanya diperbolehkan menggunakan tanda hubung (-). Contoh: <code class="bg-rose-100 px-1 rounded font-mono">edysantoso</code> atau <code class="bg-rose-100 px-1 rounded font-mono">pak-edy-smpn1</code>.
+                                </p>
+                            </div>
+                            <div class="mt-1 bg-emerald-50 border border-emerald-200 rounded-xl p-3 flex gap-2">
+                                <span class="flex-shrink-0">✅</span>
+                                <p class="text-xs text-emerald-800">
+                                    <strong>Rekomendasi Username:</strong> Gunakan kombinasi nama pendidik atau identitas sekolah. Contoh: <code class="bg-emerald-100 px-1 rounded font-mono">edysantoso</code>, <code class="bg-emerald-100 px-1 rounded font-mono">pak-fanani-smpn2</code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="w-6 h-6 bg-slate-700 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</div>
+                        <div class="text-sm text-slate-700 leading-relaxed">
+                            Lakukan verifikasi email → selesaikan verifikasi keamanan → pilih paket <strong>Free (Gratis)</strong> → akun GitHub Anda siap digunakan ✓
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-4 flex gap-3">
+                    <span class="text-xl flex-shrink-0">💡</span>
+                    <p class="text-xs text-indigo-800 leading-relaxed">
+                        <strong>Struktur Domain Website Anda:</strong> Pada langkah berikutnya, kita akan membuat repositori bertipe <em>User Site</em> dengan format nama <code class="bg-indigo-100 px-1.5 rounded font-mono font-bold">&lt;username&gt;.github.io</code>. Melalui skema ini, alamat website MPI Anda akan aktif langsung pada root domain: <code class="bg-indigo-100 px-1.5 rounded font-mono font-bold">https://username.github.io/</code> tanpa tambahan subfolder. Contoh apabila username Anda adalah <code class="font-mono font-bold">edysantoso</code>, maka alamat website resmi Anda adalah <code class="font-mono font-bold text-indigo-900">https://edysantoso.github.io/</code>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── LANGKAH 4 ── -->
+        <section id="langkah-4" class="space-y-6 scroll-mt-6">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-emerald-600 text-white rounded-2xl flex items-center justify-center font-heading font-extrabold text-xl flex-shrink-0 shadow-lg shadow-emerald-500/30">4</div>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl md:text-2xl text-slate-900">🌐 Buat Repositori &lt;username&gt;.github.io & Konfigurasi Pages</h2>
+                    <p class="text-xs text-slate-500">Inisialisasi repositori User Site di GitHub agar media pembelajaran aktif pada domain utama.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200/80 p-4 sm:p-6 md:p-8 shadow-sm space-y-5">
+                <p class="text-sm text-slate-700 leading-relaxed">
+                    Berdasarkan dokumentasi resmi GitHub Pages, setiap pengguna berhak atas satu situs utama (<em>User Site</em>) dengan memberi nama repositori persis sesuai nama pengguna: <code class="bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded font-mono font-bold">&lt;username&gt;.github.io</code>.
+                </p>
+
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="w-6 h-6 bg-emerald-700 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</div>
+                        <div class="text-sm text-slate-700 leading-relaxed">
+                            Setelah berhasil masuk ke GitHub, klik tombol <strong>+ New</strong> (pada sudut kiri atas) atau akses langsung halaman <a href="https://github.com/new" target="_blank" class="text-indigo-600 font-semibold underline">github.com/new</a>.
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="w-6 h-6 bg-emerald-700 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</div>
+                        <div class="space-y-1.5">
+                            <p class="text-sm text-slate-700 font-semibold">Lengkapi formulir pembuatan repositori:</p>
+                            <ul class="text-xs text-slate-600 space-y-1.5 ml-2">
+                                <li>• <strong>Repository name:</strong> ketik persis <code class="bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded font-mono font-bold text-xs">&lt;username&gt;.github.io</code></li>
+                                <li>• <strong>Description:</strong> opsional, misalnya <em>"Media Pembelajaran Interaktif IPA Sistem Pernapasan Manusia"</em></li>
+                                <li>• Visibility: pilih <strong>Public</strong> (wajib agar dapat diakses oleh siswa dan rekan guru)</li>
+                                <li>• Beri tanda centang pada <strong>"Add a README file"</strong></li>
+                            </ul>
+                            <div class="mt-2 bg-amber-50 border border-amber-200 rounded-xl p-3 flex gap-2.5">
+                                <span class="text-amber-600 text-base flex-shrink-0">📌</span>
+                                <p class="text-xs text-amber-900 leading-relaxed">
+                                    <strong>Ketentuan Dokumentasi GitHub Pages:</strong> Nama repositori harus berupa huruf kecil semua dan identik dengan username akun Anda diikuti sufiks <code class="font-mono font-semibold">.github.io</code>. Contoh apabila username Anda adalah <strong>edysantoso</strong>, maka repositori <strong>wajib</strong> bernama <code class="bg-amber-100 text-amber-950 px-1 rounded font-mono font-bold">edysantoso.github.io</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="w-6 h-6 bg-emerald-700 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</div>
+                        <div class="text-sm text-slate-700 leading-relaxed">
+                            Klik tombol <strong>"Create repository"</strong> di bagian bawah → repositori berhasil dibuat ✓
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="w-6 h-6 bg-emerald-700 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">4</div>
+                        <div class="space-y-1.5">
+                            <p class="text-sm text-slate-700 font-semibold">Pengaturan Branch & Konfigurasi GitHub Pages:</p>
+                            <ul class="text-xs text-slate-600 space-y-1.5 ml-2">
+                                <li>• Pada halaman repositori baru Anda, pilih tab <strong>Settings</strong> (ikon gerigi pada bilah navigasi atas)</li>
+                                <li>• Pada menu sebelah kiri (kategori <em>Code and automation</em>), klik <strong>Pages</strong></li>
+                                <li>• Pada bagian <em>Build and deployment</em> → <em>Source</em>, pilih <strong>Deploy from a branch</strong></li>
+                                <li>• Pada bagian <em>Branch</em>: pilih <strong>main</strong> (atau master) → Folder: pilih <strong>/ (root)</strong></li>
+                                <li>• Klik tombol <strong>Save</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex gap-3">
+                    <span class="text-xl flex-shrink-0">🎉</span>
+                    <p class="text-xs text-emerald-800 leading-relaxed">
+                        Layanan GitHub Pages telah aktif. Alamat website resmi Anda adalah: <code class="bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-mono font-bold">https://&lt;username&gt;.github.io/</code> (contoh: <code class="font-mono">https://edysantoso.github.io/</code>). Halaman akan segera menampilkan MPI Anda begitu berkas diunggah pada Langkah 5.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── LANGKAH 5 ── -->
+        <section id="langkah-5" class="space-y-6 scroll-mt-6">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-violet-600 text-white rounded-2xl flex items-center justify-center font-heading font-extrabold text-xl flex-shrink-0 shadow-lg shadow-violet-500/30">5</div>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl md:text-2xl text-slate-900">⬆️ Publikasikan Berkas MPI ke GitHub</h2>
+                    <p class="text-xs text-slate-500">Unggah seluruh berkas dari folder kerja agar media pembelajaran dapat diakses secara daring.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200/80 p-4 sm:p-6 md:p-8 shadow-sm space-y-5">
+                <p class="text-sm text-slate-700 leading-relaxed">
+                    Unggah seluruh berkas dari folder kerja lokal Anda ke dalam repositori <code class="font-mono font-semibold text-violet-700">&lt;username&gt;.github.io</code> yang telah disiapkan.
+                </p>
+
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="w-6 h-6 bg-violet-700 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</div>
+                        <div class="text-sm text-slate-700 leading-relaxed">
+                            Pada halaman utama repositori GitHub Anda, klik tombol <strong>"Add file"</strong> (di samping tombol hijau Code) → pilih <strong>"Upload files"</strong>.
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="w-6 h-6 bg-violet-700 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</div>
+                        <div class="space-y-1">
+                            <p class="text-sm text-slate-700">Seret dan lepaskan (<em>drag & drop</em>) seluruh berkas dari folder kerja Anda ke area upload, atau klik tautan <strong>"choose your files"</strong>:</p>
+                            <div class="bg-slate-100 border border-slate-200 rounded-xl p-3 text-xs text-slate-700 code-box space-y-1 mt-2 overflow-x-auto max-w-full">
+                                <div>✅ <strong>index.html</strong> <span class="text-slate-500">(halaman utama MPI hasil generasi AI)</span></div>
+                                <div>✅ <strong>[berkas logo sekolah]</strong> <span class="text-slate-500">(logo resmi instansi)</span></div>
+                                <div>✅ <strong>[berkas foto profil guru]</strong> <span class="text-slate-500">(foto pengembang media)</span></div>
+                                <div>✅ <strong>bg-ruang-kelas.jpg</strong> <span class="text-slate-500">(gambar latar belakang ruang kelas)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="w-6 h-6 bg-violet-700 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</div>
+                        <div class="text-sm text-slate-700 leading-relaxed">
+                            Gulir ke bagian bawah halaman → pada kotak <em>Commit changes</em>, cantumkan keterangan ringkas (misalnya: <em>"Publikasi MPI IPA Sistem Pernapasan Manusia"</em>) → klik tombol hijau <strong>"Commit changes"</strong>.
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="w-6 h-6 bg-violet-700 text-white rounded-lg flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">4</div>
+                        <div class="text-sm text-slate-700 leading-relaxed">
+                            Tunggu proses deployment server GitHub sekitar 1–3 menit, lalu buka alamat website resmi Anda: <code class="bg-violet-100 text-violet-800 px-2 py-0.5 rounded font-mono font-bold">https://&lt;username&gt;.github.io/</code> (contoh: <code class="font-mono">https://edysantoso.github.io/</code>).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success card -->
+                <div class="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-6 text-white text-center space-y-2">
+                    <div class="text-4xl">🎉</div>
+                    <div class="font-heading font-extrabold text-xl">Selamat! Media Pembelajaran Interaktif Anda Telah Online</div>
+                    <p class="text-sm text-emerald-100 leading-relaxed">
+                        Karya media pembelajaran interaktif berbasis web buatan Anda kini telah aktif secara daring dan dapat diakses kapan saja oleh siswa, rekan pendidik, maupun masyarakat umum melalui tautan peramban.
+                    </p>
+                </div>
+
+                <!-- Tips update -->
+                <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-4 flex gap-3">
+                    <span class="text-xl flex-shrink-0">🔄</span>
+                    <p class="text-xs text-indigo-800 leading-relaxed">
+                        <strong>Pembaruan Konten di Masa Mendatang:</strong> Apabila Anda ingin menyempurnakan materi atau menambah instrumen evaluasi baru, Anda cukup meminta revisi kode pada sesi chat AI, mengunduh berkas baru sebagai <code class="bg-indigo-100 px-1 rounded font-mono">index.html</code>, lalu mengunggahnya kembali ke repositori GitHub untuk memperbarui konten website secara otomatis.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vibe Prompt Tips -->
+        <section class="bg-slate-900 rounded-3xl p-5 sm:p-8 text-white space-y-5 border border-white/5">
+            <h3 class="font-heading font-extrabold text-xl text-white flex items-center gap-2">
+                💬 Referensi Prompt untuk Penyempurnaan Mandiri
+            </h3>
+            <p class="text-sm text-slate-300">Setelah berkas dasar MPI selesai, Anda dapat memberikan instruksi lanjutan pada sesi percakapan AI yang sama untuk melakukan penyesuaian khusus:</p>
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-1">
+                    <div class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Penyesuaian Tema Warna</div>
+                    <p class="text-sm text-white italic">"Sesuaikan warna dominan aplikasi menjadi hijau toska dan kuning cerah yang harmonis."</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-1">
+                    <div class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Penambahan Instrumen Soal</div>
+                    <p class="text-sm text-white italic">"Tambahkan 3 butir soal pilihan ganda baru dengan fokus pada pemahaman konsep."</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-1">
+                    <div class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Penjelasan & Pembahasan</div>
+                    <p class="text-sm text-white italic">"Sertakan kotak penjelasan dan pembahasan edukatif saat siswa memilih jawaban yang salah."</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-1">
+                    <div class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Revisi Tujuan Pembelajaran</div>
+                    <p class="text-sm text-white italic">"Perbarui rumusan tujuan pembelajaran nomor 2 menjadi: '...' "</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── REKOMENDASI PENGEMBANGAN MANDIRI (2 BAGIAN) ── -->
+        <section id="pengembangan-mandiri" class="space-y-8 scroll-mt-6">
+            <div class="text-center space-y-2 max-w-2xl mx-auto">
+                <div class="inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    ✨ Langkah Lanjutan
+                </div>
+                <h2 class="text-2xl md:text-3xl font-extrabold font-heading text-slate-900">
+                    Rekomendasi Pengembangan Mandiri
+                </h2>
+                <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
+                    Setelah berhasil mempublikasikan karya perdana Anda, terdapat dua jalur eksplorasi strategis yang dapat Anda kembangkan secara mandiri:
+                </p>
+            </div>
+
+            <!-- BAGIAN 1: PENGEMBANGAN WEBSITE DENGAN GITHUB PAGES -->
+            <div class="bg-white rounded-3xl border border-slate-200/90 p-4 sm:p-6 md:p-8 shadow-sm space-y-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center font-heading font-extrabold text-xl flex-shrink-0 shadow-lg shadow-indigo-500/30">
+                        1
+                    </div>
+                    <div class="space-y-1">
+                        <div class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Bagian 1 · Pemanfaatan Ekosistem Web</div>
+                        <h3 class="text-xl md:text-2xl font-bold font-heading text-slate-900">
+                            Mengembangkan Website Mandiri melalui GitHub Pages
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Melalui workshop ini, Anda telah menguasai alur kerja dasar pembuatan repositori dan publikasi web gratis menggunakan GitHub Pages. Keterampilan berharga ini dapat Anda manfaatkan secara berkelanjutan untuk membangun berbagai jenis media digital pendidikan:
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-4 pt-1">
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-2">
+                        <div class="text-2xl">👨‍🏫</div>
+                        <h4 class="font-heading font-bold text-sm text-slate-800">Portofolio Digital Guru</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Kembangkan repositori utama <code class="font-mono bg-slate-200 px-1 rounded text-slate-800">&lt;username&gt;.github.io</code> menjadi situs portofolio resmi yang memuat profil pendidik, rekam jejak sertifikasi, karya publikasi ilmiah, hingga dokumentasi aksi nyata pembelajaran.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-2">
+                        <div class="text-2xl">📚</div>
+                        <h4 class="font-heading font-bold text-sm text-slate-800">Pusat Modul & Bank Soal</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Anda dapat membuat repositori baru di akun GitHub yang sama untuk topik atau mata pelajaran lain. Seluruh repositori tersebut dapat dipublikasikan sebagai modul ajar digital, lembar kerja siswa (LKPD interaktif), maupun simulasi sains tambahan.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-2">
+                        <div class="text-2xl">🌐</div>
+                        <h4 class="font-heading font-bold text-sm text-slate-800">Portal Informasi & Literasi</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Rancang halaman pameran karya siswa, buletin literasi kelas, atau media informasi ekstrakurikuler yang dapat diakses wali murid dan masyarakat luas kapan saja tanpa biaya sewa server.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BAGIAN 2: PENGEMBANGAN DENGAN ANTIGRAVITY IDE -->
+            <div class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-4 sm:p-6 md:p-8 text-white border border-indigo-500/30 shadow-2xl relative overflow-hidden space-y-6">
+                <div class="absolute inset-0 rounded-3xl pointer-events-none" style="background: radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 60%);"></div>
+                
+                <div class="relative z-10 flex items-start gap-4">
+                    <div class="w-12 h-12 bg-cyan-500 text-slate-950 rounded-2xl flex items-center justify-center font-heading font-extrabold text-xl flex-shrink-0 shadow-lg shadow-cyan-500/30">
+                        2
+                    </div>
+                    <div class="space-y-1">
+                        <div class="text-xs font-bold text-cyan-300 uppercase tracking-wider">Bagian 2 · Lingkungan Kerja Berbasis AI Agent</div>
+                        <h3 class="text-xl md:text-2xl font-bold font-heading text-white">
+                            Pengembangan Lanjutan dengan Antigravity IDE
+                        </h3>
+                        <p class="text-sm text-slate-300 leading-relaxed max-w-3xl">
+                            Jika Anda ingin mengembangkan aplikasi pembelajaran yang lebih kompleks tanpa bergantung pada proses unduh atau salin-tempel berkas melalui chat browser, beralihlah ke <strong class="text-white">Antigravity IDE</strong> — lingkungan kerja pemrograman berbasis <em>Agentic AI</em> yang bekerja langsung di dalam komputer Anda.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Keunggulan Antigravity IDE -->
+                <div class="relative z-10 grid md:grid-cols-2 gap-4">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-2">
+                        <div class="text-2xl">🤖</div>
+                        <h4 class="font-heading font-bold text-sm text-white">AI Agent Mengedit Berkas Secara Langsung</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Cukup berikan instruksi perbaikan (misalnya: <em>"Tambahkan simulasi interaktif tekanan udara diafragma dan lengkapi dengan efek audio saat mengembang"</em>), agen AI akan membuka berkas, menyusun kode, dan memperbarui <code class="text-emerald-300 font-mono">index.html</code> secara otomatis di laptop Anda.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-2">
+                        <div class="text-2xl">⚡</div>
+                        <h4 class="font-heading font-bold text-sm text-white">Pratinjau Terintegrasi (Built-in Preview)</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Dilengkapi browser bawaan tepat di samping editor kerja. Setiap modifikasi tata letak, fungsi tombol interaktif, maupun efek suara Web Audio API dapat langsung diuji seketika tanpa perlu berpindah jendela aplikasi.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-2">
+                        <div class="text-2xl">📂</div>
+                        <h4 class="font-heading font-bold text-sm text-white">Akses Penuh Folder & Aset Multimedia</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Antigravity membaca seluruh direktori proyek secara mandiri. AI dapat mendeteksi resolusi gambar, tata letak logo, dan memastikan keterhubungan antar-berkas berjalan tanpa kendala tautan rusak.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-2">
+                        <div class="text-2xl">🐙</div>
+                        <h4 class="font-heading font-bold text-sm text-white">Sinkronisasi Repositori GitHub Lebih Cepat</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Pembaruan media pembelajaran dapat langsung diunggah ke repositori GitHub Pages Anda melalui integrasi Git terpadu, memudahkan pembaruan konten pembelajaran daring secara berkala.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Langkah Memulai -->
+                <div class="relative z-10 bg-indigo-950/80 border border-indigo-500/40 rounded-2xl p-5 space-y-2.5">
+                    <div class="font-heading font-bold text-sm text-indigo-200 flex items-center gap-2">
+                        <span>💡</span>
+                        <span>Tahapan Memulai dengan Antigravity IDE:</span>
+                    </div>
+                    <ol class="text-xs text-slate-300 space-y-1.5 ml-4 list-decimal leading-relaxed">
+                        <li>Buka aplikasi <strong>Antigravity IDE</strong> pada perangkat komputer Anda.</li>
+                        <li>Pilih menu <strong>File → Open Folder</strong>, lalu buka direktori proyek MPI Anda.</li>
+                        <li>Gunakan panel AI Agent untuk menyampaikan rencana pengembangan fitur atau penambahan materi baru.</li>
+                        <li>Amati agen AI menyusun perubahan secara otonom dan lakukan validasi langsung pada panel pratinjau terintegrasi.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Document links -->
+        <div class="flex flex-wrap gap-4 justify-center text-xs text-slate-500 pt-2">
+            <a href="spesifikasi.md" download class="hover:text-indigo-600 font-semibold underline">📋 Unduh spesifikasi.md</a>
+            <span>•</span>
+            <a href="bg-ruang-kelas.jpg" download class="hover:text-indigo-600 font-semibold underline">🖼️ Unduh bg-ruang-kelas.jpg</a>
+            <span>•</span>
+            <a href="contoh-hasil-mpi.html" target="_blank" class="hover:text-indigo-600 font-semibold underline">🚀 Lihat Demo MPI Lengkap</a>
+            <span>•</span>
+            <a href="panduan-workshop.md" class="hover:text-indigo-600 font-semibold underline">📄 Panduan Fasilitator</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 py-8 text-center text-xs text-slate-400">
+        <p>© 2026 Ach. Chanifuddin Fanani, S.Pd. · Workshop KKA Dinas Pendidikan Kabupaten Lamongan</p>
+    </footer>
+
+</body>
+</html>
