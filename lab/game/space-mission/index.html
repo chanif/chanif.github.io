@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Space Mission: Command Center | Gim Edukasi Informatika Fase D</title>
+  <meta name="description" content="Gim Edukasi Informatika SMP Fase D — Jadilah Mission Controller dan selesaikan 4 misi kritis dengan algoritma yang tepat. Belajar Sekuensial, IF-ELSE, Loop, dan Dekomposisi melalui petualangan luar angkasa.">
+  <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Nunito:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Starfield Canvas -->
+  <canvas id="starfield"></canvas>
+  <!-- Scanlines -->
+  <div id="scanlines"></div>
+  <!-- Mobile Rotate Overlay -->
+  <div id="rotate-overlay">
+    <div class="rotate-icon">📱</div>
+    <div class="rotate-title">PUTAR LAYAR</div>
+    <div class="rotate-sub">Space Mission dirancang untuk rasio <b>16:9 Landscape</b>.<br>Miringkan perangkat ke posisi tidur untuk memulai misi!</div>
+  </div>
+
+  <!-- Result Overlay (shared) -->
+  <div class="result-overlay" id="result-overlay">
+    <div class="result-card" id="result-card">
+      <div class="result-card-icon" id="result-icon">🎉</div>
+      <div class="result-card-title" id="result-title">Misi Selesai!</div>
+      <div class="result-card-stars" id="result-stars">⭐⭐⭐</div>
+      <div class="result-card-score" id="result-score">+300 pts</div>
+      <div class="result-card-sub" id="result-sub"></div>
+      <div style="display:flex;gap:10px;margin-top:4px;">
+        <button class="btn btn-ghost" id="result-retry-btn" onclick="retryCurrentMission()">🔄 Coba Lagi</button>
+        <button class="btn btn-primary" id="result-next-btn" onclick="proceedFromResult()">▶ Lanjutkan</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="app">
+
+    <!-- ===================== PAGE 1: COVER ===================== -->
+    <section id="page-cover" class="page active">
+      <div class="cover-page">
+        <div class="cover-logos">
+          <img src="assets/kemendikdasmen-lengkap.png" alt="Logo Kemendikdasmen" onerror="this.style.display='none'">
+          <img src="assets/sobat-bermutu-ramah.png" alt="Logo Sobat SMP" onerror="this.style.display='none'">
+        </div>
+        <div class="cover-hero">
+          <div class="cover-left">
+            <div class="cover-badge">
+              <span class="dot"></span>
+              <span>🚀 Gim Edukasi Interaktif — Festival Biru Putih 2026</span>
+            </div>
+            <h1 class="cover-title">
+              Space Mission:<br><span>Command Center</span>
+            </h1>
+            <p class="cover-subtitle">"Satu kesalahan kode = misi gagal.<br>Presisi adalah segalanya."</p>
+            <div class="cover-objectives">
+              <h3>🎯 Tujuan Pembelajaran (Fase D SMP)</h3>
+              <ul id="cover-tp-list"><!-- filled by JS --></ul>
+            </div>
+            <div class="cover-meta">
+              <span class="cover-meta-chip">📚 Informatika</span>
+              <span class="cover-meta-chip">📐 Fase D (VII–IX)</span>
+              <span class="cover-meta-chip">🧮 Algoritma & BK</span>
+            </div>
+          </div>
+          <div class="cover-right">
+            <div class="cover-mascot-wrap">
+              <div class="cover-mascot-ring"></div>
+              <div class="cover-mascot-ring-2"></div>
+              <div class="cover-mascot" id="cover-mascot">
+                <img src="assets/characters/controller-default.png" alt="Mission Controller" onerror="this.outerHTML='🚀'">
+              </div>
+            </div>
+            <button class="btn-start" onclick="goToPage('briefing')">
+              <span>🚀</span> MULAI MISI
+            </button>
+          </div>
+        </div>
+        <div class="cover-creator" id="cover-creator"></div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 2: BRIEFING ===================== -->
+    <section id="page-briefing" class="page">
+      <div class="briefing-page">
+        <div class="terminal-wrap">
+          <div class="terminal-bar">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span class="terminal-title">SPACE_MISSION :: COMMAND_CENTER — v2026.1</span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line">> Initializing Mission Briefing System...</div>
+            <div class="terminal-line success">> STATUS: READY | 4 MISSIONS LOADED</div>
+            <div class="terminal-line comment"># Selamat datang, Mission Controller!</div>
+            <div class="terminal-line comment"># Kamu bertanggung jawab atas keselamatan stasiun luar angkasa.</div>
+            <div class="terminal-line comment"># Selesaikan 4 misi kritis menggunakan algoritma yang tepat.</div>
+          </div>
+          <div class="briefing-cards" id="briefing-cards"><!-- filled by JS --></div>
+          <div class="briefing-action">
+            <button class="btn btn-secondary" onclick="goToPage('cover')" style="margin-right:auto;">◀ Kembali</button>
+            <button class="btn btn-primary btn-lg" onclick="goToPage('mission-select')">🗺️ Pilih Misi &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 3: MISSION SELECT ===================== -->
+    <section id="page-mission-select" class="page">
+      <div class="mission-select-page">
+        <div class="mission-select-header">
+          <h2>🗺️ GALACTIC MISSION MAP</h2>
+          <p>Selesaikan misi secara berurutan untuk membuka misi berikutnya</p>
+        </div>
+        <div class="galaxy-map">
+          <div class="galaxy-path"></div>
+          <div class="mission-node-wrap">
+            <div class="mission-node" id="mission-node-1" onclick="startMission(1)">
+              <div class="mission-node-planet">🔵</div>
+            </div>
+            <div class="mission-node-number">MISI 01</div>
+            <div class="mission-node-label">Boot Sequence</div>
+            <div class="mission-node-concept">Algoritma Sekuensial</div>
+            <div class="mission-node-stars" id="node-stars-1"></div>
+          </div>
+          <div class="mission-node-wrap">
+            <div class="mission-node" id="mission-node-2" onclick="startMission(2)">
+              <div class="mission-node-planet">🔴</div>
+            </div>
+            <div class="mission-node-number">MISI 02</div>
+            <div class="mission-node-label">Life Support</div>
+            <div class="mission-node-concept">Logika Kondisional</div>
+            <div class="mission-node-stars" id="node-stars-2"></div>
+          </div>
+          <div class="mission-node-wrap">
+            <div class="mission-node" id="mission-node-3" onclick="startMission(3)">
+              <div class="mission-node-planet">🟡</div>
+            </div>
+            <div class="mission-node-number">MISI 03</div>
+            <div class="mission-node-label">Solar Charging</div>
+            <div class="mission-node-concept">Perulangan / Loop</div>
+            <div class="mission-node-stars" id="node-stars-3"></div>
+          </div>
+          <div class="mission-node-wrap">
+            <div class="mission-node" id="mission-node-4" onclick="startMission(4)">
+              <div class="mission-node-planet">🟣</div>
+            </div>
+            <div class="mission-node-number">MISI 04</div>
+            <div class="mission-node-label">Emergency Protocol</div>
+            <div class="mission-node-concept">Dekomposisi &amp; Paralel</div>
+            <div class="mission-node-stars" id="node-stars-4"></div>
+          </div>
+        </div>
+        <div class="mission-select-footer">
+          <button class="btn btn-ghost" onclick="goToPage('briefing')">◀ Panduan</button>
+          <div class="progress-wrap">
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="overall-progress-fill" style="width:0%"></div>
+            </div>
+            <div class="progress-label" id="overall-progress-label">0 / 4 misi selesai</div>
+          </div>
+          <div class="badge-chip" id="current-badge-chip">🛸 Space Cadet</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 4: MISSION 1 — BOOT SEQUENCE ===================== -->
+    <section id="page-mission-1" class="page">
+      <div class="hud-bar">
+        <div>
+          <div class="hud-mission-id">MISI 01</div>
+          <div class="hud-mission-name">Boot Sequence</div>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-stars" id="m1-hud-stars">☆☆☆</div>
+        <span class="hud-score-label">SKOR</span>
+        <span class="hud-score-value" id="m1-hud-score">0</span>
+        <span class="hud-attempts" id="m1-hud-attempts">Percobaan: 0</span>
+        <button class="hud-back-btn" onclick="goToPage('mission-select')">◀ Peta</button>
+      </div>
+      <div class="game-workspace">
+        <div class="mission-briefing" id="m1-briefing"></div>
+        <div class="boot-workspace">
+          <div class="boot-col">
+            <div class="boot-col-header">
+              <div class="boot-col-header-title">📦 Sistem Tersedia</div>
+              <div class="boot-col-header-hint">Klik atau seret kartu ke slot urutan</div>
+            </div>
+            <div class="boot-pool" id="m1-pool"></div>
+          </div>
+          <div class="boot-arrow">➔</div>
+          <div class="boot-col">
+            <div class="boot-col-header">
+              <div class="boot-col-header-title">🔧 Urutan Boot Sequence (1 → 7)</div>
+              <div class="boot-col-header-hint">Klik slot untuk membatalkan</div>
+            </div>
+            <div class="boot-slots" id="m1-slots"></div>
+          </div>
+        </div>
+        <div class="action-row">
+          <button class="btn btn-ghost" onclick="resetMission1()">🔄 Reset</button>
+          <button class="btn btn-primary" id="m1-check-btn" onclick="checkMission1()" disabled>⚡ Jalankan Boot Sequence</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 5: RECAP 1 ===================== -->
+    <section id="page-recap-1" class="page">
+      <div class="recap-page">
+        <div class="recap-result-header">
+          <div class="recap-icon">🛰️</div>
+          <div>
+            <div class="recap-title">Misi 1 Selesai! Boot Sequence Berhasil!</div>
+            <div class="recap-stars-row" id="recap-1-stars"></div>
+            <div class="recap-score" id="recap-1-score"></div>
+          </div>
+          <div class="recap-sep"></div>
+          <div class="recap-concept-badge">✨ Algoritma Sekuensial</div>
+        </div>
+        <div class="recap-content-grid">
+          <div class="recap-pseudocode-box">
+            <div class="recap-pseudocode-header">🔍 Pseudo-Code — Apa yang Baru Kamu Lakukan</div>
+            <pre class="recap-pseudocode-pre" id="recap-1-code"></pre>
+          </div>
+          <div class="recap-right-col">
+            <div class="recap-funfact-box">
+              <div class="recap-funfact-label">💡 Tahukah Kamu?</div>
+              <div class="recap-funfact-text" id="recap-1-funfact"></div>
+            </div>
+            <div class="recap-cptp-box">
+              <div class="recap-cptp-label">📚 Capaian Pembelajaran</div>
+              <div class="recap-cptp-text" id="recap-1-cptp"></div>
+            </div>
+          </div>
+        </div>
+        <div class="recap-actions">
+          <button class="btn btn-secondary" onclick="goToPage('mission-select')">🗺️ Peta Misi</button>
+          <button class="btn btn-primary" onclick="goToPage('mission-2')">▶ Misi Berikutnya</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 6: MISSION 2 — LIFE SUPPORT ===================== -->
+    <section id="page-mission-2" class="page">
+      <div class="hud-bar">
+        <div>
+          <div class="hud-mission-id">MISI 02</div>
+          <div class="hud-mission-name">Life Support</div>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-stars" id="m2-hud-stars">☆☆☆</div>
+        <span class="hud-score-label">SKOR</span>
+        <span class="hud-score-value" id="m2-hud-score">0</span>
+        <span class="hud-attempts" id="m2-hud-progress">Skenario 1/3</span>
+        <button class="hud-back-btn" onclick="goToPage('mission-select')">◀ Peta</button>
+      </div>
+      <div class="game-workspace">
+        <div class="mission-briefing" id="m2-briefing"></div>
+        <div class="sensor-workspace" id="m2-scenario-area">
+          <!-- filled by JS -->
+        </div>
+        <div class="action-row" id="m2-action-row" style="display:none">
+          <button class="btn btn-primary" id="m2-next-btn" onclick="nextScenario()">▶ Skenario Berikutnya</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 7: RECAP 2 ===================== -->
+    <section id="page-recap-2" class="page">
+      <div class="recap-page">
+        <div class="recap-result-header">
+          <div class="recap-icon">⚡</div>
+          <div>
+            <div class="recap-title">Misi 2 Selesai! Semua Zona Aman!</div>
+            <div class="recap-stars-row" id="recap-2-stars"></div>
+            <div class="recap-score" id="recap-2-score"></div>
+          </div>
+          <div class="recap-sep"></div>
+          <div class="recap-concept-badge">✨ Logika Kondisional IF-ELSE</div>
+        </div>
+        <div class="recap-content-grid">
+          <div class="recap-pseudocode-box">
+            <div class="recap-pseudocode-header">🔍 Pseudo-Code — Apa yang Baru Kamu Lakukan</div>
+            <pre class="recap-pseudocode-pre" id="recap-2-code"></pre>
+          </div>
+          <div class="recap-right-col">
+            <div class="recap-funfact-box">
+              <div class="recap-funfact-label">💡 Tahukah Kamu?</div>
+              <div class="recap-funfact-text" id="recap-2-funfact"></div>
+            </div>
+            <div class="recap-cptp-box">
+              <div class="recap-cptp-label">📚 Capaian Pembelajaran</div>
+              <div class="recap-cptp-text" id="recap-2-cptp"></div>
+            </div>
+          </div>
+        </div>
+        <div class="recap-actions">
+          <button class="btn btn-secondary" onclick="goToPage('mission-select')">🗺️ Peta Misi</button>
+          <button class="btn btn-primary" onclick="goToPage('mission-3')">▶ Misi Berikutnya</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 8: MISSION 3 — SOLAR CHARGING ===================== -->
+    <section id="page-mission-3" class="page">
+      <div class="hud-bar">
+        <div>
+          <div class="hud-mission-id">MISI 03</div>
+          <div class="hud-mission-name">Solar Charging</div>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-stars" id="m3-hud-stars">☆☆☆</div>
+        <span class="hud-score-label">SKOR</span>
+        <span class="hud-score-value" id="m3-hud-score">0</span>
+        <button class="hud-back-btn" onclick="goToPage('mission-select')">◀ Peta</button>
+      </div>
+      <div class="game-workspace">
+        <div class="mission-briefing" id="m3-briefing"></div>
+        <div class="loop-workspace">
+          <!-- Left: Manual (problem) -->
+          <div class="loop-panel">
+            <div class="loop-panel-title bad">❌ Cara Manual (Menulis Ulang Satu per Satu)</div>
+            <div class="loop-manual-list" id="m3-manual-list"></div>
+            <div class="loop-comparison" id="m3-comparison" style="display:none">
+              <div class="loop-comp-item">
+                <div class="loop-comp-number bad" id="m3-lines-manual">-</div>
+                <div class="loop-comp-label">Baris Manual</div>
+              </div>
+              <div class="loop-comp-vs">vs</div>
+              <div class="loop-comp-item">
+                <div class="loop-comp-number good">3</div>
+                <div class="loop-comp-label">Baris Loop</div>
+              </div>
+              <div class="loop-comp-item">
+                <div class="loop-comp-number saved" id="m3-lines-saved">-</div>
+                <div class="loop-comp-label">Baris Dihemat!</div>
+              </div>
+            </div>
+          </div>
+          <!-- Right: Loop Builder -->
+          <div class="loop-panel">
+            <div class="loop-panel-title good">✅ Cara Pintar (Loop / Perulangan)</div>
+            <div class="loop-builder">
+              <div class="loop-builder-line">
+                <span>ULANGI</span>
+                <div class="loop-count-select" id="m3-count-select"><!-- filled by JS --></div>
+                <span>KALI :</span>
+              </div>
+              <div class="loop-inner-lines">
+                <div class="loop-inner-line">  ambil_pod_berikutnya()</div>
+                <div class="loop-inner-line">  charge(pod)</div>
+                <div class="loop-inner-line">  simpan_status("CHARGED")</div>
+              </div>
+              <div class="loop-builder-line">AKHIR_ULANGI</div>
+            </div>
+            <div class="pod-grid" id="m3-pod-grid"><!-- filled by JS --></div>
+            <div class="action-row">
+              <button class="btn btn-ghost btn-ghost" onclick="resetMission3()">🔄 Reset</button>
+              <button class="btn btn-success" id="m3-run-btn" onclick="runLoopAnimation()" disabled>▶ Jalankan Loop!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 9: RECAP 3 ===================== -->
+    <section id="page-recap-3" class="page">
+      <div class="recap-page">
+        <div class="recap-result-header">
+          <div class="recap-icon">🔄</div>
+          <div>
+            <div class="recap-title">Misi 3 Selesai! Semua Pod Terisi Energi!</div>
+            <div class="recap-stars-row" id="recap-3-stars"></div>
+            <div class="recap-score" id="recap-3-score"></div>
+          </div>
+          <div class="recap-sep"></div>
+          <div class="recap-concept-badge">✨ Perulangan / Loop</div>
+        </div>
+        <div class="recap-content-grid">
+          <div class="recap-pseudocode-box">
+            <div class="recap-pseudocode-header">🔍 Pseudo-Code — Apa yang Baru Kamu Lakukan</div>
+            <pre class="recap-pseudocode-pre" id="recap-3-code"></pre>
+          </div>
+          <div class="recap-right-col">
+            <div class="recap-funfact-box">
+              <div class="recap-funfact-label">💡 Tahukah Kamu?</div>
+              <div class="recap-funfact-text" id="recap-3-funfact"></div>
+            </div>
+            <div class="recap-cptp-box">
+              <div class="recap-cptp-label">📚 Capaian Pembelajaran</div>
+              <div class="recap-cptp-text" id="recap-3-cptp"></div>
+            </div>
+          </div>
+        </div>
+        <div class="recap-actions">
+          <button class="btn btn-secondary" onclick="goToPage('mission-select')">🗺️ Peta Misi</button>
+          <button class="btn btn-primary" onclick="goToPage('mission-4')">▶ Misi Berikutnya</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 10: MISSION 4 — EMERGENCY PROTOCOL ===================== -->
+    <section id="page-mission-4" class="page">
+      <div class="hud-bar">
+        <div>
+          <div class="hud-mission-id">MISI 04 🚨</div>
+          <div class="hud-mission-name">Emergency Protocol</div>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-stars" id="m4-hud-stars">☆☆☆</div>
+        <span class="hud-score-label">WAKTU</span>
+        <span class="hud-score-value" id="m4-timer-display">00:45</span>
+        <button class="hud-back-btn" onclick="goToPage('mission-select')">◀ Peta</button>
+      </div>
+      <div class="game-workspace">
+        <div class="emergency-alarm" id="m4-alarm">
+          <span class="emergency-alarm-icon">🚨</span>
+          <span class="emergency-alarm-text">DARURAT LEVEL MERAH — BAGI TUGAS KE 3 TIM SEKARANG!</span>
+        </div>
+        <div class="timer-bar-track" id="m4-timer-bar-track" style="display:none">
+          <div class="timer-bar-fill" id="m4-timer-bar-fill" style="width:100%"></div>
+        </div>
+        <div class="emergency-workspace">
+          <div class="teams-row" id="m4-teams-row"><!-- filled by JS --></div>
+          <div class="task-pool-wrap" id="m4-pool-wrap">
+            <div class="task-pool-title">📋 TUGAS DARURAT — Seret atau Klik ke Stasiun Tim</div>
+            <div class="task-pool" id="m4-task-pool"><!-- filled by JS --></div>
+          </div>
+        </div>
+        <div class="action-row">
+          <button class="btn btn-ghost" onclick="resetMission4()">🔄 Reset</button>
+          <button class="btn btn-danger" id="m4-start-btn" onclick="startEmergencyTimer()" disabled>⚡ Kirim Tim — MULAI MISI!</button>
+        </div>
+        <!-- Parallel animation area (replaces workspace) -->
+        <div id="m4-parallel-overlay" class="result-overlay" style="background:rgba(6,8,16,0.96)">
+          <div style="width:90%;max-width:900px;">
+            <div class="emergency-alarm" style="margin-bottom:14px;">
+              <span class="emergency-alarm-icon">🚨</span>
+              <span class="emergency-alarm-text">TIM SEDANG BEKERJA SECARA PARALEL!</span>
+              <span class="emergency-timer" id="m4-countdown">00:45</span>
+            </div>
+            <div class="parallel-tracks" id="m4-parallel-tracks"><!-- filled by JS --></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 11: RECAP 4 ===================== -->
+    <section id="page-recap-4" class="page">
+      <div class="recap-page">
+        <div class="recap-result-header">
+          <div class="recap-icon">🏆</div>
+          <div>
+            <div class="recap-title">Misi 4 Selesai! Krisis Teratasi!</div>
+            <div class="recap-stars-row" id="recap-4-stars"></div>
+            <div class="recap-score" id="recap-4-score"></div>
+          </div>
+          <div class="recap-sep"></div>
+          <div class="recap-concept-badge">✨ Dekomposisi &amp; Paralelisme</div>
+        </div>
+        <div class="recap-content-grid">
+          <div class="recap-pseudocode-box">
+            <div class="recap-pseudocode-header">🔍 Pseudo-Code — Apa yang Baru Kamu Lakukan</div>
+            <pre class="recap-pseudocode-pre" id="recap-4-code"></pre>
+          </div>
+          <div class="recap-right-col">
+            <div class="recap-funfact-box">
+              <div class="recap-funfact-label">💡 Tahukah Kamu?</div>
+              <div class="recap-funfact-text" id="recap-4-funfact"></div>
+            </div>
+            <div class="recap-cptp-box">
+              <div class="recap-cptp-label">📚 Capaian Pembelajaran</div>
+              <div class="recap-cptp-text" id="recap-4-cptp"></div>
+            </div>
+          </div>
+        </div>
+        <div class="recap-actions">
+          <button class="btn btn-secondary" onclick="goToPage('mission-select')">🗺️ Peta Misi</button>
+          <button class="btn btn-primary" onclick="goToPage('complete')">🏆 Lihat Hasil Akhir</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 12: MISSION COMPLETE ===================== -->
+    <section id="page-complete" class="page">
+      <div class="complete-page">
+        <div class="complete-glow"></div>
+        <div class="complete-mascot">
+          <img src="assets/characters/controller-celebrate.png" alt="Celebrate" style="width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(0,212,255,0.5))" onerror="this.outerHTML='🚀'">
+        </div>
+        <div>
+          <div class="complete-badge-name" id="complete-badge-name">⭐ Space Legend</div>
+          <div class="complete-total-score" id="complete-total-score">1200</div>
+          <div class="complete-score-label">Total Skor Seluruh Misi</div>
+        </div>
+        <div class="complete-levels-grid" id="complete-levels-grid"><!-- filled by JS --></div>
+        <div>
+          <p style="font-size:0.72rem;color:var(--c-text-dim);margin-bottom:10px;text-align:center;font-family:var(--font-mono);letter-spacing:0.08em;">KONSEP ALGORITMA YANG TELAH DIKUASAI:</p>
+          <div class="complete-concepts">
+            <span class="concept-tag">1. Algoritma Sekuensial</span>
+            <span class="concept-tag">2. Logika Kondisional IF-ELSE</span>
+            <span class="concept-tag">3. Perulangan (Loop)</span>
+            <span class="concept-tag">4. Dekomposisi &amp; Paralelisme</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;">
+          <button class="btn btn-secondary" onclick="goToPage('mission-select')">🔄 Main Lagi</button>
+          <button class="btn btn-primary" onclick="goToPage('creator')">👤 Profil Kreator</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 13: CREATOR ===================== -->
+    <section id="page-creator" class="page">
+      <div class="creator-page">
+        <div class="hud-bar" style="position:relative;border-radius:var(--radius-md);margin-bottom:4px;max-width:680px;width:100%">
+          <button class="hud-back-btn" onclick="goToPage('complete')">◀ Kembali</button>
+          <span style="font-family:var(--font-head);font-size:0.8rem;color:var(--c-text-head);letter-spacing:0.1em;">👤 PROFIL PENGEMBANG</span>
+        </div>
+        <div class="creator-card">
+          <img src="assets/fanani.jpg" alt="Foto Pengembang" class="creator-photo" onerror="this.outerHTML='<div style=width:90px;height:90px;border-radius:50%;background:var(--c-panel);display:flex;align-items:center;justify-content:center;font-size:2rem;border:2px solid var(--c-border);flex-shrink:0>👨‍💻</div>'">
+          <div>
+            <div class="creator-name" id="creator-name">Ach. Chanifuddin Fanani, S.Pd.</div>
+            <div class="creator-role">Guru Informatika &amp; Kecerdasan Artifisial (KKA)</div>
+            <div class="creator-school">SMP Negeri 2 Lamongan</div>
+            <div class="creator-desc">Full-Stack Developer sejak 2013 dan pengajar Informatika yang berdedikasi untuk menciptakan media pembelajaran interaktif yang inovatif, ramah anak, dan menyenangkan.</div>
+          </div>
+        </div>
+        <div class="creator-logos">
+          <img src="assets/logo-tutwuri.png" alt="Kemendikdasmen" onerror="this.style.display='none'">
+          <img src="assets/logo-sobat-smp.png" alt="Sobat SMP" onerror="this.style.display='none'">
+          <img src="assets/logo-bermutu.png" alt="Pendidikan Bermutu" onerror="this.style.display='none'">
+          <img src="assets/logo-ramah.png" alt="Sekolah Ramah" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /app -->
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
