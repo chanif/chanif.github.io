@@ -13,7 +13,9 @@ let isDarkTheme = false;
 
 const labState = {
   // Rakit PC state
-  installed: {}, // { cpu: true, ram: true, ... }
+  installed: {},          // { compId: true/false }
+  slotOccupant: {},       // { slotId: compId }
+  compSlot: {},           // { compId: slotId }
   currentExploration: 'free',
   
   // Binary state
@@ -25,9 +27,9 @@ const labState = {
   rgbSolved: {},
   
   // LKPD state
-  pgAnswers: {},    // { 0: selectedIdx, 1: selectedIdx, ... }
-  bsAnswers: {},    // { 0: true/false, ... }
-  matchPairs: {},   // { leftId: rightId, ... }
+  pgAnswers: {},          // { 0: selectedIdx, 1: selectedIdx, ... }
+  bsAnswers: {},          // { 0: true/false, ... }
+  matchPairs: {},         // { leftKey: { rightKey, leftElId, rightElId } }
   matchSelected: null,
   lkpdSubmitted: false,
 };
@@ -231,22 +233,7 @@ function closeModal(id) {
 
 // ==================== WELCOME SCREEN LOGIC ====================
 function generateStars() {
-  const field = document.getElementById('starfield');
-  if (!field) return;
-  field.innerHTML = '';
-  const total = 50;
-  for (let i = 0; i < total; i++) {
-    const star = document.createElement('div');
-    star.className = 'star-dot';
-    const size = (Math.random() * 2 + 1.2).toFixed(1);
-    star.style.width = size + 'px';
-    star.style.height = size + 'px';
-    star.style.top = (Math.random() * 100) + '%';
-    star.style.left = (Math.random() * 100) + '%';
-    star.style.animationDelay = (Math.random() * 3).toFixed(2) + 's';
-    star.style.animationDuration = (2 + Math.random() * 3).toFixed(2) + 's';
-    field.appendChild(star);
-  }
+  // Tech circuit background uses pure CSS vectors
 }
 
 function checkNameInput() {
@@ -496,37 +483,91 @@ function clickToPlace(compId) {
   const cfg = window.LAB_CONFIG;
   const comp = cfg.components.find(c => c.id === compId);
   if (!comp || labState.installed[compId]) return;
-  placeComponent(compId, comp.slotId);
+  
+  if (comp.isDistractor) {
+    alert(`⚠️ Komponen Pengecoh (${comp.name}):\nKomponen ini tidak memiliki soket yang kompatibel di motherboard modern. Kamu bisa mencoba menariknya ke salah satu soket motherboard untuk melihat respons diagnostik.`);
+    return;
+  }
+  
+  if (comp.slotId) {
+    placeComponent(compId, comp.slotId);
+  }
 }
 
-function handleSlotClick(compId) {
-  if (labState.installed[compId]) {
-    removeComponent(compId);
+function handleSlotClick(slotAccepts) {
+  const slotEl = document.querySelector(`.mb-physical-slot[data-accepts="${slotAccepts}"]`);
+  const slotId = slotEl ? slotEl.id : 'slot-' + slotAccepts;
+  const occupantId = labState.slotOccupant ? labState.slotOccupant[slotId] : null;
+
+  if (occupantId) {
+    removeComponent(occupantId);
   } else {
-    clickToPlace(compId);
+    appendBootLog(`> [INFO] Soket ${slotEl?.title || slotAccepts} masih kosong. Tarik komponen dari rak ke sini.`);
   }
 }
 
 function placeComponent(compId, slotId) {
   const cfg = window.LAB_CONFIG;
   const comp = cfg.components.find(c => c.id === compId);
-  if (!comp) return;
+  const slot = document.getElementById(slotId);
+  if (!comp || !slot) return;
 
+  // Check if slot is already occupied
+  if (labState.slotOccupant && labState.slotOccupant[slotId]) {
+    const prevOccupant = labState.slotOccupant[slotId];
+    if (prevOccupant === compId) return;
+    sfxError();
+    appendBootLog(`> ⚠️ [SOKET TERISI] Soket ini sudah terpasang komponen lain! Lepas dulu sebelum memasang baru.`);
+    return;
+  }
+
+  // If component was installed in another slot, remove it from old slot first
+  if (labState.installed[compId] && labState.compSlot && labState.compSlot[compId]) {
+    removeComponent(compId);
+  }
+
+  const slotAccepts = slot.getAttribute('data-accepts');
+  const isMatch = !comp.isDistractor && comp.id === slotAccepts;
+
+  // Register in state
   labState.installed[compId] = true;
+  labState.slotOccupant[slotId] = compId;
+  labState.compSlot[compId] = slotId;
 
   // 1. Update slot visual
-  const slot = document.getElementById(slotId);
-  const targetContainer = document.getElementById('installed-' + compId);
-  
-  if (slot) {
-    slot.classList.add('filled');
-    slot.classList.remove('slot-highlight-target', 'slot-dimmed', 'drag-over', 'drag-forbidden');
-  }
+  slot.classList.add('filled');
+  slot.classList.remove('slot-highlight-target', 'slot-dimmed', 'drag-over', 'drag-forbidden');
+
+  // Remove any old misplaced badge
+  slot.querySelector('.slot-misplaced-badge')?.remove();
+
+  const targetContainer = slot.querySelector('.slot-installed-component');
   if (targetContainer) {
     targetContainer.innerHTML = `
       <img src="${comp.svg}" alt="${comp.name}" draggable="true" title="${comp.name} — Tarik keluar atau klik untuk melepas">
     `;
     setupSlotInstalledDrag(slot, compId);
+  }
+
+  if (isMatch) {
+    slot.classList.remove('slot-misplaced');
+    sfxSnap();
+    appendBootLog(`> [OK] ${comp.name} terpasang sempurna pada ${slot.title || slotAccepts}! ⚡`);
+  } else {
+    // MISPLACED OR DISTRACTOR COMPONENT
+    slot.classList.add('slot-misplaced');
+    const badge = document.createElement('div');
+    badge.className = 'slot-misplaced-badge';
+    badge.textContent = comp.isDistractor ? '⚠️ TAK COCOK' : '⚠️ SALAH SOKET';
+    slot.appendChild(badge);
+
+    sfxError();
+    appendBootLog(`> ⚠️ [PERINGATAN SOKET] KESALAHAN! ${comp.name} dipasang di ${slot.title || slotAccepts}! Komponen tidak kompatibel.`);
+    
+    // Safety Alert
+    setTimeout(() => {
+      alert(`⚠️ PERINGATAN KESELAMATAN PERANGKAT KERAS:\n${comp.errorMsg || ('Komponen ' + comp.name + ' tidak cocok dipasang pada ' + (slot.title || slotAccepts) + '!')}\n\nKomputer TIDAK AKAN BISA MENYALA jika ada komponen salah pasang. Lepas komponen dengan mengkliknya atau menariknya kembali ke rak.`);
+    }, 50);
   }
 
   // 2. Update shelf card
@@ -537,14 +578,12 @@ function placeComponent(compId, slotId) {
   }
   const pill = document.getElementById('pill-status-' + compId);
   if (pill) {
-    pill.textContent = '✓ Terpasang';
-    pill.style.background = 'rgba(16, 185, 129, 0.2)';
-    pill.style.color = 'var(--accent-emerald)';
+    pill.textContent = isMatch ? '✓ Terpasang' : '⚠️ Salah Pasang';
+    pill.style.background = isMatch ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)';
+    pill.style.color = isMatch ? 'var(--accent-emerald)' : '#ef4444';
   }
 
   updateInstalledCount();
-  sfxSnap();
-  appendBootLog(`> [HARDWARE] ${comp.name} terpasang sempurna pada soket! ⚡`);
 }
 
 function removeComponent(compId) {
@@ -552,17 +591,27 @@ function removeComponent(compId) {
   const comp = cfg.components.find(c => c.id === compId);
   if (!comp) return;
 
+  const slotId = labState.compSlot ? labState.compSlot[compId] : (comp.slotId || null);
+
   labState.installed[compId] = false;
+  if (slotId && labState.slotOccupant) {
+    delete labState.slotOccupant[slotId];
+  }
+  if (labState.compSlot) {
+    delete labState.compSlot[compId];
+  }
+
   powerOffBoard();
 
   // Restore slot
-  const slot = document.getElementById(comp.slotId);
-  const targetContainer = document.getElementById('installed-' + compId);
-  if (slot) {
-    slot.classList.remove('filled', 'snap-bounce');
-  }
-  if (targetContainer) {
-    targetContainer.innerHTML = '';
+  if (slotId) {
+    const slot = document.getElementById(slotId);
+    if (slot) {
+      slot.classList.remove('filled', 'slot-misplaced', 'snap-bounce');
+      slot.querySelector('.slot-misplaced-badge')?.remove();
+      const targetContainer = slot.querySelector('.slot-installed-component');
+      if (targetContainer) targetContainer.innerHTML = '';
+    }
   }
 
   // Restore shelf card
@@ -580,7 +629,7 @@ function removeComponent(compId) {
 
   updateInstalledCount();
   sfxClick();
-  appendBootLog(`> [HARDWARE] ${comp.name} dilepas dari motherboard ↩`);
+  appendBootLog(`> [HARDWARE] ${comp.name} dilepas dari motherboard. ↩`);
 }
 
 function autoAssemble() {
@@ -594,30 +643,45 @@ function autoAssemble() {
     }
   }
 
+  // Remove any wrong or distractor components first
+  Object.keys(labState.installed).forEach(id => {
+    if (labState.installed[id]) removeComponent(id);
+  });
+
   let delay = 0;
-  cfg.components.forEach((comp) => {
-    if (!labState.installed[comp.id]) {
-      setTimeout(() => {
-        placeComponent(comp.id, comp.slotId);
-      }, delay);
-      delay += 140;
-    }
+  // Only the 5 legitimate required components
+  const required = cfg.components.filter(c => !c.isDistractor);
+  required.forEach((comp) => {
+    setTimeout(() => {
+      placeComponent(comp.id, comp.slotId);
+    }, delay);
+    delay += 140;
   });
 
   setTimeout(() => {
-    appendBootLog('> [AUTO] Semua 5 komponen selesai dirakit! Tekan POWER ON untuk uji boot.');
+    appendBootLog('> [AUTO] Semua 5 komponen inti selesai dirakit! Tekan POWER ON untuk uji boot.');
   }, delay + 50);
 }
 
 function updateInstalledCount() {
-  const count = Object.values(labState.installed).filter(v => v).length;
+  const correctCount = ['cpu', 'ram', 'ssd', 'gpu', 'psu'].filter(id => {
+    return labState.installed[id] && (
+      (id === 'cpu' && labState.slotOccupant['slot-cpu'] === 'cpu') ||
+      (id === 'ram' && labState.slotOccupant['slot-ram'] === 'ram') ||
+      (id === 'ssd' && labState.slotOccupant['slot-storage'] === 'ssd') ||
+      (id === 'gpu' && labState.slotOccupant['slot-gpu'] === 'gpu') ||
+      (id === 'psu' && labState.slotOccupant['slot-psu'] === 'psu')
+    );
+  }).length;
+
+  const totalInstalled = Object.values(labState.installed).filter(v => v).length;
   const el = document.getElementById('installed-count');
-  if (el) el.textContent = count;
+  if (el) el.textContent = correctCount;
   
   const pill = document.getElementById('mb-installed-pill');
   if (pill) {
-    pill.innerHTML = `TERPASANG: <strong id="installed-count">${count}</strong>/5`;
-    if (count === 5) {
+    pill.innerHTML = `TERPASANG: <strong id="installed-count">${correctCount}</strong>/5`;
+    if (correctCount === 5 && totalInstalled === 5) {
       pill.style.borderColor = 'var(--accent-emerald)';
       pill.style.color = '#a7f3d0';
     } else {
@@ -626,17 +690,30 @@ function updateInstalledCount() {
     }
   }
 
+  // Update Status Pill
+  const powerPill = document.getElementById('mb-power-pill');
+  if (powerPill && powerPill.textContent !== 'STATUS: RUNNING' && powerPill.textContent !== 'STATUS: POST TESTING...') {
+    const hasError = document.querySelector('.mb-physical-slot.slot-misplaced');
+    if (hasError) {
+      powerPill.className = 'mb-telemetry-pill status-error';
+      powerPill.textContent = 'STATUS: ⚠️ SOKET ERROR';
+    } else {
+      powerPill.className = 'mb-telemetry-pill';
+      powerPill.textContent = 'STATUS: STANDBY';
+    }
+  }
+
   // Update Onboarding Hint visibility
   const hint = document.getElementById('rakit-onboarding-hint');
   if (hint) {
-    if (count === 0) {
+    if (totalInstalled === 0) {
       hint.style.display = 'flex';
       hint.style.opacity = '1';
     } else {
       hint.style.opacity = '0';
       setTimeout(() => { 
-        const currentCount = Object.values(labState.installed).filter(v => v).length;
-        if (currentCount > 0 && hint) hint.style.display = 'none'; 
+        const countNow = Object.values(labState.installed).filter(v => v).length;
+        if (countNow > 0 && hint) hint.style.display = 'none'; 
       }, 250);
     }
   }
@@ -680,9 +757,6 @@ function setupDragDrop() {
       card.classList.add('dragging');
       e.dataTransfer.setData('text/plain', compId);
       e.dataTransfer.effectAllowed = 'copy';
-
-      // Highlight matching target slot & dim others
-      highlightTargetSlot(comp.slotId);
       sfxClick();
     };
 
@@ -698,22 +772,11 @@ function setupDragDrop() {
 
   // 2. Setup Motherboard Sockets (Drop target)
   document.querySelectorAll('.mb-physical-slot').forEach(slot => {
-    const accepts = slot.getAttribute('data-accepts');
-    if (!accepts) return;
-
     slot.ondragover = (e) => {
       e.preventDefault();
       if (!currentDraggedCompId) return;
-
-      if (currentDraggedCompId === accepts && !labState.installed[accepts]) {
-        e.dataTransfer.dropEffect = 'copy';
-        slot.classList.add('drag-over');
-        slot.classList.remove('drag-forbidden');
-      } else {
-        e.dataTransfer.dropEffect = 'none';
-        slot.classList.add('drag-forbidden');
-        slot.classList.remove('drag-over');
-      }
+      e.dataTransfer.dropEffect = 'copy';
+      slot.classList.add('drag-over');
     };
 
     slot.ondragleave = () => {
@@ -726,21 +789,15 @@ function setupDragDrop() {
       const droppedId = e.dataTransfer.getData('text/plain') || currentDraggedCompId;
       clearSlotHighlights();
 
-      if (droppedId === accepts && !labState.installed[droppedId]) {
+      if (droppedId) {
         placeComponent(droppedId, slot.id);
-        // Tactile snap bounce animation
         slot.classList.add('snap-bounce');
         setTimeout(() => slot.classList.remove('snap-bounce'), 450);
-      } else if (droppedId && droppedId !== accepts) {
-        sfxError();
-        slot.classList.add('slot-wrong-shake');
-        setTimeout(() => slot.classList.remove('slot-wrong-shake'), 400);
-        appendBootLog(`> [PERINGATAN] Komponen tidak cocok dengan soket ini! Periksa bentuk soket.`);
       }
       currentDraggedCompId = null;
     };
 
-    // Setup installed draggable (drag off motherboard to dismantle)
+    const accepts = slot.getAttribute('data-accepts');
     setupSlotInstalledDrag(slot, accepts);
   });
 
@@ -924,8 +981,61 @@ function testBoot() {
   clearPostLeds();
   sfxClick();
 
-  // 1. PSU Check
-  if (!installed['psu']) {
+  // 1. Check for ANY Misplaced Components or Distractors
+  const misplacedErrors = [];
+  const expectedSlots = {
+    'slot-cpu': 'cpu',
+    'slot-ram': 'ram',
+    'slot-storage': 'ssd',
+    'slot-gpu': 'gpu',
+    'slot-psu': 'psu'
+  };
+
+  Object.entries(expectedSlots).forEach(([slotId, expectedId]) => {
+    const occupant = labState.slotOccupant ? labState.slotOccupant[slotId] : null;
+    if (occupant && occupant !== expectedId) {
+      const comp = cfg.components.find(c => c.id === occupant);
+      const slotEl = document.getElementById(slotId);
+      const slotTitle = slotEl?.title || slotId;
+      misplacedErrors.push(`- KESALAHAN SOKET: ${comp ? comp.name : occupant} terpasang di ${slotTitle}!`);
+    }
+  });
+
+  if (labState.installed['ram_ddr2']) {
+    misplacedErrors.push('- KOMPONEN TAK KOMPATIBEL: RAM DDR2 terpasang (Motherboard membutuhkan DDR4).');
+  }
+  if (labState.installed['hdd_ide']) {
+    misplacedErrors.push('- KOMPONEN TAK KOMPATIBEL: Harddisk IDE 40-pin terpasang (Motherboard tidak mendukung IDE).');
+  }
+
+  if (misplacedErrors.length > 0) {
+    powerOffBoard();
+    const pill = document.getElementById('mb-power-pill');
+    if (pill) {
+      pill.className = 'mb-telemetry-pill status-error';
+      pill.textContent = 'STATUS: 🔴 BOOT FAILED';
+    }
+    const lines = [
+      '========================================',
+      '❌ [POST CRITICAL FAILURE] BOOTING GAGAL!',
+      '========================================',
+      'Terdeteksi kesalahan fatal perangkat keras:',
+      ...misplacedErrors,
+      '',
+      '⚠️ Komputer TIDAK BISA MENYALA demi keselamatan!',
+      'Risiko korsleting dan kerusakan pin fisik.',
+      '',
+      'TINDAKAN PERBAIKAN:',
+      '1. Lepas komponen yang salah dari motherboard.',
+      '2. Pasang komponen yang benar pada soket yang sesuai.',
+      '========================================'
+    ];
+    typeBootSequence(monitor, lines, 'error-text', () => sfxError());
+    return;
+  }
+
+  // 2. PSU Check
+  if (!installed['psu'] || (labState.slotOccupant && labState.slotOccupant['slot-psu'] !== 'psu')) {
     powerOffBoard();
     const pill = document.getElementById('mb-power-pill');
     if (pill) {
@@ -934,7 +1044,7 @@ function testBoot() {
     }
     const lines = [
       '⚡ [POWER SYSTEM FAILURE]',
-      '❌ Catu daya (PSU) belum terpasang!',
+      '❌ Catu daya (PSU) belum terpasang dengan benar!',
       '',
       'Arus listrik 24-Pin tidak mengalir ke motherboard.',
       'Pasang PSU terlebih dahulu untuk menyalakan komputer.'
@@ -1592,72 +1702,191 @@ function selectBS(qi, val) {
   sfxClick();
 }
 
+let matchLeftItems = [];
+let matchRightItems = [];
+
 function renderMatch() {
   const cfg = window.LAB_CONFIG;
   const leftCol = document.getElementById('match-left');
   const rightCol = document.getElementById('match-right');
+  const svg = document.getElementById('match-svg-layer');
   if (!leftCol || !rightCol || !cfg) return;
 
   leftCol.innerHTML = '';
   rightCol.innerHTML = '';
+  if (svg) svg.innerHTML = '';
 
-  const shuffledRight = [...cfg.lkpd.bagianC].sort(() => Math.random() - 0.5);
+  matchLeftItems = cfg.lkpd.bagianC.map((item, idx) => ({
+    id: 'l' + idx,
+    key: item.left,
+    label: item.left,
+    color: item.color || '#00D4FF'
+  }));
 
-  cfg.lkpd.bagianC.forEach((item, i) => {
+  // Shuffle right items consistently
+  const shuffled = [...cfg.lkpd.bagianC].sort((a, b) => (b.right.length - a.right.length) || (a.left.charCodeAt(0) - b.left.charCodeAt(0)));
+  matchRightItems = shuffled.map((item, idx) => ({
+    id: 'r' + idx,
+    originalKey: item.left,
+    label: item.right
+  }));
+
+  matchLeftItems.forEach((item) => {
     const btn = document.createElement('button');
     btn.className = 'match-interactive-btn';
-    btn.id = 'match-left-' + i;
-    btn.textContent = `${item.left}`;
-    btn.onclick = () => selectMatchLeft(i);
+    btn.id = `match-btn-${item.id}`;
+    btn.innerHTML = `
+      <span><strong>${item.label}</strong></span>
+      <span class="match-port-dot" id="dot-${item.id}"></span>
+    `;
+    btn.onclick = () => handleMatchLeftClick(item.key, item.id);
     leftCol.appendChild(btn);
   });
 
-  shuffledRight.forEach((item, i) => {
+  matchRightItems.forEach((item) => {
     const btn = document.createElement('button');
     btn.className = 'match-interactive-btn';
-    btn.id = 'match-right-' + i;
-    btn.textContent = item.right;
-    btn.setAttribute('data-original-left', item.left);
-    btn.onclick = () => selectMatchRight(i);
+    btn.id = `match-btn-${item.id}`;
+    btn.innerHTML = `
+      <span class="match-port-dot" id="dot-${item.id}"></span>
+      <span style="font-size:0.82vw;margin-left:0.6vw;line-height:1.35;">${item.label}</span>
+    `;
+    btn.onclick = () => handleMatchRightClick(item.originalKey, item.id);
     rightCol.appendChild(btn);
   });
+
+  setTimeout(drawMatchLines, 80);
 }
 
-function selectMatchLeft(index) {
+function handleMatchLeftClick(key, elId) {
   if (labState.lkpdSubmitted) return;
-  const cfg = window.LAB_CONFIG;
-  const leftKey = cfg.lkpd.bagianC[index].left;
-  if (labState.matchPairs[leftKey]) return;
 
-  document.querySelectorAll('#match-left .match-interactive-btn').forEach(el => el.classList.remove('selected'));
-  document.getElementById('match-left-' + index)?.classList.add('selected');
-  labState.matchSelected = index;
+  // If this item is already paired, clicking it unpairs/disconnects it!
+  if (labState.matchPairs[key]) {
+    delete labState.matchPairs[key];
+    drawMatchLines();
+    updateLkpdProgress();
+    sfxClick();
+    return;
+  }
+
+  // If already selected, deselect
+  if (labState.matchSelected && labState.matchSelected.key === key) {
+    labState.matchSelected = null;
+  } else {
+    labState.matchSelected = { key, elId };
+  }
+
+  drawMatchLines();
   sfxClick();
 }
 
-function selectMatchRight(index) {
-  if (labState.lkpdSubmitted || labState.matchSelected === null) return;
-  const cfg = window.LAB_CONFIG;
-  const leftIndex = labState.matchSelected;
-  const leftKey = cfg.lkpd.bagianC[leftIndex].left;
-  const rightEl = document.getElementById('match-right-' + index);
-  const rightText = rightEl?.getAttribute('data-original-left');
+function handleMatchRightClick(originalKey, elId) {
+  if (labState.lkpdSubmitted) return;
 
-  labState.matchPairs[leftKey] = { rightIndex: index, rightOriginalLeft: rightText };
-
-  const leftEl = document.getElementById('match-left-' + leftIndex);
-  if (leftEl) {
-    leftEl.classList.add('matched');
-    leftEl.classList.remove('selected');
-  }
-  if (rightEl) {
-    rightEl.classList.add('matched');
+  // If this right item is already connected to any left item, clicking it unpairs that connection!
+  const connectedLeftKey = Object.keys(labState.matchPairs).find(k => labState.matchPairs[k].rightElId === elId);
+  if (connectedLeftKey) {
+    delete labState.matchPairs[connectedLeftKey];
+    drawMatchLines();
+    updateLkpdProgress();
+    sfxClick();
+    return;
   }
 
-  labState.matchSelected = null;
-  updateLkpdProgress();
-  sfxSnap();
+  // If a left item is selected, create connection rope!
+  if (labState.matchSelected) {
+    const leftKey = labState.matchSelected.key;
+    const leftElId = labState.matchSelected.elId;
+
+    labState.matchPairs[leftKey] = {
+      rightKey: originalKey,
+      leftElId: leftElId,
+      rightElId: elId
+    };
+
+    labState.matchSelected = null;
+    drawMatchLines();
+    updateLkpdProgress();
+    sfxSnap();
+  }
 }
+
+function drawMatchLines() {
+  const wrapper = document.getElementById('match-interactive-wrapper');
+  const svg = document.getElementById('match-svg-layer');
+  if (!wrapper || !svg) return;
+
+  svg.innerHTML = '';
+  const wrapperRect = wrapper.getBoundingClientRect();
+  if (wrapperRect.width === 0 || wrapperRect.height === 0) return;
+
+  // Reset button visual classes
+  document.querySelectorAll('.match-interactive-btn').forEach(btn => {
+    btn.classList.remove('selected', 'matched');
+    btn.style.borderColor = '';
+  });
+
+  if (labState.matchSelected) {
+    const selBtn = document.getElementById(`match-btn-${labState.matchSelected.elId}`);
+    if (selBtn) selBtn.classList.add('selected');
+  }
+
+  Object.entries(labState.matchPairs).forEach(([leftKey, pair]) => {
+    const leftBtn = document.getElementById(`match-btn-${pair.leftElId}`);
+    const rightBtn = document.getElementById(`match-btn-${pair.rightElId}`);
+    const leftDot = document.getElementById(`dot-${pair.leftElId}`);
+    const rightDot = document.getElementById(`dot-${pair.rightElId}`);
+    if (!leftDot || !rightDot) return;
+
+    if (leftBtn) leftBtn.classList.add('matched');
+    if (rightBtn) rightBtn.classList.add('matched');
+
+    const leftDotRect = leftDot.getBoundingClientRect();
+    const rightDotRect = rightDot.getBoundingClientRect();
+
+    const x1 = leftDotRect.left + leftDotRect.width / 2 - wrapperRect.left;
+    const y1 = leftDotRect.top + leftDotRect.height / 2 - wrapperRect.top;
+    const x2 = rightDotRect.left + rightDotRect.width / 2 - wrapperRect.left;
+    const y2 = rightDotRect.top + rightDotRect.height / 2 - wrapperRect.top;
+
+    const itemConfig = window.LAB_CONFIG.lkpd.bagianC.find(c => c.left === leftKey);
+    let color = itemConfig ? itemConfig.color : '#00D4FF';
+
+    if (labState.lkpdSubmitted) {
+      const isCorrect = pair.rightKey === leftKey;
+      color = isCorrect ? '#10b981' : '#ef4444';
+    }
+
+    if (leftBtn) leftBtn.style.borderColor = color;
+    if (rightBtn) rightBtn.style.borderColor = color;
+
+    const midX = (x1 + x2) / 2;
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', `M ${x1},${y1} C ${midX},${y1} ${midX},${y2} ${x2},${y2}`);
+    path.setAttribute('stroke', color);
+    path.setAttribute('stroke-width', labState.lkpdSubmitted ? '4.5' : '3.5');
+    path.setAttribute('fill', 'none');
+    path.classList.add('match-cable-line');
+    svg.appendChild(path);
+
+    const c1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c1.setAttribute('cx', x1);
+    c1.setAttribute('cy', y1);
+    c1.setAttribute('r', '6');
+    c1.setAttribute('fill', color);
+    svg.appendChild(c1);
+
+    const c2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c2.setAttribute('cx', x2);
+    c2.setAttribute('cy', y2);
+    c2.setAttribute('r', '6');
+    c2.setAttribute('fill', color);
+    svg.appendChild(c2);
+  });
+}
+window.addEventListener('resize', drawMatchLines);
 
 function submitLKPD() {
   const cfg = window.LAB_CONFIG;
@@ -1695,7 +1924,7 @@ function submitLKPD() {
   let scoreC = 0;
   cfg.lkpd.bagianC.forEach((item) => {
     const pair = labState.matchPairs[item.left];
-    if (pair && pair.rightOriginalLeft === item.left) scoreC++;
+    if (pair && pair.rightKey === item.left) scoreC++;
   });
 
   const total = scoreA + scoreB + scoreC;
@@ -1727,6 +1956,8 @@ function submitLKPD() {
     document.getElementById('hasil-detail').textContent = `Rincian: Pilihan Ganda (${scoreA}/5) · Benar/Salah (${scoreB}/5) · Menjodohkan (${scoreC}/5)`;
     resBox.scrollIntoView({ behavior: 'smooth' });
   }
+
+  drawMatchLines();
 
   if (percent >= 85) {
     sfxVictoryMelody();

@@ -160,44 +160,47 @@ body {
   overflow: hidden;
 }
 
-.starfield {
+.tech-circuit-bg {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
-}
-.star-dot {
-  position: absolute; background: #ffffff; border-radius: 50%;
-  animation: twinkle 3s ease-in-out infinite;
-}
-@keyframes twinkle { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.95; } }
-
-.planet-deco {
-  position: absolute; border-radius: 50%; opacity: 0.9; z-index: 1; pointer-events: none;
-}
-@keyframes floatSlow {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(8deg); }
+  background-color: #060919;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(30, 41, 107, 0.4) 0%, transparent 70%),
+    linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
 }
 
-.planet-1 {
-  width: 5.5vw; height: 5.5vw; top: 10%; left: 7%;
-  background: radial-gradient(circle at 35% 30%, #6ee7dc, var(--aurora-teal) 70%);
-  animation: floatSlow 7s ease-in-out infinite;
-  box-shadow: 0 0 35px rgba(47, 217, 196, 0.4);
-}
-.planet-2 {
-  width: 3.5vw; height: 3.5vw; top: 68%; left: 11%;
-  background: radial-gradient(circle at 35% 30%, #fff, var(--comet-amber) 70%);
-  animation: floatSlow 5.5s ease-in-out infinite 0.6s;
-  box-shadow: 0 0 25px rgba(251, 174, 60, 0.4);
-}
-.planet-3 {
-  width: 4.8vw; height: 4.8vw; top: 12%; right: 8%;
-  background: radial-gradient(circle at 35% 30%, #a5b4fc, #4c4fb8 70%);
-  animation: floatSlow 6.5s ease-in-out infinite 0.3s;
-  box-shadow: 0 0 30px rgba(76, 79, 184, 0.45);
+.tech-grid-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(6, 9, 25, 0.85) 90%);
 }
 
-.sequence-orbit {
-  position: absolute; bottom: 5%; left: 0; width: 100%; z-index: 1; opacity: 0.85; pointer-events: none;
+.tech-chip-deco {
+  position: absolute; z-index: 2; pointer-events: none; opacity: 0.75;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1.5px solid rgba(0, 212, 255, 0.35);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.15), inset 0 0 15px rgba(0, 212, 255, 0.1);
+  backdrop-filter: blur(4px);
+}
+.tech-chip-deco::after {
+  content: ''; position: absolute; inset: 4px;
+  border: 1px dashed rgba(251, 174, 60, 0.4);
+  border-radius: 8px;
+}
+
+.chip-1 {
+  width: 5vw; height: 5vw; top: 12%; left: 8%;
+  animation: techPulse 6s ease-in-out infinite;
+}
+.chip-2 {
+  width: 4.2vw; height: 4.2vw; bottom: 14%; right: 9%;
+  animation: techPulse 5s ease-in-out infinite 1s;
+}
+
+@keyframes techPulse {
+  0%, 100% { transform: translateY(0) rotate(0deg); box-shadow: 0 0 25px rgba(0, 212, 255, 0.2); }
+  50% { transform: translateY(-10px) rotate(4deg); box-shadow: 0 0 35px rgba(251, 174, 60, 0.35); border-color: rgba(251, 174, 60, 0.5); }
 }
 
 .welcome-inner {
@@ -307,6 +310,27 @@ body {
 }
 .btn-outline:hover {
   background: rgba(255, 255, 255, 0.25);
+}
+
+.btn-secondary {
+  background: var(--card-sub-bg);
+  color: var(--text-main);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-weight: 700;
+  font-family: var(--font-body);
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35vw;
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover {
+  border-color: var(--tab-active);
+  color: var(--tab-active);
+  background: var(--card-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* ---------- TOP HEADER BAR ---------- */
@@ -434,9 +458,9 @@ header {
   box-shadow: var(--shadow-sm);
 }
 .scenario-btn:hover {
-  transform: translateY(-2px);
   border-color: var(--tab-active);
   color: var(--tab-active);
+  background-color: var(--card-sub-bg);
 }
 .scenario-btn.active {
   background: linear-gradient(135deg, var(--tab-active), #6366f1);
@@ -736,7 +760,7 @@ p, li {
    ============================================================ */
 .rakit-workspace-grid {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 295px 1fr;
   gap: 1vw;
   flex: 1;
   height: 100%;
@@ -1072,6 +1096,40 @@ p, li {
   border-color: #ef4444 !important;
   background: rgba(239, 68, 68, 0.28) !important;
   box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+}
+
+/* Misplaced Socket Warning State */
+.mb-physical-slot.slot-misplaced {
+  border: 2px dashed #ef4444 !important;
+  background: rgba(239, 68, 68, 0.25) !important;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.7) !important;
+  animation: hazardPulse 1s ease-in-out infinite alternate !important;
+  z-index: 25 !important;
+}
+@keyframes hazardPulse {
+  0% { box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
+  100% { box-shadow: 0 0 24px rgba(239, 68, 68, 0.9); }
+}
+.slot-misplaced-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 0.58vw;
+  font-weight: 900;
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 30;
+  animation: bounceMini 0.6s infinite alternate;
+}
+@keyframes bounceMini {
+  0% { transform: translate(-50%, 0); }
+  100% { transform: translate(-50%, -3px); }
 }
 
 @keyframes snapBounce {
@@ -1554,77 +1612,160 @@ p, li {
   cursor: pointer;
 }
 
-/* Matching Rows */
+/* ============================================================
+   PANEL 6: LKPD MATCHING ENGINE & SVG CABLE LAYER
+   ============================================================ */
+.match-interactive-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 0.6vw;
+}
+.match-svg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+.match-cable-line {
+  stroke-dasharray: 8 5;
+  animation: cableFlow 1.2s linear infinite;
+  stroke-linecap: round;
+}
+@keyframes cableFlow {
+  to { stroke-dashoffset: -26; }
+}
+
 .match-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1vw;
-  margin-top: 0.6vw;
+  gap: 3.5vw;
+  position: relative;
+  z-index: 1;
 }
 .match-btn-col {
   display: flex;
   flex-direction: column;
-  gap: 0.4vw;
+  gap: 0.6vw;
 }
 .match-interactive-btn {
-  padding: 0.5vw 0.8vw;
+  padding: 0.6vw 1vw;
   background: var(--card-bg);
   border: 1.5px solid var(--border-color);
   border-radius: var(--radius-md);
   cursor: pointer;
-  font-size: 0.82vw;
+  font-size: 0.85vw;
   font-weight: 600;
   text-align: left;
   transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: var(--shadow-sm);
 }
-.match-interactive-btn:hover { border-color: var(--tab-active); }
+.match-interactive-btn:hover {
+  border-color: var(--tab-active);
+  background: var(--card-sub-bg);
+}
 .match-interactive-btn.selected {
   border-color: var(--tab-active);
   background: var(--header-bg);
-  box-shadow: 0 0 10px var(--tab-active-glow);
+  box-shadow: 0 0 0 3px var(--tab-active-glow);
 }
 .match-interactive-btn.matched {
-  background: rgba(16, 185, 129, 0.12);
-  border-color: var(--accent-emerald);
-  color: var(--accent-emerald);
-  cursor: default;
+  background: var(--card-sub-bg);
+  font-weight: 700;
+}
+
+/* Port indicator dots */
+.match-port-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-subtle);
+  border: 2px solid var(--card-bg);
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.match-interactive-btn.selected .match-port-dot {
+  background: var(--tab-active);
+  box-shadow: 0 0 8px var(--tab-active);
+  transform: scale(1.25);
+}
+.match-interactive-btn.matched .match-port-dot {
+  background: var(--accent-emerald);
+  box-shadow: 0 0 8px var(--accent-emerald);
 }
 
 /* ============================================================
    PANEL 7: PROFIL PENGEMBANG (SATU-SATUNYA TEMPAT IDENTITAS)
    ============================================================ */
+/* ============================================================
+   PANEL 7: PROFIL PENGEMBANG (SATU-SATUNYA TEMPAT IDENTITAS)
+   ============================================================ */
 .developer-profile-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2.5vw;
+  width: 100%;
+  margin: 1vw 0;
+  text-align: left;
+}
+
+.dev-photo-col {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  text-align: center;
+  gap: 0.6vw;
+  flex-shrink: 0;
 }
 
 .dev-avatar-ring {
-  width: 6.5vw;
-  height: 6.5vw;
-  max-width: 90px;
-  max-height: 90px;
-  border-radius: 50%;
-  border: 3.5px solid var(--tab-active);
-  box-shadow: 0 8px 20px rgba(67, 56, 202, 0.25);
+  width: 9vw;
+  height: 9vw;
+  max-width: 130px;
+  max-height: 130px;
+  border-radius: var(--radius-lg);
+  border: 4px solid var(--tab-active);
+  box-shadow: 0 10px 28px rgba(67, 56, 202, 0.25);
   overflow: hidden;
-  margin-bottom: 0.6vw;
 }
 .dev-avatar-ring img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+.dev-photo-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.dev-photo-caption strong {
+  font-size: 0.95vw;
+  color: var(--text-heading);
+}
+.dev-photo-caption span {
+  font-size: 0.75vw;
+  color: var(--text-muted);
+}
+
+.dev-details-col {
+  flex: 1;
+  max-width: 620px;
+}
 
 .profile-table {
   border-collapse: collapse;
   font-size: 0.9vw;
-  margin: 0.6vw 0 1vw;
+  margin: 0 0 0.8vw;
   text-align: left;
+  width: 100%;
 }
 .profile-table td {
   padding: 0.35vw 0.8vw;
@@ -1634,6 +1775,19 @@ p, li {
 .profile-table td:first-child {
   font-weight: 700;
   color: var(--text-heading);
+  white-space: nowrap;
+  width: 28%;
+}
+
+.dev-plain-contact {
+  font-family: var(--font-mono);
+  font-size: 0.85vw;
+  font-weight: 700;
+  background: var(--header-bg);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  color: var(--tab-active);
 }
 
 .dev-logos-row {

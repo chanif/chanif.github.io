@@ -24,16 +24,15 @@
   <!-- WELCOME / LOGIN SCREEN (Tanpa Identitas Guru/Instansi)       -->
   <!-- ============================================================ -->
   <div id="welcome-screen">
-    <div class="starfield" id="starfield"></div>
-
-    <div class="planet-deco planet-1"></div>
-    <div class="planet-deco planet-2"></div>
-    <div class="planet-deco planet-3"></div>
+    <div class="tech-circuit-bg" id="tech-circuit-bg"></div>
+    <div class="tech-grid-overlay"></div>
+    <div class="tech-chip-deco chip-1"></div>
+    <div class="tech-chip-deco chip-2"></div>
 
     <div class="welcome-inner">
-      <div class="eyebrow-badge">MISI INFORMATIKA &middot; LAB MAYA SMP FASE D</div>
-      <h1>Selamat Datang di Lab Perakitan Komputer! 🚀</h1>
-      <p>Ayo bereksperimen, merakit komputer impianmu, memahami cara kerja sakelar bilangan biner, dan mengolah jutaan warna RGB!</p>
+      <div class="eyebrow-badge">LABORATORIUM MAYA &middot; INFORMATIKA SMP FASE D</div>
+      <h1>Selamat Datang di Lab Perakitan Komputer! 🖥️</h1>
+      <p>Ayo pelajari struktur perangkat keras, rakit komponen ke soket motherboard, pecahkan teka-teki bilangan biner, dan eksplorasi spektrum warna RGB!</p>
 
       <div class="input-name-container">
         <input type="text" id="player-name" class="input-name" placeholder="Masukkan Namamu di Sini..." onkeyup="checkNameInput()" oninput="checkNameInput()" autocomplete="off">
@@ -41,7 +40,7 @@
       </div>
 
       <div class="welcome-buttons">
-        <button class="btn-large" id="start-btn" onclick="startGame()" disabled>Masuk Lab 🚀</button>
+        <button class="btn-large" id="start-btn" onclick="startGame()" disabled>Masuk Lab 🖥️</button>
         <button class="btn-large btn-outline" onclick="showModal('panduan-modal')">Panduan Lab 📖</button>
       </div>
     </div>
@@ -78,7 +77,7 @@
         <span>📝</span> Prosedur
       </button>
       <button class="scenario-btn btn-featured" id="tab-btn-sim-rakit-pc" onclick="switchLabTab('sim-rakit-pc')">
-        <span>🖥️</span> <strong>Rakit Komputer</strong> <span class="tab-chip">Utama</span>
+        <span>🖥️</span> <strong>Rakit Komputer</strong>
       </button>
       <button class="scenario-btn" id="tab-btn-sim-binary" onclick="switchLabTab('sim-binary')">
         <span>💡</span> Sakelar Biner
@@ -125,7 +124,7 @@
           <div class="motherboard-col">
             <div class="mb-stage-panel motherboard-panel" id="motherboard-panel">
               <div class="mb-top-telemetry">
-                <span style="font-weight:700;letter-spacing:0.5px;">MOTHERBOARD ATX — PAPAN SIRKUIT UTAMA</span>
+                <span style="font-weight:700;letter-spacing:0.5px;">MOTHERBOARD ATX — PAPAN SIRKUIT KOMPUTER</span>
                 <div style="display:flex;gap:0.4vw;align-items:center;">
                   <span class="mb-telemetry-pill" id="mb-power-pill">STATUS: STANDBY</span>
                   <span class="mb-telemetry-pill" id="mb-installed-pill">TERPASANG: <strong id="installed-count">0</strong>/5</span>
@@ -433,10 +432,15 @@
         <div id="lkpd-bs" class="lkpd-section-content" style="display:none;"></div>
         <div id="lkpd-match" class="lkpd-section-content" style="display:none;">
           <h4 style="margin-bottom:0.4vw;">Cocokkan Komponen dengan Fungsinya</h4>
-          <p style="font-size:0.85vw;color:var(--text-muted);margin-bottom:0.8vw;">Klik nama komponen di kolom kiri, lalu klik deskripsi fungsinya di kolom kanan.</p>
-          <div class="match-grid">
-            <div class="match-btn-col" id="match-left"></div>
-            <div class="match-btn-col" id="match-right"></div>
+          <p style="font-size:0.85vw;color:var(--text-muted);margin-bottom:0.8vw;">
+            Klik nama komponen di kolom kiri, lalu klik deskripsi fungsinya di kolom kanan untuk menyambungkan kabel interaktif. Klik kembali komponen/kabel untuk melepas sambungan.
+          </p>
+          <div class="match-interactive-wrapper" id="match-interactive-wrapper">
+            <svg class="match-svg-layer" id="match-svg-layer"></svg>
+            <div class="match-grid">
+              <div class="match-btn-col" id="match-left"></div>
+              <div class="match-btn-col" id="match-right"></div>
+            </div>
           </div>
         </div>
 
@@ -459,57 +463,72 @@
     <!-- ========================================================== -->
     <div id="sub-pengembang" class="game-sub-panel">
       <div class="card card-scrollable" style="border-top-color: var(--tab-active);">
+        <h2 style="margin-bottom:0.8vw;">👨‍💻 Profil Pengembang Media</h2>
         <div class="developer-profile-wrapper">
-          <div class="dev-avatar-ring">
-            <img src="assets/fanani.jpg" alt="Foto Pengembang">
-          </div>
-          <h2>👨‍💻 PROFIL PENGEMBANG</h2>
-
-          <table class="profile-table">
-            <tr>
-              <td>Nama Lengkap</td>
-              <td>:</td>
-              <td><strong>Ach. Chanifuddin Fanani, S.Pd.</strong></td>
-            </tr>
-            <tr>
-              <td>Instansi / Sekolah</td>
-              <td>:</td>
-              <td>SMP Negeri 2 Lamongan</td>
-            </tr>
-            <tr>
-              <td>Mata Pelajaran</td>
-              <td>:</td>
-              <td>Informatika (Fase D)</td>
-            </tr>
-            <tr>
-              <td>Peran</td>
-              <td>:</td>
-              <td>Guru Informatika &amp; Pengembang Media Pembelajaran</td>
-            </tr>
-            <tr>
-              <td>Surel Belajar.id</td>
-              <td>:</td>
-              <td>ach.chanifuddin.fanani@guru.smp.belajar.id</td>
-            </tr>
-            <tr>
-              <td>Tahun Pembuatan</td>
-              <td>:</td>
-              <td>2026</td>
-            </tr>
-          </table>
-
-          <div class="teori-box" style="max-width:85%;text-align:left;">
-            <p style="margin-bottom:0;line-height:1.6;">
-              Media pembelajaran <strong>“Lab Perakitan Komputer”</strong> ini dirancang dengan pendekatan visual interaktif, kontekstual, dan bermakna untuk peserta didik SMP Fase D. Melalui perakitan PC virtual, sakelar biner, dan pencampur warna RGB, siswa dapat mengamati secara langsung jembatan antara perangkat keras fisik dengan representasi data digital di era digitalisasi pendidikan. 🚀
-            </p>
+          <!-- Sisi Kiri: Foto Profil Pengembang -->
+          <div class="dev-photo-col">
+            <div class="dev-avatar-ring">
+              <img src="assets/fanani.jpg" alt="Foto Pengembang">
+            </div>
+            <div class="dev-photo-caption">
+              <strong>Ach. Chanifuddin Fanani</strong>
+              <span>Guru Informatika SMP</span>
+            </div>
           </div>
 
-          <div class="dev-logos-row">
-            <img src="assets/Logo Tutwuri Kemendikdasmen.png" alt="Kemendikdasmen" title="Kementerian Pendidikan Dasar dan Menengah">
-            <img src="assets/Logo-Sobat-SMP-2025.png" alt="Sobat SMP" title="Direktorat SMP Kemendikdasmen">
-            <img src="assets/Logo Pendidikan Bermutu.png" alt="Pendidikan Bermutu" title="Pendidikan Bermutu untuk Semua">
-            <img src="assets/Logo Ramah.png" alt="Sekolah Ramah" title="Sekolah Ramah Anak">
+          <!-- Sisi Kanan: Tabel Informasi & Kontak -->
+          <div class="dev-details-col">
+            <table class="profile-table">
+              <tr>
+                <td>Nama Lengkap</td>
+                <td>:</td>
+                <td><strong>Ach. Chanifuddin Fanani, S.Pd.</strong></td>
+              </tr>
+              <tr>
+                <td>Instansi / Sekolah</td>
+                <td>:</td>
+                <td>SMP Negeri 2 Lamongan</td>
+              </tr>
+              <tr>
+                <td>Mata Pelajaran</td>
+                <td>:</td>
+                <td>Informatika (Fase D)</td>
+              </tr>
+              <tr>
+                <td>Peran</td>
+                <td>:</td>
+                <td>Guru Informatika &amp; Pengembang Media Pembelajaran</td>
+              </tr>
+              <tr>
+                <td>Surel (Email)</td>
+                <td>:</td>
+                <td><span class="dev-plain-contact">chanifuddin@gmail.com</span></td>
+              </tr>
+              <tr>
+                <td>Situs Web</td>
+                <td>:</td>
+                <td><span class="dev-plain-contact">fanani.my.id</span></td>
+              </tr>
+              <tr>
+                <td>Tahun Pembuatan</td>
+                <td>:</td>
+                <td>2026</td>
+              </tr>
+            </table>
+
+            <div class="teori-box" style="text-align:left;margin-top:0.8vw;">
+              <p style="margin-bottom:0;line-height:1.6;font-size:0.85vw;">
+                Media pembelajaran <strong>“Lab Perakitan Komputer”</strong> ini dirancang dengan pendekatan visual interaktif, kontekstual, dan bermakna untuk peserta didik SMP Fase D. Melalui perakitan PC virtual, sakelar biner, dan pencampur warna RGB, siswa dapat mengamati secara langsung jembatan antara perangkat keras fisik dengan representasi data digital di era digitalisasi pendidikan.
+              </p>
+            </div>
           </div>
+        </div>
+
+        <div class="dev-logos-row" style="margin-top:1vw;">
+          <img src="assets/Logo Tutwuri Kemendikdasmen.png" alt="Kemendikdasmen" title="Kementerian Pendidikan Dasar dan Menengah">
+          <img src="assets/Logo-Sobat-SMP-2025.png" alt="Sobat SMP" title="Direktorat SMP Kemendikdasmen">
+          <img src="assets/Logo Pendidikan Bermutu.png" alt="Pendidikan Bermutu" title="Pendidikan Bermutu untuk Semua">
+          <img src="assets/Logo Ramah.png" alt="Sekolah Ramah" title="Sekolah Ramah Anak">
         </div>
       </div>
     </div>
@@ -547,15 +566,17 @@
   <!-- ============================================================ -->
   <div id="panduan-modal" class="modal-overlay" onclick="if(event.target===this)closeModal('panduan-modal')">
     <div class="modal-card">
-      <h2 style="margin-bottom:0.8vw;">Panduan Eksplorasi Lab Maya 📖</h2>
-      <div style="font-size:0.95vw;line-height:1.7;">
-        <p>1. 🖥️ <strong>Rakit Komputer:</strong> Pasang kelima komponen utama dari rak sebelah kiri ke soket motherboard ATX. Tekan tombol <strong>POWER ON</strong> untuk menjalankan uji boot (POST)!</p>
-        <p>2. 💡 <strong>Sakelar Biner:</strong> Klik lampu-lampu biner untuk melihat bagaimana kombinasi 0 dan 1 membentuk bilangan desimal.</p>
-        <p>3. 🎨 <strong>Warna RGB:</strong> Geser slider Merah, Hijau, dan Biru untuk memahami cara layar komputermu menghasilkan jutaan warna.</p>
-        <p>4. ✍️ <strong>LKPD:</strong> Uji pemahamanmu dengan kuis interaktif setelah menyelesaikan eksperimen!</p>
+      <h2 style="margin-bottom:0.8vw;">Panduan Eksplorasi Lab Perakitan Komputer 📖</h2>
+      <div style="font-size:0.92vw;line-height:1.7;">
+        <p>1. 📚 <strong>Pahami Teori Komputer:</strong> Mulai dari tab Teori untuk mempelajari fungsi 5 komponen utama (CPU, RAM, SSD, GPU, PSU) serta alur siklus Input-Proses-Output (IPO).</p>
+        <p>2. 📝 <strong>Perhatikan Prosedur &amp; K3:</strong> Pelajari langkah-langkah kerja aman perakitan komputer sebelum melakukan praktik.</p>
+        <p>3. 🖥️ <strong>Rakit Komputer &amp; Waspadai Pengecoh:</strong> Tarik komponen ke soket motherboard. Hati-hati jangan salah soket dan waspadai komponen pengecoh yang tidak kompatibel!</p>
+        <p>4. ⚡ <strong>Uji Booting (Power On):</strong> Tekan tombol Power On untuk memeriksa apakah komputer menyala. Jika ada komponen salah soket, komputer tidak akan menyala dan memunculkan kode diagnostik.</p>
+        <p>5. 💡 <strong>Eksplorasi Sakelar Biner &amp; RGB:</strong> Pahami representasi data digital 0 &amp; 1 pada sakelar biner dan percampuran jutaan warna sub-piksel monitor pada modul RGB.</p>
+        <p>6. ✍️ <strong>Kerjakan LKPD:</strong> Evaluasi pemahamanmu melalui soal Pilihan Ganda, Benar/Salah, dan Menjodohkan beranimasi kabel!</p>
       </div>
       <div style="text-align:right;margin-top:1.2vw;">
-        <button class="btn-large" onclick="closeModal('panduan-modal')">Siap, Paham! 🚀</button>
+        <button class="btn-large" onclick="closeModal('panduan-modal')">Siap, Mulai Belajar! 🖥️</button>
       </div>
     </div>
   </div>
