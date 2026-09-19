@@ -88,61 +88,77 @@ window.LAB_CONFIG = {
       id: 'cpu',
       name: 'CPU (Prosesor)',
       shortName: 'CPU',
+      role: 'Otak Komputer',
       icon: '🧠',
+      svg: 'assets/images/component-cpu.svg',
+      coolerSvg: 'assets/images/component-cooler.svg',
       slotId: 'slot-cpu',
       color: '#00D4FF',
-      description: 'Otak komputer — memproses semua instruksi dan perhitungan.',
-      analogy: 'Seperti otak manusia yang berpikir dan mengambil keputusan.',
-      details: 'CPU (Central Processing Unit) berisi ALU (Arithmetic Logic Unit) untuk perhitungan matematika, Control Unit untuk mengendalikan aliran data, dan Clock yang menentukan kecepatan kerja. CPU modern punya miliaran transistor dalam chip sekecil kuku jari.',
+      description: 'Otak komputer — memproses semua instruksi dan perhitungan matematika.',
+      analogy: 'Seperti otak manusia yang berpikir, menghitung, dan memberi perintah.',
+      details: 'CPU (Central Processing Unit) berisi ALU (Arithmetic Logic Unit) untuk perhitungan matematika, Control Unit untuk mengendalikan aliran data, dan Cache super cepat. CPU modern punya miliaran transistor dalam chip sekecil kuku jari.',
       funFact: 'CPU laptop setebal koin dan berisi lebih dari 10 miliar transistor — lebih banyak dari jumlah manusia di bumi!',
+      techSpec: 'Intel Core i7-8800K · 8C/16T · 3.60GHz · LGA 1700',
     },
     {
       id: 'ram',
-      name: 'RAM (Memori)',
+      name: 'RAM (Memori Kerja)',
       shortName: 'RAM',
+      role: 'Meja Kerja Cepat',
       icon: '⚡',
+      svg: 'assets/images/component-ram.svg',
       slotId: 'slot-ram',
       color: '#10B981',
-      description: 'Memori kerja sementara — menyimpan data program yang sedang berjalan.',
-      analogy: 'Seperti meja kerja — semakin lebar, semakin banyak buku yang bisa dibuka bersamaan.',
-      details: 'RAM (Random Access Memory) adalah memori volatil — datanya hilang saat komputer dimatikan. RAM menyimpan data dalam bilangan biner (0 dan 1). Semakin besar RAM, semakin banyak aplikasi yang bisa berjalan bersamaan tanpa lambat.',
-      funFact: 'RAM 8GB punya sekitar 68 miliar "saklar biner" — seperti lampu yang bisa nyala atau mati!',
+      description: 'Memori kerja sementara — menyimpan data aplikasi yang sedang aktif dibuka.',
+      analogy: 'Seperti meja belajar — semakin luas meja, semakin banyak buku/aplikasi yang bisa dibuka bersamaan tanpa bertumpuk.',
+      details: 'RAM (Random Access Memory) adalah memori volatil — datanya hilang saat komputer dimatikan. RAM menyimpan data dalam bilangan biner (0 dan 1). Semakin besar RAM, semakin lancar multitasking tanpa macet.',
+      funFact: 'RAM 8GB punya sekitar 68 miliar sakelar biner mikro yang bisa menyala atau padam seketika!',
+      techSpec: 'Hyper-X 8GB DDR4 · 3200MHz · Dual Channel',
     },
     {
       id: 'ssd',
       name: 'SSD (Penyimpanan)',
       shortName: 'SSD',
+      role: 'Lemari Arsip Permanen',
       icon: '💾',
+      svg: 'assets/images/component-ssd.svg',
       slotId: 'slot-storage',
       color: '#F59E0B',
-      description: 'Penyimpanan permanen — menyimpan file, aplikasi, dan sistem operasi.',
-      analogy: 'Seperti lemari arsip — data tersimpan meskipun komputer dimatikan.',
-      details: 'SSD (Solid State Drive) adalah media penyimpanan non-volatil yang sangat cepat. Berbeda dengan HDD yang pakai piringan berputar, SSD menyimpan data di chip flash memory tanpa bagian bergerak, sehingga lebih cepat, tahan guncangan, dan hemat energi.',
-      funFact: 'SSD bisa membaca data 100× lebih cepat dari HDD — seperti perbedaan antara mobil balap dan sepeda!',
+      description: 'Penyimpanan data permanen — menyimpan file, aplikasi, dan sistem operasi.',
+      analogy: 'Seperti lemari arsip — semua berkas tetap tersimpan rapi dan aman meskipun komputer dimatikan.',
+      details: 'SSD (Solid State Drive) adalah media penyimpanan non-volatil yang sangat cepat berbasis flash memory tanpa piringan berputar, sehingga tahan guncangan, sunyi, dan hemat daya.',
+      funFact: 'SSD membaca data hingga 100× lebih cepat dari HDD piringan lama — seperti mobil balap vs sepeda ontel!',
+      techSpec: 'NVMe M.2 2280 · 512GB PCIe Gen4 (7000 MB/s)',
     },
     {
       id: 'gpu',
       name: 'GPU (Kartu Grafis)',
       shortName: 'GPU',
+      role: 'Pelukis Gambar Layar',
       icon: '🎮',
+      svg: 'assets/images/component-gpu.svg',
       slotId: 'slot-gpu',
-      color: '#7C3AED',
-      description: 'Pemroses gambar dan video — menampilkan visual di layar monitor.',
-      analogy: 'Seperti pelukis super cepat yang menggambar jutaan piksel setiap detik.',
-      details: 'GPU (Graphics Processing Unit) mengolah data visual: game 3D, video, animasi, desain grafis. GPU memiliki ribuan inti kecil yang bekerja paralel untuk menghitung warna setiap piksel di layar. Setiap piksel punya 3 sub-piksel: Merah, Hijau, Biru (RGB).',
-      funFact: 'GPU gaming modern bisa menghitung warna untuk 8 juta piksel (resolusi 4K) sebanyak 60 kali per detik!',
+      color: '#8B5CF6',
+      description: 'Pemroses grafis & visual — menghitung jutaan warna piksel untuk monitor.',
+      analogy: 'Seperti pelukis kilat yang mampu menggambar dan mewarnai jutaan titik piksel setiap detik.',
+      details: 'GPU (Graphics Processing Unit) dirancang khusus untuk mengolah grafis 3D, efek video, dan visual monitor. GPU memiliki ribuan inti pemroses yang menghitung nilai warna RGB (Red, Green, Blue) secara paralel 60-144 kali per detik.',
+      funFact: 'GPU modern menghitung warna untuk 8 juta piksel monitor 4K sebanyak 60 kali per detik tanpa henti!',
+      techSpec: 'NVIDIA RTX 3060 · 8GB GDDR6 · Dual Fan Cooling',
     },
     {
       id: 'psu',
-      name: 'PSU (Power Supply)',
+      name: 'PSU (Catu Daya)',
       shortName: 'PSU',
+      role: 'Jantung Daya Listrik',
       icon: '🔌',
+      svg: 'assets/images/component-psu.svg',
       slotId: 'slot-psu',
       color: '#EF4444',
-      description: 'Pemasok daya listrik — mengubah arus listrik AC menjadi DC untuk semua komponen.',
-      analogy: 'Seperti jantung yang memompa darah (listrik) ke seluruh tubuh (komponen).',
-      details: 'PSU (Power Supply Unit) mengubah arus bolak-balik (AC 220V dari stopkontak) menjadi arus searah (DC 12V, 5V, 3.3V) yang dibutuhkan komponen elektronik. Tanpa PSU, tidak ada satu pun komponen yang bisa bekerja.',
-      funFact: 'PSU yang efisien (80+ Gold) membuang kurang dari 10% energi sebagai panas — hemat listrik!',
+      description: 'Pemasok energi listrik — mengubah arus listrik AC rumah menjadi DC stabil.',
+      analogy: 'Seperti jantung manusia yang memompa darah (listrik) ke seluruh organ tubuh (komponen PC).',
+      details: 'PSU (Power Supply Unit) mengubah arus bolak-balik AC (220V dari stopkontak) menjadi arus searah DC (12V, 5V, 3.3V) yang aman untuk sirkuit motherboard dan komponen sensitif.',
+      funFact: 'Sertifikasi 80 Plus Gold pada PSU membuktikan efisiensi di atas 90%, sehingga sedikit sekali daya yang terbuang jadi panas!',
+      techSpec: 'ATX 650W Full Modular · 80+ Gold Certified',
     },
   ],
 
@@ -359,13 +375,13 @@ window.LAB_CONFIG = {
         title: 'Komponen Utama',
         icon: '🔩',
         content: `
-          <h3>6 Komponen Utama Komputer</h3>
-          <p>Setiap komputer memiliki komponen inti yang bekerja sama. Klik ikon di bawah untuk mempelajari masing-masing:</p>
-          <div id="teori-komponen-grid" class="komponen-grid">
+          <h3>5 Komponen Utama Komputer & Motherboard</h3>
+          <p>Setiap komputer memiliki komponen inti yang bekerja sama. Klik kartu di bawah untuk mempelajari fungsi dan analoginya:</p>
+          <div id="teori-komponen-grid" class="teori-komponen-grid">
             <!-- Rendered dynamically from components data -->
           </div>
           <div id="teori-komponen-detail" class="komponen-detail-panel">
-            <p class="placeholder-text">👆 Klik salah satu komponen di atas untuk melihat penjelasan detail.</p>
+            <p class="placeholder-text">👆 Klik salah satu kartu komponen di atas untuk melihat penjelasan detail & spesifikasi teknis.</p>
           </div>
 
           <h4 style="margin-top:1.2em">Perangkat I/O (Input/Output)</h4>
@@ -505,15 +521,15 @@ window.LAB_CONFIG = {
 
   // ── Prosedur Langkah ──
   prosedur: [
-    { step: 1, icon: '📖', text: 'Baca teori tentang komponen komputer terlebih dahulu.' },
-    { step: 2, icon: '🔬', text: 'Masuk ke menu <strong>Simulasi</strong>.' },
-    { step: 3, icon: '🖥️', text: 'Mulai dari <strong>Simulasi Utama: Rakit Komputer</strong>.' },
-    { step: 4, icon: '🎯', text: 'Klik atau drag komponen dari panel samping ke slot motherboard yang benar.' },
-    { step: 5, icon: '⚡', text: 'Klik tombol <strong>POWER</strong> untuk menguji rakitanmu.' },
-    { step: 6, icon: '👀', text: 'Amati hasilnya: berhasil boot atau muncul error?' },
-    { step: 7, icon: '🔍', text: 'Eksplorasi: coba rakit tanpa beberapa komponen — apa yang terjadi?' },
-    { step: 8, icon: '💡', text: 'Lanjut ke <strong>Simulasi Pendukung</strong> untuk memahami cara kerja data.' },
-    { step: 9, icon: '📝', text: 'Isi <strong>LKPD</strong> untuk menguji pemahamanmu.' },
+    { step: 1, icon: '📚', text: 'Pelajari ringkasan <strong>Teori Komputer</strong> untuk memahami fungsi CPU, RAM, SSD, GPU, dan PSU.' },
+    { step: 2, icon: '🖥️', text: 'Buka menu <strong>Rakit Komputer</strong> untuk masuk ke meja kerja perakitan virtual.' },
+    { step: 3, icon: '✊', text: '<strong>Tarik (Drag and Drop)</strong> setiap komponen dari rak di sebelah kiri, lalu arahkan dan lepaskan tepat di atas soket motherboard yang menyala.' },
+    { step: 4, icon: '🔧', text: 'Perhatikan indikator soket: soket target akan berdenyut kuning-emas dan berubah hijau saat komponen dilepas tepat sasaran.' },
+    { step: 5, icon: '↩️', text: 'Ingin membongkar komponen? Tarik komponen yang terpasang keluar dari motherboard kembali ke rak, atau cukup klik soket tersebut.' },
+    { step: 6, icon: '⚡', text: 'Setelah semua 5 komponen terpasang, tekan tombol <strong>POWER ON</strong> untuk memulai proses uji booting dan amati lampu diagnostik LED POST.' },
+    { step: 7, icon: '🔬', text: 'Coba eksplorasi: lepaskan RAM atau GPU, lalu nyalakan komputer. Perhatikan kode beep dan error BIOS yang muncul!' },
+    { step: 8, icon: '💡', text: 'Jelajahi simulasi pendukung <strong>Sakelar Biner</strong> dan <strong>Warna RGB</strong> untuk memperdalam konsep data digital.' },
+    { step: 9, icon: '✍️', text: 'Kerjakan <strong>LKPD &amp; Kuis</strong> untuk menguji pemahaman dan raih predikat terbaikmu!' },
   ],
 
   // ── LKPD (Lembar Kerja Peserta Didik) ──

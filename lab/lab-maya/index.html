@@ -9,40 +9,80 @@
     <link rel="canonical" href="https://fanani.my.id/lab/lab-maya/">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         h1, h2, h3, h4, .font-heading { font-family: 'Quicksand', sans-serif; }
         body { font-family: 'Inter', sans-serif; }
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Cyber-Lab Glow and Neon Highlights */
+        .neon-border-cyan {
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.15);
         }
-        .card-hover:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px -10px rgba(14, 165, 233, 0.25);
+        .neon-border-cyan:hover {
+            border-color: rgba(0, 212, 255, 0.8);
+            box-shadow: 0 0 35px rgba(0, 212, 255, 0.3);
         }
-        .cyber-glow {
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+        .cyber-card {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.85) 0%, rgba(10, 15, 29, 0.95) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            backdrop-filter: blur(12px);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cyber-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 20px 40px -15px rgba(0, 212, 255, 0.25);
+        }
+
+        /* Animated Pulse Grid Background */
+        .cyber-grid-bg {
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        /* Logic Sandbox Switch */
+        .logic-toggle {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .logic-toggle.active {
+            background: #00D4FF;
+            color: #020617;
+            box-shadow: 0 0 15px #00D4FF;
+        }
+
+        /* Bulb Glow Animation */
+        @keyframes bulbGlow {
+            0%, 100% { filter: drop-shadow(0 0 15px #00FF66); }
+            50% { filter: drop-shadow(0 0 25px #00FF66); }
+        }
+        .bulb-lit {
+            animation: bulbGlow 1.5s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-cyan-100 selection:text-cyan-900 min-h-screen flex flex-col">
+<body class="bg-[#060913] text-slate-200 antialiased selection:bg-cyan-500 selection:text-slate-900 min-h-screen flex flex-col relative overflow-x-hidden cyber-grid-bg">
 
-    <!-- Decorative Gradient Background Orbs -->
-    <div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-cyan-200 opacity-40 blur-[120px] rounded-full pointer-events-none z-0"></div>
-    <div class="fixed top-[20%] right-[-5%] w-96 h-96 bg-sky-200 opacity-35 blur-[120px] rounded-full pointer-events-none z-0"></div>
-    <div class="fixed bottom-[10%] left-[20%] w-80 h-80 bg-indigo-200 opacity-25 blur-[100px] rounded-full pointer-events-none z-0"></div>
+    <!-- Ambient Glowing Nebulae -->
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-600/15 blur-[150px] rounded-full pointer-events-none z-0"></div>
+    <div class="fixed top-[30%] right-[-10%] w-[500px] h-[500px] bg-indigo-600/15 blur-[150px] rounded-full pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-sky-600/10 blur-[130px] rounded-full pointer-events-none z-0"></div>
 
     <!-- Navigation Bar -->
-    <nav class="relative z-50 max-w-6xl mx-auto w-full px-6 py-6 flex justify-between items-center border-b border-slate-200/70">
-        <a href="../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-cyan-600 transition flex items-center gap-1.5">
-            fanani<span class="text-cyan-600">.</span>
+    <nav class="relative z-50 max-w-6xl mx-auto w-full px-6 py-6 flex justify-between items-center border-b border-slate-800/80">
+        <a href="../../" class="font-heading font-extrabold text-2xl text-white hover:text-cyan-400 transition flex items-center gap-2">
+            <span class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 text-lg shadow-sm">🔬</span>
+            <span>fanani<span class="text-cyan-400">.</span>lab</span>
         </a>
-        <div class="flex items-center gap-3 md:gap-6 font-semibold text-xs md:text-sm text-slate-600">
-            <a href="../../" class="hover:text-cyan-600 transition">Beranda</a>
-            <a href="../mpi/" class="hover:text-cyan-600 transition">Koleksi MPI</a>
-            <a href="../game/" class="hover:text-cyan-600 transition">Koleksi Gim</a>
-            <a href="../../edu/" class="hover:text-cyan-600 transition">Platform Belajar</a>
+        <div class="flex items-center gap-3 md:gap-6 font-semibold text-xs md:text-sm text-slate-400">
+            <a href="../../" class="hover:text-cyan-400 transition">Beranda</a>
+            <a href="../mpi/" class="hover:text-cyan-400 transition">Koleksi MPI</a>
+            <a href="../game/" class="hover:text-cyan-400 transition">Koleksi Gim</a>
+            <a href="../../edu/" class="hover:text-cyan-400 transition">Platform Belajar</a>
         </div>
     </nav>
 
@@ -50,119 +90,241 @@
     <main class="relative z-10 max-w-6xl mx-auto px-6 pt-10 pb-20 flex-1 space-y-16">
 
         <!-- Hero Section -->
-        <section class="text-center max-w-3xl mx-auto space-y-5">
-            <div class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-50 to-sky-50 border border-cyan-200/80 px-4 py-1.5 rounded-full text-xs font-bold text-cyan-700 shadow-sm">
-                <span>🔬 Laboratorium Maya (Virtual Lab)</span>
-                <span class="text-cyan-300">•</span>
-                <span>Informatika SMP Fase D</span>
-            </div>
-            
-            <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 font-heading leading-tight tracking-tight">
-                Eksplorasi Praktikum Virtual Tanpa Batas Ruang & Alat! ⚡
-            </h1>
-            
-            <p class="text-sm md:text-base text-slate-600 leading-relaxed">
-                Koleksi simulasi eksperimen virtual interaktif untuk membedah konsep abstrak Informatika. Peserta didik dapat menguji variabel, merakit perangkat keras, dan memverifikasi prinsip keilmuan secara mandiri melalui lingkungan simulasi dua arah.
-            </p>
+        <section class="grid lg:grid-cols-12 gap-8 items-center pt-4">
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-400/30 px-4 py-1.5 rounded-full text-xs font-bold text-cyan-300 shadow-sm">
+                    <span>🔬 Laboratorium Maya (Virtual Lab)</span>
+                    <span class="text-cyan-500">•</span>
+                    <span>Sains Komputasi SMP Fase D</span>
+                </div>
+                
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white font-heading leading-tight tracking-tight">
+                    Eksplorasi Praktikum Virtual <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">Sains Komputasi</span> ⚡
+                </h1>
+                
+                <p class="text-sm md:text-base text-slate-300 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    Lingkungan simulasi dua arah berbasis komputer untuk membedah perangkat keras, bilangan biner, gerbang logika, dan representasi sub-piksel monitor. Siswa dapat merakit, menguji variabel, dan memverifikasi prinsip keilmuan secara mandiri tanpa batas alat fisik.
+                </p>
 
-            <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-500 pt-2">
-                <span class="inline-flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm">
-                    👨‍🏫 Ach. Chanifuddin Fanani, S.Pd.
-                </span>
-                <span class="inline-flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm">
-                    🏫 SMP Negeri 2 Lamongan
-                </span>
+                <!-- Author & Stats Badges -->
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs font-semibold text-slate-300 pt-1">
+                    <span class="inline-flex items-center gap-1.5 bg-slate-900/80 px-3.5 py-1.5 rounded-full border border-slate-700/80">
+                        👨‍🏫 Ach. Chanifuddin Fanani, S.Pd.
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 bg-slate-900/80 px-3.5 py-1.5 rounded-full border border-slate-700/80">
+                        🏫 SMP Negeri 2 Lamongan
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 bg-cyan-950/60 text-cyan-300 px-3 py-1.5 rounded-full border border-cyan-500/30">
+                        🏆 Festival Biru Putih 2026
+                    </span>
+                </div>
+
+                <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                    <a href="perakitan-komputer/index.html" class="px-7 py-3.5 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-slate-950 font-heading font-extrabold text-sm rounded-2xl shadow-xl shadow-cyan-500/25 transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <span>🚀 Masuk ke Lab Perakitan PC</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                    <a href="#mini-sandbox" class="px-5 py-3.5 bg-slate-800/80 hover:bg-slate-700 text-white font-heading font-bold text-sm rounded-2xl border border-slate-700 transition flex items-center gap-2">
+                        <span>⚡ Coba Mini-Sandbox</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Graphic: SVG Laboratory Apparatus Banner -->
+            <div class="lg:col-span-5 relative">
+                <div class="relative rounded-3xl overflow-hidden border-2 border-cyan-500/30 shadow-2xl bg-slate-950/60 p-2 group">
+                    <img src="assets/images/lab-hero.svg" alt="Laboratorium Maya Ilustrasi" class="w-full h-auto rounded-2xl transition duration-500 group-hover:scale-105">
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Quick-Play Widget: Logic Gate Mini-Sandbox -->
+        <section id="mini-sandbox" class="cyber-card rounded-3xl p-6 md:p-8 space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 uppercase tracking-wider">
+                        <span>⚡ LIVE EXPERIMENT PLAYGROUND</span>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-extrabold font-heading text-white">
+                        Uji Cepat: Gerbang Logika & Sakelar Listrik Digital
+                    </h2>
+                    <p class="text-xs text-slate-400">
+                        Coba langsung prinsip sakelar transistor komputer: ubah input sakelar A & B, pilih operator gerbang logika, lalu amati keluaran arus listrik!
+                    </p>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-slate-400 font-mono bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-800">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>SIMULATOR AKTIF</span>
+                </div>
+            </div>
+
+            <!-- Mini Sandbox Interactive Board -->
+            <div class="grid md:grid-cols-12 gap-6 items-center">
+                <!-- Left: Inputs A and B -->
+                <div class="md:col-span-4 space-y-4 bg-slate-900/80 p-5 rounded-2xl border border-slate-800">
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-400">1. Sakelar Input (Biner)</div>
+                    
+                    <div class="flex items-center justify-between p-3 bg-slate-950 rounded-xl border border-slate-800">
+                        <span class="font-heading font-bold text-sm text-white">Sakelar A</span>
+                        <button id="toggle-input-a" onclick="toggleInput('a')" class="logic-toggle px-4 py-1.5 rounded-lg text-xs font-mono font-bold bg-slate-800 text-slate-300">
+                            OFF (0)
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 bg-slate-950 rounded-xl border border-slate-800">
+                        <span class="font-heading font-bold text-sm text-white">Sakelar B</span>
+                        <button id="toggle-input-b" onclick="toggleInput('b')" class="logic-toggle px-4 py-1.5 rounded-lg text-xs font-mono font-bold bg-slate-800 text-slate-300">
+                            OFF (0)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Center: Gate Selector -->
+                <div class="md:col-span-4 space-y-4 bg-slate-900/80 p-5 rounded-2xl border border-slate-800">
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-400">2. Pilih Gerbang Logika</div>
+                    <div class="grid grid-cols-3 gap-2" id="gate-selectors">
+                        <button onclick="selectGate('AND')" class="gate-btn active py-2 rounded-xl text-xs font-bold font-mono bg-cyan-500/20 border border-cyan-400 text-cyan-300">AND</button>
+                        <button onclick="selectGate('OR')" class="gate-btn py-2 rounded-xl text-xs font-bold font-mono bg-slate-950 border border-slate-800 text-slate-400 hover:text-white">OR</button>
+                        <button onclick="selectGate('XOR')" class="gate-btn py-2 rounded-xl text-xs font-bold font-mono bg-slate-950 border border-slate-800 text-slate-400 hover:text-white">XOR</button>
+                        <button onclick="selectGate('NAND')" class="gate-btn py-2 rounded-xl text-xs font-bold font-mono bg-slate-950 border border-slate-800 text-slate-400 hover:text-white">NAND</button>
+                        <button onclick="selectGate('NOR')" class="gate-btn py-2 rounded-xl text-xs font-bold font-mono bg-slate-950 border border-slate-800 text-slate-400 hover:text-white">NOR</button>
+                        <button onclick="selectGate('NOT_A')" class="gate-btn py-2 rounded-xl text-xs font-bold font-mono bg-slate-950 border border-slate-800 text-slate-400 hover:text-white">NOT(A)</button>
+                    </div>
+                    <div id="gate-desc" class="text-[11px] text-slate-400 bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 font-mono">
+                        AND: Output 1 HANYA JIKA kedua input bernilai 1.
+                    </div>
+                </div>
+
+                <!-- Right: Output Indicator -->
+                <div class="md:col-span-4 bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col items-center justify-center text-center space-y-3">
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-400">3. Status Lampu Output</div>
+                    <div id="sandbox-bulb" class="w-20 h-20 rounded-full flex items-center justify-center text-4xl bg-slate-950 border-2 border-slate-800 transition-all duration-300">
+                        💡
+                    </div>
+                    <div class="font-mono text-sm font-bold">
+                        Output: <span id="sandbox-result" class="text-slate-400">0 (PADAM)</span>
+                    </div>
+                    <div class="text-[10px] text-slate-500">
+                        Prinsip sirkuit mikroprosesor komputer
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Featured Contest Entry: Lab Perakitan Komputer -->
-        <section class="bg-gradient-to-br from-slate-950 via-cyan-950 to-slate-900 rounded-3xl p-8 md:p-12 text-white border-2 border-cyan-500/30 shadow-2xl relative overflow-hidden cyber-glow">
-            <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10 grid md:grid-cols-12 gap-8 items-center">
-                <div class="md:col-span-7 space-y-5">
-                    <div class="inline-flex items-center gap-2 bg-cyan-500/20 border border-cyan-400/30 px-3.5 py-1 rounded-full text-xs font-bold text-cyan-300">
-                        <span>🏆 Karya Festival Biru Putih 2026 · Kategori Lab Maya</span>
+        <section class="cyber-card rounded-3xl p-8 md:p-12 text-white border-2 border-cyan-500/40 relative overflow-hidden">
+            <div class="relative z-10 grid lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-5">
+                    <div class="inline-flex items-center gap-2 bg-cyan-500/20 border border-cyan-400/40 px-3.5 py-1 rounded-full text-xs font-bold text-cyan-300">
+                        <span>🏆 Modul Unggulan Lomba · Festival Biru Putih 2026</span>
                     </div>
-                    <h2 class="text-3xl md:text-4xl font-extrabold font-heading text-white leading-tight">
+                    <h2 class="text-2xl md:text-4xl font-extrabold font-heading text-white leading-tight">
                         Lab Perakitan Komputer: Rakit, Uji, & Pahami Mesin Komputasi 🖥️
                     </h2>
                     <p class="text-sm md:text-base text-slate-300 leading-relaxed">
-                        Laboratorium Maya interaktif untuk membedah perangkat keras sistem komputer (arsitektur Von Neumann), sistem bilangan biner 8-bit, dan representasi sub-piksel warna RGB. Dilengkapi simulasi perakitan PC interaktif dengan layar monitor POST boot sequence bersuara nyata dan Lembar Kerja Peserta Didik (LKPD) digital terintegrasi.
+                        Laboratorium Maya lengkap dengan aset visual SVG komponen presisi tinggi: Motherboard ATX, CPU LGA 1700, DDR4 RAM dengan RGB diffuser, NVMe M.2 SSD, kartu grafis GPU dual-fan berputar, dan PSU modular. Dilengkapi monitor CRT urutan POST boot sequence dan instrumen asesmen LKPD digital terintegrasi.
                     </p>
                     <div class="flex flex-wrap gap-2 text-xs font-semibold text-cyan-200 pt-2">
-                        <span class="bg-white/10 px-3 py-1 rounded-full border border-cyan-400/20">🔧 Rakit PC (6 Komponen + POST Boot)</span>
-                        <span class="bg-white/10 px-3 py-1 rounded-full border border-cyan-400/20">💡 Sakelar Biner 8-Bit (Basis Desimal & Hex)</span>
-                        <span class="bg-white/10 px-3 py-1 rounded-full border border-cyan-400/20">🎨 Mixer RGB Sub-Piksel Monitor</span>
-                        <span class="bg-white/10 px-3 py-1 rounded-full border border-cyan-400/20">📝 Evaluasi LKPD Formatif 3 Bagian</span>
+                        <span class="bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-400/30">🔧 Rakit 5 Komponen ATX Realistis</span>
+                        <span class="bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-400/30">🔊 Audio Sintesis Web Audio API (POST Chime & Error Beeps)</span>
+                        <span class="bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-400/30">💡 Sakelar Biner 8-Bit (Konversi Hex/Desimal)</span>
+                        <span class="bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-400/30">🎨 Loupe Sub-Piksel RGB Monitor</span>
+                        <span class="bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-400/30">📝 Asesmen LKPD Digital 3 Bagian</span>
                     </div>
                     <div class="pt-3">
-                        <a href="perakitan-komputer/index.html" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-600 hover:to-sky-600 text-white font-heading font-extrabold text-base rounded-2xl shadow-xl shadow-cyan-500/30 transition transform hover:-translate-y-1">
-                            <span>🚀 Buka Laboratorium: Perakitan Komputer</span>
+                        <a href="perakitan-komputer/index.html" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-500 hover:from-cyan-400 hover:to-sky-400 text-slate-950 font-heading font-extrabold text-base rounded-2xl shadow-xl shadow-cyan-500/30 transition transform hover:-translate-y-1">
+                            <span>🚀 Buka Laboratorium Perakitan Komputer (16:9)</span>
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </div>
-                <div class="md:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-md text-center space-y-4">
-                    <div class="w-24 h-24 mx-auto rounded-2xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-4xl shadow-inner">
-                        💻 ⚡ 🔬
+
+                <!-- Right: Component Showcase Showcase Preview -->
+                <div class="lg:col-span-5 bg-slate-950/80 border border-slate-800 rounded-3xl p-6 text-center space-y-4">
+                    <div class="grid grid-cols-3 gap-3 p-3 bg-slate-900/60 rounded-2xl border border-slate-800/80">
+                        <div class="p-2 bg-slate-950 rounded-xl border border-slate-800 flex flex-col items-center gap-1">
+                            <img src="perakitan-komputer/assets/images/component-cpu.svg" alt="CPU" class="w-12 h-12 object-contain">
+                            <span class="text-[10px] font-bold text-cyan-400">CPU</span>
+                        </div>
+                        <div class="p-2 bg-slate-950 rounded-xl border border-slate-800 flex flex-col items-center gap-1">
+                            <img src="perakitan-komputer/assets/images/component-ram.svg" alt="RAM" class="w-12 h-12 object-contain">
+                            <span class="text-[10px] font-bold text-emerald-400">RAM</span>
+                        </div>
+                        <div class="p-2 bg-slate-950 rounded-xl border border-slate-800 flex flex-col items-center gap-1">
+                            <img src="perakitan-komputer/assets/images/component-ssd.svg" alt="SSD" class="w-12 h-12 object-contain">
+                            <span class="text-[10px] font-bold text-amber-400">SSD</span>
+                        </div>
+                        <div class="p-2 bg-slate-950 rounded-xl border border-slate-800 flex flex-col items-center gap-1">
+                            <img src="perakitan-komputer/assets/images/component-gpu.svg" alt="GPU" class="w-12 h-12 object-contain">
+                            <span class="text-[10px] font-bold text-purple-400">GPU</span>
+                        </div>
+                        <div class="p-2 bg-slate-950 rounded-xl border border-slate-800 flex flex-col items-center gap-1">
+                            <img src="perakitan-komputer/assets/images/component-psu.svg" alt="PSU" class="w-12 h-12 object-contain">
+                            <span class="text-[10px] font-bold text-red-400">PSU</span>
+                        </div>
+                        <div class="p-2 bg-slate-950 rounded-xl border border-slate-800 flex flex-col items-center gap-1">
+                            <img src="perakitan-komputer/assets/images/component-cooler.svg" alt="Cooler" class="w-12 h-12 object-contain">
+                            <span class="text-[10px] font-bold text-sky-400">COOLER</span>
+                        </div>
                     </div>
-                    <div class="font-heading font-bold text-lg text-white">Simulasi Sains Komputasi 100% Offline</div>
-                    <p class="text-xs text-cyan-100/80 leading-relaxed">
-                        Dirancang sesuai kriteria juknis lomba: bebas instalasi, tanpa plugin pihak ketiga, rasio 16:9 lanskap, audio synthesizer murni Web Audio API, serta alur linier komprehensif mulai dari Teori, Prosedur, Simulasi, hingga LKPD.
+                    <div class="font-heading font-bold text-sm text-white">Simulasi Sains Komputasi 100% Offline</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Dirancang sesuai juknis lomba Festival Biru Putih: bebas dependensi eksternal, audio synthesizer murni Web Audio API, rasio 16:9 lanskap, serta alur pedagogis linier (Teori &rarr; Prosedur &rarr; Simulasi &rarr; LKPD).
                     </p>
                 </div>
             </div>
         </section>
 
         <!-- Section Heading: Koleksi Lab Maya -->
-        <div class="pt-4 text-center">
-            <h3 class="text-lg font-bold font-heading text-slate-800">🧪 Koleksi Laboratorium Maya Informatika</h3>
-            <p class="text-xs text-slate-500">Daftar modul eksperimen dan praktikum virtual interaktif untuk pembelajaran mandiri:</p>
+        <div class="pt-4 text-center space-y-2">
+            <h2 class="text-2xl font-bold font-heading text-white">🧪 Katalog Modul Laboratorium Maya</h2>
+            <p class="text-xs text-slate-400">Daftar eksperimen sains komputasi interaktif untuk pembelajaran mandiri Fase D:</p>
         </div>
 
         <!-- Labs Showcase Grid -->
         <section class="grid md:grid-cols-2 gap-8 items-stretch">
 
             <!-- Card 1: Lab Perakitan Komputer -->
-            <div class="group bg-white rounded-3xl border-2 border-cyan-100 overflow-hidden shadow-sm card-hover flex flex-col justify-between relative">
+            <div class="cyber-card rounded-3xl overflow-hidden flex flex-col justify-between group">
                 <div>
-                    <!-- Header Image / Badge -->
-                    <div class="h-56 relative overflow-hidden bg-gradient-to-br from-slate-900 via-cyan-950 to-slate-950 flex items-center justify-center p-6 text-white">
+                    <!-- Header Visual Banner -->
+                    <div class="h-56 relative overflow-hidden bg-gradient-to-br from-slate-950 via-cyan-950 to-slate-900 flex items-center justify-center p-6 border-b border-slate-800">
+                        <img src="perakitan-komputer/assets/images/motherboard-atx.svg" alt="Motherboard Preview" class="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:scale-105 transition-transform duration-500">
                         <div class="relative z-10 text-center space-y-2 max-w-sm">
-                            <div class="inline-flex items-center gap-1.5 bg-cyan-500/30 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-cyan-200 border border-cyan-400/40">
+                            <div class="inline-flex items-center gap-1.5 bg-cyan-500/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-cyan-300 border border-cyan-400/40">
                                 🖥️ Sistem Komputer · Fase D
                             </div>
-                            <h2 class="text-2xl font-extrabold font-heading text-white drop-shadow">
+                            <h3 class="text-2xl font-extrabold font-heading text-white drop-shadow">
                                 Lab Perakitan Komputer
-                            </h2>
+                            </h3>
                             <p class="text-xs text-cyan-200/90 font-medium">
-                                Simulasi Virtual Interaktif Hardware, Biner, & RGB
+                                Hardware Von Neumann · Sakelar Biner · Loupe RGB
                             </p>
                         </div>
                     </div>
 
                     <!-- Body Details -->
                     <div class="p-6 md:p-8 space-y-6">
-                        <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
-                            Simulasi laboratorium lengkap untuk mengenal dan merakit 6 komponen utama PC (CPU, RAM, SSD, GPU, PSU, Motherboard), bereksperimen dengan sakelar kode biner, dan meneliti pencampuran warna sub-piksel layar.
+                        <p class="text-xs md:text-sm text-slate-300 leading-relaxed">
+                            Simulasi laboratorium lengkap untuk mengenal dan merakit 5 komponen utama PC (CPU, RAM, SSD, GPU, PSU), bereksperimen dengan sakelar bilangan biner 8-bit, dan meneliti pencampuran warna sub-piksel layar monitor.
                         </p>
 
                         <!-- Key Features Checklist -->
-                        <div class="space-y-2 text-xs font-medium text-slate-700">
-                            <div class="flex items-center gap-2">
-                                <span class="text-cyan-600 font-bold">✓</span>
-                                <span>Simulasi 1: Rakit Komponen PC & Boot Monitor CRT</span>
+                        <div class="space-y-2.5 text-xs font-medium text-slate-300">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xs font-bold">✓</span>
+                                <span>Simulasi 1: Rakit Komponen PC & Boot Monitor CRT BIOS</span>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-cyan-600 font-bold">✓</span>
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xs font-bold">✓</span>
                                 <span>Simulasi 2: Sakelar 8 Lampu Biner & Konversi Desimal/Hex</span>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-cyan-600 font-bold">✓</span>
-                                <span>Simulasi 3: Mixer Warna Sub-Piksel RGB Monitor</span>
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xs font-bold">✓</span>
+                                <span>Simulasi 3: Mixer Warna Sub-Piksel RGB Loupe Layar</span>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-cyan-600 font-bold">✓</span>
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xs font-bold">✓</span>
                                 <span>LKPD 3 Bagian: Pilihan Ganda, Benar/Salah, & Menjodohkan</span>
                             </div>
                         </div>
@@ -171,76 +333,76 @@
 
                 <!-- Action Button -->
                 <div class="p-6 md:p-8 pt-0">
-                    <a href="perakitan-komputer/index.html" class="w-full text-center px-6 py-3.5 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-600 hover:to-sky-600 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-cyan-500/20 transition flex items-center justify-center gap-2">
-                        <span>🚀 Masuk ke Lab Perakitan</span>
+                    <a href="perakitan-komputer/index.html" class="w-full text-center px-6 py-3.5 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-slate-950 font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-cyan-500/20 transition flex items-center justify-center gap-2">
+                        <span>🚀 Masuk ke Lab Perakitan Komputer</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
             </div>
 
-            <!-- Card 2: Upcoming Lab Concept (Gerbang Logika) -->
-            <div class="bg-white/60 rounded-3xl border-2 border-dashed border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between relative opacity-85">
+            <!-- Card 2: Upcoming Lab Concept (Gerbang Logika & Transistor) -->
+            <div class="cyber-card rounded-3xl overflow-hidden flex flex-col justify-between border-dashed border-slate-700/80 opacity-90">
                 <div>
-                    <!-- Header Image / Badge -->
-                    <div class="h-56 relative overflow-hidden bg-gradient-to-br from-slate-200 via-slate-300 to-slate-400 flex items-center justify-center p-6 text-slate-500">
+                    <!-- Header Visual Banner -->
+                    <div class="h-56 relative overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 flex items-center justify-center p-6 border-b border-slate-800">
                         <div class="text-center space-y-2">
                             <div class="text-4xl">🔌 💡 ⚡</div>
-                            <div class="inline-flex items-center gap-1.5 bg-white/60 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-slate-600">
-                                ⏳ Dalam Pengembangan
+                            <div class="inline-flex items-center gap-1.5 bg-indigo-500/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-indigo-300 border border-indigo-500/30">
+                                🔬 Modul Lanjutan · Sains Komputasi
                             </div>
-                            <h2 class="text-2xl font-extrabold font-heading text-slate-700">
-                                Lab Gerbang Logika Digital
-                            </h2>
+                            <h3 class="text-2xl font-extrabold font-heading text-white">
+                                Lab Gerbang Logika & Sirkuit
+                            </h3>
                         </div>
                     </div>
 
                     <!-- Body Details -->
                     <div class="p-6 md:p-8 space-y-4">
-                        <p class="text-xs md:text-sm text-slate-500 leading-relaxed">
-                            Konsep laboratorium virtual berikutnya: merangkai gerbang logika dasar (AND, OR, NOT, XOR, NAND) secara visual untuk menguji tabel kebenaran (*truth table*) dan memahami cara kerja transistor microchip.
+                        <p class="text-xs md:text-sm text-slate-300 leading-relaxed">
+                            Eksperimen merangkai gerbang logika dasar (AND, OR, NOT, XOR, NAND) secara visual untuk membuktikan tabel kebenaran (*truth table*) dan memahami cara transistor microchip melakukan komputasi boolean.
                         </p>
 
                         <div class="space-y-2 text-xs font-medium text-slate-400">
                             <div class="flex items-center gap-2">
-                                <span class="font-bold">•</span>
-                                <span>Perakitan Sirkuit Logika Interaktif Real-Time</span>
+                                <span class="text-indigo-400 font-bold">•</span>
+                                <span>Perakitan Sirkuit Logika Gerbang Interaktif Real-Time</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <span class="font-bold">•</span>
-                                <span>Verifikasi Tabel Kebenaran Otomatis</span>
+                                <span class="text-indigo-400 font-bold">•</span>
+                                <span>Verifikasi Tabel Kebenaran Otomatis (Truth Table)</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <span class="font-bold">•</span>
-                                <span>Tantangan Desain Sirkuit Komparator Biner</span>
+                                <span class="text-indigo-400 font-bold">•</span>
+                                <span>Tantangan Desain Sirkuit Half-Adder Biner</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Disabled Action Button -->
+                <!-- Action Button -->
                 <div class="p-6 md:p-8 pt-0">
-                    <button disabled class="w-full text-center px-6 py-3.5 bg-slate-100 text-slate-400 font-heading font-bold text-xs rounded-2xl cursor-not-allowed">
-                        ⏳ Segera Hadir
-                    </button>
+                    <a href="#mini-sandbox" class="w-full text-center px-6 py-3.5 bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/40 font-heading font-bold text-xs rounded-2xl transition flex items-center justify-center gap-2">
+                        <span>⚡ Coba Simulator di Atas (Live)</span>
+                    </a>
                 </div>
             </div>
 
         </section>
 
-        <!-- Informasi Tambahan / Panduan Praktikum -->
-        <section class="bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950 text-white rounded-3xl p-8 md:p-12 shadow-xl space-y-6 border border-slate-800">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/10">
+        <!-- Informasi Tambahan / Panduan Pedagogik -->
+        <section class="cyber-card rounded-3xl p-8 md:p-12 text-white shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-800">
                 <div class="space-y-1">
                     <h3 class="font-heading font-extrabold text-xl md:text-2xl text-white">
-                        💡 Panduan Eksplorasi Laboratorium Maya
+                        💡 Prinsip Pedagogik Laboratorium Maya
                     </h3>
-                    <p class="text-xs text-cyan-200">
-                        Prinsip pedagogik praktikum sains komputasi yang aman, presisi, dan terstruktur.
+                    <p class="text-xs text-cyan-300">
+                        Standar media pembelajaran interaktif sesuai Juknis Festival Biru Putih Kemendikdasmen RI.
                     </p>
                 </div>
                 <div class="flex items-center gap-3">
-                    <a href="../mpi/" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl transition border border-white/20">
-                        📖 Buka Koleksi MPI
+                    <a href="../mpi/" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-xl transition border border-slate-700">
+                        📖 Koleksi MPI
                     </a>
                 </div>
             </div>
@@ -248,15 +410,15 @@
             <div class="grid sm:grid-cols-3 gap-6 text-xs text-slate-300">
                 <div class="space-y-2">
                     <strong class="text-white font-bold block text-sm">📐 Rasio Layar 16:9 Lanskap</strong>
-                    <p class="leading-relaxed">Simulasi dikunci pada rasio 16:9 lanskap untuk mensimulasikan meja praktikum virtual yang utuh tanpa memerlukan pengguliran (*scroll-free interaction*).</p>
+                    <p class="leading-relaxed text-slate-400">Simulasi didesain dengan rasio 16:9 mendatar untuk menghadirkan meja kerja laboratorium yang menyeluruh tanpa scroll (*scroll-free interaction*).</p>
                 </div>
                 <div class="space-y-2">
                     <strong class="text-white font-bold block text-sm">🔊 Respons Audio Real-Time</strong>
-                    <p class="leading-relaxed">Umpan balik audio disintesis langsung di peramban (Web Audio API) untuk menyajikan efek klik sakelar, bunyi POST boot, suara kesalahan, dan sinyal indikator secara nyata.</p>
+                    <p class="leading-relaxed text-slate-400">Umpan balik audio disintesis langsung di peramban (Web Audio API) untuk menghadirkan suara klik komponen, POST boot, error beeps, dan sakelar biner secara nyata.</p>
                 </div>
                 <div class="space-y-2">
                     <strong class="text-white font-bold block text-sm">📋 LKPD Mandiri Terintegrasi</strong>
-                    <p class="leading-relaxed">Setiap eksperimen bermuara pada pengerjaan Lembar Kerja Peserta Didik (LKPD) digital yang langsung mengolah skor, predikat, dan umpan balik otomatis.</p>
+                    <p class="leading-relaxed text-slate-400">Setiap eksperimen bermuara pada pengerjaan Lembar Kerja Peserta Didik digital interaktif (Pilihan Ganda, Benar/Salah, dan Menjodohkan) dengan penilaian skor otomatis.</p>
                 </div>
             </div>
         </section>
@@ -264,9 +426,106 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-200 py-8 text-center text-xs text-slate-400">
-        <p>© 2026 Ach. Chanifuddin Fanani, S.Pd. Platform Laboratorium Maya Informatika SMP Fase D.</p>
+    <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500">
+        <p>© 2026 Ach. Chanifuddin Fanani, S.Pd. · Laboratorium Maya Informatika SMP Fase D · SMP Negeri 2 Lamongan</p>
     </footer>
 
+    <!-- Interactive Logic Sandbox Script -->
+    <script>
+        const sandboxState = {
+            a: 0,
+            b: 0,
+            gate: 'AND'
+        };
+
+        // Web Audio Synthesizer for Sandbox
+        let sbAudioCtx = null;
+        function playSandboxTone(freq, duration = 0.08) {
+            try {
+                if (!sbAudioCtx) sbAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = sbAudioCtx.createOscillator();
+                const gain = sbAudioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                gain.gain.value = 0.1;
+                gain.gain.exponentialRampToValueAtTime(0.001, sbAudioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(sbAudioCtx.destination);
+                osc.start();
+                osc.stop(sbAudioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function toggleInput(input) {
+            sandboxState[input] = sandboxState[input] ? 0 : 1;
+            const btn = document.getElementById('toggle-input-' + input);
+            if (btn) {
+                btn.textContent = sandboxState[input] ? 'ON (1)' : 'OFF (0)';
+                btn.classList.toggle('active', sandboxState[input] === 1);
+            }
+            playSandboxTone(sandboxState[input] ? 600 : 300);
+            computeGate();
+        }
+
+        function selectGate(gateName) {
+            sandboxState.gate = gateName;
+            document.querySelectorAll('.gate-btn').forEach(btn => {
+                const isActive = btn.textContent === gateName;
+                btn.classList.toggle('active', isActive);
+                if (isActive) {
+                    btn.className = 'gate-btn active py-2 rounded-xl text-xs font-bold font-mono bg-cyan-500/20 border border-cyan-400 text-cyan-300';
+                } else {
+                    btn.className = 'gate-btn py-2 rounded-xl text-xs font-bold font-mono bg-slate-950 border border-slate-800 text-slate-400 hover:text-white';
+                }
+            });
+
+            const descriptions = {
+                'AND': 'AND: Output 1 HANYA JIKA kedua input bernilai 1.',
+                'OR': 'OR: Output 1 JIKA minimal salah satu input bernilai 1.',
+                'XOR': 'XOR: Output 1 JIKA kedua input BERBEDA (satu bernilai 1, satu bernilai 0).',
+                'NAND': 'NAND: Kebalikan AND (Output 0 hanya jika kedua input bernilai 1).',
+                'NOR': 'NOR: Kebalikan OR (Output 1 hanya jika kedua input bernilai 0).',
+                'NOT_A': 'NOT: Membalikkan nilai input A (0 jadi 1, 1 jadi 0).'
+            };
+            const descEl = document.getElementById('gate-desc');
+            if (descEl) descEl.textContent = descriptions[gateName] || '';
+
+            playSandboxTone(750, 0.05);
+            computeGate();
+        }
+
+        function computeGate() {
+            const { a, b, gate } = sandboxState;
+            let result = 0;
+
+            switch (gate) {
+                case 'AND': result = (a && b) ? 1 : 0; break;
+                case 'OR': result = (a || b) ? 1 : 0; break;
+                case 'XOR': result = (a !== b) ? 1 : 0; break;
+                case 'NAND': result = !(a && b) ? 1 : 0; break;
+                case 'NOR': result = !(a || b) ? 1 : 0; break;
+                case 'NOT_A': result = !a ? 1 : 0; break;
+            }
+
+            const bulb = document.getElementById('sandbox-bulb');
+            const resultText = document.getElementById('sandbox-result');
+
+            if (result === 1) {
+                bulb.style.background = '#00FF66';
+                bulb.style.boxShadow = '0 0 35px #00FF66, 0 0 60px rgba(0,255,102,0.4)';
+                bulb.style.borderColor = '#ffffff';
+                bulb.classList.add('bulb-lit');
+                resultText.textContent = '1 (MENYALA ⚡)';
+                resultText.className = 'text-emerald-400 font-bold';
+            } else {
+                bulb.style.background = '#020617';
+                bulb.style.boxShadow = 'none';
+                bulb.style.borderColor = '#334155';
+                bulb.classList.remove('bulb-lit');
+                resultText.textContent = '0 (PADAM)';
+                resultText.className = 'text-slate-400';
+            }
+        }
+    </script>
 </body>
 </html>
