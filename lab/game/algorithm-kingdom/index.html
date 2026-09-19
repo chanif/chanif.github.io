@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Algorithm Kingdom | Gim Edukasi Informatika Fase D</title>
+  <meta name="description" content="Gim Edukasi Informatika SMP Fase D — Bangun Kerajaanmu dari Nol dengan Logika Algoritma! Belajar Sekuensial, IF-ELSE, Loop, dan Dekomposisi dalam petualangan kerajaan interaktif.">
+  <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Particles Canvas -->
+  <canvas id="particles"></canvas>
+  <!-- Texture Overlay -->
+  <div id="texture-overlay"></div>
+
+  <!-- Mobile Landscape Advisory -->
+  <div id="rotate-overlay">
+    <div class="rotate-icon">🏰</div>
+    <div class="rotate-title">PUTAR PERANGKAT KE LANDSCAPE</div>
+    <div class="rotate-sub">Algorithm Kingdom dirancang untuk pengalaman optimal di rasio <b>16:9 Landscape</b>.<br>Silakan miringkan layar perangkatmu untuk mulai memerintah kerajaan!</div>
+  </div>
+
+  <!-- Global Toast Notification System -->
+  <div id="toast-container"></div>
+
+  <!-- Custom Modal (replaces browser prompt/alert) -->
+  <div class="custom-modal-overlay" id="custom-modal-overlay">
+    <div class="custom-modal">
+      <div class="custom-modal-icon" id="custom-modal-icon">❓</div>
+      <div class="custom-modal-title" id="custom-modal-title">Titah Raja</div>
+      <div class="custom-modal-body" id="custom-modal-body"></div>
+      <div class="custom-modal-btns" id="custom-modal-btns"></div>
+    </div>
+  </div>
+
+  <!-- Global Sound / Music Toggle in Floating HUD Corner -->
+  <div class="global-audio-pill" id="global-audio-pill" onclick="toggleAudio()" title="Nyalakan / Matikan Musik & Efek Suara">
+    <span id="audio-pill-icon">🎵</span>
+    <span id="audio-pill-text">BGM: OFF</span>
+  </div>
+
+  <!-- Shared Result Overlay Modal -->
+  <div class="result-overlay" id="result-overlay">
+    <div class="result-card" id="result-card">
+      <div class="result-card-icon" id="result-icon">🎉</div>
+      <div class="result-card-title" id="result-title">Misi Berhasil!</div>
+      <div class="result-card-stars" id="result-stars">⭐⭐⭐</div>
+      <div class="result-card-score" id="result-score">+300 pts</div>
+      <div class="result-card-sub" id="result-sub"></div>
+      <div style="display:flex;gap:12px;margin-top:10px;justify-content:center;">
+        <button class="btn btn-ghost" id="result-retry-btn" onclick="retryCurrentMission()">🔄 Coba Lagi</button>
+        <button class="btn btn-primary" id="result-next-btn" onclick="proceedFromResult()">▶ Lanjutkan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Game Container -->
+  <div id="app">
+
+    <!-- ===================== PAGE 1: COVER ===================== -->
+    <section id="page-cover" class="page active">
+      <div class="cover-page" style="background-image: linear-gradient(to right, rgba(26,18,16,0.92) 0%, rgba(26,18,16,0.65) 50%, rgba(26,18,16,0.85) 100%), url('assets/bg-kingdom-cover.jpg'); background-size: cover; background-position: center;">
+        <div class="cover-logos">
+          <img src="assets/kemendikdasmen-lengkap.png" alt="Kemendikdasmen" onerror="this.style.display='none'">
+          <img src="assets/sobat-bermutu-ramah.png" alt="Sobat SMP" onerror="this.style.display='none'">
+        </div>
+
+        <div class="cover-hero">
+          <div class="cover-left">
+            <div class="cover-badge">
+              <span class="dot"></span>
+              <span>🏰 Gim Edukasi Algoritma — Festival Biru Putih 2026</span>
+            </div>
+            <h1 class="cover-title">
+              Algorithm<br><span>Kingdom</span>
+            </h1>
+            <p class="cover-subtitle">
+              "Sebuah kerajaan runtuh karena perintah yang keliru, dan bangkit megah karena algoritma yang presisi."
+            </p>
+            <div class="cover-objectives">
+              <h3>🎯 Target Capaian Pembelajaran (Informatika Fase D)</h3>
+              <ul id="cover-tp-list">
+                <!-- Injected via config.js -->
+              </ul>
+            </div>
+            <div class="cover-meta">
+              <span class="cover-meta-chip">📚 Informatika SMP</span>
+              <span class="cover-meta-chip">🛡️ Algoritma & Pemrograman (AP)</span>
+              <span class="cover-meta-chip">🧠 Berpikir Komputasional (BK)</span>
+            </div>
+          </div>
+
+          <div class="cover-right">
+            <!-- King Mascot Welcome Card -->
+            <div class="cover-king-card">
+              <div class="cover-king-avatar-wrap">
+                <img src="assets/characters/king-avatar.jpg" alt="Baginda Raja" class="cover-king-avatar" onerror="this.outerHTML='<div class=\'cover-castle\'>👑</div>'">
+              </div>
+              <div class="cover-king-bubble">
+                <div class="cover-king-bubble-name">Baginda Raja Bertitah:</div>
+                <div class="cover-king-bubble-text">
+                  "Wahai calon penguasa, padang rimba ini menanti sentuhan logikamu. Bangunlah peradaban terkuat dengan kekuatan Algoritma!"
+                </div>
+              </div>
+            </div>
+
+            <button class="btn-start" onclick="goToPage('briefing')">
+              <span>👑</span> MULAI PETUALANGAN
+            </button>
+          </div>
+        </div>
+
+        <div class="cover-creator" id="cover-creator">
+          SMP Negeri 2 Lamongan • Karya: Ach. Chanifuddin Fanani, S.Pd.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 2: BRIEFING ===================== -->
+    <section id="page-briefing" class="page">
+      <div class="briefing-page">
+        <div class="scroll-wrap">
+          <div class="scroll-header">
+            <span class="scroll-header-icon">📜</span>
+            <span class="scroll-header-title">TITAH KERAJAAN :: PANDUAN CALON PENGUASA</span>
+          </div>
+          <div class="scroll-body">
+            Selamat datang, Yang Mulia! Wilayah ini masih berupa padang rimba tak bertuan. Di bawah kepemimpinanmu dan dengan senjata terkuat peradaban modern—yaitu <strong>Algoritma & Pemikiran Komputasional</strong>—kamu akan membangun sebuah kerajaan yang makmur, adil, dan tangguh!
+          </div>
+          <div class="briefing-cards" id="briefing-cards-container">
+            <!-- Injected by config.js -->
+          </div>
+          <div class="briefing-action">
+            <button class="btn btn-primary btn-lg" onclick="goToPage('map')">
+              <span>🗺️</span> BUKA PETA KERAJAAN ▶
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 3: KINGDOM MAP ===================== -->
+    <section id="page-map" class="page">
+      <div class="kingdom-map-page" style="background-image: url('assets/bg-kingdom-map.jpg'); background-size: cover; background-position: center;">
+        <div class="kingdom-map-header">
+          <h2>PETA EKSPANSI KERAJAAN ALGORITMA</h2>
+          <p>Selesaikan puzzle algoritma pada tiap wilayah untuk mendirikan bangunan megah dan memperluas kekuasaanmu!</p>
+        </div>
+
+        <div class="kingdom-landscape" id="kingdom-landscape">
+          <!-- 4 Unlocked Visual Buildings Display -->
+          <div class="kingdom-building" id="b-castle" style="left: 14%; top: 12%;">
+            <div class="kingdom-building-img-wrap">
+              <img src="assets/buildings/castle.jpg" alt="Kastil Utama" id="b-castle-img" class="kingdom-building-img" onerror="this.style.display='none'">
+              <span id="b-castle-icon" class="kingdom-building-fallback">🏰</span>
+            </div>
+            <div class="kingdom-building-label">Kastil Utama</div>
+            <div class="kingdom-building-district">Wilayah I (Sekuensial)</div>
+          </div>
+
+          <div class="kingdom-building" id="b-shield" style="left: 38%; top: 12%;">
+            <div class="kingdom-building-img-wrap">
+              <img src="assets/buildings/watchtower.svg" alt="Menara Penjaga" id="b-shield-img" class="kingdom-building-img" onerror="this.style.display='none'">
+              <span id="b-shield-icon" class="kingdom-building-fallback">🛡️</span>
+            </div>
+            <div class="kingdom-building-label">Menara Penjaga</div>
+            <div class="kingdom-building-district">Wilayah II (IF-ELSE)</div>
+          </div>
+
+          <div class="kingdom-building" id="b-farm" style="left: 62%; top: 12%;">
+            <div class="kingdom-building-img-wrap">
+              <img src="assets/buildings/granary-farm.svg" alt="Lumbung Pangan" id="b-farm-img" class="kingdom-building-img" onerror="this.style.display='none'">
+              <span id="b-farm-icon" class="kingdom-building-fallback">🌾</span>
+            </div>
+            <div class="kingdom-building-label">Lumbung Pangan</div>
+            <div class="kingdom-building-district">Wilayah III (Loop)</div>
+          </div>
+
+          <div class="kingdom-building" id="b-council" style="left: 86%; top: 12%;">
+            <div class="kingdom-building-img-wrap">
+              <img src="assets/buildings/council-hall.svg" alt="Balai Dewan" id="b-council-img" class="kingdom-building-img" onerror="this.style.display='none'">
+              <span id="b-council-icon" class="kingdom-building-fallback">🏛️</span>
+            </div>
+            <div class="kingdom-building-label">Balai Dewan</div>
+            <div class="kingdom-building-district">Wilayah IV (Dekomposisi)</div>
+          </div>
+
+          <!-- SVG Paths between nodes -->
+          <svg class="map-paths-svg" id="map-paths-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="3" refY="2" orient="auto">
+                <polygon points="0 0, 6 2, 0 4" fill="#F59E0B" opacity="0.7"/>
+              </marker>
+            </defs>
+            <!-- Paths rendered by JS -->
+            <path class="map-path" id="map-path-1-2" d="M25,55 Q37,42 49,55" stroke="#F59E0B" stroke-width="0.6" fill="none" opacity="0" stroke-dasharray="2,1.5" marker-end="url(#arrowhead)"/>
+            <path class="map-path" id="map-path-2-3" d="M51,55 Q63,68 73,55" stroke="#F59E0B" stroke-width="0.6" fill="none" opacity="0" stroke-dasharray="2,1.5" marker-end="url(#arrowhead)"/>
+            <path class="map-path" id="map-path-3-4" d="M75,55 Q81,42 88,55" stroke="#F59E0B" stroke-width="0.6" fill="none" opacity="0" stroke-dasharray="2,1.5" marker-end="url(#arrowhead)"/>
+          </svg>
+
+          <!-- RPG Pin Nodes placed directly on map -->
+          <div class="rpg-pin-node" id="mission-node-1" style="left:18%;top:50%;" onclick="startMission(1)">
+            <div class="rpg-pin-glow"></div>
+            <div class="rpg-pin-body">
+              <div class="rpg-pin-icon">🏰</div>
+            </div>
+            <div class="rpg-pin-label">Wilayah I</div>
+            <div class="rpg-pin-sub">Bangun Kastil</div>
+            <div class="rpg-pin-concept">Sekuensial</div>
+            <div class="rpg-pin-stars" id="node-stars-1">☆☆☆</div>
+            <div class="rpg-pin-building" id="b-castle">
+              <span id="b-castle-icon">🏰</span>
+            </div>
+          </div>
+
+          <div class="rpg-pin-node" id="mission-node-2" style="left:41%;top:65%;" onclick="startMission(2)">
+            <div class="rpg-pin-glow"></div>
+            <div class="rpg-pin-body">
+              <div class="rpg-pin-icon">⚖️</div>
+            </div>
+            <div class="rpg-pin-label">Wilayah II</div>
+            <div class="rpg-pin-sub">Kebijakan Rakyat</div>
+            <div class="rpg-pin-concept">IF-ELSE</div>
+            <div class="rpg-pin-stars" id="node-stars-2">☆☆☆</div>
+            <div class="rpg-pin-building" id="b-shield">
+              <span id="b-shield-icon">🛡️</span>
+            </div>
+          </div>
+
+          <div class="rpg-pin-node" id="mission-node-3" style="left:63%;top:48%;" onclick="startMission(3)">
+            <div class="rpg-pin-glow"></div>
+            <div class="rpg-pin-body">
+              <div class="rpg-pin-icon">🌾</div>
+            </div>
+            <div class="rpg-pin-label">Wilayah III</div>
+            <div class="rpg-pin-sub">Panen Raya</div>
+            <div class="rpg-pin-concept">Loop</div>
+            <div class="rpg-pin-stars" id="node-stars-3">☆☆☆</div>
+            <div class="rpg-pin-building" id="b-farm">
+              <span id="b-farm-icon">🌾</span>
+            </div>
+          </div>
+
+          <div class="rpg-pin-node" id="mission-node-4" style="left:82%;top:60%;" onclick="startMission(4)">
+            <div class="rpg-pin-glow"></div>
+            <div class="rpg-pin-body">
+              <div class="rpg-pin-icon">⚔️</div>
+            </div>
+            <div class="rpg-pin-label">Wilayah IV</div>
+            <div class="rpg-pin-sub">Krisis Kerajaan</div>
+            <div class="rpg-pin-concept">Dekomposisi</div>
+            <div class="rpg-pin-stars" id="node-stars-4">☆☆☆</div>
+            <div class="rpg-pin-building" id="b-council">
+              <span id="b-council-icon">🏛️</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kingdom-map-footer">
+          <div class="progress-wrap">
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="map-progress-fill" style="width: 0%;"></div>
+            </div>
+            <div class="progress-label" id="map-progress-text">0 / 4 Wilayah Dibangun • Skor: 0</div>
+          </div>
+          <div class="badge-chip" id="map-badge-chip">🧑‍🌾 Rakyat Biasa</div>
+          <button class="btn btn-ghost" onclick="goToPage('creator')">👤 Profil Pengembang</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 4: MISSION 1 (SEKUENSIAL) ===================== -->
+    <section id="page-mission-1" class="page">
+      <div class="hud-bar">
+        <button class="hud-back-btn" onclick="goToPage('map')">◀ Peta Kerajaan</button>
+        <div class="hud-mission-id">MISI 1 / 4</div>
+        <div class="hud-mission-name">🏗️ Bangun Kastil — Algoritma Sekuensial & Simulasi Fisika</div>
+        <div class="hud-sep"></div>
+        <div class="hud-attempts" id="m1-attempts">Percobaan: 0</div>
+        <div class="m1-timer-wrap" id="m1-timer-wrap">
+          <span class="m1-timer-icon">⏱️</span>
+          <span class="m1-timer-display" id="m1-timer-display">01:30</span>
+        </div>
+        <div class="m1-combo-wrap" id="m1-combo-wrap" style="display:none;">
+          <span class="m1-combo-label">COMBO</span>
+          <span class="m1-combo-val" id="m1-combo-val">x0</span>
+        </div>
+        <div class="hud-stars" id="m1-hud-stars">⭐⭐⭐</div>
+        <div class="hud-score-label">SKOR</div>
+        <div class="hud-score-value" id="m1-hud-score">300</div>
+      </div>
+
+      <div class="game-workspace">
+        <div class="mission-briefing" id="m1-briefing">
+          <strong>TANTANGAN SEKUENSIAL:</strong> Susun <strong>7 instruksi konstruksi kastil</strong> dari fondasi paling dasar sampai kibaran panji teratas. Uji eksekusi langkahmu — jika urutan tidak logis, kastil akan mengalami kegagalan struktur dan runtuh! ⚠️ <strong>Hati-hati kartu jebakan!</strong>
+        </div>
+
+        <div class="m1-interactive-grid">
+          <!-- Col 1: Available Steps Pool -->
+          <div class="build-col">
+            <div class="build-col-header">
+              <div class="build-col-header-title">📦 Langkah Tersedia (Acak)</div>
+              <div class="build-col-header-hint">Klik kartu untuk memasukkan ke slot kosong</div>
+            </div>
+            <div class="build-pool" id="m1-pool">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Col 2: Live Animated Construction Visual Stage -->
+          <div class="m1-stage-panel">
+            <div class="m1-stage-header">
+              <div class="m1-stage-title">🏗️ Panggung Simulasi Konstruksi Real-Time</div>
+              <div class="m1-stage-status" id="m1-stage-status">Status: Menunggu Rancangan</div>
+            </div>
+
+            <div class="m1-stage-viewport" id="m1-stage-viewport">
+              <!-- Animated Layers of Castle -->
+              <div class="castle-layer layer-ground active" id="layer-ground">
+                <div class="ground-grass"></div>
+              </div>
+              <div class="castle-layer layer-survey" id="layer-survey">
+                <div class="survey-marker m1">📐</div>
+                <div class="survey-marker m2">🚩</div>
+                <div class="survey-marker m3">📏</div>
+                <div class="survey-line"></div>
+              </div>
+              <div class="castle-layer layer-foundation" id="layer-foundation">
+                <div class="stone-foundation-block"></div>
+              </div>
+              <div class="castle-layer layer-walls" id="layer-walls">
+                <div class="stone-wall-structure">
+                  <div class="wall-window"></div>
+                  <div class="wall-window"></div>
+                </div>
+              </div>
+              <div class="castle-layer layer-roof" id="layer-roof">
+                <div class="roof-timber-rafters"></div>
+              </div>
+              <div class="castle-layer layer-tower" id="layer-tower">
+                <div class="crenellated-tower left-t"></div>
+                <div class="crenellated-tower right-t"></div>
+              </div>
+              <div class="castle-layer layer-gate" id="layer-gate">
+                <div class="oak-drawbridge"></div>
+              </div>
+              <div class="castle-layer layer-flag" id="layer-flag">
+                <div class="royal-banner-pole">
+                  <div class="banner-cloth">👑</div>
+                </div>
+              </div>
+
+              <!-- Collapse Dust & Rubble Container -->
+              <div class="m1-collapse-overlay" id="m1-collapse-overlay">
+                <div class="collapse-debris d1">🪨</div>
+                <div class="collapse-debris d2">🧱</div>
+                <div class="collapse-debris d3">🪵</div>
+                <div class="collapse-smoke">💨</div>
+                <div class="collapse-banner-alert">💥 KASTIL RUNTUH! 💥</div>
+              </div>
+
+              <!-- Inspector Speech Bubble -->
+              <div class="m1-inspector-bubble" id="m1-inspector-bubble">
+                <img src="assets/characters/king-avatar.jpg" class="inspector-avatar" alt="Mandor">
+                <div class="inspector-text" id="m1-inspector-text">
+                  "Silakan susun 7 langkah di kanan, lalu klik UJI EKSEKUSI PEMBANGUNAN!"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Col 3: Ordered Construction Sequence Slots -->
+          <div class="build-col">
+            <div class="build-col-header">
+              <div class="build-col-header-title">🏛️ Urutan Kronologis (1 ➔ 7)</div>
+              <div class="build-col-header-hint">Klik slot terisi untuk mengembalikan kartu</div>
+            </div>
+            <div class="build-slots" id="m1-slots">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary" onclick="resetMission1()">🔄 Acak Ulang</button>
+          <button class="btn btn-primary" id="m1-submit-btn" onclick="checkMission1()">
+            <span>⚡</span> UJI & EKSEKUSI PEMBANGUNAN!
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 5: RECAP 1 ===================== -->
+    <section id="page-recap-1" class="page">
+      <div class="recap-page">
+        <div class="recap-result-header">
+          <img src="assets/buildings/castle.jpg" alt="Kastil Utama" class="recap-building-thumb" onerror="this.outerHTML='<div class=\'recap-icon\'>🏰</div>'">
+          <div>
+            <div class="recap-title" id="recap1-title">Kastil Utama Berhasil Dibangun!</div>
+            <div class="recap-stars-row" id="recap1-stars">⭐⭐⭐</div>
+            <div class="recap-score" id="recap1-score">+300 Poin Kerajaan</div>
+          </div>
+          <div class="recap-sep"></div>
+          <div class="recap-concept-badge">KONSEPSI: SEKUENSIAL</div>
+        </div>
+
+        <div class="recap-content-grid">
+          <div class="recap-pseudocode-box">
+            <div class="recap-pseudocode-header">📜 KODE LOGIKA KOMPUTER (PSEUDOCODE)</div>
+            <pre class="recap-pseudocode-pre" id="recap1-pseudocode"></pre>
+          </div>
+
+          <div class="recap-right-col">
+            <div class="recap-funfact-box">
+              <div class="recap-funfact-label">💡 TAHUKAH KAMU?</div>
+              <div class="recap-funfact-text" id="recap1-funfact"></div>
+            </div>
+            <div class="recap-cptp-box">
+              <div class="recap-cptp-label">🎯 RELEVANSI KURIKULUM (FASE D)</div>
+              <div class="recap-cptp-text" id="recap1-cptp"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="recap-actions">
+          <button class="btn btn-secondary" onclick="goToPage('map')">🗺️ Peta Kerajaan</button>
+          <button class="btn btn-primary" onclick="startMission(2)">Wilayah II: Kebijakan ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 6: MISSION 2 (IF-ELSE) ===================== -->
+    <section id="page-mission-2" class="page">
+      <div class="hud-bar">
+        <button class="hud-back-btn" onclick="goToPage('map')">◀ Peta Kerajaan</button>
+        <div class="hud-mission-id">MISI 2 / 4</div>
+        <div class="hud-mission-name">⚖️ Kebijakan Kerajaan — Logika Percabangan IF-ELSE</div>
+        <div class="hud-sep"></div>
+        <div class="hud-attempts" id="m2-attempts">Percobaan: 0</div>
+        <div class="m1-timer-wrap" id="m2-timer-wrap">
+          <span class="m1-timer-icon">⏱️</span>
+          <span class="m1-timer-display" id="m2-timer-display">00:25</span>
+        </div>
+        <div class="hud-stars" id="m2-hud-stars">⭐⭐⭐</div>
+        <div class="hud-score-label">SKOR</div>
+        <div class="hud-score-value" id="m2-hud-score">300</div>
+      </div>
+
+      <div class="game-workspace">
+        <!-- Kingdom Vitals Meter Bar -->
+        <div class="kingdom-vitals-bar">
+          <div class="vital-item">
+            <span class="vital-icon">💧</span>
+            <div class="vital-info">
+              <div class="vital-label">Air & Pangan</div>
+              <div class="vital-bar-track"><div class="vital-bar-fill vital-water" id="vital-fill-water" style="width: 60%;"></div></div>
+            </div>
+            <span class="vital-val" id="vital-val-water">60%</span>
+          </div>
+
+          <div class="vital-item">
+            <span class="vital-icon">🛡️</span>
+            <div class="vital-info">
+              <div class="vital-label">Keamanan</div>
+              <div class="vital-bar-track"><div class="vital-bar-fill vital-security" id="vital-fill-security" style="width: 55%;"></div></div>
+            </div>
+            <span class="vital-val" id="vital-val-security">55%</span>
+          </div>
+
+          <div class="vital-item">
+            <span class="vital-icon">💰</span>
+            <div class="vital-info">
+              <div class="vital-label">Kas Kerajaan</div>
+              <div class="vital-bar-track"><div class="vital-bar-fill vital-gold" id="vital-fill-gold" style="width: 70%;"></div></div>
+            </div>
+            <span class="vital-val" id="vital-val-gold">70 Gold</span>
+          </div>
+
+          <div class="vital-item">
+            <span class="vital-icon">😊</span>
+            <div class="vital-info">
+              <div class="vital-label">Moral Rakyat</div>
+              <div class="vital-bar-track"><div class="vital-bar-fill vital-morale" id="vital-fill-morale" style="width: 65%;"></div></div>
+            </div>
+            <span class="vital-val" id="vital-val-morale">65%</span>
+          </div>
+        </div>
+
+        <div class="policy-workspace">
+          <!-- Left: Current Kingdom State / Reading -->
+          <div class="policy-panel">
+            <div class="policy-messenger-card">
+              <img src="assets/characters/minister-water.jpg" alt="Utusan Kerajaan" id="m2-messenger-avatar" class="policy-messenger-avatar">
+              <div class="policy-messenger-info">
+                <div class="policy-zone-label" id="m2-zone-label">Wilayah Selatan</div>
+                <div class="policy-case-title" id="m2-case-title">Kekeringan Ekstrem</div>
+              </div>
+            </div>
+
+            <div class="policy-reading">
+              <div class="policy-reading-label" id="m2-reading-label">Parameter Wilayah</div>
+              <div class="policy-reading-value" id="m2-reading-value">--</div>
+              <div class="policy-status-badge" id="m2-status-badge">STATUS</div>
+            </div>
+
+            <div class="policy-condition">
+              <div class="policy-condition-label">KONDISI ATURAN KERAJAAN (IF STATEMENT)</div>
+              <div class="policy-condition-code" id="m2-condition-code">JIKA ... MAKA ...</div>
+            </div>
+
+            <div class="policy-progress" id="m2-progress-text">Kasus 1 dari 3</div>
+          </div>
+
+          <!-- Right: Policy Options -->
+          <div class="choice-panel">
+            <div class="choice-panel-title">TITAH KEBIJAKAN RAJA (LOGIKA PERCABANGAN)</div>
+            <div id="m2-choices" style="display:flex;flex-direction:column;gap:10px;">
+              <!-- Rendered via JS -->
+            </div>
+            <div class="choice-feedback" id="m2-feedback"></div>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary" onclick="goToPage('map')">Batal</button>
+          <button class="btn btn-primary" id="m2-next-case-btn" onclick="nextPolicyCase()" style="display:none;">
+            Lanjutkan Kasus Berikutnya ▶
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 7: RECAP 2 ===================== -->
+    <section id="page-recap-2" class="page">
+      <div class="recap-page">
+        <div class="recap-result-header">
+          <img src="assets/buildings/watchtower.svg" alt="Menara Penjaga" class="recap-building-thumb" onerror="this.outerHTML='<div class=\'recap-icon\'>🛡️</div>'">
+          <div>
+            <div class="recap-title" id="recap2-title">Menara Perlindungan Berdiri Kokoh!</div>
+            <div class="recap-stars-row" id="recap2-stars">⭐⭐⭐</div>
+            <div class="recap-score" id="recap2-score">+300 Poin Kerajaan</div>
+          </div>
+          <div class="recap-sep"></div>
+          <div class="recap-concept-badge">KONSEPSI: LOGIKA KONDISIONAL (IF-ELSE)</div>
+        </div>
+
+        <div class="recap-content-grid">
+          <div class="recap-pseudocode-box">
+            <div class="recap-pseudocode-header">📜 KODE LOGIKA KOMPUTER (PSEUDOCODE)</div>
+            <pre class="recap-pseudocode-pre" id="recap2-pseudocode"></pre>
+          </div>
+
+          <div class="recap-right-col">
+            <div class="recap-funfact-box">
+              <div class="recap-funfact-label">💡 TAHUKAH KAMU?</div>
+              <div class="recap-funfact-text" id="recap2-funfact"></div>
+            </div>
+            <div class="recap-cptp-box">
+              <div class="recap-cptp-label">🎯 RELEVANSI KURIKULUM (FASE D)</div>
+              <div class="recap-cptp-text" id="recap2-cptp"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="recap-actions">
+          <button class="btn btn-secondary" onclick="goToPage('map')">🗺️ Peta Kerajaan</button>
+          <button class="btn btn-primary" onclick="startMission(3)">Wilayah III: Panen Raya ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 8: MISSION 3 (LOOP) ===================== -->
+    <section id="page-mission-3" class="page">
+      <div class="hud-bar">
+        <button class="hud-back-btn" onclick="goToPage('map')">◀ Peta Kerajaan</button>
+        <div class="hud-mission-id">MISI 3 / 4</div>
+        <div class="hud-mission-name">🌾 Panen Raya — Algoritma Perulangan (Loop) & Ekspedisi Gerobak</div>
+        <div class="hud-sep"></div>
+        <div class="hud-attempts" id="m3-attempts">Percobaan: 0</div>
+        <div class="hud-stars" id="m3-hud-stars">⭐⭐⭐</div>
+        <div class="hud-score-label">SKOR</div>
+        <div class="hud-score-value" id="m3-hud-score">300</div>
+      </div>
+
+      <div class="game-workspace">
+        <div class="mission-briefing">
+          <strong>TANTANGAN LOOP (PUTARAN PANEN):</strong> Gerobak kerajaan hanya muat <strong>5 desa sekali jalan</strong>! Atur loop setiap ronde. Saat gerobak tiba, <strong style="color:#FBBF24;">KLIK 🌾 desa yang berkedip</strong> dalam 2 detik untuk memanen! Desa tak diklik = terlewat!
+        </div>
+        <div class="m3-run-status" id="m3-run-status">
+          <span class="m3-run-label">Putaran Loop:</span>
+          <span class="m3-run-current" id="m3-run-current">1</span>
+          <span class="m3-run-label">/ <span id="m3-runs-total">?</span></span>
+          <span class="m3-run-harvested">Dipanen: <strong id="m3-harvested-count">0</strong> / 12 Desa</span>
+        </div>
+
+        <div class="harvest-workspace">
+          <!-- Left: Manual vs Loop Comparison -->
+          <div class="harvest-panel">
+            <div class="harvest-panel-title bad">❌ PENDEKATAN MANUAL (BOROS MEMORI)</div>
+            <div class="manual-list" id="m3-manual-list">
+              <!-- Rendered via JS -->
+            </div>
+            <div class="harvest-comparison">
+              <div class="harvest-comp-item">
+                <div class="harvest-comp-number bad">36</div>
+                <div class="harvest-comp-label">Baris Kode Manual</div>
+              </div>
+              <div class="harvest-comp-vs">VS</div>
+              <div class="harvest-comp-item">
+                <div class="harvest-comp-number good">4</div>
+                <div class="harvest-comp-label">Baris dengan Loop</div>
+              </div>
+              <div class="harvest-comp-item">
+                <div class="harvest-comp-number saved">89%</div>
+                <div class="harvest-comp-label">Efisiensi Dihemat</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Visual Loop Programmer & 2D Kingdom Terrain -->
+          <div class="harvest-panel">
+            <div class="harvest-panel-title good">✅ OTOMATISASI DENGAN PERULANGAN (LOOP)</div>
+            
+            <div class="loop-builder">
+              <div class="loop-builder-line">
+                <span>ULANGI (LOOP) SEBANYAK :</span>
+                <div class="loop-count-select" id="m3-loop-buttons">
+                  <!-- Rendered via JS: buttons 4, 8, 10, 12 -->
+                </div>
+                <span>KALI :</span>
+              </div>
+              <div class="loop-inner-lines">
+                <div class="loop-inner-line">▸ gerobak.datangi_desa(desa_berikutnya)</div>
+                <div class="loop-inner-line">▸ angkut_karung_gandum()</div>
+                <div class="loop-inner-line">▸ simpan_ke_lumbung_agung()</div>
+              </div>
+              <div class="loop-builder-line" style="color:var(--c-text-dim); display:flex; justify-content:space-between;">
+                <span>AKHIR_ULANGI</span>
+                <div class="speed-selector" id="m3-speed-selector">
+                  <!-- Speed selector rendered via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- 12 Villages Road Map & Silo Meter -->
+            <div class="m3-terrain-box">
+              <div class="village-grid" id="m3-villages">
+                <!-- Rendered via JS -->
+              </div>
+              <!-- Granary Silo Fill Meter -->
+              <div class="granary-silo-wrap">
+                <div class="granary-silo-label">Kapasitas Lumbung Kerajaan</div>
+                <div class="granary-silo-track">
+                  <div class="granary-silo-fill" id="m3-silo-fill" style="height: 0%;"></div>
+                </div>
+                <div class="granary-silo-val" id="m3-silo-val">0 / 12 Desa</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary" onclick="resetMission3()">Atur Ulang</button>
+          <button class="btn btn-primary" id="m3-run-btn" onclick="runLoopHarvest()">
+            <span>⚡</span> JALANKAN RONDE EKSPEDISI!
+          </button>
+          <button class="btn btn-ghost" id="m3-next-run-btn" onclick="nextHarvestRun()" style="display:none;">
+            ▶ Lanjut Ronde Berikutnya
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 9: RECAP 3 ===================== -->
+    <section id="page-recap-3" class="page">
+      <div class="recap-page">
+        <div class="recap-result-header">
+          <img src="assets/buildings/granary-farm.svg" alt="Lumbung Padi" class="recap-building-thumb" onerror="this.outerHTML='<div class=\'recap-icon\'>🌾</div>'">
+          <div>
+            <div class="recap-title" id="recap3-title">Lumbung Pangan Penuh Melimpah!</div>
+            <div class="recap-stars-row" id="recap3-stars">⭐⭐⭐</div>
+            <div class="recap-score" id="recap3-score">+300 Poin Kerajaan</div>
+          </div>
+          <div class="recap-sep"></div>
+          <div class="recap-concept-badge">KONSEPSI: PERULANGAN (LOOP)</div>
+        </div>
+
+        <div class="recap-content-grid">
+          <div class="recap-pseudocode-box">
+            <div class="recap-pseudocode-header">📜 KODE LOGIKA KOMPUTER (PSEUDOCODE)</div>
+            <pre class="recap-pseudocode-pre" id="recap3-pseudocode"></pre>
+          </div>
+
+          <div class="recap-right-col">
+            <div class="recap-funfact-box">
+              <div class="recap-funfact-label">💡 TAHUKAH KAMU?</div>
+              <div class="recap-funfact-text" id="recap3-funfact"></div>
+            </div>
+            <div class="recap-cptp-box">
+              <div class="recap-cptp-label">🎯 RELEVANSI KURIKULUM (FASE D)</div>
+              <div class="recap-cptp-text" id="recap3-cptp"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="recap-actions">
+          <button class="btn btn-secondary" onclick="goToPage('map')">🗺️ Peta Kerajaan</button>
+          <button class="btn btn-primary" onclick="startMission(4)">Wilayah IV: Krisis Kerajaan ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 10: MISSION 4 (DEKOMPOSISI) ===================== -->
+    <section id="page-mission-4" class="page">
+      <div class="hud-bar">
+        <button class="hud-back-btn" onclick="goToPage('map')">◀ Peta Kerajaan</button>
+        <div class="hud-mission-id">MISI 4 / 4</div>
+        <div class="hud-mission-name">⚔️ Pusat Komando Krisis — Dekomposisi & Komputasi Paralel</div>
+        <div class="hud-sep"></div>
+        <div class="hud-attempts" id="m4-attempts">Percobaan: 0</div>
+        <div class="hud-stars" id="m4-hud-stars">⭐⭐⭐</div>
+        <div class="hud-score-label">SKOR</div>
+        <div class="hud-score-value" id="m4-hud-score">300</div>
+      </div>
+
+      <div class="game-workspace">
+        <div class="crisis-alarm">
+          <span class="crisis-alarm-icon">🚨</span>
+          <span class="crisis-alarm-text">STATUS DARURAT KERAJAAN: BANJIR DELTA, WABAH KOTA, & SERANGAN PENJARAH!</span>
+          <div class="crisis-timer" id="m4-timer">00:45</div>
+        </div>
+        <div class="timer-bar-track">
+          <div class="timer-bar-fill" id="m4-timer-bar" style="width: 100%;"></div>
+        </div>
+
+        <div class="crisis-workspace" id="m4-workspace">
+          <!-- 3 Ministers Workstations with Portraits -->
+          <div class="ministers-row">
+            <!-- Minister 1: Water -->
+            <div class="minister-station" id="station-water" ondragover="allowDrop(event)" ondrop="handleTaskDrop(event, 'water')">
+              <div class="minister-station-header">
+                <img src="assets/characters/minister-water.jpg" alt="Menteri Pengairan" class="minister-head-avatar" onerror="this.outerHTML='<span class=\'minister-station-icon\'>🌊</span>'">
+                <div style="flex:1;">
+                  <div class="minister-station-name">Menteri Pengairan</div>
+                  <div class="minister-station-role">Divisi Bencana Banjir (Thread 1)</div>
+                </div>
+                <div class="minister-slot-count" id="count-water">0 / 3</div>
+              </div>
+              <div class="minister-tasks" id="tasks-water">
+                <div class="minister-task-empty">Tarik / Klik tugas pengairan ke sini</div>
+              </div>
+            </div>
+
+            <!-- Minister 2: Health -->
+            <div class="minister-station" id="station-health" ondragover="allowDrop(event)" ondrop="handleTaskDrop(event, 'health')">
+              <div class="minister-station-header">
+                <img src="assets/characters/minister-health.jpg" alt="Menteri Kesehatan" class="minister-head-avatar" onerror="this.outerHTML='<span class=\'minister-station-icon\'>💊</span>'">
+                <div style="flex:1;">
+                  <div class="minister-station-name">Menteri Kesehatan</div>
+                  <div class="minister-station-role">Penanggulangan Wabah (Thread 2)</div>
+                </div>
+                <div class="minister-slot-count" id="count-health">0 / 3</div>
+              </div>
+              <div class="minister-tasks" id="tasks-health">
+                <div class="minister-task-empty">Tarik / Klik tugas kesehatan ke sini</div>
+              </div>
+            </div>
+
+            <!-- Minister 3: Defense -->
+            <div class="minister-station" id="station-defense" ondragover="allowDrop(event)" ondrop="handleTaskDrop(event, 'defense')">
+              <div class="minister-station-header">
+                <img src="assets/characters/minister-defense.jpg" alt="Panglima Pertahanan" class="minister-head-avatar" onerror="this.outerHTML='<span class=\'minister-station-icon\'>⚔️</span>'">
+                <div style="flex:1;">
+                  <div class="minister-station-name">Panglima Pertahanan</div>
+                  <div class="minister-station-role">Pengamanan Batas (Thread 3)</div>
+                </div>
+                <div class="minister-slot-count" id="count-defense">0 / 3</div>
+              </div>
+              <div class="minister-tasks" id="tasks-defense">
+                <div class="minister-task-empty">Tarik / Klik tugas pertahanan ke sini</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pool of 9 Tasks -->
+          <div class="task-pool-wrap">
+            <div class="task-pool-title">📋 9 TUGAS DARURAT (TARIK ATAU KLIK KARTU UNTUK MEMILIH MENTERI TUJUAN):</div>
+            <div class="task-pool" id="m4-task-pool">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden Simulation Tracks during execution -->
+        <div class="parallel-tracks" id="m4-parallel-sim" style="display:none;">
+          <div class="parallel-sim-banner">
+            ⚡ EKSEKUSI PARALEL AKTIF (3 THREAD SEKALIGUS BERJALAN)
+            <div class="speedup-badge">Percepatan Komputasi: 3.0x Lebih Cepat dari Sekuensial!</div>
+          </div>
+
+          <div class="parallel-track" id="sim-track-water">
+            <div class="parallel-track-header">
+              <img src="assets/characters/minister-water.jpg" class="sim-minister-icon" alt="Water">
+              <span>🌊 Penanganan Banjir (Thread 1)</span>
+            </div>
+            <div id="sim-items-water"></div>
+            <div class="parallel-track-progress"><div class="parallel-track-bar" id="sim-bar-water"></div></div>
+          </div>
+
+          <div class="parallel-track" id="sim-track-health">
+            <div class="parallel-track-header">
+              <img src="assets/characters/minister-health.jpg" class="sim-minister-icon" alt="Health">
+              <span>💊 Pengendalian Wabah (Thread 2)</span>
+            </div>
+            <div id="sim-items-health"></div>
+            <div class="parallel-track-progress"><div class="parallel-track-bar" id="sim-bar-health"></div></div>
+          </div>
+
+          <div class="parallel-track" id="sim-track-defense">
+            <div class="parallel-track-header">
+              <img src="assets/characters/minister-defense.jpg" class="sim-minister-icon" alt="Defense">
+              <span>⚔️ Pertahanan Wilayah (Thread 3)</span>
+            </div>
+            <div id="sim-items-defense"></div>
+            <div class="parallel-track-progress"><div class="parallel-track-bar" id="sim-bar-defense"></div></div>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button class="btn btn-secondary" onclick="resetMission4()">Atur Ulang</button>
+          <button class="btn btn-primary" id="m4-run-btn" onclick="checkMission4()">
+            <span>⚡</span> EKSEKUSI PARALEL SEMUA MENTERI!
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 11: RECAP 4 ===================== -->
+    <section id="page-recap-4" class="page">
+      <div class="recap-page">
+        <div class="recap-result-header">
+          <img src="assets/buildings/council-hall.svg" alt="Balai Dewan" class="recap-building-thumb" onerror="this.outerHTML='<div class=\'recap-icon\'>🏛️</div>'">
+          <div>
+            <div class="recap-title" id="recap4-title">Balai Dewan Berhasil Mengatasi Krisis!</div>
+            <div class="recap-stars-row" id="recap4-stars">⭐⭐⭐</div>
+            <div class="recap-score" id="recap4-score">+300 Poin Kerajaan</div>
+          </div>
+          <div class="recap-sep"></div>
+          <div class="recap-concept-badge">KONSEPSI: DEKOMPOSISI & PARALELISME</div>
+        </div>
+
+        <div class="recap-content-grid">
+          <div class="recap-pseudocode-box">
+            <div class="recap-pseudocode-header">📜 KODE LOGIKA KOMPUTER (PSEUDOCODE)</div>
+            <pre class="recap-pseudocode-pre" id="recap4-pseudocode"></pre>
+          </div>
+
+          <div class="recap-right-col">
+            <div class="recap-funfact-box">
+              <div class="recap-funfact-label">💡 TAHUKAH KAMU?</div>
+              <div class="recap-funfact-text" id="recap4-funfact"></div>
+            </div>
+            <div class="recap-cptp-box">
+              <div class="recap-cptp-label">🎯 RELEVANSI KURIKULUM (FASE D)</div>
+              <div class="recap-cptp-text" id="recap4-cptp"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="recap-actions">
+          <button class="btn btn-secondary" onclick="goToPage('map')">🗺️ Peta Kerajaan</button>
+          <button class="btn btn-primary" onclick="goToPage('complete')">Upacara Penobatan Raja ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 12: COMPLETE ===================== -->
+    <section id="page-complete" class="page">
+      <div class="complete-page">
+        <div class="complete-glow"></div>
+        <div class="complete-avatar-wrap">
+          <img src="assets/characters/king-avatar.jpg" alt="Raja Algoritma" class="complete-king-avatar" onerror="this.outerHTML='<div class=\'complete-mascot\'>👑</div>'">
+        </div>
+        <div>
+          <div class="complete-badge-name" id="complete-rank-title">PENOBATAN: RAJA ALGORITMA AGUNG</div>
+          <h2 style="font-family:var(--font-head);font-size:1.6rem;color:var(--c-text-head);margin-top:4px;">
+            SELAMAT! KERAJAANMU BERDIRI MEGAH!
+          </h2>
+          <div class="complete-score-label" style="margin-top:10px;">TOTAL SKOR KERAJAAN</div>
+          <div class="complete-total-score" id="complete-final-score">1200</div>
+        </div>
+
+        <div class="complete-levels-grid">
+          <div class="complete-level-item">
+            <img src="assets/buildings/castle.jpg" class="complete-item-thumb" alt="Kastil">
+            <div class="complete-level-name">Kastil Utama</div>
+            <div class="complete-level-stars" id="c-stars-1">⭐⭐⭐</div>
+            <div class="complete-level-score" id="c-score-1">300 pts</div>
+          </div>
+          <div class="complete-level-item">
+            <img src="assets/buildings/watchtower.svg" class="complete-item-thumb" alt="Menara">
+            <div class="complete-level-name">Menara Penjaga</div>
+            <div class="complete-level-stars" id="c-stars-2">⭐⭐⭐</div>
+            <div class="complete-level-score" id="c-score-2">300 pts</div>
+          </div>
+          <div class="complete-level-item">
+            <img src="assets/buildings/granary-farm.svg" class="complete-item-thumb" alt="Lumbung">
+            <div class="complete-level-name">Lumbung Padi</div>
+            <div class="complete-level-stars" id="c-stars-3">⭐⭐⭐</div>
+            <div class="complete-level-score" id="c-score-3">300 pts</div>
+          </div>
+          <div class="complete-level-item">
+            <img src="assets/buildings/council-hall.svg" class="complete-item-thumb" alt="Balai Dewan">
+            <div class="complete-level-name">Balai Dewan</div>
+            <div class="complete-level-stars" id="c-stars-4">⭐⭐⭐</div>
+            <div class="complete-level-score" id="c-score-4">300 pts</div>
+          </div>
+        </div>
+
+        <div class="complete-concepts">
+          <span class="concept-tag">✓ Sekuensial (Urutan Kronologis Presisi)</span>
+          <span class="concept-tag">✓ Logika IF-ELSE (Kondisional Multi-Pilar)</span>
+          <span class="concept-tag">✓ Perulangan / Loop (Otomatisasi & Efisiensi 89%)</span>
+          <span class="concept-tag">✓ Dekomposisi & Paralelisme (Multi-Thread Multi-Core)</span>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:8px;">
+          <button class="btn btn-secondary" onclick="resetEntireGame()">🔄 Mulai Kerajaan Baru</button>
+          <button class="btn btn-primary" onclick="goToPage('creator')">👤 Lihat Profil Pengembang</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAGE 13: CREATOR ===================== -->
+    <section id="page-creator" class="page">
+      <div class="creator-page">
+        <div class="creator-card">
+          <img src="assets/fanani.jpg" alt="Foto Pengembang" class="creator-photo" onerror="this.outerHTML='<div style=\'font-size:3rem;padding:10px;\'>👨‍🏫</div>'">
+          <div>
+            <div class="creator-name">Ach. Chanifuddin Fanani, S.Pd.</div>
+            <div class="creator-role">Guru Mata Pelajaran Informatika & Pembina Ekstrakurikuler IT</div>
+            <div class="creator-school">SMP Negeri 2 Lamongan • Kabupaten Lamongan, Jawa Timur</div>
+            <div class="creator-desc">
+              Media edukasi interaktif <strong>Algorithm Kingdom</strong> dirancang khusus untuk memenuhi Capaian Pembelajaran (CP) Informatika Kurikulum Merdeka Fase D (SMP Kelas VII–IX), mengintegrasikan pilar Berpikir Komputasional dan Algoritma Pemrograman ke dalam mekanik simulasi pembangun kerajaan yang menyenangkan dan penuh tantangan.
+            </div>
+          </div>
+        </div>
+
+        <div class="creator-logos">
+          <img src="assets/logo-tutwuri.png" alt="Tut Wuri Handayani" onerror="this.style.display='none'">
+          <img src="assets/kemendikdasmen-lengkap.png" alt="Kemendikdasmen" onerror="this.style.display='none'">
+          <img src="assets/sobat-bermutu-ramah.png" alt="Sobat SMP" onerror="this.style.display='none'">
+        </div>
+
+        <div style="display:flex;gap:10px;">
+          <button class="btn btn-primary" onclick="goToPage('map')">🗺️ Kembali ke Peta Kerajaan</button>
+          <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">🔬 Kembali ke Lab Maya</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Game Scripts -->
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

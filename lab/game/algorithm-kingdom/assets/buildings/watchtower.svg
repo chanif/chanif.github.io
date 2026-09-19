@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="groundGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#15803d"/>
+    </linearGradient>
+    <linearGradient id="stoneLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <linearGradient id="stoneRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+    <linearGradient id="woodGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="roofGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <radialGradient id="glowLantern" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#f59e0b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#090503" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Ground Pedestal -->
+  <g filter="url(#dropShadow)">
+    <ellipse cx="256" cy="425" rx="190" ry="65" fill="#1e293b" opacity="0.4"/>
+    <path d="M70 410 C120 460 392 460 442 410 L442 430 C392 485 120 485 70 430 Z" fill="#334155"/>
+    <ellipse cx="256" cy="410" rx="186" ry="60" fill="url(#groundGrad)"/>
+    <ellipse cx="256" cy="410" rx="145" ry="42" fill="#78716c" opacity="0.4"/>
+    
+    <!-- Stone Foundation Steps -->
+    <path d="M160 390 L256 345 L352 390 L256 435 Z" fill="#475569"/>
+    <path d="M160 390 L256 435 L256 448 L160 403 Z" fill="#334155"/>
+    <path d="M256 435 L352 390 L352 403 L256 448 Z" fill="#1e293b"/>
+
+    <!-- Main Stone Tower Body -->
+    <!-- Left Face -->
+    <path d="M185 365 L256 332 L256 180 L185 208 Z" fill="url(#stoneLeft)"/>
+    <!-- Right Face -->
+    <path d="M256 332 L327 365 L327 208 L256 180 Z" fill="url(#stoneRight)"/>
+
+    <!-- Tower Stone Bricks Details -->
+    <path d="M195 330 L220 318 M225 300 L250 288 M195 270 L225 256 M230 240 L255 228" stroke="#cbd5e1" stroke-width="2" opacity="0.6"/>
+    <path d="M265 318 L295 330 M280 288 L315 300 M265 256 L295 270 M285 228 L315 240" stroke="#1e293b" stroke-width="2" opacity="0.6"/>
+
+    <!-- Arched Wooden Door -->
+    <path d="M236 342 L256 332 L276 342 L276 385 L236 385 Z" fill="url(#woodGrad)"/>
+    <path d="M242 344 A14 14 0 0 1 270 344 L270 382 L242 382 Z" fill="#451a03"/>
+    <circle cx="265" cy="365" r="2.5" fill="#fcd34d"/>
+
+    <!-- Slit Windows -->
+    <rect x="215" y="235" width="8" height="24" rx="4" fill="#0f172a"/>
+    <rect x="289" y="235" width="8" height="24" rx="4" fill="#0f172a"/>
+
+    <!-- Royal Shield on Tower Center -->
+    <g transform="translate(242, 220) scale(0.7)">
+      <path d="M20 0 L40 8 L40 28 C40 45 20 56 20 56 C20 56 0 45 0 28 L0 8 Z" fill="#ef4444" stroke="#fbbf24" stroke-width="3"/>
+      <path d="M20 6 L35 12 L35 27 C35 39 20 48 20 48 C20 48 5 39 5 27 L5 12 Z" fill="#b91c1c"/>
+      <polygon points="20,14 23,22 31,23 25,28 27,36 20,31 13,36 15,28 9,23 17,22" fill="#fbbf24"/>
+    </g>
+
+    <!-- Corbel / Platform Support -->
+    <path d="M165 210 L256 172 L347 210 L335 224 L256 188 L177 224 Z" fill="#334155"/>
+
+    <!-- Wooden Watch Deck & Railing -->
+    <path d="M160 195 L256 152 L352 195 L340 212 L256 174 L172 212 Z" fill="url(#woodGrad)"/>
+    
+    <!-- Wooden Posts -->
+    <rect x="175" y="155" width="8" height="42" fill="#78350f"/>
+    <rect x="215" y="142" width="8" height="38" fill="#78350f"/>
+    <rect x="252" y="135" width="8" height="38" fill="#92400e"/>
+    <rect x="289" y="142" width="8" height="38" fill="#78350f"/>
+    <rect x="329" y="155" width="8" height="42" fill="#78350f"/>
+
+    <!-- Roof Structure -->
+    <path d="M150 160 L256 80 L362 160 L256 178 Z" fill="url(#roofGrad)"/>
+    <path d="M150 160 L256 80 L256 178 Z" fill="#2563eb"/>
+    
+    <!-- Roof tiles lines -->
+    <path d="M185 135 L220 165 M215 110 L245 168" stroke="#93c5fd" stroke-width="2" opacity="0.5"/>
+    <path d="M327 135 L292 165 M297 110 L267 168" stroke="#1d4ed8" stroke-width="2" opacity="0.6"/>
+
+    <!-- Golden Spire and Flag -->
+    <path d="M253 80 L253 25 L259 25 L259 80 Z" fill="#f59e0b"/>
+    <circle cx="256" cy="22" r="6" fill="#fde047" stroke="#b45309" stroke-width="2"/>
+    <path d="M259 26 Q295 18 315 30 Q290 40 259 42 Z" fill="#38bdf8"/>
+    <path d="M259 26 Q295 18 315 30 Q290 40 259 42 Z" fill="url(#roofGrad)" opacity="0.85"/>
+
+    <!-- Hanging Glowing Lantern -->
+    <line x1="179" y1="195" x2="179" y2="215" stroke="#475569" stroke-width="2"/>
+    <circle cx="179" cy="222" r="18" fill="url(#glowLantern)"/>
+    <rect x="174" y="215" width="10" height="14" rx="2" fill="#f59e0b" stroke="#78350f" stroke-width="1.5"/>
+
+    <!-- Guard's Bow leaning on deck -->
+    <path d="M332 170 Q342 185 330 205" fill="none" stroke="#d97706" stroke-width="3"/>
+    <line x1="332" y1="170" x2="330" y2="205" stroke="#f8fafc" stroke-width="1"/>
+  </g>
+</svg>
