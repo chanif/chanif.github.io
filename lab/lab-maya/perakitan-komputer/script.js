@@ -387,7 +387,8 @@ function renderTeoriKomponenGrid() {
   if (!grid || !cfg) return;
   
   grid.innerHTML = '';
-  cfg.components.forEach((comp, idx) => {
+  const mainComponents = cfg.components.filter(c => !c.isDistractor);
+  mainComponents.forEach((comp, idx) => {
     const item = document.createElement('div');
     item.className = 'komponen-grid-item' + (idx === 0 ? ' selected' : '');
     item.id = 'teori-card-' + comp.id;
@@ -407,8 +408,8 @@ function renderTeoriKomponenGrid() {
   });
 
   // Automatically show the first component's details
-  if (cfg.components.length > 0) {
-    showTeoriKomponenDetail(cfg.components[0]);
+  if (mainComponents.length > 0) {
+    showTeoriKomponenDetail(mainComponents[0]);
   }
 }
 
