@@ -169,19 +169,21 @@ function showBootCelebration() {
 
   const nameEl = document.getElementById('celeb-student-name');
   if (nameEl) {
-    nameEl.textContent = playerName ? playerName : 'Sobat Informatika';
+    nameEl.textContent = 'Sobat Informatika';
   }
 
   const specsGrid = document.getElementById('celeb-specs-grid');
   if (specsGrid && cfg) {
     specsGrid.innerHTML = '';
-    cfg.components.forEach(comp => {
+    cfg.components.filter(c => !c.isDistractor).forEach(comp => {
       const card = document.createElement('div');
       card.className = 'celeb-spec-card';
       card.innerHTML = `
-        <div class="celeb-spec-icon">${comp.icon}</div>
+        <div class="celeb-spec-icon" style="background:${comp.color}22;border:2px solid ${comp.color};border-radius:10px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;padding:5px;">
+          <img src="${comp.svg}" alt="${comp.name}" style="max-width:100%;max-height:100%;object-fit:contain;">
+        </div>
         <div class="celeb-spec-name">${comp.shortName}</div>
-        <div class="celeb-spec-status">✓ Normal &amp; Siap</div>
+        <div class="celeb-spec-status" style="color:#10b981;">✓ Normal & Siap</div>
       `;
       specsGrid.appendChild(card);
     });
@@ -232,40 +234,66 @@ function closeModal(id) {
 }
 
 // ==================== WELCOME SCREEN LOGIC ====================
-function generateStars() {
-  // Tech circuit background uses pure CSS vectors
-}
 
-function checkNameInput() {
-  const name = document.getElementById('player-name')?.value.trim() || '';
-  const school = document.getElementById('player-school')?.value.trim() || '';
-  const startBtn = document.getElementById('start-btn');
-  if (startBtn) {
-    startBtn.disabled = !(name.length > 0 && school.length > 0);
+// Animasi partikel di welcome screen
+function initWelcomeParticles() {
+  const canvas = document.getElementById('welcome-particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  const particles = [];
+  const colors = ['#fbae3c', '#2fd9c4', '#6366f1', '#10b981', '#f43f5e'];
+  for (let i = 0; i < 55; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2.2 + 0.5,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      alpha: Math.random() * 0.6 + 0.2,
+    });
   }
+
+  function drawParticles() {
+    if (!document.getElementById('welcome-screen') ||
+        document.getElementById('welcome-screen').style.display === 'none') return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
 }
 
 function startGame() {
-  playerName = document.getElementById('player-name')?.value.trim() || 'Sahabat';
-  playerSchool = document.getElementById('player-school')?.value.trim() || 'SMP';
-  
-  const userGreeting = document.getElementById('user-display');
-  if (userGreeting) {
-    userGreeting.innerHTML = `👋 Halo, <strong>${playerName}</strong>! <span>(${playerSchool})</span>`;
-  }
-  
   const welcome = document.getElementById('welcome-screen');
   if (welcome) {
-    welcome.style.transition = 'opacity 0.4s ease';
+    welcome.style.transition = 'opacity 0.5s ease';
     welcome.style.opacity = '0';
     setTimeout(() => {
       welcome.style.display = 'none';
-    }, 400);
+    }, 500);
   }
 
   sfxBootChime();
   switchLabTab('teori');
 }
+
 
 // ==================== UNIFIED TAB NAVIGATION ====================
 function switchLabTab(tabId) {
@@ -296,8 +324,11 @@ function switchLabTab(tabId) {
     initRakitPC();
     updateInstalledCount();
   }
-  if (tabId === 'sim-binary') initBinary();
-  if (tabId === 'sim-rgb') initRGBMixer();
+  if (tabId === 'eksplorasi') {
+    initBinary();
+    initRGBMixer();
+    initLogicGate();
+  }
   if (tabId === 'lkpd') initLKPD();
   if (tabId === 'referensi') initReferensi();
 
@@ -479,13 +510,95 @@ function renderComponentShelf() {
   setupDragDrop();
 }
 
+// ==================== MISPLACED COMPONENT MODAL LOGIC ====================
+let currentMisplacedCompId = null;
+
+function showMisplacedModal(comp, slot, type) {
+  currentMisplacedCompId = comp.id;
+  const modal = document.getElementById('modal-misplaced-comp');
+  if (!modal) return;
+
+  const titleEl = document.getElementById('misplaced-modal-title');
+  const subtitleEl = document.getElementById('misplaced-modal-subtitle');
+  const imgEl = document.getElementById('misplaced-comp-img');
+  const nameEl = document.getElementById('misplaced-comp-name');
+  const badgeEl = document.getElementById('misplaced-slot-badge');
+  const reasonBox = document.getElementById('misplaced-reason-box');
+  const returnBtn = document.getElementById('btn-misplaced-return');
+
+  if (imgEl) imgEl.src = comp.svg || '';
+  if (nameEl) nameEl.textContent = comp.name;
+
+  if (type === 'distractor') {
+    if (titleEl) titleEl.textContent = '⚠️ Peringatan Komponen Pengecoh (Distractor)';
+    if (subtitleEl) subtitleEl.textContent = 'Perangkat Tidak Memiliki Soket di Motherboard Ini';
+    if (badgeEl) {
+      badgeEl.textContent = '⚠️ Komponen Pengecoh';
+      badgeEl.style.background = 'rgba(239, 68, 68, 0.15)';
+      badgeEl.style.color = '#ef4444';
+      badgeEl.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+    }
+    if (reasonBox) {
+      reasonBox.innerHTML = `
+        <p><strong>${comp.name}</strong> adalah komponen tambahan / kartu antarmuka legacy yang <strong>tidak kompatibel</strong> dengan tata letak soket motherboard modern ini.</p>
+        <div style="margin-top:0.6vw;background:rgba(239,68,68,0.06);border-left:3px solid #ef4444;padding:8px 12px;border-radius:4px;font-size:0.85vw;line-height:1.5;">
+          ${comp.errorMsg || 'Komponen ini sengaja disiapkan sebagai bahan evaluasi nalar kritis. Dalam perakitan komputer standar, kamu hanya memerlukan 5 komponen inti: CPU, RAM, SSD, GPU, dan PSU.'}
+        </div>
+      `;
+    }
+    if (returnBtn) {
+      returnBtn.textContent = '↩️ Kembalikan ke Rak Komponen';
+      returnBtn.onclick = () => {
+        returnMisplacedComp();
+      };
+    }
+  } else {
+    const slotTitle = slot ? (slot.title || slot.getAttribute('data-accepts') || 'Soket') : 'Soket';
+    const cfg = window.LAB_CONFIG;
+    const correctSlot = comp.slotId ? document.getElementById(comp.slotId) : null;
+    const correctSlotTitle = correctSlot ? (correctSlot.title || comp.slotId) : (comp.slotId || 'Soket yang sesuai');
+
+    if (titleEl) titleEl.textContent = '⚠️ Peringatan Keselamatan Perangkat Keras';
+    if (subtitleEl) subtitleEl.textContent = 'Komponen Salah Soket Pemasangan';
+    if (badgeEl) {
+      badgeEl.textContent = '⚠️ Salah Soket Pemasangan';
+      badgeEl.style.background = 'rgba(239, 68, 68, 0.15)';
+      badgeEl.style.color = '#ef4444';
+      badgeEl.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+    }
+    if (reasonBox) {
+      reasonBox.innerHTML = `
+        <p>Kamu mencoba memasang <strong>${comp.name}</strong> ke dalam <strong>${slotTitle}</strong>.</p>
+        <div style="margin-top:0.6vw;background:rgba(239,68,68,0.06);border-left:3px solid #ef4444;padding:8px 12px;border-radius:4px;font-size:0.85vw;line-height:1.5;">
+          ${comp.errorMsg || `Soket <strong>${slotTitle}</strong> tidak kompatibel secara fisik dan pin elektrikal dengan ${comp.name}. Soket yang benar untuk komponen ini adalah <strong>${correctSlotTitle}</strong>.`}
+        </div>
+      `;
+    }
+    if (returnBtn) {
+      returnBtn.textContent = '↩️ Lepas & Kembalikan ke Rak';
+      returnBtn.onclick = () => {
+        returnMisplacedComp();
+      };
+    }
+  }
+
+  showModal('modal-misplaced-comp');
+}
+
+function returnMisplacedComp() {
+  if (currentMisplacedCompId) {
+    removeComponent(currentMisplacedCompId);
+  }
+  closeModal('modal-misplaced-comp');
+}
+
 function clickToPlace(compId) {
   const cfg = window.LAB_CONFIG;
   const comp = cfg.components.find(c => c.id === compId);
   if (!comp || labState.installed[compId]) return;
   
   if (comp.isDistractor) {
-    alert(`⚠️ Komponen Pengecoh (${comp.name}):\nKomponen ini tidak memiliki soket yang kompatibel di motherboard modern. Kamu bisa mencoba menariknya ke salah satu soket motherboard untuk melihat respons diagnostik.`);
+    showMisplacedModal(comp, null, 'distractor');
     return;
   }
   
@@ -564,10 +677,10 @@ function placeComponent(compId, slotId) {
     sfxError();
     appendBootLog(`> ⚠️ [PERINGATAN SOKET] KESALAHAN! ${comp.name} dipasang di ${slot.title || slotAccepts}! Komponen tidak kompatibel.`);
     
-    // Safety Alert
+    // Safety Alert Modal
     setTimeout(() => {
-      alert(`⚠️ PERINGATAN KESELAMATAN PERANGKAT KERAS:\n${comp.errorMsg || ('Komponen ' + comp.name + ' tidak cocok dipasang pada ' + (slot.title || slotAccepts) + '!')}\n\nKomputer TIDAK AKAN BISA MENYALA jika ada komponen salah pasang. Lepas komponen dengan mengkliknya atau menariknya kembali ke rak.`);
-    }, 50);
+      showMisplacedModal(comp, slot, comp.isDistractor ? 'distractor' : 'wrong-slot');
+    }, 60);
   }
 
   // 2. Update shelf card
@@ -638,10 +751,16 @@ function autoAssemble() {
 
   const currentCount = Object.values(labState.installed).filter(v => v).length;
   if (currentCount === 0) {
-    if (!confirm('💡 Ayo coba pasang manual dulu dengan drag & drop komponen ke motherboard! Apakah kamu tetap ingin menggunakan Auto Rakit?')) {
-      return;
-    }
+    showModal('modal-auto-rakit');
+    return;
   }
+  executeAutoAssemble();
+}
+
+function executeAutoAssemble() {
+  closeModal('modal-auto-rakit');
+  const cfg = window.LAB_CONFIG;
+  if (!cfg) return;
 
   // Remove any wrong or distractor components first
   Object.keys(labState.installed).forEach(id => {
@@ -911,7 +1030,7 @@ function setupCardTouchDrag(card, comp) {
     touchGhost.style.display = 'block';
 
     const slotUnder = elemUnder ? elemUnder.closest('.mb-physical-slot') : null;
-    if (slotUnder && slotUnder.getAttribute('data-accepts') === comp.id) {
+    if (slotUnder) {
       if (activeTouchSlot !== slotUnder) {
         if (activeTouchSlot) activeTouchSlot.classList.remove('drag-over');
         activeTouchSlot = slotUnder;
@@ -930,7 +1049,7 @@ function setupCardTouchDrag(card, comp) {
       touchGhost.remove();
       touchGhost = null;
     }
-    if (activeTouchSlot && activeTouchSlot.getAttribute('data-accepts') === comp.id) {
+    if (activeTouchSlot) {
       placeComponent(comp.id, activeTouchSlot.id);
       activeTouchSlot.classList.add('snap-bounce');
       setTimeout(() => activeTouchSlot?.classList.remove('snap-bounce'), 450);
@@ -1006,6 +1125,9 @@ function testBoot() {
   }
   if (labState.installed['hdd_ide']) {
     misplacedErrors.push('- KOMPONEN TAK KOMPATIBEL: Harddisk IDE 40-pin terpasang (Motherboard tidak mendukung IDE).');
+  }
+  if (labState.installed['cooler_fan']) {
+    misplacedErrors.push('- KOMPONEN TAK KOMPATIBEL: Cooler Fan 120mm bukan komponen soket motherboard.');
   }
 
   if (misplacedErrors.length > 0) {
@@ -1668,24 +1790,24 @@ function renderBS() {
   const container = document.getElementById('lkpd-bs');
   if (!container || !cfg) return;
 
-  container.innerHTML = '<h4 style="margin-bottom:0.6vw;">Benar atau Salah (5 Soal)</h4>';
+  container.innerHTML = '<h4 style="margin-bottom:0.8vw;">Bagian B: Benar atau Salah (5 Soal)</h4>';
 
   cfg.lkpd.bagianB.forEach((q, qi) => {
     const card = document.createElement('div');
-    card.className = 'lkpd-question-card';
+    card.className = 'lkpd-question-card lkpd-bs-card';
     card.innerHTML = `
-      <div style="font-weight:700;font-size:0.95vw;margin-bottom:0.4vw;">${qi + 1}. ${q.statement}</div>
-      <div style="display:flex;gap:1vw;">
-        <label class="lkpd-option-label" style="flex:1;" id="bs-lbl-${qi}-true" onclick="selectBS(${qi}, true)">
-          <input type="radio" name="bs-q-${qi}" value="true">
-          <span>✅ Benar</span>
-        </label>
-        <label class="lkpd-option-label" style="flex:1;" id="bs-lbl-${qi}-false" onclick="selectBS(${qi}, false)">
-          <input type="radio" name="bs-q-${qi}" value="false">
-          <span>❌ Salah</span>
-        </label>
+      <div class="lkpd-bs-row">
+        <div class="lkpd-bs-statement">${qi + 1}. ${q.statement}</div>
+        <div class="lkpd-bs-actions">
+          <button type="button" class="btn-bs-choice btn-bs-true" id="bs-btn-${qi}-true" onclick="selectBS(${qi}, true)">
+            <span>✅</span> Benar
+          </button>
+          <button type="button" class="btn-bs-choice btn-bs-false" id="bs-btn-${qi}-false" onclick="selectBS(${qi}, false)">
+            <span>❌</span> Salah
+          </button>
+        </div>
       </div>
-      <div id="bs-exp-${qi}" style="display:none;margin-top:0.4vw;font-size:0.8vw;padding:4px 8px;border-radius:4px;"></div>
+      <div id="bs-exp-${qi}" class="lkpd-bs-exp" style="display:none;margin-top:0.5vw;font-size:0.82vw;padding:6px 10px;border-radius:6px;line-height:1.4;"></div>
     `;
     container.appendChild(card);
   });
@@ -1694,10 +1816,15 @@ function renderBS() {
 function selectBS(qi, val) {
   if (labState.lkpdSubmitted) return;
   labState.bsAnswers[qi] = val;
-  const key = val ? 'true' : 'false';
-  const otherKey = val ? 'false' : 'true';
-  document.getElementById(`bs-lbl-${qi}-${key}`)?.classList.add('selected');
-  document.getElementById(`bs-lbl-${qi}-${otherKey}`)?.classList.remove('selected');
+  const btnTrue = document.getElementById(`bs-btn-${qi}-true`);
+  const btnFalse = document.getElementById(`bs-btn-${qi}-false`);
+  if (val === true) {
+    btnTrue?.classList.add('selected');
+    btnFalse?.classList.remove('selected');
+  } else {
+    btnFalse?.classList.add('selected');
+    btnTrue?.classList.remove('selected');
+  }
   updateLkpdProgress();
   sfxClick();
 }
@@ -1716,28 +1843,42 @@ function renderMatch() {
   rightCol.innerHTML = '';
   if (svg) svg.innerHTML = '';
 
-  matchLeftItems = cfg.lkpd.bagianC.map((item, idx) => ({
-    id: 'l' + idx,
-    key: item.left,
-    label: item.left,
-    color: item.color || '#00D4FF'
-  }));
+  matchLeftItems = cfg.lkpd.bagianC.map((item, idx) => {
+    const compData = cfg.components ? cfg.components.find(c => c.shortName === item.left || c.id === item.left.toLowerCase()) : null;
+    return {
+      id: 'l' + idx,
+      key: item.left,
+      label: item.left,
+      icon: compData?.icon || '⚙️',
+      role: compData?.role || 'Komponen Inti',
+      color: item.color || '#00D4FF'
+    };
+  });
 
   // Shuffle right items consistently
+  const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
   const shuffled = [...cfg.lkpd.bagianC].sort((a, b) => (b.right.length - a.right.length) || (a.left.charCodeAt(0) - b.left.charCodeAt(0)));
   matchRightItems = shuffled.map((item, idx) => ({
     id: 'r' + idx,
     originalKey: item.left,
+    letter: letters[idx] || String.fromCharCode(65 + idx),
     label: item.right
   }));
 
-  matchLeftItems.forEach((item) => {
+  matchLeftItems.forEach((item, idx) => {
     const btn = document.createElement('button');
-    btn.className = 'match-interactive-btn';
+    btn.className = 'match-interactive-btn match-left-btn';
     btn.id = `match-btn-${item.id}`;
     btn.innerHTML = `
-      <span><strong>${item.label}</strong></span>
-      <span class="match-port-dot" id="dot-${item.id}"></span>
+      <div class="match-left-content">
+        <span class="match-badge match-badge-num">${idx + 1}</span>
+        <span style="font-size:1.3vw;line-height:1;margin-right:2px;">${item.icon}</span>
+        <div style="display:flex;flex-direction:column;line-height:1.2;">
+          <span class="match-btn-text" style="font-weight:800;font-size:0.95vw;color:var(--text-heading);">${item.label}</span>
+          <span style="font-size:0.72vw;color:var(--text-muted);font-weight:500;">${item.role}</span>
+        </div>
+      </div>
+      <span class="match-port-dot" id="dot-${item.id}" title="Hubungkan kabel ke fungsi yang cocok"></span>
     `;
     btn.onclick = () => handleMatchLeftClick(item.key, item.id);
     leftCol.appendChild(btn);
@@ -1745,17 +1886,29 @@ function renderMatch() {
 
   matchRightItems.forEach((item) => {
     const btn = document.createElement('button');
-    btn.className = 'match-interactive-btn';
+    btn.className = 'match-interactive-btn match-right-btn';
     btn.id = `match-btn-${item.id}`;
     btn.innerHTML = `
-      <span class="match-port-dot" id="dot-${item.id}"></span>
-      <span style="font-size:0.82vw;margin-left:0.6vw;line-height:1.35;">${item.label}</span>
+      <span class="match-port-dot" id="dot-${item.id}" title="Hubungkan kabel dari komponen"></span>
+      <div class="match-right-content">
+        <span class="match-badge match-badge-letter">${item.letter}</span>
+        <span class="match-btn-text" style="font-size:0.84vw;line-height:1.45;color:var(--text-main);">${item.label}</span>
+      </div>
     `;
     btn.onclick = () => handleMatchRightClick(item.originalKey, item.id);
     rightCol.appendChild(btn);
   });
 
   setTimeout(drawMatchLines, 80);
+}
+
+function resetMatchCables() {
+  if (labState.lkpdSubmitted) return;
+  labState.matchPairs = {};
+  labState.matchSelected = null;
+  drawMatchLines();
+  updateLkpdProgress();
+  sfxClick();
 }
 
 function handleMatchLeftClick(key, elId) {
@@ -1821,10 +1974,14 @@ function drawMatchLines() {
   const wrapperRect = wrapper.getBoundingClientRect();
   if (wrapperRect.width === 0 || wrapperRect.height === 0) return;
 
-  // Reset button visual classes
+  // Reset button visual classes and dots
   document.querySelectorAll('.match-interactive-btn').forEach(btn => {
     btn.classList.remove('selected', 'matched');
     btn.style.borderColor = '';
+  });
+  document.querySelectorAll('.match-port-dot').forEach(dot => {
+    dot.style.background = '';
+    dot.style.boxShadow = '';
   });
 
   if (labState.matchSelected) {
@@ -1860,6 +2017,14 @@ function drawMatchLines() {
 
     if (leftBtn) leftBtn.style.borderColor = color;
     if (rightBtn) rightBtn.style.borderColor = color;
+    if (leftDot) {
+      leftDot.style.background = color;
+      leftDot.style.boxShadow = `0 0 10px ${color}`;
+    }
+    if (rightDot) {
+      rightDot.style.background = color;
+      rightDot.style.boxShadow = `0 0 10px ${color}`;
+    }
 
     const midX = (x1 + x2) / 2;
 
@@ -1918,6 +2083,17 @@ function submitLKPD() {
       exp.style.background = isCorrect ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)';
       exp.style.color = isCorrect ? 'var(--accent-emerald)' : '#ef4444';
       exp.textContent = (isCorrect ? '✅ Benar! ' : '❌ Salah. ') + q.explanation;
+    }
+    const btnTrue = document.getElementById(`bs-btn-${i}-true`);
+    const btnFalse = document.getElementById(`bs-btn-${i}-false`);
+    if (btnTrue && btnFalse) {
+      btnTrue.disabled = true;
+      btnFalse.disabled = true;
+      if (q.correct === true) {
+        btnTrue.classList.add('bs-correct-key');
+      } else {
+        btnFalse.classList.add('bs-correct-key');
+      }
     }
   });
 
@@ -1993,11 +2169,196 @@ function initReferensi() {
   refInitialized = true;
 }
 
+// ==================== EKSPLORASI DIGITAL: SUB-TAB NAVIGATION ====================
+function switchEksplorasiSubTab(subTabId) {
+  // Update sub-tab buttons
+  document.querySelectorAll('.eksplorasi-subtab-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  const activeBtn = document.getElementById('expl-tab-' + subTabId);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  // Update sub-content panels
+  document.querySelectorAll('.eksplorasi-sub-content').forEach(panel => {
+    panel.classList.remove('active');
+  });
+  const activePanel = document.getElementById('expl-content-' + subTabId);
+  if (activePanel) activePanel.classList.add('active');
+
+  // Lazy init
+  if (subTabId === 'binary') initBinary();
+  if (subTabId === 'rgb') initRGBMixer();
+  if (subTabId === 'logic') initLogicGate();
+
+  sfxClick();
+}
+
+// ==================== SIMULASI: GERBANG LOGIKA ====================
+let logicGateInitialized = false;
+let currentGateType = 'AND';
+let logicInputA = 0;
+let logicInputB = 0;
+
+function initLogicGate() {
+  if (logicGateInitialized) return;
+  logicGateInitialized = true;
+  updateLogicGate();
+}
+
+function switchGateType(type) {
+  currentGateType = type;
+  document.querySelectorAll('.gate-type-btn').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = document.getElementById('gate-btn-' + type);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  // Show/hide Input B for NOT gate
+  const inputBWrap = document.getElementById('logic-input-b-wrap');
+  if (inputBWrap) {
+    inputBWrap.style.display = (type === 'NOT') ? 'none' : 'block';
+  }
+
+  updateLogicGate();
+  sfxClick();
+}
+
+function toggleLogicInput(which) {
+  if (which === 'A') {
+    logicInputA = logicInputA === 0 ? 1 : 0;
+    const btn = document.getElementById('logic-input-a');
+    if (btn) {
+      btn.textContent = logicInputA;
+      btn.classList.toggle('on', logicInputA === 1);
+    }
+  } else {
+    logicInputB = logicInputB === 0 ? 1 : 0;
+    const btn = document.getElementById('logic-input-b');
+    if (btn) {
+      btn.textContent = logicInputB;
+      btn.classList.toggle('on', logicInputB === 1);
+    }
+  }
+  sfxToggle();
+  updateLogicGate();
+}
+
+function updateLogicGate() {
+  let output = 0;
+  const a = logicInputA;
+  const b = logicInputB;
+
+  switch (currentGateType) {
+    case 'AND': output = a & b; break;
+    case 'OR': output = a | b; break;
+    case 'NOT': output = a === 0 ? 1 : 0; break;
+  }
+
+  // Update gate symbol
+  const symbol = document.getElementById('logic-gate-symbol');
+  if (symbol) symbol.textContent = currentGateType;
+
+  // Update output bulb
+  const outputBulb = document.getElementById('logic-output');
+  if (outputBulb) {
+    outputBulb.textContent = output;
+    outputBulb.classList.toggle('on', output === 1);
+  }
+
+  // Update explanation
+  const explanations = {
+    'AND': `<strong>AND (DAN):</strong> Output bernilai <strong>1</strong> hanya jika <em>kedua</em> input bernilai 1. Jika salah satu input 0, output pasti 0.<br>Analogi: Lampu menyala hanya jika saklar A <em>dan</em> saklar B keduanya dinyalakan.`,
+    'OR': `<strong>OR (ATAU):</strong> Output bernilai <strong>1</strong> jika <em>salah satu atau kedua</em> input bernilai 1. Output 0 hanya jika semua input 0.<br>Analogi: Bel berbunyi jika tombol depan <em>atau</em> tombol belakang ditekan.`,
+    'NOT': `<strong>NOT (BUKAN):</strong> Membalikkan nilai input. Jika input 0, output menjadi 1. Jika input 1, output menjadi 0.<br>Analogi: Sakelar pembalik — posisi ON menjadi OFF dan sebaliknya.`,
+  };
+  const expEl = document.getElementById('logic-explanation');
+  if (expEl) expEl.innerHTML = explanations[currentGateType] || '';
+
+  // Update truth table
+  renderTruthTable();
+}
+
+function renderTruthTable() {
+  const table = document.getElementById('logic-truth-table');
+  if (!table) return;
+
+  const a = logicInputA;
+  const b = logicInputB;
+
+  if (currentGateType === 'NOT') {
+    let html = '<thead><tr><th>Input A</th><th>Output (NOT A)</th></tr></thead><tbody>';
+    for (let i = 0; i <= 1; i++) {
+      const out = i === 0 ? 1 : 0;
+      const isActive = i === a;
+      html += `<tr class="${isActive ? 'active-row' : ''}"><td>${i}</td><td>${out}</td></tr>`;
+    }
+    html += '</tbody>';
+    table.innerHTML = html;
+  } else {
+    let html = `<thead><tr><th>A</th><th>B</th><th>Output (${currentGateType})</th></tr></thead><tbody>`;
+    for (let i = 0; i <= 1; i++) {
+      for (let j = 0; j <= 1; j++) {
+        let out;
+        if (currentGateType === 'AND') out = i & j;
+        else out = i | j;
+        const isActive = (i === a && j === b);
+        html += `<tr class="${isActive ? 'active-row' : ''}"><td>${i}</td><td>${j}</td><td>${out}</td></tr>`;
+      }
+    }
+    html += '</tbody>';
+    table.innerHTML = html;
+  }
+}
+
+// ==================== PRINT LKPD ====================
+function printLKPD() {
+  // Pastikan semua section LKPD visible sebelum cetak
+  const sections = ['lkpd-pg', 'lkpd-bs', 'lkpd-match'];
+  const origDisplays = {};
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      origDisplays[id] = el.style.display;
+      el.style.display = 'block';
+    }
+  });
+
+  // Beri waktu browser render, lalu print
+  setTimeout(() => {
+    window.print();
+    // Kembalikan state asal setelah print dialog tutup
+    setTimeout(() => {
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && origDisplays[id] !== undefined) {
+          el.style.display = origDisplays[id];
+        }
+      });
+    }, 500);
+  }, 150);
+}
+
+// ==================== PENGEMBANG: SWITCH DEV QUOTE OPTIONS ====================
+function switchDevQuote(opt) {
+  const textEl = document.getElementById('dev-desc-text');
+  if (!textEl) return;
+  
+  const quotes = {
+    1: 'Media <strong>Lab Maya Perakitan Komputer</strong> hadir sebagai jembatan belajar interaktif bagi peserta didik SMP Fase D dalam memahami arsitektur komputer secara visual dan aplikatif. Melalui pengalaman <em>hands-on</em> merakit komponen motherboard ATX, bereksperimen dengan bilangan biner, logika gerbang digital, dan spektrum warna RGB, siswa diajak mengeksplorasi abstraksi komputasional secara nyata, menyenangkan, dan berorientasi pada penguatan nalar kritis.',
+    2: 'Laboratorium virtual ini dikembangkan untuk menghadirkan pengalaman merakit perangkat keras dan menguji sistem komputer (<em>POST diagnostic</em>) tanpa keterbatasan fasilitas fisik laboratorium sekolah. Dirancang khusus agar peserta didik SMP Fase D dapat bereksperimen secara mandiri, berani mencoba (<em>trial and error</em>), serta menghubungkan perangkat keras dengan representasi data digital secara komprehensif.',
+    3: 'Memadukan ketelitian logika perangkat keras (<em>hardware</em>) dan dinamika representasi data digital (<em>software</em>), <strong>Lab Maya Informatika</strong> mengajak generasi muda menyelami fondasi sistem komputasi modern. Media ini dirancang untuk menumbuhkan rasa ingin tahu, daya analisis kritis, serta penguasaan keterampilan berpikir komputasional menuju generasi Indonesia Emas 2045.'
+  };
+
+  if (quotes[opt]) {
+    textEl.innerHTML = quotes[opt];
+    document.querySelectorAll('.dev-opt-btn').forEach((btn, idx) => {
+      btn.classList.toggle('active', idx + 1 === opt);
+    });
+    sfxClick();
+  }
+}
+
 // ==================== INITIALIZATION ON LOAD ====================
 document.addEventListener('DOMContentLoaded', () => {
-  generateStars();
-  checkNameInput();
+  initWelcomeParticles();
   initTeori();
   initRakitPC();
 });
-
