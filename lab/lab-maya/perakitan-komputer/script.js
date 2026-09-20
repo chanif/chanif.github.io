@@ -162,7 +162,7 @@ function launchConfetti() {
   draw();
 }
 
-function showBootCelebration() {
+function showBootCelebration(hasDedicatedGpu = true) {
   const cfg = window.LAB_CONFIG;
   const modal = document.getElementById('modal-boot-celebration');
   if (!modal) return;
@@ -172,18 +172,48 @@ function showBootCelebration() {
     nameEl.textContent = 'Sobat Informatika';
   }
 
+  const titleEl = modal.querySelector('.celebration-title');
+  const subtitleEl = modal.querySelector('.celebration-subtitle');
+
+  if (hasDedicatedGpu) {
+    if (titleEl) titleEl.textContent = '🎉 HORE! PC BERHASIL DIRAKIT & MENYALA MAKSIMAL! 🎉';
+    if (subtitleEl) subtitleEl.innerHTML = 'Selamat, <strong>Sobat Informatika</strong>! Kamu berhasil merakit komputer dengan lengkap termasuk Kartu Grafis diskrit (GPU) untuk performa visual dan 3D rendering tertinggi.';
+  } else {
+    if (titleEl) titleEl.textContent = '🖥️ HORE! PC MENYALA DENGAN GRAFIS TERINTEGRASI (iGPU) ⚡';
+    if (subtitleEl) subtitleEl.innerHTML = 'Selamat, <strong>Sobat Informatika</strong>! Komputer berhasil menyala dan lulus pengujian BIOS POST. Karena <strong>Kartu Grafis (GPU)</strong> diskrit belum dipasang, sistem menggunakan <em>Integrated Graphics</em> (iGPU bawaan CPU) dengan kualitas tampilan visual standar/rendah.';
+  }
+
   const specsGrid = document.getElementById('celeb-specs-grid');
   if (specsGrid && cfg) {
     specsGrid.innerHTML = '';
     cfg.components.filter(c => !c.isDistractor).forEach(comp => {
+      const isInstalled = !!(labState.installed[comp.id] && (
+        (comp.id === 'cpu' && labState.slotOccupant['slot-cpu'] === 'cpu') ||
+        (comp.id === 'ram' && labState.slotOccupant['slot-ram'] === 'ram') ||
+        (comp.id === 'ssd' && labState.slotOccupant['slot-storage'] === 'ssd') ||
+        (comp.id === 'gpu' && labState.slotOccupant['slot-gpu'] === 'gpu') ||
+        (comp.id === 'psu' && labState.slotOccupant['slot-psu'] === 'psu')
+      ));
+
+      const isGpu = comp.id === 'gpu';
       const card = document.createElement('div');
       card.className = 'celeb-spec-card';
+      
+      let statusHtml = '';
+      if (isGpu && !isInstalled) {
+        statusHtml = '<div class="celeb-spec-status" style="color:#f59e0b;font-weight:700;">⚠️ iGPU Bawaan CPU (Standar/Rendah)</div>';
+      } else if (isInstalled) {
+        statusHtml = '<div class="celeb-spec-status" style="color:#10b981;font-weight:700;">✓ Normal &amp; Siap</div>';
+      } else {
+        statusHtml = '<div class="celeb-spec-status" style="color:#94a3b8;">Belum Terpasang</div>';
+      }
+
       card.innerHTML = `
         <div class="celeb-spec-icon" style="background:${comp.color}22;border:2px solid ${comp.color};border-radius:10px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;padding:5px;">
-          <img src="${comp.svg}" alt="${comp.name}" style="max-width:100%;max-height:100%;object-fit:contain;">
+          <img src="${comp.svg}" alt="${comp.name}" style="max-width:100%;max-height:100%;object-fit:contain;${(!isInstalled && isGpu) ? 'opacity:0.45;filter:grayscale(0.6);' : ''}">
         </div>
-        <div class="celeb-spec-name">${comp.shortName}</div>
-        <div class="celeb-spec-status" style="color:#10b981;">✓ Normal & Siap</div>
+        <div class="celeb-spec-name">${isGpu && !isInstalled ? 'iGPU (Bawaan CPU)' : comp.shortName}</div>
+        ${statusHtml}
       `;
       specsGrid.appendChild(card);
     });
@@ -323,6 +353,7 @@ function switchLabTab(tabId) {
   if (tabId === 'sim-rakit-pc') {
     initRakitPC();
     updateInstalledCount();
+    setTimeout(fitMotherboard, 50);
   }
   if (tabId === 'eksplorasi') {
     initBinary();
@@ -334,6 +365,7 @@ function switchLabTab(tabId) {
 
   sfxClick();
 }
+window.switchTab = switchLabTab;
 
 // ==================== INIT: TEORI ====================
 let teoriInitialized = false;
@@ -366,6 +398,43 @@ function initTeori() {
   });
 
   renderTeoriKomponenGrid();
+  if (cfg.teori.tabs.length > 0) {
+    updateTeoriNavButton(cfg.teori.tabs[0].id);
+  }
+}
+
+function updateTeoriNavButton(tabId) {
+  const cfg = window.LAB_CONFIG;
+  const nextBtn = document.getElementById('btn-teori-next');
+  if (!nextBtn || !cfg || !cfg.teori || !cfg.teori.tabs) return;
+
+  const idx = cfg.teori.tabs.findIndex(t => t.id === tabId);
+  if (idx >= 0 && idx < cfg.teori.tabs.length - 1) {
+    const nextTab = cfg.teori.tabs[idx + 1];
+    nextBtn.innerHTML = `Lanjut ke: ${nextTab.title} →`;
+    nextBtn.style.background = 'linear-gradient(135deg, var(--tab-active, #4f46e5), #06b6d4)';
+  } else {
+    // Pada materi teori terakhir, berlanjut ke Prosedur Praktik
+    nextBtn.innerHTML = `Lanjut ke Prosedur Praktik 📝 →`;
+    nextBtn.style.background = 'linear-gradient(135deg, #ff7700, #ffaa00)';
+  }
+}
+
+function nextTeoriMateri() {
+  const cfg = window.LAB_CONFIG;
+  if (!cfg || !cfg.teori || !cfg.teori.tabs) return;
+  const allBtns = Array.from(document.querySelectorAll('.teori-subtab-btn'));
+  const currentTab = document.querySelector('.teori-subtab-btn.active');
+  const currentIndex = allBtns.indexOf(currentTab);
+
+  if (currentIndex >= 0 && currentIndex < cfg.teori.tabs.length - 1) {
+    const nextTab = cfg.teori.tabs[currentIndex + 1];
+    switchTeoriTab(nextTab.id);
+    const card = document.querySelector('#sub-teori .card');
+    if (card) card.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    switchLabTab('prosedur');
+  }
 }
 
 function switchTeoriTab(tabId) {
@@ -378,6 +447,7 @@ function switchTeoriTab(tabId) {
     p.classList.toggle('active', isActive);
     p.style.display = isActive ? 'block' : 'none';
   });
+  updateTeoriNavButton(tabId);
   sfxClick();
 }
 
@@ -469,6 +539,42 @@ function initRakitPC() {
   rakitInitialized = true;
   renderComponentShelf();
   setupDragDrop();
+  initMotherboardAutoFit();
+}
+
+function fitMotherboard() {
+  const wrapper = document.getElementById('mb-board-wrapper');
+  const inner = document.getElementById('mb-board-inner');
+  if (!wrapper || !inner) return;
+
+  const w = wrapper.clientWidth;
+  const h = wrapper.clientHeight;
+  if (w <= 0 || h <= 0) return;
+
+  const targetRatio = 680 / 540;
+  let finalW = w;
+  let finalH = w / targetRatio;
+
+  if (finalH > h) {
+    finalH = h;
+    finalW = h * targetRatio;
+  }
+
+  inner.style.width = Math.floor(finalW) + 'px';
+  inner.style.height = Math.floor(finalH) + 'px';
+}
+
+function initMotherboardAutoFit() {
+  const wrapper = document.getElementById('mb-board-wrapper');
+  if (!wrapper) return;
+
+  fitMotherboard();
+  if (window.ResizeObserver) {
+    new ResizeObserver(() => {
+      fitMotherboard();
+    }).observe(wrapper);
+  }
+  window.addEventListener('resize', fitMotherboard);
 }
 
 function renderComponentShelf() {
@@ -494,17 +600,13 @@ function renderComponentShelf() {
         <div class="comp-title">${comp.name}</div>
         <div class="comp-spec-tag">${comp.techSpec || comp.shortName}</div>
         <span class="comp-status-pill" id="pill-status-${comp.id}">
-          ${isInstalled ? '✓ Terpasang' : '✊ Tarik / Pasang'}
+          ${isInstalled ? '✓ Terpasang' : '✊ Tarik ke Soket'}
         </span>
       </div>
       <button class="comp-help-btn" onclick="event.stopPropagation();showComponentInfo('${comp.id}')" title="Detail Spesifikasi ${comp.name}">?</button>
     `;
 
-    card.addEventListener('click', () => {
-      if (labState.installed[comp.id]) return;
-      clickToPlace(comp.id);
-    });
-
+    // Komponen sengaja TIDAK dipasang otomatis saat di-klik agar user tertantang melakukan drag & drop manual
     shelf.appendChild(card);
   });
 
@@ -750,13 +852,7 @@ function removeComponent(compId) {
 function autoAssemble() {
   const cfg = window.LAB_CONFIG;
   if (!cfg) return;
-
-  const currentCount = Object.values(labState.installed).filter(v => v).length;
-  if (currentCount === 0) {
-    showModal('modal-auto-rakit');
-    return;
-  }
-  executeAutoAssemble();
+  showModal('modal-auto-rakit');
 }
 
 function executeAutoAssemble() {
@@ -1225,24 +1321,16 @@ function testBoot() {
       setPostLed('vga', true);
 
       setTimeout(() => {
-        if (!installed['gpu']) {
-          const scenario = cfg.bootScenarios.missingGPU;
-          if (pill) {
-            pill.className = 'mb-telemetry-pill status-error';
-            pill.textContent = 'STATUS: NO GPU';
-          }
-          typeBootSequence(monitor, scenario.postSequence, 'warn-text', () => {
-            sfxBeepPattern('single-long');
-          });
-          return;
-        }
+        const hasGpu = !!(installed['gpu'] && labState.slotOccupant && labState.slotOccupant['slot-gpu'] === 'gpu');
 
-        // VGA Passed, check Storage (BOOT)
+        // Catatan Edukatif: Kartu Grafis diskrit (GPU) bukan syarat mutlak komputer mati total.
+        // Prosesor modern memiliki chip Grafis Terintegrasi (iGPU). Jika GPU diskrit tidak dipasang,
+        // display tetap menyala melalui iGPU CPU namun dengan peringatan kualitas grafis standar/rendah.
         setPostLed('vga', false);
         setPostLed('boot', true);
 
         setTimeout(() => {
-          if (!installed['ssd']) {
+          if (!installed['ssd'] || (labState.slotOccupant && labState.slotOccupant['slot-storage'] !== 'ssd')) {
             const scenario = cfg.bootScenarios.missingSSD || cfg.bootScenarios.missingStorage;
             if (pill) {
               pill.className = 'mb-telemetry-pill status-error';
@@ -1254,21 +1342,21 @@ function testBoot() {
             return;
           }
 
-          // ALL HARDWARE PASSED!
+          // SEMUA PERANGKAT UTAMA LULUS PENGUJIAN! (Baik dengan GPU diskrit maupun iGPU bawaan CPU)
           setPostLed('boot', false);
           const bootLed = document.getElementById('live-led-boot');
           if (bootLed) bootLed.classList.add('active');
 
           if (pill) {
-            pill.className = 'mb-telemetry-pill status-running';
-            pill.textContent = 'STATUS: RUNNING';
+            pill.className = hasGpu ? 'mb-telemetry-pill status-running' : 'mb-telemetry-pill status-warning';
+            pill.textContent = hasGpu ? 'STATUS: RUNNING (GPU DISKRIT)' : 'STATUS: RUNNING (iGPU STANDAR)';
           }
 
-          const scenario = cfg.bootScenarios.allInstalled;
-          typeBootSequence(monitor, scenario.postSequence, 'ok-text', () => {
+          const scenario = hasGpu ? cfg.bootScenarios.allInstalled : cfg.bootScenarios.integratedGraphicsBoot;
+          typeBootSequence(monitor, scenario.postSequence, hasGpu ? 'ok-text' : 'warn-text', () => {
             sfxBootChime();
             setTimeout(() => {
-              showBootCelebration();
+              showBootCelebration(hasGpu);
             }, 800);
           });
         }, 300);

@@ -1,963 +1,1118 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Lab Perakitan Komputer — Laboratorium Maya Informatika SMP Fase D</title>
-  <meta name="description" content="Laboratorium Maya interaktif untuk memahami komponen komputer, perakitan PC virtual, sistem bilangan biner, dan warna RGB. Informatika Fase D SMP.">
+  <meta name="description"
+    content="Laboratorium Maya interaktif untuk memahami komponen komputer, perakitan PC virtual, sistem bilangan biner, dan warna RGB. Informatika Fase D SMP.">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- Rotate Device Overlay (Mobile Portrait) -->
-<div class="rotate-device-overlay">
-  <div class="rotate-icon">📱</div>
-  <h2>Putar Layar ke Landscape</h2>
-  <p>Lab Maya ini dirancang untuk tampilan mendatar (16:9). Silakan putar gawaimu ke posisi horizontal agar nyaman digunakan.</p>
-</div>
-
-<!-- Main 16:9 App Container -->
-<div class="app-container" id="app">
-
-  <!-- ============================================================ -->
-  <!-- WELCOME / SPLASH SCREEN (Tanpa Input Identitas)              -->
-  <!-- ============================================================ -->
-  <div id="welcome-screen">
-    <!-- Background ilustrasi + overlay gradasi -->
-    <div class="welcome-bg-img"></div>
-    <div class="welcome-overlay"></div>
-    <!-- Canvas animasi partikel -->
-    <canvas id="welcome-particle-canvas" class="welcome-particle-canvas"></canvas>
-    <!-- Floating hardware icons (dengan class eksplisit) -->
-    <div class="welcome-float-icon fi-1">🧠</div>
-    <div class="welcome-float-icon fi-2">💾</div>
-    <div class="welcome-float-icon fi-3">🎮</div>
-    <div class="welcome-float-icon fi-4">⚡</div>
-    <div class="welcome-float-icon fi-5">🔌</div>
-    <div class="welcome-float-icon fi-6">🖥️</div>
-
-    <!-- Clone 2 Logo Top Kiri Kanan dari MPI Jaringan (tanpa welcome-logo-bar) -->
-    <div class="logo-top left">
-      <img src="assets/kemendikdasmen lengkap.png" alt="Logo Kemendikdasmen" id="logo-kemendikdasmen-cover">
-    </div>
-    <div class="logo-top right">
-      <img src="assets/sobat + bermutu + ramah.png" alt="Logo Sobat SMP" id="logo-sobat-cover">
-    </div>
-
-    <!-- Konten tengah -->
-    <div class="welcome-inner">
-      <div class="eyebrow-badge">LAB MAYA | LABORATORIUM VIRTUAL</div>
-      <h1>Lab Perakitan<br>Komputer</h1>
-      <p>Rakit komponen ke motherboard virtual, jelajahi sakelar biner, warna RGB, dan gerbang logika — semua dalam satu lab interaktif!</p>
-      <div class="welcome-meta-pill">Informatika — Fase D</div>
-      <div class="welcome-buttons">
-        <button class="btn-welcome-start" id="start-btn" onclick="startGame()">▶ MASUK LAB</button>
-        <button class="btn-welcome-guide" onclick="showModal('panduan-modal')">📖 Panduan</button>
-      </div>
-    </div>
+  <!-- Rotate Device Overlay (Mobile Portrait) -->
+  <div class="rotate-device-overlay">
+    <div class="rotate-icon">📱</div>
+    <h2>Putar Layar ke Landscape</h2>
+    <p>Lab Maya ini dirancang untuk tampilan mendatar (16:9). Silakan putar gawaimu ke posisi horizontal agar nyaman
+      digunakan.</p>
   </div>
 
-  <!-- ============================================================ -->
-  <!-- TOP HEADER BAR                                              -->
-  <!-- ============================================================ -->
-  <header>
-    <div class="header-brand">
-      <span class="app-icon">🖥️</span>
-      <span class="app-title">Lab Perakitan Komputer</span>
-      <span class="app-badge">Informatika SMP</span>
-    </div>
-    <div class="tools">
-      <button class="icon-btn" onclick="toggleAudio()" id="sound-btn" title="Aktifkan/Bisukan Audio">🔊 Suara</button>
-      <button class="icon-btn" onclick="toggleTheme()" id="theme-btn" title="Ubah Tema Tampilan">🌙 Gelap</button>
-      <button class="icon-btn" onclick="toggleFullScreen()" title="Layar Penuh">⤢ Layar Penuh</button>
-    </div>
-  </header>
+  <!-- Main 16:9 App Container -->
+  <div class="app-container" id="app">
 
-  <!-- ============================================================ -->
-  <!-- UNIFIED CONTENT AREA                                         -->
-  <!-- ============================================================ -->
-  <div class="content-area" id="content-area">
+    <!-- ============================================================ -->
+    <!-- WELCOME / SPLASH SCREEN (Tanpa Input Identitas)              -->
+    <!-- ============================================================ -->
+    <div id="welcome-screen">
+      <!-- Background ilustrasi + overlay gradasi -->
+      <div class="welcome-bg-img"></div>
+      <div class="welcome-overlay"></div>
+      <!-- Canvas animasi partikel -->
+      <canvas id="welcome-particle-canvas" class="welcome-particle-canvas"></canvas>
+      <!-- Floating hardware icons (dengan class eksplisit) -->
+      <div class="welcome-float-icon fi-1">🧠</div>
+      <div class="welcome-float-icon fi-2">💾</div>
+      <div class="welcome-float-icon fi-3">🎮</div>
+      <div class="welcome-float-icon fi-4">⚡</div>
+      <div class="welcome-float-icon fi-5">🔌</div>
+      <div class="welcome-float-icon fi-6">🖥️</div>
 
-    <!-- HORIZONTAL SCENARIO / MENU TABS -->
-    <div class="scenario-switch" id="labmaya-menu-switch">
-      <button class="scenario-btn active" id="tab-btn-teori" onclick="switchLabTab('teori')">
-        <span>📚</span> Teori
-      </button>
-      <button class="scenario-btn" id="tab-btn-prosedur" onclick="switchLabTab('prosedur')">
-        <span>📝</span> Prosedur
-      </button>
-      <button class="scenario-btn btn-featured" id="tab-btn-sim-rakit-pc" onclick="switchLabTab('sim-rakit-pc')">
-        <span>🖥️</span> <strong>Rakit Komputer</strong>
-      </button>
-      <button class="scenario-btn" id="tab-btn-eksplorasi" onclick="switchLabTab('eksplorasi')">
-        <span>📡</span> Eksplorasi Digital
-      </button>
-      <button class="scenario-btn" id="tab-btn-lkpd" onclick="switchLabTab('lkpd')">
-        <span>✍️</span> LKPD &amp; Kuis
-      </button>
-      <button class="scenario-btn" id="tab-btn-pengembang" onclick="switchLabTab('pengembang')">
-        <span>👨‍💻</span> Pengembang
-      </button>
-      <button class="scenario-btn" id="tab-btn-referensi" onclick="switchLabTab('referensi')">
-        <span>📖</span> Referensi
-      </button>
+      <!-- Clone 2 Logo Top Kiri Kanan dari MPI Jaringan (tanpa welcome-logo-bar) -->
+      <div class="logo-top left">
+        <img src="assets/kemendikdasmen lengkap.png" alt="Logo Kemendikdasmen" id="logo-kemendikdasmen-cover">
+      </div>
+      <div class="logo-top right">
+        <img src="assets/sobat + bermutu + ramah.png" alt="Logo Sobat SMP" id="logo-sobat-cover">
+      </div>
+
+      <!-- Konten tengah -->
+      <div class="welcome-inner">
+        <div class="eyebrow-badge">LAB MAYA | LABORATORIUM VIRTUAL</div>
+        <h1>Lab Perakitan Komputer</h1>
+        <p>Bongkar pasang perangkat keras komputer virtual, uji nyala mesin secara langsung, dan selami logika digital dalam satu laboratorium maya yang seru!</p>
+        <div class="welcome-meta-pill">Informatika — Fase D</div>
+        <div class="welcome-buttons">
+          <button class="btn-welcome-start" id="start-btn" onclick="startGame()">▶ MASUK LAB</button>
+          <button class="btn-welcome-guide" onclick="showModal('panduan-modal')">📖 Panduan</button>
+        </div>
+      </div>
     </div>
 
-    <!-- ========================================================== -->
-    <!-- SUB-PANEL 1: LAB PERAKITAN PC (FOKUS UTAMA)                 -->
-    <!-- ========================================================== -->
-    <div id="sub-sim-rakit-pc" class="game-sub-panel">
-      <div class="card" style="border-top-color: var(--comet-amber);">
-        <div class="rakit-workspace-grid">
-          <!-- Sisi Kiri: Rak Komponen -->
-          <div class="rakit-shelf-col">
-            <div class="shelf-header">
-              <span>🔧 Komponen</span>
-              <span style="font-size:0.68vw;color:var(--text-muted);font-family:var(--font-mono);" id="shelf-status-txt">Tarik ke Soket</span>
-            </div>
-            <!-- Friendly Onboarding Tip for first-time builders -->
-            <div id="rakit-onboarding-hint" class="onboarding-hint-card">
-              <span class="hint-icon">👋</span>
-              <div class="hint-text">
-                <strong>Mulai dari sini:</strong> Tarik <strong>CPU</strong> ke soket di tengah motherboard!
+    <!-- ============================================================ -->
+    <!-- TOP HEADER BAR                                              -->
+    <!-- ============================================================ -->
+    <header>
+      <div class="header-brand">
+        <span class="app-icon">🖥️</span>
+        <span class="app-title">Lab Perakitan Komputer</span>
+        <span class="app-badge">Informatika SMP</span>
+      </div>
+      <div class="tools">
+        <button class="icon-btn" onclick="toggleAudio()" id="sound-btn" title="Aktifkan/Bisukan Audio">🔊 Suara</button>
+        <button class="icon-btn" onclick="toggleTheme()" id="theme-btn" title="Ubah Tema Tampilan">🌙 Gelap</button>
+        <button class="icon-btn" onclick="toggleFullScreen()" title="Layar Penuh">⤢ Layar Penuh</button>
+      </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- UNIFIED CONTENT AREA                                         -->
+    <!-- ============================================================ -->
+    <div class="content-area" id="content-area">
+
+      <!-- HORIZONTAL SCENARIO / MENU TABS -->
+      <div class="scenario-switch" id="labmaya-menu-switch">
+        <button class="scenario-btn active" id="tab-btn-teori" onclick="switchLabTab('teori')">
+          <span>📚</span> Teori
+        </button>
+        <button class="scenario-btn" id="tab-btn-prosedur" onclick="switchLabTab('prosedur')">
+          <span>📝</span> Prosedur
+        </button>
+        <button class="scenario-btn btn-featured" id="tab-btn-sim-rakit-pc" onclick="switchLabTab('sim-rakit-pc')">
+          <span>🖥️</span> <strong>Rakit Komputer</strong>
+        </button>
+        <button class="scenario-btn" id="tab-btn-eksplorasi" onclick="switchLabTab('eksplorasi')">
+          <span>📡</span> Eksplorasi Digital
+        </button>
+        <button class="scenario-btn" id="tab-btn-lkpd" onclick="switchLabTab('lkpd')">
+          <span>✍️</span> LKPD &amp; Kuis
+        </button>
+        <button class="scenario-btn" id="tab-btn-pengembang" onclick="switchLabTab('pengembang')">
+          <span>👨‍💻</span> Pengembang
+        </button>
+        <button class="scenario-btn" id="tab-btn-referensi" onclick="switchLabTab('referensi')">
+          <span>📖</span> Referensi
+        </button>
+      </div>
+
+      <!-- ========================================================== -->
+      <!-- SUB-PANEL 1: LAB PERAKITAN PC (FOKUS UTAMA)                 -->
+      <!-- ========================================================== -->
+      <div id="sub-sim-rakit-pc" class="game-sub-panel">
+        <div class="card" style="border-top-color: var(--comet-amber);">
+          <div class="rakit-workspace-grid">
+            <!-- Sisi Kiri: Rak Komponen -->
+            <div class="rakit-shelf-col">
+              <div class="shelf-header">
+                <span>🔧 Komponen</span>
+                <span style="font-size:0.68vw;color:var(--text-muted);font-family:var(--font-mono);"
+                  id="shelf-status-txt">Tarik ke Soket</span>
+              </div>
+              <!-- Friendly Onboarding Tip for first-time builders -->
+              <div id="rakit-onboarding-hint" class="onboarding-hint-card">
+                <span class="hint-icon">👋</span>
+                <div class="hint-text">
+                  <strong>Mulai dari sini:</strong> Tarik <strong>CPU</strong> ke soket di tengah motherboard!
+                </div>
+              </div>
+              <div class="shelf-items-list" id="component-shelf">
+                <!-- Rendered dynamically via script.js -->
               </div>
             </div>
-            <div class="shelf-items-list" id="component-shelf">
-              <!-- Rendered dynamically via script.js -->
-            </div>
-          </div>
 
-          <!-- Sisi Kanan: Meja Motherboard & Monitor -->
-          <div class="motherboard-col">
-            <div class="mb-stage-panel motherboard-panel" id="motherboard-panel">
-              <div class="mb-top-telemetry">
-                <span style="font-weight:700;letter-spacing:0.5px;">MOTHERBOARD ATX — PAPAN SIRKUIT KOMPUTER</span>
-                <div style="display:flex;gap:0.4vw;align-items:center;">
-                  <span class="mb-telemetry-pill" id="mb-power-pill">STATUS: STANDBY</span>
-                  <span class="mb-telemetry-pill" id="mb-installed-pill">TERPASANG: <strong id="installed-count">0</strong>/5</span>
+            <!-- Sisi Kanan: Meja Motherboard & Monitor -->
+            <div class="motherboard-col">
+              <div class="mb-stage-panel motherboard-panel" id="motherboard-panel">
+                <div class="mb-top-telemetry">
+                  <span style="font-weight:700;letter-spacing:0.5px;">MOTHERBOARD ATX — PAPAN SIRKUIT KOMPUTER</span>
+                  <div style="display:flex;gap:0.4vw;align-items:center;">
+                    <span class="mb-telemetry-pill" id="mb-power-pill">STATUS: STANDBY</span>
+                    <span class="mb-telemetry-pill" id="mb-installed-pill">TERPASANG: <strong
+                        id="installed-count">0</strong>/5</span>
+                  </div>
+                </div>
+
+                <!-- Visual Motherboard Surface -->
+                <div class="mb-board-wrapper" id="mb-board-wrapper">
+                  <div class="mb-board-inner" id="mb-board-inner">
+                    <!-- Base Motherboard Vector Blueprint -->
+                    <img src="assets/images/motherboard-atx.svg" alt="Motherboard Blueprint" class="mb-base-svg"
+                      draggable="false">
+
+                    <!-- Live Hardware Diagnostic LEDs (Top-Right) -->
+                    <div class="mb-post-leds-live">
+                      <div class="led-dot led-cpu" id="live-led-cpu" title="Diagnostic LED: CPU"></div>
+                      <div class="led-dot led-dram" id="live-led-dram" title="Diagnostic LED: DRAM"></div>
+                      <div class="led-dot led-vga" id="live-led-vga" title="Diagnostic LED: VGA"></div>
+                      <div class="led-dot led-boot" id="live-led-boot" title="Diagnostic LED: BOOT"></div>
+                    </div>
+
+                    <!-- Overlaid Snap-In Physical Sockets -->
+                    <!-- 1. CPU LGA 1700 Socket -->
+                    <div class="mb-physical-slot slot-cpu" id="slot-cpu" data-accepts="cpu"
+                      onclick="handleSlotClick('cpu')" title="Soket CPU LGA 1700">
+                      <div class="slot-target-ring">
+                        <span class="slot-target-name">Soket CPU</span>
+                      </div>
+                      <div class="slot-installed-component" id="installed-cpu"></div>
+                    </div>
+
+                    <!-- 2. RAM DDR4 DIMM Slot -->
+                    <div class="mb-physical-slot slot-ram" id="slot-ram" data-accepts="ram"
+                      onclick="handleSlotClick('ram')" title="Slot DIMM DDR4 RAM">
+                      <div class="slot-target-ring">
+                        <span class="slot-target-name">Slot RAM</span>
+                      </div>
+                      <div class="slot-installed-component" id="installed-ram"></div>
+                    </div>
+
+                    <!-- 3. M.2 NVMe SSD Slot -->
+                    <div class="mb-physical-slot slot-storage" id="slot-storage" data-accepts="ssd"
+                      onclick="handleSlotClick('ssd')" title="Slot M.2 NVMe SSD">
+                      <div class="slot-target-ring">
+                        <span class="slot-target-name">Slot M.2 SSD</span>
+                      </div>
+                      <div class="slot-installed-component" id="installed-ssd"></div>
+                    </div>
+
+                    <!-- 4. PCIe x16 GPU Slot -->
+                    <div class="mb-physical-slot slot-gpu" id="slot-gpu" data-accepts="gpu"
+                      onclick="handleSlotClick('gpu')" title="Slot PCIe x16 GPU">
+                      <div class="slot-target-ring">
+                        <span class="slot-target-name">PCIe x16 GPU</span>
+                      </div>
+                      <div class="slot-installed-component" id="installed-gpu"></div>
+                    </div>
+
+                    <!-- 5. 24-Pin ATX Power Header -->
+                    <div class="mb-physical-slot slot-psu" id="slot-psu" data-accepts="psu"
+                      onclick="handleSlotClick('psu')" title="Konektor Daya ATX 24-Pin">
+                      <div class="slot-target-ring">
+                        <span class="slot-target-name">Port 24P PSU</span>
+                      </div>
+                      <div class="slot-installed-component" id="installed-psu"></div>
+                    </div>
+
+                  </div><!-- /mb-board-inner -->
+                </div><!-- /mb-board-wrapper -->
+              </div>
+            </div>
+
+            <!-- Sisi Kanan: Kontrol Perakitan & Terminal BIOS -->
+            <div class="rakit-bottom-bar">
+              <div class="shelf-header">
+                <span>🖥️ Kontrol &amp; Diagnostik</span>
+                <span style="font-size:0.68vw;color:var(--text-muted);font-family:var(--font-mono);"
+                  id="bench-status-txt">BIOS v4.2</span>
+              </div>
+
+              <div class="controls-btns">
+                <button class="btn-power" id="btn-power" onclick="testBoot()">
+                  <span>⚡</span> POWER ON / UJI BOOT
+                </button>
+                <div class="sub-ctrl-row">
+                  <button class="btn-auto" onclick="autoAssemble()" title="Pasang semua komponen otomatis">⚡ Auto
+                    Rakit</button>
+                  <button class="btn-reset-build" onclick="resetBuild()" title="Bongkar kembali ke rak">🔄
+                    Reset</button>
                 </div>
               </div>
 
-              <!-- Visual Motherboard Surface -->
-              <div class="mb-board-wrapper" id="mb-board-wrapper">
-                <div class="mb-board-inner" id="mb-board-inner">
-                  <!-- Base Motherboard Vector Blueprint -->
-                  <img src="assets/images/motherboard-atx.svg" alt="Motherboard Blueprint" class="mb-base-svg" draggable="false">
-
-                  <!-- Live Hardware Diagnostic LEDs (Top-Right) -->
-                  <div class="mb-post-leds-live">
-                    <div class="led-dot led-cpu" id="live-led-cpu" title="Diagnostic LED: CPU"></div>
-                    <div class="led-dot led-dram" id="live-led-dram" title="Diagnostic LED: DRAM"></div>
-                    <div class="led-dot led-vga" id="live-led-vga" title="Diagnostic LED: VGA"></div>
-                    <div class="led-dot led-boot" id="live-led-boot" title="Diagnostic LED: BOOT"></div>
+              <div class="boot-monitor-frame">
+                <div class="crt-bezel-header">
+                  <span>TERMINAL DIAGNOSTIK BIOS</span>
+                  <span id="crt-power-led"
+                    style="width:7px;height:7px;border-radius:50%;background:#555;display:inline-block;"></span>
+                </div>
+                <div class="boot-monitor" id="boot-monitor">
+                  <div id="monitor-content">
+                    &gt; SYSTEM STANDBY — Pasang komponen ke motherboard lalu tekan POWER ON...
+                    <span class="cursor-blink">_</span>
                   </div>
-
-                  <!-- Overlaid Snap-In Physical Sockets -->
-                  <!-- 1. CPU LGA 1700 Socket -->
-                  <div class="mb-physical-slot slot-cpu" id="slot-cpu" data-accepts="cpu" onclick="handleSlotClick('cpu')" title="Soket CPU LGA 1700">
-                    <div class="slot-target-ring">
-                      <span class="slot-target-icon">🧠</span>
-                      <span class="slot-target-name">Soket CPU</span>
-                    </div>
-                    <div class="slot-installed-component" id="installed-cpu"></div>
-                  </div>
-
-                  <!-- 2. RAM DDR4 DIMM Slot -->
-                  <div class="mb-physical-slot slot-ram" id="slot-ram" data-accepts="ram" onclick="handleSlotClick('ram')" title="Slot DIMM DDR4 RAM">
-                    <div class="slot-target-ring">
-                      <span class="slot-target-icon">⚡</span>
-                      <span class="slot-target-name">Slot RAM</span>
-                    </div>
-                    <div class="slot-installed-component" id="installed-ram"></div>
-                  </div>
-
-                  <!-- 3. M.2 NVMe SSD Slot -->
-                  <div class="mb-physical-slot slot-storage" id="slot-storage" data-accepts="ssd" onclick="handleSlotClick('ssd')" title="Slot M.2 NVMe SSD">
-                    <div class="slot-target-ring">
-                      <span class="slot-target-icon">💾</span>
-                      <span class="slot-target-name">Slot M.2 SSD</span>
-                    </div>
-                    <div class="slot-installed-component" id="installed-ssd"></div>
-                  </div>
-
-                  <!-- 4. PCIe x16 GPU Slot -->
-                  <div class="mb-physical-slot slot-gpu" id="slot-gpu" data-accepts="gpu" onclick="handleSlotClick('gpu')" title="Slot PCIe x16 GPU">
-                    <div class="slot-target-ring">
-                      <span class="slot-target-icon">🎮</span>
-                      <span class="slot-target-name">PCIe x16 GPU</span>
-                    </div>
-                    <div class="slot-installed-component" id="installed-gpu"></div>
-                  </div>
-
-                  <!-- 5. 24-Pin ATX Power Header -->
-                  <div class="mb-physical-slot slot-psu" id="slot-psu" data-accepts="psu" onclick="handleSlotClick('psu')" title="Konektor Daya ATX 24-Pin">
-                    <div class="slot-target-ring">
-                      <span class="slot-target-icon">🔌</span>
-                      <span class="slot-target-name">Port 24P PSU</span>
-                    </div>
-                    <div class="slot-installed-component" id="installed-psu"></div>
-                  </div>
-
-                </div><!-- /mb-board-inner -->
-              </div><!-- /mb-board-wrapper -->
-            </div>
-          </div>
-
-          <!-- Sisi Kanan: Kontrol Perakitan & Terminal BIOS -->
-          <div class="rakit-bottom-bar">
-            <div class="shelf-header">
-              <span>🖥️ Kontrol &amp; Diagnostik</span>
-              <span style="font-size:0.68vw;color:var(--text-muted);font-family:var(--font-mono);" id="bench-status-txt">BIOS v4.2</span>
-            </div>
-
-            <div class="controls-btns">
-              <button class="btn-power" id="btn-power" onclick="testBoot()">
-                <span>⚡</span> POWER ON / UJI BOOT
-              </button>
-              <div class="sub-ctrl-row">
-                <button class="btn-auto" onclick="autoAssemble()" title="Pasang semua komponen otomatis">⚡ Auto Rakit</button>
-                <button class="btn-reset-build" onclick="resetBuild()" title="Bongkar kembali ke rak">🔄 Reset</button>
-              </div>
-            </div>
-
-            <div class="boot-monitor-frame">
-              <div class="crt-bezel-header">
-                <span>TERMINAL DIAGNOSTIK BIOS</span>
-                <span id="crt-power-led" style="width:7px;height:7px;border-radius:50%;background:#555;display:inline-block;"></span>
-              </div>
-              <div class="boot-monitor" id="boot-monitor">
-                <div id="monitor-content">
-                  &gt; SYSTEM STANDBY — Pasang komponen ke motherboard lalu tekan POWER ON...
-                  <span class="cursor-blink">_</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- ========================================================== -->
-    <!-- SUB-PANEL: EKSPLORASI DIGITAL (Biner + RGB + Gerbang Logika) -->
-    <!-- ========================================================== -->
-    <div id="sub-eksplorasi" class="game-sub-panel">
-      <div class="card" style="border-top-color: var(--aurora-teal);">
-        <!-- Sub-tab Bar -->
-        <div class="eksplorasi-subtab-bar">
-          <button class="eksplorasi-subtab-btn active" id="expl-tab-binary" onclick="switchEksplorasiSubTab('binary')">💡 Sakelar Biner</button>
-          <button class="eksplorasi-subtab-btn" id="expl-tab-rgb" onclick="switchEksplorasiSubTab('rgb')">🎨 Warna RGB</button>
-          <button class="eksplorasi-subtab-btn" id="expl-tab-logic" onclick="switchEksplorasiSubTab('logic')">🔲 Gerbang Logika</button>
-        </div>
-
-        <!-- Sub: Sakelar Biner -->
-        <div id="expl-content-binary" class="eksplorasi-sub-content active" style="align-items: center; justify-content: space-between;">
-          <div class="teori-box box-teal" style="margin-bottom:0.4vw;">
-            <h4 style="margin-bottom:2px;">💭 Pertanyaan Pemantik Bilangan Biner</h4>
-            <p style="font-style:italic;margin-bottom:0;">Bagaimana komputer yang hanya mengenal sinyal listrik mati (0) dan hidup (1) bisa menyimpan angka besar seperti 255?</p>
+      <!-- ========================================================== -->
+      <!-- SUB-PANEL: EKSPLORASI DIGITAL (Biner + RGB + Gerbang Logika) -->
+      <!-- ========================================================== -->
+      <div id="sub-eksplorasi" class="game-sub-panel">
+        <div class="card" style="border-top-color: var(--aurora-teal);">
+          <!-- Sub-tab Bar -->
+          <div class="eksplorasi-subtab-bar">
+            <button class="eksplorasi-subtab-btn active" id="expl-tab-binary"
+              onclick="switchEksplorasiSubTab('binary')">💡 Sakelar Biner</button>
+            <button class="eksplorasi-subtab-btn" id="expl-tab-rgb" onclick="switchEksplorasiSubTab('rgb')">🎨 Warna
+              RGB</button>
+            <button class="eksplorasi-subtab-btn" id="expl-tab-logic" onclick="switchEksplorasiSubTab('logic')">🔲
+              Gerbang Logika</button>
           </div>
 
-          <div class="binary-workspace">
-            <div class="binary-quick-bar">
-              <button class="btn-secondary" onclick="resetBinaryBits()" title="Nol-kan semua sakelar biner">🔄 Nol-kan Semua Bit</button>
-              <button class="btn-game-mode" id="btn-binary-game" onclick="toggleBinaryGameMode()">🎯 Mainkan Tantangan Tebak Biner</button>
+          <!-- Sub: Sakelar Biner -->
+          <div id="expl-content-binary" class="eksplorasi-sub-content active"
+            style="align-items: center; justify-content: space-between;">
+            <div class="teori-box box-teal" style="margin-bottom:0.4vw;">
+              <h4 style="margin-bottom:2px;">💭 Pertanyaan Pemantik Bilangan Biner</h4>
+              <p style="font-style:italic;margin-bottom:0;">Bagaimana komputer yang hanya mengenal sinyal listrik mati
+                (0) dan hidup (1) bisa menyimpan angka besar seperti 255?</p>
             </div>
 
-            <div id="binary-game-banner" class="binary-game-card" style="display:none;">
-              <div class="game-target-text">
-                Target Angka: <span id="binary-game-target" class="target-digit">--</span>
-              </div>
-              <div class="game-status-text" id="binary-game-feedback">Nyalakan sakelar biner yang bila dijumlahkan bernilai tepat!</div>
-              <div class="game-score-badge">Skor: <span id="binary-game-score">0</span> / 3</div>
-            </div>
-
-            <div class="binary-switches-row" id="binary-switches"></div>
-
-            <div class="binary-result-card">
-              <div class="bin-stream" id="bin-value">00000000</div>
-              <div style="font-size:0.75vw;color:var(--text-muted);font-family:var(--font-mono);margin:2px 0;" id="calc-formula">= 0</div>
-              <div class="dec-total">= <span id="dec-value">0</span></div>
-            </div>
-
-            <div class="binary-challenges-row" id="binary-challenges"></div>
-          </div>
-
-          <div class="teori-box box-amber" style="margin-top:0.4vw;margin-bottom:0;font-size:0.82vw;">
-            <strong>🔗 Koneksi ke Rakit PC:</strong> Di simulasi Rakit PC, kamu memasang RAM. RAM menyimpan data sementara dalam sakelar biner persis seperti lampu-lampu ini. RAM 8GB memiliki sekitar 68 miliar "sakelar" biner!
-          </div>
-        </div>
-
-        <!-- Sub: Warna RGB -->
-        <div id="expl-content-rgb" class="eksplorasi-sub-content" style="justify-content: space-between;">
-          <div class="teori-box box-purple" style="margin-bottom:0.4vw;">
-            <h4 style="margin-bottom:2px;">💭 Pertanyaan Pemantik Warna RGB</h4>
-            <p style="font-style:italic;margin-bottom:0;">Layar monitor komputermu menampilkan jutaan warna. Bagaimana komputer memadukannya hanya dari 3 warna cahaya dasar (Red, Green, Blue)?</p>
-          </div>
-
-          <div class="rgb-workspace-grid">
-            <div class="rgb-controls-col">
-              <div class="rgb-slider-row">
-                <span class="rgb-label" style="color:#ef4444;">R</span>
-                <span class="slider-boundary-tag">0</span>
-                <input type="range" min="0" max="255" value="0" class="rgb-slider slider-r" id="slider-r" oninput="updateRGB()">
-                <span class="slider-boundary-tag">255</span>
-                <span class="rgb-val-tag" id="val-r" style="color:#ef4444;">0</span>
-              </div>
-              <div class="rgb-slider-row">
-                <span class="rgb-label" style="color:#22c55e;">G</span>
-                <span class="slider-boundary-tag">0</span>
-                <input type="range" min="0" max="255" value="0" class="rgb-slider slider-g" id="slider-g" oninput="updateRGB()">
-                <span class="slider-boundary-tag">255</span>
-                <span class="rgb-val-tag" id="val-g" style="color:#22c55e;">0</span>
-              </div>
-              <div class="rgb-slider-row">
-                <span class="rgb-label" style="color:#3b82f6;">B</span>
-                <span class="slider-boundary-tag">0</span>
-                <input type="range" min="0" max="255" value="0" class="rgb-slider slider-b" id="slider-b" oninput="updateRGB()">
-                <span class="slider-boundary-tag">255</span>
-                <span class="rgb-val-tag" id="val-b" style="color:#3b82f6;">0</span>
+            <div class="binary-workspace">
+              <div class="binary-quick-bar">
+                <button class="btn-secondary" onclick="resetBinaryBits()" title="Nol-kan semua sakelar biner">🔄 Nol-kan
+                  Semua Bit</button>
+                <button class="btn-game-mode" id="btn-binary-game" onclick="toggleBinaryGameMode()">🎯 Mainkan Tantangan
+                  Tebak Biner</button>
               </div>
 
-              <div class="binary-challenges-row" id="rgb-challenges" style="margin-top:0.4vw;"></div>
-
-              <div class="rgb-palette-box">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25vw;">
-                  <span style="font-size:0.75vw;font-weight:700;">🎨 Palet Warna Favoritku</span>
-                  <button class="btn-palette-save" onclick="saveCurrentColorToPalette()" title="Simpan warna saat ini ke palet">💾 Simpan Warna Ini</button>
+              <div id="binary-game-banner" class="binary-game-card" style="display:none;">
+                <div class="game-target-text">
+                  Target Angka: <span id="binary-game-target" class="target-digit">--</span>
                 </div>
-                <div class="palette-slots-row" id="rgb-palette-slots"></div>
+                <div class="game-status-text" id="binary-game-feedback">Nyalakan sakelar biner yang bila dijumlahkan
+                  bernilai tepat!</div>
+                <div class="game-score-badge">Skor: <span id="binary-game-score">0</span> / 3</div>
               </div>
+
+              <div class="binary-switches-row" id="binary-switches"></div>
+
+              <div class="binary-result-card">
+                <div class="bin-stream" id="bin-value">00000000</div>
+                <div style="font-size:0.75vw;color:var(--text-muted);font-family:var(--font-mono);margin:2px 0;"
+                  id="calc-formula">= 0</div>
+                <div class="dec-total">= <span id="dec-value">0</span></div>
+              </div>
+
+              <div class="binary-challenges-row" id="binary-challenges"></div>
             </div>
 
-            <div class="rgb-preview-col">
-              <div class="rgb-swatch-box" id="rgb-preview" style="background:#000000;"></div>
-              <div style="display:flex;gap:0.4vw;">
-                <span class="rgb-code-pills" id="hex-code">#000000</span>
-                <span class="rgb-code-pills" id="rgb-code">rgb(0, 0, 0)</span>
-              </div>
+            <div class="teori-box box-amber" style="margin-top:0.4vw;margin-bottom:0;font-size:0.82vw;">
+              <strong>🔗 Koneksi ke Rakit PC:</strong> Di simulasi Rakit PC, kamu memasang RAM. RAM menyimpan data
+              sementara dalam sakelar biner persis seperti lampu-lampu ini. RAM 8GB memiliki sekitar 68 miliar "sakelar"
+              biner!
+            </div>
+          </div>
 
-              <div style="text-align:center;margin-top:0.4vw;">
-                <span style="font-size:0.7vw;color:var(--text-muted);font-weight:700;">🔬 Sub-Piksel Monitor</span>
-                <div class="subpixel-vis-box" id="subpixel-vis">
-                  <div class="sp-bar" id="sp-r" style="background:#ef4444;height:2px;"></div>
-                  <div class="sp-bar" id="sp-g" style="background:#22c55e;height:2px;"></div>
-                  <div class="sp-bar" id="sp-b" style="background:#3b82f6;height:2px;"></div>
+          <!-- Sub: Warna RGB -->
+          <div id="expl-content-rgb" class="eksplorasi-sub-content" style="justify-content: space-between;">
+            <div class="teori-box box-purple" style="margin-bottom:0.4vw;">
+              <h4 style="margin-bottom:2px;">💭 Pertanyaan Pemantik Warna RGB</h4>
+              <p style="font-style:italic;margin-bottom:0;">Layar monitor komputermu menampilkan jutaan warna. Bagaimana
+                komputer memadukannya hanya dari 3 warna cahaya dasar (Red, Green, Blue)?</p>
+            </div>
+
+            <div class="rgb-workspace-grid">
+              <div class="rgb-controls-col">
+                <div class="rgb-slider-row">
+                  <span class="rgb-label" style="color:#ef4444;">R</span>
+                  <span class="slider-boundary-tag">0</span>
+                  <input type="range" min="0" max="255" value="0" class="rgb-slider slider-r" id="slider-r"
+                    oninput="updateRGB()">
+                  <span class="slider-boundary-tag">255</span>
+                  <span class="rgb-val-tag" id="val-r" style="color:#ef4444;">0</span>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="teori-box box-amber" style="margin-top:0.4vw;margin-bottom:0;font-size:0.82vw;">
-            <strong>🔗 Koneksi ke Rakit PC:</strong> Di simulasi Rakit PC, kamu memasang GPU. GPU mengolah jutaan perhitungan warna RGB ini 60 sampai 144 kali per detik agar monitor menghasilkan gambar yang tajam dan mulus!
-          </div>
-        </div>
-
-        <!-- Sub: Gerbang Logika -->
-        <div id="expl-content-logic" class="eksplorasi-sub-content" style="align-items:center;justify-content:space-between;">
-          <div class="teori-box box-purple" style="margin-bottom:0.4vw;">
-            <h4 style="margin-bottom:2px;">💭 Pertanyaan Pemantik Gerbang Logika</h4>
-            <p style="font-style:italic;margin-bottom:0;">Semua perhitungan di CPU komputer berasal dari kombinasi gerbang logika dasar: AND, OR, dan NOT. Bagaimana ketiga gerbang sederhana ini bisa menghasilkan operasi yang sangat kompleks?</p>
-          </div>
-
-          <div class="logic-gate-workspace">
-            <div class="logic-gate-selector">
-              <button class="gate-type-btn active" id="gate-btn-AND" onclick="switchGateType('AND')">AND</button>
-              <button class="gate-type-btn" id="gate-btn-OR" onclick="switchGateType('OR')">OR</button>
-              <button class="gate-type-btn" id="gate-btn-NOT" onclick="switchGateType('NOT')">NOT</button>
-            </div>
-
-            <div class="logic-gate-diagram">
-              <div class="logic-input-col">
-                <div>
-                  <button class="logic-input-btn" id="logic-input-a" onclick="toggleLogicInput('A')">0</button>
-                  <div class="logic-input-label">Input A</div>
+                <div class="rgb-slider-row">
+                  <span class="rgb-label" style="color:#22c55e;">G</span>
+                  <span class="slider-boundary-tag">0</span>
+                  <input type="range" min="0" max="255" value="0" class="rgb-slider slider-g" id="slider-g"
+                    oninput="updateRGB()">
+                  <span class="slider-boundary-tag">255</span>
+                  <span class="rgb-val-tag" id="val-g" style="color:#22c55e;">0</span>
                 </div>
-                <div id="logic-input-b-wrap">
-                  <button class="logic-input-btn" id="logic-input-b" onclick="toggleLogicInput('B')">0</button>
-                  <div class="logic-input-label">Input B</div>
+                <div class="rgb-slider-row">
+                  <span class="rgb-label" style="color:#3b82f6;">B</span>
+                  <span class="slider-boundary-tag">0</span>
+                  <input type="range" min="0" max="255" value="0" class="rgb-slider slider-b" id="slider-b"
+                    oninput="updateRGB()">
+                  <span class="slider-boundary-tag">255</span>
+                  <span class="rgb-val-tag" id="val-b" style="color:#3b82f6;">0</span>
+                </div>
+
+                <div class="binary-challenges-row" id="rgb-challenges" style="margin-top:0.4vw;"></div>
+
+                <div class="rgb-palette-box">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25vw;">
+                    <span style="font-size:0.75vw;font-weight:700;">🎨 Palet Warna Favoritku</span>
+                    <button class="btn-palette-save" onclick="saveCurrentColorToPalette()"
+                      title="Simpan warna saat ini ke palet">💾 Simpan Warna Ini</button>
+                  </div>
+                  <div class="palette-slots-row" id="rgb-palette-slots"></div>
                 </div>
               </div>
 
-              <div style="font-size:1.5vw;color:var(--text-muted);">→</div>
-              <div class="logic-gate-symbol" id="logic-gate-symbol">AND</div>
-              <div style="font-size:1.5vw;color:var(--text-muted);">→</div>
+              <div class="rgb-preview-col">
+                <div class="rgb-swatch-box" id="rgb-preview" style="background:#000000;"></div>
+                <div style="display:flex;gap:0.4vw;">
+                  <span class="rgb-code-pills" id="hex-code">#000000</span>
+                  <span class="rgb-code-pills" id="rgb-code">rgb(0, 0, 0)</span>
+                </div>
 
-              <div class="logic-output-display">
-                <div class="logic-output-bulb" id="logic-output">0</div>
-                <div class="logic-input-label">Output</div>
+                <div style="text-align:center;margin-top:0.4vw;">
+                  <span style="font-size:0.7vw;color:var(--text-muted);font-weight:700;">🔬 Sub-Piksel Monitor</span>
+                  <div class="subpixel-vis-box" id="subpixel-vis">
+                    <div class="sp-bar" id="sp-r" style="background:#ef4444;height:2px;"></div>
+                    <div class="sp-bar" id="sp-g" style="background:#22c55e;height:2px;"></div>
+                    <div class="sp-bar" id="sp-b" style="background:#3b82f6;height:2px;"></div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div id="logic-explanation" style="font-size:0.85vw;color:var(--text-muted);max-width:500px;"></div>
-
-            <table class="logic-truth-table" id="logic-truth-table"></table>
+            <div class="teori-box box-amber" style="margin-top:0.4vw;margin-bottom:0;font-size:0.82vw;">
+              <strong>🔗 Koneksi ke Rakit PC:</strong> Di simulasi Rakit PC, kamu memasang GPU. GPU mengolah jutaan
+              perhitungan warna RGB ini 60 sampai 144 kali per detik agar monitor menghasilkan gambar yang tajam dan
+              mulus!
+            </div>
           </div>
 
-          <div class="teori-box box-amber" style="margin-top:0.4vw;margin-bottom:0;font-size:0.82vw;">
-            <strong>🔗 Koneksi ke Rakit PC:</strong> Di dalam CPU yang kamu pasang, terdapat miliaran transistor yang membentuk gerbang logika AND, OR, dan NOT. Semua perhitungan matematika, perbandingan, dan operasi yang dilakukan CPU berasal dari kombinasi gerbang logika ini!
+          <!-- Sub: Gerbang Logika -->
+          <div id="expl-content-logic" class="eksplorasi-sub-content"
+            style="align-items:center;justify-content:space-between;">
+            <div class="teori-box box-purple" style="margin-bottom:0.4vw;">
+              <h4 style="margin-bottom:2px;">💭 Pertanyaan Pemantik Gerbang Logika</h4>
+              <p style="font-style:italic;margin-bottom:0;">Semua perhitungan di CPU komputer berasal dari kombinasi
+                gerbang logika dasar: AND, OR, dan NOT. Bagaimana ketiga gerbang sederhana ini bisa menghasilkan operasi
+                yang sangat kompleks?</p>
+            </div>
+
+            <div class="logic-gate-workspace">
+              <div class="logic-gate-selector">
+                <button class="gate-type-btn active" id="gate-btn-AND" onclick="switchGateType('AND')">AND</button>
+                <button class="gate-type-btn" id="gate-btn-OR" onclick="switchGateType('OR')">OR</button>
+                <button class="gate-type-btn" id="gate-btn-NOT" onclick="switchGateType('NOT')">NOT</button>
+              </div>
+
+              <div class="logic-gate-diagram">
+                <div class="logic-input-col">
+                  <div>
+                    <button class="logic-input-btn" id="logic-input-a" onclick="toggleLogicInput('A')">0</button>
+                    <div class="logic-input-label">Input A</div>
+                  </div>
+                  <div id="logic-input-b-wrap">
+                    <button class="logic-input-btn" id="logic-input-b" onclick="toggleLogicInput('B')">0</button>
+                    <div class="logic-input-label">Input B</div>
+                  </div>
+                </div>
+
+                <div style="font-size:1.5vw;color:var(--text-muted);">→</div>
+                <div class="logic-gate-symbol" id="logic-gate-symbol">AND</div>
+                <div style="font-size:1.5vw;color:var(--text-muted);">→</div>
+
+                <div class="logic-output-display">
+                  <div class="logic-output-bulb" id="logic-output">0</div>
+                  <div class="logic-input-label">Output</div>
+                </div>
+              </div>
+
+              <div id="logic-explanation" style="font-size:0.85vw;color:var(--text-muted);max-width:500px;"></div>
+
+              <table class="logic-truth-table" id="logic-truth-table"></table>
+            </div>
+
+            <div class="teori-box box-amber" style="margin-top:0.4vw;margin-bottom:0;font-size:0.82vw;">
+              <strong>🔗 Koneksi ke Rakit PC:</strong> Di dalam CPU yang kamu pasang, terdapat miliaran transistor yang
+              membentuk gerbang logika AND, OR, dan NOT. Semua perhitungan matematika, perbandingan, dan operasi yang
+              dilakukan CPU berasal dari kombinasi gerbang logika ini!
+            </div>
           </div>
+
         </div>
-
       </div>
-    </div>
 
-    <!-- ========================================================== -->
-    <!-- SUB-PANEL 4: TEORI KOMPUTER                                -->
-    <!-- ========================================================== -->
-    <!-- SUB-PANEL 4: TEORI KOMPUTER (TAHAP 1)                      -->
-    <!-- ========================================================== -->
-    <div id="sub-teori" class="game-sub-panel active">
-      <div class="card card-scrollable" style="border-top-color: var(--tab-active);">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6vw;">
-          <h2 style="margin-bottom:0;">📚 Teori Sistem Komputer (Fase D)</h2>
-          <button class="btn-large" style="padding:0.4vw 1.2vw;font-size:0.82vw;box-shadow:var(--shadow-sm);" onclick="switchLabTab('prosedur')">
-            Lanjut ke Prosedur Praktik 📝 →
-          </button>
-        </div>
-        <div class="teori-tabs-row" id="teori-tabs"></div>
-        <div id="teori-panels"></div>
+      <!-- ========================================================== -->
+      <!-- SUB-PANEL 4: TEORI KOMPUTER                                -->
+      <!-- ========================================================== -->
+      <!-- SUB-PANEL 4: TEORI KOMPUTER (TAHAP 1)                      -->
+      <!-- ========================================================== -->
+      <div id="sub-teori" class="game-sub-panel active">
+        <div class="card card-scrollable" style="border-top-color: var(--tab-active);">
+          <div style="margin-bottom:0.6vw;">
+            <h2 style="margin-bottom:0;">📚 Teori Sistem Komputer (Fase D)</h2>
+          </div>
+          <div class="teori-tabs-row" id="teori-tabs"></div>
+          <div id="teori-panels"></div>
 
-        <div style="margin-top:1.2vw;padding-top:0.8vw;border-top:1px solid var(--border-color);display:flex;justify-content:flex-end;">
-          <button class="btn-large" style="padding:0.5vw 1.4vw;font-size:0.88vw;" onclick="switchLabTab('prosedur')">
-            Lanjut ke Prosedur Praktik 📝 →
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================================== -->
-    <!-- SUB-PANEL 5: PROSEDUR PENGGUNAAN LAB (TAHAP 2)             -->
-    <!-- ========================================================== -->
-    <div id="sub-prosedur" class="game-sub-panel">
-      <div class="card card-scrollable" style="border-top-color: var(--comet-amber);">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6vw;">
-          <h2 style="margin-bottom:0;">📝 Prosedur Eksperimen Virtual</h2>
-          <div style="display:flex;gap:0.5vw;">
-            <button class="btn-secondary" style="padding:0.35vw 0.9vw;font-size:0.8vw;" onclick="switchLabTab('teori')">
-              ← Baca Teori
+          <div class="teori-footer-nav"
+            style="margin-top:1.2vw;padding-top:0.8vw;border-top:1px solid var(--border-color);display:flex;justify-content:flex-end;">
+            <button id="btn-teori-next" class="btn-large"
+              style="padding:0.55vw 1.6vw;font-size:0.88vw;background:linear-gradient(135deg, var(--tab-active, #4f46e5), #06b6d4);"
+              onclick="nextTeoriMateri()">
+              Lanjut ke: Apa Itu Komputer? →
             </button>
-            <button class="btn-large" style="padding:0.4vw 1.2vw;font-size:0.82vw;background:linear-gradient(135deg, #ff7700, #ffaa00);" onclick="switchLabTab('sim-rakit-pc')">
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================== -->
+      <!-- SUB-PANEL 5: PROSEDUR PENGGUNAAN LAB (TAHAP 2)             -->
+      <!-- ========================================================== -->
+      <div id="sub-prosedur" class="game-sub-panel">
+        <div class="card card-scrollable" style="border-top-color: var(--comet-amber);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6vw;">
+            <h2 style="margin-bottom:0;">📝 Prosedur Eksperimen Virtual</h2>
+            <div style="display:flex;gap:0.5vw;">
+              <button class="btn-secondary" style="padding:0.35vw 0.9vw;font-size:0.8vw;"
+                onclick="switchLabTab('teori')">
+                ← Baca Teori
+              </button>
+              <button class="btn-large"
+                style="padding:0.4vw 1.2vw;font-size:0.82vw;background:linear-gradient(135deg, #ff7700, #ffaa00);"
+                onclick="switchLabTab('sim-rakit-pc')">
+                Mulai Merakit Komputer 🚀 →
+              </button>
+            </div>
+          </div>
+          <p style="color:var(--text-muted);margin-bottom:0.8vw;">Ikuti langkah-langkah di bawah ini untuk memulai
+            perakitan komputer secara mandiri:</p>
+          <div id="prosedur-list"></div>
+
+          <div
+            style="margin-top:1.2vw;padding-top:0.8vw;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;">
+            <button class="btn-secondary" style="padding:0.45vw 1.2vw;font-size:0.85vw;"
+              onclick="switchLabTab('teori')">
+              ← Kembali ke Teori
+            </button>
+            <button class="btn-large"
+              style="padding:0.5vw 1.5vw;font-size:0.9vw;background:linear-gradient(135deg, #ff7700, #ffaa00);"
+              onclick="switchLabTab('sim-rakit-pc')">
               Mulai Merakit Komputer 🚀 →
             </button>
           </div>
         </div>
-        <p style="color:var(--text-muted);margin-bottom:0.8vw;">Ikuti langkah-langkah di bawah ini untuk memulai perakitan komputer secara mandiri:</p>
-        <div id="prosedur-list"></div>
-
-        <div style="margin-top:1.2vw;padding-top:0.8vw;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;">
-          <button class="btn-secondary" style="padding:0.45vw 1.2vw;font-size:0.85vw;" onclick="switchLabTab('teori')">
-            ← Kembali ke Teori
-          </button>
-          <button class="btn-large" style="padding:0.5vw 1.5vw;font-size:0.9vw;background:linear-gradient(135deg, #ff7700, #ffaa00);" onclick="switchLabTab('sim-rakit-pc')">
-            Mulai Merakit Komputer 🚀 →
-          </button>
-        </div>
       </div>
-    </div>
 
-    <!-- ========================================================== -->
-    <!-- SUB-PANEL 6: LKPD & KUIS EVALUASI                          -->
-    <!-- ========================================================== -->
-    <div id="sub-lkpd" class="game-sub-panel">
-      <div class="card card-scrollable" style="border-top-color: var(--accent-emerald);">
-        <div class="lkpd-header-row">
-          <div>
-            <h2 style="margin-bottom:0.2vw;">✍️ Lembar Kerja Peserta Didik (LKPD)</h2>
-            <div class="lkpd-progress-pill" id="lkpd-progress-pill">
-              📝 Terjawab: <strong id="lkpd-answered-count">0</strong> / 15 Soal
-            </div>
-          </div>
-          <div style="display:flex;gap:0.5vw;align-items:center;">
-            <button class="btn-secondary" style="padding:0.4vw 1vw;font-size:0.82vw;" onclick="printLKPD()" title="Cetak atau simpan LKPD sebagai PDF">🖨️ Cetak</button>
-            <button class="btn-large" style="padding:0.4vw 1.2vw;font-size:0.85vw;" onclick="submitLKPD()">Kumpulkan &amp; Cek Nilai 📝</button>
-          </div>
-        </div>
-
-        <div class="lkpd-section-tab-bar">
-          <button class="lkpd-tab-btn active" onclick="showLkpdSection('pg')">A. Pilihan Ganda (5)</button>
-          <button class="lkpd-tab-btn" onclick="showLkpdSection('bs')">B. Benar / Salah (5)</button>
-          <button class="lkpd-tab-btn" onclick="showLkpdSection('match')">C. Menjodohkan (5)</button>
-        </div>
-
-        <div id="lkpd-pg" class="lkpd-section-content active"></div>
-        <div id="lkpd-bs" class="lkpd-section-content" style="display:none;"></div>
-        <div id="lkpd-match" class="lkpd-section-content" style="display:none;">
-          <div class="match-instructions-bar">
+      <!-- ========================================================== -->
+      <!-- SUB-PANEL 6: LKPD & KUIS EVALUASI                          -->
+      <!-- ========================================================== -->
+      <div id="sub-lkpd" class="game-sub-panel">
+        <div class="card card-scrollable" style="border-top-color: var(--accent-emerald);">
+          <div class="lkpd-header-row">
             <div>
-              <h4 style="margin-bottom:0.2vw;">Bagian C: Menjodohkan Komponen &amp; Fungsinya</h4>
-              <p style="font-size:0.85vw;color:var(--text-muted);margin:0;">
-                Klik komponen di kolom kiri (1–5), lalu klik fungsi yang cocok di kolom kanan (A–E) untuk menarik kabel data interaktif. Klik kembali untuk memutus sambungan.
-              </p>
+              <h2 style="margin-bottom:0.2vw;">✍️ Lembar Kerja Peserta Didik (LKPD)</h2>
+              <div class="lkpd-progress-pill" id="lkpd-progress-pill">
+                📝 Terjawab: <strong id="lkpd-answered-count">0</strong> / 15 Soal
+              </div>
             </div>
-            <button type="button" class="btn-secondary match-reset-btn" onclick="resetMatchCables()" title="Lepas semua sambungan kabel untuk mengulang">
-              🔌 Lepas Semua Kabel
-            </button>
-          </div>
-
-          <div class="match-columns-header">
-            <div class="match-col-title">
-              <span class="col-title-badge">1 — 5</span>
-              <span>Perangkat Keras (Hardware)</span>
-            </div>
-            <div class="match-col-title">
-              <span class="col-title-badge">A — E</span>
-              <span>Fungsi &amp; Peran Sistem</span>
+            <div style="display:flex;gap:0.5vw;align-items:center;">
+              <button class="btn-secondary" style="padding:0.4vw 1vw;font-size:0.82vw;" onclick="printLKPD()"
+                title="Cetak atau simpan LKPD sebagai PDF">🖨️ Cetak</button>
+              <button class="btn-large" style="padding:0.4vw 1.2vw;font-size:0.85vw;" onclick="submitLKPD()">Kumpulkan
+                &amp; Cek Nilai 📝</button>
             </div>
           </div>
 
-          <div class="match-interactive-wrapper" id="match-interactive-wrapper">
-            <svg class="match-svg-layer" id="match-svg-layer"></svg>
-            <div class="match-grid">
-              <div class="match-btn-col" id="match-left"></div>
-              <div class="match-btn-col" id="match-right"></div>
+          <div class="lkpd-section-tab-bar">
+            <button class="lkpd-tab-btn active" onclick="showLkpdSection('pg')">A. Pilihan Ganda (5)</button>
+            <button class="lkpd-tab-btn" onclick="showLkpdSection('bs')">B. Benar / Salah (5)</button>
+            <button class="lkpd-tab-btn" onclick="showLkpdSection('match')">C. Menjodohkan (5)</button>
+          </div>
+
+          <div id="lkpd-pg" class="lkpd-section-content active"></div>
+          <div id="lkpd-bs" class="lkpd-section-content" style="display:none;"></div>
+          <div id="lkpd-match" class="lkpd-section-content" style="display:none;">
+            <div class="match-instructions-bar">
+              <div>
+                <h4 style="margin-bottom:0.2vw;">Bagian C: Menjodohkan Komponen &amp; Fungsinya</h4>
+                <p style="font-size:0.85vw;color:var(--text-muted);margin:0;">
+                  Klik komponen di kolom kiri (1–5), lalu klik fungsi yang cocok di kolom kanan (A–E) untuk menarik
+                  kabel data interaktif. Klik kembali untuk memutus sambungan.
+                </p>
+              </div>
+              <button type="button" class="btn-secondary match-reset-btn" onclick="resetMatchCables()"
+                title="Lepas semua sambungan kabel untuk mengulang">
+                🔌 Lepas Semua Kabel
+              </button>
+            </div>
+
+            <div class="match-columns-header">
+              <div class="match-col-title">
+                <span class="col-title-badge">1 — 5</span>
+                <span>Perangkat Keras (Hardware)</span>
+              </div>
+              <div class="match-col-title">
+                <span class="col-title-badge">A — E</span>
+                <span>Fungsi &amp; Peran Sistem</span>
+              </div>
+            </div>
+
+            <div class="match-interactive-wrapper" id="match-interactive-wrapper">
+              <svg class="match-svg-layer" id="match-svg-layer"></svg>
+              <div class="match-grid">
+                <div class="match-btn-col" id="match-left"></div>
+                <div class="match-btn-col" id="match-right"></div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Hasil Evaluasi Pop-in Modal / Container -->
-        <div id="lkpd-result-box" class="lkpd-result-card" style="display:none;">
-          <div class="lkpd-result-stars" id="lkpd-stars">⭐⭐⭐</div>
-          <div class="lkpd-result-score" id="hasil-score">0%</div>
-          <div class="lkpd-result-badge" id="hasil-predikat">—</div>
-          <p id="hasil-detail" class="lkpd-result-detail"></p>
-          <div class="lkpd-result-actions">
-            <button class="btn-secondary" onclick="resetLKPD()">🔄 Kerjakan Ulang Kuis</button>
-            <button class="btn-large" onclick="showLkpdSection('pg')">🔍 Lihat Pembahasan Soal ⬇️</button>
+          <!-- Hasil Evaluasi Pop-in Modal / Container -->
+          <div id="lkpd-result-box" class="lkpd-result-card" style="display:none;">
+            <div class="lkpd-result-stars" id="lkpd-stars">⭐⭐⭐</div>
+            <div class="lkpd-result-score" id="hasil-score">0%</div>
+            <div class="lkpd-result-badge" id="hasil-predikat">—</div>
+            <p id="hasil-detail" class="lkpd-result-detail"></p>
+            <div class="lkpd-result-actions">
+              <button class="btn-secondary" onclick="resetLKPD()">🔄 Kerjakan Ulang Kuis</button>
+              <button class="btn-large" onclick="showLkpdSection('pg')">🔍 Lihat Pembahasan Soal ⬇️</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- ========================================================== -->
-    <div id="sub-pengembang" class="game-sub-panel">
-      <div class="card card-scrollable" style="border-top-color: var(--tab-active);">
-        <h2 style="margin-bottom: 1.2vw; text-align: center;">👨‍💻 Profil Pengembang</h2>
+      <!-- ========================================================== -->
+      <div id="sub-pengembang" class="game-sub-panel">
+        <div class="card card-scrollable" style="border-top-color: var(--tab-active);">
+          <h2 style="margin-bottom: 1.2vw; text-align: center;">👨‍💻 Profil Pengembang</h2>
 
-        <!-- Developer Card (Lebar 80% di Tengah) -->
-        <div class="dev-card">
-          <div class="dev-layout">
-            <div class="dev-photo" id="dev-photo-1">
-              <img src="assets/fanani.jpg" alt="Foto Ach. Chanifuddin Fanani, S.Pd." onerror="this.outerHTML='👨‍💻'">
-            </div>
-            <div class="dev-fields">
-              <div class="dev-field">
-                <span class="field-label">Nama :</span>
-                <span class="field-value">Ach. Chanifuddin Fanani, S.Pd.</span>
+          <!-- Developer Card (Lebar 80% di Tengah) -->
+          <div class="dev-card">
+            <div class="dev-layout">
+              <div class="dev-photo" id="dev-photo-1">
+                <img src="assets/fanani.jpg" alt="Foto Ach. Chanifuddin Fanani, S.Pd." onerror="this.outerHTML='👨‍💻'">
               </div>
-              <div class="dev-field">
-                <span class="field-label">Instansi :</span>
-                <span class="field-value">SMP Negeri 2 Lamongan</span>
-              </div>
-              <div class="dev-field">
-                <span class="field-label">Tahun Pembuatan :</span>
-                <span class="field-value">2026</span>
-              </div>
-              <div class="dev-field">
-                <span class="field-label">Email :</span>
-                <span class="field-value">chanifuddin@gmail.com</span>
-              </div>
-              <div class="dev-field">
-                <span class="field-label">Tautan :</span>
-                <span class="field-value" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
-                  <span style="display:inline-flex;align-items:center;gap:8px;color:var(--text-heading);font-weight:600;">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                      style="vertical-align:middle;border-radius:6px;flex-shrink:0;">
-                      <defs>
-                        <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
-                          <stop offset="0%" stop-color="#fdf497" />
-                          <stop offset="5%" stop-color="#fdf497" />
-                          <stop offset="45%" stop-color="#fd5949" />
-                          <stop offset="60%" stop-color="#d6249f" />
-                          <stop offset="90%" stop-color="#285AEB" />
-                        </radialGradient>
-                      </defs>
-                      <rect width="24" height="24" rx="6" fill="url(#ig-grad)" />
-                      <rect x="5.5" y="5.5" width="13" height="13" rx="3.5" stroke="white" stroke-width="1.6" fill="none" />
-                      <circle cx="12" cy="12" r="3.2" stroke="white" stroke-width="1.6" fill="none" />
-                      <circle cx="15.8" cy="8.2" r="0.9" fill="white" />
-                    </svg>
-                    <span>@qaneev</span>
+              <div class="dev-fields">
+                <div class="dev-field">
+                  <span class="field-label">Nama :</span>
+                  <span class="field-value">Ach. Chanifuddin Fanani, S.Pd.</span>
+                </div>
+                <div class="dev-field">
+                  <span class="field-label">Instansi :</span>
+                  <span class="field-value">SMP Negeri 2 Lamongan</span>
+                </div>
+                <div class="dev-field">
+                  <span class="field-label">Tahun Pembuatan :</span>
+                  <span class="field-value">2026</span>
+                </div>
+                <div class="dev-field">
+                  <span class="field-label">Email :</span>
+                  <span class="field-value">chanifuddin@gmail.com</span>
+                </div>
+                <div class="dev-field">
+                  <span class="field-label">Tautan :</span>
+                  <span class="field-value" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+                    <span
+                      style="display:inline-flex;align-items:center;gap:8px;color:var(--text-heading);font-weight:600;">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        style="vertical-align:middle;border-radius:6px;flex-shrink:0;">
+                        <defs>
+                          <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+                            <stop offset="0%" stop-color="#fdf497" />
+                            <stop offset="5%" stop-color="#fdf497" />
+                            <stop offset="45%" stop-color="#fd5949" />
+                            <stop offset="60%" stop-color="#d6249f" />
+                            <stop offset="90%" stop-color="#285AEB" />
+                          </radialGradient>
+                        </defs>
+                        <rect width="24" height="24" rx="6" fill="url(#ig-grad)" />
+                        <rect x="5.5" y="5.5" width="13" height="13" rx="3.5" stroke="white" stroke-width="1.6"
+                          fill="none" />
+                        <circle cx="12" cy="12" r="3.2" stroke="white" stroke-width="1.6" fill="none" />
+                        <circle cx="15.8" cy="8.2" r="0.9" fill="white" />
+                      </svg>
+                      <span>@qaneev</span>
+                    </span>
+                    <span style="color:var(--border-subtle);">|</span>
+                    <span
+                      style="display:inline-flex;align-items:center;gap:6px;color:var(--text-heading);font-weight:600;">
+                      <span>🌐</span>
+                      <span>fanani.my.id</span>
+                    </span>
                   </span>
-                  <span style="color:var(--border-subtle);">|</span>
-                  <span style="display:inline-flex;align-items:center;gap:6px;color:var(--text-heading);font-weight:600;">
-                    <span>🌐</span>
-                    <span>fanani.my.id</span>
-                  </span>
-                </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Deskripsi / Quote Media (100% Lebar Panel di Bawah Profil) -->
-        <div class="dev-desc-block">
-          <div class="dev-quote-mark">"</div>
-          <p class="dev-desc-text" id="dev-desc-text">
-            Media <strong>Lab Maya Perakitan Komputer</strong> hadir untuk menghadirkan pengalaman praktikum perakitan perangkat keras (<em>hardware</em>) dan pengujian sistem komputer (<em>POST diagnostic</em>) tanpa keterbatasan fasilitas fisik laboratorium sekolah. Melalui pengalaman <em>hands-on</em> merakit komponen motherboard, bereksperimen dengan bilangan biner, gerbang logika, serta pencampur warna RGB, peserta didik SMP Fase D dapat bereksplorasi secara mandiri, berani mencoba (<em>trial and error</em>), dan membangun pemahaman konkret tentang cara kerja sistem komputer yang berorientasi pada penguatan nalar kritis.
+          <!-- Deskripsi / Quote Media (100% Lebar Panel di Bawah Profil) -->
+          <div class="dev-desc-block">
+            <div class="dev-quote-mark">"</div>
+            <p class="dev-desc-text" id="dev-desc-text">
+              Media <strong>Lab Maya Perakitan Komputer</strong> hadir untuk menghadirkan pengalaman praktikum perakitan
+              perangkat keras (<em>hardware</em>) dan pengujian sistem komputer (<em>POST diagnostic</em>) tanpa
+              keterbatasan fasilitas fisik laboratorium sekolah. Melalui pengalaman <em>hands-on</em> merakit komponen
+              motherboard, bereksperimen dengan bilangan biner, gerbang logika, serta pencampur warna RGB, peserta didik
+              SMP Fase D dapat bereksplorasi secara mandiri, berani mencoba (<em>trial and error</em>), dan membangun
+              pemahaman konkret tentang cara kerja sistem komputer yang berorientasi pada penguatan nalar kritis.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========================================================== -->
+
+      <!-- SUB-PANEL 8: REFERENSI                                     -->
+      <!-- ========================================================== -->
+      <!-- SUB-PANEL 8: REFERENSI                                     -->
+      <!-- ========================================================== -->
+      <div id="sub-referensi" class="game-sub-panel">
+        <div class="card card-scrollable" style="border-top-color: var(--aurora-teal);">
+          <h2>📖 Referensi, Sumber Pembelajaran &amp; Transparansi Aset Media</h2>
+          <p style="color:var(--text-muted);font-size:0.88vw;margin-bottom:1vw;line-height:1.6;">
+            Sebagai wujud integritas akademik, kepatuhan hak cipta, dan transparansi teknologi dalam karya inovasi
+            pembelajaran <strong>Festival Biru Putih 2026</strong>, seluruh sumber rujukan kurikulum, literatur ilmiah,
+            aset grafis, tipografi, efek suara, serta dokumentasi prompt <em>Artificial Intelligence</em> (AI)
+            dicantumkan secara lengkap dan terbuka di bawah ini.
           </p>
-        </div>
 
+          <!-- 1. DAFTAR PUSTAKA & KURIKULUM -->
+          <div class="teori-box" style="margin-bottom:1vw;">
+            <h3 style="margin-bottom:0.6vw;">📚 1. Daftar Pustaka &amp; Rujukan Kurikulum</h3>
+            <ul style="margin-left:1.5vw;line-height:1.7;font-size:0.85vw;">
+              <li>Badan Standar, Kurikulum, dan Asesmen Pendidikan (BSKAP). (2022). <i>Capaian Pembelajaran Mata
+                  Pelajaran Informatika Fase D (SMP/MTs)</i>. Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi
+                RI.</li>
+              <li>Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi. (2021). <i>Buku Panduan Guru Informatika
+                  untuk SMP Kelas VIII</i>. Pusat Perbukuan, Balitbangbuk, Kemendikbudristek RI.</li>
+              <li>Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi. (2021). <i>Buku Siswa Informatika untuk SMP
+                  Kelas VIII</i>. Pusat Perbukuan, Balitbangbuk, Kemendikbudristek RI.</li>
+              <li>Patterson, D. A., &amp; Hennessy, J. L. (2020). <i>Computer Organization and Design: The
+                  Hardware/Software Interface</i> (6th ed.). Morgan Kaufmann Publishers.</li>
+              <li>Stallings, W. (2019). <i>Computer Organization and Architecture: Designing for Performance</i> (11th
+                ed.). Pearson Education.</li>
+              <li>Tanenbaum, A. S., &amp; Austin, T. (2013). <i>Structured Computer Organization</i> (6th ed.). Pearson.
+              </li>
+              <li>Direktorat Sekolah Menengah Pertama. (2026). <i>Petunjuk Teknis Festival Biru Putih 2026: Inovasi
+                  Media Pembelajaran Digital Berbantuan AI</i>. Direktorat Jenderal PAUD, Dikdas, dan Dikmen,
+                Kemendikdasmen RI.</li>
+            </ul>
+          </div>
+
+          <!-- 2. DAFTAR ASET GRAFIS & PROMPT AI -->
+          <div class="teori-box box-teal" style="margin-bottom:1vw;">
+            <h3 style="margin-bottom:0.4vw;">🎨 2. Inventaris Aset Grafis &amp; Dokumentasi Prompt AI (Artificial
+              Intelligence)</h3>
+            <p style="font-size:0.83vw;color:var(--text-muted);margin-bottom:0.6vw;line-height:1.5;">
+              Seluruh ilustrasi perangkat keras dan latar visual dibuat secara khusus (orisinil) untuk aplikasi ini
+              menggunakan teknologi pemodelan generatif AI dan desain vektor matematis SVG presisi. Berikut daftar aset
+              beserta prompt deskriptif yang digunakan:
+            </p>
+
+            <div class="ref-table-wrap">
+              <table class="ref-table">
+                <thead>
+                  <tr>
+                    <th style="width:20%;text-align:center;">Gambar</th>
+                    <th style="width:15%;">Jenis &amp; Lisensi</th>
+                    <th style="width:15%;">Alat / Metode</th>
+                    <th style="width:50%;">Prompt AI &amp; Keterangan Teknis Pembuatan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="text-align:center;">
+                      <img src="assets/welcome-bg.jpg" alt="Latar Lab Komputer" title="Latar Lab Komputer"
+                        style="width:192px;height:112px;object-fit:cover;border-radius:6px;border:1.5px solid var(--border-color);display:inline-block;box-shadow:var(--shadow-sm);">
+                    </td>
+                    <td><span class="ref-badge ref-badge-ai">AI Generated Image</span></td>
+                    <td>Google Imagen 3 / DeepMind</td>
+                    <td>
+                      <span class="ref-prompt-label">Prompt AI:</span>
+                      <div class="ref-prompt-box">"A vibrant, high-tech computer hardware assembly laboratory with neon
+                        cyan and teal lighting, neatly organized technician workbench featuring computer parts,
+                        motherboard, processor, memory RAM sticks, graphics card, screwdrivers and testing equipment,
+                        clean modern educational classroom aesthetic, cinematic wide angle, 3D digital illustration, 8k
+                        resolution, photorealistic, 16:9"</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:center;">
+                      <img src="assets/images/motherboard-atx.svg" alt="Motherboard ATX" title="Motherboard ATX"
+                        style="width:144px;height:144px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
+                    </td>
+                    <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
+                    <td>Antigravity AI (Procedural SVG)</td>
+                    <td>
+                      <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
+                      <div class="ref-prompt-box">"Comprehensive vector schematic diagram of an ATX gaming motherboard,
+                        matte navy blue PCB traces, LGA 1700 CPU socket with lever arm, dual DDR4 DIMM memory slots,
+                        steel-reinforced PCIe 5.0 x16 slot, M.2 NVMe shield bed, ATX 24-pin power socket, VRM aluminum
+                        heatsinks, passive chipset heatsink, EZ debug LED post cluster, clean scalable SVG 680x540"
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:center;">
+                      <img src="assets/images/component-cpu.svg" alt="Prosesor (CPU)" title="Prosesor (CPU)"
+                        style="width:128px;height:128px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
+                    </td>
+                    <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
+                    <td>Antigravity AI (Procedural SVG)</td>
+                    <td>
+                      <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
+                      <div class="ref-prompt-box">"Vector illustration of modern desktop computer processor CPU,
+                        top-down isometric view, metallic integrated heat spreader IHS with laser etched 'PROCESSOR'
+                        text, golden corner triangle marker, green substrate PCB, sleek high-tech cyber style, clean
+                        scalable SVG"</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:center;">
+                      <img src="assets/images/component-ram.svg" alt="RAM DDR4 8GB" title="RAM DDR4 8GB"
+                        style="width:184px;height:80px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
+                    </td>
+                    <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
+                    <td>Antigravity AI (Procedural SVG)</td>
+                    <td>
+                      <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
+                      <div class="ref-prompt-box">"Vector illustration of DDR4 high-speed desktop RAM module, aggressive
+                        black aluminum heat armor spreader with geometric cooling facets, top rainbow RGB diffuser
+                        lightbar, 288-pin gold edge connector with asymmetric DDR4 notch, 'DDR4 8GB 3200MHz' silkscreen
+                        emblem, dual-state rack and installed horizontal tilt view"</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:center;">
+                      <img src="assets/images/component-ram-ddr2.svg" alt="RAM DDR2 (Pengecoh)"
+                        title="RAM DDR2 (Pengecoh)"
+                        style="width:184px;height:80px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
+                    </td>
+                    <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
+                    <td>Antigravity AI (Procedural SVG)</td>
+                    <td>
+                      <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
+                      <div class="ref-prompt-box">"Vector illustration of legacy vintage DDR2 RAM memory stick, classic
+                        retro green circuit board PCB, 8 rectangular black DRAM IC packages, white paper spec sticker
+                        with red text 'LEGACY DDR2 1GB 800MHz', central key notch position for mismatch detection"</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:center;">
+                      <img src="assets/images/component-ssd.svg" alt="SSD M.2 NVMe" title="SSD M.2 NVMe"
+                        style="width:184px;height:72px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
+                    </td>
+                    <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
+                    <td>Antigravity AI (Procedural SVG)</td>
+                    <td>
+                      <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
+                      <div class="ref-prompt-box">"Vector illustration of M.2 2280 NVMe SSD solid state drive, black
+                        matte PCB, two 3D NAND flash storage chips, silver metallic PCIe Gen4 controller chip, gold
+                        M-Key connector pins on right edge, semicircular standoff mounting screw notch, 280x80 viewBox"
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:center;">
+                      <img src="assets/images/component-gpu.svg" alt="Kartu Grafis (GPU)" title="Kartu Grafis (GPU)"
+                        style="width:184px;height:104px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
+                    </td>
+                    <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
+                    <td>Antigravity AI (Procedural SVG)</td>
+                    <td>
+                      <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
+                      <div class="ref-prompt-box">"Vector illustration of dual-fan desktop graphics card GPU, dark
+                        geometric shroud with cyan LED accent line, dual circular cooling fans with center hub badges,
+                        copper heatpipes, PCIe x16 gold contact fingers, rear metal bracket with HDMI DisplayPort
+                        cutouts, downwards hanging installed layout"</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:center;">
+                      <img src="assets/images/component-psu.svg" alt="Catu Daya (PSU)" title="Catu Daya (PSU)"
+                        style="width:144px;height:120px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
+                    </td>
+                    <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
+                    <td>Antigravity AI (Procedural SVG)</td>
+                    <td>
+                      <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
+                      <div class="ref-prompt-box">"Vector illustration of ATX power supply unit and 24-pin motherboard
+                        power cable plug, black nylon molded connector with latch lock, 12 pairs of colorful braided
+                        individually-sleeved power wires (orange, red, yellow, black, green, purple, blue), clear
+                        acrylic cable combs"</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:center;">
+                      <img src="assets/images/component-hdd-ide.svg" alt="Harddisk IDE (Pengecoh)"
+                        title="Harddisk IDE (Pengecoh)"
+                        style="width:128px;height:128px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
+                    </td>
+                    <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
+                    <td>Antigravity AI (Procedural SVG)</td>
+                    <td>
+                      <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
+                      <div class="ref-prompt-box">"Vector illustration of vintage 3.5 inch PATA IDE hard disk drive,
+                        heavy cast aluminum body, top metallic cover with vintage drive label, 40-pin ribbon cable
+                        header, 4-pin Molex power receptacle, master-slave jumper pins"</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:center;">
+                      <img src="assets/images/component-cooler.svg" alt="Kipas Casing (Pengecoh)"
+                        title="Kipas Casing (Pengecoh)"
+                        style="width:128px;height:128px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
+                    </td>
+                    <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
+                    <td>Antigravity AI (Procedural SVG)</td>
+                    <td>
+                      <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
+                      <div class="ref-prompt-box">"Vector illustration of 120mm computer case cooling fan, black
+                        octagonal mounting frame with corner screw holes and anti-vibration rubber pads, 9 aerodynamic
+                        curved fan blades, 4-pin PWM sleeved connection cable"</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 3. TIPOGRAFI & AUDIO DIGITAL -->
+          <div class="teori-box" style="margin-bottom:1vw;">
+            <h3 style="margin-bottom:0.4vw;">🔤 3. Tipografi Terbuka (OFL) &amp; Efek Suara Prosedural</h3>
+            <div class="ref-table-wrap">
+              <table class="ref-table">
+                <thead>
+                  <tr>
+                    <th style="width:25%;">Komponen Aset</th>
+                    <th style="width:25%;">Pencipta / Sumber</th>
+                    <th style="width:50%;">Jenis Lisensi &amp; Implementasi Teknis</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Font Fredoka</strong> (Headings)</td>
+                    <td>Gilbert Bonfim (Google Fonts)</td>
+                    <td>SIL Open Font License (OFL) v1.1 — Disimpan secara lokal (*self-hosted* offline).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Font Nunito</strong> (Body Text)</td>
+                    <td>Vernon Adams (Google Fonts)</td>
+                    <td>SIL Open Font License (OFL) v1.1 — Disimpan secara lokal (*self-hosted* offline).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Font Poppins</strong> (UI Elements)</td>
+                    <td>Indian Type Foundry (Google Fonts)</td>
+                    <td>SIL Open Font License (OFL) v1.1 — Disimpan secara lokal (*self-hosted* offline).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Efek Suara (SFX Digital)</strong><br><small style="color:var(--text-dim);">Klik, Snap,
+                        Error, Fan Spin, Booting</small></td>
+                    <td>Sintesis Web Audio API Native</td>
+                    <td><strong>100% Prosedural Bebas Hak Cipta</strong> — Seluruh efek audio dibangkitkan secara
+                      matematis melalui kode osilator gelombang JavaScript tanpa file audio eksternal.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 4. ETIKA & TRANSPARANSI AI -->
+          <div class="teori-box box-purple">
+            <h3 style="margin-bottom:0.4vw;">🤖 4. Pernyataan Etika &amp; Transparansi Pemanfaatan Kecerdasan Artifisial
+              (AI)</h3>
+            <p style="text-align:justify;line-height:1.65;margin-bottom:0;font-size:0.85vw;">
+              Media pembelajaran interaktif <strong>“Lab Perakitan Komputer”</strong> ini dirancang oleh <strong>Ach.
+                Chanifuddin Fanani, S.Pd.</strong> dengan mematuhi prinsip etika AI pendidikan. Kecerdasan Artifisial
+              (Google DeepMind / Antigravity AI) digunakan secara beretika sebagai <em>pair programming assistant</em>
+              dalam membantu penulisan kode terstruktur, pembentukan persamaan geometris SVG vektor perangkat keras,
+              optimasi aksesibilitas tata letak, dan perumusan interaktivitas drag-and-drop. Konseptual pedagogis, alur
+              kurikulum Informatika Fase D, skenario studi kasus, soal evaluasi LKPD, dan kendali mutu akhir sepenuhnya
+              berada di bawah pengawasan dan tanggung jawab guru pengembang.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content-area -->
+
+    <!-- ============================================================ -->
+    <!-- MODAL: PANDUAN LAB MAYA                                      -->
+    <!-- ============================================================ -->
+    <div id="panduan-modal" class="modal-overlay" onclick="if(event.target===this)closeModal('panduan-modal')">
+      <div class="modal-card">
+        <h2 style="margin-bottom:0.8vw;">Panduan Eksplorasi Lab Perakitan Komputer 📖</h2>
+        <div style="font-size:0.92vw;line-height:1.7;">
+          <p>1. 📚 <strong>Pahami Teori Komputer:</strong> Mulai dari tab Teori untuk mempelajari fungsi 5 komponen
+            utama (CPU, RAM, SSD, GPU, PSU) serta alur siklus Input-Proses-Output (IPO).</p>
+          <p>2. 📝 <strong>Perhatikan Prosedur &amp; K3:</strong> Pelajari langkah-langkah kerja aman perakitan komputer
+            sebelum melakukan praktik.</p>
+          <p>3. 🖥️ <strong>Rakit Komputer &amp; Waspadai Pengecoh:</strong> Tarik komponen ke soket motherboard.
+            Hati-hati jangan salah soket dan waspadai komponen pengecoh yang tidak kompatibel!</p>
+          <p>4. ⚡ <strong>Uji Booting (Power On):</strong> Tekan tombol Power On untuk memeriksa apakah komputer
+            menyala. Jika ada komponen salah soket, komputer tidak akan menyala dan memunculkan kode diagnostik.</p>
+          <p>5. 💡 <strong>Eksplorasi Sakelar Biner &amp; RGB:</strong> Pahami representasi data digital 0 &amp; 1 pada
+            sakelar biner dan percampuran jutaan warna sub-piksel monitor pada modul RGB.</p>
+          <p>6. ✍️ <strong>Kerjakan LKPD:</strong> Evaluasi pemahamanmu melalui soal Pilihan Ganda, Benar/Salah, dan
+            Menjodohkan beranimasi kabel!</p>
+        </div>
+        <div style="text-align:right;margin-top:1.2vw;">
+          <button class="btn-large" onclick="closeModal('panduan-modal')">Siap, Mulai Belajar! 🖥️</button>
+        </div>
       </div>
     </div>
 
-    <!-- ========================================================== -->
-
-    <!-- SUB-PANEL 8: REFERENSI                                     -->
-    <!-- ========================================================== -->
-    <!-- SUB-PANEL 8: REFERENSI                                     -->
-    <!-- ========================================================== -->
-    <div id="sub-referensi" class="game-sub-panel">
-      <div class="card card-scrollable" style="border-top-color: var(--aurora-teal);">
-        <h2>📖 Referensi, Sumber Pembelajaran &amp; Transparansi Aset Media</h2>
-        <p style="color:var(--text-muted);font-size:0.88vw;margin-bottom:1vw;line-height:1.6;">
-          Sebagai wujud integritas akademik, kepatuhan hak cipta, dan transparansi teknologi dalam karya inovasi pembelajaran <strong>Festival Biru Putih 2026</strong>, seluruh sumber rujukan kurikulum, literatur ilmiah, aset grafis, tipografi, efek suara, serta dokumentasi prompt <em>Artificial Intelligence</em> (AI) dicantumkan secara lengkap dan terbuka di bawah ini.
-        </p>
-
-        <!-- 1. DAFTAR PUSTAKA & KURIKULUM -->
-        <div class="teori-box" style="margin-bottom:1vw;">
-          <h3 style="margin-bottom:0.6vw;">📚 1. Daftar Pustaka &amp; Rujukan Kurikulum</h3>
-          <ul style="margin-left:1.5vw;line-height:1.7;font-size:0.85vw;">
-            <li>Badan Standar, Kurikulum, dan Asesmen Pendidikan (BSKAP). (2022). <i>Capaian Pembelajaran Mata Pelajaran Informatika Fase D (SMP/MTs)</i>. Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi RI.</li>
-            <li>Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi. (2021). <i>Buku Panduan Guru Informatika untuk SMP Kelas VIII</i>. Pusat Perbukuan, Balitbangbuk, Kemendikbudristek RI.</li>
-            <li>Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi. (2021). <i>Buku Siswa Informatika untuk SMP Kelas VIII</i>. Pusat Perbukuan, Balitbangbuk, Kemendikbudristek RI.</li>
-            <li>Patterson, D. A., &amp; Hennessy, J. L. (2020). <i>Computer Organization and Design: The Hardware/Software Interface</i> (6th ed.). Morgan Kaufmann Publishers.</li>
-            <li>Stallings, W. (2019). <i>Computer Organization and Architecture: Designing for Performance</i> (11th ed.). Pearson Education.</li>
-            <li>Tanenbaum, A. S., &amp; Austin, T. (2013). <i>Structured Computer Organization</i> (6th ed.). Pearson.</li>
-            <li>Direktorat Sekolah Menengah Pertama. (2026). <i>Petunjuk Teknis Festival Biru Putih 2026: Inovasi Media Pembelajaran Digital Berbantuan AI</i>. Direktorat Jenderal PAUD, Dikdas, dan Dikmen, Kemendikdasmen RI.</li>
-          </ul>
-        </div>
-
-        <!-- 2. DAFTAR ASET GRAFIS & PROMPT AI -->
-        <div class="teori-box box-teal" style="margin-bottom:1vw;">
-          <h3 style="margin-bottom:0.4vw;">🎨 2. Inventaris Aset Grafis &amp; Dokumentasi Prompt AI (Artificial Intelligence)</h3>
-          <p style="font-size:0.83vw;color:var(--text-muted);margin-bottom:0.6vw;line-height:1.5;">
-            Seluruh ilustrasi perangkat keras dan latar visual dibuat secara khusus (orisinil) untuk aplikasi ini menggunakan teknologi pemodelan generatif AI dan desain vektor matematis SVG presisi. Berikut daftar aset beserta prompt deskriptif yang digunakan:
-          </p>
-
-          <div class="ref-table-wrap">
-            <table class="ref-table">
-              <thead>
-                <tr>
-                  <th style="width:13%;text-align:center;">Gambar</th>
-                  <th style="width:16%;">Jenis &amp; Lisensi</th>
-                  <th style="width:17%;">Alat / Metode</th>
-                  <th style="width:54%;">Prompt AI &amp; Keterangan Teknis Pembuatan</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="text-align:center;">
-                    <img src="assets/welcome-bg.jpg" alt="Latar Lab Komputer" title="Latar Lab Komputer" style="width:96px;height:56px;object-fit:cover;border-radius:6px;border:1.5px solid var(--border-color);display:inline-block;box-shadow:var(--shadow-sm);">
-                  </td>
-                  <td><span class="ref-badge ref-badge-ai">AI Generated Image</span></td>
-                  <td>Google Imagen 3 / DeepMind</td>
-                  <td>
-                    <span class="ref-prompt-label">Prompt AI:</span>
-                    <div class="ref-prompt-box">"A vibrant, high-tech computer hardware assembly laboratory with neon cyan and teal lighting, neatly organized technician workbench featuring computer parts, motherboard, processor, memory RAM sticks, graphics card, screwdrivers and testing equipment, clean modern educational classroom aesthetic, cinematic wide angle, 3D digital illustration, 8k resolution, photorealistic, 16:9"</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">
-                    <img src="assets/images/motherboard-atx.svg" alt="Motherboard ATX" title="Motherboard ATX" style="width:72px;height:72px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
-                  </td>
-                  <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
-                  <td>Antigravity AI (Procedural SVG)</td>
-                  <td>
-                    <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
-                    <div class="ref-prompt-box">"Comprehensive vector schematic diagram of an ATX gaming motherboard, matte navy blue PCB traces, LGA 1700 CPU socket with lever arm, dual DDR4 DIMM memory slots, steel-reinforced PCIe 5.0 x16 slot, M.2 NVMe shield bed, ATX 24-pin power socket, VRM aluminum heatsinks, passive chipset heatsink, EZ debug LED post cluster, clean scalable SVG 680x540"</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">
-                    <img src="assets/images/component-cpu.svg" alt="Prosesor (CPU)" title="Prosesor (CPU)" style="width:64px;height:64px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
-                  </td>
-                  <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
-                  <td>Antigravity AI (Procedural SVG)</td>
-                  <td>
-                    <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
-                    <div class="ref-prompt-box">"Vector illustration of modern desktop computer processor CPU, top-down isometric view, metallic integrated heat spreader IHS with laser etched 'PROCESSOR' text, golden corner triangle marker, green substrate PCB, sleek high-tech cyber style, clean scalable SVG"</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">
-                    <img src="assets/images/component-ram.svg" alt="RAM DDR4 8GB" title="RAM DDR4 8GB" style="width:92px;height:40px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
-                  </td>
-                  <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
-                  <td>Antigravity AI (Procedural SVG)</td>
-                  <td>
-                    <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
-                    <div class="ref-prompt-box">"Vector illustration of DDR4 high-speed desktop RAM module, aggressive black aluminum heat armor spreader with geometric cooling facets, top rainbow RGB diffuser lightbar, 288-pin gold edge connector with asymmetric DDR4 notch, 'DDR4 8GB 3200MHz' silkscreen emblem, dual-state rack and installed horizontal tilt view"</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">
-                    <img src="assets/images/component-ram-ddr2.svg" alt="RAM DDR2 (Pengecoh)" title="RAM DDR2 (Pengecoh)" style="width:92px;height:40px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
-                  </td>
-                  <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
-                  <td>Antigravity AI (Procedural SVG)</td>
-                  <td>
-                    <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
-                    <div class="ref-prompt-box">"Vector illustration of legacy vintage DDR2 RAM memory stick, classic retro green circuit board PCB, 8 rectangular black DRAM IC packages, white paper spec sticker with red text 'LEGACY DDR2 1GB 800MHz', central key notch position for mismatch detection"</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">
-                    <img src="assets/images/component-ssd.svg" alt="SSD M.2 NVMe" title="SSD M.2 NVMe" style="width:92px;height:36px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
-                  </td>
-                  <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
-                  <td>Antigravity AI (Procedural SVG)</td>
-                  <td>
-                    <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
-                    <div class="ref-prompt-box">"Vector illustration of M.2 2280 NVMe SSD solid state drive, black matte PCB, two 3D NAND flash storage chips, silver metallic PCIe Gen4 controller chip, gold M-Key connector pins on right edge, semicircular standoff mounting screw notch, 280x80 viewBox"</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">
-                    <img src="assets/images/component-gpu.svg" alt="Kartu Grafis (GPU)" title="Kartu Grafis (GPU)" style="width:92px;height:52px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
-                  </td>
-                  <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
-                  <td>Antigravity AI (Procedural SVG)</td>
-                  <td>
-                    <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
-                    <div class="ref-prompt-box">"Vector illustration of dual-fan desktop graphics card GPU, dark geometric shroud with cyan LED accent line, dual circular cooling fans with center hub badges, copper heatpipes, PCIe x16 gold contact fingers, rear metal bracket with HDMI DisplayPort cutouts, downwards hanging installed layout"</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">
-                    <img src="assets/images/component-psu.svg" alt="Catu Daya (PSU)" title="Catu Daya (PSU)" style="width:72px;height:60px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
-                  </td>
-                  <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
-                  <td>Antigravity AI (Procedural SVG)</td>
-                  <td>
-                    <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
-                    <div class="ref-prompt-box">"Vector illustration of ATX power supply unit and 24-pin motherboard power cable plug, black nylon molded connector with latch lock, 12 pairs of colorful braided individually-sleeved power wires (orange, red, yellow, black, green, purple, blue), clear acrylic cable combs"</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">
-                    <img src="assets/images/component-hdd-ide.svg" alt="Harddisk IDE (Pengecoh)" title="Harddisk IDE (Pengecoh)" style="width:64px;height:64px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
-                  </td>
-                  <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
-                  <td>Antigravity AI (Procedural SVG)</td>
-                  <td>
-                    <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
-                    <div class="ref-prompt-box">"Vector illustration of vintage 3.5 inch PATA IDE hard disk drive, heavy cast aluminum body, top metallic cover with vintage drive label, 40-pin ribbon cable header, 4-pin Molex power receptacle, master-slave jumper pins"</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="text-align:center;">
-                    <img src="assets/images/component-cooler.svg" alt="Kipas Casing (Pengecoh)" title="Kipas Casing (Pengecoh)" style="width:64px;height:64px;object-fit:contain;border-radius:6px;border:1.5px solid var(--border-color);background:var(--card-sub-bg);padding:4px;display:inline-block;box-shadow:var(--shadow-sm);">
-                  </td>
-                  <td><span class="ref-badge ref-badge-svg">Vector SVG AI-Assisted</span></td>
-                  <td>Antigravity AI (Procedural SVG)</td>
-                  <td>
-                    <span class="ref-prompt-label">Prompt &amp; Parameter Desain:</span>
-                    <div class="ref-prompt-box">"Vector illustration of 120mm computer case cooling fan, black octagonal mounting frame with corner screw holes and anti-vibration rubber pads, 9 aerodynamic curved fan blades, 4-pin PWM sleeved connection cable"</div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- 3. TIPOGRAFI & AUDIO DIGITAL -->
-        <div class="teori-box" style="margin-bottom:1vw;">
-          <h3 style="margin-bottom:0.4vw;">🔤 3. Tipografi Terbuka (OFL) &amp; Efek Suara Prosedural</h3>
-          <div class="ref-table-wrap">
-            <table class="ref-table">
-              <thead>
-                <tr>
-                  <th style="width:25%;">Komponen Aset</th>
-                  <th style="width:25%;">Pencipta / Sumber</th>
-                  <th style="width:50%;">Jenis Lisensi &amp; Implementasi Teknis</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Font Fredoka</strong> (Headings)</td>
-                  <td>Gilbert Bonfim (Google Fonts)</td>
-                  <td>SIL Open Font License (OFL) v1.1 — Disimpan secara lokal (*self-hosted* offline).</td>
-                </tr>
-                <tr>
-                  <td><strong>Font Nunito</strong> (Body Text)</td>
-                  <td>Vernon Adams (Google Fonts)</td>
-                  <td>SIL Open Font License (OFL) v1.1 — Disimpan secara lokal (*self-hosted* offline).</td>
-                </tr>
-                <tr>
-                  <td><strong>Font Poppins</strong> (UI Elements)</td>
-                  <td>Indian Type Foundry (Google Fonts)</td>
-                  <td>SIL Open Font License (OFL) v1.1 — Disimpan secara lokal (*self-hosted* offline).</td>
-                </tr>
-                <tr>
-                  <td><strong>Efek Suara (SFX Digital)</strong><br><small style="color:var(--text-dim);">Klik, Snap, Error, Fan Spin, Booting</small></td>
-                  <td>Sintesis Web Audio API Native</td>
-                  <td><strong>100% Prosedural Bebas Hak Cipta</strong> — Seluruh efek audio dibangkitkan secara matematis melalui kode osilator gelombang JavaScript tanpa file audio eksternal.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- 4. ETIKA & TRANSPARANSI AI -->
-        <div class="teori-box box-purple">
-          <h3 style="margin-bottom:0.4vw;">🤖 4. Pernyataan Etika &amp; Transparansi Pemanfaatan Kecerdasan Artifisial (AI)</h3>
-          <p style="text-align:justify;line-height:1.65;margin-bottom:0;font-size:0.85vw;">
-            Media pembelajaran interaktif <strong>“Lab Perakitan Komputer”</strong> ini dirancang oleh <strong>Ach. Chanifuddin Fanani, S.Pd.</strong> dengan mematuhi prinsip etika AI pendidikan. Kecerdasan Artifisial (Google DeepMind / Antigravity AI) digunakan secara beretika sebagai <em>pair programming assistant</em> dalam membantu penulisan kode terstruktur, pembentukan persamaan geometris SVG vektor perangkat keras, optimasi aksesibilitas tata letak, dan perumusan interaktivitas drag-and-drop. Konseptual pedagogis, alur kurikulum Informatika Fase D, skenario studi kasus, soal evaluasi LKPD, dan kendali mutu akhir sepenuhnya berada di bawah pengawasan dan tanggung jawab guru pengembang.
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /content-area -->
-
-  <!-- ============================================================ -->
-  <!-- MODAL: PANDUAN LAB MAYA                                      -->
-  <!-- ============================================================ -->
-  <div id="panduan-modal" class="modal-overlay" onclick="if(event.target===this)closeModal('panduan-modal')">
-    <div class="modal-card">
-      <h2 style="margin-bottom:0.8vw;">Panduan Eksplorasi Lab Perakitan Komputer 📖</h2>
-      <div style="font-size:0.92vw;line-height:1.7;">
-        <p>1. 📚 <strong>Pahami Teori Komputer:</strong> Mulai dari tab Teori untuk mempelajari fungsi 5 komponen utama (CPU, RAM, SSD, GPU, PSU) serta alur siklus Input-Proses-Output (IPO).</p>
-        <p>2. 📝 <strong>Perhatikan Prosedur &amp; K3:</strong> Pelajari langkah-langkah kerja aman perakitan komputer sebelum melakukan praktik.</p>
-        <p>3. 🖥️ <strong>Rakit Komputer &amp; Waspadai Pengecoh:</strong> Tarik komponen ke soket motherboard. Hati-hati jangan salah soket dan waspadai komponen pengecoh yang tidak kompatibel!</p>
-        <p>4. ⚡ <strong>Uji Booting (Power On):</strong> Tekan tombol Power On untuk memeriksa apakah komputer menyala. Jika ada komponen salah soket, komputer tidak akan menyala dan memunculkan kode diagnostik.</p>
-        <p>5. 💡 <strong>Eksplorasi Sakelar Biner &amp; RGB:</strong> Pahami representasi data digital 0 &amp; 1 pada sakelar biner dan percampuran jutaan warna sub-piksel monitor pada modul RGB.</p>
-        <p>6. ✍️ <strong>Kerjakan LKPD:</strong> Evaluasi pemahamanmu melalui soal Pilihan Ganda, Benar/Salah, dan Menjodohkan beranimasi kabel!</p>
-      </div>
-      <div style="text-align:right;margin-top:1.2vw;">
-        <button class="btn-large" onclick="closeModal('panduan-modal')">Siap, Mulai Belajar! 🖥️</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================================ -->
-  <!-- MODAL: PERINGATAN SALAH PASANG KOMPONEN (HARDWARE SAFETY)     -->
-  <!-- ============================================================ -->
-  <div id="modal-misplaced-comp" class="modal-overlay" style="display:none;" onclick="if(event.target===this)closeModal('modal-misplaced-comp')">
-    <div class="modal-card misplaced-modal-card">
-      <div class="misplaced-modal-header">
-        <div class="misplaced-warning-icon">⚠️</div>
-        <div>
-          <h3 id="misplaced-modal-title" class="misplaced-modal-title">Peringatan Keselamatan Perangkat Keras</h3>
-          <p id="misplaced-modal-subtitle" class="misplaced-modal-subtitle">Komponen Tidak Kompatibel dengan Soket Motherboard</p>
-        </div>
-      </div>
-
-      <div class="misplaced-modal-body">
-        <div class="misplaced-preview-box">
-          <img id="misplaced-comp-img" src="" alt="Komponen" class="misplaced-comp-thumb">
-          <div class="misplaced-comp-info">
-            <div id="misplaced-comp-name" class="misplaced-comp-name">Nama Komponen</div>
-            <span id="misplaced-slot-badge" class="misplaced-slot-badge">⚠️ Salah Soket Pemasangan</span>
-          </div>
-        </div>
-
-        <div id="misplaced-reason-box" class="misplaced-reason-box">
-          <!-- Dynamically populated explanation in script.js -->
-        </div>
-
-        <div class="misplaced-safety-note">
-          <span style="font-size:1.4vw;line-height:1;">⚡</span>
+    <!-- ============================================================ -->
+    <!-- MODAL: PERINGATAN SALAH PASANG KOMPONEN (HARDWARE SAFETY)     -->
+    <!-- ============================================================ -->
+    <div id="modal-misplaced-comp" class="modal-overlay" style="display:none;"
+      onclick="if(event.target===this)closeModal('modal-misplaced-comp')">
+      <div class="modal-card misplaced-modal-card">
+        <div class="misplaced-modal-header">
+          <div class="misplaced-warning-icon">⚠️</div>
           <div>
-            <strong>Dampak Nyata di PC Fisik:</strong> Memaksa komponen masuk ke soket yang salah dapat membengkokkan pin soket CPU/RAM, merusak jalur tegangan daya motherboard, atau menyebabkan korsleting (<em>short circuit</em>). Sistem BIOS POST otomatis mendeteksi kegagalan ini dan menolak menyala demi keselamatan perangkat!
+            <h3 id="misplaced-modal-title" class="misplaced-modal-title">Peringatan Keselamatan Perangkat Keras</h3>
+            <p id="misplaced-modal-subtitle" class="misplaced-modal-subtitle">Komponen Tidak Kompatibel dengan Soket
+              Motherboard</p>
           </div>
         </div>
-      </div>
 
-      <div class="misplaced-modal-actions">
-        <button id="btn-misplaced-return" class="btn-large btn-danger" onclick="returnMisplacedComp()">
-          ↩️ Lepas &amp; Kembalikan ke Rak
-        </button>
-        <button class="btn-large btn-outline" style="background:#f1f5f9;color:#334155;border:1.5px solid #cbd5e1;" onclick="closeModal('modal-misplaced-comp')">
-          ✕ Paham, Biarkan Terpasang
-        </button>
-      </div>
-    </div>
-  </div>
+        <div class="misplaced-modal-body">
+          <div class="misplaced-preview-box">
+            <img id="misplaced-comp-img" src="" alt="Komponen" class="misplaced-comp-thumb">
+            <div class="misplaced-comp-info">
+              <div id="misplaced-comp-name" class="misplaced-comp-name">Nama Komponen</div>
+              <span id="misplaced-slot-badge" class="misplaced-slot-badge">⚠️ Salah Soket Pemasangan</span>
+            </div>
+          </div>
 
-  <!-- ============================================================ -->
-  <!-- MODAL: KONFIRMASI AUTO RAKIT                                  -->
-  <!-- ============================================================ -->
-  <div id="modal-auto-rakit" class="modal-overlay" style="display:none;" onclick="if(event.target===this)closeModal('modal-auto-rakit')">
-    <div class="modal-card auto-rakit-modal-card">
-      <div class="auto-rakit-modal-header">
-        <div class="auto-rakit-modal-icon">⚡</div>
-        <div>
-          <h3 class="auto-rakit-modal-title">Konfirmasi Auto Rakit Komputer</h3>
-          <p class="auto-rakit-modal-subtitle">Laboratorium Maya Perakitan Komputer</p>
+          <div id="misplaced-reason-box" class="misplaced-reason-box">
+            <!-- Dynamically populated explanation in script.js -->
+          </div>
+
+          <div class="misplaced-safety-note">
+            <span style="font-size:1.4vw;line-height:1;">⚡</span>
+            <div>
+              <strong>Dampak Nyata di PC Fisik:</strong> Memaksa komponen masuk ke soket yang salah dapat membengkokkan
+              pin soket CPU/RAM, merusak jalur tegangan daya motherboard, atau menyebabkan korsleting (<em>short
+                circuit</em>). Sistem BIOS POST otomatis mendeteksi kegagalan ini dan menolak menyala demi keselamatan
+              perangkat!
+            </div>
+          </div>
+        </div>
+
+        <div class="misplaced-modal-actions">
+          <button id="btn-misplaced-return" class="btn-large btn-danger" onclick="returnMisplacedComp()">
+            ↩️ Lepas &amp; Kembalikan ke Rak
+          </button>
+          <button class="btn-large btn-outline" style="background:#f1f5f9;color:#334155;border:1.5px solid #cbd5e1;"
+            onclick="closeModal('modal-misplaced-comp')">
+            ✕ Paham, Biarkan Terpasang
+          </button>
         </div>
       </div>
+    </div>
 
-      <div class="auto-rakit-modal-body">
-        <div class="teori-box box-amber" style="margin-bottom:0.8vw;">
-          <strong>💡 Saran Eksplorasi:</strong>
-          <p style="margin:4px 0 0 0;font-size:0.85vw;line-height:1.5;">
-            Mencoba merakit secara mandiri dengan cara menyeret (<em>drag &amp; drop</em>) komponen dari rak ke soket motherboard akan sangat membantumu memahami tata letak fisik arsitektur komputer!
+    <!-- ============================================================ -->
+    <!-- MODAL: KONFIRMASI AUTO RAKIT                                  -->
+    <!-- ============================================================ -->
+    <div id="modal-auto-rakit" class="modal-overlay" style="display:none;"
+      onclick="if(event.target===this)closeModal('modal-auto-rakit')">
+      <div class="modal-card auto-rakit-modal-card">
+        <div class="auto-rakit-modal-header">
+          <div class="auto-rakit-modal-icon">⚡</div>
+          <div>
+            <h3 class="auto-rakit-modal-title">Konfirmasi Auto Rakit Komputer</h3>
+            <p class="auto-rakit-modal-subtitle">Laboratorium Maya Perakitan Komputer</p>
+          </div>
+        </div>
+
+        <div class="auto-rakit-modal-body">
+          <div class="teori-box box-amber" style="margin-bottom:0.8vw;">
+            <strong>💡 Saran Eksplorasi:</strong>
+            <p style="margin:4px 0 0 0;font-size:0.85vw;line-height:1.5;">
+              Mencoba merakit secara mandiri dengan cara menyeret (<em>drag &amp; drop</em>) komponen dari rak ke soket
+              motherboard akan sangat membantumu memahami tata letak fisik arsitektur komputer!
+            </p>
+          </div>
+          <p style="font-size:0.88vw;line-height:1.6;color:var(--text-main);margin:0;">
+            Apakah kamu ingin melanjutkan pemasangan otomatis untuk <strong>5 komponen inti</strong> (CPU, RAM, SSD,
+            GPU, dan PSU)? Komponen pengecoh atau komponen yang salah pasang akan otomatis dibersihkan.
           </p>
         </div>
-        <p style="font-size:0.88vw;line-height:1.6;color:var(--text-main);margin:0;">
-          Apakah kamu ingin melanjutkan pemasangan otomatis untuk <strong>5 komponen inti</strong> (CPU, RAM, SSD, GPU, dan PSU)? Komponen pengecoh atau komponen yang salah pasang akan otomatis dibersihkan.
-        </p>
-      </div>
 
-      <div class="misplaced-modal-actions">
-        <button class="btn-large" style="background:linear-gradient(135deg, #0284c7, #00acc1);" onclick="executeAutoAssemble()">
-          ⚡ Ya, Rakit Otomatis!
-        </button>
-        <button class="btn-large btn-outline" style="background:#f1f5f9;color:#334155;border:1.5px solid #cbd5e1;" onclick="closeModal('modal-auto-rakit')">
-          🖐️ Coba Pasang Manual Saja
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================================ -->
-  <!-- MODAL: DETAIL SPESIFIKASI KOMPONEN (HELP / INFO)             -->
-  <!-- ============================================================ -->
-  <div id="info-popup-overlay" class="modal-overlay" style="display:none;" onclick="if(event.target===this)closeInfoPopup()">
-    <div class="info-popup-card" id="info-popup" onclick="event.stopPropagation()">
-      <button class="close-popup-btn" onclick="closeInfoPopup()" title="Tutup">✕</button>
-      <div style="display:flex;align-items:center;gap:1.2vw;border-bottom:1.5px solid var(--border-color);padding-bottom:0.8vw;">
-        <div id="info-popup-thumb" style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;background:var(--card-sub-bg);border-radius:10px;border:1.5px solid var(--border-color);padding:6px;flex-shrink:0;box-shadow:var(--shadow-sm);"></div>
-        <div style="flex:1;">
-          <h3 id="info-popup-title" style="color:var(--tab-active);margin:0 0 4px 0;font-size:1.15vw;font-family:var(--font-heading);"></h3>
-          <span id="info-popup-spec" style="font-size:0.75vw;font-family:var(--font-mono);background:var(--header-bg);padding:3px 10px;border-radius:6px;color:var(--tab-active);font-weight:700;border:1px solid var(--border-color);display:inline-block;"></span>
+        <div class="misplaced-modal-actions">
+          <button class="btn-large" style="background:linear-gradient(135deg, #0284c7, #00acc1);"
+            onclick="executeAutoAssemble()">
+            ⚡ Ya, Rakit Otomatis!
+          </button>
+          <button class="btn-large btn-outline" style="background:#f1f5f9;color:#334155;border:1.5px solid #cbd5e1;"
+            onclick="closeModal('modal-auto-rakit')">
+            🖐️ Coba Pasang Manual Saja
+          </button>
         </div>
       </div>
-      <p id="info-popup-desc" style="font-weight:700;margin-top:0.8vw;font-size:0.92vw;color:var(--text-heading);line-height:1.5;"></p>
-      <p id="info-popup-detail" style="font-size:0.85vw;margin-top:0.4vw;color:var(--text-main);line-height:1.6;text-align:justify;"></p>
-      <div id="info-popup-fact" class="teori-box box-amber" style="display:none;margin-top:0.8vw;font-size:0.82vw;line-height:1.5;"></div>
-      <div style="text-align:right;margin-top:1.1vw;">
-        <button class="btn-small" style="padding:0.45vw 1.2vw;font-size:0.82vw;border-radius:8px;cursor:pointer;" onclick="closeInfoPopup()">✕ Paham &amp; Tutup</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MODAL: DETAIL SPESIFIKASI KOMPONEN (HELP / INFO)             -->
+    <!-- ============================================================ -->
+    <div id="info-popup-overlay" class="modal-overlay" style="display:none;"
+      onclick="if(event.target===this)closeInfoPopup()">
+      <div class="info-popup-card" id="info-popup" onclick="event.stopPropagation()">
+        <button class="close-popup-btn" onclick="closeInfoPopup()" title="Tutup">✕</button>
+        <div
+          style="display:flex;align-items:center;gap:1.2vw;border-bottom:1.5px solid var(--border-color);padding-bottom:0.8vw;">
+          <div id="info-popup-thumb"
+            style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;background:var(--card-sub-bg);border-radius:10px;border:1.5px solid var(--border-color);padding:6px;flex-shrink:0;box-shadow:var(--shadow-sm);">
+          </div>
+          <div style="flex:1;">
+            <h3 id="info-popup-title"
+              style="color:var(--tab-active);margin:0 0 4px 0;font-size:1.15vw;font-family:var(--font-heading);"></h3>
+            <span id="info-popup-spec"
+              style="font-size:0.75vw;font-family:var(--font-mono);background:var(--header-bg);padding:3px 10px;border-radius:6px;color:var(--tab-active);font-weight:700;border:1px solid var(--border-color);display:inline-block;"></span>
+          </div>
+        </div>
+        <p id="info-popup-desc"
+          style="font-weight:700;margin-top:0.8vw;font-size:0.92vw;color:var(--text-heading);line-height:1.5;"></p>
+        <p id="info-popup-detail"
+          style="font-size:0.85vw;margin-top:0.4vw;color:var(--text-main);line-height:1.6;text-align:justify;"></p>
+        <div id="info-popup-fact" class="teori-box box-amber"
+          style="display:none;margin-top:0.8vw;font-size:0.82vw;line-height:1.5;"></div>
+        <div class="info-popup-actions">
+          <button class="btn-info-close" onclick="closeInfoPopup()">
+            <span style="font-size:1.1em;line-height:1;">✕</span>
+            <span>Paham &amp; Tutup</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- ============================================================ -->
-  <!-- MODAL: SELEBRASI BOOT SUKSES                                 -->
-  <!-- ============================================================ -->
-  <div id="modal-boot-celebration" class="modal-overlay celebration-overlay" style="display:none;" onclick="if(event.target===this)closeModal('modal-boot-celebration')">
-    <canvas id="celebration-confetti-canvas" class="confetti-canvas"></canvas>
-    <div class="modal-card celebration-modal-card">
-      <div class="celebration-trophy-badge">🏆</div>
-      <h2 class="celebration-title">🎉 HORE! PC BERHASIL DIRAKIT &amp; MENYALA! 🎉</h2>
-      <p class="celebration-subtitle">Selamat, <strong id="celeb-student-name">Sobat Informatika</strong>! Kamu berhasil merakit komputer dengan benar dan lulus semua pengujian BIOS POST.</p>
+    <!-- ============================================================ -->
+    <!-- MODAL: SELEBRASI BOOT SUKSES                                 -->
+    <!-- ============================================================ -->
+    <div id="modal-boot-celebration" class="modal-overlay celebration-overlay" style="display:none;"
+      onclick="if(event.target===this)closeModal('modal-boot-celebration')">
+      <canvas id="celebration-confetti-canvas" class="confetti-canvas"></canvas>
+      <div class="modal-card celebration-modal-card">
+        <div class="celebration-trophy-badge">🏆</div>
+        <h2 class="celebration-title">🎉 HORE! PC BERHASIL DIRAKIT &amp; MENYALA! 🎉</h2>
+        <p class="celebration-subtitle">Selamat, <strong id="celeb-student-name">Sobat Informatika</strong>! Kamu
+          berhasil merakit komputer dengan benar dan lulus semua pengujian BIOS POST.</p>
 
-      <div class="celeb-specs-grid" id="celeb-specs-grid">
-        <!-- Rendered dynamically via showBootCelebration() in script.js -->
-      </div>
+        <div class="celeb-specs-grid" id="celeb-specs-grid">
+          <!-- Rendered dynamically via showBootCelebration() in script.js -->
+        </div>
 
-      <div class="celeb-actions-row">
-        <button class="btn-large btn-outline" style="color:#1e293b;border:2px solid #e2e8f0;background:#f8fafc;" onclick="closeModal('modal-boot-celebration')">🔄 Meja Rakit</button>
-        <button class="btn-large" style="background:linear-gradient(135deg, #06b6d4, #0284c7);" onclick="closeModal('modal-boot-celebration');switchLabTab('eksplorasi')">📡 Eksplorasi Digital →</button>
-        <button class="btn-large" style="background:linear-gradient(135deg, #10b981, #059669);" onclick="closeModal('modal-boot-celebration');switchLabTab('lkpd')">✍️ Kerjakan LKPD →</button>
+        <div class="celeb-actions-row">
+          <button class="btn-large btn-outline" style="color:#1e293b;border:2px solid #e2e8f0;background:#f8fafc;"
+            onclick="closeModal('modal-boot-celebration')">🔄 Meja Rakit</button>
+          <button class="btn-large" style="background:linear-gradient(135deg, #06b6d4, #0284c7);"
+            onclick="closeModal('modal-boot-celebration');switchLabTab('eksplorasi')">📡 Eksplorasi Digital →</button>
+          <button class="btn-large" style="background:linear-gradient(135deg, #10b981, #059669);"
+            onclick="closeModal('modal-boot-celebration');switchLabTab('lkpd')">✍️ Kerjakan LKPD →</button>
+        </div>
       </div>
     </div>
-  </div>
 
-</div><!-- /app-container -->
+  </div><!-- /app-container -->
 
-<script src="config.js"></script>
-<script src="script.js"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>

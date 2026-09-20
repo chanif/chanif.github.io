@@ -300,23 +300,40 @@ window.LAB_CONFIG = {
     missingGPU: {
       type: 'warning',
       icon: '⚠️',
-      title: 'WARNING: No Display Output',
+      title: 'WARNING: Dedicated GPU Not Found',
       postSequence: [
         'Initializing power supply... OK',
-        'CPU detected... OK',
-        'RAM check: 8192 MB ... OK',
-        'GPU check... NOT FOUND',
+        'CPU detected: Octa-Core Processor... OK',
+        'RAM check: 8192 MB DDR4... OK',
+        'Dedicated GPU (PCIe)... TIDAK TERPASANG',
+        'Fallback display: CPU Integrated Graphics (iGPU)... AKTIF',
         '',
-        '⚠️ No display output detected.',
-        '',
-        'Layar gelap — komputer bekerja di',
-        'belakang layar, tapi tidak bisa',
-        'menampilkan gambar ke monitor.',
-        '',
-        'GPU mengolah jutaan warna RGB untuk',
-        'setiap piksel di layar 60× per detik.',
+        '⚠️ PERINGATAN: Kualitas grafis berjalan pada mode standar/rendah.',
+        '⚠️ Rendering 3D dan game berat tidak optimal tanpa GPU diskrit.',
       ],
-      beepPattern: 'single-long',
+      beepPattern: 'single-short',
+    },
+    integratedGraphicsBoot: {
+      type: 'warning',
+      icon: '⚠️',
+      title: 'BOOT SUKSES — Mode Grafis Terintegrasi (iGPU)',
+      postSequence: [
+        'Initializing power supply... OK',
+        'CPU detected: Octa-Core Processor... OK',
+        'RAM check: 8192 MB DDR4... OK',
+        'Dedicated GPU (PCIe)... TIDAK TERPASANG',
+        'Display driver: CPU Integrated Graphics (iGPU)... AKTIF',
+        '',
+        '⚠️ PERINGATAN: Tampilan visual berjalan pada kualitas standar / rendah.',
+        '⚠️ Performa 3D & rendering terbatas karena tanpa Kartu Grafis diskrit.',
+        '',
+        'Storage check: M.2 NVMe SSD 512GB... OK',
+        'Loading Operating System... OK',
+        '========================================',
+        '🎉 KOMPUTER BERHASIL MENYALA (Mode iGPU)!',
+      ],
+      beepPattern: 'single-short',
+      explanation: 'Komputer berhasil menyala menggunakan chip grafis bawaan prosesor (iGPU). Kualitas visual dan performa rendering standar/rendah karena belum ada Kartu Grafis (GPU) diskrit.',
     },
     missingPSU: {
       type: 'critical',
@@ -382,7 +399,7 @@ window.LAB_CONFIG = {
 
   // ── Tantangan Biner ──
   binaryChallenges: [
-    { target: 42, hint: 'Ini adalah "jawaban untuk segalanya" menurut buku The Hitchhiker\'s Guide to the Galaxy!', binary: '00101010' },
+    { target: 42, hint: 'Nyalakan 3 sakelar: coba jumlahkan sakelar nilai 32 + 8 + 2!', binary: '00101010' },
     { target: 100, hint: 'Angka bulat 100 — skor sempurna!', binary: '01100100' },
     { target: 255, hint: 'Angka terbesar yang bisa dibuat dengan 8 bit! Nyalakan SEMUA lampu.', binary: '11111111' },
   ],
@@ -404,222 +421,213 @@ window.LAB_CONFIG = {
         icon: '🎯',
         content: `
           <div class="teori-tp-tab-content">
-            <div class="teori-tp-banner">
-              <div class="teori-tp-badge">🎯 CAPAIAN &amp; TUJUAN PEMBELAJARAN</div>
-              <h3 style="margin-bottom:0.4vw;font-size:1.25vw;color:var(--text-heading);">Laboratorium Virtual Sistem Komputer</h3>
-              <p style="font-size:0.88vw;color:var(--text-muted);margin-bottom:1vw;line-height:1.5;">
-                Media pembelajaran interaktif ini dirancang untuk peserta didik <strong>Informatika SMP Fase D</strong> guna memahami arsitektur komputer, peran perangkat keras internal, serta representasi data digital.
-              </p>
-            </div>
-
-            <div class="teori-box box-teal" style="margin-bottom:1vw;">
+            <div class="teori-box box-teal" style="margin-bottom:0.8vw;">
               <h4 style="margin-bottom:0.3vw;">📋 Capaian Pembelajaran (CP) — Elemen Sistem Komputer (SK) Fase D</h4>
               <p style="font-style:italic;margin-bottom:0;font-size:0.86vw;line-height:1.45;">
-                "Peserta didik mampu mendeskripsikan komponen, fungsi, dan cara kerja komputer yang membentuk sebuah sistem komputasi, serta memahami mekanisme internal penyimpanan data pada sistem komputer." — <em>BSKAP No. 032/H/KR/2024</em>
+                "Peserta didik mampu mendeskripsikan komponen, fungsi, dan cara kerja komputer yang membentuk sebuah sistem komputasi, serta memahami mekanisme internal penyimpanan data pada sistem komputer." — <em>Keputusan BSKAP No. 032/H/KR/2024</em>
               </p>
             </div>
 
-            <h4 style="margin-bottom:0.6vw;font-size:1vw;color:var(--text-heading);">🎯 Tujuan Pembelajaran:</h4>
-            <div class="teori-tp-cards-grid">
+            <h4 style="margin-bottom:0.6vw;font-size:1vw;color:var(--text-heading);">🎯 Tujuan Pembelajaran Laboratorium Maya:</h4>
+            <div class="teori-tp-cards-grid" style="grid-template-columns:repeat(2, 1fr);gap:0.7vw;">
               <div class="teori-tp-card">
                 <div class="teori-tp-card-num">1</div>
                 <div class="teori-tp-card-body">
-                  <strong>Mengidentifikasi komponen utama sistem komputer</strong>
-                  <p>Peserta didik dapat menyebutkan dan menjelaskan fungsi komponen utama sistem komputer (CPU, RAM, media penyimpanan, GPU, PSU, dan motherboard) serta peran pengguna (brainware) dalam mengoperasikan sistem.</p>
+                  <strong>Memahami Hakikat Sistem Komputer &amp; Siklus IPOS</strong>
+                  <p>Mendeskripsikan hubungan sinergis antara tiga unsur utama (Hardware, Software, dan Brainware) serta menganalisis alur pemrosesan data melalui siklus Input–Proses–Output–Simpan.</p>
                 </div>
               </div>
               <div class="teori-tp-card">
                 <div class="teori-tp-card-num">2</div>
                 <div class="teori-tp-card-body">
-                  <strong>Menjelaskan cara kerja sistem komputer</strong>
-                  <p>Peserta didik dapat menjelaskan siklus kerja komputer (input–proses–output–simpan) dan mensimulasikan perakitan komputer secara virtual dengan memasang komponen pada soket yang tepat.</p>
+                  <strong>Menganalisis Peran Komponen Perangkat Keras</strong>
+                  <p>Mengidentifikasi fungsi dan karakteristik spesifik komponen internal (CPU, RAM, Media Penyimpanan, GPU, PSU, Motherboard) serta perangkat masukan dan keluaran (I/O).</p>
                 </div>
               </div>
               <div class="teori-tp-card">
                 <div class="teori-tp-card-num">3</div>
                 <div class="teori-tp-card-body">
-                  <strong>Memahami representasi data digital</strong>
-                  <p>Peserta didik dapat menjelaskan sistem bilangan biner (bit dan byte) sebagai dasar penyimpanan data, serta memahami representasi warna layar melalui model warna aditif RGB.</p>
+                  <strong>Mensimulasikan Perakitan &amp; Diagnostik Komputer</strong>
+                  <p>Memasang perangkat keras pada soket motherboard yang tepat secara virtual, menguji prosedur boot POST, serta menganalisis kode status operasional perangkat.</p>
+                </div>
+              </div>
+              <div class="teori-tp-card">
+                <div class="teori-tp-card-num">4</div>
+                <div class="teori-tp-card-body">
+                  <strong>Mengeksplorasi Representasi Data Digital</strong>
+                  <p>Membuktikan mekanisme penerjemahan data fisik menjadi sinyal biner digital (bit &amp; byte), model warna visual aditif (RGB) pada layar, serta dasar logika komputasi.</p>
                 </div>
               </div>
             </div>
-
-            <div class="teori-box box-amber" style="margin-top:1vw;">
-              <h4 style="margin-bottom:0.2vw;">💭 Pertanyaan Pemantik:</h4>
-              <p style="font-style:italic;margin-bottom:0;font-size:0.86vw;">
-                "Pernahkah kamu membuka casing komputer atau melihat bagian dalam perangkat elektronik? Mengapa komputer membutuhkan berbagai komponen berbeda yang saling terhubung agar bisa bekerja?"
-              </p>
-            </div>
           </div>
         `,
       },
       {
-        id: 'apa-itu',
-        title: 'Apa Itu Komputer?',
+        id: 'sistem-ipos',
+        title: 'Sistem Komputer & IPOS',
         icon: '💻',
         content: `
-          <h3>Definisi dan Konsep Dasar Komputer</h3>
-          <p>Komputer adalah perangkat elektronik yang dapat menerima data (<em>input</em>), menyimpan, mengolah data sesuai instruksi program, dan menghasilkan informasi (<em>output</em>) yang bermakna bagi penggunanya.</p>
+          <h3>Hakikat Sistem Komputer &amp; Siklus IPOS</h3>
+          <p style="margin-bottom:0.8vw;">
+            Secara istilah, <strong>Sistem Komputer</strong> adalah kesatuan terpadu yang terdiri atas perangkat keras (hardware), program pengontrol (software), dan pengguna (brainware) yang saling terhubung untuk mengolah data menjadi informasi yang bermanfaat.
+          </p>
 
-          <div class="info-card">
-            <h4>📌 Tiga Unsur Sistem Komputer</h4>
-            <p>Komputer bukan sekadar perangkat keras. <strong>Sistem komputer</strong> adalah kesatuan yang terdiri dari tiga unsur yang bekerja bersama:</p>
-            <div class="two-col" style="gap:0.6vw;margin-top:0.4vw;">
-              <div style="padding:0.6vw;background:rgba(0,212,255,0.08);border-radius:6px;border:1px solid rgba(0,212,255,0.2);">
-                <strong>🔧 Hardware (Perangkat Keras)</strong>
-                <p style="margin:0.3vw 0 0;font-size:0.82vw;">Komponen fisik yang dapat dilihat dan disentuh: CPU, RAM, SSD, GPU, PSU, monitor, keyboard, mouse.</p>
+          <!-- Tiga Pilar Sistem Komputer -->
+          <div class="info-card" style="margin-bottom:0.8vw;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3vw;">
+              <h4 style="margin:0;">📌 Tiga Pilar Utama Sistem Komputer</h4>
+              <span style="font-size:0.72vw;font-family:var(--font-mono);color:var(--tab-active);background:rgba(79,70,229,0.1);padding:2px 8px;border-radius:10px;">Triad Komputasi</span>
+            </div>
+            <p style="margin-bottom:0.5vw;font-size:0.84vw;color:var(--text-muted);">
+              Ketiga elemen ini saling melengkapi dan tidak dapat dipisahkan dalam operasional komputasi:
+            </p>
+            <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:0.7vw;margin-top:0.4vw;">
+              <div style="padding:0.7vw;background:rgba(0,212,255,0.06);border-radius:8px;border:1.5px solid rgba(0,212,255,0.25);">
+                <strong style="font-size:0.88vw;color:#00b4d8;display:block;margin-bottom:0.2vw;">🔧 Hardware (Perangkat Keras)</strong>
+                <p style="margin:0;font-size:0.8vw;line-height:1.45;color:var(--text-main);">
+                  Peralatan fisik yang dialiri listrik dan dapat disentuh. Berperan menerima sinyal, melakukan kalkulasi sirkuit, dan mengeksekusi instruksi.
+                </p>
+                <div style="margin-top:0.4vw;font-size:0.73vw;color:var(--text-muted);background:rgba(0,0,0,0.04);padding:3px 6px;border-radius:4px;">
+                  <em>Contoh:</em> CPU, RAM, SSD, GPU, Motherboard, Keyboard, Layar.
+                </div>
               </div>
-              <div style="padding:0.6vw;background:rgba(16,185,129,0.08);border-radius:6px;border:1px solid rgba(16,185,129,0.2);">
-                <strong>💿 Software (Perangkat Lunak)</strong>
-                <p style="margin:0.3vw 0 0;font-size:0.82vw;">Program dan instruksi yang dijalankan komputer: sistem operasi (Windows, Linux), aplikasi (Word, Chrome), dan game.</p>
+
+              <div style="padding:0.7vw;background:rgba(16,185,129,0.06);border-radius:8px;border:1.5px solid rgba(16,185,129,0.25);">
+                <strong style="font-size:0.88vw;color:#10b981;display:block;margin-bottom:0.2vw;">💿 Software (Perangkat Lunak)</strong>
+                <p style="margin:0;font-size:0.8vw;line-height:1.45;color:var(--text-main);">
+                  Program dan instruksi tanpa wujud fisik yang memandu hardware mengenai apa yang harus dikerjakan serta bagaimana data diproses.
+                </p>
+                <div style="margin-top:0.4vw;font-size:0.73vw;color:var(--text-muted);background:rgba(0,0,0,0.04);padding:3px 6px;border-radius:4px;">
+                  <em>Contoh:</em> Sistem Operasi (Windows/Linux), Peramban Web, Game.
+                </div>
               </div>
-              <div style="padding:0.6vw;background:rgba(139,92,246,0.08);border-radius:6px;border:1px solid rgba(139,92,246,0.2);">
-                <strong>🧑 Brainware (Pengguna/SDM)</strong>
-                <p style="margin:0.3vw 0 0;font-size:0.82vw;">Manusia yang mengoperasikan, memprogram, dan merawat sistem komputer. Tanpa brainware, hardware dan software tidak bermakna.</p>
+
+              <div style="padding:0.7vw;background:rgba(139,92,246,0.06);border-radius:8px;border:1.5px solid rgba(139,92,246,0.25);">
+                <strong style="font-size:0.88vw;color:#8b5cf6;display:block;margin-bottom:0.2vw;">🧑 Brainware (Pengguna / SDM)</strong>
+                <p style="margin:0;font-size:0.8vw;line-height:1.45;color:var(--text-main);">
+                  Manusia yang mengoperasikan, memberi masukan perintah, membuat kode program, serta merawat infrastruktur sistem komputer.
+                </p>
+                <div style="margin-top:0.4vw;font-size:0.73vw;color:var(--text-muted);background:rgba(0,0,0,0.04);padding:3px 6px;border-radius:4px;">
+                  <em>Peran:</em> Pengguna (User), Programmer, Teknisi, Administrator.
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="info-card" style="margin-top:0.8vw;">
-            <h4>🏷️ Jenis-Jenis Komputer</h4>
-            <div class="two-col" style="gap:0.5vw;">
-              <div>
-                <strong>🖥️ Komputer Desktop &amp; Laptop</strong>
-                <p style="font-size:0.82vw;margin:0.2vw 0 0;">Komputer pribadi untuk kerja, belajar, dan hiburan. Desktop bisa dirakit sesuai kebutuhan; laptop lebih portabel.</p>
-              </div>
-              <div>
-                <strong>📱 Smartphone &amp; Tablet</strong>
-                <p style="font-size:0.82vw;margin:0.2vw 0 0;">Komputer mini bertenaga prosesor ARM yang muat di genggaman. Menjalankan aplikasi, kamera, GPS secara bersamaan.</p>
-              </div>
-              <div>
-                <strong>🖨️ Embedded System</strong>
-                <p style="font-size:0.82vw;margin:0.2vw 0 0;">Komputer tertanam di dalam perangkat lain: mesin cuci, TV pintar, mobil, sistem kendali industri, hingga ATM.</p>
-              </div>
-              <div>
-                <strong>☁️ Server &amp; Superkomputer</strong>
-                <p style="font-size:0.82vw;margin:0.2vw 0 0;">Komputer berperforma tinggi untuk memproses data jutaan pengguna internet dan simulasi ilmiah kompleks.</p>
-              </div>
-            </div>
+          <!-- Sinergi 3 Pilar -->
+          <div class="teori-box box-teal" style="margin-bottom:0.8vw;padding:0.6vw 1vw;">
+            <strong style="font-size:0.88vw;color:var(--text-heading);">🔗 Analogi Sinergi:</strong>
+            <p style="margin:0.2vw 0 0;font-size:0.82vw;line-height:1.45;">
+              Ibarat tubuh manusia: <strong>Hardware</strong> adalah raga/organ fisik, <strong>Software</strong> adalah pengetahuan dan keterampilan berpikir, sedangkan <strong>Brainware</strong> adalah jiwa yang berkehendak menggerakkannya. Ketiadaan salah satu unsur menyebabkan sistem tidak dapat berfungsi sama sekali.
+            </p>
           </div>
 
-          <div class="fun-fact" style="margin-top:0.8vw;">
-            <strong>📜 Perkembangan Singkat Komputer</strong>
-            <p>Komputer pertama (ENIAC, 1945) sebesar dua ruangan kelas dan beratnya 30 ton. Chip komputer modern (sekecil kuku jari) berisi lebih dari 10 miliar transistor dan 1.000.000× lebih cepat dari ENIAC! Smartphone di sakumu kini lebih powerful dari komputer yang digunakan untuk mendaratkan manusia di bulan pada tahun 1969.</p>
-          </div>
-        `,
-      },
-      {
-        id: 'cara-kerja',
-        title: 'Cara Kerja',
-        icon: '⚙️',
-        content: `
-          <h3>Cara Kerja Sistem Komputer</h3>
-          <p>Semua komputer, dari smartphone hingga superkomputer, bekerja mengikuti satu siklus dasar yang sama — disebut <strong>siklus IPOS (Input–Proses–Output–Simpan)</strong>:</p>
-          
-          <div class="cycle-diagram">
+          <!-- Siklus IPOS -->
+          <h4 style="margin:0.8vw 0 0.3vw;font-size:0.95vw;color:var(--text-heading);">⚙️ Siklus Kerja Komputer: Model IPOS</h4>
+          <p style="font-size:0.84vw;color:var(--text-muted);margin-bottom:0.5vw;">
+            Semua komputer bekerja mengikuti satu siklus dasar pemrosesan informasi:
+          </p>
+
+          <div class="cycle-diagram" style="margin-bottom:0.8vw;">
             <div class="cycle-step" style="--step-color: #00D4FF">
               <div class="cycle-icon">⌨️</div>
               <div class="cycle-label">INPUT</div>
-              <div class="cycle-desc">Data masuk melalui keyboard, mouse, kamera, mikrofon, sensor</div>
+              <div class="cycle-desc">Data masuk melalui keyboard, mouse, layar sentuh, kamera, atau sensor</div>
             </div>
-            <div class="cycle-arrow">→</div>
+            <div class="cycle-arrow">➔</div>
             <div class="cycle-step" style="--step-color: #7C3AED">
               <div class="cycle-icon">🧠</div>
               <div class="cycle-label">PROSES</div>
-              <div class="cycle-desc">CPU mengolah data sesuai instruksi program; RAM menyimpan data sementara</div>
+              <div class="cycle-desc">CPU mengeksekusi instruksi data; RAM menampung data kerja sementara</div>
             </div>
-            <div class="cycle-arrow">→</div>
+            <div class="cycle-arrow">➔</div>
             <div class="cycle-step" style="--step-color: #10B981">
               <div class="cycle-icon">🖥️</div>
               <div class="cycle-label">OUTPUT</div>
-              <div class="cycle-desc">Hasil ditampilkan di monitor, speaker, atau dikirim ke perangkat lain</div>
+              <div class="cycle-desc">Hasil disajikan ke pengguna melalui layar monitor, speaker, atau printer</div>
             </div>
-            <div class="cycle-arrow">→</div>
+            <div class="cycle-arrow">➔</div>
             <div class="cycle-step" style="--step-color: #F59E0B">
               <div class="cycle-icon">💾</div>
               <div class="cycle-label">SIMPAN</div>
-              <div class="cycle-desc">Data disimpan permanen di SSD/HDD agar bisa digunakan kembali</div>
+              <div class="cycle-desc">Data disimpan permanen di media penyimpanan (SSD/HDD)</div>
             </div>
           </div>
 
-          <div class="info-card" style="margin-top:0.8vw;">
-            <h4>🔄 Contoh Nyata: Saat Kamu Mengetik di WhatsApp</h4>
-            <ol style="margin:0.4vw 0 0;padding-left:1.2em;">
-              <li><strong>Input:</strong> Jari menyentuh layar atau menekan tombol keyboard</li>
-              <li><strong>Proses:</strong> CPU mengidentifikasi karakter, RAM menampung teks sementara, GPU merender tampilan layar</li>
-              <li><strong>Output:</strong> Huruf muncul di layar; layar diperbarui 60 kali per detik oleh GPU</li>
-              <li><strong>Simpan:</strong> Pesan disimpan di memori flash internal dan dikirim melalui jaringan</li>
-            </ol>
+          <div class="fun-fact" style="margin-top:0.6vw;">
+            <strong>📱 Contoh Kasus Nyata (Mengetik Pesan WhatsApp):</strong>
+            <p style="margin:0.2vw 0 0;font-size:0.82vw;line-height:1.45;">
+              Jari menekan keyboard (<strong>Input</strong>) ➔ CPU memproses karakter biner dan GPU merender teks (<strong>Proses</strong>) ➔ Huruf langsung muncul pada layar (<strong>Output</strong>) ➔ Pesan tersimpan di memori internal dan dikirim lewat jaringan (<strong>Simpan</strong>).
+            </p>
+          </div>
+        `,
+      },
+      {
+        id: 'komponen',
+        title: 'Anatomi Perangkat Keras',
+        icon: '🔩',
+        content: `
+          <h3>Anatomi Perangkat Keras Komputer (Hardware)</h3>
+          <p style="margin-bottom:0.7vw;">
+            Perangkat keras komputer dikelompokkan menjadi <strong>Komponen Internal</strong> (terpasang di atas motherboard di dalam casing) dan <strong>Perangkat Eksternal I/O</strong> (berinteraksi langsung dengan pengguna).
+          </p>
+
+          <h4 style="margin-bottom:0.3vw;font-size:0.95vw;color:var(--text-heading);">1. Komponen Internal Inti (Motherboard Platform)</h4>
+          <p style="font-size:0.82vw;color:var(--text-muted);margin-bottom:0.4vw;">
+            Klik kartu komponen di bawah untuk meninjau fungsi teknis dan posisinya sebelum melakukan simulasi perakitan:
+          </p>
+          <div id="teori-komponen-grid" class="teori-komponen-grid">
+            <!-- Diisi secara dinamis oleh script.js -->
+          </div>
+          <div id="teori-komponen-detail" class="komponen-detail-panel">
+            <p class="placeholder-text">👆 Klik salah satu kartu komponen di atas untuk melihat penjelasan detail &amp; spesifikasi teknis.</p>
           </div>
 
-          <div class="teori-box box-teal" style="margin-top:0.8vw;">
-            <h4>🔗 Peran Setiap Komponen dalam Siklus IPOS</h4>
+          <h4 style="margin-top:1vw;margin-bottom:0.4vw;font-size:0.95vw;color:var(--text-heading);">2. Perangkat Eksternal: Input &amp; Output (I/O)</h4>
+          <div class="two-col" style="gap:0.7vw;margin-bottom:0.8vw;">
+            <div style="padding:0.7vw;background:var(--card-sub-bg);border:1px solid var(--border-color);border-radius:8px;">
+              <strong style="color:#00b4d8;font-size:0.88vw;">⌨️ Unit Input (Perangkat Masukan)</strong>
+              <p style="margin:0.3vw 0 0;font-size:0.8vw;color:var(--text-main);line-height:1.45;">
+                Berfungsi memasukkan data mentah dan instruksi dari dunia luar ke dalam komputer.
+              </p>
+              <div style="margin-top:0.4vw;font-size:0.75vw;color:var(--text-muted);">
+                <em>Contoh:</em> Keyboard, Mouse, Touchpad, Layar Sentuh, Mikrofon, Kamera (Webcam), Scanner.
+              </div>
+            </div>
+            <div style="padding:0.7vw;background:var(--card-sub-bg);border:1px solid var(--border-color);border-radius:8px;">
+              <strong style="color:#10b981;font-size:0.88vw;">🖥️ Unit Output (Perangkat Keluaran)</strong>
+              <p style="margin:0.3vw 0 0;font-size:0.8vw;color:var(--text-main);line-height:1.45;">
+                Berfungsi menyajikan hasil pemrosesan komputer dalam format yang dapat dicerap indra manusia.
+              </p>
+              <div style="margin-top:0.4vw;font-size:0.75vw;color:var(--text-muted);">
+                <em>Contoh:</em> Layar Monitor, Proyektor, Speaker, Headphone, Printer.
+              </div>
+            </div>
+          </div>
+
+          <div class="teori-box box-teal" style="margin-top:0.6vw;">
+            <h4 style="margin-bottom:0.3vw;">🔗 Pemetaan Peran Perangkat Keras dalam Siklus IPOS</h4>
             <table style="width:100%;font-size:0.82vw;border-collapse:collapse;">
-              <thead><tr style="border-bottom:1px solid var(--border-color);">
-                <th style="text-align:left;padding:0.3vw 0.5vw;">Komponen</th>
-                <th style="text-align:left;padding:0.3vw 0.5vw;">Peran dalam IPOS</th>
+              <thead><tr style="border-bottom:1.5px solid var(--border-color);">
+                <th style="text-align:left;padding:0.3vw 0.5vw;">Perangkat Keras</th>
+                <th style="text-align:left;padding:0.3vw 0.5vw;">Tahap IPOS</th>
+                <th style="text-align:left;padding:0.3vw 0.5vw;">Peran Spesifik</th>
               </tr></thead>
               <tbody>
-                <tr><td style="padding:0.25vw 0.5vw;">⌨️ Keyboard, Mouse</td><td style="padding:0.25vw 0.5vw;">Input — memasukkan perintah dan data</td></tr>
-                <tr><td style="padding:0.25vw 0.5vw;">🧠 CPU</td><td style="padding:0.25vw 0.5vw;">Proses — mengeksekusi instruksi program</td></tr>
-                <tr><td style="padding:0.25vw 0.5vw;">⚡ RAM</td><td style="padding:0.25vw 0.5vw;">Proses — menyimpan data kerja sementara</td></tr>
-                <tr><td style="padding:0.25vw 0.5vw;">🎮 GPU</td><td style="padding:0.25vw 0.5vw;">Output — mengolah grafis dan menampilkan gambar</td></tr>
-                <tr><td style="padding:0.25vw 0.5vw;">🖥️ Monitor, Speaker</td><td style="padding:0.25vw 0.5vw;">Output — menyajikan hasil ke pengguna</td></tr>
-                <tr><td style="padding:0.25vw 0.5vw;">💾 SSD/HDD</td><td style="padding:0.25vw 0.5vw;">Simpan — media penyimpanan data permanen</td></tr>
+                <tr><td style="padding:0.25vw 0.5vw;">⌨️ Keyboard, Mouse, Mikrofon</td><td style="padding:0.25vw 0.5vw;"><span style="color:#00b4d8;font-weight:700;">INPUT</span></td><td style="padding:0.25vw 0.5vw;">Menerjemahkan aksi fisik manusia menjadi sinyal listrik komputer</td></tr>
+                <tr><td style="padding:0.25vw 0.5vw;">🧠 CPU (Central Processing Unit)</td><td style="padding:0.25vw 0.5vw;"><span style="color:#8b5cf6;font-weight:700;">PROSES</span></td><td style="padding:0.25vw 0.5vw;">Otak komputasi yang mengeksekusi instruksi aritmetika dan logika</td></tr>
+                <tr><td style="padding:0.25vw 0.5vw;">⚡ RAM (Random Access Memory)</td><td style="padding:0.25vw 0.5vw;"><span style="color:#8b5cf6;font-weight:700;">PROSES</span></td><td style="padding:0.25vw 0.5vw;">Menyimpan data kerja program yang sedang aktif agar akses CPU instan</td></tr>
+                <tr><td style="padding:0.25vw 0.5vw;">🎮 GPU (Graphics Processing Unit)</td><td style="padding:0.25vw 0.5vw;"><span style="color:#10b981;font-weight:700;">OUTPUT</span></td><td style="padding:0.25vw 0.5vw;">Mengolah jutaan piksel grafis 2D/3D untuk disalurkan ke layar</td></tr>
+                <tr><td style="padding:0.25vw 0.5vw;">🖥️ Monitor, Speaker, Printer</td><td style="padding:0.25vw 0.5vw;"><span style="color:#10b981;font-weight:700;">OUTPUT</span></td><td style="padding:0.25vw 0.5vw;">Menampilkan wujud visual, auditori, atau cetakan fisik informasi</td></tr>
+                <tr><td style="padding:0.25vw 0.5vw;">💾 SSD / Flash Storage</td><td style="padding:0.25vw 0.5vw;"><span style="color:#f59e0b;font-weight:700;">SIMPAN</span></td><td style="padding:0.25vw 0.5vw;">Menyimpan sistem operasi, aplikasi, dan berkas pengguna secara permanen</td></tr>
               </tbody>
             </table>
           </div>
         `,
       },
       {
-        id: 'komponen',
-        title: 'Komponen Utama',
-        icon: '🔩',
-        content: `
-          <h3>Komponen Utama Sistem Komputer</h3>
-          <p>Sistem komputer terdiri dari perangkat keras internal (di dalam casing), perangkat I/O, dan brainware. Klik kartu di bawah untuk mempelajari fungsi detail:</p>
-          <div id="teori-komponen-grid" class="teori-komponen-grid">
-            <!-- Rendered dynamically from components data -->
-          </div>
-          <div id="teori-komponen-detail" class="komponen-detail-panel">
-            <p class="placeholder-text">👆 Klik salah satu kartu komponen di atas untuk melihat penjelasan detail &amp; spesifikasi teknis.</p>
-          </div>
-
-          <h4 style="margin-top:1.2em;">Perangkat Input &amp; Output (I/O)</h4>
-          <div class="two-col">
-            <div>
-              <strong>⌨️ Perangkat Input</strong>
-              <p>Perangkat untuk <em>memasukkan</em> data dan perintah ke komputer: keyboard, mouse, layar sentuh, mikrofon, kamera, scanner, joystick.</p>
-            </div>
-            <div>
-              <strong>🖥️ Perangkat Output</strong>
-              <p>Perangkat untuk <em>menampilkan</em> hasil pengolahan data: monitor, speaker, printer, proyektor, headphone.</p>
-            </div>
-          </div>
-
-          <div class="teori-box" style="margin-top:1vw;background:rgba(139,92,246,0.06);border-left:3px solid #8b5cf6;">
-            <h4 style="color:#a78bfa;">🧑 Brainware — Unsur Manusia dalam Sistem Komputer</h4>
-            <p style="font-size:0.86vw;line-height:1.55;margin-bottom:0.4vw;">Brainware adalah <strong>manusia</strong> yang berperan dalam mengoperasikan, mengembangkan, dan memelihara sistem komputer. Tanpa brainware, hardware dan software tidak dapat berfungsi secara bermakna.</p>
-            <div class="two-col" style="gap:0.5vw;">
-              <div style="font-size:0.82vw;">
-                <strong>👤 Pengguna (User)</strong> — mengoperasikan aplikasi untuk menyelesaikan tugas sehari-hari (mengetik, browsing, belajar online).
-              </div>
-              <div style="font-size:0.82vw;">
-                <strong>👨‍💻 Programmer</strong> — menulis kode program (software) yang memerintah hardware untuk bekerja sesuai kebutuhan.
-              </div>
-              <div style="font-size:0.82vw;">
-                <strong>🔧 Teknisi (IT Support)</strong> — merakit, merawat, dan memperbaiki perangkat keras komputer.
-              </div>
-              <div style="font-size:0.82vw;">
-                <strong>🗂️ Administrator Sistem</strong> — mengelola server, jaringan, keamanan data, dan akses pengguna di organisasi.
-              </div>
-            </div>
-          </div>
-        `,
-      },
-      {
         id: 'biner',
-        title: 'Representasi Data',
+        title: 'Data Biner & Memori',
         icon: '🔢',
         content: `
           <h3>Cara Komputer Menyimpan &amp; Merepresentasikan Data</h3>
@@ -766,7 +774,7 @@ window.LAB_CONFIG = {
               <strong>🕹️ Ingin Mencoba Mengubah Angka Biner Sendiri?</strong>
               <div style="font-size:0.78vw;color:var(--text-muted);margin-top:2px;">Buka laboratorium interaktif Sakelar Biner untuk menggeser tuas 8-bit dan melihat angka desimal berubah secara langsung!</div>
             </div>
-            <button class="banner-btn" onclick="switchTab('eksplorasi')">
+            <button class="banner-btn" onclick="switchLabTab('eksplorasi')">
               Coba Sakelar Biner ⚡
             </button>
           </div>
@@ -774,7 +782,7 @@ window.LAB_CONFIG = {
       },
       {
         id: 'warna-rgb',
-        title: 'Warna RGB',
+        title: 'Visual Layar & Warna RGB',
         icon: '🎨',
         content: `
           <h3>Cara Monitor Menampilkan Jutaan Warna (Model RGB)</h3>
@@ -987,7 +995,7 @@ window.LAB_CONFIG = {
               <strong>🎨 Ingin Mencampur Warna RGB Secara Langsung?</strong>
               <div style="font-size:0.78vw;color:var(--text-muted);margin-top:2px;">Buka laboratorium interaktif Eksplorasi Digital untuk menggeser slider Red, Green, Blue dan melihat perpaduan warnanya seketika!</div>
             </div>
-            <button class="banner-btn" onclick="switchTab('eksplorasi')">
+            <button class="banner-btn" onclick="switchLabTab('eksplorasi')">
               Coba Mixer RGB 🌈
             </button>
           </div>
