@@ -1338,32 +1338,37 @@ function showComponentInfo(compId) {
     thumb.innerHTML = `<img src="${comp.svg}" alt="${comp.name}" style="max-width:100%;max-height:100%;object-fit:contain;">`;
   }
 
-  document.getElementById('info-popup-title').textContent = `${comp.icon} ${comp.name}`;
+  const titleEl = document.getElementById('info-popup-title');
+  if (titleEl) titleEl.textContent = `${comp.icon || ''} ${comp.name}`;
+  
   const specEl = document.getElementById('info-popup-spec');
-  if (specEl) specEl.textContent = comp.techSpec || comp.shortName;
-  document.getElementById('info-popup-desc').textContent = comp.description;
-  document.getElementById('info-popup-detail').textContent = comp.details;
+  if (specEl) specEl.textContent = comp.techSpec || comp.shortName || '';
+  
+  const descEl = document.getElementById('info-popup-desc');
+  if (descEl) descEl.textContent = comp.description || '';
+  
+  const detailEl = document.getElementById('info-popup-detail');
+  if (detailEl) detailEl.textContent = comp.details || '';
   
   const fact = document.getElementById('info-popup-fact');
-  if (comp.funFact) {
-    fact.style.display = 'block';
-    fact.innerHTML = `<strong>💡 Tahukah Kamu?</strong><p>${comp.funFact}</p>`;
-  } else {
-    fact.style.display = 'none';
+  if (fact) {
+    if (comp.funFact) {
+      fact.style.display = 'block';
+      fact.innerHTML = `<strong>💡 Tahukah Kamu?</strong><p style="margin:4px 0 0 0;">${comp.funFact}</p>`;
+    } else {
+      fact.style.display = 'none';
+    }
   }
 
-  const popup = document.getElementById('info-popup');
   const overlay = document.getElementById('info-popup-overlay');
-  if (popup) popup.style.display = 'block';
   if (overlay) overlay.style.display = 'flex';
   sfxClick();
 }
 
 function closeInfoPopup() {
-  const popup = document.getElementById('info-popup');
   const overlay = document.getElementById('info-popup-overlay');
-  if (popup) popup.style.display = 'none';
   if (overlay) overlay.style.display = 'none';
+  sfxClick();
 }
 
 // ==================== SIMULASI: SAKELAR BINER ====================

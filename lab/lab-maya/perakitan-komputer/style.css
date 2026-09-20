@@ -2327,8 +2327,8 @@ p, li {
 }
 
 .dev-photo {
-  width: 175px;
-  height: 175px;
+  width: 210px;
+  height: 260px;
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, #81d4fa, #4dd0e1, #a5d6a7);
   display: flex;
@@ -2704,33 +2704,42 @@ p, li {
   margin-bottom: 1.2vw;
 }
 
-/* Component Pop-up Detail */
+/* Component Pop-up Detail Modal Card */
 .info-popup-card {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   background: var(--card-bg);
+  color: var(--text-main);
   border: 2px solid var(--tab-active);
-  border-radius: var(--radius-md);
-  padding: 1vw 1.2vw;
-  width: 85%;
-  max-width: 580px;
-  box-shadow: var(--shadow-lg);
-  z-index: 100;
-  display: none;
-  animation: slideUp 0.25s ease;
-}
-@keyframes slideUp {
-  0% { transform: translate(-50%, 15px); opacity: 0; }
-  100% { transform: translate(-50%, 0); opacity: 1; }
+  border-radius: var(--radius-lg);
+  padding: 1.4vw 1.8vw;
+  width: 90%;
+  max-width: 620px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 212, 255, 0.2);
+  z-index: 502;
+  animation: popIn 0.25s ease;
 }
 .close-popup-btn {
   position: absolute;
-  top: 8px; right: 10px;
-  background: none; border: none;
-  font-size: 1.1vw; cursor: pointer;
+  top: 12px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
   color: var(--text-muted);
+  transition: 0.2s ease;
+}
+.close-popup-btn:hover {
+  background: var(--danger-color);
+  color: #ffffff;
+  border-color: var(--danger-color);
+  transform: scale(1.1);
 }
 
 /* Rotate Device Mobile Warning */

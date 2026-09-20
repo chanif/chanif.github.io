@@ -7,7 +7,7 @@
 **Mata Pelajaran:** Informatika  
 **Fase/Kelas:** Fase D (Kelas VII–IX SMP)  
 **Elemen CP:** Sistem Komputer (SK)  
-**Kreator:** Chanif Fanani, S.Pd.  
+**Kreator:** Ach. Chanifuddin Fanani, S.Pd.  
 
 ---
 
@@ -382,7 +382,7 @@ Cocokkan komponen dengan fungsinya (drag garis atau klik-pasangkan):
 | Elemen | Detail |
 |--------|--------|
 | **Foto** | Foto pengembang |
-| **Nama** | Chanif Fanani, S.Pd. |
+| **Nama** | Ach. Chanifuddin Fanani, S.Pd. |
 | **Sekolah** | [Nama SMP] |
 | **Kontak** | Email / website |
 | **Deskripsi** | Singkat tentang pengembang |
