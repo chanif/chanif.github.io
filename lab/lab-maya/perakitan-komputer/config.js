@@ -619,41 +619,152 @@ window.LAB_CONFIG = {
         icon: '🔢',
         content: `
           <h3>Cara Komputer Menyimpan &amp; Merepresentasikan Data</h3>
-          <p>Komputer hanya mengenal <strong>dua angka: 0 dan 1</strong>. Sistem ini disebut <strong>bilangan biner</strong> (binary). Seluruh data — teks, gambar, suara, video — dikodekan sebagai deretan panjang angka 0 dan 1.</p>
+          <p>Komputer adalah perangkat elektronik digital. Di tingkat paling mendasar, prosesor dan sirkuit memori hanya mengenali aliran arus listrik: <strong>Ada Arus Listrik (ON = 1)</strong> dan <strong>Tidak Ada Arus (OFF = 0)</strong>. Pola kombinasi 0 dan 1 inilah yang disebut <strong>Sistem Bilangan Biner</strong> (basis 2).</p>
+
+          <h4 style="margin-top:1vw;">🔤 Hierarki Satuan Kapasitas Data Digital</h4>
+          <p style="font-size:0.84vw;color:var(--text-muted);margin-bottom:0.2vw;">Dari satu sakelar biner tunggal hingga gigabyte data di penyimpanan komputer:</p>
           
-          <div class="info-card">
-            <h4>🔤 Bit &amp; Byte — Satuan Data Digital</h4>
-            <ul>
-              <li><strong>1 Bit</strong> = satu digit biner (0 atau 1) — seperti satu saklar lampu: nyala atau mati</li>
-              <li><strong>1 Byte</strong> = 8 bit = bisa mewakili angka 0–255</li>
-              <li><strong>1 Kilobyte (KB)</strong> = 1.024 byte ≈ satu halaman teks</li>
-              <li><strong>1 Megabyte (MB)</strong> = 1.024 KB ≈ satu foto HP</li>
-              <li><strong>1 Gigabyte (GB)</strong> = 1.024 MB ≈ 250 lagu MP3</li>
-            </ul>
+          <div class="capacity-cards">
+            <div class="capacity-card">
+              <span class="cap-badge">1 BIT (b)</span>
+              <span class="cap-value">0 atau 1</span>
+              <span class="cap-analogy">1 sakelar lampu (ON atau OFF)</span>
+            </div>
+            <div class="capacity-card">
+              <span class="cap-badge">1 BYTE (B)</span>
+              <span class="cap-value">8 Bit</span>
+              <span class="cap-analogy">1 karakter huruf / angka (misal: 'A')</span>
+            </div>
+            <div class="capacity-card">
+              <span class="cap-badge">1 KILOBYTE</span>
+              <span class="cap-value">1.024 Byte</span>
+              <span class="cap-analogy">≈ 1 halaman dokumen teks</span>
+            </div>
+            <div class="capacity-card">
+              <span class="cap-badge">1 MEGABYTE</span>
+              <span class="cap-value">1.024 KB</span>
+              <span class="cap-analogy">≈ 1 foto kamera smartphone</span>
+            </div>
+            <div class="capacity-card">
+              <span class="cap-badge">1 GIGABYTE</span>
+              <span class="cap-value">1.024 MB</span>
+              <span class="cap-analogy">≈ 250 lagu MP3 audio</span>
+            </div>
           </div>
 
-          <h4>Konversi Biner ke Desimal</h4>
-          <table class="data-table">
-            <thead><tr><th>Biner</th><th>Perhitungan</th><th>Desimal</th></tr></thead>
+          <h4 style="margin-top:1.1vw;">🔢 Sistem Nilai Tempat Biner (Bobot Pangkat 2)</h4>
+          <p style="font-size:0.84vw;color:var(--text-muted);">Dalam 1 Byte (8 bit), setiap posisi sakelar dari kanan ke kiri memiliki bobot kelipatan dua (2⁰ sampai 2⁷):</p>
+
+          <table class="data-table-modern" style="text-align:center;">
+            <thead>
+              <tr>
+                <th>Posisi Bit</th>
+                <th>Bit 7 (2⁷)</th>
+                <th>Bit 6 (2⁶)</th>
+                <th>Bit 5 (2⁵)</th>
+                <th>Bit 4 (2⁴)</th>
+                <th>Bit 3 (2³)</th>
+                <th>Bit 2 (2²)</th>
+                <th>Bit 1 (2¹)</th>
+                <th>Bit 0 (2⁰)</th>
+                <th style="text-align:center;">Total Desimal</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><td class="mono">0000 0001</td><td>1</td><td>1</td></tr>
-              <tr><td class="mono">0000 1010</td><td>8 + 2</td><td>10</td></tr>
-              <tr><td class="mono">0010 1010</td><td>32 + 8 + 2</td><td>42</td></tr>
-              <tr><td class="mono">1111 1111</td><td>128+64+32+16+8+4+2+1</td><td>255</td></tr>
+              <tr>
+                <td><strong>Nilai Bobot</strong></td>
+                <td><span class="mono-val">128</span></td>
+                <td><span class="mono-val">64</span></td>
+                <td><span class="mono-val">32</span></td>
+                <td><span class="mono-val">16</span></td>
+                <td><span class="mono-val">8</span></td>
+                <td><span class="mono-val">4</span></td>
+                <td><span class="mono-val">2</span></td>
+                <td><span class="mono-val">1</span></td>
+                <td style="font-weight:800;color:var(--tab-active);">Maks: 255</td>
+              </tr>
+              <tr>
+                <td><strong>Status Bit (Contoh)</strong></td>
+                <td>0</td>
+                <td>0</td>
+                <td style="color:#10b981;font-weight:700;">1</td>
+                <td>0</td>
+                <td style="color:#10b981;font-weight:700;">1</td>
+                <td>0</td>
+                <td style="color:#10b981;font-weight:700;">1</td>
+                <td>0</td>
+                <td style="font-weight:800;color:#10b981;font-size:0.95vw;">42</td>
+              </tr>
+              <tr style="background:rgba(16, 185, 129, 0.05);">
+                <td colspan="10" style="text-align:left;padding:0.4vw 0.8vw;font-size:0.78vw;color:var(--text-muted);">
+                  💡 <strong>Perhitungan:</strong> Bit yang bernilai <strong>1</strong> dijumlahkan bobotnya: 32 + 8 + 2 = <strong>42</strong>. Bit bernilai 0 diabaikan.
+                </td>
+              </tr>
             </tbody>
           </table>
 
-          <h4 style="margin-top:1em;">🎨 Warna RGB — Kodifikasi Warna dalam Biner</h4>
-          <p>Layar komputer menampilkan jutaan warna hanya dari <strong>3 warna dasar cahaya: Merah (Red), Hijau (Green), Biru (Blue)</strong> — disebut model <strong>RGB</strong>. Setiap warna diwakili angka 0–255 (1 byte).</p>
-          <ul>
-            <li>🔴 Merah + 🟢 Hijau = 🟡 <strong>Kuning</strong></li>
-            <li>🟢 Hijau + 🔵 Biru = 🩵 <strong>Cyan</strong></li>
-            <li>🔴 + 🟢 + 🔵 (semua penuh) = ⬜ <strong>Putih</strong></li>
-          </ul>
+          <div class="two-col" style="margin-top:0.8vw;">
+            <div>
+              <h4>📊 Contoh Konversi Biner Lainnya</h4>
+              <table class="data-table-modern">
+                <thead>
+                  <tr>
+                    <th>Biner (8-Bit)</th>
+                    <th>Penjumlahan Bobot</th>
+                    <th>Desimal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="mono-val">0000 0001</span></td>
+                    <td>1</td>
+                    <td><strong>1</strong></td>
+                  </tr>
+                  <tr>
+                    <td><span class="mono-val">0000 1010</span></td>
+                    <td>8 + 2</td>
+                    <td><strong>10</strong></td>
+                  </tr>
+                  <tr>
+                    <td><span class="mono-val">0100 0001</span></td>
+                    <td>64 + 1</td>
+                    <td><strong>65</strong> <span style="font-size:0.75vw;color:var(--text-muted);">(Huruf 'A')</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="mono-val">1111 1111</span></td>
+                    <td>128 + 64 + 32 + 16 + 8 + 4 + 2 + 1</td>
+                    <td><strong>255</strong> <span style="font-size:0.75vw;color:var(--text-muted);">(Nilai Penuh)</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-          <div class="fun-fact">
-            <strong>💡 Tahukah Kamu?</strong>
-            <p>Semua data di HP-mu — foto, chat WhatsApp, lagu Spotify — disimpan sebagai deretan panjang angka 0 dan 1. Sebuah foto 5MB terdiri dari sekitar 40 juta digit biner! Coba buktikan di <strong>Eksplorasi Digital: Sakelar Biner &amp; Warna RGB</strong>!</p>
+            <div>
+              <h4>🔤 Bagaimana Huruf Dikodekan? (Standar ASCII)</h4>
+              <div class="info-card" style="margin-top:0.2vw;">
+                <p style="font-size:0.83vw;line-height:1.5;margin-bottom:0.4vw;">
+                  Setiap karakter yang kamu ketik di keyboard memiliki nomor kode unik standar internasional bernama <strong>ASCII</strong> (<em>American Standard Code for Information Interchange</em>):
+                </p>
+                <div style="display:flex;gap:0.4vw;margin-bottom:0.4vw;flex-wrap:wrap;">
+                  <span class="color-swatch-chip"><span class="mono-val">01000001</span> = Huruf <strong>A</strong> (65)</span>
+                  <span class="color-swatch-chip"><span class="mono-val">01000010</span> = Huruf <strong>B</strong> (66)</span>
+                  <span class="color-swatch-chip"><span class="mono-val">01100001</span> = Huruf <strong>a</strong> (97)</span>
+                </div>
+                <p style="font-size:0.78vw;color:var(--text-muted);margin:0;">
+                  Ketika kamu mengetik pesan, keyboard secara otomatis mengirimkan sinyal pulsa 8-bit ke RAM dan CPU secara instan.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="interactive-link-banner">
+            <div class="banner-text">
+              <strong>🕹️ Ingin Mencoba Mengubah Angka Biner Sendiri?</strong>
+              <div style="font-size:0.78vw;color:var(--text-muted);margin-top:2px;">Buka laboratorium interaktif Sakelar Biner untuk menggeser tuas 8-bit dan melihat angka desimal berubah secara langsung!</div>
+            </div>
+            <button class="banner-btn" onclick="switchTab('eksplorasi')">
+              Coba Sakelar Biner ⚡
+            </button>
           </div>
         `,
       },
@@ -662,44 +773,219 @@ window.LAB_CONFIG = {
         title: 'Warna RGB',
         icon: '🎨',
         content: `
-          <h3>Cara Komputer Menampilkan Warna</h3>
-          <p>Layar komputer menampilkan jutaan warna hanya dari <strong>3 warna dasar cahaya: Merah (Red), Hijau (Green), Biru (Blue)</strong> — disebut model <strong>RGB</strong>.</p>
-          
-          <div class="info-card">
-            <h4>🌈 Pencampuran Warna Cahaya (Aditif)</h4>
-            <p>Berbeda dengan cat (subtraktif), cahaya bersifat <strong>aditif</strong> — semakin banyak warna dicampur, semakin terang:</p>
-            <ul>
-              <li>🔴 Merah + 🟢 Hijau = 🟡 <strong>Kuning</strong></li>
-              <li>🟢 Hijau + 🔵 Biru = 🩵 <strong>Cyan</strong></li>
-              <li>🔴 Merah + 🔵 Biru = 🟣 <strong>Magenta</strong></li>
-              <li>🔴 + 🟢 + 🔵 (semua penuh) = ⬜ <strong>Putih</strong></li>
-              <li>Semua mati = ⬛ <strong>Hitam</strong></li>
-            </ul>
+          <h3>Cara Monitor Menampilkan Jutaan Warna (Model RGB)</h3>
+          <p>Layar monitor komputer, laptop, dan smartphone tidak memakai tinta cat fisik, melainkan memancarkan <strong>tiga berkas cahaya primer: Merah (Red), Hijau (Green), dan Biru (Blue)</strong>. Metode ini dikenal sebagai model pencampuran warna <strong>Aditif (Cahaya)</strong> — semakin banyak intensitas cahaya yang dipadukan, warna yang dihasilkan semakin terang menuju putih.</p>
+
+          <h4 style="margin-top:1vw;">🌈 Tiga Kanal Warna Primer &amp; Format 24-Bit (True Color)</h4>
+          <p style="font-size:0.84vw;color:var(--text-muted);margin-bottom:0.3vw;">Setiap piksel di layarmu memiliki 3 sub-piksel cahaya (R, G, B) dengan skala kekuatan <strong>0 (mati) hingga 255 (daya penuh)</strong>:</p>
+
+          <div class="capacity-cards" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="capacity-card" style="border-top:3px solid #ef4444;">
+              <span class="cap-badge" style="background:#ef4444;">🔴 KANAL MERAH (R)</span>
+              <span class="cap-value">Skala 0 – 255</span>
+              <span class="cap-analogy">Menggunakan 1 Byte (8 Bit) memori video</span>
+            </div>
+            <div class="capacity-card" style="border-top:3px solid #10b981;">
+              <span class="cap-badge" style="background:#10b981;">🟢 KANAL HIJAU (G)</span>
+              <span class="cap-value">Skala 0 – 255</span>
+              <span class="cap-analogy">Menggunakan 1 Byte (8 Bit) memori video</span>
+            </div>
+            <div class="capacity-card" style="border-top:3px solid #3b82f6;">
+              <span class="cap-badge" style="background:#3b82f6;">🔵 KANAL BIRU (B)</span>
+              <span class="cap-value">Skala 0 – 255</span>
+              <span class="cap-analogy">Menggunakan 1 Byte (8 Bit) memori video</span>
+            </div>
           </div>
 
-          <h4>Setiap Warna = 3 Angka (0–255)</h4>
-          <table class="data-table">
-            <thead><tr><th>Warna</th><th>R</th><th>G</th><th>B</th><th>Kode HEX</th></tr></thead>
+          <div class="fun-fact" style="margin-top:0.4vw;margin-bottom:0.8vw;">
+            <strong>✨ Fakta Spektakuler:</strong> Karena masing-masing kanal punya 256 tingkat kecerahan, total kombinasi warna yang dapat dibentuk satu piksel adalah <strong>256 × 256 × 256 = 16.777.216 warna berbeda (16,7 Juta Warna)</strong>! Format ini disebut sistem warna <strong>24-Bit True Color</strong>.
+          </div>
+
+          <h4 style="margin-top:1vw;">🎨 Resep Pencampuran Warna Cahaya Aditif</h4>
+          <p style="font-size:0.84vw;color:var(--text-muted);margin-bottom:0.2vw;">Perpaduan dua atau lebih berkas cahaya primer menghasilkan warna sekunder:</p>
+
+          <div class="rgb-mixing-grid">
+            <div class="rgb-mix-card">
+              <div class="rgb-mix-inputs">
+                <span class="color-swatch-square" style="background:#ef4444;"></span> Merah
+                <span>+</span>
+                <span class="color-swatch-square" style="background:#10b981;"></span> Hijau
+              </div>
+              <div class="rgb-mix-result">
+                <span>=</span>
+                <span class="color-swatch-chip"><span class="color-swatch-square" style="background:#ffff00;"></span> 🟡 Kuning</span>
+              </div>
+            </div>
+
+            <div class="rgb-mix-card">
+              <div class="rgb-mix-inputs">
+                <span class="color-swatch-square" style="background:#10b981;"></span> Hijau
+                <span>+</span>
+                <span class="color-swatch-square" style="background:#3b82f6;"></span> Biru
+              </div>
+              <div class="rgb-mix-result">
+                <span>=</span>
+                <span class="color-swatch-chip"><span class="color-swatch-square" style="background:#00ffff;"></span> 🩵 Cyan</span>
+              </div>
+            </div>
+
+            <div class="rgb-mix-card">
+              <div class="rgb-mix-inputs">
+                <span class="color-swatch-square" style="background:#ef4444;"></span> Merah
+                <span>+</span>
+                <span class="color-swatch-square" style="background:#3b82f6;"></span> Biru
+              </div>
+              <div class="rgb-mix-result">
+                <span>=</span>
+                <span class="color-swatch-chip"><span class="color-swatch-square" style="background:#ff00ff;"></span> 🟣 Magenta</span>
+              </div>
+            </div>
+
+            <div class="rgb-mix-card">
+              <div class="rgb-mix-inputs">
+                <span>🔴 + 🟢 + 🔵</span> Semua Penuh (255)
+              </div>
+              <div class="rgb-mix-result">
+                <span>=</span>
+                <span class="color-swatch-chip"><span class="color-swatch-square" style="background:#ffffff;"></span> ⬜ Putih Terang</span>
+              </div>
+            </div>
+
+            <div class="rgb-mix-card">
+              <div class="rgb-mix-inputs">
+                <span>Padam Total</span> Nilai (0, 0, 0)
+              </div>
+              <div class="rgb-mix-result">
+                <span>=</span>
+                <span class="color-swatch-chip"><span class="color-swatch-square" style="background:#000000;"></span> ⬛ Hitam (Mati)</span>
+              </div>
+            </div>
+
+            <div class="rgb-mix-card">
+              <div class="rgb-mix-inputs">
+                <span>Kekuatan Sedang</span> Nilai (128, 128, 128)
+              </div>
+              <div class="rgb-mix-result">
+                <span>=</span>
+                <span class="color-swatch-chip"><span class="color-swatch-square" style="background:#808080;"></span> 🔘 Abu-Abu</span>
+              </div>
+            </div>
+          </div>
+
+          <h4 style="margin-top:1vw;">📋 Tabel Kode Warna Komputer (RGB Desimal &amp; Kode HEX)</h4>
+          <table class="data-table-modern">
+            <thead>
+              <tr>
+                <th style="width:25%;">Nama Warna</th>
+                <th style="width:15%;">Kanal R</th>
+                <th style="width:15%;">Kanal G</th>
+                <th style="width:15%;">Kanal B</th>
+                <th style="width:15%;">Kode HEX</th>
+                <th style="width:15%;">Visual Swatch</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><td>🔴 Merah</td><td>255</td><td>0</td><td>0</td><td class="mono">#FF0000</td></tr>
-              <tr><td>🟡 Kuning</td><td>255</td><td>255</td><td>0</td><td class="mono">#FFFF00</td></tr>
-              <tr><td>🔵 Biru Instagram</td><td>0</td><td>149</td><td>246</td><td class="mono">#0095F6</td></tr>
-              <tr><td>⬜ Putih</td><td>255</td><td>255</td><td>255</td><td class="mono">#FFFFFF</td></tr>
+              <tr>
+                <td><strong>Merah Murni</strong></td>
+                <td>255</td>
+                <td>0</td>
+                <td>0</td>
+                <td><span class="mono-val">#FF0000</span></td>
+                <td><span class="color-swatch-square" style="background:#ff0000;width:32px;height:18px;"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Hijau Murni</strong></td>
+                <td>0</td>
+                <td>255</td>
+                <td>0</td>
+                <td><span class="mono-val">#00FF00</span></td>
+                <td><span class="color-swatch-square" style="background:#00ff00;width:32px;height:18px;"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Biru Murni</strong></td>
+                <td>0</td>
+                <td>0</td>
+                <td>255</td>
+                <td><span class="mono-val">#0000FF</span></td>
+                <td><span class="color-swatch-square" style="background:#0000ff;width:32px;height:18px;"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Kuning Cerah</strong></td>
+                <td>255</td>
+                <td>255</td>
+                <td>0</td>
+                <td><span class="mono-val">#FFFF00</span></td>
+                <td><span class="color-swatch-square" style="background:#ffff00;width:32px;height:18px;"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Cyan (Biru Muda)</strong></td>
+                <td>0</td>
+                <td>255</td>
+                <td>255</td>
+                <td><span class="mono-val">#00FFFF</span></td>
+                <td><span class="color-swatch-square" style="background:#00ffff;width:32px;height:18px;"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Magenta (Ungu Terang)</strong></td>
+                <td>255</td>
+                <td>0</td>
+                <td>255</td>
+                <td><span class="mono-val">#FF00FF</span></td>
+                <td><span class="color-swatch-square" style="background:#ff00ff;width:32px;height:18px;"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Putih Bersih</strong></td>
+                <td>255</td>
+                <td>255</td>
+                <td>255</td>
+                <td><span class="mono-val">#FFFFFF</span></td>
+                <td><span class="color-swatch-square" style="background:#ffffff;width:32px;height:18px;"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Hitam Pekat</strong></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td><span class="mono-val">#000000</span></td>
+                <td><span class="color-swatch-square" style="background:#000000;width:32px;height:18px;"></span></td>
+              </tr>
             </tbody>
           </table>
 
-          <h4 style="margin-top:1em;">⚡ Gerbang Logika — Dasar Perhitungan CPU</h4>
-          <p>Di dalam CPU terdapat miliaran <strong>transistor</strong> yang membentuk gerbang logika. Tiga gerbang dasar:</p>
-          <ul>
-            <li><strong>AND</strong> — Output 1 hanya jika <em>semua</em> input bernilai 1</li>
-            <li><strong>OR</strong> — Output 1 jika <em>salah satu</em> input bernilai 1</li>
-            <li><strong>NOT</strong> — Membalikkan input: 0 → 1 dan 1 → 0</li>
-          </ul>
-          <p>Kombinasi gerbang-gerbang ini membentuk sirkuit penjumlah, pembanding, dan semua operasi yang dilakukan prosesor.</p>
+          <h4 style="margin-top:1.1vw;">⚡ Gerbang Logika — Jantung Pengambilan Keputusan CPU</h4>
+          <p style="font-size:0.84vw;color:var(--text-muted);margin-bottom:0.3vw;">Di balik tampilan grafis dan operasi komputasi, transistor CPU dirangkai membentuk gerbang logika digital:</p>
 
-          <div class="fun-fact">
-            <strong>🔬 Sub-Piksel</strong>
-            <p>Setiap piksel di layarmu terdiri dari 3 sub-piksel kecil: R, G, B. Layar Full HD (1920×1080) punya 2 juta piksel = 6 juta sub-piksel! GPU mengolah semuanya 60× per detik. Coba buktikan di <strong>Eksplorasi Digital: Warna RGB &amp; Gerbang Logika</strong>!</p>
+          <div class="logic-gates-grid">
+            <div class="logic-gate-card">
+              <span class="gate-badge">GERBANG AND</span>
+              <div class="gate-desc">Output bernilai <strong>1 (Benar)</strong> hanya jika <strong>SEMUA</strong> input bernilai 1.</div>
+              <div class="gate-rule">1 AND 1 = 1 | Lainnya = 0</div>
+              <div style="font-size:0.74vw;color:var(--text-muted);">Analogi: 2 sakelar dipasang berurutan seri. Keduanya wajib dinyalakan agar lampu menyala.</div>
+            </div>
+
+            <div class="logic-gate-card">
+              <span class="gate-badge" style="background:#0284c7;">GERBANG OR</span>
+              <div class="gate-desc">Output bernilai <strong>1 (Benar)</strong> jika <strong>SALAH SATU atau KEDUA</strong> input bernilai 1.</div>
+              <div class="gate-rule" style="color:#0284c7;background:rgba(2,132,199,0.08);">0 OR 0 = 0 | Lainnya = 1</div>
+              <div style="font-size:0.74vw;color:var(--text-muted);">Analogi: 2 sakelar paralel bercabang. Cukup salah satu sakelar dinyalakan lampu sudah menyala.</div>
+            </div>
+
+            <div class="logic-gate-card">
+              <span class="gate-badge" style="background:#e11d48;">GERBANG NOT</span>
+              <div class="gate-desc">Gerbang pembalik (inverter) — membalikkan nilai sinyal input secara langsung.</div>
+              <div class="gate-rule" style="color:#e11d48;background:rgba(225,29,72,0.08);">NOT 1 = 0 | NOT 0 = 1</div>
+              <div style="font-size:0.74vw;color:var(--text-muted);">Analogi: Tombol darurat pemutus arus listrik otomatis ketika terpicu.</div>
+            </div>
+          </div>
+
+          <div class="interactive-link-banner">
+            <div class="banner-text">
+              <strong>🎨 Ingin Mencampur Warna RGB Secara Langsung?</strong>
+              <div style="font-size:0.78vw;color:var(--text-muted);margin-top:2px;">Buka laboratorium interaktif Eksplorasi Digital untuk menggeser slider Red, Green, Blue dan melihat perpaduan warnanya seketika!</div>
+            </div>
+            <button class="banner-btn" onclick="switchTab('eksplorasi')">
+              Coba Mixer RGB 🌈
+            </button>
           </div>
         `,
       },
