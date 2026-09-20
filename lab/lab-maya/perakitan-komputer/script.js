@@ -657,8 +657,9 @@ function placeComponent(compId, slotId) {
 
   const targetContainer = slot.querySelector('.slot-installed-component');
   if (targetContainer) {
+    const installedImg = comp.installedSvg || comp.svg;
     targetContainer.innerHTML = `
-      <img src="${comp.svg}" alt="${comp.name}" draggable="true" title="${comp.name} — Tarik keluar atau klik untuk melepas">
+      <img src="${installedImg}" alt="${comp.name}" draggable="true" title="${comp.name} — Tarik keluar atau klik untuk melepas">
     `;
     setupSlotInstalledDrag(slot, compId);
   }
