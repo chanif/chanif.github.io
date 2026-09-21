@@ -1,0 +1,335 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 540" width="100%" height="100%">
+  <defs>
+    <!-- PCB Base Gradient -->
+    <linearGradient id="mb-pcb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a101d" />
+      <stop offset="50%" stop-color="#070c16" />
+      <stop offset="100%" stop-color="#040810" />
+    </linearGradient>
+
+    <!-- Heatsink Brushed Aluminum -->
+    <linearGradient id="mb-heatsink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="25%" stop-color="#1e293b" />
+      <stop offset="50%" stop-color="#475569" />
+      <stop offset="75%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- PCIe Metal Shield -->
+    <linearGradient id="mb-metal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="50%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#64748b" />
+    </linearGradient>
+
+    <!-- Gold Pin / Solder Gradient -->
+    <linearGradient id="mb-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+
+    <filter id="mb-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.8" />
+    </filter>
+
+    <pattern id="pcb-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.8" fill="#1e293b" opacity="0.6" />
+    </pattern>
+  </defs>
+
+  <g filter="url(#mb-glow)">
+    <!-- ATX PCB Board Foundation -->
+    <rect x="15" y="15" width="650" height="510" rx="14" fill="url(#mb-pcb)" stroke="#00D4FF" stroke-width="1.5" />
+    <rect x="15" y="15" width="650" height="510" rx="14" fill="url(#pcb-grid)" />
+
+    <!-- Corner Mounting Screw Holes (ATX standard 9 holes) -->
+    <g fill="#020617" stroke="#f59e0b" stroke-width="2">
+      <circle cx="35" cy="35" r="7" /><circle cx="340" cy="35" r="7" /><circle cx="645" cy="35" r="7" />
+      <circle cx="35" cy="270" r="7" /><circle cx="340" cy="270" r="7" /><circle cx="645" cy="270" r="7" />
+      <circle cx="35" cy="505" r="7" /><circle cx="340" cy="505" r="7" /><circle cx="645" cy="505" r="7" />
+    </g>
+
+    <!-- PCB Circuit Bus Lines (Cyan and Gold Traces) -->
+    <g stroke="#00D4FF" stroke-width="1" fill="none" opacity="0.3" stroke-linecap="round">
+      <!-- Bus: CPU to RAM -->
+      <path d="M 230,100 L 290,100" />
+      <path d="M 230,115 L 290,115" />
+      <path d="M 230,130 L 290,130" />
+      <path d="M 230,145 L 290,145" />
+      <path d="M 230,160 L 290,160" />
+      <path d="M 230,175 L 290,175" />
+
+      <!-- Bus: CPU to PCIe GPU -->
+      <path d="M 160,200 L 160,300" />
+      <path d="M 175,200 L 175,300" />
+      <path d="M 190,200 L 190,300" />
+      <path d="M 205,200 L 205,300" />
+
+      <!-- Bus: CPU to M.2 Storage -->
+      <path d="M 190,210 L 220,230 L 270,230" />
+      <path d="M 190,218 L 220,238 L 270,238" />
+
+      <!-- Bus: Chipset to SATA / Headers -->
+      <path d="M 520,380 L 520,440 L 580,440" />
+      <path d="M 500,380 L 500,455 L 580,455" />
+      <path d="M 480,380 L 480,470 L 580,470" />
+    </g>
+
+    <!-- Amber Power Flow Traces (PSU Header to VRMs) -->
+    <g stroke="#f59e0b" stroke-width="1.2" fill="none" opacity="0.35">
+      <path d="M 590,120 L 450,120 L 400,65 L 200,65" />
+      <path d="M 590,135 L 450,135 L 390,75 L 200,75" />
+      <path d="M 590,150 L 470,150 L 470,300 L 410,320" />
+    </g>
+
+    <!-- Isolated Audio Guard Line (Bottom Left) -->
+    <path d="M 30,370 L 95,370 L 95,510" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="3,3" fill="none" opacity="0.8" />
+    <text x="60" y="385" font-family="'Inter', sans-serif" font-size="6" font-weight="700" fill="#f59e0b" opacity="0.9">AUDIO BOOST HD</text>
+    <!-- 4 Golden Audio Capacitors -->
+    <circle cx="50" cy="410" r="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
+    <circle cx="75" cy="410" r="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
+    <circle cx="50" cy="440" r="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
+    <circle cx="75" cy="440" r="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
+
+    <!-- REAR I/O SHIELD (Far Left: x=20, y=40, width=45, height=220) -->
+    <rect x="22" y="45" width="46" height="210" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="45" y="60" font-family="'Inter', sans-serif" font-size="6" font-weight="800" fill="#94a3b8" text-anchor="middle">REAR I/O</text>
+    <!-- Display & USB Ports Stack -->
+    <rect x="28" y="70" width="34" height="20" rx="2" fill="#020617" stroke="#38bdf8" stroke-width="0.8" />
+    <rect x="28" y="98" width="34" height="24" rx="2" fill="#020617" stroke="#38bdf8" stroke-width="0.8" />
+    <rect x="28" y="130" width="34" height="24" rx="2" fill="#020617" stroke="#ef4444" stroke-width="0.8" />
+    <rect x="28" y="162" width="34" height="30" rx="2" fill="#020617" stroke="#475569" stroke-width="0.8" />
+    <rect x="28" y="200" width="34" height="35" rx="2" fill="#020617" stroke="#f59e0b" stroke-width="0.8" />
+
+    <!-- TOP VRM HEATSINK (Above CPU: x=80, y=35, width=140, height=40) -->
+    <rect x="80" y="35" width="135" height="36" rx="4" fill="url(#mb-heatsink)" stroke="#64748b" stroke-width="1" />
+    <!-- Cooling Fins Grooves -->
+    <line x1="95" y1="35" x2="95" y2="71" stroke="#0f172a" stroke-width="2" />
+    <line x1="110" y1="35" x2="110" y2="71" stroke="#0f172a" stroke-width="2" />
+    <line x1="125" y1="35" x2="125" y2="71" stroke="#0f172a" stroke-width="2" />
+    <line x1="140" y1="35" x2="140" y2="71" stroke="#0f172a" stroke-width="2" />
+    <line x1="155" y1="35" x2="155" y2="71" stroke="#0f172a" stroke-width="2" />
+    <line x1="170" y1="35" x2="170" y2="71" stroke="#0f172a" stroke-width="2" />
+    <line x1="185" y1="35" x2="185" y2="71" stroke="#0f172a" stroke-width="2" />
+    <line x1="200" y1="35" x2="200" y2="71" stroke="#0f172a" stroke-width="2" />
+
+    <!-- LEFT VRM HEATSINK (Left of CPU: x=75, y=75, width=32, height=115) -->
+    <rect x="75" y="80" width="30" height="110" rx="4" fill="url(#mb-heatsink)" stroke="#64748b" stroke-width="1" />
+    <line x1="75" y1="95" x2="105" y2="95" stroke="#0f172a" stroke-width="2" />
+    <line x1="75" y1="110" x2="105" y2="110" stroke="#0f172a" stroke-width="2" />
+    <line x1="75" y1="125" x2="105" y2="125" stroke="#0f172a" stroke-width="2" />
+    <line x1="75" y1="140" x2="105" y2="140" stroke="#0f172a" stroke-width="2" />
+    <line x1="75" y1="155" x2="105" y2="155" stroke="#0f172a" stroke-width="2" />
+    <line x1="75" y1="170" x2="105" y2="170" stroke="#0f172a" stroke-width="2" />
+
+    <!-- Black Solid Capacitors array around VRM -->
+    <g fill="#1e293b" stroke="#cbd5e1" stroke-width="1">
+      <circle cx="132" cy="82" r="5" /><circle cx="146" cy="82" r="5" />
+      <circle cx="160" cy="82" r="5" /><circle cx="174" cy="82" r="5" /><circle cx="188" cy="82" r="5" />
+      <circle cx="202" cy="82" r="5" /><circle cx="216" cy="82" r="5" /><circle cx="230" cy="82" r="5" />
+      <circle cx="244" cy="82" r="5" /><circle cx="258" cy="82" r="5" />
+      <circle cx="132" cy="105" r="5" /><circle cx="132" cy="120" r="5" /><circle cx="132" cy="135" r="5" />
+      <circle cx="132" cy="150" r="5" /><circle cx="132" cy="165" r="5" /><circle cx="132" cy="180" r="5" />
+      <circle cx="132" cy="195" r="5" />
+    </g>
+
+    <!-- ================= 1. CPU SOCKET (LGA 1700) ================= -->
+    <!-- Socket Frame shifted slightly right: x=152, y=105, width=116, height=116 -->
+    <g id="mb-cpu-socket-area">
+      <!-- Metal Bracket outer frame -->
+      <rect x="152" y="105" width="116" height="116" rx="6" fill="#1e293b" stroke="#94a3b8" stroke-width="2" />
+      <!-- Socket inner bed -->
+      <rect x="158" y="111" width="104" height="104" rx="3" fill="#020617" stroke="#475569" stroke-width="1" />
+      
+      <!-- Pin Array Texture (Dense golden microdots) -->
+      <rect x="164" y="117" width="92" height="92" fill="#0f172a" stroke="#f59e0b" stroke-dasharray="2,2" stroke-width="0.8" opacity="0.8" />
+      <text x="210" y="167" font-family="'Inter', sans-serif" font-size="8" font-weight="800" fill="#00D4FF" text-anchor="middle" letter-spacing="1">
+        LGA 1700
+      </text>
+
+      <!-- Metal Load Lever Arm -->
+      <rect x="147" y="108" width="4" height="106" rx="2" fill="#cbd5e1" stroke="#64748b" stroke-width="0.8" />
+      <circle cx="149" cy="210" r="5" fill="#94a3b8" />
+      <path d="M 149,210 L 142,218" stroke="#cbd5e1" stroke-width="2.5" stroke-linecap="round" />
+    </g>
+
+    <!-- ================= 2. RAM SLOTS (DIMM A1 / B1) ================= -->
+    <!-- Shifted right into the open space: x=365, y=52, width=42, height=200 -->
+    <g id="mb-ram-slots-area">
+      <!-- Slot 1 -->
+      <rect x="365" y="52" width="16" height="200" rx="2" fill="#020617" stroke="#38bdf8" stroke-width="1" />
+      <line x1="373" y1="62" x2="373" y2="145" stroke="#f59e0b" stroke-width="2" />
+      <rect x="369" y="147" width="8" height="4" fill="#020617" />
+      <line x1="373" y1="153" x2="373" y2="242" stroke="#f59e0b" stroke-width="2" />
+      <rect x="363" y="44" width="20" height="8" rx="2" fill="#cbd5e1" stroke="#475569" stroke-width="0.8" />
+      <rect x="363" y="252" width="20" height="8" rx="2" fill="#cbd5e1" stroke="#475569" stroke-width="0.8" />
+
+      <!-- Slot 2 -->
+      <rect x="390" y="52" width="16" height="200" rx="2" fill="#020617" stroke="#00D4FF" stroke-width="1.2" />
+      <line x1="398" y1="62" x2="398" y2="145" stroke="#f59e0b" stroke-width="2" />
+      <rect x="394" y="147" width="8" height="4" fill="#020617" />
+      <line x1="398" y1="153" x2="398" y2="242" stroke="#f59e0b" stroke-width="2" />
+      <rect x="388" y="44" width="20" height="8" rx="2" fill="#cbd5e1" stroke="#475569" stroke-width="0.8" />
+      <rect x="388" y="252" width="20" height="8" rx="2" fill="#cbd5e1" stroke="#475569" stroke-width="0.8" />
+
+      <text x="383" y="38" font-family="'Inter', sans-serif" font-size="6.5" font-weight="700" fill="#38bdf8" text-anchor="middle">
+        DDR4 DIMM_1 · 2
+      </text>
+    </g>
+
+    <!-- ================= 3. 24-PIN ATX POWER HEADER (PSU) ================= -->
+    <!-- Located on Right Edge: x=605, y=95, width=32, height=130 -->
+    <g id="mb-psu-header-area">
+      <rect x="605" y="95" width="34" height="135" rx="3" fill="#020617" stroke="#ef4444" stroke-width="1.5" />
+      <text x="622" y="88" font-family="'Inter', sans-serif" font-size="6.5" font-weight="800" fill="#ef4444" text-anchor="middle">
+        ATX 24P
+      </text>
+      <!-- 2x12 Pin Grid -->
+      <g fill="#f59e0b" stroke="#78350f" stroke-width="0.5">
+        <!-- Col 1 -->
+        <rect x="610" y="102" width="8" height="7" rx="1" /><rect x="610" y="112" width="8" height="7" rx="1" />
+        <rect x="610" y="122" width="8" height="7" rx="1" /><rect x="610" y="132" width="8" height="7" rx="1" />
+        <rect x="610" y="142" width="8" height="7" rx="1" /><rect x="610" y="152" width="8" height="7" rx="1" />
+        <rect x="610" y="162" width="8" height="7" rx="1" /><rect x="610" y="172" width="8" height="7" rx="1" />
+        <rect x="610" y="182" width="8" height="7" rx="1" /><rect x="610" y="192" width="8" height="7" rx="1" />
+        <rect x="610" y="202" width="8" height="7" rx="1" /><rect x="610" y="212" width="8" height="7" rx="1" />
+        <!-- Col 2 -->
+        <rect x="624" y="102" width="8" height="7" rx="1" /><rect x="624" y="112" width="8" height="7" rx="1" />
+        <rect x="624" y="122" width="8" height="7" rx="1" /><rect x="624" y="132" width="8" height="7" rx="1" />
+        <rect x="624" y="142" width="8" height="7" rx="1" /><rect x="624" y="152" width="8" height="7" rx="1" />
+        <rect x="624" y="162" width="8" height="7" rx="1" /><rect x="624" y="172" width="8" height="7" rx="1" />
+        <rect x="624" y="182" width="8" height="7" rx="1" /><rect x="624" y="192" width="8" height="7" rx="1" />
+        <rect x="624" y="202" width="8" height="7" rx="1" /><rect x="624" y="212" width="8" height="7" rx="1" />
+      </g>
+    </g>
+
+    <!-- ================= 4. M.2 NVMe SSD SLOT ================= -->
+    <!-- Shifted right underneath CPU: x=160, y=255, width=165, height=34 -->
+    <g id="mb-m2-slot-area">
+      <!-- M.2 Slot Connector Block on Right: x=305, y=255, width=20, height=34 -->
+      <rect x="305" y="255" width="20" height="34" rx="2" fill="#020617" stroke="#f59e0b" stroke-width="1.2" />
+      <line x1="309" y1="260" x2="309" y2="284" stroke="#f59e0b" stroke-width="1.5" />
+      <line x1="313" y1="260" x2="313" y2="284" stroke="#f59e0b" stroke-width="1.5" />
+
+      <!-- M.2 Slot Bed / Heatsink Standoff: x=160 to 303 -->
+      <rect x="160" y="255" width="145" height="34" rx="2" fill="#0f172a" stroke="#334155" stroke-width="0.8" stroke-dasharray="3,3" />
+      
+      <!-- Standoff Screw Nut at 2280 position (x=168, cy=272) -->
+      <circle cx="168" cy="272" r="6" fill="#f59e0b" stroke="#78350f" stroke-width="1" />
+      <circle cx="168" cy="272" r="2.5" fill="#020617" />
+
+      <text x="235" y="276" font-family="'Inter', sans-serif" font-size="7" font-weight="700" fill="#00D4FF" text-anchor="middle">
+        M.2 PCIe 4.0 x4 (2280)
+      </text>
+    </g>
+
+    <!-- ================= 5. PCIe x16 GPU EXPANSION SLOT ================= -->
+    <!-- Located at: x=90, y=345, width=330, height=32 -->
+    <g id="mb-pcie-slot-area">
+      <!-- Reinforced Steel Armor Casing -->
+      <rect x="90" y="345" width="330" height="32" rx="3" fill="url(#mb-metal)" stroke="#ffffff" stroke-width="0.8" />
+      
+      <!-- Inner Slot Trench -->
+      <rect x="98" y="352" width="300" height="18" rx="1.5" fill="#020617" />
+      
+      <!-- Gold Pins inside slot with key partition at x=135 -->
+      <line x1="102" y1="361" x2="132" y2="361" stroke="#f59e0b" stroke-width="3" />
+      <rect x="133" y="352" width="5" height="18" fill="#475569" />
+      <line x1="139" y1="361" x2="395" y2="361" stroke="#f59e0b" stroke-width="3" />
+
+      <!-- PCIe Release Clip on Right End (x=402, y=347) -->
+      <rect x="402" y="347" width="16" height="28" rx="2" fill="#cbd5e1" stroke="#475569" stroke-width="1" />
+      <circle cx="410" cy="361" r="3" fill="#0284c7" />
+
+      <text x="250" y="338" font-family="'Inter', sans-serif" font-size="7" font-weight="800" fill="#7C3AED" text-anchor="middle" letter-spacing="1">
+        PCIe 5.0 x16 (STEEL ARMOR · GPU)
+      </text>
+    </g>
+
+    <!-- Secondary PCIe x1 Slot shifted down -->
+    <g opacity="0.45">
+      <rect x="90" y="415" width="120" height="18" rx="2" fill="#1e293b" stroke="#475569" stroke-width="0.8" />
+      <line x1="95" y1="424" x2="205" y2="424" stroke="#f59e0b" stroke-width="1.5" />
+      <text x="150" y="443" font-family="'Inter', sans-serif" font-size="5" fill="#64748b" text-anchor="middle">PCIe x1</text>
+    </g>
+
+    <!-- SOUTHBRIDGE / CHIPSET HEATSINK (Shifted down, smaller & subtle background element) -->
+    <g id="mb-chipset-subtle" opacity="0.45" transform="translate(495, 380)">
+      <rect x="0" y="0" width="105" height="85" rx="5" fill="#0b1120" stroke="#334155" stroke-width="1" />
+      <polygon points="4,4 101,4 85,32 4,32" fill="#020617" opacity="0.6" />
+      <!-- Subtle Chipset Emblem -->
+      <g transform="translate(52, 45)">
+        <circle cx="0" cy="0" r="15" fill="#020617" stroke="#475569" stroke-width="0.8" />
+        <text x="0" y="3" font-family="'Inter', sans-serif" font-size="5" font-weight="700" fill="#64748b" text-anchor="middle">CHIPSET</text>
+      </g>
+      <text x="52" y="75" font-family="'Inter', sans-serif" font-size="4.5" font-weight="600" fill="#475569" text-anchor="middle" letter-spacing="0.5">
+        PCH HEATSINK
+      </text>
+    </g>
+
+    <!-- SATA 6Gb/s Ports (Far Right Bottom) -->
+    <rect x="625" y="320" width="22" height="40" rx="2" fill="#020617" stroke="#475569" stroke-width="0.8" />
+    <rect x="625" y="370" width="22" height="40" rx="2" fill="#020617" stroke="#475569" stroke-width="0.8" />
+    <text x="636" y="315" font-family="'Inter', sans-serif" font-size="5" fill="#94a3b8" text-anchor="middle">SATA</text>
+
+    <!-- ================= 6. POST DEBUG LED CLUSTER ================= -->
+    <!-- Located at Top-Right (Above PSU header, clear of RAM) -->
+    <g id="mb-debug-leds" transform="translate(515, 30)">
+      <rect x="0" y="0" width="130" height="28" rx="4" fill="#020617" stroke="#475569" stroke-width="1" />
+      <text x="65" y="9" font-family="'Inter', sans-serif" font-size="5.5" font-weight="800" fill="#94a3b8" text-anchor="middle">
+        EZ DEBUG LED · POST
+      </text>
+
+      <!-- LED 1: CPU -->
+      <g transform="translate(18, 18)">
+        <circle id="led-cpu-bulb" cx="0" cy="0" r="3.5" fill="#ef4444" opacity="0.3" stroke="#7f1d1d" stroke-width="0.5" />
+        <text x="0" y="7" font-family="'Inter', sans-serif" font-size="4.5" font-weight="700" fill="#94a3b8" text-anchor="middle">CPU</text>
+      </g>
+
+      <!-- LED 2: DRAM (RAM) -->
+      <g transform="translate(48, 18)">
+        <circle id="led-dram-bulb" cx="0" cy="0" r="3.5" fill="#f59e0b" opacity="0.3" stroke="#78350f" stroke-width="0.5" />
+        <text x="0" y="7" font-family="'Inter', sans-serif" font-size="4.5" font-weight="700" fill="#94a3b8" text-anchor="middle">DRAM</text>
+      </g>
+
+      <!-- LED 3: VGA (GPU) -->
+      <g transform="translate(78, 18)">
+        <circle id="led-vga-bulb" cx="0" cy="0" r="3.5" fill="#38bdf8" opacity="0.3" stroke="#0369a1" stroke-width="0.5" />
+        <text x="0" y="7" font-family="'Inter', sans-serif" font-size="4.5" font-weight="700" fill="#94a3b8" text-anchor="middle">VGA</text>
+      </g>
+
+      <!-- LED 4: BOOT -->
+      <g transform="translate(108, 18)">
+        <circle id="led-boot-bulb" cx="0" cy="0" r="3.5" fill="#10b981" opacity="0.3" stroke="#064e3b" stroke-width="0.5" />
+        <text x="0" y="7" font-family="'Inter', sans-serif" font-size="4.5" font-weight="700" fill="#94a3b8" text-anchor="middle">BOOT</text>
+      </g>
+    </g>
+
+    <!-- Front Panel Connectors & Headers along Bottom Edge -->
+    <g fill="#1e293b" stroke="#334155" stroke-width="0.8">
+      <rect x="120" y="495" width="40" height="15" rx="1" />
+      <text x="140" y="490" font-family="'Inter', sans-serif" font-size="5" fill="#64748b" text-anchor="middle">USB 2.0</text>
+      <rect x="175" y="495" width="45" height="15" rx="1" />
+      <text x="197" y="490" font-family="'Inter', sans-serif" font-size="5" fill="#64748b" text-anchor="middle">USB 3.2</text>
+      <rect x="235" y="495" width="35" height="15" rx="1" />
+      <text x="252" y="490" font-family="'Inter', sans-serif" font-size="5" fill="#64748b" text-anchor="middle">FAN_1</text>
+      <rect x="480" y="495" width="55" height="15" rx="1" />
+      <text x="507" y="490" font-family="'Inter', sans-serif" font-size="5" fill="#64748b" text-anchor="middle">F_PANEL</text>
+    </g>
+
+    <!-- Silk-Screen Main Branding (Shifted lower down to open space) -->
+    <g transform="translate(340, 452)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="9.5" font-weight="900" fill="#00D4FF" letter-spacing="1.5" opacity="0.85" text-anchor="middle">
+        MOTHERBOARD ATX PRO EDITION
+      </text>
+      <text x="0" y="11" font-family="'Inter', sans-serif" font-size="5.5" font-weight="600" fill="#64748b" letter-spacing="0.5" text-anchor="middle">
+        ATX FORM FACTOR · VRM 16+1+1 PHASES · PCIE 5.0 READY · DDR4 5333MHz (OC)
+      </text>
+      <text x="0" y="22" font-family="'Space Mono', monospace" font-size="7.5" font-weight="700" fill="#38bdf8" letter-spacing="1" opacity="0.95" text-anchor="middle">
+        PCB REVISION 2.4 · fanani.my.id
+      </text>
+    </g>
+  </g>
+</svg>

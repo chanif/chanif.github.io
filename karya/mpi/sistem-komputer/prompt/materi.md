@@ -1,153 +1,161 @@
-# 📖 Materi & Evaluasi — MPI: Sistem Komputer (Menyelam ke Dalam Mesin)
+# 📖 Materi & Evaluasi — MPI: Sistem Komputer (Menyelam ke Dalam Mesin Digital)
 
 **Mata Pelajaran:** Informatika  
 **Jenjang / Fase:** SMP / Fase D (Kelas VII - VIII)  
-**Elemen Capaian Pembelajaran:** Sistem Komputer (SK)  
+**Elemen Capaian Pembelajaran:** Sistem Komputer (SK) — BSKAP No. 032/H/KR/2024  
 **Judul Karya:** Sistem Komputer: Menyelam ke Dalam Mesin Digital  
 **Penyusun:** Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan  
 
 ---
 
-## 🎯 1. Capaian & Tujuan Pembelajaran
+## 🎯 1. Capaian & Indikator Ketercapaian Tujuan Pembelajaran
 
 ### Capaian Pembelajaran (CP) Elemen SK Fase D
-> *"Peserta didik mampu mendeskripsikan komponen, fungsi, dan cara kerja komputer yang membentuk sebuah sistem komputasi, serta menjelaskan proses kodifikasi data (bilangan biner) untuk penyimpanan data dalam memori komputer."*
+> *"Peserta didik mampu mendeskripsikan komponen, fungsi, dan cara kerja komputer yang membentuk sebuah sistem komputasi, serta menjelaskan interaksi antara perangkat keras, perangkat lunak, dan pengguna."*
 
 ### Indikator Ketercapaian Tujuan Pembelajaran (IKTP)
-1. **Mengidentifikasi 4 komponen utama perangkat keras (Arsitektur Von Neumann):** Perangkat Masukan (*Input*), Pemrosesan (*Process/CPU*), Keluaran (*Output*), dan Penyimpanan (*Storage*).
-2. **Menganalisis mekanisme kerja CPU dan Memori:** Siklus *Fetch-Decode-Execute*, fungsi RAM (*volatile*) vs SSD/Storage (*non-volatile*).
-3. **Membedakan perangkat lunak:** Sistem Operasi (*Operating System*) sebagai pengelola perangkat keras dan Perangkat Lunak Aplikasi (*Application Software*).
-4. **Mempraktikkan kodifikasi data biner:** Menghitung konversi bilangan biner 8-bit ke desimal serta memahami representasi warna RGB dan teks.
+1. **Mengidentifikasi 4 pilar perangkat keras & Motherboard:** Menganalisis peranti Masukan (*Input*), Pemrosesan (*CPU*), Keluaran (*Output*), Penyimpanan (*Storage*), serta peran Motherboard ATX sebagai papan sirkuit induk penghubung bus data.
+2. **Menganalisis siklus mesin Von Neumann & Diagnostik BIOS:** Menjelaskan alur *Fetch-Decode-Execute-Store*, perbedaan memori kerja RAM (*volatile*) vs penyimpanan arsip SSD (*non-volatile*), serta proses *Power-On Self-Test (POST)* saat komputer dinyalakan.
+3. **Menganalisis Sistem Operasi & Sinergi Sistem:** Menjelaskan peran OS dalam manajemen proses, manajemen memori (*Virtual Memory*), driver perangkat, dan monitoring performa (*Task Manager*).
+4. **Mensimulasikan perakitan dan pemecahan masalah (*troubleshooting*):** Mengidentifikasi kompatibilitas soket CPU LGA 1700, notch RAM DDR4, SSD M.2 NVMe, serta menganalisis indikator error LED/Beep saat komponen gagal.
 
 ---
 
-## 📚 2. Struktur Modul Materi
+## 📚 2. Struktur Modul Pembelajaran Terpadu
 
-### Bab 1: Perangkat Keras & Model Von Neumann
-- **Komputer itu Apa?**
-  Komputer adalah sistem elektronik yang menerima data masukan (*input*), memprosesnya sesuai instruksi (*processing*), menghasilkan informasi (*output*), dan menyimpannya (*storage*).
-- **4 Pilar Komponen Hardware:**
-  1. **Input Device:** Keyboard, Mouse, Mikrofon, Scanner, Touchscreen.
-  2. **Processing Device (Otak Komputer):** 
-     - **CPU (Central Processing Unit):** Terdiri dari ALU (*Arithmetic Logic Unit* untuk berhitung logika) dan CU (*Control Unit* sebagai dirigen instruksi).
-     - **Motherboard:** Papan sirkuit utama tempat semua komponen bersatu.
-  3. **Storage Device (Penyimpan Data):**
-     - **RAM (Random Access Memory):** Tempat kerja sementara, sangat cepat, data hilang saat listrik padam (*volatile*).
-     - **SSD / Harddisk:** Penyimpan permanen file, dokumen, dan sistem operasi (*non-volatile*).
-  4. **Output Device:** Monitor, Speaker, Printer, Proyektor.
-
----
-
-### Bab 2: Perangkat Lunak (Software) & Cara Kerja Sistem
-- **Sistem Operasi (OS) — Jenderal Pengelola:**
-  - Tanpa OS, perangkat keras hanyalah tumpukan logam dan silikon mati.
-  - OS (Windows, Linux, Android, iOS) menjembatani manusia dan aplikasi dengan perangkat keras.
-- **Perangkat Lunak Aplikasi:**
-  - Program yang dirancang untuk menyelesaikan tugas spesifik pengguna (browser, perkakas kantor, editor grafis, gim).
-- **Bagaimana Komputer Bekerja? Siklus Mesin (*Machine Cycle*):**
-  - **Fetch (Ambil):** CPU mengambil instruksi dari RAM.
-  - **Decode (Terjemahkan):** CPU memahami apa yang harus dilakukan.
-  - **Execute (Jalankan):** CPU mengeksekusi perhitungan di ALU.
-  - **Store (Simpan):** Hasil disimpan kembali ke memori.
+### Bab 1: Anatomi Perangkat Keras & Tulang Punggung Motherboard
+- **Sistem Komputer:** Kesatuan utuh Hardware, Software, dan Brainware.
+- **Analogi Dapur Restoran:**
+  - *Input:* Pelayan mencatat pesanan pelanggan (*Keyboard, Mouse, Scanner*).
+  - *CPU:* Koki kepala meracik bumbu dan mengolah masakan (*Processor, ALU, CU*).
+  - *RAM & Storage:* Meja racik bahan aktif (*RAM volatile*) dan lemari pendingin bahan baku (*SSD/HDD non-volatile*).
+  - *Output:* Piring hidangan hangat disajikan ke meja tamu (*Monitor, Speaker, Printer*).
+- **Motherboard ATX Modern:**
+  - *Soket CPU LGA 1700:* Mengunci pin prosesor, dilindungi heatsink pendingin dari *thermal throttling*.
+  - *Slot RAM DDR4 DIMM:* Dilengkapi lekukan (notch) khusus untuk mencegah salah pasang atau korslet.
+  - *Slot M.2 NVMe PCIe Gen4:* Jalur transfer data ultra-cepat hingga ribuan megabyte per detik.
+  - *Slot PCIe x16:* Jalur tol grafis ke Kartu Grafis (GPU).
+  - *Konektor 24-Pin ATX:* Suplai daya listrik stabil dari Power Supply Unit (PSU).
 
 ---
 
-### Bab 3: Bahasa Rahasia Komputer — Bilangan Biner
-- **Mengapa Komputer Pakai Biner (0 dan 1)?**
-  - Sirkuit komputer terbuat dari milyaran transistor kecil yang hanya memiliki dua kondisi listrik: **MATI (0)** atau **HIDUP (1)**.
-  - Satuan terkecil data disebut **bit** (*binary digit*). 8 bit berkumpul membentuk **1 Byte** (cukup untuk menyimpan 1 huruf karakter).
-- **Nilai Tempat 8-Bit (Pangkat 2):**
-  - Bobot bit dari kiri ke kanan: `128 | 64 | 32 | 16 | 8 | 4 | 2 | 1`
-  - Contoh: Biner `00001010` = 8 + 2 = **10** desimal.
-  - Biner `01000001` = 64 + 1 = **65** desimal (dalam tabel ASCII adalah huruf **'A'**).
+### Bab 2: Otak Komputer, Siklus Mesin CPU & Diagnostik BIOS
+- **Tiga Komponen Inti CPU:**
+  1. *ALU (Arithmetic Logic Unit):* Melakukan kalkulasi matematika (+, -, ×, ÷) dan logika biner (AND, OR, NOT).
+  2. *CU (Control Unit):* Mengatur alur lalu lintas data dan sinkronisasi clock prosesor.
+  3. *Register & Cache (L1/L2/L3):* Memori internal super-cepat tepat di dalam inti silikon prosesor.
+- **Siklus Mesin CPU (Machine Cycle):**
+  - **1. Fetch (Jemput):** CU mengambil instruksi program dari memori RAM.
+  - **2. Decode (Terjemahkan):** CU menguraikan kode biner menjadi sinyal mikro perintah.
+  - **3. Execute (Eksekusi):** ALU menjalankan kalkulasi perintah secara instan.
+  - **4. Store (Simpan):** Hasil disimpan kembali ke register atau RAM/layar.
+- **Detik-Detik Booting: Power-On Self-Test (POST) BIOS:**
+  - Saat tombol Power ditekan, firmware BIOS/UEFI memeriksa 4 komponen utama secara berurutan:
+    - *LED CPU:* Memeriksa kesiapan prosesor.
+    - *LED DRAM:* Memeriksa modul RAM terpasang kokoh.
+    - *LED VGA:* Memeriksa kartu display aktif.
+    - *LED BOOT:* Memeriksa drive SSD memuat OS.
+  - *Beep Code:* 1 beep pendek = normal booting sukses. Beep panjang berulang = kegagalan deteksi RAM/VGA.
 
 ---
 
-## 🎮 3. Spesifikasi Lab Simulasi Terintegrasi
-
-### Simulasi 1: Rakit PC Interaktif
-- Komponen di rak perakitan: **CPU**, **RAM**, **SSD M.2**, **GPU (Kartu Grafis)**.
-- Slot motherboard yang responsif terhadap penempatan komponen.
-- Tombol **"⚡ Nyalakan Komputer (Power Test)"**:
-  - Jika komponen lengkap: Kipas CPU berputar animasi kencang, RGB menyala, dan monitor menampilkan layar BIOS *"System Booting... SUCCESS!"*
-  - Jika belum lengkap: Tombol power berbunyi peringatan *"Beep! RAM belum terpasang!"*
-
-### Simulasi 2: Sakelar Biner 8-Bit (Interactive Binary Switch)
-- 8 Sakelar lampu bolam virtual bernilai: 128, 64, 32, 16, 8, 4, 2, 1.
-- Siswa mengklik sakelar lampu untuk mengubah status 0 (Mati) atau 1 (Menyala).
-- Layar kalkulator di samping otomatis menjumlahkan nilai desimal secara *real-time*.
-- Ada mode tantangan: *"Nyalakan lampu untuk membentuk angka 42!"*
+### Bab 3: Sistem Operasi, Manajemen Memori & Kolaborasi Sistem
+- **Sistem Operasi (OS) — Jiwa Sang Mesin:**
+  - Tanpa OS, perangkat keras hanyalah tumpukan logam silikon mati.
+  - *Manajemen Proses (CPU Scheduling):* Membagi giliran kerja CPU agar puluhan aplikasi berjalan serentak.
+  - *Manajemen Memori (Virtual Memory / Paging):* Meminjam ruang penyimpanan SSD sebagai cadangan saat kapasitas RAM hampir habis agar aplikasi tidak *crash*.
+  - *Antarmuka Grafis (GUI):* Memudahkan manusia berinteraksi lewat ikon jendela dan tetikus.
+  - *Driver Perangkat:* Penerjemah komunikasi antara OS dan hardware fisik baru.
+- **Kolaborasi Segitiga Emas:**
+  - *Hardware (Raga):* Memberikan tenaga komputasi fisik.
+  - *Software (Pikiran):* Memuat logika dan algoritma perintah.
+  - *Brainware (Akal):* Manusia yang menentukan arah tujuan pemecahan masalah.
 
 ---
 
-## 📝 4. Bank Soal Kuis Formatif (10 Soal)
+## 🎮 3. Spesifikasi Lab Simulasi & Evaluasi
 
-1. **Komponen yang sering disebut sebagai 'otak komputer' karena bertugas memproses seluruh instruksi dan perhitungan logika adalah...**
+### Simulasi 1: Simulator Rakit PC & Uji Kompatibilitas
+- Memilih komponen kompatibel (CPU Soket LGA, RAM DDR4, SSD M.2, GPU PCIe, PSU ATX).
+- Sistem menolak komponen rusak/cacat (misal CPU pin patah, RAM DDR2 lawas, floppy disk).
+- Tombol **"⚡ Nyalakan PC"**:
+  - Jika rakitan valid: Kipas berputar, lampu RGB menyala, layar monitor menampilkan status BIOS POST SUCCESS.
+  - Jika ada kesalahan: Memberikan tips *troubleshooting* edukatif.
+
+### Simulasi 2: Sakelar Biner & Diagnostik Masalah
+- Konversi sakelar biner 8-bit ke angka desimal (128, 64, 32, 16, 8, 4, 2, 1).
+- Skenario studi kasus perbaikan: Layar Gelap (cek RAM/VGA) dan Memori Penuh (cek Task Manager & Virtual Memory).
+
+---
+
+## 📝 4. Bank Soal Kuis Formatif (10 Soal Berbobot)
+
+1. **Komponen yang sering disebut sebagai 'otak komputer' karena bertugas memproses seluruh instruksi dan perhitungan logika matematika adalah...**
    - A. Harddisk
    - B. CPU (Central Processing Unit) *(Kunci)*
    - C. Keyboard
    - D. Power Supply
-   - *Pembahasan: CPU memproses seluruh instruksi program dan kalkulasi matematika/logika melalui ALU dan CU.*
+   - *Pembahasan: CPU memproses seluruh instruksi dan kalkulasi matematika/logika melalui ALU dan CU.*
 
-2. **Perbedaan mendasar antara RAM dan SSD/Harddisk dalam menyimpan data adalah...**
-   - A. RAM bersifat permanen, sedangkan SSD datanya hilang saat mati lampu
-   - B. RAM bersifat sementara (volatile), sedangkan SSD menyimpan permanen (non-volatile) *(Kunci)*
-   - C. RAM berukuran lebih besar daripada SSD
-   - D. RAM hanya digunakan untuk mencetak dokumen
-   - *Pembahasan: RAM adalah memori kerja jangka pendek (volatile), sedangkan SSD menyimpan file secara permanen.*
+2. **Perbedaan mendasar antara RAM dan SSD dalam menyimpan data komputasi adalah...**
+   - A. RAM bersifat permanen, sedangkan SSD datanya hilang saat komputer mati
+   - B. RAM bersifat sementara (volatile) dan berkecepatan tinggi, sedangkan SSD menyimpan data permanen (non-volatile) *(Kunci)*
+   - C. RAM berukuran kapasitas lebih besar daripada SSD
+   - D. RAM hanya digunakan saat komputer dimatikan
+   - *Pembahasan: RAM adalah memori kerja aktif (volatile), sedangkan SSD menyimpan arsip file secara permanen.*
 
-3. **Perangkat berikut ini yang seluruhnya termasuk dalam kategori Perangkat Masukan (Input Device) adalah...**
-   - A. Monitor, Speaker, Printer
-   - B. Keyboard, Mouse, Mikrofon *(Kunci)*
-   - C. CPU, RAM, Motherboard
-   - D. Proyektor, Flashdisk, Harddisk
-   - *Pembahasan: Keyboard, mouse, dan mikrofon berfungsi memasukkan data/perintah ke dalam sistem komputer.*
-
-4. **Sistem Operasi (Operating System) seperti Windows, Linux, atau Android berfungsi sebagai...**
-   - A. Penghias tampilan casing komputer
-   - B. Pengelola sumber daya perangkat keras dan penghubung antara pengguna dengan aplikasi *(Kunci)*
-   - C. Pengganti arus listrik rumah
-   - D. Pembersih kotoran debu kipas CPU
-   - *Pembahasan: OS adalah perangkat lunak dasar pengelola perangkat keras dan eksekusi program aplikasi.*
-
-5. **Mengapa komputer internal menggunakan sistem bilangan biner (angka 0 dan 1) dalam bekerja?**
-   - A. Karena huruf alfabet terlalu banyak untuk dipelajari komputer
-   - B. Karena transistor sirkuit komputer hanya mengenal dua kondisi fisik: tidak ada arus (0) dan ada arus (1) *(Kunci)*
-   - C. Karena angka biner diciptakan oleh penemu monitor
-   - D. Agar siswa merasa kesulitan belajar
-   - *Pembahasan: Komputer tersusun atas transistor elektronik biner (sakelar on/off arus listrik).*
-
-6. **Berapa nilai desimal dari bilangan biner 8-bit `00001011`?**
-   - A. 8
-   - B. 10
-   - C. 11 *(Kunci)*
-   - D. 15
-   - *Pembahasan: Bobot bit yang aktif (1) adalah posisi 8, 2, dan 1. Maka 8 + 2 + 1 = 11.*
-
-7. **Satuan data terkecil dalam sistem komputasi disebut bit. Gabungan dari 8 buah bit akan membentuk...**
-   - A. 1 Kilo
-   - B. 1 Byte *(Kunci)*
-   - C. 1 Hertz
-   - D. 1 Watt
-   - *Pembahasan: 1 Byte = 8 bit, yang merupakan standar penyimpanan satu karakter huruf/angka.*
-
-8. **Papan sirkuit utama tempat diletakkannya CPU, RAM, dan kartu ekspansi agar saling terhubung disebut...**
+3. **Papan sirkuit induk yang menjadi tempat bertenggernya CPU, RAM, slot PCIe kartu grafis, dan jalur bus data disebut...**
    - A. Motherboard / Mainboard *(Kunci)*
-   - B. Mousepad
+   - B. Power Supply
    - C. Heatsink Fan
    - D. Casing Tower
-   - *Pembahasan: Motherboard adalah papan sirkuit induk yang mengintegrasikan seluruh komponen hardware.*
+   - *Pembahasan: Motherboard adalah tulang punggung interkoneksi utama yang menghubungkan seluruh komponen hardware.*
 
-9. **Ketika kamu menekan tombol power komputer, urutan proses awal yang dijalankan sebelum masuk ke desktop adalah...**
-   - A. Langsung membuka Microsoft Word
-   - B. Proses Booting (POST dan inisialisasi hardware oleh BIOS/UEFI) *(Kunci)*
-   - C. Menghapus seluruh file di penyimpanan
-   - D. Mengirim email ke guru
-   - *Pembahasan: Proses Booting menginisialisasi hardware dan memuat sistem operasi dari SSD ke RAM.*
+4. **Ketika kamu menyalakan komputer, proses pengujian perangkat keras awal yang dijalankan oleh BIOS/UEFI sebelum memuat sistem operasi disebut...**
+   - A. Disk Defragmenter
+   - B. Power-On Self-Test (POST) *(Kunci)*
+   - C. Rendering Video
+   - D. Windows Update
+   - *Pembahasan: POST memeriksa kesiapan CPU, DRAM, VGA, dan Storage sebelum menyerahkan kendali ke sistem operasi.*
 
-10. **Komponen pendingin (Heatsink dan Kipas) sangat krusial dipasang di atas processor (CPU) karena...**
-    - A. CPU menghasilkan panas tinggi akibat triliunan perpindahan arus listrik setiap detik *(Kunci)*
-    - B. Agar CPU terlihat bercahaya di dalam casing
-    - C. Untuk menyedot debu dari lantai
-    - D. Agar suara komputer menjadi sangat keras
-    - *Pembahasan: Perpindahan daya listrik di mikroprosesor menimbulkan panas tinggi yang harus segera dilepaskan agar tidak overheat.*
+5. **Tahapan siklus mesin CPU (Machine Cycle) saat Control Unit mengambil kode instruksi dari memori RAM dinamakan...**
+   - A. Execute
+   - B. Fetch *(Kunci)*
+   - C. Decode
+   - D. Store
+   - *Pembahasan: Fetch adalah tahap penjemputan kode instruksi dari RAM ke dalam CPU.*
+
+6. **Bagian di dalam CPU yang bertugas melakukan perhitungan penjumlahan, pengurangan, serta perbandingan logika biner (AND, OR, NOT) adalah...**
+   - A. Arithmetic Logic Unit (ALU) *(Kunci)*
+   - B. Control Unit (CU)
+   - C. Solid State Drive (SSD)
+   - D. Power Button
+   - *Pembahasan: ALU adalah kalkulator internal mikroprosesor yang mengeksekusi operasi matematika dan logika.*
+
+7. **Ketika kapasitas RAM komputer hampir habis karena membuka terlalu banyak aplikasi berat, Sistem Operasi memanfaatkan teknik meminjam sebagian ruang SSD sebagai memori darurat yang disebut...**
+   - A. BIOS Cache
+   - B. Virtual Memory / Paging *(Kunci)*
+   - C. Formatting
+   - D. Overclocking
+   - *Pembahasan: Virtual Memory memungkinkan OS memindahkan data sementara ke SSD agar sistem tidak langsung crash.*
+
+8. **Program perangkat lunak khusus yang bertindak sebagai "penerjemah bahasa" antara Sistem Operasi dan perangkat keras tertentu (seperti printer baru atau kartu grafis) disebut...**
+   - A. Web Browser
+   - B. Device Driver *(Kunci)*
+   - C. Antivirus
+   - D. Wallpaper
+   - *Pembahasan: Driver memungkinkan OS berkomunikasi dan mengendalikan fitur spesifik dari suatu hardware.*
+
+9. **Jika saat merakit PC kamu mencoba memaksa memasang keping RAM DDR2 lama ke motherboard modern yang berstandar DDR4, apa yang akan terjadi secara fisik?**
+   - A. Komputer langsung menyala dua kali lebih cepat
+   - B. Keping RAM tidak bisa masuk karena posisi lekukan (notch) penguncinya berbeda dan dapat patah jika dipaksa *(Kunci)*
+   - C. RAM DDR2 otomatis berubah menjadi DDR4
+   - D. Layar monitor langsung menampilkan foto desktop
+   - *Pembahasan: Produsen mendesain posisi notch pemisah pin berbeda pada setiap generasi RAM untuk mencegah salah pasang dan korsleting tegangan.*
+
+10. **Komponen pendingin (Heatsink dan Kipas) sangat wajib dipasang rapat di atas permukaan prosesor (CPU) karena...**
+    - A. CPU menghasilkan panas sangat tinggi akibat triliunan perpindahan arus listrik setiap detik sehingga rawan overheat (*thermal throttling*) *(Kunci)*
+    - B. Agar CPU terlihat bercahaya di dalam casing kaca
+    - C. Untuk menyedot debu dari lantai ruang komputer
+    - D. Agar suara kipas dapat menjadi musik pengiring belajar
+    - *Pembahasan: Tanpa pendinginan efektif, CPU akan membatasi kecepatannya atau mendadak mati darurat (shutdown) untuk mencegah kerusakan silikon.*

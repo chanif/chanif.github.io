@@ -67,7 +67,7 @@ window.MPI_CONFIG = {
         dev_photo_1: 'assets/fanani.jpg',
 
         // Video materi lokal (offline ready)
-        video_src: 'assets/video/jaringan.mp4',
+        video_src: 'assets/video/siklus_cpu.mp4',
     },
 
     // ------------------------------------------------------------
@@ -103,9 +103,9 @@ window.MPI_CONFIG = {
     // 6. METADATA MEDIA PEMBELAJARAN
     // ------------------------------------------------------------
     meta: {
-        title: 'Jaringan Komputer — Perjalanan Paket Data',
+        title: 'Sistem Komputer — Menyelam ke Dalam Mesin Digital',
         subject: 'Informatika',
-        grade: 'Kelas VIII / Semester II (Genap)',
+        grade: 'Kelas VII - VIII / Semester Gasal & Genap',
         phase: 'Fase D',
         author: 'Ach. Chanifuddin Fanani, S.Pd.',
         institution: 'SMP Negeri 2 Lamongan',
