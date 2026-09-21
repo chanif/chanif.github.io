@@ -1825,9 +1825,25 @@ function showLkpdSection(secId) {
   document.querySelectorAll('.lkpd-tab-btn').forEach(btn => btn.classList.remove('active'));
 
   const activeContent = document.getElementById(`lkpd-${secId}`);
-  if (activeContent) activeContent.style.display = 'block';
+  if (activeContent) {
+    activeContent.style.display = 'block';
+    const cardScroll = activeContent.closest('.card-scrollable');
+    if (cardScroll) {
+      cardScroll.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
 
-  event.currentTarget.classList.add('active');
+  // Aktifkan tab bar terkait
+  const activeTabBtn = document.querySelector(`.lkpd-section-tab-bar .lkpd-tab-btn[data-section="${secId}"]`) ||
+                       document.querySelector(`.lkpd-section-tab-bar .lkpd-tab-btn[onclick*="'${secId}'"]`);
+  if (activeTabBtn) {
+    activeTabBtn.classList.add('active');
+  }
+
+  if (secId === 'match' && typeof drawMatchLines === 'function') {
+    setTimeout(drawMatchLines, 60);
+  }
+
   sfxClick();
 }
 
@@ -1859,6 +1875,20 @@ function renderPG() {
     `;
     container.appendChild(card);
   });
+
+  // Navigasi Bawah Bagian A -> Bagian B
+  const navDiv = document.createElement('div');
+  navDiv.className = 'lkpd-bottom-nav';
+  navDiv.innerHTML = `
+    <div class="lkpd-nav-hint">
+      <span>💡 Selesai Bagian A? Lanjutkan ke Bagian B untuk soal Benar / Salah.</span>
+    </div>
+    <button type="button" class="lkpd-nav-btn lkpd-nav-btn-next" onclick="showLkpdSection('bs')">
+      <span>Lanjut ke Bagian B: Benar / Salah</span>
+      <span class="nav-arrow">➔</span>
+    </button>
+  `;
+  container.appendChild(navDiv);
 }
 
 function updateLkpdProgress() {
@@ -1895,17 +1925,37 @@ function renderBS() {
         <div class="lkpd-bs-statement">${qi + 1}. ${q.statement}</div>
         <div class="lkpd-bs-actions">
           <button type="button" class="btn-bs-choice btn-bs-true" id="bs-btn-${qi}-true" onclick="selectBS(${qi}, true)">
-            <span>✅</span> Benar
+            <span class="bs-btn-icon">✅</span>
+            <span class="bs-print-box">[ &nbsp; ]</span>
+            <span class="bs-btn-text">Benar</span>
           </button>
           <button type="button" class="btn-bs-choice btn-bs-false" id="bs-btn-${qi}-false" onclick="selectBS(${qi}, false)">
-            <span>❌</span> Salah
+            <span class="bs-btn-icon">❌</span>
+            <span class="bs-print-box">[ &nbsp; ]</span>
+            <span class="bs-btn-text">Salah</span>
           </button>
         </div>
       </div>
+      <div id="bs-print-feedback-${qi}" class="bs-print-feedback lkpd-print-only"></div>
       <div id="bs-exp-${qi}" class="lkpd-bs-exp" style="display:none;margin-top:0.5vw;font-size:0.82vw;padding:6px 10px;border-radius:6px;line-height:1.4;"></div>
     `;
     container.appendChild(card);
   });
+
+  // Navigasi Bawah Bagian B -> Kembali ke A & Lanjut ke C
+  const navDiv = document.createElement('div');
+  navDiv.className = 'lkpd-bottom-nav';
+  navDiv.innerHTML = `
+    <button type="button" class="lkpd-nav-btn lkpd-nav-btn-prev" onclick="showLkpdSection('pg')">
+      <span class="nav-arrow">⬅</span>
+      <span>Kembali ke Bagian A</span>
+    </button>
+    <button type="button" class="lkpd-nav-btn lkpd-nav-btn-next" onclick="showLkpdSection('match')">
+      <span>Lanjut ke Bagian C: Menjodohkan</span>
+      <span class="nav-arrow">➔</span>
+    </button>
+  `;
+  container.appendChild(navDiv);
 }
 
 function selectBS(qi, val) {
@@ -1972,6 +2022,9 @@ function renderMatch() {
           <span class="match-btn-text" style="font-weight:800;font-size:0.95vw;color:var(--text-heading);">${item.label}</span>
           <span style="font-size:0.72vw;color:var(--text-muted);font-weight:500;">${item.role}</span>
         </div>
+      </div>
+      <div class="match-print-answer-box" id="print-match-ans-${item.key}">
+        <span>Pasangan: <strong>[ &nbsp;&nbsp;&nbsp;&nbsp; ]</strong></span>
       </div>
       <span class="match-port-dot" id="dot-${item.id}" title="Hubungkan kabel ke fungsi yang cocok"></span>
     `;
@@ -2405,7 +2458,106 @@ function renderTruthTable() {
 
 // ==================== PRINT LKPD ====================
 function printLKPD() {
-  // Pastikan semua section LKPD visible sebelum cetak
+  // 1. Pastikan seluruh LKPD sudah diinisialisasi
+  if (!lkpdInitialized) {
+    initLKPD();
+  }
+
+  // 2. Isi tanggal cetak otomatis
+  const today = new Date();
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const tanggalStr = today.toLocaleDateString('id-ID', options);
+  const tglEl = document.getElementById('print-tanggal-val');
+  if (tglEl) tglEl.textContent = tanggalStr;
+
+  // 3. Tampilkan nilai jika sudah dikerjakan & dikumpulkan
+  const scoreValEl = document.getElementById('print-score-val');
+  const predikatValEl = document.getElementById('print-predikat-val');
+  if (scoreValEl && predikatValEl) {
+    if (labState.lkpdSubmitted) {
+      const cfg = window.LAB_CONFIG;
+      let scoreA = 0;
+      cfg.lkpd.bagianA.forEach((q, i) => {
+        if (labState.pgAnswers[i] === q.correct) scoreA++;
+      });
+      let scoreB = 0;
+      cfg.lkpd.bagianB.forEach((q, i) => {
+        if (labState.bsAnswers[i] === q.correct) scoreB++;
+      });
+      let scoreC = 0;
+      cfg.lkpd.bagianC.forEach(item => {
+        const pair = labState.matchPairs[item.left];
+        if (pair && pair.rightKey === item.left) scoreC++;
+      });
+      const percent = Math.round(((scoreA + scoreB + scoreC) / 15) * 100);
+      scoreValEl.textContent = `${percent} / 100`;
+      predikatValEl.textContent = document.getElementById('hasil-predikat')?.textContent || 'Selesai';
+    } else {
+      scoreValEl.textContent = '— / 100';
+      predikatValEl.textContent = 'Belum Dinilai';
+    }
+  }
+
+  // 4. Perbarui status jawaban Bagian B (Benar / Salah) untuk versi cetak
+  if (window.LAB_CONFIG && window.LAB_CONFIG.lkpd && window.LAB_CONFIG.lkpd.bagianB) {
+    window.LAB_CONFIG.lkpd.bagianB.forEach((q, qi) => {
+      const ans = labState.bsAnswers[qi];
+      const boxTrue = document.querySelector(`#bs-btn-${qi}-true .bs-print-box`);
+      const boxFalse = document.querySelector(`#bs-btn-${qi}-false .bs-print-box`);
+      const fbEl = document.getElementById(`bs-print-feedback-${qi}`);
+
+      if (boxTrue && boxFalse) {
+        if (ans === true) {
+          boxTrue.innerHTML = '<strong>[ &#10003; ]</strong>';
+          boxFalse.innerHTML = '[ &nbsp; ]';
+        } else if (ans === false) {
+          boxTrue.innerHTML = '[ &nbsp; ]';
+          boxFalse.innerHTML = '<strong>[ &#10003; ]</strong>';
+        } else {
+          boxTrue.innerHTML = '[ &nbsp; ]';
+          boxFalse.innerHTML = '[ &nbsp; ]';
+        }
+      }
+
+      if (fbEl) {
+        if (labState.lkpdSubmitted) {
+          const isCorrect = ans === q.correct;
+          const keyLabel = q.correct ? 'BENAR' : 'SALAH';
+          const userAnsStr = ans === undefined ? 'Belum Dijawab' : (ans ? 'BENAR' : 'SALAH');
+          fbEl.innerHTML = isCorrect
+            ? `<span class="bs-badge-correct">✅ Jawaban Anda Benar</span>`
+            : `<span class="bs-badge-wrong">❌ Jawaban Anda: <strong>${userAnsStr}</strong> &bull; Kunci: <strong>${keyLabel}</strong></span>`;
+          fbEl.style.display = 'block';
+        } else {
+          fbEl.style.display = 'none';
+        }
+      }
+    });
+  }
+
+  // 5. Perbarui status jawaban Bagian C untuk versi cetak
+  if (window.LAB_CONFIG && window.LAB_CONFIG.lkpd && window.LAB_CONFIG.lkpd.bagianC) {
+    window.LAB_CONFIG.lkpd.bagianC.forEach(item => {
+      const box = document.getElementById(`print-match-ans-${item.left}`);
+      if (box) {
+        const pair = labState.matchPairs[item.left];
+        if (pair) {
+          const rightItem = matchRightItems.find(r => r.originalKey === pair.rightKey);
+          const letter = rightItem ? rightItem.letter : '?';
+          if (labState.lkpdSubmitted) {
+            const isCorrect = pair.rightKey === item.left;
+            box.innerHTML = `<span>Pasangan: <strong>[ ${letter} ]</strong> ${isCorrect ? '✅' : '❌'}</span>`;
+          } else {
+            box.innerHTML = `<span>Pasangan: <strong>[ ${letter} ]</strong></span>`;
+          }
+        } else {
+          box.innerHTML = `<span>Pasangan: <strong>[ &nbsp;&nbsp;&nbsp;&nbsp; ]</strong></span>`;
+        }
+      }
+    });
+  }
+
+  // 6. Tampilkan semua section LKPD sebelum cetak
   const sections = ['lkpd-pg', 'lkpd-bs', 'lkpd-match'];
   const origDisplays = {};
   sections.forEach(id => {
@@ -2416,19 +2568,23 @@ function printLKPD() {
     }
   });
 
-  // Beri waktu browser render, lalu print
+  // Pulihkan tampilan tab hanya setelah dialog print ditutup (event afterprint)
+  const handleAfterPrint = () => {
+    window.removeEventListener('afterprint', handleAfterPrint);
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && origDisplays[id] !== undefined) {
+        el.style.display = origDisplays[id];
+      }
+    });
+  };
+  window.addEventListener('afterprint', handleAfterPrint);
+
+  // Fallback pengaman jika browser tidak mendukung afterprint
   setTimeout(() => {
+    // Beri waktu 200ms sebelum memanggil dialog print
     window.print();
-    // Kembalikan state asal setelah print dialog tutup
-    setTimeout(() => {
-      sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && origDisplays[id] !== undefined) {
-          el.style.display = origDisplays[id];
-        }
-      });
-    }, 500);
-  }, 150);
+  }, 100);
 }
 
 // ==================== PENGEMBANG: SWITCH DEV QUOTE OPTIONS ====================

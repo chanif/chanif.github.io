@@ -235,7 +235,7 @@ body {
 
 .eyebrow-badge {
   font-family: var(--font-mono);
-  font-size: 0.8vw;
+  font-size: 1.2vw;
   letter-spacing: 3px;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.35);
@@ -265,7 +265,7 @@ body {
 }
 
 #welcome-screen p {
-  font-size: 1.15vw;
+  font-size: 1.3vw;
   margin-bottom: 1.2vw;
   opacity: 0.9;
   font-weight: 500;
@@ -279,7 +279,7 @@ body {
   background: var(--aurora-teal);
   color: #0f172a;
   font-weight: 800;
-  font-size: 1vw;
+  font-size: 1.2vw;
   padding: 0.4vw 1.4vw;
   border-radius: var(--radius-pill);
   margin-bottom: 1.5vw;
@@ -412,7 +412,7 @@ header {
   align-items: center;
   background: var(--header-bar-bg);
   padding: 0 1.5vw;
-  height: 11%;
+  height: 9%;
   border-bottom: 3.5px solid var(--comet-amber);
   color: #ffffff;
   z-index: 10;
@@ -477,7 +477,7 @@ header {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 89%;
+  height: 91%;
   background-color: var(--bg-app);
   background-image: radial-gradient(var(--border-color) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
@@ -2061,6 +2061,94 @@ p, li {
   cursor: pointer;
 }
 
+/* LKPD Bottom Navigation (UX Step Navigation) */
+.lkpd-bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.2vw;
+  padding-top: 1vw;
+  border-top: 1px dashed var(--border-color);
+  gap: 1vw;
+  flex-wrap: wrap;
+}
+
+.lkpd-nav-hint {
+  font-size: 0.85vw;
+  color: var(--text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4vw;
+}
+
+.lkpd-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5vw;
+  padding: 0.55vw 1.2vw;
+  font-size: 0.88vw;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-family: var(--font-body);
+}
+
+.lkpd-nav-btn .nav-arrow {
+  font-size: 1vw;
+  transition: transform 0.2s ease;
+}
+
+.lkpd-nav-btn-next {
+  background: linear-gradient(135deg, var(--tab-active), #6366f1);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 14px var(--tab-active-glow);
+  margin-left: auto;
+}
+
+.lkpd-nav-btn-next:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px var(--tab-active-glow);
+  filter: brightness(1.08);
+}
+
+.lkpd-nav-btn-next:hover .nav-arrow {
+  transform: translateX(3px);
+}
+
+.lkpd-nav-btn-prev {
+  background: var(--card-sub-bg);
+  color: var(--text-main);
+  border: 1.5px solid var(--border-color);
+}
+
+.lkpd-nav-btn-prev:hover {
+  border-color: var(--tab-active);
+  color: var(--tab-active);
+  background: var(--card-bg);
+  transform: translateY(-2px);
+}
+
+.lkpd-nav-btn-prev:hover .nav-arrow {
+  transform: translateX(-3px);
+}
+
+.lkpd-nav-btn-submit {
+  background: linear-gradient(135deg, var(--accent-emerald), #059669);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  margin-left: auto;
+}
+
+.lkpd-nav-btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.5);
+  filter: brightness(1.08);
+}
+
 /* LKPD Evaluation Result Card */
 .lkpd-result-card {
   background: linear-gradient(135deg, var(--card-bg) 0%, var(--card-sub-bg) 100%);
@@ -3602,40 +3690,513 @@ p, li {
   margin-bottom: 2px;
 }
 
+/* Elemen khusus cetak disembunyikan pada mode layar */
+.lkpd-print-only {
+  display: none !important;
+}
+.match-print-answer-box {
+  display: none;
+}
+.bs-print-box {
+  display: none;
+}
+.bs-print-feedback {
+  display: none;
+}
+
 /* ============================================================
-   @MEDIA PRINT — Cetak LKPD
+   @MEDIA PRINT — Cetak LKPD Lengkap & Terstruktur (A4)
    ============================================================ */
 @media print {
-  /* Sembunyikan semua kecuali konten LKPD */
-  body > * { display: none !important; }
-  .app-container { display: block !important; }
-  #welcome-screen, header, .scenario-switch,
-  .sub-sim-rakit-pc, #sub-sim-rakit-pc,
-  #sub-eksplorasi, #sub-teori, #sub-prosedur,
-  #sub-pengembang, #sub-referensi,
-  .lkpd-header-row button,
-  .lkpd-section-tab-bar,
-  #lkpd-result-box { display: none !important; }
-
-  /* Tampilkan LKPD */
-  #sub-lkpd { display: block !important; }
-  #sub-lkpd .card { box-shadow: none !important; border: none !important; overflow: visible !important; }
-  #sub-lkpd .card-scrollable { overflow: visible !important; max-height: none !important; }
-
-  /* Tampilkan SEMUA section LKPD */
-  .lkpd-section-content { display: block !important; }
-  #lkpd-pg, #lkpd-bs, #lkpd-match { display: block !important; page-break-inside: avoid; }
-
-  /* Judul cetak */
-  #lkpd-print-header { display: block !important; }
-
-  /* Warna aman untuk cetak */
-  * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
-  .lkpd-option-label { border: 1px solid #ccc !important; }
-  .lkpd-question-card { border: 1px solid #ddd !important; margin-bottom: 8px !important; }
-
+  /* Pengaturan kertas dan margin A4 */
   @page {
     size: A4 portrait;
-    margin: 1.5cm 2cm;
+    margin: 1.2cm 1.5cm;
+  }
+
+  /* Reset layout global agar tidak terpotong 100vh / overflow:hidden */
+  html, body {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-family: Arial, "Segoe UI", Helvetica, sans-serif !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Sembunyikan elemen shell aplikasi dan kontrol interaktif */
+  .rotate-device-overlay,
+  #welcome-screen,
+  header,
+  .scenario-switch,
+  .game-sub-panel:not(#sub-lkpd),
+  .lkpd-header-row,
+  .lkpd-section-tab-bar,
+  .lkpd-bottom-nav,
+  .match-instructions-bar button,
+  .match-port-dot,
+  .match-svg-layer,
+  #lkpd-result-box,
+  .modal-overlay,
+  .toast,
+  #sfx-audio-layer {
+    display: none !important;
+  }
+
+  /* Container utama & Content Area dibuka penuh tanpa batas viewport */
+  .app-container,
+  .content-area {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: static !important;
+    background: transparent !important;
+    background-image: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Container LKPD */
+  #sub-lkpd {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #sub-lkpd .card,
+  #sub-lkpd .card-scrollable {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  /* Tampilkan elemen cetak */
+  .lkpd-print-only {
+    display: block !important;
+  }
+
+  /* Kop Cetak LKPD */
+  #lkpd-print-header {
+    display: block !important;
+    border-bottom: 2.5px solid #111827;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .print-kop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+
+  .print-kop-title h2 {
+    font-size: 14pt !important;
+    font-weight: 800 !important;
+    margin: 0 0 2px 0 !important;
+    color: #111827 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .print-kop-title h3 {
+    font-size: 10.5pt !important;
+    font-weight: 700 !important;
+    margin: 0 0 2px 0 !important;
+    color: #2563eb !important;
+  }
+
+  .print-kop-title p {
+    font-size: 9pt !important;
+    color: #4b5563 !important;
+    margin: 0 !important;
+  }
+
+  .print-score-box {
+    border: 2px solid #111827;
+    border-radius: 6px;
+    padding: 6px 12px;
+    text-align: center;
+    min-width: 110px;
+    background: #f8fafc !important;
+  }
+
+  .print-score-label {
+    font-size: 7.5pt !important;
+    font-weight: 800 !important;
+    color: #4b5563 !important;
+    display: block;
+  }
+
+  .print-score-num {
+    font-size: 13pt !important;
+    font-weight: 900 !important;
+    color: #111827 !important;
+    line-height: 1.2;
+  }
+
+  .print-score-predikat {
+    font-size: 7pt !important;
+    color: #6b7280 !important;
+    font-weight: 600;
+  }
+
+  .print-identity-table {
+    border: 1px solid #94a3b8;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    background: #f8fafc !important;
+  }
+
+  .print-id-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-size: 9pt !important;
+  }
+
+  .print-id-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .print-id-cell {
+    flex: 1;
+  }
+
+  .print-dots {
+    color: #4b5563;
+  }
+
+  .print-instructions {
+    font-size: 8.5pt !important;
+    color: #4b5563 !important;
+    line-height: 1.35;
+    padding: 5px 8px;
+    background: #f1f5f9 !important;
+    border-left: 3px solid #2563eb;
+    border-radius: 2px;
+    margin-bottom: 12px;
+  }
+
+  /* Tampilkan semua 3 bagian LKPD */
+  .lkpd-section-content {
+    display: block !important;
+  }
+
+  #lkpd-pg,
+  #lkpd-bs,
+  #lkpd-match {
+    display: block !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* Judul Tiap Bagian */
+  #lkpd-pg > h4,
+  #lkpd-bs > h4,
+  .match-instructions-bar h4 {
+    font-size: 11pt !important;
+    font-weight: 800 !important;
+    color: #111827 !important;
+    border-bottom: 1.5px solid #cbd5e1;
+    padding-bottom: 3px;
+    margin-top: 14px !important;
+    margin-bottom: 8px !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Kartu Soal PG & BS */
+  .lkpd-question-card {
+    background: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    border-left: 3.5px solid #2563eb !important;
+    border-radius: 4px !important;
+    padding: 7px 10px !important;
+    margin-bottom: 8px !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .lkpd-question-card > div:first-child {
+    font-size: 9.5pt !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    margin-bottom: 5px !important;
+  }
+
+  /* Opsi Pilihan Ganda: 2 kolom rapi */
+  .lkpd-options-list {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4px 10px !important;
+  }
+
+  .lkpd-option-label {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 4px !important;
+    padding: 4px 8px !important;
+    font-size: 9pt !important;
+    color: #111827 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .lkpd-option-label.selected {
+    border: 1.5px solid #111827 !important;
+    background: #f1f5f9 !important;
+    font-weight: 700 !important;
+  }
+
+  /* Benar / Salah (Format Lembar Kerja Siswa) */
+  .lkpd-bs-card {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-left: 3.5px solid #059669 !important;
+    border-radius: 4px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 8px !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .lkpd-bs-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+  }
+
+  .lkpd-bs-statement {
+    font-size: 10pt !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
+    line-height: 1.4 !important;
+    margin-bottom: 3px !important;
+  }
+
+  .lkpd-bs-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin-top: 2px !important;
+    padding-left: 14px !important;
+  }
+
+  /* Sembunyikan emoji web (✅ dan ❌) saat cetak */
+  .bs-btn-icon {
+    display: none !important;
+  }
+
+  /* Tampilkan kotak checklist cetak [   ] atau [ ✓ ] */
+  .bs-print-box {
+    display: inline-block !important;
+    font-family: monospace, "Courier New", Courier !important;
+    font-size: 11pt !important;
+    font-weight: 900 !important;
+    color: #111827 !important;
+    margin-right: 4px !important;
+    letter-spacing: -1px !important;
+  }
+
+  .btn-bs-choice {
+    display: inline-flex !important;
+    align-items: center !important;
+    background: #ffffff !important;
+    border: 1.5px solid #64748b !important;
+    border-radius: 4px !important;
+    padding: 3px 12px !important;
+    font-size: 9pt !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+    cursor: default !important;
+  }
+
+  .btn-bs-choice.selected {
+    border: 2px solid #111827 !important;
+    background: #f1f5f9 !important;
+    font-weight: 900 !important;
+  }
+
+  .btn-bs-choice.selected .bs-btn-text {
+    font-weight: 800 !important;
+    text-decoration: underline !important;
+  }
+
+  /* Feedback Kunci Jawaban jika sudah dinilai */
+  .bs-print-feedback {
+    display: block !important;
+    font-size: 8.5pt !important;
+    margin-top: 4px !important;
+    padding-left: 14px !important;
+  }
+
+  .bs-badge-correct {
+    color: #047857 !important;
+    font-weight: 700 !important;
+  }
+
+  .bs-badge-wrong {
+    color: #b91c1c !important;
+    font-weight: 700 !important;
+  }
+
+  /* Kotak Penjelasan */
+  [id^="pg-exp-"],
+  [id^="bs-exp-"] {
+    font-size: 8.5pt !important;
+    padding: 4px 8px !important;
+    margin-top: 5px !important;
+    border-radius: 4px !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+
+  /* Bagian C: Menjodohkan */
+  .match-instructions-bar p {
+    font-size: 8.5pt !important;
+    color: #4b5563 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .match-columns-header {
+    display: grid !important;
+    grid-template-columns: 1fr 1.3fr !important;
+    gap: 12px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .match-col-title {
+    font-size: 9pt !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+  }
+
+  .match-interactive-wrapper {
+    min-height: auto !important;
+  }
+
+  .match-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1.3fr !important;
+    gap: 8px 12px !important;
+  }
+
+  .match-btn-col {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .match-interactive-btn {
+    background: #ffffff !important;
+    border: 1px solid #94a3b8 !important;
+    border-radius: 4px !important;
+    padding: 5px 8px !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+    text-align: left !important;
+    cursor: default !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .match-left-btn {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .match-badge {
+    display: inline-block !important;
+    background: #e2e8f0 !important;
+    color: #111827 !important;
+    font-weight: 800 !important;
+    font-size: 8pt !important;
+    padding: 1px 5px !important;
+    border-radius: 3px !important;
+    border: 1px solid #cbd5e1 !important;
+    margin-right: 4px !important;
+  }
+
+  .match-btn-text {
+    font-size: 8.5pt !important;
+    color: #111827 !important;
+  }
+
+  .match-print-answer-box {
+    display: block !important;
+    font-size: 8.5pt !important;
+    color: #1e3a8a !important;
+    margin-left: 6px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Print Footer: Catatan & Tanda Tangan */
+  .lkpd-print-footer {
+    display: block !important;
+    margin-top: 18px !important;
+    padding-top: 10px !important;
+    border-top: 1.5px solid #94a3b8 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .print-notes-box {
+    font-size: 8.5pt !important;
+    margin-bottom: 14px !important;
+  }
+
+  .print-notes-lines {
+    border-bottom: 1px dotted #94a3b8;
+    height: 28px;
+    margin-top: 3px;
+  }
+
+  .print-signature-grid {
+    display: flex !important;
+    justify-content: space-between !important;
+    text-align: center !important;
+    font-size: 8.5pt !important;
+  }
+
+  .print-sig-col {
+    width: 200px !important;
+  }
+
+  .print-sig-space {
+    height: 48px !important;
   }
 }

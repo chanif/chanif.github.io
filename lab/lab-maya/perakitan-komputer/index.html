@@ -502,6 +502,38 @@
       <!-- ========================================================== -->
       <div id="sub-lkpd" class="game-sub-panel">
         <div class="card card-scrollable" style="border-top-color: var(--accent-emerald);">
+          <!-- KOP & IDENTITAS KHUSUS CETAK (Hanya Muncul Saat Print) -->
+          <div id="lkpd-print-header" class="lkpd-print-only">
+            <div class="print-kop">
+              <div class="print-kop-title">
+                <h2>LEMBAR KERJA PESERTA DIDIK (LKPD)</h2>
+                <h3>Mata Pelajaran: Informatika (Fase D / SMP)</h3>
+                <p>Materi Pokok: Perangkat Keras Komputer, Arsitektur Sistem &amp; Simulasi Perakitan PC</p>
+              </div>
+              <div class="print-kop-score">
+                <div class="print-score-box">
+                  <div class="print-score-label">NILAI / SKOR</div>
+                  <div class="print-score-num" id="print-score-val">— / 100</div>
+                  <div class="print-score-predikat" id="print-predikat-val">Belum Dinilai</div>
+                </div>
+              </div>
+            </div>
+            <div class="print-identity-table">
+              <div class="print-id-row">
+                <div class="print-id-cell"><strong>Nama Siswa:</strong> <span class="print-dots">..................................................................</span></div>
+                <div class="print-id-cell"><strong>Kelas / No. Absen:</strong> <span class="print-dots">................ / ........</span></div>
+              </div>
+              <div class="print-id-row">
+                <div class="print-id-cell"><strong>Sekolah / Lab:</strong> <span class="print-dots">..................................................................</span></div>
+                <div class="print-id-cell"><strong>Tanggal:</strong> <span class="print-dots" id="print-tanggal-val">................................</span></div>
+              </div>
+            </div>
+            <div class="print-instructions">
+              <strong>Petunjuk Pengerjaan:</strong>
+              Bacalah setiap butir soal dengan saksama. Jawablah soal Pilihan Ganda (Bagian A), tentukan Benar atau Salah pada Bagian B, dan jodohkan komponen dengan fungsinya pada Bagian C.
+            </div>
+          </div>
+
           <div class="lkpd-header-row">
             <div>
               <h2 style="margin-bottom:0.2vw;">✍️ Lembar Kerja Peserta Didik (LKPD)</h2>
@@ -518,9 +550,9 @@
           </div>
 
           <div class="lkpd-section-tab-bar">
-            <button class="lkpd-tab-btn active" onclick="showLkpdSection('pg')">A. Pilihan Ganda (5)</button>
-            <button class="lkpd-tab-btn" onclick="showLkpdSection('bs')">B. Benar / Salah (5)</button>
-            <button class="lkpd-tab-btn" onclick="showLkpdSection('match')">C. Menjodohkan (5)</button>
+            <button class="lkpd-tab-btn active" data-section="pg" onclick="showLkpdSection('pg')">A. Pilihan Ganda (5)</button>
+            <button class="lkpd-tab-btn" data-section="bs" onclick="showLkpdSection('bs')">B. Benar / Salah (5)</button>
+            <button class="lkpd-tab-btn" data-section="match" onclick="showLkpdSection('match')">C. Menjodohkan (5)</button>
           </div>
 
           <div id="lkpd-pg" class="lkpd-section-content active"></div>
@@ -558,6 +590,17 @@
                 <div class="match-btn-col" id="match-right"></div>
               </div>
             </div>
+
+            <!-- Navigasi Bawah Bagian C: Kembali ke B & Kumpulkan Jawaban -->
+            <div class="lkpd-bottom-nav">
+              <button type="button" class="lkpd-nav-btn lkpd-nav-btn-prev" onclick="showLkpdSection('bs')">
+                <span class="nav-arrow">⬅</span>
+                <span>Kembali ke Bagian B</span>
+              </button>
+              <button type="button" class="lkpd-nav-btn lkpd-nav-btn-submit" onclick="submitLKPD()">
+                <span>Kumpulkan &amp; Cek Nilai 📝</span>
+              </button>
+            </div>
           </div>
 
           <!-- Hasil Evaluasi Pop-in Modal / Container -->
@@ -569,6 +612,26 @@
             <div class="lkpd-result-actions">
               <button class="btn-secondary" onclick="resetLKPD()">🔄 Kerjakan Ulang Kuis</button>
               <button class="btn-large" onclick="showLkpdSection('pg')">🔍 Lihat Pembahasan Soal ⬇️</button>
+            </div>
+          </div>
+
+          <!-- CATATAN & TANDA TANGAN KHUSUS CETAK -->
+          <div class="lkpd-print-footer lkpd-print-only">
+            <div class="print-notes-box">
+              <strong>Catatan / Umpan Balik Guru:</strong>
+              <div class="print-notes-lines"></div>
+            </div>
+            <div class="print-signature-grid">
+              <div class="print-sig-col">
+                <p>Orang Tua / Wali Siswa,</p>
+                <div class="print-sig-space"></div>
+                <p>( ..................................................... )</p>
+              </div>
+              <div class="print-sig-col">
+                <p>Guru Mata Pelajaran Informatika,</p>
+                <div class="print-sig-space"></div>
+                <p>( ..................................................... )</p>
+              </div>
             </div>
           </div>
         </div>
