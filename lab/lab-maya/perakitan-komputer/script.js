@@ -920,19 +920,98 @@ function updateInstalledCount() {
     }
   }
 
-  // Update Onboarding Hint visibility
+  // Update Dynamic Step Guide & Onboarding Stepper (Juknis Hal 21 poin g)
+  updateRakitStepGuide(correctCount, totalInstalled);
+}
+
+let currentRakitScenario = 'normal';
+
+function setRakitScenario(scen) {
+  currentRakitScenario = scen;
+  document.querySelectorAll('.scenario-tag-btn').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = document.getElementById(scen === 'normal' ? 'btn-scen-normal' : 'btn-scen-troubleshoot');
+  if (activeBtn) activeBtn.classList.add('active');
+  
+  const correctCount = ['cpu', 'ram', 'ssd', 'gpu', 'psu'].filter(id => {
+    return labState.installed[id] && (
+      (id === 'cpu' && labState.slotOccupant['slot-cpu'] === 'cpu') ||
+      (id === 'ram' && labState.slotOccupant['slot-ram'] === 'ram') ||
+      (id === 'ssd' && labState.slotOccupant['slot-storage'] === 'ssd') ||
+      (id === 'gpu' && labState.slotOccupant['slot-gpu'] === 'gpu') ||
+      (id === 'psu' && labState.slotOccupant['slot-psu'] === 'psu')
+    );
+  }).length;
+  const totalInstalled = Object.values(labState.installed).filter(v => v).length;
+  updateRakitStepGuide(correctCount, totalInstalled);
+  sfxClick();
+}
+
+function updateRakitStepGuide(correctCount, totalInstalled) {
+  const stepIndicator = document.getElementById('mb-step-indicator');
   const hint = document.getElementById('rakit-onboarding-hint');
-  if (hint) {
-    if (totalInstalled === 0) {
-      hint.style.display = 'flex';
-      hint.style.opacity = '1';
-    } else {
-      hint.style.opacity = '0';
-      setTimeout(() => { 
-        const countNow = Object.values(labState.installed).filter(v => v).length;
-        if (countNow > 0 && hint) hint.style.display = 'none'; 
-      }, 250);
+  const stepIcon = document.getElementById('rakit-step-icon');
+  const stepTitle = document.getElementById('rakit-step-title');
+  const stepDesc = document.getElementById('rakit-step-desc');
+  if (!hint || !stepTitle || !stepDesc) return;
+
+  hint.style.display = 'flex';
+  hint.style.opacity = '1';
+
+  if (currentRakitScenario === 'troubleshoot') {
+    if (stepIndicator) {
+      stepIndicator.textContent = 'Skenario: Uji Masalah';
+      stepIndicator.style.background = 'rgba(239, 68, 68, 0.15)';
+      stepIndicator.style.color = '#ef4444';
+      stepIndicator.style.borderColor = 'rgba(239, 68, 68, 0.3)';
     }
+    if (stepIcon) stepIcon.textContent = '🔍';
+    stepTitle.textContent = 'Eksplorasi Masalah & Inkompatibilitas:';
+    stepDesc.innerHTML = 'Tarik <strong>RAM DDR2</strong> atau <strong>HDD IDE</strong> ke motherboard untuk melihat bagaimana sistem menolak komponen tak cocok, atau tekan <strong>POWER ON</strong> saat komponen belum lengkap untuk menganalisis LED diagnostik!';
+    return;
+  }
+
+  // Skenario Standar (Langkah 1 s.d. 5)
+  if (stepIndicator) {
+    stepIndicator.style.background = 'rgba(14,165,233,0.15)';
+    stepIndicator.style.color = '#38bdf8';
+    stepIndicator.style.borderColor = 'rgba(14,165,233,0.3)';
+  }
+
+  if (!labState.installed['cpu']) {
+    if (stepIndicator) stepIndicator.textContent = 'Langkah 1 dari 5';
+    if (stepIcon) stepIcon.textContent = '🧠';
+    stepTitle.textContent = 'Langkah 1 dari 5:';
+    stepDesc.innerHTML = 'Tarik <strong>CPU (Prosesor)</strong> ke soket LGA 1700 di tengah motherboard!';
+  } else if (!labState.installed['ram']) {
+    if (stepIndicator) stepIndicator.textContent = 'Langkah 2 dari 5';
+    if (stepIcon) stepIcon.textContent = '⚡';
+    stepTitle.textContent = 'Langkah 2 dari 5:';
+    stepDesc.innerHTML = 'Pasang <strong>RAM DDR4</strong> ke slot memori DIMM di samping soket CPU.';
+  } else if (!labState.installed['ssd']) {
+    if (stepIndicator) stepIndicator.textContent = 'Langkah 3 dari 5';
+    if (stepIcon) stepIcon.textContent = '💾';
+    stepTitle.textContent = 'Langkah 3 dari 5:';
+    stepDesc.innerHTML = 'Pasang <strong>SSD NVMe M.2</strong> ke slot penyimpanan cepat di motherboard.';
+  } else if (!labState.installed['gpu']) {
+    if (stepIndicator) stepIndicator.textContent = 'Langkah 4 dari 5';
+    if (stepIcon) stepIcon.textContent = '🎮';
+    stepTitle.textContent = 'Langkah 4 dari 5:';
+    stepDesc.innerHTML = 'Pasang <strong>Kartu Grafis (GPU)</strong> ke slot ekspansi PCIe x16.';
+  } else if (!labState.installed['psu']) {
+    if (stepIndicator) stepIndicator.textContent = 'Langkah 5 dari 5';
+    if (stepIcon) stepIcon.textContent = '🔌';
+    stepTitle.textContent = 'Langkah 5 dari 5:';
+    stepDesc.innerHTML = 'Hubungkan <strong>Catu Daya (PSU)</strong> ke header daya 24-Pin ATX.';
+  } else {
+    if (stepIndicator) {
+      stepIndicator.textContent = 'Perakitan Selesai (5/5)';
+      stepIndicator.style.background = 'rgba(16, 185, 129, 0.15)';
+      stepIndicator.style.color = '#10b981';
+      stepIndicator.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+    }
+    if (stepIcon) stepIcon.textContent = '🎉';
+    stepTitle.textContent = 'Langkah Terakhir:';
+    stepDesc.innerHTML = 'Seluruh 5 komponen terpasang! Klik tombol <strong>⚡ POWER ON / UJI BOOT</strong> untuk menyalakan komputer.';
   }
 }
 

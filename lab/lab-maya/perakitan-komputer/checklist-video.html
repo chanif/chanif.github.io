@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist Pengumpulan & Script Video Demo — Festival Biru Putih 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --accent: #f59e0b;
+      --emerald: #10b981;
+      --rose: #ef4444;
+      --dark: #0f172a;
+      --text: #334155;
+      --border: #e2e8f0;
+      --bg-light: #f8fafc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: #f1f5f9;
+      line-height: 1.65;
+      font-size: 13.5px;
+      padding: 24px 16px;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 44px 52px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; font-size: 10.5pt; }
+      .container { max-width: 100%; padding: 0; box-shadow: none; border-radius: 0; }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; }
+    }
+
+    /* Top Sticky Control Bar */
+    .top-bar {
+      position: sticky;
+      top: 15px;
+      z-index: 100;
+      background: #0f172a;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 40px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 12px 20px -4px rgba(15, 23, 42, 0.35);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .progress-pill {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid var(--emerald);
+      color: #6ee7b7;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .top-btns {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-action {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: white;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-action:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(2, 132, 199, 0.4); }
+    .btn-timer {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+
+    /* Header */
+    .doc-header {
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .doc-header h1 {
+      font-size: 21px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+    .doc-header p {
+      color: #64748b;
+      font-weight: 600;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .badge-sayembara {
+      background: #e0f2fe;
+      border: 1px solid #bae6fd;
+      color: #0369a1;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    /* Meta Grid */
+    .meta-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-bottom: 25px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      font-size: 12.5px;
+    }
+    .meta-box span { color: #64748b; font-size: 11px; text-transform: uppercase; font-weight: 700; display: block; }
+
+    /* Section Styles */
+    h2 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 30px 0 12px 0;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h3 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 18px 0 8px 0;
+    }
+
+    /* Checklist Item Box */
+    .checklist-group {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+      transition: all 0.2s ease;
+    }
+    .checklist-group:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .checklist-group h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px dashed #f1f5f9;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .check-item:last-child { border-bottom: none; }
+    .check-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      margin-top: 2px;
+      accent-color: var(--emerald);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .check-item label {
+      cursor: pointer;
+      flex: 1;
+    }
+    .check-item.checked label {
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+
+    /* Script Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 24px 0;
+      font-size: 12.5px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) { background: #fafafa; }
+
+    .time-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .voice-over {
+      background: #fdf6ec;
+      border-left: 3px solid var(--accent);
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin-top: 6px;
+      font-style: italic;
+      line-height: 1.55;
+      color: #451a03;
+    }
+
+    /* Floating Teleprompter Stopwatch Modal */
+    #timer-modal {
+      display: none;
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 1000;
+      background: #0f172a;
+      color: white;
+      padding: 16px 20px;
+      border-radius: 14px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+      border: 1.5px solid #334155;
+      min-width: 260px;
+    }
+    .timer-display {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 800;
+      text-align: center;
+      margin: 6px 0 10px 0;
+      color: #38bdf8;
+    }
+    .timer-display.warn { color: #f59e0b; }
+    .timer-display.danger { color: #ef4444; animation: pulse 1s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .timer-controls {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-t-ctrl {
+      border: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-t-start { background: var(--emerald); color: white; }
+    .btn-t-stop { background: var(--rose); color: white; }
+    .btn-t-reset { background: #475569; color: white; }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Practice Stopwatch Modal -->
+  <div id="timer-modal" class="no-print">
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#94a3b8;font-weight:700;">
+      <span>⏱️ PENGHITUNG WAKTU LATIHAN</span>
+      <span style="cursor:pointer;" onclick="toggleTimerModal()">✕</span>
+    </div>
+    <div class="timer-display" id="timer-text">00:00</div>
+    <div style="font-size:11px;text-align:center;margin-bottom:8px;color:#94a3b8;" id="timer-target">
+      Batas Maksimal: <strong>03:00</strong>
+    </div>
+    <div class="timer-controls">
+      <button class="btn-t-ctrl btn-t-start" onclick="startTimer()">Mulai</button>
+      <button class="btn-t-ctrl btn-t-stop" onclick="pauseTimer()">Jeda</button>
+      <button class="btn-t-ctrl btn-t-reset" onclick="resetTimer()">Reset</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Sticky Top Navigation / Action Bar -->
+    <div class="top-bar no-print">
+      <div class="top-bar-left">
+        <strong>📋 Berkas Sayembara &amp; Video Script</strong>
+        <span class="progress-pill" id="progress-text">0 / 18 Terpenuhi</span>
+      </div>
+      <div class="top-btns">
+        <button class="btn-action btn-timer" onclick="toggleTimerModal()">
+          ⏱️ Stopwatch Latihan (3 Menit)
+        </button>
+        <button class="btn-action" onclick="window.print()">
+          🖨️ Cetak Checklist
+        </button>
+      </div>
+    </div>
+
+    <!-- Header Dokumen -->
+    <div class="doc-header">
+      <div>
+        <h1>Checklist Pengumpulan &amp; Naskah Video Demonstrasi</h1>
+        <p>Pedoman Menuju Pengunggahan Karya Festival Biru Putih 2026 (Direktorat SMP)</p>
+      </div>
+      <div class="badge-sayembara">
+        Kategori:<br><strong>LAB MAYA</strong>
+      </div>
+    </div>
+
+    <!-- Meta Identitas -->
+    <div class="meta-box">
+      <div>
+        <span>Nama Pengembang</span>
+        <strong>Ach. Chanifuddin Fanani, S.Pd.</strong>
+      </div>
+      <div>
+        <span>Instansi / Unit Kerja</span>
+        <strong>SMP Negeri 2 Lamongan, Jawa Timur</strong>
+      </div>
+      <div>
+        <span>Judul Karya Sayembara</span>
+        <strong>Lab Maya Sistem Komputer: Perakitan PC &amp; Logika Digital</strong>
+      </div>
+      <div>
+        <span>Sasaran Kurikulum</span>
+        <strong>Informatika SMP — Fase D (Elemen Sistem Komputer)</strong>
+      </div>
+    </div>
+
+    <!-- BAGIAN 1: CHECKLIST PERSYARATAN -->
+    <h2>✅ Bagian 1: Checklist Berkas &amp; Kepatuhan Juknis</h2>
+    <p style="margin-bottom:15px;color:#64748b;font-size:12.5px;">
+      Klik kotak centang di bawah untuk menandai berkas yang telah Anda siapkan. Kemajuan Anda tersimpan otomatis di peramban ini.
+    </p>
+
+    <!-- Grup A: Syarat Peserta -->
+    <div class="checklist-group">
+      <h4>👤 A. Persyaratan Peserta (Bab II Hal. 5)</h4>
+      <div class="check-item">
+        <input type="checkbox" id="chk-1" onchange="updateProgress()">
+        <label for="chk-1"><strong>Status Aktif:</strong> Pendidik atau Tenaga Kependidikan aktif di jenjang SMP.</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-2" onchange="updateProgress()">
+        <label for="chk-2"><strong>NUPTK Valid:</strong> Memiliki Nomor Unik Pendidik dan Tenaga Kependidikan (NUPTK) aktif.</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-3" onchange="updateProgress()">
+        <label for="chk-3"><strong>Akun Portal Sayembara:</strong> Terdaftar di laman registrasi Festival Biru Putih 2026.</label>
+      </div>
+    </div>
+
+    <!-- Grup B: Berkas Administrasi -->
+    <div class="checklist-group">
+      <h4>📝 B. Berkas Administrasi &amp; Legalitas (Lampiran 1 Hal. 33)</h4>
+      <div class="check-item">
+        <input type="checkbox" id="chk-4" onchange="updateProgress()">
+        <label for="chk-4"><strong>Surat Pernyataan &amp; Integritas (Lampiran 1):</strong> Diisi lengkap sesuai data diri, judul karya, dan kategori Lab Maya.</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-5" onchange="updateProgress()">
+        <label for="chk-5"><strong>Meterai Rp 10.000:</strong> Telah ditempeli meterai fisik atau e-Meterai serta ditandatangani.</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-6" onchange="updateProgress()">
+        <label for="chk-6"><strong>Scan PDF Surat Pernyataan:</strong> Telah dipindai rapi dalam format PDF dan siap diunggah.</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-7" onchange="updateProgress()">
+        <label for="chk-7"><strong>Orisinalitas &amp; Hak Cipta:</strong> Bebas plagiasi, belum pernah menang kompetisi lain, dan bebas dari iklan komersial.</label>
+      </div>
+    </div>
+
+    <!-- Grup C: Berkas Paket ZIP Aplikasi -->
+    <div class="checklist-group">
+      <h4>📦 C. Berkas Paket Aplikasi (.ZIP) (Bab V Hal. 21 &amp; 24)</h4>
+      <div class="check-item">
+        <input type="checkbox" id="chk-8" onchange="updateProgress()">
+        <label for="chk-8"><strong>Single Page Application (SPA):</strong> Aplikasi berjalan penuh di satu halaman tanpa redirect ke file html lain.</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-9" onchange="updateProgress()">
+        <label for="chk-9"><strong>File index.html di Root:</strong> File utama bernama persis <code>index.html</code> dan terletak di root folder ZIP.</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-10" onchange="updateProgress()">
+        <label for="chk-10"><strong>100% Offline (Tanpa URL Luar):</strong> Bebas CDN luar; font, gambar, dan efek suara Web Audio API berjalan mandiri tanpa internet.</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-11" onchange="updateProgress()">
+        <label for="chk-11"><strong>Rasio Aspek 16:9:</strong> Layout mendatar rapi dan responsif, disertai peringatan rotasi layar untuk smartphone.</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-12" onchange="updateProgress()">
+        <label for="chk-12"><strong>Ukuran File Ringan:</strong> Total ukuran file ZIP sangat ringkas (&lt; 5 MB), jauh di bawah batas maksimal 150 MB.</label>
+      </div>
+    </div>
+
+    <!-- Grup D: Panduan PDF -->
+    <div class="checklist-group">
+      <h4>📖 D. Dokumen Panduan Penggunaan / User Guide (PDF) (Bab V Hal. 24 Poin E.4)</h4>
+      <div class="check-item">
+        <input type="checkbox" id="chk-13" onchange="updateProgress()">
+        <label for="chk-13"><strong>Panduan PDF Resmi:</strong> File panduan dicetak dari <code>panduan-resmi.html</code> menjadi format PDF.</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-14" onchange="updateProgress()">
+        <label for="chk-14"><strong>Pemetaan Kurikulum:</strong> Memuat CP BSKAP No. 032/H/KR/2024 dan 4 rumusan Tujuan Pembelajaran (TP).</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-15" onchange="updateProgress()">
+        <label for="chk-15"><strong>Transparansi Aset &amp; AI:</strong> Mencantumkan atribusi latar belakang AI dan prompt orisinil yang digunakan.</label>
+      </div>
+    </div>
+
+    <!-- Grup E: Video Demo MP4 -->
+    <div class="checklist-group">
+      <h4>🎬 E. Berkas Video Demonstrasi (MP4) (Bab V Hal. 24 Poin E.5)</h4>
+      <div class="check-item">
+        <input type="checkbox" id="chk-16" onchange="updateProgress()">
+        <label for="chk-16"><strong>Format &amp; Resolusi:</strong> File MP4 (H.264), rasio 16:9, resolusi 1080p Full HD (atau minimal 720p).</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-17" onchange="updateProgress()">
+        <label for="chk-17"><strong>Durasi Ketat &le; 3 Menit:</strong> Durasi video tepat antara 02:45 s.d. 02:55 (tidak boleh melebihi 03:00).</label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="chk-18" onchange="updateProgress()">
+        <label for="chk-18"><strong>Kejernihan Audio:</strong> Suara narasi terdengar bersih tanpa distorsi/noise, musik latar lembut (maksimal 20%).</label>
+      </div>
+    </div>
+
+    <!-- BAGIAN 2: NASKAH VIDEO DEMO -->
+    <div class="page-break"></div>
+    <h2>🎬 Bagian 2: Naskah / Script Rekaman Video Demo (Maksimal 3 Menit)</h2>
+    <p style="margin-bottom:15px;color:#64748b;font-size:12.5px;">
+      Gunakan panduan tabel di bawah ini saat merekam layar (screen recording). Anda dapat menyalakan <strong>⏱️ Stopwatch Latihan</strong> di pojok kanan atas untuk melatih tempo bicara.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 14%;">Waktu</th>
+          <th style="width: 22%;">Scene &amp; Visual Layar</th>
+          <th>Panduan Tindakan &amp; Naskah Narasi Suara (Voice Over)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="time-badge">00:00 - 00:25</span><br><small style="color:#64748b;">(25 detik)</small></td>
+          <td>
+            <strong>Scene 1: Pembuka</strong><br>
+            Layar cover lab maya.<br>
+            Tampilkan judul, logo Kemendikdasmen &amp; SMPN 2 Lamongan.
+          </td>
+          <td>
+            <strong>Aksi Layar:</strong> Rekam kursor bergerak lembut di halaman cover, arahkan ke tombol MASUK LAB.<br>
+            <div class="voice-over">
+              "Halo Bapak Ibu Dewan Juri Festival Biru Putih 2026. Saya Ach. Chanifuddin Fanani dari SMP Negeri 2 Lamongan.<br><br>
+              Praktikum perangkat keras komputer di SMP sering terkendala mahalnya biaya unit PC dan risiko kerusakan komponen. Untuk itu, saya mempersembahkan inovasi: <strong>Lab Maya Sistem Komputer: Perakitan PC &amp; Logika Digital</strong> — sebuah laboratorium virtual interaktif berbasis web, 100% luring, aman, dan tanpa biaya."
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">00:25 - 01:10</span><br><small style="color:#64748b;">(45 detik)</small></td>
+          <td>
+            <strong>Scene 2: Perakitan PC &amp; Stepper</strong><br>
+            Tab <em>Rakit Komputer</em>.<br>
+            Tunjukkan bilah langkah <code>Langkah 1 dari 5</code>.<br>
+            Drag komponen satu demi satu.
+          </td>
+          <td>
+            <strong>Aksi Layar:</strong> Drag CPU &rarr; soket LGA 1700. Stepper berganti ke Langkah 2. Pasang RAM DDR4, SSD M.2, GPU PCIe, dan PSU 24P.<br>
+            <div class="voice-over">
+              "Lab Maya ini dirancang dengan rasio standar 16:9 dan arsitektur Single Page Application.<br><br>
+              Di ruang Rakit Komputer, siswa dipandu secara bertahap melalui indikator langkah dinamis. Pertama, kita pasang CPU ke soket LGA 1700 di tengah motherboard. Indikator langsung berganti ke Langkah 2: memasang RAM DDR4 ke slot DIMM. Kita lanjutkan memasang SSD NVMe M.2, Kartu Grafis GPU pada slot PCIe, dan terakhir menghubungkan catu daya PSU. Seluruh komponen terpasang presisi dengan status 5 dari 5."
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">01:10 - 01:40</span><br><small style="color:#64748b;">(30 detik)</small></td>
+          <td>
+            <strong>Scene 3: Uji Masalah</strong><br>
+            Klik <code>🔍 Uji Masalah</code>.<br>
+            Tarik RAM DDR2 1GB (Legacy) ke slot RAM DDR4.<br>
+            Muncul modal peringatan inkompatibilitas.
+          </td>
+          <td>
+            <strong>Aksi Layar:</strong> Ambil komponen pengecoh (RAM DDR2 / HDD IDE), lepaskan di slot, amati kotak dialog edukatif yang muncul.<br>
+            <div class="voice-over">
+              "Sesuai standar Juknis untuk membandingkan skenario berbeda, tersedia mode <strong>Uji Masalah</strong>. Siswa diajak bernalar kritis: bagaimana jika kita memasang RAM DDR2 lama ke motherboard modern? Sistem langsung menolak dan memberikan umpan balik edukatif mengenai perbedaan notch pin dan voltase. Ini melatih keterampilan pemecahan masalah tanpa risiko merusak alat fisik."
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">01:40 - 02:10</span><br><small style="color:#64748b;">(30 detik)</small></td>
+          <td>
+            <strong>Scene 4: Booting BIOS &amp; POST LED</strong><br>
+            Klik tombol <code>⚡ POWER ON</code>.<br>
+            LED diagnostik menyala bertahap.<br>
+            Log terminal BIOS berputar.
+          </td>
+          <td>
+            <strong>Aksi Layar:</strong> Klik tombol POWER ON, perbesar sorotan ke 4 LED diagnostik (CPU, DRAM, VGA, BOOT) dan teks terminal BIOS.<br>
+            <div class="voice-over">
+              "Setelah perakitan selesai, siswa menekan tombol <strong>POWER ON / UJI BOOT</strong>. Di sinilah keunggulan Lab Maya ini: sistem menjalankan simulasi Power-On Self-Test (POST) nyata! Lampu LED diagnostik menyala bertahap, disusul suara beep BIOS, dan terminal diagnostik menampilkan siklus Von Neumann — bagaimana CPU mengambil instruksi dari RAM dan mengeksekusinya secara visual."
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">02:10 - 02:40</span><br><small style="color:#64748b;">(30 detik)</small></td>
+          <td>
+            <strong>Scene 5: Eksplorasi &amp; LKPD</strong><br>
+            Tab <em>Eksplorasi Digital</em> (Biner &amp; RGB).<br>
+            Tab <em>LKPD &amp; Kuis</em>.
+          </td>
+          <td>
+            <strong>Aksi Layar:</strong> Klik sakelar biner (0/1), geser slider warna RGB, klik sakelar gerbang logika, lalu buka tab LKPD.<br>
+            <div class="voice-over">
+              "Tidak hanya hardware fisik, Lab Maya ini mengintegrasikan pemahaman konsep abstrak melalui tab <strong>Eksplorasi Digital</strong>: simulasi sakelar bilangan biner 8-bit, pencampuran warna 24-bit RGB monitor, dan simulator 6 gerbang logika dasar.<br><br>
+              Seluruh pemahaman dievaluasi melalui tab <strong>LKPD &amp; Kuis Interaktif</strong> yang menyediakan umpan balik otomatis dan rekapan penilaian belajar mandiri."
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">02:40 - 02:55</span><br><small style="color:#64748b;">(15 detik)</small></td>
+          <td>
+            <strong>Scene 6: Penutup</strong><br>
+            Layar cover penutup / webcam guru.<br>
+            Teks ucapan terima kasih.
+          </td>
+          <td>
+            <strong>Aksi Layar:</strong> Tampilkan kembali identitas sekolah dan salam penutup.<br>
+            <div class="voice-over">
+              "Lab Maya Sistem Komputer hadir untuk mewujudkan digitalisasi pembelajaran yang bermakna, menyenangkan, dan berdaya guna bagi seluruh siswa di Indonesia.<br><br>
+              Mari wujudkan pendidikan bermutu untuk semua. Terima kasih, salam hangat dari SMP Negeri 2 Lamongan!"
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <script>
+    // === LocalStorage Checklist Persistence ===
+    const TOTAL_CHECKS = 18;
+    function updateProgress() {
+      let checkedCount = 0;
+      for (let i = 1; i <= TOTAL_CHECKS; i++) {
+        const chk = document.getElementById('chk-' + i);
+        if (chk) {
+          if (chk.checked) {
+            checkedCount++;
+            chk.parentElement.classList.add('checked');
+            localStorage.setItem('fbp_chk_' + i, '1');
+          } else {
+            chk.parentElement.classList.remove('checked');
+            localStorage.removeItem('fbp_chk_' + i);
+          }
+        }
+      }
+
+      const txt = document.getElementById('progress-text');
+      if (txt) {
+        txt.textContent = `${checkedCount} / ${TOTAL_CHECKS} Terpenuhi`;
+        if (checkedCount === TOTAL_CHECKS) {
+          txt.style.background = 'rgba(16, 185, 129, 0.4)';
+          txt.style.color = '#ffffff';
+        } else {
+          txt.style.background = 'rgba(16, 185, 129, 0.2)';
+          txt.style.color = '#6ee7b7';
+        }
+      }
+    }
+
+    // Restore Checklist State on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      for (let i = 1; i <= TOTAL_CHECKS; i++) {
+        const saved = localStorage.getItem('fbp_chk_' + i);
+        const chk = document.getElementById('chk-' + i);
+        if (chk && saved === '1') {
+          chk.checked = true;
+          chk.parentElement.classList.add('checked');
+        }
+      }
+      updateProgress();
+    });
+
+    // === Stopwatch Timer Logic for Video Demo Rehearsal ===
+    let timerInterval = null;
+    let timerSeconds = 0;
+
+    function toggleTimerModal() {
+      const modal = document.getElementById('timer-modal');
+      if (!modal) return;
+      modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function formatTime(s) {
+      const mins = Math.floor(s / 60);
+      const secs = s % 60;
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    function startTimer() {
+      if (timerInterval) return;
+      timerInterval = setInterval(() => {
+        timerSeconds++;
+        const disp = document.getElementById('timer-text');
+        if (disp) {
+          disp.textContent = formatTime(timerSeconds);
+          if (timerSeconds >= 180) {
+            disp.className = 'timer-display danger';
+          } else if (timerSeconds >= 165) {
+            disp.className = 'timer-display warn';
+          } else {
+            disp.className = 'timer-display';
+          }
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      timerSeconds = 0;
+      const disp = document.getElementById('timer-text');
+      if (disp) {
+        disp.textContent = '00:00';
+        disp.className = 'timer-display';
+      }
+    }
+  </script>
+</body>
+</html>

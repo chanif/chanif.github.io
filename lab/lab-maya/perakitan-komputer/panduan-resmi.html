@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panduan Penggunaan & Deskripsi Teknis — Lab Maya Sistem Komputer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --accent: #f59e0b;
+      --dark: #0f172a;
+      --text: #334155;
+      --border: #e2e8f0;
+      --bg-light: #f8fafc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: #f1f5f9;
+      line-height: 1.65;
+      font-size: 13.5px;
+    }
+
+    .doc-container {
+      max-width: 860px;
+      margin: 30px auto;
+      background: #ffffff;
+      padding: 48px 56px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+      border-radius: 12px;
+    }
+
+    /* Print styling for direct PDF generation */
+    @media print {
+      body { background: #fff; font-size: 11pt; line-height: 1.5; }
+      .doc-container { max-width: 100%; margin: 0; padding: 0; box-shadow: none; border-radius: 0; }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; }
+      h2 { page-break-after: avoid; }
+      table { page-break-inside: avoid; }
+    }
+
+    /* Action bar */
+    .action-bar {
+      position: sticky;
+      top: 15px;
+      z-index: 100;
+      background: #1e293b;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
+    .btn-print {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.2s ease;
+    }
+    .btn-print:hover { transform: scale(1.04); }
+
+    /* Kop Dokumen */
+    .doc-header {
+      border-bottom: 2.5px solid #0f172a;
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .header-titles h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .header-titles p {
+      font-size: 13px;
+      color: #64748b;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .badge-sayembara {
+      background: #e0f2fe;
+      border: 1px solid #bae6fd;
+      color: #0369a1;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Typography */
+    h2 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 28px 0 12px 0;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 18px 0 8px 0;
+    }
+    p { margin-bottom: 10px; text-align: justify; }
+    ul, ol { margin-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 5px; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px 0;
+      font-size: 12.5px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) { background: #fafafa; }
+
+    /* Callout Box */
+    .callout {
+      background: #f0fdf4;
+      border-left: 4px solid #16a34a;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      font-size: 13px;
+    }
+    .callout.info {
+      background: #f0f9ff;
+      border-left-color: #0284c7;
+    }
+    .callout.amber {
+      background: #fffbeb;
+      border-left-color: #f59e0b;
+    }
+
+    /* Metadata Grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 22px;
+      font-size: 12.5px;
+    }
+    .meta-item strong { color: #0f172a; display: block; font-size: 11px; text-transform: uppercase; color: #64748b; }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="doc-container">
+
+    <!-- Sticky Bar Untuk Print / Save PDF -->
+    <div class="action-bar no-print">
+      <div>
+        <strong>📄 Panduan Penggunaan &amp; Dokumen Teknis</strong>
+        <span style="font-size: 12px; opacity: 0.8; margin-left: 8px;">Festival Biru Putih 2026</span>
+      </div>
+      <button class="btn-print" onclick="window.print()">
+        🖨️ Cetak / Simpan sebagai PDF
+      </button>
+    </div>
+
+    <!-- KOP DOKUMEN -->
+    <div class="doc-header">
+      <div class="header-titles">
+        <h1>Panduan Penggunaan &amp; Deskripsi Teknis</h1>
+        <p>Karya Bahan Ajar Digital: Laboratorium Maya (Lab Maya) Informatika SMP</p>
+      </div>
+      <div class="badge-sayembara">
+        Festival Biru Putih<br>Tahun 2026
+      </div>
+    </div>
+
+    <!-- METADATA KARYA -->
+    <div class="meta-grid">
+      <div class="meta-item">
+        <strong>Judul Karya</strong>
+        Lab Maya Sistem Komputer: Perakitan PC &amp; Logika Digital
+      </div>
+      <div class="meta-item">
+        <strong>Kategori Lomba</strong>
+        Lab Maya (Bab V Juknis Festival Biru Putih 2026)
+      </div>
+      <div class="meta-item">
+        <strong>Nama Pengembang / Guru</strong>
+        Ach. Chanifuddin Fanani, S.Pd.
+      </div>
+      <div class="meta-item">
+        <strong>Instansi / Unit Kerja</strong>
+        SMP Negeri 2 Lamongan, Jawa Timur
+      </div>
+      <div class="meta-item">
+        <strong>Sasaran Peserta Didik</strong>
+        Informatika — Fase D (Kelas VII / VIII / IX SMP)
+      </div>
+      <div class="meta-item">
+        <strong>Format Media &amp; Teknologi</strong>
+        Single Page Application (SPA), HTML5, CSS3, JavaScript murni (Zero-Dependency)
+      </div>
+    </div>
+
+    <!-- BAB 1: LATAR BELAKANG & DESKRIPSI -->
+    <h2>📌 1. Deskripsi &amp; Latar Belakang Inovasi</h2>
+    <p>
+      Pembelajaran materi Sistem Komputer (SK) di jenjang SMP seringkali dihadapkan pada kendala keterbatasan perangkat keras fisik. Banyak sekolah tidak memiliki unit komputer cadangan yang aman untuk dibongkar-pasang oleh peserta didik karena risiko kerusakan komponen yang mahal dan bahaya sengatan listrik.
+    </p>
+    <p>
+      <strong>Lab Maya Sistem Komputer: Perakitan PC &amp; Logika Digital</strong> hadir sebagai solusi laboratorium virtual berbasis peramban (web browser) yang aman, interaktif, dan komprehensif. Melalui media ini, peserta didik dapat melakukan eksperimen perakitan motherboard ATX modern secara taktil (drag &amp; drop), menguji nyala mesin (POST test) melalui terminal diagnostik BIOS, serta menyelami cara kerja komputasi internal melalui simulasi sakelar bilangan biner, percampuran warna monitor 24-bit (RGB), dan logika sirkuit digital (Logic Gates).
+    </p>
+
+    <!-- BAB 2: KESELARASAN KURIKULUM -->
+    <h2>🎯 2. Keselarasan Kurikulum (Capaian &amp; Tujuan Pembelajaran)</h2>
+    <div class="callout info">
+      <strong>Rujukan Kurikulum Nasional:</strong> Keputusan Kepala BSKAP Kemendikbudristek No. 032/H/KR/2024 tentang Capaian Pembelajaran pada Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar, dan Jenjang Pendidikan Menengah.
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Elemen Kurikulum</th>
+          <th>Rumusan Capaian &amp; Indikator Ketercapaian</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Capaian Pembelajaran (CP)</strong></td>
+          <td>Peserta didik mampu mendeskripsikan komponen, fungsi, dan cara kerja komputer yang membentuk sebuah sistem komputasi, serta memahami mekanisme internal penyimpanan dan representasi data pada sistem komputer.</td>
+        </tr>
+        <tr>
+          <td><strong>Tujuan Pembelajaran 1 (TP-1)</strong></td>
+          <td>Peserta didik mampu mengidentifikasi dan mengkategorikan 5 komponen utama perangkat keras (CPU, RAM, Media Penyimpanan SSD, GPU, dan PSU) serta fungsinya pada sirkuit motherboard ATX.</td>
+        </tr>
+        <tr>
+          <td><strong>Tujuan Pembelajaran 2 (TP-2)</strong></td>
+          <td>Peserta didik mampu melakukan prosedur perakitan komputer secara virtual dengan alur logis dan mendiagnosis hasil Power-On Self-Test (POST) pada sistem BIOS.</td>
+        </tr>
+        <tr>
+          <td><strong>Tujuan Pembelajaran 3 (TP-3)</strong></td>
+          <td>Peserta didik mampu menganalisis representasi data biner (basis-2) dan pencampuran warna 24-bit RGB sebagai prinsip kerja fundamental pemrosesan komputer.</td>
+        </tr>
+        <tr>
+          <td><strong>Tujuan Pembelajaran 4 (TP-4)</strong></td>
+          <td>Peserta didik mampu menganalisis operasi logika dasar (AND, OR, NOT, XOR, NAND, NOR) yang membentuk sirkuit terpadu pada prosesor komputer.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- BAB 3: PANDUAN PENGGUNAAN -->
+    <h2>💻 3. Panduan Penggunaan Laboratorium Maya (User Guide)</h2>
+    
+    <h3>A. Navigasi Antarmuka &amp; Layar Pembuka</h3>
+    <ol>
+      <li><strong>Akses Media:</strong> Buka file <code>index.html</code> pada peramban web modern (Google Chrome, Microsoft Edge, Mozilla Firefox, atau Safari). Media berjalan 100% luring (offline) tanpa membutuhkan koneksi internet.</li>
+      <li><strong>Rasio Layar 16:9:</strong> Gunakan laptop, PC, Chromebook, atau tablet. Jika dibuka pada ponsel cerdas, miringkan posisi layar ke mode mendatar (Landscape) sesuai petunjuk overlay otomatis.</li>
+      <li><strong>Mulai Eksplorasi:</strong> Pada halaman depan (Cover), klik tombol <strong>▶ MASUK LAB</strong> untuk masuk ke ruang simulasi, atau klik <strong>📖 Panduan</strong> untuk membaca ikhtisar.</li>
+    </ol>
+
+    <h3>B. Menjalankan Eksperimen Rakit PC (Simulasi Utama)</h3>
+    <ol>
+      <li><strong>Pilihan Skenario:</strong>
+        <ul>
+          <li><code>🟢 Skenario Standar</code>: Panduan perakitan terstruktur dari Langkah 1 hingga 5.</li>
+          <li><code>🔍 Uji Masalah</code>: Menguji nalar kritis dengan mencoba memasang komponen tidak cocok (DDR2 / HDD IDE) dan menganalisis kegagalan boot.</li>
+        </ul>
+      </li>
+      <li><strong>Panduan Langkah Interaktif (Stepper):</strong> Perhatikan kartu petunjuk di sisi kiri atas yang akan memandu langkah aktif:
+        <ul>
+          <li><strong>Langkah 1 dari 5:</strong> Tarik <strong>CPU</strong> ke soket LGA 1700 di tengah motherboard.</li>
+          <li><strong>Langkah 2 dari 5:</strong> Pasang <strong>RAM DDR4</strong> ke slot memori DIMM sebelah kanan CPU.</li>
+          <li><strong>Langkah 3 dari 5:</strong> Pasang <strong>SSD M.2 NVMe</strong> ke slot penyimpanan cepat.</li>
+          <li><strong>Langkah 4 dari 5:</strong> Pasang <strong>Kartu Grafis (GPU)</strong> ke slot PCIe x16.</li>
+          <li><strong>Langkah 5 dari 5:</strong> Hubungkan <strong>Catu Daya (PSU)</strong> ke header daya 24-Pin ATX.</li>
+        </ul>
+      </li>
+      <li><strong>Uji Diagnostik Mesin:</strong> Setelah seluruh komponen terpasang (status <code>5/5</code>), tekan tombol <strong>⚡ POWER ON / UJI BOOT</strong>. Amati lampu LED diagnostik (CPU, DRAM, VGA, BOOT) dan log terminal BIOS yang menunjukkan siklus Von Neumann (Fetch &rarr; Decode &rarr; Execute).</li>
+      <li><strong>Fitur Pembantu:</strong> Tersedia tombol <code>⚡ Auto Rakit</code> untuk demonstrasi cepat di depan kelas dan tombol <code>🔄 Reset</code> untuk mengulang perakitan dari awal.</li>
+    </ol>
+
+    <h3>C. Eksplorasi Digital Lanjutan</h3>
+    <ul>
+      <li><strong>Sakelar Biner (8-Bit):</strong> Siswa menyalakan/mematikan bit (1/0) untuk melihat pembentukan angka desimal (0-255) serta dapat mengaktifkan mode permainan <em>Tantangan Tebak Biner</em>.</li>
+      <li><strong>Pencampur Warna RGB:</strong> Menggeser slider Red, Green, Blue (0-255) untuk memahami pembentukan 16,7 juta warna pada monitor dan kode heksadesimalnya.</li>
+      <li><strong>Gerbang Logika:</strong> Menguji tabel kebenaran 6 gerbang logika dasar (AND, OR, NOT, XOR, NAND, NOR) secara interaktif dengan sakelar masukan dan lampu indikator keluaran.</li>
+    </ul>
+
+    <h3>D. Lembar Kerja Peserta Didik (LKPD) &amp; Kuis</h3>
+    <p>
+      Klik tab <strong>✍️ LKPD &amp; Kuis</strong> untuk mengakses evaluasi formatif mandiri. Siswa dapat menjawab soal studi kasus dan pertanyaan reflektif, lalu mencetak atau mengunduh rekapan hasil evaluasi secara otomatis.
+    </p>
+
+    <!-- BAB 4: SPESIFIKASI TEKNIS -->
+    <h2>⚙️ 4. Spesifikasi Teknis &amp; Kepatuhan Standar Juknis</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Kriteria Juknis Bab V</th>
+          <th>Spesifikasi Implementasi Media</th>
+          <th>Status Kepatuhan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Arsitektur Aplikasi</strong></td>
+          <td>Single Page Application (SPA), zero-refresh, navigasi tab dinamis berbasis JavaScript.</td>
+          <td>✅ 100% Sesuai</td>
+        </tr>
+        <tr>
+          <td><strong>Ketergantungan Eksternal</strong></td>
+          <td>Murni lokal. Tidak ada pemanggilan CDN, font web eksternal, atau pustaka luar (100% mandiri).</td>
+          <td>✅ 100% Sesuai</td>
+        </tr>
+        <tr>
+          <td><strong>Tata Suara (Audio)</strong></td>
+          <td>Disintesis secara real-time via Web Audio API (beep POST, klik mekanik, nada sukses). Tanpa file MP3 eksternal.</td>
+          <td>✅ 100% Sesuai</td>
+        </tr>
+        <tr>
+          <td><strong>Format &amp; Rasio Layar</strong></td>
+          <td>Rasio tetap 16:9 Landscape dengan viewport responsive scaling dan deteksi orientasi layar ponsel.</td>
+          <td>✅ 100% Sesuai</td>
+        </tr>
+        <tr>
+          <td><strong>Ukuran File</strong></td>
+          <td>Sangat ringkas (&lt; 2 MB total), jauh di bawah batas maksimal juknis (150 MB).</td>
+          <td>✅ 100% Sesuai</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- BAB 5: ATRIBUSI ASET & PROMPT AI -->
+    <h2>🤖 5. Transparansi Hak Cipta &amp; Dokumentasi Prompt AI</h2>
+    <div class="callout amber">
+      <strong>Kepatuhan Hak Cipta (Juknis Bab II Hal. 6 Poin 3e):</strong> Seluruh karya grafis dirancang khusus dan tidak mengandung pelanggaran hak kekayaan intelektual (HAKI).
+    </div>
+    <p>
+      Latar belakang visual tematik pada halaman cover dibuat menggunakan generator kecerdasan artifisial (AI) dengan prompt orisinil pengembang:
+    </p>
+    <ul>
+      <li><strong>Aset Visual Cover:</strong> <code>assets/images/welcome-bg.jpg</code></li>
+      <li><strong>Keterangan:</strong> <em>"Gambar latar belakang ini dibuat dengan bantuan AI Image Generator."</em></li>
+      <li><strong>Prompt Desain:</strong> <code>"Isometric 3D clean futuristic computer hardware workshop, glowing motherboard blueprint, floating electronic components, soft ambient cyber lighting, high detailed digital art, 16:9 aspect ratio --no text --no watermark"</code></li>
+      <li><strong>Aset Diagram Vektor:</strong> Seluruh motherboard ATX, soket LGA, slot RAM, dan kartu ekspansi digambar manual dalam format SVG matematis murni.</li>
+    </ul>
+
+    <!-- BAB 6: STORYLINE VIDEO DEMO -->
+    <h2>🎬 6. Rencana Storyline Video Demonstrasi (Maksimal 3 Menit)</h2>
+    <p>Sesuai Juknis Bab V Hal. 24 Poin E.5, berikut rancangan video demonstrasi singkat format MP4:</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 15%;">Waktu</th>
+          <th style="width: 25%;">Bagian</th>
+          <th>Aktivitas Visual &amp; Narasi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>00:00 - 00:30</td>
+          <td><strong>Pembuka &amp; Masalah</strong></td>
+          <td>Tampilan cover lab maya, perkenalan guru dan SMPN 2 Lamongan, menyampaikan latar belakang perlunya praktikum perakitan komputer yang aman dan hemat biaya.</td>
+        </tr>
+        <tr>
+          <td>00:30 - 01:40</td>
+          <td><strong>Simulasi Rakit PC &amp; Skenario</strong></td>
+          <td>Demonstrasi drag-and-drop CPU, RAM, SSD, GPU, PSU dengan panduan langkah (1 s.d. 5). Menunjukkan skenario uji komponen pengecoh (DDR2), lalu melakukan Uji Booting BIOS dan lampu indikator LED.</td>
+        </tr>
+        <tr>
+          <td>01:40 - 02:25</td>
+          <td><strong>Eksplorasi Digital</strong></td>
+          <td>Menunjukkan interaksi sakelar bilangan biner (8-bit), pencampuran warna RGB monitor, dan simulasi 6 gerbang logika terintegrasi.</td>
+        </tr>
+        <tr>
+          <td>02:25 - 03:00</td>
+          <td><strong>Asesmen &amp; Penutup</strong></td>
+          <td>Menampilkan tab LKPD &amp; Kuis serta rangkuman hasil belajar. Kalimat penutup tentang dampak nyata digitalisasi pembelajaran di sekolah.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- BAB 7: TEMPLATE SURAT PERNYATAAN -->
+    <div class="page-break"></div>
+    <h2>📝 7. Format Surat Pernyataan &amp; Integritas Peserta (Lampiran 1)</h2>
+    <div style="border: 1px solid #cbd5e1; padding: 24px; border-radius: 8px; margin-top: 10px; background: #fafafa;">
+      <h3 style="text-align: center; margin-bottom: 16px; text-transform: uppercase;">
+        SURAT PERNYATAAN DAN INTEGRITAS<br>CALON PESERTA FESTIVAL KREASI BIRU PUTIH 2026
+      </h3>
+      <p>Yang bertanda tangan di bawah ini:</p>
+      <table style="border: none; margin: 8px 0;">
+        <tr style="background: none;"><td style="border: none; width: 25%; padding: 3px 0;">Nama Lengkap</td><td style="border: none; padding: 3px 0;">: <strong>Ach. Chanifuddin Fanani, S.Pd.</strong></td></tr>
+        <tr style="background: none;"><td style="border: none; padding: 3px 0;">Unit Kerja</td><td style="border: none; padding: 3px 0;">: <strong>SMP Negeri 2 Lamongan</strong></td></tr>
+        <tr style="background: none;"><td style="border: none; padding: 3px 0;">Jabatan</td><td style="border: none; padding: 3px 0;">: Guru Mata Pelajaran Informatika</td></tr>
+        <tr style="background: none;"><td style="border: none; padding: 3px 0;">Alamat Instansi</td><td style="border: none; padding: 3px 0;">: Jl. Ki Sarmidi Mangunsarkoro No. 8, Lamongan, Jawa Timur</td></tr>
+      </table>
+      <p style="margin-top: 10px;">Dengan ini menyatakan dengan sesungguhnya bahwa:</p>
+      <ol style="margin-left: 20px;">
+        <li>Karya yang diajukan untuk mengikuti Festival Kreasi Biru Putih:
+          <ul style="list-style: none; margin-left: 0; margin-top: 4px;">
+            <li>● <strong>Judul Karya / Inovasi:</strong> Lab Maya Sistem Komputer: Perakitan PC &amp; Logika Digital</li>
+            <li>● <strong>Kategori Sayembara:</strong> Lab Maya</li>
+          </ul>
+        </li>
+        <li>Karya tersebut merupakan karya orisinal (asli) hasil ciptaan sendiri, bukan hasil plagiasi maupun duplikasi pihak lain.</li>
+        <li>Karya ini belum pernah dipublikasikan secara komersial dan belum pernah memenangkan penghargaan pada perlombaan lain sebelumnya.</li>
+        <li>Karya ini tidak mengandung unsur SARA, pornografi, ujaran kebencian, serta bebas dari pelanggaran hak cipta/HAKI.</li>
+      </ol>
+      <div style="display: flex; justify-content: space-between; margin-top: 40px; text-align: center;">
+        <div></div>
+        <div style="width: 250px;">
+          <p>Lamongan, September 2026<br>Yang membuat pernyataan,</p>
+          <div style="height: 60px; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 11px; border: 1px dashed #cbd5e1; margin: 10px auto; width: 140px;">
+            Meterai Rp10.000
+          </div>
+          <p style="font-weight: 700; text-decoration: underline;">Ach. Chanifuddin Fanani, S.Pd.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

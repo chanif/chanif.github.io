@@ -116,16 +116,27 @@
           <div class="rakit-workspace-grid">
             <!-- Sisi Kiri: Rak Komponen -->
             <div class="rakit-shelf-col">
+              <!-- Skenario Eksplorasi (Juknis Hal 21 poin h: Eksplorasi Skenario Berbeda) -->
+              <div class="scenario-badge-bar">
+                <button class="scenario-tag-btn active" id="btn-scen-normal" onclick="setRakitScenario('normal')" title="Skenario Standar: Perakitan PC Normal">
+                  <span>🟢 Skenario Standar</span>
+                </button>
+                <button class="scenario-tag-btn" id="btn-scen-troubleshoot" onclick="setRakitScenario('troubleshoot')" title="Skenario Eksplorasi Masalah & Inkompatibilitas">
+                  <span>🔍 Uji Masalah</span>
+                </button>
+              </div>
+
               <div class="shelf-header">
                 <span>🔧 Komponen</span>
                 <span style="font-size:0.68vw;color:var(--text-muted);font-family:var(--font-mono);"
                   id="shelf-status-txt">Tarik ke Soket</span>
               </div>
-              <!-- Friendly Onboarding Tip for first-time builders -->
+              <!-- Indikator Panduan Langkah Interaktif (Juknis Hal 21 poin g: 'Langkah 1 dari 5') -->
               <div id="rakit-onboarding-hint" class="onboarding-hint-card">
-                <span class="hint-icon">👋</span>
+                <span class="hint-icon" id="rakit-step-icon">🎯</span>
                 <div class="hint-text">
-                  <strong>Mulai dari sini:</strong> Tarik <strong>CPU</strong> ke soket di tengah motherboard!
+                  <strong id="rakit-step-title">Langkah 1 dari 5:</strong>
+                  <span id="rakit-step-desc">Tarik <strong>CPU (Prosesor)</strong> ke soket LGA 1700 di tengah motherboard!</span>
                 </div>
               </div>
               <div class="shelf-items-list" id="component-shelf">
@@ -137,7 +148,10 @@
             <div class="motherboard-col">
               <div class="mb-stage-panel motherboard-panel" id="motherboard-panel">
                 <div class="mb-top-telemetry">
-                  <span style="font-weight:700;letter-spacing:0.5px;">MOTHERBOARD ATX — PAPAN SIRKUIT KOMPUTER</span>
+                  <div style="display:flex;gap:0.4vw;align-items:center;">
+                    <span style="font-weight:700;letter-spacing:0.5px;">MOTHERBOARD ATX</span>
+                    <span class="mb-telemetry-pill" id="mb-step-indicator" style="background:rgba(14,165,233,0.15);color:#38bdf8;border:1px solid rgba(14,165,233,0.3);">Langkah 1 dari 5</span>
+                  </div>
                   <div style="display:flex;gap:0.4vw;align-items:center;">
                     <span class="mb-telemetry-pill" id="mb-power-pill">STATUS: STANDBY</span>
                     <span class="mb-telemetry-pill" id="mb-installed-pill">TERPASANG: <strong

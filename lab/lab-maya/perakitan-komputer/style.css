@@ -1065,7 +1065,42 @@ p, li {
   overflow: hidden;
 }
 
-/* Onboarding Hint Card */
+/* Scenario Badge Bar (Juknis Hal. 21 poin h: Eksplorasi Skenario Berbeda) */
+.scenario-badge-bar {
+  display: flex;
+  gap: 0.35vw;
+  margin-bottom: 0.4vw;
+}
+.scenario-tag-btn {
+  flex: 1;
+  padding: 0.28vw 0.45vw;
+  font-size: 0.65vw;
+  font-family: var(--font-display);
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--card-sub-bg);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2vw;
+  white-space: nowrap;
+}
+.scenario-tag-btn:hover {
+  border-color: var(--comet-amber);
+  color: var(--text-heading);
+}
+.scenario-tag-btn.active {
+  background: linear-gradient(135deg, rgba(251, 174, 60, 0.2), rgba(47, 217, 196, 0.15));
+  border-color: var(--comet-amber);
+  color: var(--comet-amber);
+  box-shadow: 0 0 8px rgba(251, 174, 60, 0.25);
+}
+
+/* Onboarding Hint Card / Dynamic Stepper */
 .onboarding-hint-card {
   display: flex;
   align-items: center;
