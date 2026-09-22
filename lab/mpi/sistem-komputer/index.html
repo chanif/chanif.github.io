@@ -540,85 +540,90 @@
 
       <div class="content-box wide scrollable">
         <div class="content-columns">
-          <!-- Kolom Kiri: Teori CPU & Siklus Mesin -->
+          <!-- Kolom Kiri: Arsitektur CPU & Siklus Mesin -->
           <div class="content-col">
-            <h3>🧠 1. CPU: Otak Sang Komputer</h3>
+            <h3>🧠 1. Komponen Inti CPU</h3>
             <p>
-              <strong>Central Processing Unit (CPU)</strong> mengeksekusi miliaran instruksi program setiap detik. Tiga komponen
-              inti di dalamnya:
+              <strong>Central Processing Unit (CPU)</strong> mengeksekusi miliaran instruksi per detik melalui 3 unit utama:
             </p>
-            <div class="materi-subcard-list" style="margin-bottom: 10px;">
+            <div class="materi-subcard-list" style="margin-bottom: 12px;">
               <div class="materi-subcard" style="border-color: rgba(2,136,209,0.45);">
                 <div class="materi-subcard-title" style="color: #0288D1;">🧮 ALU (Arithmetic Logic Unit):</div>
-                <p class="materi-subcard-desc">Mesin hitung yang melakukan kalkulasi matematika (+, -, ×, ÷) dan
-                  perbandingan logika biner (AND, OR, NOT, &gt;, &lt;).</p>
+                <p class="materi-subcard-desc">Eksekutor kalkulasi matematika (+, -, ×, ÷) dan logika komputasi biner (AND, OR, NOT, &gt;, &lt;).</p>
               </div>
               <div class="materi-subcard" style="border-color: rgba(0,131,143,0.45);">
                 <div class="materi-subcard-title" style="color: var(--teal-dark);">🚦 CU (Control Unit):</div>
-                <p class="materi-subcard-desc">Dirigen pengatur lalu lintas data yang menjemput instruksi dan mengatur
-                  sinkronisasi clock kerja seluruh sirkuit.</p>
+                <p class="materi-subcard-desc">Dirigen pengatur alur data yang menjemput instruksi dan menyinkronkan irama kerja (Clock Speed).</p>
               </div>
               <div class="materi-subcard" style="border-color: rgba(123,31,162,0.45);">
                 <div class="materi-subcard-title" style="color: #7b1fa2;">⚡ Register &amp; Cache (L1/L2/L3):</div>
-                <p class="materi-subcard-desc">Memori internal berkecepatan ultra-tinggi tepat di dalam inti silikon prosesor
-                  untuk menampung data yang sedang dihitung tanpa jeda.</p>
+                <p class="materi-subcard-desc">Memori internal berkecepatan ultra-tinggi tepat di dalam inti silikon CPU untuk menampung data kalkulasi aktif.</p>
               </div>
             </div>
 
             <h3>🔄 2. Siklus Mesin CPU (Machine Cycle)</h3>
-            <p>Setiap instruksi program dijalankan melalui 4 tahap siklus berulang (Von Neumann):</p>
-            <div
-              style="background:var(--white);border-radius:var(--radius-md);padding:10px 14px;border:2px solid rgba(0,172,193,0.35);">
-              <p style="font-size:13.5px;margin-bottom:4px;"><strong>1. Fetch (Jemput):</strong> Control Unit menjemput
-                kode instruksi dari memori RAM via bus data.</p>
-              <p style="font-size:13.5px;margin-bottom:4px;"><strong>2. Decode (Terjemahkan):</strong> Control Unit
-                menguraikan maksud perintah menjadi sinyal kontrol.</p>
-              <p style="font-size:13.5px;margin-bottom:4px;"><strong>3. Execute (Eksekusi):</strong> ALU menjalankan
-                perhitungan matematika atau logika instruksi.</p>
-              <p style="font-size:13.5px;margin-bottom:0;"><strong>4. Store (Simpan):</strong> Hasil operasi dituliskan
-                kembali ke register, RAM, atau kartu grafis.</p>
+            <p>Setiap instruksi program diproses melalui 4 tahap siklus berulang (Von Neumann):</p>
+            <div class="materi-subcard-list">
+              <div class="materi-subcard" style="border-color: rgba(0,172,193,0.4);">
+                <div class="materi-subcard-title" style="color: var(--teal-dark);">📥 1. Fetch (Jemput):</div>
+                <p class="materi-subcard-desc">Control Unit menjemput kode instruksi biner dari memori RAM via bus data sistem.</p>
+              </div>
+              <div class="materi-subcard" style="border-color: rgba(2,136,209,0.4);">
+                <div class="materi-subcard-title" style="color: #0288D1;">🔍 2. Decode (Terjemahkan):</div>
+                <p class="materi-subcard-desc">Control Unit menguraikan maksud instruksi menjadi sinyal perintah kontrol operasional mikro.</p>
+              </div>
+              <div class="materi-subcard" style="border-color: rgba(245,158,11,0.45);">
+                <div class="materi-subcard-title" style="color: #b45309;">⚡ 3. Execute (Eksekusi):</div>
+                <p class="materi-subcard-desc">ALU memproses komputasi matematika atau logika secara kilat dalam hitungan nanodetik.</p>
+              </div>
+              <div class="materi-subcard" style="border-color: rgba(16,185,129,0.45);">
+                <div class="materi-subcard-title" style="color: #047857;">💾 4. Store (Simpan):</div>
+                <p class="materi-subcard-desc">Hasil operasi dituliskan kembali ke register internal, memori RAM, atau kartu grafis.</p>
+              </div>
             </div>
           </div>
 
-          <!-- Kolom Kanan: RAM vs SSD & POST BIOS -->
+          <!-- Kolom Kanan: RAM vs SSD & Diagnostik Booting BIOS -->
           <div class="content-col">
             <h3>⚡ 3. Pertarungan: RAM vs SSD</h3>
-            <p>Sering tertukar antara RAM dan Penyimpanan? Kenali perbedaannya:</p>
+            <p>Memahami perbedaan mendasar antara memori kerja dan media penyimpanan data:</p>
 
-            <div class="materi-subcard-list" style="margin-bottom:10px;">
+            <div class="materi-subcard-list" style="margin-bottom: 10px;">
               <div class="materi-subcard" style="border-color: rgba(0,172,193,0.45);">
                 <div class="materi-subcard-title" style="color: var(--teal-dark);">⚡ RAM (Random Access Memory):</div>
                 <p class="materi-subcard-desc">
-                  <strong>Volatile (Sementara).</strong> Tempat meletakkan aplikasi aktif. Bila komputer dimatikan, isi
-                  RAM terhapus bersih. Kecepatannya luar biasa tinggi!
+                  <strong>Volatile (Sementara).</strong> Tempat meletakkan aplikasi aktif. Bila komputer dimatikan, isi RAM terhapus bersih. Kecepatannya sangat tinggi!
                 </p>
               </div>
 
               <div class="materi-subcard" style="border-color: rgba(230,81,0,0.45);">
-                <div class="materi-subcard-title" style="color: #e65100;">💾 SSD / Storage (Penyimpanan Sekunder):
-                </div>
+                <div class="materi-subcard-title" style="color: #e65100;">💾 SSD / Storage (Penyimpanan Sekunder):</div>
                 <p class="materi-subcard-desc">
-                  <strong>Non-Volatile (Permanen).</strong> Lemari arsip tempat sistem operasi, aplikasi, foto, dan
-                  berkas tugas tersimpan aman meski tanpa aliran listrik.
+                  <strong>Non-Volatile (Permanen).</strong> Lemari arsip tempat sistem operasi, aplikasi, dan berkas tugas tersimpan aman meski tanpa aliran listrik.
                 </p>
               </div>
             </div>
 
-            <div class="materi-analogi-box" style="margin-bottom:10px;">
-              <p style="margin:0;font-size:13.5px;line-height:1.45;">
-                📖 <strong>Analogi Belajar di Meja:</strong><br>
-                • <strong>RAM</strong> adalah meja kerjamu—buku yang sedang terbuka dan dibaca.<br>
-                • <strong>SSD</strong> adalah lemari bukumu—seluruh koleksi tersimpan rapi di sana.
+            <div class="materi-analogi-box" style="margin-bottom: 12px;">
+              <p>
+                📖 <strong>Analogi Meja Belajar:</strong><br>
+                • <strong>RAM</strong> adalah meja kerjamu—buku yang sedang terbuka dan dibaca langsung.<br>
+                • <strong>SSD</strong> adalah lemari rak bukumu—seluruh koleksi tersimpan rapi dan aman.
               </p>
             </div>
 
-            <div class="materi-highlight-box">
-              <p style="margin:0;font-size:13px;line-height:1.45;">
-                🛠️ <strong>4. Detik-Detik Booting: Diagnostik POST BIOS</strong><br>
-                Saat tombol Power ditekan, firmware BIOS/UEFI melakukan <strong>Power-On Self-Test (POST)</strong>:<br>
-                1. Lampu LED CPU menyala (cek prosesor) &rarr; 2. LED DRAM (cek RAM) &rarr; 3. LED VGA (cek grafis) &rarr; 4. LED BOOT (cek SSD).<br>
-                Bunyi <em>1 Beep pendek</em> menandakan hardware normal, sedangkan beep panjang berulang menandakan komponen kendor/salah pasang!
-              </p>
+            <h3>🛠️ 4. Diagnostik Booting: POST BIOS</h3>
+            <p>Saat tombol Power ditekan, firmware BIOS/UEFI melakukan <strong>Power-On Self-Test (POST)</strong>:</p>
+
+            <div class="materi-subcard-list">
+              <div class="materi-subcard" style="border-color: rgba(2,136,209,0.4);">
+                <div class="materi-subcard-title" style="color: #0288D1;">🚦 Urutan Indikator LED POST:</div>
+                <p class="materi-subcard-desc">Motherboard memeriksa komponen berurutan: <strong>1. CPU</strong> &rarr; <strong>2. DRAM (RAM)</strong> &rarr; <strong>3. VGA (Grafis)</strong> &rarr; <strong>4. BOOT (SSD)</strong>.</p>
+              </div>
+              <div class="materi-subcard" style="border-color: rgba(225,29,72,0.35);">
+                <div class="materi-subcard-title" style="color: #be123c;">🔔 Deteksi Kode Suara Beep:</div>
+                <p class="materi-subcard-desc">• <strong>1 Beep pendek:</strong> Hardware normal &amp; siap booting masuk ke OS.<br>• <strong>Beep panjang berulang:</strong> Komponen RAM kendor, kotor, atau salah pasang!</p>
+              </div>
             </div>
           </div>
         </div>
@@ -666,20 +671,36 @@
 
           <div class="video-summary">
             <h3>🔍 Panduan Pengamatan Video:</h3>
-            <div
-              style="background:var(--white);border-radius:var(--radius-md);padding:12px 16px;margin-bottom:8px;margin-top:10px;border:2px solid rgba(0,172,193,0.25);">
-              <p style="margin-bottom:3px;font-weight:700;color:var(--teal-dark);">⚡ 1. Aliran Bus &amp; Penjemputan (Fetch)</p>
-              <p style="font-size:13.5px;color:var(--text-body);margin-bottom:0;line-height:1.4;">Perhatikan bagaimana klik input mouse mengalirkan sinyal ke motherboard, lalu instruksi program dijemput dari memori RAM berkecepatan tinggi menuju soket CPU.</p>
+            <div class="video-step-card">
+              <div class="video-step-header">
+                <span class="video-step-title">⚡ 1. Sinyal Input &amp; Penjemputan (Fetch)</span>
+                <span class="video-step-time">00:00 – 00:16</span>
+              </div>
+              <p class="video-step-desc">Klik mouse mengalirkan pulsa elektrik ke motherboard ATX. Paket kode biner (0 &amp; 1) dijemput dari modul RAM DDR4 melintasi bus sistem menuju soket CPU.</p>
             </div>
-            <div
-              style="background:var(--white);border-radius:var(--radius-md);padding:12px 16px;margin-bottom:8px;border:2px solid rgba(0,172,193,0.25);">
-              <p style="margin-bottom:3px;font-weight:700;color:var(--teal-dark);">⚙️ 2. Penguraian &amp; Eksekusi Kilat (Decode &amp; Execute)</p>
-              <p style="font-size:13.5px;color:var(--text-body);margin-bottom:0;line-height:1.4;">Amati unit kendali (Control Unit) mengurai kode biner, disusul ALU yang mengeksekusi perhitungan matematika dan logika dalam hitungan nanodetik.</p>
+
+            <div class="video-step-card">
+              <div class="video-step-header">
+                <span class="video-step-title">🚦 2. Penguraian Kode di Control Unit (Decode)</span>
+                <span class="video-step-time">00:16 – 00:24</span>
+              </div>
+              <p class="video-step-desc">Di dalam inti prosesor, laser Control Unit (CU) memindai paket biner dan mengurainya menjadi sinyal instruksi mikro selaras irama clock speed CPU.</p>
             </div>
-            <div
-              style="background:var(--white);border-radius:var(--radius-md);padding:12px 16px;border:2px solid rgba(0,172,193,0.25);">
-              <p style="margin-bottom:3px;font-weight:700;color:var(--teal-dark);">🖥️ 3. Penyimpanan &amp; Tampilan Layar (Store &amp; Output)</p>
-              <p style="font-size:13.5px;color:var(--text-body);margin-bottom:0;line-height:1.4;">Saksikan hasil kalkulasi disimpan kembali ke register/RAM, disalurkan via jalur PCIe x16 ke Kartu Grafis (GPU), dan seketika memancar di layar monitor!</p>
+
+            <div class="video-step-card">
+              <div class="video-step-header">
+                <span class="video-step-title">🧮 3. Komputasi Kilat di ALU (Execute)</span>
+                <span class="video-step-time">00:24 – 00:32</span>
+              </div>
+              <p class="video-step-desc">Arithmetic Logic Unit (ALU) mengeksekusi perhitungan matematika (+, ×) dan perbandingan logika biner (AND, OR) dalam hitungan nanodetik dengan kilatan cahaya emas.</p>
+            </div>
+
+            <div class="video-step-card">
+              <div class="video-step-header">
+                <span class="video-step-title">🖥️ 4. Penyimpanan &amp; Output Grafis Layar</span>
+                <span class="video-step-time">00:32 – 00:48</span>
+              </div>
+              <p class="video-step-desc">Hasil disimpan (Store) ke register, dialirkan via PCIe x16 ke GPU untuk diolah menjadi paket piksel warna, lalu seketika memancar di layar monitor komputer!</p>
             </div>
           </div>
         </div>
