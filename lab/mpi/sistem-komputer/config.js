@@ -67,7 +67,7 @@ window.MPI_CONFIG = {
         dev_photo_1: 'assets/fanani.jpg',
 
         // Video materi lokal (offline ready)
-        video_src: 'assets/video/siklus_cpu.mp4',
+        video_src: 'assets/video/sistem-komputer.mp4',
     },
 
     // ------------------------------------------------------------

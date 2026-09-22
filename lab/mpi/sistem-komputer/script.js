@@ -528,8 +528,10 @@ function initVideo() {
     videoInitialized = true;
 
     const onVideoError = function() {
-      video.style.display = 'none';
-      if (fallback) fallback.style.display = 'block';
+      if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE || video.error) {
+        video.style.display = 'none';
+        if (fallback) fallback.style.display = 'block';
+      }
     };
 
     const onVideoSuccess = function() {
@@ -538,16 +540,18 @@ function initVideo() {
     };
 
     video.addEventListener('error', onVideoError);
-    if (source) {
-      source.addEventListener('error', onVideoError);
-    }
     video.addEventListener('loadeddata', onVideoSuccess);
     video.addEventListener('canplay', onVideoSuccess);
     video.addEventListener('loadedmetadata', onVideoSuccess);
   }
 
-  video.style.display = 'block';
-  if (fallback) fallback.style.display = 'none';
+  if (video.readyState >= 1) {
+    video.style.display = 'block';
+    if (fallback) fallback.style.display = 'none';
+  } else {
+    video.style.display = 'block';
+    if (fallback) fallback.style.display = 'none';
+  }
 }
 
 
