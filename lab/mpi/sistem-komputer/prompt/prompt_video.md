@@ -15,7 +15,7 @@ Video ini dirancang untuk mengisi **Halaman Video (Siklus Mesin CPU)** pada apli
 3. **Eksekusi Klip Berantai (Sequence Extension):**  
    Masukkan prompt **Klip 1**. Setelah klip pertama terbentuk, gunakan fitur **Extend / In-betweening** untuk menyambungkan **Klip 2, 3, 4, 5, dan 6** secara berurutan agar karakter, gaya visual, dan kontinuitas sirkuit tetap konsisten (*seamless*).
 4. **Ekspor Video Utuh:**  
-   Gabungkan (atau unduh hasil extend penuh) dalam rasio **16:9**, resolusi minimal **1080p Full HD**, simpan ke: `assets/video/sistem-komputer.mp4` (atau `assets/video/siklus_cpu.mp4`).
+   Gabungkan (atau unduh hasil extend penuh) dalam rasio **16:9**, resolusi minimal **1080p Full HD**, simpan ke: `assets/video/siklus_cpu.mp4`.
 
 ---
 
