@@ -1063,6 +1063,61 @@ function switchGameLevel(lvl) {
   renderCurrentStageUI();
 }
 
+function resetCurrentGameLevel() {
+  playSynthSound('click');
+  if (computerGame.currentLevel === 1) {
+    computerGame.m1.mounted = { cpu: null, ram: null, ssd: null, gpu: null, psu: null };
+    computerGame.m1.powered = false;
+    updateM1UI();
+    showM1Notice('Seluruh komponen motherboard telah dikembalikan ke rak komponen.', 'info');
+  } else if (computerGame.currentLevel === 2) {
+    computerGame.m2.bits = [0, 0, 0, 0, 0, 0, 0, 0];
+    renderBinarySwitches();
+    updateBinaryDisplay();
+  } else if (computerGame.currentLevel === 3) {
+    computerGame.m3.selectedActions = [];
+    renderTroubleCase1UI();
+  } else if (computerGame.currentLevel === 4) {
+    computerGame.m4.selectedActions = [];
+    renderTroubleCase2UI();
+  }
+}
+
+function showGameHint() {
+  playSynthSound('click');
+  const lvl = computerGame.currentLevel;
+  if (lvl === 1) {
+    showGameModal({
+      icon: '💡',
+      title: 'Bantuan Misi 1: Kompatibilitas Perangkat',
+      text: 'Pasangkan kelima komponen modern yang sesuai dengan spesifikasi Motherboard ATX Gaming Series:<br><br>1. <strong>CPU:</strong> Prosesor Multi-Core LGA 1700 (bukan cooler jadul)<br>2. <strong>RAM:</strong> Modul 16GB DDR4 (posisi notch presisi)<br>3. <strong>Penyimpanan:</strong> SSD NVMe M.2 512GB (bukan kabel pita IDE)<br>4. <strong>Kartu Grafis:</strong> GPU Dual-Fan PCIe x16<br>5. <strong>Catu Daya:</strong> PSU 550W 80+ ATX 24-Pin (bukan adaptor charger 10W)',
+      actions: [{ text: 'Siap Merakit', primary: true, onClick: closeGameModal }]
+    });
+  } else if (lvl === 2) {
+    const ch = computerGame.m2.challenges.find(c => c.id === computerGame.m2.challengeIdx);
+    showGameModal({
+      icon: '💡',
+      title: 'Bantuan Misi 2: Sakelar Biner',
+      text: ch ? ch.hint : 'Setiap sakelar bernilai bobot perpangkatan dua (128, 64, 32, 16, 8, 4, 2, 1). Jumlahkan angka aktif (1) hingga menghasilkan target desimal yang diminta.',
+      actions: [{ text: 'Paham', primary: true, onClick: closeGameModal }]
+    });
+  } else if (lvl === 3) {
+    showGameModal({
+      icon: '💡',
+      title: 'Bantuan Misi 3: Kode Beep Berulang',
+      text: 'Bunyi beep panjang berulang dan layar hitam no-signal umumnya menandakan memori RAM kotor atau longgar. Ikuti urutan SOP: Cabut listrik &rarr; Buka pengait &rarr; Lepas RAM &rarr; Bersihkan pin emas &rarr; Pasang kembali sampai berbunyi klik &rarr; Uji nyala.',
+      actions: [{ text: 'Paham', primary: true, onClick: closeGameModal }]
+    });
+  } else if (lvl === 4) {
+    showGameModal({
+      icon: '💡',
+      title: 'Bantuan Misi 4: Bottleneck RAM',
+      text: 'Pada grafik Task Manager terlihat penggunaan RAM mencapai 98% (Bottleneck memori). Hentikan proses/tab yang berlebihan, nonaktifkan startup apps yang tidak perlu, dan tingkatkan kapasitas RAM fisik menjadi 32GB.',
+      actions: [{ text: 'Paham', primary: true, onClick: closeGameModal }]
+    });
+  }
+}
+
 function renderCurrentStageUI() {
   const p1 = document.getElementById('game-stage-panel-1');
   const p2 = document.getElementById('game-stage-panel-2');
@@ -1078,8 +1133,9 @@ function renderCurrentStageUI() {
 
   if (computerGame.currentLevel === 1) {
     if (iconEl) iconEl.textContent = '🔧';
-    if (descEl) descEl.textContent = 'Misi 1: Pilih 5 komponen yang kompatibel (CPU, RAM, GPU, Storage, PSU) ke Motherboard, lalu uji nyala!';
+    if (descEl) descEl.textContent = 'Misi 1: Seret & Lepas (Drag & Drop) 5 komponen yang kompatibel (CPU, RAM, SSD, GPU, PSU) ke Motherboard, lalu uji nyala!';
     updateM1UI();
+    setupM1DragDrop();
   } else if (computerGame.currentLevel === 2) {
     if (iconEl) iconEl.textContent = '💡';
     if (descEl) descEl.textContent = 'Misi 2: Atur sakelar 8-bit (1/0) agar kalkulasi menghasilkan nilai desimal / karakter yang diminta! (Dikerjakan 1 tantangan sudah dianggap selesai)';
@@ -1225,39 +1281,329 @@ function setPostLed(id, color) {
   }
 }
 
-function selectOrMountComponent(itemKey) {
+// State variables for M1 Drag and Drop
+let currentDraggedM1Key = null;
+let currentDraggedM1FromSlot = null;
+let m1NoticeTimeout = null;
+
+function showM1Notice(msg, type = 'info') {
+  const descEl = document.getElementById('game-mission-desc');
+  const iconEl = document.getElementById('game-mission-icon');
+  if (!descEl || !iconEl) return;
+
+  if (m1NoticeTimeout) clearTimeout(m1NoticeTimeout);
+
+  iconEl.textContent = type === 'warn' ? '⚠️' : (type === 'success' ? '✅' : '💡');
+  descEl.innerHTML = `<span style="color:${type === 'warn' ? '#ef4444' : (type === 'success' ? '#10b981' : '#0288d1')};font-weight:700;">${msg}</span>`;
+
+  m1NoticeTimeout = setTimeout(() => {
+    if (computerGame.currentLevel === 1) {
+      iconEl.textContent = '🔧';
+      descEl.textContent = 'Misi 1: Seret & Lepas (Drag & Drop) 5 komponen yang kompatibel (CPU, RAM, SSD, GPU, PSU) ke Motherboard, lalu uji nyala!';
+    }
+  }, 3500);
+}
+
+// User klik langsung: beri peringatan bahwa sistem menggunakan Drag & Drop
+function warnDragOnlyComponent(itemKey) {
   const item = M1_CATALOG[itemKey];
   if (!item) return;
 
-  // Jika item ini sudah terpasang di soketnya, lepas kembali
   if (computerGame.m1.mounted[item.slot] === itemKey) {
-    computerGame.m1.mounted[item.slot] = null;
-    computerGame.m1.powered = false;
-    playSynthSound('click');
-    updateM1UI();
+    showM1Notice(`Komponen "${item.name}" sudah terpasang. Tarik dari soket kembali ke rak untuk melepasnya.`, 'info');
     return;
   }
 
-  // Pasang item ke soket yang sesuai
-  computerGame.m1.mounted[item.slot] = itemKey;
+  playSynthSound('click');
+  showM1Notice(`🖐️ Tarik (drag) kartu "${item.name}" lalu lepas (drop) tepat ke soketnya pada motherboard!`, 'warn');
+  highlightM1TargetSlot(item.slot);
+  setTimeout(() => clearM1SlotHighlights(), 1600);
+}
+
+// Kompatibilitas mundur jika fungsi selectOrMountComponent masih dipanggil di tempat lain
+function selectOrMountComponent(itemKey) {
+  warnDragOnlyComponent(itemKey);
+}
+
+function highlightM1TargetSlot(slotType) {
+  const targetSlot = document.getElementById(`socket-${slotType}`);
+  if (targetSlot) {
+    targetSlot.classList.add('slot-highlight-target');
+  }
+  const slots = ['cpu', 'ram', 'gpu', 'ssd', 'psu'];
+  slots.forEach(s => {
+    if (s !== slotType) {
+      const el = document.getElementById(`socket-${s}`);
+      if (el && !el.classList.contains('filled')) {
+        el.classList.add('slot-dimmed');
+      }
+    }
+  });
+}
+
+function clearM1SlotHighlights() {
+  const slots = ['cpu', 'ram', 'gpu', 'ssd', 'psu'];
+  slots.forEach(s => {
+    const el = document.getElementById(`socket-${s}`);
+    if (el) {
+      el.classList.remove('slot-highlight-target', 'slot-dimmed', 'drag-over', 'drag-forbidden');
+    }
+  });
+  const shelf = document.getElementById('pc-inventory-list');
+  if (shelf) shelf.classList.remove('shelf-drop-active');
+}
+
+function mountComponentToSlot(itemKey, slotType) {
+  const item = M1_CATALOG[itemKey];
+  if (!item) return;
+
+  computerGame.m1.mounted[slotType] = itemKey;
   computerGame.m1.powered = false;
   playSynthSound('packet_arrive');
   updateM1UI();
+
+  if (item.isGood) {
+    showM1Notice(`Mantap! ${item.name} berhasil terpasang di soket ${slotType.toUpperCase()}!`, 'success');
+  } else {
+    showM1Notice(`Perhatian: ${item.name} dipasang di soket ${slotType.toUpperCase()} (waspadai kompatibilitas spesifikasi!)`, 'warn');
+  }
+
+  // Auto completion check tanpa POST BIOS
+  checkM1AutoCompletion();
 }
 
-function clickMotherboardSocket(slotType) {
+function unmountComponentFromSlot(slotType) {
   if (computerGame.m1.mounted[slotType]) {
+    const itemKey = computerGame.m1.mounted[slotType];
+    const item = M1_CATALOG[itemKey];
     computerGame.m1.mounted[slotType] = null;
     computerGame.m1.powered = false;
     playSynthSound('click');
     updateM1UI();
+    if (item) {
+      showM1Notice(`${item.name} dilepas dari soket dan dikembalikan ke rak.`, 'info');
+    }
   }
+}
+
+function clickMotherboardSocket(slotType) {
+  if (computerGame.m1.mounted[slotType]) {
+    unmountComponentFromSlot(slotType);
+  }
+}
+
+// Inisialisasi Drag and Drop untuk Misi 1 (Desktop HTML5 & Mobile Touch)
+function setupM1DragDrop() {
+  // 1. Setup Kartu Komponen di Rak (Drag source ke motherboard)
+  document.querySelectorAll('.inv-comp-card').forEach(card => {
+    const key = card.getAttribute('data-comp-key');
+    const item = M1_CATALOG[key];
+    if (!item) return;
+
+    // Klik kartu inventaris: tidak langsung pasang, beri edukasi drag & drop
+    card.onclick = () => warnDragOnlyComponent(key);
+
+    // Desktop Drag Start
+    card.ondragstart = (e) => {
+      if (computerGame.m1.mounted[item.slot] === key) {
+        e.preventDefault();
+        return;
+      }
+      currentDraggedM1Key = key;
+      currentDraggedM1FromSlot = null;
+      card.classList.add('dragging');
+      e.dataTransfer.setData('text/plain', key);
+      e.dataTransfer.effectAllowed = 'copy';
+      highlightM1TargetSlot(item.slot);
+      playSynthSound('click');
+    };
+
+    // Desktop Drag End
+    card.ondragend = () => {
+      card.classList.remove('dragging');
+      clearM1SlotHighlights();
+      currentDraggedM1Key = null;
+    };
+
+    // Mobile / Tablet Touch Drag Handler
+    setupM1TouchDrag(card, key, item);
+  });
+
+  // 2. Setup Soket Motherboard (Drop target)
+  const slots = ['cpu', 'ram', 'gpu', 'ssd', 'psu'];
+  slots.forEach(slotType => {
+    const socketEl = document.getElementById(`socket-${slotType}`);
+    if (!socketEl) return;
+
+    socketEl.ondragover = (e) => {
+      e.preventDefault();
+      if (!currentDraggedM1Key) return;
+      const draggedItem = M1_CATALOG[currentDraggedM1Key];
+      if (draggedItem && draggedItem.slot === slotType) {
+        e.dataTransfer.dropEffect = 'copy';
+        socketEl.classList.remove('drag-forbidden');
+        socketEl.classList.add('drag-over');
+      } else {
+        e.dataTransfer.dropEffect = 'none';
+        socketEl.classList.remove('drag-over');
+        socketEl.classList.add('drag-forbidden');
+      }
+    };
+
+    socketEl.ondragleave = () => {
+      socketEl.classList.remove('drag-over', 'drag-forbidden');
+    };
+
+    socketEl.ondrop = (e) => {
+      e.preventDefault();
+      socketEl.classList.remove('drag-over', 'drag-forbidden');
+      const droppedKey = e.dataTransfer.getData('text/plain') || currentDraggedM1Key;
+      clearM1SlotHighlights();
+
+      if (!droppedKey || !M1_CATALOG[droppedKey]) return;
+      const droppedItem = M1_CATALOG[droppedKey];
+
+      if (droppedItem.slot === slotType) {
+        mountComponentToSlot(droppedKey, slotType);
+        socketEl.classList.add('snap-bounce');
+        setTimeout(() => socketEl.classList.remove('snap-bounce'), 450);
+      } else {
+        playSynthSound('error');
+        showM1Notice(`Komponen "${droppedItem.name}" tidak dapat dipasang di ${socketEl.innerText.split('\n')[0] || slotType.toUpperCase()}!`, 'warn');
+      }
+      currentDraggedM1Key = null;
+    };
+  });
+
+  // 3. Setup Rak Komponen sebagai Drop Target saat Melepas Komponen (Dismantle)
+  const shelfEl = document.getElementById('pc-inventory-list');
+  if (shelfEl) {
+    shelfEl.ondragover = (e) => {
+      if (currentDraggedM1FromSlot) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        shelfEl.classList.add('shelf-drop-active');
+      }
+    };
+    shelfEl.ondragleave = () => {
+      shelfEl.classList.remove('shelf-drop-active');
+    };
+    shelfEl.ondrop = (e) => {
+      e.preventDefault();
+      shelfEl.classList.remove('shelf-drop-active');
+      const slotToRemove = currentDraggedM1FromSlot || (e.dataTransfer.getData('text/plain') || '').replace('remove:', '');
+      if (slotToRemove && computerGame.m1.mounted[slotToRemove]) {
+        unmountComponentFromSlot(slotToRemove);
+      }
+      currentDraggedM1FromSlot = null;
+      currentDraggedM1Key = null;
+    };
+  }
+}
+
+// Mobile / Tablet Touch Drag Handler
+function setupM1TouchDrag(card, itemKey, item) {
+  let touchGhost = null;
+  let activeTouchSlot = null;
+
+  card.ontouchstart = (e) => {
+    if (computerGame.m1.mounted[item.slot] === itemKey) return;
+    const touch = e.touches[0];
+    currentDraggedM1Key = itemKey;
+    highlightM1TargetSlot(item.slot);
+
+    touchGhost = document.createElement('div');
+    touchGhost.className = 'touch-drag-ghost';
+    touchGhost.innerHTML = `<img src="${item.img}" alt="${item.name}">`;
+    touchGhost.style.left = touch.clientX + 'px';
+    touchGhost.style.top = touch.clientY + 'px';
+    document.body.appendChild(touchGhost);
+    playSynthSound('click');
+  };
+
+  card.ontouchmove = (e) => {
+    if (!touchGhost) return;
+    e.preventDefault();
+    const touch = e.touches[0];
+    touchGhost.style.left = touch.clientX + 'px';
+    touchGhost.style.top = touch.clientY + 'px';
+
+    touchGhost.style.display = 'none';
+    const elemUnder = document.elementFromPoint(touch.clientX, touch.clientY);
+    touchGhost.style.display = 'flex';
+
+    const slotUnder = elemUnder ? elemUnder.closest('.mb-socket-slot') : null;
+    if (slotUnder) {
+      if (activeTouchSlot !== slotUnder) {
+        if (activeTouchSlot) activeTouchSlot.classList.remove('drag-over', 'drag-forbidden');
+        activeTouchSlot = slotUnder;
+        const targetSlotType = activeTouchSlot.getAttribute('data-slot');
+        if (item.slot === targetSlotType) {
+          activeTouchSlot.classList.add('drag-over');
+        } else {
+          activeTouchSlot.classList.add('drag-forbidden');
+        }
+      }
+    } else {
+      if (activeTouchSlot) {
+        activeTouchSlot.classList.remove('drag-over', 'drag-forbidden');
+        activeTouchSlot = null;
+      }
+    }
+  };
+
+  card.ontouchend = () => {
+    if (touchGhost) {
+      touchGhost.remove();
+      touchGhost = null;
+    }
+    if (activeTouchSlot) {
+      const targetSlotType = activeTouchSlot.getAttribute('data-slot');
+      activeTouchSlot.classList.remove('drag-over', 'drag-forbidden');
+      if (item.slot === targetSlotType) {
+        mountComponentToSlot(itemKey, targetSlotType);
+        activeTouchSlot.classList.add('snap-bounce');
+        setTimeout(() => activeTouchSlot?.classList.remove('snap-bounce'), 450);
+      } else {
+        playSynthSound('error');
+        showM1Notice(`Komponen "${item.name}" tidak sesuai dengan soket tersebut!`, 'warn');
+      }
+    }
+    clearM1SlotHighlights();
+    currentDraggedM1Key = null;
+    activeTouchSlot = null;
+  };
+}
+
+// Drag terbalik dari soket terpasang kembali ke rak komponen
+function setupSlotInstalledDragM1(socketEl, slotType) {
+  socketEl.setAttribute('draggable', 'true');
+  socketEl.ondragstart = (e) => {
+    if (!computerGame.m1.mounted[slotType]) {
+      e.preventDefault();
+      return;
+    }
+    currentDraggedM1FromSlot = slotType;
+    currentDraggedM1Key = null;
+    e.dataTransfer.setData('text/plain', 'remove:' + slotType);
+    e.dataTransfer.effectAllowed = 'move';
+
+    const shelfEl = document.getElementById('pc-inventory-list');
+    if (shelfEl) shelfEl.classList.add('shelf-drop-active');
+    playSynthSound('click');
+  };
+
+  socketEl.ondragend = () => {
+    const shelfEl = document.getElementById('pc-inventory-list');
+    if (shelfEl) shelfEl.classList.remove('shelf-drop-active');
+    currentDraggedM1FromSlot = null;
+  };
 }
 
 function updateM1UI() {
   let countMounted = 0;
 
-  // Update Inventory Cards
+  // 1. Update Kartu Inventaris Komponen di Rak
   Object.keys(M1_CATALOG).forEach(key => {
     const item = M1_CATALOG[key];
     const isMounted = computerGame.m1.mounted[item.slot] === key;
@@ -1266,290 +1612,158 @@ function updateM1UI() {
     if (cardEl && statusEl) {
       if (isMounted) {
         cardEl.classList.add('mounted');
+        cardEl.setAttribute('draggable', 'false');
         statusEl.textContent = '✅ Terpasang di Soket';
         statusEl.style.color = '#0288d1';
         statusEl.style.fontWeight = '700';
       } else {
         cardEl.classList.remove('mounted');
-        statusEl.textContent = 'Siap Pasang (Klik)';
+        cardEl.setAttribute('draggable', 'true');
+        statusEl.textContent = 'Tarik ke Soket';
         statusEl.style.color = '#64748b';
         statusEl.style.fontWeight = 'normal';
       }
     }
   });
 
-  // Update 5 Sockets
+  // 2. Update Visual 5 Soket Motherboard
   const slots = ['cpu', 'ram', 'gpu', 'ssd', 'psu'];
   slots.forEach(slot => {
     const mountedKey = computerGame.m1.mounted[slot];
     const socketEl = document.getElementById(`socket-${slot}`);
+    const installedContainer = document.getElementById(`installed-${slot}`);
     if (!socketEl) return;
+
+    const slotClass = slot === 'ssd' ? 'storage' : slot;
 
     if (mountedKey) {
       countMounted++;
       const item = M1_CATALOG[mountedKey];
-      socketEl.className = `mb-socket-slot filled ${item.isGood ? '' : 'bad-comp'}`;
+      socketEl.className = `mb-physical-slot slot-${slotClass} filled ${item.isGood ? '' : 'bad-comp'}`;
+      socketEl.setAttribute('title', `${item.name} — Tarik kembali ke rak atau klik untuk melepas`);
+
       const displayImg = item.installedImg || item.img;
-      socketEl.innerHTML = `
-        <img src="${displayImg}" class="socket-thumb-img" alt="${item.name}" style="max-height:46px;max-width:90%;object-fit:contain;margin-bottom:2px;">
-        <span style="color:#ffffff;font-weight:700;font-size:11px;line-height:1.2;text-align:center;">${item.name}</span>
-        <span style="color:${item.isGood ? '#38bdf8' : '#f87171'};font-size:9.5px;margin-top:2px;">${item.isGood ? '✅ Terpasang (Klik lepas)' : '⚠️ Cek Kompatibilitas'}</span>
-      `;
+      if (installedContainer) {
+        installedContainer.innerHTML = `
+          <img src="${displayImg}" alt="${item.name}" draggable="true" title="${item.name} — Tarik ke rak atau klik untuk melepas">
+        `;
+      }
+      setupSlotInstalledDragM1(socketEl, slot);
     } else {
-      socketEl.className = 'mb-socket-slot';
-      const defaultLabels = {
-        cpu: { icon: '🔲', title: 'Soket CPU LGA 1700', desc: 'Pasang Prosessor' },
-        ram: { icon: '🔲', title: 'Slot RAM DDR4 DIMM', desc: 'Pasang Memori Utama' },
-        gpu: { icon: '🔲', title: 'Slot PCIe x16 GPU', desc: 'Pasang Kartu Grafis' },
-        ssd: { icon: '🔲', title: 'Slot M.2 NVMe SSD', desc: 'Pasang Media Storage' },
-        psu: { icon: '🔲', title: 'Header Daya 24-Pin ATX', desc: 'Pasang Catu Daya' }
-      };
-      socketEl.innerHTML = `
-        <span style="font-size:20px;">${defaultLabels[slot].icon}</span>
-        <span style="color:#e2e8f0;font-weight:700;font-size:11px;margin-top:2px;">${defaultLabels[slot].title}</span>
-        <span style="color:#94a3b8;font-size:9px;">${defaultLabels[slot].desc}</span>
-      `;
+      socketEl.className = `mb-physical-slot slot-${slotClass}`;
+      socketEl.removeAttribute('title');
+      socketEl.removeAttribute('draggable');
+      socketEl.ondragstart = null;
+      socketEl.ondragend = null;
+      if (installedContainer) {
+        installedContainer.innerHTML = '';
+      }
     }
   });
 
-  const progressEl = document.getElementById('mb-progress-text');
-  if (progressEl) {
-    progressEl.textContent = `Terpasang: ${countMounted} dari 5 Komponen`;
+  // 3. Update Bar Telemetri Atas Motherboard
+  const countEl = document.getElementById('installed-count');
+  if (countEl) countEl.textContent = countMounted;
+
+  const stepEl = document.getElementById('mb-step-indicator');
+  if (stepEl) {
+    stepEl.textContent = countMounted === 5 ? 'Perakitan Lengkap' : `Langkah ${countMounted + 1} dari 5`;
   }
 
-  const powerBtn = document.getElementById('btn-power-on');
-  const powerLed = document.getElementById('mb-power-led');
-
-  if (powerBtn && powerLed) {
-    if (countMounted === 5) {
-      powerBtn.removeAttribute('disabled');
-      powerBtn.style.opacity = '1';
-      powerBtn.style.boxShadow = '0 0 16px rgba(0, 172, 193, 0.7)';
-      powerBtn.textContent = '⚡ TEKAN TOMBOL POWER (UJI NYALA)';
-    } else {
-      powerBtn.setAttribute('disabled', 'true');
-      powerBtn.style.opacity = '0.5';
-      powerBtn.style.boxShadow = 'none';
-      powerBtn.textContent = `⚡ PASANG 5 KOMPONEN DULU (${countMounted}/5)`;
-    }
-
+  const statusPill = document.getElementById('mb-status-pill');
+  if (statusPill) {
     if (computerGame.m1.powered) {
-      powerLed.innerHTML = '● Daya Aktif (Power ON)';
-      powerLed.style.color = '#22c55e';
+      statusPill.textContent = 'STATUS: SIAP DIGUNAKAN 🟢';
+      statusPill.style.background = 'rgba(16,185,129,0.18)';
+      statusPill.style.color = '#10b981';
+      statusPill.style.borderColor = 'rgba(16,185,129,0.35)';
+    } else if (countMounted === 0) {
+      statusPill.textContent = 'STATUS: BELUM DIRAKIT';
+      statusPill.style.background = 'rgba(239,68,68,0.18)';
+      statusPill.style.color = '#ef4444';
+      statusPill.style.borderColor = 'rgba(239,68,68,0.35)';
     } else {
-      powerLed.innerHTML = '● Daya Mati';
-      powerLed.style.color = '#ef4444';
-      setPostLed('post-led-cpu', '#64748b');
-      setPostLed('post-led-dram', '#64748b');
-      setPostLed('post-led-vga', '#64748b');
-      setPostLed('post-led-boot', '#64748b');
+      statusPill.textContent = `STATUS: MERAKIT (${countMounted}/5)`;
+      statusPill.style.background = 'rgba(245,158,11,0.18)';
+      statusPill.style.color = '#f59e0b';
+      statusPill.style.borderColor = 'rgba(245,158,11,0.35)';
     }
   }
+
+  // 4. Update LED Diagnostik Realtime di Sudut Kanan Atas Motherboard
+  const ledCpu = document.getElementById('live-led-cpu');
+  const ledRam = document.getElementById('live-led-dram');
+  const ledGpu = document.getElementById('live-led-vga');
+  const ledBoot = document.getElementById('live-led-boot');
+
+  if (ledCpu) ledCpu.classList.toggle('active', !!computerGame.m1.mounted.cpu);
+  if (ledRam) ledRam.classList.toggle('active', !!computerGame.m1.mounted.ram);
+  if (ledGpu) ledGpu.classList.toggle('active', !!computerGame.m1.mounted.gpu);
+  if (ledBoot) ledBoot.classList.toggle('active', !!computerGame.m1.mounted.ssd);
 }
 
-function testPowerOnPC() {
-  const postScreen = document.getElementById('post-screen');
-  if (!postScreen) return;
-
-  const powerBtn = document.getElementById('btn-power-on');
-  if (powerBtn) powerBtn.setAttribute('disabled', 'true');
-
-  // Reset LEDs
-  setPostLed('post-led-cpu', '#64748b');
-  setPostLed('post-led-dram', '#64748b');
-  setPostLed('post-led-vga', '#64748b');
-  setPostLed('post-led-boot', '#64748b');
-
-  playSynthSound('transmit');
-  postScreen.innerHTML = `
-    <div style="color:#38bdf8;">[POWER ON] Menghubungkan jalur daya 24-Pin ATX...</div>
-    <div style="color:#f59e0b;">[BIOS POST] Memulai Power-On Self Test sequensial...</div>
-  `;
-
+// Pemeriksaan Otomatis Begitu 5 Komponen Terpasang (Langsung Popup Modal, Tanpa Tombol POST BIOS)
+function checkM1AutoCompletion() {
   const m = computerGame.m1.mounted;
+  const count = (m.cpu ? 1 : 0) + (m.ram ? 1 : 0) + (m.ssd ? 1 : 0) + (m.gpu ? 1 : 0) + (m.psu ? 1 : 0);
 
-  // 1. Cek PSU terlebih dahulu (Daya)
-  if (m.psu !== 'psu_good') {
+  // Hanya periksa ketika 5 slot telah terpasang semua
+  if (count < 5) return;
+
+  const isCpuOk = m.cpu === 'cpu_good';
+  const isRamOk = m.ram === 'ram_good';
+  const isSsdOk = m.ssd === 'ssd_good';
+  const isGpuOk = m.gpu === 'gpu_good';
+  const isPsuOk = m.psu === 'psu_good';
+  const isAllGood = isCpuOk && isRamOk && isSsdOk && isGpuOk && isPsuOk;
+
+  if (isAllGood) {
+    // SEMUA KOMPONEN TEPAT & 100% KOMPATIBEL
+    computerGame.m1.powered = true;
+    updateM1UI();
+    playBiosBeep(true);
+    playSynthSound('success');
+    spawnConfetti();
+
+    computerGame.stars[1] = 1;
+    if (computerGame.unlockedLevel < 2) computerGame.unlockedLevel = 2;
+    updateGameHUD();
+
     setTimeout(() => {
-      playBiosBeep(false);
-      playSynthSound('error');
-      postScreen.innerHTML += `
-        <div style="color:#ef4444;margin-top:4px;">[PSU FAULT] Adaptor HP 10W gagal menyuplai tegangan 12V/5V/3.3V ATX!</div>
-        <div style="color:#ef4444;">[HALT] Daya tidak mencukupi, motherboard gagal menyalakan rail sirkuit!</div>
-      `;
-      postScreen.scrollTop = postScreen.scrollHeight;
-      updateM1UI();
-
       showGameModal({
-        icon: '⚡',
-        title: 'Catu Daya Gagal (Power Fault)!',
-        titleClass: 'error',
-        text: 'Komputer desktop membutuhkan catu daya standar ATX 24-Pin minimal 400W–550W.<br><br>Adaptor charger ponsel 10W tidak mampu menghidupkan sirkuit motherboard dan komponen lainnya!',
-        actions: [{ text: 'Ganti PSU ATX Standar', primary: true, onClick: closeGameModal }]
+        icon: '🏆',
+        title: 'Perakitan Komputer Berhasil!',
+        text: 'Luar biasa! Seluruh 5 komponen utama (CPU Multi-Core LGA 1700, RAM 16GB DDR4, SSD NVMe M.2 512GB, GPU Dual-Fan PCIe x16, dan PSU 550W 80+ ATX) berhasil dipasang dengan tepat dan 100% kompatibel!',
+        stars: '⭐ Misi 1 Selesai!',
+        actions: [
+          { text: 'Lanjut ke Misi 2 (Sakelar Biner) ▶', primary: true, onClick: () => { closeGameModal(); switchGameLevel(2); } }
+        ]
       });
-    }, 500);
-    return;
-  }
+    }, 300);
+  } else {
+    // ADA KOMPONEN JEBAKAN / TIDAK KOMPATIBEL
+    const errors = [];
+    if (!isPsuOk) errors.push(`• <strong>Catu Daya (PSU):</strong> ${M1_CATALOG[m.psu]?.error || 'Catu daya tidak kompatibel!'}`);
+    if (!isCpuOk) errors.push(`• <strong>Prosesor (CPU):</strong> ${M1_CATALOG[m.cpu]?.error || 'Soket CPU salah!'}`);
+    if (!isRamOk) errors.push(`• <strong>Memori (RAM):</strong> ${M1_CATALOG[m.ram]?.error || 'Slot RAM tidak cocok!'}`);
+    if (!isGpuOk) errors.push(`• <strong>Kartu Grafis (GPU):</strong> Kartu grafis tidak sesuai!`);
+    if (!isSsdOk) errors.push(`• <strong>Penyimpanan (SSD):</strong> ${M1_CATALOG[m.ssd]?.error || 'Media penyimpanan tidak cocok!'}`);
 
-  // Tahap 1: CPU Check (350ms)
-  setTimeout(() => {
-    setPostLed('post-led-cpu', '#f59e0b');
-    postScreen.innerHTML += `<div style="color:#cbd5e1;">[POST 1/4] Menguji Processor (CPU LGA 1700)...</div>`;
-    postScreen.scrollTop = postScreen.scrollHeight;
+    playBiosBeep(false);
+    playSynthSound('error');
 
     setTimeout(() => {
-      if (m.cpu !== 'cpu_good') {
-        setPostLed('post-led-cpu', '#ef4444');
-        playBiosBeep(false);
-        playSynthSound('error');
-        postScreen.innerHTML += `
-          <div style="color:#ef4444;">[CPU ERROR] ${M1_CATALOG[m.cpu] ? M1_CATALOG[m.cpu].error : 'Soket CPU Kosong/Salah!'}</div>
-          <div style="color:#f59e0b;">[HALT] POST terhenti pada LED CPU.</div>
-        `;
-        postScreen.scrollTop = postScreen.scrollHeight;
-        updateM1UI();
-
-        showGameModal({
-          icon: '⚠️',
-          title: 'Uji CPU Gagal (POST LED CPU Merah)!',
-          titleClass: 'error',
-          text: `Kesalahan pada soket CPU:<br><strong style="color:#b91c1c;">${M1_CATALOG[m.cpu].error}</strong><br><br>Gunakan prosesor dengan soket yang cocok (LGA 1700) agar instruksi BIOS dapat dieksekusi!`,
-          actions: [{ text: 'Perbaiki Komponen CPU', primary: true, onClick: closeGameModal }]
-        });
-        return;
-      }
-
-      // CPU Berhasil
-      setPostLed('post-led-cpu', '#22c55e');
-      postScreen.innerHTML += `<div style="color:#22c55e;">[CPU OK] Multi-Core Processor LGA 1700 terdeteksi.</div>`;
-
-      // Tahap 2: DRAM Check (400ms)
-      setTimeout(() => {
-        setPostLed('post-led-dram', '#f59e0b');
-        postScreen.innerHTML += `<div style="color:#cbd5e1;">[POST 2/4] Menguji Memori Utama (DRAM DDR4)...</div>`;
-        postScreen.scrollTop = postScreen.scrollHeight;
-
-        setTimeout(() => {
-          if (m.ram !== 'ram_good') {
-            setPostLed('post-led-dram', '#ef4444');
-            playBiosBeep(false);
-            playSynthSound('error');
-            postScreen.innerHTML += `
-              <div style="color:#ef4444;">[DRAM ERROR] ${M1_CATALOG[m.ram] ? M1_CATALOG[m.ram].error : 'Slot RAM Bermasalah!'}</div>
-              <div style="color:#f59e0b;">[HALT] POST terhenti pada LED DRAM.</div>
-            `;
-            postScreen.scrollTop = postScreen.scrollHeight;
-            updateM1UI();
-
-            showGameModal({
-              icon: '⚠️',
-              title: 'Uji RAM Gagal (POST LED DRAM Merah)!',
-              titleClass: 'error',
-              text: `Kesalahan pada slot RAM:<br><strong style="color:#b91c1c;">${M1_CATALOG[m.ram].error}</strong><br><br>Gunakan modul RAM DDR4 yang notch-nya presisi dengan slot motherboard!`,
-              actions: [{ text: 'Perbaiki Komponen RAM', primary: true, onClick: closeGameModal }]
-            });
-            return;
-          }
-
-          // DRAM Berhasil
-          setPostLed('post-led-dram', '#22c55e');
-          postScreen.innerHTML += `<div style="color:#22c55e;">[DRAM OK] 16384 MB DDR4 Dual-Channel 3200MHz OK.</div>`;
-
-          // Tahap 3: VGA / GPU Check (400ms)
-          setTimeout(() => {
-            setPostLed('post-led-vga', '#f59e0b');
-            postScreen.innerHTML += `<div style="color:#cbd5e1;">[POST 3/4] Menguji Kartu Grafis (GPU PCIe x16)...</div>`;
-            postScreen.scrollTop = postScreen.scrollHeight;
-
-            setTimeout(() => {
-              if (m.gpu !== 'gpu_good') {
-                setPostLed('post-led-vga', '#ef4444');
-                playBiosBeep(false);
-                playSynthSound('error');
-                postScreen.innerHTML += `
-                  <div style="color:#ef4444;">[VGA ERROR] Kartu Grafis tidak terpasang dengan benar pada slot PCIe x16!</div>
-                  <div style="color:#f59e0b;">[HALT] POST terhenti pada LED VGA.</div>
-                `;
-                postScreen.scrollTop = postScreen.scrollHeight;
-                updateM1UI();
-
-                showGameModal({
-                  icon: '⚠️',
-                  title: 'Uji VGA Gagal (POST LED VGA Merah)!',
-                  titleClass: 'error',
-                  text: 'Kartu grafis GPU diperlukan untuk menampilkan visual ke monitor melalui slot PCIe x16 berkecepatan tinggi.',
-                  actions: [{ text: 'Pasang GPU PCIe', primary: true, onClick: closeGameModal }]
-                });
-                return;
-              }
-
-              // VGA Berhasil
-              setPostLed('post-led-vga', '#22c55e');
-              postScreen.innerHTML += `<div style="color:#22c55e;">[VGA OK] GPU Dual-Fan PCIe x16 Video Output Aktif.</div>`;
-
-              // Tahap 4: BOOT / SSD Check (400ms)
-              setTimeout(() => {
-                setPostLed('post-led-boot', '#f59e0b');
-                postScreen.innerHTML += `<div style="color:#cbd5e1;">[POST 4/4] Menguji Media Penyimpanan Boot (BOOT Device)...</div>`;
-                postScreen.scrollTop = postScreen.scrollHeight;
-
-                setTimeout(() => {
-                  if (m.ssd !== 'ssd_good') {
-                    setPostLed('post-led-boot', '#ef4444');
-                    playBiosBeep(false);
-                    playSynthSound('error');
-                    postScreen.innerHTML += `
-                      <div style="color:#ef4444;">[BOOT ERROR] ${M1_CATALOG[m.ssd] ? M1_CATALOG[m.ssd].error : 'Boot drive tidak terbaca!'}</div>
-                      <div style="color:#f59e0b;">[HALT] POST terhenti pada LED BOOT.</div>
-                    `;
-                    postScreen.scrollTop = postScreen.scrollHeight;
-                    updateM1UI();
-
-                    showGameModal({
-                      icon: '⚠️',
-                      title: 'Uji BOOT Gagal (POST LED BOOT Merah)!',
-                      titleClass: 'error',
-                      text: `Kesalahan pada slot penyimpanan:<br><strong style="color:#b91c1c;">${M1_CATALOG[m.ssd].error}</strong><br><br>Pasang media modern NVMe M.2 SSD berkecepatan tinggi!`,
-                      actions: [{ text: 'Perbaiki Media Penyimpanan', primary: true, onClick: closeGameModal }]
-                    });
-                    return;
-                  }
-
-                  // SEMUA LOLOS!
-                  setPostLed('post-led-boot', '#22c55e');
-                  computerGame.m1.powered = true;
-                  playBiosBeep(true);
-                  playSynthSound('success');
-                  spawnConfetti();
-
-                  postScreen.innerHTML += `
-                    <div style="color:#22c55e;">[BOOT OK] SSD NVMe M.2 512GB UEFI Boot Sector OK.</div>
-                    <div style="color:#38bdf8;font-weight:bold;margin-top:4px;">[SUCCESS] 🌟 POST 100% LULUS! Komputer Siap Booting OS! 🎉</div>
-                  `;
-                  postScreen.scrollTop = postScreen.scrollHeight;
-
-                  computerGame.stars[1] = 1;
-                  if (computerGame.unlockedLevel < 2) computerGame.unlockedLevel = 2;
-                  updateGameHUD();
-                  updateM1UI();
-
-                  showGameModal({
-                    icon: '🏆',
-                    title: 'Perakitan Komputer Berhasil!',
-                    text: 'Luar biasa! Seluruh 5 komponen (CPU, RAM, GPU, SSD, PSU) kompatibel 100% dan lulus diagnosa 4 POST LED BIOS (CPU, DRAM, VGA, BOOT). Komputer siap digunakan!',
-                    stars: '⭐ Misi 1 Selesai!',
-                    actions: [
-                      { text: 'Lanjut ke Misi 2 (Sakelar Biner) ▶', primary: true, onClick: () => { closeGameModal(); switchGameLevel(2); } }
-                    ]
-                  });
-                }, 400);
-              }, 400);
-            }, 400);
-          }, 400);
-        }, 400);
-      }, 400);
-    }, 400);
-  }, 350);
+      showGameModal({
+        icon: '⚠️',
+        title: 'Komponen Tidak Kompatibel!',
+        titleClass: 'error',
+        text: `Kelima komponen telah dipasang, namun sistem mendeteksi ketidaksesuaian spesifikasi perangkat keras:<br><br><div style="text-align:left;font-size:12.5px;line-height:1.5;background:#fef2f2;border:1.5px solid #fecaca;padding:10px 14px;border-radius:8px;color:#991b1b;max-height:150px;overflow-y:auto;">${errors.join('<br><br>')}</div><br>Silakan tarik komponen yang tidak cocok kembali ke rak dan pasang komponen yang sesuai spesifikasi motherboard!`,
+        actions: [
+          { text: 'Periksa & Ganti Komponen', primary: true, onClick: closeGameModal }
+        ]
+      });
+    }, 300);
+  }
 }
 
 // ==================== MISI 2: SAKELAR BINER 8-BIT ====================

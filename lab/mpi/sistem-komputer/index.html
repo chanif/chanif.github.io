@@ -913,7 +913,7 @@
         <!-- Instruction Bar -->
         <div class="game-mission-info" id="game-mission-info">
           <span class="mission-icon" id="game-mission-icon">🔧</span>
-          <span class="mission-text" id="game-mission-desc">Misi 1: Pilih 5 komponen yang kompatibel (CPU, RAM, SSD, GPU, PSU) dari rak untuk dirakit ke Motherboard, lalu uji nyala!</span>
+          <span class="mission-text" id="game-mission-desc">Misi 1: Seret &amp; Lepas (Drag &amp; Drop) 5 komponen yang kompatibel (CPU, RAM, SSD, GPU, PSU) dari rak tepat ke soket Motherboard, lalu uji nyala!</span>
         </div>
 
         <!-- ==================== STAGE 1: RAKIT KOMPUTER BERDASARKAN SPESIFIKASI ==================== -->
@@ -927,197 +927,197 @@
                   <span class="side-icon">📦</span>
                   <span class="side-title" style="font-size:14px;">Rak Komponen</span>
                 </div>
-                <span style="font-size:10.5px;color:#0288d1;font-weight:700;">(Pilih 5 Kompatibel)</span>
+                <span style="font-size:10.5px;color:#0288d1;font-weight:700;">(Tarik &amp; Lepas ke Soket)</span>
               </div>
               <div class="pc-inventory-scroll" id="pc-inventory-list" style="width:100%;">
                 <!-- 1. CPU Good -->
-                <div class="inv-comp-card" id="inv-cpu_good" onclick="selectOrMountComponent('cpu_good')">
-                  <img src="assets/component-cpu.svg" class="inv-comp-thumb" alt="CPU Multi-Core">
+                <div class="inv-comp-card" id="inv-cpu_good" draggable="true" data-comp-key="cpu_good" data-slot="cpu" title="Tarik (drag) ke Soket CPU pada Motherboard">
+                  <img src="assets/component-cpu.svg" class="inv-comp-thumb" alt="CPU Multi-Core" draggable="false">
                   <div class="inv-comp-info">
                     <div class="inv-comp-title">CPU Multi-Core LGA</div>
                     <span class="inv-comp-tag compat">Soket LGA 1700</span>
-                    <div class="inv-comp-status" id="inv-cpu_good-status">Siap Pasang</div>
+                    <div class="inv-comp-status" id="inv-cpu_good-status">Tarik ke Soket</div>
                   </div>
                 </div>
 
                 <!-- 2. CPU / Cooler Bad -->
-                <div class="inv-comp-card" id="inv-cpu_bad" onclick="selectOrMountComponent('cpu_bad')">
-                  <img src="assets/component-cooler.svg" class="inv-comp-thumb" alt="Cooler AM3">
+                <div class="inv-comp-card" id="inv-cpu_bad" draggable="true" data-comp-key="cpu_bad" data-slot="cpu" title="Tarik (drag) ke Soket CPU pada Motherboard">
+                  <img src="assets/component-cooler.svg" class="inv-comp-thumb" alt="Cooler AM3" draggable="false">
                   <div class="inv-comp-info">
                     <div class="inv-comp-title">Cooler AM3 (Jebakan)</div>
                     <span class="inv-comp-tag bad">Salah Braket</span>
-                    <div class="inv-comp-status" id="inv-cpu_bad-status">Siap Pasang</div>
+                    <div class="inv-comp-status" id="inv-cpu_bad-status">Tarik ke Soket</div>
                   </div>
                 </div>
 
                 <!-- 3. RAM Good -->
-                <div class="inv-comp-card" id="inv-ram_good" onclick="selectOrMountComponent('ram_good')">
-                  <img src="assets/component-ram.svg" class="inv-comp-thumb" alt="RAM DDR4">
+                <div class="inv-comp-card" id="inv-ram_good" draggable="true" data-comp-key="ram_good" data-slot="ram" title="Tarik (drag) ke Slot RAM pada Motherboard">
+                  <img src="assets/component-ram.svg" class="inv-comp-thumb" alt="RAM DDR4" draggable="false">
                   <div class="inv-comp-info">
                     <div class="inv-comp-title">RAM 16GB DDR4</div>
                     <span class="inv-comp-tag compat">Slot DDR4 DIMM</span>
-                    <div class="inv-comp-status" id="inv-ram_good-status">Siap Pasang</div>
+                    <div class="inv-comp-status" id="inv-ram_good-status">Tarik ke Soket</div>
                   </div>
                 </div>
 
                 <!-- 4. RAM Bad -->
-                <div class="inv-comp-card" id="inv-ram_bad" onclick="selectOrMountComponent('ram_bad')">
-                  <img src="assets/component-ram-ddr2.svg" class="inv-comp-thumb" alt="RAM DDR2 Jadul">
+                <div class="inv-comp-card" id="inv-ram_bad" draggable="true" data-comp-key="ram_bad" data-slot="ram" title="Tarik (drag) ke Slot RAM pada Motherboard">
+                  <img src="assets/component-ram-ddr2.svg" class="inv-comp-thumb" alt="RAM DDR2 Jadul" draggable="false">
                   <div class="inv-comp-info">
                     <div class="inv-comp-title">RAM DDR2 Jadul</div>
                     <span class="inv-comp-tag bad">Notch Beda</span>
-                    <div class="inv-comp-status" id="inv-ram_bad-status">Siap Pasang</div>
+                    <div class="inv-comp-status" id="inv-ram_bad-status">Tarik ke Soket</div>
                   </div>
                 </div>
 
                 <!-- 5. SSD Good -->
-                <div class="inv-comp-card" id="inv-ssd_good" onclick="selectOrMountComponent('ssd_good')">
-                  <img src="assets/component-ssd.svg" class="inv-comp-thumb" alt="SSD NVMe M.2">
+                <div class="inv-comp-card" id="inv-ssd_good" draggable="true" data-comp-key="ssd_good" data-slot="ssd" title="Tarik (drag) ke Slot M.2 SSD pada Motherboard">
+                  <img src="assets/component-ssd.svg" class="inv-comp-thumb" alt="SSD NVMe M.2" draggable="false">
                   <div class="inv-comp-info">
                     <div class="inv-comp-title">SSD NVMe M.2 512GB</div>
                     <span class="inv-comp-tag compat">Slot M.2 PCIe</span>
-                    <div class="inv-comp-status" id="inv-ssd_good-status">Siap Pasang</div>
+                    <div class="inv-comp-status" id="inv-ssd_good-status">Tarik ke Soket</div>
                   </div>
                 </div>
 
                 <!-- 6. Storage Bad -->
-                <div class="inv-comp-card" id="inv-hdd_bad" onclick="selectOrMountComponent('hdd_bad')">
-                  <img src="assets/component-hdd-ide.svg" class="inv-comp-thumb" alt="HDD IDE Pita">
+                <div class="inv-comp-card" id="inv-hdd_bad" draggable="true" data-comp-key="hdd_bad" data-slot="ssd" title="Tarik (drag) ke Slot M.2 SSD pada Motherboard">
+                  <img src="assets/component-hdd-ide.svg" class="inv-comp-thumb" alt="HDD IDE Pita" draggable="false">
                   <div class="inv-comp-info">
                     <div class="inv-comp-title">HDD IDE Kabel Pita</div>
                     <span class="inv-comp-tag bad">Kabel Usang</span>
-                    <div class="inv-comp-status" id="inv-hdd_bad-status">Siap Pasang</div>
+                    <div class="inv-comp-status" id="inv-hdd_bad-status">Tarik ke Soket</div>
                   </div>
                 </div>
 
                 <!-- 7. GPU Good -->
-                <div class="inv-comp-card" id="inv-gpu_good" onclick="selectOrMountComponent('gpu_good')">
-                  <img src="assets/component-gpu.svg" class="inv-comp-thumb" alt="GPU PCIe">
+                <div class="inv-comp-card" id="inv-gpu_good" draggable="true" data-comp-key="gpu_good" data-slot="gpu" title="Tarik (drag) ke Slot GPU PCIe pada Motherboard">
+                  <img src="assets/component-gpu.svg" class="inv-comp-thumb" alt="GPU PCIe" draggable="false">
                   <div class="inv-comp-info">
                     <div class="inv-comp-title">GPU Dual-Fan PCIe</div>
                     <span class="inv-comp-tag compat">Slot PCIe x16</span>
-                    <div class="inv-comp-status" id="inv-gpu_good-status">Siap Pasang</div>
+                    <div class="inv-comp-status" id="inv-gpu_good-status">Tarik ke Soket</div>
                   </div>
                 </div>
 
                 <!-- 8. PSU Good -->
-                <div class="inv-comp-card" id="inv-psu_good" onclick="selectOrMountComponent('psu_good')">
-                  <img src="assets/component-psu.svg" class="inv-comp-thumb" alt="PSU 550W">
+                <div class="inv-comp-card" id="inv-psu_good" draggable="true" data-comp-key="psu_good" data-slot="psu" title="Tarik (drag) ke Header PSU pada Motherboard">
+                  <img src="assets/component-psu.svg" class="inv-comp-thumb" alt="PSU 550W" draggable="false">
                   <div class="inv-comp-info">
                     <div class="inv-comp-title">PSU 550W 80+ ATX</div>
                     <span class="inv-comp-tag compat">Konektor 24P</span>
-                    <div class="inv-comp-status" id="inv-psu_good-status">Siap Pasang</div>
+                    <div class="inv-comp-status" id="inv-psu_good-status">Tarik ke Soket</div>
                   </div>
                 </div>
 
                 <!-- 9. Charger Bad -->
-                <div class="inv-comp-card" id="inv-charger_bad" onclick="selectOrMountComponent('charger_bad')">
-                  <img src="assets/comp_charger_bad.jpg" class="inv-comp-thumb" alt="Charger HP 10W">
+                <div class="inv-comp-card" id="inv-charger_bad" draggable="true" data-comp-key="charger_bad" data-slot="psu" title="Tarik (drag) ke Header PSU pada Motherboard">
+                  <img src="assets/comp_charger_bad.jpg" class="inv-comp-thumb" alt="Charger HP 10W" draggable="false">
                   <div class="inv-comp-info">
                     <div class="inv-comp-title">Adaptor HP 10W</div>
-                    <span class="inv-comp-tag bad">Daya Lemah</span>
-                    <div class="inv-comp-status" id="inv-charger_bad-status">Siap Pasang</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 2. Motherboard Visual Board (Center) -->
-            <div class="game-canvas"
-              style="flex:1;background:linear-gradient(135deg,#1e293b 0%,#0b1329 100%);border-radius:16px;border:3px solid #334155;padding:12px;position:relative;min-height:340px;display:flex;flex-direction:column;justify-content:space-between;">
-              <!-- Header with Diagnostic LEDs -->
-              <div
-                style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #334155;padding-bottom:6px;">
-                <span style="color:#38bdf8;font-weight:800;font-size:12.5px;letter-spacing:0.5px;">🖥️ MOTHERBOARD ATX GAMING SERIES</span>
-                <div class="mb-post-leds" style="display:flex;gap:6px;align-items:center;background:rgba(0,0,0,0.6);padding:3px 8px;border-radius:14px;border:1px solid #334155;">
-                  <span style="font-size:9.5px;font-weight:700;color:#94a3b8;">POST LED:</span>
-                  <span id="post-led-cpu" style="font-size:9.5px;font-weight:700;color:#64748b;">● CPU</span>
-                  <span id="post-led-dram" style="font-size:9.5px;font-weight:700;color:#64748b;">● DRAM</span>
-                  <span id="post-led-vga" style="font-size:9.5px;font-weight:700;color:#64748b;">● VGA</span>
-                  <span id="post-led-boot" style="font-size:9.5px;font-weight:700;color:#64748b;">● BOOT</span>
-                </div>
-              </div>
-
-              <!-- Sockets Layout Grid (2 Top, 3 Bottom) -->
-              <div style="margin:8px 0;display:flex;flex-direction:column;gap:8px;">
-                <!-- Baris 1: CPU & RAM -->
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-                  <!-- Socket CPU -->
-                  <div id="socket-cpu" class="mb-socket-slot" onclick="clickMotherboardSocket('cpu')">
-                    <span style="font-size:22px;" id="socket-cpu-icon">🔲</span>
-                    <span style="color:#e2e8f0;font-weight:700;font-size:11.5px;margin-top:2px;" id="socket-cpu-label">Soket CPU LGA 1700</span>
-                    <span style="color:#94a3b8;font-size:9.5px;" id="socket-cpu-desc">Klik item di rak untuk pasang</span>
-                  </div>
-
-                  <!-- Socket RAM -->
-                  <div id="socket-ram" class="mb-socket-slot" onclick="clickMotherboardSocket('ram')">
-                    <span style="font-size:22px;" id="socket-ram-icon">🔲</span>
-                    <span style="color:#e2e8f0;font-weight:700;font-size:11.5px;margin-top:2px;" id="socket-ram-label">Slot RAM DDR4 DIMM</span>
-                    <span style="color:#94a3b8;font-size:9.5px;" id="socket-ram-desc">Klik item di rak untuk pasang</span>
+                    <span class="inv-comp-tag incomp">Daya Lemah</span>
+                    <div class="inv-comp-status" id="inv-charger_bad-status">Tarik ke Soket</div>
                   </div>
                 </div>
 
-                <!-- Baris 2: GPU, SSD, PSU -->
-                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
-                  <!-- Socket GPU -->
-                  <div id="socket-gpu" class="mb-socket-slot" onclick="clickMotherboardSocket('gpu')">
-                    <span style="font-size:20px;" id="socket-gpu-icon">🔲</span>
-                    <span style="color:#e2e8f0;font-weight:700;font-size:11px;margin-top:2px;" id="socket-gpu-label">Slot PCIe x16 GPU</span>
-                    <span style="color:#94a3b8;font-size:9px;" id="socket-gpu-desc">Pasang Kartu Grafis</span>
-                  </div>
+              </div><!-- /pc-inventory-list -->
+            </div><!-- /inventory-col -->
 
-                  <!-- Socket SSD -->
-                  <div id="socket-ssd" class="mb-socket-slot" onclick="clickMotherboardSocket('ssd')">
-                    <span style="font-size:20px;" id="socket-ssd-icon">🔲</span>
-                    <span style="color:#e2e8f0;font-weight:700;font-size:11px;margin-top:2px;" id="socket-ssd-label">Slot M.2 NVMe SSD</span>
-                    <span style="color:#94a3b8;font-size:9px;" id="socket-ssd-desc">Pasang Media Storage</span>
-                  </div>
-
-                  <!-- Socket PSU -->
-                  <div id="socket-psu" class="mb-socket-slot" onclick="clickMotherboardSocket('psu')">
-                    <span style="font-size:20px;" id="socket-psu-icon">🔲</span>
-                    <span style="color:#e2e8f0;font-weight:700;font-size:11px;margin-top:2px;" id="socket-psu-label">Header Daya 24-Pin ATX</span>
-                    <span style="color:#94a3b8;font-size:9px;" id="socket-psu-desc">Pasang Catu Daya</span>
-                  </div>
+            <!-- 2. Motherboard Visual Board (Cloned from Lab Maya) -->
+            <div class="motherboard-workspace-card"
+              style="flex:1;background:linear-gradient(135deg,#0f172a 0%,#090d1a 100%);border-radius:16px;border:2.5px solid #1e293b;padding:0;position:relative;min-height:380px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+              
+              <!-- Telemetry Header (Lab Maya Style) -->
+              <div class="mb-top-telemetry"
+                style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:rgba(15,23,42,0.85);border-bottom:1.5px solid #1e293b;">
+                <div style="display:flex;gap:8px;align-items:center;">
+                  <span style="color:#38bdf8;font-weight:800;font-size:13px;letter-spacing:0.5px;">🖥️ MOTHERBOARD ATX GAMING SERIES</span>
+                  <span class="mb-telemetry-pill" id="mb-step-indicator"
+                    style="background:rgba(14,165,233,0.18);color:#38bdf8;border:1px solid rgba(14,165,233,0.35);font-size:11px;padding:2px 10px;border-radius:12px;font-weight:700;">
+                    Langkah 1 dari 5
+                  </span>
+                </div>
+                <div style="display:flex;gap:8px;align-items:center;">
+                  <span class="mb-telemetry-pill" id="mb-status-pill"
+                    style="background:rgba(239,68,68,0.18);color:#ef4444;border:1px solid rgba(239,68,68,0.35);font-size:11px;padding:2px 10px;border-radius:12px;font-weight:700;">
+                    STATUS: BELUM DIRAKIT
+                  </span>
+                  <span class="mb-telemetry-pill" id="mb-installed-pill"
+                    style="background:rgba(56,189,248,0.18);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);font-size:11px;padding:2px 10px;border-radius:12px;font-weight:700;">
+                    TERPASANG: <strong id="installed-count" style="color:#ffffff;">0</strong>/5
+                  </span>
                 </div>
               </div>
 
-              <!-- Board Status Footnote -->
-              <div
-                style="background:rgba(0,0,0,0.35);border-radius:8px;padding:5px 10px;display:flex;justify-content:space-between;align-items:center;">
-                <span style="color:#94a3b8;font-size:10.5px;" id="mb-progress-text">Terpasang: 0 dari 5 Komponen</span>
-                <span id="mb-power-led"
-                  style="display:inline-flex;align-items:center;gap:4px;color:#ef4444;font-weight:700;font-size:10.5px;">● Daya Mati</span>
-              </div>
-            </div>
+              <!-- Visual Motherboard Surface Container -->
+              <div class="mb-board-wrapper" id="mb-board-wrapper"
+                style="flex:1;width:100%;display:flex;align-items:center;justify-content:center;padding:10px 14px;position:relative;box-sizing:border-box;overflow:hidden;">
+                
+                <div class="mb-board-inner" id="mb-board-inner"
+                  style="position:relative;aspect-ratio:680/540;width:min(100%,calc((410px - 50px) * 680 / 540));height:min(calc(100% - 6px),calc(100% * 540 / 680));max-height:365px;display:flex;align-items:center;justify-content:center;">
+                  
+                  <!-- Base Motherboard Vector Blueprint -->
+                  <img src="assets/motherboard-atx.svg" alt="Motherboard ATX Blueprint" class="mb-base-svg" draggable="false"
+                    style="width:100%;height:100%;object-fit:contain;display:block;pointer-events:none;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.6));">
 
-            <!-- 3. Diagnostic Screen (Right) -->
-            <div class="game-side-panel receiver-panel" style="width:290px;min-width:290px;">
-              <div class="side-panel-header">
-                <span class="side-icon">🖥️</span>
-                <span class="side-title" style="font-size:14px;">Monitor POST BIOS</span>
-              </div>
-              <div
-                style="padding:10px 0;display:flex;flex-direction:column;justify-content:space-between;height:calc(100% - 40px);width:100%;">
-                <!-- CRT Terminal Screen -->
-                <div id="post-screen"
-                  style="background:#020617;border:2px solid #334155;border-radius:8px;padding:10px;font-family:monospace;font-size:11px;color:#22c55e;min-height:190px;max-height:205px;overflow-y:auto;text-align:left;line-height:1.45;">
-                  <div>[BIOS v2.4] Standby...</div>
-                  <div style="color:#64748b;">Pesanan Spek: PC Lab Sekolah Modern (LGA 1700, DDR4, M.2 NVMe, GPU PCIe, PSU 24P).</div>
-                  <div style="color:#64748b;margin-top:4px;">Pasang 5 komponen di motherboard, lalu uji tombol power.
+                  <!-- Live Hardware Diagnostic LEDs (Top-Right of Motherboard) -->
+                  <div class="mb-post-leds-live" id="mb-post-leds-live">
+                    <div class="led-dot led-cpu" id="live-led-cpu" title="Diagnostic LED: CPU"></div>
+                    <div class="led-dot led-dram" id="live-led-dram" title="Diagnostic LED: DRAM"></div>
+                    <div class="led-dot led-vga" id="live-led-vga" title="Diagnostic LED: VGA"></div>
+                    <div class="led-dot led-boot" id="live-led-boot" title="Diagnostic LED: BOOT"></div>
                   </div>
-                </div>
 
-                <!-- Big Power Button -->
-                <button class="btn btn-primary" onclick="testPowerOnPC()" id="btn-power-on"
-                  style="margin-top:8px;width:100%;font-weight:800;font-size:12.5px;padding:10px;border-radius:8px;opacity:0.6;"
-                  disabled>
-                  ⚡ PASANG 5 KOMPONEN DULU (0/5)
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+                  <!-- 1. CPU LGA 1700 Socket -->
+                  <div class="mb-physical-slot slot-cpu" id="socket-cpu" data-slot="cpu" data-accepts="cpu"
+                    onclick="clickMotherboardSocket('cpu')" title="Soket CPU LGA 1700 (Tarik CPU ke sini)">
+                    <div class="slot-target-ring">
+                      <span class="slot-target-name">Soket CPU</span>
+                    </div>
+                    <div class="slot-installed-component" id="installed-cpu"></div>
+                  </div>
+
+                  <!-- 2. RAM DDR4 DIMM Slot -->
+                  <div class="mb-physical-slot slot-ram" id="socket-ram" data-slot="ram" data-accepts="ram"
+                    onclick="clickMotherboardSocket('ram')" title="Slot DIMM DDR4 RAM (Tarik RAM ke sini)">
+                    <div class="slot-target-ring">
+                      <span class="slot-target-name">Slot RAM</span>
+                    </div>
+                    <div class="slot-installed-component" id="installed-ram"></div>
+                  </div>
+
+                  <!-- 3. M.2 NVMe SSD Slot -->
+                  <div class="mb-physical-slot slot-storage" id="socket-ssd" data-slot="ssd" data-accepts="ssd"
+                    onclick="clickMotherboardSocket('ssd')" title="Slot M.2 NVMe SSD (Tarik M.2 SSD ke sini)">
+                    <div class="slot-target-ring">
+                      <span class="slot-target-name">Slot M.2 SSD</span>
+                    </div>
+                    <div class="slot-installed-component" id="installed-ssd"></div>
+                  </div>
+
+                  <!-- 4. PCIe x16 GPU Slot -->
+                  <div class="mb-physical-slot slot-gpu" id="socket-gpu" data-slot="gpu" data-accepts="gpu"
+                    onclick="clickMotherboardSocket('gpu')" title="Slot PCIe x16 GPU (Tarik Kartu Grafis ke sini)">
+                    <div class="slot-target-ring">
+                      <span class="slot-target-name">PCIe x16 GPU</span>
+                    </div>
+                    <div class="slot-installed-component" id="installed-gpu"></div>
+                  </div>
+
+                  <!-- 5. 24-Pin ATX Power Header -->
+                  <div class="mb-physical-slot slot-psu" id="socket-psu" data-slot="psu" data-accepts="psu"
+                    onclick="clickMotherboardSocket('psu')" title="Konektor Daya ATX 24-Pin (Tarik PSU ke sini)">
+                    <div class="slot-target-ring">
+                      <span class="slot-target-name">Port 24P PSU</span>
+                    </div>
+                    <div class="slot-installed-component" id="installed-psu"></div>
+                  </div>
+
+                </div><!-- /mb-board-inner -->
+              </div><!-- /mb-board-wrapper -->
+            </div><!-- /motherboard-workspace-card -->
+          </div><!-- /game-stage-wrapper -->
+        </div><!-- /game-stage-panel-1 -->
 
         <!-- ==================== STAGE 2: SAKELAR BINER 8-BIT ==================== -->
         <div class="game-stage-panel" id="game-stage-panel-2" style="display:none;">

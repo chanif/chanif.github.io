@@ -3110,47 +3110,364 @@ body.zoom-sub-100 .content-box.narrow {
   margin-top: 1px;
 }
 
-/* Motherboard Sockets */
-.mb-socket-slot {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px dashed #475569;
+/* ==================== LAB MAYA AUTHENTIC MOTHERBOARD CANVAS ==================== */
+.motherboard-workspace-card {
+  position: relative;
+  background: linear-gradient(135deg, #0f172a 0%, #090d1a 100%);
+  border-radius: 16px;
+  border: 2px solid #1e293b;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.mb-top-telemetry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(15, 23, 42, 0.85);
+  border-bottom: 1.5px solid #1e293b;
+}
+
+.mb-telemetry-pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
   border-radius: 12px;
-  padding: 8px 10px;
-  text-align: center;
+  font-family: monospace;
+}
+
+.mb-board-wrapper {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.mb-board-inner {
+  position: relative;
+  aspect-ratio: 680 / 540;
+  height: 100%;
+  max-height: 360px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mb-base-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.65));
+}
+
+/* Motherboard Live Diagnostic LEDs */
+.mb-post-leds-live {
+  position: absolute;
+  top: 7.4%;
+  left: 70.6%;
+  display: flex;
+  gap: 5px;
+  z-index: 15;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.led-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #334155;
+  transition: 0.15s;
+}
+.led-dot.active.led-cpu { background: #ffaa00; box-shadow: 0 0 8px #ffaa00; }
+.led-dot.active.led-dram { background: #ff5500; box-shadow: 0 0 8px #ff5500; }
+.led-dot.active.led-vga { background: #00d4ff; box-shadow: 0 0 8px #00d4ff; }
+.led-dot.active.led-boot { background: #00ff88; box-shadow: 0 0 8px #00ff88; }
+
+/* Physical Snap-In Sockets Overlay */
+.mb-physical-slot {
+  position: absolute;
   cursor: pointer;
-  transition: all 0.3s ease;
-  min-height: 98px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.slot-target-ring {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed rgba(47, 217, 196, 0.85);
+  background: rgba(47, 217, 196, 0.12);
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
+  transition: all 0.2s ease;
+  animation: pulseSlot 2s ease-in-out infinite;
+  box-sizing: border-box;
 }
 
-.mb-socket-slot:hover {
-  border-color: #38bdf8;
-  background: rgba(56, 189, 248, 0.08);
+@keyframes pulseSlot {
+  0%, 100% { border-color: rgba(47, 217, 196, 0.6); background: rgba(47, 217, 196, 0.08); }
+  50% { border-color: rgba(251, 174, 60, 0.95); background: rgba(251, 174, 60, 0.18); }
 }
 
-.mb-socket-slot.filled {
-  border-style: solid;
-  border-color: #38bdf8;
-  background: rgba(15, 23, 42, 0.85);
+.mb-physical-slot:hover .slot-target-ring {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.02);
 }
 
-.mb-socket-slot.filled.bad-comp {
+.slot-target-name {
+  font-size: 9px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: monospace;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.slot-installed-component {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.slot-installed-component img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+}
+
+.mb-physical-slot.filled .slot-target-ring { display: none; }
+.mb-physical-slot.filled .slot-installed-component { display: flex; }
+.mb-physical-slot.filled {
+  border: 1.5px solid rgba(16, 185, 129, 0.85);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+  cursor: grab;
+}
+.mb-physical-slot.filled:active {
+  cursor: grabbing;
+}
+.mb-physical-slot.filled.bad-comp {
   border-color: #ef4444;
-  background: rgba(239, 68, 68, 0.15);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.45);
 }
 
-.socket-thumb-img {
-  width: 46px;
-  height: 46px;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-bottom: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+/* Exact Socket Percentage Coordinates from Lab Maya */
+.slot-cpu {
+  left: 24.26%;
+  top: 12.04%;
+  width: 17.65%;
+  height: 22.22%;
+}
+.slot-cpu.filled {
+  overflow: visible;
+}
+.slot-cpu.filled .slot-installed-component img {
+  transform: scale(1.15);
+  transform-origin: center center;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.85));
+}
+
+.slot-ram {
+  left: 53.38%;
+  top: 8.89%;
+  width: 6.62%;
+  height: 40.0%;
+}
+.slot-ram.filled {
+  overflow: visible;
+  width: 23.5%;
+  height: 40.0%;
+  left: 53.68%;
+  top: 8.5%;
+}
+.slot-ram.filled .slot-installed-component {
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+}
+.slot-ram.filled .slot-installed-component img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.85));
+}
+
+.slot-storage {
+  left: 23.53%;
+  top: 47.22%;
+  width: 24.26%;
+  height: 6.30%;
+}
+.slot-storage.filled {
+  overflow: visible;
+  height: 8.0%;
+  top: 46.5%;
+}
+.slot-storage.filled .slot-installed-component img {
+  transform: scale(1.65);
+  transform-origin: 85% center;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.85));
+}
+
+.slot-gpu {
+  left: 13.24%;
+  top: 63.89%;
+  width: 48.53%;
+  height: 5.93%;
+}
+.slot-gpu.filled {
+  overflow: visible;
+  height: 27%;
+  top: 63.4%;
+}
+.slot-gpu.filled .slot-installed-component img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.85));
+}
+
+.slot-psu {
+  left: 88.97%;
+  top: 17.59%;
+  width: 5.0%;
+  height: 25.0%;
+}
+.slot-psu.filled {
+  overflow: visible;
+  width: 13.0%;
+  height: 27.5%;
+  top: 16.3%;
+  left: 88.4%;
+}
+.slot-psu.filled .slot-installed-component img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.75));
+}
+
+/* Drag states on sockets */
+.mb-physical-slot.slot-highlight-target {
+  z-index: 25;
+}
+.mb-physical-slot.slot-highlight-target .slot-target-ring {
+  border: 2.5px dashed #f59e0b !important;
+  background: rgba(245, 158, 11, 0.28) !important;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.85), inset 0 0 15px rgba(245, 158, 11, 0.4) !important;
+  animation: targetPulse 0.8s ease-in-out infinite alternate !important;
+}
+.mb-physical-slot.slot-highlight-target .slot-target-name {
+  color: #ffffff;
+  background: #d97706;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 800;
+}
+@keyframes targetPulse {
+  0% { transform: scale(1.0); }
+  100% { transform: scale(1.06); }
+}
+
+.mb-physical-slot.slot-dimmed {
+  opacity: 0.35;
+  filter: grayscale(60%);
+  transition: all 0.25s ease;
+}
+
+.mb-physical-slot.drag-over {
+  transform: scale(1.06) !important;
+  z-index: 30;
+}
+.mb-physical-slot.drag-over .slot-target-ring {
+  border: 2.5px solid #10b981 !important;
+  background: rgba(16, 185, 129, 0.4) !important;
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.9), inset 0 0 15px rgba(16, 185, 129, 0.5) !important;
+  animation: none !important;
+}
+
+.mb-physical-slot.drag-forbidden {
+  cursor: not-allowed !important;
+  animation: slotShake 0.35s ease-in-out;
+}
+.mb-physical-slot.drag-forbidden .slot-target-ring {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.28) !important;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+}
+
+.mb-physical-slot.snap-bounce {
+  animation: slotSnapBounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  z-index: 20;
+}
+
+@keyframes slotPulse {
+  0% { transform: scale(1.0); box-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
+  100% { transform: scale(1.03); box-shadow: 0 0 24px rgba(245, 158, 11, 0.85); }
+}
+
+@keyframes slotSnapBounce {
+  0% { transform: scale(0.92); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1.0); }
+}
+
+@keyframes slotShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+}
+
+/* Touch Drag Ghost Avatar */
+.touch-drag-ghost {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.92);
+  border: 2px solid #38bdf8;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(56, 189, 248, 0.65);
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.touch-drag-ghost img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* ==================== STAGES 3 & 4: TROUBLESHOOTING KASUS TEKNISI ==================== */
