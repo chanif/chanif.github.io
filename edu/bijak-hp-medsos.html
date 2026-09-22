@@ -201,6 +201,34 @@
       background: linear-gradient(90deg, #f59e0b, #ec4899);
     }
 
+    /* Big Cheerful Checkbox */
+    .custom-check {
+      appearance: none;
+      width: 32px;
+      height: 32px;
+      border: 3px solid #cbd5e1;
+      border-radius: 10px;
+      background: #ffffff;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .custom-check:checked {
+      background: #ec4899;
+      border-color: #db2777;
+    }
+    .custom-check:checked::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
     /* Overview Modal Light */
     #overview-modal {
       position: fixed;
@@ -376,60 +404,64 @@
     </section>
 
     <!-- ===============================================================
-         SLIDE 2: ICE BREAKING LANGSUNG (ANGKAT TANGAN TANPA HP!)
+         SLIDE 2: ICE BREAKING LANGSUNG (ANGKAT TANGAN + CENTANGAN INTERAKTIF)
          =============================================================== -->
     <section class="slide" data-title="Ice Breaking: Angkat Tanganmu!">
       <div class="slide-inner">
-        <div class="text-center mb-6">
+        <div class="text-center mb-5">
           <span class="text-sm sm:text-base font-black uppercase tracking-wider text-pink-800 bg-pink-100 border-2 border-pink-300 px-5 py-1.5 rounded-full">
-            ✋ Ice Breaking Tanpa HP (3 Menit)
+            ✋ Ice Breaking Interaktif (3 Menit)
           </span>
           <h2 class="text-3xl sm:text-5xl font-black text-slate-900 mt-2">
             "Ayo Angkat Tangan!" Siapa yang Pernah Begini?
           </h2>
           <p class="text-slate-600 text-base sm:text-xl max-w-3xl mx-auto mt-1 font-semibold">
-            Karena saat LDKS kalian tidak boleh pegang HP, mari kita uji kejujuran langsung di ruangan ini!
+            Tunjuk tangan di aula! Pemateri akan mencentang di layar untuk melihat skor kejujuran kita bersama:
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-5 mb-5">
-          <div class="p-6 rounded-3xl bg-white border-3 border-amber-200 shadow-md card-ceria flex items-center gap-4">
-            <span class="text-5xl shrink-0">☀️</span>
-            <div>
-              <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-1">1. Bangun Tidur Langsung Cari HP</h3>
-              <p class="text-base sm:text-lg text-slate-700 font-bold">Bahkan sebelum cuci muka atau sholat/doa, tangan otomatis meraba kasur mencari HP.</p>
-            </div>
+        <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+          <!-- Left Checklist (Besar, Bold, Nyaman Diklik di Layar) -->
+          <div class="lg:col-span-7 space-y-3 flex flex-col justify-center">
+            <label class="flex items-center gap-4 p-4 rounded-2xl bg-white border-3 border-slate-200 card-ceria cursor-pointer hover:border-pink-300 transition">
+              <input type="checkbox" class="custom-check check-habit" onchange="calcHabitScore()">
+              <span class="text-base sm:text-lg text-slate-800 font-bold">1. ☀️ Baru bangun tidur, hal pertama yang dicari langsung HP.</span>
+            </label>
+            <label class="flex items-center gap-4 p-4 rounded-2xl bg-white border-3 border-slate-200 card-ceria cursor-pointer hover:border-pink-300 transition">
+              <input type="checkbox" class="custom-check check-habit" onchange="calcHabitScore()">
+              <span class="text-base sm:text-lg text-slate-800 font-bold">2. 🎬 Niat scroll medsos cuma "5 menit", eh tahu-tahu bablas 1–2 jam!</span>
+            </label>
+            <label class="flex items-center gap-4 p-4 rounded-2xl bg-white border-3 border-slate-200 card-ceria cursor-pointer hover:border-pink-300 transition">
+              <input type="checkbox" class="custom-check check-habit" onchange="calcHabitScore()">
+              <span class="text-base sm:text-lg text-slate-800 font-bold">3. 😰 Panik & gelisah kalau baterai tinggal 15% atau kuota internet habis.</span>
+            </label>
+            <label class="flex items-center gap-4 p-4 rounded-2xl bg-white border-3 border-slate-200 card-ceria cursor-pointer hover:border-pink-300 transition">
+              <input type="checkbox" class="custom-check check-habit" onchange="calcHabitScore()">
+              <span class="text-base sm:text-lg text-slate-800 font-bold">4. 🍽️ Lagi makan atau kumpul keluarga, mata tetap fokus menatap layar HP.</span>
+            </label>
+            <label class="flex items-center gap-4 p-4 rounded-2xl bg-white border-3 border-slate-200 card-ceria cursor-pointer hover:border-pink-300 transition">
+              <input type="checkbox" class="custom-check check-habit" onchange="calcHabitScore()">
+              <span class="text-base sm:text-lg text-slate-800 font-bold">5. 🌙 Lampu kamar sudah mati, tapi wajah masih tersorot layar HP di kasur.</span>
+            </label>
           </div>
 
-          <div class="p-6 rounded-3xl bg-white border-3 border-pink-200 shadow-md card-ceria flex items-center gap-4">
-            <span class="text-5xl shrink-0">🎬</span>
-            <div>
-              <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-1">2. Bablas Nonton Reels / Shorts</h3>
-              <p class="text-base sm:text-lg text-slate-700 font-bold">Niat awalnya cuma "5 menit buat refreshing", tiba-tiba sudah 2 jam berlalu sia-sia!</p>
+          <!-- Right Realtime Diagnosis Card -->
+          <div class="lg:col-span-5 flex flex-col justify-center">
+            <div id="habit-result-card" class="p-8 rounded-3xl bg-white border-3 border-indigo-200 shadow-2xl shadow-indigo-100 text-center h-full flex flex-col justify-center items-center">
+              <div id="habit-emoji" class="text-7xl mb-3 animate-pulse">📱</div>
+              <div class="text-sm text-slate-500 font-bold uppercase tracking-wider mb-1">Hasil Diagnostik Kita:</div>
+              <div id="habit-score" class="text-5xl sm:text-6xl font-black text-indigo-600 mb-2">0 / 5 Tercentang</div>
+              <div id="habit-status" class="text-xl sm:text-2xl font-black text-slate-900 mb-3">
+                Ayo Angkat Tangan & Centang!
+              </div>
+              <p id="habit-desc" class="text-base sm:text-lg text-slate-600 leading-relaxed font-semibold max-w-sm mb-4">
+                Jujur pada diri sendiri adalah langkah pertama calon pemimpin untuk mendisiplinkan diri sebelum memimpin orang lain!
+              </p>
+              <button onclick="resetHabitScore()" class="text-xs font-black text-slate-400 hover:text-rose-500 bg-slate-100 hover:bg-rose-50 px-4 py-2 rounded-full transition border border-slate-200 shadow-sm">
+                ↺ Reset Centangan
+              </button>
             </div>
           </div>
-
-          <div class="p-6 rounded-3xl bg-white border-3 border-cyan-200 shadow-md card-ceria flex items-center gap-4">
-            <span class="text-5xl shrink-0">😰</span>
-            <div>
-              <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-1">3. Panik Berat Baterai &lt;15%</h3>
-              <p class="text-base sm:text-lg text-slate-700 font-bold">Gelisah, cemas, atau uring-uringan kalau baterai sekarat atau kuota internet habis.</p>
-            </div>
-          </div>
-
-          <div class="p-6 rounded-3xl bg-white border-3 border-indigo-200 shadow-md card-ceria flex items-center gap-4">
-            <span class="text-5xl shrink-0">🌙</span>
-            <div>
-              <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-1">4. Wajah Disorot Layar di Kasur</h3>
-              <p class="text-base sm:text-lg text-slate-700 font-bold">Lampu kamar sudah padam, tapi mata masih melotot main HP sambil tiduran sampai mata perih.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="p-5 rounded-3xl bg-gradient-to-r from-amber-100 to-pink-100 border-3 border-pink-300 text-center shadow-md">
-          <p class="text-lg sm:text-2xl font-black text-slate-900">
-            👉 <span class="text-pink-600">Fakta Menarik:</span> "Ternyata hampir semua dari kita pernah mengalaminya! Pertanyaannya: <span class="underline decoration-pink-500">Maukah kamu terus diperbudak layar gawai?</span>"
-          </p>
         </div>
       </div>
     </section>
@@ -1323,6 +1355,54 @@
     }
 
     // Interactive Handlers for Case Studies
+    function calcHabitScore() {
+      playClick();
+      const checkboxes = document.querySelectorAll('.check-habit');
+      const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+      
+      const scoreEl = document.getElementById('habit-score');
+      const statusEl = document.getElementById('habit-status');
+      const descEl = document.getElementById('habit-desc');
+      const emojiEl = document.getElementById('habit-emoji');
+      const cardEl = document.getElementById('habit-result-card');
+
+      if (!scoreEl) return;
+      scoreEl.textContent = `${checkedCount} / 5 Tercentang`;
+
+      if (checkedCount === 0) {
+        emojiEl.textContent = '🌟';
+        statusEl.textContent = 'Ayo Angkat Tangan & Centang!';
+        statusEl.className = 'text-xl sm:text-2xl font-black text-indigo-600 mb-3';
+        descEl.textContent = 'Jujur pada diri sendiri adalah langkah pertama calon pemimpin untuk mendisiplinkan diri sebelum memimpin orang lain!';
+        cardEl.style.borderColor = '#c7d2fe';
+      } else if (checkedCount <= 2) {
+        emojiEl.textContent = '👍';
+        statusEl.textContent = 'Pengendali Gadget yang Baik';
+        statusEl.className = 'text-xl sm:text-2xl font-black text-cyan-700 mb-3';
+        descEl.textContent = 'Sebagian dari kalian cukup bijak mengatur waktu. Tetap waspada agar kebiasaan kecil tidak perlahan jadi candu!';
+        cardEl.style.borderColor = '#06b6d4';
+      } else if (checkedCount <= 4) {
+        emojiEl.textContent = '⚠️';
+        statusEl.textContent = 'Zona Waspada Terjebak Algoritma!';
+        statusEl.className = 'text-xl sm:text-2xl font-black text-amber-700 mb-3';
+        descEl.textContent = 'Banyak yang tangannya terangkat! Perhatian kalian mulai banyak tercuri oleh HP. Perlu komitmen detoks mulai hari ini!';
+        cardEl.style.borderColor = '#f59e0b';
+      } else {
+        emojiEl.textContent = '🚨';
+        statusEl.textContent = 'Hampir Semua Mengalami! (Wajib Detoks)';
+        statusEl.className = 'text-xl sm:text-2xl font-black text-rose-600 mb-3';
+        descEl.textContent = 'Hampir semua angkat tangan! Waktu kalian terkuras habis oleh gadget. Sebagai calon pengurus OSIS, saatnya rebut kembali kendali hidupmu!';
+        cardEl.style.borderColor = '#f43f5e';
+      }
+    }
+
+    function resetHabitScore() {
+      const checkboxes = document.querySelectorAll('.check-habit');
+      checkboxes.forEach(cb => cb.checked = false);
+      calcHabitScore();
+      showToast('Centangan Direset ↺');
+    }
+
     function handleCase1(option) {
       const fb = document.getElementById('case1-feedback');
       if (option === 'A') {
