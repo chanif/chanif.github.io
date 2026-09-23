@@ -21,7 +21,7 @@ window.MPI_CONFIG = {
     background: {
         // Path gambar latar belakang ruang kelas (mendukung JPG, PNG, WEBP, SVG)
         // Kosongkan ('') jika ingin menggunakan latar belakang animasi SVG internal
-        image: 'assets/sistem_komputer.jpg',
+        image: 'assets/bg-lab-clean.jpg',
 
         // Mode tampilan background ('cover', 'contain', '100% 100%')
         size: 'cover',
@@ -37,7 +37,7 @@ window.MPI_CONFIG = {
         overlay_color: 'rgba(255, 255, 255, 0.40)',
 
         // Opacity latar kotak konten (0.0 s.d 1.0)
-        box_opacity: 0.88,
+        box_opacity: 0.90,
     },
 
     // ------------------------------------------------------------

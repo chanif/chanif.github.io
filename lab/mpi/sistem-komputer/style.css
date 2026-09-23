@@ -121,8 +121,8 @@ body,
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background-color: #f0e6dc;
-  background-image: url('assets/bg-jaringan-orange.png');
+  background-color: #e0f2fe;
+  background-image: url('assets/bg-lab-clean.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1256,6 +1256,43 @@ body.zoom-sub-100 .content-box.narrow {
   line-height: 1.4;
 }
 
+.materi-cards.grid-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 22px;
+  width: 100%;
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+.materi-cards.grid-6 .materi-card {
+  border-radius: 18px;
+  border-width: 2.5px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.materi-cards.grid-6 .materi-card .card-thumb {
+  height: 200px;
+  border-radius: 15px 15px 0 0;
+}
+
+.materi-cards.grid-6 .materi-card .card-body {
+  padding: 11px 16px 13px;
+}
+
+.materi-cards.grid-6 .materi-card .card-title {
+  font-size: calc(20px * var(--font-scale, 1.0));
+  margin-bottom: 5px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.materi-cards.grid-6 .materi-card .card-desc {
+  font-size: calc(15px * var(--font-scale, 1.0));
+  line-height: 1.38;
+  color: #475569;
+}
+
 .materi-card {
   background: rgba(255, 255, 255, 0.94);
   border: 3.5px dashed var(--teal);
@@ -1431,6 +1468,180 @@ body.zoom-sub-100 .content-box.narrow {
   padding: 26px 36px 18px !important;
 }
 
+#page-materi-2 .content-box {
+  width: 96%;
+  max-width: 1440px;
+  padding: 18px 30px 16px !important;
+  overflow: hidden;
+}
+
+#page-materi-2 .content-columns {
+  gap: 20px;
+  flex: 1;
+  align-items: stretch;
+}
+
+#page-materi-2 .content-col {
+  padding: 13px 18px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#page-materi-2 .content-col h3 {
+  font-size: calc(18px * var(--font-scale, 1.0)) !important;
+  margin-bottom: 4px !important;
+  color: #00838F;
+}
+
+#page-materi-2 .content-col > p {
+  font-size: calc(13px * var(--font-scale, 1.0)) !important;
+  line-height: 1.4 !important;
+  margin-bottom: 8px !important;
+}
+
+#page-materi-2 .materi-subcard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1;
+  justify-content: space-evenly;
+}
+
+#page-materi-2 .materi-subcard {
+  padding: 6px 12px !important;
+  border-radius: 8px;
+}
+
+#page-materi-2 .materi-subcard-title {
+  font-size: calc(14px * var(--font-scale, 1.0)) !important;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+#page-materi-2 .materi-subcard-desc {
+  font-size: calc(12.5px * var(--font-scale, 1.0)) !important;
+  line-height: 1.36 !important;
+  margin: 0 !important;
+}
+
+#page-materi-2 .materi-analogi-box,
+#page-materi-2 .materi-highlight-box {
+  margin-top: 8px;
+  padding: 7px 12px !important;
+  border-radius: 0 8px 8px 0;
+}
+
+#page-materi-4 .content-box {
+  width: 96%;
+  max-width: 1440px;
+  padding: 24px 38px 22px !important;
+  overflow: hidden;
+}
+
+#page-materi-4 .content-columns {
+  gap: 24px;
+  flex: 1;
+  align-items: stretch;
+}
+
+#page-materi-4 .content-col {
+  padding: 18px 24px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+#page-materi-4 .content-col h3 {
+  font-size: calc(22px * var(--font-scale, 1.0)) !important;
+  margin-bottom: 8px !important;
+  color: #00838F;
+  line-height: 1.3 !important;
+}
+
+#page-materi-4 .materi-lead {
+  font-size: calc(16px * var(--font-scale, 1.0)) !important;
+  line-height: 1.55 !important;
+  margin-bottom: 14px !important;
+  color: #475569;
+}
+
+#page-materi-4 .materi-subcard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#page-materi-4 .materi-subcard {
+  padding: 2px !important;
+  border-radius: 8px;
+}
+
+#page-materi-4 .materi-subcard-title {
+  font-size: calc(16.5px * var(--font-scale, 1.0)) !important;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+#page-materi-4 .materi-subcard-desc {
+  font-size: calc(15px * var(--font-scale, 1.0)) !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  color: #334155;
+}
+
+#page-materi-4 .aksi-subcard {
+  padding: 10px 14px !important;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+#page-materi-4 .aksi-subcard .materi-subcard-title {
+  font-size: calc(16.5px * var(--font-scale, 1.0)) !important;
+  margin-bottom: 6px;
+}
+
+#page-materi-4 .aksi-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+#page-materi-4 .aksi-steps div {
+  font-size: calc(15px * var(--font-scale, 1.0)) !important;
+  line-height: 1.55 !important;
+  color: #334155;
+}
+
+#page-materi-4 .materi-analogi-box,
+#page-materi-4 .materi-highlight-box {
+  margin-top: 10px;
+  padding: 7px !important;
+  border-radius: 0 10px 10px 0;
+}
+
+#page-materi-4 .materi-analogi-box {
+  background: #e0f7fa !important;
+  border-left: 5px solid var(--teal) !important;
+}
+
+#page-materi-4 .materi-highlight-box {
+  background: #e0f2fe !important;
+  border-left: 5px solid #0288D1 !important;
+}
+
+#page-materi-4 .materi-analogi-box.intisari-box {
+  background: #fef3c7 !important;
+  border-left: 5px solid #f59e0b !important;
+}
+
+#page-materi-4 .materi-analogi-box p,
+#page-materi-4 .materi-highlight-box p {
+  font-size: calc(15px * var(--font-scale, 1.0)) !important;
+  line-height: 1.55 !important;
+  margin: 0 !important;
+}
+
 #page-materi-1 .materi-tabs-nav {
   margin-bottom: 12px;
   gap: 12px;
@@ -1513,7 +1724,9 @@ body.zoom-sub-100 .content-box.narrow {
 
 #page-materi-1 .materi-analogi-box,
 #page-materi-2 .materi-analogi-box,
-#page-materi-3 .materi-analogi-box {
+#page-materi-3 .materi-analogi-box,
+#page-materi-4 .materi-analogi-box,
+.materi-analogi-box {
   background: #e0f7fa;
   border-left: 5px solid var(--teal);
   padding: 10px 14px;
@@ -1523,7 +1736,9 @@ body.zoom-sub-100 .content-box.narrow {
 
 #page-materi-1 .materi-analogi-box p,
 #page-materi-2 .materi-analogi-box p,
-#page-materi-3 .materi-analogi-box p {
+#page-materi-3 .materi-analogi-box p,
+#page-materi-4 .materi-analogi-box p,
+.materi-analogi-box p {
   margin-bottom: 0 !important;
   font-size: calc(14.5px * var(--font-scale, 1.0)) !important;
   line-height: 1.45 !important;
@@ -1532,7 +1747,9 @@ body.zoom-sub-100 .content-box.narrow {
 
 #page-materi-1 .materi-highlight-box,
 #page-materi-2 .materi-highlight-box,
-#page-materi-3 .materi-highlight-box {
+#page-materi-3 .materi-highlight-box,
+#page-materi-4 .materi-highlight-box,
+.materi-highlight-box {
   background: #e0f2fe;
   border-left: 5px solid #0288D1;
   padding: 10px 14px;
@@ -1542,7 +1759,9 @@ body.zoom-sub-100 .content-box.narrow {
 
 #page-materi-1 .materi-highlight-box p,
 #page-materi-2 .materi-highlight-box p,
-#page-materi-3 .materi-highlight-box p {
+#page-materi-3 .materi-highlight-box p,
+#page-materi-4 .materi-highlight-box p,
+.materi-highlight-box p {
   margin-bottom: 0 !important;
   font-size: calc(14px * var(--font-scale, 1.0)) !important;
   line-height: 1.45 !important;
@@ -2309,10 +2528,12 @@ body.zoom-sub-100 .content-box.narrow {
 /* Game Stage & 3-Column Layout */
 .game-stage-wrapper {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   align-items: stretch;
   width: 100%;
-  height: 410px;
+  min-height: 520px;
+  height: calc(100vh - 250px);
+  max-height: calc(100vh - 245px);
   position: relative;
 }
 
@@ -2331,13 +2552,9 @@ body.zoom-sub-100 .content-box.narrow {
   flex-shrink: 0;
 }
 
-.game-side-panel.sender-panel,
-.game-side-panel.receiver-panel {
-  width: 290px;
-  min-width: 290px;
-}
-
 .game-side-panel.sender-panel {
+  width: 360px;
+  min-width: 340px;
   border-color: #0288D1;
   background: linear-gradient(180deg, #ffffff 0%, #e1f5fe 100%);
 }
@@ -3019,10 +3236,11 @@ body.zoom-sub-100 .content-box.narrow {
 
 /* ==================== STAGE 1: RAKIT MOTHERBOARD ENHANCED ==================== */
 .pc-inventory-scroll {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-height: 335px;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 8px !important;
+  max-height: calc(100vh - 365px);
+  min-height: 420px;
   overflow-y: auto;
   padding: 4px 6px 4px 2px;
 }
@@ -3039,19 +3257,26 @@ body.zoom-sub-100 .content-box.narrow {
   background: #ffffff;
   border: 1.5px solid #e2e8f0;
   border-radius: 10px;
-  padding: 6px 10px;
-  cursor: pointer;
+  padding: 8px 6px;
+  cursor: grab;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  text-align: center;
+  gap: 4px;
   transition: all 0.2s ease;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  user-select: none;
+}
+
+.inv-comp-card:active {
+  cursor: grabbing;
 }
 
 .inv-comp-card:hover {
   border-color: var(--teal);
-  transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(0, 172, 193, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 172, 193, 0.2);
 }
 
 .inv-comp-card.mounted {
@@ -3061,37 +3286,45 @@ body.zoom-sub-100 .content-box.narrow {
 }
 
 .inv-comp-thumb {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border-radius: 8px;
-  object-fit: cover;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   background: #f8fafc;
   flex-shrink: 0;
+  padding: 2px;
 }
 
 .inv-comp-info {
-  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-width: 0;
-  text-align: left;
 }
 
 .inv-comp-title {
   font-weight: 700;
-  font-size: calc(12.5px * var(--font-scale, 1.0));
+  font-size: calc(11.5px * var(--font-scale, 1.0));
   color: #1e293b;
-  white-space: nowrap;
+  line-height: 1.25;
+  text-align: center;
+  margin-bottom: 2px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .inv-comp-tag {
   display: inline-block;
-  font-size: calc(10px * var(--font-scale, 1.0));
+  font-size: 9.5px;
   font-weight: 700;
-  padding: 1px 6px;
+  padding: 1px 5px;
   border-radius: 4px;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .inv-comp-tag.compat {
@@ -3104,10 +3337,15 @@ body.zoom-sub-100 .content-box.narrow {
   color: #991b1b;
 }
 
+.inv-comp-tag.incomp {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
 .inv-comp-status {
-  font-size: calc(10.5px * var(--font-scale, 1.0));
+  font-size: 9.5px;
   color: #64748b;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 /* ==================== LAB MAYA AUTHENTIC MOTHERBOARD CANVAS ==================== */
@@ -3144,7 +3382,7 @@ body.zoom-sub-100 .content-box.narrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 14px;
+  padding: 4px 6px;
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
@@ -3153,9 +3391,11 @@ body.zoom-sub-100 .content-box.narrow {
 .mb-board-inner {
   position: relative;
   aspect-ratio: 680 / 540;
-  height: 100%;
-  max-height: 360px;
+  height: calc(100% - 4px);
+  max-height: calc(100vh - 230px);
   width: auto;
+  max-width: calc(100% - 8px);
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3166,7 +3406,7 @@ body.zoom-sub-100 .content-box.narrow {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: fill;
   pointer-events: none;
   filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.65));
 }
@@ -3220,6 +3460,7 @@ body.zoom-sub-100 .content-box.narrow {
   transition: all 0.2s ease;
   animation: pulseSlot 2s ease-in-out infinite;
   box-sizing: border-box;
+  pointer-events: none;
 }
 
 @keyframes pulseSlot {
@@ -3234,12 +3475,13 @@ body.zoom-sub-100 .content-box.narrow {
 }
 
 .slot-target-name {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
   color: #ffffff;
   font-family: monospace;
   letter-spacing: 0.3px;
   text-align: center;
+  pointer-events: none;
 }
 
 .slot-installed-component {
@@ -3250,12 +3492,13 @@ body.zoom-sub-100 .content-box.narrow {
   display: none;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
 .slot-installed-component img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
 }
 
 .mb-physical-slot.filled .slot-target-ring { display: none; }
@@ -3273,34 +3516,34 @@ body.zoom-sub-100 .content-box.narrow {
   box-shadow: 0 0 12px rgba(239, 68, 68, 0.45);
 }
 
-/* Exact Socket Percentage Coordinates from Lab Maya */
+/* Exact Socket Coordinates (Calibrated to 680x540 SVG viewBox) & Scaled-Up Components */
 .slot-cpu {
-  left: 24.26%;
-  top: 12.04%;
-  width: 17.65%;
-  height: 22.22%;
+  left: 22.35%;
+  top: 19.44%;
+  width: 17.06%;
+  height: 21.48%;
 }
 .slot-cpu.filled {
   overflow: visible;
 }
 .slot-cpu.filled .slot-installed-component img {
-  transform: scale(1.15);
+  transform: scale(1.85);
   transform-origin: center center;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.85));
+  filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.95));
 }
 
 .slot-ram {
   left: 53.38%;
-  top: 8.89%;
+  top: 8.15%;
   width: 6.62%;
   height: 40.0%;
 }
 .slot-ram.filled {
   overflow: visible;
-  width: 23.5%;
-  height: 40.0%;
-  left: 53.68%;
-  top: 8.5%;
+  width: 26%;
+  height: 48%;
+  left: 51.5%;
+  top: 5.5%;
 }
 .slot-ram.filled .slot-installed-component {
   overflow: visible;
@@ -3314,7 +3557,8 @@ body.zoom-sub-100 .content-box.narrow {
   max-height: 100%;
   object-fit: contain;
   object-position: left center;
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.85));
+  transform: scale(1.48);
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.9));
 }
 
 .slot-storage {
@@ -3325,13 +3569,18 @@ body.zoom-sub-100 .content-box.narrow {
 }
 .slot-storage.filled {
   overflow: visible;
-  height: 8.0%;
-  top: 46.5%;
+  width: 32%;
+  height: 16.0%;
+  top: 42.5%;
+  left: 22.0%;
 }
 .slot-storage.filled .slot-installed-component img {
-  transform: scale(1.65);
-  transform-origin: 85% center;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.85));
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(1.45);
+  transform-origin: center center;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.9));
 }
 
 .slot-gpu {
@@ -3342,14 +3591,17 @@ body.zoom-sub-100 .content-box.narrow {
 }
 .slot-gpu.filled {
   overflow: visible;
-  height: 27%;
-  top: 63.4%;
+  width: 68%;
+  height: 44%;
+  top: 50%;
+  left: 7%;
 }
 .slot-gpu.filled .slot-installed-component img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.85));
+  transform: scale(1.52);
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.95));
 }
 
 .slot-psu {
@@ -3360,17 +3612,18 @@ body.zoom-sub-100 .content-box.narrow {
 }
 .slot-psu.filled {
   overflow: visible;
-  width: 13.0%;
-  height: 27.5%;
-  top: 16.3%;
-  left: 88.4%;
+  width: 21.0%;
+  height: 42.0%;
+  top: 9%;
+  left: 79%;
 }
 .slot-psu.filled .slot-installed-component img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: left center;
-  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.75));
+  transform: scale(1.6);
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.85));
 }
 
 /* Drag states on sockets */
@@ -4388,6 +4641,7 @@ body.zoom-sub-100 .content-box.narrow {
   border: 1.5px solid rgba(0, 172, 193, 0.28);
   box-shadow: 0 2px 6px var(--shadow-light);
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .video-step-card:hover {
@@ -4403,7 +4657,7 @@ body.zoom-sub-100 .content-box.narrow {
 }
 
 .video-step-title {
-  font-size: calc(13.5px * var(--font-scale, 1.0));
+  font-size: calc(17px * var(--font-scale, 1.0)) !important;
   font-weight: 700;
   color: var(--teal-dark);
 }
@@ -4419,11 +4673,12 @@ body.zoom-sub-100 .content-box.narrow {
   font-family: monospace;
 }
 
+.content-box .video-step-desc,
 .video-step-desc {
-  font-size: calc(12px * var(--font-scale, 1.0));
-  color: var(--text-body);
-  margin-bottom: 0;
-  line-height: 1.35;
+  font-size: calc(16px * var(--font-scale, 1.0)) !important;
+  color: var(--text-body) !important;
+  margin-bottom: 0 !important;
+  line-height: 1.45 !important;
 }
 
 .video-wrapper {

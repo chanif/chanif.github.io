@@ -185,7 +185,7 @@ function resetFont() {
 
 // ==================== NAVIGATION (SPA) ====================
 
-const MATERI_SUBPAGES = ['materi-1', 'video', 'tarik-jawaban', 'materi-3'];
+const MATERI_SUBPAGES = ['materi-1', 'tarik-jawaban', 'materi-2', 'video', 'materi-3', 'materi-4'];
 
 function updateTopControls(pageId) {
   const topControls = document.getElementById('top-controls-right');
@@ -219,16 +219,17 @@ const PAGE_INDEX_MAP = {
   'materi-2': 8,
   'video': 9,
   'materi-3': 10,
-  'permainan-intro': 11,
-  'permainan': 12,
-  'latihan-intro': 13,
-  'latihan': 14,
-  'rangkuman': 15,
-  'referensi': 16,
-  'prompt-ai': 17,
-  'pengembang': 18,
-  'kutipan': 19,
-  'kredit': 20
+  'materi-4': 11,
+  'permainan-intro': 12,
+  'permainan': 13,
+  'latihan-intro': 14,
+  'latihan': 15,
+  'rangkuman': 16,
+  'referensi': 17,
+  'prompt-ai': 18,
+  'pengembang': 19,
+  'kutipan': 20,
+  'kredit': 21
 };
 
 function updateTestingIndicator(pageId) {
@@ -248,13 +249,13 @@ function updateTestingIndicator(pageId) {
   }
 
   const pageNum = PAGE_INDEX_MAP[pageId] || '?';
-  indicator.innerHTML = `<span>Halaman ${pageNum} / 20</span>`;
+  indicator.innerHTML = `<span>Halaman ${pageNum} / 21</span>`;
   indicator.style.display = 'block';
 }
 
 const LINEAR_PAGES = [
   'cover', 'menu', 'petunjuk', 'tujuan', 'materi-list',
-  'materi-1', 'tarik-jawaban', 'materi-2', 'video', 'materi-3',
+  'materi-1', 'tarik-jawaban', 'materi-2', 'video', 'materi-3', 'materi-4',
   'permainan-intro', 'permainan', 'latihan-intro', 'latihan',
   'rangkuman', 'referensi', 'prompt-ai', 'pengembang', 'kutipan', 'kredit'
 ];
@@ -330,7 +331,7 @@ const JARINGAN_PAGE_NAV_MAP = {
   'materi-list': {
     prevText: 'Tujuan Pembelajaran',
     prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Materi 1: Anatomi Hardware',
+    nextText: 'Materi 1: Sistem Komputer & Segitiga Emas',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'materi-1': {
@@ -340,9 +341,9 @@ const JARINGAN_PAGE_NAV_MAP = {
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'tarik-jawaban': {
-    prevText: 'Materi 1: Anatomi Hardware',
+    prevText: 'Materi 1: Sistem Komputer & Segitiga Emas',
     prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Materi 2: Otak Komputer & Alur Data',
+    nextText: 'Materi 2: Perangkat Keras & Motherboard',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'materi-2': {
@@ -352,19 +353,25 @@ const JARINGAN_PAGE_NAV_MAP = {
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'video': {
-    prevText: 'Materi 2: Otak Komputer & Alur Data',
+    prevText: 'Materi 2: Perangkat Keras & Motherboard',
     prevSub: 'HALAMAN SEBELUMNYA',
-    nextText: 'Materi 3: Sistem Operasi & Kolaborasi',
+    nextText: 'Materi 3: Cara Kerja Komputer',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'materi-3': {
     prevText: 'Video: Simulasi Siklus CPU',
     prevSub: 'HALAMAN SEBELUMNYA',
+    nextText: 'Materi 4: Sistem Operasi',
+    nextSub: 'HALAMAN BERIKUTNYA'
+  },
+  'materi-4': {
+    prevText: 'Materi 3: Cara Kerja Komputer',
+    prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Pengantar Simulator Komputer',
     nextSub: 'HALAMAN BERIKUTNYA'
   },
   'permainan-intro': {
-    prevText: 'Materi 3: Sistem Operasi & Kolaborasi',
+    prevText: 'Materi 4: Sistem Operasi',
     prevSub: 'HALAMAN SEBELUMNYA',
     nextText: 'Mulai Simulator Komputer',
     nextSub: 'HALAMAN BERIKUTNYA'
@@ -554,6 +561,17 @@ function initVideo() {
   }
 }
 
+function seekVideo(seconds) {
+  const video = document.getElementById('main-video');
+  if (video) {
+    try {
+      video.currentTime = seconds;
+      video.play().catch(() => {});
+    } catch (e) {
+      console.warn('seekVideo error:', e);
+    }
+  }
+}
 
 // ==================== MENJODOHKAN ISTILAH (HALAMAN 8) ====================
 
@@ -1304,25 +1322,31 @@ function showM1Notice(msg, type = 'info') {
   }, 3500);
 }
 
-// User klik langsung: beri peringatan bahwa sistem menggunakan Drag & Drop
-function warnDragOnlyComponent(itemKey) {
+// User klik kartu: klik untuk memasang langsung ke soket (atau mencopot bila sudah terpasang)
+function toggleMountComponentFromCard(itemKey) {
   const item = M1_CATALOG[itemKey];
   if (!item) return;
 
   if (computerGame.m1.mounted[item.slot] === itemKey) {
-    showM1Notice(`Komponen "${item.name}" sudah terpasang. Tarik dari soket kembali ke rak untuk melepasnya.`, 'info');
+    unmountComponentFromSlot(item.slot);
     return;
   }
 
-  playSynthSound('click');
-  showM1Notice(`🖐️ Tarik (drag) kartu "${item.name}" lalu lepas (drop) tepat ke soketnya pada motherboard!`, 'warn');
-  highlightM1TargetSlot(item.slot);
-  setTimeout(() => clearM1SlotHighlights(), 1600);
+  mountComponentToSlot(itemKey, item.slot);
+  const targetSocket = document.getElementById(`socket-${item.slot}`);
+  if (targetSocket) {
+    targetSocket.classList.add('snap-bounce');
+    setTimeout(() => targetSocket?.classList.remove('snap-bounce'), 450);
+  }
+}
+
+function warnDragOnlyComponent(itemKey) {
+  toggleMountComponentFromCard(itemKey);
 }
 
 // Kompatibilitas mundur jika fungsi selectOrMountComponent masih dipanggil di tempat lain
 function selectOrMountComponent(itemKey) {
-  warnDragOnlyComponent(itemKey);
+  toggleMountComponentFromCard(itemKey);
 }
 
 function highlightM1TargetSlot(slotType) {
@@ -1394,14 +1418,14 @@ function clickMotherboardSocket(slotType) {
 
 // Inisialisasi Drag and Drop untuk Misi 1 (Desktop HTML5 & Mobile Touch)
 function setupM1DragDrop() {
-  // 1. Setup Kartu Komponen di Rak (Drag source ke motherboard)
+  // 1. Setup Kartu Komponen di Rak (Drag source ke motherboard & Click-to-Mount)
   document.querySelectorAll('.inv-comp-card').forEach(card => {
     const key = card.getAttribute('data-comp-key');
     const item = M1_CATALOG[key];
     if (!item) return;
 
-    // Klik kartu inventaris: tidak langsung pasang, beri edukasi drag & drop
-    card.onclick = () => warnDragOnlyComponent(key);
+    // Klik kartu inventaris: klik untuk pasang / copot langsung (Click-to-Mount)
+    card.onclick = () => toggleMountComponentFromCard(key);
 
     // Desktop Drag Start
     card.ondragstart = (e) => {
@@ -1412,8 +1436,10 @@ function setupM1DragDrop() {
       currentDraggedM1Key = key;
       currentDraggedM1FromSlot = null;
       card.classList.add('dragging');
-      e.dataTransfer.setData('text/plain', key);
-      e.dataTransfer.effectAllowed = 'copy';
+      if (e.dataTransfer) {
+        e.dataTransfer.setData('text/plain', key);
+        e.dataTransfer.effectAllowed = 'copyMove';
+      }
       highlightM1TargetSlot(item.slot);
       playSynthSound('click');
     };
@@ -1422,14 +1448,46 @@ function setupM1DragDrop() {
     card.ondragend = () => {
       card.classList.remove('dragging');
       clearM1SlotHighlights();
-      currentDraggedM1Key = null;
+      setTimeout(() => {
+        currentDraggedM1Key = null;
+      }, 80);
     };
 
     // Mobile / Tablet Touch Drag Handler
     setupM1TouchDrag(card, key, item);
   });
 
-  // 2. Setup Soket Motherboard (Drop target)
+  // 2. Setup Seluruh Area Motherboard (Drop target fleksibel: melepaskan komponen di mana saja di area motherboard otomatis terpasang ke soketnya)
+  const mbDropTargets = [
+    document.querySelector('.motherboard-workspace-card'),
+    document.getElementById('mb-board-wrapper'),
+    document.getElementById('mb-board-inner')
+  ];
+  mbDropTargets.forEach(targetEl => {
+    if (!targetEl) return;
+    targetEl.ondragover = (e) => {
+      e.preventDefault();
+      if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    };
+    targetEl.ondrop = (e) => {
+      e.preventDefault();
+      const droppedKey = (e.dataTransfer && e.dataTransfer.getData('text/plain')) || currentDraggedM1Key;
+      clearM1SlotHighlights();
+
+      if (!droppedKey || !M1_CATALOG[droppedKey]) return;
+      const droppedItem = M1_CATALOG[droppedKey];
+
+      mountComponentToSlot(droppedKey, droppedItem.slot);
+      const targetSocket = document.getElementById(`socket-${droppedItem.slot}`);
+      if (targetSocket) {
+        targetSocket.classList.add('snap-bounce');
+        setTimeout(() => targetSocket?.classList.remove('snap-bounce'), 450);
+      }
+      currentDraggedM1Key = null;
+    };
+  });
+
+  // 3. Setup Soket Spesifik Motherboard (Drop target presisi & feedback edukatif)
   const slots = ['cpu', 'ram', 'gpu', 'ssd', 'psu'];
   slots.forEach(slotType => {
     const socketEl = document.getElementById(`socket-${slotType}`);
@@ -1437,14 +1495,14 @@ function setupM1DragDrop() {
 
     socketEl.ondragover = (e) => {
       e.preventDefault();
+      e.stopPropagation();
+      if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
       if (!currentDraggedM1Key) return;
       const draggedItem = M1_CATALOG[currentDraggedM1Key];
       if (draggedItem && draggedItem.slot === slotType) {
-        e.dataTransfer.dropEffect = 'copy';
         socketEl.classList.remove('drag-forbidden');
         socketEl.classList.add('drag-over');
       } else {
-        e.dataTransfer.dropEffect = 'none';
         socketEl.classList.remove('drag-over');
         socketEl.classList.add('drag-forbidden');
       }
@@ -1456,8 +1514,9 @@ function setupM1DragDrop() {
 
     socketEl.ondrop = (e) => {
       e.preventDefault();
+      e.stopPropagation();
       socketEl.classList.remove('drag-over', 'drag-forbidden');
-      const droppedKey = e.dataTransfer.getData('text/plain') || currentDraggedM1Key;
+      const droppedKey = (e.dataTransfer && e.dataTransfer.getData('text/plain')) || currentDraggedM1Key;
       clearM1SlotHighlights();
 
       if (!droppedKey || !M1_CATALOG[droppedKey]) return;
@@ -1466,39 +1525,46 @@ function setupM1DragDrop() {
       if (droppedItem.slot === slotType) {
         mountComponentToSlot(droppedKey, slotType);
         socketEl.classList.add('snap-bounce');
-        setTimeout(() => socketEl.classList.remove('snap-bounce'), 450);
+        setTimeout(() => socketEl?.classList.remove('snap-bounce'), 450);
       } else {
         playSynthSound('error');
-        showM1Notice(`Komponen "${droppedItem.name}" tidak dapat dipasang di ${socketEl.innerText.split('\n')[0] || slotType.toUpperCase()}!`, 'warn');
+        showM1Notice(`Komponen "${droppedItem.name}" tidak dapat dipasang di soket ${slotType.toUpperCase()}! Pasang di soket ${droppedItem.slot.toUpperCase()}.`, 'warn');
       }
       currentDraggedM1Key = null;
     };
   });
 
-  // 3. Setup Rak Komponen sebagai Drop Target saat Melepas Komponen (Dismantle)
-  const shelfEl = document.getElementById('pc-inventory-list');
-  if (shelfEl) {
+  // 4. Setup Rak Komponen sebagai Drop Target saat Melepas Komponen (Dismantle)
+  const shelfTargets = [
+    document.getElementById('pc-inventory-list'),
+    document.querySelector('.game-side-panel.sender-panel')
+  ];
+  shelfTargets.forEach(shelfEl => {
+    if (!shelfEl) return;
     shelfEl.ondragover = (e) => {
       if (currentDraggedM1FromSlot) {
         e.preventDefault();
-        e.dataTransfer.dropEffect = 'move';
-        shelfEl.classList.add('shelf-drop-active');
+        if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
+        const listEl = document.getElementById('pc-inventory-list');
+        if (listEl) listEl.classList.add('shelf-drop-active');
       }
     };
     shelfEl.ondragleave = () => {
-      shelfEl.classList.remove('shelf-drop-active');
+      const listEl = document.getElementById('pc-inventory-list');
+      if (listEl) listEl.classList.remove('shelf-drop-active');
     };
     shelfEl.ondrop = (e) => {
       e.preventDefault();
-      shelfEl.classList.remove('shelf-drop-active');
-      const slotToRemove = currentDraggedM1FromSlot || (e.dataTransfer.getData('text/plain') || '').replace('remove:', '');
+      const listEl = document.getElementById('pc-inventory-list');
+      if (listEl) listEl.classList.remove('shelf-drop-active');
+      const slotToRemove = currentDraggedM1FromSlot || ((e.dataTransfer && e.dataTransfer.getData('text/plain')) || '').replace('remove:', '');
       if (slotToRemove && computerGame.m1.mounted[slotToRemove]) {
         unmountComponentFromSlot(slotToRemove);
       }
       currentDraggedM1FromSlot = null;
       currentDraggedM1Key = null;
     };
-  }
+  });
 }
 
 // Mobile / Tablet Touch Drag Handler
@@ -1532,7 +1598,7 @@ function setupM1TouchDrag(card, itemKey, item) {
     const elemUnder = document.elementFromPoint(touch.clientX, touch.clientY);
     touchGhost.style.display = 'flex';
 
-    const slotUnder = elemUnder ? elemUnder.closest('.mb-socket-slot') : null;
+    const slotUnder = elemUnder ? elemUnder.closest('.mb-physical-slot') : null;
     if (slotUnder) {
       if (activeTouchSlot !== slotUnder) {
         if (activeTouchSlot) activeTouchSlot.classList.remove('drag-over', 'drag-forbidden');
@@ -1552,7 +1618,7 @@ function setupM1TouchDrag(card, itemKey, item) {
     }
   };
 
-  card.ontouchend = () => {
+  card.ontouchend = (e) => {
     if (touchGhost) {
       touchGhost.remove();
       touchGhost = null;
@@ -1567,6 +1633,19 @@ function setupM1TouchDrag(card, itemKey, item) {
       } else {
         playSynthSound('error');
         showM1Notice(`Komponen "${item.name}" tidak sesuai dengan soket tersebut!`, 'warn');
+      }
+    } else {
+      const touch = e.changedTouches ? e.changedTouches[0] : null;
+      if (touch) {
+        const elemUnder = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (elemUnder && elemUnder.closest('#mb-board-wrapper')) {
+          mountComponentToSlot(itemKey, item.slot);
+          const targetSocket = document.getElementById(`socket-${item.slot}`);
+          if (targetSocket) {
+            targetSocket.classList.add('snap-bounce');
+            setTimeout(() => targetSocket?.classList.remove('snap-bounce'), 450);
+          }
+        }
       }
     }
     clearM1SlotHighlights();
@@ -2426,6 +2505,7 @@ function spawnConfetti() {
 
 const EVAL_ANSWERS = {
   A1: 'B', A2: 'C', A3: 'B', A4: 'B', A5: 'C',
+  A6: 'B', A7: 'C', A8: 'C', A9: 'C', A10: 'B',
   B1: 'benar', B2: 'salah', B3: 'benar', B4: 'salah', B5: 'benar',
 };
 
@@ -2945,7 +3025,7 @@ function updateSeqNumbers() {
 function submitEval() {
   const scores = { A: 0, B: 0, C: 0, D: 0 };
 
-  for (let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 10; i++) {
     const key = 'A' + i;
     if (evalUserAnswers[key] === EVAL_ANSWERS[key]) scores.A++;
   }
@@ -2965,7 +3045,7 @@ function submitEval() {
   });
 
   const total = scores.A + scores.B + scores.C + scores.D;
-  const maxTotal = 20;
+  const maxTotal = 25;
   const percentage = Math.round((total / maxTotal) * 100);
 
   let msgClass, msgText;
@@ -2988,7 +3068,7 @@ function submitEval() {
     <p style="font-size:18px;color:var(--text-body);margin-bottom:12px;">Total Skor: <strong>${total}</strong> / ${maxTotal} Poin</p>
 
     <div class="recap-details">
-      <span class="recap-badge a">Bagian A: ${scores.A}/5</span>
+      <span class="recap-badge a">Bagian A: ${scores.A}/10</span>
       <span class="recap-badge b">Bagian B: ${scores.B}/5</span>
       <span class="recap-badge c">Bagian C: ${scores.C}/5</span>
       <span class="recap-badge d">Bagian D: ${scores.D}/5</span>
