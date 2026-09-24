@@ -1,21 +1,21 @@
-# Panduan Prompt Video — Google Flow / Veo / AI Video Generator
+# Panduan Pembuatan Video AI — Google Vids (Google Workspace AI)
 ## "Siklus Mesin CPU & Perjalanan Instruksi di Dalam Komputer"
 
 Dokumen ini berisi panduan dan prompt lengkap dalam **Bahasa Indonesia** dan **Bahasa Inggris** untuk memproduksi video animasi edukasi 3D/2.5D tentang bagaimana data dan instruksi diproses di dalam komputer (dari aksi klik pengguna, penjemputan dari RAM, penguraian kode di Control Unit, komputasi di ALU, hingga muncul kembali di layar monitor).
 
-Video ini dirancang untuk mengisi **Halaman Video (Siklus Mesin CPU)** pada aplikasi Media Pembelajaran Interaktif (MPI) Sistem Komputer.
+Video ini dirancang untuk mengisi **Halaman Video (Siklus Mesin CPU)** pada aplikasi Media Pembelajaran Interaktif (MPI) Sistem Komputer menggunakan platform **Google Vids**.
 
 ---
 
-## 💡 Alur Kerja Rekomendasi: Image-to-Video (Extend Model)
-1. **Buat Gambar Referensi Awal (First Frame):**  
-   Gunakan prompt pada **BAGIAN 1** di generator gambar AI (*Midjourney v6*, *Google Imagen 3*, *DALL-E 3*, atau *Flux*) dengan rasio **16:9**.
-2. **Buka Platform Video AI:**  
-   Buka **flow.google** (Google Flow / Veo), **Runway Gen-3 Alpha**, **Luma Dream Machine**, atau **Kling AI**. Unggah gambar referensi sebagai **Start Frame**.
-3. **Eksekusi Klip Berantai (Sequence Extension):**  
-   Masukkan prompt **Klip 1**. Setelah klip pertama terbentuk, gunakan fitur **Extend / In-betweening** untuk menyambungkan **Klip 2, 3, 4, 5, dan 6** secara berurutan agar karakter, gaya visual, dan kontinuitas sirkuit tetap konsisten (*seamless*).
-4. **Ekspor Video Utuh:**  
-   Gabungkan (atau unduh hasil extend penuh) dalam rasio **16:9**, resolusi minimal **1080p Full HD**, simpan ke: `assets/video/siklus_cpu.mp4`.
+## 💡 Alur Kerja Produksi Video di Google Vids
+1. **Prompt Storyboard & Naskah (*Help Me Create a Video*):**  
+   Buka **Google Vids** di Google Workspace. Masukkan deskripsi alur video pada prompt utama untuk menghasilkan outline alur cerita, pemenggalan scene otomatis, serta draf naskah narasi edukatif.
+2. **Penyiapan Aset Visual & Media Scene:**  
+   Gunakan gambar acuan visual 3D beresolusi tinggi (rasio 16:9) pada setiap segmen scene (Klik Mouse, RAM Fetch, CPU Decode, ALU Execute, GPU Store, Monitor Output).
+3. **Penerapan Narasi Suara AI (*AI Voiceover*):**  
+   Manfaatkan fitur AI Voiceover bawaan Google Vids untuk membacakan penjelasan alur kerja siklus instruksi komputer secara jernih, runtut, dan ramah bagi siswa SMP.
+4. **Finishing Timeline & Ekspor Video Utuh:**  
+   Sesuaikan durasi adegan dan transisi di timeline Google Vids, lalu ekspor video dalam rasio **16:9**, resolusi minimal **1080p Full HD**, simpan ke: `assets/video/siklus_cpu.mp4`.
 
 ---
 

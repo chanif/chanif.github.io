@@ -16,8 +16,7 @@
 1. **TP 1 (Konsep Sistem & Segitiga Emas):** Menjelaskan konsep **Sistem Komputer** sebagai kesatuan utuh **Hardware, Software, dan Brainware (Segitiga Emas)** beserta contoh penerapannya pada perangkat sehari-hari (HP, laptop, tablet, Smart TV).
 2. **TP 2 (Arsitektur Perangkat Keras & Motherboard):** Mengidentifikasi dan mengelompokkan **4 komponen utama perangkat keras** (Masukan/Input, Pemroses/CPU, Penyimpanan, dan Keluaran/Output) beserta fungsi **Motherboard** sebagai tulang punggung interkoneksi.
 3. **TP 3 (Mekanisme Pemrosesan & Siklus Mesin):** Menjelaskan mekanisme kerja internal CPU melalui **siklus mesin *Fetch–Decode–Execute–Store*** serta membedakan karakteristik memori kerja RAM (*volatile*) dan penyimpanan sekunder SSD (*non-volatile*).
-4. **TP 4 (Sistem Operasi & Integrasi Sinergis):** Menganalisis peran penting **Sistem Operasi (OS)** dalam manajemen proses (*multitasking*), memori (*Virtual Memory*), antarmuka pengguna (GUI & CLI), dan *device driver*, serta menghubungkannya kembali ke konsep Segitiga Emas.
-5. **TP 5 (Simulasi Perakitan & Troubleshooting):** Mensimulasikan **perakitan komponen komputer** secara kompatibel serta mendiagnosis kendala fungsi dasar (*troubleshooting*) berdasarkan gejala error hardware (indikator LED POST dan kode suara *beep* BIOS).
+4. **TP 4 (Sistem Operasi & Peran OS):** Menjelaskan peran **Sistem Operasi (OS)** sebagai penghubung (jembatan) antara Hardware, Software, dan Brainware, serta menyebutkan contoh OS yang digunakan pada perangkat sehari-hari (Windows, Android, iOS, macOS).
 
 ---
 
@@ -42,7 +41,7 @@ Modul dirancang dengan ritme pedagogis selang-seling interaktif (*interleaving*)
           ├── [14. Latihan Intro] ── [15. Evaluasi (PG, B/S, Jodohkan, Alur Booting)]
           ├── [16. Rangkuman & Refleksi Belajar] (Segitiga Emas di Poin 1)
           ├── [17. Referensi & Sumber Aset]
-          ├── [18. Dokumentasi Prompt AI & Transparansi Juknis]
+          ├── [18. Dokumentasi Prompt AI & Transparansi Aset]
           ├── [19. Profil Pengembang]
           ├── [20. Kutipan Inspiratif]
           └── [21. Kredit & Penutup Kemendikdasmen]
@@ -59,11 +58,16 @@ Modul dirancang dengan ritme pedagogis selang-seling interaktif (*interleaving*)
   - **Hardware (Raga/Fisik):** Komponen yang dapat disentuh (layar, prosesor, baterai, kamera, tombol).
   - **Software (Pikiran/Logika):** Program yang tidak dapat disentuh (Android, Windows, WhatsApp, peramban web).
   - **Brainware (Akal/Tujuan):** Manusia yang mengoperasikan dan menentukan arah instruksi (kamu, guru, programmer).
-- **Analogi Tubuh Manusia:**
-  - Tubuh = Hardware
-  - Pikiran = Software
-  - Niat/Tujuan Hidup = Brainware
+- **Jika 1 Unsur Hilang?**
+  - Tanpa Software: Hardware jadi benda mati (layar gelap tanpa instruksi).
+  - Tanpa Brainware: Komputer diam mematung (tak ada yang memberi perintah).
+  - Tanpa Hardware: Program tak punya raga fisik untuk dapat berjalan.
 - **Tabel Kontekstual Sehari-Hari:** Bukti sistem komputer pada Smartphone, Laptop, ATM Bank, dan Smart TV.
+- **Siklus Alur Kerja Sistem (Input – Proses – Output / IPO):**
+  - Input: Masukan data dari Brainware (keyboard, mikrofon, sentuhan).
+  - Proses: Pengolahan oleh CPU & RAM sesuai logika Software.
+  - Output: Hasil informasi bermanfaat bagi pengguna (layar, speaker, cetakan).
+
 
 ---
 

@@ -305,7 +305,17 @@ function goToPage(pageId) {
     if (!activeSec || activeSec.id === 'eval-section-recap') {
       startEval();
     }
+    const scrollHint = document.getElementById('eval-floating-scroll-hint');
+    if (scrollHint) {
+      const secA = document.getElementById('eval-section-A');
+      if (secA && secA.classList.contains('active')) {
+        scrollHint.classList.remove('hidden');
+      } else {
+        scrollHint.classList.add('hidden');
+      }
+    }
   }
+  if (pageId === 'rangkuman') loadRefleksi();
 }
 
 // ==================== GLOBAL COMPOUND NAVIGATION MAP ====================
@@ -1123,7 +1133,7 @@ function showGameHint() {
     showGameModal({
       icon: '💡',
       title: 'Bantuan Misi 3: Kode Beep Berulang',
-      text: 'Bunyi beep panjang berulang dan layar hitam no-signal umumnya menandakan memori RAM kotor atau longgar. Ikuti urutan SOP: Cabut listrik &rarr; Buka pengait &rarr; Lepas RAM &rarr; Bersihkan pin emas &rarr; Pasang kembali sampai berbunyi klik &rarr; Uji nyala.',
+      text: 'Bunyi beep panjang berulang dan layar hitam no-signal umumnya menandakan memori RAM kotor atau longgar. Ikuti urutan SOP: Cabut listrik &rarr; Buka pengait &rarr; Lepas RAM &rarr; Bersihkan pin emas &rarr; Pasang kembali sampai berbunyi klik &rarr; Nyalakan komputer.',
       actions: [{ text: 'Paham', primary: true, onClick: closeGameModal }]
     });
   } else if (lvl === 4) {
@@ -1151,7 +1161,7 @@ function renderCurrentStageUI() {
 
   if (computerGame.currentLevel === 1) {
     if (iconEl) iconEl.textContent = '🔧';
-    if (descEl) descEl.textContent = 'Misi 1: Seret & Lepas (Drag & Drop) 5 komponen yang kompatibel (CPU, RAM, SSD, GPU, PSU) ke Motherboard, lalu uji nyala!';
+    if (descEl) descEl.textContent = 'Misi 1: Seret & Lepas (Drag & Drop) 5 komponen yang kompatibel (CPU, RAM, SSD, GPU, PSU) ke Motherboard. Begitu semua slot terisi, sistem akan otomatis memeriksa apakah komputer berhasil menyala!';
     updateM1UI();
     setupM1DragDrop();
   } else if (computerGame.currentLevel === 2) {
@@ -1177,36 +1187,36 @@ const M1_CATALOG = {
   cpu_good: {
     slot: 'cpu',
     name: 'CPU Multi-Core LGA 1700',
-    tag: 'Soket LGA 1700',
+    tag: 'Socket LGA 1700',
     isGood: true,
     img: 'assets/component-cpu.svg',
     installedImg: 'assets/component-cpu.svg'
   },
   cpu_bad: {
     slot: 'cpu',
-    name: 'Cooler AM3 (Jebakan)',
-    tag: 'Salah Braket',
+    name: 'Cooler Heatsink AM3',
+    tag: 'Socket AM3 / FM2',
     isGood: false,
     img: 'assets/component-cooler.svg',
     installedImg: 'assets/component-cooler.svg',
-    error: 'Braket pendingin Cooler AM3 tidak pas dengan mounting Soket LGA 1700! Soket motherboard ini membutuhkan prosesor LGA 1700, bukan heatsink soket AMD jadul!'
+    error: 'Yang kamu pasang adalah Heatsink Cooler soket AMD, bukan prosesor CPU! Soket LGA 1700 masih kosong tanpa chip, sehingga komputer tidak memiliki otak pemroses instruksi.'
   },
   ram_good: {
     slot: 'ram',
     name: 'RAM 16GB DDR4',
-    tag: 'Slot DDR4 DIMM',
+    tag: 'DDR4 3200MHz',
     isGood: true,
     img: 'assets/component-ram.svg',
     installedImg: 'assets/component-ram-installed.svg'
   },
   ram_bad: {
     slot: 'ram',
-    name: 'RAM DDR2 Jadul',
-    tag: 'Notch Beda',
+    name: 'RAM 2GB DDR2',
+    tag: 'DDR2 800MHz',
     isGood: false,
     img: 'assets/component-ram-ddr2.svg',
     installedImg: 'assets/component-ram-ddr2-installed.svg',
-    error: 'Posisi lekukan (notch) DDR2 tidak cocok dengan slot RAM DDR4! Memaksa memasangnya akan merusak pin motherboard!'
+    error: 'RAM DDR2 memiliki posisi lekukan (notch) dan voltase berbeda dengan slot DDR4 modern. Komputer gagal menyala karena tidak ada memori kerja (RAM) yang kompatibel.'
   },
   ssd_good: {
     slot: 'ssd',
@@ -1218,12 +1228,12 @@ const M1_CATALOG = {
   },
   hdd_bad: {
     slot: 'ssd',
-    name: 'HDD IDE Kabel Pita',
-    tag: 'Kabel Usang',
+    name: 'Harddisk 80GB IDE',
+    tag: 'Kabel Pita IDE',
     isGood: false,
     img: 'assets/component-hdd-ide.svg',
     installedImg: 'assets/component-hdd-ide.svg',
-    error: 'Kabel pita IDE 40-pin kuno tidak memiliki konektor ke slot M.2 PCIe NVMe modern!'
+    error: 'Harddisk IDE menggunakan kabel pita kuno yang tidak bisa terhubung ke slot M.2 NVMe PCIe modern. Komputer tidak dapat booting karena tidak ada media penyimpanan sistem operasi.'
   },
   gpu_good: {
     slot: 'gpu',
@@ -1236,19 +1246,19 @@ const M1_CATALOG = {
   psu_good: {
     slot: 'psu',
     name: 'PSU 550W 80+ ATX',
-    tag: 'Konektor 24P',
+    tag: 'Konektor 24P ATX',
     isGood: true,
     img: 'assets/component-psu.svg',
     installedImg: 'assets/component-psu-installed.svg'
   },
   charger_bad: {
     slot: 'psu',
-    name: 'Adaptor HP 10W',
-    tag: 'Daya Lemah',
+    name: 'Adaptor Daya 10W DC',
+    tag: 'Output DC 5V 2A',
     isGood: false,
     img: 'assets/comp_charger_bad.jpg',
     installedImg: 'assets/comp_charger_bad.jpg',
-    error: 'Catu daya Adaptor HP 10W terlampau lemah dan menggunakan colokan USB! Motherboard desktop membutuhkan soket 24-Pin ATX minimal 400W–550W!'
+    error: 'Adaptor 10W DC hanya untuk charger ponsel dan tidak memiliki konektor 24-Pin ATX. Komputer kekurangan daya total sehingga mati (tidak ada daya listrik sama sekali).'
   }
 };
 
@@ -1317,7 +1327,7 @@ function showM1Notice(msg, type = 'info') {
   m1NoticeTimeout = setTimeout(() => {
     if (computerGame.currentLevel === 1) {
       iconEl.textContent = '🔧';
-      descEl.textContent = 'Misi 1: Seret & Lepas (Drag & Drop) 5 komponen yang kompatibel (CPU, RAM, SSD, GPU, PSU) ke Motherboard, lalu uji nyala!';
+      descEl.textContent = 'Misi 1: Seret & Lepas (Drag & Drop) 5 komponen yang kompatibel (CPU, RAM, SSD, GPU, PSU) ke Motherboard. Begitu semua slot terisi, sistem akan otomatis memeriksa apakah komputer berhasil menyala!';
     }
   }, 3500);
 }
@@ -1810,9 +1820,9 @@ function checkM1AutoCompletion() {
 
     setTimeout(() => {
       showGameModal({
-        icon: '🏆',
-        title: 'Perakitan Komputer Berhasil!',
-        text: 'Luar biasa! Seluruh 5 komponen utama (CPU Multi-Core LGA 1700, RAM 16GB DDR4, SSD NVMe M.2 512GB, GPU Dual-Fan PCIe x16, dan PSU 550W 80+ ATX) berhasil dipasang dengan tepat dan 100% kompatibel!',
+        icon: '💻',
+        title: 'Komputer Berhasil Menyala! 🎉',
+        text: '<strong>STATUS: BENAR (100% Kompatibel)</strong><br><br>Luar biasa! Seluruh 5 komponen (CPU LGA 1700, RAM DDR4, SSD M.2 NVMe, GPU PCIe x16, dan PSU ATX 550W) sangat cocok dengan spesifikasi Motherboard. Arus listrik mengalir sempurna dan komputer berhasil booting normal!',
         stars: '⭐ Misi 1 Selesai!',
         actions: [
           { text: 'Lanjut ke Misi 2 (Sakelar Biner) ▶', primary: true, onClick: () => { closeGameModal(); switchGameLevel(2); } }
@@ -1820,13 +1830,13 @@ function checkM1AutoCompletion() {
       });
     }, 300);
   } else {
-    // ADA KOMPONEN JEBAKAN / TIDAK KOMPATIBEL
+    // ADA KOMPONEN TIDAK KOMPATIBEL -> KOMPUTER TIDAK MENYALA
     const errors = [];
-    if (!isPsuOk) errors.push(`• <strong>Catu Daya (PSU):</strong> ${M1_CATALOG[m.psu]?.error || 'Catu daya tidak kompatibel!'}`);
-    if (!isCpuOk) errors.push(`• <strong>Prosesor (CPU):</strong> ${M1_CATALOG[m.cpu]?.error || 'Soket CPU salah!'}`);
-    if (!isRamOk) errors.push(`• <strong>Memori (RAM):</strong> ${M1_CATALOG[m.ram]?.error || 'Slot RAM tidak cocok!'}`);
-    if (!isGpuOk) errors.push(`• <strong>Kartu Grafis (GPU):</strong> Kartu grafis tidak sesuai!`);
-    if (!isSsdOk) errors.push(`• <strong>Penyimpanan (SSD):</strong> ${M1_CATALOG[m.ssd]?.error || 'Media penyimpanan tidak cocok!'}`);
+    if (!isPsuOk) errors.push(`⚡ <strong>Catu Daya (PSU):</strong> ${M1_CATALOG[m.psu]?.error || 'Catu daya tidak kompatibel!'}`);
+    if (!isCpuOk) errors.push(`🧠 <strong>Prosesor (CPU):</strong> ${M1_CATALOG[m.cpu]?.error || 'Soket CPU salah!'}`);
+    if (!isRamOk) errors.push(`💾 <strong>Memori (RAM):</strong> ${M1_CATALOG[m.ram]?.error || 'Slot RAM tidak cocok!'}`);
+    if (!isGpuOk) errors.push(`🖥️ <strong>Kartu Grafis (GPU):</strong> Kartu grafis belum terpasang dengan benar pada slot PCIe x16, sehingga tidak ada sinyal keluaran ke monitor!`);
+    if (!isSsdOk) errors.push(`📁 <strong>Penyimpanan (SSD):</strong> ${M1_CATALOG[m.ssd]?.error || 'Media penyimpanan tidak cocok!'}`);
 
     playBiosBeep(false);
     playSynthSound('error');
@@ -1834,11 +1844,11 @@ function checkM1AutoCompletion() {
     setTimeout(() => {
       showGameModal({
         icon: '⚠️',
-        title: 'Komponen Tidak Kompatibel!',
+        title: 'Komputer Tidak Menyala! ❌',
         titleClass: 'error',
-        text: `Kelima komponen telah dipasang, namun sistem mendeteksi ketidaksesuaian spesifikasi perangkat keras:<br><br><div style="text-align:left;font-size:12.5px;line-height:1.5;background:#fef2f2;border:1.5px solid #fecaca;padding:10px 14px;border-radius:8px;color:#991b1b;max-height:150px;overflow-y:auto;">${errors.join('<br><br>')}</div><br>Silakan tarik komponen yang tidak cocok kembali ke rak dan pasang komponen yang sesuai spesifikasi motherboard!`,
+        text: `<strong>STATUS: SALAH (Ada Komponen Tidak Cocok)</strong><br><br>Semua 5 slot sudah terisi, tetapi <strong>komputer gagal menyala</strong> karena masalah berikut:<br><br><div style="text-align:left;font-size:12px;line-height:1.55;background:#fef2f2;border:1.5px solid #fecaca;padding:10px 14px;border-radius:8px;color:#991b1b;max-height:170px;overflow-y:auto;">${errors.join('<br><br>')}</div><br>Silakan tarik komponen yang tidak cocok kembali ke rak dan pasang komponen yang sesuai spesifikasi motherboard!`,
         actions: [
-          { text: 'Periksa & Ganti Komponen', primary: true, onClick: closeGameModal }
+          { text: 'Periksa & Pasang Ulang', primary: true, onClick: closeGameModal }
         ]
       });
     }, 300);
@@ -2592,7 +2602,24 @@ function nextEvalSection(sectionId) {
   if (sectionId === 'D' && !evalSectionInited.D) initSeqSection();
 
   const evalBox = document.getElementById('eval-box');
-  if (evalBox) evalBox.scrollTop = 0;
+  if (evalBox) {
+    evalBox.scrollTop = 0;
+    const scrollHint = document.getElementById('eval-floating-scroll-hint');
+    if (scrollHint) {
+      if (sectionId === 'A') {
+        scrollHint.classList.remove('hidden');
+      } else {
+        scrollHint.classList.add('hidden');
+      }
+    }
+  }
+}
+
+function scrollEvalBoxDown() {
+  const evalBox = document.getElementById('eval-box');
+  if (evalBox) {
+    evalBox.scrollBy({ top: 380, behavior: 'smooth' });
+  }
 }
 
 function selectMCQ(el) {
@@ -3090,7 +3117,7 @@ function submitEval() {
 }
 
 
-// ==================== MOBILE & DESKTOP SWIPE NAVIGATION ====================
+// ==================== MOBILE & TABLET TOUCH SWIPE NAVIGATION ====================
 
 function initSwipeNavigation() {
   let startX = 0;
@@ -3099,33 +3126,40 @@ function initSwipeNavigation() {
   let tracking = false;
   let directionLocked = false; // once locked, won't change
   let isHorizontal = false;
-  let isMouse = false;
 
-  const MIN_DISTANCE = 40;  // px — minimum swipe distance
-  const MAX_TIME = 900;     // ms — maximum allowed swipe duration
+  const MIN_DISTANCE = 45;  // px — minimum swipe distance
   const LOCK_THRESHOLD = 8; // px — distance to lock direction
 
   // Elements that should NOT trigger page swipe
   function isInteractive(el) {
     if (!el || !(el instanceof Element)) return false;
 
+    // Never trigger swipe on interactive pages (simulation/games/matching)
+    if (['permainan', 'tarik-jawaban', 'evaluasi'].includes(currentPage)) {
+      return true;
+    }
+
     // Active modal overlay
     const modal = document.querySelector('.game-modal.show, #game-modal.show');
     if (modal && modal.contains(el)) return true;
 
     return !!el.closest([
-      'video', 'audio', 'canvas', 'input', 'textarea', 'select',
+      'video', 'audio', 'canvas', 'input', 'textarea', 'select', 'button',
       '.match-p8-item', '.match-item', '.match-col', '.match-column',
       '.seq-item', '.node-item', '.router-node',
       '.game-canvas', '#game-canvas', '.game-controls',
       '.packet-btn', '.route-btn',
       '.video-container', '.video-controls',
       '.qc-panel', '#quick-controls-panel',
+      '#page-permainan', '.game-stage-wrapper', '.motherboard-workspace-card',
+      '.inv-comp-card', '.mb-physical-slot', '[draggable="true"]',
       '.no-swipe', '[data-no-swipe]'
     ].join(','));
   }
 
-  // --- TOUCH EVENTS (Mobile & Tablet) ---
+  // --- TOUCH EVENTS ONLY (Mobile & Tablet) ---
+  // Catatan: Navigasi drag mouse pada desktop dinonaktifkan agar tidak berbenturan
+  // dengan fitur Drag & Drop komponen, seleksi teks, maupun klik interaktif.
   document.addEventListener('touchstart', function(e) {
     if (e.touches.length !== 1) return;
     if (isInteractive(e.target)) { tracking = false; return; }
@@ -3137,11 +3171,10 @@ function initSwipeNavigation() {
     tracking = true;
     directionLocked = false;
     isHorizontal = false;
-    isMouse = false;
   }, { passive: true });
 
   document.addEventListener('touchmove', function(e) {
-    if (!tracking || isMouse || e.touches.length !== 1) return;
+    if (!tracking || e.touches.length !== 1) return;
 
     const t = e.touches[0];
     const dx = t.clientX - startX;
@@ -3162,7 +3195,7 @@ function initSwipeNavigation() {
   }, { passive: false });
 
   document.addEventListener('touchend', function(e) {
-    if (!tracking || isMouse) return;
+    if (!tracking) return;
     tracking = false;
 
     // Only act on horizontal swipes
@@ -3185,63 +3218,6 @@ function initSwipeNavigation() {
   document.addEventListener('touchcancel', function() {
     tracking = false;
   }, { passive: true });
-
-  // --- MOUSE DRAG EVENTS (Desktop testing & touch-screen emulators) ---
-  document.addEventListener('mousedown', function(e) {
-    if (e.button !== 0) return;
-    if (isInteractive(e.target)) { tracking = false; return; }
-
-    startX = e.clientX;
-    startY = e.clientY;
-    startTime = Date.now();
-    tracking = true;
-    directionLocked = false;
-    isHorizontal = false;
-    isMouse = true;
-  });
-
-  document.addEventListener('mousemove', function(e) {
-    if (!tracking || !isMouse) return;
-
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
-    const ax = Math.abs(dx);
-    const ay = Math.abs(dy);
-
-    if (!directionLocked && (ax > LOCK_THRESHOLD || ay > LOCK_THRESHOLD)) {
-      directionLocked = true;
-      isHorizontal = ax > ay;
-    }
-
-    if (directionLocked && isHorizontal && e.cancelable) {
-      e.preventDefault();
-    }
-  });
-
-  document.addEventListener('mouseup', function(e) {
-    if (!tracking || !isMouse) return;
-    tracking = false;
-
-    if (!directionLocked || !isHorizontal) return;
-
-    const dx = e.clientX - startX;
-    const elapsed = Date.now() - startTime;
-
-    if (elapsed > 5000) return;
-    if (Math.abs(dx) < MIN_DISTANCE) return;
-
-    if (dx < 0) {
-      navNext();  // drag left → next
-    } else {
-      navPrev();  // drag right → prev
-    }
-  });
-
-  document.addEventListener('dragstart', function(e) {
-    if (tracking && isMouse && directionLocked && isHorizontal) {
-      e.preventDefault();
-    }
-  });
 }
 
 
@@ -3280,6 +3256,17 @@ document.addEventListener('DOMContentLoaded', function() {
       if (secC && secC.classList.contains('active')) {
         drawMatchLines();
       }
+
+      const scrollHint = document.getElementById('eval-floating-scroll-hint');
+      if (scrollHint) {
+        const secA = document.getElementById('eval-section-A');
+        const isSecA = secA && secA.classList.contains('active');
+        if (!isSecA || evalBox.scrollTop > 90 || (evalBox.scrollTop + evalBox.clientHeight >= evalBox.scrollHeight - 50)) {
+          scrollHint.classList.add('hidden');
+        } else {
+          scrollHint.classList.remove('hidden');
+        }
+      }
     });
   }
 
@@ -3316,3 +3303,61 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// ==================== REFLEKSI BELAJAR ====================
+function simpanRefleksi() {
+  const input = document.getElementById('refleksi-input');
+  const status = document.getElementById('refleksi-status');
+  if (!input) return;
+  const val = input.value.trim();
+  if (val.length === 0) {
+    if (status) {
+      status.textContent = '⚠️ Tuliskan refleksimu dulu!';
+      status.style.color = '#dc2626';
+      status.style.display = 'block';
+    }
+    return;
+  }
+  try {
+    localStorage.setItem('mpi_sk_refleksi', val);
+  } catch (e) {}
+  if (status) {
+    status.textContent = '✓ Refleksimu tersimpan!';
+    status.style.color = '#16a34a';
+    status.style.display = 'block';
+    setTimeout(() => {
+      status.style.display = 'none';
+    }, 3500);
+  }
+}
+
+function loadRefleksi() {
+  const input = document.getElementById('refleksi-input');
+  if (!input) return;
+  try {
+    const saved = localStorage.getItem('mpi_sk_refleksi');
+    if (saved && !input.value) {
+      input.value = saved;
+    }
+  } catch (e) {}
+}
+
+function scrollToRefleksi() {
+  const box = document.getElementById('content-rangkuman');
+  const target = document.querySelector('#page-rangkuman .refleksi-box') || document.getElementById('refleksi-input');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+      const input = document.getElementById('refleksi-input');
+      if (input) {
+        input.focus();
+        input.style.borderColor = 'var(--teal)';
+        setTimeout(() => {
+          input.style.borderColor = '';
+        }, 1500);
+      }
+    }, 450);
+  } else if (box) {
+    box.scrollTo({ top: box.scrollHeight, behavior: 'smooth' });
+  }
+}
