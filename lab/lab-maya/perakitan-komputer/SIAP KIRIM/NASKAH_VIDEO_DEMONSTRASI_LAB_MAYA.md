@@ -1,48 +1,46 @@
-# NASKAH REKAMAN VIDEO DEMONSTRASI (DURASI MAKSIMAL 3 MENIT)
-**KATEGORI SAYEMBARA: LAB MAYA (FESTIVAL BIRU PUTIH 2026)**  
-**KEMENTERIAN PENDIDIKAN DASAR DAN MENENGAH — DIREKTORAT SMP**  
+# NASKAH VIDEO DEMONSTRASI — LAB MAYA PERAKITAN KOMPUTER
+**Festival Biru Putih 2026 | Kategori: Lab Maya**  
+**SMP Negeri 2 Lamongan | Ach. Chanifuddin Fanani, S.Pd.**
 
 ---
 
-### Judul Karya
-**LABORATORIUM MAYA SISTEM KOMPUTER: SIMULASI PERAKITAN PC, DIAGNOSTIK HARDWARE & LOGIKA DIGITAL**
+## Informasi Rekaman
 
-### Identitas Pengembang
-- **Nama Pengembang:** Ach. Chanifuddin Fanani, S.Pd.  
-- **Unit Kerja:** SMP Negeri 2 Lamongan, Jawa Timur  
-- **Mata Pelajaran:** Informatika SMP — Fase D (Elemen Sistem Komputer)  
-- **Batas Waktu Juknis:** Tepat 3 Menit (180 Detik) — *Melebihi batas berisiko terkena penalti/diskualifikasi*  
-- **Target Durasi Bersih:** **2 Menit 45 Detik (165 Detik)** — *Memberikan batas jeda aman 15 detik*  
-- **Spesifikasi Video:** MP4 1080p (1920x1080) 30/60 FPS, Rasio Aspek 16:9, Audio Stereo Jernih  
+| | |
+|:--|:--|
+| **Durasi Target** | 2 menit 50 detik *(10 detik jeda aman dari batas 3 menit)* |
+| **Resolusi** | 1920 × 1080 (1080p), 30 FPS, rasio 16:9 |
+| **Format Output** | MP4 (H.264 codec) |
+| **Aplikasi Rekam** | OBS Studio / Clipchamp / Camtasia |
 
 ---
 
-## PETUNJUK TEKNIS PEREKAMAN VIDEO (RECORDING SETUP)
+## Sebelum Mulai Rekam
 
-1. **Aplikasi Rekam Layar:** Disarankan menggunakan **OBS Studio** (gratis & tanpa watermark), Camtasia, atau Microsoft Clipchamp. Atur resolusi kanvas perekaman tepat **1920 x 1080 piksel** pada rasio 16:9.
-2. **Kamera Presenter (Picture-in-Picture):** Posisikan kamera webcam presenter di sudut kanan bawah atau sudut kiri bawah selama **Scene 1 (Pembuka)** dan **Scene 6 (Penutup)** untuk membangun sentuhan personal dan kredibilitas dengan dewan juri. Selama demonstrasi teknis (Scene 2 s.d. 5), kamera webcam dapat diminimalkan atau disembunyikan agar seluruh area layar lab maya terlihat maksimal.
-3. **Persiapan Browser:** Buka karya di browser Google Chrome atau Microsoft Edge, lalu tekan tombol **F11** untuk mengaktifkan mode **Layar Penuh (Fullscreen)** tanpa bilah tab/URL browser.
-4. **Gerakan Mouse:** Gerakkan kursor mouse secara tenang, mantap, dan terarah. Hindari menggerakkan kursor melingkar-lingkar cepat di udara yang dapat mengganggu kenyamanan visual penonton.
-5. **Level Suara Audio:**
-   - Suara Vokal Narasi (Mikrofon): Sekitar **-6 dB s.d. -3 dB** (jelas, bersemangat, tidak pecah).
-   - Efek Suara Web Audio (Klik & Beep BIOS): Terdengar seimbang tanpa menenggelamkan suara vokal.
+- Buka `index.html` di **Chrome atau Edge**, tekan **F11** → mode layar penuh.
+- Kamera webcam: **aktif di sudut bawah** saat scene pertama dan penutup. Sembunyikan saat demonstrasi agar layar terlihat penuh.
+- Volume efek suara aplikasi (klik, beep BIOS): biarkan terdengar — itu bagian dari demo.
+- **Tidak perlu hafal narasi kata per kata.** Baca sekali, pahami alurnya, bicara natural.
 
 ---
 
-## TABEL STORYBOARD & NASKAH KATA-DEMI-KATA (SCENE-BY-SCENE)
+## Naskah Scene by Scene
 
-| Waktu / Durasi | Nama Scene | Panduan Aksi Layar (Visual & Kursor) | Naskah Narasi Suara (Voice Over) |
-| :---: | :--- | :--- | :--- |
-| **00:00 - 00:25**<br>*(25 detik)* | **Scene 1:**<br>Pembuka, Identitas & Latar Belakang Masalah | • Tampilkan Layar Pembuka (*Welcome Screen*).<br>• Perlihatkan logo Kemendikdasmen, judul Lab Maya, dan nama instansi SMPN 2 Lamongan.<br>• Kamera webcam presenter aktif di pojok bawah. | *"Halo Bapak Ibu Dewan Juri Festival Biru Putih 2026 yang terhormat. Saya Ach. Chanifuddin Fanani dari SMP Negeri 2 Lamongan.<br><br>Praktikum perangkat keras komputer di jenjang SMP sering terkendala mahalnya unit PC dan tingginya risiko kerusakan fisik komponen. Menjawab tantangan tersebut, saya mengembangkan inovasi: **Lab Maya Sistem Komputer: Perakitan PC & Logika Digital** — sebuah laboratorium virtual berbasis web, 100% luring, aman, dan tanpa biaya!"* |
-| **00:25 - 01:10**<br>*(45 detik)* | **Scene 2:**<br>Simulasi Rakit Motherboard ATX & Stepper Panduan | • Klik tombol **▶ MASUK LAB** &rarr; masuk ke Meja Rakit.<br>• Sorot badge **Langkah 1 dari 5** di bagian atas.<br>• Lakukan drag-and-drop 5 komponen secara berurutan:<br>  1. Tarik CPU ke soket LGA 1700 di tengah.<br>  2. Tarik RAM DDR4 ke slot DIMM.<br>  3. Tarik SSD NVMe M.2 ke soket M.2.<br>  4. Tarik GPU ke slot PCIe x16.<br>  5. Tarik kabel PSU 24-Pin ke header ATX.<br>• Seluruh 5 komponen terpasang presisi dengan status 5 dari 5. | *"Karya ini dirancang dengan rasio standar 16:9 berbasis arsitektur Single Page Application yang sangat responsif.<br><br>Di ruang meja rakit, peserta didik dipandu secara terstruktur melalui indikator langkah adaptif. Pertama, kita pasang prosesor ke soket LGA 1700. Sistem otomatis beralih ke Langkah 2: memasang modul RAM DDR4 ke slot memori. Dilanjutkan SSD NVMe M.2, kartu grafis GPU ke slot PCIe x16, dan terakhir kabel daya PSU 24-Pin. Seluruh komponen terpasang presisi dengan status 5 dari 5!"* |
-| **01:10 - 01:38**<br>*(28 detik)* | **Scene 3:**<br>Mode Uji Masalah (Troubleshoot) & Distraktor | • Klik tombol **🔍 Uji Masalah**.<br>• Tarik **RAM DDR2 lama** ke motherboard &rarr; muncul kotak dialog penolakan merah edukatif.<br>• Tarik **HDD IDE pita kuno** &rarr; ditolak dengan penjelasan logis. | *"Sesuai rubrik Juknis untuk mengeksplorasi berbagai skenario, tersedia mode **Uji Masalah**. Murid diajak bernalar kritis: bagaimana jika memasang RAM DDR2 lama ke motherboard modern? Sistem cerdas langsung menolak dan menjelaskan perbedaan notch pin serta generasi teknologi. Ini melatih penalaran problem-solving tanpa risiko alat rusak!"* |
-| **01:38 - 02:05**<br>*(27 detik)* | **Scene 4:**<br>Uji Booting POST BIOS & Siklus Von Neumann | • Klik tombol **⚡ POWER ON / UJI BOOT**.<br>• Sorot 4 lampu LED (CPU, DRAM, VGA, BOOT menyala hijau berurutan).<br>• Terdengar bunyi nada beep BIOS sukses.<br>• Sorot terminal log BIOS yang memaparkan alur *Fetch-Decode-Execute*. | *"Setelah perakitan lengkap, kita uji dengan menekan tombol **POWER ON / UJI BOOT**. Lab Maya menyimulasikan Power-On Self-Test (POST) secara nyata! Lampu indikator LED menyala bertahap, disusul suara beep BIOS, dan terminal diagnostik memperagakan siklus Von Neumann — bagaimana CPU mengambil instruksi dari RAM dan mengeksekusinya secara visual."* |
-| **02:05 - 02:32**<br>*(27 detik)* | **Scene 5:**<br>Eksplorasi Digital & LKPD Formatif | • Klik tab **Eksplorasi Digital**.<br>  - Klik 2-3 sakelar biner (tunjukkan nilai desimal berganti real-time).<br>  - Geser slider RGB (tunjukkan warna piksel & kode HEX).<br>  - Klik sakelar gerbang logika AND/OR.<br>• Buka tab **✍️ LKPD & Kuis**. | *"Tidak hanya hardware fisik, Lab Maya ini memfasilitasi konsep abstrak komputasi di tab **Eksplorasi Digital**: sakelar biner 8-bit real-time, pencampuran warna monitor RGB 24-bit, hingga simulator gerbang logika.<br><br>Seluruh capaian dievaluasi melalui LKPD digital dan kuis formatif dengan penilaian skor instan serta pembahasan mendalam."* |
-| **02:32 - 02:45**<br>*(13 detik)* | **Scene 6:**<br>Penutup & Komitmen Pembelajaran | • Tampilkan kembali layar utama / wajah presenter.<br>• Muncul teks identitas, SMP Negeri 2 Lamongan, dan logo kementerian. | *"Lab Maya Sistem Komputer: wujud nyata digitalisasi pembelajaran Informatika yang bermakna, interaktif, dan berpusat pada murid.<br><br>Terima kasih kepada Direktorat SMP Kemendikdasmen. Salam hangat dari SMP Negeri 2 Lamongan!"* |
+| Waktu | Scene | Apa yang dilakukan di layar | Narasi |
+|:---:|:---|:---|:---|
+| **00:00 – 00:18**<br>18 detik | **Pembuka** | Tampilkan Welcome Screen.<br>Kamera wajah aktif di sudut bawah.<br>Tunjuk logo sekolah dan judul karya. | *"Assalamu'alaikum. Saya Chanifuddin Fanani, guru Informatika di SMP Negeri 2 Lamongan.*<br><br>*Ini karya yang ingin saya perkenalkan: Lab Maya Sistem Komputer. Saya buat ini karena satu alasan sederhana — siswa saya ingin belajar merakit komputer, tapi tidak ada satu pun PC yang boleh dibongkar di sekolah."* |
+| **00:18 – 00:52**<br>34 detik | **Meja Rakit PC** | Klik **▶ MASUK LAB**.<br>Sorot badge *Langkah 1 dari 5*.<br>Seret komponen ke motherboard satu per satu:<br>① CPU → soket LGA 1700<br>② RAM DDR4 → slot DIMM<br>③ SSD NVMe M.2<br>④ GPU → slot PCIe x16<br>⑤ Kabel PSU 24-Pin<br>*(biarkan bunyi klik terdengar setiap komponen terpasang)* | *"Begitu masuk, siswa disambut meja kerja motherboard. Ada panduan langkah yang muncul sendiri: 'Langkah 1, pasang CPU ke soket LGA 1700.'*<br><br>*Tinggal seret ke tempatnya — klik, terpasang. Lanjut RAM... SSD NVMe... GPU... kabel daya. Lima langkah, dan siswa betul-betul paham urutannya."* |
+| **00:52 – 01:18**<br>26 detik | **Uji Masalah** | Klik **🔍 Uji Masalah**.<br>Seret RAM DDR2 ke motherboard → muncul notif penolakan merah dengan penjelasan.<br>Seret HDD IDE → ditolak juga. | *"Nah ini yang bikin beda. Ada mode Uji Masalah — komponen yang muncul sengaja salah generasi: RAM DDR2 lama, harddisk IDE yang tidak lagi kompatibel.*<br><br>*Siswa coba pasang... sistem langsung respons dengan penjelasan kenapa ditolak. Di sini mereka belajar troubleshooting, bukan sekadar perakitan normal."* |
+| **01:18 – 01:42**<br>24 detik | **Uji Boot & POST BIOS** | Klik **⚡ POWER ON / UJI BOOT**.<br>Tunjukkan 4 lampu LED menyala satu per satu: CPU → DRAM → VGA → BOOT.<br>Bunyi beep terdengar.<br>Sorot log terminal POST. | *"Semua terpasang benar — tombol Power aktif. Klik... dan saat inilah yang paling siswa tunggu: lampu LED menyala satu per satu, bunyi beep BIOS, lalu terminal menampilkan cara kerja CPU — Fetch instruksi, Decode, Execute.*<br><br>*Dari merakit fisik, mereka langsung melihat prosesnya. Nyambung."* |
+| **01:42 – 02:12**<br>30 detik | **Eksplorasi Digital** | Klik tab **Eksplorasi Digital**.<br>Klik sakelar biner → nilai desimal berubah real-time.<br>Geser slider RGB → tunjukkan warna dan kode HEX berubah.<br>Klik input gerbang logika AND → tabel kebenaran muncul. | *"Masih ada satu ruang lagi: Eksplorasi Digital.*<br><br>*Sakelar biner delapan bit — klik on dan off, nilai desimalnya langsung berubah di hadapan mata. Slider RGB — geser merah, tambah biru, terjadi pencampuran warna nyata persis seperti cara monitor bekerja. Plus simulasi gerbang logika yang bisa siswa uji sendiri.*<br><br>*Konsep yang selama ini abstrak, di sini jadi sesuatu yang bisa dimain-mainkan."* |
+| **02:12 – 02:38**<br>26 detik | **LKPD & Kuis** | Klik tab **✍️ LKPD & Kuis**.<br>Tampilkan soal studi kasus kerusakan PC.<br>Pilih satu jawaban → muncul pembahasan langsung. | *"Terakhir, ada LKPD dan kuis. Soalnya bukan hafalan — siswa dihadapkan pada kasus: 'PC hidup tapi tidak ada tampilan, apa yang rusak?' Mereka harus menganalisis sebelum menjawab.*<br><br>*Begitu pilih jawaban, pembahasan langsung keluar. Nilai otomatis terekap. Guru bisa tahu langsung mana yang sudah paham, mana yang belum."* |
+| **02:38 – 02:52**<br>14 detik | **Penutup** | Kembali ke Welcome Screen.<br>Kamera wajah aktif kembali. | *"Lab Maya ini bukan pengganti lab fisik. Tapi setidaknya, tidak ada lagi siswa yang hanya bisa lihat gambar komputer dari buku teks.*<br><br>*Terima kasih. Wassalamu'alaikum dari Lamongan."* |
 
 ---
 
-### Tips Sukses Saat Pengambilan Gambar (Recording Take):
-- Lakukan latihan pembacaan naskah (gladi kotor) sebanyak 1-2 kali dengan stopwatch/timer di ponsel agar tempo bicara stabil dan tidak terburu-buru.
-- Beri jeda 0,5 detik sebelum mengklik elemen di layar agar penonton dapat melihat kursor bergerak secara alami.
-- Pastikan ruangan Anda tenang saat rekaman suara.
+## Tips Saat Rekaman
+
+- Bicara **seperti sedang mengajar**, bukan seperti sedang presentasi formal. Lebih hangat, lebih dipercaya.
+- Kalau gagal di tengah-tengah scene — **jangan langsung mulai ulang dari awal**. Diam 2 detik, ulangi dari kalimat terakhir yang benar. Saat editing tinggal potong.
+- Scene Eksplorasi Digital bisa dipercepat kalau waktu mepet. Cukup tunjukkan biner dan RGB, gerbang logika bisa dilewati.
+- **Rekam minimal 2 take**. Take pertama biasanya untuk "pemanasan", take kedua biasanya lebih baik.
