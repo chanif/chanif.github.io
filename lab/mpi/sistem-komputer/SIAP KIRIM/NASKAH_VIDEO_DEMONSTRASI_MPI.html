@@ -16,14 +16,11 @@
       --border: #2d3148;
       --accent: #a78bfa;
       --accent2: #34d399;
-      --warn: #f59e0b;
       --text: #e2e8f0;
       --text-muted: #8892a4;
       --scene-num: #c084fc;
       --narasi-bg: #1a0d3c;
-      --narasi-border: #6d28d9;
       --action-bg: #14261a;
-      --action-border: #166534;
     }
 
     body {
@@ -37,7 +34,7 @@
     .page-header {
       background: linear-gradient(135deg, #2d1b69 0%, #111827 60%);
       border-bottom: 1px solid var(--border);
-      padding: 40px 40px 36px;
+      padding: 36px 40px 32px;
       position: relative;
       overflow: hidden;
     }
@@ -49,38 +46,15 @@
       border-radius: 50%;
       background: rgba(167,139,250,.07);
     }
-    .header-tag {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-    .header-title {
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 6px;
-    }
-    .header-subtitle {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-    }
+    .header-tag { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .header-title { font-size: 22px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+    .header-subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
     .meta-row { display: flex; flex-wrap: wrap; gap: 10px; }
-    .meta-chip {
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 5px 12px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+    .meta-chip { background: rgba(255,255,255,.06); border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 12px; color: var(--text-muted); }
     .meta-chip strong { color: var(--text); }
 
     .alert {
-      margin: 28px 40px 0;
+      margin: 24px 40px 0;
       background: rgba(245,158,11,.07);
       border: 1px solid rgba(245,158,11,.3);
       border-radius: 10px;
@@ -91,162 +65,57 @@
       gap: 12px;
       align-items: flex-start;
     }
-    .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .alert-icon { font-size: 18px; flex-shrink: 0; }
 
     .setup {
-      margin: 28px 40px 0;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 24px;
-    }
-    .section-title {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-    .setup-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .setup-list li {
-      font-size: 13.5px;
-      color: var(--text);
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      line-height: 1.5;
-    }
-    .setup-list li::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-    .setup-list code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1px 6px;
-      color: var(--accent2);
-    }
-
-    .scenes-wrapper {
-      margin: 28px 40px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .scene-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .scene-head {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface2);
-    }
-    .scene-badge {
-      background: rgba(192,132,252,.12);
-      border: 1px solid rgba(192,132,252,.3);
-      color: var(--scene-num);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 6px;
-      white-space: nowrap;
-    }
-    .scene-name { font-size: 15px; font-weight: 600; flex: 1; }
-    .scene-time {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: var(--accent);
-      font-weight: 500;
-      white-space: nowrap;
-    }
-    .scene-dur { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
-
-    .scene-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    .action-box {
-      padding: 18px 20px;
-      border-right: 1px solid var(--border);
-      background: var(--action-bg);
-    }
-    .narasi-box { padding: 18px 20px; background: var(--narasi-bg); }
-    .box-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .action-box .box-label { color: var(--accent2); }
-    .narasi-box .box-label { color: #d8b4fe; }
-
-    .action-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .action-list li {
-      font-size: 13px;
-      color: var(--text);
-      line-height: 1.5;
-      padding-left: 18px;
-      position: relative;
-    }
-    .action-list li::before { content: '•'; position: absolute; left: 4px; color: var(--accent2); }
-    .action-list li em { color: var(--text-muted); font-style: normal; }
-    .action-list .step-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px; height: 18px;
-      background: rgba(52,211,153,.15);
-      border: 1px solid rgba(52,211,153,.35);
-      border-radius: 50%;
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--accent2);
-      margin-right: 4px;
-      flex-shrink: 0;
-    }
-    .action-list li.step { display: flex; align-items: flex-start; padding-left: 0; gap: 6px; }
-    .action-list li.step::before { display: none; }
-
-    .narasi-text {
-      font-size: 14px;
-      line-height: 1.75;
-      color: #e9d5ff;
-      font-style: italic;
-    }
-
-    .tips {
       margin: 24px 40px 0;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px 24px;
+      padding: 18px 22px;
     }
-    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .tips-list li {
-      font-size: 13.5px;
-      color: var(--text);
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      line-height: 1.55;
-    }
-    .tips-list .tip-icon { flex-shrink: 0; font-size: 16px; }
+    .section-title { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .setup-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .setup-list li { font-size: 13.5px; display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; }
+    .setup-list li::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: rgba(255,255,255,.07); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; color: var(--accent2); }
+    kbd { display: inline-block; background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #e2e8f0; }
+
+    .timeline { margin: 24px 40px 0; display: flex; flex-direction: column; gap: 0; }
+    .scene-block { display: flex; gap: 0; }
+    .scene-gutter { display: flex; flex-direction: column; align-items: center; width: 90px; flex-shrink: 0; }
+    .scene-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); box-shadow: 0 0 0 3px rgba(167,139,250,.25); flex-shrink: 0; margin-top: 18px; }
+    .scene-line { width: 2px; flex: 1; min-height: 20px; background: var(--border); margin: 4px 0; }
+    .scene-time-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); white-space: nowrap; margin-top: 2px; text-align: center; }
+    .scene-dur-label { font-size: 10px; color: var(--text-muted); text-align: center; }
+    .scene-content { flex: 1; padding: 0 0 28px 16px; }
+    .scene-head-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-top: 14px; }
+    .scene-badge { background: rgba(192,132,252,.12); border: 1px solid rgba(192,132,252,.3); color: var(--scene-num); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px; border-radius: 5px; }
+    .scene-name { font-size: 14px; font-weight: 600; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .action-box { background: var(--action-bg); border: 1px solid #1f4a2e; border-radius: 10px; padding: 14px 16px; }
+    .narasi-box { background: var(--narasi-bg); border: 1px solid #3b1d6a; border-radius: 10px; padding: 14px 16px; }
+    .box-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+    .action-box .box-label { color: var(--accent2); }
+    .narasi-box .box-label { color: #d8b4fe; }
+
+    .action-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .action-list li { font-size: 13px; line-height: 1.5; padding-left: 14px; position: relative; }
+    .action-list li::before { content: '▸'; position: absolute; left: 0; color: var(--accent2); font-size: 10px; top: 3px; }
+    .action-list li.note { color: var(--text-muted); font-style: italic; }
+    .action-list li.note::before { content: '—'; }
+
+    .narasi-text { font-size: 14px; line-height: 1.85; color: #e9d5ff; }
+
+    .tips { margin: 16px 40px 0; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tips-list li { font-size: 13.5px; display: flex; gap: 10px; align-items: flex-start; line-height: 1.55; }
 
     @media print {
       body { background: #fff; color: #111; }
-      .scene-card { page-break-inside: avoid; border: 1px solid #ccc; }
-      .narasi-text { color: #1a1a2e; }
+      .page-header { background: #2d1b69; color: #fff; }
+      .scene-block { page-break-inside: avoid; }
     }
   </style>
 </head>
@@ -257,219 +126,305 @@
   <h1 class="header-title">MPI Sistem Komputer<br>Menyelam ke Dalam Mesin</h1>
   <p class="header-subtitle">Ach. Chanifuddin Fanani, S.Pd. · SMP Negeri 2 Lamongan · Informatika Fase D</p>
   <div class="meta-row">
-    <span class="meta-chip"><strong>Durasi target</strong> 2 menit 50 detik</span>
-    <span class="meta-chip"><strong>Batas juknis</strong> 3 menit (180 detik)</span>
+    <span class="meta-chip"><strong>Durasi target</strong> ~2 menit 50 detik</span>
+    <span class="meta-chip"><strong>Batas juknis</strong> 3 menit</span>
     <span class="meta-chip"><strong>Format</strong> MP4 · 1080p · 30 FPS · 16:9</span>
-    <span class="meta-chip"><strong>Mode rekam</strong> Rekam layar saja (tanpa kamera wajah)</span>
+    <span class="meta-chip"><strong>Mode</strong> Rekam layar saja</span>
   </div>
 </div>
 
 <div class="alert">
   <span class="alert-icon">⚠️</span>
-  <span><strong>Perhatikan batas durasi 3 menit.</strong> Jika waktunya mepet, bagian Transparansi Prompt AI bisa diperpendek — cukup tunjukkan halamannya sebentar tanpa dibaca semua.</span>
+  <span><strong>Jangan hafal kata per kata.</strong> Narasi di bawah adalah panduan alur — baca sekali, pahami, lalu bicarakan dengan kata-katamu sendiri. Yang penting urutan fitur terdemonstrasikan sesuai scene.</span>
 </div>
 
 <div class="setup">
-  <div class="section-title">⚙️ Setup Sebelum Rekam</div>
+  <div class="section-title">⚙️ Persiapan Sebelum Rekam</div>
   <ul class="setup-list">
-    <li>Buka <code>index.html</code> di Chrome atau Edge → klik ikon layar penuh di aplikasi, atau tekan <strong>F11</strong>.</li>
-    <li>Volume musik latar (BGM) aplikasi: turunkan ke sekitar <strong>15–20%</strong> agar narasi vokal tetap dominan.</li>
-    <li>Aplikasi rekam layar: OBS Studio (disarankan) · Clipchamp · Camtasia. Kanvas rekaman: <strong>1920 × 1080</strong>.</li>
-    <li>Narasi disampaikan lewat mikrofon. <strong>Tidak perlu dibaca kata per kata</strong> — pahami alurnya, bicara seperti biasa mengajar.</li>
-    <li>Latih sekali tanpa rekam sambil pegang timer di ponsel.</li>
+    <li>Buka <code>index.html</code> di Chrome atau Edge. Klik tombol <kbd>▶ MULAI</kbd> dan pastikan tampilan sudah penuh layar.</li>
+    <li>Volume musik latar (BGM): turunkan ke sekitar <strong>15%</strong> agar narasi vokal tetap dominan.</li>
+    <li>Resolusi rekam: <strong>1920 × 1080</strong>. Gunakan OBS Studio atau Clipchamp.</li>
+    <li>Latih sekali tanpa rekam dengan stopwatch di tangan.</li>
   </ul>
 </div>
 
-<div class="scenes-wrapper">
-  <div class="section-title" style="margin: 0 0 -8px;">🎬 Scene by Scene</div>
+<div class="timeline">
 
   <!-- Scene 1 -->
-  <div class="scene-card">
-    <div class="scene-head">
-      <span class="scene-badge">Scene 1</span>
-      <span class="scene-name">Pembuka — Cover Depan &amp; Latar Belakang</span>
-      <span class="scene-time">00:00 – 00:20</span>
-      <span class="scene-dur">20 det</span>
+  <div class="scene-block">
+    <div class="scene-gutter">
+      <div class="scene-time-label">00:00</div>
+      <div class="scene-dot" style="background:#c084fc;box-shadow:0 0 0 3px rgba(192,132,252,.25);"></div>
+      <div class="scene-line"></div>
+      <div class="scene-dur-label">~20 det</div>
     </div>
-    <div class="scene-body">
-      <div class="action-box">
-        <div class="box-label">🖥 Aksi di Layar</div>
-        <ul class="action-list">
-          <li>Tampilkan cover depan MPI penuh.</li>
-          <li>Biarkan musik ambient berjalan 2 detik sebelum mulai bicara.</li>
-          <li>Sorot judul karya dan identitas pengembang di layar.</li>
-        </ul>
+    <div class="scene-content">
+      <div class="scene-head-row">
+        <span class="scene-badge">Scene 1</span>
+        <span class="scene-name">Halaman Cover — Tampilan Awal</span>
       </div>
-      <div class="narasi-box">
-        <div class="box-label">🎙 Narasi</div>
-        <p class="narasi-text">"Assalamu'alaikum. Saya Chanifuddin Fanani, guru Informatika SMP Negeri 2 Lamongan.<br><br>Ini adalah MPI Sistem Komputer — 'Menyelam ke Dalam Mesin'. Saya beri judul seperti itu karena saya ingin siswa tidak hanya tahu komputer itu ada, tapi benar-benar paham apa yang sedang terjadi di dalamnya."</p>
+      <div class="two-col">
+        <div class="action-box">
+          <div class="box-label">🖥 Di Layar</div>
+          <ul class="action-list">
+            <li>Tampilkan halaman cover penuh — biarkan musik ambient 2 detik.</li>
+            <li>Tunjuk logo <strong>Kemendikdasmen</strong> di kiri atas.</li>
+            <li>Tunjuk logo <strong>Sobat SMP</strong> di kanan atas.</li>
+            <li>Sorot judul: <em>"Sistem Komputer — Menyelam ke Dalam Mesin Digital"</em>.</li>
+            <li>Tunjuk tombol <kbd>▶ MULAI</kbd> di bagian tengah.</li>
+          </ul>
+        </div>
+        <div class="narasi-box">
+          <div class="box-label">🎙 Narasi</div>
+          <p class="narasi-text">Assalamu'alaikum warahmatullahi wabarakatuh, salam sejahtera untuk kita semua. Saya Fanani, guru Informatika di SMP Negeri 2 Lamongan.
+
+Ini adalah Media Pembelajaran Interaktif Sistem Komputer yang telah kami kembangkan.
+
+Halaman awal atau cover menampilkan logo Kemendikdasmen di kiri atas, logo Sobat SMP di kanan atas, judul MPI di tengah, dan tombol Mulai untuk memulai pembelajaran.</p>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Scene 2 -->
-  <div class="scene-card">
-    <div class="scene-head">
-      <span class="scene-badge">Scene 2</span>
-      <span class="scene-name">Menu Utama &amp; Materi Segitiga Emas</span>
-      <span class="scene-time">00:20 – 00:48</span>
-      <span class="scene-dur">28 det</span>
+  <div class="scene-block">
+    <div class="scene-gutter">
+      <div class="scene-time-label">00:20</div>
+      <div class="scene-dot"></div>
+      <div class="scene-line"></div>
+      <div class="scene-dur-label">~25 det</div>
     </div>
-    <div class="scene-body">
-      <div class="action-box">
-        <div class="box-label">🖥 Aksi di Layar</div>
-        <ul class="action-list">
-          <li>Klik <strong>MULAI BELAJAR</strong> → Menu Utama muncul.</li>
-          <li>Tunjukkan 6 kartu modul sejenak (jangan diklik semua).</li>
-          <li>Klik kartu <strong>Materi</strong> → Daftar Materi.</li>
-          <li>Klik Materi 1 → Halaman Segitiga Emas.</li>
-          <li>Klik salah satu sudut diagram (Hardware / Software / Brainware).</li>
-        </ul>
+    <div class="scene-content">
+      <div class="scene-head-row">
+        <span class="scene-badge">Scene 2</span>
+        <span class="scene-name">Menu Utama — 6 Kartu Navigasi</span>
       </div>
-      <div class="narasi-box">
-        <div class="box-label">🎙 Narasi</div>
-        <p class="narasi-text">"Dari menu utama, siswa bebas pilih mulai dari mana — ada materi, permainan, evaluasi, tidak harus linear.<br><br>Kita masuk ke materi pertama: Segitiga Emas Komputer. Hardware, Software, Brainware. Masing-masing bisa diklik, dibaca penjelasannya, dieksplor — bukan sekadar gambar diam."</p>
+      <div class="two-col">
+        <div class="action-box">
+          <div class="box-label">🖥 Di Layar</div>
+          <ul class="action-list">
+            <li>Klik <kbd>▶ MULAI</kbd> → Menu Utama tampil.</li>
+            <li>Tunjuk kontrol kanan atas: tombol Zoom (🔍) dan ukuran huruf (Aa).</li>
+            <li>Sorot 6 kartu menu satu per satu: Petunjuk, Tujuan Pembelajaran, Materi, Permainan, Latihan, Rangkuman.</li>
+            <li>Klik kartu <strong>Petunjuk</strong> sebentar — tunjukkan isinya.</li>
+            <li>Kembali ke Menu.</li>
+          </ul>
+        </div>
+        <div class="narasi-box">
+          <div class="box-label">🎙 Narasi</div>
+          <p class="narasi-text">Setelah masuk, tampil Menu Utama dengan enam kartu. Di kanan atas ada dua kontrol tampilan: tombol zoom untuk memperbesar atau memperkecil layar, dan tombol Aa untuk mengatur ukuran huruf.
+
+Enam menu tersebut adalah: Petunjuk berisi cara penggunaan MPI, Tujuan Pembelajaran, Materi, Permainan, Latihan evaluasi, dan Rangkuman.</p>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Scene 3 -->
-  <div class="scene-card">
-    <div class="scene-head">
-      <span class="scene-badge">Scene 3</span>
-      <span class="scene-name">Aktivitas Tarik Jawaban &amp; Video Animasi CPU</span>
-      <span class="scene-time">00:48 – 01:15</span>
-      <span class="scene-dur">27 det</span>
+  <div class="scene-block">
+    <div class="scene-gutter">
+      <div class="scene-time-label">00:45</div>
+      <div class="scene-dot"></div>
+      <div class="scene-line"></div>
+      <div class="scene-dur-label">~30 det</div>
     </div>
-    <div class="scene-body">
-      <div class="action-box">
-        <div class="box-label">🖥 Aksi di Layar</div>
-        <ul class="action-list">
-          <li>Klik Next → Halaman Tarik Jawaban.</li>
-          <li class="step"><span class="step-num">①</span> Seret Keyboard → kotak Input</li>
-          <li class="step"><span class="step-num">②</span> Seret CPU → kotak Pemrosesan</li>
-          <li class="step"><span class="step-num">③</span> Seret Monitor → kotak Output</li>
-          <li>Validasi muncul otomatis.</li>
-          <li>Klik Next → Halaman Video Animasi.</li>
-          <li>Klik play → putar 6–8 detik.</li>
-        </ul>
+    <div class="scene-content">
+      <div class="scene-head-row">
+        <span class="scene-badge">Scene 3</span>
+        <span class="scene-name">Menu Materi — 6 Bagian Pembelajaran</span>
       </div>
-      <div class="narasi-box">
-        <div class="box-label">🎙 Narasi</div>
-        <p class="narasi-text">"Setelah baca materi, langsung ada aktivitas: seret nama komponen ke kategorinya — Input, Pemrosesan, Penyimpanan, Output. Kalau salah, dikasih tahu. Kalau benar, lanjut.<br><br>Terus ada video animasi — ini yang sering siswa minta putar berulang kali. Menampilkan bagaimana instruksi mengalir dari RAM ke Control Unit, ke ALU, balik lagi. Offline, tidak perlu internet."</p>
+      <div class="two-col">
+        <div class="action-box">
+          <div class="box-label">🖥 Di Layar</div>
+          <ul class="action-list">
+            <li>Klik kartu <strong>Materi</strong> → Daftar 6 kartu materi muncul.</li>
+            <li>Tunjukkan keenam kartu: Bagian 1 s.d. 6.</li>
+            <li>Klik kartu <strong>Bagian 1: Sistem Komputer & Segitiga Emas</strong>.</li>
+            <li>Scroll sekilas — tunjukkan konten dua kolom (Hardware/Software/Brainware + tabel perangkat).</li>
+            <li>Klik navigasi <strong>▶</strong> → masuk Bagian 2: Uji Menjodohkan.</li>
+            <li>Tunjukkan sebentar tampilan aktivitas menjodohkan — klik 1–2 jawaban.</li>
+          </ul>
+        </div>
+        <div class="narasi-box">
+          <div class="box-label">🎙 Narasi</div>
+          <p class="narasi-text">Di menu Materi, ada enam bagian. Bagian pertama membahas Sistem Komputer dan Segitiga Emas — Hardware, Software, dan Brainware. Setiap konsep dijelaskan dengan contoh perangkat yang siswa gunakan sehari-hari.
+
+Bagian kedua langsung interaktif: siswa menjodohkan nama komponen dengan fungsinya. Bukan sekadar membaca, tapi langsung berlatih.</p>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Scene 4 -->
-  <div class="scene-card">
-    <div class="scene-head">
-      <span class="scene-badge">Scene 4</span>
-      <span class="scene-name">Permainan Simulator &amp; Troubleshooting</span>
-      <span class="scene-time">01:15 – 01:42</span>
-      <span class="scene-dur">27 det</span>
+  <div class="scene-block">
+    <div class="scene-gutter">
+      <div class="scene-time-label">01:15</div>
+      <div class="scene-dot" style="background:#f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,.25);width:16px;height:16px;"></div>
+      <div class="scene-line"></div>
+      <div class="scene-dur-label">~25 det</div>
     </div>
-    <div class="scene-body">
-      <div class="action-box">
-        <div class="box-label">🖥 Aksi di Layar</div>
-        <ul class="action-list">
-          <li>Kembali ke Menu → klik kartu <strong>Permainan</strong>.</li>
-          <li>Layar intro permainan → klik <strong>Mulai</strong>.</li>
-          <li>Tampilkan salah satu skenario kerusakan di layar.</li>
-          <li>Pilih satu komponen sebagai jawaban → tunjukkan respons/feedback-nya.</li>
-        </ul>
+    <div class="scene-content">
+      <div class="scene-head-row">
+        <span class="scene-badge" style="background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.4);color:#f59e0b;">Scene 4 ⭐</span>
+        <span class="scene-name">Bagian 4 — Video Animasi Siklus CPU (Luring)</span>
       </div>
-      <div class="narasi-box">
-        <div class="box-label">🎙 Narasi</div>
-        <p class="narasi-text">"Bagian yang biasanya paling rame di kelas: Permainan. Siswa dikasih skenario — 'Komputer menyala tapi tidak ada tampilan di monitor. Masalahnya di mana?'<br><br>Mereka harus diagnosa sendiri. Salah? Ada penjelasannya. Benar? Ada reward-nya. Tanpa mereka sadari, mereka sedang berpikir seperti teknisi."</p>
+      <div class="two-col">
+        <div class="action-box">
+          <div class="box-label">🖥 Di Layar</div>
+          <ul class="action-list">
+            <li>Dari Materi, navigasi ke <strong>Bagian 4: Simulasi Video Siklus CPU</strong>.</li>
+            <li>Klik play → putar video <strong>6–8 detik</strong> saja (cukup tunjukkan video bergerak).</li>
+            <li class="note">Video ini dibuat dengan Google Vids, berjalan offline tanpa internet.</li>
+          </ul>
+        </div>
+        <div class="narasi-box">
+          <div class="box-label">🎙 Narasi</div>
+          <p class="narasi-text">Di Bagian 4, ada video animasi siklus CPU — menampilkan bagaimana instruksi mengalir dari RAM ke Control Unit, dieksekusi oleh ALU, dan hasilnya disimpan kembali.
+
+Video ini dibuat menggunakan Google Vids dan berjalan sepenuhnya offline — tidak perlu koneksi internet untuk memutarnya di kelas.</p>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Scene 5 -->
-  <div class="scene-card">
-    <div class="scene-head">
-      <span class="scene-badge">Scene 5</span>
-      <span class="scene-name">Latihan Evaluasi 10 Soal</span>
-      <span class="scene-time">01:42 – 02:12</span>
-      <span class="scene-dur">30 det</span>
+  <div class="scene-block">
+    <div class="scene-gutter">
+      <div class="scene-time-label">01:40</div>
+      <div class="scene-dot"></div>
+      <div class="scene-line"></div>
+      <div class="scene-dur-label">~25 det</div>
     </div>
-    <div class="scene-body">
-      <div class="action-box">
-        <div class="box-label">🖥 Aksi di Layar</div>
-        <ul class="action-list">
-          <li>Kembali ke Menu → klik kartu <strong>Latihan</strong>.</li>
-          <li>Klik <strong>Mulai Evaluasi</strong> → soal pertama muncul dengan timer.</li>
-          <li>Jawab 1–2 soal (tunjukkan opsi jawaban dan timer berjalan).</li>
-          <li>Selesaikan → tampilkan halaman skor.</li>
-          <li>Klik satu soal → tampilkan contoh pembahasan.</li>
-        </ul>
+    <div class="scene-content">
+      <div class="scene-head-row">
+        <span class="scene-badge">Scene 5</span>
+        <span class="scene-name">Menu Permainan — Simulator & Troubleshooting</span>
       </div>
-      <div class="narasi-box">
-        <div class="box-label">🎙 Narasi</div>
-        <p class="narasi-text">"Kalau sudah siap, ada evaluasi sepuluh soal. Bukan hafalan — tiap soal punya konteks, siswa diminta berpikir sebelum menjawab.<br><br>Setelah selesai, langsung keluar nilainya. Dan yang penting: ada pembahasan per soal. Jadi siswa tahu mana yang salah, dan kenapa salah. Bukan sekadar dapat angka."</p>
+      <div class="two-col">
+        <div class="action-box">
+          <div class="box-label">🖥 Di Layar</div>
+          <ul class="action-list">
+            <li>Kembali ke Menu → klik kartu <strong>🎲 Permainan</strong>.</li>
+            <li>Tampilkan layar intro permainan.</li>
+            <li>Klik <kbd>Mulai</kbd> → pilih salah satu skenario kerusakan.</li>
+            <li>Pilih salah satu jawaban → tunjukkan feedback/respons yang muncul.</li>
+          </ul>
+        </div>
+        <div class="narasi-box">
+          <div class="box-label">🎙 Narasi</div>
+          <p class="narasi-text">Di menu Permainan, siswa dihadapkan pada skenario kerusakan komputer. Misalnya — komputer menyala tapi tidak ada tampilan. Mereka harus menentukan komponen mana yang bermasalah.
+
+Kalau jawaban salah, ada penjelasannya. Kalau benar, ada reward-nya. Siswa berpikir seperti teknisi, tanpa risiko merusak alat sungguhan.</p>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Scene 6 -->
-  <div class="scene-card">
-    <div class="scene-head">
-      <span class="scene-badge">Scene 6</span>
-      <span class="scene-name">Transparansi Prompt AI — Halaman Kejujuran</span>
-      <span class="scene-time">02:12 – 02:35</span>
-      <span class="scene-dur">23 det</span>
+  <div class="scene-block">
+    <div class="scene-gutter">
+      <div class="scene-time-label">02:05</div>
+      <div class="scene-dot"></div>
+      <div class="scene-line"></div>
+      <div class="scene-dur-label">~22 det</div>
     </div>
-    <div class="scene-body">
-      <div class="action-box">
-        <div class="box-label">🖥 Aksi di Layar</div>
-        <ul class="action-list">
-          <li>Dari Menu → navigasi ke halaman <strong>Prompt AI</strong>.</li>
-          <li>Scroll pelan dari atas ke bawah — cukup tunjukkan isinya ada.</li>
-          <li><em>(Tidak perlu dibaca semua, cukup 5–6 detik scroll.)</em></li>
-        </ul>
+    <div class="scene-content">
+      <div class="scene-head-row">
+        <span class="scene-badge">Scene 6</span>
+        <span class="scene-name">Menu Latihan — Evaluasi Formatif Multi-Tipe</span>
       </div>
-      <div class="narasi-box">
-        <div class="box-label">🎙 Narasi</div>
-        <p class="narasi-text">"Ada satu halaman yang sengaja saya buat transparan: dokumentasi penggunaan AI. Prompt untuk video animasi pakai Google Vids, prompt untuk gambar-gambar visual — semua ada di sini.<br><br>Saya tidak sembunyikan. Justru saya tampilkan, supaya siswa juga belajar bahwa pakai AI itu tidak salah — yang penting jujur dan bertanggung jawab."</p>
+      <div class="two-col">
+        <div class="action-box">
+          <div class="box-label">🖥 Di Layar</div>
+          <ul class="action-list">
+            <li>Kembali ke Menu → klik kartu <strong>📝 Latihan</strong>.</li>
+            <li>Tunjukkan layar intro evaluasi → klik <kbd>Mulai Evaluasi</kbd>.</li>
+            <li>Jawab 1–2 soal (tunjukkan timer dan opsi jawaban).</li>
+            <li>Selesaikan → tampilkan halaman rekap skor dan pembahasan satu soal.</li>
+          </ul>
+        </div>
+        <div class="narasi-box">
+          <div class="box-label">🎙 Narasi</div>
+          <p class="narasi-text">Menu Latihan berisi evaluasi formatif. Ada berbagai tipe soal — pilihan ganda, benar atau salah, menjodohkan, dan alur booting.
+
+Setelah selesai, nilai langsung terhitung dan ada pembahasan per soal. Guru bisa langsung melihat sejauh mana pemahaman siswa, tanpa perlu mengoreksi manual.</p>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Scene 7 -->
-  <div class="scene-card">
-    <div class="scene-head">
-      <span class="scene-badge">Scene 7</span>
-      <span class="scene-name">Penutup</span>
-      <span class="scene-time">02:35 – 02:50</span>
-      <span class="scene-dur">15 det</span>
+  <div class="scene-block">
+    <div class="scene-gutter">
+      <div class="scene-time-label">02:27</div>
+      <div class="scene-dot"></div>
+      <div class="scene-line"></div>
+      <div class="scene-dur-label">~15 det</div>
     </div>
-    <div class="scene-body">
-      <div class="action-box">
-        <div class="box-label">🖥 Aksi di Layar</div>
-        <ul class="action-list">
-          <li>Kembali ke halaman Cover Depan.</li>
-          <li>Biarkan musik ambient mengalir saat narasi penutup.</li>
-          <li>Fade out layar perlahan.</li>
-        </ul>
+    <div class="scene-content">
+      <div class="scene-head-row">
+        <span class="scene-badge">Scene 7</span>
+        <span class="scene-name">Transparansi Prompt AI — Halaman Kejujuran</span>
       </div>
-      <div class="narasi-box">
-        <div class="box-label">🎙 Narasi</div>
-        <p class="narasi-text">"MPI ini saya bangun dengan harapan sederhana: semoga ada satu siswa yang setelah buka media ini, jadi lebih penasaran tentang apa yang terjadi di dalam komputer yang mereka pakai setiap hari.<br><br>Terima kasih. Wassalamu'alaikum."</p>
+      <div class="two-col">
+        <div class="action-box">
+          <div class="box-label">🖥 Di Layar</div>
+          <ul class="action-list">
+            <li>Navigasi ke halaman <strong>Prompt AI</strong> (halaman ke-18).</li>
+            <li>Scroll pelan dari atas ke bawah — 5–6 detik cukup.</li>
+            <li class="note">Tidak perlu dibaca semua, cukup tunjukkan halamannya ada dan berisi dokumentasi lengkap.</li>
+          </ul>
+        </div>
+        <div class="narasi-box">
+          <div class="box-label">🎙 Narasi</div>
+          <p class="narasi-text">Ada satu halaman khusus yang sengaja kami buat terbuka: halaman Transparansi Prompt AI. Di sini didokumentasikan seluruh prompt yang digunakan untuk membuat video animasi dengan Google Vids dan aset visual lainnya.
+
+Kami tidak menyembunyikan penggunaan AI — justru kami tampilkan, sebagai bentuk integritas akademik.</p>
+        </div>
       </div>
     </div>
   </div>
 
-</div>
+  <!-- Penutup -->
+  <div class="scene-block">
+    <div class="scene-gutter">
+      <div class="scene-time-label">02:42</div>
+      <div class="scene-dot" style="background:#34d399;box-shadow:0 0 0 3px rgba(52,211,153,.25);"></div>
+      <div class="scene-dur-label">~10 det</div>
+    </div>
+    <div class="scene-content">
+      <div class="scene-head-row">
+        <span class="scene-badge" style="background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.3);color:#34d399;">Penutup</span>
+        <span class="scene-name">Kembali ke Cover</span>
+      </div>
+      <div class="two-col">
+        <div class="action-box">
+          <div class="box-label">🖥 Di Layar</div>
+          <ul class="action-list">
+            <li>Navigasi kembali ke halaman cover.</li>
+            <li class="note">Biarkan musik ambient mengalir saat narasi penutup.</li>
+            <li class="note">Fade out atau biarkan rekaman berhenti secara natural.</li>
+          </ul>
+        </div>
+        <div class="narasi-box">
+          <div class="box-label">🎙 Narasi</div>
+          <p class="narasi-text">Demikian Media Pembelajaran Interaktif Sistem Komputer — semoga bermanfaat untuk pembelajaran Informatika di seluruh Indonesia. Terima kasih. Wassalamu'alaikum warahmatullahi wabarakatuh.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /timeline -->
 
 <div class="tips">
-  <div class="section-title">💡 Tips Saat Rekaman</div>
+  <div class="section-title">💡 Tips Rekaman</div>
   <ul class="tips-list">
-    <li><span class="tip-icon">🗣</span><span>Bicara seperti sedang mengajar di kelas — santai, personal, tidak perlu terdengar formal.</span></li>
-    <li><span class="tip-icon">🖱</span><span>Beri jeda 0,5 detik sebelum klik elemen — supaya penonton bisa ikuti gerakan kursor.</span></li>
-    <li><span class="tip-icon">🎵</span><span>Kalau volume BGM aplikasi terasa bersaing dengan suara vokal — turunkan lagi sampai hampir tidak terdengar. Narasi lebih penting.</span></li>
-    <li><span class="tip-icon">✂️</span><span>Gagal di tengah scene? <strong>Diam 2 detik, lanjut dari kalimat terakhir yang benar.</strong> Jangan mulai dari awal — saat editing tinggal potong.</span></li>
-    <li><span class="tip-icon">🔁</span><span>Rekam minimal 2 take. Take pertama untuk pemanasan, take kedua biasanya jauh lebih natural.</span></li>
+    <li><span>🗣</span><span>Narasi di atas adalah panduan — ucapkan dengan katamu sendiri, jangan dibaca persis. Yang penting alur dan urutannya benar.</span></li>
+    <li><span>⏸</span><span>Beri jeda 0,5–1 detik sebelum klik apa pun, agar penonton bisa mengikuti gerakan kursor.</span></li>
+    <li><span>🎵</span><span>Kalau volume BGM bersaing dengan vokal — turunkan lagi. Narasi harus jadi yang paling jelas terdengar.</span></li>
+    <li><span>✂️</span><span>Jika salah di tengah — <strong>diam 2 detik, lanjut dari kalimat terakhir yang benar</strong>. Saat editing tinggal dipotong. Jangan mulai dari awal.</span></li>
+    <li><span>🔁</span><span>Rekam minimal 2 take. Take pertama untuk pemanasan, take kedua biasanya lebih natural dan percaya diri.</span></li>
+    <li><span>⏱</span><span>Scene 7 (Transparansi AI) bisa diperpendek jika waktu mepet — cukup 3–4 detik scroll, tidak perlu dijelaskan panjang.</span></li>
   </ul>
 </div>
 
