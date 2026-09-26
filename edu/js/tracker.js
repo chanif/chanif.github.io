@@ -1,12 +1,12 @@
 /**
  * ============================================================
  * Fanani Learning Platform — Client Tracker & API Connector
- * Hybrid sync: LocalStorage + Server MySQL (smpn2lmg.sch.id)
+ * Hybrid sync: LocalStorage + Cloudflare Edge D1 (api.fanani.my.id)
  * ============================================================
  */
 
 const FananiTracker = (() => {
-    const API_BASE_URL = 'https://smpn2lmg.sch.id/fanani_api'; // Host endpoint PHP server
+    const API_BASE_URL = 'https://api.fanani.my.id'; // Cloudflare Workers + D1 Database
 
     // Complete curriculum directory structure for Informatika & KKA
 const COURSE_CATALOG = {
