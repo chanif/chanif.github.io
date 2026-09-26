@@ -8,16 +8,14 @@
     <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <link rel="canonical" href="https://fanani.my.id/edu/coding/">
     <link rel="icon" href="https://fanani.my.id/assets/images/logo.png" type="image/png">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Pre-compiled CSS & Fonts -->
+    <link rel="stylesheet" href="../../assets/css/style.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
-        body{font-family:'Inter',sans-serif;}
-        .card-hover{transition:all .3s cubic-bezier(.25,.8,.25,1);}
-        .card-hover:hover{transform:translateY(-3px);box-shadow:0 16px 28px -10px rgba(13,148,136,0.22);}
-    </style>
+
+    <!-- Theme Manager (Supports Light & Dark Mode) -->
+    <script src="../../assets/js/theme.js"></script>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900 pb-24">
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900 pb-24 transition-colors duration-300">
 
 <div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-teal-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
 <div class="fixed bottom-0 right-0 w-80 h-80 bg-cyan-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
@@ -34,6 +32,9 @@
         <a href="../" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition flex items-center gap-1">
             ← Pusat Belajar
         </a>
+        <button onclick="toggleTheme()" class="theme-toggle-btn ml-1" title="Ganti Mode Gelap/Terang" aria-label="Toggle Dark Mode">
+            <span class="theme-toggle-icon">🌙</span>
+        </button>
     </div>
 </nav>
 

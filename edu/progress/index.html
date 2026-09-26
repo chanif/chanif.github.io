@@ -8,19 +8,14 @@
     <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <link rel="icon" href="../../assets/images/logo.png" type="image/png">
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
+    <!-- Pre-compiled CSS & Fonts -->
+    <link rel="stylesheet" href="../../assets/css/style.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Theme Manager (Supports Light & Dark Mode) -->
+    <script src="../../assets/js/theme.js"></script>
+
     <style>
-        h1, h2, h3, h4, .font-heading { font-family: 'Quicksand', sans-serif; }
-        body { font-family: 'Inter', sans-serif; }
-        
-        .card-hover { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        .card-hover:hover { transform: translateY(-3px); box-shadow: 0 16px 32px -10px rgba(99, 102, 241, 0.15); }
-        
         .star-glow {
             text-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
         }
@@ -41,7 +36,7 @@
         }
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900 pb-24">
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900 pb-24 transition-colors duration-300">
 
     <!-- Decorative Glow Blobs -->
     <div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-indigo-200 opacity-30 blur-[120px] rounded-full pointer-events-none z-0"></div>
@@ -58,6 +53,9 @@
             </a>
             <button onclick="window.print()" class="px-3.5 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold rounded-xl transition flex items-center gap-1.5 shadow-sm">
                 🖨️ Cetak Rapor
+            </button>
+            <button onclick="toggleTheme()" class="theme-toggle-btn ml-1" title="Ganti Mode Gelap/Terang" aria-label="Toggle Dark Mode">
+                <span class="theme-toggle-icon">🌙</span>
             </button>
         </div>
     </nav>
@@ -716,17 +714,19 @@
             document.getElementById('overall-completed-text').innerText = `${stats.total_completed} dari ${stats.total_modules} Modul Selesai`;
 
             // 3. Render 4 Metric Cards
-            document.getElementById('stat-completed-count').innerText = `${stats.total_completed} / 96`;
+            document.getElementById('stat-completed-count').innerText = `${stats.total_completed} / ${stats.total_modules || 102}`;
             document.getElementById('stat-stars-count').innerText = `${stats.total_stars} ⭐`;
             document.getElementById('stat-avg-score').innerText = stats.evaluated_count > 0 ? `${stats.average_score} / 100` : '-';
             const unlockedCount = badges.filter(b => b.unlocked).length;
             document.getElementById('stat-badge-count').innerText = `${unlockedCount} / ${badges.length}`;
 
             // Tab badge counts
+            const infTotal = catalog.informatika.reduce((acc, u) => acc + u.total_modules, 0);
+            const kkaTotal = catalog.coding.reduce((acc, u) => acc + u.total_modules, 0);
             const infCompleted = catalog.informatika.reduce((acc, u) => acc + u.completed_modules, 0);
             const kkaCompleted = catalog.coding.reduce((acc, u) => acc + u.completed_modules, 0);
-            document.getElementById('inf-badge-count').innerText = `${infCompleted}/50`;
-            document.getElementById('kka-badge-count').innerText = `${kkaCompleted}/46`;
+            document.getElementById('inf-badge-count').innerText = `${infCompleted}/${infTotal}`;
+            document.getElementById('kka-badge-count').innerText = `${kkaCompleted}/${kkaTotal}`;
 
             // 4. Render Badges Showcase
             const badgeContainer = document.getElementById('badges-container');

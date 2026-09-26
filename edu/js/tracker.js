@@ -9,7 +9,7 @@ const FananiTracker = (() => {
     const API_BASE_URL = 'https://smpn2lmg.sch.id/fanani_api'; // Host endpoint PHP server
 
     // Complete curriculum directory structure for Informatika & KKA
-    const COURSE_CATALOG = {
+const COURSE_CATALOG = {
         informatika: [
             {
                 unit_id: '01',
@@ -17,11 +17,10 @@ const FananiTracker = (() => {
                 desc: 'Konsep dasar, sejarah, profesi, dan peran komputasi dalam kehidupan',
                 path: 'informatika/01-pengantar-informatika/',
                 topics: [
-                    { id: 'inf-intro-01', title: 'Apa itu Informatika?', path: 'informatika/01-pengantar-informatika/01-apa-itu-informatika/' },
-                    { id: 'inf-intro-02', title: 'Sejarah Perkembangan Komputer', path: 'informatika/01-pengantar-informatika/02-sejarah-perkembangan/' },
-                    { id: 'inf-intro-03', title: 'Profesi di Bidang Informatika', path: 'informatika/01-pengantar-informatika/03-profesi-di-bidang-informatika/' },
-                    { id: 'inf-intro-04', title: 'Informatika di Sekitar Kita', path: 'informatika/01-pengantar-informatika/04-informatika-di-sekitar-kita/' },
-                    { id: 'inf-intro-05', title: 'Peta Belajar & Eksplorasi', path: 'informatika/01-pengantar-informatika/05-peta-belajar-informatika/' }
+                    { id: 'inf-intro-01', title: 'Apa Itu Informatika & 8 Pilar Kurikulum Merdeka', path: 'informatika/01-pengantar-informatika/01-apa-itu-informatika/' },
+                    { id: 'inf-intro-02', title: 'Sejarah & Perkembangan Informatika: Dari Abakus hingga AI', path: 'informatika/01-pengantar-informatika/02-sejarah-perkembangan/' },
+                    { id: 'inf-intro-03', title: 'Profesi & Peta Karier di Bidang Informatika', path: 'informatika/01-pengantar-informatika/03-profesi-di-bidang-informatika/' },
+                    { id: 'inf-intro-04', title: 'Informatika di Sekitar Kita & Revolusi Industri 4.0', path: 'informatika/01-pengantar-informatika/04-informatika-di-sekitar-kita/' }
                 ]
             },
             {
@@ -30,115 +29,122 @@ const FananiTracker = (() => {
                 desc: '4 pilar pemecahan masalah algoritmis: dekomposisi, pola, abstraksi, algoritma',
                 path: 'informatika/02-berpikir-komputasional/',
                 topics: [
-                    { id: 'inf-bk-01', title: 'Dekomposisi Masalah', path: 'informatika/02-berpikir-komputasional/01-dekomposisi/' },
-                    { id: 'inf-bk-02', title: 'Pengenalan Pola', path: 'informatika/02-berpikir-komputasional/02-pengenalan-pola/' },
-                    { id: 'inf-bk-03', title: 'Abstraksi & Generalisasi', path: 'informatika/02-berpikir-komputasional/03-abstraksi/' },
-                    { id: 'inf-bk-04', title: 'Algoritma & Pseudocode', path: 'informatika/02-berpikir-komputasional/04-algoritma-dan-pseudocode/' },
-                    { id: 'inf-bk-05', title: 'Studi Kasus Rumah Cerdas', path: 'informatika/02-berpikir-komputasional/05-studi-kasus-rumah-cerdas/' }
+                    { id: 'inf-bk-01', title: 'Dekomposisi: Seni Memecah Masalah Besar', path: 'informatika/02-berpikir-komputasional/01-dekomposisi/' },
+                    { id: 'inf-bk-02-pola', title: 'Pengenalan Pola (Pattern Recognition)', path: 'informatika/02-berpikir-komputasional/02-pengenalan-pola/' },
+                    { id: 'inf-bk-03-abstraksi', title: 'Abstraksi: Memilah Informasi Esensial', path: 'informatika/02-berpikir-komputasional/03-abstraksi/' },
+                    { id: 'inf-bk-04-algoritma', title: 'Algoritma, Flowchart & Pseudocode', path: 'informatika/02-berpikir-komputasional/04-algoritma-dan-pseudocode/' },
+                    { id: 'inf-bk-02', title: 'Berpikir Komputasional: Algoritma di Balik Rumah Cerdas (IoT)', path: 'informatika/02-berpikir-komputasional/05-studi-kasus-rumah-cerdas/' },
+                    { id: 'inf-bk-06', title: 'Proyek Mandiri Berpikir Komputasional', path: 'informatika/02-berpikir-komputasional/06-proyek-bk/' }
                 ]
             },
             {
                 unit_id: '03',
                 title: 'Teknologi Informasi & Komunikasi',
-                desc: 'Perangkat lunak produktivitas, kolaborasi cloud, dan etika komunikasi digital',
+                desc: 'Perangkat lunak produktivitas, kolaborasi cloud, presentasi, dan desain grafis',
                 path: 'informatika/03-teknologi-informasi-komunikasi/',
                 topics: [
-                    { id: 'inf-tik-01', title: 'Aplikasi Perkantoran Terpadu', path: 'informatika/03-teknologi-informasi-komunikasi/01-aplikasi-perkantoran/' },
-                    { id: 'inf-tik-02', title: 'Integrasi Konten Antar Aplikasi', path: 'informatika/03-teknologi-informasi-komunikasi/02-integrasi-konten/' },
-                    { id: 'inf-tik-03', title: 'Cloud Storage & Kolaborasi Online', path: 'informatika/03-teknologi-informasi-komunikasi/03-cloud-storage-kolaborasi/' },
-                    { id: 'inf-tik-04', title: 'Mesin Pencari & Teknik Googling Cerdas', path: 'informatika/03-teknologi-informasi-komunikasi/04-mesin-pencari-cerdas/' },
-                    { id: 'inf-tik-05', title: 'Etika Berkirim Email & Dokumen Digital', path: 'informatika/03-teknologi-informasi-komunikasi/05-etika-komunikasi-digital/' }
+                    { id: 'inf-tik-01', title: 'Perangkat Lunak Produktivitas', path: 'informatika/03-teknologi-informasi-komunikasi/01-perangkat-lunak-produktivitas/' },
+                    { id: 'inf-tik-02', title: 'Pengolahan Dokumen Digital & Mail Merge', path: 'informatika/03-teknologi-informasi-komunikasi/02-pengolahan-dokumen-digital/' },
+                    { id: 'inf-tik-03', title: 'Presentasi Efektif & Desain Slide Memikat', path: 'informatika/03-teknologi-informasi-komunikasi/03-presentasi-efektif/' },
+                    { id: 'inf-tik-04', title: 'Kolaborasi Cloud & Penyimpanan Digital', path: 'informatika/03-teknologi-informasi-komunikasi/04-kolaborasi-cloud/' },
+                    { id: 'inf-tik-05', title: 'Desain Grafis Dasar & Teori Warna', path: 'informatika/03-teknologi-informasi-komunikasi/05-desain-grafis-dasar/' }
                 ]
             },
             {
                 unit_id: '04',
                 title: 'Sistem Komputer',
-                desc: 'Perangkat keras (hardware), software, OS, dan alur siklus pemrosesan Von Neumann',
+                desc: 'Perangkat keras (hardware), software, OS, sistem bilangan, dan interaksi manusia-komputer',
                 path: 'informatika/04-sistem-komputer/',
                 topics: [
-                    { id: 'inf-sk-01', title: 'Perangkat Keras Komputer (Hardware)', path: 'informatika/04-sistem-komputer/01-perangkat-keras/' },
-                    { id: 'inf-sk-02', title: 'Perangkat Lunak & Sistem Operasi', path: 'informatika/04-sistem-komputer/02-perangkat-lunak-os/' },
-                    { id: 'inf-sk-03', title: 'Mekanisme Siklus Kerja CPU', path: 'informatika/04-sistem-komputer/03-cara-kerja-cpu/' },
-                    { id: 'inf-sk-04', title: 'Representasi Data Biner Komputer', path: 'informatika/04-sistem-komputer/04-representasi-data-biner/' },
-                    { id: 'inf-sk-05', title: 'Troubleshooting Dasar Komputer', path: 'informatika/04-sistem-komputer/05-troubleshooting-komputer/' }
+                    { id: 'inf-sistem-01', title: 'Mengenal Perangkat Komputer', path: 'informatika/04-sistem-komputer/01-perangkat-keras/' },
+                    { id: 'inf-sk-02', title: 'Perangkat Lunak & Sistem Operasi', path: 'informatika/04-sistem-komputer/02-perangkat-lunak-sistem-operasi/' },
+                    { id: 'inf-sk-03', title: 'Representasi Data Digital: Bit, Teks, Gambar & Suara', path: 'informatika/04-sistem-komputer/03-representasi-data-digital/' },
+                    { id: 'inf-sistem-04', title: 'Sistem Bilangan', path: 'informatika/04-sistem-komputer/04-sistem-bilangan/' },
+                    { id: 'inf-sk-05', title: 'Interaksi Manusia-Komputer (IMK) & Prinsip UI/UX', path: 'informatika/04-sistem-komputer/05-interaksi-manusia-komputer/' }
                 ]
             },
             {
                 unit_id: '05',
                 title: 'Jaringan Komputer & Internet',
-                desc: 'Topologi, arsitektur TCP/IP, DNS, paket data, dan keamanan koneksi Wi-Fi',
+                desc: 'Topologi, arsitektur TCP/IP, DNS, paket data, dan keamanan koneksi jaringan',
                 path: 'informatika/05-jaringan-komputer-internet/',
                 topics: [
-                    { id: 'inf-jki-01', title: 'Pengenalan Jaringan Komputer', path: 'informatika/05-jaringan-komputer-internet/01-pengenalan-jaringan/' },
-                    { id: 'inf-jki-02', title: 'Topologi & Perangkat Jaringan', path: 'informatika/05-jaringan-komputer-internet/02-topologi-jaringan/' },
+                    { id: 'inf-jaringan-01', title: 'Jaringan Komputer & Internet', path: 'informatika/05-jaringan-komputer-internet/01-pengenalan-jaringan/' },
+                    { id: 'inf-jki-02', title: 'Topologi & Perangkat Jaringan Komputer', path: 'informatika/05-jaringan-komputer-internet/02-topologi-dan-perangkat/' },
                     { id: 'inf-jki-03', title: 'Protokol Jaringan, IP Address & DNS', path: 'informatika/05-jaringan-komputer-internet/03-protokol-ip-address-dns/' },
-                    { id: 'inf-jki-04', title: 'Perjalanan Paket Data di Internet', path: 'informatika/05-jaringan-komputer-internet/04-perjalanan-paket-data/' },
-                    { id: 'inf-jki-05', title: 'Keamanan Jaringan & Koneksi Publik', path: 'informatika/05-jaringan-komputer-internet/05-keamanan-jaringan-wifi/' }
+                    { id: 'inf-jk-02', title: 'Jaringan Komputer: Perjalanan Paket Data di Internet', path: 'informatika/05-jaringan-komputer-internet/04-perjalanan-paket-data/' },
+                    { id: 'inf-jki-05', title: 'Layanan Internet & Mesin Pencari Cerdas', path: 'informatika/05-jaringan-komputer-internet/05-layanan-internet/' },
+                    { id: 'inf-jaringan-06', title: 'Internet & Keamanan Digital', path: 'informatika/05-jaringan-komputer-internet/06-keamanan-jaringan/' }
                 ]
             },
             {
                 unit_id: '06',
                 title: 'Analisis Data',
-                desc: 'Pengumpulan, pembersihan data, pengolahan rumus logika, dan visualisasi grafik',
+                desc: 'Pengumpulan, pembersihan data, pengolahan spreadsheet, dan visualisasi grafik',
                 path: 'informatika/06-analisis-data/',
                 topics: [
-                    { id: 'inf-ad-01', title: 'Konsep Data, Informasi & Pengetahuan', path: 'informatika/06-analisis-data/01-konsep-data-informasi/' },
-                    { id: 'inf-ad-02', title: 'Pengumpulan & Input Data Terstruktur', path: 'informatika/06-analisis-data/02-pengumpulan-data/' },
-                    { id: 'inf-ad-03', title: 'Pengolahan Rumus Spreadsheet & Fungsi Logika', path: 'informatika/06-analisis-data/03-pengolahan-rumus-fungsi/' },
-                    { id: 'inf-ad-04', title: 'Visualisasi Data Grafik Interaktif', path: 'informatika/06-analisis-data/04-visualisasi-data/' },
-                    { id: 'inf-ad-05', title: 'Studi Kasus Analisis Survei Kantin', path: 'informatika/06-analisis-data/05-studi-kasus-survei-sekolah/' }
+                    { id: 'inf-ad-01', title: 'Pengantar Analisis Data & Hierarki DIKW', path: 'informatika/06-analisis-data/01-pengantar-data/' },
+                    { id: 'inf-ad-02', title: 'Metode Pengumpulan Data & Etika Kuesioner', path: 'informatika/06-analisis-data/02-pengumpulan-data/' },
+                    { id: 'inf-analisis-03', title: 'Pengolahan Data dengan Google Sheets', path: 'informatika/06-analisis-data/03-pengolahan-spreadsheet/' },
+                    { id: 'inf-ad-04', title: 'Visualisasi Data: Seni Mengubah Angka Menjadi Cerita', path: 'informatika/06-analisis-data/04-visualisasi-data/' },
+                    { id: 'inf-ad-05', title: 'Interpretasi Data & Menarik Kesimpulan', path: 'informatika/06-analisis-data/05-interpretasi-kesimpulan/' },
+                    { id: 'inf-ad-06', title: 'Proyek Analisis Data Mandiri', path: 'informatika/06-analisis-data/06-proyek-analisis-data/' }
                 ]
             },
             {
                 unit_id: '07',
                 title: 'Algoritma & Pemrograman',
-                desc: 'Pemrograman blok Scratch, percabangan if-else, looping, dan logika pembuatan game',
+                desc: 'Flowchart, Scratch blok, variabel, percabangan if-else, loop, dan Python dasar',
                 path: 'informatika/07-algoritma-pemrograman/',
                 topics: [
-                    { id: 'inf-ap-01', title: 'Pengenalan Algoritma & Flowchart', path: 'informatika/07-algoritma-pemrograman/01-algoritma-flowchart/' },
-                    { id: 'inf-ap-02', title: 'Koding Visual Blok dengan Scratch', path: 'informatika/07-algoritma-pemrograman/02-koding-visual-scratch/' },
-                    { id: 'inf-ap-03', title: 'Variabel, Tipe Data & Operator Logika', path: 'informatika/07-algoritma-pemrograman/03-variabel-dan-operator/' },
-                    { id: 'inf-ap-04', title: 'Struktur Percabangan & Perulangan Loop', path: 'informatika/07-algoritma-pemrograman/04-percabangan-dan-loop/' },
-                    { id: 'inf-ap-05', title: 'Proyek Pembuatan Game Edukatif Scratch', path: 'informatika/07-algoritma-pemrograman/05-proyek-game-scratch/' }
+                    { id: 'inf-algoritma-01', title: 'Algoritma & Flowchart', path: 'informatika/07-algoritma-pemrograman/01-konsep-algoritma/' },
+                    { id: 'inf-algoritma-02', title: 'Scratch Lanjutan: Game & Animasi Interaktif', path: 'informatika/07-algoritma-pemrograman/02-pemrograman-blok-scratch/' },
+                    { id: 'inf-ap-03', title: 'Variabel, Tipe Data & Operator', path: 'informatika/07-algoritma-pemrograman/03-variabel-dan-tipe-data/' },
+                    { id: 'inf-ap-04', title: 'Struktur Percabangan (If-Else & Elif)', path: 'informatika/07-algoritma-pemrograman/04-percabangan-if-else/' },
+                    { id: 'inf-algoritma-05', title: 'Logika: Percabangan & Pengulangan', path: 'informatika/07-algoritma-pemrograman/05-perulangan-loop/' },
+                    { id: 'inf-algoritma-06', title: 'Python Turtle: Belajar Coding Lewat Menggambar', path: 'informatika/07-algoritma-pemrograman/06-python-dasar/' },
+                    { id: 'inf-ap-07', title: 'Fungsi & Modularitas Kode', path: 'informatika/07-algoritma-pemrograman/07-fungsi-dan-modularitas/' },
+                    { id: 'inf-ap-08', title: 'Proyek Pemrograman Mandiri', path: 'informatika/07-algoritma-pemrograman/08-proyek-pemrograman/' }
                 ]
             },
             {
                 unit_id: '08',
                 title: 'Dampak Sosial Informatika',
-                desc: 'Etika digital netiket, jejak digital, cyberbullying, dan Undang-Undang ITE',
+                desc: 'Etika digital netiket, rekam jejak digital, privasi, HKI, dan anti cyberbullying & hoax',
                 path: 'informatika/08-dampak-sosial-informatika/',
                 topics: [
-                    { id: 'inf-dsi-01', title: 'Perkembangan Teknologi & Transformasi Sosial', path: 'informatika/08-dampak-sosial-informatika/01-transformasi-sosial/' },
-                    { id: 'inf-dsi-02', title: 'Jejak Digital & Manajemen Reputasi Online', path: 'informatika/08-dampak-sosial-informatika/02-jejak-digital-reputasi/' },
-                    { id: 'inf-dsi-03', title: 'Cyberbullying & Kesehatan Mental Digital', path: 'informatika/08-dampak-sosial-informatika/03-cyberbullying-kesehatan-mental/' },
-                    { id: 'inf-dsi-04', title: 'Hak Cipta Digital, Lisensi & Plagiarisme', path: 'informatika/08-dampak-sosial-informatika/04-hak-cipta-lisensi-plagiarisme/' },
-                    { id: 'inf-dsi-05', title: 'Hukum Siber & Literasi UU ITE Indonesia', path: 'informatika/08-dampak-sosial-informatika/05-hukum-siber-uu-ite/' }
+                    { id: 'inf-dsi-01', title: 'Etika Digital & Netiquette', path: 'informatika/08-dampak-sosial-informatika/01-etika-digital/' },
+                    { id: 'inf-dampak-02', title: 'Rekam Jejak Digital', path: 'informatika/08-dampak-sosial-informatika/02-rekam-jejak-digital/' },
+                    { id: 'inf-dsi-03', title: 'Keamanan & Privasi Data Pribadi', path: 'informatika/08-dampak-sosial-informatika/03-keamanan-privasi-data/' },
+                    { id: 'inf-dsi-04', title: 'Hak Kekayaan Intelektual (HKI) & Lisensi Digital', path: 'informatika/08-dampak-sosial-informatika/04-hak-kekayaan-intelektual/' },
+                    { id: 'inf-dsi-05', title: 'Pencegahan Cyberbullying & Deteksi Hoax', path: 'informatika/08-dampak-sosial-informatika/05-cyberbullying-dan-hoax/' },
+                    { id: 'inf-dampak-06', title: 'Kewargaan Digital', path: 'informatika/08-dampak-sosial-informatika/06-kewargaan-digital/' }
                 ]
             },
             {
                 unit_id: '09',
                 title: 'Praktik Lintas Bidang (PLB)',
-                desc: 'Kolaborasi antardisiplin, perancangan prototipe perangkat lunak, dan presentasi tim',
+                desc: 'Membuat website HTML/CSS, UI/UX, mobile app inventor, dan pameran digital',
                 path: 'informatika/09-praktik-lintas-bidang/',
                 topics: [
-                    { id: 'inf-plb-01', title: 'Pengantar Proyek Lintas Bidang & Kolaborasi Tim', path: 'informatika/09-praktik-lintas-bidang/01-pengantar-plb-kolaborasi/' },
-                    { id: 'inf-plb-02', title: 'Perancangan Solusi Komputasi Terpadu', path: 'informatika/09-praktik-lintas-bidang/02-perancangan-solusi-komputasi/' },
-                    { id: 'inf-plb-03', title: 'Pengembangan Prototipe Aplikasi & Artefak Komputasi', path: 'informatika/09-praktik-lintas-bidang/03-pengembangan-prototipe-artefak/' },
-                    { id: 'inf-plb-04', title: 'Pengujian Sistem, Debugging & Evaluasi Pengguna', path: 'informatika/09-praktik-lintas-bidang/04-pengujian-debugging-evaluasi/' },
-                    { id: 'inf-plb-05', title: 'Dokumentasi Teknis & Presentasi Pameran Karya', path: 'informatika/09-praktik-lintas-bidang/05-dokumentasi-presentasi-karya/' }
+                    { id: 'inf-praktik-01', title: 'Membuat Website dengan HTML', path: 'informatika/09-praktik-lintas-bidang/01-membuat-website-html/' },
+                    { id: 'inf-praktik-02', title: 'Mempercantik Web dengan CSS', path: 'informatika/09-praktik-lintas-bidang/02-styling-dengan-css/' },
+                    { id: 'inf-praktik-03', title: 'UI/UX Dasar: Desain yang Nyaman', path: 'informatika/09-praktik-lintas-bidang/03-ui-ux-dasar/' },
+                    { id: 'inf-praktik-04', title: 'App Inventor: Buat Aplikasi Android', path: 'informatika/09-praktik-lintas-bidang/04-app-inventor/' },
+                    { id: 'inf-praktik-05', title: 'Proyek Pameran Digital', path: 'informatika/09-praktik-lintas-bidang/05-proyek-pameran-digital/' }
                 ]
             },
             {
                 unit_id: '10',
-                title: 'Literasi Digital & Masa Depan',
-                desc: 'Keamanan data pribadi, AI masa depan, smart city, dan karir era teknologi tinggi',
-                path: 'informatika/10-literasi-digital-masa-depan/',
+                title: 'Informatika Lanjut',
+                desc: 'Struktur data, OOP Python lanjutan, SQL database, web JS DOM, dan kriptografi',
+                path: 'informatika/10-informatika-lanjut/',
                 topics: [
-                    { id: 'inf-ldm-01', title: 'Kecakapan Digital Kritis & Anti Hoaks', path: 'informatika/10-literasi-digital-masa-depan/01-kecakapan-digital-kritis/' },
-                    { id: 'inf-ldm-02', title: 'Keamanan Data Pribadi & Privasi Digital', path: 'informatika/10-literasi-digital-masa-depan/02-keamanan-privasi-data/' },
-                    { id: 'inf-ldm-03', title: 'Teknologi Masa Depan: AI, IoT & Smart City', path: 'informatika/10-literasi-digital-masa-depan/03-teknologi-masa-depan-ai-iot/' },
-                    { id: 'inf-ldm-04', title: 'Eksplorasi Karir & Pendidikan Lanjutan Teknologi', path: 'informatika/10-literasi-digital-masa-depan/04-karir-pendidikan-teknologi/' },
-                    { id: 'inf-ldm-05', title: 'Refleksi Pembelajaran & Portofolio Siswa', path: 'informatika/10-literasi-digital-masa-depan/05-portofolio-digital-mandiri/' }
+                    { id: 'inf-lanjut-01', title: 'Struktur Data: Stack, Queue & Array', path: 'informatika/10-informatika-lanjut/01-struktur-data/' },
+                    { id: 'inf-lanjut-02', title: 'Pemrograman Berorientasi Objek (OOP) Python', path: 'informatika/10-informatika-lanjut/02-oop-python-lanjutan/' },
+                    { id: 'inf-lanjut-03', title: 'Basis Data Relasional & Query SQL', path: 'informatika/10-informatika-lanjut/03-basis-data-sql/' },
+                    { id: 'inf-lanjut-04', title: 'Pemrograman Web: JavaScript & DOM', path: 'informatika/10-informatika-lanjut/04-pemrograman-web-javascript/' },
+                    { id: 'inf-lanjut-05', title: 'Keamanan Siber & Kriptografi Dasar', path: 'informatika/10-informatika-lanjut/05-keamanan-siber-kriptografi/' }
                 ]
             }
         ],
@@ -150,11 +156,11 @@ const FananiTracker = (() => {
                 path: 'coding/01-berpikir-komputasional/',
                 topics: [
                     { id: 'kka-bk-01', title: 'Logika & Penalaran Komputasi', path: 'coding/01-berpikir-komputasional/01-logika-dan-penalaran/' },
-                    { id: 'kka-bk-02', title: 'Dekomposisi Masalah Koding', path: 'coding/01-berpikir-komputasional/02-dekomposisi-masalah/' },
-                    { id: 'kka-bk-03', title: 'Pengenalan Pola & Optimasi', path: 'coding/01-berpikir-komputasional/03-pengenalan-pola/' },
-                    { id: 'kka-bk-04', title: 'Abstraksi & Pemodelan Sistem', path: 'coding/01-berpikir-komputasional/04-abstraksi-dan-generalisasi/' },
-                    { id: 'kka-bk-05', title: 'Perancangan Algoritma Efisien', path: 'coding/01-berpikir-komputasional/05-perancangan-algoritma/' },
-                    { id: 'kka-bk-06', title: 'Computational Thinking Unplugged', path: 'coding/01-berpikir-komputasional/06-computational-thinking-unplugged/' }
+                    { id: 'kka-bk-02', title: 'Dekomposisi Masalah Koding & AI', path: 'coding/01-berpikir-komputasional/02-dekomposisi-masalah/' },
+                    { id: 'kka-bk-03', title: 'Pengenalan Pola dalam Data & AI', path: 'coding/01-berpikir-komputasional/03-pengenalan-pola/' },
+                    { id: 'kka-bk-04', title: 'Abstraksi & Generalisasi Komputasi', path: 'coding/01-berpikir-komputasional/04-abstraksi-dan-generalisasi/' },
+                    { id: 'kka-bk-05', title: 'Perancangan Algoritma & Efisiensi', path: 'coding/01-berpikir-komputasional/05-perancangan-algoritma/' },
+                    { id: 'kka-bk-06', title: 'Berpikir Komputasional Unplugged', path: 'coding/01-berpikir-komputasional/06-computational-thinking-unplugged/' }
                 ]
             },
             {
@@ -164,9 +170,9 @@ const FananiTracker = (() => {
                 path: 'coding/02-literasi-digital/',
                 topics: [
                     { id: 'kka-ld-01', title: 'Identitas Digital & Jejak Online', path: 'coding/02-literasi-digital/01-identitas-digital-jejak-online/' },
-                    { id: 'kka-ld-02', title: 'Keamanan Siber Personal & 2FA', path: 'coding/02-literasi-digital/02-keamanan-siber-dasar/' },
-                    { id: 'kka-ld-03', title: 'Literasi Informasi & Verifikasi SIFT', path: 'coding/02-literasi-digital/03-literasi-informasi-hoax/' },
-                    { id: 'kka-ld-04', title: 'Produksi Konten Digital Etis', path: 'coding/02-literasi-digital/04-produksi-konten-digital-etis/' },
+                    { id: 'kka-ld-02', title: 'Keamanan Siber Dasar', path: 'coding/02-literasi-digital/02-keamanan-siber-dasar/' },
+                    { id: 'kka-ld-03', title: 'Literasi Informasi & Deteksi Hoax', path: 'coding/02-literasi-digital/03-literasi-informasi-hoax/' },
+                    { id: 'kka-ld-04', title: 'Produksi Konten Digital yang Etis', path: 'coding/02-literasi-digital/04-produksi-konten-digital-etis/' },
                     { id: 'kka-ld-05', title: 'Hak Cipta & Lisensi Creative Commons', path: 'coding/02-literasi-digital/05-hak-cipta-lisensi-creative-commons/' }
                 ]
             },
@@ -176,13 +182,13 @@ const FananiTracker = (() => {
                 desc: 'Cara kerja machine learning, mitigasi bias algoritma, privasi data, dan etika AI',
                 path: 'coding/03-literasi-etika-ai/',
                 topics: [
-                    { id: 'kka-ai-01', title: 'Apa itu Kecerdasan Artifisial (AI)?', path: 'coding/03-literasi-etika-ai/01-apa-itu-kecerdasan-artifisial/' },
-                    { id: 'kka-ai-02', title: 'Cara Kerja Machine Learning', path: 'coding/03-literasi-etika-ai/02-cara-kerja-machine-learning/' },
-                    { id: 'kka-ai-03', title: 'Ragam Jenis Kecerdasan Artifisial', path: 'coding/03-literasi-etika-ai/03-jenis-jenis-ai/' },
-                    { id: 'kka-ai-04', title: 'Bias Data & Keadilan Algoritma AI', path: 'coding/03-literasi-etika-ai/04-bias-dan-keadilan-ai/' },
-                    { id: 'kka-ai-05', title: 'Deepfake, Manipulasi & Misinformasi AI', path: 'coding/03-literasi-etika-ai/05-deepfake-misinformasi-ai/' },
-                    { id: 'kka-ai-06', title: 'Etika & Tanggung Jawab Penggunaan AI', path: 'coding/03-literasi-etika-ai/06-etika-tanggung-jawab-ai/' },
-                    { id: 'kka-ai-07', title: 'AI dan Masa Depan Lapangan Kerja', path: 'coding/03-literasi-etika-ai/07-ai-dan-masa-depan-pekerjaan/' }
+                    { id: 'kka-ai-01', title: 'Apa Itu Kecerdasan Buatan (AI)? 🤖✨', path: 'coding/03-literasi-etika-ai/01-apa-itu-kecerdasan-artifisial/' },
+                    { id: 'kka-ai-02', title: 'Cara Kerja Machine Learning 🧠', path: 'coding/03-literasi-etika-ai/02-cara-kerja-machine-learning/' },
+                    { id: 'kka-ai-03', title: 'Jenis-Jenis & Cabang Kecerdasan Artifisial', path: 'coding/03-literasi-etika-ai/03-jenis-jenis-ai/' },
+                    { id: 'kka-ai-04', title: 'Bias & Keadilan dalam AI ⚖️', path: 'coding/03-literasi-etika-ai/04-bias-dan-keadilan-ai/' },
+                    { id: 'kka-ai-05', title: 'Deepfake & Misinformasi AI', path: 'coding/03-literasi-etika-ai/05-deepfake-misinformasi-ai/' },
+                    { id: 'kka-ai-06', title: 'Etika & Tanggung Jawab AI 🛡️', path: 'coding/03-literasi-etika-ai/06-etika-tanggung-jawab-ai/' },
+                    { id: 'kka-ai-07', title: 'AI & Masa Depan Dunia Kerja', path: 'coding/03-literasi-etika-ai/07-ai-dan-masa-depan-pekerjaan/' }
                 ]
             },
             {
@@ -191,30 +197,30 @@ const FananiTracker = (() => {
                 desc: 'Generative AI, prompting cerdas, Teachable Machine, dan solusi AI',
                 path: 'coding/04-pemanfaatan-pengembangan-ai/',
                 topics: [
-                    { id: 'kka-genai-01', title: 'Mengenal Generative AI & Model LLM', path: 'coding/04-pemanfaatan-pengembangan-ai/01-mengenal-generative-ai/' },
-                    { id: 'kka-genai-02', title: 'Seni Prompt Engineering Efektif', path: 'coding/04-pemanfaatan-pengembangan-ai/02-prompt-engineering/' },
-                    { id: 'kka-genai-03', title: 'AI untuk Penulisan & Ide Kreatif', path: 'coding/04-pemanfaatan-pengembangan-ai/03-ai-untuk-teks-dan-tulisan/' },
-                    { id: 'kka-genai-04', title: 'AI untuk Gambar & Kreasi Multimedia', path: 'coding/04-pemanfaatan-pengembangan-ai/04-ai-untuk-gambar-dan-multimedia/' },
-                    { id: 'kka-genai-05', title: 'AI sebagai Asisten Belajar Mandiri', path: 'coding/04-pemanfaatan-pengembangan-ai/05-ai-asisten-belajar/' },
-                    { id: 'kka-genai-06', title: 'Latihan Model dengan Teachable Machine', path: 'coding/04-pemanfaatan-pengembangan-ai/06-teachable-machine/' },
-                    { id: 'kka-genai-07', title: 'Proyek Image Classifier Mandiri', path: 'coding/04-pemanfaatan-pengembangan-ai/07-proyek-image-classifier/' },
-                    { id: 'kka-genai-08', title: 'Merancang Solusi Berbasis AI Nyata', path: 'coding/04-pemanfaatan-pengembangan-ai/08-merancang-solusi-berbasis-ai/' }
+                    { id: 'kka-genai-01', title: 'Mengenal Generative AI 🎨✍️', path: 'coding/04-pemanfaatan-pengembangan-ai/01-mengenal-generative-ai/' },
+                    { id: 'kka-genai-02', title: 'Prompt Engineering: Seni Memerintah AI 🎯', path: 'coding/04-pemanfaatan-pengembangan-ai/02-prompt-engineering/' },
+                    { id: 'kka-genai-03', title: 'AI untuk Teks & Penulisan Kreatif', path: 'coding/04-pemanfaatan-pengembangan-ai/03-ai-untuk-teks-dan-tulisan/' },
+                    { id: 'kka-genai-04', title: 'AI untuk Gambar & Multimedia 🎨🖼️', path: 'coding/04-pemanfaatan-pengembangan-ai/04-ai-untuk-gambar-dan-multimedia/' },
+                    { id: 'kka-genai-05', title: 'AI Asisten Belajar Pribadi 📚🤖', path: 'coding/04-pemanfaatan-pengembangan-ai/05-ai-asisten-belajar/' },
+                    { id: 'kka-genai-06', title: 'Melatih AI dengan Teachable Machine 📷🤖', path: 'coding/04-pemanfaatan-pengembangan-ai/06-teachable-machine/' },
+                    { id: 'kka-genai-07', title: 'Proyek Mini: Pendeteksi Sampah AI ♻️📷', path: 'coding/04-pemanfaatan-pengembangan-ai/07-proyek-image-classifier/' },
+                    { id: 'kka-genai-08', title: 'Merancang Solusi Berbasis AI 🚀💡', path: 'coding/04-pemanfaatan-pengembangan-ai/08-merancang-solusi-berbasis-ai/' }
                 ]
             },
             {
                 unit_id: '05',
                 title: 'Algoritma & Pemrograman KKA',
-                desc: 'Koding visual Scratch, transisi ke Python teks, struktur data, dan game maker',
+                desc: 'Koding visual Scratch, event, variabel, looping, transisi ke Python, dan game',
                 path: 'coding/05-algoritma-pemrograman/',
                 topics: [
-                    { id: 'kka-ap-01', title: 'Algoritma Pemrograman Visual Scratch', path: 'coding/05-algoritma-pemrograman/01-algoritma-pemrograman-visual-scratch/' },
-                    { id: 'kka-ap-02', title: 'Struktur Logika, Percabangan & Loop', path: 'coding/05-algoritma-pemrograman/02-struktur-logika-percabangan-loop/' },
-                    { id: 'kka-ap-03', title: 'Transisi Koding Visual ke Teks Python', path: 'coding/05-algoritma-pemrograman/03-transisi-koding-visual-ke-teks-python/' },
-                    { id: 'kka-ap-04', title: 'Sintaks Dasar Python, Variabel & Tipe Data', path: 'coding/05-algoritma-pemrograman/04-sintaks-dasar-python-variabel-tipe-data/' },
-                    { id: 'kka-ap-05', title: 'Struktur Kontrol Alur Python', path: 'coding/05-algoritma-pemrograman/05-struktur-kontrol-alur-python/' },
-                    { id: 'kka-ap-06', title: 'Fungsi Modular & Library Python', path: 'coding/05-algoritma-pemrograman/06-fungsi-modular-dan-library-python/' },
-                    { id: 'kka-ap-07', title: 'Proyek Pembuatan Game Python Sederhana', path: 'coding/05-algoritma-pemrograman/07-proyek-game-python-sederhana/' },
-                    { id: 'kka-ap-08', title: 'Pengembangan Aplikasi Mandiri & SDLC', path: 'coding/05-algoritma-pemrograman/08-pengembangan-aplikasi-mandiri-sdlc/' }
+                    { id: 'kka-ap-01', title: 'Pemrograman Blok Scratch', path: 'coding/05-algoritma-pemrograman/01-pemrograman-blok-scratch/' },
+                    { id: 'kka-ap-02', title: 'Event & Interaksi Pengguna', path: 'coding/05-algoritma-pemrograman/02-event-dan-interaksi/' },
+                    { id: 'kka-ap-03', title: 'Variabel & Percabangan Kondisional', path: 'coding/05-algoritma-pemrograman/03-variabel-dan-kondisi/' },
+                    { id: 'kka-ap-04', title: 'Pengulangan & Fungsi Kustom', path: 'coding/05-algoritma-pemrograman/04-pengulangan-dan-fungsi/' },
+                    { id: 'kka-ap-05', title: 'Pengenalan Bahasa Python', path: 'coding/05-algoritma-pemrograman/05-pengenalan-python/' },
+                    { id: 'kka-ap-06', title: 'Python untuk Pengolahan Data Sederhana', path: 'coding/05-algoritma-pemrograman/06-python-untuk-data-sederhana/' },
+                    { id: 'kka-ap-07', title: 'Membuat Game Sederhana', path: 'coding/05-algoritma-pemrograman/07-membuat-game-sederhana/' },
+                    { id: 'kka-ap-08', title: 'Proyek Akhir Aplikasi Koding', path: 'coding/05-algoritma-pemrograman/08-proyek-aplikasi-koding/' }
                 ]
             },
             {
@@ -223,12 +229,12 @@ const FananiTracker = (() => {
                 desc: 'Piramida DIKW, dataset publik, visualisasi grafik, dan data-driven decision',
                 path: 'coding/06-analisis-data/',
                 topics: [
-                    { id: 'kka-ad-01', title: 'Hierarki DIKW & Data Bahan Bakar AI', path: 'coding/06-analisis-data/01-hierarki-dikw-data-bahan-bakar-ai/' },
-                    { id: 'kka-ad-02', title: 'Pengumpulan & Eksplorasi Dataset Publik', path: 'coding/06-analisis-data/02-pengumpulan-eksplorasi-dataset-publik/' },
-                    { id: 'kka-ad-03', title: 'Pembersihan Data (Data Cleaning)', path: 'coding/06-analisis-data/03-pembersihan-data-cleaning/' },
-                    { id: 'kka-ad-04', title: 'Visualisasi Data Grafik & Storytelling', path: 'coding/06-analisis-data/04-visualisasi-data-storytelling/' },
-                    { id: 'kka-ad-05', title: 'Pengambilan Keputusan Berbasis Data', path: 'coding/06-analisis-data/05-pengambilan-keputusan-berbasis-data/' },
-                    { id: 'kka-ad-06', title: 'Proyek Riset Analisis Data Sekolah', path: 'coding/06-analisis-data/06-proyek-riset-analisis-data-sekolah/' }
+                    { id: 'kka-ad-01', title: 'Apa Itu Data? Fondasi Kecerdasan Artifisial', path: 'coding/06-analisis-data/01-apa-itu-data/' },
+                    { id: 'kka-ad-02', title: 'Metode & Etika Pengumpulan Data', path: 'coding/06-analisis-data/02-mengumpulkan-data/' },
+                    { id: 'kka-ad-03', title: 'Menyajikan Data: Tabel & Visualisasi Grafik', path: 'coding/06-analisis-data/03-menyajikan-data-tabel-grafik/' },
+                    { id: 'kka-ad-04', title: 'Menganalisis Pola & Tren Data', path: 'coding/06-analisis-data/04-menganalisis-pola-data/' },
+                    { id: 'kka-ad-05', title: 'Data & Pengambilan Keputusan', path: 'coding/06-analisis-data/05-data-dan-pengambilan-keputusan/' },
+                    { id: 'kka-ad-06', title: 'Proyek Akhir Analisis Data & Kolaborasi AI', path: 'coding/06-analisis-data/06-proyek-analisis-data/' }
                 ]
             },
             {
@@ -237,12 +243,12 @@ const FananiTracker = (() => {
                 desc: 'Python ML, NLP, OpenCV Computer Vision, Chatbot AI, Robotika, dan Capstone',
                 path: 'coding/07-koding-kreatif-lanjutan/',
                 topics: [
-                    { id: 'kka-adv-01', title: 'Python untuk Machine Learning (Scikit-Learn)', path: 'coding/07-koding-kreatif-lanjutan/01-python-untuk-machine-learning/' },
-                    { id: 'kka-adv-02', title: 'Natural Language Processing (NLP & Sentimen)', path: 'coding/07-koding-kreatif-lanjutan/02-natural-language-processing/' },
-                    { id: 'kka-adv-03', title: 'Computer Vision & OpenCV (Deteksi Wajah/Objek)', path: 'coding/07-koding-kreatif-lanjutan/03-computer-vision-opencv/' },
-                    { id: 'kka-adv-04', title: 'Arsitektur & Pembuatan Chatbot AI Interaktif', path: 'coding/07-koding-kreatif-lanjutan/04-chatbot-ai/' },
-                    { id: 'kka-adv-05', title: 'Robotika Cerdas & Simulasi Fisika Digital', path: 'coding/07-koding-kreatif-lanjutan/05-robotika-simulasi/' },
-                    { id: 'kka-adv-06', title: 'Proyek Capstone AI & Demo Day Inovasi', path: 'coding/07-koding-kreatif-lanjutan/06-proyek-capstone-ai/' }
+                    { id: 'kka-adv-01', title: 'Python untuk Machine Learning', path: 'coding/07-koding-kreatif-lanjutan/01-python-untuk-machine-learning/' },
+                    { id: 'kka-adv-02', title: 'Natural Language Processing (NLP)', path: 'coding/07-koding-kreatif-lanjutan/02-natural-language-processing/' },
+                    { id: 'kka-adv-03', title: 'Computer Vision & OpenCV', path: 'coding/07-koding-kreatif-lanjutan/03-computer-vision-opencv/' },
+                    { id: 'kka-adv-04', title: 'Membangun Chatbot AI Interaktif', path: 'coding/07-koding-kreatif-lanjutan/04-chatbot-ai/' },
+                    { id: 'kka-adv-05', title: 'Robotika Cerdas & Simulasi Digital', path: 'coding/07-koding-kreatif-lanjutan/05-robotika-simulasi/' },
+                    { id: 'kka-adv-06', title: 'Proyek Capstone AI & Koding Lanjutan', path: 'coding/07-koding-kreatif-lanjutan/06-proyek-capstone-ai/' }
                 ]
             }
         ]
@@ -518,7 +524,8 @@ const FananiTracker = (() => {
         const infData = processSection(COURSE_CATALOG.informatika, 'informatika');
         const kkaData = processSection(COURSE_CATALOG.coding, 'coding');
 
-        const totalModules = 96;
+        const totalModules = (COURSE_CATALOG.informatika.reduce((acc, u) => acc + u.topics.length, 0) +
+                              COURSE_CATALOG.coding.reduce((acc, u) => acc + u.topics.length, 0)) || 102;
         const overallPercentage = Math.round((totalCompleted / totalModules) * 100);
         const averageScore = evaluatedCount > 0 ? Math.round(totalScoreSum / evaluatedCount) : 0;
 

@@ -12,10 +12,8 @@
     <link rel="canonical" href="https://fanani.my.id/edu/">
     <link rel="icon" href="../assets/images/logo.png" type="image/png">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
+    <!-- Pre-compiled CSS & Fonts -->
+    <link rel="stylesheet" href="../assets/css/style.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
@@ -23,57 +21,12 @@
     <!-- Google Identity Services (GSI) -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-    <style>
-        h1,
-        h2,
-        h3,
-        h4,
-        .font-heading {
-            font-family: 'Quicksand', sans-serif;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .blob-shape {
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            animation: morph 8s ease-in-out infinite;
-        }
-
-        @keyframes morph {
-
-            0%,
-            100% {
-                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            }
-
-            34% {
-                border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
-            }
-
-            67% {
-                border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
-            }
-        }
-
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 32px rgba(99, 102, 241, 0.12);
-        }
-    </style>
+    <!-- Theme Manager (Supports Light & Dark Mode) -->
+    <script src="../assets/js/theme.js"></script>
 </head>
 
 <body
-    class="bg-[#F8FAFC] text-slate-800 antialiased overflow-x-hidden relative selection:bg-indigo-100 selection:text-indigo-900">
+    class="bg-[#F8FAFC] text-slate-800 antialiased overflow-x-hidden relative selection:bg-indigo-100 selection:text-indigo-900 transition-colors duration-300">
 
     <!-- Background decorative blobs senada dengan root & lab -->
     <div
@@ -89,10 +42,13 @@
             class="font-heading font-extrabold text-2xl text-slate-900 tracking-tight hover:text-indigo-600 transition">
             fanani<span class="text-indigo-600">.</span>
         </a>
-        <div class="flex items-center gap-6 font-medium text-sm text-slate-500">
+        <div class="flex items-center gap-5 font-medium text-sm text-slate-500">
             <a href="../" class="hover:text-indigo-600 transition">Dev</a>
             <a href="./" class="text-indigo-600 font-bold border-b-2 border-indigo-600 pb-0.5">Edu</a>
             <a href="../lab/" class="hover:text-indigo-600 transition">Lab</a>
+            <button onclick="toggleTheme()" class="theme-toggle-btn ml-1" title="Ganti Mode Gelap/Terang" aria-label="Toggle Dark Mode">
+                <span class="theme-toggle-icon">🌙</span>
+            </button>
         </div>
     </nav>
 
@@ -393,37 +349,37 @@
                     <!-- 3 SUB-HIGHLIGHT CARDS UNGGULAN -->
                     <div class="grid sm:grid-cols-3 gap-3 pt-2 text-xs">
                         <a href="workshop/materi-sd/kka-kelas-5/index.html"
-                            class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-100 hover:border-emerald-300 transition group/sub block space-y-1">
+                            class="p-4 rounded-2xl bg-rose-50/80 border border-rose-100 hover:border-rose-300 transition group/sub block space-y-1">
                             <div
-                                class="flex items-center gap-2 font-bold text-emerald-900 group-hover/sub:text-emerald-700 text-xs">
+                                class="flex items-center gap-2 font-bold text-rose-900 group-hover/sub:text-rose-700 text-xs">
                                 <span class="text-base">🎒</span>
                                 <span class="truncate">Modul SD Kelas 5 &amp; 6</span>
                             </div>
-                            <p class="text-[11px] text-emerald-700 leading-relaxed">22 materi ajar unplugged &amp;
+                            <p class="text-[11px] text-rose-700 leading-relaxed">22 materi ajar unplugged &amp;
                                 plugged lengkap untuk setahun.</p>
                         </a>
 
                         <a href="workshop/2026-09-workshop-kka-dinas-pendidikan/index.html"
-                            class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-100 hover:border-indigo-300 transition group/sub block space-y-1">
+                            class="p-4 rounded-2xl bg-orange-50/80 border border-orange-100 hover:border-orange-300 transition group/sub block space-y-1">
                             <div
-                                class="flex items-center gap-2 font-bold text-indigo-900 group-hover/sub:text-indigo-700 text-xs">
+                                class="flex items-center gap-2 font-bold text-orange-950 group-hover/sub:text-orange-700 text-xs">
                                 <span class="text-base">⚡</span>
                                 <span class="truncate" title="Workshop KKA Dinas Pendidikan">Workshop KKA Dinas
                                     Pendidikan</span>
                             </div>
-                            <p class="text-[11px] text-indigo-700 leading-relaxed">Vibe Coding Media Pembelajaran
+                            <p class="text-[11px] text-orange-700 leading-relaxed">Vibe Coding Media Pembelajaran
                                 Interaktif (MPI).</p>
                         </a>
 
                         <a href="workshop/2026-10-workshop-mgmp-informatika-kka/index.html"
-                            class="p-4 rounded-2xl bg-violet-50/70 border border-violet-100 hover:border-violet-300 transition group/sub block space-y-1">
+                            class="p-4 rounded-2xl bg-sky-50/80 border border-sky-100 hover:border-sky-300 transition group/sub block space-y-1">
                             <div
-                                class="flex items-center gap-2 font-bold text-violet-900 group-hover/sub:text-violet-700 text-xs">
+                                class="flex items-center gap-2 font-bold text-sky-900 group-hover/sub:text-sky-700 text-xs">
                                 <span class="text-base">🚀</span>
                                 <span class="truncate" title="Workshop MGMP Informatika">Workshop MGMP
                                     Informatika</span>
                             </div>
-                            <p class="text-[11px] text-violet-700 leading-relaxed">Membangun LMS Mini Interaktif dengan
+                            <p class="text-[11px] text-sky-700 leading-relaxed">Membangun LMS Mini Interaktif dengan
                                 AI, Firebase &amp; GitHub Pages.</p>
                         </a>
                     </div>

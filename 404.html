@@ -12,25 +12,14 @@
     <!-- Favicon -->
     <link rel="icon" href="/assets/images/logo.png" type="image/png">
 
-    <!-- Fonts & Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Pre-compiled CSS & Fonts -->
+    <link rel="stylesheet" href="/assets/css/style.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <!-- Theme Manager (Supports Light & Dark Mode) -->
+    <script src="/assets/js/theme.js"></script>
+
     <style>
-        h1, h2, h3, h4, .font-heading { font-family: 'Quicksand', sans-serif; }
-        body { font-family: 'Inter', sans-serif; }
-        
-        .blob-shape { 
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; 
-            animation: morph 8s ease-in-out infinite;
-        }
-
-        @keyframes morph {
-            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-            34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-            67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
-        }
-
         .floating {
             animation: float 4s ease-in-out infinite;
         }
@@ -41,7 +30,7 @@
         }
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased min-h-screen flex flex-col justify-between relative overflow-x-hidden selection:bg-indigo-100 selection:text-indigo-900">
+<body class="bg-[#F8FAFC] text-slate-800 antialiased min-h-screen flex flex-col justify-between relative overflow-x-hidden selection:bg-indigo-100 selection:text-indigo-900 transition-colors duration-300">
 
     <!-- Ambient Glowing Blobs -->
     <div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-indigo-200 opacity-40 blur-[120px] rounded-full pointer-events-none z-0"></div>
@@ -53,10 +42,13 @@
         <a href="/" class="font-heading font-extrabold text-2xl text-slate-900 tracking-tight hover:text-indigo-600 transition flex items-center gap-1.5">
             fanani<span class="text-indigo-600">.</span>
         </a>
-        <div class="flex items-center gap-6 font-medium text-sm text-slate-500">
+        <div class="flex items-center gap-5 font-medium text-sm text-slate-500">
             <a href="/" class="hover:text-indigo-600 transition">Dev</a>
             <a href="/edu/" class="hover:text-indigo-600 transition">Edu</a>
             <a href="/lab/" class="hover:text-indigo-600 transition">Lab</a>
+            <button onclick="toggleTheme()" class="theme-toggle-btn ml-1" title="Ganti Mode Gelap/Terang" aria-label="Toggle Dark Mode">
+                <span class="theme-toggle-icon">🌙</span>
+            </button>
         </div>
     </nav>
 

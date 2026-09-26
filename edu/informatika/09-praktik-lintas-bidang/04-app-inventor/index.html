@@ -196,6 +196,18 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
     </div>
+
+    <!-- Selesai Mempelajari Modul Card -->
+    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+            <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
+            <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
+        </div>
+        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+            <span>✓</span> Tandai Selesai
+        </button>
+    </div>
+
 </main>
 <footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
     <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
@@ -203,5 +215,34 @@
         <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
     </div>
 </footer>
+<script src="../../../js/tracker.js"></script>
+<script>
+const SUBJECT = 'informatika';
+const TOPIC_ID = 'inf-praktik-04';
+
+async function markModuleComplete() {
+    if (window.FananiTracker) {
+        await FananiTracker.markCompleted(SUBJECT, TOPIC_ID);
+        const btn = document.getElementById("btn-complete-module");
+        if (btn) {
+            btn.innerHTML = "<span>✓</span> Modul Tuntas!";
+            btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+    if (window.FananiTracker) {
+        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+        if (hist && hist.is_completed) {
+            const btn = document.getElementById("btn-complete-module");
+            if (btn) {
+                btn.innerHTML = "<span>✓</span> Modul Tuntas!";
+                btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+            }
+        }
+    }
+});
+</script>
 </body>
 </html>
