@@ -1,236 +1,720 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mengenal perangkat komputer: perbedaan hardware dan software, perangkat input/output, CPU, RAM, storage, dan cara kerja komputer secara keseluruhan.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Mengenal Perangkat Komputer | Informatika Kelas 7</title>
+    <title>Perangkat Keras (Hardware) & Arsitektur Komputer | Sistem Komputer Informatika</title>
+    <meta name="description" content="Pelajari arsitektur Von Neumann, siklus Fetch-Decode-Execute, komponen CPU, RAM vs SSD, GPU, Motherboard, analisis bottleneck, serta simulasi perakitan PC virtual.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
         body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.05rem;color:#334155;margin-top:1.25rem;margin-bottom:.5rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}
-        .prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}
-        .prose li{margin-bottom:.4rem;line-height:1.7;}
-        .prose table{width:100%;border-collapse:collapse;margin:1rem 0;}
-        .prose th{background:#f1f5f9;color:#334155;font-family:'Quicksand',sans-serif;font-weight:700;padding:.6rem 1rem;text-align:left;border:1px solid #e2e8f0;}
-        .prose td{padding:.6rem 1rem;border:1px solid #e2e8f0;color:#475569;font-size:.9rem;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}
-        .callout-tip{background:#f0fdf4;border-color:#22c55e;}
-        .callout-fun{background:#fdf4ff;border-color:#a855f7;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-indigo-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
 
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-indigo-600 hover:underline">← Kelas 7</a>
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Unit Sistem Komputer
+        </a>
+    </div>
 </nav>
 
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#von-neumann" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🏛️ Arsitektur Von Neumann</a>
+        <a href="#siklus-mesin" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🔄 Siklus Fetch-Execute</a>
+        <a href="#komponen-utama" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🧩 Komponen Utama PC</a>
+        <a href="#studi-kasus-lemot" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">⚡ Mengapa Komputer Lemot?</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman</a>
+    </div>
+</div>
 
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Edu</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
-        <a href="../" class="hover:text-indigo-600">Kelas 7</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 3</span>
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../edu/" class="hover:text-blue-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">Sistem Komputer</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">01. Perangkat Keras & Arsitektur Komputer</span>
     </div>
 
-    <div class="bg-gradient-to-br from-slate-700 to-indigo-800 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 3 · Hardware</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Mengenal Perangkat Komputer 🔧</h1>
-            <p class="text-slate-300 leading-relaxed max-w-2xl">Kenali bagian-bagian komputer: hardware (perangkat keras) dan software (perangkat lunak) — dua hal yang tidak bisa dipisahkan!</p>
-        </div>
-    </div>
-
-    <div class="prose max-w-none">
-
-        <h2>Hardware vs Software: Apa Bedanya?</h2>
-        <p>Komputer terdiri dari dua bagian utama yang saling melengkapi:</p>
-
-        <div class="grid md:grid-cols-2 gap-5 my-6 not-prose">
-            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                <div class="text-3xl mb-3">🔩</div>
-                <h3 class="font-heading font-extrabold text-slate-800 text-lg mb-2">Hardware (Perangkat Keras)</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">Semua bagian komputer yang bisa kamu lihat dan sentuh secara fisik.</p>
-                <ul class="mt-3 text-slate-600 text-sm space-y-1">
-                    <li>✅ Monitor, keyboard, mouse</li>
-                    <li>✅ CPU, RAM, harddisk</li>
-                    <li>✅ Printer, speaker, kamera</li>
-                </ul>
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-blue-700 via-indigo-800 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🖥️ Sistem Komputer · Modul 01
             </div>
-            <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-6">
-                <div class="text-3xl mb-3">💿</div>
-                <h3 class="font-heading font-extrabold text-indigo-800 text-lg mb-2">Software (Perangkat Lunak)</h3>
-                <p class="text-indigo-700 text-sm leading-relaxed">Program atau aplikasi yang berjalan di dalam komputer. Tidak bisa dipegang, tapi bisa digunakan!</p>
-                <ul class="mt-3 text-indigo-700 text-sm space-y-1">
-                    <li>✅ Windows, Android, iOS</li>
-                    <li>✅ Microsoft Word, Chrome</li>
-                    <li>✅ Game, aplikasi kamera</li>
-                </ul>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Perangkat Keras & Rahasia di Balik Kecepatan Komputer
+            </h1>
+            <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-6">
+                Pernahkah kamu bertanya apa yang sebenarnya terjadi saat menekan tombol power laptop atau smartphone? Mengapa komputer dengan RAM 16GB dan SSD NVMe bisa booting hanya dalam 8 detik, sementara komputer lama membutuhkan 3 menit? Mari kita bedah tuntas arsitektur Von Neumann, anatomi perangkat keras, dan cara mendiagnosis bottleneck performa!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-blue-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🧩 Arsitektur: Von Neumann & Siklus CPU</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
             </div>
         </div>
+    </section>
 
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🎯 Analogi Mudah</p>
-            <p class="text-purple-700 text-sm">Hardware itu seperti <strong>tubuh manusia</strong> (tangan, kaki, otak). Software itu seperti <strong>pikiran dan kemampuan</strong> (bisa menyanyi, menggambar, memasak). Keduanya butuh satu sama lain!</p>
-        </div>
-
-        <h2>Komponen Hardware Utama Komputer</h2>
-
-        <h3>🖥️ Perangkat Input (Masukan)</h3>
-        <p>Alat untuk memasukkan data ke komputer:</p>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 my-4 not-prose">
-            <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <div class="text-2xl mb-1">⌨️</div>
-                <p class="font-heading font-bold text-xs text-slate-700">Keyboard</p>
-                <p class="text-xs text-slate-400">Mengetik teks</p>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <div class="text-2xl mb-1">🖱️</div>
-                <p class="font-heading font-bold text-xs text-slate-700">Mouse</p>
-                <p class="text-xs text-slate-400">Menggerakkan kursor</p>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <div class="text-2xl mb-1">📷</div>
-                <p class="font-heading font-bold text-xs text-slate-700">Kamera/Webcam</p>
-                <p class="text-xs text-slate-400">Merekam gambar/video</p>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <div class="text-2xl mb-1">🎤</div>
-                <p class="font-heading font-bold text-xs text-slate-700">Mikrofon</p>
-                <p class="text-xs text-slate-400">Merekam suara</p>
-            </div>
-        </div>
-
-        <h3>🖨️ Perangkat Output (Keluaran)</h3>
-        <p>Alat untuk menampilkan atau mengeluarkan hasil dari komputer:</p>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 my-4 not-prose">
-            <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <div class="text-2xl mb-1">🖥️</div>
-                <p class="font-heading font-bold text-xs text-slate-700">Monitor</p>
-                <p class="text-xs text-slate-400">Menampilkan gambar</p>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <div class="text-2xl mb-1">🔊</div>
-                <p class="font-heading font-bold text-xs text-slate-700">Speaker</p>
-                <p class="text-xs text-slate-400">Mengeluarkan suara</p>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <div class="text-2xl mb-1">🖨️</div>
-                <p class="font-heading font-bold text-xs text-slate-700">Printer</p>
-                <p class="text-xs text-slate-400">Mencetak dokumen</p>
-            </div>
-            <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <div class="text-2xl mb-1">📽️</div>
-                <p class="font-heading font-bold text-xs text-slate-700">Proyektor</p>
-                <p class="text-xs text-slate-400">Menampilkan di layar besar</p>
-            </div>
-        </div>
-
-        <h3>🧠 Komponen Proses (Dalam Kotak CPU)</h3>
-        <p>Bagian dalam komputer yang memproses semua data:</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Komponen</th>
-                    <th>Fungsi</th>
-                    <th>Analogi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>CPU (Processor)</strong></td>
-                    <td>Otak komputer, memproses semua instruksi</td>
-                    <td>Seperti otak manusia</td>
-                </tr>
-                <tr>
-                    <td><strong>RAM</strong></td>
-                    <td>Memori sementara saat komputer hidup</td>
-                    <td>Seperti meja kerja — makin lebar, makin banyak yang bisa dikerjakan</td>
-                </tr>
-                <tr>
-                    <td><strong>Harddisk/SSD</strong></td>
-                    <td>Menyimpan data secara permanen</td>
-                    <td>Seperti lemari arsip/gudang</td>
-                </tr>
-                <tr>
-                    <td><strong>GPU</strong></td>
-                    <td>Memproses grafis dan gambar</td>
-                    <td>Seperti seniman khusus gambar</td>
-                </tr>
-                <tr>
-                    <td><strong>Motherboard</strong></td>
-                    <td>Papan utama yang menghubungkan semua komponen</td>
-                    <td>Seperti jalan raya antar kota</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Jenis-Jenis Komputer</h2>
-        <p>Komputer hadir dalam berbagai bentuk dan ukuran:</p>
-        <ul>
-            <li>🖥️ <strong>Desktop</strong> — komputer meja, cocok untuk rumah dan kantor</li>
-            <li>💻 <strong>Laptop</strong> — komputer portable yang bisa dibawa ke mana-mana</li>
-            <li>📱 <strong>Smartphone</strong> — komputer dalam genggaman tanganmu!</li>
-            <li>📟 <strong>Tablet</strong> — ukuran antara laptop dan smartphone</li>
-            <li>⌚ <strong>Smartwatch</strong> — komputer di pergelangan tangan</li>
-            <li>🖨️ <strong>Server</strong> — komputer super kuat yang melayani banyak pengguna</li>
-        </ul>
-
-        <div class="callout callout-info">
-            <p class="font-heading font-bold text-blue-800 mb-1">📌 Coba Yuk!</p>
-            <p class="text-blue-700 text-sm">Lihat komputer atau HP yang kamu miliki. Identifikasikan 5 perangkat input dan output yang ada! Coba juga tebak: berapa RAM HP kamu?</p>
-        </div>
-
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Hardware adalah bagian fisik komputer yang bisa dipegang</li>
-            <li>Software adalah program/aplikasi yang menjalankan komputer</li>
-            <li>Perangkat input: keyboard, mouse, kamera, mikrofon</li>
-            <li>Perangkat output: monitor, speaker, printer</li>
-            <li>CPU = otak, RAM = meja kerja, Harddisk = gudang</li>
-        </ul>
-
-    </div>
-
-    <div class="flex justify-between mt-12 gap-4">
-        <a href="../02-berpikir-komputasional/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-200 rounded-2xl shadow-sm hover:border-indigo-200 transition group">
-            <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
             <div>
-                <p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p>
-                <p class="text-sm font-semibold text-slate-700">Berpikir Komputasional</p>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah mempelajari modul ini</p>
             </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Arsitektur Von Neumann</strong>
+                    <p class="text-slate-600">Menjelaskan interaksi 4 pilar sistem: Perangkat Masukan (Input), Pemrosesan (CPU), Penyimpanan (Memory & Storage), dan Keluaran (Output).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menganalisis Siklus Mesin CPU</strong>
+                    <p class="text-slate-600">Menelusuri tahapan <em>Fetch</em> (ambil instruksi), <em>Decode</em> (terjemahkan kode), <em>Execute</em> (eksekusi perhitungan di ALU), dan <em>Store</em> (simpan hasil).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membedakan Karakteristik Komponen Fisik</strong>
+                    <p class="text-slate-600">Menganalisis perbedaan RAM (memori volatile cepat) vs SSD/HDD (penyimpanan permanen), CPU multi-core, GPU terintegrasi vs diskrit, dan motherboard.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mendiagnosis Masalah Kinerja (Bottleneck)</strong>
+                    <p class="text-slate-600">Mampu menganalisis penyebab komputer atau smartphone menjadi lambat dan menentukan solusi peningkatan (*upgrade*) yang tepat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: ARSITEKTUR VON NEUMANN -->
+    <section id="von-neumann" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Arsitektur Von Neumann: Cetak Biru Komputer Modern</h2>
+                <p class="text-xs text-slate-500">Prinsip fundamental komputer yang dirumuskan matematikawan John von Neumann pada tahun 1945</p>
+            </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+            Hampir setiap komputer yang kamu gunakan hari ini—mulai dari smartphone tipis di sakumu, laptop sekolah, hingga superkomputer peramal cuaca—bekerja dengan prinsip <strong>Arsitektur Von Neumann</strong>. Ciri khas utamanya adalah konsep <em>Stored-Program</em>, di mana instruksi program dan data pengguna disimpan bersama di dalam memori yang sama.
+        </p>
+
+        <!-- Diagram Interaktif 4 Blok Von Neumann -->
+        <div class="grid md:grid-cols-4 gap-4 text-xs">
+            <div class="p-5 rounded-2xl bg-amber-50/80 border-2 border-amber-200 space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">⌨️</span>
+                    <span class="text-[10px] font-bold bg-amber-200 text-amber-800 px-2 py-0.5 rounded">Langkah 1</span>
+                </div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Perangkat Input</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Menerima rangsangan dari dunia luar dan mengubahnya menjadi sinyal digital (0 dan 1).
+                </p>
+                <div class="pt-2 text-[11px] text-amber-900 font-semibold">
+                    Contoh: Keyboard, Mouse, Mikrofon, Touchscreen, Sensor Fingerprint.
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-blue-50/80 border-2 border-blue-200 space-y-2 md:col-span-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">🧠</span>
+                    <span class="text-[10px] font-bold bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Jantung Sistem</span>
+                </div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">CPU (Central Processing Unit) & Memori Utama</h3>
+                <div class="grid sm:grid-cols-2 gap-3 pt-1">
+                    <div class="bg-white p-3 rounded-xl border border-blue-100">
+                        <strong class="text-blue-800 block mb-0.5">Control Unit (CU)</strong>
+                        <p class="text-slate-500 text-[11px]">Polisi lalu lintas yang mengatur urutan instruksi dan membaca kode program.</p>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-blue-100">
+                        <strong class="text-blue-800 block mb-0.5">ALU (Arithmetic Logic Unit)</strong>
+                        <p class="text-slate-500 text-[11px]">Kalkulator super cepat untuk hitungan matematika (+,-,*,/) dan logika logika (AND, OR, NOT, &gt;, &lt;).</p>
+                    </div>
+                </div>
+                <p class="text-slate-600 text-[11px] pt-1">
+                    Didukung <strong>Register</strong> (memori ultra-cepat berkapasitas sangat kecil di dalam inti CPU) dan <strong>RAM</strong> (meja kerja sementara).
+                </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-emerald-50/80 border-2 border-emerald-200 space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">🖥️</span>
+                    <span class="text-[10px] font-bold bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded">Langkah Akhir</span>
+                </div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Perangkat Output</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Menerjemahkan hasil olahan biner CPU menjadi bentuk yang dipahami manusia (visual, audio, cetak).
+                </p>
+                <div class="pt-2 text-[11px] text-emerald-900 font-semibold">
+                    Contoh: Monitor OLED, Speaker, Printer 3D, Haptic Motor (getaran HP).
+                </div>
+            </div>
+        </div>
+
+        <!-- Analogi Koki Restoran -->
+        <div class="p-5 rounded-2xl bg-gradient-to-r from-slate-900 to-indigo-950 text-white space-y-3">
+            <h4 class="font-heading font-bold text-sm text-yellow-300 flex items-center gap-2">
+                <span>👨‍🍳</span> Analogi Restoran Cepat Saji: Memahami Alur Komputer
+            </h4>
+            <div class="grid sm:grid-cols-3 gap-4 text-xs text-slate-300">
+                <div class="bg-white/10 p-3 rounded-xl">
+                    <strong class="text-white block mb-1">1. Meja Kasir (Input)</strong>
+                    Pelanggan memesan burger. Kasir mencatat pesanan ke sistem kasir.
+                </div>
+                <div class="bg-white/10 p-3 rounded-xl">
+                    <strong class="text-white block mb-1">2. Koki & Meja Racik (CPU & RAM)</strong>
+                    Koki (CPU) membaca resep. Bahan burger diambil sebentar ke meja racik (RAM). Koki menggoreng daging dan menyusun roti.
+                </div>
+                <div class="bg-white/10 p-3 rounded-xl">
+                    <strong class="text-white block mb-1">3. Meja Penyajian (Output)</strong>
+                    Burger hangat dibungkus rapi dan diserahkan ke pelanggan untuk dinikmati!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: SIKLUS FETCH-DECODE-EXECUTE -->
+    <section id="siklus-mesin" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Siklus Mesin CPU: Fetch, Decode, Execute, Store</h2>
+                <p class="text-xs text-slate-500">Detak ritmis miliaran kali per detik (Gigahertz) di jantung prosesor</p>
+            </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+            Jika prosesormu berkecepatan <strong>3.0 GHz (Gigahertz)</strong>, artinya CPU melakukan siklus mesin ini sebanyak <strong>3.000.000.000 kali per detik</strong>! Berikut 4 langkah siklus mesin tanpa henti:
+        </p>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+            <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 space-y-2">
+                <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-xs">1</div>
+                <strong class="font-heading text-sm text-slate-800 block">FETCH (Ambil)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Control Unit mengambil instruksi kode program biner berikutnya dari alamat memori RAM melalui bus data.
+                </p>
+            </div>
+            <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 space-y-2">
+                <div class="w-8 h-8 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center text-xs">2</div>
+                <strong class="font-heading text-sm text-slate-800 block">DECODE (Terjemahkan)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Instruksi biner diterjemahkan menjadi sinyal perintah kontrol: apakah operasi penjumlahan, pemindahan nilai, atau percabangan?
+                </p>
+            </div>
+            <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 space-y-2">
+                <div class="w-8 h-8 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-xs">3</div>
+                <strong class="font-heading text-sm text-slate-800 block">EXECUTE (Jalankan)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    ALU mengeksekusi operasi aritmetika atau logika. Jika instruksi berbunyi <code>5 + 7</code>, ALU menghasilkan output <code>12</code>.
+                </p>
+            </div>
+            <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 space-y-2">
+                <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-xs">4</div>
+                <strong class="font-heading text-sm text-slate-800 block">STORE (Simpan)</strong>
+                <p class="text-slate-600 text-[11px] leading-relaxed">
+                    Hasil kalkulasi disimpan kembali ke Register CPU atau dituliskan ke lokasi memori RAM untuk dipakai proses berikutnya.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: KOMPONEN UTAMA PC & PERBANDINGAN -->
+    <section id="komponen-utama" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">3</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Bedah Anatomi Komponen Fisik Komputer</h2>
+                <p class="text-xs text-slate-500">Mengenal spesifikasi dan peranan masing-masing komponen di dalam casing komputer</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5 text-xs">
+            <!-- CPU & Multi-core -->
+            <div class="p-5 rounded-2xl border border-slate-200 bg-white space-y-2.5 shadow-sm">
+                <span class="text-3xl">🔲</span>
+                <h3 class="font-heading font-bold text-slate-900 text-base">CPU: Otak Utama & Multi-Core</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    CPU modern tidak lagi hanya mengandalkan kecepatan clock (GHz), melainkan memiliki banyak <strong>Core</strong> (inti komputasi independen). 
+                </p>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1 text-[11px]">
+                    <div><strong>Single-Core:</strong> Seperti 1 koki yang harus masak 10 pesanan bergantian.</div>
+                    <div><strong>Octa-Core (8 Core):</strong> Seperti 8 koki yang memasak bersamaan secara paralel. Multitasking game + streaming Spotify + browsing 20 tab tetap lancar!</div>
+                </div>
+            </div>
+
+            <!-- RAM vs Storage -->
+            <div class="p-5 rounded-2xl border border-slate-200 bg-white space-y-2.5 shadow-sm">
+                <span class="text-3xl">🗄️</span>
+                <h3 class="font-heading font-bold text-slate-900 text-base">RAM vs Storage: Volatile vs Non-Volatile</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Banyak orang keliru menyamakan RAM dengan Ruang Penyimpanan (Storage). Perbedaannya sangat mendasar:
+                </p>
+                <table class="w-full text-left text-[11px] border border-slate-200 rounded-xl overflow-hidden">
+                    <thead class="bg-slate-100 font-bold text-slate-700">
+                        <tr><th class="p-2">Karakteristik</th><th class="p-2">RAM (Memori)</th><th class="p-2">SSD/HDD (Storage)</th></tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr><td class="p-2 font-semibold">Sifat Data</td><td class="p-2 text-rose-600 font-bold">Volatile (Hilang saat listrik mati)</td><td class="p-2 text-emerald-600 font-bold">Non-Volatile (Tetap awet tersimpan)</td></tr>
+                        <tr><td class="p-2 font-semibold">Kecepatan Baca</td><td class="p-2 text-blue-700 font-bold">Sangat Cepat (~25.000 MB/s)</td><td class="p-2">SSD: ~3.500 MB/s | HDD: ~150 MB/s</td></tr>
+                        <tr><td class="p-2 font-semibold">Fungsi</td><td class="p-2">Tempat aplikasi aktif dibuka</td><td class="p-2">Tempat instalasi game & berkas file</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- GPU -->
+            <div class="p-5 rounded-2xl border border-slate-200 bg-white space-y-2.5 shadow-sm">
+                <span class="text-3xl">🎮</span>
+                <h3 class="font-heading font-bold text-slate-900 text-base">GPU (Graphics Processing Unit)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Spesialis memproses ribuan kalkulasi visual dan matriks secara serempak. Sangat vital untuk rendering 3D, bermain game, mengedit video, dan menjalankan model Kecerdasan Artifisial (AI).
+                </p>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-[11px] space-y-1">
+                    <div><strong>iGPU (Integrated):</strong> Menyatu di dalam prosesor, hemat daya (laptop tipis, HP).</div>
+                    <div><strong>dGPU (Dedicated/Diskrit):</strong> Kartu grafis terpisah dengan kipas pendingin dan VRAM sendiri (NVIDIA GeForce, AMD Radeon) untuk komputasi berat.</div>
+                </div>
+            </div>
+
+            <!-- Motherboard & PSU -->
+            <div class="p-5 rounded-2xl border border-slate-200 bg-white space-y-2.5 shadow-sm">
+                <span class="text-3xl">🔌</span>
+                <h3 class="font-heading font-bold text-slate-900 text-base">Motherboard & Power Supply (PSU)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    <strong>Motherboard</strong> adalah papan sirkuit utama yang menghubungkan semua komponen melalui jalur tembaga mikroskopis (bus).
+                </p>
+                <p class="text-slate-600 leading-relaxed">
+                    <strong>PSU</strong> adalah jantung daya yang mengubah arus bolak-balik (AC 220V dari colokan PLN) menjadi arus searah (DC 12V, 5V, 3.3V) yang stabil agar sirkuit silikon komputer tidak terbakar.
+                </p>
+            </div>
+        </div>
+
+        <!-- Callout Banner ke Lab Maya -->
+        <div class="bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl p-6 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-5">
+            <div class="space-y-1.5">
+                <div class="inline-block bg-white/20 px-2.5 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wide">
+                    Praktik Virtual Terpadu
+                </div>
+                <h4 class="font-heading font-extrabold text-xl text-white">Ingin Merakit Komputer Secara Nyata?</h4>
+                <p class="text-amber-100 text-xs max-w-xl leading-relaxed">
+                    Kunjungi <strong>Lab Maya: Simulasi Perakitan Komputer</strong> untuk mencoba memasang CPU, mengunci tuas socket, memasang RAM dual-channel, hingga menyambungkan kabel PSU tanpa risiko korsleting!
+                </p>
+            </div>
+            <a href="/lab/lab-maya/perakitan-komputer/" target="_blank" rel="noopener"
+               class="px-5 py-3 bg-white text-orange-700 hover:bg-orange-50 font-bold text-xs rounded-xl shadow-md transition whitespace-nowrap flex items-center gap-2">
+                <span>🔧</span> Buka Lab Maya (Tab Baru) →
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION 4: STUDI KASUS MENGAPA KOMPUTER LEMOT -->
+    <section id="studi-kasus-lemot" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">4</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Studi Kasus Teknis: Mengapa Laptop atau HP Menjadi Lemot?</h2>
+                <p class="text-xs text-slate-500">Mengenal istilah "Bottleneck" dan cara mendiagnosis penyebab kelambatan sistem</p>
+            </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+            Dalam sistem komputer, performa keseluruhan ditentukan oleh <strong>komponen yang paling lambat</strong>, seperti air yang mengalir keluar dari mulut botol sempit (*bottleneck*). Berikut 4 skenario umum penyebab komputer lemot:
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+                <div class="flex items-center gap-2 text-rose-600 font-bold">
+                    <span>🛑</span> Gejala 1: Masih Memakai HDD Piringan Magnetik
+                </div>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    <strong>Penyebab:</strong> HDD mekanik harus memutar piringan fisik pada 5.400 RPM untuk mencari data. Ketika Windows 10/11 melakukan update di latar belakang, disk usage menjadi 100%.<br>
+                    <strong>Solusi:</strong> Ganti HDD dengan <strong>SSD (Solid State Drive)</strong>. Kecepatan baca naik 10x lipat secara instan!
+                </p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+                <div class="flex items-center gap-2 text-amber-600 font-bold">
+                    <span>🛑</span> Gejala 2: Kapasitas RAM Kurang (Paging/Thrashing)
+                </div>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    <strong>Penyebab:</strong> Jika RAM 4GB penuh karena membuka 15 tab Google Chrome, OS terpaksa meminjam memori penyimpanan SSD/HDD sebagai <em>Virtual Memory</em>. Karena SSD jauh lebih lambat dari RAM asli, komputer terasa patah-patah.<br>
+                    <strong>Solusi:</strong> Tambah RAM menjadi minimal 8GB atau 16GB dual-channel.
+                </p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+                <div class="flex items-center gap-2 text-indigo-600 font-bold">
+                    <span>🛑</span> Gejala 3: Panas Berlebih (Thermal Throttling)
+                </div>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    <strong>Penyebab:</strong> Ketika debu menyumbat kipas pendingin laptop atau pasta termal CPU mengering, suhu inti CPU bisa menembus 95°C. Demi melindungi silikon agar tidak meleleh terbakar, CPU secara otomatis memotong kecepatannya menjadi 20%.<br>
+                    <strong>Solusi:</strong> Bersihkan ventilasi kipas dan ganti pasta termal secara berkala.
+                </p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+                <div class="flex items-center gap-2 text-blue-600 font-bold">
+                    <span>🛑</span> Gejala 4: Terlalu Banyak Aplikasi Startup & Bloatware
+                </div>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    <strong>Penyebab:</strong> Banyak aplikasi otomatis berjalan saat Windows pertama kali dinyalakan (Spotify, Steam, launcher game, updater otomatis) yang menghabiskan memori dan siklus CPU sebelum kamu mulai bekerja.<br>
+                    <strong>Solusi:</strong> Matikan aplikasi yang tidak perlu melalui tab <em>Startup</em> di Task Manager.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (20 SOAL TOTAL DALAM 4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Uji Pemahaman Hardware</h2>
+                    <p class="text-xs text-slate-500">20 Soal (Pilihan Ganda, Benar/Salah, Menjodohkan, dan Siklus Komputasi)</p>
+                </div>
+            </div>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-4 py-2 rounded-2xl"></div>
+        </div>
+
+        <!-- Bagian A: Pilihan Ganda (8 Soal @ 5 Poin = 40 Poin) -->
+        <div class="space-y-5 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian A: Pilihan Ganda (HOTS & Pemecahan Masalah)</span>
+                <span class="text-slate-500">8 Soal · 40 Poin</span>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">1. Ciri khas utama dari arsitektur komputer Von Neumann yang membedakannya dari mesin hitung kalkulator mekanik kuno adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="A"> A. Menggunakan layar berwarna dan tombol fisik QWERTY</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="B"> B. Data dan instruksi program disimpan bersama di dalam memori utama yang sama (Stored-Program)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="C"> C. Tidak membutuhkan memori sementara RAM</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="D"> D. Komputer hanya bisa menjalankan satu program seumur hidupnya</label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">2. Bagian di dalam CPU yang bertugas melakukan perhitungan matematika seperti penambahan, perkalian, dan pembandingan logika boolean adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="A"> A. Control Unit (CU)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="B"> B. Arithmetic Logic Unit (ALU)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="C"> C. Power Supply Unit (PSU)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="D"> D. Heat sink</label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">3. Komputer Doni tiba-tiba mati lampu saat sedang mengetik tugas. Ketika listrik menyala kembali dan laptop dihidupkan, ketikan tugas yang belum disimpan hilang total. Hal ini membuktikan bahwa RAM memiliki sifat...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="A"> A. Non-Volatile (permanen tersimpan)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="B"> B. Read-Only Memory (hanya bisa dibaca)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="C"> C. Volatile (data hilang jika aliran arus listrik terputus)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="D"> D. Solid State Storage</label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">4. Mengapa mengganti Harddisk (HDD) lama dengan SSD (Solid State Drive) membuat komputer booting jauh lebih cepat?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="A"> A. SSD memakai piringan magnetik yang berputar pada 10.000 RPM</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="B"> B. SSD menggunakan chip memori flash elektronik tanpa komponen mekanik yang bergerak</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="C"> C. SSD berfungsi menggantikan peran prosesor utama</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="D"> D. SSD menurunkan resolusi grafis monitor</label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">5. Urutan siklus mesin instruksi CPU yang benar dan terjadi berulang-ulang adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="A"> A. Execute → Fetch → Decode → Store</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="B"> B. Decode → Execute → Store → Fetch</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="C"> C. Fetch → Decode → Execute → Store</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="D"> D. Store → Decode → Fetch → Execute</label>
+                </div>
+            </div>
+
+            <!-- Soal 6 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">6. Manakah dari perangkat berikut yang bertindak sebagai perangkat Masukan (Input) sekaligus Keluaran (Output) dalam satu kesatuan fisik?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="A"> A. Layar Sentuh (Touchscreen Smartphone)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="B"> B. Keyboard Mekanikal</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="C"> C. Proyektor LCD</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="D"> D. Mouse Optik</label>
+                </div>
+            </div>
+
+            <!-- Soal 7 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">7. Fenomena penurunan kecepatan CPU secara otomatis saat suhu prosesor mencapai batas maksimal berbahaya (misal 95°C) disebut...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="A"> A. Overclocking</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="B"> B. Thermal Throttling</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="C"> C. Multi-threading</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="D"> D. Disk Defragmenter</label>
+                </div>
+            </div>
+
+            <!-- Soal 8 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">8. Komponen komputer yang bertugas mengubah tegangan tinggi listrik AC PLN (220V) menjadi tegangan rendah DC (12V, 5V, 3.3V) yang aman untuk motherboard dan komponen lainnya adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="A"> A. Motherboard</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="B"> B. Heatsink Fan</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="C"> C. Power Supply Unit (PSU)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="D"> D. Solid State Drive</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian B: Benar atau Salah (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian B: Analisis Benar atau Salah</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">9. Semakin besar kapasitas RAM (misal 16GB), maka semakin banyak aplikasi yang bisa dibuka bersamaan tanpa komputer mengalami lag / meminjam storage virtual.</span>
+                <select id="tf1" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">10. Kartu Grafis Terintegrasi (Integrated GPU) memiliki performa gaming dan rendering 3D yang jauh lebih bertenaga dibandingkan Dedicated GPU papan atas.</span>
+                <select id="tf2" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">11. Register adalah unit memori paling cepat di dalam sistem komputer karena berada tepat di dalam inti prosesor (CPU).</span>
+                <select id="tf3" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">12. Saat merakit komputer, prosesor boleh dipasang tanpa thermal paste dan heatsink pendingin asalkan komputer diletakkan di ruangan ber-AC.</span>
+                <select id="tf4" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Bagian C: Menjodohkan Fungsi Komponen (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian C: Menjodohkan Komponen & Peran Kunci</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">13. Motherboard</p>
+                    <select id="m1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi yang Tepat --</option>
+                        <option value="BUS">Papan sirkuit utama tempat bertemunya CPU, RAM, GPU melalui jalur bus data</option>
+                        <option value="MATH">Melakukan operasi perhitungan matematika dan logika</option>
+                        <option value="POWER">Menyuplai listrik arus DC ke seluruh komponen</option>
+                        <option value="VOLATILE">Menyimpan sementara instruksi aplikasi yang sedang aktif</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">14. Arithmetic Logic Unit (ALU)</p>
+                    <select id="m2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi yang Tepat --</option>
+                        <option value="BUS">Papan sirkuit utama tempat bertemunya CPU, RAM, GPU melalui jalur bus data</option>
+                        <option value="MATH">Melakukan operasi perhitungan matematika dan logika</option>
+                        <option value="POWER">Menyuplai listrik arus DC ke seluruh komponen</option>
+                        <option value="VOLATILE">Menyimpan sementara instruksi aplikasi yang sedang aktif</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">15. Power Supply Unit (PSU)</p>
+                    <select id="m3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi yang Tepat --</option>
+                        <option value="BUS">Papan sirkuit utama tempat bertemunya CPU, RAM, GPU melalui jalur bus data</option>
+                        <option value="MATH">Melakukan operasi perhitungan matematika dan logika</option>
+                        <option value="POWER">Menyuplai listrik arus DC ke seluruh komponen</option>
+                        <option value="VOLATILE">Menyimpan sementara instruksi aplikasi yang sedang aktif</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">16. Random Access Memory (RAM)</p>
+                    <select id="m4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi yang Tepat --</option>
+                        <option value="BUS">Papan sirkuit utama tempat bertemunya CPU, RAM, GPU melalui jalur bus data</option>
+                        <option value="MATH">Melakukan operasi perhitungan matematika dan logika</option>
+                        <option value="POWER">Menyuplai listrik arus DC ke seluruh komponen</option>
+                        <option value="VOLATILE">Menyimpan sementara instruksi aplikasi yang sedang aktif</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian D: Urutan Siklus Mesin Komputasi (4 Langkah @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian D: Mengurutkan Tahapan Siklus Mesin CPU</span>
+                <span class="text-slate-500">4 Langkah · 20 Poin</span>
+            </div>
+
+            <p class="text-slate-600">Urutkan 4 tahapan eksekusi instruksi di CPU secara tepat dari tahap pertama hingga tahap akhir:</p>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">Tahap ke-1:</label>
+                    <select id="seq1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Tahap</option>
+                        <option value="FETCH">FETCH (Ambil Kode dari RAM)</option>
+                        <option value="DECODE">DECODE (Terjemahkan Instruksi)</option>
+                        <option value="EXECUTE">EXECUTE (Kalkulasi di ALU)</option>
+                        <option value="STORE">STORE (Tulis Hasil ke Memori)</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">Tahap ke-2:</label>
+                    <select id="seq2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Tahap</option>
+                        <option value="FETCH">FETCH (Ambil Kode dari RAM)</option>
+                        <option value="DECODE">DECODE (Terjemahkan Instruksi)</option>
+                        <option value="EXECUTE">EXECUTE (Kalkulasi di ALU)</option>
+                        <option value="STORE">STORE (Tulis Hasil ke Memori)</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">Tahap ke-3:</label>
+                    <select id="seq3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Tahap</option>
+                        <option value="FETCH">FETCH (Ambil Kode dari RAM)</option>
+                        <option value="DECODE">DECODE (Terjemahkan Instruksi)</option>
+                        <option value="EXECUTE">EXECUTE (Kalkulasi di ALU)</option>
+                        <option value="STORE">STORE (Tulis Hasil ke Memori)</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">Tahap ke-4:</label>
+                    <select id="seq4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Tahap</option>
+                        <option value="FETCH">FETCH (Ambil Kode dari RAM)</option>
+                        <option value="DECODE">DECODE (Terjemahkan Instruksi)</option>
+                        <option value="EXECUTE">EXECUTE (Kalkulasi di ALU)</option>
+                        <option value="STORE">STORE (Tulis Hasil ke Memori)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+            <p class="text-xs text-slate-400">Pastikan semua nomor telah terisi sebelum menekan tombol periksa nilai.</p>
+            <button onclick="submitEvaluationHardware()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm rounded-xl shadow-lg transition">
+                Periksa & Kirim Jawaban
+            </button>
+        </div>
+
+        <!-- Riwayat Pengerjaan -->
+        <div id="attempt-history-box" class="hidden pt-6 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-xs uppercase text-slate-400 tracking-wider">Riwayat Pengerjaan Tersimpan:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI -->
+    <section id="rangkuman" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">✨</span>
+            <h2 class="font-heading font-extrabold text-xl text-slate-800">Rangkuman Kunci & Refleksi Belajar</h2>
+        </div>
+
+        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li><strong>Arsitektur Von Neumann</strong> memadukan Input, CPU (CU + ALU + Register), Memori Utama, dan Output dalam satu alur eksekusi terkoordinasi.</li>
+            <li><strong>Siklus Mesin CPU</strong> terdiri dari 4 tahap: <em>Fetch</em> (ambil instruksi dari RAM), <em>Decode</em> (terjemahkan oleh CU), <em>Execute</em> (hitung di ALU), dan <em>Store</em> (simpan hasil).</li>
+            <li><strong>RAM vs SSD</strong>: RAM bersifat <em>volatile</em> dan super cepat untuk aplikasi aktif; SSD bersifat <em>non-volatile</em> untuk penyimpanan permanen berkas dan OS.</li>
+            <li><strong>Bottleneck</strong> performa sering kali disebabkan oleh penggunaan HDD lama, RAM yang kekecilan (kurang dari 8GB), atau panas berlebih yang memicu <em>thermal throttling</em>.</li>
+        </ul>
+
+        <div class="pt-4 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-slate-800 text-sm">Refleksi Belajarmu:</h4>
+            <textarea id="reflection-input" rows="3" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Apa hal paling mengejutkan atau baru yang kamu pelajari tentang cara kerja perangkat keras komputer hari ini?"></textarea>
+            <div class="flex items-center justify-between">
+                <span id="refl-status" class="text-xs text-emerald-600 font-bold"></span>
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition">
+                    Simpan Refleksi
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-200 transition text-xs font-bold">
+            ← Indeks Sistem Komputer
         </a>
-        <a href="../04-sistem-bilangan/" class="flex items-center gap-3 px-5 py-3 bg-indigo-600 text-white rounded-2xl shadow hover:bg-indigo-700 transition group">
-            <div class="text-right">
-                <p class="text-[10px] text-indigo-200 uppercase tracking-wider">Berikutnya</p>
-                <p class="text-sm font-semibold">Sistem Bilangan</p>
-            </div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="../02-perangkat-lunak-sistem-operasi/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white transition text-xs font-bold shadow-md">
+            Modul Berikutnya: Sistem Operasi →
         </a>
     </div>
-
 
     <!-- Selesai Mempelajari Modul Card -->
-    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
             <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
             <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
         </div>
-        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
             <span>✓</span> Tandai Selesai
         </button>
     </div>
@@ -238,39 +722,160 @@
 </main>
 
 <footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan.</div>
+        <a href="../../../" class="hover:text-blue-600 transition font-medium">← Kembali ke Portal Edu</a>
     </div>
 </footer>
+
 <script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
-const TOPIC_ID = 'inf-sistem-01';
+const TOPIC_ID = 'inf-sk-01';
+
+const ANSWERS_A = {
+    q1: 'B',
+    q2: 'B',
+    q3: 'C',
+    q4: 'B',
+    q5: 'C',
+    q6: 'A',
+    q7: 'B',
+    q8: 'C'
+};
+
+const ANSWERS_B = {
+    tf1: 'BENAR',
+    tf2: 'SALAH',
+    tf3: 'BENAR',
+    tf4: 'SALAH'
+};
+
+const ANSWERS_C = {
+    m1: 'BUS',
+    m2: 'MATH',
+    m3: 'POWER',
+    m4: 'VOLATILE'
+};
+
+const ANSWERS_D = {
+    seq1: 'FETCH',
+    seq2: 'DECODE',
+    seq3: 'EXECUTE',
+    seq4: 'STORE'
+};
 
 async function markModuleComplete() {
     if (window.FananiTracker) {
-        await FananiTracker.markCompleted(SUBJECT, TOPIC_ID);
-        const btn = document.getElementById("btn-complete-module");
+        await FananiTracker.markComplete(SUBJECT, TOPIC_ID);
+        const btn = document.getElementById('btn-complete-module');
         if (btn) {
-            btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-            btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+            btn.innerHTML = '<span>✓</span> Tersimpan di Rapor!';
+            btn.className = 'px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl transition shadow cursor-default';
+        }
+    } else {
+        alert('Modul ditandai selesai secara lokal!');
+    }
+}
+
+async function submitEvaluationHardware() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in ANSWERS_A) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_A[k]) scoreA += 5;
+    }
+
+    for (let k in ANSWERS_B) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_B[k]) scoreB += 5;
+    }
+
+    for (let k in ANSWERS_C) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_C[k]) scoreC += 5;
+    }
+
+    for (let k in ANSWERS_D) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_D[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
         }
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    if (window.FananiTracker) {
-        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-        if (hist && hist.is_completed) {
-            const btn = document.getElementById("btn-complete-module");
-            if (btn) {
-                btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-                btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
-            }
-        }
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    loadHistory();
 });
 </script>
+
 </body>
 </html>

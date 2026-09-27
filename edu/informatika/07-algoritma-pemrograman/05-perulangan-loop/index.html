@@ -1,235 +1,810 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Logika percabangan dan pengulangan dalam Python: pernyataan if-elif-else, for loop, while loop, dan penerapannya untuk membuat program yang lebih cerdas.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Logika: Percabangan & Pengulangan | Informatika Kelas 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Perulangan (Looping) | Algoritma & Pemrograman Informatika</title>
+    <meta name="description" content="Pelajari for loop range(start, stop, step), while loop, penanganan infinite loop, perintah break & continue, pola akumulator, dan simulator jalannya perulangan live.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .prose strong{color:#1e293b;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
-        pre{background:#0f172a;color:#e2e8f0;padding:1.25rem;border-radius:.75rem;overflow-x:auto;font-size:.875rem;line-height:1.6;margin:1rem 0;}
-        code{font-family:'Courier New',monospace;}:not(pre)>code{background:#f1f5f9;color:#6366f1;padding:.15rem .4rem;border-radius:.35rem;font-size:.85em;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .font-mono{font-family:'JetBrains Mono',monospace;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(168,85,247,0.2);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-emerald-600 hover:underline">← Kelas 8</a>
-</nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Edu</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
-        <a href="../" class="hover:text-emerald-600">Kelas 8</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 3</span>
-    </div>
-    <div class="bg-gradient-to-br from-sky-500 to-emerald-500 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 3 · Python</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Logika: Percabangan & Pengulangan 🔀</h1>
-            <p class="text-sky-100 leading-relaxed max-w-2xl">Dua konsep ini adalah "otak" dari setiap program. Dengan if-else, program bisa membuat keputusan. Dengan loop, program bisa mengulang pekerjaan tanpa capek!</p>
-        </div>
-    </div>
-    <div class="prose max-w-none">
-        <h2>Percabangan: Program yang Bisa Memilih</h2>
-        <p>Dalam kehidupan sehari-hari, kita sering membuat keputusan: <em>"Jika hujan, bawa payung. Jika tidak, bawa topi."</em> Dalam Python, ini disebut <strong>percabangan (if-else)</strong>.</p>
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🧠 Analogi Sehari-hari</p>
-            <p class="text-purple-700 text-sm">Rambu lalu lintas = if-else! <br>"JIKA lampu hijau → jalan. JIKA lampu merah → berhenti." Program pun begitu!</p>
-        </div>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-purple-100 selection:text-purple-900 pb-24">
 
-        <h2>Struktur If-Else di Python</h2>
-        <pre>nilai = 75
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-purple-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-if nilai >= 75:
-    print("Selamat, kamu lulus! 🎉")
-elif nilai >= 60:
-    print("Hampir! Coba lebih keras lagi.")
-else:
-    print("Jangan menyerah, terus belajar! 💪")</pre>
-        <div class="not-prose grid md:grid-cols-3 gap-3 my-5">
-                                    <div class="bg-white border bg-emerald-50 border-emerald-200 rounded-xl p-4 shadow-sm">
-                <code class="text-emerald-700 font-bold text-lg">if</code>
-                <p class="text-slate-500 text-xs mt-2">Kondisi PERTAMA yang dicek. Dieksekusi jika BENAR.</p>
-            </div>
-                        <div class="bg-white border bg-amber-50 border-amber-200 rounded-xl p-4 shadow-sm">
-                <code class="text-amber-700 font-bold text-lg">elif</code>
-                <p class="text-slate-500 text-xs mt-2">Kondisi ALTERNATIF (bisa banyak). Singkatan dari "else if".</p>
-            </div>
-                        <div class="bg-white border bg-slate-50 border-slate-200 rounded-xl p-4 shadow-sm">
-                <code class="text-slate-600 font-bold text-lg">else</code>
-                <p class="text-slate-500 text-xs mt-2">Dieksekusi jika SEMUA kondisi di atas SALAH.</p>
-            </div>
-                    </div>
-
-        <h2>Operator Perbandingan</h2>
-        <div class="not-prose grid grid-cols-2 md:grid-cols-3 gap-3 my-4">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <code class="text-indigo-600 font-bold text-xl">==</code>
-                <p class="text-slate-600 text-xs font-semibold mt-1">Sama dengan</p>
-                <p class="text-slate-400 text-xs mt-1 font-mono">5 == 5 → True</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <code class="text-indigo-600 font-bold text-xl">!=</code>
-                <p class="text-slate-600 text-xs font-semibold mt-1">Tidak sama dengan</p>
-                <p class="text-slate-400 text-xs mt-1 font-mono">3 != 5 → True</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <code class="text-indigo-600 font-bold text-xl">></code>
-                <p class="text-slate-600 text-xs font-semibold mt-1">Lebih besar</p>
-                <p class="text-slate-400 text-xs mt-1 font-mono">7 > 3 → True</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <code class="text-indigo-600 font-bold text-xl"><</code>
-                <p class="text-slate-600 text-xs font-semibold mt-1">Lebih kecil</p>
-                <p class="text-slate-400 text-xs mt-1 font-mono">2 < 8 → True</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <code class="text-indigo-600 font-bold text-xl">>=</code>
-                <p class="text-slate-600 text-xs font-semibold mt-1">Lebih besar / sama</p>
-                <p class="text-slate-400 text-xs mt-1 font-mono">5 >= 5 → True</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 text-center shadow-sm">
-                <code class="text-indigo-600 font-bold text-xl"><=</code>
-                <p class="text-slate-600 text-xs font-semibold mt-1">Lebih kecil / sama</p>
-                <p class="text-slate-400 text-xs mt-1 font-mono">4 <= 6 → True</p>
-            </div>
-                    </div>
-
-        <h2>Pengulangan: Program yang Tak Kenal Lelah</h2>
-        <p>Bayangkan kamu harus menyapa 100 teman satu per satu. Kalau ditulis manual, butuh 100 baris kode! Dengan <strong>loop</strong>, cukup beberapa baris saja.</p>
-
-        <h3>Loop For — Ulangi Sejumlah Tertentu</h3>
-        <pre># Cetak angka 1 sampai 10
-for angka in range(1, 11):
-    print(angka)
-
-# Hitung total nilai
-nilai = [80, 75, 90, 85, 70]
-total = 0
-for n in nilai:
-    total = total + n
-print("Total:", total)  # Output: Total: 400</pre>
-
-        <h3>Loop While — Ulangi Selama Kondisi Benar</h3>
-        <pre>nyawa = 3
-
-while nyawa > 0:
-    print(f"Kamu punya {nyawa} nyawa tersisa.")
-    jawaban = input("Tebak angka (1-5): ")
-    if jawaban == "3":
-        print("Benar! Kamu menang! 🎉")
-        break          # keluar dari loop
-    else:
-        nyawa = nyawa - 1
-        print("Salah!")
-
-if nyawa == 0:
-    print("Game Over! 💀")</pre>
-
-        <div class="callout callout-warn">
-            <p class="font-heading font-bold text-amber-800 mb-1">⚠️ Hati-hati: Infinite Loop!</p>
-            <p class="text-amber-700 text-sm">Loop while akan terus berjalan kalau kondisinya tidak pernah menjadi False. Selalu pastikan ada sesuatu yang mengubah kondisi agar loop bisa berhenti!</p>
-        </div>
-
-        <h2>Gabungan: If di Dalam Loop</h2>
-        <p>Inilah kekuatan sesungguhnya! Kita bisa menggabungkan percabangan dan pengulangan:</p>
-        <pre># Tentukan nilai setiap siswa
-siswa = [("Budi", 82), ("Ani", 65), ("Cici", 91), ("Deni", 55)]
-
-for nama, nilai in siswa:
-    if nilai >= 75:
-        status = "Lulus ✅"
-    else:
-        status = "Remedial ⚠️"
-    print(f"{nama}: {nilai} — {status}")</pre>
-
-        <div class="callout callout-tip">
-            <p class="font-heading font-bold text-green-800 mb-2">✅ Tips Belajar</p>
-            <ul class="text-green-700 text-sm space-y-1 list-disc pl-4">
-                <li>Indentasi (spasi di awal baris) sangat penting di Python!</li>
-                <li><code>range(5)</code> menghasilkan 0,1,2,3,4 (dimulai dari 0)</li>
-                <li><code>range(1, 6)</code> menghasilkan 1,2,3,4,5</li>
-                <li>Gunakan <code>break</code> untuk keluar dari loop lebih awal</li>
-            </ul>
-        </div>
-
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Percabangan (<code>if/elif/else</code>) membuat program bisa memilih tindakan</li>
-            <li>Loop <code>for</code> mengulang sejumlah tertentu kali</li>
-            <li>Loop <code>while</code> mengulang selama kondisi masih benar</li>
-            <li>Gabungan keduanya membuat program yang benar-benar "pintar"!</li>
-        </ul>
-    </div>
-    <div class="flex justify-between mt-12 gap-4">
-        <a href="../02-python-turtle/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
-            <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Python Turtle</p></div>
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-purple-600 transition">
+        fanani<span class="text-purple-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-purple-600 transition flex items-center gap-1">
+            ← Unit Algoritma & Pemrograman
         </a>
-        <a href="../04-jaringan-internet/" class="flex items-center gap-3 px-5 py-3 bg-emerald-600 text-white rounded-2xl shadow hover:bg-emerald-700 transition">
-            <div class="text-right"><p class="text-[10px] text-emerald-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Jaringan & Internet</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#for-loop" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">🔄 For & Range</a>
+        <a href="#while-loop" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">⏳ While Loop</a>
+        <a href="#break-continue" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">⛔ Break & Continue</a>
+        <a href="#simulator-loop" class="px-3 py-1.5 rounded-full bg-purple-100 text-purple-900 hover:bg-purple-200 transition whitespace-nowrap font-bold">🎮 Live Loop Stepper</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">✨ Rangkuman</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../edu/" class="hover:text-purple-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-purple-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-purple-600 transition">Algoritma & Pemrograman</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">05. Struktur Perulangan (Loop)</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-purple-600 via-indigo-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🧩 AP · Modul 05
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Otomasi Ribuan Langkah Tanpa Lelah: Logika Perulangan (Loop)
+            </h1>
+            <p class="text-purple-100 text-sm md:text-base leading-relaxed mb-6">
+                Manusia akan lelah dan bosan jika disuruh menulis kalimat yang sama 1.000 kali. Namun bagi komputer, 1.000 kali pengulangan dapat diselesaikan dalam 0,001 detik tanpa kesalahan! Pelajari perbedaan <code>for</code> loop terhitung dengan <code>while</code> loop bersyarat, teknik pengendali <code>break</code> & <code>continue</code>, serta pola akumulator nilai.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-purple-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🔄 Struktur: For & While Loop</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah mempelajari modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100">
+                <span class="text-purple-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Esensi Perulangan</strong>
+                    <p class="text-slate-600">Menjelaskan mengapa loop vital untuk efisiensi kode dan mencegah duplikasi baris instruksi (prinsip DRY).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100">
+                <span class="text-purple-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menguasai For Loop & Fungsi Range()</strong>
+                    <p class="text-slate-600">Menggunakan <code>range(stop)</code>, <code>range(start, stop)</code>, dan <code>range(start, stop, step)</code> untuk perulangan terhitung.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100">
+                <span class="text-purple-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan While Loop & Mencegah Infinite Loop</strong>
+                    <p class="text-slate-600">Menyusun kondisi penghenti loop dan memastikan variabel pencacah (*counter*) selalu dinaikkan.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100">
+                <span class="text-purple-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengendalikan Alur dengan Break & Continue</strong>
+                    <p class="text-slate-600">Menghentikan loop secara paksa saat kondisi khusus terpenuhi atau melewati satu putaran iterasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: FOR LOOP & RANGE() -->
+    <section id="for-loop" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">For Loop & Rahasia Parameter Fungsi range()</h2>
+                <p class="text-xs text-slate-500">Struktur perulangan pasti (*counted loop*) saat jumlah putaran sudah diketahui sebelumnya</p>
+            </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+            Dalam Python, <code>for</code> loop selalu berpasangan dengan fungsi <code>range()</code> untuk menghasilkan deretan angka berurutan. Ingat aturan kunci: <strong>angka akhir (stop) bersifat eksklusif (tidak diikutsertakan)</strong>!
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <strong class="text-purple-900 font-bold block text-sm">1. range(stop)</strong>
+                <p class="text-slate-600 text-[11px]">Mulai dari 0 hingga stop-1.</p>
+                <div class="bg-white p-3 rounded-lg border font-mono text-[11px] text-purple-950">
+                    for i in range(5):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print(i)<br>
+                    <span class="text-slate-400 font-sans"># Output: 0, 1, 2, 3, 4</span>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <strong class="text-purple-900 font-bold block text-sm">2. range(start, stop)</strong>
+                <p class="text-slate-600 text-[11px]">Mulai dari nilai awal spesifik.</p>
+                <div class="bg-white p-3 rounded-lg border font-mono text-[11px] text-purple-950">
+                    for i in range(1, 6):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print(i)<br>
+                    <span class="text-slate-400 font-sans"># Output: 1, 2, 3, 4, 5</span>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <strong class="text-purple-900 font-bold block text-sm">3. range(start, stop, step)</strong>
+                <p class="text-slate-600 text-[11px]">Dengan lompatan langkah tertentu.</p>
+                <div class="bg-white p-3 rounded-lg border font-mono text-[11px] text-purple-950">
+                    for i in range(2, 11, 2):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print(i)<br>
+                    <span class="text-slate-400 font-sans"># Output Genap: 2, 4, 6, 8, 10</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: WHILE LOOP & INFINITE LOOP -->
+    <section id="while-loop" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">While Loop: Perulangan Berbasis Kondisi & Bahaya Infinite Loop</h2>
+                <p class="text-xs text-slate-500">Berputar selama kondisi bernilai Benar (*True*) dan berhenti seketika saat Salah (*False*)</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50 space-y-3">
+                <strong class="font-bold text-slate-800 block text-sm">Struktur While Loop yang Benar</strong>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Wajib memiliki 3 elemen: (1) Inisialisasi awal, (2) Syarat kondisi, dan (3) Pembaruan counter penambah.
+                </p>
+                <div class="bg-white p-3.5 rounded-xl border border-slate-200 font-mono text-[11px] text-slate-800 space-y-1">
+                    <div>nyawa = 3</div>
+                    <div>while nyawa &gt; 0:</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;print(f"Bermain game! Sisa nyawa: {nyawa}")</div>
+                    <div class="text-emerald-700 font-bold">&nbsp;&nbsp;&nbsp;&nbsp;nyawa -= 1 &nbsp;# Wajib ada agar tidak macet!</div>
+                    <div>print("Game Over!")</div>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border-2 border-rose-200 bg-rose-50/50 space-y-3">
+                <div class="flex items-center gap-2 text-rose-700 font-bold text-sm">
+                    <span>⚠️</span> Bahaya Infinite Loop (Macet Permanen)
+                </div>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Jika kamu lupa menuliskan baris penambah nilai counter (<code>i += 1</code>), maka nilai kondisi akan selalu <em>True</em> selamanya. Program akan macet, browser membeku, dan CPU komputer bekerja 100%!
+                </p>
+                <div class="bg-white p-3 rounded-xl border border-rose-200 font-mono text-[11px] text-rose-700">
+                    i = 1<br>
+                    while i &lt;= 5:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;print(i) # Nilai i tetap 1 selamanya! MACET!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: BREAK & CONTINUE -->
+    <section id="break-continue" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">3</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Perintah Pengendali: break vs continue</h2>
+                <p class="text-xs text-slate-500">Dua tombol darurat untuk memotong atau melompati jalannya siklus perulangan</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="p-5 rounded-2xl border-2 border-rose-100 bg-rose-50/30 space-y-3">
+                <span class="text-xs font-bold text-rose-800 uppercase tracking-wider block">1. Perintah break (Berhenti Total)</span>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Menghentikan dan keluar dari loop secara paksa saat itu juga, tanpa menyelesaikan putaran yang tersisa.
+                </p>
+                <div class="bg-white p-3.5 rounded-xl border border-rose-200 font-mono text-[11px] text-slate-800 space-y-0.5">
+                    <div>for i in range(1, 10):</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;if i == 5:</div>
+                    <div class="text-rose-700 font-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break # Langsung keluar saat i=5</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;print(i)</div>
+                    <div class="text-slate-400 font-sans"># Output hanya: 1, 2, 3, 4</div>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border-2 border-blue-100 bg-blue-50/30 space-y-3">
+                <span class="text-xs font-bold text-blue-800 uppercase tracking-wider block">2. Perintah continue (Lewati Putaran Ini)</span>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Hanya melewati instruksi di bawahnya pada putaran saat ini, lalu langsung melompat ke putaran berikutnya.
+                </p>
+                <div class="bg-white p-3.5 rounded-xl border border-blue-200 font-mono text-[11px] text-slate-800 space-y-0.5">
+                    <div>for i in range(1, 6):</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;if i == 3:</div>
+                    <div class="text-blue-700 font-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue # Lewati angka 3</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;print(i)</div>
+                    <div class="text-slate-400 font-sans"># Output: 1, 2, 4, 5 (angka 3 hilang)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: SIMULATOR LIVE LOOP STEPPER -->
+    <section id="simulator-loop" class="bg-white rounded-2xl border-2 border-purple-200 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-purple-100">
+            <span class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center text-xl font-extrabold">🎮</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Simulator Interaktif: Live Loop Stepper & Akumulator</h2>
+                <p class="text-xs text-slate-500">Tentukan batas pengulangan lalu klik "Jalankan Satu Iterasi" untuk melacak perubahan variabel secara langsung!</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+            <!-- Panel Kontrol Input -->
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4 text-xs">
+                <div class="space-y-1.5">
+                    <label class="font-bold text-slate-700 block">Batas Akhir Loop (N):</label>
+                    <input type="number" id="loop-max" value="5" min="2" max="10" class="w-full p-2 bg-white border border-slate-300 rounded-lg font-mono font-bold">
+                </div>
+
+                <div class="p-3.5 bg-slate-900 text-white rounded-xl font-mono text-[11px] space-y-1">
+                    <div class="text-purple-400">total = 0</div>
+                    <div class="text-slate-300">for i in range(1, <span id="code-max">6</span>):</div>
+                    <div class="text-emerald-400">&nbsp;&nbsp;&nbsp;&nbsp;total += i</div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button onclick="stepLoop()" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow transition">
+                        ▶ Putar 1 Iterasi
+                    </button>
+                    <button onclick="resetLoopSim()" class="px-4 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl transition">
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Panel Output Variabel -->
+            <div class="p-6 rounded-2xl bg-slate-900 text-white space-y-4 text-xs">
+                <div class="grid grid-cols-2 gap-3 text-center">
+                    <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                        <span class="text-slate-400 text-[10px] uppercase font-bold block">Variabel 'i' (Iterasi)</span>
+                        <span id="sim-i" class="text-3xl font-mono font-extrabold text-purple-400">0</span>
+                    </div>
+                    <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                        <span class="text-slate-400 text-[10px] uppercase font-bold block">Variabel 'total' (Akumulasi)</span>
+                        <span id="sim-total" class="text-3xl font-mono font-extrabold text-emerald-400">0</span>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-white/5 rounded-xl border border-white/10 space-y-1">
+                    <strong class="text-amber-300 text-[11px] block">Log Perjalanan Loop:</strong>
+                    <div id="sim-log" class="text-slate-300 font-mono text-[11px]">Siap dimulai. Tekan tombol 'Putar 1 Iterasi'!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (20 SOAL TOTAL DALAM 4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Struktur Perulangan (Loop)</h2>
+                    <p class="text-xs text-slate-500">20 Soal (Pilihan Ganda, Benar/Salah, Menjodohkan, dan Prediksi Output)</p>
+                </div>
+            </div>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-4 py-2 rounded-2xl"></div>
+        </div>
+
+        <!-- Bagian A: Pilihan Ganda (8 Soal @ 5 Poin = 40 Poin) -->
+        <div class="space-y-5 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian A: Pilihan Ganda</span>
+                <span class="text-slate-500">8 Soal · 40 Poin</span>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">1. Angka apa sajakah yang dihasilkan oleh perintah <code>range(4)</code> dalam Python?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="A"> A. 1, 2, 3, 4</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="B"> B. 0, 1, 2, 3</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="C"> C. 0, 1, 2, 3, 4</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="D"> D. 1, 2, 3</label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">2. Berapakah jumlah perulangan yang dieksekusi oleh <code>for i in range(1, 10):</code>?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="A"> A. 10 kali</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="B"> B. 9 kali</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="C"> C. 11 kali</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="D"> D. 1 kali</label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">3. Perintah <code>range(2, 10, 2)</code> akan menghasilkan urutan angka...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="A"> A. 2, 4, 6, 8</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="B"> B. 2, 4, 6, 8, 10</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="C"> C. 2, 3, 4, 5, 6, 7, 8, 9, 10</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="D"> D. 4, 6, 8</label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">4. Perintah yang digunakan untuk menghentikan seluruh proses perulangan seketika dan langsung keluar dari loop adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="A"> A. continue</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="B"> B. break</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="C"> C. pass</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="D"> D. return</label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">5. Perintah <code>continue</code> dalam sebuah loop berfungsi untuk...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="A"> A. Menghentikan program selamanya</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="B"> B. Melewati sisa baris kode pada putaran saat ini dan langsung melompat ke putaran berikutnya</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="C"> C. Mengulang dari awal iterasi 0</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="D"> D. Mematikan komputer</label>
+                </div>
+            </div>
+
+            <!-- Soal 6 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">6. Apa yang terjadi jika kondisi pada <code>while</code> loop bernilai True terus menerus dan tidak pernah berubah menjadi False?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="A"> A. Terjadi error SyntaxError</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="B"> B. Terjadi Infinite Loop (perulangan tanpa henti hingga program hang/macet)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="C"> C. Program otomatis tertutup sendiri dengan rapi</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="D"> D. Nilai variabel otomatis direset ke 0</label>
+                </div>
+            </div>
+
+            <!-- Soal 7 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">7. Perhatikan kode berikut: <code>for x in "KUCING": print(x)</code>. Berapa kali perintah print dieksekusi?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="A"> A. 1 kali</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="B"> B. 6 kali (mencetak huruf K, U, C, I, N, G satu per satu)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="C"> C. 5 kali</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="D"> D. 0 kali</label>
+                </div>
+            </div>
+
+            <!-- Soal 8 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">8. Cara yang benar dan ringkas untuk menambahkan nilai 1 ke variabel counter <code>i</code> adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="A"> A. i =+ 1</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="B"> B. i += 1</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="C"> C. i ++ 1</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="D"> D. i == 1</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian B: Benar atau Salah (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian B: Analisis Benar atau Salah</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">9. Fungsi <code>range(1, 5)</code> akan menyertakan angka 5 ke dalam deretan perulangannya.</span>
+                <select id="tf1" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">10. For loop lebih cocok dipakai jika kita sudah mengetahui dengan pasti berapa jumlah putaran yang ingin dijalankan.</span>
+                <select id="tf2" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">11. Perulangan bersarang (*Nested Loop*) adalah struktur loop yang berada di dalam blok loop lainnya.</span>
+                <select id="tf3" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">12. Perintah <code>break</code> hanya menghentikan satu putaran dan tetap melanjutkan putaran berikutnya.</span>
+                <select id="tf4" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Bagian C: Menjodohkan Konsep Loop (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian C: Menjodohkan Istilah Loop & Fungsinya</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">13. for loop</p>
+                    <select id="m1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi --</option>
+                        <option value="COUNT">Perulangan terhitung dengan rentang angka pasti</option>
+                        <option value="COND">Perulangan berbasis syarat kondisi boolean</option>
+                        <option value="STOP">Menghentikan paksa dan keluar dari loop</option>
+                        <option value="SKIP">Melewati putaran saat ini ke putaran selanjutnya</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">14. while loop</p>
+                    <select id="m2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi --</option>
+                        <option value="COUNT">Perulangan terhitung dengan rentang angka pasti</option>
+                        <option value="COND">Perulangan berbasis syarat kondisi boolean</option>
+                        <option value="STOP">Menghentikan paksa dan keluar dari loop</option>
+                        <option value="SKIP">Melewati putaran saat ini ke putaran selanjutnya</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">15. break</p>
+                    <select id="m3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi --</option>
+                        <option value="COUNT">Perulangan terhitung dengan rentang angka pasti</option>
+                        <option value="COND">Perulangan berbasis syarat kondisi boolean</option>
+                        <option value="STOP">Menghentikan paksa dan keluar dari loop</option>
+                        <option value="SKIP">Melewati putaran saat ini ke putaran selanjutnya</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">16. continue</p>
+                    <select id="m4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi --</option>
+                        <option value="COUNT">Perulangan terhitung dengan rentang angka pasti</option>
+                        <option value="COND">Perulangan berbasis syarat kondisi boolean</option>
+                        <option value="STOP">Menghentikan paksa dan keluar dari loop</option>
+                        <option value="SKIP">Melewati putaran saat ini ke putaran selanjutnya</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian D: Prediksi Output Kode (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian D: Melengkapi Logika & Prediksi Hasil</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">17. Hasil akhir <code>total</code> dari loop: <code>total=0; for i in range(1,4): total+=i</code></label>
+                    <select id="d1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Angka</option>
+                        <option value="6">6 (1 + 2 + 3)</option>
+                        <option value="10">10 (1 + 2 + 3 + 4)</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">18. Angka pertama yang dicetak oleh <code>range(5)</code> adalah:</label>
+                    <select id="d2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Angka</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">19. Angka terakhir yang dicetak oleh <code>range(1, 10)</code> adalah:</label>
+                    <select id="d3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Angka</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">20. Parameter ketiga pada <code>range(1, 10, 3)</code> mengatur:</label>
+                    <select id="d4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Fungsi</option>
+                        <option value="STEP">Besar lompatan langkah (Step)</option>
+                        <option value="STOP">Angka berhenti</option>
+                        <option value="START">Angka awal</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+            <p class="text-xs text-slate-400">Pastikan semua nomor telah terisi sebelum menekan tombol periksa nilai.</p>
+            <button onclick="submitEvaluationLoop()" class="w-full sm:w-auto px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-sm rounded-xl shadow-lg transition">
+                Periksa & Kirim Jawaban
+            </button>
+        </div>
+
+        <!-- Riwayat Pengerjaan -->
+        <div id="attempt-history-box" class="hidden pt-6 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-xs uppercase text-slate-400 tracking-wider">Riwayat Pengerjaan Tersimpan:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI -->
+    <section id="rangkuman" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">✨</span>
+            <h2 class="font-heading font-extrabold text-xl text-slate-800">Rangkuman Kunci & Refleksi Belajar</h2>
+        </div>
+
+        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li><strong>Looping</strong> mengotomasi pengeksekusian kode berulang kali sehingga program lebih hemat baris dan efisien.</li>
+            <li>Gunakan <code>for i in range(stop)</code> untuk putaran pasti; angka stop tidak diikutsertakan (eksklusif).</li>
+            <li>Gunakan <code>while kondisi:</code> untuk putaran yang bergantung pada syarat logika; pastikan selalu ada kenaikan counter.</li>
+            <li>Gunakan <code>break</code> untuk menghentikan loop seketika dan <code>continue</code> untuk melewati satu putaran.</li>
+        </ul>
+
+        <div class="pt-4 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-slate-800 text-sm">Refleksi Belajarmu:</h4>
+            <textarea id="reflection-input" rows="3" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Bayangkan kamu membuat program kasir toko, bagaimana loop while membantu menghitung total harga barang belanjaan pembeli sampai selesai?"></textarea>
+            <div class="flex items-center justify-between">
+                <span id="refl-status" class="text-xs text-emerald-600 font-bold"></span>
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition">
+                    Simpan Refleksi
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../04-percabangan-if-else/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-purple-600 hover:border-purple-200 transition text-xs font-bold">
+            ← Modul Sebelumnya: Percabangan If-Else
+        </a>
+        <a href="../06-python-dasar/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white transition text-xs font-bold shadow-md">
+            Modul Berikutnya: Python Dasar →
         </a>
     </div>
 
     <!-- Selesai Mempelajari Modul Card -->
-    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
             <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
             <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
         </div>
-        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
             <span>✓</span> Tandai Selesai
         </button>
     </div>
 
 </main>
+
 <footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan.</div>
+        <a href="../../../" class="hover:text-purple-600 transition font-medium">← Kembali ke Portal Edu</a>
     </div>
 </footer>
+
 <script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
-const TOPIC_ID = 'inf-algoritma-05';
+const TOPIC_ID = 'inf-ap-05';
+
+let simCurrentI = 0;
+let simTotal = 0;
+
+function resetLoopSim() {
+    simCurrentI = 0;
+    simTotal = 0;
+    const maxVal = parseInt(document.getElementById('loop-max').value) || 5;
+    document.getElementById('code-max').innerText = maxVal + 1;
+    document.getElementById('sim-i').innerText = '0';
+    document.getElementById('sim-total').innerText = '0';
+    document.getElementById('sim-log').innerText = 'Siap dimulai. Tekan tombol Putar 1 Iterasi!';
+}
+
+function stepLoop() {
+    const maxVal = parseInt(document.getElementById('loop-max').value) || 5;
+    document.getElementById('code-max').innerText = maxVal + 1;
+
+    if (simCurrentI < maxVal) {
+        simCurrentI++;
+        simTotal += simCurrentI;
+        document.getElementById('sim-i').innerText = simCurrentI;
+        document.getElementById('sim-total').innerText = simTotal;
+        document.getElementById('sim-log').innerText = `Iterasi ke-${simCurrentI}: Menambahkan angka ${simCurrentI} ke total. Total sekarang = ${simTotal}.`;
+    } else {
+        document.getElementById('sim-log').innerText = `Perulangan selesai! Batas N = ${maxVal} tercapai. Total akhir = ${simTotal}.`;
+    }
+}
+
+const ANSWERS_A = {
+    q1: 'B',
+    q2: 'B',
+    q3: 'A',
+    q4: 'B',
+    q5: 'B',
+    q6: 'B',
+    q7: 'B',
+    q8: 'B'
+};
+
+const ANSWERS_B = {
+    tf1: 'SALAH',
+    tf2: 'BENAR',
+    tf3: 'BENAR',
+    tf4: 'SALAH'
+};
+
+const ANSWERS_C = {
+    m1: 'COUNT',
+    m2: 'COND',
+    m3: 'STOP',
+    m4: 'SKIP'
+};
+
+const ANSWERS_D = {
+    d1: '6',
+    d2: '0',
+    d3: '9',
+    d4: 'STEP'
+};
 
 async function markModuleComplete() {
     if (window.FananiTracker) {
-        await FananiTracker.markCompleted(SUBJECT, TOPIC_ID);
-        const btn = document.getElementById("btn-complete-module");
+        await FananiTracker.markComplete(SUBJECT, TOPIC_ID);
+        const btn = document.getElementById('btn-complete-module');
         if (btn) {
-            btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-            btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+            btn.innerHTML = '<span>✓</span> Tersimpan di Rapor!';
+            btn.className = 'px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl transition shadow cursor-default';
+        }
+    } else {
+        alert('Modul ditandai selesai secara lokal!');
+    }
+}
+
+async function submitEvaluationLoop() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in ANSWERS_A) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_A[k]) scoreA += 5;
+    }
+
+    for (let k in ANSWERS_B) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_B[k]) scoreB += 5;
+    }
+
+    for (let k in ANSWERS_C) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_C[k]) scoreC += 5;
+    }
+
+    for (let k in ANSWERS_D) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_D[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
         }
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    if (window.FananiTracker) {
-        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-        if (hist && hist.is_completed) {
-            const btn = document.getElementById("btn-complete-module");
-            if (btn) {
-                btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-                btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
-            }
-        }
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    loadHistory();
 });
 </script>
+
 </body>
 </html>

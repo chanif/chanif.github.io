@@ -1,247 +1,777 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Proyek pameran digital kelas 9: panduan membuat karya digital final — website, presentasi interaktif, atau aplikasi — dan mempresentasikannya ke teman sekelas.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Proyek Pameran Digital | Informatika Kelas 9</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyek Pameran Digital & Gelar Karya | Praktik Lintas Bidang</title>
+    <meta name="description" content="Panduan lengkap pameran karya digital akhir: manajemen proyek tim agile, dokumentasi teknis artefak komputasi, pembuatan video demo, dan kalkulator kesiapan showcase pameran.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .prose strong{color:#1e293b;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-amber-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-amber-600 hover:underline">← Kelas 9</a>
-</nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Edu</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
-        <a href="../" class="hover:text-amber-600">Kelas 9</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 6</span>
-    </div>
-    <div class="bg-gradient-to-br from-amber-500 to-orange-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 6 · Proyek Akhir</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Proyek Pameran Digital 🏆</h1>
-            <p class="text-amber-100 leading-relaxed max-w-2xl">Ini dia momen yang ditunggu-tunggu! Tunjukkan semua yang sudah kamu pelajari selama 3 tahun dalam sebuah karya digital yang membanggakan.</p>
-        </div>
-    </div>
-    <div class="prose max-w-none">
-        <h2>Apa Itu Proyek Pameran Digital?</h2>
-        <p>Proyek Pameran Digital adalah <strong>karya akhir kelulusanmu</strong> di mata pelajaran Informatika. Kamu bebas memilih bentuk karya — yang penting menunjukkan kemampuan digitalmu dan bermanfaat bagi orang lain!</p>
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🌟 Semangat!</p>
-            <p class="text-purple-700 text-sm">Ingat semua yang sudah kamu pelajari: berpikir komputasional, Scratch, Python, HTML, CSS, App Inventor, dan literasi digital. Semuanya bisa kamu wujudkan dalam proyek ini!</p>
-        </div>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-purple-100 selection:text-purple-900 pb-24">
 
-        <h2>Pilihan Tema Proyek</h2>
-        <div class="not-prose grid md:grid-cols-2 gap-4 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="text-2xl">🌐</span>
-                    <div>
-                        <p class="font-heading font-bold text-slate-700 text-sm">Website Portofolio</p>
-                        <span class="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded-md font-semibold">HTML + CSS</span>
-                    </div>
-                </div>
-                <p class="text-slate-500 text-xs">Buat website yang memperkenalkan dirimu: hobi, prestasi, karya, dan cita-cita. Ini bisa jadi CV digitalmu!</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="text-2xl">📱</span>
-                    <div>
-                        <p class="font-heading font-bold text-slate-700 text-sm">Aplikasi Android</p>
-                        <span class="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded-md font-semibold">MIT App Inventor</span>
-                    </div>
-                </div>
-                <p class="text-slate-500 text-xs">Buat aplikasi yang memecahkan masalah kecil di sekitarmu — pengingat jadwal sholat, kalkulator nilai, dll.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="text-2xl">📊</span>
-                    <div>
-                        <p class="font-heading font-bold text-slate-700 text-sm">Laporan Data Interaktif</p>
-                        <span class="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded-md font-semibold">Google Sheets + Slides</span>
-                    </div>
-                </div>
-                <p class="text-slate-500 text-xs">Kumpulkan data survei teman-teman, olah di Sheets, buat grafik, dan presentasikan temuanmu.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="text-2xl">🎮</span>
-                    <div>
-                        <p class="font-heading font-bold text-slate-700 text-sm">Game Edukatif</p>
-                        <span class="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded-md font-semibold">Scratch</span>
-                    </div>
-                </div>
-                <p class="text-slate-500 text-xs">Buat game Scratch yang mengajarkan sesuatu — kuis geografi, latihan perkalian, atau cerita interaktif.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="text-2xl">🎬</span>
-                    <div>
-                        <p class="font-heading font-bold text-slate-700 text-sm">Video Tutorial</p>
-                        <span class="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded-md font-semibold">Canva / CapCut</span>
-                    </div>
-                </div>
-                <p class="text-slate-500 text-xs">Buat video tutorial mengajarkan skill digital kepada teman seusiamu — editing sederhana, tips belajar online, dll.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md transition">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="text-2xl">🤖</span>
-                    <div>
-                        <p class="font-heading font-bold text-slate-700 text-sm">Proyek AI</p>
-                        <span class="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded-md font-semibold">Teachable Machine</span>
-                    </div>
-                </div>
-                <p class="text-slate-500 text-xs">Latih model Teachable Machine untuk menyelesaikan masalah nyata — identifikasi sampah, pengenal gestur, dll.</p>
-            </div>
-                    </div>
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-purple-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-        <h2>Timeline Pengerjaan (4 Minggu)</h2>
-        <div class="not-prose space-y-2 my-4">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
-                <div class="bg-amber-100 text-amber-700 rounded-xl px-3 py-2 text-center flex-shrink-0">
-                    <p class="font-heading font-bold text-xs">Minggu 1</p>
-                </div>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">Perencanaan & Riset</p>
-                    <p class="text-slate-500 text-xs mt-0.5">Pilih tema, tentukan target pengguna, buat wireframe/sketsa kasar, dan daftarkan ke guru</p>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
-                <div class="bg-amber-100 text-amber-700 rounded-xl px-3 py-2 text-center flex-shrink-0">
-                    <p class="font-heading font-bold text-xs">Minggu 2</p>
-                </div>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">Pembuatan Prototipe</p>
-                    <p class="text-slate-500 text-xs mt-0.5">Buat versi pertama yang masih kasar — fokus pada fungsi, bukan tampilan</p>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
-                <div class="bg-amber-100 text-amber-700 rounded-xl px-3 py-2 text-center flex-shrink-0">
-                    <p class="font-heading font-bold text-xs">Minggu 3</p>
-                </div>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">Penyempurnaan</p>
-                    <p class="text-slate-500 text-xs mt-0.5">Perbaiki berdasarkan feedback teman, percantik tampilan, tambahkan fitur bonus</p>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm flex items-start gap-4">
-                <div class="bg-amber-100 text-amber-700 rounded-xl px-3 py-2 text-center flex-shrink-0">
-                    <p class="font-heading font-bold text-xs">Minggu 4</p>
-                </div>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">Presentasi & Pameran</p>
-                    <p class="text-slate-500 text-xs mt-0.5">Siapkan demo live dan presentasi singkat: apa masalahnya? bagaimana solusimu? apa yang kamu pelajari?</p>
-                </div>
-            </div>
-                    </div>
-
-        <h2>Rubrik Penilaian</h2>
-        <div class="not-prose overflow-x-auto my-4">
-            <table class="w-full text-sm bg-white rounded-xl overflow-hidden shadow-sm">
-                <thead class="bg-amber-600 text-white">
-                    <tr>
-                        <th class="px-4 py-3 text-left font-heading font-bold">Kriteria</th>
-                        <th class="px-4 py-3 text-center font-heading font-bold">Bobot</th>
-                        <th class="px-4 py-3 text-left font-heading font-bold">Deskripsi</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100">
-                                                            <tr class="hover:bg-slate-50">
-                        <td class="px-4 py-3 font-semibold text-slate-700">Orisinalitas & Kreativitas</td>
-                        <td class="px-4 py-3 text-center"><span class="bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded-md text-xs">25%</span></td>
-                        <td class="px-4 py-3 text-slate-500">Ide unik, bukan sekadar meniru contoh</td>
-                    </tr>
-                                        <tr class="hover:bg-slate-50">
-                        <td class="px-4 py-3 font-semibold text-slate-700">Fungsi & Teknis</td>
-                        <td class="px-4 py-3 text-center"><span class="bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded-md text-xs">30%</span></td>
-                        <td class="px-4 py-3 text-slate-500">Karya berfungsi dengan baik, tidak ada error fatal</td>
-                    </tr>
-                                        <tr class="hover:bg-slate-50">
-                        <td class="px-4 py-3 font-semibold text-slate-700">Desain & Tampilan</td>
-                        <td class="px-4 py-3 text-center"><span class="bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded-md text-xs">20%</span></td>
-                        <td class="px-4 py-3 text-slate-500">UI menarik, konsisten, dan mudah digunakan</td>
-                    </tr>
-                                        <tr class="hover:bg-slate-50">
-                        <td class="px-4 py-3 font-semibold text-slate-700">Presentasi</td>
-                        <td class="px-4 py-3 text-center"><span class="bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded-md text-xs">15%</span></td>
-                        <td class="px-4 py-3 text-slate-500">Mampu menjelaskan karya dengan percaya diri</td>
-                    </tr>
-                                        <tr class="hover:bg-slate-50">
-                        <td class="px-4 py-3 font-semibold text-slate-700">Manfaat & Dampak</td>
-                        <td class="px-4 py-3 text-center"><span class="bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded-md text-xs">10%</span></td>
-                        <td class="px-4 py-3 text-slate-500">Karya memiliki nilai guna bagi orang lain</td>
-                    </tr>
-                                    </tbody>
-            </table>
-        </div>
-
-        <div class="callout callout-tip">
-            <p class="font-heading font-bold text-green-800 mb-2">✅ Tips Presentasi yang Keren</p>
-            <ul class="text-green-700 text-sm space-y-1 list-disc pl-4">
-                <li>Mulai dengan <strong>cerita</strong>: "Saya terinspirasi membuat ini karena..."</li>
-                <li>Demo langsung lebih berkesan daripada hanya slide PowerPoint</li>
-                <li>Ceritakan hambatan yang kamu hadapi dan bagaimana mengatasinya</li>
-                <li>Tutup dengan rencana pengembangan ke depan — tunjukkan antusiasme!</li>
-            </ul>
-        </div>
-
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Proyek Pameran Digital = karya akhir yang membuktikan kemampuan digitalmu</li>
-            <li>Bebas pilih format: website, aplikasi, game, video, laporan data, atau proyek AI</li>
-            <li>Proses lebih penting dari hasil — rencanakan, buat, sempurnakan, presentasikan</li>
-            <li>Tunjukkan keberanian dan kreativitasmu — ini kesempatanmu bersinar! 🌟</li>
-        </ul>
-    </div>
-    <div class="flex justify-between mt-10 gap-4">
-        <a href="../05-kewargaan-digital/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
-            <svg class="w-5 h-5 text-slate-400 group-hover:text-amber-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Kewargaan Digital</p></div>
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-purple-600 transition">
+        fanani<span class="text-purple-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-purple-600 transition flex items-center gap-1">
+            ← Unit Praktik Lintas Bidang
         </a>
-        <a href="../quiz/" class="flex items-center gap-3 px-5 py-3 bg-amber-500 text-white rounded-2xl shadow hover:bg-amber-600 transition">
-            <div class="text-right"><p class="text-[10px] text-amber-100 uppercase tracking-wider">Evaluasi</p><p class="text-sm font-semibold">🧠 Mulai Quiz Kelas 9</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#manajemen-tim" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">👥 Kolaborasi Tim</a>
+        <a href="#dokumentasi-stand" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">📄 Dokumentasi & Booth</a>
+        <a href="#simulator-showcase" class="px-3 py-1.5 rounded-full bg-purple-100 text-purple-800 hover:bg-purple-200 transition whitespace-nowrap font-bold">🎮 Showcase Readiness Calculator</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../edu/" class="hover:text-purple-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-purple-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-purple-600 transition">Praktik Lintas Bidang</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">05. Proyek Pameran Digital</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-purple-700 via-indigo-800 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🏆 Praktik Lintas Bidang · Modul 05 (Puncak Karya)
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Proyek Pameran Digital: Gelar Karya Komputasi Akbar
+            </h1>
+            <p class="text-purple-100 text-sm md:text-base leading-relaxed mb-6">
+                Ini adalah panggung puncak belajarmu! Satukan seluruh pengetahuan berpikir komputasional, HTML, CSS, dan aplikasi mobile ke dalam artefak digital yang siap dipamerkan ke hadapan guru, orang tua, dan teman sekelas. Waktunya bersinar sebagai inovator muda Indonesia!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-purple-100">
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🌟 Muara: Gelar Karya Digital Sekolah</span>
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100">
+                <span class="text-purple-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Hakikat Praktik Lintas Bidang</strong>
+                    <p class="text-slate-600">Mengintegrasikan seluruh pilar informatika untuk memecahkan persoalan nyata di sekolah maupun lingkungan sekitar.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100">
+                <span class="text-purple-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengorganisir Tim Kolaborasi Agile</strong>
+                    <p class="text-slate-600">Membagi peran terarah (Project Lead, Designer, Coder, Tester) dan menyusun jadwal kerja terukur (Sprint Planning).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100">
+                <span class="text-purple-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menyusun Dokumentasi Teknis Profesional</strong>
+                    <p class="text-slate-600">Menulis berkas README ringkas, diagram alur sistem, panduan instalasi, dan rekaman video demonstrasi 2 menit.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-purple-50/50 p-4 rounded-xl border border-purple-100">
+                <span class="text-purple-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mempersiapkan Booth & Gelar Karya</strong>
+                    <p class="text-slate-600">Merancang poster ilmiah ringkas, teknik presentasi live demo interaktif, dan melakukan evaluasi umpan balik pengunjung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: KOLABORASI TIM AGILE -->
+    <section id="manajemen-tim" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl">👥</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-800">1. Manajemen Proyek Tim Kolaborasi (Agile Mini)</h2>
+                <p class="text-xs text-slate-500">Karya besar tidak pernah lahir dari kerja sendirian, melainkan sinergi tim yang kompak</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                <span class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">👔</span>
+                <strong class="block text-slate-800">Project Manager / Lead</strong>
+                <p class="text-slate-600">Mengatur jadwal kerja, memimpin diskusi pembagian tugas, dan memastikan seluruh target selesai tepat waktu.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                <span class="w-8 h-8 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-sm">🎨</span>
+                <strong class="block text-slate-800">UI/UX Designer</strong>
+                <p class="text-slate-600">Membuat sketsa wireframe, memilih palet warna harmonis, dan memastikan antarmuka mudah digunakan pengguna awam.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm">💻</span>
+                <strong class="block text-slate-800">Lead Developer / Coder</strong>
+                <p class="text-slate-600">Merangkai struktur kode HTML/CSS atau menyusun blok logika di App Inventor dan Scratch agar aplikasi berjalan mulus.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                <span class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-sm">🔍</span>
+                <strong class="block text-slate-800">QA Tester & Presenter</strong>
+                <p class="text-slate-600">Menguji aplikasi untuk menemukan bug/eror tersembunyi, menulis dokumentasi README, dan memimpin presentasi di booth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DOKUMENTASI & STAND PAMERAN -->
+    <section id="dokumentasi-stand" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl">📄</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-800">2. Dokumentasi Teknis & Persiapan Booth Pameran</h2>
+                <p class="text-xs text-slate-500">Mempersiapkan artefak karya agar siap dinilai dan memukau pengunjung pameran</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs leading-relaxed">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-heading font-bold text-slate-800 text-sm flex items-center gap-2">
+                    <span class="text-purple-600">📋</span> Berkas Wajib Dokumentasi (README):
+                </h3>
+                <ul class="space-y-2 text-slate-600 list-disc list-inside">
+                    <li><strong>Latar Belakang & Masalah:</strong> Masalah apa di sekolah atau masyarakat yang ingin diselesaikan oleh aplikasi ini?</li>
+                    <li><strong>Target Pengguna (User Persona):</strong> Siapa yang akan menggunakan aplikasi ini (misal: siswa kelas 7, petugas perpustakaan, guru piket)?</li>
+                    <li><strong>Alur Kerja (Flowchart):</strong> Diagram sederhana yang menggambarkan langkah pengguna dari membuka aplikasi hingga mencapai tujuan.</li>
+                    <li><strong>Panduan Menjalankan:</strong> Langkah mengunduh atau link web tempat mencoba karya secara langsung.</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-heading font-bold text-slate-800 text-sm flex items-center gap-2">
+                    <span class="text-emerald-600">🎪</span> Perlengkapan Stand / Booth Gelar Karya:
+                </h3>
+                <ul class="space-y-2 text-slate-600 list-disc list-inside">
+                    <li><strong>Poster Infografis Ringkas:</strong> Menampilkan judul karya yang memikat, cuplikan tangkapan layar antarmuka, dan nama anggota tim.</li>
+                    <li><strong>Perangkat Demo Siap Pakai:</strong> Laptop atau smartphone dengan baterai penuh yang sudah terpasang aplikasi untuk langsung dicoba pengunjung.</li>
+                    <li><strong>QR Code Langsung:</strong> Poster dilengkapi stiker QR Code agar pengunjung bisa mengunduh APK atau membuka link web di HP masing-masing.</li>
+                    <li><strong>Buku Tamu & Kotak Kritik Saran:</strong> Tempat pengunjung menuliskan pesan apresiasi dan masukan membangun.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR / INTERACTIVE SHOWCASE READINESS CALCULATOR -->
+    <section id="simulator-showcase" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4 flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-800">Showcase Readiness Audit Studio</h2>
+                    <p class="text-xs text-slate-400">Centang checklist kesiapan tim untuk mengukur persentase kesiapan menuju pameran karya</p>
+                </div>
+            </div>
+            <span class="text-[11px] font-bold bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Interactive Audit</span>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-6 items-center">
+            <!-- Checklist Items -->
+            <div class="md:col-span-7 space-y-2.5 text-xs">
+                <label class="flex items-center gap-2.5 p-2.5 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-purple-50 transition">
+                    <input type="checkbox" id="chk-1" onchange="calculateShowcaseReadiness()" class="w-4 h-4 accent-purple-600">
+                    <span class="text-slate-700 font-semibold">1. Masalah yang diangkat jelas dan bermanfaat nyata bagi sekolah/teman</span>
+                </label>
+
+                <label class="flex items-center gap-2.5 p-2.5 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-purple-50 transition">
+                    <input type="checkbox" id="chk-2" onchange="calculateShowcaseReadiness()" class="w-4 h-4 accent-purple-600">
+                    <span class="text-slate-700 font-semibold">2. Aplikasi / website berfungsi bebas eror saat tombol utama ditekan</span>
+                </label>
+
+                <label class="flex items-center gap-2.5 p-2.5 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-purple-50 transition">
+                    <input type="checkbox" id="chk-3" onchange="calculateShowcaseReadiness()" class="w-4 h-4 accent-purple-600">
+                    <span class="text-slate-700 font-semibold">3. Desain antarmuka rapi, kontras warna terbaca, dan konsisten</span>
+                </label>
+
+                <label class="flex items-center gap-2.5 p-2.5 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-purple-50 transition">
+                    <input type="checkbox" id="chk-4" onchange="calculateShowcaseReadiness()" class="w-4 h-4 accent-purple-600">
+                    <span class="text-slate-700 font-semibold">4. Dokumen README & diagram alir cara kerja sistem telah ditulis lengkap</span>
+                </label>
+
+                <label class="flex items-center gap-2.5 p-2.5 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-purple-50 transition">
+                    <input type="checkbox" id="chk-5" onchange="calculateShowcaseReadiness()" class="w-4 h-4 accent-purple-600">
+                    <span class="text-slate-700 font-semibold">5. Poster infografis & gawai demo live telah siap dipajang di stand</span>
+                </label>
+            </div>
+
+            <!-- Gauge / Meter Box -->
+            <div class="md:col-span-5 bg-slate-900 text-white p-6 rounded-2xl text-center space-y-3">
+                <span class="text-xs text-slate-400 uppercase font-bold tracking-wider">Kesiapan Tim Menuju Pameran:</span>
+                <div id="readiness-score" class="font-heading font-extrabold text-4xl text-purple-400">0%</div>
+                <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
+                    <div id="readiness-bar" class="bg-purple-500 h-full w-0 transition-all duration-500"></div>
+                </div>
+                <p id="readiness-status" class="text-xs text-slate-300">
+                    Centang checklist di samping untuk memulai evaluasi kesiapan karya timmu!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (20 SOAL - 4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4 flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-800">Evaluasi Formatif: Proyek Pameran Digital</h2>
+                    <p class="text-xs text-slate-400">Total 20 Soal (Skor Maksimal 100 poin) · Syarat Tuntas KKM: 70</p>
+                </div>
+            </div>
+            <span class="text-xs font-bold px-3 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-200">20 Soal · 4 Bagian</span>
+        </div>
+
+        <!-- Bagian A: Pilihan Ganda (8 Soal @ 5 Poin = 40 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian A: Pilihan Ganda Konseptual</span>
+                <span class="text-slate-500">8 Soal · 40 Poin</span>
+            </div>
+
+            <!-- Q1 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">1. Tujuan utama dari Praktik Lintas Bidang (PLB) dalam mata pelajaran Informatika adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="A"> A. Mengintegrasikan berbagai pilar ilmu informatika untuk menghasilkan artefak solusi nyata
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="B"> B. Membongkar seluruh komputer di laboratorium sekolah sampai rusak
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="C"> C. Menghafal seluruh daftar kode biner dari 0 sampai 1000
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="D"> D. Bermain game online selama jam pelajaran sekolah berlangsung
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">2. Anggota tim yang bertugas membuat sketsa tampilan antarmuka, pemilihan warna, dan tata letak tombol adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="A"> A. UI/UX Designer
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="B"> B. Hardware Technician
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="C"> C. Security Guard
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="D"> D. Network Cable Crimper
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">3. Berkas dokumentasi teks ringkas yang menyertai kode proyek untuk menjelaskan cara kerja dan panduan instalasi disebut berkas...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="A"> A. README.md
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="B"> B. ERROR.log
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="C"> C. VIRUS.exe
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="D"> D. RECYCLE.bin
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">4. Metode kerja tim yang fleksibel dan membagi pengerjaan proyek menjadi siklus-siklus kecil berkala dinamakan metode...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="A"> A. Agile / Scrum
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="B"> B. Monolitik Kaku
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="C"> C. Pasif Individualis
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="D"> D. Random Trial
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">5. Hal penting yang wajib disiapkan tim pada meja stand saat pameran karya gelar digital berlangsung adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="A"> A. Poster infografis dan perangkat demo yang siap dicoba langsung pengunjung
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="B"> B. Menutup rapat stand dengan kain hitam agar tidak ada yang melihat
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="C"> C. Menyembunyikan laptop di dalam lemari yang terkunci
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="D"> D. Memutar musik berisik dengan volume maksimal sepanjang hari
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">6. Durasi video demonstrasi aplikasi yang ideal untuk mempresentasikan karya kepada publik secara efektif adalah sekitar...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="A"> A. 2 hingga 3 menit
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="B"> B. 5 jam nonstop
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="C"> C. 1 detik saja
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="D"> D. 24 jam sehari semalam
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">7. Kode batang dua dimensi yang sangat praktis dicetak di poster pameran agar pengunjung bisa langsung scan dengan kamera smartphone adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="A"> A. QR Code
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="B"> B. Kode Morse
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="C"> C. Huruf Braille
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="D"> D. Sinyal Asap
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">8. Sikap terpuji yang wajib ditunjukkan anggota tim saat menerima kritik dan saran perbaikan dari pengunjung pameran adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="A"> A. Mendengarkan dengan santun, mencatat poin masukan, dan berterima kasih
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="B"> B. Marah dan mengusir pengunjung keluar dari gedung pameran
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="C"> C. Menutup telinga dan membantah semua perkataan guru penguji
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-purple-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="D"> D. Merusak karya tim lain karena merasa tersaingi
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian B: Benar / Salah (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian B: Analisis Pernyataan (Benar / Salah)</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">9. Proyek Lintas Bidang hanya boleh dikerjakan oleh satu orang saja dan dilarang berkolaborasi dalam kelompok.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_1" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_1" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">10. Menguji aplikasi sebelum hari pameran sangat krusial untuk memastikan tidak terjadi eror tak terduga saat live demo di depan penguji.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_2" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_2" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">11. Portofolio digital yang berisi kumpulan dokumentasi proyek dapat dijadikan bukti prestasi untuk pendaftaran beasiswa dan sekolah lanjutan.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_3" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_3" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">12. Menyalin 100% kode proyek orang lain dari internet tanpa mencantumkan sumber dan mengklaim sebagai karya sendiri adalah hal yang dibenarkan.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_4" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_4" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian C: Menjodohkan Peran Proyek (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian C: Menjodohkan Peran Tim & Tanggung Jawab</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">13. Project Manager</p>
+                    <select id="m1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Tanggung Jawab --</option>
+                        <option value="PM">Memimpin koordinasi target waktu dan pembagian peran anggota tim</option>
+                        <option value="DEV">Menulis struktur kode program dan merakit logika algoritma</option>
+                        <option value="QA">Menguji fungsi aplikasi untuk mendeteksi bug dan menyusun dokumentasi</option>
+                        <option value="UI">Merancang wireframe, keserasian warna, dan tata letak tombol</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">14. Lead Developer</p>
+                    <select id="m2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Tanggung Jawab --</option>
+                        <option value="PM">Memimpin koordinasi target waktu dan pembagian peran anggota tim</option>
+                        <option value="DEV">Menulis struktur kode program dan merakit logika algoritma</option>
+                        <option value="QA">Menguji fungsi aplikasi untuk mendeteksi bug dan menyusun dokumentasi</option>
+                        <option value="UI">Merancang wireframe, keserasian warna, dan tata letak tombol</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">15. UI/UX Designer</p>
+                    <select id="m3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Tanggung Jawab --</option>
+                        <option value="PM">Memimpin koordinasi target waktu dan pembagian peran anggota tim</option>
+                        <option value="DEV">Menulis struktur kode program dan merakit logika algoritma</option>
+                        <option value="QA">Menguji fungsi aplikasi untuk mendeteksi bug dan menyusun dokumentasi</option>
+                        <option value="UI">Merancang wireframe, keserasian warna, dan tata letak tombol</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">16. Quality Assurance (QA)</p>
+                    <select id="m4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Tanggung Jawab --</option>
+                        <option value="PM">Memimpin koordinasi target waktu dan pembagian peran anggota tim</option>
+                        <option value="DEV">Menulis struktur kode program dan merakit logika algoritma</option>
+                        <option value="QA">Menguji fungsi aplikasi untuk mendeteksi bug dan menyusun dokumentasi</option>
+                        <option value="UI">Merancang wireframe, keserasian warna, dan tata letak tombol</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian D: Melengkapi Istilah Proyek Pameran (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian D: Melengkapi Istilah Pameran Digital</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">17. Singkatan dari Praktik Lintas Bidang dalam mata pelajaran Informatika adalah...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_A" placeholder="Ketik singkatan 3 huruf..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 uppercase font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: PLB)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">18. Nama berkas teks dokumentasi utama yang menjelaskan petunjuk pembacaan proyek adalah READ-...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_B" placeholder="Ketik 2 huruf penutup..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 uppercase font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: ME / README)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">19. Meja tempat memajang karya dan mendemonstrasikan aplikasi kepada pengunjung saat pameran disebut stand atau ...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_C" placeholder="Ketik kata bahasa Inggris..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 uppercase font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: Booth)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">20. Istilah bahasa Inggris untuk gelar pameran karya digital unjuk gigi kepada publik adalah Digital Show-...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_D" placeholder="Ketik kata bahasa Inggris..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 uppercase font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: Case / Showcase)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-purple-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-purple-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-purple-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Kolaborasi Menghasilkan Mahakarya:</strong> Menyatukan keahlian logika pemrograman, desain estetika, dan kepemimpinan tim adalah kunci kesuksesan industri teknologi nyata.</p>
+            <p><strong>2. Menghargai Proses:</strong> Nilai terbesar dari sebuah proyek bukan hanya tepuk tangan di hari pameran, melainkan proses jatuh-bangun memecahkan eror dan bekerja sama.</p>
+            <p><strong>3. Portofolio Hidup:</strong> Simpan rapi dokumentasi karyamu di web portofolio pribadi sebagai bekal berharga menyongsong masa depan cerahmu.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Pelajaran paling berharga apa yang kamu dapatkan selama mengerjakan proyek kelompok bersama teman-temanmu?" class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-purple-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-purple-500 hover:bg-purple-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../04-app-inventor/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-purple-600 hover:border-purple-200 transition text-xs font-bold shadow-sm">
+            ← Modul Sebelumnya: Aplikasi Android (App Inventor)
+        </a>
+        <a href="../../../../edu/informatika/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white transition text-xs font-bold shadow-md">
+            Kembali ke Daftar Unit Informatika 🎓 →
         </a>
     </div>
 
     <!-- Selesai Mempelajari Modul Card -->
-    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
             <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
             <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
         </div>
-        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
             <span>✓</span> Tandai Selesai
         </button>
     </div>
 
 </main>
-<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
-    </div>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2026 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
 </footer>
+
 <script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
-const TOPIC_ID = 'inf-praktik-05';
+const TOPIC_ID = 'inf-plb-05';
+
+function calculateShowcaseReadiness() {
+    let checkedCount = 0;
+    for (let i = 1; i <= 5; i++) {
+        if (document.getElementById(`chk-${i}`).checked) checkedCount++;
+    }
+    const percent = checkedCount * 20;
+
+    const scoreEl = document.getElementById('readiness-score');
+    const barEl = document.getElementById('readiness-bar');
+    const statusEl = document.getElementById('readiness-status');
+
+    scoreEl.innerText = `${percent}%`;
+    barEl.style.width = `${percent}%`;
+
+    if (percent === 100) {
+        scoreEl.className = "font-heading font-extrabold text-4xl text-emerald-400";
+        barEl.className = "bg-emerald-500 h-full transition-all duration-500";
+        statusEl.innerHTML = "🎉 <strong>Luar Biasa! Timmu 100% Siap Pameran!</strong> Karya, dokumentasi, dan poster sudah matang sempurna!";
+    } else if (percent >= 60) {
+        scoreEl.className = "font-heading font-extrabold text-4xl text-amber-400";
+        barEl.className = "bg-amber-500 h-full transition-all duration-500";
+        statusEl.innerHTML = "⚡ <strong>Hampir Siap!</strong> Selesaikan checklist yang masih kosong bersama rekan timmu.";
+    } else {
+        scoreEl.className = "font-heading font-extrabold text-4xl text-purple-400";
+        barEl.className = "bg-purple-500 h-full transition-all duration-500";
+        statusEl.innerHTML = "Ayo diskusikan pembagian tugas tim untuk melengkapi artefak yang belum siap!";
+    }
+}
+
+// Answer Keys Formatif
+const KEY_MCQ = {
+    mcq_1: 'A',
+    mcq_2: 'A',
+    mcq_3: 'A',
+    mcq_4: 'A',
+    mcq_5: 'A',
+    mcq_6: 'A',
+    mcq_7: 'A',
+    mcq_8: 'A'
+};
+
+const KEY_TF = {
+    tf_1: 'S',
+    tf_2: 'B',
+    tf_3: 'B',
+    tf_4: 'S'
+};
+
+const KEY_MATCH = {
+    m1: 'PM',
+    m2: 'DEV',
+    m3: 'UI',
+    m4: 'QA'
+};
+
+const KEY_SEQ = {
+    seq_A: ['PLB'],
+    seq_B: ['ME', 'README'],
+    seq_C: ['BOOTH', 'STAND'],
+    seq_D: ['CASE', 'SHOWCASE']
+};
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value.trim().toUpperCase() : '';
+        answers[k] = val;
+        if (KEY_SEQ[k].some(opt => val.includes(opt))) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
 
 async function markModuleComplete() {
     if (window.FananiTracker) {
@@ -254,18 +784,53 @@ async function markModuleComplete() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
     if (window.FananiTracker) {
-        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-        if (hist && hist.is_completed) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data) {
+        if (data.is_completed) {
             const btn = document.getElementById("btn-complete-module");
             if (btn) {
                 btn.innerHTML = "<span>✓</span> Modul Tuntas!";
                 btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
             }
         }
+        if (data.attempts && data.attempts.length > 0) {
+            const box = document.getElementById('attempt-history-box');
+            const list = document.getElementById('attempt-history-list');
+            box.classList.remove('hidden');
+            list.innerHTML = data.attempts.map((att, idx) => `
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                    <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                    <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                        Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                    </span>
+                </div>
+            `).join('');
+        }
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
     }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadHistory();
 });
 </script>
+
 </body>
 </html>

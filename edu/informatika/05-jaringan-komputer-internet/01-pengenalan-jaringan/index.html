@@ -1,211 +1,926 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jaringan komputer dan internet: topologi jaringan, IP address, DNS, protokol HTTP/HTTPS, cara data bergerak di internet, dan konsep client-server.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Jaringan Komputer & Internet | Informatika Kelas 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengenalan Jaringan Komputer & Media Transmisi | JKI Informatika</title>
+    <meta name="description" content="Pelajari konsep jaringan komputer, skala PAN, LAN, MAN, WAN, arsitektur Client-Server vs Peer-to-Peer, media transmisi kabel UTP & fiber optik vs WiFi, serta simulator skala jaringan.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .prose strong{color:#1e293b;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
-        pre{background:#0f172a;color:#e2e8f0;padding:1.25rem;border-radius:.75rem;overflow-x:auto;font-size:.875rem;line-height:1.6;margin:1rem 0;}
-        code{font-family:'Courier New',monospace;}:not(pre)>code{background:#f1f5f9;color:#6366f1;padding:.15rem .4rem;border-radius:.35rem;font-size:.85em;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(14,165,233,0.2);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-emerald-600 hover:underline">← Kelas 8</a>
-</nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Edu</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
-        <a href="../" class="hover:text-emerald-600">Kelas 8</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 4</span>
-    </div>
-    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 4 · Jaringan</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Jaringan Komputer & Internet 🌐</h1>
-            <p class="text-blue-100 leading-relaxed max-w-2xl">Bagaimana data bisa sampai dari HP-mu ke seluruh dunia dalam hitungan detik? Kenali cara internet bekerja lewat analogi yang mudah dipahami!</p>
-        </div>
-    </div>
-    <div class="prose max-w-none">
-        <h2>Internet Itu Apa Sih?</h2>
-        <p>Internet adalah <strong>jaringan komputer terbesar di dunia</strong> — menghubungkan miliaran perangkat dari HP, laptop, server, hingga kulkas pintar. Data bergerak melalui kabel bawah laut, gelombang radio WiFi, dan sinyal 4G/5G.</p>
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🌊 Fakta Keren!</p>
-            <p class="text-purple-700 text-sm">Lebih dari 95% data internet dunia berjalan melalui <strong>kabel optik bawah laut</strong>! Kabel-kabel ini membentang di dasar samudra menghubungkan benua-benua. Total panjangnya bisa mengelilingi bumi lebih dari 30 kali!</p>
-        </div>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-sky-100 selection:text-sky-900 pb-24">
 
-        <h2>Alamat IP — Alamat Rumahmu di Internet</h2>
-        <p>Setiap perangkat yang terhubung ke internet punya <strong>IP Address (Internet Protocol Address)</strong> — seperti alamat rumah agar data bisa dikirim ke tujuan yang tepat.</p>
-        <div class="not-prose grid md:grid-cols-2 gap-4 my-5">
-            <div class="bg-blue-50 border border-blue-100 rounded-xl p-4">
-                <p class="font-heading font-bold text-blue-800 mb-2">IPv4 (versi lama)</p>
-                <code class="text-blue-700 text-lg font-bold">192.168.1.1</code>
-                <p class="text-blue-600 text-xs mt-2">Format: 4 angka (0-255) dipisah titik. Total bisa ~4 miliar alamat — sekarang sudah hampir habis!</p>
-            </div>
-            <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4">
-                <p class="font-heading font-bold text-indigo-800 mb-2">IPv6 (versi baru)</p>
-                <code class="text-indigo-700 text-sm font-bold">2001:0db8:85a3::8a2e</code>
-                <p class="text-indigo-600 text-xs mt-2">Format lebih panjang dengan huruf dan angka. Bisa menampung 340 triliun triliun triliun alamat!</p>
-            </div>
-        </div>
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-sky-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-blue-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-        <h2>DNS — Penerjemah Nama Website</h2>
-        <p>Saat kamu ketik <code>google.com</code>, komputermu tidak langsung tahu ke server mana harus pergi. <strong>DNS (Domain Name System)</strong> bertugas menerjemahkan nama domain menjadi IP address.</p>
-        <div class="not-prose my-5 bg-slate-50 border border-slate-200 rounded-xl p-5">
-            <p class="font-heading font-bold text-slate-700 mb-3">🗺️ Perjalanan Data Saat Buka Website</p>
-            <div class="space-y-2">
-                                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
-                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
-                    <span class="text-sm text-slate-700">⌨️ Kamu ketik "google.com" di browser</span>
-                </div>
-                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
-                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
-                    <span class="text-sm text-slate-700">🔍 Komputer tanya ke DNS: "Berapa IP address google.com?"</span>
-                </div>
-                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
-                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
-                    <span class="text-sm text-slate-700">📋 DNS jawab: "IP-nya 142.250.X.X"</span>
-                </div>
-                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
-                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
-                    <span class="text-sm text-slate-700">📤 Browser kirim permintaan ke server Google di IP tersebut</span>
-                </div>
-                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
-                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">5</span>
-                    <span class="text-sm text-slate-700">📥 Server Google kirim balik halaman web</span>
-                </div>
-                                <div class="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
-                    <span class="w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">6</span>
-                    <span class="text-sm text-slate-700">🖥️ Browser tampilkan halaman di layarmu!</span>
-                </div>
-                            </div>
-        </div>
-
-        <h2>Jenis-Jenis Jaringan</h2>
-        <div class="not-prose grid md:grid-cols-3 gap-3 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
-                <div class="text-3xl mb-2">🏠</div>
-                <p class="font-heading font-extrabold text-blue-700 text-xl">LAN</p>
-                <p class="text-slate-500 text-xs font-semibold mb-2">Local Area Network</p>
-                <p class="text-slate-400 text-xs">WiFi di rumah atau sekolah. Jangkauan pendek, kecepatan tinggi.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
-                <div class="text-3xl mb-2">🏙️</div>
-                <p class="font-heading font-extrabold text-blue-700 text-xl">MAN</p>
-                <p class="text-slate-500 text-xs font-semibold mb-2">Metropolitan Area Network</p>
-                <p class="text-slate-400 text-xs">Jaringan antar gedung pemerintah dalam satu kota.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm text-center">
-                <div class="text-3xl mb-2">🌍</div>
-                <p class="font-heading font-extrabold text-blue-700 text-xl">WAN</p>
-                <p class="text-slate-500 text-xs font-semibold mb-2">Wide Area Network</p>
-                <p class="text-slate-400 text-xs">Internet itu sendiri! Menghubungkan seluruh dunia.</p>
-            </div>
-                    </div>
-
-        <h2>HTTP vs HTTPS — Aman atau Tidak?</h2>
-        <p>Saat membuka website, perhatikan awalan URL-nya:</p>
-        <div class="not-prose grid md:grid-cols-2 gap-4 my-4">
-            <div class="bg-red-50 border border-red-200 rounded-xl p-4">
-                <p class="font-heading font-bold text-red-700 text-lg mb-1">🔓 HTTP</p>
-                <p class="text-red-600 text-sm">Data dikirim <strong>tanpa enkripsi</strong>. Orang lain di jaringan yang sama bisa "mengintip" data yang kamu kirim. Jangan isi password atau data penting!</p>
-            </div>
-            <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-                <p class="font-heading font-bold text-green-700 text-lg mb-1">🔒 HTTPS</p>
-                <p class="text-green-600 text-sm">Data dikirim dengan <strong>enkripsi SSL/TLS</strong>. Meskipun diintersepsi, data tidak bisa dibaca. Aman untuk transaksi dan login!</p>
-            </div>
-        </div>
-
-        <div class="callout callout-tip">
-            <p class="font-heading font-bold text-green-800 mb-2">✅ Kebiasaan Aman di Internet</p>
-            <ul class="text-green-700 text-sm space-y-1 list-disc pl-4">
-                <li>Selalu cek ada gembok 🔒 di browser sebelum isi data penting</li>
-                <li>Hindari WiFi publik tanpa password untuk transaksi online</li>
-                <li>Jangan klik link dari sumber yang tidak dikenal</li>
-                <li>Gunakan password yang berbeda untuk setiap akun</li>
-            </ul>
-        </div>
-
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Internet = jaringan komputer terbesar yang menghubungkan seluruh dunia</li>
-            <li>IP Address = alamat unik setiap perangkat di internet</li>
-            <li>DNS menerjemahkan nama domain (google.com) menjadi IP address</li>
-            <li>HTTPS lebih aman dari HTTP karena menggunakan enkripsi</li>
-        </ul>
-    </div>
-    <div class="flex justify-between mt-12 gap-4">
-        <a href="../03-logika-percabangan-loop/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
-            <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Percabangan & Loop</p></div>
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-sky-600 transition">
+        fanani<span class="text-sky-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-sky-600 transition flex items-center gap-1">
+            ← Unit Jaringan & Internet
         </a>
-        <a href="../05-pengolahan-data-sheet/" class="flex items-center gap-3 px-5 py-3 bg-emerald-600 text-white rounded-2xl shadow hover:bg-emerald-700 transition">
-            <div class="text-right"><p class="text-[10px] text-emerald-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Pengolahan Data</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-sky-50 hover:text-sky-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#apa-itu-jaringan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-sky-50 hover:text-sky-600 transition whitespace-nowrap">🌐 Konsep Jaringan</a>
+        <a href="#skala-jaringan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-sky-50 hover:text-sky-600 transition whitespace-nowrap">🗺️ PAN, LAN, MAN, WAN</a>
+        <a href="#arsitektur" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-sky-50 hover:text-sky-600 transition whitespace-nowrap">⚖️ Client-Server vs P2P</a>
+        <a href="#media-transmisi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-sky-50 hover:text-sky-600 transition whitespace-nowrap">📡 Media Transmisi</a>
+        <a href="#simulator-skala" class="px-3 py-1.5 rounded-full bg-sky-100 text-sky-900 hover:bg-sky-200 transition whitespace-nowrap font-bold">🎮 Simulator Skala Jaringan</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-sky-50 hover:text-sky-600 transition whitespace-nowrap">✨ Rangkuman</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../edu/" class="hover:text-sky-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-sky-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-sky-600 transition">Jaringan Komputer & Internet</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">01. Pengenalan Jaringan Komputer</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-sky-600 via-blue-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🌐 JKI · Modul 01
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Menghubungkan Dunia: Anatomi Jaringan Komputer
+            </h1>
+            <p class="text-sky-100 text-sm md:text-base leading-relaxed mb-6">
+                Komputer yang berdiri sendiri (stand-alone) hanya seperti pulau terisolasi. Namun saat disambungkan ke dalam jaringan, komputer menjelma menjadi jendela tanpa batas: berbagi data seketika, streaming video 4K dari server di belahan bumi lain, dan menghubungkan miliaran manusia.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-sky-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🗺️ Cakupan: PAN, LAN, MAN, WAN</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah mempelajari modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-sky-50/50 p-4 rounded-xl border border-sky-100">
+                <span class="text-sky-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Esensi Jaringan Komputer</strong>
+                    <p class="text-slate-600">Menjelaskan konsep berbagi sumber daya (file, printer, internet) dan keunggulan kolaborasi terhubung.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-sky-50/50 p-4 rounded-xl border border-sky-100">
+                <span class="text-sky-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengklasifikasi Skala Jaringan</strong>
+                    <p class="text-slate-600">Membedakan jangkauan geografis PAN (Bluetooth), LAN (Sekolah), MAN (Kota), hingga WAN/Internet (Global).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-sky-50/50 p-4 rounded-xl border border-sky-100">
+                <span class="text-sky-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membandingkan Arsitektur Layanan</strong>
+                    <p class="text-slate-600">Menganalisis perbedaan model Client-Server terpusat dengan model Peer-to-Peer (P2P) terdistribusi.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-sky-50/50 p-4 rounded-xl border border-sky-100">
+                <span class="text-sky-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menganalisis Media Transmisi</strong>
+                    <p class="text-slate-600">Menimbang kelebihan dan kekurangan kabel tembaga (UTP), Fiber Optik (kecepatan cahaya), dan nirkabel Wi-Fi/Seluler.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: APA ITU JARINGAN KOMPUTER? -->
+    <section id="apa-itu-jaringan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Hakikat & Manfaat Jaringan Komputer</h2>
+                <p class="text-xs text-slate-500">Dua atau lebih perangkat komputasi yang saling bertukar data melalui media komunikasi</p>
+            </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+            <strong>Jaringan Komputer (Computer Network)</strong> adalah interkoneksi antara dua atau lebih komputer mandiri (autonomous) yang terhubung melalui kabel atau gelombang radio untuk tujuan berbagi sumber daya (*resource sharing*) dan komunikasi data.
+        </p>
+
+        <div class="grid sm:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+                <span class="text-2xl">🖨️</span>
+                <strong class="text-slate-800 block">1. Berbagi Perangkat Keras</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Satu printer di ruang kantor sekolah dapat dipakai bersama oleh 30 guru sekaligus melalui LAN tanpa harus memindahkan kabel USB bolak-balik.
+                </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+                <span class="text-2xl">📂</span>
+                <strong class="text-slate-800 block">2. Berbagi Data & Penyimpanan</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Dokumen tugas kelompok disimpan di Network Attached Storage (NAS) atau Cloud, sehingga semua anggota dapat mengedit berkas yang sama secara real-time.
+                </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+                <span class="text-2xl">⚡</span>
+                <strong class="text-slate-800 block">3. Efisiensi & Komunikasi</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Koneksi internet satu gedung sekolah dibagikan merata ke ratusan laptop siswa melalui router cerdas dan manajemen bandwidth.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: 4 SKALA GEOGRAFIS JARINGAN -->
+    <section id="skala-jaringan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Klasifikasi Skala Geografis: PAN, LAN, MAN, WAN</h2>
+                <p class="text-xs text-slate-500">Mulai dari radius meja belajar hingga jangkauan antariksa lintas benua</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5 text-xs">
+            <!-- PAN -->
+            <div class="p-5 rounded-2xl border-2 border-slate-200 bg-white space-y-2 card-hover">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">🎧</span>
+                    <span class="text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded">Radius: &lt; 10 Meter</span>
+                </div>
+                <h3 class="font-heading font-bold text-slate-900 text-sm">PAN (Personal Area Network)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Jaringan nirkabel pribadi di sekitar tubuh seseorang. Menghubungkan smartphone ke smartwatch, headset Bluetooth TWS, atau tethering hotspot HP ke laptop sendiri di kafe.
+                </p>
+            </div>
+
+            <!-- LAN -->
+            <div class="p-5 rounded-2xl border-2 border-sky-200 bg-sky-50/30 space-y-2 card-hover">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">🏫</span>
+                    <span class="text-[10px] font-bold bg-sky-100 text-sky-800 px-2 py-0.5 rounded">Radius: 100m - 1 Km</span>
+                </div>
+                <h3 class="font-heading font-bold text-sky-900 text-sm">LAN (Local Area Network)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Jaringan di dalam satu ruangan, laboratorium komputer, rumah, atau satu gedung sekolah. Biasanya dihubungkan dengan kabel UTP berkecepatan tinggi (Gigabit LAN 1000 Mbps) atau Wi-Fi Access Point lokal.
+                </p>
+            </div>
+
+            <!-- MAN -->
+            <div class="p-5 rounded-2xl border-2 border-indigo-200 bg-indigo-50/30 space-y-2 card-hover">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">🏙️</span>
+                    <span class="text-[10px] font-bold bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded">Radius: 10 - 50 Km</span>
+                </div>
+                <h3 class="font-heading font-bold text-indigo-900 text-sm">MAN (Metropolitan Area Network)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Jaringan yang menjangkau seluruh area satu kota. Contoh: Jaringan kamera CCTV dinas perhubungan lalu lintas kota, jaringan antar-kantor cabang bank dalam satu kabupaten, atau jaringan TV kabel kota.
+                </p>
+            </div>
+
+            <!-- WAN -->
+            <div class="p-5 rounded-2xl border-2 border-purple-200 bg-purple-50/30 space-y-2 card-hover">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl">🌍</span>
+                    <span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded">Radius: Ribuan Km / Global</span>
+                </div>
+                <h3 class="font-heading font-bold text-purple-900 text-sm">WAN (Wide Area Network) / Internet</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Jaringan lintas negara dan benua. Menghubungkan jutaan LAN melalui kabel serat optik bawah laut lintas samudera (*submarine cable*) dan satelit komunikasi orbit bumi. Internet adalah contoh WAN terbesar!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: ARSITEKTUR CLIENT-SERVER VS P2P -->
+    <section id="arsitektur" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">3</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Arsitektur Jaringan: Client-Server vs Peer-to-Peer</h2>
+                <p class="text-xs text-slate-500">Dua filosofi utama pembagian peran dan beban kerja antar perangkat</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <!-- Client Server -->
+            <div class="p-5 rounded-2xl border border-blue-200 bg-blue-50/40 space-y-3">
+                <div class="flex items-center gap-2 text-blue-900 font-bold text-sm">
+                    <span>🖥️</span> Model Client-Server (Terpusat)
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                    Terdapat satu atau lebih komputer tangguh yang bertindak sebagai <strong>Server (Pelayan)</strong> yang menyediakan data/layanan, sementara komputer pengguna disebut <strong>Client (Peminta Layanan)</strong>.
+                </p>
+                <div class="bg-white p-3 rounded-xl border border-blue-100 space-y-1 text-[11px]">
+                    <div><strong>Contoh:</strong> YouTube (server video Google melayani miliaran HP penonton), Web Sekolah, E-banking.</div>
+                    <div><strong>Kelebihan:</strong> Keamanan terpusat, pencadangan (backup) data mudah dikelola.</div>
+                    <div><strong>Kelemahan:</strong> Jika server pusat mati/down, seluruh client tidak bisa mengakses layanan.</div>
+                </div>
+            </div>
+
+            <!-- Peer to Peer -->
+            <div class="p-5 rounded-2xl border border-teal-200 bg-teal-50/40 space-y-3">
+                <div class="flex items-center gap-2 text-teal-900 font-bold text-sm">
+                    <span>👥</span> Model Peer-to-Peer / P2P (Setara)
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                    Tidak ada server khusus. Setiap komputer memiliki derajat hak yang setara: bisa menjadi penyedia data sekaligus pengunduh data secara serentak.
+                </p>
+                <div class="bg-white p-3 rounded-xl border border-teal-100 space-y-1 text-[11px]">
+                    <div><strong>Contoh:</strong> Fitur AirDrop / Quick Share kirim foto antar HP tetangga, protokol BitTorrent, Blockchain.</div>
+                    <div><strong>Kelebihan:</strong> Tidak ada ketergantungan pada satu titik server tunggal, murah tanpa biaya sewa server.</div>
+                    <div><strong>Kelemahan:</strong> Keamanan lebih sulit dikontrol karena data tersebar di masing-masing perangkat.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: MEDIA TRANSMISI KABEL VS NIRKABEL -->
+    <section id="media-transmisi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">4</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Media Transmisi: Kabel (Guided) vs Nirkabel (Unguided)</h2>
+                <p class="text-xs text-slate-500">Bagaimana sinyal biner merambat dari satu tempat ke tempat lain</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5 text-xs">
+            <!-- Kabel UTP -->
+            <div class="p-5 rounded-2xl border border-slate-200 bg-white space-y-2 shadow-sm">
+                <span class="text-3xl">🔌</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Kabel UTP / STP (Twisted Pair)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Terdiri dari 8 kawat tembaga berpilin yang dipasang konektor <strong>RJ-45</strong>. Sinyal dikirim dalam bentuk <em>arus listrik tegangan</em>.
+                </p>
+                <div class="text-[11px] text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                    <div><strong>Jarak Maksimal:</strong> 100 meter</div>
+                    <div><strong>Kecepatan:</strong> 100 Mbps - 10 Gbps</div>
+                    <div><strong>Kelemahan:</strong> Rentan interferensi medan magnet elektromagnetik.</div>
+                </div>
+            </div>
+
+            <!-- Fiber Optik -->
+            <div class="p-5 rounded-2xl border-2 border-cyan-200 bg-cyan-50/30 space-y-2 shadow-sm">
+                <span class="text-3xl">💡</span>
+                <h3 class="font-heading font-bold text-cyan-900 text-sm">Fiber Optik (Serat Kaca Silika)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Sinyal data ditransmisikan dalam wujud <strong>pulsa cahaya laser</strong> yang memantul di dalam tabung kaca setipis helai rambut manusia!
+                </p>
+                <div class="text-[11px] text-cyan-900 bg-white p-2.5 rounded-lg border border-cyan-200">
+                    <div><strong>Jarak Maksimal:</strong> Puluhan kilometer tanpa amplifier</div>
+                    <div><strong>Kecepatan:</strong> Hingga 100+ Gbps (super cepat)</div>
+                    <div><strong>Kelebihan:</strong> 100% kebal petir dan interferensi listrik!</div>
+                </div>
+            </div>
+
+            <!-- Wi-Fi & Nirkabel -->
+            <div class="p-5 rounded-2xl border border-slate-200 bg-white space-y-2 shadow-sm">
+                <span class="text-3xl">📶</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Nirkabel (Wi-Fi & Seluler)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Menggunakan gelombang elektromagnetik radio (frekuensi 2.4 GHz dan 5 GHz). Memberikan kebebasan bergerak (*mobility*) tanpa terikat kabel.
+                </p>
+                <div class="text-[11px] text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                    <div><strong>Jangkauan:</strong> 10 - 50 meter (terhalang tembok)</div>
+                    <div><strong>Faktor Hambatan:</strong> Tembok beton tebal, cuaca hujan badai, interferensi microwave.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Callout Banner ke MPI Jaringan -->
+        <div class="bg-gradient-to-r from-sky-600 to-indigo-700 rounded-2xl p-6 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-5">
+            <div class="space-y-1.5">
+                <div class="inline-block bg-white/20 px-2.5 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wide">
+                    Simulasi Visual MPI
+                </div>
+                <h4 class="font-heading font-extrabold text-xl text-white">Ingin Melihat Simulasi Aliran Paket Data Jaringan?</h4>
+                <p class="text-sky-100 text-xs max-w-xl leading-relaxed">
+                    Jelajahi <strong>MPI Jaringan Komputer & Internet</strong> untuk melihat animasi interaktif bagaimana switch mengarahkan frame data dan bagaimana DNS menerjemahkan nama website!
+                </p>
+            </div>
+            <a href="/lab/mpi/jaringan/" target="_blank" rel="noopener"
+               class="px-5 py-3 bg-white text-blue-700 hover:bg-blue-50 font-bold text-xs rounded-xl shadow-md transition whitespace-nowrap flex items-center gap-2">
+                <span>🌐</span> Buka MPI Jaringan (Tab Baru) →
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION 5: SIMULATOR SKALA JARINGAN -->
+    <section id="simulator-skala" class="bg-white rounded-2xl border-2 border-sky-200 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-sky-100">
+            <span class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-800 flex items-center justify-center text-xl font-extrabold">🎮</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Simulator Interaktif: Pemilih Skala Jaringan</h2>
+                <p class="text-xs text-slate-500">Pilih skenario jaringan di bawah ini untuk melihat simulasi radius, perangkat yang terlibat, dan teknologinya!</p>
+            </div>
+        </div>
+
+        <!-- Tombol Pilihan -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <button onclick="selectScale('PAN')" id="btn-pan" class="p-3.5 rounded-xl border-2 border-sky-500 bg-sky-50 text-sky-900 font-bold text-xs transition">
+                1. Skala PAN (Pribadi)
+            </button>
+            <button onclick="selectScale('LAN')" id="btn-lan" class="p-3.5 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-700 font-bold text-xs hover:border-sky-300 transition">
+                2. Skala LAN (Sekolah)
+            </button>
+            <button onclick="selectScale('MAN')" id="btn-man" class="p-3.5 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-700 font-bold text-xs hover:border-sky-300 transition">
+                3. Skala MAN (Kota)
+            </button>
+            <button onclick="selectScale('WAN')" id="btn-wan" class="p-3.5 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-700 font-bold text-xs hover:border-sky-300 transition">
+                4. Skala WAN (Global)
+            </button>
+        </div>
+
+        <!-- Panel Hasil Simulasi -->
+        <div id="scale-card" class="p-6 rounded-2xl bg-slate-900 text-white space-y-3">
+            <div class="flex items-center justify-between">
+                <span id="scale-title" class="font-heading font-extrabold text-lg text-sky-300">PAN (Personal Area Network)</span>
+                <span id="scale-radius" class="text-xs bg-white/10 px-3 py-1 rounded-full text-slate-200">Radius: &lt; 10 Meter</span>
+            </div>
+            <p id="scale-desc" class="text-xs text-slate-300 leading-relaxed">
+                Jaringan pribadi di sekeliling pengguna. Menghubungkan smartphone dengan TWS earphone nirkabel dan smartwatch pelacak detak jantung.
+            </p>
+            <div class="grid sm:grid-cols-3 gap-3 pt-2 text-[11px] text-slate-200">
+                <div class="bg-white/5 p-3 rounded-xl border border-white/10">
+                    <strong class="text-sky-300 block mb-0.5">Media Utama:</strong>
+                    <span id="scale-media">Bluetooth LE, Wi-Fi Direct, Kabel USB-C</span>
+                </div>
+                <div class="bg-white/5 p-3 rounded-xl border border-white/10">
+                    <strong class="text-sky-300 block mb-0.5">Perangkat Khas:</strong>
+                    <span id="scale-devices">HP, Smartwatch, Headset, Drone remote</span>
+                </div>
+                <div class="bg-white/5 p-3 rounded-xl border border-white/10">
+                    <strong class="text-sky-300 block mb-0.5">Kecepatan Rata-rata:</strong>
+                    <span id="scale-speed">1 - 24 Mbps (Hemat baterai)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (20 SOAL TOTAL DALAM 4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Pengenalan Jaringan</h2>
+                    <p class="text-xs text-slate-500">20 Soal (Pilihan Ganda, Benar/Salah, Menjodohkan, dan Analisis Kasus)</p>
+                </div>
+            </div>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-4 py-2 rounded-2xl"></div>
+        </div>
+
+        <!-- Bagian A: Pilihan Ganda (8 Soal @ 5 Poin = 40 Poin) -->
+        <div class="space-y-5 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian A: Pilihan Ganda</span>
+                <span class="text-slate-500">8 Soal · 40 Poin</span>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">1. Jaringan komputer yang menghubungkan seluruh komputer di dalam satu laboratorium sekolah SMP Negeri 2 Lamongan termasuk dalam kategori...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="A"> A. PAN</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="B"> B. LAN</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="C"> C. MAN</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="D"> D. WAN</label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">2. Mengapa kabel Fiber Optik memiliki kecepatan transfer data tertinggi dan jangkauan terjauh dibandingkan kabel tembaga UTP?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="A"> A. Menggunakan arus listrik tegangan tinggi 380 Volt</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="B"> B. Mengirimkan sinyal dalam bentuk pulsa cahaya melalui serat kaca silika murni</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="C"> C. Dilapisi oleh magnet permanen penarik sinyal</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="D"> D. Tidak membutuhkan terminal konektor</label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">3. Konektor standar yang dipasang di ujung kabel UTP untuk ditancapkan ke port Ethernet komputer adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="A"> A. RJ-11</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="B"> B. RJ-45</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="C"> C. HDMI</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="D"> D. VGA</label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">4. Menghubungkan smartphone ke speaker bluetooth di kamar tidur merupakan contoh penerapan skala jaringan...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="A"> A. PAN (Personal Area Network)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="B"> B. MAN (Metropolitan Area Network)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="C"> C. WAN (Wide Area Network)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="D"> D. SAN (Storage Area Network)</label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">5. Karakteristik utama dari model arsitektur Client-Server adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="A"> A. Setiap komputer memiliki hak setara tanpa ada yang melayani</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="B"> B. Komputer server bertindak sebagai penyedia layanan dan client sebagai peminta layanan</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="C"> C. Tidak membutuhkan sistem operasi jaringan</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="D"> D. Hanya bisa digunakan saat listrik padam</label>
+                </div>
+            </div>
+
+            <!-- Soal 6 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">6. Manakah yang merupakan contoh media transmisi jaringan nir-kabel (tanpa kabel fisik)?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="A"> A. Kabel Koaksial</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="B"> B. Kabel Twisted Pair Cat6</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="C"> C. Gelombang Radio Wi-Fi</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="D"> D. Kabel Serat Optik Bawah Laut</label>
+                </div>
+            </div>
+
+            <!-- Soal 7 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">7. Jaringan antarkantor bank di seluruh penjuru kota Surabaya yang menghubungkan mesin ATM kota diklasifikasikan sebagai...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="A"> A. MAN (Metropolitan Area Network)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="B"> B. PAN (Personal Area Network)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="C"> C. Local Area Network</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="D"> D. Personal Bus Network</label>
+                </div>
+            </div>
+
+            <!-- Soal 8 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">8. Salah satu kelebihan model Peer-to-Peer (P2P) dibandingkan Client-Server adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="A"> A. Memiliki server raksasa yang sangat mahal</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="B"> B. Jika satu komputer mati, komputer lain masih bisa saling berbagi tanpa server pusat down</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="C"> C. Sangat mudah mengatur keamanan ribuan komputer secara terpusat</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="D"> D. Menggunakan kabel tembaga murni tanpa sinyal radio</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian B: Benar atau Salah (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian B: Analisis Benar atau Salah</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">9. Internet adalah contoh nyata dari jaringan WAN (Wide Area Network) berskala dunia.</span>
+                <select id="tf1" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">10. Kabel UTP kebal terhadap petir dan gangguan frekuensi motor listrik karena terbuat dari kaca silika.</span>
+                <select id="tf2" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">11. Jarak maksimal kabel UTP standar tanpa perangkat repeater atau switch adalah sekitar 100 meter.</span>
+                <select id="tf3" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">12. Dalam model P2P, jika satu komputer mengunduh file, komputer tersebut tidak bisa mengunggah file ke komputer lain.</span>
+                <select id="tf4" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Bagian C: Menjodohkan Skala & Contoh Nyata (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian C: Menjodohkan Skala Jaringan & Skenario</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">13. Smartwatch terhubung ke HP</p>
+                    <select id="m1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Skala Jaringan --</option>
+                        <option value="PAN">PAN (Personal Area Network)</option>
+                        <option value="LAN">LAN (Local Area Network)</option>
+                        <option value="MAN">MAN (Metropolitan Area Network)</option>
+                        <option value="WAN">WAN (Wide Area Network)</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">14. Lab Komputer Sekolah SMP</p>
+                    <select id="m2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Skala Jaringan --</option>
+                        <option value="PAN">PAN (Personal Area Network)</option>
+                        <option value="LAN">LAN (Local Area Network)</option>
+                        <option value="MAN">MAN (Metropolitan Area Network)</option>
+                        <option value="WAN">WAN (Wide Area Network)</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">15. Jaringan CCTV Dishub Satu Kota</p>
+                    <select id="m3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Skala Jaringan --</option>
+                        <option value="PAN">PAN (Personal Area Network)</option>
+                        <option value="LAN">LAN (Local Area Network)</option>
+                        <option value="MAN">MAN (Metropolitan Area Network)</option>
+                        <option value="WAN">WAN (Wide Area Network)</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">16. Menonton Video YouTube dari Server Luar Negeri</p>
+                    <select id="m4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Skala Jaringan --</option>
+                        <option value="PAN">PAN (Personal Area Network)</option>
+                        <option value="LAN">LAN (Local Area Network)</option>
+                        <option value="MAN">MAN (Metropolitan Area Network)</option>
+                        <option value="WAN">WAN (Wide Area Network)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian D: Urutan Skala Radius (4 Langkah @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian D: Mengurutkan Skala Jaringan dari Terkecil ke Terbesar</span>
+                <span class="text-slate-500">4 Langkah · 20 Poin</span>
+            </div>
+
+            <p class="text-slate-600">Urutkan 4 skala geografis jaringan komputer dari yang radius jangkauannya <strong>paling sempit</strong> ke yang <strong>paling luas</strong>:</p>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">Urutan 1 (Paling Sempit):</label>
+                    <select id="seq1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Skala</option>
+                        <option value="PAN">PAN (Personal Area Network)</option>
+                        <option value="LAN">LAN (Local Area Network)</option>
+                        <option value="MAN">MAN (Metropolitan Area Network)</option>
+                        <option value="WAN">WAN (Wide Area Network)</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">Urutan 2:</label>
+                    <select id="seq2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Skala</option>
+                        <option value="PAN">PAN (Personal Area Network)</option>
+                        <option value="LAN">LAN (Local Area Network)</option>
+                        <option value="MAN">MAN (Metropolitan Area Network)</option>
+                        <option value="WAN">WAN (Wide Area Network)</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">Urutan 3:</label>
+                    <select id="seq3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Skala</option>
+                        <option value="PAN">PAN (Personal Area Network)</option>
+                        <option value="LAN">LAN (Local Area Network)</option>
+                        <option value="MAN">MAN (Metropolitan Area Network)</option>
+                        <option value="WAN">WAN (Wide Area Network)</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">Urutan 4 (Paling Luas):</label>
+                    <select id="seq4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Skala</option>
+                        <option value="PAN">PAN (Personal Area Network)</option>
+                        <option value="LAN">LAN (Local Area Network)</option>
+                        <option value="MAN">MAN (Metropolitan Area Network)</option>
+                        <option value="WAN">WAN (Wide Area Network)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+            <p class="text-xs text-slate-400">Pastikan semua nomor telah terisi sebelum menekan tombol periksa nilai.</p>
+            <button onclick="submitEvaluationNetworkIntro()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-sm rounded-xl shadow-lg transition">
+                Periksa & Kirim Jawaban
+            </button>
+        </div>
+
+        <!-- Riwayat Pengerjaan -->
+        <div id="attempt-history-box" class="hidden pt-6 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-xs uppercase text-slate-400 tracking-wider">Riwayat Pengerjaan Tersimpan:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI -->
+    <section id="rangkuman" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">✨</span>
+            <h2 class="font-heading font-extrabold text-xl text-slate-800">Rangkuman Kunci & Refleksi Belajar</h2>
+        </div>
+
+        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li><strong>Jaringan Komputer</strong> menghubungkan perangkat untuk berbagi sumber daya, data, dan komunikasi efisien.</li>
+            <li><strong>4 Skala Geografis:</strong> PAN (&lt;10m), LAN (100m-1km), MAN (10-50km satu kota), WAN (lintas benua/global).</li>
+            <li><strong>Client-Server vs P2P:</strong> Client-Server memusatkan data pada server tangguh, sedangkan P2P menghubungkan komputer berderajat setara tanpa server tunggal.</li>
+            <li><strong>Fiber Optik</strong> mentransmisikan data berkecepatan cahaya menggunakan serat kaca silika dan kebal dari interferensi elektromagnetik.</li>
+        </ul>
+
+        <div class="pt-4 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-slate-800 text-sm">Refleksi Belajarmu:</h4>
+            <textarea id="reflection-input" rows="3" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="Bayangkan jika seluruh jaringan kabel serat optik bawah laut dunia terputus selama 1 hari, apa saja dampak langsung yang kamu rasakan?"></textarea>
+            <div class="flex items-center justify-between">
+                <span id="refl-status" class="text-xs text-emerald-600 font-bold"></span>
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition">
+                    Simpan Refleksi
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-sky-600 hover:border-sky-200 transition text-xs font-bold">
+            ← Indeks Jaringan Komputer
+        </a>
+        <a href="../02-topologi-dan-perangkat/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white transition text-xs font-bold shadow-md">
+            Modul Berikutnya: Topologi & Perangkat →
         </a>
     </div>
 
     <!-- Selesai Mempelajari Modul Card -->
-    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
             <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
             <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
         </div>
-        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
             <span>✓</span> Tandai Selesai
         </button>
     </div>
 
 </main>
+
 <footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan.</div>
+        <a href="../../../" class="hover:text-sky-600 transition font-medium">← Kembali ke Portal Edu</a>
     </div>
 </footer>
+
 <script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
-const TOPIC_ID = 'inf-jaringan-01';
+const TOPIC_ID = 'inf-jki-01';
+
+const scaleData = {
+    PAN: {
+        title: 'PAN (Personal Area Network)',
+        radius: 'Radius: < 10 Meter',
+        desc: 'Jaringan pribadi di sekeliling tubuh pengguna. Menghubungkan smartphone dengan TWS earphone nirkabel dan smartwatch pelacak detak jantung.',
+        media: 'Bluetooth LE, Wi-Fi Direct, Kabel USB-C',
+        devices: 'HP, Smartwatch, Headset, Drone remote',
+        speed: '1 - 24 Mbps (Hemat baterai)'
+    },
+    LAN: {
+        title: 'LAN (Local Area Network)',
+        radius: 'Radius: 100 Meter - 1 Km',
+        desc: 'Jaringan area lokal berkecepatan tinggi dalam satu gedung sekolah, lab komputer, rumah, atau kantor.',
+        media: 'Kabel UTP Cat6, Wi-Fi Access Point (802.11ax)',
+        devices: 'PC Desktop, Laptop, Printer Kantor, Switch, Router',
+        speed: '100 Mbps - 1.000 Mbps (Gigabit)'
+    },
+    MAN: {
+        title: 'MAN (Metropolitan Area Network)',
+        radius: 'Radius: 10 - 50 Km',
+        desc: 'Jaringan area metropolitan yang mencakup seluruh wilayah satu kota atau kabupaten untuk menghubungkan antar-institusi.',
+        media: 'Kabel Fiber Optik Bawah Tanah, Gelombang Radio Microwave',
+        devices: 'Router Core, CCTV Dishub, Server Bank Cabang',
+        speed: '1 Gbps - 10 Gbps'
+    },
+    WAN: {
+        title: 'WAN (Wide Area Network) / Internet',
+        radius: 'Radius: Ribuan Km / Seluruh Dunia',
+        desc: 'Jaringan global raksasa yang menghubungkan jutaan LAN antar benua melintasi samudera melalui kabel bawah laut dan satelit luar angkasa.',
+        media: 'Submarine Fiber Cable, Satelit LEO (Starlink)',
+        devices: 'Data Center Google/AWS, Gateway ISP Nasional',
+        speed: '100 Gbps - Terabit per detik'
+    }
+};
+
+function selectScale(type) {
+    const d = scaleData[type];
+    if (!d) return;
+
+    document.getElementById('scale-title').innerText = d.title;
+    document.getElementById('scale-radius').innerText = d.radius;
+    document.getElementById('scale-desc').innerText = d.desc;
+    document.getElementById('scale-media').innerText = d.media;
+    document.getElementById('scale-devices').innerText = d.devices;
+    document.getElementById('scale-speed').innerText = d.speed;
+
+    ['pan', 'lan', 'man', 'wan'].forEach(k => {
+        const btn = document.getElementById('btn-' + k);
+        if (k === type.toLowerCase()) {
+            btn.className = 'p-3.5 rounded-xl border-2 border-sky-500 bg-sky-50 text-sky-900 font-bold text-xs transition';
+        } else {
+            btn.className = 'p-3.5 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-700 font-bold text-xs hover:border-sky-300 transition';
+        }
+    });
+}
+
+const ANSWERS_A = {
+    q1: 'B',
+    q2: 'B',
+    q3: 'B',
+    q4: 'A',
+    q5: 'B',
+    q6: 'C',
+    q7: 'A',
+    q8: 'B'
+};
+
+const ANSWERS_B = {
+    tf1: 'BENAR',
+    tf2: 'SALAH',
+    tf3: 'BENAR',
+    tf4: 'SALAH'
+};
+
+const ANSWERS_C = {
+    m1: 'PAN',
+    m2: 'LAN',
+    m3: 'MAN',
+    m4: 'WAN'
+};
+
+const ANSWERS_D = {
+    seq1: 'PAN',
+    seq2: 'LAN',
+    seq3: 'MAN',
+    seq4: 'WAN'
+};
 
 async function markModuleComplete() {
     if (window.FananiTracker) {
-        await FananiTracker.markCompleted(SUBJECT, TOPIC_ID);
-        const btn = document.getElementById("btn-complete-module");
+        await FananiTracker.markComplete(SUBJECT, TOPIC_ID);
+        const btn = document.getElementById('btn-complete-module');
         if (btn) {
-            btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-            btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+            btn.innerHTML = '<span>✓</span> Tersimpan di Rapor!';
+            btn.className = 'px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl transition shadow cursor-default';
+        }
+    } else {
+        alert('Modul ditandai selesai secara lokal!');
+    }
+}
+
+async function submitEvaluationNetworkIntro() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in ANSWERS_A) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_A[k]) scoreA += 5;
+    }
+
+    for (let k in ANSWERS_B) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_B[k]) scoreB += 5;
+    }
+
+    for (let k in ANSWERS_C) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_C[k]) scoreC += 5;
+    }
+
+    for (let k in ANSWERS_D) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_D[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
         }
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    if (window.FananiTracker) {
-        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-        if (hist && hist.is_completed) {
-            const btn = document.getElementById("btn-complete-module");
-            if (btn) {
-                btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-                btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
-            }
-        }
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    loadHistory();
 });
 </script>
+
 </body>
 </html>

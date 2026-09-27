@@ -1,213 +1,856 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sistem bilangan dalam informatika: bilangan biner (basis 2), oktal (basis 8), dan heksadesimal (basis 16). Konversi bilangan dan cara komputer menyimpan data.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Sistem Bilangan | Informatika Kelas 7</title>
+    <title>Sistem Bilangan (Biner, Oktal, Heksadesimal) | Sistem Komputer Informatika</title>
+    <meta name="description" content="Pelajari logika sistem bilangan biner, oktal, heksadesimal, metode konversi, mengapa komputer berbasis biner, dan coba kalkulator interaktif bit-flipper live.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
         body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.05rem;color:#334155;margin-top:1.25rem;margin-bottom:.5rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}
-        .prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}
-        .prose li{margin-bottom:.4rem;line-height:1.7;}
-        .prose table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem;}
-        .prose th{background:#f1f5f9;color:#334155;font-family:'Quicksand',sans-serif;font-weight:700;padding:.6rem 1rem;text-align:center;border:1px solid #e2e8f0;}
-        .prose td{padding:.6rem 1rem;border:1px solid #e2e8f0;color:#475569;text-align:center;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}
-        .callout-tip{background:#f0fdf4;border-color:#22c55e;}
-        .callout-fun{background:#fdf4ff;border-color:#a855f7;}
-        .bit{display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:.5rem;font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.1rem;}
-        .bit-1{background:#6366f1;color:white;}
-        .bit-0{background:#e2e8f0;color:#64748b;}
+        .font-mono{font-family:'JetBrains Mono',monospace;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(245,158,11,0.2);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-indigo-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-indigo-600 hover:underline">← Kelas 7</a>
-</nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Edu</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
-        <a href="../" class="hover:text-indigo-600">Kelas 7</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 4</span>
-    </div>
-    <div class="bg-gradient-to-br from-violet-600 to-indigo-700 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 4 · Matematika Komputer</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Sistem Bilangan 🔢</h1>
-            <p class="text-violet-100 leading-relaxed max-w-2xl">Komputer hanya mengenal 0 dan 1! Pelajari cara komputer "membaca" angka yang berbeda dari cara kita menghitungnya.</p>
-        </div>
-    </div>
-    <div class="prose max-w-none">
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-amber-100 selection:text-amber-900 pb-24">
 
-        <h2>Komputer Hanya Kenal 0 dan 1! 😮</h2>
-        <p>Tahukah kamu? Semua yang ada di komputer — gambar, musik, video, teks — semuanya tersimpan sebagai rangkaian angka <strong>0</strong> dan <strong>1</strong>. Dua angka ini disebut <strong>bit</strong> (binary digit).</p>
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-amber-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-orange-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-        <div class="not-prose my-6 flex flex-col items-center gap-4">
-            <p class="text-slate-500 text-sm font-semibold">Contoh: Huruf "A" dalam komputer tersimpan sebagai:</p>
-            <div class="flex gap-2">
-                <span class="bit bit-0">0</span><span class="bit bit-1">1</span><span class="bit bit-0">0</span><span class="bit bit-0">0</span><span class="bit bit-0">0</span><span class="bit bit-0">0</span><span class="bit bit-0">0</span><span class="bit bit-1">1</span>
-            </div>
-            <p class="text-slate-400 text-xs">8 bit = 1 byte = satu karakter</p>
-        </div>
-
-        <h2>Sistem Bilangan yang Dipelajari</h2>
-        <p>Ada beberapa sistem bilangan yang digunakan dalam informatika:</p>
-
-        <div class="grid md:grid-cols-2 gap-5 my-6 not-prose">
-            <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-5">
-                <p class="font-heading font-extrabold text-indigo-700 text-xl mb-1">Desimal (Basis 10)</p>
-                <p class="text-indigo-600 text-sm mb-2">Sistem yang kita pakai sehari-hari</p>
-                <p class="font-heading font-extrabold text-3xl text-indigo-800">0–9</p>
-                <p class="text-indigo-600 text-xs mt-2">Contoh: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11...</p>
-            </div>
-            <div class="bg-violet-50 border border-violet-100 rounded-2xl p-5">
-                <p class="font-heading font-extrabold text-violet-700 text-xl mb-1">Biner (Basis 2)</p>
-                <p class="text-violet-600 text-sm mb-2">Bahasa komputer, hanya 0 dan 1</p>
-                <p class="font-heading font-extrabold text-3xl text-violet-800">0–1</p>
-                <p class="text-violet-600 text-xs mt-2">Contoh: 0, 1, 10, 11, 100, 101, 110...</p>
-            </div>
-            <div class="bg-amber-50 border border-amber-100 rounded-2xl p-5">
-                <p class="font-heading font-extrabold text-amber-700 text-xl mb-1">Oktal (Basis 8)</p>
-                <p class="text-amber-600 text-sm mb-2">Dipakai dalam sistem operasi lama</p>
-                <p class="font-heading font-extrabold text-3xl text-amber-800">0–7</p>
-                <p class="text-amber-600 text-xs mt-2">Contoh: 0, 1, 2, 3, 4, 5, 6, 7, 10, 11...</p>
-            </div>
-            <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-5">
-                <p class="font-heading font-extrabold text-emerald-700 text-xl mb-1">Heksadesimal (Basis 16)</p>
-                <p class="text-emerald-600 text-sm mb-2">Dipakai untuk kode warna dan memori</p>
-                <p class="font-heading font-extrabold text-3xl text-emerald-800">0–F</p>
-                <p class="text-emerald-600 text-xs mt-2">Contoh: 0,1,...,9, A, B, C, D, E, F, 10...</p>
-            </div>
-        </div>
-
-        <h2>Cara Mengubah Biner ke Desimal</h2>
-        <p>Cara mudah mengubah bilangan biner ke desimal adalah dengan menggunakan nilai posisi (pangkat 2):</p>
-
-        <div class="not-prose bg-slate-800 text-white rounded-2xl p-6 my-4 overflow-x-auto">
-            <p class="font-heading font-bold text-slate-100 text-sm mb-4">Contoh: Ubah biner 1011 ke desimal</p>
-            <div class="flex items-end gap-2 justify-center text-center mb-4">
-                <div><div class="bit bit-1 mx-auto">1</div><div class="text-slate-200 text-xs mt-1">×2³</div><div class="text-white text-sm font-bold mt-1">= 8</div></div>
-                <div class="text-slate-200 text-xl pb-6">+</div>
-                <div><div class="bit bit-0 mx-auto">0</div><div class="text-slate-200 text-xs mt-1">×2²</div><div class="text-white text-sm font-bold mt-1">= 0</div></div>
-                <div class="text-slate-200 text-xl pb-6">+</div>
-                <div><div class="bit bit-1 mx-auto">1</div><div class="text-slate-200 text-xs mt-1">×2¹</div><div class="text-white text-sm font-bold mt-1">= 2</div></div>
-                <div class="text-slate-200 text-xl pb-6">+</div>
-                <div><div class="bit bit-1 mx-auto">1</div><div class="text-slate-200 text-xs mt-1">×2⁰</div><div class="text-white text-sm font-bold mt-1">= 1</div></div>
-                <div class="text-slate-200 text-xl pb-6">=</div>
-                <div class="pb-2"><div class="text-indigo-400 font-heading font-extrabold text-3xl">11</div><div class="text-slate-200 text-xs">desimal</div></div>
-            </div>
-            <p class="text-slate-100 text-sm text-center">8 + 0 + 2 + 1 = <span class="text-indigo-400 font-bold">11</span></p>
-        </div>
-
-        <h2>Tabel Konversi Bilangan</h2>
-        <table>
-            <thead>
-                <tr><th>Desimal</th><th>Biner</th><th>Oktal</th><th>Heksadesimal</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>0</td><td>0000</td><td>0</td><td>0</td></tr>
-                <tr><td>1</td><td>0001</td><td>1</td><td>1</td></tr>
-                <tr><td>5</td><td>0101</td><td>5</td><td>5</td></tr>
-                <tr><td>10</td><td>1010</td><td>12</td><td>A</td></tr>
-                <tr><td>15</td><td>1111</td><td>17</td><td>F</td></tr>
-                <tr><td>16</td><td>10000</td><td>20</td><td>10</td></tr>
-                <tr><td>255</td><td>11111111</td><td>377</td><td>FF</td></tr>
-            </tbody>
-        </table>
-
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🎨 Heksadesimal di Kehidupan Nyata!</p>
-            <p class="text-purple-700 text-sm">Kode warna di komputer menggunakan heksadesimal! Contoh: <span class="font-bold">#FF0000</span> = merah, <span class="font-bold">#00FF00</span> = hijau, <span class="font-bold">#0000FF</span> = biru. Coba cek kode warna favoritmu di Google!</p>
-        </div>
-
-        <div class="callout callout-info">
-            <p class="font-heading font-bold text-blue-800 mb-1">📌 Coba Yuk!</p>
-            <p class="text-blue-700 text-sm">Ubah angka berikut ke bilangan biner:<br>
-            a) 5 → biner: ...<br>
-            b) 12 → biner: ...<br>
-            c) 20 → biner: ...</p>
-        </div>
-
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Komputer hanya mengenal 2 angka: 0 dan 1 (bit)</li>
-            <li>Sistem biner (basis 2) adalah bahasa dasar komputer</li>
-            <li>Kita juga mengenal oktal (basis 8) dan heksadesimal (basis 16)</li>
-            <li>Untuk mengubah biner ke desimal: kalikan setiap digit dengan pangkat 2</li>
-            <li>Kode warna HTML menggunakan heksadesimal</li>
-        </ul>
-    </div>
-
-    <div class="flex justify-between mt-12 gap-4">
-        <a href="../03-perangkat-komputer/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-200 rounded-2xl shadow-sm hover:border-indigo-200 transition group">
-            <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Perangkat Komputer</p></div>
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-amber-600 transition">
+        fanani<span class="text-amber-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-amber-600 transition flex items-center gap-1">
+            ← Unit Sistem Komputer
         </a>
-        <a href="../05-algoritma-flowchart/" class="flex items-center gap-3 px-5 py-3 bg-indigo-600 text-white rounded-2xl shadow hover:bg-indigo-700 transition group">
-            <div class="text-right"><p class="text-[10px] text-indigo-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Algoritma & Flowchart</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-amber-50 hover:text-amber-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#mengapa-biner" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-amber-50 hover:text-amber-600 transition whitespace-nowrap">⚡ Mengapa Biner?</a>
+        <a href="#4-basis" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-amber-50 hover:text-amber-600 transition whitespace-nowrap">🔢 4 Sistem Bilangan</a>
+        <a href="#metode-konversi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-amber-50 hover:text-amber-600 transition whitespace-nowrap">📐 Metode Konversi</a>
+        <a href="#playground-biner" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition whitespace-nowrap font-bold">🎮 Live 8-Bit Flipper</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-indigo-100 text-indigo-900 hover:bg-indigo-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-amber-50 hover:text-amber-600 transition whitespace-nowrap">✨ Rangkuman</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../edu/" class="hover:text-amber-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-amber-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-amber-600 transition">Sistem Komputer</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">04. Sistem Bilangan & Logika Digital</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-amber-600 via-orange-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🖥️ Sistem Komputer · Modul 04
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Bahasa Rahasia Komputer: Biner, Oktal & Heksadesimal
+            </h1>
+            <p class="text-amber-100 text-sm md:text-base leading-relaxed mb-6">
+                Manusia berhitung dengan 10 jari (Desimal), tetapi komputer hanya mengenal dua status sakelar: menyala atau padam (0 dan 1). Pelajari rahasia matematika di balik gerbang silikon, cara mengonversi angka biner ke desimal secara kilat, dan peran heksadesimal dalam kode warna serta alamat memori!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-amber-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🔢 Basis: 2, 8, 10, dan 16</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah mempelajari modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-amber-50/50 p-4 rounded-xl border border-amber-100">
+                <span class="text-amber-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Landasan Fisika Biner</strong>
+                    <p class="text-slate-600">Menjelaskan mengapa komputer digital memakai sistem biner (sakelar transistor On/Off dan kekebalan derau tegangan).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-amber-50/50 p-4 rounded-xl border border-amber-100">
+                <span class="text-amber-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membedakan 4 Basis Sistem Bilangan</strong>
+                    <p class="text-slate-600">Mengidentifikasi simbol digit desimal (0-9), biner (0-1), oktal (0-7), dan heksadesimal (0-9, A-F).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-amber-50/50 p-4 rounded-xl border border-amber-100">
+                <span class="text-amber-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menguasai Teknik Konversi Manual</strong>
+                    <p class="text-slate-600">Melakukan konversi desimal ke biner (metode sisa bagi 2) dan biner ke desimal (tabel kelipatan pangkat $2^n$).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-amber-50/50 p-4 rounded-xl border border-amber-100">
+                <span class="text-amber-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Heksadesimal di Dunia Nyata</strong>
+                    <p class="text-slate-600">Menghubungkan heksadesimal dengan kode warna HEX CSS web (#RRGGBB) dan format alamat MAC/IP fisik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: MENGAPA KOMPUTER MEMAKAI BINER? -->
+    <section id="mengapa-biner" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Mengapa Komputer Tidak Menghitung Seperti Manusia?</h2>
+                <p class="text-xs text-slate-500">Alasan mendasar di balik penggunaan angka 0 dan 1 pada sirkuit silikon</p>
+            </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+            Manusia terbiasa menggunakan sistem bilangan <strong>Desimal (basis 10)</strong> karena secara biologis kita memiliki 10 jari tangan. Mengapa para perancang komputer tidak membuat mesin yang langsung menghitung angka 0 sampai 9? Jawabannya ada pada <strong>keandalan perangkat keras fisik</strong>:
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-5 text-xs">
+            <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50/60 space-y-2">
+                <span class="text-2xl">🔌</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Transistor: Sakelar Listrik Mikroskopis</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Di dalam satu chip CPU modern (seperti Intel Core i7 atau Apple M-Series), terdapat lebih dari <strong>15 hingga 20 miliar transistor</strong>. Transistor bekerja seperti sakelar lampu kamar:
+                </p>
+                <div class="space-y-1 font-mono text-[11px] bg-white p-3 rounded-xl border border-slate-200">
+                    <div class="text-emerald-700"><strong>Status ON (Ada Arus ~1.2 Volt)</strong> = Direpresentasikan sebagai angka 1</div>
+                    <div class="text-slate-500"><strong>Status OFF (Nol Volt)</strong> = Direpresentasikan sebagai angka 0</div>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50/60 space-y-2">
+                <span class="text-2xl">🛡️</span>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Kebal Terhadap Gangguan Sinyal (Noise Immunity)</h3>
+                <p class="text-slate-600 leading-relaxed">
+                    Jika kita membagi voltase menjadi 10 level (misal 0.5V untuk angka 1, 1.0V untuk angka 2, dst.), fluktuasi panas sedikit saja akan menyebabkan komputer salah membaca data (derau sinyal). Dengan biner, perbedaannya sangat tegas: <em>Tinggi (1)</em> atau <em>Rendah (0)</em>. Tidak ada keraguan!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: 4 SISTEM BILANGAN KOMPUTASI -->
+    <section id="4-basis" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-orange-100 text-orange-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">4 Sistem Bilangan Utama dalam Informatika</h2>
+                <p class="text-xs text-slate-500">Mengenal karakter digit dan basis perpangkatan masing-masing sistem</p>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <thead class="bg-slate-100 text-slate-700 uppercase text-[10px] font-bold">
+                    <tr>
+                        <th class="p-3.5">Sistem Bilangan</th>
+                        <th class="p-3.5">Basis Radix</th>
+                        <th class="p-3.5">Simbol Digit yang Digunakan</th>
+                        <th class="p-3.5">Contoh Notasi</th>
+                        <th class="p-3.5">Penggunaan Nyata</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    <tr>
+                        <td class="p-3.5 font-bold text-blue-700">Desimal</td>
+                        <td class="p-3.5 font-mono">10</td>
+                        <td class="p-3.5 font-mono">0, 1, 2, 3, 4, 5, 6, 7, 8, 9</td>
+                        <td class="p-3.5 font-mono text-slate-800">45<sub>10</sub></td>
+                        <td class="p-3.5 text-slate-600">Perhitungan manusia sehari-hari, saldo uang, nilai rapor.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3.5 font-bold text-emerald-700">Biner (Binary)</td>
+                        <td class="p-3.5 font-mono">2</td>
+                        <td class="p-3.5 font-mono">0, 1</td>
+                        <td class="p-3.5 font-mono text-slate-800">00101101<sub>2</sub></td>
+                        <td class="p-3.5 text-slate-600">Eksekusi instruksi CPU, status transistor, bit data murni.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3.5 font-bold text-amber-700">Oktal</td>
+                        <td class="p-3.5 font-mono">8</td>
+                        <td class="p-3.5 font-mono">0, 1, 2, 3, 4, 5, 6, 7</td>
+                        <td class="p-3.5 font-mono text-slate-800">55<sub>8</sub></td>
+                        <td class="p-3.5 text-slate-600">Izin berkas file sistem Linux (misal <code>chmod 755</code>).</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3.5 font-bold text-purple-700">Heksadesimal</td>
+                        <td class="p-3.5 font-mono">16</td>
+                        <td class="p-3.5 font-mono">0-9 dan A(10), B(11), C(12), D(13), E(14), F(15)</td>
+                        <td class="p-3.5 font-mono text-slate-800">2D<sub>16</sub></td>
+                        <td class="p-3.5 text-slate-600">Kode warna web (CSS #FF5733), alamat RAM, IPv6.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECTION 3: METODE KONVERSI SISTEMATIS -->
+    <section id="metode-konversi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">3</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Teknik Konversi: Desimal &harr; Biner &harr; Heksadesimal</h2>
+                <p class="text-xs text-slate-500">Kuasai dua rumus cepat yang sering keluar di ujian dan kompetisi informatika (OSN)</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <!-- Konversi Biner ke Desimal -->
+            <div class="p-5 rounded-2xl border-2 border-emerald-100 bg-emerald-50/30 space-y-3">
+                <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider block">Metode 1: Biner ke Desimal (Tabel Pangkat 2)</span>
+                <p class="text-slate-600 leading-relaxed">
+                    Setiap posisi bit memiliki bobot perpangkatan basis 2 dari kanan ke kiri ($2^0=1, 2^1=2, 2^2=4, 2^3=8, 2^4=16, 2^5=32, 2^6=64, 2^7=128$).
+                </p>
+                <div class="bg-white p-3.5 rounded-xl border border-emerald-200 space-y-2 font-mono text-[11px]">
+                    <div class="font-bold text-slate-800">Contoh Konversi: 1 0 1 1 0 1 (Biner)</div>
+                    <div class="text-slate-600">
+                        = (1&times;32) + (0&times;16) + (1&times;8) + (1&times;4) + (0&times;2) + (1&times;1)<br>
+                        = 32 + 0 + 8 + 4 + 0 + 1<br>
+                        = <span class="font-bold text-emerald-700 text-sm">45 (Desimal)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Konversi Desimal ke Biner -->
+            <div class="p-5 rounded-2xl border-2 border-blue-100 bg-blue-50/30 space-y-3">
+                <span class="text-xs font-bold text-blue-800 uppercase tracking-wider block">Metode 2: Desimal ke Biner (Pembagian Beruntun Bagi 2)</span>
+                <p class="text-slate-600 leading-relaxed">
+                    Bagi angka desimal dengan 2 terus-menerus hingga habis, lalu <strong>baca sisa pembagian dari bawah ke atas</strong> (atau kanan ke kiri).
+                </p>
+                <div class="bg-white p-3.5 rounded-xl border border-blue-200 space-y-1.5 font-mono text-[11px]">
+                    <div class="font-bold text-slate-800">Contoh Konversi Angka 25 ke Biner:</div>
+                    <div class="text-slate-600">
+                        25 &divide; 2 = 12 (Sisa <strong>1</strong>) &uarr;<br>
+                        12 &divide; 2 = 6 &nbsp;(Sisa <strong>0</strong>) |<br>
+                        6 &divide; 2 = 3 &nbsp; (Sisa <strong>0</strong>) |<br>
+                        3 &divide; 2 = 1 &nbsp; (Sisa <strong>1</strong>) |<br>
+                        1 &divide; 2 = 0 &nbsp; (Sisa <strong>1</strong>) | Baca dari bawah!<br>
+                        Hasil: <span class="font-bold text-blue-700 text-sm">11001<sub>2</sub></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Heksadesimal dan Kode Warna Web -->
+        <div class="p-5 rounded-2xl bg-purple-50/80 border border-purple-200 space-y-2 text-xs">
+            <h4 class="font-heading font-bold text-purple-900 text-sm flex items-center gap-2">
+                <span>🎨</span> Mengapa Web Programmer Menyukai Heksadesimal?
+            </h4>
+            <p class="text-purple-950 leading-relaxed">
+                Menulis 1 Byte data biner membutuhkan 8 digit (misal: <code>11111111</code>). Namun dalam heksadesimal, angka tersebut cukup disingkat menjadi <strong>2 karakter saja: <code>FF</code></strong>!
+                Itulah mengapa warna di HTML/CSS ditulis dalam format HEX 6-digit <code>#RRGGBB</code> (Red, Green, Blue):
+            </p>
+            <div class="grid sm:grid-cols-3 gap-2 font-mono text-[11px] pt-1">
+                <div class="bg-white p-2.5 rounded-lg border border-purple-200"><span class="inline-block w-3 h-3 rounded-full bg-red-600 mr-1.5"></span>#FF0000 = Merah Penuh</div>
+                <div class="bg-white p-2.5 rounded-lg border border-purple-200"><span class="inline-block w-3 h-3 rounded-full bg-green-600 mr-1.5"></span>#00FF00 = Hijau Penuh</div>
+                <div class="bg-white p-2.5 rounded-lg border border-purple-200"><span class="inline-block w-3 h-3 rounded-full bg-blue-600 mr-1.5"></span>#0000FF = Biru Penuh</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: INTERACTIVE 8-BIT FLIPPER SIMULATOR -->
+    <section id="playground-biner" class="bg-white rounded-2xl border-2 border-amber-200 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-amber-100">
+            <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">🎮</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Simulator Interaktif: 8-Bit Switch Flipper</h2>
+                <p class="text-xs text-slate-500">Klik sakelar bit di bawah ini untuk menyalakan/mematikan transistor (0 atau 1) dan lihat hasilnya langsung!</p>
+            </div>
+        </div>
+
+        <!-- Sakelar 8 Bit -->
+        <div class="grid grid-cols-4 sm:grid-cols-8 gap-2.5 text-center">
+            <!-- Bit 7 (128) -->
+            <div onclick="toggleBit(7)" id="bit-box-7" class="cursor-pointer p-3 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-amber-400 transition select-none">
+                <span class="text-[10px] text-slate-400 font-bold block mb-1">Bobot: 128</span>
+                <span id="bit-val-7" class="text-2xl font-mono font-extrabold text-slate-700 block">0</span>
+            </div>
+            <!-- Bit 6 (64) -->
+            <div onclick="toggleBit(6)" id="bit-box-6" class="cursor-pointer p-3 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-amber-400 transition select-none">
+                <span class="text-[10px] text-slate-400 font-bold block mb-1">Bobot: 64</span>
+                <span id="bit-val-6" class="text-2xl font-mono font-extrabold text-slate-700 block">0</span>
+            </div>
+            <!-- Bit 5 (32) -->
+            <div onclick="toggleBit(5)" id="bit-box-5" class="cursor-pointer p-3 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-amber-400 transition select-none">
+                <span class="text-[10px] text-slate-400 font-bold block mb-1">Bobot: 32</span>
+                <span id="bit-val-5" class="text-2xl font-mono font-extrabold text-slate-700 block">0</span>
+            </div>
+            <!-- Bit 4 (16) -->
+            <div onclick="toggleBit(4)" id="bit-box-4" class="cursor-pointer p-3 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-amber-400 transition select-none">
+                <span class="text-[10px] text-slate-400 font-bold block mb-1">Bobot: 16</span>
+                <span id="bit-val-4" class="text-2xl font-mono font-extrabold text-slate-700 block">0</span>
+            </div>
+            <!-- Bit 3 (8) -->
+            <div onclick="toggleBit(3)" id="bit-box-3" class="cursor-pointer p-3 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-amber-400 transition select-none">
+                <span class="text-[10px] text-slate-400 font-bold block mb-1">Bobot: 8</span>
+                <span id="bit-val-3" class="text-2xl font-mono font-extrabold text-slate-700 block">0</span>
+            </div>
+            <!-- Bit 2 (4) -->
+            <div onclick="toggleBit(2)" id="bit-box-2" class="cursor-pointer p-3 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-amber-400 transition select-none">
+                <span class="text-[10px] text-slate-400 font-bold block mb-1">Bobot: 4</span>
+                <span id="bit-val-2" class="text-2xl font-mono font-extrabold text-slate-700 block">0</span>
+            </div>
+            <!-- Bit 1 (2) -->
+            <div onclick="toggleBit(1)" id="bit-box-1" class="cursor-pointer p-3 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-amber-400 transition select-none">
+                <span class="text-[10px] text-slate-400 font-bold block mb-1">Bobot: 2</span>
+                <span id="bit-val-1" class="text-2xl font-mono font-extrabold text-slate-700 block">0</span>
+            </div>
+            <!-- Bit 0 (1) -->
+            <div onclick="toggleBit(0)" id="bit-box-0" class="cursor-pointer p-3 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-amber-400 transition select-none">
+                <span class="text-[10px] text-slate-400 font-bold block mb-1">Bobot: 1</span>
+                <span id="bit-val-0" class="text-2xl font-mono font-extrabold text-slate-700 block">0</span>
+            </div>
+        </div>
+
+        <!-- Output Dashboard Nilai Hasil -->
+        <div class="grid sm:grid-cols-3 gap-4 pt-2">
+            <div class="p-4 rounded-xl bg-slate-900 text-white text-center space-y-1">
+                <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block">Nilai Desimal</span>
+                <span id="res-dec" class="text-3xl font-heading font-extrabold text-amber-400">0</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900 text-white text-center space-y-1">
+                <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block">Nilai Biner (1 Byte)</span>
+                <span id="res-bin" class="text-2xl font-mono font-extrabold text-emerald-400">00000000</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900 text-white text-center space-y-1">
+                <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block">Nilai Heksadesimal</span>
+                <span id="res-hex" class="text-3xl font-mono font-extrabold text-purple-400">0x00</span>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-500 pt-2">
+            <span>💡 1 Byte (8 Bit) mampu menyimpan angka bulat dari 0 hingga 255.</span>
+            <button onclick="resetBits()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-bold transition">
+                Reset Semua ke 0
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (20 SOAL TOTAL DALAM 4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Sistem Bilangan</h2>
+                    <p class="text-xs text-slate-500">20 Soal (Pilihan Ganda, Benar/Salah, Menjodohkan, dan Isian Konversi)</p>
+                </div>
+            </div>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-4 py-2 rounded-2xl"></div>
+        </div>
+
+        <!-- Bagian A: Pilihan Ganda (8 Soal @ 5 Poin = 40 Poin) -->
+        <div class="space-y-5 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian A: Pilihan Ganda (Konseptual & Perhitungan)</span>
+                <span class="text-slate-500">8 Soal · 40 Poin</span>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">1. Nilai desimal dari angka biner <code>1010</code> adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="A"> A. 8</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="B"> B. 10</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="C"> C. 12</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="D"> D. 14</label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">2. Berapakah hasil konversi angka desimal <code>19</code> ke dalam bentuk biner?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="A"> A. 10011</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="B"> B. 11001</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="C"> C. 10101</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="D"> D. 11100</label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">3. Dalam sistem heksadesimal, huruf <strong>F</strong> mewakili nilai desimal seharga...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="A"> A. 10</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="B"> B. 12</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="C"> C. 15</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="D"> D. 16</label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">4. Angka heksadesimal <code>1A</code> setara dengan nilai desimal...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="A"> A. 26</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="B"> B. 16</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="C"> C. 30</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="D"> D. 10</label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">5. Sistem bilangan Oktal memiliki basis 8, yang berarti digit maksimal yang boleh digunakan dalam penulisannya adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="A"> A. 8</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="B"> B. 9</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="C"> C. 7</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="D"> D. 6</label>
+                </div>
+            </div>
+
+            <!-- Soal 6 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">6. Berapa nilai desimal tertinggi yang dapat disimpan oleh 1 Byte (8 bit) biner tanpa tanda?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="A"> A. 128</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="B"> B. 255</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="C"> C. 256</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="D"> D. 1024</label>
+                </div>
+            </div>
+
+            <!-- Soal 7 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">7. Mengapa kode warna di web seperti warna putih ditulis dengan <code>#FFFFFF</code>?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="A"> A. Huruf F adalah singkatan dari Full Color</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="B"> B. Masing-masing komponen R, G, B diset ke nilai heksadesimal tertinggi (FF = 255 desimal)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="C"> C. Angka 0 dan F tidak bisa dibaca oleh monitor</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="D"> D. Warna putih hanya memiliki 1 bit informasi</label>
+                </div>
+            </div>
+
+            <!-- Soal 8 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">8. Berapakah hasil penjumlahan biner sederhana: <code>1 + 1</code>?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="A"> A. 2</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="B"> B. 10</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="C"> C. 11</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="D"> D. 0</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian B: Benar atau Salah (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian B: Analisis Benar atau Salah</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">9. Angka <code>108</code> adalah penulisan bilangan biner yang valid.</span>
+                <select id="tf1" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">10. 1 Byte terdiri dari tepat 8 Bit.</span>
+                <select id="tf2" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">11. Heksadesimal digunakan karena lebih mudah dibaca manusia saat merepresentasikan data biner yang sangat panjang.</span>
+                <select id="tf3" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">12. Komputer menggunakan sinyal analog tegangan kontinu agar bisa menghitung lebih cepat daripada biner.</span>
+                <select id="tf4" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Bagian C: Menjodohkan Nilai (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian C: Menjodohkan Nilai Desimal ke Biner</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">13. Desimal 7</p>
+                    <select id="m1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Nilai Biner --</option>
+                        <option value="0111">0111 (Biner)</option>
+                        <option value="1000">1000 (Biner)</option>
+                        <option value="1111">1111 (Biner)</option>
+                        <option value="0101">0101 (Biner)</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">14. Desimal 8</p>
+                    <select id="m2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Nilai Biner --</option>
+                        <option value="0111">0111 (Biner)</option>
+                        <option value="1000">1000 (Biner)</option>
+                        <option value="1111">1111 (Biner)</option>
+                        <option value="0101">0101 (Biner)</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">15. Desimal 15</p>
+                    <select id="m3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Nilai Biner --</option>
+                        <option value="0111">0111 (Biner)</option>
+                        <option value="1000">1000 (Biner)</option>
+                        <option value="1111">1111 (Biner)</option>
+                        <option value="0101">0101 (Biner)</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">16. Desimal 5</p>
+                    <select id="m4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Nilai Biner --</option>
+                        <option value="0111">0111 (Biner)</option>
+                        <option value="1000">1000 (Biner)</option>
+                        <option value="1111">1111 (Biner)</option>
+                        <option value="0101">0101 (Biner)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian D: Isian Singkat Konversi (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian D: Isian Angka Hasil Konversi</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <label class="font-bold text-slate-700">17. Berapakah nilai desimal dari biner <code>1100</code>?</label>
+                    <input type="text" id="ans17" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-mono text-xs" placeholder="Tulis angka bulat (contoh: 12)">
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <label class="font-bold text-slate-700">18. Berapakah nilai biner dari desimal <code>16</code>?</label>
+                    <input type="text" id="ans18" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-mono text-xs" placeholder="Tulis angka biner (contoh: 10000)">
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <label class="font-bold text-slate-700">19. Berapakah nilai desimal dari huruf HEX <code>C</code>?</label>
+                    <input type="text" id="ans19" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-mono text-xs" placeholder="Tulis angka bulat (contoh: 12)">
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <label class="font-bold text-slate-700">20. Berapakah hasil <code>2 pangkat 5</code> (bobot bit ke-6)?</label>
+                    <input type="text" id="ans20" class="w-full p-2 bg-white border border-slate-200 rounded-lg font-mono text-xs" placeholder="Tulis angka bulat (contoh: 32)">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+            <p class="text-xs text-slate-400">Pastikan semua nomor telah terisi sebelum menekan tombol periksa nilai.</p>
+            <button onclick="submitEvaluationNumberSystems()" class="w-full sm:w-auto px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-sm rounded-xl shadow-lg transition">
+                Periksa & Kirim Jawaban
+            </button>
+        </div>
+
+        <!-- Riwayat Pengerjaan -->
+        <div id="attempt-history-box" class="hidden pt-6 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-xs uppercase text-slate-400 tracking-wider">Riwayat Pengerjaan Tersimpan:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI -->
+    <section id="rangkuman" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">✨</span>
+            <h2 class="font-heading font-extrabold text-xl text-slate-800">Rangkuman Kunci & Refleksi Belajar</h2>
+        </div>
+
+        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li><strong>Biner (basis 2)</strong> adalah bahasa inti komputasi karena transistor silikon hanya memiliki dua kondisi stabil: Nyala (1) atau Mati (0).</li>
+            <li><strong>Heksadesimal (basis 16)</strong> adalah cara ringkas menulis biner: 4 digit biner (nibble) dipadatkan menjadi tepat 1 digit heksadesimal (0-9, A-F).</li>
+            <li><strong>1 Byte</strong> terdiri dari 8 bit dan dapat menyatakan nilai desimal antara 0 sampai 255.</li>
+            <li>Konversi biner ke desimal dilakukan dengan menjumlahkan bobot bit bernilai 1 ($2^0, 2^1, 2^2, 2^3, \dots$).</li>
+        </ul>
+
+        <div class="pt-4 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-slate-800 text-sm">Refleksi Belajarmu:</h4>
+            <textarea id="reflection-input" rows="3" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Setelah mencoba simulator 8-bit flipper, bagaimana pandanganmu tentang cara komputer memproses teks dan gambar?"></textarea>
+            <div class="flex items-center justify-between">
+                <span id="refl-status" class="text-xs text-emerald-600 font-bold"></span>
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition">
+                    Simpan Refleksi
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../03-representasi-data-digital/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-amber-600 hover:border-amber-200 transition text-xs font-bold">
+            ← Modul Sebelumnya: Representasi Data
+        </a>
+        <a href="../05-interaksi-manusia-komputer/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white transition text-xs font-bold shadow-md">
+            Modul Berikutnya: Interaksi Manusia Komputer →
         </a>
     </div>
 
     <!-- Selesai Mempelajari Modul Card -->
-    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
             <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
             <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
         </div>
-        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
             <span>✓</span> Tandai Selesai
         </button>
     </div>
 
 </main>
+
 <footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan.</div>
+        <a href="../../../" class="hover:text-amber-600 transition font-medium">← Kembali ke Portal Edu</a>
     </div>
 </footer>
+
 <script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
-const TOPIC_ID = 'inf-sistem-04';
+const TOPIC_ID = 'inf-sk-04';
+
+// State for 8-bit flipper
+const bits = [0, 0, 0, 0, 0, 0, 0, 0]; // bit 0 (kanan, bobot 1) to bit 7 (kiri, bobot 128)
+
+function toggleBit(idx) {
+    bits[idx] = bits[idx] === 0 ? 1 : 0;
+    updateSimulatorUI();
+}
+
+function resetBits() {
+    for (let i = 0; i < 8; i++) bits[i] = 0;
+    updateSimulatorUI();
+}
+
+function updateSimulatorUI() {
+    let dec = 0;
+    let binStr = '';
+
+    for (let i = 7; i >= 0; i--) {
+        const val = bits[i];
+        binStr += val;
+        if (val === 1) dec += Math.pow(2, i);
+
+        const elVal = document.getElementById('bit-val-' + i);
+        const elBox = document.getElementById('bit-box-' + i);
+        if (elVal && elBox) {
+            elVal.innerText = val;
+            if (val === 1) {
+                elBox.className = 'cursor-pointer p-3 rounded-xl border-2 border-amber-500 bg-amber-100 shadow-sm transition select-none';
+                elVal.className = 'text-2xl font-mono font-extrabold text-amber-800 block';
+            } else {
+                elBox.className = 'cursor-pointer p-3 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-amber-400 transition select-none';
+                elVal.className = 'text-2xl font-mono font-extrabold text-slate-700 block';
+            }
+        }
+    }
+
+    const hexStr = '0x' + dec.toString(16).toUpperCase().padStart(2, '0');
+
+    document.getElementById('res-dec').innerText = dec;
+    document.getElementById('res-bin').innerText = binStr;
+    document.getElementById('res-hex').innerText = hexStr;
+}
+
+const ANSWERS_A = {
+    q1: 'B',
+    q2: 'A',
+    q3: 'C',
+    q4: 'A',
+    q5: 'C',
+    q6: 'B',
+    q7: 'B',
+    q8: 'B'
+};
+
+const ANSWERS_B = {
+    tf1: 'SALAH',
+    tf2: 'BENAR',
+    tf3: 'BENAR',
+    tf4: 'SALAH'
+};
+
+const ANSWERS_C = {
+    m1: '0111',
+    m2: '1000',
+    m3: '1111',
+    m4: '0101'
+};
+
+const ANSWERS_D = {
+    ans17: '12',
+    ans18: '10000',
+    ans19: '12',
+    ans20: '32'
+};
 
 async function markModuleComplete() {
     if (window.FananiTracker) {
-        await FananiTracker.markCompleted(SUBJECT, TOPIC_ID);
-        const btn = document.getElementById("btn-complete-module");
+        await FananiTracker.markComplete(SUBJECT, TOPIC_ID);
+        const btn = document.getElementById('btn-complete-module');
         if (btn) {
-            btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-            btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+            btn.innerHTML = '<span>✓</span> Tersimpan di Rapor!';
+            btn.className = 'px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl transition shadow cursor-default';
+        }
+    } else {
+        alert('Modul ditandai selesai secara lokal!');
+    }
+}
+
+async function submitEvaluationNumberSystems() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in ANSWERS_A) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_A[k]) scoreA += 5;
+    }
+
+    for (let k in ANSWERS_B) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_B[k]) scoreB += 5;
+    }
+
+    for (let k in ANSWERS_C) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_C[k]) scoreC += 5;
+    }
+
+    for (let k in ANSWERS_D) {
+        const el = document.getElementById(k);
+        const val = el ? el.value.trim() : '';
+        answers[k] = val;
+        if (val === ANSWERS_D[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
         }
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    if (window.FananiTracker) {
-        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-        if (hist && hist.is_completed) {
-            const btn = document.getElementById("btn-complete-module");
-            if (btn) {
-                btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-                btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
-            }
-        }
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    updateSimulatorUI();
+    loadHistory();
 });
 </script>
+
 </body>
 </html>

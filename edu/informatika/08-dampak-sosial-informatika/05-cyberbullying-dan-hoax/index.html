@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -504,6 +504,27 @@
         </div>
     </section>
 
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../04-hak-kekayaan-intelektual/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-200 transition text-xs font-bold shadow-sm">
+            ← Modul Sebelumnya: Hak Kekayaan Intelektual
+        </a>
+        <a href="../06-kewargaan-digital/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white transition text-xs font-bold shadow-md">
+            Modul Berikutnya: Kewargaan Digital →
+        </a>
+    </div>
+
+    <!-- Selesai Mempelajari Modul Card -->
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+            <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
+            <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
+        </div>
+        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+            <span>✓</span> Tandai Selesai
+        </button>
+    </div>
+
 </main>
 
 <footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
@@ -644,6 +665,17 @@ async function submitQuizEvaluasi() {
     }
 }
 
+async function markModuleComplete() {
+    if (window.FananiTracker) {
+        await FananiTracker.markCompleted(SUBJECT, TOPIC_ID);
+        const btn = document.getElementById("btn-complete-module");
+        if (btn) {
+            btn.innerHTML = "<span>✓</span> Modul Tuntas!";
+            btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+        }
+    }
+}
+
 async function saveStudentReflection() {
     const txt = document.getElementById('reflection-input').value.trim();
     if (!txt) {
@@ -660,7 +692,15 @@ async function saveStudentReflection() {
 async function loadHistory() {
     if (!window.FananiTracker) return;
     const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-    if (data && data.attempts && data.attempts.length > 0) {
+    if (data) {
+        if (data.is_completed) {
+            const btn = document.getElementById("btn-complete-module");
+            if (btn) {
+                btn.innerHTML = "<span>✓</span> Modul Tuntas!";
+                btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+            }
+        }
+        if (data.attempts && data.attempts.length > 0) {
         const box = document.getElementById('attempt-history-box');
         const list = document.getElementById('attempt-history-list');
         box.classList.remove('hidden');

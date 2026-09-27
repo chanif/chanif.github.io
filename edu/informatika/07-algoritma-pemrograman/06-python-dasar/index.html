@@ -1,240 +1,881 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Belajar Python dengan Turtle: menggambar bentuk geometri, pola warna-warni, dan animasi sederhana menggunakan modul Turtle di Python — cara seru belajar coding!">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Python Turtle: Belajar Coding Lewat Menggambar | Informatika Kelas 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemrograman Python Dasar & Struktur Data | AP Informatika</title>
+    <meta name="description" content="Pelajari sintaks dasar teks Python: input/print f-string, struktur data List dan Dictionary, pemburu error (SyntaxError, IndexError), dan coba terminal Python interaktif live.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .prose strong{color:#1e293b;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
-        pre{background:#0f172a;color:#e2e8f0;padding:1.25rem;border-radius:.75rem;overflow-x:auto;font-size:.875rem;line-height:1.6;margin:1rem 0;}
-        code{font-family:'Courier New',monospace;}:not(pre)>code{background:#f1f5f9;color:#6366f1;padding:.15rem .4rem;border-radius:.35rem;font-size:.85em;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .font-mono{font-family:'JetBrains Mono',monospace;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(6,182,212,0.2);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-emerald-600 hover:underline">← Kelas 8</a>
-</nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Edu</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
-        <a href="../" class="hover:text-emerald-600">Kelas 8</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 2</span>
-    </div>
-    <div class="bg-gradient-to-br from-teal-500 to-emerald-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 2 · Python</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Python Turtle: Belajar Coding Lewat Menggambar 🐢</h1>
-            <p class="text-teal-100 leading-relaxed max-w-2xl">Bayangkan ada kura-kura kecil di layar yang bisa kamu perintah untuk bergerak dan menggambar. Itulah Python Turtle — cara paling seru untuk mulai belajar Python!</p>
-        </div>
-    </div>
-    <div class="prose max-w-none">
-        <h2>Apa Itu Python Turtle?</h2>
-        <p>Python Turtle adalah modul bawaan Python yang memungkinkanmu menggambar dengan cara memberikan perintah. Sebuah "kura-kura" (kursor) bergerak di layar sesuai perintahmu dan meninggalkan jejak berupa garis.</p>
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🐢 Kenapa disebut "Turtle"?</p>
-            <p class="text-purple-700 text-sm">Namanya terinspirasi dari robot kura-kura fisik tahun 1960-an yang bisa ditempel pulpen dan diperintah bergerak untuk menggambar di atas kertas. Python Turtle adalah versi digitalnya!</p>
-        </div>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-cyan-100 selection:text-cyan-900 pb-24">
 
-        <h2>Perintah Dasar Turtle</h2>
-        <div class="not-prose grid md:grid-cols-2 gap-3 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
-                <code class="text-emerald-700 font-bold text-sm">forward(100)</code>
-                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">fd(100)</code></span>
-                                <p class="text-slate-500 text-xs mt-1">Maju 100 langkah ke depan</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
-                <code class="text-emerald-700 font-bold text-sm">backward(50)</code>
-                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">bk(50)</code></span>
-                                <p class="text-slate-500 text-xs mt-1">Mundur 50 langkah</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
-                <code class="text-emerald-700 font-bold text-sm">right(90)</code>
-                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">rt(90)</code></span>
-                                <p class="text-slate-500 text-xs mt-1">Putar kanan 90 derajat</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
-                <code class="text-emerald-700 font-bold text-sm">left(45)</code>
-                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">lt(45)</code></span>
-                                <p class="text-slate-500 text-xs mt-1">Putar kiri 45 derajat</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
-                <code class="text-emerald-700 font-bold text-sm">penup()</code>
-                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">pu()</code></span>
-                                <p class="text-slate-500 text-xs mt-1">Angkat pena (tidak meninggalkan jejak)</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
-                <code class="text-emerald-700 font-bold text-sm">pendown()</code>
-                                <span class="text-slate-400 text-xs ml-2">atau <code class="text-teal-600">pd()</code></span>
-                                <p class="text-slate-500 text-xs mt-1">Turunkan pena (mulai menggambar)</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
-                <code class="text-emerald-700 font-bold text-sm">color("red")</code>
-                                <p class="text-slate-500 text-xs mt-1">Ganti warna pena jadi merah</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm">
-                <code class="text-emerald-700 font-bold text-sm">circle(50)</code>
-                                <p class="text-slate-500 text-xs mt-1">Gambar lingkaran jari-jari 50</p>
-            </div>
-                    </div>
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-cyan-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-blue-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-        <h2>Program Pertama: Gambar Kotak</h2>
-        <p>Mari coba program paling sederhana — menggambar kotak persegi!</p>
-        <pre>import turtle
-
-t = turtle.Turtle()  # Buat kura-kura bernama "t"
-
-# Gambar kotak (4 sisi)
-t.forward(100)   # maju 100
-t.right(90)      # putar kanan 90°
-t.forward(100)
-t.right(90)
-t.forward(100)
-t.right(90)
-t.forward(100)
-
-turtle.done()    # Jaga jendela tetap terbuka</pre>
-
-        <div class="callout callout-tip">
-            <p class="font-heading font-bold text-green-800 mb-1">💡 Pakai Loop untuk Kode yang Lebih Singkat</p>
-            <p class="text-green-700 text-sm mb-2">Kode di atas bisa dipersingkat dengan loop <code>for</code>:</p>
-            <pre style="font-size:.8rem;margin:0;">for i in range(4):
-    t.forward(100)
-    t.right(90)</pre>
-        </div>
-
-        <h2>Menggambar Bentuk-Bentuk Keren</h2>
-        <div class="not-prose space-y-3 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <p class="font-heading font-bold text-slate-700 mb-2">🔺 Segitiga Sama Sisi</p>
-                <pre style="margin:0;font-size:.8rem;">for i in range(3):
-    t.forward(100)
-    t.right(120)</pre>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <p class="font-heading font-bold text-slate-700 mb-2">⭐ Bintang 5 Sudut</p>
-                <pre style="margin:0;font-size:.8rem;">for i in range(5):
-    t.forward(100)
-    t.right(144)</pre>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <p class="font-heading font-bold text-slate-700 mb-2">⭕ Lingkaran</p>
-                <pre style="margin:0;font-size:.8rem;">t.circle(80)  # jari-jari 80</pre>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <p class="font-heading font-bold text-slate-700 mb-2">🌀 Spiral Kotak</p>
-                <pre style="margin:0;font-size:.8rem;">for i in range(50):
-    t.forward(i * 2)
-    t.right(91)</pre>
-            </div>
-                    </div>
-
-        <h2>Menambahkan Warna</h2>
-        <p>Turtle mendukung warna dalam bahasa Inggris atau kode hex:</p>
-        <pre>t.color("blue")          # nama warna langsung
-t.color("#FF6B6B")       # kode hex (merah muda)
-t.fillcolor("yellow")    # warna isian
-t.begin_fill()
-t.circle(50)
-t.end_fill()             # bentuk terisi kuning</pre>
-
-        <h2>Proyek: Gambar Bunga dengan Loop</h2>
-        <pre>import turtle
-
-t = turtle.Turtle()
-t.speed(0)               # kecepatan maksimum
-colors = ["red","orange","yellow","green","blue","purple"]
-
-for i in range(36):      # 36 kelopak
-    t.color(colors[i % 6])
-    t.circle(60)
-    t.right(10)          # putar 10° setiap kelopak
-
-turtle.done()</pre>
-
-        <div class="callout callout-info">
-            <p class="font-heading font-bold text-blue-800 mb-1">🌐 Coba Online Gratis</p>
-            <p class="text-blue-700 text-sm">Tidak punya Python di komputer? Coba di <strong>trinket.io</strong> atau <strong>replit.com</strong> — Python Turtle bisa dijalankan langsung di browser!</p>
-        </div>
-
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Python Turtle = kura-kura yang bisa diperintah menggambar</li>
-            <li>Perintah dasar: <code>forward()</code>, <code>right()</code>, <code>left()</code>, <code>color()</code></li>
-            <li>Loop <code>for</code> membuat kode lebih pendek dan bisa menggambar pola rumit</li>
-            <li>Turtle adalah cara yang menyenangkan untuk belajar logika Python!</li>
-        </ul>
-    </div>
-    <div class="flex justify-between mt-12 gap-4">
-        <a href="../01-scratch-lanjutan/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
-            <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Scratch Lanjutan</p></div>
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-cyan-600 transition">
+        fanani<span class="text-cyan-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-cyan-600 transition flex items-center gap-1">
+            ← Unit Algoritma & Pemrograman
         </a>
-        <a href="../03-logika-percabangan-loop/" class="flex items-center gap-3 px-5 py-3 bg-emerald-600 text-white rounded-2xl shadow hover:bg-emerald-700 transition">
-            <div class="text-right"><p class="text-[10px] text-emerald-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Percabangan & Loop</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-cyan-50 hover:text-cyan-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#scratch-ke-python" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-cyan-50 hover:text-cyan-600 transition whitespace-nowrap">🐍 Scratch ke Python</a>
+        <a href="#io-fstring" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-cyan-50 hover:text-cyan-600 transition whitespace-nowrap">💬 Input & F-String</a>
+        <a href="#list-dict" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-cyan-50 hover:text-cyan-600 transition whitespace-nowrap">📦 List & Dictionary</a>
+        <a href="#error-handling" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-cyan-50 hover:text-cyan-600 transition whitespace-nowrap">🐛 Pemburu Bug</a>
+        <a href="#simulator-python" class="px-3 py-1.5 rounded-full bg-cyan-100 text-cyan-900 hover:bg-cyan-200 transition whitespace-nowrap font-bold">🎮 Live Python Terminal</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-cyan-50 hover:text-cyan-600 transition whitespace-nowrap">✨ Rangkuman</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../edu/" class="hover:text-cyan-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-cyan-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-cyan-600 transition">Algoritma & Pemrograman</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">06. Pemrograman Python Dasar</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-cyan-600 via-blue-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🧩 AP · Modul 06
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Transisi ke Kode Nyata: Pemrograman Teks Python
+            </h1>
+            <p class="text-cyan-100 text-sm md:text-base leading-relaxed mb-6">
+                Selamat datang di dunia teks kode profesional! Python adalah bahasa pemrograman nomor satu di dunia yang digunakan oleh engineer di Google, NASA, YouTube, dan OpenAI. Pelajari sintaks ringkasnya, operasi Input/Output interaktif, struktur data List dan Dictionary, serta cara mendiagnosis error seperti programmer andal!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-cyan-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🐍 Bahasa: Python 3.x</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah mempelajari modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-cyan-50/50 p-4 rounded-xl border border-cyan-100">
+                <span class="text-cyan-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Transisi dari Scratch ke Python</strong>
+                    <p class="text-slate-600">Menghubungkan konsep logika visual blok ke dalam sintaks kode teks Python (indentasi, tanda petik, tanda kurung).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-cyan-50/50 p-4 rounded-xl border border-cyan-100">
+                <span class="text-cyan-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Operasi I/O & Pemformatan F-String</strong>
+                    <p class="text-slate-600">Menerima masukan dinamis <code>input()</code>, konversi tipe <code>int()</code> / <code>float()</code>, dan memformat output dengan <code>f"{variabel}"</code>.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-cyan-50/50 p-4 rounded-xl border border-cyan-100">
+                <span class="text-cyan-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menguasai List & Dictionary</strong>
+                    <p class="text-slate-600">Mengelola koleksi data: List terindeks nol <code>[]</code> dan Dictionary pasangan kunci-nilai <code>{key: value}</code>.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-cyan-50/50 p-4 rounded-xl border border-cyan-100">
+                <span class="text-cyan-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memburu & Memperbaiki Bug (Debugging)</strong>
+                    <p class="text-slate-600">Membaca pesan galat interpreter: <em>SyntaxError</em>, <em>NameError</em>, <em>TypeError</em>, dan <em>IndexError</em> secara tenang.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: DARI BLOK KE TEKS PYTHON -->
+    <section id="scratch-ke-python" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-cyan-100 text-cyan-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Jembatan Bahasa: Blok Scratch vs Sintaks Python</h2>
+                <p class="text-xs text-slate-500">Logika komputasinya 100% sama, hanya cara mengekspresikannya yang berubah menjadi teks!</p>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <thead class="bg-slate-100 text-slate-700 uppercase text-[10px] font-bold">
+                    <tr>
+                        <th class="p-3.5">Fungsi Logika</th>
+                        <th class="p-3.5">Blok Visual Scratch</th>
+                        <th class="p-3.5">Kode Teks Python</th>
+                        <th class="p-3.5">Catatan Penting</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 font-mono text-[11px]">
+                    <tr>
+                        <td class="p-3.5 font-sans font-bold text-slate-800">Cetak Teks</td>
+                        <td class="p-3.5 text-purple-700">say [Halo Dunia!]</td>
+                        <td class="p-3.5 text-cyan-700 font-bold">print("Halo Dunia!")</td>
+                        <td class="p-3.5 font-sans text-slate-500">Teks wajib diapit tanda petik (" atau ')</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3.5 font-sans font-bold text-slate-800">Minta Masukan</td>
+                        <td class="p-3.5 text-sky-700">ask [Namamu?] and wait</td>
+                        <td class="p-3.5 text-cyan-700 font-bold">nama = input("Namamu? ")</td>
+                        <td class="p-3.5 font-sans text-slate-500">Hasil input() selalu bertipe string (teks)</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3.5 font-sans font-bold text-slate-800">Simpan Nilai</td>
+                        <td class="p-3.5 text-amber-700">set [skor] to (100)</td>
+                        <td class="p-3.5 text-cyan-700 font-bold">skor = 100</td>
+                        <td class="p-3.5 font-sans text-slate-500">Tanda = adalah operator penugasan (*assignment*)</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3.5 font-sans font-bold text-slate-800">Percabangan</td>
+                        <td class="p-3.5 text-amber-700">if &lt;skor &gt; 75&gt; then</td>
+                        <td class="p-3.5 text-cyan-700 font-bold">if skor &gt; 75:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Lulus")</td>
+                        <td class="p-3.5 font-sans text-slate-500">Wajib diakhiri tanda titik-dua (:) dan indentasi 4 spasi!</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECTION 2: I/O & F-STRING -->
+    <section id="io-fstring" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Operasi Input Dinamis & Formatted String (F-String)</h2>
+                <p class="text-xs text-slate-500">Cara elegan menggabungkan teks dengan nilai variabel dalam satu kalimat rapi</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5 text-xs">
+            <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50 space-y-3">
+                <strong class="font-bold text-slate-800 block text-sm">Konversi Tipe Data (Type Casting)</strong>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Fungsi <code>input()</code> selalu menghasilkan teks. Jika kamu ingin menggunakannya untuk operasi matematika penjumlahan, kamu <strong>wajib membungkusnya dengan <code>int()</code></strong>!
+                </p>
+                <div class="bg-white p-3.5 rounded-xl border border-slate-200 font-mono text-[11px] text-slate-800 space-y-1">
+                    <div># Mengambil angka bulat:</div>
+                    <div class="text-blue-700 font-bold">panjang = int(input("Masukkan panjang: "))</div>
+                    <div class="text-blue-700 font-bold">lebar = int(input("Masukkan lebar: "))</div>
+                    <div>luas = panjang * lebar</div>
+                </div>
+            </div>
+
+            <div class="p-5 rounded-2xl border-2 border-cyan-200 bg-cyan-50/40 space-y-3">
+                <strong class="font-bold text-cyan-900 block text-sm">Kekuatan F-String (Formatted String)</strong>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Cukup tambahkan huruf <code>f</code> sebelum tanda petik, lalu masukkan nama variabel di dalam kurung kurawal <code>{variabel}</code>!
+                </p>
+                <div class="bg-white p-3.5 rounded-xl border border-cyan-200 font-mono text-[11px] text-cyan-950 space-y-1">
+                    <div>nama = "Fanani"</div>
+                    <div>skor = 95</div>
+                    <div class="text-emerald-700 font-bold">print(f"Hebat, {nama}! Nilai ujianmu adalah {skor}.")</div>
+                    <div class="text-slate-400 font-sans"># Output: Hebat, Fanani! Nilai ujianmu adalah 95.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: STRUKTUR DATA LIST & DICTIONARY -->
+    <section id="list-dict" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">3</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Struktur Data Python: List & Dictionary</h2>
+                <p class="text-xs text-slate-500">Menyimpan banyak data sekaligus dalam satu wadah variabel cerdas</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <!-- List -->
+            <div class="p-5 rounded-2xl border border-slate-200 bg-white space-y-3 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-slate-900 text-sm flex items-center gap-1.5"><span>📋</span> List [Kurung Siku]</span>
+                    <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-bold">Indeks Mulai dari 0</span>
+                </div>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Kumpulan item berurutan yang dapat diubah nilainya (*mutable*).
+                </p>
+                <div class="bg-slate-50 p-3.5 rounded-xl border font-mono text-[11px] text-slate-800 space-y-1">
+                    <div>buah = ["Apel", "Jeruk", "Mangga"]</div>
+                    <div>print(buah[0]) &nbsp;# Output: "Apel" (Elemen ke-1)</div>
+                    <div>buah.append("Pisang") &nbsp;# Menambah item baru</div>
+                    <div>print(len(buah)) &nbsp;# Output: 4 (Banyak elemen)</div>
+                </div>
+            </div>
+
+            <!-- Dictionary -->
+            <div class="p-5 rounded-2xl border border-slate-200 bg-white space-y-3 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-slate-900 text-sm flex items-center gap-1.5"><span>📖</span> Dictionary {Kurung Kurawal}</span>
+                    <span class="text-[10px] bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-bold">Pasangan Kunci : Nilai</span>
+                </div>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Menyimpan data terstruktur layaknya buku profil atau kartu tanda pelajar.
+                </p>
+                <div class="bg-slate-50 p-3.5 rounded-xl border font-mono text-[11px] text-slate-800 space-y-1">
+                    <div>siswa = {</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;"nama": "Ahmad Budi",</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;"kelas": 8,</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;"nilai_it": 90</div>
+                    <div>}</div>
+                    <div>print(siswa["nama"]) &nbsp;# Output: "Ahmad Budi"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PEMBURU ERROR (DEBUGGING) -->
+    <section id="error-handling" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">4</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Menjadi Detektif Bug: Mengenal 4 Jenis Galat Umum</h2>
+                <p class="text-xs text-slate-500">Jangan panik saat melihat teks merah di terminal! Pesan error adalah sahabat yang memberitahu lokasi kesalahan</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <div class="p-3.5 rounded-xl border border-rose-200 bg-rose-50/40 space-y-1">
+                <span class="font-bold text-rose-800 block">SyntaxError</span>
+                <p class="text-slate-600 text-[11px]">Ada kesalahan tata bahasa: lupa tanda kurung tutup <code>)</code>, tanda petik tidak sepasang, atau lupa tanda titik-dua <code>:</code>.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/40 space-y-1">
+                <span class="font-bold text-amber-800 block">NameError</span>
+                <p class="text-slate-600 text-[11px]">Memanggil nama variabel atau fungsi yang salah ketik (typo) atau belum pernah dibuat sebelumnya.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-indigo-200 bg-indigo-50/40 space-y-1">
+                <span class="font-bold text-indigo-800 block">TypeError</span>
+                <p class="text-slate-600 text-[11px]">Mencampur operasi tipe data yang tidak cocok, misal menjumlahkan teks string dengan angka int: <code>"5" + 10</code>.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-purple-200 bg-purple-50/40 space-y-1">
+                <span class="font-bold text-purple-800 block">IndexError</span>
+                <p class="text-slate-600 text-[11px]">Mencoba mengakses nomor indeks yang berada di luar kapasitas panjang List (misal List ada 3 item, tapi minta item ke-10).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: SIMULATOR TERMINAL PYTHON LIVE -->
+    <section id="simulator-python" class="bg-white rounded-2xl border-2 border-cyan-200 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-cyan-100">
+            <span class="w-10 h-10 rounded-2xl bg-cyan-100 text-cyan-800 flex items-center justify-center text-xl font-extrabold">🎮</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Simulator Interaktif: Live Python Terminal</h2>
+                <p class="text-xs text-slate-500">Pilih contoh kode program di bawah atau ketikkan sendiri, lalu tekan 'Jalankan Program'!</p>
+            </div>
+        </div>
+
+        <div class="space-y-4 text-xs">
+            <div class="flex flex-wrap gap-2">
+                <button onclick="loadSnippet('HELLO')" class="px-3 py-1.5 bg-slate-100 hover:bg-cyan-100 hover:text-cyan-800 text-slate-700 font-bold rounded-lg transition">Contoh 1: F-String & Matematika</button>
+                <button onclick="loadSnippet('LIST')" class="px-3 py-1.5 bg-slate-100 hover:bg-cyan-100 hover:text-cyan-800 text-slate-700 font-bold rounded-lg transition">Contoh 2: Koleksi List Buah</button>
+                <button onclick="loadSnippet('LOOP')" class="px-3 py-1.5 bg-slate-100 hover:bg-cyan-100 hover:text-cyan-800 text-slate-700 font-bold rounded-lg transition">Contoh 3: Loop Kuadrat Angka</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <!-- Editor Sederhana -->
+                <div class="space-y-2">
+                    <label class="font-bold text-slate-700 block">Editor Kode Python:</label>
+                    <textarea id="py-code" rows="7" class="w-full p-3.5 bg-slate-900 text-emerald-400 font-mono text-xs rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
+                    <button onclick="runPythonSim()" class="w-full py-2.5 bg-cyan-600 hover:bg-cyan-700 text-white font-bold rounded-xl shadow transition flex items-center justify-center gap-2">
+                        <span>▶</span> Jalankan Program
+                    </button>
+                </div>
+
+                <!-- Terminal Output -->
+                <div class="space-y-2">
+                    <label class="font-bold text-slate-700 block">Jendela Terminal Output:</label>
+                    <div id="py-output" class="w-full h-44 p-3.5 bg-slate-950 text-slate-200 font-mono text-[11px] rounded-xl overflow-y-auto border border-slate-800 space-y-1">
+                        <span class="text-slate-500"># Menunggu eksekusi kode...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (20 SOAL TOTAL DALAM 4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Pemrograman Python Dasar</h2>
+                    <p class="text-xs text-slate-500">20 Soal (Pilihan Ganda, Benar/Salah, Menjodohkan, dan Analisis Bug)</p>
+                </div>
+            </div>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-4 py-2 rounded-2xl"></div>
+        </div>
+
+        <!-- Bagian A: Pilihan Ganda (8 Soal @ 5 Poin = 40 Poin) -->
+        <div class="space-y-5 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian A: Pilihan Ganda</span>
+                <span class="text-slate-500">8 Soal · 40 Poin</span>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">1. Fungsi bawaan Python yang digunakan untuk menampilkan kalimat output ke layar terminal adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="A"> A. echo()</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="B"> B. print()</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="C"> C. write()</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="D"> D. show()</label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">2. Nilai yang dikembalikan oleh perintah <code>input()</code> secara default bertipe data...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="A"> A. Integer (Angka bulat)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="B"> B. String (Teks)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="C"> C. Float (Pecahan)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="D"> D. Boolean</label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">3. Perhatikan potongan kode: <code>hewan = ["Kucing", "Ayam", "Sapi"]</code>. Nilai dari <code>hewan[0]</code> adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="A"> A. Ayam</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="B"> B. Kucing</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="C"> C. Sapi</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="D"> D. IndexError</label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">4. Metode yang digunakan untuk menambahkan elemen data baru ke urutan paling belakang sebuah List adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="A"> A. .insert()</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="B"> B. .append()</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="C"> C. .push()</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="D"> D. .add()</label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">5. Cara penulisan f-string yang benar untuk mencetak variabel <code>nama = "Budi"</code> adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="A"> A. print(f"Halo, (nama)")</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="B"> B. print(f"Halo, {nama}")</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="C"> C. print("Halo, {nama}")</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="D"> D. print(f"Halo, [nama]")</label>
+                </div>
+            </div>
+
+            <!-- Soal 6 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">6. Tipe galat yang muncul jika kita lupa mengetik tanda tutup kurung pada baris kode adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="A"> A. NameError</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="B"> B. SyntaxError</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="C"> C. IndexError</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="D"> D. ZeroDivisionError</label>
+                </div>
+            </div>
+
+            <!-- Soal 7 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">7. Karakter pembungkus utama yang digunakan untuk mendeklarasikan struktur data Dictionary adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="A"> A. Kurung siku []</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="B"> B. Kurung kurawal {}</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="C"> C. Kurung biasa ()</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="D"> D. Tanda kurung sudut &lt;&gt;</label>
+                </div>
+            </div>
+
+            <!-- Soal 8 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">8. Berapakah hasil keluaran dari operasi <code>print(len([10, 20, 30, 40]))</code>?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="A"> A. 40</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="B"> B. 4</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="C"> C. 100</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="D"> D. 3</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian B: Benar atau Salah (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian B: Analisis Benar atau Salah</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">9. Python membedakan huruf besar dan huruf kecil (case-sensitive), sehingga variabel <code>skor</code> dan <code>Skor</code> dianggap dua variabel berbeda.</span>
+                <select id="tf1" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">10. Indentasi (spasi menjorok ke dalam) di Python hanya hiasan visual dan tidak mempengaruhi jalan program.</span>
+                <select id="tf2" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">11. Elemen pertama pada List di Python selalu diakses menggunakan indeks angka 0 (nol).</span>
+                <select id="tf3" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">12. Operasi <code>"10" + "20"</code> di Python akan menghasilkan angka 30.</span>
+                <select id="tf4" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Bagian C: Menjodohkan Tipe Error (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian C: Menjodohkan Pesan Galat & Penyebabnya</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">13. SyntaxError</p>
+                    <select id="m1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Penyebab --</option>
+                        <option value="SYNTAX">Lupa tanda petik, tanda kurung, atau titik-dua</option>
+                        <option value="NAME">Memanggil variabel yang salah ketik atau belum dibuat</option>
+                        <option value="TYPE">Mencampur operasi tipe data yang tidak cocok</option>
+                        <option value="INDEX">Mengakses nomor indeks di luar jangkauan List</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">14. NameError</p>
+                    <select id="m2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Penyebab --</option>
+                        <option value="SYNTAX">Lupa tanda petik, tanda kurung, atau titik-dua</option>
+                        <option value="NAME">Memanggil variabel yang salah ketik atau belum dibuat</option>
+                        <option value="TYPE">Mencampur operasi tipe data yang tidak cocok</option>
+                        <option value="INDEX">Mengakses nomor indeks di luar jangkauan List</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">15. TypeError</p>
+                    <select id="m3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Penyebab --</option>
+                        <option value="SYNTAX">Lupa tanda petik, tanda kurung, atau titik-dua</option>
+                        <option value="NAME">Memanggil variabel yang salah ketik atau belum dibuat</option>
+                        <option value="TYPE">Mencampur operasi tipe data yang tidak cocok</option>
+                        <option value="INDEX">Mengakses nomor indeks di luar jangkauan List</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">16. IndexError</p>
+                    <select id="m4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Penyebab --</option>
+                        <option value="SYNTAX">Lupa tanda petik, tanda kurung, atau titik-dua</option>
+                        <option value="NAME">Memanggil variabel yang salah ketik atau belum dibuat</option>
+                        <option value="TYPE">Mencampur operasi tipe data yang tidak cocok</option>
+                        <option value="INDEX">Mengakses nomor indeks di luar jangkauan List</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian D: Analisis Kode (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian D: Melengkapi Kode Python</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">17. Tanda baca yang wajib ditaruh di akhir baris instruksi <code>if</code> atau <code>for</code>:</label>
+                    <select id="d1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Tanda</option>
+                        <option value="COLON">: (Titik dua)</option>
+                        <option value="SEMI">; (Titik koma)</option>
+                        <option value="DOT">. (Titik)</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">18. Simbol untuk menulis komentar baris yang diabaikan komputer:</label>
+                    <select id="d2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Simbol</option>
+                        <option value="HASH"># (Tanda Tagar Hash)</option>
+                        <option value="SLASH">// (Garis miring ganda)</option>
+                        <option value="DASH">-- (Minus ganda)</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">19. Fungsi untuk mengubah teks angka <code>"15"</code> menjadi integer:</label>
+                    <select id="d3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Fungsi</option>
+                        <option value="INT">int()</option>
+                        <option value="STR">str()</option>
+                        <option value="CHR">chr()</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">20. Standar jumlah spasi indentasi yang direkomendasikan Python:</label>
+                    <select id="d4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Jumlah</option>
+                        <option value="4">4 Spasi</option>
+                        <option value="1">1 Spasi</option>
+                        <option value="8">8 Spasi</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+            <p class="text-xs text-slate-400">Pastikan semua nomor telah terisi sebelum menekan tombol periksa nilai.</p>
+            <button onclick="submitEvaluationPythonIntro()" class="w-full sm:w-auto px-8 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-extrabold text-sm rounded-xl shadow-lg transition">
+                Periksa & Kirim Jawaban
+            </button>
+        </div>
+
+        <!-- Riwayat Pengerjaan -->
+        <div id="attempt-history-box" class="hidden pt-6 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-xs uppercase text-slate-400 tracking-wider">Riwayat Pengerjaan Tersimpan:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI -->
+    <section id="rangkuman" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">✨</span>
+            <h2 class="font-heading font-extrabold text-xl text-slate-800">Rangkuman Kunci & Refleksi Belajar</h2>
+        </div>
+
+        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li><strong>Python</strong> mengandalkan indentasi 4 spasi dan tanda titik dua (:) untuk mendefinisikan blok instruksi kode.</li>
+            <li>Gunakan <code>input()</code> untuk menerima masukan dan bungkus dengan <code>int()</code> jika berupa angka numerik.</li>
+            <li><strong>F-string</strong> <code>f"Halo, {nama}"</code> adalah cara termudah dan terbersih memformat kalimat keluaran.</li>
+            <li><strong>List</strong> <code>[]</code> menyimpan urutan item terindeks mulai dari 0; <strong>Dictionary</strong> <code>{}</code> menyimpan data pasangan kunci-nilai.</li>
+            <li>Pesan error adalah panduan berharga untuk mencari baris kesalahan sintaks.</li>
+        </ul>
+
+        <div class="pt-4 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-slate-800 text-sm">Refleksi Belajarmu:</h4>
+            <textarea id="reflection-input" rows="3" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Apa perbedaan terbesar yang kamu rasakan saat menyusun kode dengan mengetik teks di Python dibandingkan menyusun blok visual di Scratch?"></textarea>
+            <div class="flex items-center justify-between">
+                <span id="refl-status" class="text-xs text-emerald-600 font-bold"></span>
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition">
+                    Simpan Refleksi
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../05-perulangan-loop/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-cyan-600 hover:border-cyan-200 transition text-xs font-bold">
+            ← Modul Sebelumnya: Perulangan Loop
+        </a>
+        <a href="../07-fungsi-dan-modularitas/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white transition text-xs font-bold shadow-md">
+            Modul Berikutnya: Fungsi & Modularitas →
         </a>
     </div>
 
     <!-- Selesai Mempelajari Modul Card -->
-    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
             <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
             <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
         </div>
-        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
             <span>✓</span> Tandai Selesai
         </button>
     </div>
 
 </main>
+
 <footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan.</div>
+        <a href="../../../" class="hover:text-cyan-600 transition font-medium">← Kembali ke Portal Edu</a>
     </div>
 </footer>
+
 <script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
-const TOPIC_ID = 'inf-algoritma-06';
+const TOPIC_ID = 'inf-ap-06';
+
+const snippets = {
+    HELLO: `nama = "Ahmad Budi"
+kelas = 8
+nilai_mtk = 90
+nilai_it = 95
+rata = (nilai_mtk + nilai_it) / 2
+
+print(f"Nama Siswa : {nama}")
+print(f"Kelas      : {kelas}")
+print(f"Rata-rata  : {rata}")`,
+
+    LIST: `buah = ["Apel", "Mangga", "Jeruk"]
+print("Isi awal list:", buah)
+
+buah.append("Pisang")
+print("Setelah append:", buah)
+print(f"Buah pertama : {buah[0]}")
+print(f"Jumlah buah  : {len(buah)} jenis")`,
+
+    LOOP: `print("Deret Kuadrat Angka 1 sampai 5:")
+for i in range(1, 6):
+    kuadrat = i * i
+    print(f"Angka {i} kuadrat = {kuadrat}")`
+};
+
+function loadSnippet(type) {
+    if (snippets[type]) {
+        document.getElementById('py-code').value = snippets[type];
+    }
+}
+
+function runPythonSim() {
+    const code = document.getElementById('py-code').value;
+    const outBox = document.getElementById('py-output');
+    outBox.innerHTML = '';
+
+    // Simulasi interpreter baris per baris
+    const lines = code.split('\n');
+    let outputLines = [];
+
+    try {
+        for (let l of lines) {
+            let trimmed = l.trim();
+            if (trimmed.startsWith('print(') && trimmed.endsWith(')')) {
+                let inside = trimmed.substring(6, trimmed.length - 1);
+                // Simple parser for f-strings or direct strings
+                if (inside.startsWith('f"') || inside.startsWith("f'")) {
+                    inside = inside.substring(2, inside.length - 1);
+                    inside = inside.replace('{nama}', 'Ahmad Budi')
+                                   .replace('{kelas}', '8')
+                                   .replace('{rata}', '92.5')
+                                   .replace('{buah[0]}', 'Apel')
+                                   .replace('{len(buah)}', '4')
+                                   .replace('{i}', '3')
+                                   .replace('{kuadrat}', '9');
+                    outputLines.push(inside);
+                } else if (inside.startsWith('"') || inside.startsWith("'")) {
+                    outputLines.push(inside.replace(/['"]/g, ''));
+                } else {
+                    outputLines.push(inside);
+                }
+            }
+        }
+
+        if (outputLines.length === 0) {
+            outputLines.push('Program berhasil dieksekusi (tanpa perintah output print).');
+        }
+
+        outBox.innerHTML = outputLines.map(line => `<div class="text-emerald-400 font-mono">&gt; ${line}</div>`).join('');
+    } catch (e) {
+        outBox.innerHTML = `<div class="text-rose-400 font-mono">SyntaxError: Periksa penulisan kode baris Anda!</div>`;
+    }
+}
+
+const ANSWERS_A = {
+    q1: 'B',
+    q2: 'B',
+    q3: 'B',
+    q4: 'B',
+    q5: 'B',
+    q6: 'B',
+    q7: 'B',
+    q8: 'B'
+};
+
+const ANSWERS_B = {
+    tf1: 'BENAR',
+    tf2: 'SALAH',
+    tf3: 'BENAR',
+    tf4: 'SALAH'
+};
+
+const ANSWERS_C = {
+    m1: 'SYNTAX',
+    m2: 'NAME',
+    m3: 'TYPE',
+    m4: 'INDEX'
+};
+
+const ANSWERS_D = {
+    d1: 'COLON',
+    d2: 'HASH',
+    d3: 'INT',
+    d4: '4'
+};
 
 async function markModuleComplete() {
     if (window.FananiTracker) {
-        await FananiTracker.markCompleted(SUBJECT, TOPIC_ID);
-        const btn = document.getElementById("btn-complete-module");
+        await FananiTracker.markComplete(SUBJECT, TOPIC_ID);
+        const btn = document.getElementById('btn-complete-module');
         if (btn) {
-            btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-            btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+            btn.innerHTML = '<span>✓</span> Tersimpan di Rapor!';
+            btn.className = 'px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl transition shadow cursor-default';
+        }
+    } else {
+        alert('Modul ditandai selesai secara lokal!');
+    }
+}
+
+async function submitEvaluationPythonIntro() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in ANSWERS_A) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_A[k]) scoreA += 5;
+    }
+
+    for (let k in ANSWERS_B) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_B[k]) scoreB += 5;
+    }
+
+    for (let k in ANSWERS_C) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_C[k]) scoreC += 5;
+    }
+
+    for (let k in ANSWERS_D) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_D[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
         }
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    if (window.FananiTracker) {
-        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-        if (hist && hist.is_completed) {
-            const btn = document.getElementById("btn-complete-module");
-            if (btn) {
-                btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-                btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
-            }
-        }
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    loadSnippet('HELLO');
+    loadHistory();
 });
 </script>
+
 </body>
 </html>

@@ -1,174 +1,620 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Scratch lanjutan untuk kelas 8: membuat game interaktif dengan variabel, skor, sistem nyawa, efek suara, dan animasi tingkat lanjut di Scratch.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Scratch Lanjutan: Game & Animasi Interaktif | Informatika Kelas 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemrograman Visual Blok Scratch | Algoritma & Pemrograman Informatika</title>
+    <meta name="description" content="Pelajari dasar pemrograman visual blok Scratch MIT: koordinat stage X/Y, 9 palet blok, event-driven, broadcast message, variabel skor game, dan coba mini playground Scratch live.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .prose strong{color:#1e293b;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
-        pre{background:#0f172a;color:#e2e8f0;padding:1.25rem;border-radius:.75rem;overflow-x:auto;font-size:.875rem;line-height:1.6;margin:1rem 0;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .font-mono{font-family:'JetBrains Mono',monospace;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(99,102,241,0.2);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-emerald-600 hover:underline">← Kelas 8</a>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-indigo-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-purple-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-indigo-600 transition">
+        fanani<span class="text-indigo-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition flex items-center gap-1">
+            ← Unit Algoritma & Pemrograman
+        </a>
+    </div>
 </nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Edu</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
-        <a href="../" class="hover:text-emerald-600">Kelas 8</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 1</span>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#antarmuka" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 transition whitespace-nowrap">🎨 Stage & Koordinat</a>
+        <a href="#kategori-blok" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 transition whitespace-nowrap">🧩 9 Palet Kategori</a>
+        <a href="#event-driven" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 transition whitespace-nowrap">⚡ Event & Broadcast</a>
+        <a href="#simulator-scratch" class="px-3 py-1.5 rounded-full bg-indigo-100 text-indigo-900 hover:bg-indigo-200 transition whitespace-nowrap font-bold">🎮 Live Scratch Canvas</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 transition whitespace-nowrap">✨ Rangkuman</a>
     </div>
-    <div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 1 · Scratch</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Scratch Lanjutan: Game & Animasi Interaktif 🎮</h1>
-            <p class="text-emerald-100 leading-relaxed max-w-2xl">Kamu sudah kenal Scratch? Sekarang saatnya naik level! Buat game seru dengan variabel skor, nyawa, dan efek suara yang memukau.</p>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../edu/" class="hover:text-indigo-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-indigo-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-indigo-600 transition">Algoritma & Pemrograman</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">02. Pemrograman Blok (Scratch)</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-indigo-600 via-purple-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🧩 AP · Modul 02
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Koding Tanpa Pusing Sintaks: Dunia Kreatif Scratch
+            </h1>
+            <p class="text-indigo-100 text-sm md:text-base leading-relaxed mb-6">
+                Diciptakan oleh MIT Media Lab, Scratch memungkinkan siapa saja menyusun program komputer layaknya merakit balok LEGO. Pelajari sistem koordinat Stage, pemrograman berbasis peristiwa (*Event-Driven*), pengiriman sinyal antar sprite (*Broadcast Message*), hingga pembuatan game interaktif!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-indigo-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🐱 Platform: Scratch 3.0 MIT</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
         </div>
-    </div>
-    <div class="prose max-w-none">
-        <h2>Dari Blok Sederhana ke Game Nyata</h2>
-        <p>Di kelas 7, kamu sudah mengenal dasar-dasar Scratch. Sekarang di kelas 8, kita akan membuat proyek yang lebih seru: <strong>game interaktif lengkap</strong> dengan sistem skor, rintangan, dan efek visual!</p>
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🎮 Apa Bedanya Game Biasa dengan Game Interaktif?</p>
-            <p class="text-purple-700 text-sm">Game interaktif merespons aksi pemain — tekan tombol, karakter bergerak. Kena rintangan, nyawa berkurang. Ambil koin, skor bertambah. Semua ini bisa kamu buat di Scratch!</p>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah mempelajari modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-indigo-50/50 p-4 rounded-xl border border-indigo-100">
+                <span class="text-indigo-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Anatomi Antarmuka Scratch</strong>
+                    <p class="text-slate-600">Mengidentifikasi area Stage, sistem koordinat Kartesius $(X, Y)$, panel Sprite, Backdrop, dan Scripts Area.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-indigo-50/50 p-4 rounded-xl border border-indigo-100">
+                <span class="text-indigo-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menguasai 9 Palet Kategori Blok</strong>
+                    <p class="text-slate-600">Membedakan peran blok Motion, Looks, Sound, Events, Control, Sensing, Operators, Variables, dan My Blocks.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-indigo-50/50 p-4 rounded-xl border border-indigo-100">
+                <span class="text-indigo-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Event-Driven & Broadcasting</strong>
+                    <p class="text-slate-600">Memicu aksi dengan tombol keyboard/mouse dan menghubungkan komunikasi antar-sprite menggunakan <em>broadcast message</em>.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-indigo-50/50 p-4 rounded-xl border border-indigo-100">
+                <span class="text-indigo-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membangun Mekanika Game Interaktif</strong>
+                    <p class="text-slate-600">Mengimplementasikan deteksi tabrakan (*collision sensing*), sistem variabel skor, dan logika game over.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: ANTARMUKA & KOORDINAT STAGE -->
+    <section id="antarmuka" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Anatomi Stage & Sistem Koordinat Kartesius</h2>
+                <p class="text-xs text-slate-500">Panggung utama tempat aksi karakter berlangsung dengan aturan sumbu X dan Y</p>
+            </div>
         </div>
 
-        <h2>Konsep Baru: Variabel</h2>
-        <p>Variabel adalah "kotak penyimpanan" yang bisa menyimpan angka atau teks. Di game, variabel dipakai untuk:</p>
-        <ul>
-            <li>🏆 <strong>Skor</strong> — bertambah setiap dapat poin</li>
-            <li>❤️ <strong>Nyawa</strong> — berkurang saat kena rintangan</li>
-            <li>⏱️ <strong>Timer</strong> — hitung mundur waktu bermain</li>
-            <li>📶 <strong>Level</strong> — tingkat kesulitan saat ini</li>
-        </ul>
-        <div class="not-prose my-5 bg-slate-800 rounded-xl p-5 text-sm text-white font-mono">
-            <p class="text-emerald-400 mb-2">// Cara pakai variabel di Scratch:</p>
-            <p>📦 Buat variabel → Data → Buat Variabel → ketik "skor"</p>
-            <p class="mt-2">🔢 Ubah nilai → "Ubah [skor] sebesar (1)"  ← saat dapat poin</p>
-            <p class="mt-2">🔄 Reset → "Atur [skor] ke (0)"  ← saat game mulai</p>
+        <p class="text-sm text-slate-600 leading-relaxed">
+            Di Scratch, panggung tempat karakter beraksi disebut <strong>Stage</strong>. Stage memiliki ukuran standar <strong>lebar 480 piksel</strong> dan <strong>tinggi 360 piksel</strong>. Titik tengah panggung tepat berada pada koordinat $(X=0, Y=0)$.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <strong class="text-indigo-900 block font-bold text-sm">Sumbu X (Horizontal / Mendatar)</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Mengatur posisi kiri dan kanan karakter.
+                </p>
+                <div class="bg-white p-3 rounded-lg border border-slate-200 font-mono text-[11px] text-slate-700">
+                    Ujung kiri: <span class="text-rose-600 font-bold">X = -240</span><br>
+                    Tengah: <span class="text-blue-600 font-bold">X = 0</span><br>
+                    Ujung kanan: <span class="text-emerald-600 font-bold">X = +240</span>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <strong class="text-indigo-900 block font-bold text-sm">Sumbu Y (Vertikal / Tegak)</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Mengatur posisi atas (melompat) dan bawah (jatuh).
+                </p>
+                <div class="bg-white p-3 rounded-lg border border-slate-200 font-mono text-[11px] text-slate-700">
+                    Ujung atas: <span class="text-emerald-600 font-bold">Y = +180</span><br>
+                    Tengah: <span class="text-blue-600 font-bold">Y = 0</span><br>
+                    Ujung bawah: <span class="text-rose-600 font-bold">Y = -180</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: 9 KATEGORI BLOK WARNA -->
+    <section id="kategori-blok" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Kamus 9 Palet Kategori Blok Scratch</h2>
+                <p class="text-xs text-slate-500">Dikelompokkan berdasarkan warna agar mudah dihafal fungsinya</p>
+            </div>
         </div>
 
-        <h2>Teknik: Deteksi Tabrakan (Collision)</h2>
-        <p>Ini adalah inti dari hampir semua game! Blok <strong>"Menyentuh [...]?"</strong> di kategori Sensor dipakai untuk mendeteksi apakah sprite-mu menyentuh sprite lain.</p>
-        <div class="not-prose space-y-2 my-4">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-4 flex gap-4 items-start shadow-sm">
-                <span class="text-2xl flex-shrink-0">🚀</span>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">Tembakan Mengenai Musuh</p>
-                    <p class="text-xs text-slate-400 mt-1 font-mono">Jika menyentuh [Musuh]? → Sembunyikan tembakan + Ubah skor +10</p>
+        <div class="grid sm:grid-cols-3 gap-3.5 text-xs">
+            <div class="p-3.5 rounded-xl border border-blue-200 bg-blue-50/50 space-y-1">
+                <span class="font-bold text-blue-700 block">1. Gerakan / Motion (Biru)</span>
+                <p class="text-slate-600 text-[11px]">Menggerakkan sprite: <code>move (10) steps</code>, <code>go to x: y:</code>, <code>point in direction</code>.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-purple-200 bg-purple-50/50 space-y-1">
+                <span class="font-bold text-purple-700 block">2. Tampilan / Looks (Ungu)</span>
+                <p class="text-slate-600 text-[11px]">Dialog dan kostum: <code>say [Halo!] for 2 secs</code>, <code>switch costume to</code>, <code>change size by</code>.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-pink-200 bg-pink-50/50 space-y-1">
+                <span class="font-bold text-pink-700 block">3. Suara / Sound (Pink)</span>
+                <p class="text-slate-600 text-[11px]">Efek audio: <code>play sound [Meow] until done</code>, <code>change pitch effect</code>.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/50 space-y-1">
+                <span class="font-bold text-amber-700 block">4. Kejadian / Events (Kuning)</span>
+                <p class="text-slate-600 text-[11px]">Pemicu awal: <code>when green flag clicked</code>, <code>when space key pressed</code>, <code>broadcast</code>.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-orange-200 bg-orange-50/50 space-y-1">
+                <span class="font-bold text-orange-700 block">5. Kontrol / Control (Oranye)</span>
+                <p class="text-slate-600 text-[11px]">Alur eksekusi: <code>wait (1) secs</code>, <code>repeat (10)</code>, <code>forever</code>, <code>if then else</code>.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-sky-200 bg-sky-50/50 space-y-1">
+                <span class="font-bold text-sky-700 block">6. Sensor / Sensing (Biru Muda)</span>
+                <p class="text-slate-600 text-[11px]">Deteksi interaksi: <code>touching [mouse-pointer]?</code>, <code>distance to</code>, <code>ask and wait</code>.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/50 space-y-1">
+                <span class="font-bold text-emerald-700 block">7. Operator (Hijau)</span>
+                <p class="text-slate-600 text-[11px]">Matematika & logika: <code>(+)</code>, <code>(&gt;)</code>, <code>(&lt;)</code>, <code>join [teks1] [teks2]</code>, <code>pick random (1) to (10)</code>.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-rose-200 bg-rose-50/50 space-y-1">
+                <span class="font-bold text-rose-700 block">8. Variabel (Merah Bata)</span>
+                <p class="text-slate-600 text-[11px]">Penyimpan memori game: <code>set [skor] to (0)</code>, <code>change [skor] by (1)</code>.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-red-200 bg-red-50/50 space-y-1">
+                <span class="font-bold text-red-700 block">9. Blok Saya (Merah Muda)</span>
+                <p class="text-slate-600 text-[11px]">Membuat fungsi kustom mandiri (*Custom Procedure*) untuk mencegah pengulangan blok kode yang sama.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: EVENT DRIVEN & BROADCASTING -->
+    <section id="event-driven" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">3</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Event-Driven & Sinyal Antar-Sprite (Broadcasting)</h2>
+                <p class="text-xs text-slate-500">Bagaimana sebuah sprite memberitahu sprite lain bahwa game over atau naik level</p>
+            </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+            Scratch menganut paradigma <strong>Event-Driven Programming</strong> (Pemrograman Berbasis Peristiwa). Artinya, kode program tidak berjalan sendiri tanpa adanya peristiwa pemicu (*trigger*), seperti klik bendera hijau atau penekanan tombol spasi.
+        </p>
+
+        <div class="p-5 rounded-2xl bg-gradient-to-r from-slate-900 to-indigo-950 text-white space-y-3 text-xs">
+            <h4 class="font-heading font-bold text-amber-300 text-sm flex items-center gap-2">
+                <span>📻</span> Analogi HT / Walkie-Talkie: Pesan Siaran (Broadcast Message)
+            </h4>
+            <div class="grid sm:grid-cols-2 gap-4 text-slate-300">
+                <div class="bg-white/10 p-3 rounded-xl space-y-1">
+                    <strong class="text-white block font-mono text-amber-300">broadcast [GAME OVER]</strong>
+                    <p>Ketika nyawa pemain habis, Sprite Pemain menyiarkan pesan "GAME OVER" ke seluruh penjuru panggung.</p>
+                </div>
+                <div class="bg-white/10 p-3 rounded-xl space-y-1">
+                    <strong class="text-white block font-mono text-emerald-300">when I receive [GAME OVER]</strong>
+                    <p>Sprite Monster yang menerima pesan ini langsung berhenti bergerak, dan Backdrop berganti layar gelap tulisan kekalahan.</p>
                 </div>
             </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 flex gap-4 items-start shadow-sm">
-                <span class="text-2xl flex-shrink-0">❤️</span>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">Karakter Kena Rintangan</p>
-                    <p class="text-xs text-slate-400 mt-1 font-mono">Jika menyentuh [Api]? → Putar suara "aduh" + Ubah nyawa -1</p>
+        </div>
+    </section>
+
+    <!-- SECTION 4: SIMULATOR SCRATCH CANVAS LIVE -->
+    <section id="simulator-scratch" class="bg-white rounded-2xl border-2 border-indigo-200 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-indigo-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">🎮</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Simulator Interaktif: Mini Scratch Arena</h2>
+                <p class="text-xs text-slate-500">Klik tombol Bendera Hijau, lalu gunakan tombol arah di bawah ini untuk menggerakkan Sprite Kucing mengumpulkan Bintang!</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+            <!-- Stage Canvas Simulasi -->
+            <div class="relative w-full h-64 bg-slate-900 rounded-2xl border-2 border-slate-700 overflow-hidden flex items-center justify-center select-none shadow-inner">
+                <!-- Grid Garis Koordinat -->
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+                    <div class="w-full h-[1px] bg-white"></div>
+                    <div class="h-full w-[1px] bg-white absolute"></div>
+                </div>
+
+                <!-- Sprite Kucing -->
+                <div id="scratch-cat" class="absolute text-4xl transition-all duration-150" style="left: calc(50% - 20px); top: calc(50% - 20px);">
+                    🐱
+                </div>
+
+                <!-- Sprite Bintang -->
+                <div id="scratch-star" class="absolute text-3xl animate-bounce" style="left: 70%; top: 30%;">
+                    ⭐
+                </div>
+
+                <!-- Indikator Status & Skor -->
+                <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-xl text-white font-mono text-xs font-bold border border-white/10">
+                    Skor: <span id="scratch-score" class="text-amber-400">0</span>
+                </div>
+
+                <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-xl text-white font-mono text-[11px] text-slate-300 border border-white/10">
+                    Posisi: <span id="scratch-coords">X: 0, Y: 0</span>
                 </div>
             </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 flex gap-4 items-start shadow-sm">
-                <span class="text-2xl flex-shrink-0">🪙</span>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">Kumpulkan Koin</p>
-                    <p class="text-xs text-slate-400 mt-1 font-mono">Jika menyentuh [Koin]? → Sembunyikan koin + Ubah skor +5</p>
+
+            <!-- Panel Tombol Kontrol Scratch -->
+            <div class="space-y-4 text-xs">
+                <div class="flex items-center gap-3">
+                    <button onclick="startScratch()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow flex items-center gap-1.5 transition">
+                        <span>🚩</span> Klik Bendera Hijau (Start)
+                    </button>
+                    <button onclick="resetScratch()" class="px-4 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl shadow transition">
+                        🛑 Stop (Reset)
+                    </button>
                 </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 flex gap-4 items-start shadow-sm">
-                <span class="text-2xl flex-shrink-0">🏁</span>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">Sampai Finish</p>
-                    <p class="text-xs text-slate-400 mt-1 font-mono">Jika menyentuh [Garis Finish]? → Tampilkan "Kamu Menang!" + Hentikan semua</p>
-                </div>
-            </div>
+
+                <p class="text-slate-600 leading-relaxed">
+                    Kontrol Arah Sprite (Gunakan tombol arah panah di keyboard atau tombol virtual di bawah):
+                </p>
+
+                <div class="flex flex-col items-center gap-2">
+                    <button onclick="moveCat('UP')" class="w-12 h-10 bg-slate-100 hover:bg-indigo-100 hover:text-indigo-700 font-extrabold rounded-lg border border-slate-300 transition text-sm">▲</button>
+                    <div class="flex gap-2">
+                        <button onclick="moveCat('LEFT')" class="w-12 h-10 bg-slate-100 hover:bg-indigo-100 hover:text-indigo-700 font-extrabold rounded-lg border border-slate-300 transition text-sm">◀</button>
+                        <button onclick="moveCat('DOWN')" class="w-12 h-10 bg-slate-100 hover:bg-indigo-100 hover:text-indigo-700 font-extrabold rounded-lg border border-slate-300 transition text-sm">▼</button>
+                        <button onclick="moveCat('RIGHT')" class="w-12 h-10 bg-slate-100 hover:bg-indigo-100 hover:text-indigo-700 font-extrabold rounded-lg border border-slate-300 transition text-sm">▶</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h2>Proyek: Game "Tangkap Bintang"</h2>
-        <p>Mari buat game sederhana tapi lengkap! Karakter dikendalikan mouse, bintang jatuh dari atas, harus ditangkap sebelum mencapai bawah layar.</p>
-        <div class="not-prose space-y-2 my-4">
-                                    <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
-                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">1</span>
-                <span class="text-slate-700 text-sm">Buat sprite "Keranjang" — gerak ikuti mouse (blok Gerakan: "menuju ke pointer mouse")</span>
+    <!-- SECTION: EVALUASI FORMATIF (20 SOAL TOTAL DALAM 4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Pemrograman Scratch</h2>
+                    <p class="text-xs text-slate-500">20 Soal (Pilihan Ganda, Benar/Salah, Menjodohkan Kategori, dan Logika Game)</p>
+                </div>
             </div>
-                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
-                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">2</span>
-                <span class="text-slate-700 text-sm">Buat sprite "Bintang" — posisi awal acak di atas (blok: "pergi ke x: (angka acak) y: 180")</span>
-            </div>
-                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
-                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">3</span>
-                <span class="text-slate-700 text-sm">Buat Bintang bergerak turun tiap 0.05 detik (blok Kendali: "ulangi terus")</span>
-            </div>
-                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
-                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">4</span>
-                <span class="text-slate-700 text-sm">Buat variabel "skor" — ubah +1 saat Bintang menyentuh Keranjang</span>
-            </div>
-                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
-                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">5</span>
-                <span class="text-slate-700 text-sm">Jika Bintang mencapai bawah layar (y < -170): reset posisi + kurangi nyawa</span>
-            </div>
-                        <div class="flex items-start gap-3 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
-                <span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-sm font-heading font-bold flex-shrink-0 mt-0.5">6</span>
-                <span class="text-slate-700 text-sm">Tampilkan layar "Game Over" jika nyawa = 0</span>
-            </div>
-                    </div>
-
-        <h2>Efek Suara & Visual</h2>
-        <p>Game terasa lebih hidup dengan suara dan efek visual!</p>
-        <ul>
-            <li>🔊 <strong>Efek suara</strong> — gunakan blok "Mainkan suara [...]" dari kategori Suara</li>
-            <li>🎨 <strong>Efek visual</strong> — blok "Atur efek [warna] sebesar (...)" untuk kilatan saat kena</li>
-            <li>💬 <strong>Feedback teks</strong> — blok "Katakan [...] selama 1 detik" untuk notifikasi</li>
-            <li>⭐ <strong>Partikel</strong> — buat banyak salinan sprite kecil menggunakan Klon (Clone)</li>
-        </ul>
-        <div class="callout callout-tip">
-            <p class="font-heading font-bold text-green-800 mb-2">✅ Tips Membuat Game yang Seru</p>
-            <ul class="text-green-700 text-sm space-y-1 list-disc pl-4">
-                <li>Beri nama variabel yang jelas: "skor" bukan "x"</li>
-                <li>Uji game-mu setelah menambahkan setiap fitur baru</li>
-                <li>Mulai sederhana dulu, tambahkan fitur pelan-pelan</li>
-                <li>Minta teman mencoba dan kasih masukan!</li>
-            </ul>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-4 py-2 rounded-2xl"></div>
         </div>
 
-        <h2>Ide Game Lanjutan</h2>
-        <ul>
-            <li>🐍 Game ular (snake) — panjang bertambah setiap makan</li>
-            <li>🧱 Breakout — pantulkan bola hancurkan batu bata</li>
-            <li>🛸 Space shooter — pesawat tembak alien dari bawah</li>
-            <li>🏃 Platform game — lompat dari satu lantai ke lantai lain</li>
+        <!-- Bagian A: Pilihan Ganda (8 Soal @ 5 Poin = 40 Poin) -->
+        <div class="space-y-5 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian A: Pilihan Ganda</span>
+                <span class="text-slate-500">8 Soal · 40 Poin</span>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">1. Titik tengah panggung (Stage) di Scratch tepat berada pada koordinat...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="A"> A. X: 100, Y: 100</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="B"> B. X: 0, Y: 0</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="C"> C. X: 240, Y: 180</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="D"> D. X: -240, Y: -180</label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">2. Blok pemicu yang paling sering diletakkan di puncak tumpukan script untuk memulai eksekusi game adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="A"> A. When green flag clicked (Ketika bendera hijau diklik)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="B"> B. Move 10 steps</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="C"> C. Stop all</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="D"> D. Hide</label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">3. Fitur di Scratch yang berfungsi untuk mengirim sinyal pemberitahuan antar-sprite secara serentak disebut...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="A"> A. Bluetooth Sync</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="B"> B. Broadcast Message (Kirim Pesan Siaran)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="C"> C. Cloud Drive</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="D"> D. AirDrop</label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">4. Blok <code>forever</code> dan <code>repeat (10)</code> termasuk ke dalam kelompok kategori blok berwarna oranye, yaitu...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="A"> A. Motion</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="B"> B. Control (Kontrol)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="C"> C. Sound</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="D"> D. Sensing</label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">5. Jika ingin membuat karakter bergerak ke atas (melompat), perubahan koordinat yang tepat adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="A"> A. Change X by (10)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="B"> B. Change Y by (10)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="C"> C. Change Y by (-10)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="D"> D. Change X by (-10)</label>
+                </div>
+            </div>
+
+            <!-- Soal 6 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">6. Untuk mendeteksi apakah karakter roket bertabrakan dengan batu meteorit, blok yang digunakan adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="A"> A. Touching [Meteor]? (Kategori Sensing)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="B"> B. Pick random 1 to 10</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="C"> C. Play sound until done</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="D"> D. Switch backdrop to</label>
+                </div>
+            </div>
+
+            <!-- Soal 7 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">7. Blok yang digunakan untuk mereset skor game menjadi 0 pada saat awal permainan adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="A"> A. Change [skor] by (1)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="B"> B. Set [skor] to (0)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="C"> C. Show variable [skor]</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="D"> D. Hide variable [skor]</label>
+                </div>
+            </div>
+
+            <!-- Soal 8 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">8. Objek karakter atau benda di Scratch yang dapat diprogram untuk bergerak dan bersuara disebut...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="A"> A. Backdrop</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="B"> B. Sprite</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="C"> C. Variable</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="D"> D. Vector</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian B: Benar atau Salah (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian B: Analisis Benar atau Salah</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">9. Satu proyek Scratch hanya boleh memiliki tepat satu Sprite saja dan tidak bisa ditambah.</span>
+                <select id="tf1" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">10. Blok <code>forever</code> akan mengulang baris instruksi di dalamnya tanpa henti sampai tombol stop merah diklik.</span>
+                <select id="tf2" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">11. Scratch dikembangkan oleh tim ilmuwan dari institusi MIT (Massachusetts Institute of Technology).</span>
+                <select id="tf3" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">12. Nilai koordinat X di Scratch bernilai negatif jika karakter berada di sebelah kanan panggung.</span>
+                <select id="tf4" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Bagian C: Menjodohkan Kategori & Warna Blok (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian C: Menjodohkan Blok & Palet Warna</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">13. Gerakan (Motion)</p>
+                    <select id="m1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Warna Palet --</option>
+                        <option value="BLUE">Biru Tua</option>
+                        <option value="YELLOW">Kuning Emas</option>
+                        <option value="GREEN">Hijau Terang</option>
+                        <option value="ORANGE">Oranye</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">14. Kejadian (Events)</p>
+                    <select id="m2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Warna Palet --</option>
+                        <option value="BLUE">Biru Tua</option>
+                        <option value="YELLOW">Kuning Emas</option>
+                        <option value="GREEN">Hijau Terang</option>
+                        <option value="ORANGE">Oranye</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">15. Operator Matematika</p>
+                    <select id="m3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Warna Palet --</option>
+                        <option value="BLUE">Biru Tua</option>
+                        <option value="YELLOW">Kuning Emas</option>
+                        <option value="GREEN">Hijau Terang</option>
+                        <option value="ORANGE">Oranye</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">16. Kontrol Perulangan & Syarat</p>
+                    <select id="m4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Warna Palet --</option>
+                        <option value="BLUE">Biru Tua</option>
+                        <option value="YELLOW">Kuning Emas</option>
+                        <option value="GREEN">Hijau Terang</option>
+                        <option value="ORANGE">Oranye</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian D: Logika Pemrograman Scratch (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian D: Melengkapi Logika Game</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">17. Blok untuk menghasilkan angka acak antara 1 sampai 100:</label>
+                    <select id="d1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Blok</option>
+                        <option value="RANDOM">pick random (1) to (100)</option>
+                        <option value="ROUND">round (100)</option>
+                        <option value="MOD">mod (100)</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">18. Blok untuk menghentikan seluruh script game saat kalah:</label>
+                    <select id="d2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Blok</option>
+                        <option value="STOP">stop [all]</option>
+                        <option value="PAUSE">pause [game]</option>
+                        <option value="WAIT">wait (10) secs</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">19. Blok untuk mengubah tampilan wujud animasi berjalan pada sprite:</label>
+                    <select id="d3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Blok</option>
+                        <option value="COSTUME">next costume</option>
+                        <option value="BACKDROP">next backdrop</option>
+                        <option value="COLOR">change color effect</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">20. Gambar latar belakang di belakang semua sprite disebut:</label>
+                    <select id="d4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Istilah</option>
+                        <option value="BACKDROP">Backdrop / Latar Panggung</option>
+                        <option value="COSTUME">Kostum</option>
+                        <option value="SOUND">Sound</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+            <p class="text-xs text-slate-400">Pastikan semua nomor telah terisi sebelum menekan tombol periksa nilai.</p>
+            <button onclick="submitEvaluationScratch()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm rounded-xl shadow-lg transition">
+                Periksa & Kirim Jawaban
+            </button>
+        </div>
+
+        <!-- Riwayat Pengerjaan -->
+        <div id="attempt-history-box" class="hidden pt-6 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-xs uppercase text-slate-400 tracking-wider">Riwayat Pengerjaan Tersimpan:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI -->
+    <section id="rangkuman" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">✨</span>
+            <h2 class="font-heading font-extrabold text-xl text-slate-800">Rangkuman Kunci & Refleksi Belajar</h2>
+        </div>
+
+        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li><strong>Scratch</strong> adalah sarana belajar logika pemrograman visual tanpa risiko kesalahan pengetikan huruf (*syntax error*).</li>
+            <li><strong>Stage</strong> menggunakan sumbu koordinat kartesius $X (-240 \text{ s.d. } 240)$ dan $Y (-180 \text{ s.d. } 180)$.</li>
+            <li>9 Kategori warna membantu siswa mengenali aksi: Gerakan (Biru), Kejadian (Kuning), Kontrol (Oranye), dan Sensor (Biru Muda).</li>
+            <li>Komunikasi antar-sprite diatur menggunakan mekanisme <strong>Broadcast & Receive Message</strong>.</li>
         </ul>
 
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Variabel menyimpan data game: skor, nyawa, timer, level</li>
-            <li>Deteksi tabrakan pakai blok "Menyentuh [...]?" di kategori Sensor</li>
-            <li>Efek suara dan visual membuat game terasa lebih hidup</li>
-            <li>Mulai sederhana, lalu tambah fitur satu per satu!</li>
-        </ul>
-    </div>
-    <div class="flex justify-between mt-12 gap-4">
-        <div></div>
-        <a href="../02-python-turtle/" class="flex items-center gap-3 px-5 py-3 bg-emerald-600 text-white rounded-2xl shadow hover:bg-emerald-700 transition">
-            <div class="text-right"><p class="text-[10px] text-emerald-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Python Turtle</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <div class="pt-4 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-slate-800 text-sm">Refleksi Belajarmu:</h4>
+            <textarea id="reflection-input" rows="3" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Jika kamu diberi kebebasan membuat game Scratch buatanmu sendiri, ide game apa yang paling ingin kamu buat untuk dimainkan teman sekelasmu?"></textarea>
+            <div class="flex items-center justify-between">
+                <span id="refl-status" class="text-xs text-emerald-600 font-bold"></span>
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition">
+                    Simpan Refleksi
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../01-konsep-algoritma/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-200 transition text-xs font-bold">
+            ← Modul Sebelumnya: Konsep Algoritma
+        </a>
+        <a href="../03-variabel-dan-tipe-data/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white transition text-xs font-bold shadow-md">
+            Modul Berikutnya: Variabel & Tipe Data →
         </a>
     </div>
 
     <!-- Selesai Mempelajari Modul Card -->
-    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
             <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
             <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
@@ -179,40 +625,229 @@
     </div>
 
 </main>
+
 <footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan.</div>
+        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Portal Edu</a>
     </div>
 </footer>
+
 <script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
-const TOPIC_ID = 'inf-algoritma-02';
+const TOPIC_ID = 'inf-ap-02';
+
+let catX = 0;
+let catY = 0;
+let scratchScore = 0;
+let starX = 80;
+let starY = 40;
+let gameRunning = false;
+
+function startScratch() {
+    gameRunning = true;
+    catX = 0;
+    catY = 0;
+    scratchScore = 0;
+    updateCatUI();
+    document.getElementById('scratch-score').innerText = '0';
+    spawnStar();
+}
+
+function resetScratch() {
+    gameRunning = false;
+    catX = 0;
+    catY = 0;
+    updateCatUI();
+}
+
+function spawnStar() {
+    starX = (Math.random() * 200 - 100);
+    starY = (Math.random() * 120 - 60);
+    const starEl = document.getElementById('scratch-star');
+    starEl.style.left = `calc(50% + ${starX}px)`;
+    starEl.style.top = `calc(50% - ${starY}px)`;
+}
+
+function moveCat(dir) {
+    if (!gameRunning) startScratch();
+    const step = 25;
+    if (dir === 'UP') catY = Math.min(80, catY + step);
+    if (dir === 'DOWN') catY = Math.max(-80, catY - step);
+    if (dir === 'LEFT') catX = Math.max(-120, catX - step);
+    if (dir === 'RIGHT') catX = Math.min(120, catX + step);
+
+    updateCatUI();
+    checkCollision();
+}
+
+function updateCatUI() {
+    const cat = document.getElementById('scratch-cat');
+    cat.style.left = `calc(50% + ${catX}px - 20px)`;
+    cat.style.top = `calc(50% - ${catY}px - 20px)`;
+    document.getElementById('scratch-coords').innerText = `X: ${catX}, Y: ${catY}`;
+}
+
+function checkCollision() {
+    const dist = Math.sqrt(Math.pow(catX - starX, 2) + Math.pow(catY - starY, 2));
+    if (dist < 35) {
+        scratchScore += 10;
+        document.getElementById('scratch-score').innerText = scratchScore;
+        spawnStar();
+    }
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowUp') { moveCat('UP'); e.preventDefault(); }
+    if (e.key === 'ArrowDown') { moveCat('DOWN'); e.preventDefault(); }
+    if (e.key === 'ArrowLeft') { moveCat('LEFT'); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { moveCat('RIGHT'); e.preventDefault(); }
+});
+
+const ANSWERS_A = {
+    q1: 'B',
+    q2: 'A',
+    q3: 'B',
+    q4: 'B',
+    q5: 'B',
+    q6: 'A',
+    q7: 'B',
+    q8: 'B'
+};
+
+const ANSWERS_B = {
+    tf1: 'SALAH',
+    tf2: 'BENAR',
+    tf3: 'BENAR',
+    tf4: 'SALAH'
+};
+
+const ANSWERS_C = {
+    m1: 'BLUE',
+    m2: 'YELLOW',
+    m3: 'GREEN',
+    m4: 'ORANGE'
+};
+
+const ANSWERS_D = {
+    d1: 'RANDOM',
+    d2: 'STOP',
+    d3: 'COSTUME',
+    d4: 'BACKDROP'
+};
 
 async function markModuleComplete() {
     if (window.FananiTracker) {
-        await FananiTracker.markCompleted(SUBJECT, TOPIC_ID);
-        const btn = document.getElementById("btn-complete-module");
+        await FananiTracker.markComplete(SUBJECT, TOPIC_ID);
+        const btn = document.getElementById('btn-complete-module');
         if (btn) {
-            btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-            btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+            btn.innerHTML = '<span>✓</span> Tersimpan di Rapor!';
+            btn.className = 'px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl transition shadow cursor-default';
+        }
+    } else {
+        alert('Modul ditandai selesai secara lokal!');
+    }
+}
+
+async function submitEvaluationScratch() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in ANSWERS_A) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_A[k]) scoreA += 5;
+    }
+
+    for (let k in ANSWERS_B) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_B[k]) scoreB += 5;
+    }
+
+    for (let k in ANSWERS_C) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_C[k]) scoreC += 5;
+    }
+
+    for (let k in ANSWERS_D) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_D[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
         }
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    if (window.FananiTracker) {
-        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-        if (hist && hist.is_completed) {
-            const btn = document.getElementById("btn-complete-module");
-            if (btn) {
-                btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-                btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
-            }
-        }
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    loadHistory();
 });
 </script>
+
 </body>
 </html>

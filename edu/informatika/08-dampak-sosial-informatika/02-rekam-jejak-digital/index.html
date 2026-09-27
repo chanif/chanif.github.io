@@ -1,180 +1,910 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rekam jejak digital: apa yang kamu posting online tersimpan selamanya. Pelajari cara mengelola digital footprint, privasi online, dan membangun reputasi digital yang positif.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Rekam Jejak Digital | Informatika Kelas 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekam Jejak Digital & Reputasi Online | Dampak Sosial Informatika</title>
+    <meta name="description" content="Pelajari konsep rekam jejak digital (digital footprint) aktif vs pasif, permanensi data internet, dampak bagi masa depan siswa, serta strategi audit dan perlindungan privasi diri.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .prose strong{color:#1e293b;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-emerald-600 hover:underline">← Kelas 8</a>
-</nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Edu</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
-        <a href="../" class="hover:text-emerald-600">Kelas 8</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 6</span>
-    </div>
-    <div class="bg-gradient-to-br from-slate-600 to-slate-800 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 6 · Literasi Digital</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Rekam Jejak Digital 🔍</h1>
-            <p class="text-slate-300 leading-relaxed max-w-2xl">Setiap like, komentar, dan foto yang kamu posting online tersimpan selamanya. Saatnya memahami apa itu jejak digital dan bagaimana mengelolanya dengan bijak!</p>
-        </div>
-    </div>
-    <div class="prose max-w-none">
-        <h2>Apa Itu Jejak Digital?</h2>
-        <p>Jejak digital adalah <strong>semua informasi yang kamu tinggalkan saat menggunakan internet</strong> — foto yang kamu upload, komentar yang kamu tulis, video yang kamu tonton, bahkan lokasi saat kamu membuka aplikasi peta.</p>
-        <div class="callout callout-warn">
-            <p class="font-heading font-bold text-amber-800 mb-1">⚠️ Fakta Penting!</p>
-            <p class="text-amber-700 text-sm">Bahkan jika kamu <em>menghapus</em> sesuatu, itu mungkin sudah di-screenshot, di-cache oleh Google, atau tersimpan di server platform. <strong>Di internet, "hapus" tidak berarti benar-benar hilang!</strong></p>
-        </div>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
 
-        <h2>Dua Jenis Jejak Digital</h2>
-        <div class="not-prose grid md:grid-cols-2 gap-4 my-5">
-            <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
-                <p class="font-heading font-bold text-blue-800 mb-3">📤 Jejak Aktif</p>
-                <p class="text-blue-700 text-sm mb-3">Data yang <strong>kamu sengaja</strong> bagikan:</p>
-                <ul class="text-blue-600 text-sm space-y-1">
-                    <li>• Postingan di media sosial</li>
-                    <li>• Komentar dan like</li>
-                    <li>• Foto dan video yang diupload</li>
-                    <li>• Formulir online yang diisi</li>
-                    <li>• Email yang dikirim</li>
-                </ul>
-            </div>
-            <div class="bg-orange-50 border border-orange-200 rounded-xl p-5">
-                <p class="font-heading font-bold text-orange-800 mb-3">📡 Jejak Pasif</p>
-                <p class="text-orange-700 text-sm mb-3">Data yang dikumpulkan <strong>tanpa kamu sadari</strong>:</p>
-                <ul class="text-orange-600 text-sm space-y-1">
-                    <li>• Riwayat pencarian Google</li>
-                    <li>• Lokasi GPS saat buka Maps</li>
-                    <li>• Iklan yang kamu klik</li>
-                    <li>• Waktu yang kamu habiskan di sebuah video</li>
-                    <li>• Cookies dari website</li>
-                </ul>
-            </div>
-        </div>
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-        <h2>Dampak Jejak Digital</h2>
-        <p>Jejak digital bisa berdampak positif <em>dan</em> negatif, tergantung apa yang kamu tinggalkan:</p>
-        <div class="not-prose grid md:grid-cols-2 gap-4 my-4">
-            <div class="space-y-2">
-                <p class="font-heading font-bold text-emerald-700 text-sm mb-2">✅ Dampak Positif</p>
-                                                <div class="bg-emerald-50 border border-emerald-100 rounded-xl px-4 py-2 text-emerald-700 text-sm">Portofolio karya digital yang bisa dilihat perusahaan</div>
-                                <div class="bg-emerald-50 border border-emerald-100 rounded-xl px-4 py-2 text-emerald-700 text-sm">Reputasi baik sebagai pelajar yang aktif dan kreatif</div>
-                                <div class="bg-emerald-50 border border-emerald-100 rounded-xl px-4 py-2 text-emerald-700 text-sm">Jejak prestasi lomba online yang bisa dibanggakan</div>
-                            </div>
-            <div class="space-y-2">
-                <p class="font-heading font-bold text-red-700 text-sm mb-2">❌ Dampak Negatif</p>
-                                                <div class="bg-red-50 border border-red-100 rounded-xl px-4 py-2 text-red-700 text-sm">Komentar kasar bisa merusak reputasi saat melamar kerja/kuliah</div>
-                                <div class="bg-red-50 border border-red-100 rounded-xl px-4 py-2 text-red-700 text-sm">Foto tidak pantas sulit dihapus dan bisa tersebar</div>
-                                <div class="bg-red-50 border border-red-100 rounded-xl px-4 py-2 text-red-700 text-sm">Data pribadi bocor bisa dipakai untuk penipuan</div>
-                            </div>
-        </div>
-
-        <h2>Skenario: Pikirkan Sebelum Posting!</h2>
-        <div class="not-prose space-y-3 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <div class="flex items-start gap-3">
-                    <span class="text-2xl flex-shrink-0">📍</span>
-                    <div>
-                        <p class="font-heading font-bold text-slate-700 text-sm">Situasi: Posting foto liburan dengan caption lokasi spesifik rumah</p>
-                        <p class="text-red-600 text-xs mt-1">⚠️ Risiko: Memberi tahu orang tidak dikenal bahwa rumahmu sedang kosong!</p>
-                    </div>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <div class="flex items-start gap-3">
-                    <span class="text-2xl flex-shrink-0">💬</span>
-                    <div>
-                        <p class="font-heading font-bold text-slate-700 text-sm">Situasi: Nulis komentar kasar di video orang lain pakai akun asli</p>
-                        <p class="text-red-600 text-xs mt-1">⚠️ Risiko: 10 tahun lagi, calon universitas atau bos bisa membacanya.</p>
-                    </div>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <div class="flex items-start gap-3">
-                    <span class="text-2xl flex-shrink-0">📋</span>
-                    <div>
-                        <p class="font-heading font-bold text-slate-700 text-sm">Situasi: Isi nama lengkap, sekolah, dan tanggal lahir di kuis online abal-abal</p>
-                        <p class="text-red-600 text-xs mt-1">⚠️ Risiko: Data ini bisa dipakai untuk phishing atau mengambil akun media sosialmu.</p>
-                    </div>
-                </div>
-            </div>
-                    </div>
-
-        <h2>Cara Menjaga Jejak Digital yang Sehat</h2>
-        <div class="callout callout-tip">
-            <p class="font-heading font-bold text-green-800 mb-2">✅ Checklist Jejak Digital Positif</p>
-            <ul class="text-green-700 text-sm space-y-1 list-disc pl-4">
-                <li>Gunakan tes <strong>THINK</strong> sebelum posting: <em>True? Helpful? Inspiring? Necessary? Kind?</em></li>
-                <li>Periksa pengaturan privasi akun media sosialmu secara rutin</li>
-                <li>Gunakan nama/username yang profesional (hindari nama alay)</li>
-                <li>Bangun portofolio positif: bagikan karya, proyek, atau pencapaianmu</li>
-                <li>Jangan bagikan informasi sensitif: NIK, nomor telepon, alamat rumah</li>
-                <li>Rutin cek apa yang muncul saat kamu Google nama sendiri</li>
-            </ul>
-        </div>
-
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Jejak digital = semua data yang kamu tinggalkan saat online</li>
-            <li>Ada jejak aktif (sengaja) dan pasif (tanpa sadar)</li>
-            <li>Jejak digital sulit benar-benar dihapus — sekali posting, selalu ada</li>
-            <li>Bangun jejak digital yang positif: bagikan karya, jaga sopan santun online</li>
-        </ul>
-    </div>
-    <div class="flex justify-between mt-10 gap-4">
-        <a href="../05-pengolahan-data-sheet/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
-            <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Pengolahan Data</p></div>
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Unit Dampak Sosial Informatika
         </a>
-        <a href="../quiz/" class="flex items-center gap-3 px-5 py-3 bg-emerald-600 text-white rounded-2xl shadow hover:bg-emerald-700 transition">
-            <div class="text-right"><p class="text-[10px] text-emerald-200 uppercase tracking-wider">Evaluasi</p><p class="text-sm font-semibold">🧠 Mulai Quiz Kelas 8</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#konsep-jejak" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">👣 Konsep Jejak Digital</a>
+        <a href="#aktif-pasif" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">⚖️ Aktif vs Pasif</a>
+        <a href="#dampak-strategi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🛡️ Dampak & Proteksi</a>
+        <a href="#simulator-audit" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">🎮 Footprint Risk Auditor</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../edu/" class="hover:text-blue-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">Dampak Sosial Informatika</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">02. Rekam Jejak Digital</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-slate-900 via-indigo-900 to-blue-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                👣 Dampak Sosial · Modul 02
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Rekam Jejak Digital: Abadi di Balik Layar Kaca
+            </h1>
+            <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-6">
+                Di dunia nyata, jejak langkahmu di tanah basah akan terhapus oleh hujan. Namun di dunia digital, setiap postingan, komentar, pencarian, dan lokasi GPS tersimpan permanen di server global. Pelajari bagaimana jejak ini bekerja, risikonya, dan cara membangun reputasi online yang membanggakan!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-blue-100">
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🔍 Topik: Active vs Passive Footprint</span>
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi esensial yang kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Membedakan Jejak Aktif & Pasif</strong>
+                    <p class="text-slate-600">Mengidentifikasi data yang disengaja diunggah (postingan, komentar) vs data yang terekam otomatis tanpa disadari (IP, cookies, metadata foto).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Sifat Permanensi Data</strong>
+                    <p class="text-slate-600">Menyadari bahwa tombol <em>Delete</em> tidak menjamin terhapusnya data karena adanya web cache, screenshot, dan arsip internet.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menganalisis Risiko Doxxing & Profiling</strong>
+                    <p class="text-slate-600">Menilai bahaya oversharing identitas terhadap ancaman rekayasa sosial, pencurian akun, dan seleksi beasiswa/karier masa depan.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                <span class="text-blue-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Audit & Kurasi Jejak Digital</strong>
+                    <p class="text-slate-600">Mempraktikkan prinsip filter T.H.I.N.K, pengetatan izin privasi aplikasi gawai, serta membangun portofolio digital positif.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: KONSEP DASAR JEJAK DIGITAL -->
+    <section id="konsep-jejak" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl">👣</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-800">1. Konsep & Permanensi Rekam Jejak Digital</h2>
+                <p class="text-xs text-slate-500">Mengapa jejak di internet dikatakan tidak pernah benar-benar mati?</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <div class="w-10 h-10 bg-indigo-100 text-indigo-700 rounded-xl flex items-center justify-center text-lg font-bold">🌐</div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Apa itu Jejak Digital?</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Jejak digital (<em>Digital Footprint</em>) adalah seluruh rekam jejak data elektronik yang tertinggal saat seseorang berinteraksi menggunakan perangkat pintar dan internet. Jejak ini membentuk identitas dan reputasi virtual seseorang di mata dunia.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <div class="w-10 h-10 bg-rose-100 text-rose-700 rounded-xl flex items-center justify-center text-lg font-bold">💾</div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Mitos Tombol "Hapus"</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Menghapus status di media sosial hanya menghilangkan tampilannya di profilmu. Konten tersebut kemungkinan sudah tersimpan di arsip server pengembang (backup), terindeks oleh mesin pencari Google, atau diambil tangkapan layarnya (screenshot) oleh orang lain.
+                </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <div class="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-lg font-bold">🏛️</div>
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Mesin Pengarsip Publik</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Layanan seperti <em>Internet Archive (Wayback Machine)</em> secara berkala menduplikasi halaman web di seluruh dunia. Artikel atau status web yang kamu unggah bertahun-tahun lalu masih bisa dibuka kembali oleh siapa saja meskipun situs resminya telah tutup.
+                </p>
+            </div>
+        </div>
+
+        <div class="p-5 bg-amber-50 border-l-4 border-amber-500 rounded-r-2xl space-y-1">
+            <h4 class="font-heading font-bold text-amber-900 text-sm flex items-center gap-2">
+                <span>⚠️</span> Pepatah Penting Abad Ke-21:
+            </h4>
+            <p class="text-xs text-amber-800 leading-relaxed">
+                <em>"Pena tinta dapat dihapus dengan tip-ex, namun apa pun yang kamu ketik dan unggah ke internet diukir di atas batu karang digital."</em> Selalu perlakukan segala sesuatu yang kamu tulis online seolah-olah itu terpampang di papan pengumuman sekolah yang bisa dibaca orang tua, guru, dan teman-temanmu.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION: JEJAK AKTIF VS JEJAK PASIF -->
+    <section id="aktif-pasif" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl">⚖️</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-800">2. Dua Wajah Jejak Digital: Aktif vs Pasif</h2>
+                <p class="text-xs text-slate-500">Pahami bagaimana data pribadimu terkumpul, baik disadari maupun tanpa disadari</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Active Footprint -->
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50/30 border border-blue-200 rounded-2xl p-6 space-y-4">
+                <div class="flex items-center justify-between border-b border-blue-200 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">📤</span>
+                        <h3 class="font-heading font-extrabold text-blue-900 text-lg">Jejak Digital Aktif</h3>
+                    </div>
+                    <span class="text-[11px] font-bold bg-blue-200 text-blue-900 px-2.5 py-1 rounded-full">Disengaja</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Data yang kamu bagikan secara sadar dan sukarela ke ruang publik atau platform digital tertentu.
+                </p>
+                <div class="space-y-2 text-xs">
+                    <div class="bg-white p-3 rounded-xl border border-blue-100 flex items-start gap-2.5 shadow-sm">
+                        <span class="text-blue-600 font-bold">✓</span>
+                        <div><strong>Unggahan Media Sosial:</strong> Foto selfie, video reels/TikTok, teks curhatan, dan cerita status.</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-blue-100 flex items-start gap-2.5 shadow-sm">
+                        <span class="text-blue-600 font-bold">✓</span>
+                        <div><strong>Interaksi & Komentar:</strong> Memberikan tombol like, subscribe, komentar kritik atau pujian di postingan publik.</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-blue-100 flex items-start gap-2.5 shadow-sm">
+                        <span class="text-blue-600 font-bold">✓</span>
+                        <div><strong>Formulir Registrasi:</strong> Memasukkan nama lengkap, tanggal lahir, dan nomor kontak pada form kuis daring atau akun web.</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-blue-100 flex items-start gap-2.5 shadow-sm">
+                        <span class="text-blue-600 font-bold">✓</span>
+                        <div><strong>Komunikasi Terbuka:</strong> Mengirimkan email resmi, thread Twitter/X, atau obrolan di forum komunitas game.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passive Footprint -->
+            <div class="bg-gradient-to-br from-amber-50 to-orange-50/30 border border-amber-200 rounded-2xl p-6 space-y-4">
+                <div class="flex items-center justify-between border-b border-amber-200 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">📡</span>
+                        <h3 class="font-heading font-extrabold text-amber-900 text-lg">Jejak Digital Pasif</h3>
+                    </div>
+                    <span class="text-[11px] font-bold bg-amber-200 text-amber-900 px-2.5 py-1 rounded-full">Otomatis / Tak Sadar</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Data yang dipanen di latar belakang oleh sistem, server, periklanan, atau sensor perangkat tanpa tindakan pengetikan langsung.
+                </p>
+                <div class="space-y-2 text-xs">
+                    <div class="bg-white p-3 rounded-xl border border-amber-100 flex items-start gap-2.5 shadow-sm">
+                        <span class="text-amber-600 font-bold">✓</span>
+                        <div><strong>IP Address & Lokasi GPS:</strong> Titik koordinat tempatmu mengakses internet dan kota domisili koneksi ISP.</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-amber-100 flex items-start gap-2.5 shadow-sm">
+                        <span class="text-amber-600 font-bold">✓</span>
+                        <div><strong>Browser Cookies & Tracker:</strong> Rekam jejak toko online apa yang kamu kunjungi sehingga iklan produk tersebut terus mengikutimu.</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-amber-100 flex items-start gap-2.5 shadow-sm">
+                        <span class="text-amber-600 font-bold">✓</span>
+                        <div><strong>Metadata Foto (EXIF):</strong> Info teknis tertanam di foto meliputi model kamera gawai, tanggal/jam persis, dan koordinat satelit GPS pengambilan foto.</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-amber-100 flex items-start gap-2.5 shadow-sm">
+                        <span class="text-amber-600 font-bold">✓</span>
+                        <div><strong>Durasi Tonton (Dwell Time):</strong> Algoritma merekam berapa detik matamu berhenti memandangi video tertentu sebelum scroll.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DAMPAK & STRATEGI PERLINDUNGAN -->
+    <section id="dampak-strategi" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl">🛡️</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-800">3. Dampak Nyata & Strategi Mengelola Jejak Pribadi</h2>
+                <p class="text-xs text-slate-500">Membangun pagar pelindung dan reputasi online yang positif</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5 text-xs">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-heading font-bold text-slate-800 text-sm flex items-center gap-2">
+                    <span class="text-rose-600">🚨</span> Ancaman & Dampak Buruk Jejak Negatif:
+                </h3>
+                <ul class="space-y-2 text-slate-600 list-disc list-inside leading-relaxed">
+                    <li><strong>Doxxing:</strong> Penyebaran data pribadi lengkap (alamat rumah, sekolah, nomor telepon) oleh pihak jahat untuk mempermalukan atau mengancam korban di publik.</li>
+                    <li><strong>Gagal Seleksi Sekolah/Beasiswa/Kerja:</strong> Panitia seleksi perguruan tinggi dan departemen HRD perusahaan masa kini rutin mencari nama kandidat di Google dan media sosial untuk melihat integritas moral calonnya.</li>
+                    <li><strong>Target Rekayasa Sosial (Social Engineering):</strong> Penipu meneliti hobi, nama anggota keluarga, dan kebiasaanmu di media sosial untuk membuat skenario penipuan yang sangat meyakinkan.</li>
+                    <li><strong>Profil Penargetan Iklan Agresif:</strong> Kamu dimanipulasi secara psikologis untuk terus berbelanja barang konsumtif berdasarkan rekam jejak klikmu.</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-heading font-bold text-slate-800 text-sm flex items-center gap-2">
+                    <span class="text-emerald-600">🌟</span> Strategi Kurasi Jejak Digital Positif:
+                </h3>
+                <ul class="space-y-2 text-slate-600 list-disc list-inside leading-relaxed">
+                    <li><strong>Gunakan Filter T.H.I.N.K:</strong> Sebelum menekan tombol 'Kirim/Post', tanyakan: <em>Is it <strong>T</strong>rue (Benar)? <strong>H</strong>elpful (Bermanfaat)? <strong>I</strong>nspiring (Menginspirasi)? <strong>N</strong>ecessary (Penting)? <strong>K</strong>ind (Santun)?</em></li>
+                    <li><strong>Audit Mandiri (Self-Googling):</strong> Cari namamu sendiri di mesin pencari dengan mode samaran (Incognito). Hapus akun lama yang tidak terpakai.</li>
+                    <li><strong>Kunci Privasi Media Sosial:</strong> Ubah setelan akun ke mode <em>Private</em>, matikan fitur tagging otomatis tanpa persetujuan, dan jangan sembarangan menerima permintaan pertemanan dari akun asing.</li>
+                    <li><strong>Bangun Portofolio Prestasi:</strong> Manfaatkan internet untuk membagikan artikel edukatif, proyek coding, karya gambar digital, dan sertifikat prestasi lomba.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Perbandingan Ilustratif Kasus Nyata -->
+        <div class="bg-slate-900 text-white rounded-2xl p-6 space-y-4">
+            <h3 class="font-heading font-bold text-blue-300 text-base">Studi Kasus: Jejak Foto Tiket Konser & Boarding Pass Pesawat</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+                Banyak siswa dengan bangga mengunggah foto tiket pesawat atau konser baru dengan memamerkan barcode/QR code di media sosial.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div class="bg-slate-800/80 p-3.5 rounded-xl border border-rose-500/40 space-y-1">
+                    <div class="text-rose-400 font-bold">❌ Tindakan Berbahaya:</div>
+                    <p class="text-slate-300">Siapa pun dapat memindai barcode foto tiketmu untuk mengetahui kode booking (PNR), nama lengkap, nomor paspor/NIK, jadwal perjalanan, bahkan membatalkan kursi penumpangmu secara sepihak!</p>
+                </div>
+                <div class="bg-slate-800/80 p-3.5 rounded-xl border border-emerald-500/40 space-y-1">
+                    <div class="text-emerald-400 font-bold">✅ Tindakan Bijak:</div>
+                    <p class="text-slate-300">Jika ingin berbagi kegembiraan, sensor tebal seluruh angka kode booking, QR code, nomor identitas, atau unggah foto suasana tempatnya setelah acara selesai diselenggarakan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR / INTERACTIVE AUDITOR -->
+    <section id="simulator-audit" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4 flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-800">Footprint Risk Auditor Studio</h2>
+                    <p class="text-xs text-slate-400">Pilih skenario aktivitas digital siswa untuk menganalisis tingkat risiko kebocoran datanya</p>
+                </div>
+            </div>
+            <span class="text-[11px] font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Interactive Sandbox</span>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-6">
+            <!-- Pilihan Skenario -->
+            <div class="md:col-span-6 space-y-3">
+                <label class="font-heading font-bold text-xs text-slate-700 block">Pilih Skenario Kebiasaan Digital Siswa:</label>
+                <div class="space-y-2">
+                    <button onclick="auditFootprintScenario(0)" id="scen-btn-0" class="scen-btn w-full text-left p-3.5 rounded-xl border border-blue-600 bg-blue-50 text-blue-900 text-xs font-semibold transition flex items-center justify-between">
+                        <span>📸 Posting foto selfie berseragam lengkap badge nama & logo sekolah</span>
+                        <span>👉</span>
+                    </button>
+                    <button onclick="auditFootprintScenario(1)" id="scen-btn-1" class="scen-btn w-full text-left p-3.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold transition flex items-center justify-between">
+                        <span>🎉 Ikut kuis viral: "Cek nama artis jodohmu dengan masukkan tanggal lahir & nama ibu"</span>
+                        <span>👉</span>
+                    </button>
+                    <button onclick="auditFootprintScenario(2)" id="scen-btn-2" class="scen-btn w-full text-left p-3.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold transition flex items-center justify-between">
+                        <span>✈️ Mengunggah foto boarding pass tiket pesawat saat sedang menunggu di bandara</span>
+                        <span>👉</span>
+                    </button>
+                    <button onclick="auditFootprintScenario(3)" id="scen-btn-3" class="scen-btn w-full text-left p-3.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold transition flex items-center justify-between">
+                        <span>🌟 Mempublikasikan link website portofolio tugas coding scratch buatan sendiri</span>
+                        <span>👉</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Panel Hasil Analisis Auditor -->
+            <div class="md:col-span-6 bg-slate-900 text-white rounded-2xl p-5 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Hasil Audit Radar Privasi:</span>
+                    <span id="risk-badge" class="px-2.5 py-1 rounded-full text-xs font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/30">RISIKO SEDANG</span>
+                </div>
+
+                <div class="space-y-1">
+                    <p class="text-xs text-slate-400">Data yang Terekspos ke Publik:</p>
+                    <p id="exposed-data" class="font-bold text-sm text-indigo-300">Nama lengkap, jenjang sekolah, lokasi geografi sekolah, dan estimasi usia.</p>
+                </div>
+
+                <div class="space-y-1">
+                    <p class="text-xs text-slate-400">Analisis Bahaya / Konsekuensi:</p>
+                    <p id="risk-desc" class="text-xs text-slate-300 leading-relaxed">Orang asing dapat dengan mudah mendatangi pintu gerbang sekolahmu saat jam pulang atau berpura-pura menjadi kenalan orang tuamu dengan menyebut nama lengkapmu.</p>
+                </div>
+
+                <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700 space-y-1">
+                    <p class="text-[11px] font-bold text-emerald-400 uppercase">💡 Rekomendasi Solusi Bijak:</p>
+                    <p id="risk-fix" class="text-xs text-slate-300">Sensor atau blur badge nama dan logo sekolah jika ingin mengunggah foto ke akun publik, atau batasi postingan hanya untuk lingkaran teman dekat (Close Friends).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (20 SOAL - 4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4 flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-800">Evaluasi Formatif: Uji Pemahaman Mandiri</h2>
+                    <p class="text-xs text-slate-400">Total 20 Soal (Skor Maksimal 100 poin) · Syarat Tuntas KKM: 70</p>
+                </div>
+            </div>
+            <span class="text-xs font-bold px-3 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-200">20 Soal · 4 Bagian</span>
+        </div>
+
+        <!-- Bagian A: Pilihan Ganda (8 Soal @ 5 Poin = 40 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian A: Pilihan Ganda Konseptual</span>
+                <span class="text-slate-500">8 Soal · 40 Poin</span>
+            </div>
+
+            <!-- Q1 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">1. Seluruh jejak riwayat aktivitas dan informasi yang ditinggalkan seseorang saat menjelajah dunia maya dinamakan...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="A"> A. Digital Footprint (Rekam Jejak Digital)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="B"> B. Digital Hardware Blueprint
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="C"> C. Computer System Architecture
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="D"> D. Internet Protocol Packet
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">2. Manakah di bawah ini yang merupakan contoh dari <strong>Jejak Digital Aktif</strong>?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="A"> A. Mengunggah video kreasi tari daerah dan menulis caption di Instagram
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="B"> B. Cookies web yang merekam halaman toko online yang baru dibuka
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="C"> C. IP address yang terdaftar otomatis di log server saat menyalakan router
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="D"> D. Koordinat satelit GPS yang tersimpan di sistem background Maps
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">3. Mengapa menekan tombol "Hapus Postingan" tidak menjamin konten digitalmu hilang 100% dari internet?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="A"> A. Karena internet memiliki kecepatan cahaya sehingga mustahil diakses
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="B"> B. Konten mungkin telah di-screenshot, dicache oleh mesin pencari, atau disimpan pengarsip web
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="C"> C. Semua tombol hapus di media sosial hanyalah hiasan palsu yang tidak berfungsi
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="D"> D. Kabel bawah laut internasional otomatis menyalin setiap ketikan ke hard disk raksasa
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">4. Istilah kejahatan siber yang dilakukan dengan cara membongkar dan menyebarkan data pribadi seseorang ke ranah publik tanpa izin adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="A"> A. Doxxing
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="B"> B. Phishing
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="C"> C. Spamming
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="D"> D. Defragmenting
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">5. Informasi teknis tersembunyi yang tertanam di dalam file foto digital seperti koordinat GPS dan tipe kamera disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="A"> A. Metadata EXIF
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="B"> B. Hypertext Markup
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="C"> C. ASCII Code
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="D"> D. Algoritma Quicksort
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">6. Dalam prinsip etika bermedia digital <strong>T.H.I.N.K</strong>, huruf <strong>I</strong> merupakan singkatan dari...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="A"> A. Inspiring (Apakah konten ini menginspirasi hal baik?)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="B"> B. Internet (Apakah konten ini ada di internet?)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="C"> C. Instant (Apakah konten ini cepat viral?)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="D"> D. Income (Apakah konten ini menghasilkan uang?)
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">7. Mengapa sangat berbahaya memposting foto tiket pesawat lengkap dengan QR Code / barcode ke media sosial?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="A"> A. Karena membuat kamera smartphone orang lain rusak seketika
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="B"> B. Barcode menyimpan data pribadi kode booking penumpang yang dapat dimanipulasi orang asing
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="C"> C. Maskapai penerbangan akan mendenda penumpang yang suka berfoto
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="D"> D. Sinyal radar pesawat di udara dapat terganggu oleh postingan tersebut
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">8. Langkah paling tepat yang dapat dilakukan siswa untuk membangun rekam jejak digital yang positif adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="A"> A. Membagikan hasil proyek karya ilmiah, karya seni, atau prestasi akademik di platform portofolio
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="B"> B. Membuat 10 akun anonim palsu untuk menyindir teman di kolom komentar
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="C"> C. Mengunggah seluruh foto kartu identitas keluarga di status WhatsApp
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-blue-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="D"> D. Mengikuti semua kuis ramalan tanggal lahir tanpa memeriksa pengembangnya
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian B: Benar / Salah (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian B: Analisis Pernyataan (Benar / Salah)</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">9. Riwayat pencarian Google dan lokasi GPS smartphone tergolong sebagai Jejak Digital Pasif karena dicatat oleh sistem tanpa pengetikan status sadar.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_1" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_1" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">10. Jika kita menulis komentar kasar menggunakan akun samaran (fake account), penegak hukum mustahil melacak pelakunya karena tidak ada foto profil.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_2" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_2" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">11. Banyak perusahaan modern dan penyedia beasiswa mengecek rekam jejak media sosial pelamar untuk melihat karakter dan sopan santunnya.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_3" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_3" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">12. Fitur 'Incognito / Private Browsing' membuat pengguna 100% anonim dan melindungi dari pemantauan penyedia internet (ISP) serta administrator sekolah.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_4" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_4" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian C: Menjodohkan Konsep (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian C: Menjodohkan Istilah & Definisi</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">13. Active Footprint</p>
+                    <select id="m1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Definisi --</option>
+                        <option value="EXIF">Data informasi koordinat GPS dan perangkat yang tersemat otomatis pada file foto</option>
+                        <option value="ACTIVE">Data yang secara sengaja diunggah oleh pengguna ke ruang siber</option>
+                        <option value="DOXX">Aksi jahat menyebarkan informasi privat seseorang ke publik tanpa izin</option>
+                        <option value="PASSIVE">Data teknis yang terkumpul di latar belakang tanpa kesadaran pengguna</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">14. Passive Footprint</p>
+                    <select id="m2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Definisi --</option>
+                        <option value="EXIF">Data informasi koordinat GPS dan perangkat yang tersemat otomatis pada file foto</option>
+                        <option value="ACTIVE">Data yang secara sengaja diunggah oleh pengguna ke ruang siber</option>
+                        <option value="DOXX">Aksi jahat menyebarkan informasi privat seseorang ke publik tanpa izin</option>
+                        <option value="PASSIVE">Data teknis yang terkumpul di latar belakang tanpa kesadaran pengguna</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">15. Metadata EXIF</p>
+                    <select id="m3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Definisi --</option>
+                        <option value="EXIF">Data informasi koordinat GPS dan perangkat yang tersemat otomatis pada file foto</option>
+                        <option value="ACTIVE">Data yang secara sengaja diunggah oleh pengguna ke ruang siber</option>
+                        <option value="DOXX">Aksi jahat menyebarkan informasi privat seseorang ke publik tanpa izin</option>
+                        <option value="PASSIVE">Data teknis yang terkumpul di latar belakang tanpa kesadaran pengguna</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">16. Doxxing</p>
+                    <select id="m4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Definisi --</option>
+                        <option value="EXIF">Data informasi koordinat GPS dan perangkat yang tersemat otomatis pada file foto</option>
+                        <option value="ACTIVE">Data yang secara sengaja diunggah oleh pengguna ke ruang siber</option>
+                        <option value="DOXX">Aksi jahat menyebarkan informasi privat seseorang ke publik tanpa izin</option>
+                        <option value="PASSIVE">Data teknis yang terkumpul di latar belakang tanpa kesadaran pengguna</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian D: Melengkapi Kalimat & Analisis Skenario (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian D: Melengkapi Logika & Sikap Kritis</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">17. Huruf 'N' dalam prinsip posting THINK adalah singkatan dari kata...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_A" placeholder="Ketik kata bahasa Inggris..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 uppercase font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: Necessary)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">18. Melakukan pencarian atas nama diri sendiri di mesin pencari untuk mengecek jejak digital dikenal dengan istilah self-...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_B" placeholder="Ketik kata bahasa Inggris..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 uppercase font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: Googling)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">19. File teks kecil yang diletakkan oleh situs web di dalam browser untuk merekam preferensi dan aktivitas pengunjung disebut...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_C" placeholder="Ketik istilah web..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 uppercase font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: Cookies)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">20. Mode penjelajahan browser yang tidak menyimpan riwayat history dan cookies lokal pada perangkat disebut mode...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_D" placeholder="Ketik nama mode..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 uppercase font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: Incognito / Samaran)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-blue-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-blue-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Rekam Jejak Digital Bersifat Permanen:</strong> Segala hal yang diunggah ke internet dapat diabadikan oleh pihak lain melalui tangkapan layar, cache, dan arsip publik meskipun status aslinya sudah kamu hapus.</p>
+            <p><strong>2. Waspadai Jejak Pasif:</strong> Lokasi GPS, metadata foto EXIF, dan riwayat cookies dapat membuka celah keamanan data tanpa disadari. Atur izin akses aplikasi gawai secara berkala.</p>
+            <p><strong>3. T.H.I.N.K Sebelum Berbagi:</strong> Jadikan internet sebagai panggung untuk memamerkan karya dan prestasi positif yang akan membuka peluang emas bagi masa depanmu.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Pernahkah kamu menemukan foto atau status lamamu yang memalukan saat dicari di internet? Apa langkah perbaikan yang akan kamu terapkan hari ini?" class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-blue-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../01-etika-digital/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-200 transition text-xs font-bold shadow-sm">
+            ← Modul Sebelumnya: Etika Digital & Netiquette
+        </a>
+        <a href="../03-keamanan-privasi-data/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white transition text-xs font-bold shadow-md">
+            Modul Berikutnya: Keamanan & Privasi Data →
         </a>
     </div>
 
     <!-- Selesai Mempelajari Modul Card -->
-    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
             <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
             <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
         </div>
-        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
             <span>✓</span> Tandai Selesai
         </button>
     </div>
 
 </main>
-<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
-    </div>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2026 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
 </footer>
+
 <script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
-const TOPIC_ID = 'inf-dampak-02';
+const TOPIC_ID = 'inf-dsi-02';
+
+// Skenario Data Auditor
+const scenarios = [
+    {
+        level: "SEDANG (MODERATE)",
+        color: "bg-amber-500/20 text-amber-300 border-amber-500/30",
+        exposed: "Nama lengkap, nama sekolah, tingkatan kelas, dan lokasi geografi sekolah.",
+        risk: "Orang asing dapat dengan mudah mendatangi pintu gerbang sekolahmu saat jam pulang atau berpura-pura menjadi kenalan orang tuamu dengan menyebut nama lengkapmu.",
+        fix: "Sensor atau blur badge nama dan logo sekolah jika ingin mengunggah foto ke akun publik, atau batasi postingan hanya untuk lingkaran teman dekat (Close Friends)."
+    },
+    {
+        level: "SANGAT TINGGI (DANGEROUS)",
+        color: "bg-rose-500/20 text-rose-300 border-rose-500/30",
+        exposed: "Tanggal lahir persis, nama gadis ibu kandung, dan profil hubungan keluarga.",
+        risk: "Nama ibu kandung dan tanggal lahir adalah dua data verifikasi keamanan perbankan (Know Your Customer) dan pemulihan kata sandi email! Penipu dapat memakai data ini untuk membobol rekening atau akun media sosialmu.",
+        fix: "Jangan pernah mengisi kuis viral sembarangan di media sosial. Kuis gratisan tersebut sering dibuat oleh sindikat pengumpul data pribadi (data harvester)."
+    },
+    {
+        level: "KRITIS (CRITICAL EXPOSURE)",
+        color: "bg-rose-600/30 text-rose-200 border-rose-500/40",
+        exposed: "Kode booking tiket (PNR), nomor paspor/NIK, rute penerbangan, dan konfirmasi bahwa rumahmu sedang kosong.",
+        risk: "Orang asing dapat memindai barcode foto untuk membatalkan tiketmu, dan pelaku pencurian rumah tahu persis keluargamu sedang berada di luar kota.",
+        fix: "Tunggu sampai kamu kembali pulang ke rumah sebelum mengunggah foto liburan, dan sensor rapat seluruh kode barcode atau tiket fisikmu."
+    },
+    {
+        level: "POSITIF (EXCELLENT FOOTPRINT)",
+        color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
+        exposed: "Portofolio karya digital, kemampuan berpikir komputasional, dan ketekunan belajar.",
+        risk: "Tidak ada risiko kebocoran identitas sensitif. Justru menjadi rekam jejak emas saat kamu mendaftar beasiswa atau sekolah favorit kelak.",
+        fix: "Pertahankan kebiasaan produktif ini! Dokumentasikan proyek-proyek inovatif buatanmu secara rapi di internet."
+    }
+];
+
+function auditFootprintScenario(idx) {
+    const s = scenarios[idx];
+    document.querySelectorAll('.scen-btn').forEach((btn, i) => {
+        if (i === idx) {
+            btn.className = "scen-btn w-full text-left p-3.5 rounded-xl border border-blue-600 bg-blue-50 text-blue-900 text-xs font-semibold transition flex items-center justify-between";
+        } else {
+            btn.className = "scen-btn w-full text-left p-3.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold transition flex items-center justify-between";
+        }
+    });
+
+    const badge = document.getElementById('risk-badge');
+    badge.className = `px-2.5 py-1 rounded-full text-xs font-extrabold border ${s.color}`;
+    badge.innerText = `RISIKO: ${s.level}`;
+
+    document.getElementById('exposed-data').innerText = s.exposed;
+    document.getElementById('risk-desc').innerText = s.risk;
+    document.getElementById('risk-fix').innerText = s.fix;
+}
+
+// Answer Keys Formatif
+const KEY_MCQ = {
+    mcq_1: 'A',
+    mcq_2: 'A',
+    mcq_3: 'B',
+    mcq_4: 'A',
+    mcq_5: 'A',
+    mcq_6: 'A',
+    mcq_7: 'B',
+    mcq_8: 'A'
+};
+
+const KEY_TF = {
+    tf_1: 'B',
+    tf_2: 'S',
+    tf_3: 'B',
+    tf_4: 'S'
+};
+
+const KEY_MATCH = {
+    m1: 'ACTIVE',
+    m2: 'PASSIVE',
+    m3: 'EXIF',
+    m4: 'DOXX'
+};
+
+const KEY_SEQ = {
+    seq_A: ['NECESSARY'],
+    seq_B: ['GOOGLING', 'GOOGLE'],
+    seq_C: ['COOKIES', 'COOKIE'],
+    seq_D: ['INCOGNITO', 'SAMARAN', 'PRIVATE']
+};
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value.trim().toUpperCase() : '';
+        answers[k] = val;
+        if (KEY_SEQ[k].some(opt => val.includes(opt))) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
 
 async function markModuleComplete() {
     if (window.FananiTracker) {
@@ -187,18 +917,53 @@ async function markModuleComplete() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
     if (window.FananiTracker) {
-        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-        if (hist && hist.is_completed) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data) {
+        if (data.is_completed) {
             const btn = document.getElementById("btn-complete-module");
             if (btn) {
                 btn.innerHTML = "<span>✓</span> Modul Tuntas!";
                 btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
             }
         }
+        if (data.attempts && data.attempts.length > 0) {
+            const box = document.getElementById('attempt-history-box');
+            const list = document.getElementById('attempt-history-list');
+            box.classList.remove('hidden');
+            list.innerHTML = data.attempts.map((att, idx) => `
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                    <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                    <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                        Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                    </span>
+                </div>
+            `).join('');
+        }
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
     }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadHistory();
 });
 </script>
+
 </body>
 </html>

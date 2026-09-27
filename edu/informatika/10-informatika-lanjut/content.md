@@ -136,4 +136,4 @@ Modul ekstensi untuk siswa yang ingin memperdalam informatika ke level SMA. Mate
   - [ ] Quiz: Konsep kriptografi dan keamanan siber (10 soal)
   - [ ] Challenge: Pecahkan 5 cipher yang diberikan
 
-> **Status**: Segera Hadir — content.md sebagai roadmap, sub-materi belum diproduksi.
+> **Status**: Lengkap & Siap Digunakan — Seluruh 5 sub-modul interaktif telah selesai diproduksi.

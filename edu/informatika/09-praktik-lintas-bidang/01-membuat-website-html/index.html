@@ -1,227 +1,839 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Membuat website pertama dengan HTML: tag heading, paragraf, gambar, link, tabel, form, dan struktur dasar dokumen HTML untuk membangun halaman web.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Membuat Website dengan HTML | Informatika Kelas 9</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membuat Website dengan HTML5 | Praktik Lintas Bidang</title>
+    <meta name="description" content="Pelajari dasar pembuatan website modern menggunakan HTML5: anatomi tag, struktur dokumen, semantic web, multimedia, tabel, form, dan uji kode langsung di live sandbox editor.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .prose strong{color:#1e293b;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
-        pre{background:#0f172a;color:#e2e8f0;padding:1.25rem;border-radius:.75rem;overflow-x:auto;font-size:.875rem;line-height:1.6;margin:1rem 0;}
-        code{font-family:'Courier New',monospace;}:not(pre)>code{background:#f1f5f9;color:#6366f1;padding:.15rem .4rem;border-radius:.35rem;font-size:.85em;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-amber-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-amber-600 hover:underline">← Kelas 9</a>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
+
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-indigo-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-blue-600 transition">
+        fanani<span class="text-blue-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition flex items-center gap-1">
+            ← Unit Praktik Lintas Bidang
+        </a>
+    </div>
 </nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Edu</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
-        <a href="../" class="hover:text-amber-600">Kelas 9</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 1</span>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#anatomi-html" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🧱 Anatomi & Dokumen</a>
+        <a href="#tag-semantik" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">🏷️ Tag Esensial & Semantik</a>
+        <a href="#simulator-html" class="px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition whitespace-nowrap font-bold">🎮 HTML Live Sandbox</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
     </div>
-    <div class="bg-gradient-to-br from-orange-500 to-amber-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 1 · HTML</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Membuat Website dengan HTML 🌐</h1>
-            <p class="text-orange-100 leading-relaxed max-w-2xl">Setiap website yang kamu buka dibangun dengan HTML. Hari ini kamu akan buat website pertamamu — dari nol, dari scratch, dari kamu sendiri!</p>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../edu/" class="hover:text-blue-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-blue-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-blue-600 transition">Praktik Lintas Bidang</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">01. Membuat Website HTML</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-orange-600 via-amber-600 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🌐 Praktik Lintas Bidang · Modul 01
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Membuat Website Pertamamu dengan HTML5
+            </h1>
+            <p class="text-orange-100 text-sm md:text-base leading-relaxed mb-6">
+                Setiap situs web di internet — dari Google, Wikipedia, hingga platform sekolah ini — tersusun dari kerangka HTML. Kuasai bahasa pondasi web modern ini, pahami tag semantik, tata tabel, sematkan gambar, dan saksikan kreasimu langsung terbit di browser!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-orange-100">
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🧱 Sintaks: Standar HTML5 W3C</span>
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
         </div>
-    </div>
-    <div class="prose max-w-none">
-        <h2>HTML Itu Apa?</h2>
-        <p><strong>HTML (HyperText Markup Language)</strong> adalah bahasa untuk membuat struktur halaman web. HTML bukan bahasa pemrograman — ia adalah <em>bahasa markup</em> yang memberitahu browser "ini adalah judul", "ini adalah paragraf", "ini adalah gambar".</p>
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">🏠 Analogi Rumah</p>
-            <p class="text-purple-700 text-sm">HTML = kerangka rumah (dinding, atap, lantai). CSS = cat, dekorasi, furnitur. JavaScript = listrik, alarm, dan sistem otomatis. Kita mulai dari kerangkanya dulu!</p>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-orange-50/50 p-4 rounded-xl border border-orange-100">
+                <span class="text-orange-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Peran HTML dalam Web</strong>
+                    <p class="text-slate-600">Mengenali HTML (HyperText Markup Language) sebagai struktur kerangka konten situs web yang dibaca oleh web browser.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-orange-50/50 p-4 rounded-xl border border-orange-100">
+                <span class="text-orange-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menyusun Struktur Dokumen Standar</strong>
+                    <p class="text-slate-600">Menulis dokumen lengkap dengan deklarasi DOCTYPE, elemen html, head, title, meta viewport, dan pembungkus body.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-orange-50/50 p-4 rounded-xl border border-orange-100">
+                <span class="text-orange-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menggunakan Tag Konten & Multimedia</strong>
+                    <p class="text-slate-600">Membuat heading hierarkis h1-h6, paragraf, penomoran list (ul/ol), hyperlink &lt;a&gt;, dan gambar &lt;img&gt; beratribut alt.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-orange-50/50 p-4 rounded-xl border border-orange-100">
+                <span class="text-orange-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Tag Semantik Modern</strong>
+                    <p class="text-slate-600">Menata halaman rapi ramah mesin pencari (SEO) menggunakan header, nav, main, section, article, aside, dan footer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ANATOMI & DOKUMEN HTML -->
+    <section id="anatomi-html" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl">🧱</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-800">1. Konsep & Anatomi Elemen HTML</h2>
+                <p class="text-xs text-slate-500">Mengenal susunan batu bata penyusun halaman situs web</p>
+            </div>
         </div>
 
-        <h2>Struktur Dasar HTML</h2>
-        <p>Setiap file HTML punya struktur yang sama. Ini adalah kerangka minimalnya:</p>
-        <pre>&lt;!DOCTYPE html&gt;
+        <div class="p-5 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl border border-orange-200 space-y-3">
+            <h3 class="font-heading font-bold text-orange-900 text-sm flex items-center gap-2">
+                <span>🏠</span> Analogi Tiga Serangkai Teknologi Web Modern:
+            </h3>
+            <div class="grid sm:grid-cols-3 gap-3 text-xs">
+                <div class="bg-white p-3.5 rounded-xl border border-orange-200 space-y-1">
+                    <span class="font-bold text-orange-600 block">1. HTML (Kerangka Rumah)</span>
+                    <p class="text-slate-600">Menentukan struktur pondasi, tiang, dinding kamar, dan letak pintu jendela (isi teks, gambar, tabel).</p>
+                </div>
+                <div class="bg-white p-3.5 rounded-xl border border-blue-200 space-y-1">
+                    <span class="font-bold text-blue-600 block">2. CSS (Dekorasi & Cat)</span>
+                    <p class="text-slate-600">Memberikan warna dinding cat, jenis lantai keramik, tata letak furnitur, dan ukuran estetika jendela.</p>
+                </div>
+                <div class="bg-white p-3.5 rounded-xl border border-amber-200 space-y-1">
+                    <span class="font-bold text-amber-600 block">3. JavaScript (Kelistrikan)</span>
+                    <p class="text-slate-600">Menyalakan lampu saat sakelar ditekan, pintu otomatis membuka, dan sistem keamanan pintar (interaktivitas dinamis).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <!-- Anatomi Tag -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Anatomi Tag HTML</h3>
+                <div class="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-xs leading-relaxed">
+                    <span class="text-rose-400">&lt;a</span> <span class="text-amber-300">href</span>=<span class="text-emerald-300">"https://sekolah.id"</span> <span class="text-amber-300">target</span>=<span class="text-emerald-300">"_blank"</span><span class="text-rose-400">&gt;</span>Kunjungi Sekolah<span class="text-rose-400">&lt;/a&gt;</span>
+                </div>
+                <ul class="space-y-1.5 text-slate-600 list-disc list-inside">
+                    <li><strong class="text-rose-600">&lt;a&gt;</strong> = Tag Pembuka (Opening tag).</li>
+                    <li><strong class="text-amber-600">href="..."</strong> = Atribut (informasi tambahan alamat tujuan link).</li>
+                    <li><strong class="text-emerald-600">Kunjungi Sekolah</strong> = Konten yang tampil dan bisa diklik oleh user.</li>
+                    <li><strong class="text-rose-600">&lt;/a&gt;</strong> = Tag Penutup (Closing tag) ditandai garis miring <code>/</code>.</li>
+                </ul>
+            </div>
+
+            <!-- Kerangka Dokumen Wajib -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Kerangka Dasar Dokumen Wajib</h3>
+                <div class="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-[11px] leading-relaxed overflow-x-auto">
+<pre class="m-0">&lt;!DOCTYPE html&gt;
 &lt;html lang="id"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Judul Tab Browser&lt;/title&gt;
+    &lt;title&gt;Halaman Pertamaku&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;!-- Konten website ditulis di sini --&gt;
-    &lt;h1&gt;Halo, Dunia!&lt;/h1&gt;
-    &lt;p&gt;Ini website pertamaku.&lt;/p&gt;
+    &lt;h1&gt;Halo Dunia!&lt;/h1&gt;
+    &lt;p&gt;Saya siap belajar web.&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
+                </div>
+                <p class="text-slate-500 text-[11px]">
+                    <code>&lt;head&gt;</code> menyimpan informasi tak kasat mata di tab (meta, title, style), sedangkan seluruh konten yang tampak di layar browser diletakkan di dalam <code>&lt;body&gt;</code>.
+                </p>
+            </div>
+        </div>
+    </section>
 
-        <div class="not-prose grid md:grid-cols-2 gap-3 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <code class="text-orange-600 font-bold text-sm">&lt;head&gt;</code>
-                <p class="text-slate-500 text-xs mt-1">Berisi informasi tersembunyi — judul, encoding, link CSS. Tidak ditampilkan di halaman.</p>
+    <!-- SECTION: TAG ESENSIAL & SEMANTIK -->
+    <section id="tag-semantik" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl">🏷️</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-800">2. Tag Esensial & Elemen Semantik HTML5</h2>
+                <p class="text-xs text-slate-500">Menyusun struktur konten yang bermakna bagi browser dan mesin telusur</p>
             </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <code class="text-orange-600 font-bold text-sm">&lt;body&gt;</code>
-                <p class="text-slate-500 text-xs mt-1">Semua yang ditampilkan di browser ada di sini: teks, gambar, tombol, dll.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <code class="text-orange-600 font-bold text-sm">&lt;meta charset&gt;</code>
-                <p class="text-slate-500 text-xs mt-1">Menentukan encoding karakter agar huruf Indonesia (é, ñ) tampil benar.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <code class="text-orange-600 font-bold text-sm">&lt;title&gt;</code>
-                <p class="text-slate-500 text-xs mt-1">Judul yang muncul di tab browser dan hasil pencarian Google.</p>
-            </div>
-                    </div>
-
-        <h2>Tag-Tag HTML yang Sering Dipakai</h2>
-        <div class="not-prose space-y-2 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
-                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;h1&gt; sampai &lt;h6&gt;</code>
-                <div class="flex-1 min-w-0">
-                    <p class="text-slate-600 text-xs">Judul/heading. h1 paling besar, h6 paling kecil</p>
-                    <code class="text-slate-400 text-xs">&lt;h1&gt;Judul Utama&lt;/h1&gt;</code>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
-                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;p&gt;</code>
-                <div class="flex-1 min-w-0">
-                    <p class="text-slate-600 text-xs">Paragraf teks biasa</p>
-                    <code class="text-slate-400 text-xs">&lt;p&gt;Ini paragraf pertama.&lt;/p&gt;</code>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
-                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;a href=&quot;...&quot;&gt;</code>
-                <div class="flex-1 min-w-0">
-                    <p class="text-slate-600 text-xs">Link yang bisa diklik</p>
-                    <code class="text-slate-400 text-xs">&lt;a href=&quot;https://google.com&quot;&gt;Buka Google&lt;/a&gt;</code>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
-                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;img src=&quot;...&quot; alt=&quot;...&quot;&gt;</code>
-                <div class="flex-1 min-w-0">
-                    <p class="text-slate-600 text-xs">Menampilkan gambar</p>
-                    <code class="text-slate-400 text-xs">&lt;img src=&quot;foto.jpg&quot; alt=&quot;Foto Profil&quot;&gt;</code>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
-                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;ul&gt; dan &lt;li&gt;</code>
-                <div class="flex-1 min-w-0">
-                    <p class="text-slate-600 text-xs">Daftar berurutan (bullet points)</p>
-                    <code class="text-slate-400 text-xs">&lt;ul&gt;&lt;li&gt;Item satu&lt;/li&gt;&lt;/ul&gt;</code>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
-                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;ol&gt; dan &lt;li&gt;</code>
-                <div class="flex-1 min-w-0">
-                    <p class="text-slate-600 text-xs">Daftar bernomor</p>
-                    <code class="text-slate-400 text-xs">&lt;ol&gt;&lt;li&gt;Langkah 1&lt;/li&gt;&lt;/ol&gt;</code>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
-                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;strong&gt;</code>
-                <div class="flex-1 min-w-0">
-                    <p class="text-slate-600 text-xs">Teks tebal (penting)</p>
-                    <code class="text-slate-400 text-xs">Ini &lt;strong&gt;sangat penting&lt;/strong&gt;!</code>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-4">
-                <code class="text-orange-600 font-bold text-xs min-w-[160px] flex-shrink-0">&lt;div&gt;</code>
-                <div class="flex-1 min-w-0">
-                    <p class="text-slate-600 text-xs">Kotak pembungkus untuk mengelompokkan elemen</p>
-                    <code class="text-slate-400 text-xs">&lt;div class=&quot;kartu&quot;&gt;...&lt;/div&gt;</code>
-                </div>
-            </div>
-                    </div>
-
-        <h2>Proyek: Halaman Profil Diri</h2>
-        <p>Buat halaman web profil dirimu sendiri! Berisi foto, nama, biodata singkat, hobi, dan cita-cita.</p>
-        <pre>&lt;!DOCTYPE html&gt;
-&lt;html lang="id"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;Profil - [Nama Kamu]&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Hai, Saya [Nama Kamu]! 👋&lt;/h1&gt;
-    &lt;img src="../fotoku.jpg" alt="Foto Saya" width="150"&gt;
-
-    &lt;h2&gt;Tentang Saya&lt;/h2&gt;
-    &lt;p&gt;Saya pelajar kelas 9 di SMP Negeri ... Lamongan.
-    Saya suka belajar teknologi dan bermain game.&lt;/p&gt;
-
-    &lt;h2&gt;Hobi Saya&lt;/h2&gt;
-    &lt;ul&gt;
-        &lt;li&gt;🎮 Bermain game edukatif&lt;/li&gt;
-        &lt;li&gt;📚 Membaca komik dan novel&lt;/li&gt;
-        &lt;li&gt;🎵 Mendengarkan musik&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;h2&gt;Cita-cita&lt;/h2&gt;
-    &lt;p&gt;Saya ingin menjadi &lt;strong&gt;programmer&lt;/strong&gt;
-    yang bisa membuat aplikasi bermanfaat.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-
-        <div class="callout callout-tip">
-            <p class="font-heading font-bold text-green-800 mb-2">✅ Cara Memulai</p>
-            <ul class="text-green-700 text-sm space-y-1 list-disc pl-4">
-                <li>Buka Notepad / VS Code / Notepad++</li>
-                <li>Ketik kode HTML di atas, ganti dengan info dirimu</li>
-                <li>Simpan sebagai <code>profil.html</code> (perhatikan ekstensi .html!)</li>
-                <li>Buka file tersebut dengan browser — hore, website pertamamu!</li>
-                <li>Atau coba langsung di <strong>codepen.io</strong> tanpa install apapun</li>
-            </ul>
         </div>
 
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>HTML = bahasa markup untuk membuat kerangka halaman web</li>
-            <li>Struktur dasar: DOCTYPE → html → head + body</li>
-            <li>Tag utama: h1-h6 (judul), p (paragraf), a (link), img (gambar), ul/ol (daftar)</li>
-            <li>Setiap tag punya tag pembuka dan penutup: <code>&lt;p&gt;...&lt;/p&gt;</code></li>
-        </ul>
-    </div>
-    <div class="flex justify-between mt-12 gap-4">
-        <div></div>
-        <a href="../02-styling-dengan-css/" class="flex items-center gap-3 px-5 py-3 bg-amber-600 text-white rounded-2xl shadow hover:bg-amber-700 transition">
-            <div class="text-right"><p class="text-[10px] text-amber-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">Styling dengan CSS</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                <code class="px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-bold text-xs">&lt;h1&gt; s.d. &lt;h6&gt;</code>
+                <strong class="block text-slate-800">Heading Hierarkis</strong>
+                <p class="text-slate-600">Judul topik utama (h1), subjudul bab (h2), hingga sub-poin terkecil (h6). Halaman web yang baik hanya memiliki satu h1 sebagai judul pokok.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                <code class="px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-bold text-xs">&lt;p&gt; & &lt;strong&gt;</code>
+                <strong class="block text-slate-800">Paragraf & Penegasan</strong>
+                <p class="text-slate-600">Tag <code>&lt;p&gt;</code> membungkus alinea teks dengan jarak spasi otomatis. Gunakan <code>&lt;strong&gt;</code> untuk tebal penting dan <code>&lt;em&gt;</code> untuk miring.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                <code class="px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-bold text-xs">&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</code>
+                <strong class="block text-slate-800">Daftar Poin & Nomor</strong>
+                <p class="text-slate-600"><code>&lt;ul&gt;</code> untuk poin bulat tak berurut (bullet list), <code>&lt;ol&gt;</code> untuk urutan nomor 1-2-3 (ordered list), dan <code>&lt;li&gt;</code> sebagai setiap butir daftarnya.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                <code class="px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-bold text-xs">&lt;img src="..." alt="..."&gt;</code>
+                <strong class="block text-slate-800">Penyematan Gambar</strong>
+                <p class="text-slate-600">Tag tanpa penutup (self-closing). Atribut <code>src</code> berisi URL berkas gambar dan atribut <code>alt</code> wajib diisi deskripsi teks bagi tuna netra dan jika gambar gagal dimuat.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                <code class="px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-bold text-xs">&lt;table&gt;, &lt;tr&gt;, &lt;td&gt;</code>
+                <strong class="block text-slate-800">Tabel Data Grid</strong>
+                <p class="text-slate-600">Menyajikan jadwal atau data nilai. <code>&lt;tr&gt;</code> adalah baris tabel (table row), <code>&lt;th&gt;</code> adalah sel judul kolom tebal, dan <code>&lt;td&gt;</code> adalah sel isi data (table data).</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                <code class="px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-bold text-xs">&lt;form&gt; & &lt;input&gt;</code>
+                <strong class="block text-slate-800">Formulir Interaktif</strong>
+                <p class="text-slate-600">Menerima masukan dari pengunjung web: input teks nama, password, radio button pilihan ganda, checkbox centang, dan tombol submit.</p>
+            </div>
+        </div>
+
+        <!-- Semantic Tag Layout Box -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+            <h3 class="font-heading font-bold text-slate-800 text-sm">Mengapa Harus Menggunakan Tag Semantik HTML5?</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Di era HTML lama, pengembang membungkus semua elemen dengan <code>&lt;div&gt;</code> yang tidak memiliki arti spesifik. HTML5 menghadirkan tag semantik yang memberi makna jelas bagi Googlebot dan pembaca layar (screen reader tuna netra):
+            </p>
+            <div class="grid sm:grid-cols-4 gap-2.5 text-xs text-center font-bold">
+                <div class="p-2.5 bg-orange-50 border border-orange-200 rounded-xl text-orange-900">&lt;header&gt;<span class="block text-[10px] font-normal text-slate-500">Kop / Kepala Web</span></div>
+                <div class="p-2.5 bg-blue-50 border border-blue-200 rounded-xl text-blue-900">&lt;nav&gt;<span class="block text-[10px] font-normal text-slate-500">Menu Navigasi</span></div>
+                <div class="p-2.5 bg-indigo-50 border border-indigo-200 rounded-xl text-indigo-900">&lt;main&gt; & &lt;article&gt;<span class="block text-[10px] font-normal text-slate-500">Konten Inti Artikel</span></div>
+                <div class="p-2.5 bg-slate-100 border border-slate-300 rounded-xl text-slate-800">&lt;footer&gt;<span class="block text-[10px] font-normal text-slate-500">Hak Cipta / Kaki Web</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR / INTERACTIVE HTML LIVE SANDBOX -->
+    <section id="simulator-html" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4 flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-800">HTML5 Live Sandbox Studio</h2>
+                    <p class="text-xs text-slate-400">Ketik atau ubah kode HTML di editor kiri dan saksikan hasilnya seketika di canvas browser kanan</p>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="loadHtmlTemplate('bio')" class="px-2.5 py-1 bg-slate-100 hover:bg-orange-50 hover:text-orange-600 rounded-lg text-xs font-semibold">Template Profil</button>
+                <button onclick="loadHtmlTemplate('tabel')" class="px-2.5 py-1 bg-slate-100 hover:bg-orange-50 hover:text-orange-600 rounded-lg text-xs font-semibold">Template Tabel Nilai</button>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-6">
+            <!-- Code Editor Box -->
+            <div class="md:col-span-6 space-y-2">
+                <div class="flex items-center justify-between">
+                    <label class="font-heading font-bold text-xs text-slate-700">Kode Sumber HTML:</label>
+                    <span class="text-[11px] text-slate-400">Coba ubah teks atau tambah tag baru!</span>
+                </div>
+                <textarea id="html-code-input" rows="12" class="w-full p-4 bg-slate-900 text-emerald-400 font-mono text-xs rounded-2xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500 leading-relaxed" oninput="renderHtmlPreview()"><div style="font-family:sans-serif; text-align:center; padding:15px; background:#fff7ed; border-radius:15px; border:2px dashed #f97316;">
+  <h2 style="color:#c2410c; margin-bottom:5px;">Halo! Saya Calon Web Developer 🚀</h2>
+  <p style="color:#78350f; font-size:13px;">Ini halaman website buatan siswa SMP Negeri 2 Lamongan.</p>
+  <button style="background:#ea580c; color:white; border:none; padding:8px 16px; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="alert('Keren! Tombol HTML kamu berhasil berfungsi!')">Klik Saya!</button>
+</div></textarea>
+            </div>
+
+            <!-- Browser Live Preview Box -->
+            <div class="md:col-span-6 space-y-2">
+                <div class="flex items-center justify-between">
+                    <label class="font-heading font-bold text-xs text-slate-700">Hasil Tampilan Browser Real-time:</label>
+                    <span class="text-[11px] font-bold text-emerald-600 flex items-center gap-1">● Live Rendering</span>
+                </div>
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl min-h-[260px] flex items-center justify-center overflow-auto shadow-inner" id="html-preview-canvas">
+                    <!-- Live Output Injected Here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (20 SOAL - 4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4 flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-800">Evaluasi Formatif: Pembuatan Website HTML</h2>
+                    <p class="text-xs text-slate-400">Total 20 Soal (Skor Maksimal 100 poin) · Syarat Tuntas KKM: 70</p>
+                </div>
+            </div>
+            <span class="text-xs font-bold px-3 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-200">20 Soal · 4 Bagian</span>
+        </div>
+
+        <!-- Bagian A: Pilihan Ganda (8 Soal @ 5 Poin = 40 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian A: Pilihan Ganda Konseptual</span>
+                <span class="text-slate-500">8 Soal · 40 Poin</span>
+            </div>
+
+            <!-- Q1 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">1. Kepanjangan dari singkatan HTML dalam teknologi web adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="A"> A. HyperText Markup Language
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="B"> B. High Tech Machine Learning
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="C"> C. Home Tool Multi Language
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="D"> D. Hyperlink Translation Module List
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">2. Bagian dari dokumen HTML yang memuat seluruh teks, gambar, video, dan tombol yang tampil langsung di layar pengguna adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="A"> A. &lt;body&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="B"> B. &lt;head&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="C"> C. &lt;meta&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="D"> D. &lt;title&gt;
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">3. Di antara tag heading berikut, manakah yang menghasilkan ukuran teks judul paling besar secara baku?</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="A"> A. &lt;h1&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="B"> B. &lt;h6&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="C"> C. &lt;h3&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="D"> D. &lt;heading&gt;
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">4. Tag yang tepat untuk membuat tautan (link) yang dapat diklik menuju website lain adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="A"> A. &lt;a href="url"&gt;Teks Link&lt;/a&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="B"> B. &lt;link src="url"&gt;Teks Link&lt;/link&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="C"> C. &lt;href to="url"&gt;Teks Link&lt;/href&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="D"> D. &lt;goto web="url"&gt;Teks Link&lt;/goto&gt;
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">5. Atribut pada tag &lt;img&gt; yang wajib disertakan untuk memberikan deskripsi teks pengganti saat gambar gagal dimuat adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="A"> A. alt
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="B"> B. desc
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="C"> C. title
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="D"> D. caption
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">6. Pasangan tag untuk membuat daftar berbutir nomor terurut (1, 2, 3...) dalam dokumen HTML adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="A"> A. &lt;ol&gt; dan &lt;li&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="B"> B. &lt;ul&gt; dan &lt;li&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="C"> C. &lt;dl&gt; dan &lt;dt&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="D"> D. &lt;list&gt; dan &lt;item&gt;
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">7. Tag semantik HTML5 yang tepat untuk mewadahi menu daftar navigasi utama sebuah website adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="A"> A. &lt;nav&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="B"> B. &lt;menu-bar&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="C"> C. &lt;aside&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="D"> D. &lt;links&gt;
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">8. Dalam tabel HTML, tag yang digunakan untuk mendefinisikan sebuah sel isi data pada baris adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="A"> A. &lt;td&gt; (Table Data)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="B"> B. &lt;tr&gt; (Table Row)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="C"> C. &lt;table&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-orange-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="D"> D. &lt;cell&gt;
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian B: Benar / Salah (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian B: Analisis Pernyataan (Benar / Salah)</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">9. HTML adalah bahasa pemrograman yang digunakan untuk melakukan perhitungan matematis kompleks dan logika kalkulasi sistem.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_1" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_1" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">10. Deklarasi &lt;!DOCTYPE html&gt; wajib ditulis di baris paling awal file untuk memberitahu browser bahwa dokumen menggunakan standar HTML5.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_2" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_2" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">11. Tag &lt;br&gt; digunakan untuk berpindah baris baru dan merupakan tag tunggal (self-closing) tanpa tag penutup.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_3" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_3" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">12. Atribut target="_blank" pada tag &lt;a&gt; menyebabkan tautan web terbuka di tab atau jendela browser baru.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_4" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_4" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian C: Menjodohkan Tag & Fungsinya (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian C: Menjodohkan Tag HTML & Kegunaannya</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">13. &lt;footer&gt;</p>
+                    <select id="m1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Kegunaan --</option>
+                        <option value="IMG">Menyematkan media grafis visual ke halaman web</option>
+                        <option value="NAV">Membungkus menu navigasi tautan antar halaman</option>
+                        <option value="FOOTER">Mewadahi bagian kaki halaman web (hak cipta dan kontak)</option>
+                        <option value="FORM">Menyediakan kontrol isian formulir masukan pengguna</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">14. &lt;img&gt;</p>
+                    <select id="m2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Kegunaan --</option>
+                        <option value="IMG">Menyematkan media grafis visual ke halaman web</option>
+                        <option value="NAV">Membungkus menu navigasi tautan antar halaman</option>
+                        <option value="FOOTER">Mewadahi bagian kaki halaman web (hak cipta dan kontak)</option>
+                        <option value="FORM">Menyediakan kontrol isian formulir masukan pengguna</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">15. &lt;nav&gt;</p>
+                    <select id="m3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Kegunaan --</option>
+                        <option value="IMG">Menyematkan media grafis visual ke halaman web</option>
+                        <option value="NAV">Membungkus menu navigasi tautan antar halaman</option>
+                        <option value="FOOTER">Mewadahi bagian kaki halaman web (hak cipta dan kontak)</option>
+                        <option value="FORM">Menyediakan kontrol isian formulir masukan pengguna</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">16. &lt;form&gt;</p>
+                    <select id="m4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Kegunaan --</option>
+                        <option value="IMG">Menyematkan media grafis visual ke halaman web</option>
+                        <option value="NAV">Membungkus menu navigasi tautan antar halaman</option>
+                        <option value="FOOTER">Mewadahi bagian kaki halaman web (hak cipta dan kontak)</option>
+                        <option value="FORM">Menyediakan kontrol isian formulir masukan pengguna</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian D: Melengkapi Kode & Atribut (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian D: Melengkapi Sintaks HTML</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">17. Atribut pada tag &lt;a&gt; yang digunakan untuk menentukan alamat URL tujuan adalah...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_A" placeholder="Ketik nama atribut..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 font-mono font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: href)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">18. Atribut sumber file pada tag &lt;img&gt; yang mengarah ke lokasi berkas gambar adalah...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_B" placeholder="Ketik nama atribut..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 font-mono font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: src)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">19. Tag pembungkus seluruh baris pada sebuah tabel HTML adalah tag &lt;...&gt;</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_C" placeholder="Ketik nama tag tanpa kurung..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 font-mono font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: tr)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">20. Tag untuk membuat garis horizontal lurus pembatas antar bab di halaman web adalah tag &lt;...&gt;</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_D" placeholder="Ketik nama tag tanpa kurung..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 font-mono font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: hr)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-orange-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-orange-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. HTML sebagai Pondasi:</strong> Seluruh tampilan situs web bermula dari struktur dokumen HTML5 yang valid dengan pemisahan rapi antara isi halaman (body) dan metadata dokumen (head).</p>
+            <p><strong>2. Semantik yang Bermakna:</strong> Penggunaan header, nav, main, article, dan footer memudahkan mesin telusur membaca konten secara optimal.</p>
+            <p><strong>3. Keterkaitan Lintas Dokumen:</strong> Tag hyperlink &lt;a&gt; adalah roh utama internet yang menghubungkan miliaran pengetahuan manusia di seluruh penjuru dunia.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Website apa yang ingin kamu bangun untuk tugas proyek lintas bidang nanti? Tag HTML mana yang paling menarik bagimu?" class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-orange-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../../08-dampak-sosial-informatika/06-kewargaan-digital/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-orange-600 hover:border-orange-200 transition text-xs font-bold shadow-sm">
+            ← Unit Sebelumnya: Kewargaan Digital (DSI)
+        </a>
+        <a href="../02-styling-dengan-css/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white transition text-xs font-bold shadow-md">
+            Modul Berikutnya: Styling Desain dengan CSS →
         </a>
     </div>
 
     <!-- Selesai Mempelajari Modul Card -->
-    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
             <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
             <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
         </div>
-        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
             <span>✓</span> Tandai Selesai
         </button>
     </div>
 
 </main>
-<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
-    </div>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2026 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
 </footer>
+
 <script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
-const TOPIC_ID = 'inf-praktik-01';
+const TOPIC_ID = 'inf-plb-01';
+
+// Live HTML Preview Sandbox
+function renderHtmlPreview() {
+    const code = document.getElementById('html-code-input').value;
+    const canvas = document.getElementById('html-preview-canvas');
+    canvas.innerHTML = code;
+}
+
+function loadHtmlTemplate(type) {
+    const editor = document.getElementById('html-code-input');
+    if (type === 'bio') {
+        editor.value = `<div style="font-family:sans-serif; padding:15px; background:#eff6ff; border-radius:12px; border:1px solid #bfdbfe;">
+  <h3 style="color:#1e40af; margin-top:0;">Biodata Siswa Kreatif 🎓</h3>
+  <p><strong>Nama:</strong> Siti Aisyah</p>
+  <p><strong>Sekolah:</strong> SMPN 2 Lamongan (Kelas 9)</p>
+  <p><strong>Cita-cita:</strong> Software Engineer & AI Researcher</p>
+  <hr style="border:none; border-top:1px dashed #93c5fd; margin:10px 0;">
+  <p style="font-size:12px; color:#3b82f6;"><em>"Belajar coding membuka jendela masa depan!"</em></p>
+</div>`;
+    } else if (type === 'tabel') {
+        editor.value = `<div style="font-family:sans-serif; padding:10px;">
+  <h4 style="color:#334155; margin-bottom:8px;">Tabel Nilai Proyek Informatika</h4>
+  <table style="width:100%; border-collapse:collapse; text-align:left; font-size:12px;">
+    <thead>
+      <tr style="background:#f1f5f9; border-bottom:2px solid #cbd5e1;">
+        <th style="padding:6px;">Mata Pelajaran</th>
+        <th style="padding:6px;">Skor Proyek</th>
+        <th style="padding:6px;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #e2e8f0;">
+        <td style="padding:6px;">Struktur HTML5</td>
+        <td style="padding:6px; font-weight:bold; color:#16a34a;">95</td>
+        <td style="padding:6px; color:#16a34a;">Sangat Baik</td>
+      </tr>
+      <tr>
+        <td style="padding:6px;">Styling CSS</td>
+        <td style="padding:6px; font-weight:bold; color:#2563eb;">90</td>
+        <td style="padding:6px; color:#2563eb;">Tuntas</td>
+      </tr>
+    </tbody>
+  </table>
+</div>`;
+    }
+    renderHtmlPreview();
+}
+
+// Answer Keys Formatif
+const KEY_MCQ = {
+    mcq_1: 'A',
+    mcq_2: 'A',
+    mcq_3: 'A',
+    mcq_4: 'A',
+    mcq_5: 'A',
+    mcq_6: 'A',
+    mcq_7: 'A',
+    mcq_8: 'A'
+};
+
+const KEY_TF = {
+    tf_1: 'S',
+    tf_2: 'B',
+    tf_3: 'B',
+    tf_4: 'B'
+};
+
+const KEY_MATCH = {
+    m1: 'FOOTER',
+    m2: 'IMG',
+    m3: 'NAV',
+    m4: 'FORM'
+};
+
+const KEY_SEQ = {
+    seq_A: ['HREF'],
+    seq_B: ['SRC'],
+    seq_C: ['TR'],
+    seq_D: ['HR']
+};
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value.trim().toUpperCase() : '';
+        answers[k] = val;
+        if (KEY_SEQ[k].some(opt => val.includes(opt))) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
 
 async function markModuleComplete() {
     if (window.FananiTracker) {
@@ -234,18 +846,54 @@ async function markModuleComplete() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
     if (window.FananiTracker) {
-        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-        if (hist && hist.is_completed) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data) {
+        if (data.is_completed) {
             const btn = document.getElementById("btn-complete-module");
             if (btn) {
                 btn.innerHTML = "<span>✓</span> Modul Tuntas!";
                 btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
             }
         }
+        if (data.attempts && data.attempts.length > 0) {
+            const box = document.getElementById('attempt-history-box');
+            const list = document.getElementById('attempt-history-list');
+            box.classList.remove('hidden');
+            list.innerHTML = data.attempts.map((att, idx) => `
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                    <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                    <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                        Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                    </span>
+                </div>
+            `).join('');
+        }
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
     }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderHtmlPreview();
+    loadHistory();
 });
 </script>
+
 </body>
 </html>

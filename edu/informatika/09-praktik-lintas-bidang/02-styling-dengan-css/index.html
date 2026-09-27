@@ -1,220 +1,740 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Styling website dengan CSS: selektor, properti warna & font, box model, flexbox, dan cara membuat tampilan website yang menarik dan responsif.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Mempercantik Web dengan CSS | Informatika Kelas 9</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styling Tampilan dengan CSS | Praktik Lintas Bidang</title>
+    <meta name="description" content="Pelajari dasar Cascading Style Sheets (CSS): selektor, warna, box model (margin, border, padding), layout flexbox responsif, dan eksperimen di simulator visual interaktif.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose h3{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.1rem;color:#334155;margin-top:1.5rem;margin-bottom:.5rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}.prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}.prose li{margin-bottom:.4rem;line-height:1.7;}
-        .prose strong{color:#1e293b;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}.callout-tip{background:#f0fdf4;border-color:#22c55e;}.callout-fun{background:#fdf4ff;border-color:#a855f7;}.callout-warn{background:#fffbeb;border-color:#f59e0b;}
-        pre{background:#0f172a;color:#e2e8f0;padding:1.25rem;border-radius:.75rem;overflow-x:auto;font-size:.875rem;line-height:1.6;margin:1rem 0;}
-        code{font-family:'Courier New',monospace;}:not(pre)>code{background:#f1f5f9;color:#6366f1;padding:.15rem .4rem;border-radius:.35rem;font-size:.85em;}
+        h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
+        body{font-family:'Inter',sans-serif;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(59,130,246,0.2);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-amber-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-amber-600 hover:underline">← Kelas 9</a>
-</nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Edu</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
-        <a href="../" class="hover:text-amber-600">Kelas 9</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 2</span>
-    </div>
-    <div class="bg-gradient-to-br from-pink-500 to-rose-600 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 2 · CSS</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Mempercantik Web dengan CSS 🎨</h1>
-            <p class="text-pink-100 leading-relaxed max-w-2xl">Website-mu sudah ada kerangkanya. Sekarang saatnya beri warna, font keren, dan layout yang rapi! CSS adalah "cat dan dekorasi" untuk rumah web-mu.</p>
-        </div>
-    </div>
-    <div class="prose max-w-none">
-        <h2>CSS Itu Apa?</h2>
-        <p><strong>CSS (Cascading Style Sheets)</strong> adalah bahasa untuk mengatur tampilan elemen HTML — warna, ukuran font, spasi, layout, animasi, dan masih banyak lagi. Tanpa CSS, semua website terlihat seperti dokumen teks hitam-putih biasa!</p>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 pb-24">
 
-        <h2>Cara Menulis CSS</h2>
-        <p>Ada 3 cara menyisipkan CSS ke HTML:</p>
-        <div class="not-prose grid md:grid-cols-3 gap-3 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <span class="bg-red-50 text-red-600 text-xs font-bold px-2 py-0.5 rounded-md">Inline</span>
-                <code class="block text-slate-600 text-xs mt-2 mb-1">&lt;p style=&quot;color:red&quot;&gt;</code>
-                <p class="text-slate-400 text-xs">Langsung di dalam tag. Hindari untuk proyek besar.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <span class="bg-amber-50 text-amber-600 text-xs font-bold px-2 py-0.5 rounded-md">Internal</span>
-                <code class="block text-slate-600 text-xs mt-2 mb-1">&lt;style&gt; di dalam &lt;head&gt;</code>
-                <p class="text-slate-400 text-xs">Tulis CSS di dalam tag &lt;style&gt; di bagian head.</p>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-4 shadow-sm">
-                <span class="bg-emerald-50 text-emerald-600 text-xs font-bold px-2 py-0.5 rounded-md">External</span>
-                <code class="block text-slate-600 text-xs mt-2 mb-1">&lt;link href=&quot;style.css&quot;&gt;</code>
-                <p class="text-slate-400 text-xs">File CSS terpisah. Cara terbaik untuk proyek nyata!</p>
-            </div>
-                    </div>
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-indigo-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-pink-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-        <h2>Struktur Penulisan CSS</h2>
-        <pre>/* Selector { property: value; } */
-
-h1 {
-    color: #6366f1;        /* warna teks */
-    font-size: 2rem;       /* ukuran huruf */
-    text-align: center;    /* rata tengah */
-}
-
-p {
-    color: #475569;        /* abu-abu sedang */
-    line-height: 1.7;      /* jarak antar baris */
-    margin-bottom: 1rem;   /* jarak bawah */
-}
-
-.kartu {
-    background: white;     /* warna latar */
-    padding: 20px;         /* jarak dalam */
-    border-radius: 12px;   /* sudut membulat */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}</pre>
-
-        <h2>Properti CSS yang Paling Sering Dipakai</h2>
-        <div class="not-prose grid md:grid-cols-2 gap-3 my-5">
-                                    <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
-                <code class="text-pink-600 font-bold text-xs min-w-[100px]">color</code>
-                <div>
-                    <code class="text-slate-400 text-xs">color: #333</code>
-                    <p class="text-slate-500 text-xs">Warna teks</p>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
-                <code class="text-pink-600 font-bold text-xs min-w-[100px]">background</code>
-                <div>
-                    <code class="text-slate-400 text-xs">background: #f0f9ff</code>
-                    <p class="text-slate-500 text-xs">Warna/gambar latar belakang</p>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
-                <code class="text-pink-600 font-bold text-xs min-w-[100px]">font-size</code>
-                <div>
-                    <code class="text-slate-400 text-xs">font-size: 1.2rem</code>
-                    <p class="text-slate-500 text-xs">Ukuran huruf</p>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
-                <code class="text-pink-600 font-bold text-xs min-w-[100px]">font-family</code>
-                <div>
-                    <code class="text-slate-400 text-xs">font-family: 'Poppins'</code>
-                    <p class="text-slate-500 text-xs">Jenis font</p>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
-                <code class="text-pink-600 font-bold text-xs min-w-[100px]">padding</code>
-                <div>
-                    <code class="text-slate-400 text-xs">padding: 16px</code>
-                    <p class="text-slate-500 text-xs">Jarak antara konten dan tepi elemen</p>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
-                <code class="text-pink-600 font-bold text-xs min-w-[100px]">margin</code>
-                <div>
-                    <code class="text-slate-400 text-xs">margin: 0 auto</code>
-                    <p class="text-slate-500 text-xs">Jarak antara elemen dengan elemen lain</p>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
-                <code class="text-pink-600 font-bold text-xs min-w-[100px]">border-radius</code>
-                <div>
-                    <code class="text-slate-400 text-xs">border-radius: 8px</code>
-                    <p class="text-slate-500 text-xs">Membuat sudut elemen membulat</p>
-                </div>
-            </div>
-                        <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-sm flex items-start gap-3">
-                <code class="text-pink-600 font-bold text-xs min-w-[100px]">display</code>
-                <div>
-                    <code class="text-slate-400 text-xs">display: flex</code>
-                    <p class="text-slate-500 text-xs">Cara elemen ditampilkan (flex/block/grid)</p>
-                </div>
-            </div>
-                    </div>
-
-        <h2>Proyek: Percantik Halaman Profil</h2>
-        <p>Lanjutkan proyek profil dari materi sebelumnya! Tambahkan file <code>style.css</code> di folder yang sama:</p>
-        <pre>/* style.css */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f8fafc;
-    color: #334155;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-h1 {
-    color: #6366f1;
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-h2 {
-    color: #334155;
-    border-bottom: 3px solid #6366f1;
-    padding-bottom: 0.5rem;
-    margin-top: 2rem;
-}
-
-img {
-    border-radius: 50%;      /* foto jadi lingkaran */
-    border: 4px solid #6366f1;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-}
-
-ul {
-    background: white;
-    padding: 1rem 1rem 1rem 2rem;
-    border-radius: 12px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-}</pre>
-        <p>Sambungkan ke HTML dengan menambahkan di bagian <code>&lt;head&gt;</code>:</p>
-        <pre>&lt;link rel="stylesheet" href="../style.css"&gt;</pre>
-
-        <div class="callout callout-info">
-            <p class="font-heading font-bold text-blue-800 mb-1">🌈 Sumber Warna Gratis</p>
-            <p class="text-blue-700 text-sm">Bingung pilih warna yang cocok? Coba <strong>coolors.co</strong> untuk membuat palet warna harmonis, atau <strong>color.adobe.com</strong> untuk eksplorasi kombinasi warna!</p>
-        </div>
-
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>CSS mengatur tampilan visual: warna, ukuran, spasi, layout</li>
-            <li>Struktur CSS: <code>selector { property: value; }</code></li>
-            <li>Gunakan file CSS eksternal (<code>style.css</code>) untuk proyek yang rapi</li>
-            <li>Properti terpenting: color, background, font-size, padding, margin, border-radius</li>
-        </ul>
-    </div>
-    <div class="flex justify-between mt-12 gap-4">
-        <a href="../01-membuat-website-html/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-100 rounded-2xl shadow hover:shadow-md transition group">
-            <svg class="w-5 h-5 text-slate-400 group-hover:text-amber-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Membuat Website HTML</p></div>
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-indigo-600 transition">
+        fanani<span class="text-indigo-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition flex items-center gap-1">
+            ← Unit Praktik Lintas Bidang
         </a>
-        <a href="../03-ui-ux-dasar/" class="flex items-center gap-3 px-5 py-3 bg-amber-600 text-white rounded-2xl shadow hover:bg-amber-700 transition">
-            <div class="text-right"><p class="text-[10px] text-amber-200 uppercase tracking-wider">Berikutnya</p><p class="text-sm font-semibold">UI/UX Dasar</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#sintaks-css" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 transition whitespace-nowrap">🎨 Sintaks & Selektor</a>
+        <a href="#box-model" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 transition whitespace-nowrap">📦 Box Model</a>
+        <a href="#flexbox-layout" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 transition whitespace-nowrap">📐 Flexbox Layout</a>
+        <a href="#simulator-css" class="px-3 py-1.5 rounded-full bg-indigo-100 text-indigo-800 hover:bg-indigo-200 transition whitespace-nowrap font-bold">🎮 CSS Box & Flex Studio</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 transition whitespace-nowrap">✨ Rangkuman & Refleksi</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../edu/" class="hover:text-indigo-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-indigo-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-indigo-600 transition">Praktik Lintas Bidang</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">02. Styling dengan CSS</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-indigo-700 via-purple-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🎨 Praktik Lintas Bidang · Modul 02
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Mempercantik Tampilan Web dengan CSS Modern
+            </h1>
+            <p class="text-indigo-100 text-sm md:text-base leading-relaxed mb-6">
+                Bila HTML adalah kerangka bata, maka CSS adalah desainer interior yang menyulapnya menjadi hunian mewah penuh warna! Pelajari selektor CSS, rahasia jarak Box Model (Margin & Padding), tata letak Flexbox modern, dan animasi transisi dinamis.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-indigo-100">
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🎨 Topik: Selektor, Box Model, Flexbox</span>
+                <span class="bg-black/25 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah menyelesaikan modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-indigo-50/50 p-4 rounded-xl border border-indigo-100">
+                <span class="text-indigo-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Peran & Metode Penulisan CSS</strong>
+                    <p class="text-slate-600">Membedakan penulisan Inline style, Internal di dalam tag &lt;style&gt;, serta berkas External berekstensi .css.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-indigo-50/50 p-4 rounded-xl border border-indigo-100">
+                <span class="text-indigo-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menguasai Selektor Elemen, Class, dan ID</strong>
+                    <p class="text-slate-600">Mengarahkan target gaya tampilan secara presisi menggunakan selektor tag, class bertanda titik (.), dan ID bertanda pagar (#).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-indigo-50/50 p-4 rounded-xl border border-indigo-100">
+                <span class="text-indigo-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengatur Tata Ruang CSS Box Model</strong>
+                    <p class="text-slate-600">Menghitung dan membedakan ruang Content, jarak bantalan dalam (Padding), bingkai garis tepi (Border), dan jarak luar (Margin).</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-indigo-50/50 p-4 rounded-xl border border-indigo-100">
+                <span class="text-indigo-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mendesain Layout Fleksibel dengan Flexbox</strong>
+                    <p class="text-slate-600">Menata elemen kolom dan baris responsif secara simetris menggunakan display: flex, justify-content, dan align-items.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SINTAKS & SELEKTOR CSS -->
+    <section id="sintaks-css" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl">🎨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-800">1. Sintaks Dasar & Ragam Selektor CSS</h2>
+                <p class="text-xs text-slate-500">Bagaimana browser menghubungkan instruksi gaya dengan elemen HTML</p>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 text-white p-6 rounded-2xl space-y-3 font-mono text-xs">
+            <div class="text-slate-400">// Format Aturan CSS (CSS Rule):</div>
+            <div class="text-sm">
+                <span class="text-yellow-400 font-bold">h1</span> {
+                <div class="pl-6 text-emerald-300">
+                    <span class="text-indigo-300">color</span>: <span class="text-pink-300">#4f46e5</span>;
+                </div>
+                <div class="pl-6 text-emerald-300">
+                    <span class="text-indigo-300">font-size</span>: <span class="text-pink-300">28px</span>;
+                </div>
+                <div class="pl-6 text-emerald-300">
+                    <span class="text-indigo-300">text-align</span>: <span class="text-pink-300">center</span>;
+                </div>
+                }
+            </div>
+            <div class="text-[11px] text-slate-400 pt-2 border-t border-slate-800 flex flex-wrap gap-4">
+                <span>🎯 <strong>Selector:</strong> h1 (target)</span>
+                <span>🏷️ <strong>Property:</strong> color, font-size (sifat yang diubah)</span>
+                <span>💎 <strong>Value:</strong> #4f46e5, 28px (nilai perubahan)</span>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 text-xs">
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold">Tag Selector</span>
+                <p class="font-mono text-slate-800 font-semibold">p { color: gray; }</p>
+                <p class="text-slate-600">Mengubah seluruh tag <code>&lt;p&gt;</code> di seluruh halaman tanpa terkecuali.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Class Selector (.)</span>
+                <p class="font-mono text-slate-800 font-semibold">.tombol-beli { background: green; }</p>
+                <p class="text-slate-600">Dapat diterapkan pada banyak elemen berbeda menggunakan atribut <code>class="tombol-beli"</code>.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-bold">ID Selector (#)</span>
+                <p class="font-mono text-slate-800 font-semibold">#navigasi-utama { height: 60px; }</p>
+                <p class="text-slate-600">Bersifat unik, hanya boleh ada satu elemen yang memiliki <code>id="navigasi-utama"</code> di satu halaman.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: CSS BOX MODEL -->
+    <section id="box-model" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl">📦</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-800">2. Konsep Kunci: CSS Box Model</h2>
+                <p class="text-xs text-slate-500">Semua elemen di halaman web diperlakukan oleh browser sebagai sebuah kotak berlapis</p>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <!-- Diagram Visual Box Model -->
+            <div class="max-w-xl mx-auto p-4 bg-amber-50 rounded-2xl border-2 border-dashed border-amber-300 text-center text-xs">
+                <div class="text-amber-800 font-bold mb-2">MARGIN (Jarak luar pemisah antar kotak tetangga)</div>
+                <div class="p-4 bg-orange-100 rounded-xl border-2 border-orange-400">
+                    <div class="text-orange-900 font-bold mb-2">BORDER (Garis batas bingkai terluar elemen)</div>
+                    <div class="p-4 bg-emerald-100 rounded-lg border-2 border-emerald-400">
+                        <div class="text-emerald-900 font-bold mb-2">PADDING (Bantalan ruang kosong di dalam kotak)</div>
+                        <div class="p-4 bg-blue-600 text-white rounded font-bold shadow">
+                            CONTENT (Teks atau Gambar Inti)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-4 gap-3 text-xs pt-2">
+                <div class="p-3 bg-blue-50 rounded-xl border border-blue-200">
+                    <strong class="text-blue-900 block mb-1">1. Content</strong>
+                    <p class="text-slate-600">Ukuran lebar (width) dan tinggi (height) teks/gambar yang sebenarnya.</p>
+                </div>
+                <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200">
+                    <strong class="text-emerald-900 block mb-1">2. Padding</strong>
+                    <p class="text-slate-600">Jarak rongga udara antara konten dengan garis bingkai tepi.</p>
+                </div>
+                <div class="p-3 bg-orange-50 rounded-xl border border-orange-200">
+                    <strong class="text-orange-900 block mb-1">3. Border</strong>
+                    <p class="text-slate-600">Ketebalan, warna, dan gaya garis bingkai (solid, dashed, dotted).</p>
+                </div>
+                <div class="p-3 bg-amber-50 rounded-xl border border-amber-200">
+                    <strong class="text-amber-900 block mb-1">4. Margin</strong>
+                    <p class="text-slate-600">Jarak spasi transparan di luar bingkai yang memisahkan dari kotak lain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FLEXBOX LAYOUT -->
+    <section id="flexbox-layout" class="space-y-6">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl">📐</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-800">3. Menata Layout Fleksibel dengan CSS Flexbox</h2>
+                <p class="text-xs text-slate-500">Teknik tata letak 1 dimensi modern untuk website responsif semua ukuran layar</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5 text-xs leading-relaxed">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Properti Utama Flex Container</h3>
+                <p class="text-slate-600">
+                    Cukup tambahkan <code>display: flex;</code> pada elemen pembungkus (parent), maka anak-anaknya seketika berbaris rapi secara horisontal:
+                </p>
+                <div class="space-y-2">
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                        <code>flex-direction: row | column;</code>
+                        <span class="text-slate-500 block text-[11px] mt-0.5">Menentukan arah barisan (ke samping atau menurun).</span>
+                    </div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                        <code>justify-content: center | space-between;</code>
+                        <span class="text-slate-500 block text-[11px] mt-0.5">Mengatur posisi anak elemen di sepanjang sumbu utama.</span>
+                    </div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                        <code>align-items: center;</code>
+                        <span class="text-slate-500 block text-[11px] mt-0.5">Meratakan posisi anak elemen secara vertikal di tengah.</span>
+                    </div>
+                    <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                        <code>gap: 16px;</code>
+                        <span class="text-slate-500 block text-[11px] mt-0.5">Memberi jarak spasi seragam antar anak elemen tanpa repot hitung margin.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-heading font-bold text-slate-800 text-sm">Efek Hover & Transisi Animasi</h3>
+                <p class="text-slate-600">
+                    Situs web interaktif memberikan umpan balik visual saat kursor mouse diarahkan ke tombol:
+                </p>
+                <div class="bg-slate-900 text-slate-200 p-3.5 rounded-xl font-mono text-[11px] space-y-1">
+                    <div>.btn {</div>
+                    <div class="pl-4 text-emerald-400">background: #4f46e5;</div>
+                    <div class="pl-4 text-amber-300">transition: all 0.3s ease;</div>
+                    <div>}</div>
+                    <div>.btn:hover {</div>
+                    <div class="pl-4 text-pink-400">background: #4338ca;</div>
+                    <div class="pl-4 text-pink-400">transform: scale(1.05);</div>
+                    <div>}</div>
+                </div>
+                <p class="text-slate-500 text-[11px]">
+                    Atribut <code>transition</code> membuat perubahan warna dan ukuran membesar (scale) terjadi secara mulus dan memanjakan mata pengunjung.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SIMULATOR / INTERACTIVE CSS BOX STUDIO -->
+    <section id="simulator-css" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4 flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-800">CSS Box & Flex Visual Studio</h2>
+                    <p class="text-xs text-slate-400">Ubah slider padding, border-radius, dan flexbox untuk melihat transformasi kartu secara langsung</p>
+                </div>
+            </div>
+            <span class="text-[11px] font-bold bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Interactive Sandbox</span>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-6">
+            <!-- Controls Box -->
+            <div class="md:col-span-6 space-y-4 text-xs">
+                <div>
+                    <div class="flex justify-between font-bold text-slate-700 mb-1">
+                        <span>Padding (Ruang Dalam):</span>
+                        <span id="val-pad" class="text-indigo-600">16px</span>
+                    </div>
+                    <input type="range" min="4" max="40" value="16" id="rng-pad" class="w-full accent-indigo-600 cursor-pointer" oninput="updateCssBoxSimulator()">
+                </div>
+
+                <div>
+                    <div class="flex justify-between font-bold text-slate-700 mb-1">
+                        <span>Border Radius (Sudut Lengkung):</span>
+                        <span id="val-rad" class="text-indigo-600">16px</span>
+                    </div>
+                    <input type="range" min="0" max="40" value="16" id="rng-rad" class="w-full accent-indigo-600 cursor-pointer" oninput="updateCssBoxSimulator()">
+                </div>
+
+                <div>
+                    <div class="flex justify-between font-bold text-slate-700 mb-1">
+                        <span>Warna Tema Kartu:</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="setCardTheme('indigo')" class="w-8 h-8 rounded-full bg-indigo-600 border-2 border-white shadow"></button>
+                        <button onclick="setCardTheme('rose')" class="w-8 h-8 rounded-full bg-rose-600 border-2 border-white shadow"></button>
+                        <button onclick="setCardTheme('emerald')" class="w-8 h-8 rounded-full bg-emerald-600 border-2 border-white shadow"></button>
+                        <button onclick="setCardTheme('amber')" class="w-8 h-8 rounded-full bg-amber-500 border-2 border-white shadow"></button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="font-bold text-slate-700 block mb-1">Flexbox Justify-Content:</label>
+                    <select id="sel-justify" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg font-semibold text-slate-700" onchange="updateCssBoxSimulator()">
+                        <option value="justify-between">Space Between (Menyebar Ujung ke Ujung)</option>
+                        <option value="justify-center">Center (Rata Tengah)</option>
+                        <option value="justify-start">Flex Start (Rata Kiri)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Preview & Output Box -->
+            <div class="md:col-span-6 space-y-3">
+                <div class="p-6 bg-slate-100 rounded-2xl border border-slate-200 flex items-center justify-center min-h-[180px]">
+                    <div id="sim-target-card" class="bg-indigo-600 text-white shadow-xl transition-all flex items-center justify-between w-full max-w-sm" style="padding:16px; border-radius:16px;">
+                        <div>
+                            <h4 class="font-heading font-extrabold text-sm">Kartu Profil CSS</h4>
+                            <p class="text-[11px] text-white/80">Keren & Responsif</p>
+                        </div>
+                        <button class="px-3 py-1.5 bg-white text-indigo-700 rounded-lg text-xs font-bold shadow hover:scale-105 transition">Detail</button>
+                    </div>
+                </div>
+
+                <!-- Code Snippet Output -->
+                <div class="bg-slate-900 text-emerald-400 p-3.5 rounded-xl font-mono text-[11px] space-y-1">
+                    <span class="text-slate-400">// Kode CSS yang Dihasilkan:</span>
+                    <div id="out-css-code">.card { padding: 16px; border-radius: 16px; display: flex; justify-content: space-between; }</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (20 SOAL - 4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4 flex-wrap gap-2">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-xl text-slate-800">Evaluasi Formatif: Desain Tampilan CSS</h2>
+                    <p class="text-xs text-slate-400">Total 20 Soal (Skor Maksimal 100 poin) · Syarat Tuntas KKM: 70</p>
+                </div>
+            </div>
+            <span class="text-xs font-bold px-3 py-1 bg-amber-50 text-amber-700 rounded-full border border-amber-200">20 Soal · 4 Bagian</span>
+        </div>
+
+        <!-- Bagian A: Pilihan Ganda (8 Soal @ 5 Poin = 40 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian A: Pilihan Ganda Konseptual</span>
+                <span class="text-slate-500">8 Soal · 40 Poin</span>
+            </div>
+
+            <!-- Q1 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">1. Singkatan dari CSS dalam dunia pemrograman web adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="A"> A. Cascading Style Sheets
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="B"> B. Computer System Selector
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="C"> C. Creative Script Syntax
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_1" value="D"> D. Central Standard Styling
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">2. Simbol yang digunakan di depan nama selektor pada CSS untuk memilih elemen berbasis Class adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="A"> A. Titik (.)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="B"> B. Tanda pagar (#)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="C"> C. Tanda seru (!)
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_2" value="D"> D. Tanda dollar ($)
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">3. Dalam konsep Box Model, ruang kosong di dalam kotak yang memisahkan konten teks dengan garis border disebut...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="A"> A. Padding
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="B"> B. Margin
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="C"> C. Outline
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_3" value="D"> D. Float
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">4. Properti CSS yang digunakan untuk membuat sudut kotak elemen melengkung tumpul membulat adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="A"> A. border-radius
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="B"> B. corner-round
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="C"> C. box-circle
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_4" value="D"> D. border-curve
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">5. Tag HTML yang digunakan di dalam bagian &lt;head&gt; untuk menghubungkan berkas eksternal style.css adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="A"> A. &lt;link rel="stylesheet" href="style.css"&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="B"> B. &lt;script src="style.css"&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="C"> C. &lt;css file="style.css"&gt;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_5" value="D"> D. &lt;style href="style.css"&gt;
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">6. Untuk mengaktifkan tata letak Flexbox pada sebuah kontainer pembungkus, nilai properti display yang diberikan adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="A"> A. display: flex;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="B"> B. display: block;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="C"> C. display: table;
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_6" value="D"> D. display: inline;
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">7. Pseudo-class pada CSS yang digunakan untuk memberikan gaya tampilan saat kursor mouse melintas di atas elemen adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="A"> A. :hover
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="B"> B. :active
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="C"> C. :visited
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_7" value="D"> D. :focus
+                    </label>
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 space-y-2">
+                <p class="font-semibold text-slate-800">8. Properti CSS yang mengatur warna latar belakang sebuah elemen adalah...</p>
+                <div class="grid sm:grid-cols-2 gap-2 text-slate-700">
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="A"> A. background-color
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="B"> B. text-color
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="C"> C. color-fill
+                    </label>
+                    <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+                        <input type="radio" name="mcq_8" value="D"> D. canvas-color
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian B: Benar / Salah (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian B: Analisis Pernyataan (Benar / Salah)</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">9. Penulisan nama class pada CSS harus diawali dengan tanda titik (.), misalnya .kartu-produk.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_1" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_1" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">10. Margin adalah jarak kosong di bagian dalam kotak, sedangkan padding adalah jarak kosong di bagian luar kotak.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_2" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_2" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">11. Nilai properti justify-content: center pada flexbox akan menempatkan anak-anak elemen persis di tengah sumbu utama horisontal.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_3" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_3" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p class="font-semibold text-slate-800 sm:max-w-xl">12. Atribut style="" yang ditulis langsung di dalam tag HTML disebut sebagai External CSS.</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-emerald-700">
+                        <input type="radio" name="tf_4" value="B"> Benar
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer font-bold text-rose-700">
+                        <input type="radio" name="tf_4" value="S"> Salah
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian C: Menjodohkan Properti CSS (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian C: Menjodohkan Properti CSS & Fungsinya</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">13. margin</p>
+                    <select id="m1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi --</option>
+                        <option value="FONT">Mengatur besar kecilnya ukuran font tipografi teks</option>
+                        <option value="MARGIN">Memberi jarak spasi pemisah di luar bingkai elemen</option>
+                        <option value="RADIUS">Membuat sudut garis tepi melengkung membulat</option>
+                        <option value="TRANS">Membuat animasi perubahan gaya berjalan halus bertahap</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">14. font-size</p>
+                    <select id="m2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi --</option>
+                        <option value="FONT">Mengatur besar kecilnya ukuran font tipografi teks</option>
+                        <option value="MARGIN">Memberi jarak spasi pemisah di luar bingkai elemen</option>
+                        <option value="RADIUS">Membuat sudut garis tepi melengkung membulat</option>
+                        <option value="TRANS">Membuat animasi perubahan gaya berjalan halus bertahap</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">15. border-radius</p>
+                    <select id="m3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi --</option>
+                        <option value="FONT">Mengatur besar kecilnya ukuran font tipografi teks</option>
+                        <option value="MARGIN">Memberi jarak spasi pemisah di luar bingkai elemen</option>
+                        <option value="RADIUS">Membuat sudut garis tepi melengkung membulat</option>
+                        <option value="TRANS">Membuat animasi perubahan gaya berjalan halus bertahap</option>
+                    </select>
+                </div>
+
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">16. transition</p>
+                    <select id="m4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Fungsi --</option>
+                        <option value="FONT">Mengatur besar kecilnya ukuran font tipografi teks</option>
+                        <option value="MARGIN">Memberi jarak spasi pemisah di luar bingkai elemen</option>
+                        <option value="RADIUS">Membuat sudut garis tepi melengkung membulat</option>
+                        <option value="TRANS">Membuat animasi perubahan gaya berjalan halus bertahap</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian D: Melengkapi Atribut & Nilai CSS (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian D: Melengkapi Sintaks Properti CSS</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">17. Simbol karakter yang mengawali selektor ID pada CSS adalah tanda...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_A" placeholder="Ketik simbol atau nama tanda..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 font-mono font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: # / PAGAR / HASH)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">18. Properti CSS yang digunakan untuk memberi jarak spasi celah antar anak elemen dalam kontainer flexbox adalah...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_B" placeholder="Ketik nama properti..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 font-mono font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: gap)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">19. Properti perataan teks ke tengah secara horisontal adalah text-align dengan nilai...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_C" placeholder="Ketik nilai properti..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 font-mono font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: center)</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-semibold text-slate-800">20. Properti dekorasi bayangan pada kotak elemen dikenal dengan istilah box-...</p>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="seq_D" placeholder="Ketik kata bahasa Inggris..." class="p-2 border border-slate-300 rounded-lg bg-white w-full sm:w-64 font-mono font-bold text-slate-700">
+                    <span class="text-slate-400 text-[11px]">(Petunjuk: shadow)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button onclick="submitQuizEvaluasi()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-heading font-extrabold text-sm rounded-2xl shadow-lg shadow-indigo-500/20 transition flex items-center justify-center gap-2">
+                <span>🚀 Kumpulkan & Nilai Evaluasi</span>
+            </button>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-5 py-2.5 rounded-2xl"></div>
+        </div>
+
+        <!-- REKAP RIWAYAT ATTEMPT SISWA -->
+        <div id="attempt-history-box" class="hidden space-y-3 pt-4 border-t border-slate-100">
+            <h4 class="font-heading font-bold text-slate-800 text-xs uppercase tracking-wider">📊 Riwayat Percobaan Evaluasi Kamu:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI SISWA -->
+    <section id="rangkuman" class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+            <span class="text-2xl">✨</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl">Rangkuman Materi & Refleksi Belajar</h2>
+                <p class="text-xs text-indigo-200">Tuliskan pemahaman dan pengalaman belajarmu pada materi ini</p>
+            </div>
+        </div>
+
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+            <p><strong>1. Estetika dan Kejelasan:</strong> CSS memisahkan struktur konten (HTML) dari aspek visual, memungkinkan perubahan tema tampilan website secara cepat dan menyeluruh.</p>
+            <p><strong>2. Box Model Adalah Kunci:</strong> Pahami perbedaan padding (jarak dalam) dan margin (jarak luar) untuk mencegah tampilan layout web bertabrakan atau berantakan.</p>
+            <p><strong>3. Tata Letak Fleksibel:</strong> Dengan Flexbox, membuat antarmuka yang rapi di layar smartphone maupun komputer desktop menjadi jauh lebih mudah dan intuitif.</p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+            <label class="font-heading font-bold text-xs text-white block">
+                ✍️ Catatan Refleksi Pribadi (Tersimpan Otomatis ke Guru):
+            </label>
+            <textarea id="reflection-input" rows="3" placeholder="Gaya tampilan atau animasi CSS apa yang ingin kamu tambahkan pada proyek website sekolahmu nanti?" class="w-full p-3.5 bg-white/10 border border-white/20 rounded-2xl text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-indigo-400"></textarea>
+            <div class="flex items-center justify-between">
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-xs rounded-xl transition shadow">
+                    💾 Simpan Catatan Refleksi
+                </button>
+                <span id="refl-status" class="text-xs font-semibold text-emerald-400"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../01-membuat-website-html/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-200 transition text-xs font-bold shadow-sm">
+            ← Modul Sebelumnya: Membuat Website HTML
+        </a>
+        <a href="../03-ui-ux-dasar/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white transition text-xs font-bold shadow-md">
+            Modul Berikutnya: Prinsip Desain UI/UX Dasar →
         </a>
     </div>
 
     <!-- Selesai Mempelajari Modul Card -->
-    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
             <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
             <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
@@ -225,16 +745,139 @@ ul {
     </div>
 
 </main>
-<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
-    </div>
+
+<footer class="border-t border-slate-200 mt-20 py-8 text-center text-xs text-slate-400">
+    <p>© 2026 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
 </footer>
+
 <script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
-const TOPIC_ID = 'inf-praktik-02';
+const TOPIC_ID = 'inf-plb-02';
+
+let curThemeColor = 'bg-indigo-600';
+
+function setCardTheme(color) {
+    const card = document.getElementById('sim-target-card');
+    card.classList.remove('bg-indigo-600', 'bg-rose-600', 'bg-emerald-600', 'bg-amber-500');
+    if (color === 'indigo') curThemeColor = 'bg-indigo-600';
+    if (color === 'rose') curThemeColor = 'bg-rose-600';
+    if (color === 'emerald') curThemeColor = 'bg-emerald-600';
+    if (color === 'amber') curThemeColor = 'bg-amber-500';
+    card.classList.add(curThemeColor);
+    updateCssBoxSimulator();
+}
+
+function updateCssBoxSimulator() {
+    const pad = document.getElementById('rng-pad').value;
+    const rad = document.getElementById('rng-rad').value;
+    const just = document.getElementById('sel-justify').value;
+
+    document.getElementById('val-pad').innerText = pad + 'px';
+    document.getElementById('val-rad').innerText = rad + 'px';
+
+    const card = document.getElementById('sim-target-card');
+    card.style.padding = pad + 'px';
+    card.style.borderRadius = rad + 'px';
+
+    card.classList.remove('justify-between', 'justify-center', 'justify-start');
+    card.classList.add(just);
+
+    const justCss = just === 'justify-between' ? 'space-between' : (just === 'justify-center' ? 'center' : 'flex-start');
+    document.getElementById('out-css-code').innerText = `.card { padding: ${pad}px; border-radius: ${rad}px; display: flex; justify-content: ${justCss}; }`;
+}
+
+// Answer Keys Formatif
+const KEY_MCQ = {
+    mcq_1: 'A',
+    mcq_2: 'A',
+    mcq_3: 'A',
+    mcq_4: 'A',
+    mcq_5: 'A',
+    mcq_6: 'A',
+    mcq_7: 'A',
+    mcq_8: 'A'
+};
+
+const KEY_TF = {
+    tf_1: 'B',
+    tf_2: 'S',
+    tf_3: 'B',
+    tf_4: 'S'
+};
+
+const KEY_MATCH = {
+    m1: 'MARGIN',
+    m2: 'FONT',
+    m3: 'RADIUS',
+    m4: 'TRANS'
+};
+
+const KEY_SEQ = {
+    seq_A: ['#', 'PAGAR', 'HASH'],
+    seq_B: ['GAP'],
+    seq_C: ['CENTER'],
+    seq_D: ['SHADOW']
+};
+
+async function submitQuizEvaluasi() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in KEY_MCQ) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MCQ[k]) scoreA += 5;
+    }
+
+    for (let k in KEY_TF) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_TF[k]) scoreB += 5;
+    }
+
+    for (let k in KEY_MATCH) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === KEY_MATCH[k]) scoreC += 5;
+    }
+
+    for (let k in KEY_SEQ) {
+        const el = document.getElementById(k);
+        const val = el ? el.value.trim().toUpperCase() : '';
+        answers[k] = val;
+        if (KEY_SEQ[k].some(opt => val.includes(opt))) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
 
 async function markModuleComplete() {
     if (window.FananiTracker) {
@@ -247,18 +890,54 @@ async function markModuleComplete() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
     if (window.FananiTracker) {
-        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-        if (hist && hist.is_completed) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data) {
+        if (data.is_completed) {
             const btn = document.getElementById("btn-complete-module");
             if (btn) {
                 btn.innerHTML = "<span>✓</span> Modul Tuntas!";
                 btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
             }
         }
+        if (data.attempts && data.attempts.length > 0) {
+            const box = document.getElementById('attempt-history-box');
+            const list = document.getElementById('attempt-history-list');
+            box.classList.remove('hidden');
+            list.innerHTML = data.attempts.map((att, idx) => `
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                    <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                    <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                        Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                    </span>
+                </div>
+            `).join('');
+        }
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
+        }
     }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCssBoxSimulator();
+    loadHistory();
 });
 </script>
+
 </body>
 </html>

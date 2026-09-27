@@ -1,252 +1,831 @@
-﻿<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pengenalan internet dan keamanan digital: cara kerja internet, protokol jaringan, etika berinternet, melindungi data pribadi, dan tips aman di dunia digital.">
-    <meta name="author" content="Ach. Chanifuddin Fanani">
-    <meta name="robots" content="index, follow">
-    <title>Internet & Keamanan Digital | Informatika Kelas 7</title>
+    <title>Keamanan Jaringan & Privasi Digital | JKI Informatika</title>
+    <meta name="description" content="Pelajari ancaman malware, ransomware, teknik phishing, perbedaan HTTP vs HTTPS, risiko WiFi publik gratis, autentikasi 2FA, dan coba simulator deteksi URL palsu.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         h1,h2,h3,h4,.font-heading{font-family:'Quicksand',sans-serif;}
         body{font-family:'Inter',sans-serif;}
-        .prose h2{font-family:'Quicksand',sans-serif;font-weight:800;font-size:1.35rem;color:#1e293b;margin-top:2rem;margin-bottom:.75rem;}
-        .prose p{line-height:1.8;margin-bottom:1rem;}
-        .prose ul{list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}
-        .prose li{margin-bottom:.4rem;line-height:1.7;}
-        .callout{border-left:4px solid;padding:1rem 1.25rem;border-radius:0 .75rem .75rem 0;margin:1.25rem 0;}
-        .callout-info{background:#eff6ff;border-color:#3b82f6;}
-        .callout-tip{background:#f0fdf4;border-color:#22c55e;}
-        .callout-warn{background:#fffbeb;border-color:#f59e0b;}
-        .callout-fun{background:#fdf4ff;border-color:#a855f7;}
+        .font-mono{font-family:'JetBrains Mono',monospace;}
+        .card-hover{transition:all .25s ease;}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(225,29,72,0.2);}
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-cyan-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-4xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-indigo-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-indigo-600 hover:underline">← Kelas 7</a>
-</nav>
-<main class="relative z-10 max-w-4xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../../" class="hover:text-indigo-600">Edu</a><span>/</span>
-        <a href="../../" class="hover:text-indigo-600">Informatika</a><span>/</span>
-        <a href="../" class="hover:text-indigo-600">Kelas 7</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Materi 6</span>
-    </div>
-    <div class="bg-gradient-to-br from-cyan-500 to-blue-700 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -translate-y-8 translate-x-8"></div>
-        <div class="relative z-10">
-            <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full mb-4 inline-block">Materi 6 · Internet</span>
-            <h1 class="font-heading font-extrabold text-3xl md:text-4xl mb-3">Internet & Keamanan Digital 🌐🔒</h1>
-            <p class="text-cyan-100 leading-relaxed max-w-2xl">Pahami cara kerja internet dan bagaimana tetap aman saat menjelajahi dunia digital!</p>
-        </div>
-    </div>
-    <div class="prose max-w-none">
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-rose-100 selection:text-rose-900 pb-24">
 
-        <h2>Apa Itu Internet?</h2>
-        <p>Internet adalah <strong>jaringan komputer terbesar di dunia</strong> yang menghubungkan miliaran perangkat di seluruh penjuru bumi. Bayangkan internet seperti jalan raya raksasa — di mana data bisa "berkendara" dari satu komputer ke komputer lain dengan sangat cepat.</p>
+<!-- Background Glow -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-rose-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[10%] right-[-5%] w-80 h-80 bg-orange-200 opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
-        <div class="callout callout-fun">
-            <p class="font-heading font-bold text-purple-800 mb-1">📡 Fakta Seru!</p>
-            <p class="text-purple-700 text-sm">Setiap menit, ada lebih dari 500 jam video diunggah ke YouTube, 695.000 Stories dibagikan di Instagram, dan 6 juta pencarian dilakukan di Google. Semua ini berjalan melalui internet!</p>
-        </div>
-
-        <h2>Bagaimana Internet Bekerja?</h2>
-        <p>Ketika kamu mengetik alamat website dan menekan Enter, ini yang terjadi:</p>
-
-        <div class="not-prose space-y-3 my-5">
-                                    <div class="flex items-start gap-4 bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
-                <span class="text-2xl flex-shrink-0">📤</span>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">1. Request Dikirim</p>
-                    <p class="text-slate-500 text-sm">Browser mengirim permintaan ke server menggunakan protokol HTTP/HTTPS</p>
-                </div>
-            </div>
-                        <div class="flex items-start gap-4 bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
-                <span class="text-2xl flex-shrink-0">🔍</span>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">2. DNS Lookup</p>
-                    <p class="text-slate-500 text-sm">DNS (Domain Name System) mengubah nama domain (google.com) menjadi alamat IP (142.250.x.x)</p>
-                </div>
-            </div>
-                        <div class="flex items-start gap-4 bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
-                <span class="text-2xl flex-shrink-0">📦</span>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">3. Data Dikirim</p>
-                    <p class="text-slate-500 text-sm">Data dipecah menjadi paket-paket kecil dan dikirim melalui kabel atau sinyal wifi</p>
-                </div>
-            </div>
-                        <div class="flex items-start gap-4 bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
-                <span class="text-2xl flex-shrink-0">🖥️</span>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">4. Server Merespons</p>
-                    <p class="text-slate-500 text-sm">Server menerima permintaan dan mengirimkan data website kembali</p>
-                </div>
-            </div>
-                        <div class="flex items-start gap-4 bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
-                <span class="text-2xl flex-shrink-0">🎉</span>
-                <div>
-                    <p class="font-heading font-bold text-slate-700 text-sm">5. Browser Menampilkan</p>
-                    <p class="text-slate-500 text-sm">Browser merakit semua paket data dan menampilkan halaman website</p>
-                </div>
-            </div>
-                    </div>
-
-        <h2>Etika Berinternet (Netiquette)</h2>
-        <p>Di dunia maya juga ada aturan sopan santun yang harus diikuti, namanya <strong>netiquette</strong>:</p>
-        <ul>
-            <li>🤝 Bersikap sopan dan hormat dalam berkomentar</li>
-            <li>🚫 Jangan menyebarkan informasi yang belum terbukti kebenarannya (hoaks)</li>
-            <li>🔒 Jaga privasi diri dan orang lain</li>
-            <li>📸 Jangan menyebarkan foto/video orang lain tanpa izin</li>
-            <li>💬 Gunakan bahasa yang baik dalam chat dan media sosial</li>
-            <li>⏰ Bijaklah dalam menggunakan waktu online</li>
-        </ul>
-
-        <h2>Ancaman di Dunia Digital</h2>
-        <p>Dunia digital juga punya bahayanya tersendiri. Kenali ancaman-ancaman ini:</p>
-
-        <div class="not-prose grid md:grid-cols-2 gap-4 my-5">
-            <div class="bg-red-50 border border-red-100 rounded-2xl p-5">
-                <div class="text-2xl mb-2">🦠</div>
-                <p class="font-heading font-bold text-red-800 mb-1">Virus & Malware</p>
-                <p class="text-red-700 text-sm">Program jahat yang merusak komputer atau mencuri data. Masuk melalui file download atau email.</p>
-            </div>
-            <div class="bg-orange-50 border border-orange-100 rounded-2xl p-5">
-                <div class="text-2xl mb-2">🎣</div>
-                <p class="font-heading font-bold text-orange-800 mb-1">Phishing</p>
-                <p class="text-orange-700 text-sm">Penipuan yang menyamar sebagai website/email resmi untuk mencuri password atau data pribadi.</p>
-            </div>
-            <div class="bg-yellow-50 border border-yellow-100 rounded-2xl p-5">
-                <div class="text-2xl mb-2">😈</div>
-                <p class="font-heading font-bold text-yellow-800 mb-1">Cyberbullying</p>
-                <p class="text-yellow-700 text-sm">Perundungan di dunia maya melalui media sosial, chat, atau platform online lainnya.</p>
-            </div>
-            <div class="bg-purple-50 border border-purple-100 rounded-2xl p-5">
-                <div class="text-2xl mb-2">🕵️</div>
-                <p class="font-heading font-bold text-purple-800 mb-1">Pencurian Identitas</p>
-                <p class="text-purple-700 text-sm">Orang jahat menggunakan data pribadimu untuk kepentingan mereka tanpa seizinmu.</p>
-            </div>
-        </div>
-
-        <h2>Tips Aman di Dunia Digital 🛡️</h2>
-
-        <div class="callout callout-tip">
-            <p class="font-heading font-bold text-green-800 mb-2">✅ Cara Melindungi Dirimu Online</p>
-            <ul class="text-green-700 text-sm space-y-1 list-disc pl-4">
-                <li><strong>Buat kata sandi yang kuat</strong> — minimal 8 karakter, kombinasi huruf, angka, dan simbol</li>
-                <li><strong>Jangan bagikan kata sandi</strong> kepada siapapun, termasuk teman</li>
-                <li><strong>Hati-hati dengan link mencurigakan</strong> — jangan sembarangan klik link di email atau chat</li>
-                <li><strong>Jaga privasi</strong> — jangan bagikan alamat rumah, nomor HP, atau data pribadi di media sosial</li>
-                <li><strong>Gunakan antivirus</strong> untuk melindungi komputer dari malware</li>
-                <li><strong>Laporkan bullying</strong> — jika kamu melihat atau mengalami cyberbullying, laporkan ke orang dewasa yang dipercaya</li>
-            </ul>
-        </div>
-
-        <h2>Membuat Kata Sandi yang Kuat</h2>
-        <p>Kata sandi yang kuat adalah pelindung pertamamu di dunia digital:</p>
-
-        <div class="not-prose grid md:grid-cols-2 gap-4 my-4">
-            <div class="bg-red-50 border border-red-200 rounded-2xl p-4">
-                <p class="font-heading font-bold text-red-700 mb-2">❌ Kata Sandi Buruk</p>
-                <ul class="text-red-600 text-sm space-y-1">
-                    <li>12345678</li>
-                    <li>namakamu123</li>
-                    <li>tanggallahir</li>
-                    <li>password</li>
-                </ul>
-            </div>
-            <div class="bg-green-50 border border-green-200 rounded-2xl p-4">
-                <p class="font-heading font-bold text-green-700 mb-2">✅ Kata Sandi Kuat</p>
-                <ul class="text-green-600 text-sm space-y-1">
-                    <li>S@y@Suk@M4ng0!</li>
-                    <li>Kuc1ng#Hitam2024</li>
-                    <li>B3lajar_Cerd4s!</li>
-                    <li>M@teri7_Inf0rmatika</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="callout callout-warn">
-            <p class="font-heading font-bold text-amber-800 mb-1">⚠️ Ingat!</p>
-            <p class="text-amber-700 text-sm">Jika kamu melihat konten yang membuatmu tidak nyaman, segera tutup dan ceritakan ke orang tua atau guru. Kamu tidak sendirian!</p>
-        </div>
-
-        <h2>Ringkasan 📝</h2>
-        <ul>
-            <li>Internet adalah jaringan komputer global yang menghubungkan miliaran perangkat</li>
-            <li>Data dikirim melalui internet dalam bentuk paket-paket kecil</li>
-            <li>Netiquette adalah etika sopan santun di dunia maya</li>
-            <li>Ancaman digital: virus, phishing, cyberbullying, pencurian identitas</li>
-            <li>Lindungi diri dengan kata sandi kuat dan jaga privasi data pribadi</li>
-        </ul>
-
-        <div class="callout callout-tip">
-            <p class="font-heading font-bold text-green-800 mb-1">🎉 Selamat!</p>
-            <p class="text-green-700 text-sm">Kamu telah menyelesaikan semua materi Informatika Kelas 7! Sekarang kamu sudah punya dasar yang kuat untuk belajar lebih dalam di kelas 8. Tetap semangat ya!</p>
-        </div>
-    </div>
-
-    <div class="flex justify-between mt-10 gap-4">
-        <a href="../05-algoritma-flowchart/" class="flex items-center gap-3 px-5 py-3 bg-white border border-slate-200 rounded-2xl shadow-sm hover:border-indigo-200 transition group">
-            <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            <div><p class="text-[10px] text-slate-400 uppercase tracking-wider">Sebelumnya</p><p class="text-sm font-semibold text-slate-700">Algoritma & Flowchart</p></div>
+<!-- Top Navigation -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-rose-600 transition">
+        fanani<span class="text-rose-600">.</span>
+    </a>
+    <div class="flex items-center gap-4">
+        <a href="../" class="text-sm font-semibold text-slate-600 hover:text-rose-600 transition flex items-center gap-1">
+            ← Unit Jaringan & Internet
         </a>
-        <a href="../quiz/" class="flex items-center gap-3 px-5 py-3 bg-indigo-600 text-white rounded-2xl shadow hover:bg-indigo-700 transition">
-            <div class="text-right"><p class="text-[10px] text-indigo-200 uppercase tracking-wider">Evaluasi</p><p class="text-sm font-semibold">🧠 Mulai Quiz Kelas 7</p></div>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+</nav>
+
+<!-- Sticky Sub-Nav / Outline Pills -->
+<div class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold text-slate-600">
+        <span class="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 hidden sm:inline">Navigasi:</span>
+        <a href="#tujuan" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 transition whitespace-nowrap">🎯 Tujuan</a>
+        <a href="#ragam-ancaman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 transition whitespace-nowrap">🦠 Malware & Phishing</a>
+        <a href="#enkripsi" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 transition whitespace-nowrap">🔒 HTTP vs HTTPS</a>
+        <a href="#wifi-publik" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 transition whitespace-nowrap">📶 Bahaya Wi-Fi Publik</a>
+        <a href="#proteksi-2fa" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 transition whitespace-nowrap">🛡️ Autentikasi 2FA</a>
+        <a href="#simulator-phishing" class="px-3 py-1.5 rounded-full bg-rose-100 text-rose-900 hover:bg-rose-200 transition whitespace-nowrap font-bold">🎮 Detektif Link Palsu</a>
+        <a href="#evaluasi" class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition whitespace-nowrap font-bold">📝 Evaluasi Formatif</a>
+        <a href="#rangkuman" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 transition whitespace-nowrap">✨ Rangkuman</a>
+    </div>
+</div>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-8 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../../../edu/" class="hover:text-rose-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../../" class="hover:text-rose-600 transition">Informatika</a>
+        <span>/</span>
+        <a href="../" class="hover:text-rose-600 transition">Jaringan Komputer & Internet</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">06. Keamanan Jaringan & Privasi</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-br from-rose-600 via-red-700 to-slate-900 rounded-[2rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">
+                🛡️ JKI · Modul 06
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight mb-4">
+                Benteng Pertahanan: Keamanan Jaringan & Privasi Siber
+            </h1>
+            <p class="text-rose-100 text-sm md:text-base leading-relaxed mb-6">
+                Di internet, bahaya tidak berwujud penjahat bertopeng, melainkan baris kode berbahaya (malware), tautan jebakan (phishing), dan penyadap paket di jaringan Wi-Fi kafe terbuka. Pelajari bagaimana protokol enkripsi SSL/TLS melindungi transaksimu dan bagaimana menjadi warganet yang kebal dari manipulasi rekayasa sosial!
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-semibold text-rose-100">
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">⏱️ Waktu: 45 Menit</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">🔒 Enkripsi: HTTPS & SSL/TLS</span>
+                <span class="bg-black/20 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">📝 Evaluasi: 20 Soal (4 Bagian)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TUJUAN PEMBELAJARAN -->
+    <section id="tujuan" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">🎯</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-xl text-slate-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-400">Kompetensi yang akan kamu kuasai setelah mempelajari modul ini</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div class="flex items-start gap-3 bg-rose-50/50 p-4 rounded-xl border border-rose-100">
+                <span class="text-rose-700 font-extrabold text-sm">01.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mengidentifikasi Ragam Malware</strong>
+                    <p class="text-slate-600">Membedakan karakteristik Virus, Worm (menyebar sendiri via jaringan), Trojan Horse, Spyware, dan bahaya Ransomware.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-rose-50/50 p-4 rounded-xl border border-rose-100">
+                <span class="text-rose-700 font-extrabold text-sm">02.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Memahami Protokol Enkripsi HTTPS</strong>
+                    <p class="text-slate-600">Menjelaskan perbedaan HTTP polos vs HTTPS terenkripsi SSL/TLS dan mengapa tidak boleh memasukkan password pada situs tanpa gembok.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-rose-50/50 p-4 rounded-xl border border-rose-100">
+                <span class="text-rose-700 font-extrabold text-sm">03.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Mendeteksi Serangan Phishing & Rekayasa Sosial</strong>
+                    <p class="text-slate-600">Menganalisis indikasi tautan palsu (*typosquatting*), manipulasi psikologis kepanikan, dan pesan jebakan APK di WhatsApp.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-rose-50/50 p-4 rounded-xl border border-rose-100">
+                <span class="text-rose-700 font-extrabold text-sm">04.</span>
+                <div>
+                    <strong class="text-slate-800 block mb-0.5">Menerapkan Keamanan Akun Multi-Faktor</strong>
+                    <p class="text-slate-600">Mengonfigurasi Two-Factor Authentication (2FA) menggunakan aplikasi Authenticator dan memahami peran firewall jaringan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: RAGAM ANCAMAN MALWARE & REKAYASA SOSIAL -->
+    <section id="ragam-ancaman" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-rose-100 text-rose-800 flex items-center justify-center text-xl font-extrabold">1</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Anatomi Ancaman Siber: Malware & Social Engineering</h2>
+                <p class="text-xs text-slate-500">Perangkat lunak jahat (*malicious software*) dan taktik manipulasi psikologis</p>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <span class="text-2xl">🦠</span>
+                <strong class="font-heading text-sm text-slate-800 block">Worm (Cacing Jaringan)</strong>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Malware yang mampu menggandakan dirinya sendiri dan menyebar secara otomatis dari satu komputer ke komputer lain melalui celah port jaringan tanpa butuh campur tangan manusia.
+                </p>
+            </div>
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <span class="text-2xl">🐴</span>
+                <strong class="font-heading text-sm text-slate-800 block">Trojan Horse</strong>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Menyamar sebagai file atau aplikasi berguna (misal: game bajakan, aplikasi cheat, file PDF undangan pernikahan palsu berformat <code>.apk</code>), padahal membuka pintu belakang (*backdoor*) untuk peretas.
+                </p>
+            </div>
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <span class="text-2xl">💰</span>
+                <strong class="font-heading text-sm text-slate-800 block">Ransomware</strong>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Mengenkripsi (mengunci dengan sandi militer) semua file foto dan dokumen di komputermu, lalu meminta uang tebusan (ransom) jutaan rupiah dalam bentuk cryptocurrency agar kuncinya dibuka.
+                </p>
+            </div>
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <span class="text-2xl">🎣</span>
+                <strong class="font-heading text-sm text-slate-800 block">Phishing (Memancing)</strong>
+                <p class="text-slate-600 leading-relaxed text-[11px]">
+                    Situs web atau pesan tiruan yang meniru tampilan resmi bank, Instagram, atau Google untuk menjebak korban agar mengetikkan username, password, dan nomor kartu debit secara sukarela.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: ENKRIPSI HTTP VS HTTPS -->
+    <section id="enkripsi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-extrabold">2</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Enkripsi Data: Mengapa Harus Ada Huruf 'S' di HTTPS?</h2>
+                <p class="text-xs text-slate-500">Melihat perbedaan antara surat terbuka tanpa amplop dengan koper brankas baja bersandi</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 text-xs">
+            <!-- Box HTTP -->
+            <div class="p-5 rounded-2xl border-2 border-rose-200 bg-rose-50/40 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-rose-900 text-sm flex items-center gap-2"><span>🔓</span> HTTP (Hypertext Transfer Protocol)</span>
+                    <span class="text-[10px] bg-rose-200 text-rose-800 px-2 py-0.5 rounded font-bold">TIDAK AMAN</span>
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                    Data ditransmisikan dalam bentuk <strong>teks polos (*plain text*)</strong>. Jika kamu login di kafe yang memakai HTTP, siapa pun di ruangan itu yang menjalankan aplikasi pemantau jaringan (sniffing) bisa membaca password-mu dengan mata telanjang!
+                </p>
+                <div class="bg-white p-3 rounded-xl border border-rose-100 font-mono text-[11px] text-slate-700">
+                    Paket yang terlihat penyadap:<br>
+                    <span class="text-rose-700 font-bold">username: fanani_smp | password: rahasia123</span>
+                </div>
+            </div>
+
+            <!-- Box HTTPS -->
+            <div class="p-5 rounded-2xl border-2 border-emerald-200 bg-emerald-50/40 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-emerald-900 text-sm flex items-center gap-2"><span>🔒</span> HTTPS (HTTP Secure dengan SSL/TLS)</span>
+                    <span class="text-[10px] bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded font-bold">AMAN & TERENKRIPSI</span>
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                    Data diacak menjadi kode kriptografi acak (*ciphertext*) sebelum meninggalkan komputermu. Hanya server resmi tujuan yang memiliki kunci pembuka enkripsi tersebut.
+                </p>
+                <div class="bg-white p-3 rounded-xl border border-emerald-100 font-mono text-[11px] text-slate-700">
+                    Paket yang terlihat penyadap:<br>
+                    <span class="text-emerald-700 font-bold">k7@#9!xL8q$W01== (Teks Teracak Tidak Terbaca)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: BAHAYA WI-FI PUBLIK GRATIS -->
+    <section id="wifi-publik" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">3</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Waspada: Jangan Asal Sambung Wi-Fi Gratis Tanpa Sandi!</h2>
+                <p class="text-xs text-slate-500">Mengenal perangkap serangan Evil Twin dan penyadapan paket nirkabel</p>
+            </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900 text-white space-y-3 text-xs leading-relaxed">
+            <h4 class="font-heading font-bold text-amber-300 text-sm flex items-center gap-2">
+                <span>⚠️</span> Skenario Serangan "Evil Twin" (Kembaran Jahat)
+            </h4>
+            <p class="text-slate-300">
+                Bayangkan kamu berada di kafe "Kopi Mantap". Di daftar Wi-Fi HP-mu muncul dua nama: <code>KopiMantap_Official</code> dan <code>FREE_KopiMantap_Fast</code> (tanpa password). Jika kamu menyambung ke yang gratisan tanpa password, bisa jadi hotspot itu dibuat oleh laptop peretas di meja sudut! Semua lalu lintas data browsing-mu akan melewati komputernya.
+            </p>
+            <div class="grid sm:grid-cols-3 gap-3 pt-2 text-[11px] text-slate-200">
+                <div class="bg-white/10 p-3 rounded-xl">
+                    <strong class="text-amber-400 block mb-1">Tips 1: Jangan Transaksi</strong>
+                    Jangan pernah membuka m-banking atau belanja online saat tersambung ke Wi-Fi publik tanpa password.
+                </div>
+                <div class="bg-white/10 p-3 rounded-xl">
+                    <strong class="text-amber-400 block mb-1">Tips 2: Gunakan VPN</strong>
+                    VPN membuat lorong enkripsi pribadi tambahan dari perangkatmu langsung ke server VPN.
+                </div>
+                <div class="bg-white/10 p-3 rounded-xl">
+                    <strong class="text-amber-400 block mb-1">Tips 3: Lupakan Jaringan</strong>
+                    Matikan fitur "Auto-Connect" ke Wi-Fi terbuka di pengaturan smartphone.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: AUTENTIKASI 2FA -->
+    <section id="proteksi-2fa" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-extrabold">4</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Perisai Terkuat: Two-Factor Authentication (2FA)</h2>
+                <p class="text-xs text-slate-500">Mengapa password yang panjang saja tidak lagi cukup di era modern?</p>
+            </div>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+            Jika password akunmu bocor karena kebocoran data di sebuah website game, peretas masih <strong>TIDAK AKAN BISA MASUK</strong> jika kamu mengaktifkan <strong>Autentikasi Dua Faktor (2FA)</strong>. Konsep 2FA menggabungkan dua hal berbeda:
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-1.5">
+                <span class="text-2xl">🔑</span>
+                <strong class="text-slate-800 block">Faktor 1: Sesuatu yang Kamu Ketahui (Knowledge)</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Username dan Kata Sandi (Password) yang kamu ketikkan.
+                </p>
+            </div>
+            <div class="p-4 rounded-xl border border-slate-200 bg-teal-50/50 space-y-1.5">
+                <span class="text-2xl">📱</span>
+                <strong class="text-teal-900 block">Faktor 2: Sesuatu yang Kamu Miliki (Possession)</strong>
+                <p class="text-slate-600 leading-relaxed">
+                    Kode OTP 6-angka acak yang berganti tiap 30 detik di HP fisikmu (via Google Authenticator) atau kunci fisik hardware (YubiKey).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: SIMULATOR DETEKTIF LINK PALSU (PHISHING) -->
+    <section id="simulator-phishing" class="bg-white rounded-2xl border-2 border-rose-200 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-rose-100">
+            <span class="w-10 h-10 rounded-2xl bg-rose-100 text-rose-800 flex items-center justify-center text-xl font-extrabold">🎮</span>
+            <div>
+                <h2 class="font-heading font-extrabold text-2xl text-slate-900">Simulator Interaktif: Detektif Link Phishing</h2>
+                <p class="text-xs text-slate-500">Uji kejelian matamu! Analisis 3 skenario tautan berikut: manakah yang ASLI dan manakah yang PALSU?</p>
+            </div>
+        </div>
+
+        <div class="space-y-4 text-xs">
+            <!-- Kasus 1 -->
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <span class="font-bold text-slate-700 block">Kasus 1: Notifikasi Verifikasi Akun Instagram</span>
+                <div class="p-2.5 bg-white border border-slate-300 rounded-lg font-mono text-[11px] text-blue-700 break-all">
+                    http://instagram.login-security-center.xyz/verify-account
+                </div>
+                <div class="flex items-center gap-3 pt-1">
+                    <button onclick="checkPhish(1, 'PALSU')" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">Jebakan Phishing!</button>
+                    <button onclick="checkPhish(1, 'ASLI')" class="px-4 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-lg transition">Situs Asli Resmi</button>
+                    <span id="phish-res-1" class="font-bold"></span>
+                </div>
+            </div>
+
+            <!-- Kasus 2 -->
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <span class="font-bold text-slate-700 block">Kasus 2: Hasil Pencarian Google Dokumen Pelajaran</span>
+                <div class="p-2.5 bg-white border border-slate-300 rounded-lg font-mono text-[11px] text-blue-700 break-all">
+                    https://accounts.google.com/signin/v2/identifier
+                </div>
+                <div class="flex items-center gap-3 pt-1">
+                    <button onclick="checkPhish(2, 'PALSU')" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">Jebakan Phishing!</button>
+                    <button onclick="checkPhish(2, 'ASLI')" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition">Situs Asli Resmi</button>
+                    <span id="phish-res-2" class="font-bold"></span>
+                </div>
+            </div>
+
+            <!-- Kasus 3 -->
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
+                <span class="font-bold text-slate-700 block">Kasus 3: Pesan WhatsApp Hadiah Pulsa 500 Ribu</span>
+                <div class="p-2.5 bg-white border border-slate-300 rounded-lg font-mono text-[11px] text-blue-700 break-all">
+                    https://telk0msel-klaim-kuota.online/hadiah-gratis.apk
+                </div>
+                <div class="flex items-center gap-3 pt-1">
+                    <button onclick="checkPhish(3, 'PALSU')" class="px-4 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">Jebakan Phishing!</button>
+                    <button onclick="checkPhish(3, 'ASLI')" class="px-4 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-lg transition">Situs Asli Resmi</button>
+                    <span id="phish-res-3" class="font-bold"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVALUASI FORMATIF (20 SOAL TOTAL DALAM 4 BAGIAN) -->
+    <section id="evaluasi" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-extrabold">📝</span>
+                <div>
+                    <h2 class="font-heading font-extrabold text-2xl text-slate-900">Evaluasi Formatif: Keamanan Jaringan</h2>
+                    <p class="text-xs text-slate-500">20 Soal (Pilihan Ganda, Benar/Salah, Menjodohkan, dan Sikap Etis)</p>
+                </div>
+            </div>
+            <div id="eval-score-badge" class="hidden text-sm font-extrabold px-4 py-2 rounded-2xl"></div>
+        </div>
+
+        <!-- Bagian A: Pilihan Ganda (8 Soal @ 5 Poin = 40 Poin) -->
+        <div class="space-y-5 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian A: Pilihan Ganda</span>
+                <span class="text-slate-500">8 Soal · 40 Poin</span>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">1. Malware yang mengunci seluruh file dokumen di komputer korban dan meminta tebusan uang untuk membukanya disebut...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="A"> A. Adware</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="B"> B. Ransomware</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="C"> C. Spyware</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q1" value="D"> D. Firmware</label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">2. Huruf 'S' pada singkatan protokol HTTPS di bilah alamat browser memiliki arti...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="A"> A. Speed (Cepat)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="B"> B. Secure (Aman terenkripsi)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="C"> C. System (Sistem)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q2" value="D"> D. Server (Pelayan)</label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">3. Metode kejahatan siber dengan mengirimkan tautan formulir tiruan bank/medsos untuk mencuri sandi korban disebut...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="A"> A. Phishing</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="B"> B. Defragmenter</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="C"> C. Overclocking</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q3" value="D"> D. Rendering</label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">4. Perangkat lunak atau perangkat keras yang bertindak sebagai dinding penyaring pengawas lalu lintas data keluar-masuk di jaringan komputer disebut...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="A"> A. Firewall</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="B"> B. Trojan</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="C"> C. Heatsink</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q4" value="D"> D. Motherboard</label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">5. Mengapa Two-Factor Authentication (2FA) jauh lebih aman daripada hanya mengandalkan kata sandi biasa?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="A"> A. Menghapus semua riwayat browsing secara otomatis</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="B"> B. Meskipun kata sandi diketahui orang lain, peretas tetap tidak bisa masuk tanpa kode OTP dari perangkat fisik pemilik</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="C"> C. Menggandakan kecepatan internet menjadi 2x lipat</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q5" value="D"> D. Membuat komputer tidak butuh listrik</label>
+                </div>
+            </div>
+
+            <!-- Soal 6 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">6. Apa bahaya utama melakukan transaksi perbankan saat tersambung ke jaringan Wi-Fi publik gratis tanpa sandi?</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="A"> A. Kuota HP berkurang 2 kali lipat</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="B"> B. Data dapat disadap oleh peretas yang berada di jaringan yang sama menggunakan teknik sniffing</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="C"> C. Layar HP langsung retak secara fisik</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q6" value="D"> D. Monitor komputer berubah menjadi hitam putih</label>
+                </div>
+            </div>
+
+            <!-- Soal 7 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">7. Ciri-ciri kata sandi (password) yang kuat dan sulit ditebak oleh serangan peretas adalah...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="A"> A. Menggunakan tanggal lahir sendiri agar mudah diingat</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="B"> B. Terdiri dari minimal 12 karakter kombinasi huruf besar, huruf kecil, angka, dan simbol khusus (@, #, $)</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="C"> C. Menggunakan kata "password123"</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q7" value="D"> D. Menggunakan nama depan panggilan</label>
+                </div>
+            </div>
+
+            <!-- Soal 8 -->
+            <div class="p-4 rounded-xl border border-slate-200 space-y-2">
+                <p class="font-bold text-slate-800">8. Program jahat yang menyamar sebagai file dokumen bermanfaat (misal aplikasi game gratis atau surat undangan berformat .apk) disebut...</p>
+                <div class="space-y-1.5 pl-2 text-slate-700">
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="A"> A. Trojan Horse</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="B"> B. Antivirus</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="C"> C. Web Browser</label>
+                    <label class="flex items-center gap-2"><input type="radio" name="q8" value="D"> D. Operating System</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian B: Benar atau Salah (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian B: Analisis Benar atau Salah</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">9. Memasukkan nomor kartu ATM di situs dengan awalan <code>http://</code> (tanpa huruf S) sangat berbahaya karena datanya tidak dienkripsi.</span>
+                <select id="tf1" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">10. Tautan mencurigakan seperti <code>bca-klik-promo.xyz</code> dapat dipastikan merupakan situs resmi resmi Bank Central Asia.</span>
+                <select id="tf2" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">11. VPN (Virtual Private Network) menciptakan terowongan data terenkripsi untuk mengamankan komunikasi di jaringan yang tidak dipercaya.</span>
+                <select id="tf3" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="text-slate-700 font-medium">12. Menggunakan satu password yang sama untuk 10 akun medsos sekaligus adalah praktik keamanan terbaik.</span>
+                <select id="tf4" class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg font-bold text-xs">
+                    <option value="">Pilih Jawaban</option>
+                    <option value="BENAR">BENAR</option>
+                    <option value="SALAH">SALAH</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Bagian C: Menjodohkan Istilah Keamanan (4 Soal @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian C: Menjodohkan Istilah Keamanan Siber</span>
+                <span class="text-slate-500">4 Soal · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">13. Firewall</p>
+                    <select id="m1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Definisi --</option>
+                        <option value="FILTER">Dinding penyaring lalu lintas data berbahaya</option>
+                        <option value="ENCRYPT">Mengacak data menjadi kode rahasia yang tak terbaca</option>
+                        <option value="OTP">Kode sandi sekali pakai yang berganti berkala</option>
+                        <option value="MALWARE">Program perusak yang mengunci berkas dan meminta tebusan</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">14. Enkripsi Kriptografi</p>
+                    <select id="m2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Definisi --</option>
+                        <option value="FILTER">Dinding penyaring lalu lintas data berbahaya</option>
+                        <option value="ENCRYPT">Mengacak data menjadi kode rahasia yang tak terbaca</option>
+                        <option value="OTP">Kode sandi sekali pakai yang berganti berkala</option>
+                        <option value="MALWARE">Program perusak yang mengunci berkas dan meminta tebusan</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">15. OTP (One-Time Password)</p>
+                    <select id="m3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Definisi --</option>
+                        <option value="FILTER">Dinding penyaring lalu lintas data berbahaya</option>
+                        <option value="ENCRYPT">Mengacak data menjadi kode rahasia yang tak terbaca</option>
+                        <option value="OTP">Kode sandi sekali pakai yang berganti berkala</option>
+                        <option value="MALWARE">Program perusak yang mengunci berkas dan meminta tebusan</option>
+                    </select>
+                </div>
+                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <p class="font-bold text-slate-800">16. Ransomware</p>
+                    <select id="m4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-slate-700 text-xs">
+                        <option value="">-- Pilih Definisi --</option>
+                        <option value="FILTER">Dinding penyaring lalu lintas data berbahaya</option>
+                        <option value="ENCRYPT">Mengacak data menjadi kode rahasia yang tak terbaca</option>
+                        <option value="OTP">Kode sandi sekali pakai yang berganti berkala</option>
+                        <option value="MALWARE">Program perusak yang mengunci berkas dan meminta tebusan</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian D: Analisis Tanda Phishing (4 Langkah @ 5 Poin = 20 Poin) -->
+        <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between bg-slate-100 p-3 rounded-xl font-bold text-slate-800">
+                <span>Bagian D: Tanda Bahaya Tautan Mencurigakan</span>
+                <span class="text-slate-500">4 Pertanyaan · 20 Poin</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">17. Tautan menggunakan domain tipuan seperti <code>faceb00k.com</code> (huruf o diganti angka 0). Teknik ini dinamakan...</label>
+                    <select id="d1" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Jawaban</option>
+                        <option value="TYPO">Typosquatting (Domain Tipuan Huruf)</option>
+                        <option value="ROUTER">Routing dinamis</option>
+                        <option value="CACHING">Penyimpanan Cache</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">18. Pesan yang mendesak "Akunmu akan ditutup dalam 10 menit jika tidak klik link ini!" memanfaatkan emosi korban berupa...</label>
+                    <select id="d2" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Jawaban</option>
+                        <option value="PANIC">Kepanikan & Desakan Waktu (Sense of Urgency)</option>
+                        <option value="JOY">Kegembiraan yang tenang</option>
+                        <option value="SLEEP">Rasa kantuk</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">19. Ekstensi file mencurigakan yang dikirim via WhatsApp berkedok surat kurir paket adalah...</label>
+                    <select id="d3" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Jawaban</option>
+                        <option value="APK">File installer aplikasi Android (.apk)</option>
+                        <option value="TXT">File teks biasa (.txt)</option>
+                        <option value="PNG">Gambar foto (.png)</option>
+                    </select>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <label class="font-bold text-slate-700">20. Jika kamu tidak sengaja mengklik link phishing dan mengetik password, tindakan paling pertama yang wajib kamu lakukan adalah...</label>
+                    <select id="d4" class="w-full p-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <option value="">Pilih Jawaban</option>
+                        <option value="RESET">Segera ganti password akun resmi dan putuskan semua sesi login</option>
+                        <option value="WAIT">Menunggu 3 hari apakah ada uang yang hilang</option>
+                        <option value="RESTART">Mematikan monitor komputer</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+            <p class="text-xs text-slate-400">Pastikan semua nomor telah terisi sebelum menekan tombol periksa nilai.</p>
+            <button onclick="submitEvaluationNetworkSecurity()" class="w-full sm:w-auto px-8 py-3 bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-sm rounded-xl shadow-lg transition">
+                Periksa & Kirim Jawaban
+            </button>
+        </div>
+
+        <!-- Riwayat Pengerjaan -->
+        <div id="attempt-history-box" class="hidden pt-6 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-xs uppercase text-slate-400 tracking-wider">Riwayat Pengerjaan Tersimpan:</h4>
+            <div id="attempt-history-list" class="space-y-2 text-xs"></div>
+        </div>
+    </section>
+
+    <!-- SECTION: RANGKUMAN & REFLEKSI -->
+    <section id="rangkuman" class="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <span class="text-2xl">✨</span>
+            <h2 class="font-heading font-extrabold text-xl text-slate-800">Rangkuman Kunci & Refleksi Belajar</h2>
+        </div>
+
+        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li><strong>Malware</strong> memiliki berbagai wujud mematikan: Worm (menyebar via jaringan), Trojan (aplikasi penyamar), dan Ransomware (penyandera berkas).</li>
+            <li><strong>HTTPS</strong> melindungi kerahasiaan data dengan enkripsi SSL/TLS, sedangkan HTTP mengirim data teks polos yang mudah disadap.</li>
+            <li><strong>Hindari transaksi sensitif</strong> saat menggunakan Wi-Fi publik tanpa proteksi sandi demi mencegah serangan penyadapan (*sniffing*) dan *Evil Twin*.</li>
+            <li><strong>Aktifkan 2FA (Two-Factor Authentication)</strong> di seluruh akun medsos dan email sebagai lapis pengaman ganda saat password bocor.</li>
+        </ul>
+
+        <div class="pt-4 border-t border-slate-100 space-y-3">
+            <h4 class="font-heading font-bold text-slate-800 text-sm">Refleksi Belajarmu:</h4>
+            <textarea id="reflection-input" rows="3" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500" placeholder="Langkah keamanan siber apa yang akan langsung kamu terapkan pada akun WhatsApp atau medsos pribadimu hari ini?"></textarea>
+            <div class="flex items-center justify-between">
+                <span id="refl-status" class="text-xs text-emerald-600 font-bold"></span>
+                <button onclick="saveStudentReflection()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition">
+                    Simpan Refleksi
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <div class="flex justify-between items-center gap-4 pt-4">
+        <a href="../05-layanan-internet/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-rose-600 hover:border-rose-200 transition text-xs font-bold">
+            ← Modul Sebelumnya: Layanan Internet
+        </a>
+        <a href="../../06-analisis-data/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white transition text-xs font-bold shadow-md">
+            Unit Berikutnya: Analisis Data →
         </a>
     </div>
 
     <!-- Selesai Mempelajari Modul Card -->
-    <div class="mt-12 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 p-6 bg-white border border-slate-200 rounded-3xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
             <h4 class="font-heading font-bold text-slate-800 text-base">Sudah selesai membaca materi ini?</h4>
             <p class="text-xs text-slate-500">Klik tombol untuk mencatat progres belajarmu ke Rapor Belajar.</p>
         </div>
-        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+        <button id="btn-complete-module" onclick="markModuleComplete()" class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
             <span>✓</span> Tandai Selesai
         </button>
     </div>
 
 </main>
+
 <footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani.</div>
-        <a href="../../../" class="hover:text-indigo-600 transition font-medium">← Kembali ke Edu</a>
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+        <div>&copy; 2026 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan.</div>
+        <a href="../../../" class="hover:text-rose-600 transition font-medium">← Kembali ke Portal Edu</a>
     </div>
 </footer>
+
 <script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
-const TOPIC_ID = 'inf-jaringan-06';
+const TOPIC_ID = 'inf-jki-06';
 
-async function markModuleComplete() {
-    if (window.FananiTracker) {
-        await FananiTracker.markCompleted(SUBJECT, TOPIC_ID);
-        const btn = document.getElementById("btn-complete-module");
-        if (btn) {
-            btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-            btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+function checkPhish(caseNum, answer) {
+    const el = document.getElementById('phish-res-' + caseNum);
+    if (caseNum === 1) {
+        if (answer === 'PALSU') {
+            el.className = 'font-bold text-emerald-600';
+            el.innerText = '✅ Tepat! Domain aslinya xyz, bukan instagram.com!';
+        } else {
+            el.className = 'font-bold text-rose-600';
+            el.innerText = '❌ Salah! Perhatikan nama domainnya .xyz dan menggunakan HTTP polos!';
+        }
+    } else if (caseNum === 2) {
+        if (answer === 'ASLI') {
+            el.className = 'font-bold text-emerald-600';
+            el.innerText = '✅ Tepat! Ini adalah domain resmi HTTPS google.com.';
+        } else {
+            el.className = 'font-bold text-rose-600';
+            el.innerText = '❌ Ini adalah subdomain resmi Google yang sah.';
+        }
+    } else if (caseNum === 3) {
+        if (answer === 'PALSU') {
+            el.className = 'font-bold text-emerald-600';
+            el.innerText = '✅ Tepat! Perhatikan kata telk0msel (huruf O diganti 0) dan unduhan mencurigakan .apk!';
+        } else {
+            el.className = 'font-bold text-rose-600';
+            el.innerText = '❌ Waspada! Domain resmi Telkomsel adalah telkomsel.com, bukan .online!';
         }
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+const ANSWERS_A = {
+    q1: 'B',
+    q2: 'B',
+    q3: 'A',
+    q4: 'A',
+    q5: 'B',
+    q6: 'B',
+    q7: 'B',
+    q8: 'A'
+};
+
+const ANSWERS_B = {
+    tf1: 'BENAR',
+    tf2: 'SALAH',
+    tf3: 'BENAR',
+    tf4: 'SALAH'
+};
+
+const ANSWERS_C = {
+    m1: 'FILTER',
+    m2: 'ENCRYPT',
+    m3: 'OTP',
+    m4: 'MALWARE'
+};
+
+const ANSWERS_D = {
+    d1: 'TYPO',
+    d2: 'PANIC',
+    d3: 'APK',
+    d4: 'RESET'
+};
+
+async function markModuleComplete() {
     if (window.FananiTracker) {
-        const hist = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
-        if (hist && hist.is_completed) {
-            const btn = document.getElementById("btn-complete-module");
-            if (btn) {
-                btn.innerHTML = "<span>✓</span> Modul Tuntas!";
-                btn.className = "px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
-            }
+        await FananiTracker.markComplete(SUBJECT, TOPIC_ID);
+        const btn = document.getElementById('btn-complete-module');
+        if (btn) {
+            btn.innerHTML = '<span>✓</span> Tersimpan di Rapor!';
+            btn.className = 'px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl transition shadow cursor-default';
+        }
+    } else {
+        alert('Modul ditandai selesai secara lokal!');
+    }
+}
+
+async function submitEvaluationNetworkSecurity() {
+    let scoreA = 0, scoreB = 0, scoreC = 0, scoreD = 0;
+    const answers = {};
+
+    for (let k in ANSWERS_A) {
+        const el = document.querySelector(`input[name="${k}"]:checked`);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_A[k]) scoreA += 5;
+    }
+
+    for (let k in ANSWERS_B) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_B[k]) scoreB += 5;
+    }
+
+    for (let k in ANSWERS_C) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_C[k]) scoreC += 5;
+    }
+
+    for (let k in ANSWERS_D) {
+        const el = document.getElementById(k);
+        const val = el ? el.value : '';
+        answers[k] = val;
+        if (val === ANSWERS_D[k]) scoreD += 5;
+    }
+
+    const totalScore = scoreA + scoreB + scoreC + scoreD;
+
+    const badge = document.getElementById('eval-score-badge');
+    badge.classList.remove('hidden');
+    if (totalScore >= 70) {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300';
+        badge.innerHTML = `🎉 Selamat! Skor Kamu: ${totalScore}/100 (TUNTAS)`;
+    } else {
+        badge.className = 'text-sm font-extrabold px-5 py-2.5 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300';
+        badge.innerHTML = `⚠️ Skor Kamu: ${totalScore}/100 (Belum Tuntas, Coba Lagi!)`;
+    }
+
+    if (window.FananiTracker) {
+        await FananiTracker.submitEvaluation({
+            subject: SUBJECT,
+            topic_id: TOPIC_ID,
+            score_a: scoreA,
+            score_b: scoreB,
+            score_c: scoreC,
+            score_d: scoreD,
+            total_score: totalScore,
+            answers: answers
+        });
+        loadHistory();
+    }
+}
+
+async function saveStudentReflection() {
+    const txt = document.getElementById('reflection-input').value.trim();
+    if (!txt) {
+        alert('Tuliskan refleksi belajarmu terlebih dahulu!');
+        return;
+    }
+    if (window.FananiTracker) {
+        await FananiTracker.saveReflection(SUBJECT, TOPIC_ID, txt);
+        document.getElementById('refl-status').innerText = '✅ Refleksi tersimpan!';
+        setTimeout(() => document.getElementById('refl-status').innerText = '', 3000);
+    }
+}
+
+async function loadHistory() {
+    if (!window.FananiTracker) return;
+    const data = await FananiTracker.getHistory(SUBJECT, TOPIC_ID);
+    if (data && data.attempts && data.attempts.length > 0) {
+        const box = document.getElementById('attempt-history-box');
+        const list = document.getElementById('attempt-history-list');
+        box.classList.remove('hidden');
+        list.innerHTML = data.attempts.map((att, idx) => `
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                <span>Percobaan #${idx + 1} (${new Date(att.created_at).toLocaleDateString('id-ID')})</span>
+                <span class="font-bold ${att.total_score >= 70 ? 'text-emerald-700' : 'text-amber-700'}">
+                    Skor: ${att.total_score}/100 (A:${att.score_a} B:${att.score_b} C:${att.score_c} D:${att.score_d})
+                </span>
+            </div>
+        `).join('');
+
+        if (data.reflection_text) {
+            document.getElementById('reflection-input').value = data.reflection_text;
         }
     }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadHistory();
 });
 </script>
+
 </body>
 </html>
