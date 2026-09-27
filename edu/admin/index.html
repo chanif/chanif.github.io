@@ -534,6 +534,7 @@
                 ? `${API_URL}${endpoint}&key=${encodeURIComponent(adminKey)}` 
                 : `${API_URL}${endpoint}?key=${encodeURIComponent(adminKey)}`;
             const headers = {
+                'Authorization': `Bearer ${adminKey}`,
                 'x-admin-key': adminKey,
                 ...(options.headers || {})
             };
@@ -543,7 +544,10 @@
         async function verifyAndLaunchAdmin(key) {
             try {
                 const res = await fetch(`${API_URL}/admin/overview?key=${encodeURIComponent(key)}`, {
-                    headers: { 'x-admin-key': key }
+                    headers: { 
+                        'Authorization': `Bearer ${key}`,
+                        'x-admin-key': key 
+                    }
                 });
                 if (res.ok) {
                     unlockDashboard();
