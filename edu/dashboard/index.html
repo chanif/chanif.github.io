@@ -396,6 +396,14 @@
             loadDashboardData();
         });
 
+        // Cross-Tab Realtime Sync (Item 2)
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'fanani_edu_progress' || (e.key && e.key.startsWith('eval_hist_')) || e.key === 'fanani_user') {
+                console.log('[Class Dashboard] Storage update detected, refreshing data...');
+                loadDashboardData();
+            }
+        });
+
         async function loadDashboardData() {
             const tableBody = document.getElementById('students-table-body');
             tableBody.innerHTML = `

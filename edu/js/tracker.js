@@ -303,6 +303,21 @@ const COURSE_CATALOG = {
         } catch (e) {}
     }
 
+    // Helper to safely handle HTTP 401 (Expired/Revoked Token)
+    function handleAuthStatus(res) {
+        if (res && res.status === 401) {
+            console.warn('[Tracker] Sesi login telah berakhir atau tidak valid (401). Membersihkan token.');
+            localStorage.removeItem('fanani_auth_token');
+            if (typeof window !== 'undefined') {
+                window.dispatchEvent(new CustomEvent('fanani_session_expired', {
+                    detail: { message: 'Sesi login telah berakhir. Progres lokal Anda tetap tersimpan.' }
+                }));
+            }
+            return false;
+        }
+        return true;
+    }
+
     // Record or sync completion status
     async function markCompleted(subject, topicId) {
         setLocalProgress(topicId, true);
@@ -319,6 +334,9 @@ const COURSE_CATALOG = {
                 },
                 body: JSON.stringify({ subject, topic_id: topicId, status: 'completed' })
             });
+            if (!handleAuthStatus(res)) {
+                return { success: false, mode: 'session_expired' };
+            }
             const data = await res.json();
             syncData(false).catch(() => {});
             return { success: data.success, mode: 'server' };
@@ -364,8 +382,12 @@ const COURSE_CATALOG = {
                     },
                     body: JSON.stringify(payload)
                 });
-                syncResult = await res.json();
-                syncData(false).catch(() => {});
+                if (!handleAuthStatus(res)) {
+                    syncResult = { success: false, mode: 'session_expired' };
+                } else {
+                    syncResult = await res.json();
+                    syncData(false).catch(() => {});
+                }
             } catch (err) {
                 console.warn('[Tracker] Offline fallback for evaluation:', err);
                 syncResult = { success: true, mode: 'local_fallback' };
@@ -412,6 +434,9 @@ const COURSE_CATALOG = {
                 },
                 body: JSON.stringify({ subject, topic_id, reflection_text })
             });
+            if (!handleAuthStatus(res)) {
+                return { success: false, mode: 'session_expired' };
+            }
             const data = await res.json();
             syncData(false).catch(() => {});
             return { success: data.success, mode: 'server' };
@@ -677,6 +702,9 @@ const COURSE_CATALOG = {
                     email
                 })
             });
+            if (!handleAuthStatus(res)) {
+                return { success: false, error: 'Sesi login telah berakhir' };
+            }
             const data = await res.json();
             return data;
         } catch (err) {
@@ -768,6 +796,11 @@ const COURSE_CATALOG = {
                 headers,
                 body: JSON.stringify(payload)
             });
+
+            if (!handleAuthStatus(res)) {
+                isSyncing = false;
+                return { success: false, error: 'Sesi login telah berakhir' };
+            }
 
             if (!res.ok) {
                 isSyncing = false;
@@ -974,6 +1007,60 @@ const COURSE_CATALOG = {
         }
     }
 
+    // ============================================================
+    // QUIZ OBFUSCATION & SECURE ANSWER VALIDATION SUITE (ITEM 6)
+    // Prevents students from opening DevTools / Inspect Element to read plain text answers.
+    // ============================================================
+    const QUIZ_SALT = 'fanani_edu_merdeka_2025';
+
+    function hashAnswerSync(val, qKey = '') {
+        const str = `${QUIZ_SALT}_${String(qKey).toLowerCase()}_${String(val).trim().toLowerCase()}`;
+        let hash = 5381;
+        for (let i = 0; i < str.length; i++) {
+            hash = (((hash << 5) + hash) + str.charCodeAt(i)) & 0xFFFFFFFF;
+            if (hash >= 0x80000000) hash -= 0x100000000;
+        }
+        return ((hash & 0xFFFFFFFF) >>> 0).toString(16);
+    }
+
+    function obfuscateKeys(rawKeyMap) {
+        const obfuscated = {};
+        Object.keys(rawKeyMap).forEach(k => {
+            obfuscated[k] = hashAnswerSync(rawKeyMap[k], k);
+        });
+        return obfuscated;
+    }
+
+    function verifyObfuscatedAnswers(userAnswers, obfuscatedMap, pointsPerQuestion = 5) {
+        let score = 0;
+        let correctCount = 0;
+        const keys = Object.keys(obfuscatedMap);
+        const results = {};
+
+        keys.forEach(k => {
+            const userVal = userAnswers[k];
+            if (userVal !== undefined && userVal !== null && String(userVal).trim() !== '') {
+                const userHash = hashAnswerSync(userVal, k);
+                const isCorrect = userHash === obfuscatedMap[k];
+                results[k] = isCorrect;
+                if (isCorrect) {
+                    score += pointsPerQuestion;
+                    correctCount++;
+                }
+            } else {
+                results[k] = false;
+            }
+        });
+
+        return {
+            score,
+            correctCount,
+            totalQuestions: keys.length,
+            maxScore: keys.length * pointsPerQuestion,
+            results
+        };
+    }
+
     if (typeof window !== 'undefined') {
         const initTracker = () => {
             renderNavbarAuth();
@@ -981,6 +1068,15 @@ const COURSE_CATALOG = {
                 setTimeout(() => { syncData(false).catch(() => {}); }, 600);
             }
         };
+
+        // Auto-retry sync when network reconnects (Item 3)
+        window.addEventListener('online', () => {
+            console.log('[Tracker] Jaringan internet kembali online, menyinkronkan data tertunda...');
+            if (getToken() || (getUser() && getUser().google_id)) {
+                syncData(true).catch(() => {});
+            }
+        });
+
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initTracker);
         } else {
@@ -1002,7 +1098,10 @@ const COURSE_CATALOG = {
         syncData,
         getAppPaths,
         getAuthSyncHtml,
-        renderNavbarAuth
+        renderNavbarAuth,
+        hashAnswerSync,
+        obfuscateKeys,
+        verifyObfuscatedAnswers
     };
 })();
 

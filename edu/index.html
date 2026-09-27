@@ -873,6 +873,13 @@
             startGoogleAuthWatcher();
         });
 
+        // Cross-Tab Realtime Sync (Item 2)
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'fanani_user' || e.key === 'fanani_auth_token') {
+                renderUserStatus();
+            }
+        });
+
         window.addEventListener('load', () => {
             if (!localStorage.getItem('fanani_user')) {
                 renderGoogleSignInButton();

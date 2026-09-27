@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -556,7 +556,8 @@
     <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — SMP Negeri 2 Lamongan. Platform Pembelajaran Informatika.</p>
 </footer>
 
-<!-- Interactive Scripts -->
+<!-- Interactive Scripts & Centralized Tracker -->
+<script src="../../../js/tracker.js"></script>
 <script>
 const SUBJECT = 'informatika';
 const TOPIC_ID = 'inf-intro-01';
@@ -704,13 +705,25 @@ function moveSeq(idx, dir) {
 }
 
 function submitAllEvaluation() {
+    // Item 6: Obfuscated Quiz Keys (mencegah siswa melihat kunci jawaban via Inspect Element)
+    const OBFUSCATED_KEY_A = { 'A1': '6eb4af21', 'A2': '6eb4b361', 'A3': '6eb4b7a3', 'A4': '6eb4bbe4', 'A5': '6eb4c025' };
+    const OBFUSCATED_KEY_B = { 'B1': 'f775d629', 'B2': '433eac69', 'B3': '9038e92a', 'B4': 'de648c6c', 'B5': '2a2d62ac' };
+
     let scoreA = 0;
-    const keyA = { A1: 'B', A2: 'A', A3: 'B', A4: 'B', A5: 'B' };
-    Object.keys(keyA).forEach(k => { if (evalAnswers[k] === keyA[k]) scoreA += 5; });
+    if (window.FananiTracker && FananiTracker.verifyObfuscatedAnswers) {
+        scoreA = FananiTracker.verifyObfuscatedAnswers(evalAnswers, OBFUSCATED_KEY_A, 5).score;
+    } else {
+        const keyA = { A1: 'B', A2: 'A', A3: 'B', A4: 'B', A5: 'B' };
+        Object.keys(keyA).forEach(k => { if (evalAnswers[k] === keyA[k]) scoreA += 5; });
+    }
 
     let scoreB = 0;
-    const keyB = { B1: 'salah', B2: 'benar', B3: 'benar', B4: 'salah', B5: 'benar' };
-    Object.keys(keyB).forEach(k => { if (evalAnswers[k] === keyB[k]) scoreB += 5; });
+    if (window.FananiTracker && FananiTracker.verifyObfuscatedAnswers) {
+        scoreB = FananiTracker.verifyObfuscatedAnswers(evalAnswers, OBFUSCATED_KEY_B, 5).score;
+    } else {
+        const keyB = { B1: 'salah', B2: 'benar', B3: 'benar', B4: 'salah', B5: 'benar' };
+        Object.keys(keyB).forEach(k => { if (evalAnswers[k] === keyB[k]) scoreB += 5; });
+    }
 
     let scoreC = 0;
     Object.keys(MATCH_CORRECT).forEach(k => {
@@ -860,7 +873,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
-<script src="../../../js/tracker.js"></script>
 
 </body>
 </html>
