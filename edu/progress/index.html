@@ -38,6 +38,33 @@
 </head>
 <body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900 pb-24 transition-colors duration-300">
 
+    <!-- ========== LOADING OVERLAY ========== -->
+    <div id="loading-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-900/80 backdrop-blur-md transition-all duration-500 ease-out no-print">
+        <div class="relative flex flex-col items-center p-8 max-w-sm mx-4 bg-white/10 border border-white/20 rounded-3xl shadow-2xl backdrop-blur-xl text-center">
+            <!-- Glowing background pulse behind spinner -->
+            <div class="absolute -top-10 w-40 h-40 bg-indigo-500/30 rounded-full blur-2xl pointer-events-none animate-pulse"></div>
+            
+            <!-- Animated Spinner Rings -->
+            <div class="relative w-20 h-20 mb-5 flex items-center justify-center">
+                <div class="absolute inset-0 rounded-full border-4 border-indigo-400/20"></div>
+                <div class="absolute inset-0 rounded-full border-4 border-transparent border-t-amber-400 border-r-indigo-500 animate-spin" style="animation-duration: 1s;"></div>
+                <div class="absolute inset-2 rounded-full border-4 border-transparent border-b-emerald-400 border-l-teal-300 animate-spin" style="animation-duration: 1.5s; animation-direction: reverse;"></div>
+                <div class="text-3xl select-none animate-bounce-slow">🎓</div>
+            </div>
+
+            <!-- Text & Status Indicator -->
+            <h3 id="loading-overlay-title" class="font-heading font-extrabold text-lg text-white tracking-wide">Menyiapkan Rapor Belajar</h3>
+            <p id="loading-overlay-desc" class="text-xs text-slate-300 mt-1.5 leading-relaxed font-medium">
+                Sinkronisasi modul tuntas, skor evaluasi kuis, dan lencana prestasi...
+            </p>
+
+            <div class="mt-4 flex items-center gap-2 px-3.5 py-1 bg-white/10 rounded-full border border-white/15 text-[11px] font-bold text-amber-300">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span id="loading-overlay-badge">Memuat data siswa...</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Decorative Glow Blobs -->
     <div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-indigo-200 opacity-30 blur-[120px] rounded-full pointer-events-none z-0"></div>
     <div class="fixed bottom-0 right-0 w-96 h-96 bg-emerald-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
@@ -745,18 +772,19 @@
         }
 
         async function loadProgressDashboard() {
-            let data = null;
-            if (window.FananiTracker && typeof window.FananiTracker.getAllProgressSummary === 'function') {
-                try {
-                    data = await FananiTracker.getAllProgressSummary();
-                } catch(e) {
-                    console.warn("Tracker summary error:", e);
+            try {
+                let data = null;
+                if (window.FananiTracker && typeof window.FananiTracker.getAllProgressSummary === 'function') {
+                    try {
+                        data = await FananiTracker.getAllProgressSummary();
+                    } catch(e) {
+                        console.warn("Tracker summary error:", e);
+                    }
                 }
-            }
 
-            if (!data) {
-                data = buildFallbackSummary();
-            }
+                if (!data) {
+                    data = buildFallbackSummary();
+                }
 
             progressData = data;
             const { user, stats, badges, catalog } = progressData;
@@ -845,6 +873,11 @@
             // 5. Render Units & Modules List
             renderUnitList('inf-units-container', catalog.informatika, 'inf');
             renderUnitList('kka-units-container', catalog.coding, 'kka');
+            } catch (err) {
+                console.error("Dashboard error:", err);
+            } finally {
+                setTimeout(hideLoadingOverlay, 350);
+            }
         }
 
         function renderUnitList(containerId, unitList, prefix) {
@@ -979,6 +1012,9 @@
             localStorage.setItem('fanani_user', JSON.stringify(userObj));
             closeProfileModal();
 
+            // Show loading overlay during save
+            showLoadingOverlay('Memperbarui Profil...', 'Menyimpan nama dan kelas siswa ke database...');
+
             // Sync with backend API
             if (window.FananiTracker && typeof FananiTracker.saveProfile === 'function') {
                 const saveBtn = document.getElementById('btn-save-profile');
@@ -990,6 +1026,31 @@
             // Immediately re-load progress dashboard to update UI
             await loadProgressDashboard();
         }
+
+        // Overlay Controllers
+        function showLoadingOverlay(title = 'Menyiapkan Rapor Belajar', desc = 'Sinkronisasi modul tuntas, skor evaluasi kuis, dan lencana prestasi...') {
+            const overlay = document.getElementById('loading-overlay');
+            if (!overlay) return;
+            const titleEl = document.getElementById('loading-overlay-title');
+            const descEl = document.getElementById('loading-overlay-desc');
+            if (titleEl) titleEl.innerText = title;
+            if (descEl) descEl.innerText = desc;
+            overlay.classList.remove('hidden');
+            void overlay.offsetWidth;
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function hideLoadingOverlay() {
+            const overlay = document.getElementById('loading-overlay');
+            if (!overlay) return;
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 500);
+        }
+
+        // Fail-safe timeout to prevent infinite stuck loading
+        setTimeout(hideLoadingOverlay, 8000);
 
         document.addEventListener('DOMContentLoaded', () => {
             loadProgressDashboard();
