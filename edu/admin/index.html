@@ -529,9 +529,22 @@
             }
         }
 
+        function adminFetch(endpoint, options = {}) {
+            const url = endpoint.includes('?') 
+                ? `${API_URL}${endpoint}&key=${encodeURIComponent(adminKey)}` 
+                : `${API_URL}${endpoint}?key=${encodeURIComponent(adminKey)}`;
+            const headers = {
+                'x-admin-key': adminKey,
+                ...(options.headers || {})
+            };
+            return fetch(url, { ...options, headers });
+        }
+
         async function verifyAndLaunchAdmin(key) {
             try {
-                const res = await fetch(`${API_URL}/admin/overview?key=${encodeURIComponent(key)}`);
+                const res = await fetch(`${API_URL}/admin/overview?key=${encodeURIComponent(key)}`, {
+                    headers: { 'x-admin-key': key }
+                });
                 if (res.ok) {
                     unlockDashboard();
                 } else {
@@ -579,7 +592,7 @@
         // Load Overview & Metrics
         async function loadAdminOverview() {
             try {
-                const res = await fetch(`${API_URL}/admin/overview?key=${encodeURIComponent(adminKey)}`);
+                const res = await adminFetch('/admin/overview');
                 if (!res.ok) throw new Error('Gagal memuat overview');
                 const data = await res.json();
                 overviewData = data;
@@ -646,7 +659,7 @@
         // Load Students Management List
         async function loadAdminStudents() {
             try {
-                const res = await fetch(`${API_URL}/admin/students?key=${encodeURIComponent(adminKey)}`);
+                const res = await adminFetch('/admin/students');
                 if (!res.ok) throw new Error('Gagal memuat data siswa');
                 const data = await res.json();
 
@@ -765,7 +778,7 @@
             const role = document.getElementById('edit-student-role').value;
 
             try {
-                const res = await fetch(`${API_URL}/admin/student/update?key=${encodeURIComponent(adminKey)}`, {
+                const res = await adminFetch('/admin/student/update', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ id, full_name, kelas, role })
@@ -805,7 +818,7 @@
             const score = document.getElementById('override-score').value;
 
             try {
-                const res = await fetch(`${API_URL}/admin/student/override_progress?key=${encodeURIComponent(adminKey)}`, {
+                const res = await adminFetch('/admin/student/override_progress', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ user_id, topic_id, score, record_evaluation: true, status: 'completed' })
@@ -864,7 +877,7 @@
             }
 
             try {
-                const res = await fetch(`${API_URL}/admin/student/reset_progress?key=${encodeURIComponent(adminKey)}`, {
+                const res = await adminFetch('/admin/student/reset_progress', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ user_id, topic_id, reset_all: (scope === 'all') })
@@ -890,7 +903,7 @@
             }
 
             try {
-                const res = await fetch(`${API_URL}/admin/student/delete?key=${encodeURIComponent(adminKey)}`, {
+                const res = await adminFetch('/admin/student/delete', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ id })
@@ -911,7 +924,7 @@
         // 5. Purge Sessions
         async function handlePurgeSessions() {
             try {
-                const res = await fetch(`${API_URL}/admin/purge_sessions?key=${encodeURIComponent(adminKey)}`, {
+                const res = await adminFetch('/admin/purge_sessions', {
                     method: 'POST'
                 });
                 const data = await res.json();
