@@ -171,6 +171,13 @@
                     <span>📊 Progress Belajarku</span>
                 </a>
 
+                <!-- Tombol Edit Profil Siswa -->
+                <button id="btn-edit-profile" onclick="openEditProfileModal()"
+                    class="hidden px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition flex items-center gap-1.5 whitespace-nowrap"
+                    title="Ubah Nama Lengkap & Kelas">
+                    <span>✏️ Edit Profil</span>
+                </button>
+
                 <button id="btn-logout" onclick="handleLogout()"
                     class="hidden px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 font-bold rounded-xl text-xs transition">
                     Keluar
@@ -417,17 +424,25 @@
 
     </main>
 
-    <!-- ========== MODAL LENGKAPI PROFIL SISWA BARU (SETELAH GOOGLE LOGIN) ========== -->
+    <!-- ========== MODAL LENGKAPI / EDIT PROFIL SISWA ========== -->
     <div id="profile-modal"
         class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div
             class="bg-white rounded-3xl p-6 md:p-8 max-w-sm w-full shadow-2xl border border-slate-100 space-y-5 text-center relative">
+            
+            <!-- Tombol Tutup (✕) -->
+            <button type="button" onclick="closeProfileModal()"
+                class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 font-bold text-sm flex items-center justify-center transition"
+                title="Tutup">
+                ✕
+            </button>
+
             <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl mx-auto overflow-hidden border border-indigo-100"
                 id="modal-avatar-preview">
                 🎓
             </div>
             <div>
-                <h3 class="font-heading font-extrabold text-xl text-slate-900">Lengkapi Profil Siswa</h3>
+                <h3 class="font-heading font-extrabold text-xl text-slate-900" id="profile-modal-title">Lengkapi Profil Siswa</h3>
                 <p class="text-xs text-slate-500 mt-1" id="modal-email-preview">Konfirmasikan nama lengkap dan kelasmu
                     untuk mencatat nilai evaluasi.</p>
             </div>
@@ -489,7 +504,7 @@
                     </select>
                 </div>
 
-                <button onclick="saveStudentProfileCompletion()"
+                <button id="btn-save-profile" onclick="saveStudentProfileCompletion()"
                     class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-heading font-bold text-xs rounded-xl transition shadow mt-2">
                     Simpan Profil &amp; Mulai Belajar
                 </button>
@@ -593,8 +608,29 @@
             }
         }
 
+        // Open Edit Profile Modal for logged in users
+        function openEditProfileModal() {
+            const userJson = localStorage.getItem('fanani_user');
+            if (userJson) {
+                const user = JSON.parse(userJson);
+                document.getElementById('profile-modal-title').innerText = 'Perbarui Profil Siswa';
+                document.getElementById('modal-email-preview').innerText = user.email ? `Akun Google: ${user.email}` : 'Perbarui nama lengkap dan kelasmu:';
+                document.getElementById('profile-input-name').value = user.name || user.full_name || '';
+                document.getElementById('profile-input-kelas').value = user.kelas || '';
+                document.getElementById('btn-save-profile').innerText = 'Simpan Perubahan Profil';
+                if (user.picture) {
+                    document.getElementById('modal-avatar-preview').innerHTML = `<img src="${user.picture}" referrerpolicy="no-referrer" class="w-full h-full object-cover rounded-xl" onerror="this.parentElement.innerHTML='🎓'">`;
+                }
+            }
+            document.getElementById('profile-modal').classList.remove('hidden');
+        }
+
+        function closeProfileModal() {
+            document.getElementById('profile-modal').classList.add('hidden');
+        }
+
         // Save Completed Profile (Name & Kelas 7A - 9K)
-        function saveStudentProfileCompletion() {
+        async function saveStudentProfileCompletion() {
             const name = document.getElementById('profile-input-name').value.trim();
             const kelas = document.getElementById('profile-input-kelas').value;
 
@@ -607,23 +643,31 @@
                 return;
             }
 
+            const existingUserStr = localStorage.getItem('fanani_user');
+            const existingUser = existingUserStr ? JSON.parse(existingUserStr) : {};
+
             const userObj = {
-                google_id: pendingGooglePayload ? pendingGooglePayload.sub : 'guest_' + Date.now(),
+                ...existingUser,
+                google_id: existingUser.google_id || (pendingGooglePayload ? pendingGooglePayload.sub : ''),
+                email: existingUser.email || (pendingGooglePayload ? pendingGooglePayload.email : ''),
+                picture: existingUser.picture || (pendingGooglePayload ? pendingGooglePayload.picture : ''),
                 name: name,
+                full_name: name,
                 kelas: kelas,
-                email: pendingGooglePayload ? pendingGooglePayload.email : '',
-                picture: pendingGooglePayload ? pendingGooglePayload.picture : '',
                 profile_completed: true,
                 updated_at: new Date().toISOString()
             };
 
             localStorage.setItem('fanani_user', JSON.stringify(userObj));
-            document.getElementById('profile-modal').classList.add('hidden');
+            closeProfileModal();
             renderUserStatus();
 
-            // Optional server profile sync if FananiTracker available
+            // Sync with backend API
             if (window.FananiTracker && FananiTracker.saveProfile) {
-                FananiTracker.saveProfile(userObj);
+                const saveBtn = document.getElementById('btn-save-profile');
+                if (saveBtn) saveBtn.innerText = 'Menyimpan...';
+                await FananiTracker.saveProfile(userObj);
+                if (saveBtn) saveBtn.innerText = 'Simpan Perubahan Profil';
             }
         }
 
@@ -697,6 +741,8 @@
                             progressBtn.classList.remove('hidden');
                             progressBtn.innerHTML = '<span>📊 Progress Belajarku</span>';
                         }
+                        const editProfileBtn = document.getElementById('btn-edit-profile');
+                        if (editProfileBtn) editProfileBtn.classList.remove('hidden');
                         if (logoutBtn) logoutBtn.classList.remove('hidden');
                         return;
                     }
@@ -708,6 +754,9 @@
                 badgeEl.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600';
                 detailEl.innerText = 'Masuk dengan Google untuk menyinkronkan skor evaluasi dan catatan refleksimu ke database guru.';
                 avatarEl.innerHTML = '👤';
+
+                const editProfileBtn = document.getElementById('btn-edit-profile');
+                if (editProfileBtn) editProfileBtn.classList.add('hidden');
 
                 if (btnContainer) {
                     btnContainer.classList.remove('hidden');

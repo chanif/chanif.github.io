@@ -89,6 +89,9 @@
                         </div>
                         <h1 class="text-2xl md:text-3xl font-extrabold font-heading text-white flex flex-wrap items-center gap-2.5" id="student-name-display">
                             <span>Siswa Hebat</span>
+                            <button type="button" onclick="openEditProfileModal()" class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/15 hover:bg-white/25 active:scale-95 text-white rounded-xl text-xs font-bold backdrop-blur-sm border border-white/25 transition shadow-sm ml-1" title="Ubah Nama Lengkap &amp; Kelas">
+                                <span>✏️ Edit Profil</span>
+                            </button>
                         </h1>
                         <p class="text-xs text-slate-300 flex flex-wrap items-center justify-center sm:justify-start gap-2" id="student-detail-info">
                             <span>✨ Fanani's Class</span>
@@ -261,8 +264,95 @@
         <p>© 2025 Ach. Chanifuddin Fanani, S.Pd. — Fanani's Class. Platform Pembelajaran Mandiri.</p>
     </footer>
 
+    <!-- ========== MODAL LENGKAPI / EDIT PROFIL SISWA ========== -->
+    <div id="profile-modal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 no-print">
+        <div
+            class="bg-white rounded-3xl p-6 md:p-8 max-w-sm w-full shadow-2xl border border-slate-100 space-y-5 text-center relative">
+            
+            <!-- Tombol Tutup (✕) -->
+            <button type="button" onclick="closeProfileModal()"
+                class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 font-bold text-sm flex items-center justify-center transition"
+                title="Tutup">
+                ✕
+            </button>
+
+            <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl mx-auto overflow-hidden border border-indigo-100"
+                id="modal-avatar-preview">
+                🎓
+            </div>
+            <div>
+                <h3 class="font-heading font-extrabold text-xl text-slate-900" id="profile-modal-title">Perbarui Profil Siswa</h3>
+                <p class="text-xs text-slate-500 mt-1" id="modal-email-preview">Perbarui nama lengkap dan kelasmu untuk mencatat progres &amp; nilai evaluasi.</p>
+            </div>
+
+            <div class="space-y-3 text-left">
+                <div>
+                    <label class="text-[11px] font-bold text-slate-700 block mb-1">Nama Lengkap Siswa:</label>
+                    <input type="text" id="profile-input-name" placeholder="Nama Lengkap..."
+                        class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                </div>
+
+                <div>
+                    <label class="text-[11px] font-bold text-slate-700 block mb-1">Pilih Kelas (7A - 9K):</label>
+                    <select id="profile-input-kelas"
+                        class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                        <option value="">-- Pilih Kelas --</option>
+                        <!-- Kelas 7 -->
+                        <optgroup label="Kelas 7">
+                            <option value="7A">Kelas 7A</option>
+                            <option value="7B">Kelas 7B</option>
+                            <option value="7C">Kelas 7C</option>
+                            <option value="7D">Kelas 7D</option>
+                            <option value="7E">Kelas 7E</option>
+                            <option value="7F">Kelas 7F</option>
+                            <option value="7G">Kelas 7G</option>
+                            <option value="7H">Kelas 7H</option>
+                            <option value="7I">Kelas 7I</option>
+                            <option value="7J">Kelas 7J</option>
+                            <option value="7K">Kelas 7K</option>
+                        </optgroup>
+                        <!-- Kelas 8 -->
+                        <optgroup label="Kelas 8">
+                            <option value="8A">Kelas 8A</option>
+                            <option value="8B">Kelas 8B</option>
+                            <option value="8C">Kelas 8C</option>
+                            <option value="8D">Kelas 8D</option>
+                            <option value="8E">Kelas 8E</option>
+                            <option value="8F">Kelas 8F</option>
+                            <option value="8G">Kelas 8G</option>
+                            <option value="8H">Kelas 8H</option>
+                            <option value="8I">Kelas 8I</option>
+                            <option value="8J">Kelas 8J</option>
+                            <option value="8K">Kelas 8K</option>
+                        </optgroup>
+                        <!-- Kelas 9 -->
+                        <optgroup label="Kelas 9">
+                            <option value="9A">Kelas 9A</option>
+                            <option value="9B">Kelas 9B</option>
+                            <option value="9C">Kelas 9C</option>
+                            <option value="9D">Kelas 9D</option>
+                            <option value="9E">Kelas 9E</option>
+                            <option value="9F">Kelas 9F</option>
+                            <option value="9G">Kelas 9G</option>
+                            <option value="9H">Kelas 9H</option>
+                            <option value="9I">Kelas 9I</option>
+                            <option value="9J">Kelas 9J</option>
+                            <option value="9K">Kelas 9K</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <button id="btn-save-profile" onclick="saveStudentProfileCompletion()"
+                    class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-heading font-bold text-xs rounded-xl transition shadow mt-2">
+                    Simpan Perubahan Profil
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
-    <script src="../js/tracker.js?v=20260830_21"></script>
+    <script src="../js/tracker.js?v=20260927_01"></script>
     <script>
         let currentTab = 'informatika';
         let progressData = null;
@@ -681,6 +771,9 @@
                 document.getElementById('student-name-display').innerHTML = `
                     <span>${user.name}</span>
                     ${classBadgeHtml}
+                    <button type="button" onclick="openEditProfileModal()" class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/15 hover:bg-white/25 active:scale-95 text-white rounded-xl text-xs font-bold backdrop-blur-sm border border-white/25 transition shadow-sm ml-1" title="Ubah Nama Lengkap &amp; Kelas">
+                        <span>✏️ Edit Profil</span>
+                    </button>
                 `;
                 
                 document.getElementById('student-detail-info').innerHTML = `
@@ -699,6 +792,9 @@
                 document.getElementById('student-name-display').innerHTML = `
                     <span>Siswa Tamu</span>
                     <span class="inline-flex items-center px-2.5 py-0.5 bg-white/15 text-slate-200 font-bold text-xs rounded-xl border border-white/20">Mode Mandiri</span>
+                    <button type="button" onclick="openEditProfileModal()" class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/15 hover:bg-white/25 active:scale-95 text-white rounded-xl text-xs font-bold backdrop-blur-sm border border-white/25 transition shadow-sm ml-1" title="Atur Nama Lengkap &amp; Kelas">
+                        <span>✏️ Atur Profil</span>
+                    </button>
                 `;
                 document.getElementById('student-detail-info').innerHTML = `
                     <span>✨ Fanani's Class</span>
@@ -821,6 +917,78 @@
                     </div>
                 `;
             }).join('');
+        }
+
+        // Open Edit Profile Modal
+        function openEditProfileModal() {
+            let user = null;
+            try {
+                user = JSON.parse(localStorage.getItem('fanani_user') || 'null');
+            } catch(e) {}
+            if (user) {
+                document.getElementById('profile-modal-title').innerText = 'Perbarui Profil Siswa';
+                document.getElementById('modal-email-preview').innerText = user.email ? `Akun Google: ${user.email}` : 'Perbarui nama lengkap dan kelasmu:';
+                document.getElementById('profile-input-name').value = user.name || user.full_name || '';
+                document.getElementById('profile-input-kelas').value = user.kelas || '';
+                document.getElementById('btn-save-profile').innerText = 'Simpan Perubahan Profil';
+                if (user.picture) {
+                    document.getElementById('modal-avatar-preview').innerHTML = `<img src="${user.picture}" referrerpolicy="no-referrer" class="w-full h-full object-cover rounded-xl" onerror="this.parentElement.innerHTML='🎓'">`;
+                }
+            } else {
+                document.getElementById('profile-modal-title').innerText = 'Atur Profil Siswa';
+                document.getElementById('modal-email-preview').innerText = 'Masukkan nama lengkap dan kelasmu:';
+                document.getElementById('profile-input-name').value = '';
+                document.getElementById('profile-input-kelas').value = '';
+                document.getElementById('btn-save-profile').innerText = 'Simpan Profil';
+                document.getElementById('modal-avatar-preview').innerHTML = '🎓';
+            }
+            document.getElementById('profile-modal').classList.remove('hidden');
+        }
+
+        function closeProfileModal() {
+            document.getElementById('profile-modal').classList.add('hidden');
+        }
+
+        async function saveStudentProfileCompletion() {
+            const name = document.getElementById('profile-input-name').value.trim();
+            const kelas = document.getElementById('profile-input-kelas').value;
+
+            if (!name) {
+                alert('Silakan masukkan nama lengkap siswa!');
+                return;
+            }
+            if (!kelas) {
+                alert('Silakan pilih kelas siswa!');
+                return;
+            }
+
+            let existingUser = {};
+            try {
+                existingUser = JSON.parse(localStorage.getItem('fanani_user') || '{}');
+            } catch(e) {}
+
+            const userObj = {
+                ...existingUser,
+                name: name,
+                full_name: name,
+                kelas: kelas,
+                profile_completed: true,
+                updated_at: new Date().toISOString()
+            };
+
+            localStorage.setItem('fanani_user', JSON.stringify(userObj));
+            closeProfileModal();
+
+            // Sync with backend API
+            if (window.FananiTracker && typeof FananiTracker.saveProfile === 'function') {
+                const saveBtn = document.getElementById('btn-save-profile');
+                if (saveBtn) saveBtn.innerText = 'Menyimpan...';
+                await FananiTracker.saveProfile(userObj);
+                if (saveBtn) saveBtn.innerText = 'Simpan Perubahan Profil';
+            }
+
+            // Immediately re-load progress dashboard to update UI
+            await loadProgressDashboard();
         }
 
         document.addEventListener('DOMContentLoaded', () => {

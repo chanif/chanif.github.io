@@ -634,15 +634,16 @@ const COURSE_CATALOG = {
 
     async function googleLogin(credential) {
         try {
-            const res = await fetch(`${API_BASE_URL}/google_login.php`, {
+            const res = await fetch(`${API_BASE_URL}/google_login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ credential })
             });
             const data = await res.json();
-            if (data.success && data.session_token) {
-                localStorage.setItem('fanani_auth_token', data.session_token);
-                return data;
+            const token = data.session_token || data.token;
+            if (data.success && token) {
+                localStorage.setItem('fanani_auth_token', token);
+                return { ...data, session_token: token };
             }
             return { success: false, error: data.error || 'Login failed' };
         } catch (err) {
@@ -655,17 +656,22 @@ const COURSE_CATALOG = {
         const fullName = payload.full_name || payload.name;
         const kelas = payload.kelas;
         const token = getToken();
-
-        if (!token) return { success: true, mode: 'local' };
+        const googleId = payload.google_id || '';
+        const email = payload.email || '';
 
         try {
-            const res = await fetch(`${API_BASE_URL}/save_profile.php`, {
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) headers['Authorization'] = `Bearer ${token}`;
+
+            const res = await fetch(`${API_BASE_URL}/save_profile`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ full_name: fullName, kelas })
+                headers,
+                body: JSON.stringify({ 
+                    full_name: fullName, 
+                    kelas,
+                    google_id: googleId,
+                    email
+                })
             });
             const data = await res.json();
             return data;
