@@ -1,340 +1,536 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workshop MGMP Informatika — Pembuatan LMS Mini dengan AI, GitHub Pages & Firebase | Oktober 2026</title>
-    <meta name="description" content="Workshop untuk Guru MGMP Informatika: Membuat media pembelajaran kompleks (LMS Mini) 4 halaman dengan Claude AI, integrasi database Firebase, dan hosting di GitHub Pages.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop MGMP Informatika & KKA — Bikin Web Portofolio & 2 Media Belajar Interaktif dengan Antigravity AI, GitHub & Cloudflare | Oktober 2026</title>
+    <meta name="description" content="Panduan workshop guru Informatika & KKA: Cara membuat website portofolio guru dan 2 media pembelajaran interaktif berbantuan Antigravity AI, dicadangkan ke GitHub, dan di-hosting gratis secepat kilat dengan Cloudflare Pages.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <!-- Tailwind CSS & Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        h1,h2,h3,.font-heading{font-family:'Quicksand',sans-serif;}body{font-family:'Inter',sans-serif;}
-        .prose p{margin-bottom:.6rem;line-height:1.7;}
-        .prose strong{font-weight:700;color:#1e293b;}
+        h1, h2, h3, h4, .font-heading { font-family: 'Quicksand', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
+        .prose p { margin-bottom: 0.75rem; line-height: 1.75; }
+        .prompt-box {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
     </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 antialiased">
-<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
-<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="../../../" class="font-heading font-extrabold text-xl text-slate-900 hover:text-blue-600 transition">fanani<span class="text-indigo-600">.</span></a>
-    <a href="../" class="text-sm font-semibold text-blue-600 hover:underline">← Workshop</a>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900 pb-20">
+
+<!-- Latar Belakang Estetik -->
+<div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-indigo-200 opacity-25 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-0 right-0 w-96 h-96 bg-teal-200 opacity-20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
+<!-- Navigasi -->
+<nav class="relative z-50 max-w-5xl mx-auto px-6 py-6 flex justify-between items-center border-b border-slate-100">
+    <a href="../../../" class="font-heading font-extrabold text-2xl text-slate-900 hover:text-indigo-600 transition">
+        fanani<span class="text-indigo-600">.</span>
+    </a>
+    <div class="flex items-center gap-3">
+        <a href="../" class="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition flex items-center gap-1.5">
+            ← Semua Workshop
+        </a>
+        <a href="../../" class="px-3.5 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold rounded-xl transition">
+            Pusat Edukasi
+        </a>
+    </div>
 </nav>
-<main class="relative z-10 max-w-5xl mx-auto px-6 pb-20">
-    <div class="flex items-center gap-2 text-xs text-slate-400 mb-8 flex-wrap">
-        <a href="../../" class="hover:text-blue-600">Edu</a><span>/</span>
-        <a href="../" class="hover:text-blue-600">Workshop</a><span>/</span>
-        <span class="text-slate-600 font-semibold">Workshop MGMP Informatika</span>
+
+<main class="relative z-10 max-w-5xl mx-auto px-6 pt-6 space-y-10">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs text-slate-400 flex-wrap">
+        <a href="../../" class="hover:text-indigo-600 transition">Edu</a>
+        <span>/</span>
+        <a href="../" class="hover:text-indigo-600 transition">Workshop</a>
+        <span>/</span>
+        <span class="text-slate-700 font-semibold">MGMP Informatika & KKA Oktober 2026</span>
     </div>
 
-    <!-- Hero -->
-    <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2rem] p-8 text-white mb-10 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-56 h-56 bg-white opacity-5 rounded-full -translate-y-12 translate-x-12"></div>
-        <div class="absolute bottom-0 left-0 w-40 h-40 bg-white opacity-5 rounded-full translate-y-10 -translate-x-8"></div>
-        <div class="relative z-10">
-            <div class="flex flex-wrap gap-2 mb-4">
-                <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full">📅 Oktober 2026</span>
-                <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full">MGMP Informatika</span>
-                <span class="text-xs font-bold bg-white/20 px-3 py-1 rounded-full">Tingkat Lanjut</span>
+    <!-- Hero Header -->
+    <header class="bg-gradient-to-br from-indigo-700 via-indigo-600 to-teal-700 rounded-[2.5rem] p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-2xl -translate-y-16 translate-x-16 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl space-y-4">
+            <div class="flex flex-wrap gap-2">
+                <span class="text-xs font-bold bg-white/20 px-3.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm">📅 Oktober 2026</span>
+                <span class="text-xs font-bold bg-white/20 px-3.5 py-1 rounded-full backdrop-blur-sm">👥 MGMP Informatika & KKA</span>
+                <span class="text-xs font-bold bg-amber-400 text-slate-950 px-3 py-1 rounded-full shadow-sm">✨ Ramah Guru Pemula</span>
             </div>
-            <h1 class="font-heading font-extrabold text-2xl md:text-4xl mb-3 leading-tight">Membangun LMS Mini Interaktif <br>dengan AI, Firebase & GitHub Pages 🚀</h1>
-            <p class="text-blue-100 leading-relaxed max-w-2xl mb-5 text-sm md:text-base">Workshop ini dirancang khusus untuk guru Informatika. Kita akan membuat media pembelajaran kompleks berisi multi-halaman (Beranda, 2 Halaman Materi, dan Halaman Admin Pemantauan) buatan AI, menyimpan nilai evaluasi siswa ke database <strong>Firebase Spark Plan</strong>, dan mempublikasikannya secara permanen di <strong>GitHub Pages</strong>.</p>
+            <h1 class="text-3xl md:text-5xl font-extrabold font-heading leading-tight">
+                Membangun Web Portofolio Guru & 2 Media Pembelajaran Interaktif 🚀
+            </h1>
+            <p class="text-indigo-100 text-sm md:text-base leading-relaxed">
+                Bapak/Ibu Guru <strong>tidak perlu menghafal rumus koding rumit</strong>! Dalam workshop ini, kita memanfaatkan <strong>Antigravity AI</strong> sebagai asisten pintar kita, mengamankan file ke <strong>GitHub</strong>, dan mempublikasikannya langsung ke internet secara <strong>gratis selamanya dengan Cloudflare Pages</strong>.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-3 text-xs font-semibold text-indigo-100">
+                <span class="bg-black/20 px-3 py-1.5 rounded-xl">🌐 1 Web Portofolio Pribadi</span>
+                <span class="bg-black/20 px-3 py-1.5 rounded-xl">🎮 2 Media Ajar Interaktif + Kuis</span>
+                <span class="bg-black/20 px-3 py-1.5 rounded-xl">⚡ Cloudflare Pages: Cepat & Gratis</span>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Info Cards -->
-    <div class="grid md:grid-cols-4 gap-4 mb-10">
-                        <div class="bg-white border border-slate-100 rounded-2xl p-4 flex items-center gap-3 shadow-sm">
+    <!-- Kartu Informasi Ringkas -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm space-y-1">
             <span class="text-2xl">📅</span>
-            <div>
-                <p class="text-xs text-slate-400">Tanggal</p>
-                <p class="font-heading font-bold text-slate-800 text-sm">Oktober 2026</p>
-            </div>
+            <p class="text-[11px] text-slate-400 font-semibold uppercase">Waktu</p>
+            <p class="font-heading font-extrabold text-slate-800 text-sm">Oktober 2026</p>
+            <p class="text-[11px] text-slate-500">08.00 – 15.00 WIB</p>
         </div>
-                <div class="bg-white border border-slate-100 rounded-2xl p-4 flex items-center gap-3 shadow-sm">
-            <span class="text-2xl">⏰</span>
-            <div>
-                <p class="text-xs text-slate-400">Waktu</p>
-                <p class="font-heading font-bold text-slate-800 text-sm">08.00–15.00 WIB</p>
-            </div>
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm space-y-1">
+            <span class="text-2xl">👥</span>
+            <p class="text-[11px] text-slate-400 font-semibold uppercase">Peserta</p>
+            <p class="font-heading font-extrabold text-slate-800 text-sm">Guru Informatika & KKA</p>
+            <p class="text-[11px] text-slate-500">SMP / MTs se-Kabupaten</p>
         </div>
-                <div class="bg-white border border-slate-100 rounded-2xl p-4 flex items-center gap-3 shadow-sm">
-            <span class="text-2xl">👨‍💻</span>
-            <div>
-                <p class="text-xs text-slate-400">Peserta</p>
-                <p class="font-heading font-bold text-slate-800 text-sm">Guru Informatika</p>
-            </div>
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm space-y-1">
+            <span class="text-2xl">💻</span>
+            <p class="text-[11px] text-slate-400 font-semibold uppercase">Perangkat</p>
+            <p class="font-heading font-extrabold text-slate-800 text-sm">Laptop & Kuota Internet</p>
+            <p class="text-[11px] text-slate-500">Windows / Mac / Linux</p>
         </div>
-                <div class="bg-white border border-slate-100 rounded-2xl p-4 flex items-center gap-3 shadow-sm">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm space-y-1">
             <span class="text-2xl">🛠️</span>
-            <div>
-                <p class="text-xs text-slate-400">Tools</p>
-                <p class="font-heading font-bold text-slate-800 text-sm">Claude, Firebase, GitHub</p>
-            </div>
+            <p class="text-[11px] text-slate-400 font-semibold uppercase">Alat Praktik</p>
+            <p class="font-heading font-extrabold text-slate-800 text-sm">Antigravity, GitHub, Cloudflare</p>
+            <p class="text-[11px] text-slate-500">100% Bebas Biaya</p>
         </div>
-            </div>
-
-    <!-- 3 Output Utama -->
-    <div class="grid md:grid-cols-3 gap-4 mb-10">
-                        <div class="bg-blue-50 border-blue-100 text-blue-800 border rounded-2xl p-5">
-            <div class="text-3xl mb-3">🌐</div>
-            <p class="font-heading font-bold mb-2 text-sm">Website Multi-Halaman</p>
-            <p class="text-xs leading-relaxed opacity-80">Mampu mem-prompt Claude AI untuk membuat struktur LMS mini yang saling terhubung (Index, 2 Materi, Admin).</p>
-        </div>
-                <div class="bg-amber-50 border-amber-100 text-amber-800 border rounded-2xl p-5">
-            <div class="text-3xl mb-3">🗄️</div>
-            <p class="font-heading font-bold mb-2 text-sm">Integrasi Database</p>
-            <p class="text-xs leading-relaxed opacity-80">Mengonfigurasi Firebase Spark Plan (gratis) untuk menyimpan data skor hasil evaluasi kuis secara real-time.</p>
-        </div>
-                <div class="bg-indigo-50 border-indigo-100 text-indigo-800 border rounded-2xl p-5">
-            <div class="text-3xl mb-3">🚀</div>
-            <p class="font-heading font-bold mb-2 text-sm">Hosting Permanen</p>
-            <p class="text-xs leading-relaxed opacity-80">Deploy *source code* media ke GitHub Pages agar dapat diakses selamanya tanpa masa kedaluwarsa.</p>
-        </div>
-            </div>
-
-    <div class="space-y-8">
-
-        <!-- Rundown -->
-        <div class="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
-            <h2 class="font-heading font-extrabold text-xl text-slate-800 mb-5">🗓️ Rundown Kegiatan</h2>
-            <div class="space-y-3">
-                                                <div class="flex gap-4 items-start bg-amber-50 border-amber-200 border rounded-2xl px-5 py-4">
-                    <div class="flex-shrink-0 min-w-[80px]">
-                        <p class="font-mono font-bold text-slate-700 text-xs">08.00–09.30</p>
-                        <p class="text-[10px] text-slate-400 font-semibold mt-0.5">SESI 1</p>                    </div>
-                    <div class="border-l-2 border-slate-200 pl-4 flex-1">
-                        <p class="font-heading font-bold text-slate-800 text-sm mb-1">🔥 Persiapan & Setup Database Firebase</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">Menyiapkan folder lokal, foto profil, dan logo. Membuat project Firebase gratis untuk mendapatkan kode konfigurasi (backend).</p>
-                    </div>
-                </div>
-                                <div class="flex gap-4 items-start bg-slate-50 border-slate-200 border rounded-2xl px-5 py-4">
-                    <div class="flex-shrink-0 min-w-[80px]">
-                        <p class="font-mono font-bold text-slate-700 text-xs">09.30–09.45</p>
-                                            </div>
-                    <div class="border-l-2 border-slate-200 pl-4 flex-1">
-                        <p class="font-heading font-bold text-slate-800 text-sm mb-1">☕ Coffee Break</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">Istirahat dan diskusi santai.</p>
-                    </div>
-                </div>
-                                <div class="flex gap-4 items-start bg-blue-50 border-blue-200 border rounded-2xl px-5 py-4">
-                    <div class="flex-shrink-0 min-w-[80px]">
-                        <p class="font-mono font-bold text-slate-700 text-xs">09.45–11.30</p>
-                        <p class="text-[10px] text-slate-400 font-semibold mt-0.5">SESI 2</p>                    </div>
-                    <div class="border-l-2 border-slate-200 pl-4 flex-1">
-                        <p class="font-heading font-bold text-slate-800 text-sm mb-1">🏗️ Arsitektur Multi-Page & Prompting AI</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">Menyusun prompt super untuk Claude AI agar menghasilkan 4 file HTML yang saling terkait dan sudah otomatis terhubung dengan Firebase.</p>
-                    </div>
-                </div>
-                                <div class="flex gap-4 items-start bg-slate-50 border-slate-200 border rounded-2xl px-5 py-4">
-                    <div class="flex-shrink-0 min-w-[80px]">
-                        <p class="font-mono font-bold text-slate-700 text-xs">11.30–12.30</p>
-                                            </div>
-                    <div class="border-l-2 border-slate-200 pl-4 flex-1">
-                        <p class="font-heading font-bold text-slate-800 text-sm mb-1">🍽️ Ishoma</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">Sholat & makan siang.</p>
-                    </div>
-                </div>
-                                <div class="flex gap-4 items-start bg-indigo-50 border-indigo-200 border rounded-2xl px-5 py-4">
-                    <div class="flex-shrink-0 min-w-[80px]">
-                        <p class="font-mono font-bold text-slate-700 text-xs">12.30–14.00</p>
-                        <p class="text-[10px] text-slate-400 font-semibold mt-0.5">SESI 3</p>                    </div>
-                    <div class="border-l-2 border-slate-200 pl-4 flex-1">
-                        <p class="font-heading font-bold text-slate-800 text-sm mb-1">🐱 Deployment via GitHub Pages</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">Mempublikasikan keenam file (4 HTML + 2 Gambar) ke GitHub Pages agar live di internet dan bisa diakses siswa.</p>
-                    </div>
-                </div>
-                                <div class="flex gap-4 items-start bg-emerald-50 border-emerald-200 border rounded-2xl px-5 py-4">
-                    <div class="flex-shrink-0 min-w-[80px]">
-                        <p class="font-mono font-bold text-slate-700 text-xs">14.00–15.00</p>
-                        <p class="text-[10px] text-slate-400 font-semibold mt-0.5">SESI 4</p>                    </div>
-                    <div class="border-l-2 border-slate-200 pl-4 flex-1">
-                        <p class="font-heading font-bold text-slate-800 text-sm mb-1">🏆 Showcase & Testing</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">Uji coba pengiriman nilai siswa ke database dan apresiasi karya sesama guru.</p>
-                    </div>
-                </div>
-                            </div>
-        </div>
-
-        <!-- Sesi 1: Firebase & Persiapan -->
-        <div class="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center text-white font-heading font-extrabold">1</div>
-                <div>
-                    <h2 class="font-heading font-extrabold text-xl text-slate-800">Persiapan & Integrasi Firebase</h2>
-                    <p class="text-slate-400 text-xs">Menyiapkan aset dan "otak" penyimpan data sebelum memanggil AI</p>
-                </div>
-            </div>
-            
-            <div class="mb-5 bg-amber-50/50 p-4 rounded-xl text-sm text-amber-900 leading-relaxed border border-amber-100">
-                <strong>Kenapa database dulu?</strong> Kita akan meminta AI (Claude) untuk membuat kode website sekaligus kode *database*-nya dalam sekali jalan. Oleh karena itu, kita harus menyiapkan *"kunci database"* (Firebase Config) terlebih dahulu untuk diserahkan ke AI.
-            </div>
-
-            <!-- Persiapan File -->
-            <div class="mb-5 border-l-4 border-slate-400 pl-4">
-                <p class="font-heading font-bold text-slate-800 text-sm mb-1">Tahap 1: Siapkan Folder & Gambar</p>
-                <p class="text-slate-600 text-xs leading-relaxed">Buat sebuah folder baru di komputer Bapak/Ibu (misal: <code>lms-saya</code>). Siapkan dua gambar dan masukkan ke dalam folder tersebut: <br>1. <code>foto.jpg</code> (Pas foto atau avatar Bapak/Ibu Guru).<br>2. <code>logo.png</code> (Logo sekolah atau logo MGMP).</p>
-            </div>
-
-            <!-- Penjelasan Firebase -->
-            <div class="mb-5 border-l-4 border-amber-400 pl-4">
-                <p class="font-heading font-bold text-slate-800 text-sm mb-1">Tahap 2: Buat Database Firebase</p>
-                <p class="text-slate-600 text-xs leading-relaxed">Firebase adalah layanan gratis dari Google untuk menyimpan data (seperti nilai ujian siswa) tanpa perlu kita menyewa server PHP/MySQL.</p>
-            </div>
-
-            <!-- Panduan Detail Firebase -->
-            <div class="bg-amber-50 border border-amber-100 rounded-xl p-5 mb-5">
-                <div class="space-y-4">
-                    <div class="flex gap-3">
-                        <div class="w-6 h-6 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-800">Login & Buat Project</p>
-                            <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Buka <a href="https://console.firebase.google.com" target="_blank" class="text-blue-600 hover:underline">console.firebase.google.com</a> dengan akun Gmail. Klik <strong>"Create a project"</strong>. Beri nama (misal: lms-nilai). Menonaktifkan opsi Google Analytics sangat disarankan agar setup lebih cepat, namun sifatnya opsional.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-3">
-                        <div class="w-6 h-6 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-800">Daftarkan Web (<span class="font-mono text-amber-700">&lt;/&gt;</span>) & Copy Config</p>
-                            <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Di halaman project, klik ikon <strong>&lt;/&gt;</strong> (Web), beri nama aplikasinya. Anda akan mendapatkan blok kode bernama <code>firebaseConfig</code> (berisi apiKey, dll). <strong>Copy blok kode ini ke Notepad</strong>, kita akan memberikannya ke AI pada langkah berikutnya.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-3">
-                        <div class="w-6 h-6 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-800">Aktifkan Firestore Database</p>
-                            <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Di menu sebelah kiri, klik <strong>Build</strong> > <strong>Firestore Database</strong>. Klik tombol "Create database". Pilihlah lokasi server terdekat (misalnya <code>asia-southeast2</code> di Jakarta atau <code>asia-southeast1</code> di Singapura).</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-3">
-                        <div class="w-6 h-6 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">4</div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-800">Atur Aturan Keamanan (Security Rules)</p>
-                            <p class="text-xs text-slate-600 mt-0.5 leading-relaxed mb-2">Saat ditanya mode keamanan database, pilih salah satu:</p>
-                            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1 leading-relaxed">
-                                <li><strong>Start in test mode:</strong> Langsung mengizinkan baca/tulis data, namun akan kedaluwarsa otomatis dalam 30 hari.</li>
-                                <li><strong>Start in production mode:</strong> Lebih aman dan permanen, tetapi Anda harus memperbarui aturannya di tab <strong>Rules</strong> agar web diizinkan menulis data.</li>
-                            </ul>
-                            <div class="mt-3 bg-white p-3 rounded-lg border border-slate-200 font-mono text-[10px] text-slate-700 leading-normal">
-                                <span class="text-slate-400">// Salin ini ke tab Rules jika menggunakan Production Mode:</span><br>
-                                rules_version = '2';<br>
-                                service cloud.firestore {<br>
-                                &nbsp;&nbsp;match /databases/{database}/documents {<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;match /nilai_lms/{document} {<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;allow read, write: if true;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                                &nbsp;&nbsp;}<br>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sesi 2: Prompt Multi-Page -->
-        <div class="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
-            <div class="flex items-center gap-3 mb-5">
-                <div class="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center text-white font-heading font-extrabold">2</div>
-                <div>
-                    <h2 class="font-heading font-extrabold text-xl text-slate-800">Prompting LMS Multi-Page</h2>
-                    <p class="text-slate-400 text-xs">Meminta AI merancang web 3 halaman yang sudah pintar</p>
-                </div>
-            </div>
-
-            <p class="text-slate-600 text-sm mb-4 leading-relaxed">Kini kita sudah siap. Kita akan meminta Claude AI untuk membuat <strong>4 file HTML yang saling bertautan</strong> (index, materi1, materi2, admin) sekaligus menyertakan kode database Firebase dan memanggil aset gambar yang telah kita siapkan di folder.</p>
-
-            <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-5">
-                <p class="text-[10px] font-bold text-blue-700 mb-2 uppercase tracking-wider">🌟 PROMPT MASTER UNTUK CLAUDE AI:</p>
-                <div class="bg-white/80 rounded-xl p-4 font-mono text-[11px] md:text-xs text-slate-800 leading-relaxed border border-blue-200">
-                    Bertindaklah sebagai Senior Front-End Developer. Saya ingin membuat "LMS Mini [Informatika]" statis untuk [Kelas 7] (HTML, Tailwind CSS, Vanilla JS). Buatkan kode untuk <strong>4 file HTML berbeda</strong> yang saling terhubung dengan desain modern, responsif, dan konsisten (menggunakan navigasi yang sama).<br><br>
-                    Gunakan Firebase SDK v10 (Firestore) untuk menyimpan data secara real-time. Berikut adalah config database saya:<br>
-                    <span class="text-blue-600 font-bold">[PASTE KODE FIREBASE CONFIG DI SINI]</span><br><br>
-                    Buatkan struktur file berikut:<br><br>
-                    <strong>1. index.html (Beranda & Profil Guru):</strong><br>
-                    - Tampilkan logo menggunakan file <code>logo.png</code> dan foto profil guru menggunakan file <code>foto.jpg</code>.<br>
-                    - Deskripsi singkat kelas dan tombol navigasi utama yang menarik menuju Materi 1, Materi 2, dan Halaman Pemantauan Admin Guru.<br><br>
-                    <strong>2. materi1.html (Halaman Materi [Berpikir Komputasional]):</strong><br>
-                    - Tujuan Pembelajaran.<br>
-                    - **Pre-Test:** Form (Nama dan Kelas) + 3-5 soal pilihan ganda sederhana. Skor pre-test langsung disimpan ke Firestore (collection: <code>nilai_lms</code>) dengan field: <code>nama</code>, <code>kelas</code>, <code>jenis</code> ("Pre-Test"), <code>materi</code> ("Materi 1"), <code>skor</code>, dan <code>timestamp</code>.<br>
-                    - **Konten Materi:** Penjelasan materi terstruktur menggunakan variasi media (teks menarik, visual card, akordion, placeholder video YouTube).<br>
-                    - **Post-Test / Evaluasi:** Form (Nama dan Kelas) + 5 soal pilihan ganda. Skor evaluasi disimpan ke Firestore (collection: <code>nilai_lms</code>) dengan field: <code>nama</code>, <code>kelas</code>, <code>jenis</code> ("Evaluasi"), <code>materi</code> ("Materi 1"), <code>skor</code>, dan <code>timestamp</code>.<br><br>
-                    <strong>3. materi2.html (Halaman Materi [Sistem Komputer]):</strong><br>
-                    - Struktur dan fitur sama seperti materi1.html, tetapi dengan konten materi [Sistem Komputer].<br>
-                    - Nilai Pre-Test dan Evaluasi juga disimpan ke Firestore (collection: <code>nilai_lms</code>) dengan field materi ("Materi 2").<br><br>
-                    <strong>4. admin.html (Dashboard Pemantauan Guru):</strong><br>
-                    - Dilindungi sandi sederhana (misal: "admin123") untuk masuk.<br>
-                    - Menampilkan tabel real-time dari Firestore (collection: <code>nilai_lms</code>) yang memuat data nilai siswa: Nama, Kelas, Jenis Ujian (Pre-Test/Evaluasi), Nama Materi, Skor, dan Tanggal Pengerjaan.<br>
-                    - Sediakan fitur pencarian nama siswa, filter berdasarkan Kelas, dan filter berdasarkan Materi.<br><br>
-                    Berikan kode keempat file tersebut secara terpisah dan lengkap!
-                </div>
-            </div>
-            
-            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex gap-3 items-start">
-                <span class="text-2xl mt-1">💾</span>
-                <div>
-                    <p class="font-heading font-bold text-slate-800 text-sm mb-1">Simpan File Anda</p>
-                    <p class="text-slate-600 text-xs leading-relaxed">Kopi (*copy*) jawaban kode dari Claude, dan simpan ke dalam Notepad menjadi 4 file berbeda (<code>index.html</code>, <code>materi1.html</code>, <code>materi2.html</code>, dan <code>admin.html</code>). <strong>Simpan 4 file HTML ini ke dalam folder yang sama</strong> dengan letak <code>foto.jpg</code> dan <code>logo.png</code> tadi.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sesi 3: GitHub Pages -->
-        <div class="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 bg-indigo-500 rounded-xl flex items-center justify-center text-white font-heading font-extrabold">3</div>
-                <div>
-                    <h2 class="font-heading font-extrabold text-xl text-slate-800">Deployment ke GitHub Pages</h2>
-                    <p class="text-slate-400 text-xs">Mempublikasikan LMS Mini secara permanen dan gratis</p>
-                </div>
-            </div>
-
-            <!-- Penjelasan GitHub Pages -->
-            <div class="mb-5 border-l-4 border-indigo-400 pl-4">
-                <p class="font-heading font-bold text-slate-800 text-sm mb-1">Apa itu GitHub Pages?</p>
-                <p class="text-slate-600 text-xs leading-relaxed">GitHub adalah platform tempat para *programmer* di seluruh dunia menyimpan dan berkolaborasi dalam menulis kode. <strong>GitHub Pages</strong> adalah fiturnya yang akan menyulap keenam file dalam folder kita menjadi sebuah website utuh yang 100% gratis selamanya!</p>
-            </div>
-
-            <div class="bg-indigo-50 border border-indigo-100 p-5 rounded-xl mb-5">
-                <p class="text-xs font-bold text-indigo-800 mb-4 uppercase tracking-wider">Langkah Publikasi (*Deployment*):</p>
-                <div class="space-y-5">
-                    <div class="flex gap-4 items-start">
-                        <span class="text-indigo-800 font-extrabold text-2xl flex-shrink-0 mt-[-2px]">1</span>
-                        <div>
-                            <p class="font-heading font-bold text-sm text-indigo-900 mb-1">Buat Akun & Repository</p>
-                            <p class="text-xs text-indigo-700 leading-relaxed">Buka <a href="https://github.com" target="_blank" class="underline font-semibold hover:text-indigo-900">github.com</a> dan buat akun (Sign Up). <strong class="text-red-600 font-bold bg-red-100 px-1 rounded">Catatan Penting:</strong> Saat membuat username, <strong>gunakan huruf kecil semua (lowercase) dan jangan gunakan karakter spesial</strong> untuk menghindari error pada link website nantinya. Setelah masuk, klik tombol hijau <strong>"New"</strong>. Beri nama *repository* Anda (contoh: <code>lms-jaringan</code>), pastikan <strong>Public</strong>, lalu klik Create.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 items-start">
-                        <span class="text-indigo-800 font-extrabold text-2xl flex-shrink-0 mt-[-2px]">2</span>
-                        <div>
-                            <p class="font-heading font-bold text-sm text-indigo-900 mb-1">Upload Folder Proyek (*Drag and Drop*)</p>
-                            <p class="text-xs text-indigo-700 leading-relaxed">Di halaman *repository* baru Anda yang masih kosong, klik tulisan kecil berwarna biru <strong>"uploading an existing file"</strong>. Anda akan melihat area unggah besar. Buka folder proyek Anda di komputer, seret (*drag*) semua 6 file tersebut (4 HTML dan 2 Gambar) ke area tadi. Tunggu hingga proses unggah selesai, lalu klik tombol hijau <strong>Commit changes</strong>.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 items-start">
-                        <span class="text-indigo-800 font-extrabold text-2xl flex-shrink-0 mt-[-2px]">3</span>
-                        <div>
-                            <p class="font-heading font-bold text-sm text-indigo-900 mb-1">Aktifkan GitHub Pages</p>
-                            <p class="text-xs text-indigo-700 leading-relaxed">Setelah keenam file berhasil tersimpan, klik menu <strong>Settings</strong> (ikon gir ⚙️). Di panel menu sebelah kiri, cari dan klik <strong>Pages</strong>. Di bagian *Branch*, ubah kotak yang bertuliskan <code>None</code> menjadi <code>main</code> (atau <code>master</code>), biarkan foldernya tetap <code>/ (root)</code>, lalu klik tombol <strong>Save</strong>.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 items-start">
-                        <span class="text-indigo-800 font-extrabold text-2xl flex-shrink-0 mt-[-2px]">4</span>
-                        <div>
-                            <p class="font-heading font-bold text-sm text-indigo-900 mb-1">Website Anda Online (Go Live!)</p>
-                            <p class="text-xs text-indigo-700 leading-relaxed">Tunggu sekitar 1–2 menit, kemudian *refresh* halaman pengaturan Pages tersebut. Anda akan melihat notifikasi hijau bahwa website Anda telah aktif di URL seperti: <code>https://[username_anda].github.io/lms-jaringan/</code>. Website sudah bisa diuji coba dan nilainya akan otomatis terkirim ke Firebase Anda!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
+
+    <!-- PENTING: Kamus Istilah Ringan untuk Guru Senior -->
+    <section class="bg-amber-50 border-2 border-amber-200 rounded-3xl p-6 md:p-8 space-y-4">
+        <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-amber-200 text-amber-900 flex items-center justify-center text-xl flex-shrink-0">💡</span>
+            <div>
+                <h3 class="font-heading font-extrabold text-lg text-amber-950">Kamus Ringan untuk Bapak/Ibu Guru</h3>
+                <p class="text-xs text-amber-800/80">Istilah teknologi yang sering terdengar rumit, sebenarnya sangat sederhana:</p>
+            </div>
+        </div>
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+            <div class="bg-white/80 p-3.5 rounded-2xl border border-amber-200/70 space-y-1">
+                <p class="font-bold text-amber-950">🤖 Antigravity AI</p>
+                <p class="text-slate-600 leading-relaxed">Aplikasi di laptop kita tempat mengobrol dengan asisten AI yang bertugas menuliskan seluruh kode program secara otomatis.</p>
+            </div>
+            <div class="bg-white/80 p-3.5 rounded-2xl border border-amber-200/70 space-y-1">
+                <p class="font-bold text-amber-950">💬 Prompt</p>
+                <p class="text-slate-600 leading-relaxed">Kalimat perintah dalam bahasa Indonesia biasa yang kita ketikkan untuk meminta AI membuatkan halaman web atau kuis.</p>
+            </div>
+            <div class="bg-white/80 p-3.5 rounded-2xl border border-amber-200/70 space-y-1">
+                <p class="font-bold text-amber-950">📁 GitHub (Repo)</p>
+                <p class="text-slate-600 leading-relaxed">"Brankas online" di internet untuk mencadangkan file website kita agar aman dan tidak hilang jika laptop rusak.</p>
+            </div>
+            <div class="bg-white/80 p-3.5 rounded-2xl border border-amber-200/70 space-y-1">
+                <p class="font-bold text-amber-950">⚡ Cloudflare Pages</p>
+                <p class="text-slate-600 leading-relaxed">Penyedia server gratis nomor 1 di dunia yang menyulap file kita menjadi alamat web resmi (`.pages.dev`) yang bisa dibuka murid di HP.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 Karya Nyata yang Dibawa Pulang Guru -->
+    <section class="space-y-4">
+        <h2 class="font-heading font-extrabold text-xl text-slate-900 flex items-center gap-2">
+            <span>🎁</span>
+            <span>3 Hasil Karya yang Dibawa Pulang Bapak/Ibu Guru</span>
+        </h2>
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm space-y-3 hover:border-indigo-300 transition">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-700 flex items-center justify-center text-2xl font-bold">1</div>
+                <h3 class="font-heading font-extrabold text-base text-slate-900">Web Portofolio Guru</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Halaman pembuka (`index.html`) yang menampilkan foto guru, sambutan hangat, mata pelajaran yang diampu, riwayat prestasi, dan kartu menuju media ajar.
+                </p>
+            </div>
+            <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm space-y-3 hover:border-teal-300 transition">
+                <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center text-2xl font-bold">2</div>
+                <h3 class="font-heading font-extrabold text-base text-slate-900">Media Pembelajaran 1: BK</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Halaman materi Berpikir Komputasional (`materi-bk.html`) lengkap dengan analogi 4 pilar, simulasi interaktif seru, dan kuis pilihan ganda dengan skor otomatis.
+                </p>
+            </div>
+            <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm space-y-3 hover:border-rose-300 transition">
+                <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-700 flex items-center justify-center text-2xl font-bold">3</div>
+                <h3 class="font-heading font-extrabold text-base text-slate-900">Media Pembelajaran 2: AI / SK</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Halaman materi Pemanfaatan AI atau Sistem Komputer (`materi-ai.html`) dengan visualisasi menarik, panduan prompting etis siswa, serta uji pemahaman.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rundown Kegiatan -->
+    <section class="bg-white border border-slate-200/80 rounded-3xl p-6 md:p-8 shadow-sm space-y-5">
+        <h2 class="font-heading font-extrabold text-xl text-slate-900 flex items-center gap-2">
+            <span>🗓️</span>
+            <span>Jadwal Alur Pelatihan (Santai, Runtut & Terbimbing)</span>
+        </h2>
+        <div class="space-y-3">
+            <div class="flex gap-4 items-start p-4 rounded-2xl bg-indigo-50/60 border border-indigo-100">
+                <div class="w-24 flex-shrink-0">
+                    <span class="font-mono font-bold text-indigo-900 text-xs">08.00–09.30</span>
+                    <span class="block text-[10px] text-indigo-600 font-extrabold mt-0.5 uppercase tracking-wide">Sesi 1</span>
+                </div>
+                <div class="border-l-2 border-indigo-200 pl-4 space-y-1">
+                    <p class="font-heading font-bold text-slate-900 text-sm">Menyiapkan Folder & Berkenalan dengan Antigravity AI</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">Menyiapkan folder lokal di laptop, menyiapkan foto guru, dan membuka Antigravity IDE tanpa rasa takut.</p>
+                </div>
+            </div>
+            <div class="flex gap-4 items-center p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 text-xs text-slate-500">
+                <span class="font-mono font-bold w-24 flex-shrink-0 text-slate-700">09.30–09.45</span>
+                <span class="border-l-2 border-slate-300 pl-4 font-semibold">☕ Rehat Kopi & Teh Santai</span>
+            </div>
+            <div class="flex gap-4 items-start p-4 rounded-2xl bg-teal-50/60 border border-teal-100">
+                <div class="w-24 flex-shrink-0">
+                    <span class="font-mono font-bold text-teal-900 text-xs">09.45–11.30</span>
+                    <span class="block text-[10px] text-teal-600 font-extrabold mt-0.5 uppercase tracking-wide">Sesi 2</span>
+                </div>
+                <div class="border-l-2 border-teal-200 pl-4 space-y-1">
+                    <p class="font-heading font-bold text-slate-900 text-sm">Praktik Prompting: Membuat Web Portofolio & 2 Media Pembelajaran</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">Copy-paste prompt teruji ke Antigravity, melihat AI membuat file HTML otomatis, dan mengetesnya langsung di browser laptop.</p>
+                </div>
+            </div>
+            <div class="flex gap-4 items-center p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 text-xs text-slate-500">
+                <span class="font-mono font-bold w-24 flex-shrink-0 text-slate-700">11.30–12.30</span>
+                <span class="border-l-2 border-slate-300 pl-4 font-semibold">🍽️ Ishoma (Istirahat, Sholat & Makan Siang)</span>
+            </div>
+            <div class="flex gap-4 items-start p-4 rounded-2xl bg-sky-50/60 border border-sky-100">
+                <div class="w-24 flex-shrink-0">
+                    <span class="font-mono font-bold text-sky-900 text-xs">12.30–14.00</span>
+                    <span class="block text-[10px] text-sky-600 font-extrabold mt-0.5 uppercase tracking-wide">Sesi 3</span>
+                </div>
+                <div class="border-l-2 border-sky-200 pl-4 space-y-1">
+                    <p class="font-heading font-bold text-slate-900 text-sm">Menyimpan ke GitHub & Menerbitkan ke Cloudflare Pages</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">Menghubungkan repository GitHub ke Cloudflare Pages. Dalam hitungan detik, website portofolio guru langsung tayang di internet!</p>
+                </div>
+            </div>
+            <div class="flex gap-4 items-start p-4 rounded-2xl bg-emerald-50/60 border border-emerald-100">
+                <div class="w-24 flex-shrink-0">
+                    <span class="font-mono font-bold text-emerald-900 text-xs">14.00–15.00</span>
+                    <span class="block text-[10px] text-emerald-600 font-extrabold mt-0.5 uppercase tracking-wide">Sesi 4</span>
+                </div>
+                <div class="border-l-2 border-emerald-200 pl-4 space-y-1">
+                    <p class="font-heading font-bold text-slate-900 text-sm">Testing di Smartphone & Pameran Karya (*Showcase*)</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">Membuka web masing-masing guru lewat HP siswa, saling mencoba kuis teman sejawat, dan refleksi tindak lanjut di sekolah.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PANDUAN LANGKAH DEMI LANGKAH LENGKAP -->
+    <section class="space-y-8">
+        <div>
+            <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest block mb-1">Panduan Praktik Bertahap</span>
+            <h2 class="font-heading font-extrabold text-2xl md:text-3xl text-slate-900">
+                Langkah demi Langkah Praktik Pembuatan Web
+            </h2>
+            <p class="text-xs text-slate-500 mt-1">Ikuti langkah-langkah mudah di bawah ini satu per satu. Jangan ragu bertanya kepada fasilitator jika menemui kendala.</p>
+        </div>
+
+        <!-- TAHAP 1 -->
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-6 md:p-8 shadow-sm space-y-4">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-heading font-extrabold text-lg flex-shrink-0">1</span>
+                <div>
+                    <h3 class="font-heading font-extrabold text-lg text-slate-900">Tahap 1: Siapkan Folder di Laptop & Foto Guru</h3>
+                    <p class="text-xs text-slate-400">Fondasi awal yang rapi sebelum memanggil AI</p>
+                </div>
+            </div>
+            <div class="space-y-3 text-xs text-slate-600 leading-relaxed pl-0 md:pl-13">
+                <p>1. Buka <strong>File Explorer</strong> di laptop Bapak/Ibu (misal di drive <code>D:</code> atau di <code>Desktop</code>).</p>
+                <p>2. Buat satu folder baru dengan nama singkat tanpa spasi, misalnya: <code class="px-2 py-1 bg-slate-100 rounded text-indigo-700 font-bold">portofolio-guru</code>.</p>
+                <p>3. Masukkan 2 file gambar ke dalam folder tersebut:</p>
+                <ul class="list-disc pl-5 space-y-1 text-slate-700">
+                    <li><strong class="font-mono text-indigo-700">foto.jpg</strong> : Foto profil Bapak/Ibu Guru yang rapi dan ramah.</li>
+                    <li><strong class="font-mono text-indigo-700">logo.png</strong> : Logo sekolah masing-masing atau logo Tut Wuri Handayani.</li>
+                </ul>
+                <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-slate-500 mt-2">
+                    💡 <em>Tips: Menggunakan nama file huruf kecil sederhana seperti <code>foto.jpg</code> memudahkan AI mengenali gambar tanpa salah ketik!</em>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAHAP 2 -->
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-6 md:p-8 shadow-sm space-y-4">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-heading font-extrabold text-lg flex-shrink-0">2</span>
+                <div>
+                    <h3 class="font-heading font-extrabold text-lg text-slate-900">Tahap 2: Buka Antigravity AI & Arahkan ke Folder</h3>
+                    <p class="text-xs text-slate-400">Membuka lembar kerja editor pintar</p>
+                </div>
+            </div>
+            <div class="space-y-3 text-xs text-slate-600 leading-relaxed pl-0 md:pl-13">
+                <p>1. Buka aplikasi <strong>Antigravity IDE</strong> di laptop Bapak/Ibu.</p>
+                <p>2. Klik menu <strong>File</strong> ➔ <strong>Open Folder...</strong> (atau pintasan tombol <code>Ctrl + K, Ctrl + O</code>).</p>
+                <p>3. Pilih folder <code class="px-2 py-0.5 bg-slate-100 rounded font-bold text-indigo-700">portofolio-guru</code> yang telah kita buat pada Tahap 1.</p>
+                <p>4. Buka jendela obrolan AI (Chat Assistant) yang ada di sisi samping layar. Sekarang asisten AI siap menerima perintah kita!</p>
+            </div>
+        </div>
+
+        <!-- TAHAP 3 -->
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-6 md:p-8 shadow-sm space-y-4">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-heading font-extrabold text-lg flex-shrink-0">3</span>
+                <div>
+                    <h3 class="font-heading font-extrabold text-lg text-slate-900">Tahap 3: Perintah Sakti (Prompt) ke Antigravity AI</h3>
+                    <p class="text-xs text-slate-400">Salin prompt di bawah ini lalu kirimkan ke chat AI</p>
+                </div>
+            </div>
+            <div class="space-y-4 text-xs text-slate-600 leading-relaxed pl-0 md:pl-13">
+                <p>Bapak/Ibu cukup menyalin (*copy*) prompt di bawah ini. Ubah teks di dalam kurung siku <code>[...]</code> sesuai nama dan sekolah Bapak/Ibu, lalu tekan <strong>Enter</strong> di Antigravity!</p>
+
+                <!-- PROMPT 1 -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-heading font-bold text-slate-900 text-sm flex items-center gap-1.5">
+                            <span class="text-indigo-600">📌</span> Prompt 1: Halaman Depan Portofolio (`index.html`)
+                        </span>
+                        <button onclick="copyPrompt('prompt-1', this)" class="px-3 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-xl font-bold text-[11px] transition flex items-center gap-1">
+                            <span>📋</span> Salin Prompt 1
+                        </button>
+                    </div>
+                    <div id="prompt-1" class="prompt-box p-4 rounded-2xl text-[11px] leading-relaxed shadow-inner">Halo Antigravity AI! Tolong buatkan saya satu file halaman depan website portofolio guru yang sangat indah, modern, dan ramah siswa dengan nama file: "index.html".
+
+Spesifikasi konten:
+1. Identitas Guru:
+   - Nama Guru: [Ach. Chanifuddin Fanani, S.Pd.]
+   - Guru Mata Pelajaran: [Informatika & Koding/AI (KKA)]
+   - Nama Sekolah: [SMP Negeri 2 Lamongan]
+   - Pasang foto profil dari file lokal: "foto.jpg" (buat bentuk bulat elegan dengan border warna cerah).
+   - Pasang logo sekolah dari file lokal: "logo.png" di bagian header navigasi.
+2. Desain & Tampilan:
+   - Gunakan Tailwind CSS (via CDN) dan Google Fonts Quicksand + Inter.
+   - Pilihan warna: Latar belakang bersih lembut (#F8FAFC) dengan aksen Indigo & Teal.
+   - Tuliskan pesan sambutan yang memotivasi siswa untuk giat belajar di era digital.
+3. Menu & Kartu Akses Media Ajar:
+   - Tampilkan 2 buah kartu pilihan media pembelajaran interaktif yang mencolok:
+     * Kartu 1: "Media Pembelajaran 1: Berpikir Komputasional (BK)" yang memiliki tombol menuju "materi-bk.html".
+     * Kartu 2: "Media Pembelajaran 2: Pemanfaatan Kecerdasan Artifisial (AI)" yang memiliki tombol menuju "materi-ai.html".
+4. Bagian Kontak & Footer:
+   - Tambahkan tombol kirim pesan WhatsApp dan tautan email guru.
+   - Cantumkan hak cipta tahun 2026 nama guru dan sekolah.
+
+Buatkan kode HTML lengkap siap pakai langsung disimpan ke file index.html!</div>
+                </div>
+
+                <!-- PROMPT 2 -->
+                <div class="space-y-2 pt-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-heading font-bold text-slate-900 text-sm flex items-center gap-1.5">
+                            <span class="text-teal-600">📌</span> Prompt 2: Media Belajar 1 — Berpikir Komputasional (`materi-bk.html`)
+                        </span>
+                        <button onclick="copyPrompt('prompt-2', this)" class="px-3 py-1 bg-teal-50 hover:bg-teal-100 text-teal-700 rounded-xl font-bold text-[11px] transition flex items-center gap-1">
+                            <span>📋</span> Salin Prompt 2
+                        </button>
+                    </div>
+                    <div id="prompt-2" class="prompt-box p-4 rounded-2xl text-[11px] leading-relaxed shadow-inner">Halo Antigravity AI! Sekarang tolong buatkan file media pembelajaran pertama dengan nama: "materi-bk.html".
+
+Halaman ini harus memiliki navigasi atas dengan tombol "← Kembali ke Portofolio Guru" yang mengarah ke "index.html".
+
+Spesifikasi materi & fitur interaktif:
+1. Judul Materi: "Petualangan Berpikir Komputasional (BK) — 4 Pilar Memecahkan Masalah".
+2. Bagian Konsep:
+   - Jelaskan 4 Pilar BK dengan bahasa yang sangat seru dan contoh nyata kehidupan sehari-hari (Dekomposisi, Pengenalan Pola, Abstraksi, dan Perancangan Algoritma).
+   - Gunakan kotak kartu warna-warni yang menarik untuk masing-masing pilar.
+3. Bagian Simulasi Interaktif:
+   - Buatkan simulasi mini interaktif sederhana berbasis JavaScript (misal: simulasi memilih langkah algoritma membuat sarapan atau simulasi deteksi pola angka).
+4. Bagian Kuis Evaluasi Mandiri:
+   - Sediakan 5 soal kuis pilihan ganda yang seru.
+   - Siswa bisa memilih jawaban (A, B, C, D).
+   - Terdapat tombol "Periksa Nilai Saya": begitu diklik, otomatis menghitung skor (0 - 100), memberikan bintang (⭐), dan memunculkan animasi pujian (misal: "Luar Biasa!" jika nilai 100).
+5. Desain:
+   - Konsisten dengan tema index.html (Tailwind CSS, Quicksand, mobile-friendly nyaman dibuka di HP).
+
+Buatkan kode HTML lengkap dan tuliskan langsung ke file materi-bk.html!</div>
+                </div>
+
+                <!-- PROMPT 3 -->
+                <div class="space-y-2 pt-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-heading font-bold text-slate-900 text-sm flex items-center gap-1.5">
+                            <span class="text-rose-600">📌</span> Prompt 3: Media Belajar 2 — Pemanfaatan AI (`materi-ai.html`)
+                        </span>
+                        <button onclick="copyPrompt('prompt-3', this)" class="px-3 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl font-bold text-[11px] transition flex items-center gap-1">
+                            <span>📋</span> Salin Prompt 3
+                        </button>
+                    </div>
+                    <div id="prompt-3" class="prompt-box p-4 rounded-2xl text-[11px] leading-relaxed shadow-inner">Halo Antigravity AI! Terakhir, tolong buatkan file media pembelajaran kedua dengan nama: "materi-ai.html".
+
+Halaman ini juga memiliki tombol navigasi "← Kembali ke Portofolio Guru" menuju "index.html".
+
+Spesifikasi materi & fitur:
+1. Judul Materi: "Mengenal Kecerdasan Artifisial (AI) & Etika Penggunaannya".
+2. Bagian Materi Edukatif:
+   - Apa itu AI dan bagaimana AI membantu manusia dalam kehidupan sehari-hari.
+   - Cara membuat prompt yang baik untuk belajar (*Prompt Engineering sederhana untuk siswa*).
+   - 3 Etika Penting: Kejujuran akademik, tidak menyebarkan hoax/deepfake, dan perlindungan privasi data pribadi.
+3. Studio Latihan Prompt Interaktif:
+   - Sediakan area latihan di mana siswa bisa memilih template prompt belajar, lalu menekan tombol "Uji Prompt" untuk melihat contoh tanggapan cerdas AI.
+4. Kuis Tantangan Detektif AI:
+   - 5 pertanyaan tebak kasus (Benar atau Salah / Pilihan Ganda) mengenai mana perilaku beretika dan mana yang melanggar aturan saat memakai AI.
+   - Skor otomatis dihitung dengan tombol "Cek Hasil Evaluasi".
+5. Desain:
+   - Estetik nuansa ungu-cyan modern, responsif, dan rapi.
+
+Buatkan kode HTML lengkap dan simpan ke file materi-ai.html!</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TAHAP 4 -->
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-6 md:p-8 shadow-sm space-y-4">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-heading font-extrabold text-lg flex-shrink-0">4</span>
+                <div>
+                    <h3 class="font-heading font-extrabold text-lg text-slate-900">Tahap 4: Uji Coba Langsung di Laptop (Offline Testing)</h3>
+                    <p class="text-xs text-slate-400">Melihat hasil karya di browser sebelum diunggah ke internet</p>
+                </div>
+            </div>
+            <div class="space-y-3 text-xs text-slate-600 leading-relaxed pl-0 md:pl-13">
+                <p>1. Buka kembali folder <code class="px-2 py-0.5 bg-slate-100 rounded font-bold text-indigo-700">portofolio-guru</code> di laptop Bapak/Ibu.</p>
+                <p>2. Pastikan sekarang sudah ada 5 file di dalamnya:</p>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 font-mono text-slate-700 space-y-0.5">
+                    <div>├── foto.jpg</div>
+                    <div>├── logo.png</div>
+                    <div>├── index.html</div>
+                    <div>├── materi-bk.html</div>
+                    <div>└── materi-ai.html</div>
+                </div>
+                <p>3. <strong>Klik 2 kali</strong> pada file <code class="text-indigo-700 font-bold">index.html</code>. Halaman portofolio Bapak/Ibu akan langsung terbuka di Google Chrome / browser laptop!</p>
+                <p>4. Cobalah klik tombol menuju Materi 1 dan Materi 2, kerjakan kuisnya, dan klik tombol kembali. Jika ada teks yang ingin diganti (misal ada gelar atau nomor kontak yang keliru), cukup minta Antigravity AI memperbaikinya!</p>
+            </div>
+        </div>
+
+        <!-- TAHAP 5 -->
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-6 md:p-8 shadow-sm space-y-4">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-heading font-extrabold text-lg flex-shrink-0">5</span>
+                <div>
+                    <h3 class="font-heading font-extrabold text-lg text-slate-900">Tahap 5: Simpan File ke GitHub (Brankas Online)</h3>
+                    <p class="text-xs text-slate-400">Mencadangkan file agar siap dihubungkan ke Cloudflare</p>
+                </div>
+            </div>
+            <div class="space-y-3 text-xs text-slate-600 leading-relaxed pl-0 md:pl-13">
+                <p>1. Buka situs <a href="https://github.com" target="_blank" class="text-indigo-600 font-bold underline">github.com</a> dan masuk menggunakan akun masing-masing (atau daftar gratis jika belum punya).</p>
+                <p>2. Klik tombol hijau <strong>"New"</strong> (atau ikon <strong>+</strong> di pojok kanan atas ➔ <em>New repository</em>).</p>
+                <p>3. Beri nama gudang/repository Bapak/Ibu, contoh: <code class="px-2 py-0.5 bg-slate-100 rounded text-indigo-700 font-bold">portofolio-guru</code>. Pastikan pilih status <strong>Public</strong>, lalu klik tombol hijau <strong>"Create repository"</strong>.</p>
+                <p>4. Di halaman baru yang muncul, klik tulisan tautan kecil: <span class="font-bold text-blue-600 underline">"uploading an existing file"</span>.</p>
+                <p>5. Buka folder laptop Bapak/Ibu, <strong>pilih dan seret (drag & drop) kelima file</strong> (foto.jpg, logo.png, index.html, materi-bk.html, materi-ai.html) ke kotak unggah di GitHub.</p>
+                <p>6. Klik tombol hijau <strong>"Commit changes"</strong> di bagian bawah. Selamat! File karya Bapak/Ibu sekarang sudah tersimpan aman di awan!</p>
+            </div>
+        </div>
+
+        <!-- TAHAP 6 -->
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-6 md:p-8 shadow-sm space-y-4">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-teal-600 text-white flex items-center justify-center font-heading font-extrabold text-lg flex-shrink-0">6</span>
+                <div>
+                    <h3 class="font-heading font-extrabold text-lg text-slate-900">Tahap 6: Terbitkan Website dengan Cloudflare Pages</h3>
+                    <p class="text-xs text-slate-400">Menjadikan website online aktif dan super cepat gratis selamanya</p>
+                </div>
+            </div>
+            <div class="space-y-3 text-xs text-slate-600 leading-relaxed pl-0 md:pl-13">
+                <p>1. Buka situs <a href="https://dash.cloudflare.com" target="_blank" class="text-teal-600 font-bold underline">dash.cloudflare.com</a> dan buat akun gratis (hanya butuh email).</p>
+                <p>2. Pada menu panel sebelah kiri, klik <strong>Compute (Workers & Pages)</strong>.</p>
+                <p>3. Klik tombol <strong>"Create application"</strong> di pojok kanan atas, lalu pilih tab <strong>"Pages"</strong>.</p>
+                <p>4. Pilih opsi <strong>"Connect to Git"</strong> ➔ pilih akun GitHub Bapak/Ibu ➔ pilih repositori <code class="font-bold text-teal-700">portofolio-guru</code> yang tadi dibuat.</p>
+                <p>5. Klik tombol <strong>"Begin setup"</strong>. Di bagian pengaturan build, biarkan semua pengaturan default kosong, lalu klik tombol <strong>"Save and Deploy"</strong>.</p>
+                <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl text-emerald-900 space-y-1">
+                    <p class="font-bold text-sm">🎉 Hore! Website Bapak/Ibu Sudah Resmi Online!</p>
+                    <p class="leading-relaxed">Dalam 30 detik, Cloudflare akan memberikan alamat website resmi aktif, misalnya:<br>
+                    <code class="font-bold font-mono text-emerald-800 bg-white/70 px-2 py-0.5 rounded border border-emerald-300">https://portofolio-guru-xyz.pages.dev</code></p>
+                    <p>Alamat ini bisa langsung dibagikan lewat grup WhatsApp kelas dan dibuka oleh seluruh murid!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAHAP 7 (PENGAYAAN) -->
+        <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-8 shadow-md space-y-4">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-2xl bg-teal-400/20 text-teal-300 border border-teal-400/40 flex items-center justify-center font-heading font-extrabold text-lg flex-shrink-0">7</span>
+                <div>
+                    <span class="text-[10px] font-extrabold text-amber-300 bg-amber-500/20 border border-amber-400/30 px-2 py-0.5 rounded-full uppercase tracking-wider">Materi Pengayaan</span>
+                    <h3 class="font-heading font-extrabold text-lg text-white mt-1">Langkah Lanjutan: Simpan Nilai Kuis Siswa dengan Cloudflare Worker & D1</h3>
+                </div>
+            </div>
+            <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+                <p>Jika Bapak/Ibu ingin agar skor kuis yang dikerjakan murid di rumah **otomatis masuk ke rekap nilai guru**, kita bisa menambahkan fitur backend gratis dari Cloudflare:</p>
+                <div class="grid sm:grid-cols-2 gap-3 text-slate-200 pt-1">
+                    <div class="bg-white/10 p-3.5 rounded-2xl border border-white/10 space-y-1">
+                        <p class="font-bold text-teal-300">⚡ Cloudflare Worker (`*.workers.dev`)</p>
+                        <p class="text-[11px] text-slate-300">Bertindak sebagai kurir pintar penerima data nama murid dan skor evaluasi dari website.</p>
+                    </div>
+                    <div class="bg-white/10 p-3.5 rounded-2xl border border-white/10 space-y-1">
+                        <p class="font-bold text-teal-300">🗄️ Database Cloudflare D1</p>
+                        <p class="text-[11px] text-slate-300">Buku nilai digital otomatis berbasis SQL yang menyimpan rekap nilai siswa secara permanen dan aman.</p>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 italic">
+                    *Materi pengayaan ini akan dibimbing langsung oleh instruktur di sesi akhir bagi guru yang ingin eksplorasi lebih dalam.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FAQ & PESAN SEMANGAT UNTUK GURU -->
+    <section class="bg-white border border-slate-200/80 rounded-3xl p-6 md:p-8 shadow-sm space-y-5">
+        <h2 class="font-heading font-extrabold text-xl text-slate-900 flex items-center gap-2">
+            <span>❓</span>
+            <span>Tanya Jawab Seputar Pembuatan Web Guru (FAQ)</span>
+        </h2>
+        <div class="space-y-4 text-xs">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 space-y-1.5">
+                <p class="font-bold text-slate-900 text-sm">Q: "Apakah saya harus bisa koding bahasa pemrograman dulu?"</p>
+                <p class="text-slate-600 leading-relaxed"><strong>Jawab: Sama sekali tidak!</strong> Zaman sekarang koding sudah dibantu AI. Tugas Bapak/Ibu adalah sebagai <em>konseptor materi</em> (menentukan topik pembelajaran, isi kuis, dan tampilan yang diinginkan). Penulisan kodenya 100% dikerjakan oleh Antigravity AI.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 space-y-1.5">
+                <p class="font-bold text-slate-900 text-sm">Q: "Apakah nanti ada tagihan biaya bulanan atau perpanjangan domain?"</p>
+                <p class="text-slate-600 leading-relaxed"><strong>Jawab: Nol rupiah (100% Gratis)!</strong> Baik akun GitHub maupun Cloudflare Pages menyediakan kuota gratis tanpa batas waktu (free tier permanen) yang sangat cukup untuk melayani ribuan murid sekolah setiap hari.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 space-y-1.5">
+                <p class="font-bold text-slate-900 text-sm">Q: "Bagaimana jika suatu hari materi pembelajarannya ingin saya tambah atau perbarui?"</p>
+                <p class="text-slate-600 leading-relaxed"><strong>Jawab: Sangat mudah!</strong> Cukup buka kembali Antigravity AI, minta AI menambah materi baru, lalu upload file terbaru ke GitHub. Cloudflare Pages akan otomatis mendeteksi dan memperbarui website Bapak/Ibu secara otomatis dalam hitungan detik (*auto-deploy*)!</p>
+            </div>
+        </div>
+    </section>
+
 </main>
-<footer class="relative z-10 border-t border-slate-200 bg-white mt-8">
-    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-slate-500">
-        <div>&copy; 2026 Ach. Chanifuddin Fanani. — Workshop MGMP Informatika.</div>
-        <a href="../" class="hover:text-blue-600 font-medium">← Semua Workshop</a>
+
+<footer class="relative z-10 border-t border-slate-200 bg-white mt-12 py-8 text-center text-xs text-slate-500">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-3">
+        <div>© 2026 Ach. Chanifuddin Fanani, S.Pd. — MGMP Informatika & KKA Kabupaten Lamongan.</div>
+        <div class="flex items-center gap-4">
+            <a href="../" class="hover:text-indigo-600 font-semibold transition">← Semua Workshop</a>
+            <a href="../../" class="hover:text-indigo-600 font-semibold transition">Pusat Edukasi</a>
+        </div>
     </div>
 </footer>
+
+<!-- SCRIPT UNTUK FITUR SALIN PROMPT -->
+<script>
+function copyPrompt(elementId, btn) {
+    const text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<span>✓</span> Tersalin!';
+        btn.className = 'px-3 py-1 bg-emerald-600 text-white rounded-xl font-bold text-[11px] transition flex items-center gap-1 shadow-sm';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.className = 'px-3 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-xl font-bold text-[11px] transition flex items-center gap-1';
+        }, 2000);
+    }).catch(err => {
+        alert('Gagal menyalin otomatis. Silakan blok teks prompt dan tekan Ctrl+C.');
+    });
+}
+</script>
+
 </body>
 </html>
