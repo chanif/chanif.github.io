@@ -320,6 +320,7 @@ const COURSE_CATALOG = {
                 body: JSON.stringify({ subject, topic_id: topicId, status: 'completed' })
             });
             const data = await res.json();
+            syncData(false).catch(() => {});
             return { success: data.success, mode: 'server' };
         } catch (err) {
             console.warn('[Tracker] Offline fallback for progress:', err);
@@ -364,6 +365,7 @@ const COURSE_CATALOG = {
                     body: JSON.stringify(payload)
                 });
                 syncResult = await res.json();
+                syncData(false).catch(() => {});
             } catch (err) {
                 console.warn('[Tracker] Offline fallback for evaluation:', err);
                 syncResult = { success: true, mode: 'local_fallback' };
@@ -411,6 +413,7 @@ const COURSE_CATALOG = {
                 body: JSON.stringify({ subject, topic_id, reflection_text })
             });
             const data = await res.json();
+            syncData(false).catch(() => {});
             return { success: data.success, mode: 'server' };
         } catch (err) {
             console.warn('[Tracker] Offline fallback for reflection:', err);
@@ -682,6 +685,144 @@ const COURSE_CATALOG = {
         }
     }
 
+    // Two-Way Smart Synchronization (Reconcile Local Storage with Server D1 Database)
+    let isSyncing = false;
+    let lastSyncTime = 0;
+
+    async function syncData(force = false) {
+        // Cooldown: prevent concurrent or too frequent syncs (< 4s apart unless forced)
+        const now = Date.now();
+        if (isSyncing || (!force && now - lastSyncTime < 4000)) {
+            return { skipped: true, reason: 'debounced' };
+        }
+
+        const token = getToken();
+        const user = getUser();
+        if (!token && (!user || !user.google_id)) {
+            return { skipped: true, reason: 'unauthenticated' };
+        }
+
+        isSyncing = true;
+        try {
+            // 1. Gather all local progress
+            const localProg = getLocalProgress();
+
+            // 2. Gather all local evaluation submissions
+            const localEvals = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.startsWith('eval_hist_')) {
+                    const topicId = key.substring(10);
+                    try {
+                        const attempts = JSON.parse(localStorage.getItem(key) || '[]');
+                        if (Array.isArray(attempts)) {
+                            attempts.forEach(att => {
+                                localEvals.push({
+                                    topic_id: topicId,
+                                    subject: att.subject || (topicId.startsWith('kka-') ? 'coding' : 'informatika'),
+                                    attempt_number: att.attempt_number || 1,
+                                    score_a: att.score_a || 0,
+                                    score_b: att.score_b || 0,
+                                    score_c: att.score_c || 0,
+                                    score_d: att.score_d || 0,
+                                    total_score: att.total_score || 0,
+                                    answers: att.answers || {},
+                                    created_at: att.created_at || new Date().toISOString()
+                                });
+                            });
+                        }
+                    } catch (e) {}
+                }
+            }
+
+            // 3. Gather all local reflection notes
+            const localReflections = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.startsWith('refl_')) {
+                    const topicId = key.substring(5);
+                    const text = localStorage.getItem(key);
+                    if (text && text.trim()) {
+                        localReflections[topicId] = {
+                            text: text.trim(),
+                            subject: topicId.startsWith('kka-') ? 'coding' : 'informatika'
+                        };
+                    }
+                }
+            }
+
+            // 4. Send to /sync_progress endpoint
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) headers['Authorization'] = `Bearer ${token}`;
+
+            const payload = {
+                progress: localProg,
+                evaluations: localEvals,
+                reflections: localReflections,
+                google_id: user ? (user.google_id || '') : '',
+                email: user ? (user.email || '') : ''
+            };
+
+            const res = await fetch(`${API_BASE_URL}/sync_progress`, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(payload)
+            });
+
+            if (!res.ok) {
+                isSyncing = false;
+                return { success: false, error: 'Server returned ' + res.status };
+            }
+
+            const data = await res.json();
+            if (data && data.success) {
+                // 5. Reconcile merged progress back to LocalStorage
+                if (data.merged_progress) {
+                    const existingProg = getLocalProgress();
+                    const mergedProg = { ...existingProg, ...data.merged_progress };
+                    localStorage.setItem('fanani_edu_progress', JSON.stringify(mergedProg));
+                }
+
+                // 6. Reconcile merged evaluations back to LocalStorage
+                if (data.merged_evaluations) {
+                    Object.keys(data.merged_evaluations).forEach(tId => {
+                        const sAttempts = data.merged_evaluations[tId];
+                        if (Array.isArray(sAttempts) && sAttempts.length > 0) {
+                            localStorage.setItem(`eval_hist_${tId}`, JSON.stringify(sAttempts));
+                        }
+                    });
+                }
+
+                // 7. Reconcile merged reflections back to LocalStorage
+                if (data.merged_reflections) {
+                    Object.keys(data.merged_reflections).forEach(tId => {
+                        const rText = data.merged_reflections[tId];
+                        if (rText) {
+                            localStorage.setItem(`refl_${tId}`, rText);
+                        }
+                    });
+                }
+
+                lastSyncTime = Date.now();
+                isSyncing = false;
+
+                // Dispatch global event for active pages to reactively refresh
+                if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new CustomEvent('fanani_sync_done', { detail: data }));
+                }
+
+                return { success: true, stats: data.stats, synced_at: data.synced_at };
+            }
+
+            isSyncing = false;
+            return { success: false, error: data.error || 'Sync failed' };
+        } catch (err) {
+            console.warn('[Tracker] Sync error (offline fallback):', err);
+            isSyncing = false;
+            return { success: false, error: err.message };
+        }
+    }
+
     // Determine clean relative paths across any depth in the /edu hierarchy
     function getAppPaths() {
         const loc = window.location.pathname.replace(/\\/g, '/');
@@ -834,10 +975,16 @@ const COURSE_CATALOG = {
     }
 
     if (typeof window !== 'undefined') {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', renderNavbarAuth);
-        } else {
+        const initTracker = () => {
             renderNavbarAuth();
+            if (getToken()) {
+                setTimeout(() => { syncData(false).catch(() => {}); }, 600);
+            }
+        };
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTracker);
+        } else {
+            initTracker();
         }
     }
 
@@ -852,6 +999,7 @@ const COURSE_CATALOG = {
         getAllProgressSummary,
         googleLogin,
         saveProfile,
+        syncData,
         getAppPaths,
         getAuthSyncHtml,
         renderNavbarAuth

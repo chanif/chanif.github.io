@@ -773,6 +773,14 @@
 
         async function loadProgressDashboard() {
             try {
+                if (window.FananiTracker && typeof FananiTracker.syncData === 'function' && FananiTracker.getToken()) {
+                    try {
+                        await FananiTracker.syncData();
+                    } catch(e) {
+                        console.warn("Tracker sync warning:", e);
+                    }
+                }
+
                 let data = null;
                 if (window.FananiTracker && typeof window.FananiTracker.getAllProgressSummary === 'function') {
                     try {
@@ -1020,6 +1028,9 @@
                 const saveBtn = document.getElementById('btn-save-profile');
                 if (saveBtn) saveBtn.innerText = 'Menyimpan...';
                 await FananiTracker.saveProfile(userObj);
+                if (typeof FananiTracker.syncData === 'function') {
+                    await FananiTracker.syncData(true);
+                }
                 if (saveBtn) saveBtn.innerText = 'Simpan Perubahan Profil';
             }
 
@@ -1051,6 +1062,11 @@
 
         // Fail-safe timeout to prevent infinite stuck loading
         setTimeout(hideLoadingOverlay, 8000);
+
+        // Listen for background sync updates to auto-refresh UI
+        window.addEventListener('fanani_sync_done', () => {
+            loadProgressDashboard();
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             loadProgressDashboard();

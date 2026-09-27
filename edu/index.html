@@ -627,6 +627,17 @@
                     localStorage.setItem('fanani_auth_token', sessionToken);
                 }
                 renderUserStatus();
+
+                // Two-way synchronization & merge with server
+                if (window.FananiTracker && FananiTracker.syncData) {
+                    showAuthCardLoading('Menyinkronkan data...', 'Menggabungkan modul belajar & skor kuis...');
+                    try {
+                        await FananiTracker.syncData(true);
+                    } catch (e) {
+                        console.warn('[Edu] Sync on login error:', e);
+                    }
+                }
+                renderUserStatus();
                 hideAuthCardLoading();
             } else {
                 // Genuinely new student with no class yet: Show Profile Modal
@@ -726,12 +737,16 @@
                 if (saveBtn) saveBtn.innerText = 'Menyimpan...';
                 try {
                     await FananiTracker.saveProfile(userObj);
+                    if (FananiTracker.syncData) {
+                        await FananiTracker.syncData(true);
+                    }
                 } catch (e) {
                     console.warn('[Edu] Save profile sync warning:', e);
                 }
                 if (saveBtn) saveBtn.innerText = 'Simpan Perubahan Profil';
             }
 
+            renderUserStatus();
             hideAuthCardLoading();
         }
 
