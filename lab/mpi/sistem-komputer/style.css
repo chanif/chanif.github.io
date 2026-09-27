@@ -3410,29 +3410,52 @@ body.zoom-sub-100 .content-box.narrow {
   filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.65));
 }
 
-/* Motherboard Live Diagnostic LEDs */
+/* Motherboard Live Diagnostic LEDs (Overlaid exactly on SVG #mb-debug-leds cluster) */
 .mb-post-leds-live {
   position: absolute;
-  top: 7.4%;
-  left: 70.6%;
-  display: flex;
-  gap: 5px;
+  top: 5.556%;
+  left: 75.735%;
+  width: 19.118%;
+  height: 5.185%;
   z-index: 15;
-  background: rgba(0, 0, 0, 0.65);
-  padding: 3px 6px;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
 }
 .led-dot {
-  width: 7px; height: 7px;
+  position: absolute;
+  top: 64.286%;
+  transform: translate(-50%, -50%);
+  width: 5.385%;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background: #334155;
-  transition: 0.15s;
+  opacity: 0;
+  transition: opacity 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  pointer-events: auto;
+  cursor: help;
 }
-.led-dot.active.led-cpu { background: #ffaa00; box-shadow: 0 0 8px #ffaa00; }
-.led-dot.active.led-dram { background: #ff5500; box-shadow: 0 0 8px #ff5500; }
-.led-dot.active.led-vga { background: #00d4ff; box-shadow: 0 0 8px #00d4ff; }
-.led-dot.active.led-boot { background: #00ff88; box-shadow: 0 0 8px #00ff88; }
+.led-dot.led-cpu { left: 13.846%; }
+.led-dot.led-dram { left: 36.923%; }
+.led-dot.led-vga { left: 60.0%; }
+.led-dot.led-boot { left: 83.077%; }
+
+.led-dot.active {
+  opacity: 1;
+}
+.led-dot.active.led-cpu {
+  background: radial-gradient(circle, #ffffff 15%, #ef4444 80%);
+  box-shadow: 0 0 8px #ef4444, 0 0 16px rgba(239, 68, 68, 0.9);
+}
+.led-dot.active.led-dram {
+  background: radial-gradient(circle, #ffffff 15%, #f59e0b 80%);
+  box-shadow: 0 0 8px #f59e0b, 0 0 16px rgba(245, 158, 11, 0.9);
+}
+.led-dot.active.led-vga {
+  background: radial-gradient(circle, #ffffff 15%, #38bdf8 80%);
+  box-shadow: 0 0 8px #38bdf8, 0 0 16px rgba(56, 189, 248, 0.9);
+}
+.led-dot.active.led-boot {
+  background: radial-gradient(circle, #ffffff 15%, #10b981 80%);
+  box-shadow: 0 0 8px #10b981, 0 0 16px rgba(16, 185, 129, 0.9);
+}
 
 /* Physical Snap-In Sockets Overlay */
 .mb-physical-slot {
