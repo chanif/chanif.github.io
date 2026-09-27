@@ -653,11 +653,12 @@ const COURSE_CATALOG = {
     }
 
     async function saveProfile(payload) {
-        const fullName = payload.full_name || payload.name;
-        const kelas = payload.kelas;
+        const storedUser = getUser() || {};
+        const fullName = payload.full_name || payload.name || storedUser.full_name || storedUser.name || '';
+        const kelas = payload.kelas || storedUser.kelas || '';
         const token = getToken();
-        const googleId = payload.google_id || '';
-        const email = payload.email || '';
+        const googleId = payload.google_id || storedUser.google_id || '';
+        const email = payload.email || storedUser.email || '';
 
         try {
             const headers = { 'Content-Type': 'application/json' };
@@ -685,7 +686,7 @@ const COURSE_CATALOG = {
     function getAppPaths() {
         const loc = window.location.pathname.replace(/\\/g, '/');
         let learnBase = './';
-        let progressPath = 'progress/index.html';
+        let progressPath = 'dashboard/progress/index.html';
         
         if (loc.includes('/edu/informatika/') || loc.includes('/edu/coding/')) {
             const afterLearn = loc.substring(loc.indexOf('/edu/') + 5);
@@ -693,16 +694,22 @@ const COURSE_CATALOG = {
             const depth = segments.length;
             const prefix = '../'.repeat(depth);
             learnBase = prefix;
-            progressPath = prefix + 'progress/index.html';
-        } else if (loc.includes('/edu/progress/')) {
-            learnBase = '../';
+            progressPath = prefix + 'dashboard/progress/index.html';
+        } else if (loc.includes('/edu/dashboard/progress/')) {
+            learnBase = '../../index.html';
             progressPath = './index.html';
+        } else if (loc.includes('/edu/dashboard/admin/')) {
+            learnBase = '../../index.html';
+            progressPath = '../progress/index.html';
+        } else if (loc.includes('/edu/dashboard/')) {
+            learnBase = '../index.html';
+            progressPath = 'progress/index.html';
         } else if (loc.includes('/edu/')) {
             learnBase = './';
-            progressPath = 'progress/index.html';
+            progressPath = 'dashboard/progress/index.html';
         } else {
             learnBase = '/edu/';
-            progressPath = '/edu/progress/index.html';
+            progressPath = '/edu/dashboard/progress/index.html';
         }
         return { learnBase, progressPath };
     }
@@ -769,7 +776,7 @@ const COURSE_CATALOG = {
     // Auto-inject Global Auth Mini-Bar into Navbar
     function renderNavbarAuth() {
         const loc = window.location.pathname.replace(/\\/g, '/');
-        if (loc.endsWith('/edu/') || loc.endsWith('/edu/index.html') || loc.includes('/edu/progress/')) {
+        if (loc.endsWith('/edu/') || loc.endsWith('/edu/index.html') || loc.includes('/edu/progress/') || loc.includes('/edu/dashboard/')) {
             return;
         }
 
