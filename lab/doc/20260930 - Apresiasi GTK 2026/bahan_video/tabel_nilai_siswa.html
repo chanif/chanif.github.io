@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Daftar Nilai Asesmen Informatika Kelas IX-A - SMP Negeri 2 Lamongan</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #f1f5f9;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      padding: 30px 45px 25px;
+    }
+
+    /* Paper Container */
+    .sheet {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 32px 18px;
+    }
+
+    /* Official Kop Header */
+    .kop {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+    .kop-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .kop-left .logo-box {
+      width: 48px;
+      height: 48px;
+      border: 2px solid #0284c7;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #0284c7;
+      background: #f0f9ff;
+    }
+    .kop-text h2 {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #0f172a;
+      text-transform: uppercase;
+    }
+    .kop-text h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0369a1;
+      letter-spacing: 0.5px;
+    }
+    .kop-text p {
+      font-size: 13px;
+      color: #475569;
+    }
+    .kop-right {
+      text-align: right;
+    }
+    .doc-badge {
+      display: inline-block;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+    }
+    .doc-date {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* Metadata Bar */
+    .meta-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-bottom: 14px;
+      font-size: 13.5px;
+    }
+    .meta-item {
+      display: flex;
+      gap: 8px;
+    }
+    .meta-label {
+      color: #64748b;
+      font-weight: 600;
+    }
+    .meta-val {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    /* Student Score Table 2 Columns */
+    .table-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      flex: 1;
+    }
+    .table-col {
+      display: flex;
+      flex-direction: column;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    th {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 6px 8px;
+      text-align: center;
+      font-weight: 700;
+      border: 1px solid #0f172a;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    th.th-left {
+      text-align: left;
+      padding-left: 10px;
+    }
+    td {
+      padding: 4.8px 8px;
+      border: 1px solid #cbd5e1;
+      color: #1e293b;
+      text-align: center;
+    }
+    td.td-left {
+      text-align: left;
+      padding-left: 10px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+    tr:hover td {
+      background: #f1f5f9;
+    }
+
+    /* Status Badges */
+    .badge-tuntas {
+      color: #047857;
+      font-weight: 700;
+      font-size: 11.5px;
+    }
+    .badge-remedial {
+      color: #b91c1c;
+      font-weight: 700;
+      font-size: 11.5px;
+    }
+
+    /* Summary Row at bottom */
+    .summary-card {
+      margin-top: 12px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 10px 18px;
+      display: grid;
+      grid-template-columns: 1.4fr repeat(4, 1fr);
+      gap: 12px;
+      align-items: center;
+    }
+    .sum-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #166534;
+      text-transform: uppercase;
+    }
+    .sum-metric {
+      display: flex;
+      flex-direction: column;
+    }
+    .sum-metric .lbl {
+      font-size: 11.5px;
+      color: #4b5563;
+      font-weight: 600;
+    }
+    .sum-metric .val {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .sum-metric .val span {
+      color: #15803d;
+      font-size: 13px;
+    }
+
+    /* Signature footer */
+    .sheet-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 12px;
+      font-size: 12px;
+      color: #475569;
+    }
+    .signature {
+      text-align: right;
+    }
+    .sig-name {
+      font-weight: 800;
+      color: #0f172a;
+      text-decoration: underline;
+      font-size: 13.5px;
+    }
+    .sig-nip {
+      color: #475569;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <!-- Kop Resmi Sekolah -->
+    <div class="kop">
+      <div class="kop-left">
+        <div class="logo-box">SMP2</div>
+        <div class="kop-text">
+          <h2>Pemerintah Kabupaten Lamongan &bull; Dinas Pendidikan</h2>
+          <h1>UPT SMP NEGERI 2 LAMONGAN</h1>
+          <p>Jl. Veteran No. 3, Lamongan, Jawa Timur 62212 &bull; Laman: smpn2lamongan.sch.id</p>
+        </div>
+      </div>
+      <div class="kop-right">
+        <div class="doc-badge">DOKUMEN ASESMEN RESMI</div>
+        <div class="doc-date">Tahun Ajaran 2026/2027 &bull; Semester Ganjil</div>
+      </div>
+    </div>
+
+    <!-- Metadata Informasi Kelas -->
+    <div class="meta-bar">
+      <div class="meta-item">
+        <span class="meta-label">Mata Pelajaran:</span>
+        <span class="meta-val">Informatika (Fase D)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Kelas:</span>
+        <span class="meta-val">IX-A (35 Siswa)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Materi:</span>
+        <span class="meta-val">Sistem Komputer (Hardware & Siklus CPU)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Kriteria Ketuntasan (KKTP):</span>
+        <span class="meta-val" style="color: #0284c7;">75</span>
+      </div>
+    </div>
+
+    <!-- Table 2 Kolom (1-18 di kiri, 19-35 di kanan) -->
+    <div class="table-container">
+      <!-- Kolom 1 (No 1 - 18) -->
+      <div class="table-col">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 32px;">No</th>
+              <th style="width: 70px;">NIS</th>
+              <th class="th-left">Nama Siswa</th>
+              <th style="width: 75px;">Awal</th>
+              <th style="width: 75px;">Akhir</th>
+              <th style="width: 90px;">Keterangan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>8101</td><td class="td-left">Achmad Fauzi</td><td>46</td><td><strong>87</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>2</td><td>8102</td><td class="td-left">Aditya Pratama</td><td>40</td><td><strong>80</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>3</td><td>8103</td><td class="td-left">Alifia Zahra</td><td>75</td><td><strong>95</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>4</td><td>8104</td><td class="td-left">Ananda Putri</td><td>51</td><td><strong>87</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>5</td><td>8105</td><td class="td-left">Bayu Saputra</td><td>35</td><td><strong>70</strong></td><td class="badge-remedial">Remedial</td></tr>
+            <tr><td>6</td><td>8106</td><td class="td-left">Cantika Dewi</td><td>65</td><td><strong>90</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>7</td><td>8107</td><td class="td-left">Daffa Raihan</td><td>41</td><td><strong>80</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>8</td><td>8108</td><td class="td-left">Dimas Arya</td><td>56</td><td><strong>87</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>9</td><td>8109</td><td class="td-left">Eka Septian</td><td>45</td><td><strong>75</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>10</td><td>8110</td><td class="td-left">Fadhil Ramadhan</td><td>75</td><td><strong>100</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>11</td><td>8111</td><td class="td-left">Fatimah Az-Zahra</td><td>75</td><td><strong>95</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>12</td><td>8112</td><td class="td-left">Galih Permana</td><td>46</td><td><strong>87</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>13</td><td>8113</td><td class="td-left">Hafiz Pratama</td><td>40</td><td><strong>75</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>14</td><td>8114</td><td class="td-left">Ilham Maulana</td><td>51</td><td><strong>87</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>15</td><td>8115</td><td class="td-left">Jessica Anggraini</td><td>75</td><td><strong>90</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>16</td><td>8116</td><td class="td-left">Kelvin Putra</td><td>41</td><td><strong>81</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>17</td><td>8117</td><td class="td-left">Laila Nur Aini</td><td>75</td><td><strong>95</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>18</td><td>8118</td><td class="td-left">M. Rizky Pratama</td><td>56</td><td><strong>90</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Kolom 2 (No 19 - 35) -->
+      <div class="table-col">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 32px;">No</th>
+              <th style="width: 70px;">NIS</th>
+              <th class="th-left">Nama Siswa</th>
+              <th style="width: 75px;">Awal</th>
+              <th style="width: 75px;">Akhir</th>
+              <th style="width: 90px;">Keterangan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>19</td><td>8119</td><td class="td-left">Nabila Syahrani</td><td>75</td><td><strong>100</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>20</td><td>8120</td><td class="td-left">Noval Wahyu</td><td>40</td><td><strong>70</strong></td><td class="badge-remedial">Remedial</td></tr>
+            <tr><td>21</td><td>8121</td><td class="td-left">Nur Indah Sari</td><td>75</td><td><strong>95</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>22</td><td>8122</td><td class="td-left">Putri Maharani</td><td>65</td><td><strong>90</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>23</td><td>8123</td><td class="td-left">Raditya Bagus</td><td>51</td><td><strong>85</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>24</td><td>8124</td><td class="td-left">Rafi Ahmad</td><td>45</td><td><strong>75</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>25</td><td>8125</td><td class="td-left">Rahmat Hidayat</td><td>75</td><td><strong>90</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>26</td><td>8126</td><td class="td-left">Rania Khansa</td><td>75</td><td><strong>95</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>27</td><td>8127</td><td class="td-left">Rendy Syahputra</td><td>40</td><td><strong>70</strong></td><td class="badge-remedial">Remedial</td></tr>
+            <tr><td>28</td><td>8128</td><td class="td-left">Rini Wahyuni</td><td>75</td><td><strong>90</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>29</td><td>8129</td><td class="td-left">Salsa Bila</td><td>75</td><td><strong>95</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>30</td><td>8130</td><td class="td-left">Satria Wibawa</td><td>50</td><td><strong>85</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>31</td><td>8131</td><td class="td-left">Tiara Amelia</td><td>65</td><td><strong>90</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>32</td><td>8132</td><td class="td-left">Wahyu Setiawan</td><td>45</td><td><strong>80</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>33</td><td>8133</td><td class="td-left">Yoga Prasetya</td><td>55</td><td><strong>85</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>34</td><td>8134</td><td class="td-left">Yusuf Maulana</td><td>75</td><td><strong>95</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <tr><td>35</td><td>8135</td><td class="td-left">Zahra Aulia</td><td>75</td><td><strong>97</strong></td><td class="badge-tuntas">Tuntas</td></tr>
+            <!-- Row placeholder for visual balance -->
+            <tr style="background: #fafafa; color: #94a3b8; font-style: italic;">
+              <td>-</td><td>-</td><td class="td-left">(Batas Akhir Data Siswa Kelas IX-A)</td><td>-</td><td>-</td><td>35 Siswa</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Rekapitulasi Resmi di Bagian Bawah -->
+    <div class="summary-card">
+      <div class="sum-title">Rekapitulasi Kelas IX-A</div>
+      <div class="sum-metric">
+        <span class="lbl">Rata-Rata Nilai</span>
+        <span class="val">58,40 ➔ <span>86,80</span></span>
+      </div>
+      <div class="sum-metric">
+        <span class="lbl">Ketuntasan (≥ 75)</span>
+        <span class="val">13 ➔ <span>32 Siswa (91,4%)</span></span>
+      </div>
+      <div class="sum-metric">
+        <span class="lbl">Belum Tuntas</span>
+        <span class="val">22 ➔ <span>3 Siswa (8,6%)</span></span>
+      </div>
+      <div class="sum-metric">
+        <span class="lbl">Rentang Nilai</span>
+        <span class="val">35 – 75 ➔ <span>70 – 100</span></span>
+      </div>
+    </div>
+
+    <!-- Signature Footer -->
+    <div class="sheet-footer">
+      <div>Media: <em>fanani.my.id/lab/mpi/sistem-komputer/</em> &bull; Kurikulum Merdeka Fase D</div>
+      <div class="signature">
+        <div>Lamongan, 2 Oktober 2026</div>
+        <div>Guru Mata Pelajaran Informatika,</div>
+        <div style="height: 28px;"></div>
+        <div class="sig-name">Ach. Chanifuddin Fanani, S.Pd.</div>
+        <div class="sig-nip">NIP. 19910826 202012 1 007</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
