@@ -618,7 +618,7 @@
             } catch (e) {}
 
             const fullName = (serverUser && (serverUser.full_name || serverUser.name)) || (storedUser && (storedUser.full_name || storedUser.name)) || gName;
-            const isTeacher = (serverUser && serverUser.role === 'teacher') || email.includes('chanif') || email.includes('fanani');
+            const isTeacher = (serverUser && serverUser.role === 'teacher') || (email && email.toLowerCase().trim() === 'chanifuddin@gmail.com');
             const kelas = (serverUser && serverUser.kelas && serverUser.kelas.trim() !== '') ? serverUser.kelas.trim() : (storedUser && storedUser.kelas ? storedUser.kelas.trim() : null);
             const isProfileDone = Boolean((serverUser && serverUser.profile_completed) || (storedUser && storedUser.profile_completed) || kelas || isTeacher);
 
@@ -822,7 +822,7 @@
                 if (userJson) {
                     const user = JSON.parse(userJson);
                     if (user && user.name && (user.kelas || user.role === 'teacher')) {
-                        const isTeacher = user.role === 'teacher' || (user.email && (user.email.includes('chanif') || user.email.includes('fanani')));
+                        const isTeacher = user.role === 'teacher' || (user.email && user.email.toLowerCase().trim() === 'chanifuddin@gmail.com');
                         const classDisplay = isTeacher ? 'Guru / Pengajar' : `Kelas ${user.kelas}`;
                         nameEl.innerText = `${user.name} (${user.kelas || (isTeacher ? 'Guru' : '')})`;
                         badgeEl.innerText = isTeacher ? 'Akun Pengajar' : 'Akun Siswa Aktif';
