@@ -572,9 +572,7 @@
         }
 
         function adminFetch(endpoint, options = {}) {
-            const url = endpoint.includes('?') 
-                ? `${API_URL}${endpoint}&key=${encodeURIComponent(adminKey)}` 
-                : `${API_URL}${endpoint}?key=${encodeURIComponent(adminKey)}`;
+            const url = `${API_URL}${endpoint}`;
             const headers = {
                 'Authorization': `Bearer ${adminKey}`,
                 'x-admin-key': adminKey,
@@ -586,7 +584,7 @@
         async function verifyAndLaunchAdmin(key) {
             showLoadingOverlay('Memverifikasi Sesi Admin...', 'Menghubungkan ke Cloudflare Edge...');
             try {
-                const res = await fetch(`${API_URL}/admin/overview?key=${encodeURIComponent(key)}`, {
+                const res = await fetch(`${API_URL}/admin/overview`, {
                     headers: { 
                         'Authorization': `Bearer ${key}`,
                         'x-admin-key': key 

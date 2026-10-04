@@ -470,8 +470,10 @@ const COURSE_CATALOG = {
         return {
             success: true,
             attempts: localHist,
+            history: localHist,
             total_attempts: localHist.length,
             max_score: localHist.length ? Math.max(...localHist.map(h => h.total_score || 0)) : 0,
+            reflection: localRefl,
             reflection_text: localRefl,
             is_completed: isComp,
             mode: 'local'
@@ -685,21 +687,23 @@ const COURSE_CATALOG = {
         const fullName = payload.full_name || payload.name || storedUser.full_name || storedUser.name || '';
         const kelas = payload.kelas || storedUser.kelas || '';
         const token = getToken();
-        const googleId = payload.google_id || storedUser.google_id || '';
-        const email = payload.email || storedUser.email || '';
+
+        if (!token) {
+            return { success: true, mode: 'local_only' };
+        }
 
         try {
-            const headers = { 'Content-Type': 'application/json' };
-            if (token) headers['Authorization'] = `Bearer ${token}`;
+            const headers = { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            };
 
             const res = await fetch(`${API_BASE_URL}/save_profile`, {
                 method: 'POST',
                 headers,
                 body: JSON.stringify({ 
                     full_name: fullName, 
-                    kelas,
-                    google_id: googleId,
-                    email
+                    kelas
                 })
             });
             if (!handleAuthStatus(res)) {
@@ -725,8 +729,7 @@ const COURSE_CATALOG = {
         }
 
         const token = getToken();
-        const user = getUser();
-        if (!token && (!user || !user.google_id)) {
+        if (!token) {
             return { skipped: true, reason: 'unauthenticated' };
         }
 
@@ -780,15 +783,15 @@ const COURSE_CATALOG = {
             }
 
             // 4. Send to /sync_progress endpoint
-            const headers = { 'Content-Type': 'application/json' };
-            if (token) headers['Authorization'] = `Bearer ${token}`;
+            const headers = { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            };
 
             const payload = {
                 progress: localProg,
                 evaluations: localEvals,
-                reflections: localReflections,
-                google_id: user ? (user.google_id || '') : '',
-                email: user ? (user.email || '') : ''
+                reflections: localReflections
             };
 
             const res = await fetch(`${API_BASE_URL}/sync_progress`, {
