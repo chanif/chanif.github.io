@@ -100,7 +100,42 @@ function applyConfig() {
 }
 
 // ==================== ZOOM CONTROLS ENGINE ====================
-let currentZoom = parseFloat(localStorage.getItem('mpi_zoom_level')) || 1.0;
+
+// ---- Device Detection: Mobile / IFP Touch Screen ----
+// Mendeteksi apakah device adalah touch/mobile/IFP untuk skip auto-apply zoom
+// yang tidak bekerja di Android dan biarkan CSS media query yang bekerja
+function isTouchDevice() {
+  return (('ontouchstart' in window) ||
+    (navigator.maxTouchPoints > 0) ||
+    (navigator.msMaxTouchPoints > 0) ||
+    window.matchMedia('(pointer: coarse)').matches);
+}
+
+// Apakah layar ini "IFP-like": touch device tapi bukan HP kecil (width > 800px)
+function isIFPScreen() {
+  return isTouchDevice() && window.innerWidth > 800;
+}
+
+// Auto-zoom logic:
+// - Di HP (touch, width <= 800px): zoom di-reset ke 1.0 karena CSS media query yang handle
+// - Di IFP (touch, width > 800px): zoom di-reset ke 1.0 karena CSS handle, TAPI jika user
+//   punya saved zoom dari sesi sebelumnya (bukan 1.0), tetap pakai itu
+// - Di desktop: pakai zoom tersimpan dari localStorage
+function getInitialZoom() {
+  const saved = parseFloat(localStorage.getItem('mpi_zoom_level'));
+  if (isTouchDevice()) {
+    // Untuk touch device: hanya pakai saved zoom jika user sudah pernah manually ubah
+    // Default 1.0 karena CSS media query sudah handle responsive layout
+    if (!isNaN(saved) && saved !== 1.0) {
+      // User pernah mengubah zoom secara manual, hormati itu
+      return saved;
+    }
+    return 1.0;
+  }
+  return !isNaN(saved) ? saved : 1.0;
+}
+
+let currentZoom = getInitialZoom();
 
 function setAppZoom(zoomLevel) {
   zoomLevel = Math.round(zoomLevel * 100) / 100;
