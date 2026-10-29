@@ -78,13 +78,13 @@
     z-index: 2;
   }
 
-  /* ================= 1. HEADER LOGOS (KAPSUL MPI ASLI) ================= */
+  /* ================= 1. HEADER LOGOS (KAPSUL MPI ASLI + IDENTITAS LAMONGAN) ================= */
   .top-logos {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 36px 14px; /* Aman dari lubang ring X-Banner */
-    gap: 18px;
+    margin: 0 32px 14px; /* Aman dari lubang ring X-Banner */
+    gap: 14px;
   }
 
   .logo-pill {
@@ -92,14 +92,14 @@
     border: 3.5px solid var(--cyan-border);
     box-shadow: 0 6px 0 rgba(0, 121, 140, 0.22), 0 12px 24px rgba(15, 23, 42, 0.10);
     border-radius: 28px;
-    padding: 12px 26px;
+    padding: 10px 22px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
   }
 
   .logo-pill img {
-    height: 56px;
+    height: 54px;
     width: auto;
     object-fit: contain;
   }
@@ -113,11 +113,57 @@
   .school-id {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 11px;
+  }
+
+  .school-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.08;
+  }
+
+  .school-kab {
+    font-family: var(--font-ui);
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .school-name {
     font-family: var(--font-head);
     font-weight: 700;
-    font-size: 23px;
+    font-size: 22px;
     color: var(--teal-dark);
+    white-space: nowrap;
+  }
+
+  .megilan-id {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .megilan-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.02;
+  }
+
+  .megilan-text b {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    color: #0284c7;
+  }
+
+  .megilan-text span {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 700;
+    color: #16a34a;
+    letter-spacing: 0.02em;
   }
 
   /* ================= 2. HERO IDENTIK DENGAN COVER MPI ================= */
@@ -147,14 +193,15 @@
     background: linear-gradient(90deg, #006d77, #0096c7);
     color: #fff;
     font-family: var(--font-ui);
-    font-size: 18px;
+    font-size: 15.5px;
     font-weight: 800;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
-    padding: 8px 22px;
+    padding: 8px 20px;
     border-radius: 999px;
     border: 3px solid #fff;
     box-shadow: 0 4px 12px rgba(0, 109, 119, 0.25);
+    white-space: nowrap;
   }
 
   .cat-badge {
@@ -164,14 +211,15 @@
     background: linear-gradient(90deg, #ea580c, #f59e0b);
     color: #fff;
     font-family: var(--font-ui);
-    font-size: 18px;
+    font-size: 15.5px;
     font-weight: 800;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    padding: 8px 22px;
+    padding: 8px 20px;
     border-radius: 999px;
     border: 3px solid #fff;
     box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+    white-space: nowrap;
   }
 
   .mpi-title-block {
@@ -1044,27 +1092,38 @@
   <div class="top-stripe"></div>
   <div class="bottom-stripe"></div>
 
-  <!-- 1. LOGOS KAPSUL KHAS MPI -->
+  <!-- 1. LOGOS KAPSUL KHAS MPI + IDENTITAS LAMONGAN -->
   <div class="layer">
     <div class="top-logos">
       <div class="logo-pill">
         <img src="./image/logo-kemendikdasmen-lengkap.png" alt="Kemendikdasmen">
         <div class="logo-sep"></div>
         <div class="school-id">
-          <img src="./image/logo-kabupaten-lamongan.png" alt="Kabupaten Lamongan">
-          <img src="./image/logo-smpn-2-lamongan.png" alt="SMPN 2 Lamongan">
-          <span>SMP Negeri 2 Lamongan</span>
+          <img src="./image/logo-kabupaten-lamongan.png" alt="Kabupaten Lamongan" style="height:58px">
+          <img src="./image/logo-smpn-2-lamongan.png" alt="SMPN 2 Lamongan" style="height:54px">
+          <div class="school-text">
+            <span class="school-kab">Kabupaten Lamongan</span>
+            <span class="school-name">SMP Negeri 2 Lamongan</span>
+          </div>
         </div>
       </div>
       <div class="logo-pill">
-        <img src="./image/logo-gabungan-sobat-bermutu-ramah.png" alt="Sobat SMP · Pendidikan Bermutu · Ramah">
+        <div class="megilan-id">
+          <img src="./image/logo-lamongan-megilan-icon.png" alt="Lamongan Megilan" style="height:54px">
+          <div class="megilan-text">
+            <b>Lamongan</b>
+            <span>Megilan</span>
+          </div>
+        </div>
+        <div class="logo-sep"></div>
+        <img src="./image/logo-gabungan-sobat-bermutu-ramah.png" alt="Sobat SMP · Pendidikan Bermutu · Ramah" style="height:50px">
       </div>
     </div>
 
     <!-- 2. HERO IDENTIK DENGAN COVER MPI -->
     <div class="hero-mpi">
       <div class="hero-top-row">
-        <span class="event-badge">★ Apresiasi GTK Jawa Timur 2026</span>
+        <span class="event-badge">★ Delegasi Kab. Lamongan · Apresiasi GTK Jatim 2026</span>
         <span class="cat-badge">Guru SMP Transformatif · Inovasi Pembelajaran</span>
       </div>
 
