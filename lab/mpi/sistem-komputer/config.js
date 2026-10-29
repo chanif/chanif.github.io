@@ -105,7 +105,7 @@ window.MPI_CONFIG = {
     meta: {
         title: 'Sistem Komputer — Menyelam ke Dalam Mesin Digital',
         subject: 'Informatika',
-        grade: 'Kelas VII - VIII / Semester Gasal & Genap',
+        grade: 'Kelas IX / Semester Gasal',
         phase: 'Fase D',
         author: 'Ach. Chanifuddin Fanani, S.Pd.',
         institution: 'SMP Negeri 2 Lamongan',

@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>X-Banner Opsi 3 (Layout Opsi 1 · Teks Ringkas & Font Besar) — Menyelam ke Dalam Mesin Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0b1324;
+    --navy: #0f172a;
+    --slate: #334155;
+    --mute: #64748b;
+    --pri: #0284c7;
+    --sky: #0ea5e9;
+    --cyan: #06b6d4;
+    --ind: #4f46e5;
+    --vio: #7c3aed;
+    --emr: #059669;
+    --amb: #d97706;
+    --ros: #e11d48;
+    --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    width: 1200px;
+    height: 3200px;
+    background: #f1f5f9;
+    font-family: var(--font);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Kanvas Utama 60 x 160 cm (Rasio 3:8 -> 1200 x 3200 px, dirender 2.5x = 3000 x 8000 px) */
+  .banner {
+    position: relative;
+    width: 1200px;
+    height: 3200px;
+    overflow: hidden;
+    background:
+      radial-gradient(900px 600px at 0% 0%, rgba(14, 165, 233, 0.14), transparent 65%),
+      radial-gradient(900px 700px at 100% 18%, rgba(79, 70, 229, 0.13), transparent 65%),
+      radial-gradient(900px 700px at 0% 65%, rgba(6, 182, 212, 0.10), transparent 65%),
+      radial-gradient(900px 600px at 100% 95%, rgba(5, 150, 105, 0.12), transparent 65%),
+      #f8fafc;
+    padding: 60px 50px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Pola titik halus di latar */
+  .banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(15, 23, 42, 0.065) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .top-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: linear-gradient(90deg, var(--sky), var(--ind), var(--emr));
+    z-index: 3;
+  }
+
+  .bottom-accent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: linear-gradient(90deg, var(--emr), var(--ind), var(--sky));
+    z-index: 3;
+  }
+
+  .layer {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ================= 1. HEADER & IDENTITAS ================= */
+  .logo-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1.5px solid #e2e8f0;
+    border-radius: 999px;
+    padding: 14px 34px;
+    margin: 0 38px 18px; /* Jarak aman dari lubang ring pojok atas X-Banner */
+    box-shadow: 0 12px 30px -14px rgba(15, 23, 42, 0.12);
+  }
+
+  .logo-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .logo-bar img {
+    height: 54px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .logo-divider {
+    width: 2px;
+    height: 38px;
+    background: #cbd5e1;
+  }
+
+  .school-tag {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 21px;
+    color: var(--navy);
+  }
+
+  /* Hero Card */
+  .hero {
+    background: linear-gradient(135deg, #091326 0%, #0f1f3d 55%, #172554 100%);
+    border-radius: 32px;
+    padding: 32px 40px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 24px 50px -20px rgba(15, 23, 42, 0.45);
+    border: 1.5px solid rgba(56, 189, 248, 0.28);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -120px;
+    top: -120px;
+    width: 460px;
+    height: 460px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.28) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badges {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: nowrap;
+  }
+
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .badge-gold {
+    background: linear-gradient(90deg, #f59e0b, #ea580c);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  }
+
+  .badge-glass {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    color: #bae6fd;
+  }
+
+  .hero-title {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
+
+  .hero-title span {
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #34d399);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-sub {
+    font-size: 24px;
+    line-height: 1.38;
+    color: #cbd5e1;
+    font-weight: 500;
+    margin-bottom: 22px;
+  }
+
+  .hero-sub b {
+    color: #fff;
+    font-weight: 800;
+  }
+
+  .author-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 22px;
+    padding: 14px 24px;
+  }
+
+  .author-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .author-left img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #38bdf8;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    flex: none;
+  }
+
+  .author-name {
+    font-size: 27px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .author-role {
+    font-size: 19px;
+    color: #93c5fd;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .author-meta {
+    display: flex;
+    gap: 12px;
+    flex: none;
+  }
+
+  .meta-box {
+    background: rgba(15, 23, 42, 0.68);
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    padding: 10px 18px;
+    border-radius: 14px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .meta-box b {
+    display: block;
+    font-size: 22px;
+    font-weight: 900;
+    color: #38bdf8;
+    line-height: 1.15;
+  }
+
+  .meta-box small {
+    font-size: 13.5px;
+    color: #cbd5e1;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ================= 2. ZONA QR INTERAKTIF (EYE-LEVEL) ================= */
+  .qr-section {
+    background: #fff;
+    border-radius: 30px;
+    padding: 22px 26px 24px;
+    border: 2.5px solid #bae6fd;
+    box-shadow: 0 20px 45px -20px rgba(2, 132, 199, 0.22);
+    position: relative;
+  }
+
+  .qr-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .qr-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .pulse-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.2);
+    flex: none;
+  }
+
+  .qr-title {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .qr-hint {
+    background: #eff6ff;
+    color: var(--pri);
+    border: 1.5px solid #bfdbfe;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 8px 18px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex: none;
+  }
+
+  .qr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    align-items: stretch;
+  }
+
+  .qr-card {
+    border-radius: 24px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .qr-card.mpi {
+    background: linear-gradient(145deg, #f5f3ff 0%, #ede9fe 100%);
+    border: 2px solid #c4b5fd;
+  }
+
+  .qr-card.lab {
+    background: linear-gradient(145deg, #ecfeff 0%, #e0f2fe 100%);
+    border: 2px solid #7dd3fc;
+  }
+
+  .qr-card-top {
+    display: grid;
+    grid-template-columns: 204px 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .qr-box {
+    background: #fff;
+    padding: 10px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.25);
+    border: 2px solid rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr-box img {
+    width: 180px;
+    height: 180px;
+    display: block;
+  }
+
+  .qr-scan-tag {
+    margin-top: 7px;
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .qr-card.mpi .qr-scan-tag {
+    background: #4f46e5;
+    color: #fff;
+  }
+
+  .qr-card.lab .qr-scan-tag {
+    background: #0284c7;
+    color: #fff;
+  }
+
+  .qr-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .qr-kicker {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 13.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .qr-card.mpi .qr-kicker {
+    background: #ddd6fe;
+    color: #4c1d95;
+  }
+
+  .qr-card.lab .qr-kicker {
+    background: #bae6fd;
+    color: #0c4a6e;
+  }
+
+  .qr-info h3 {
+    font-size: 25.5px;
+    font-weight: 900;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+  }
+
+  .qr-thumb {
+    width: 100%;
+    height: 116px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1.5px solid rgba(15, 23, 42, 0.14);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .qr-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .qr-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .qr-feat {
+    font-size: 16px;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--ink);
+    padding: 7px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(15, 23, 42, 0.09);
+    white-space: nowrap;
+  }
+
+  .qr-url {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 800;
+    padding: 10px 12px;
+    border-radius: 12px;
+    text-align: center;
+    background: var(--navy);
+    color: #38bdf8;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .qr-card.mpi .qr-url {
+    color: #c4b5fd;
+  }
+
+  /* ================= 3. SECTION HEADINGS ================= */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .sec-pill {
+    font-size: 15.5px;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 999px;
+    color: #fff;
+    white-space: nowrap;
+    flex: none;
+  }
+
+  .sp-st { background: linear-gradient(90deg, var(--ros), var(--amb)); }
+  .sp-ak { background: linear-gradient(90deg, var(--pri), var(--ind)); }
+  .sp-dp { background: linear-gradient(90deg, var(--emr), var(--pri)); }
+
+  .sec-title {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    color: var(--navy);
+    line-height: 1.15;
+  }
+
+  /* ================= 4. SITUASI & TANTANGAN ================= */
+  .st-grid {
+    display: grid;
+    grid-template-columns: 410px 1fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .st-photo {
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 12px 28px -12px rgba(15, 23, 42, 0.2);
+  }
+
+  .st-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .st-photo-cap {
+    position: absolute;
+    inset: auto 12px 12px 12px;
+    background: rgba(11, 19, 36, 0.88);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 16.5px;
+    font-weight: 600;
+    line-height: 1.32;
+  }
+
+  .st-photo-cap b {
+    color: #fda4af;
+  }
+
+  .st-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .mini-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 18px 20px;
+    border: 1.5px solid #e2e8f0;
+    box-shadow: 0 8px 20px -12px rgba(15, 23, 42, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .mc-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .mc-num {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .mc-tag {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 5px 11px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  .mini-card h4 {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .mini-card p {
+    font-size: 17.5px;
+    line-height: 1.35;
+    color: var(--slate);
+    font-weight: 500;
+  }
+
+  .mini-card p b {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  /* ================= 5. AKSI: SOLUSI & 4 PILAR ================= */
+  .aksi-box {
+    background: #fff;
+    border-radius: 26px;
+    padding: 20px 24px;
+    border: 1.5px solid #e2e8f0;
+    box-shadow: 0 12px 30px -14px rgba(15, 23, 42, 0.14);
+  }
+
+  .aksi-top {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 20px;
+    align-items: stretch;
+    margin-bottom: 16px;
+  }
+
+  .pilar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .pilar {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .pilar-no {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-weight: 900;
+    font-size: 19px;
+    flex: none;
+    color: #fff;
+  }
+
+  .pilar h5 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 3px;
+    line-height: 1.2;
+  }
+
+  .pilar p {
+    font-size: 17px;
+    line-height: 1.34;
+    color: var(--slate);
+    font-weight: 500;
+  }
+
+  .vibe-photo {
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    border: 1.5px solid #cbd5e1;
+  }
+
+  .vibe-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .vibe-cap {
+    position: absolute;
+    inset: auto 10px 10px 10px;
+    background: rgba(11, 19, 36, 0.88);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .vibe-cap b {
+    color: #38bdf8;
+  }
+
+  .misi-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    background: linear-gradient(90deg, #eff6ff, #eef2ff, #ecfdf5);
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 1px solid #cbd5e1;
+  }
+
+  .misi-item {
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 12px;
+    padding: 12px 14px;
+    border: 1px solid rgba(15, 23, 42, 0.07);
+  }
+
+  .misi-item small {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--pri);
+    letter-spacing: 0.06em;
+  }
+
+  .misi-item b {
+    display: block;
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 2px 0;
+  }
+
+  .misi-item span {
+    font-size: 16px;
+    color: var(--slate);
+    font-weight: 500;
+    display: block;
+    line-height: 1.3;
+  }
+
+  /* ================= 6. DAMPAK & PENGIMBASAN ================= */
+  .dampak-grid {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 20px;
+  }
+
+  .dampak-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 22px 24px;
+    border: 1.5px solid #e2e8f0;
+    box-shadow: 0 12px 28px -14px rgba(15, 23, 42, 0.14);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .chart-group {
+    margin-bottom: 14px;
+  }
+
+  .chart-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .cg-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .cg-head span {
+    font-size: 19.5px;
+    font-weight: 800;
+    color: var(--navy);
+  }
+
+  .cg-badge {
+    background: #d1fae5;
+    color: #065f46;
+    font-size: 15.5px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 68px 1fr;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .bar-lbl {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--mute);
+  }
+
+  .bar-track {
+    height: 36px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .bar-fill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 14px;
+    font-size: 17.5px;
+    font-weight: 800;
+    border-radius: 10px;
+  }
+
+  .bf-old {
+    background: #cbd5e1;
+    color: #1e293b;
+  }
+
+  .bf-new {
+    background: linear-gradient(90deg, var(--sky), var(--ind));
+    color: #fff;
+  }
+
+  .bf-emr {
+    background: linear-gradient(90deg, var(--emr), #10b981);
+    color: #fff;
+  }
+
+  .stat-Highlight-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1.5px dashed #e2e8f0;
+  }
+
+  .sh-item {
+    background: #f8fafc;
+    border-radius: 14px;
+    padding: 12px 14px;
+    border: 1px solid #e2e8f0;
+  }
+
+  .sh-item b {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--emr);
+    display: block;
+    line-height: 1.15;
+  }
+
+  .sh-item span {
+    font-size: 16.5px;
+    color: var(--slate);
+    font-weight: 600;
+    line-height: 1.3;
+    display: block;
+    margin-top: 3px;
+  }
+
+  /* Imbas Card */
+  .imbas-hero {
+    background: linear-gradient(135deg, #0284c7, #4f46e5);
+    color: #fff;
+    border-radius: 18px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 14px;
+  }
+
+  .imbas-big {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #fde047;
+  }
+
+  .imbas-hero div p {
+    font-size: 17.5px;
+    line-height: 1.3;
+    font-weight: 600;
+    color: #e0f2fe;
+  }
+
+  .imbas-hero div p b {
+    color: #fff;
+    font-size: 19.5px;
+  }
+
+  .imbas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .imbas-li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 17.5px;
+    line-height: 1.34;
+    color: var(--slate);
+    font-weight: 500;
+  }
+
+  .imbas-li i {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: #e0f2fe;
+    color: var(--pri);
+    display: grid;
+    place-items: center;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    flex: none;
+    margin-top: 1px;
+  }
+
+  .imbas-li b {
+    color: var(--ink);
+    font-weight: 800;
+  }
+
+  /* ================= 7. FOOTER ================= */
+  .footer-bar {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 24px;
+    padding: 18px 32px;
+    margin: 0 38px; /* Aman dari mata ayam pojok bawah */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    box-shadow: 0 14px 30px -12px rgba(15, 23, 42, 0.35);
+  }
+
+  .footer-quote {
+    font-size: 18.5px;
+    font-style: italic;
+    color: #cbd5e1;
+    line-height: 1.35;
+  }
+
+  .footer-quote b {
+    color: #38bdf8;
+  }
+
+  .footer-right {
+    text-align: right;
+    flex: none;
+  }
+
+  .footer-links {
+    font-family: var(--mono);
+    font-size: 15.5px;
+    color: #93c5fd;
+    margin-top: 3px;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="top-accent"></div>
+  <div class="bottom-accent"></div>
+
+  <!-- 1. TOP BAR LOGOS & HERO -->
+  <div class="layer">
+    <div class="logo-bar">
+      <div class="logo-group">
+        <img src="./image/logo-kemendikdasmen-lengkap.png" alt="Kemendikdasmen">
+        <div class="logo-divider"></div>
+        <div class="school-tag">
+          <img src="./image/logo-kabupaten-lamongan.png" alt="Kabupaten Lamongan">
+          <img src="./image/logo-smpn-2-lamongan.png" alt="SMPN 2 Lamongan">
+          <span>SMP Negeri 2 Lamongan</span>
+        </div>
+      </div>
+      <div class="logo-group">
+        <img src="./image/logo-gabungan-sobat-bermutu-ramah.png" alt="Pendidikan Bermutu Untuk Semua">
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-badges">
+        <span class="badge-pill badge-gold">★ Apresiasi GTK Jatim 2026</span>
+        <span class="badge-pill badge-glass">Guru SMP Transformatif · Inovasi Pembelajaran</span>
+        <span class="badge-pill badge-glass">Informatika Kelas IX</span>
+      </div>
+      <h1 class="hero-title">MENYELAM KE DALAM <span>MESIN DIGITAL</span></h1>
+      <p class="hero-sub">
+        Inovasi <b>MPI &amp; Laboratorium Maya</b> Berbasis Web untuk Mengubah Materi Sistem Komputer yang Abstrak Menjadi Praktik Aman &amp; Menyenangkan.
+      </p>
+      <div class="author-strip">
+        <div class="author-left">
+          <img src="./image/foto-profil-fanani.webp" alt="Ach. Chanifuddin Fanani">
+          <div>
+            <div class="author-name">Ach. Chanifuddin Fanani, S.Pd.</div>
+            <div class="author-role">Guru Informatika · SMP Negeri 2 Lamongan</div>
+          </div>
+        </div>
+        <div class="author-meta">
+          <div class="meta-box">
+            <b>8 Rombel</b>
+            <small>Kelas 9A–9H</small>
+          </div>
+          <div class="meta-box">
+            <b>16 : 9</b>
+            <small>Layar Web</small>
+          </div>
+          <div class="meta-box">
+            <b>100%</b>
+            <small>Gratis</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. EYE-LEVEL DUAL QR CODE STATION -->
+  <div class="layer qr-section">
+    <div class="qr-header">
+      <div class="qr-header-left">
+        <span class="pulse-dot"></span>
+        <span class="qr-title">Pindai &amp; Coba Langsung di Gawai Anda!</span>
+      </div>
+      <span class="qr-hint">📱 Tanpa Instal Aplikasi · Hemat Kuota</span>
+    </div>
+
+    <div class="qr-grid">
+      <!-- QR 1: MPI SISTEM KOMPUTER -->
+      <div class="qr-card mpi">
+        <div class="qr-card-top">
+          <div class="qr-box">
+            <img src="./image/qr-mpi-sistem-komputer.png" alt="QR MPI Sistem Komputer">
+            <span class="qr-scan-tag">Pindai QR #1 · MPI</span>
+          </div>
+          <div class="qr-info">
+            <span class="qr-kicker">Karya Utama · MPI Web</span>
+            <h3>MPI Sistem Komputer</h3>
+            <div class="qr-thumb">
+              <img src="./image/thumb-mpi-sistem-komputer.png" alt="Preview MPI Sistem Komputer">
+            </div>
+          </div>
+        </div>
+        <div class="qr-features">
+          <span class="qr-feat">✓ 21 Hal Modular</span>
+          <span class="qr-feat">✓ Siklus Kerja CPU</span>
+          <span class="qr-feat">✓ Simulator 4 Misi</span>
+          <span class="qr-feat">✓ Kuis &amp; Log AI</span>
+        </div>
+        <div class="qr-url">fanani.my.id/lab/mpi/sistem-komputer</div>
+      </div>
+
+      <!-- QR 2: LAB MAYA PERAKITAN KOMPUTER -->
+      <div class="qr-card lab">
+        <div class="qr-card-top">
+          <div class="qr-box">
+            <img src="./image/qr-lab-maya-perakitan-komputer.png" alt="QR Lab Maya Perakitan Komputer">
+            <span class="qr-scan-tag">Pindai QR #2 · Lab Maya</span>
+          </div>
+          <div class="qr-info">
+            <span class="qr-kicker">Ekosistem · Virtual Lab</span>
+            <h3>Lab Maya Perakitan PC</h3>
+            <div class="qr-thumb">
+              <img src="./bahan_video/03_simulator_pc_interaktif_16x9.jpg" alt="Preview Lab Maya Perakitan Komputer">
+            </div>
+          </div>
+        </div>
+        <div class="qr-features">
+          <span class="qr-feat">✓ Rakit Hardware</span>
+          <span class="qr-feat">✓ Sakelar Biner</span>
+          <span class="qr-feat">✓ Piksel Warna RGB</span>
+          <span class="qr-feat">✓ Beep BIOS &amp; LKPD</span>
+        </div>
+        <div class="qr-url">fanani.my.id/lab/lab-maya/perakitan-komputer</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SITUASI & TANTANGAN -->
+  <div class="layer">
+    <div class="sec-head">
+      <span class="sec-pill sp-st">Situasi &amp; Tantangan</span>
+      <h2 class="sec-title">Murid Fasih Menyentuh Layar, Namun Belum Paham Mesinnya</h2>
+    </div>
+    <div class="st-grid">
+      <div class="st-photo">
+        <img src="./bahan_video/01_masalah_lab_komputer_16x9.jpg" alt="Kondisi Pembelajaran Awal">
+        <div class="st-photo-cap">
+          <b>Masalah Kelas:</b> Materi Sistem Komputer abstrak &amp; murid jenuh menghafal buku.
+        </div>
+      </div>
+      <div class="st-cards">
+        <div class="mini-card">
+          <div class="mc-top">
+            <span class="mc-num" style="color:var(--ros)">1 : 35</span>
+            <span class="mc-tag" style="background:#ffe4e6;color:var(--ros)">Alat Terbatas</span>
+          </div>
+          <h4>Takut Merusak Alat</h4>
+          <p>Hanya <b>1 PC terbuka</b> untuk 35 murid; takut merusak alat.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mc-top">
+            <span class="mc-num" style="color:var(--amb)">58,40</span>
+            <span class="mc-tag" style="background:#fef3c7;color:var(--amb)">Nilai Awal 9A</span>
+          </div>
+          <h4>Tuntas Awal 37,1%</h4>
+          <p>Baru <b>13 dari 35 murid</b> tuntas di <b>8 kelas (9A–9H)</b>.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mc-top">
+            <span class="mc-num" style="color:var(--pri)">16 : 9</span>
+            <span class="mc-tag" style="background:#e0f2fe;color:var(--pri)">Layar Kelas</span>
+          </div>
+          <h4>Semua Perangkat</h4>
+          <p>Lancar di <b>Panel Interaktif (IFP)</b>, PC lab, &amp; HP murid.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mc-top">
+            <span class="mc-num" style="color:var(--ind)">Etika AI</span>
+            <span class="mc-tag" style="background:#e0e7ff;color:var(--ind)">Transparan</span>
+          </div>
+          <h4>Jujur &amp; Terbuka</h4>
+          <p>AI mitra teknis guru; <b>seluruh prompt AI dibuka</b>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. AKSI & INOVASI -->
+  <div class="layer">
+    <div class="sec-head">
+      <span class="sec-pill sp-ak">Aksi · ADDIE</span>
+      <h2 class="sec-title">Laboratorium Virtual via Vibe Coding &amp; Belajar Aktif</h2>
+    </div>
+    <div class="aksi-box">
+      <div class="aksi-top">
+        <div class="pilar-grid">
+          <div class="pilar">
+            <span class="pilar-no" style="background:var(--pri)">1</span>
+            <div>
+              <h5>Materi Visual &amp; Analogi</h5>
+              <p>6 materi kontekstual &amp; animasi alur kerja CPU.</p>
+            </div>
+          </div>
+          <div class="pilar">
+            <span class="pilar-no" style="background:var(--ind)">2</span>
+            <div>
+              <h5>Simulator &amp; Pengecoh</h5>
+              <p>Rakit PC, komponen pengecoh, &amp; <i>beep BIOS</i> nyata.</p>
+            </div>
+          </div>
+          <div class="pilar">
+            <span class="pilar-no" style="background:var(--emr)">3</span>
+            <div>
+              <h5>Evaluasi 4 Format</h5>
+              <p>20 soal interaktif 4 format &amp; skor langsung.</p>
+            </div>
+          </div>
+          <div class="pilar">
+            <span class="pilar-no" style="background:var(--amb)">4</span>
+            <div>
+              <h5>Guru Jadi Fasilitator</h5>
+              <p>Murid eksplorasi aktif; riwayat <i>prompt</i> AI terbuka.</p>
+            </div>
+          </div>
+        </div>
+        <div class="vibe-photo">
+          <img src="./bahan_video/02_guru_vibe_coding_16x9.jpg" alt="Guru Merancang Media dengan Vibe Coding">
+          <div class="vibe-cap">
+            <b>Vibe Coding (Antigravity):</b> Web HTML/CSS/JS murni &amp; ringan.
+          </div>
+        </div>
+      </div>
+
+      <div class="misi-strip">
+        <div class="misi-item">
+          <small>Misi 01</small>
+          <b>Merakit PC</b>
+          <span>Pasang komponen hingga nyala &amp; beep BIOS.</span>
+        </div>
+        <div class="misi-item">
+          <small>Misi 02</small>
+          <b>Sakelar Biner</b>
+          <span>Ubah sakelar 0 &amp; 1 menjadi angka &amp; huruf.</span>
+        </div>
+        <div class="misi-item">
+          <small>Misi 03</small>
+          <b>Layar Gelap</b>
+          <span>Cari penyebab PC gagal tampil ke monitor.</span>
+        </div>
+        <div class="misi-item">
+          <small>Misi 04</small>
+          <b>Memori Penuh</b>
+          <span>Atasi beban penuh RAM agar sistem stabil.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. DAMPAK, HASIL & PENGIMBASAN -->
+  <div class="layer">
+    <div class="sec-head">
+      <span class="sec-pill sp-dp">Dampak &amp; Imbas</span>
+      <h2 class="sec-title">Nilai Melonjak, Murid Berani Mencoba, &amp; Imbas 160 Guru</h2>
+    </div>
+    <div class="dampak-grid">
+      <!-- Kiri: Grafik Kuantitatif -->
+      <div class="dampak-card">
+        <div>
+          <div class="chart-group">
+            <div class="cg-head">
+              <span>Rata-Rata Nilai Kelas 9A (35 Murid)</span>
+              <span class="cg-badge">▲ +28,40 Poin</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-lbl">Awal</span>
+              <div class="bar-track"><div class="bar-fill bf-old" style="width:58.4%">58,40</div></div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-lbl">Akhir</span>
+              <div class="bar-track"><div class="bar-fill bf-new" style="width:86.8%">86,80</div></div>
+            </div>
+          </div>
+
+          <div class="chart-group">
+            <div class="cg-head">
+              <span>Ketuntasan Belajar (KKTP ≥ 75)</span>
+              <span class="cg-badge">▲ 13 → 32 Murid</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-lbl">Awal</span>
+              <div class="bar-track"><div class="bar-fill bf-old" style="width:37.1%">37,1%</div></div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-lbl">Akhir</span>
+              <div class="bar-track"><div class="bar-fill bf-emr" style="width:91.4%">91,4% (32/35 Tuntas)</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-Highlight-row">
+          <div class="sh-item">
+            <b>25 dari 35 Murid</b>
+            <span>Sukarela mencoba ulang dari rumah.</span>
+          </div>
+          <div class="sh-item">
+            <b style="color:var(--pri)">Cemas → Antusias</b>
+            <span>Diperluas ke kelas 9B–9J.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kanan: Pengimbasan & Rencana Tindak Lanjut -->
+      <div class="dampak-card">
+        <div>
+          <div class="imbas-hero">
+            <div class="imbas-big">160</div>
+            <div>
+              <p><b>Guru SMP se-Kab. Lamongan</b><br>Dilatih membuat MPI via <i>Vibe Coding</i></p>
+            </div>
+          </div>
+          <div class="imbas-list">
+            <div class="imbas-li">
+              <i>★</i>
+              <div><b>Narasumber Dinas Pendidikan Kab. Lamongan</b> (Sosialisasi Pembelajaran Mendalam &amp; KKA).</div>
+            </div>
+            <div class="imbas-li">
+              <i>★</i>
+              <div><b>5 Karya Gratis di fanani.my.id/lab</b> (kode terbuka di GitHub untuk guru se-Indonesia).</div>
+            </div>
+            <div class="imbas-li">
+              <i>★</i>
+              <div><b>Tindak Lanjut:</b> Pendampingan 3 murid belum tuntas &amp; pengembangan <b>PWA Offline</b>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. FOOTER -->
+  <div class="layer footer-bar">
+    <div class="footer-quote">
+      “Inovasi tidak diukur dari mahalnya alat, melainkan dari&nbsp;<b>seberapa dalam menyentuh nalar murid.</b>”
+    </div>
+    <div class="footer-right">
+      <div style="font-size:19.5px;font-weight:900;color:#fbbf24;letter-spacing:0.02em">GURU HEBAT, INDONESIA KUAT!</div>
+      <div class="footer-links">fanani.my.id/lab · github.com/chanif · pak@fanani.my.id</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+

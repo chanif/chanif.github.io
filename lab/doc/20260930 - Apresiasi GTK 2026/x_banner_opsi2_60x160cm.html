@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>X-Banner Opsi 2 (Visual & Ringkas) — Menyelam ke Dalam Mesin Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #070d19;
+    --card: #0f172a;
+    --ink: #0b1324;
+    --sky: #38bdf8;
+    --pri: #0284c7;
+    --ind: #6366f1;
+    --vio: #8b5cf6;
+    --emr: #10b981;
+    --amb: #f59e0b;
+    --ros: #f43f5e;
+    --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    width: 1200px;
+    height: 3200px;
+    background: #f8fafc;
+    font-family: var(--font);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .banner {
+    position: relative;
+    width: 1200px;
+    height: 3200px;
+    overflow: hidden;
+    background:
+      radial-gradient(1000px 750px at 0% 0%, rgba(14, 165, 233, 0.16), transparent 65%),
+      radial-gradient(1000px 800px at 100% 25%, rgba(99, 102, 241, 0.14), transparent 65%),
+      radial-gradient(900px 750px at 0% 75%, rgba(16, 185, 129, 0.12), transparent 65%),
+      #f8fafc;
+    padding: 72px 64px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(15, 23, 42, 0.06) 2px, transparent 2px);
+    background-size: 34px 34px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .top-bar-line {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 16px;
+    background: linear-gradient(90deg, #0ea5e9, #6366f1, #10b981);
+    z-index: 5;
+  }
+
+  .bottom-bar-line {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 16px;
+    background: linear-gradient(90deg, #10b981, #6366f1, #0ea5e9);
+    z-index: 5;
+  }
+
+  .layer {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ================= 1. HEADER LOGOS ================= */
+  .logo-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 999px;
+    padding: 16px 38px;
+    margin: 0 32px 32px; /* Aman dari ring pojok X-Banner */
+    box-shadow: 0 16px 36px -18px rgba(15, 23, 42, 0.14);
+  }
+
+  .logo-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .logo-bar img {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .sep {
+    width: 2px;
+    height: 38px;
+    background: #cbd5e1;
+  }
+
+  .school-name {
+    font-size: 21px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+  }
+
+  /* ================= 2. HERO POSTER ================= */
+  .hero {
+    background: linear-gradient(140deg, #091326 0%, #0f1f3d 55%, #1e1b4b 100%);
+    border-radius: 40px;
+    padding: 46px 48px 44px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -22px rgba(15, 23, 42, 0.5);
+    border: 2px solid rgba(56, 189, 248, 0.3);
+  }
+
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(90deg, #f59e0b, #ea580c);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.35);
+  }
+
+  .hero h1 {
+    font-size: 74px;
+    font-weight: 900;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(90deg, #38bdf8, #a78bfa, #34d399);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-tagline {
+    font-size: 26px;
+    font-weight: 600;
+    color: #cbd5e1;
+    line-height: 1.35;
+    margin-bottom: 32px;
+  }
+
+  .hero-tagline b {
+    color: #fff;
+  }
+
+  /* Visual Mockup + Profil di dalam Hero */
+  .hero-showcase {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 26px;
+    align-items: stretch;
+  }
+
+  .screen-frame {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 3px solid rgba(56, 189, 248, 0.45);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    height: 270px;
+  }
+
+  .screen-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .screen-pill {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    background: rgba(9, 19, 38, 0.88);
+    backdrop-filter: blur(8px);
+    color: #38bdf8;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+  }
+
+  .profile-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: 24px;
+    padding: 24px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .prof-top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .prof-top img {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3.5px solid #38bdf8;
+    flex: none;
+  }
+
+  .prof-name {
+    font-size: 25px;
+    font-weight: 900;
+    line-height: 1.15;
+    color: #fff;
+  }
+
+  .prof-sub {
+    font-size: 17px;
+    color: #93c5fd;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  .prof-pills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .prof-pill {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 14px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+
+  .prof-pill b {
+    display: block;
+    font-size: 22px;
+    font-weight: 900;
+    color: #fde047;
+    line-height: 1.1;
+  }
+
+  .prof-pill span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #cbd5e1;
+  }
+
+  /* ================= 3. ZONA EYE-LEVEL: 2 QR JUMBO ================= */
+  .qr-station {
+    background: #fff;
+    border-radius: 38px;
+    padding: 34px 38px 36px;
+    border: 3px solid #7dd3fc;
+    box-shadow: 0 26px 55px -22px rgba(2, 132, 199, 0.25);
+  }
+
+  .qr-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .qr-head h2 {
+    font-size: 31px;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.025em;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .dot-live {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.22);
+  }
+
+  .qr-badge-right {
+    background: #0f172a;
+    color: #38bdf8;
+    font-size: 17px;
+    font-weight: 800;
+    padding: 10px 22px;
+    border-radius: 999px;
+  }
+
+  .qr-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .qr-big-card {
+    border-radius: 30px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .qr-big-card.mpi {
+    background: linear-gradient(160deg, #f5f3ff 0%, #ede9fe 100%);
+    border: 2.5px solid #c4b5fd;
+  }
+
+  .qr-big-card.lab {
+    background: linear-gradient(160deg, #ecfeff 0%, #e0f2fe 100%);
+    border: 2.5px solid #7dd3fc;
+  }
+
+  .qbc-tag {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    border-radius: 999px;
+  }
+
+  .qr-big-card.mpi .qbc-tag {
+    background: #4f46e5;
+    color: #fff;
+  }
+
+  .qr-big-card.lab .qbc-tag {
+    background: #0284c7;
+    color: #fff;
+  }
+
+  .qbc-title {
+    font-size: 32px;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+
+  .qbc-qr-wrap {
+    background: #fff;
+    padding: 16px;
+    border-radius: 26px;
+    box-shadow: 0 18px 38px -14px rgba(15, 23, 42, 0.25);
+    border: 2px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .qbc-qr-wrap img {
+    width: 260px;
+    height: 260px;
+    display: block;
+  }
+
+  .qbc-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .qbc-chip {
+    background: #fff;
+    color: #1e293b;
+    font-size: 15.5px;
+    font-weight: 800;
+    padding: 7px 14px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(15, 23, 42, 0.1);
+  }
+
+  .qbc-url {
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 13.8px;
+    font-weight: 800;
+    padding: 12px 10px;
+    border-radius: 14px;
+    background: #0f172a;
+    color: #38bdf8;
+    white-space: nowrap;
+  }
+
+  .qr-big-card.mpi .qbc-url {
+    color: #c4b5fd;
+  }
+
+  /* ================= 4. ALUR STAR RINGKAS (4 KARTU BESAR) ================= */
+  .star-section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .star-section-title h2 {
+    font-size: 30px;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.025em;
+  }
+
+  .star-badges {
+    display: flex;
+    gap: 8px;
+  }
+
+  .star-badges span {
+    font-size: 15px;
+    font-weight: 900;
+    padding: 7px 18px;
+    border-radius: 999px;
+    background: #0f172a;
+    color: #fff;
+  }
+
+  .star-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .star-card {
+    background: #fff;
+    border-radius: 28px;
+    padding: 26px 26px;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 14px 32px -16px rgba(15, 23, 42, 0.14);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sc-step {
+    display: inline-flex;
+    align-self: flex-start;
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 5px 14px;
+    border-radius: 999px;
+  }
+
+  .sc-big {
+    font-size: 46px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .star-card h3 {
+    font-size: 22px;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.2;
+  }
+
+  .star-card p {
+    font-size: 16.5px;
+    font-weight: 600;
+    color: #475569;
+    line-height: 1.4;
+  }
+
+  /* ================= 5. DAMPAK UTAMA (ANGKA JUMBO) ================= */
+  .impact-panel {
+    background: linear-gradient(135deg, #091326 0%, #0f1f3d 100%);
+    border-radius: 36px;
+    padding: 34px 38px;
+    color: #fff;
+    box-shadow: 0 24px 50px -20px rgba(15, 23, 42, 0.45);
+  }
+
+  .impact-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .impact-head h2 {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+
+  .impact-head span {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1.5px solid #34d399;
+    color: #6ee7b7;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 7px 18px;
+    border-radius: 999px;
+  }
+
+  .impact-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .metric-box {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1.5px solid rgba(255, 255, 255, 0.14);
+    border-radius: 26px;
+    padding: 24px 24px;
+  }
+
+  .mb-label {
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #93c5fd;
+    margin-bottom: 8px;
+  }
+
+  .mb-val {
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 10px;
+  }
+
+  .mb-sub {
+    font-size: 16.5px;
+    font-weight: 600;
+    color: #e2e8f0;
+    line-height: 1.35;
+  }
+
+  /* ================= 6. FOOTER ================= */
+  .footer-bar {
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 28px;
+    padding: 20px 34px;
+    margin: 0 32px; /* Aman dari ring pojok bawah */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 12px 28px -14px rgba(15, 23, 42, 0.12);
+  }
+
+  .fb-left {
+    font-size: 19px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .fb-left span {
+    color: #0284c7;
+  }
+
+  .fb-right {
+    font-family: var(--mono);
+    font-size: 17px;
+    font-weight: 800;
+    color: #4f46e5;
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="top-bar-line"></div>
+  <div class="bottom-bar-line"></div>
+
+  <!-- 1. LOGOS -->
+  <div class="layer">
+    <div class="logo-bar">
+      <div class="logo-left">
+        <img src="./image/logo-kemendikdasmen-lengkap.png" alt="Kemendikdasmen">
+        <div class="sep"></div>
+        <img src="./image/logo-kabupaten-lamongan.png" alt="Kab. Lamongan">
+        <img src="./image/logo-smpn-2-lamongan.png" alt="SMPN 2 Lamongan">
+        <span class="school-name">SMP Negeri 2 Lamongan</span>
+      </div>
+      <img src="./image/logo-gabungan-sobat-bermutu-ramah.png" alt="Pendidikan Bermutu Untuk Semua">
+    </div>
+
+    <!-- 2. HERO RINGKAS & VISUAL -->
+    <div class="hero">
+      <div class="hero-kicker">★ Apresiasi GTK Jatim 2026 · Guru SMP Transformatif</div>
+      <h1>MENYELAM KE DALAM<br><span>MESIN DIGITAL</span></h1>
+      <p class="hero-tagline">
+        Inovasi <b>MPI &amp; Laboratorium Maya</b> Sistem Komputer Berbasis Web — Informatika Kelas IX
+      </p>
+
+      <div class="hero-showcase">
+        <div class="screen-frame">
+          <img src="./bahan_video/03_simulator_pc_interaktif_16x9.jpg" alt="Simulator Perakitan PC Interaktif">
+          <span class="screen-pill">🖥️ Simulator Rakit PC &amp; Siklus CPU Interaktif (16:9)</span>
+        </div>
+        <div class="profile-card">
+          <div class="prof-top">
+            <img src="./image/foto-profil-fanani.webp" alt="Ach. Chanifuddin Fanani">
+            <div>
+              <div class="prof-name">Ach. Chanifuddin Fanani, S.Pd.</div>
+              <div class="prof-sub">Guru Informatika<br>SMP Negeri 2 Lamongan</div>
+            </div>
+          </div>
+          <div class="prof-pills">
+            <div class="prof-pill">
+              <b>21 Hal</b>
+              <span>Modular</span>
+            </div>
+            <div class="prof-pill">
+              <b>4 Misi</b>
+              <span>Simulator</span>
+            </div>
+            <div class="prof-pill">
+              <b>Gratis</b>
+              <span>Web Murni</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. EYE-LEVEL: 2 QR JUMBO -->
+  <div class="layer qr-station">
+    <div class="qr-head">
+      <h2><span class="dot-live"></span> PINDAI &amp; COBA LANGSUNG DI HP ANDA</h2>
+      <span class="qr-badge-right">📱 Tanpa Instal · Langsung Main</span>
+    </div>
+
+    <div class="qr-duo">
+      <!-- QR 1 -->
+      <div class="qr-big-card mpi">
+        <span class="qbc-tag">QR #1 · Karya Utama</span>
+        <div class="qbc-title">MPI Sistem Komputer</div>
+        <div class="qbc-qr-wrap">
+          <img src="./image/qr-mpi-sistem-komputer.png" alt="QR MPI Sistem Komputer">
+        </div>
+        <div class="qbc-chips">
+          <span class="qbc-chip">Siklus CPU</span>
+          <span class="qbc-chip">Simulator 4 Misi</span>
+          <span class="qbc-chip">Kuis 4 Format</span>
+          <span class="qbc-chip">Log Prompt AI</span>
+        </div>
+        <div class="qbc-url">fanani.my.id/lab/mpi/sistem-komputer</div>
+      </div>
+
+      <!-- QR 2 -->
+      <div class="qr-big-card lab">
+        <span class="qbc-tag">QR #2 · Virtual Lab</span>
+        <div class="qbc-title">Lab Maya Perakitan PC</div>
+        <div class="qbc-qr-wrap">
+          <img src="./image/qr-lab-maya-perakitan-komputer.png" alt="QR Lab Maya Perakitan">
+        </div>
+        <div class="qbc-chips">
+          <span class="qbc-chip">Rakit Hardware</span>
+          <span class="qbc-chip">Biner 8-Bit</span>
+          <span class="qbc-chip">Piksel RGB</span>
+          <span class="qbc-chip">Beep BIOS &amp; LKPD</span>
+        </div>
+        <div class="qbc-url">fanani.my.id/lab/lab-maya/perakitan-komputer</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. INTI CERITA (S - T - A) RINGKAS -->
+  <div class="layer">
+    <div class="star-section-title">
+      <h2>Dari Keterbatasan Alat Menjadi Eksplorasi Tanpa Rasa Takut</h2>
+      <div class="star-badges">
+        <span>Situasi</span>
+        <span>Tantangan</span>
+        <span>Aksi</span>
+      </div>
+    </div>
+
+    <div class="star-grid">
+      <div class="star-card">
+        <span class="sc-step" style="background:#ffe4e6;color:#e11d48">1 · Masalah</span>
+        <div class="sc-big" style="color:#e11d48">1 : 35</div>
+        <h3>Alat Terbatas &amp; Cemas</h3>
+        <p>Hanya 1 PC terbuka untuk 35 murid. Materi CPU abstrak &amp; murid takut merusak komponen fisik.</p>
+      </div>
+
+      <div class="star-card">
+        <span class="sc-step" style="background:#e0e7ff;color:#4f46e5">2 · Inovasi</span>
+        <div class="sc-big" style="color:#4f46e5">Vibe Coding</div>
+        <h3>Web Mandiri + Etika AI</h3>
+        <p>Dibangun dengan HTML/CSS/JS murni bersama asisten AI secara etis &amp; transparan.</p>
+      </div>
+
+      <div class="star-card">
+        <span class="sc-step" style="background:#e0f2fe;color:#0284c7">3 · Pengalaman</span>
+        <div class="sc-big" style="color:#0284c7">Aman 100%</div>
+        <h3>Rakit PC &amp; Beep BIOS</h3>
+        <p>Seret-lepas komponen dengan pengecoh, bunyi beep BIOS nyata, &amp; panduan diagnostik.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. DAMPAK & PENGIMBASAN (ANGKA JUMBO) -->
+  <div class="layer impact-panel">
+    <div class="impact-head">
+      <h2>Dampak Nyata &amp; Pengimbasan</h2>
+      <span>✓ Sampel Kelas 9A (35 Murid) → Diperluas 9B–9H</span>
+    </div>
+
+    <div class="impact-metrics">
+      <div class="metric-box">
+        <div class="mb-label">Lonjakan Nilai Rata-Rata</div>
+        <div class="mb-val" style="color:#38bdf8">58,4 → 86,8</div>
+        <div class="mb-sub">Naik <b>+28,4 poin</b>; murid mampu menalar alur kerja CPU &amp; perakitan.</div>
+      </div>
+
+      <div class="metric-box">
+        <div class="mb-label">Ketuntasan Kelas</div>
+        <div class="mb-val" style="color:#34d399">91,4%</div>
+        <div class="mb-sub">Melesat dari 37,1% (<b>32/35 tuntas</b>); <b>25 murid</b> mengulang mandiri di rumah.</div>
+      </div>
+
+      <div class="metric-box">
+        <div class="mb-label">Diseminasi Se-Kabupaten</div>
+        <div class="mb-val" style="color:#fde047">160 Guru</div>
+        <div class="mb-sub">Dilatih membuat MPI mandiri di Dinas Pendidikan Kab. Lamongan &amp; MGMP.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. FOOTER -->
+  <div class="layer footer-bar">
+    <div class="fb-left">
+      <span>Guru Hebat, Indonesia Kuat!</span> · 5 Karya Terbuka &amp; Gratis untuk Pendidikan Indonesia
+    </div>
+    <div class="fb-right">
+      fanani.my.id/lab · github.com/chanif
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

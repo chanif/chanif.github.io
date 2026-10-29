@@ -8,7 +8,7 @@
 
 window.LAB_CONFIG = {
   // ── Mode Testing ──
-  is_testing: 1,
+  is_testing: 0,
 
   // ── Metadata ──
   meta: {
