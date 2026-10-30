@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>X-Banner 60x160 cm — Sistem Komputer: Menyelam ke Dalam Mesin Digital (Edisi Kurasi)</title>
+<link rel="stylesheet" href="./image/fonts/fonts.css">
+<style>
+  :root {
+    --teal-dark: #005f73;
+    --teal: #008b9e;
+    --cyan-border: #00a8b8;
+    --orange: #ea580c;
+    --orange-bright: #f97316;
+    --amber: #f59e0b;
+    --navy: #0a1428;
+    --ink: #0f172a;
+    --slate: #334155;
+    --emr: #059669;
+    --ros: #e11d48;
+    --ind: #4f46e5;
+    --font-head: 'Fredoka', 'Poppins', sans-serif;
+    --font-body: 'Nunito', 'Poppins', sans-serif;
+    --font-ui: 'Poppins', sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    width: 1200px;
+    height: 3200px;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: #eef8fa;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Kanvas 60 x 160 cm (1200 x 3200 px, dirender 2.5x = 3000 x 8000 px) */
+  .banner {
+    position: relative;
+    width: 1200px;
+    height: 3200px;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg,
+        rgba(224, 247, 250, 0.86) 0%,
+        rgba(240, 253, 255, 0.92) 38%,
+        rgba(248, 250, 252, 0.95) 72%,
+        rgba(224, 242, 254, 0.92) 100%),
+      url('./image/bg-kelas-mpi.jpg') center top / cover no-repeat;
+    padding: 54px 40px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .top-stripe {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 14px;
+    background: linear-gradient(90deg, var(--teal-dark), var(--cyan-border), var(--orange-bright), var(--teal));
+    z-index: 5;
+  }
+
+  .bottom-stripe {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 14px;
+    background: linear-gradient(90deg, var(--teal), var(--orange-bright), var(--cyan-border), var(--teal-dark));
+    z-index: 5;
+  }
+
+  .layer {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ================= 1. HEADER LOGOS (KAPSUL MPI + AMAN DARI MATA IKAN POJOK) ================= */
+  .top-logos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 56px 14px; /* Aman dari lubang mata ikan pojok X-Banner */
+    gap: 14px;
+  }
+
+  .logo-pill {
+    background: rgba(255, 255, 255, 0.98);
+    border: 3.5px solid var(--cyan-border);
+    box-shadow: 0 7px 0 rgba(0, 121, 140, 0.24), 0 14px 28px rgba(15, 23, 42, 0.12);
+    border-radius: 30px;
+    padding: 12px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .logo-pill img {
+    height: 78px;
+    width: auto;
+    object-fit: contain;
+    flex: none;
+  }
+
+  .logo-sep {
+    width: 2.5px;
+    height: 56px;
+    background: #cbd5e1;
+    border-radius: 99px;
+    flex: none;
+  }
+
+  .school-id {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .school-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.12;
+  }
+
+  .school-name {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 21px;
+    color: #0f172a;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .school-kab {
+    font-family: var(--font-ui);
+    font-size: 15.5px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #0284c7;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .megilan-id {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .megilan-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.04;
+  }
+
+  .megilan-text b {
+    font-family: var(--font-head);
+    font-size: 21px;
+    font-weight: 700;
+    color: #0284c7;
+  }
+
+  .megilan-text span {
+    font-family: var(--font-head);
+    font-size: 18.5px;
+    font-weight: 700;
+    color: #16a34a;
+    letter-spacing: 0.02em;
+  }
+
+  /* ================= 2. HERO SENADA HALAMAN UTAMA MPI (LEBIH LUAS & VIBRANT) ================= */
+  .hero-mpi {
+    position: relative;
+    border-radius: 38px;
+    overflow: hidden;
+    border: 4.5px solid #00a8b8;
+    box-shadow: 0 12px 0 rgba(0, 121, 140, 0.26), 0 26px 52px -14px rgba(0, 95, 115, 0.28);
+    background:
+      linear-gradient(135deg, rgba(212, 246, 252, 0.70) 0%, rgba(255, 255, 255, 0.60) 48%, rgba(255, 239, 213, 0.72) 100%),
+      url('./image/bg-kelas-mpi.jpg') center center / cover no-repeat;
+    padding: 44px 40px 38px;
+  }
+
+  .hero-top-row {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  .event-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #007788, #00a8b8);
+    color: #fff;
+    font-family: var(--font-ui);
+    font-size: 16.5px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 9px 24px;
+    border-radius: 999px;
+    border: 3.5px solid #fff;
+    box-shadow: 0 5px 0 rgba(0, 95, 115, 0.24), 0 8px 16px rgba(0, 109, 119, 0.22);
+    white-space: nowrap;
+  }
+
+  .cat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ff5a00, #f59e0b);
+    color: #fff;
+    font-family: var(--font-ui);
+    font-size: 16.5px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 9px 24px;
+    border-radius: 999px;
+    border: 3.5px solid #fff;
+    box-shadow: 0 5px 0 rgba(194, 65, 12, 0.24), 0 8px 16px rgba(234, 88, 12, 0.24);
+    white-space: nowrap;
+  }
+
+  .mpi-title-block {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    margin: 72px 0 54px;
+  }
+
+  .mpi-main-title {
+    font-family: var(--font-head);
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 0.98;
+    color: #00889e;
+    -webkit-text-stroke: 17px #ffffff;
+    paint-order: stroke fill;
+    filter: drop-shadow(0 8px 0 rgba(0, 95, 115, 0.22)) drop-shadow(0 16px 26px rgba(0, 109, 130, 0.34));
+    letter-spacing: -0.01em;
+  }
+
+  .mpi-sub-title {
+    font-family: var(--font-head);
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1.08;
+    color: #ff5500;
+    -webkit-text-stroke: 12px #ffffff;
+    paint-order: stroke fill;
+    filter: drop-shadow(0 6px 0 rgba(194, 65, 12, 0.20)) drop-shadow(0 12px 22px rgba(234, 88, 12, 0.30));
+    margin-top: 12px;
+  }
+
+  /* Kapsul Cyan Vibrant Senada Tombol "Informatika - Fase D" di Cover MPI */
+  .mpi-tagline {
+    margin-top: 28px;
+    font-family: var(--font-head);
+    font-size: 27.5px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(180deg, #00b8cc 0%, #0091a6 100%);
+    display: inline-block;
+    padding: 13px 46px;
+    border-radius: 999px;
+    border: 4px solid #ffffff;
+    box-shadow: 0 6px 0 rgba(0, 95, 115, 0.26), 0 12px 24px rgba(0, 139, 158, 0.28);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+
+  .mpi-tagline b {
+    color: #fef08a;
+  }
+
+  /* ================= 3. SHOWCASE 2 KARYA + SCREENSHOT + QR SHORT URL ================= */
+  .dual-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .app-panel {
+    border-radius: 28px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 11px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .app-panel.mpi-theme {
+    background: linear-gradient(160deg, #ffffff 0%, #e6f9fc 100%);
+    border: 3.5px solid #00a8b8;
+    box-shadow: 0 8px 0 rgba(0, 121, 140, 0.18), 0 14px 30px -12px rgba(0, 139, 158, 0.22);
+  }
+
+  .app-panel.lab-theme {
+    background: linear-gradient(160deg, #091326 0%, #111e38 60%, #0f2942 100%);
+    border: 3.5px solid #38bdf8;
+    color: #fff;
+    box-shadow: 0 8px 0 rgba(9, 19, 38, 0.28), 0 14px 30px -12px rgba(9, 19, 38, 0.40);
+  }
+
+  .ap-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .ap-pill {
+    font-family: var(--font-ui);
+    font-size: 15.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 5px 16px;
+    border-radius: 999px;
+  }
+
+  .mpi-theme .ap-pill {
+    background: #008b9e;
+    color: #fff;
+  }
+
+  .lab-theme .ap-pill {
+    background: #f59e0b;
+    color: #091326;
+  }
+
+  .ap-head-tag {
+    font-size: 15.5px;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 999px;
+  }
+
+  .mpi-theme .ap-head-tag {
+    background: #ffedd5;
+    color: #c2410c;
+    border: 2px solid #fdba74;
+  }
+
+  .lab-theme .ap-head-tag {
+    background: rgba(56, 189, 248, 0.18);
+    color: #7dd3fc;
+    border: 2px solid rgba(56, 189, 248, 0.45);
+  }
+
+  .ap-title {
+    font-family: var(--font-head);
+    font-size: 33px;
+    font-weight: 700;
+    line-height: 1.05;
+    margin-top: 4px;
+  }
+
+  .mpi-theme .ap-title {
+    color: #006d77;
+  }
+
+  .lab-theme .ap-title {
+    background: linear-gradient(90deg, #fcd34d, #34d399);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* 2 Screenshot Asli Berdampingan */
+  .screens-collage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .sc-item {
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    border: 2.5px solid rgba(0, 168, 184, 0.45);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
+    background: #0f172a;
+  }
+
+  .lab-theme .sc-item {
+    border-color: rgba(56, 189, 248, 0.55);
+  }
+
+  .sc-item img {
+    width: 100%;
+    height: 156px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  .sc-cap {
+    font-family: var(--font-ui);
+    font-size: 13.5px;
+    font-weight: 800;
+    text-align: center;
+    padding: 5px 6px;
+    background: #0f172a;
+    color: #fff;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .mpi-theme .sc-cap {
+    background: #006d77;
+  }
+
+  /* Baris QR Short URL Lebih Simpel + 3 Poin Jelas */
+  .ap-qr-row {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 15px;
+    align-items: center;
+    padding: 11px 14px;
+    border-radius: 18px;
+  }
+
+  .mpi-theme .ap-qr-row {
+    background: #ffffff;
+    border: 2.5px solid #bae6fd;
+  }
+
+  .lab-theme .ap-qr-row {
+    background: rgba(255, 255, 255, 0.09);
+    border: 2.5px solid rgba(125, 211, 252, 0.36);
+  }
+
+  .qr-frame {
+    background: #fff;
+    padding: 6px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
+    border: 2px solid #e2e8f0;
+  }
+
+  .qr-frame img {
+    width: 148px;
+    height: 148px;
+    display: block;
+    image-rendering: pixelated;
+  }
+
+  .qr-cta {
+    margin-top: 5px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 7px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .mpi-theme .qr-cta {
+    background: var(--orange);
+    color: #fff;
+  }
+
+  .lab-theme .qr-cta {
+    background: #0284c7;
+    color: #fff;
+  }
+
+  .ap-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ap-bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 20.5px;
+    font-weight: 800;
+    line-height: 1.22;
+  }
+
+  .mpi-theme .ap-bullet { color: #0f172a; }
+  .lab-theme .ap-bullet { color: #f8fafc; }
+
+  .ap-bullet i {
+    font-style: normal;
+    font-weight: 900;
+    color: var(--orange);
+    flex: none;
+  }
+
+  .lab-theme .ap-bullet i {
+    color: #38bdf8;
+  }
+
+  .ap-url-bar {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 19.5px;
+    font-weight: 700;
+    text-align: center;
+    padding: 9px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+
+  .mpi-theme .ap-url-bar {
+    background: #005f73;
+    color: #ffffff;
+  }
+
+  .lab-theme .ap-url-bar {
+    background: #020617;
+    color: #38bdf8;
+    border: 2px solid rgba(56, 189, 248, 0.45);
+  }
+
+  /* ================= 4. JUDUL SEKSI BERGAYA PITA MPI ================= */
+  .mpi-ribbon-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .ribbon-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(180deg, #00a8b8 0%, #00798c 100%);
+    color: #fff;
+    font-family: var(--font-head);
+    font-size: 27px;
+    font-weight: 700;
+    padding: 8px 28px;
+    border-radius: 999px;
+    border: 3.5px solid #fff;
+    box-shadow: 0 5px 0 rgba(0, 95, 115, 0.25), 0 8px 18px rgba(0, 95, 115, 0.18);
+    white-space: nowrap;
+    flex: none;
+  }
+
+  .ribbon-pill.orange {
+    background: linear-gradient(180deg, #f97316 0%, #ea580c 100%);
+    box-shadow: 0 5px 0 rgba(194, 65, 12, 0.28), 0 8px 18px rgba(234, 88, 12, 0.18);
+  }
+
+  .ribbon-pill.emerald {
+    background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+    box-shadow: 0 5px 0 rgba(6, 95, 70, 0.28), 0 8px 18px rgba(5, 150, 105, 0.18);
+  }
+
+  .ribbon-sub {
+    font-family: var(--font-head);
+    font-size: 25px;
+    font-weight: 700;
+    color: #0f172a;
+    white-space: nowrap;
+  }
+
+  /* ================= 5. SITUASI & TANTANGAN (FONT SUPER BESAR & CLEAN) ================= */
+  .st-container {
+    background: #ffffff;
+    border: 3.5px solid var(--cyan-border);
+    border-radius: 28px;
+    padding: 22px 24px;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 20px;
+    align-items: stretch;
+    box-shadow: 0 8px 0 rgba(0, 121, 140, 0.16), 0 14px 30px -12px rgba(15, 23, 42, 0.14);
+  }
+
+  .st-photo-box {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #e2e8f0;
+  }
+
+  .st-photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .st-overlay {
+    position: absolute;
+    inset: auto 10px 10px 10px;
+    background: rgba(9, 19, 38, 0.92);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 20.5px;
+    font-weight: 800;
+    line-height: 1.24;
+  }
+
+  .st-overlay b {
+    color: #fbbf24;
+  }
+
+  .st-4cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .st-card {
+    background: #f8fafc;
+    border: 2.5px solid #e2e8f0;
+    border-left: 8px solid var(--teal);
+    border-radius: 18px;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .st-card.c-ros { border-left-color: var(--ros); }
+  .st-card.c-amb { border-left-color: var(--orange); }
+  .st-card.c-ind { border-left-color: var(--ind); }
+
+  .stc-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .stc-big {
+    font-family: var(--font-head);
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .stc-label {
+    font-size: 15.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+
+  .st-card h4 {
+    font-family: var(--font-head);
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+
+  .st-card p {
+    font-size: 20.5px;
+    font-weight: 800;
+    color: var(--slate);
+    line-height: 1.22;
+    margin-top: 2px;
+  }
+
+  /* ================= 6. AKSI: 2x2 PILAR BESAR (TANPA 4 MISI) ================= */
+  .aksi-container {
+    background: #ffffff;
+    border: 3.5px solid var(--cyan-border);
+    border-radius: 28px;
+    padding: 20px 24px;
+    box-shadow: 0 8px 0 rgba(0, 121, 140, 0.16), 0 14px 30px -12px rgba(15, 23, 42, 0.14);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .pilar-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .pilar-box {
+    background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 100%);
+    border: 2.5px solid #99f6e4;
+    border-radius: 20px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .pb-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--teal);
+    color: #fff;
+    font-family: var(--font-head);
+    font-size: 29px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    flex: none;
+    box-shadow: 0 4px 10px rgba(0, 139, 158, 0.25);
+  }
+
+  .pb-text h4 {
+    font-family: var(--font-head);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--teal-dark);
+    line-height: 1.14;
+  }
+
+  .pb-text p {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--slate);
+    line-height: 1.24;
+    margin-top: 3px;
+  }
+
+  /* ================= 7. DAMPAK, HASIL & PENGIMBASAN (FONT SUPER BESAR) ================= */
+  .dampak-row {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 18px;
+  }
+
+  .dampak-box {
+    background: #ffffff;
+    border: 3.5px solid var(--cyan-border);
+    border-radius: 28px;
+    padding: 22px 24px;
+    box-shadow: 0 8px 0 rgba(0, 121, 140, 0.16), 0 14px 30px -12px rgba(15, 23, 42, 0.14);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .db-chart {
+    margin-bottom: 10px;
+  }
+
+  .dbc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .dbc-top b {
+    font-family: var(--font-head);
+    font-size: 23.5px;
+    color: var(--ink);
+  }
+
+  .dbc-pill {
+    background: #d1fae5;
+    color: #065f46;
+    font-size: 18px;
+    font-weight: 900;
+    padding: 4px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex: none;
+  }
+
+  .b-line {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .b-line span {
+    font-size: 20px;
+    font-weight: 800;
+    color: #475569;
+  }
+
+  .b-track {
+    height: 38px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .b-fill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 14px;
+    font-family: var(--font-head);
+    font-size: 21px;
+    font-weight: 700;
+    border-radius: 10px;
+  }
+
+  .bf-1 { background: #94a3b8; color: #fff; }
+  .bf-2 { background: linear-gradient(90deg, #008b9e, #0284c7); color: #fff; }
+  .bf-3 { background: linear-gradient(90deg, #059669, #10b981); color: #fff; }
+
+  .dampak-2mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding-top: 8px;
+    border-top: 2px solid #e2e8f0;
+  }
+
+  .dm-item {
+    background: #f0fdfa;
+    border: 2.5px solid #99f6e4;
+    border-radius: 14px;
+    padding: 10px 14px;
+  }
+
+  .dm-item b {
+    font-family: var(--font-head);
+    font-size: 25px;
+    color: var(--teal-dark);
+    display: block;
+    line-height: 1.1;
+  }
+
+  .dm-item span {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--slate);
+    line-height: 1.2;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* Kanan: Pengimbasan 160 Guru */
+  .imbas-banner {
+    background: linear-gradient(135deg, #005f73 0%, #0a1428 100%);
+    color: #fff;
+    border-radius: 18px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border: 3px solid #38bdf8;
+  }
+
+  .ib-num {
+    font-family: var(--font-head);
+    font-size: 66px;
+    font-weight: 700;
+    color: #fde047;
+    line-height: 0.95;
+  }
+
+  .ib-text b {
+    font-family: var(--font-head);
+    font-size: 23.5px;
+    color: #fff;
+    display: block;
+    line-height: 1.12;
+    white-space: nowrap;
+  }
+
+  .ib-text span {
+    font-size: 19.5px;
+    font-weight: 800;
+    color: #bae6fd;
+    line-height: 1.22;
+    display: block;
+    margin-top: 3px;
+  }
+
+  .imbas-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ic-box {
+    background: #f8fafc;
+    border: 2.5px solid #e2e8f0;
+    border-left: 8px solid var(--orange);
+    border-radius: 16px;
+    padding: 12px 16px;
+  }
+
+  .ic-box.emr {
+    border-left-color: var(--emr);
+  }
+
+  .ic-box h5 {
+    font-family: var(--font-head);
+    font-size: 22.5px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+
+  .ic-box p {
+    font-size: 19.5px;
+    font-weight: 800;
+    color: var(--slate);
+    line-height: 1.22;
+    margin-top: 2px;
+  }
+
+  /* ================= 8. FOOTER IDENTITAS & MOTTO ================= */
+  .footer-pill {
+    background: linear-gradient(135deg, #031020 0%, #0a1f38 40%, #004d66 100%);
+    color: #fff;
+    border-radius: 30px;
+    padding: 22px 28px 22px 26px;
+    margin: 0 56px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0;
+    border: 4px solid rgba(255,255,255,0.95);
+    box-shadow: 0 12px 32px rgba(9, 19, 38, 0.40);
+    overflow: hidden;
+  }
+
+  .fp-profile {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex: 1;
+  }
+
+  .fp-avatar-wrap {
+    position: relative;
+    flex: none;
+  }
+
+  .fp-profile img {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #38bdf8;
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.28), 0 10px 22px rgba(0, 0, 0, 0.45);
+    display: block;
+  }
+
+  .fp-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .fp-name {
+    font-family: var(--font-head);
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.06;
+    white-space: nowrap;
+  }
+
+  .fp-role {
+    font-size: 19px;
+    font-weight: 800;
+    color: #7dd3fc;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .fp-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .fp-contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 17.5px;
+    font-weight: 700;
+    color: #e2f0ff;
+    white-space: nowrap;
+  }
+
+  .fp-contact-item .fp-ic-label {
+    font-size: 18px;
+    width: 22px;
+    text-align: center;
+    flex: none;
+    filter: brightness(1.2);
+  }
+
+  .fp-contact-item b {
+    color: #fde68a;
+    font-weight: 900;
+  }
+
+  /* Pemisah vertikal */
+  .fp-divider {
+    width: 2px;
+    background: rgba(255, 255, 255, 0.22);
+    margin: 0 18px;
+    align-self: stretch;
+    flex: none;
+  }
+
+  .fp-right {
+    text-align: right;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    max-width: 360px;
+    min-width: 300px;
+  }
+
+  .fp-tag {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #fde047, #fb923c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  }
+
+  .fp-motto-sub {
+    font-size: 16px;
+    font-weight: 800;
+    color: #bae6fd;
+    line-height: 1.35;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="top-stripe"></div>
+  <div class="bottom-stripe"></div>
+
+  <!-- 1. LOGOS KAPSUL BERSIH & TERLIHAT JELAS (KEMENDIKDASMEN, JATIM, LAMONGAN MEGILAN, DISDIK, SMPN 2) -->
+  <div class="layer">
+    <div class="top-logos">
+      <div class="logo-pill">
+        <!-- 1. Kemendikdasmen -->
+        <img src="./image/logo-kemendikdasmen-simpel.png" alt="Kemendikdasmen" style="height:88px">
+        <div class="logo-sep"></div>
+        <!-- 2. Jawa Timur (Tanpa Text) -->
+        <img src="./image/logo-jawa-timur.png" alt="Provinsi Jawa Timur" style="height:82px">
+        <div class="logo-sep"></div>
+        <!-- 3. Lamongan Megilan (logo full — tanpa text terpisah) -->
+        <img src="./image/logo-lamongan-megilan-official.png" alt="Lamongan Megilan" style="height:76px">
+        <div class="logo-sep"></div>
+        <!-- 4. Dinas Pendidikan Kabupaten Lamongan (Dengan Text) -->
+        <div class="school-id">
+          <img src="./image/logo-kabupaten-lamongan.png" alt="Dinas Pendidikan Kabupaten Lamongan" style="height:80px">
+          <div class="school-text">
+            <span class="school-name">Dinas Pendidikan</span>
+            <span class="school-kab">Kabupaten Lamongan</span>
+          </div>
+        </div>
+        <div class="logo-sep"></div>
+        <!-- 5. SMPN 2 Lamongan (Tanpa Text) -->
+        <img src="./image/logo-smpn-2-lamongan.png" alt="SMPN 2 Lamongan" style="height:92px">
+      </div>
+    </div>
+
+    <!-- 2. HERO SENADA HALAMAN UTAMA MPI SISTEM KOMPUTER (LEBIH LUAS & VIBRANT) -->
+    <div class="hero-mpi">
+      <div class="hero-top-row">
+        <span class="event-badge">★ Inovasi Pembelajaran</span>
+        <span class="cat-badge">Apresiasi GTK Transformatif 2026</span>
+      </div>
+
+      <div class="mpi-title-block">
+        <div style="font-family: var(--font-head); font-size: 32px; font-weight: 800; letter-spacing: 0.12em; color: #005f73; text-transform: uppercase; margin-bottom: 8px;">
+          SISTEM KOMPUTER &bull; INFORMATIKA FASE D
+        </div>
+        <div class="mpi-main-title">Menyelam ke Dalam</div>
+        <div class="mpi-sub-title">Mesin Digital</div>
+        <div class="mpi-tagline">
+          Inovasi <b>Media Pembelajaran Interaktif &amp; Simulator Virtual</b> Bebas Cemas
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SHOWCASE 2 KARYA (MODUL BELAJAR & LABORATORIUM MAYA) -->
+  <div class="layer dual-showcase">
+    <!-- KIRI: MODUL INTERAKTIF & SIKLUS CPU -->
+    <div class="app-panel mpi-theme">
+      <div>
+        <div class="ap-head">
+          <span class="ap-pill">Karya Utama · Web Murni</span>
+          <span class="ap-head-tag">Multi-Perangkat</span>
+        </div>
+        <h3 class="ap-title">Modul Interaktif &amp; Siklus CPU</h3>
+      </div>
+
+      <div class="screens-collage">
+        <div class="sc-item">
+          <img src="./image/screen-mpi-cover.png" alt="Halaman Utama MPI Sistem Komputer">
+          <div class="sc-cap">Media Belajar Interaktif</div>
+        </div>
+        <div class="sc-item">
+          <img src="./image/screen-mpi-simulator.png" alt="Simulator Rakit PC di MPI">
+          <div class="sc-cap">Simulasi &amp; Animasi CPU</div>
+        </div>
+      </div>
+
+      <div class="ap-qr-row">
+        <div class="qr-frame">
+          <img src="./image/qr-mpi-short.png" alt="QR MPI Sistem Komputer (Short URL)">
+        </div>
+        <div class="ap-bullets">
+          <div class="ap-bullet"><i>▸</i><span>Visualisasi Proses CPU Tak Kasatmata</span></div>
+          <div class="ap-bullet"><i>▸</i><span>Analogi Kontekstual &amp; Bermakna</span></div>
+          <div class="ap-bullet"><i>▸</i><span>Asesmen Formatif &amp; Umpan Balik Cepat</span></div>
+        </div>
+      </div>
+
+      <div class="ap-url-bar">fanani.my.id/lab/mpi/sistem-komputer</div>
+    </div>
+
+    <!-- KANAN: SIMULATOR VIRTUAL PERAKITAN PC -->
+    <div class="app-panel lab-theme">
+      <div>
+        <div class="ap-head">
+          <span class="ap-pill">Laboratorium Maya</span>
+          <span class="ap-head-tag">Eksperimen Bebas Cemas</span>
+        </div>
+        <h3 class="ap-title">Simulator Virtual Rakit PC</h3>
+      </div>
+
+      <div class="screens-collage">
+        <div class="sc-item">
+          <img src="./image/screen-labmaya-cover.png" alt="Halaman Utama Lab Maya Perakitan Komputer">
+          <div class="sc-cap">Ruang Praktik Digital</div>
+        </div>
+        <div class="sc-item">
+          <img src="./image/screen-labmaya-rakit.png" alt="Simulator Rakit Motherboard ATX">
+          <div class="sc-cap">Motherboard ATX &amp; BIOS</div>
+        </div>
+      </div>
+
+      <div class="ap-qr-row">
+        <div class="qr-frame">
+          <img src="./image/qr-labmaya-short.png" alt="QR Lab Maya Perakitan Komputer (Short URL)">
+        </div>
+        <div class="ap-bullets">
+          <div class="ap-bullet"><i>▸</i><span>Merakit Komponen Tanpa Takut Rusak</span></div>
+          <div class="ap-bullet"><i>▸</i><span>Interaksi Drag &amp; Drop Mirip Nyata</span></div>
+          <div class="ap-bullet"><i>▸</i><span>Diagnostik Eror &amp; Suara Beep BIOS</span></div>
+        </div>
+      </div>
+
+      <div class="ap-url-bar">fanani.my.id/lab/lab-maya/perakitan-komputer</div>
+    </div>
+  </div>
+
+  <!-- 4. SITUASI & TANTANGAN -->
+  <div class="layer">
+    <div class="mpi-ribbon-head">
+      <span class="ribbon-pill orange">1 · Situasi &amp; Tantangan (Kelas 9A–9H)</span>
+      <span class="ribbon-sub">Mahir Menatap Layar, Belum Paham Mesin di Baliknya</span>
+    </div>
+
+    <div class="st-container">
+      <div class="st-photo-box">
+        <img src="./bahan_video/01_masalah_lab_komputer_16x9.jpg" alt="Suasana Kelas & Lab Komputer">
+        <div class="st-overlay">
+          <b>Ironi Kelas:</b> Cemas merusak alat &amp; jenuh menghafal konsep abstrak.
+        </div>
+      </div>
+
+      <div class="st-4cards">
+        <div class="st-card c-ros">
+          <div class="stc-head">
+            <span class="stc-big" style="color:var(--ros)">1 : 35</span>
+            <span class="stc-label" style="background:#ffe4e6;color:var(--ros)">Alat Terbatas</span>
+          </div>
+          <h4>Sarana Tidak Cukup</h4>
+          <p>Hanya 1 PC peraga untuk 35 murid.</p>
+        </div>
+
+        <div class="st-card c-amb">
+          <div class="stc-head">
+            <span class="stc-big" style="color:var(--orange)">58,40</span>
+            <span class="stc-label" style="background:#ffedd5;color:#c2410c">Nilai Awal 9A</span>
+          </div>
+          <h4>Tuntas Hanya 37,1%</h4>
+          <p>Baru 13 dari 35 murid capai KKTP.</p>
+        </div>
+
+        <div class="st-card c-ros">
+          <div class="stc-head">
+            <span class="stc-big" style="color:var(--ros)">Cemas</span>
+            <span class="stc-label" style="background:#ffe4e6;color:var(--ros)">Ragu Mencoba</span>
+          </div>
+          <h4>Takut Merusak Komponen</h4>
+          <p>Khawatir korsleting &amp; setrum statis.</p>
+        </div>
+
+        <div class="st-card c-ind">
+          <div class="stc-head">
+            <span class="stc-big" style="color:var(--ind)">Abstrak</span>
+            <span class="stc-label" style="background:#e0e7ff;color:var(--ind)">Metode Pasif</span>
+          </div>
+          <h4>Sekadar Hafal Istilah</h4>
+          <p>Buku teks tak visualkan alur proses.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. AKSI: 4 PILAR INOVASI PEMBELAJARAN MENDALAM -->
+  <div class="layer">
+    <div class="mpi-ribbon-head">
+      <span class="ribbon-pill">2 · Aksi: Inovasi Pembelajaran Mendalam</span>
+      <span class="ribbon-sub">Dari Menghafal Istilah Menuju Pengalaman Nyata</span>
+    </div>
+
+    <div class="aksi-container">
+      <div class="pilar-2x2">
+        <div class="pilar-box">
+          <span class="pb-num">1</span>
+          <div class="pb-text">
+            <h4>Membumikan Konsep Abstrak</h4>
+            <p>Analogi kontekstual sehari-hari &amp; animasi siklus kerja CPU.</p>
+          </div>
+        </div>
+
+        <div class="pilar-box">
+          <span class="pb-num" style="background:var(--orange)">2</span>
+          <div class="pb-text">
+            <h4>Eksplorasi Simulator Bebas Risiko</h4>
+            <p>Praktik mandiri di IFP &amp; lab tanpa takut komponen rusak.</p>
+          </div>
+        </div>
+
+        <div class="pilar-box">
+          <span class="pb-num" style="background:var(--emr)">3</span>
+          <div class="pb-text">
+            <h4>Asesmen Pemantik Nalar Kritis</h4>
+            <p>Kuis interaktif multiformat dengan umpan balik reflektif seketika.</p>
+          </div>
+        </div>
+
+        <div class="pilar-box">
+          <span class="pb-num" style="background:var(--ind)">4</span>
+          <div class="pb-text">
+            <h4>Guru Fasilitator &amp; Etika AI</h4>
+            <p>Membimbing inkuiri serta meneladankan kejujuran akademik AI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. DAMPAK, HASIL & PENGIMBASAN -->
+  <div class="layer">
+    <div class="mpi-ribbon-head">
+      <span class="ribbon-pill emerald">3 · Dampak Nyata &amp; Pengimbasan</span>
+      <span class="ribbon-sub">Pemahaman Melonjak Tajam &amp; Mengimbas Lebih Luas</span>
+    </div>
+
+    <div class="dampak-row">
+      <div class="dampak-box">
+        <div>
+          <div class="db-chart">
+            <div class="dbc-top">
+              <b>Rata-Rata Nilai Sampel (Kelas 9A)</b>
+              <span class="dbc-pill">▲ +28,40 Poin</span>
+            </div>
+            <div class="b-line">
+              <span>Awal</span>
+              <div class="b-track"><div class="b-fill bf-1" style="width:58.4%">58,40</div></div>
+            </div>
+            <div class="b-line">
+              <span>Akhir</span>
+              <div class="b-track"><div class="b-fill bf-2" style="width:86.8%">86,80</div></div>
+            </div>
+          </div>
+
+          <div class="db-chart" style="margin-bottom:6px">
+            <div class="dbc-top">
+              <b>Ketuntasan Belajar (KKTP ≥ 75)</b>
+              <span class="dbc-pill">▲ 13 → 32 Murid</span>
+            </div>
+            <div class="b-line">
+              <span>Awal</span>
+              <div class="b-track"><div class="b-fill bf-1" style="width:37.1%">37,1%</div></div>
+            </div>
+            <div class="b-line">
+              <span>Akhir</span>
+              <div class="b-track"><div class="b-fill bf-3" style="width:91.4%">91,4% (32 dari 35 Murid)</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dampak-2mini">
+          <div class="dm-item">
+            <b>Kemandirian Tinggi</b>
+            <span>25 dari 35 murid akses mandiri dari rumah.</span>
+          </div>
+          <div class="dm-item">
+            <b>Perubahan Sikap</b>
+            <span>Dari cemas menjadi antusias &amp; berani mencoba.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dampak-box">
+        <div class="imbas-banner">
+          <div class="ib-num">160</div>
+          <div class="ib-text">
+            <b>Guru SMP se-Kab. Lamongan</b>
+            <span>Praktik baik pembuatan MPI via Vibe Coding</span>
+          </div>
+        </div>
+
+        <div class="imbas-cards">
+          <div class="ic-box">
+            <h5>★ Narasumber Dinas Pendidikan</h5>
+            <p>Sosialisasi Pembelajaran Mendalam &amp; KKA (15 Sep 2026) di hadapan guru se-kabupaten.</p>
+          </div>
+          <div class="ic-box emr">
+            <h5>★ Replikasi di 8 Kelas (9A–9H)</h5>
+            <p>Pendekatan terbukti efektif meningkatkan motivasi belajar seluruh rombel binaan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. FOOTER IDENTITAS & MOTTO -->
+  <div class="layer footer-pill">
+    <div class="fp-profile">
+      <div class="fp-avatar-wrap">
+        <img src="./image/foto-profil-fanani.webp" alt="Ach. Chanifuddin Fanani, S.Pd.">
+      </div>
+      <div class="fp-identity">
+        <div class="fp-name">Ach. Chanifuddin Fanani, S.Pd.</div>
+        <div class="fp-role">Guru Informatika &middot; SMP Negeri 2 Lamongan</div>
+        <div class="fp-contacts">
+          <span class="fp-contact-item"><span class="fp-ic-label">&#127760;</span> https://fanani.my.id</span>
+          <span class="fp-contact-item"><span class="fp-ic-label">&#9993;</span> chanifuddin@gmail.com</span>
+          <span class="fp-contact-item"><span class="fp-ic-label">&#128242;</span> +62 815-8885-508</span>
+        </div>
+      </div>
+    </div>
+    <div class="fp-divider"></div>
+    <div class="fp-right">
+      <div class="fp-tag">GURU HEBAT,<br>INDONESIA KUAT!</div>
+      <div class="fp-motto-sub">“Inovasi sejati diukur dari nalar kritis dan kemandirian belajar murid.”</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

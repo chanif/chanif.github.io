@@ -17,6 +17,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Theme Manager (Supports Light & Dark Mode) -->
+    <script>
+        (function () {
+            var p = window.location.pathname.replace(/\/+$/, '').toLowerCase();
+            var map = {
+                '/s_mpi_siskom': '/lab/mpi/sistem-komputer/',
+                '/s_lab_rakit': '/lab/lab-maya/perakitan-komputer/'
+            };
+            if (map[p]) {
+                window.location.replace(map[p]);
+            }
+        })();
+    </script>
     <script src="/assets/js/theme.js"></script>
 
     <style>
