@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flyer F4 - Apresiasi GTK Transformatif 2026 - Ach. Chanifuddin Fanani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Fira+Code:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #00798c;
+    --primary-dark: #005f73;
+    --teal-dark: #084c5e;
+    --cyan-neon: #00d2ee;
+    --cyan-border: #38bdf8;
+    --navy-deep: #061325;
+    --navy-card: #0b1f3b;
+    --orange-accent: #f57936;
+    --orange-dark: #ea580c;
+    --amber: #f59e0b;
+    --emerald: #059669;
+    --ros: #e11d48;
+    --ind: #4f46e5;
+    --font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-head: 'Outfit', sans-serif;
+  }
+
+  @page {
+    size: 215mm 330mm; /* Standar Ukuran Kertas F4 (Folio) Indonesia */
+    margin: 0;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    width: 1200px;
+    height: 1842px; /* Rasio F4: 215mm x 330mm */
+    max-width: 1200px;
+    max-height: 1842px;
+    margin: 0 auto;
+    background: #061325;
+    font-family: var(--font-ui);
+    color: #0f172a;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* KANVAS F4 DENGAN LATAR BELAKANG EDITORIAL MODERN */
+  .f4-canvas {
+    width: 1200px;
+    height: 1842px;
+    padding: 24px 30px 22px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background:
+      radial-gradient(circle at 5% 4%, rgba(0, 210, 238, 0.22) 0%, transparent 35%),
+      radial-gradient(circle at 95% 8%, rgba(245, 121, 54, 0.20) 0%, transparent 32%),
+      radial-gradient(circle at 90% 55%, rgba(2, 132, 199, 0.16) 0%, transparent 38%),
+      radial-gradient(circle at 8% 85%, rgba(16, 185, 129, 0.18) 0%, transparent 36%),
+      linear-gradient(180deg, #f8fcfe 0%, #edf6f9 50%, #e2f0f4 100%);
+  }
+
+  /* 1. HEADER 5 LOGO KAPSUL RESMI */
+  .f4-header {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    border: 2px solid #bae6fd;
+    border-radius: 999px;
+    padding: 8px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+  }
+
+  .fh-logo {
+    display: block;
+    object-fit: contain;
+  }
+
+  .logo-sep {
+    width: 2px;
+    height: 36px;
+    background: #cbd5e1;
+    border-radius: 2px;
+  }
+
+  .school-id {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .school-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.12;
+  }
+
+  .school-name {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 900;
+    color: #0369a1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .school-kab {
+    font-size: 13px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ================= 2. HERO SENADA HALAMAN UTAMA MPI (KARTU VIBRANT) ================= */
+  .hero-mpi {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 3.5px solid #00a8b8;
+    box-shadow: 0 8px 0 rgba(0, 121, 140, 0.22), 0 18px 36px -10px rgba(0, 95, 115, 0.22);
+    background:
+      linear-gradient(135deg, rgba(212, 246, 252, 0.72) 0%, rgba(255, 255, 255, 0.62) 48%, rgba(255, 239, 213, 0.74) 100%),
+      url('./image/bg-kelas-mpi.jpg') center center / cover no-repeat;
+    padding: 18px 26px 18px;
+  }
+
+  .hero-top-row {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .event-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #007788, #00a8b8);
+    color: #fff;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 999px;
+    border: 2.5px solid #fff;
+    box-shadow: 0 4px 0 rgba(0, 95, 115, 0.22), 0 6px 14px rgba(0, 109, 119, 0.18);
+    white-space: nowrap;
+  }
+
+  .cat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #f57936, #ea580c);
+    color: #fff;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 999px;
+    border: 2.5px solid #fff;
+    box-shadow: 0 4px 0 rgba(194, 65, 12, 0.22), 0 6px 14px rgba(234, 88, 12, 0.20);
+    white-space: nowrap;
+  }
+
+  .mpi-title-block {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    margin: 6px 0 3px;
+  }
+
+  .mpi-kategori-sub {
+    font-family: var(--font-head);
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    color: #005f73;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .mpi-main-title {
+    font-family: var(--font-head);
+    font-size: 55px;
+    font-weight: 900;
+    line-height: 0.98;
+    color: #00889e;
+    -webkit-text-stroke: 9px #ffffff;
+    paint-order: stroke fill;
+    filter: drop-shadow(0 5px 0 rgba(0, 95, 115, 0.22)) drop-shadow(0 10px 18px rgba(0, 109, 130, 0.28));
+    letter-spacing: -0.01em;
+  }
+
+  .mpi-sub-title {
+    font-family: var(--font-head);
+    font-size: 58px;
+    font-weight: 900;
+    line-height: 1.04;
+    color: #ff5500;
+    -webkit-text-stroke: 8px #ffffff;
+    paint-order: stroke fill;
+    filter: drop-shadow(0 4px 0 rgba(194, 65, 12, 0.20)) drop-shadow(0 8px 16px rgba(234, 88, 12, 0.26));
+    margin-top: 3px;
+  }
+
+  .mpi-tagline {
+    margin-top: 15px;
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(180deg, #00b8cc 0%, #0091a6 100%);
+    display: inline-block;
+    padding: 8px 32px;
+    border-radius: 999px;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 0 rgba(0, 95, 115, 0.26), 0 10px 20px rgba(0, 139, 158, 0.24);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+
+  .mpi-tagline b {
+    color: #fef08a;
+  }
+
+  /* 3. SHOWCASE KARYA UTAMA BENTO CARD */
+  .f4-showcase {
+    background: #ffffff;
+    border: 2.5px solid var(--cyan-border);
+    border-radius: 22px;
+    padding: 14px 20px 12px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    position: relative;
+  }
+
+  .f4-sc-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1.5px dashed #cbd5e1;
+  }
+
+  .f4-sc-title {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 800;
+    color: #005f73;
+  }
+
+  .f4-sc-tags {
+    display: flex;
+    gap: 8px;
+  }
+
+  .f4-sc-tag {
+    font-size: 12.5px;
+    font-weight: 800;
+    padding: 3px 12px;
+    border-radius: 999px;
+  }
+
+  .tag-cyan { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+  .tag-amber { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+
+  .f4-sc-body {
+    display: grid;
+    grid-template-columns: 490px 1fr;
+    gap: 18px;
+    align-items: center;
+  }
+
+  /* OVERLAPPING MOCKUP SCREENSHOTS */
+  .f4-sc-screens {
+    position: relative;
+    height: 195px;
+    width: 100%;
+  }
+
+  .f4-sc-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 290px;
+    z-index: 1;
+    border: 2px solid #38bdf8;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.14);
+    background: #005f73;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .f4-sc-back img {
+    width: 100%;
+    height: 124px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  .f4-sc-back .f4-sc-cap {
+    font-size: 12.5px;
+    font-weight: 800;
+    text-align: center;
+    padding: 4px 6px;
+    background: #005f73;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .f4-sc-front {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 355px;
+    z-index: 2;
+    border: 3px solid #0284c7;
+    border-radius: 14px;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.32), 0 0 0 2.5px #ffffff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .f4-sc-front img {
+    width: 100%;
+    height: 138px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  .f4-sc-front .f4-sc-cap {
+    font-size: 14px;
+    font-weight: 900;
+    text-align: center;
+    padding: 5px 10px;
+    background: linear-gradient(90deg, #008b9e, #0284c7);
+    color: #fff;
+  }
+
+  /* INFO QR + POIN */
+  .f4-sc-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 195px;
+  }
+
+  .f4-sc-qr-box {
+    display: grid;
+    grid-template-columns: 115px 1fr;
+    gap: 14px;
+    align-items: center;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 8px 12px;
+  }
+
+  .f4-sc-qr-img {
+    background: #fff;
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .f4-sc-qr-img img {
+    width: 102px;
+    height: 102px;
+    display: block;
+    image-rendering: pixelated;
+  }
+
+  .f4-sc-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .f4-sc-bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+  }
+
+  .f4-sc-bullet i {
+    color: #f57936;
+    font-style: normal;
+    font-weight: 900;
+  }
+
+  .f4-sc-bullet b {
+    color: #005f73;
+  }
+
+  .f4-sc-url {
+    background: linear-gradient(90deg, #005f73 0%, #0369a1 100%);
+    color: #ffffff;
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    padding: 7px 14px;
+    border-radius: 10px;
+    letter-spacing: 0.02em;
+    box-shadow: 0 3px 8px rgba(0, 95, 115, 0.18);
+  }
+
+  /* STRIP PORTAL LAB */
+  .f4-portal-strip {
+    background: linear-gradient(90deg, #07152d 0%, #0c2b4d 55%, #005f73 100%);
+    color: #ffffff;
+    border: 2px solid #38bdf8;
+    border-radius: 14px;
+    padding: 6px 12px 6px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: 0 4px 14px rgba(7, 21, 45, 0.22);
+  }
+
+  .fps-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .fps-badge {
+    background: #f59e0b;
+    color: #091326;
+    font-size: 13.5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .fps-desc {
+    font-size: 16.5px;
+    font-weight: 800;
+    color: #f8fafc;
+    white-space: nowrap;
+  }
+
+  .fps-desc b {
+    color: #7dd3fc;
+  }
+
+  .fps-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .fps-link {
+    font-family: 'Fira Code', monospace;
+    font-size: 17.5px;
+    font-weight: 800;
+    color: #fde047;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(253, 224, 71, 0.6);
+    padding: 4px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .fps-qr-tab {
+    background: #ffffff;
+    border: 2px solid #38bdf8;
+    border-radius: 8px;
+    padding: 2px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: -10px -2px -10px 0;
+    z-index: 3;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  }
+
+  .fps-qr-tab img {
+    width: 60px;
+    height: 60px;
+    display: block;
+    image-rendering: pixelated;
+  }
+
+  .fps-qr-lbl {
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #005f73;
+  }
+
+  /* 4. MIDDLE SECTION: 2-COLUMN SPREAD (SITUASI & TANTANGAN vs AKSI INOVASI) */
+  .f4-mid-spread {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .f4-mid-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .f4-col-ribbon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .fcr-pill {
+    background: linear-gradient(90deg, #005f73, #0284c7);
+    color: #ffffff;
+    font-family: var(--font-head);
+    font-size: 15.5px;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 2px 6px rgba(0, 95, 115, 0.2);
+    white-space: nowrap;
+  }
+
+  .fcr-pill.orange {
+    background: linear-gradient(90deg, #f57936, #ea580c);
+  }
+
+  .fcr-sub {
+    font-size: 14px;
+    font-weight: 800;
+    color: #475569;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 6px;
+  }
+
+  /* KOTAK KIRI: SITUASI & TANTANGAN */
+  .f4-s1-box {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 12px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .f4-s1-photo-wrap {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1.5px solid #cbd5e1;
+    height: 180px;
+  }
+
+  .f4-s1-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .f4-s1-photo-overlay {
+    position: absolute;
+    inset: 6px 6px auto 6px;
+    background: rgba(7, 21, 45, 0.92);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.22;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+  }
+
+  .f4-s1-photo-overlay b {
+    color: #fbbf24;
+  }
+
+  .f4-s1-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .f4-sc-card {
+    border-radius: 10px;
+    padding: 7px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .c-ros { background: #fff1f2; border: 1.5px solid #fecdd3; }
+  .c-amb { background: #fffbeb; border: 1.5px solid #fef3c7; }
+  .c-ind { background: #eef2ff; border: 1.5px solid #e0e7ff; }
+
+  .f4-scc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+  }
+
+  .f4-scc-num {
+    font-family: var(--font-head);
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .f4-scc-badge {
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 999px;
+  }
+
+  .f4-sc-card h4 {
+    font-family: var(--font-head);
+    font-size: 15.5px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 1px 0;
+    line-height: 1.15;
+  }
+
+  .f4-sc-card p {
+    font-size: 13px;
+    font-weight: 700;
+    color: #475569;
+    line-height: 1.18;
+  }
+
+  /* KOTAK KANAN: 4 PILAR INOVASI (VERTIKAL STACK) */
+  .f4-pillars-box {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .f4-pillar-card {
+    background: #ffffff;
+    border: 1.5px solid #bae6fd;
+    border-radius: 12px;
+    padding: 9px 14px 8px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .f4-pillar-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+  }
+
+  .pil-1::before { background: #00798c; }
+  .pil-2::before { background: #f57936; }
+  .pil-3::before { background: #059669; }
+  .pil-4::before { background: #6366f1; }
+
+  .fpc-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .fpc-num {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 900;
+    flex: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  }
+
+  .apc-1 { background: #00798c; }
+  .apc-2 { background: #f57936; }
+  .apc-3 { background: #059669; }
+  .apc-4 { background: #6366f1; }
+
+  .fpc-head b {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 800;
+    color: #005f73;
+    line-height: 1.15;
+  }
+
+  .f4-pillar-card p {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #475569;
+    line-height: 1.24;
+    padding-left: 33px;
+  }
+
+  /* 5. SEKSI 3: DAMPAK NYATA & PENGIMBASAN */
+  .f4-sec3-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .f4-sec3-ribbon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .f3r-pill {
+    background: linear-gradient(90deg, #059669, #0d9488);
+    color: #ffffff;
+    font-family: var(--font-head);
+    font-size: 15.5px;
+    font-weight: 800;
+    padding: 4px 15px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(5, 150, 105, 0.2);
+  }
+
+  .f3r-sub {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #334155;
+  }
+
+  .f4-sec3-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 18px;
+  }
+
+  .f4-sec3-box {
+    background: #ffffff;
+    border: 2px solid var(--cyan-border);
+    border-radius: 18px;
+    padding: 12px 15px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .f4-chart-item {
+    margin-bottom: 5px;
+  }
+
+  .f4-chart-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+  }
+
+  .f4-chart-top b {
+    font-family: var(--font-head);
+    font-size: 16px;
+    color: #0f172a;
+  }
+
+  .f4-chart-pill {
+    background: #d1fae5;
+    color: #065f46;
+    font-size: 13.5px;
+    font-weight: 900;
+    padding: 2px 9px;
+    border-radius: 999px;
+  }
+
+  .f4-bar-row {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 3px;
+  }
+
+  .f4-bar-row span {
+    font-size: 14px;
+    font-weight: 800;
+    color: #64748b;
+  }
+
+  .f4-bar-track {
+    height: 22px;
+    background: #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .f4-bar-fill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    font-family: var(--font-head);
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #ffffff;
+    border-radius: 6px;
+  }
+
+  .bf-gray { background: #94a3b8; }
+  .bf-blue { background: linear-gradient(90deg, #008b9e, #0284c7); }
+  .bf-green { background: linear-gradient(90deg, #059669, #10b981); }
+
+  .f4-mini-dampak {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding-top: 6px;
+    border-top: 1.5px solid #e2e8f0;
+  }
+
+  .f4-mini-item {
+    background: #f0fdfa;
+    border: 1px solid #99f6e4;
+    border-radius: 8px;
+    padding: 6px 9px;
+  }
+
+  .f4-mini-item b {
+    font-family: var(--font-head);
+    font-size: 15.5px;
+    color: #0f766e;
+    display: block;
+    line-height: 1.1;
+  }
+
+  .f4-mini-item span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+    line-height: 1.18;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* KANAN PENGIMBASAN */
+  .f4-imbas-banner {
+    background: linear-gradient(135deg, #005f73 0%, #0a1428 100%);
+    color: #ffffff;
+    border: 1.5px solid #38bdf8;
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  .fib-num {
+    font-family: var(--font-head);
+    font-size: 44px;
+    font-weight: 900;
+    color: #fde047;
+    line-height: 1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .fib-text b {
+    font-family: var(--font-head);
+    font-size: 17.5px;
+    color: #ffffff;
+    display: block;
+  }
+
+  .fib-text span {
+    font-size: 14px;
+    font-weight: 700;
+    color: #bae6fd;
+    display: block;
+    margin-top: 1px;
+  }
+
+  .f4-imbas-photo {
+    border: 1.5px solid #38bdf8;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0a1428;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .f4-imbas-photo img {
+    width: 100%;
+    height: 112px;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+
+  .f4-imbas-cap {
+    background: #0a1428;
+    color: #ffffff;
+    padding: 6px 10px 7px;
+    border-top: 1px solid rgba(56, 189, 248, 0.35);
+  }
+
+  .f4-imbas-cap b {
+    font-family: var(--font-head);
+    font-size: 14.5px;
+    color: #fde047;
+    display: block;
+    line-height: 1.15;
+  }
+
+  .f4-imbas-cap span {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #e0f2fe;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.2;
+  }
+
+  /* 6. FOOTER IDENTITAS MODERN */
+  .f4-footer {
+    background: linear-gradient(135deg, #031020 0%, #0a1f38 40%, #004d66 100%);
+    color: #ffffff;
+    border: 2.5px solid #ffffff;
+    border-radius: 20px;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    box-shadow: 0 6px 20px rgba(7, 21, 45, 0.3);
+  }
+
+  .fff-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .fff-avatar {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3.5px solid #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+    display: block;
+  }
+
+  .fff-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .fff-name {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+  }
+
+  .fff-role {
+    font-size: 15px;
+    font-weight: 700;
+    color: #7dd3fc;
+  }
+
+  .fff-contacts {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #e2f0ff;
+    margin-top: 2px;
+  }
+
+  .fff-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .fff-tag {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #fde047, #fb923c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 0.02em;
+  }
+
+  .fff-motto {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #bae6fd;
+    font-style: italic;
+    max-width: 380px;
+    line-height: 1.25;
+  }
+</style>
+</head>
+<body>
+
+<div class="f4-canvas">
+
+  <!-- 1. HEADER 5 LOGO KAPSUL RESMI -->
+  <header class="f4-header">
+    <img src="./image/logo-kemendikdasmen-simpel.png" alt="Kemendikdasmen" class="fh-logo" style="height:46px;">
+    <div class="logo-sep"></div>
+    <img src="./image/logo-jawa-timur.png" alt="Provinsi Jawa Timur" class="fh-logo" style="height:42px;">
+    <div class="logo-sep"></div>
+    <img src="./image/logo-lamongan-megilan-official.png" alt="Lamongan Megilan" class="fh-logo" style="height:40px;">
+    <div class="logo-sep"></div>
+    <div class="school-id">
+      <img src="./image/logo-kabupaten-lamongan.png" alt="Dinas Pendidikan Kab. Lamongan" class="fh-logo" style="height:42px;">
+      <div class="school-text">
+        <span class="school-name">DINAS PENDIDIKAN</span>
+        <span class="school-kab">KABUPATEN LAMONGAN</span>
+      </div>
+    </div>
+    <div class="logo-sep"></div>
+    <img src="./image/logo-smpn-2-lamongan.png" alt="SMPN 2 Lamongan" class="fh-logo" style="height:48px;">
+  </header>
+
+  <!-- 2. HERO SENADA HALAMAN UTAMA MPI SISTEM KOMPUTER (KARTU VIBRANT) -->
+  <section class="hero-mpi">
+    <div class="hero-top-row">
+      <span class="event-badge">★ Inovasi Pembelajaran</span>
+      <span class="cat-badge">Apresiasi GTK Transformatif 2026</span>
+    </div>
+
+    <div class="mpi-title-block">
+      <div class="mpi-kategori-sub">
+        SISTEM KOMPUTER &bull; INFORMATIKA FASE D
+      </div>
+      <div class="mpi-main-title">Menyelam ke Dalam</div>
+      <div class="mpi-sub-title">Mesin Digital</div>
+      <div class="mpi-tagline">
+        Inovasi <b>Media Pembelajaran Interaktif &amp; Laboratorium Maya</b> Berbasis Web
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SHOWCASE KARYA UTAMA MPI + PORTAL LAB -->
+  <section class="f4-showcase">
+    <div class="f4-sc-head">
+      <h2 class="f4-sc-title">MPI Sistem Komputer: Menyelam ke Dalam Mesin Digital</h2>
+      <div class="f4-sc-tags">
+        <span class="f4-sc-tag tag-cyan">Karya Inovasi dan Praktik Baik</span>
+        <span class="f4-sc-tag tag-amber">21 Halaman Modular · Open Source</span>
+      </div>
+    </div>
+
+    <div class="f4-sc-body">
+      <!-- MOCKUP OVERLAP SCREENSHOT -->
+      <div class="f4-sc-screens">
+        <div class="f4-sc-back">
+          <div class="f4-sc-cap">Daftar Pilihan Materi</div>
+          <img src="./image/screen-mpi-pilihan-materi.png" alt="Daftar Pilihan Materi MPI Sistem Komputer">
+        </div>
+        <div class="f4-sc-front">
+          <img src="./image/screen-mpi-simulator.png" alt="Simulator Rakit PC 4 Misi">
+          <div class="f4-sc-cap">Simulator Rakit PC 4 Misi</div>
+        </div>
+      </div>
+
+      <!-- INFO QR + POIN -->
+      <div class="f4-sc-right">
+        <div class="f4-sc-qr-box">
+          <div class="f4-sc-qr-img">
+            <img src="./image/qr-mpi-short.png" alt="QR MPI Sistem Komputer">
+          </div>
+          <div class="f4-sc-bullets">
+            <div class="f4-sc-bullet"><i>▸</i><span><b>Visualisasi Abstrak:</b> Siklus kerja CPU &amp; alur instruksi memori</span></div>
+            <div class="f4-sc-bullet"><i>▸</i><span><b>Simulator Rakit PC:</b> Drag-and-drop mandiri &amp; diagnosis beep BIOS</span></div>
+            <div class="f4-sc-bullet"><i>▸</i><span><b>Asesmen Formatif:</b> Kuis interaktif 4 format pemantik nalar</span></div>
+          </div>
+        </div>
+        <div class="f4-sc-url">fanani.my.id/lab/mpi/sistem-komputer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTAL LAB MENTION STRIP -->
+  <div class="f4-portal-strip">
+    <div class="fps-left">
+      <span class="fps-badge">🌐 Portal Lab</span>
+      <span class="fps-desc">Tersedia <b>1 Lab Maya</b>, <b>3 MPI</b>, &amp; <b>1 Game Edukasi</b> gratis di:</span>
+    </div>
+    <div class="fps-right">
+      <div class="fps-link">fanani.my.id/lab</div>
+      <div class="fps-qr-tab">
+        <img src="./image/qr-portal-lab.png" alt="QR fanani.my.id/lab">
+        <span class="fps-qr-lbl">Pindai /lab</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. MIDDLE SECTION: 2-COLUMN SPREAD (SITUASI & TANTANGAN vs AKSI 4 PILAR INOVASI) -->
+  <div class="f4-mid-spread">
+    
+    <!-- KOLOM KIRI: 1. SITUASI & TANTANGAN -->
+    <div class="f4-mid-col">
+      <div class="f4-col-ribbon">
+        <span class="fcr-pill orange">1 · Situasi &amp; Tantangan</span>
+        <span class="fcr-sub">Murid Mahir Menatap Layar, Belum Paham Mesin di Baliknya</span>
+      </div>
+      <div class="f4-s1-box">
+        <div class="f4-s1-photo-wrap">
+          <img src="./image/foto-siswa-praktik-pc.jpg" alt="Praktik Perakitan Komputer Siswa">
+          <div class="f4-s1-photo-overlay">
+            <b>Tantangan Kelas:</b> Konsep abstrak &amp; minim alat peraga.
+          </div>
+        </div>
+        <div class="f4-s1-cards-grid">
+          <div class="f4-sc-card c-ros">
+            <div class="f4-scc-top">
+              <span class="f4-scc-num" style="color:var(--ros);">1 : 35</span>
+              <span class="f4-scc-badge" style="background:#ffe4e6;color:var(--ros);">Alat Terbatas</span>
+            </div>
+            <h4>Sarana Tidak Cukup</h4>
+            <p>Hanya 1 PC peraga untuk 35 murid.</p>
+          </div>
+          <div class="f4-sc-card c-amb">
+            <div class="f4-scc-top">
+              <span class="f4-scc-num" style="color:var(--orange-dark);">58,40</span>
+              <span class="f4-scc-badge" style="background:#ffedd5;color:#c2410c;">Nilai Awal 9A</span>
+            </div>
+            <h4>Tuntas Hanya 37,1%</h4>
+            <p>Baru 13 dari 35 murid capai KKTP.</p>
+          </div>
+          <div class="f4-sc-card c-ros">
+            <div class="f4-scc-top">
+              <span class="f4-scc-num" style="color:var(--ros);">Cemas</span>
+              <span class="f4-scc-badge" style="background:#ffe4e6;color:var(--ros);">Ragu Mencoba</span>
+            </div>
+            <h4>Takut Merusak Komponen</h4>
+            <p>Khawatir korsleting &amp; listrik statis.</p>
+          </div>
+          <div class="f4-sc-card c-ind">
+            <div class="f4-scc-top">
+              <span class="f4-scc-num" style="color:var(--ind);">Abstrak</span>
+              <span class="f4-scc-badge" style="background:#e0e7ff;color:var(--ind);">Belajar Tekstual</span>
+            </div>
+            <h4>Sekadar Hafal Istilah</h4>
+            <p>Buku teks belum memvisualkan alur proses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KOLOM KANAN: 2. AKSI INOVASI PEMBELAJARAN MENDALAM -->
+    <div class="f4-mid-col">
+      <div class="f4-col-ribbon">
+        <span class="fcr-pill">2 · Aksi: Inovasi Pembelajaran Mendalam</span>
+        <span class="fcr-sub">Dari Menghafal Menuju Pengalaman Nyata</span>
+      </div>
+      <div class="f4-pillars-box">
+        <div class="f4-pillar-card pil-1">
+          <div class="fpc-head">
+            <div class="fpc-num apc-1">1</div>
+            <b>Konsep Visual &amp; Kontekstual</b>
+          </div>
+          <p>Analogi kontekstual sehari-hari &amp; animasi siklus kerja CPU.</p>
+        </div>
+        <div class="f4-pillar-card pil-2">
+          <div class="fpc-head">
+            <div class="fpc-num apc-2">2</div>
+            <b>Simulator Perakitan PC Interaktif</b>
+          </div>
+          <p>Praktik mandiri di IFP &amp; lab tanpa rasa cemas komponen rusak.</p>
+        </div>
+        <div class="f4-pillar-card pil-3">
+          <div class="fpc-head">
+            <div class="fpc-num apc-3">3</div>
+            <b>Asesmen Pemantik Nalar Kritis</b>
+          </div>
+          <p>Kuis interaktif multiformat dengan umpan balik reflektif seketika.</p>
+        </div>
+        <div class="f4-pillar-card pil-4">
+          <div class="fpc-head">
+            <div class="fpc-num apc-4">4</div>
+            <b>Guru Fasilitator &amp; Etika AI</b>
+          </div>
+          <p>Membimbing inkuiri serta meneladankan kejujuran akademik AI.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 5. SEKSI 3: DAMPAK NYATA & PENGIMBASAN -->
+  <div class="f4-sec3-wrap">
+    <div class="f4-sec3-ribbon">
+      <span class="f3r-pill">3 · Dampak Nyata &amp; Pengimbasan</span>
+      <span class="f3r-sub">Pemahaman Melonjak Tajam &amp; Mengimbas Lebih Luas</span>
+    </div>
+    <div class="f4-sec3-grid">
+      <!-- KIRI: GRAFIK & METRIK KELAS -->
+      <div class="f4-sec3-box">
+        <div class="f4-chart-item">
+          <div class="f4-chart-top">
+            <b>Rata-Rata Nilai Sampel (Kelas 9A)</b>
+            <span class="f4-chart-pill">▲ +28,40 Poin</span>
+          </div>
+          <div class="f4-bar-row">
+            <span>Awal</span>
+            <div class="f4-bar-track"><div class="f4-bar-fill bf-gray" style="width:58%;">58,40</div></div>
+          </div>
+          <div class="f4-bar-row">
+            <span>Akhir</span>
+            <div class="f4-bar-track"><div class="f4-bar-fill bf-blue" style="width:87%;">86,80</div></div>
+          </div>
+        </div>
+
+        <div class="f4-chart-item">
+          <div class="f4-chart-top">
+            <b>Ketuntasan Belajar (KKTP ≥ 75)</b>
+            <span class="f4-chart-pill">▲ 13 → 32 Murid</span>
+          </div>
+          <div class="f4-bar-row">
+            <span>Awal</span>
+            <div class="f4-bar-track"><div class="f4-bar-fill bf-gray" style="width:37%;">37,1%</div></div>
+          </div>
+          <div class="f4-bar-row">
+            <span>Akhir</span>
+            <div class="f4-bar-track"><div class="f4-bar-fill bf-green" style="width:91%;">91,4% (32 dari 35 Murid)</div></div>
+          </div>
+        </div>
+
+        <div class="f4-mini-dampak">
+          <div class="f4-mini-item">
+            <b>Kemandirian Tinggi</b>
+            <span>25 dari 35 murid antusias akses mandiri dari rumah.</span>
+          </div>
+          <div class="f4-mini-item">
+            <b>Perubahan Sikap</b>
+            <span>Dari cemas menjadi antusias &amp; berani mencoba.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- KANAN: PENGIMBASAN DISDIK -->
+      <div class="f4-sec3-box">
+        <div class="f4-imbas-banner">
+          <div class="fib-num">160</div>
+          <div class="fib-text">
+            <b>Guru SMP se-Kab. Lamongan</b>
+            <span>Praktik baik pembuatan MPI via Vibe Coding</span>
+          </div>
+        </div>
+
+        <div class="f4-imbas-photo">
+          <img src="./image/foto-narasumber-disdik.jpg" alt="Pak Fanani menjadi narasumber di Dinas Pendidikan Kab. Lamongan">
+          <div class="f4-imbas-cap">
+            <b>★ Narasumber Dinas Pendidikan Kab. Lamongan</b>
+            <span>Berbagi Cara Pembuatan Media Pembelajaran Interaktif dengan Vibe Coding dan GitHub (15 Sep 2026)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. FOOTER IDENTITAS MODERN -->
+  <footer class="f4-footer">
+    <div class="fff-profile">
+      <img src="./image/foto-profil-fanani.webp" alt="Ach. Chanifuddin Fanani, S.Pd." class="fff-avatar">
+      <div class="fff-info">
+        <div class="fff-name">Ach. Chanifuddin Fanani, S.Pd.</div>
+        <div class="fff-role">Guru Informatika &middot; SMP Negeri 2 Lamongan</div>
+        <div class="fff-contacts">
+          <span>🌐 https://fanani.my.id</span>
+          <span>✉ chanifuddin@gmail.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="fff-right">
+      <div class="fff-tag">GURU HEBAT, INDONESIA KUAT!</div>
+      <div class="fff-motto">“Inovasi sejati diukur dari nalar kritis dan kemandirian belajar murid.”</div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

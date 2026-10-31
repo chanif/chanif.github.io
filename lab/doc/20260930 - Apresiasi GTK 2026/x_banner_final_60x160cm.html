@@ -351,42 +351,86 @@
 
   .ss-body-grid {
     display: grid;
-    grid-template-columns: 500px 1fr;
-    gap: 22px;
+    grid-template-columns: 530px 1fr;
+    gap: 20px;
     align-items: center;
   }
 
-  /* 2 Screenshot MPI Berdampingan */
+  /* Screenshot MPI Saling Overlap (Simulator Lebih Besar di Depan) */
   .ss-screens {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    position: relative;
+    height: 250px;
+    width: 100%;
   }
 
   .ss-screen-item {
-    border-radius: 16px;
     overflow: hidden;
-    position: relative;
-    border: 2.5px solid rgba(0, 168, 184, 0.45);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
     background: #0f172a;
   }
 
-  .ss-screen-item img {
+  .ss-screen-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 330px;
+    z-index: 1;
+    border: 2.5px solid #38bdf8;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.16);
+    background: #005f73;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ss-screen-back img {
     width: 100%;
-    height: 142px;
+    height: 155px;
     object-fit: cover;
     object-position: top center;
     display: block;
   }
 
-  .ss-screen-cap {
+  .ss-screen-back .ss-screen-cap {
     font-family: var(--font-ui);
-    font-size: 14px;
+    font-size: 14.5px;
     font-weight: 800;
     text-align: center;
-    padding: 6px;
-    background: #006d77;
+    padding: 6px 10px;
+    background: #005f73;
+    color: #fff;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .ss-screen-front {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 395px;
+    z-index: 2;
+    border: 3.5px solid #0284c7;
+    border-radius: 18px;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.38), 0 0 0 3.5px #ffffff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ss-screen-front img {
+    width: 100%;
+    height: 172px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  .ss-screen-front .ss-screen-cap {
+    font-family: var(--font-ui);
+    font-size: 15.5px;
+    font-weight: 900;
+    text-align: center;
+    padding: 7px 12px;
+    background: linear-gradient(90deg, #008b9e, #0284c7);
     color: #fff;
     letter-spacing: 0.02em;
     white-space: nowrap;
@@ -1172,13 +1216,13 @@
 
     <!-- BODY GRID: SCREENSHOTS (KIRI) & QR + FITUR (KANAN) -->
     <div class="ss-body-grid">
-      <!-- KIRI: DUA SCREENSHOT ASLI BERDAMPINGAN -->
+      <!-- KIRI: DUA SCREENSHOT SALING OVERLAP (SIMULATOR LEBIH BESAR DI DEPAN) -->
       <div class="ss-screens">
-        <div class="ss-screen-item">
-          <img src="./image/screen-mpi-pilihan-materi.png" alt="Daftar Pilihan Materi MPI Sistem Komputer">
+        <div class="ss-screen-item ss-screen-back">
           <div class="ss-screen-cap">Daftar Pilihan Materi</div>
+          <img src="./image/screen-mpi-pilihan-materi.png" alt="Daftar Pilihan Materi MPI Sistem Komputer">
         </div>
-        <div class="ss-screen-item">
+        <div class="ss-screen-item ss-screen-front">
           <img src="./image/screen-mpi-simulator.png" alt="Simulator Rakit PC di MPI">
           <div class="ss-screen-cap">Simulator Rakit PC 4 Misi</div>
         </div>
@@ -1379,10 +1423,10 @@
         </div>
 
         <div class="imbas-photo-card">
-          <img src="./image/foto-narasumber-disdik.jpg" alt="Pak Fanani menjadi Narasumber Dinas Pendidikan Kab. Lamongan">
+          <img src="./image/foto-narasumber-disdik.jpg" alt="Pak Fanani berbagi cara pembuatan media interaktif di Dinas Pendidikan Kab. Lamongan">
           <div class="imbas-photo-cap">
             <b>★ Narasumber Dinas Pendidikan Kab. Lamongan</b>
-            <span>Sosialisasi Pembelajaran Mendalam &amp; Koding/KKA (15 Sep 2026)</span>
+            <span>Berbagi Cara Pembuatan Media Pembelajaran Interaktif dengan Vibe Coding dan GitHub (15 Sep 2026)</span>
           </div>
         </div>
       </div>
