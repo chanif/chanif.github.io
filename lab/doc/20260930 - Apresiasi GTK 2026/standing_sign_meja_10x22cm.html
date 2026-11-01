@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standing Sign Meja 10x22 cm (Tema Putih Bersih) - Apresiasi GTK 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-white: #ffffff;
+      --navy-text: #061d38;
+      --blue-primary: #0284c7;
+      --blue-dark: #005f73;
+      --orange-accent: #ea580c;
+      --orange-dark: #c2410c;
+      --slate-text: #334155;
+      --cyan-border: #0284c7;
+      --font-head: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background: #e2e8f0;
+      font-family: var(--font-body);
+      color: var(--navy-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 20px;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+        gap: 0;
+      }
+      .page-break {
+        page-break-after: always;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* ================= 1. KARTU VERSI LANDSCAPE (22 cm x 10 cm) ================= */
+    .sign-landscape {
+      width: 1320px;
+      height: 550px;
+      background: #ffffff;
+      border: none;
+      border-radius: 24px;
+      padding: 26px 38px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sl-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px dashed #cbd5e1;
+      padding-bottom: 12px;
+    }
+
+    .sl-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, #005f73, #0284c7);
+      color: #ffffff;
+      font-family: var(--font-head);
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 22px;
+      border-radius: 999px;
+      box-shadow: 0 3px 10px rgba(2, 132, 199, 0.25);
+    }
+
+    .sl-school {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 900;
+      color: #0369a1;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .sl-center {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: auto 0;
+    }
+
+    .sl-title-main {
+      font-family: var(--font-head);
+      font-size: 100px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: #051937;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      white-space: nowrap;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+    }
+
+    .sl-title-sub {
+      font-family: var(--font-head);
+      font-size: 80px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: #ea580c;
+      white-space: nowrap;
+      filter: drop-shadow(0 2px 4px rgba(234, 88, 12, 0.15));
+    }
+
+    .sl-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 2px dashed #cbd5e1;
+      padding-top: 14px;
+    }
+
+    .sl-topic {
+      font-size: 21px;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sl-topic b {
+      color: #0284c7;
+    }
+
+    .sl-author {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      background: #f1f5f9;
+      border: 1.5px solid #cbd5e1;
+      padding: 6px 20px;
+      border-radius: 999px;
+    }
+
+    /* ================= 2. KARTU VERSI PORTRAIT (10 cm x 22 cm) ================= */
+    .sign-portrait {
+      width: 600px;
+      height: 1320px;
+      background: #ffffff;
+      border: none;
+      border-radius: 24px;
+      padding: 36px 30px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.12);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .sp-top-badge {
+      display: inline-block;
+      margin: 0 auto;
+      background: linear-gradient(90deg, #005f73, #0284c7);
+      color: #ffffff;
+      font-family: var(--font-head);
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 7px 24px;
+      border-radius: 999px;
+      box-shadow: 0 3px 10px rgba(2, 132, 199, 0.25);
+    }
+
+    .sp-school-title {
+      font-family: var(--font-head);
+      font-size: 21px;
+      font-weight: 900;
+      color: #0369a1;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: 14px;
+    }
+
+    .sp-school-sub {
+      font-size: 17px;
+      font-weight: 700;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .sp-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: auto 0;
+    }
+
+    .sp-icon-wrap {
+      width: 96px;
+      height: 96px;
+      background: #eff6ff;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 46px;
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.15);
+    }
+
+    .sp-title-main {
+      font-family: var(--font-head);
+      font-size: 62px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      color: #051937;
+      text-transform: uppercase;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+    }
+
+    .sp-divider {
+      width: 86px;
+      height: 5px;
+      background: linear-gradient(90deg, #0284c7, #ea580c);
+      border-radius: 999px;
+      margin: 4px auto;
+    }
+
+    .sp-title-sub {
+      font-family: var(--font-head);
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: #ea580c;
+      filter: drop-shadow(0 2px 4px rgba(234, 88, 12, 0.15));
+    }
+
+    .sp-sub-cap {
+      font-size: 21px;
+      font-weight: 800;
+      color: #0369a1;
+      margin-top: 8px;
+      line-height: 1.25;
+      max-width: 480px;
+    }
+
+    .sp-bottom {
+      border-top: 2px dashed #cbd5e1;
+      padding-top: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sp-author {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: 0.01em;
+    }
+
+    .sp-web {
+      font-family: var(--font-head);
+      font-size: 19px;
+      font-weight: 800;
+      color: #0369a1;
+      background: #eff6ff;
+      border: 1.5px solid #bae6fd;
+      padding: 5px 22px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= OPSI 1: LANDSCAPE (22 cm x 10 cm) ================= -->
+  <div class="sign-landscape">
+    <div class="sl-top">
+      <div class="sl-badge">★ Apresiasi GTK Transformatif 2026</div>
+      <div class="sl-school">SMP Negeri 2 Lamongan</div>
+    </div>
+
+    <div class="sl-center">
+      <div class="sl-title-main">SILAKAN AMBIL FLYER</div>
+      <div class="sl-title-sub">SEMOGA MENGINSPIRASI</div>
+    </div>
+
+    <div class="sl-bottom">
+      <div class="sl-topic">
+        💡 <span>Praktik Baik: <b>Inovasi Media Pembelajaran Interaktif &amp; Lab Maya</b></span>
+      </div>
+      <div class="sl-author">
+        Ach. Chanifuddin Fanani, S.Pd. &bull; fanani.my.id
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ================= OPSI 2: PORTRAIT (10 cm x 22 cm) ================= -->
+  <div class="sign-portrait">
+    <div>
+      <div class="sp-top-badge">★ Apresiasi GTK 2026</div>
+      <div class="sp-school-title">SMP Negeri 2 Lamongan</div>
+      <div class="sp-school-sub">Inovasi Pembelajaran Informatika</div>
+    </div>
+
+    <div class="sp-center">
+      <div class="sp-icon-wrap">📄</div>
+      <div class="sp-title-main">
+        SILAKAN<br>AMBIL FLYER
+      </div>
+      <div class="sp-divider"></div>
+      <div class="sp-title-sub">
+        SEMOGA<br>MENGINSPIRASI
+      </div>
+      <div class="sp-sub-cap">
+        Bebas dibawa pulang untuk inspirasi pembelajaran di kelas Anda
+      </div>
+    </div>
+
+    <div class="sp-bottom">
+      <div class="sp-author">Ach. Chanifuddin Fanani, S.Pd.</div>
+      <div class="sp-web">🌐 fanani.my.id/lab</div>
+    </div>
+  </div>
+
+</body>
+
+</html>
