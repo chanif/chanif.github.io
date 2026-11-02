@@ -6,18 +6,21 @@
   <title>Buku Tamu Digital — Apresiasi GTK Jawa Timur 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090f1d;
-      --card-bg: rgba(18, 28, 49, 0.85);
-      --card-border: rgba(56, 85, 133, 0.45);
-      --primary: #38bdf8;
-      --primary-hover: #0ea5e9;
-      --accent: #f97316;
-      --text: #f1f5f9;
-      --text-muted: #94a3b8;
-      --radius: 16px;
+      --primary: #00798c;
+      --primary-dark: #005f73;
+      --cyan-border: #38bdf8;
+      --cyan-light: #bae6fd;
+      --navy-deep: #061325;
+      --orange-accent: #f57936;
+      --orange-dark: #ea580c;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --card-bg: rgba(255, 255, 255, 0.96);
+      --card-border: #bae6fd;
+      --radius: 22px;
     }
 
     * {
@@ -28,19 +31,20 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg);
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.18) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(249, 115, 22, 0.12) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.4) 0px, transparent 100%);
-      color: var(--text);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at 5% 4%, rgba(0, 210, 238, 0.22) 0%, transparent 35%),
+        radial-gradient(circle at 95% 8%, rgba(245, 121, 54, 0.20) 0%, transparent 32%),
+        radial-gradient(circle at 90% 55%, rgba(2, 132, 199, 0.16) 0%, transparent 38%),
+        radial-gradient(circle at 8% 85%, rgba(16, 185, 129, 0.18) 0%, transparent 36%),
+        linear-gradient(180deg, #f8fcfe 0%, #edf6f9 50%, #e2f0f4 100%);
+      color: var(--text-main);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 20px 16px;
     }
 
     .container {
@@ -52,26 +56,18 @@
     .badge-event {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(14, 165, 233, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: #7dd3fc;
-      padding: 6px 14px;
+      gap: 8px;
+      background: linear-gradient(90deg, #007788, #00a8b8);
+      color: #ffffff;
+      padding: 7px 18px;
       border-radius: 999px;
       font-size: 0.78rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+      box-shadow: 0 4px 10px rgba(0, 121, 140, 0.2);
       margin-bottom: 12px;
-    }
-
-    .badge-event span {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      background: #38bdf8;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #38bdf8;
+      border: 1.5px solid #ffffff;
     }
 
     .header-card {
@@ -81,29 +77,31 @@
 
     .title {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.75rem;
-      font-weight: 800;
-      line-height: 1.25;
-      background: linear-gradient(135deg, #ffffff 30%, #bae6fd 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 1.9rem;
+      font-weight: 900;
+      line-height: 1.2;
+      color: var(--navy-deep);
       margin-bottom: 6px;
+      letter-spacing: -0.02em;
     }
 
     .subtitle {
       color: var(--text-muted);
-      font-size: 0.88rem;
-      line-height: 1.45;
+      font-size: 0.92rem;
+      line-height: 1.5;
     }
 
     .card {
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      border: 2.5px solid var(--card-border);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 26px 24px;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
+      box-shadow: 
+        0 8px 0 rgba(0, 121, 140, 0.08), 
+        0 20px 36px -10px rgba(0, 95, 115, 0.12),
+        0 2px 8px rgba(15, 23, 42, 0.04);
     }
 
     .form-group {
@@ -116,45 +114,46 @@
       align-items: baseline;
       flex-wrap: wrap;
       gap: 4px;
-      font-size: 0.84rem;
-      font-weight: 700;
-      color: #cbd5e1;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--navy-deep);
       margin-bottom: 8px;
       letter-spacing: 0.01em;
     }
 
     .label .req {
-      color: #f87171;
+      color: #ea580c;
       margin-left: 2px;
     }
 
     .label .hint {
-      font-weight: 500;
-      font-size: 0.74rem;
-      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.76rem;
+      color: #64748b;
     }
 
     .input-field, .textarea-field {
       width: 100%;
-      background: rgba(10, 18, 34, 0.7);
-      border: 1px solid rgba(71, 85, 105, 0.6);
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
       border-radius: 12px;
       padding: 12px 14px;
       font-size: 0.95rem;
-      color: #fff;
+      color: var(--text-main);
       font-family: inherit;
       outline: none;
       transition: all 0.2s ease;
+      box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
     }
 
     .input-field:focus, .textarea-field:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22);
-      background: rgba(15, 23, 42, 0.95);
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18);
+      background: #ffffff;
     }
 
     .input-field::placeholder, .textarea-field::placeholder {
-      color: #64748b;
+      color: #94a3b8;
       font-size: 0.88rem;
     }
 
@@ -174,23 +173,24 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(71, 85, 105, 0.5);
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
       border-radius: 12px;
       padding: 10px 12px;
-      color: #cbd5e1;
+      color: #334155;
       font-size: 0.84rem;
-      font-weight: 600;
+      font-weight: 700;
       font-family: inherit;
       cursor: pointer;
       text-align: left;
       transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
       user-select: none;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
     }
 
     .pill-btn:hover {
-      background: rgba(30, 41, 59, 0.9);
-      border-color: rgba(148, 163, 184, 0.6);
+      background: #f8fafc;
+      border-color: #94a3b8;
       transform: translateY(-1px);
     }
 
@@ -206,47 +206,49 @@
 
     /* Active States */
     .pill-btn.active {
-      background: rgba(14, 165, 233, 0.18);
-      border-color: #38bdf8;
-      color: #fff;
-      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35);
+      background: #f0fdfa;
+      border-color: #00a8b8;
+      color: #084c5e;
+      box-shadow: 0 0 0 2px rgba(0, 168, 184, 0.25);
     }
 
     .pill-btn.active.warn {
-      background: rgba(245, 158, 11, 0.18);
-      border-color: #fbbf24;
-      box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.35);
+      background: #fffbeb;
+      border-color: #f59e0b;
+      color: #92400e;
+      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.25);
     }
 
     .pill-btn.active.bad {
-      background: rgba(239, 68, 68, 0.18);
-      border-color: #f87171;
-      box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.35);
+      background: #fef2f2;
+      border-color: #ef4444;
+      color: #991b1b;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25);
     }
 
     .submit-btn {
       width: 100%;
-      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      background: linear-gradient(135deg, #0284c7 0%, #00798c 100%);
       color: #ffffff;
       border: none;
       border-radius: 12px;
       padding: 14px;
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: 1.02rem;
+      font-weight: 800;
       font-family: inherit;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      box-shadow: 0 8px 20px -6px rgba(2, 132, 199, 0.6);
+      box-shadow: 0 6px 16px -2px rgba(0, 121, 140, 0.4);
       transition: all 0.2s ease;
       margin-top: 22px;
     }
 
     .submit-btn:hover {
-      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-      box-shadow: 0 10px 24px -4px rgba(14, 165, 233, 0.7);
+      background: linear-gradient(135deg, #0369a1 0%, #005f73 100%);
+      box-shadow: 0 8px 20px -2px rgba(0, 121, 140, 0.5);
       transform: translateY(-1px);
     }
 
@@ -264,7 +266,7 @@
       display: none;
       width: 18px;
       height: 18px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
       border-top-color: #fff;
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
@@ -283,15 +285,15 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: #7dd3fc;
+      color: #0369a1;
       text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 700;
       transition: color 0.15s;
     }
 
     .view-responses-link:hover {
-      color: #bae6fd;
+      color: #0284c7;
       text-decoration: underline;
     }
 
@@ -299,23 +301,23 @@
       display: none;
       padding: 12px 14px;
       border-radius: 10px;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       margin-bottom: 14px;
       line-height: 1.4;
+      font-weight: 600;
     }
 
     .alert-error {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.35);
-      color: #fca5a5;
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      color: #b91c1c;
     }
 
     .alert-success {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: #6ee7b7;
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      color: #047857;
       text-align: center;
-      font-weight: 600;
     }
 
     @media (max-width: 420px) {
@@ -323,10 +325,10 @@
         grid-template-columns: 1fr;
       }
       .card {
-        padding: 18px 16px;
+        padding: 20px 16px;
       }
       .title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
     }
   </style>
@@ -336,7 +338,7 @@
   <div class="container">
     <div class="header-card">
       <div class="badge-event">
-        <span></span> ⚡ 15 Detik &bull; Apresiasi GTK 2026
+        ⚡ 15 Detik &bull; Apresiasi GTK 2026
       </div>
       <h1 class="title">Buku Tamu Digital</h1>
       <p class="subtitle">Senang Anda mampir ke stand kami! Tinggalkan sapaan atau jejak singkat Anda di bawah ini 👋</p>
@@ -473,7 +475,7 @@
         if (tone === 'bad' || btn.dataset.kesan.includes('Perlu Ditingkatkan')) {
           pesanInput.placeholder = 'Bagian mana yang menurut Anda kurang atau perlu kami tingkatkan? Kritik Anda sangat berharga...';
         } else {
-          pesanInput.placeholder = 'Tulis pesan, doa, atau masukan untuk karya ini...';
+          pesanInput.placeholder = 'Pesan singkat, doa, atau masukan (bebas)...';
         }
       });
     });
@@ -488,7 +490,7 @@
       const pesan = pesanInput.value.trim();
 
       if (!nama || !instansi || !kesan) {
-        showAlert('Mohon isi nama, instansi, dan pilih salah satu kesan.', 'error');
+        showAlert('Mohon isi nama, instansi, dan pilih salah satu kesan ya 🙏', 'error');
         return;
       }
 
@@ -513,7 +515,6 @@
         if (response.ok && data.success) {
           showAlert('🎉 Respon berhasil dikirim! Mengalihkan ke Wall of Responses...', 'success');
           
-          // Simpan nama lokal untuk highlight di wall jika diinginkan
           try {
             sessionStorage.setItem('just_submitted_name', nama);
           } catch(e) {}
@@ -541,4 +542,3 @@
   </script>
 </body>
 </html>
-
