@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Cek Layar & Diagnosa Responsif MPI</title>
+<style>
+  :root { --teal:#00ACC1; --dark:#006064; --bg:#f1f5f9; --ok:#16a34a; --warn:#d97706; --bad:#dc2626; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background:var(--bg); color:#1e293b; font-size:15px; line-height:1.45; }
+  header { background:var(--teal); color:#fff; padding:14px 18px; position:sticky; top:0; z-index:10; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
+  header h1 { font-size:18px; }
+  .big { font-size:28px; font-weight:800; letter-spacing:.5px; }
+  .tabs { display:flex; gap:6px; }
+  .tabs button { border:2px solid #fff; background:transparent; color:#fff; padding:6px 14px; border-radius:999px; font-weight:700; cursor:pointer; font-size:14px; }
+  .tabs button.on { background:#fff; color:var(--dark); }
+  main { padding:16px; max-width:1200px; margin:0 auto; }
+  .hero { background:#fff; border-radius:16px; padding:16px; margin-bottom:14px; box-shadow:0 2px 10px rgba(0,0,0,.06); text-align:center; }
+  .hero .vp { font-size:clamp(34px, 8vw, 64px); font-weight:900; color:var(--dark); }
+  .hero .sub { color:#64748b; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:14px; }
+  .card { background:#fff; border-radius:14px; padding:14px 16px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
+  .card h2 { font-size:15px; color:var(--dark); margin-bottom:8px; border-bottom:2px solid #e2e8f0; padding-bottom:6px; }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  td { padding:4px 4px; border-bottom:1px dashed #e2e8f0; vertical-align:top; }
+  td:first-child { color:#64748b; width:52%; }
+  td:last-child { font-weight:700; font-family: ui-monospace, Consolas, monospace; word-break:break-all; }
+  .pill { display:inline-block; padding:2px 10px; border-radius:999px; font-size:12px; font-weight:800; color:#fff; }
+  .ok { background:var(--ok); } .warn { background:var(--warn); } .bad { background:var(--bad); } .info { background:#0284c7; }
+  .issues li { list-style:none; padding:8px 10px; border-radius:10px; margin-bottom:6px; font-size:13.5px; border-left:5px solid; background:#f8fafc; }
+  .issues li.bad { border-color:var(--bad); background:#fef2f2; color:#7f1d1d; }
+  .issues li.warn { border-color:var(--warn); background:#fffbeb; color:#78350f; }
+  .issues li.ok { border-color:var(--ok); background:#f0fdf4; color:#14532d; }
+  .actions { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; justify-content:center; }
+  .btn { background:var(--teal); color:#fff; border:none; padding:10px 18px; border-radius:999px; font-weight:800; font-size:14px; cursor:pointer; text-decoration:none; }
+  .btn.alt { background:#fff; color:var(--dark); border:2px solid var(--teal); }
+  textarea { width:100%; height:180px; font-family:ui-monospace,Consolas,monospace; font-size:12px; padding:8px; border-radius:10px; border:1px solid #cbd5e1; }
+  .bp-bar { display:flex; height:30px; border-radius:8px; overflow:hidden; font-size:11px; font-weight:800; color:#fff; position:relative; margin-top:6px; }
+  .bp-bar div { display:flex; align-items:center; justify-content:center; }
+  .bp-marker { position:absolute; top:-4px; bottom:-4px; width:4px; background:#111; border-radius:2px; }
+  /* probes (hidden) */
+  .probe { position:fixed; left:-9999px; top:0; width:1px; visibility:hidden; pointer-events:none; }
+  /* Simulator */
+  #sim { display:none; }
+  .sim-ctrl { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:12px; }
+  .sim-ctrl select, .sim-ctrl input { padding:7px 10px; border-radius:8px; border:1px solid #cbd5e1; font-size:14px; }
+  .sim-ctrl input[type=number] { width:90px; }
+  .sim-stage { background:#334155; border-radius:14px; padding:16px; overflow:auto; }
+  .sim-frame-wrap { transform-origin: top left; background:#fff; box-shadow:0 0 0 10px #0f172a, 0 10px 40px rgba(0,0,0,.5); border-radius:6px; overflow:hidden; }
+  .sim-frame-wrap iframe { border:0; display:block; }
+  .note { font-size:13px; color:#475569; margin-top:8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>📐 Cek Layar & Diagnosa Responsif MPI</h1>
+    <div style="font-size:12px;opacity:.9">Buka halaman ini di tablet → putar layar (portrait/landscape) → salin laporan</div>
+  </div>
+  <div class="tabs">
+    <button id="tab-info" class="on" onclick="showTab('info')">📱 Info Perangkat</button>
+    <button id="tab-sim" onclick="showTab('sim')">🖥️ Simulator</button>
+  </div>
+</header>
+
+<!-- Probes untuk mengukur unit CSS -->
+<div class="probe" id="p-vh" style="height:100vh"></div>
+<div class="probe" id="p-dvh" style="height:100dvh"></div>
+<div class="probe" id="p-svh" style="height:100svh"></div>
+<div class="probe" id="p-lvh" style="height:100lvh"></div>
+<div class="probe" id="p-safe" style="padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)"></div>
+<div class="probe" id="p-rem" style="width:1rem"></div>
+
+<main id="info">
+  <div class="hero">
+    <div class="sub">Viewport CSS (yang "dilihat" oleh CSS / media query)</div>
+    <div class="vp" id="hero-vp">– × –</div>
+    <div class="sub" id="hero-sub">–</div>
+    <div style="margin-top:10px">
+      <div class="bp-bar" id="bp-bar">
+        <div style="flex:800;background:#7c3aed">≤800 Mobile</div>
+        <div style="flex:300;background:#d97706">801–1100 Medium</div>
+        <div style="flex:500;background:#0f766e">&gt;1100 Desktop</div>
+        <span class="bp-marker" id="bp-marker"></span>
+      </div>
+      <div class="note">Breakpoint yang dipakai <code>style.css</code> MPI Sistem Komputer (hanya berdasarkan <b>lebar</b>, tidak ada yang berdasarkan tinggi).</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <h2>🩺 Diagnosa Otomatis untuk MPI Sistem Komputer</h2>
+    <ul class="issues" id="issues"></ul>
+  </div>
+
+  <div class="actions">
+    <button class="btn" onclick="copyReport()">📋 Salin Laporan</button>
+    <a class="btn alt" href="../mpi/sistem-komputer/index.html" target="_blank">▶ Buka MPI Sistem Komputer</a>
+    <button class="btn alt" onclick="resetMpiZoom()">♻️ Reset Zoom/Font MPI</button>
+  </div>
+
+  <div class="grid">
+    <div class="card"><h2>📏 Viewport & Layar</h2><table id="t-viewport"></table></div>
+    <div class="card"><h2>📐 Unit Tinggi (vh / dvh / svh)</h2><table id="t-units"></table></div>
+    <div class="card"><h2>👆 Input & Orientasi</h2><table id="t-input"></table></div>
+    <div class="card"><h2>🧩 Dukungan Fitur CSS</h2><table id="t-support"></table></div>
+    <div class="card"><h2>💾 Pengaturan MPI tersimpan (localStorage)</h2><table id="t-storage"></table></div>
+    <div class="card"><h2>🌐 Browser / Perangkat</h2><table id="t-ua"></table></div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h2>📝 Laporan (kirim teks ini ke asisten)</h2>
+    <textarea id="report" readonly></textarea>
+    <div class="note">Tips: ambil laporan 2× — sekali posisi <b>portrait</b>, sekali <b>landscape</b>. Nilai di halaman ini ter-update otomatis saat layar diputar.</div>
+  </div>
+</main>
+
+<main id="sim">
+  <div class="card" style="margin-bottom:12px">
+    <h2>🖥️ Simulator Tablet (pakai di laptop/PC)</h2>
+    <div class="sim-ctrl">
+      <select id="sim-preset" onchange="applyPreset()"></select>
+      <input type="number" id="sim-w" value="1024" onchange="renderSim()"> ×
+      <input type="number" id="sim-h" value="768" onchange="renderSim()">
+      <button class="btn alt" onclick="rotateSim()">🔄 Putar</button>
+      <label>Skala tampilan <input type="range" id="sim-scale" min="30" max="100" value="70" oninput="renderSim()"> <span id="sim-scale-v">70%</span></label>
+      <select id="sim-url" onchange="renderSim(true)">
+        <option value="../mpi/sistem-komputer/index.html">MPI Sistem Komputer</option>
+        <option value="../mpi/jaringan/index.html">MPI Jaringan</option>
+        <option value="../mpi/berpikir_komputasional/index.html">MPI Berpikir Komputasional</option>
+      </select>
+    </div>
+    <div class="note">Iframe dirender dengan lebar × tinggi CSS persis seperti tablet, sehingga media query MPI ikut aktif. (Catatan: perilaku sentuh, address-bar, dan <code>zoom</code> di Safari iPad tetap harus dicek di perangkat asli.)</div>
+  </div>
+  <div class="sim-stage" id="sim-stage">
+    <div class="sim-frame-wrap" id="sim-wrap"><iframe id="sim-frame"></iframe></div>
+  </div>
+</main>
+
+<script>
+// ===== Konstanta dari style.css MPI Sistem Komputer =====
+const MPI = {
+  bpMobile: 800, bpMedium: 1100,
+  contentMinH: 480,          // .content-box min-height
+  contentMaxOffDesktop: 230, // max-height: calc(100vh - 230px)
+  contentMaxOffMedium: 160,  // @media 801-1100: calc(100vh - 160px)
+  bigPageMinH: 640,          // beberapa halaman: min-height 640px
+  navArrowDesktop: 104, navArrowMedium: 88,
+  navTopDesktop: 82, navTopMedium: 72,
+};
+
+const $ = id => document.getElementById(id);
+const px = el => Math.round(el.getBoundingClientRect().height * 10) / 10;
+const mq = q => window.matchMedia(q).matches;
+const yes = b => b ? '✅ ya' : '❌ tidak';
+
+function rows(id, data) {
+  $(id).innerHTML = data.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+}
+
+function collect() {
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const cw = document.documentElement.clientWidth, ch = document.documentElement.clientHeight;
+  const dpr = window.devicePixelRatio || 1;
+  const vv = window.visualViewport;
+  const safe = getComputedStyle($('p-safe'));
+  const ua = navigator.userAgent;
+  const isIPadOS = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+  const isTablet = isIPadOS || /iPad|Tablet|SM-T|SM-X|Tab|Android(?!.*Mobile)/i.test(ua);
+  const orient = (screen.orientation && screen.orientation.type) || (mq('(orientation: portrait)') ? 'portrait' : 'landscape');
+  let bp = vw <= MPI.bpMobile ? 'MOBILE (≤800)' : vw <= MPI.bpMedium ? 'MEDIUM (801–1100)' : 'DESKTOP (>1100)';
+  const zoomSaved = localStorage.getItem('mpi_zoom_level');
+  const fontSaved = localStorage.getItem('mpi_font_scale');
+  return {
+    vw, vh, cw, ch, dpr,
+    physW: Math.round(vw * dpr), physH: Math.round(vh * dpr),
+    screenW: screen.width, screenH: screen.height, availW: screen.availWidth, availH: screen.availHeight,
+    vvW: vv ? Math.round(vv.width) : null, vvH: vv ? Math.round(vv.height) : null, vvScale: vv ? vv.scale.toFixed(2) : null,
+    u_vh: px($('p-vh')), u_dvh: px($('p-dvh')), u_svh: px($('p-svh')), u_lvh: px($('p-lvh')),
+    remPx: $('p-rem').getBoundingClientRect().width,
+    safe: `T${safe.paddingTop} B${safe.paddingBottom} L${safe.paddingLeft} R${safe.paddingRight}`,
+    orient, aspect: (vw / vh).toFixed(3),
+    pointer: mq('(pointer: coarse)') ? 'coarse (jari)' : mq('(pointer: fine)') ? 'fine (mouse)' : 'none',
+    anyFine: mq('(any-pointer: fine)'),
+    hover: mq('(hover: hover)') ? 'hover' : 'none',
+    touchPoints: navigator.maxTouchPoints || 0,
+    sup: {
+      zoom: 'zoom' in document.body.style,
+      dvh: CSS.supports('height', '100dvh'),
+      has: CSS.supports('selector(:has(a))'),
+      backdrop: CSS.supports('backdrop-filter', 'blur(2px)') || CSS.supports('-webkit-backdrop-filter', 'blur(2px)'),
+      container: CSS.supports('container-type', 'inline-size'),
+      clamp: CSS.supports('width', 'clamp(1px, 2vw, 3px)'),
+      aspect: CSS.supports('aspect-ratio', '16/9'),
+    },
+    ua, platform: navigator.platform || '-', isIPadOS, isTablet,
+    standalone: mq('(display-mode: standalone)') || navigator.standalone === true,
+    zoomSaved, fontSaved, bp,
+  };
+}
+
+function diagnose(d) {
+  const out = [];
+  const zoom = parseFloat(d.zoomSaved) || 1;
+  const font = parseFloat(d.fontSaved) || 1;
+  // Viewport efektif setelah body.style.zoom
+  const effW = Math.round(d.vw / zoom), effH = Math.round(d.vh / zoom);
+
+  out.push(['ok', `Zona breakpoint MPI: <b>${d.bp}</b> — viewport ${d.vw}×${d.vh}, orientasi ${d.orient}.`]);
+
+  if (d.vw > MPI.bpMobile && d.vw <= MPI.bpMedium && d.orient.startsWith('portrait'))
+    out.push(['bad', `Tablet <b>portrait</b> lebar ${d.vw}px jatuh ke zona MEDIUM → layout 2 kolom / grid 6 kartu masih dipakai di layar sempit & tinggi. Inilah kandidat utama "tampilan kacau".`]);
+
+  if (d.vw > MPI.bpMedium && d.vh < 900)
+    out.push(['warn', `Lebar ${d.vw}px dianggap DESKTOP penuh (tombol 104px, judul 34px), padahal tinggi hanya ${d.vh}px.`]);
+
+  const off = d.vw > MPI.bpMedium ? MPI.contentMaxOffDesktop : (d.vw > MPI.bpMobile ? MPI.contentMaxOffMedium : null);
+  if (off !== null) {
+    const maxH = effH - off;
+    if (maxH < MPI.contentMinH)
+      out.push(['bad', `Konflik tinggi: .content-box max-height = 100vh − ${off} = <b>${maxH}px</b>, tetapi min-height = ${MPI.contentMinH}px → kotak konten meluber menabrak tombol navigasi bawah.`]);
+    else
+      out.push(['ok', `.content-box punya ruang ${maxH}px (≥ min ${MPI.contentMinH}px).`]);
+    if (effH - 150 < MPI.bigPageMinH)
+      out.push(['bad', `Beberapa halaman (latihan/simulator) memakai min-height ${MPI.bigPageMinH}px; tinggi tersedia hanya ±${effH - 150}px → terpotong/overlap.`]);
+    const arrow = d.vw > MPI.bpMedium ? MPI.navArrowDesktop : MPI.navArrowMedium;
+    const topBtn = d.vw > MPI.bpMedium ? MPI.navTopDesktop : MPI.navTopMedium;
+    const used = topBtn + 24 + arrow + 22;
+    out.push([used / effH > 0.25 ? 'warn' : 'ok', `Tombol navigasi atas+bawah memakan ±${used}px (${Math.round(used / effH * 100)}% tinggi layar).`]);
+  }
+
+  if (Math.abs(d.u_vh - d.u_dvh) > 2)
+    out.push(['warn', `100vh (${d.u_vh}px) ≠ 100dvh (${d.u_dvh}px): address bar browser menutupi ±${Math.round(d.u_vh - d.u_dvh)}px. MPI memakai <code>100vh</code> → bagian bawah tertutup.`]);
+
+  if (zoom !== 1) out.push(['warn', `Zoom MPI tersimpan = <b>${Math.round(zoom * 100)}%</b> (body.style.zoom). Viewport efektif jadi ${effW}×${effH}. Coba tombol "Reset Zoom/Font MPI".`]);
+  if (font !== 1) out.push(['warn', `Skala font MPI tersimpan = <b>${Math.round(font * 100)}%</b>.`]);
+  if (d.remPx !== 16) out.push(['warn', `Ukuran font dasar browser = ${d.remPx}px (bukan 16px) — pengaturan teks besar di perangkat.`]);
+
+  if (d.hover === 'none')
+    out.push(['warn', `Perangkat tanpa hover: efek <code>:hover</code> (scale/translate) bisa "nyangkut" setelah disentuh.`]);
+  if (d.isIPadOS)
+    out.push(['warn', `iPadOS terdeteksi menyamar sebagai Mac. Safari: <code>zoom</code> CSS berperilaku berbeda & 100vh termasuk area address bar.`]);
+  if (d.dpr >= 2 && d.sup.backdrop)
+    out.push(['warn', `DPR ${d.dpr} + banyak <code>backdrop-filter: blur()</code> → bisa berat/lag di tablet kelas menengah.`]);
+
+  return out;
+}
+
+function render() {
+  const d = collect();
+  $('hero-vp').textContent = `${d.vw} × ${d.vh}`;
+  $('hero-sub').textContent = `${d.orient} • DPR ${d.dpr} • fisik ${d.physW}×${d.physH}px • ${d.pointer}`;
+  const pos = Math.min(d.vw, 1600) / 1600 * 100;
+  $('bp-marker').style.left = `calc(${pos}% - 2px)`;
+
+  rows('t-viewport', [
+    ['window.inner (CSS px)', `${d.vw} × ${d.vh}`],
+    ['documentElement.client', `${d.cw} × ${d.ch}`],
+    ['visualViewport', d.vvW ? `${d.vvW} × ${d.vvH} (scale ${d.vvScale})` : '-'],
+    ['screen', `${d.screenW} × ${d.screenH}`],
+    ['screen.avail', `${d.availW} × ${d.availH}`],
+    ['devicePixelRatio', d.dpr],
+    ['Resolusi fisik viewport', `${d.physW} × ${d.physH}`],
+    ['Rasio aspek', d.aspect],
+    ['Breakpoint MPI', d.bp],
+  ]);
+  rows('t-units', [
+    ['100vh', d.u_vh + 'px'], ['100dvh', d.u_dvh + 'px'], ['100svh', d.u_svh + 'px'], ['100lvh', d.u_lvh + 'px'],
+    ['safe-area-inset', d.safe], ['1rem', d.remPx + 'px'],
+  ]);
+  rows('t-input', [
+    ['Orientasi', d.orient], ['pointer', d.pointer], ['any-pointer: fine', yes(d.anyFine)],
+    ['hover', d.hover], ['maxTouchPoints', d.touchPoints], ['Mode standalone (PWA)', yes(d.standalone)],
+  ]);
+  rows('t-support', Object.entries(d.sup).map(([k, v]) => [k, yes(v)]));
+  rows('t-storage', [
+    ['mpi_zoom_level', d.zoomSaved ?? '(belum ada → 100%)'],
+    ['mpi_font_scale', d.fontSaved ?? '(belum ada → 100%)'],
+  ]);
+  rows('t-ua', [
+    ['Tablet terdeteksi', yes(d.isTablet)], ['iPadOS (menyamar Mac)', yes(d.isIPadOS)],
+    ['platform', d.platform], ['userAgent', d.ua],
+  ]);
+
+  const issues = diagnose(d);
+  $('issues').innerHTML = issues.map(([c, t]) => `<li class="${c}">${t}</li>`).join('');
+
+  const strip = s => s.replace(/<[^>]+>/g, '');
+  $('report').value = [
+    '=== LAPORAN CEK LAYAR MPI ===',
+    'Waktu        : ' + new Date().toLocaleString('id-ID'),
+    `Viewport     : ${d.vw}x${d.vh} (client ${d.cw}x${d.ch})`,
+    `VisualVP     : ${d.vvW}x${d.vvH} scale ${d.vvScale}`,
+    `Screen       : ${d.screenW}x${d.screenH} (avail ${d.availW}x${d.availH})`,
+    `DPR          : ${d.dpr}  -> fisik ${d.physW}x${d.physH}`,
+    `Orientasi    : ${d.orient}  aspek ${d.aspect}`,
+    `Units        : vh=${d.u_vh} dvh=${d.u_dvh} svh=${d.u_svh} lvh=${d.u_lvh} rem=${d.remPx}`,
+    `Safe-area    : ${d.safe}`,
+    `Input        : pointer=${d.pointer} hover=${d.hover} touch=${d.touchPoints}`,
+    `Dukungan CSS : ${Object.entries(d.sup).map(([k, v]) => k + '=' + (v ? 'Y' : 'N')).join(' ')}`,
+    `MPI storage  : zoom=${d.zoomSaved} font=${d.fontSaved}`,
+    `Breakpoint   : ${d.bp}`,
+    `Tablet/iPadOS: ${d.isTablet}/${d.isIPadOS}`,
+    `UA           : ${d.ua}`,
+    '--- Diagnosa ---',
+    ...issues.map(([c, t]) => `[${c.toUpperCase()}] ${strip(t)}`),
+  ].join('\n');
+}
+
+function copyReport() {
+  const ta = $('report');
+  ta.select();
+  (navigator.clipboard ? navigator.clipboard.writeText(ta.value) : Promise.reject())
+    .then(() => alert('Laporan disalin ✅'))
+    .catch(() => { document.execCommand('copy'); alert('Laporan disalin ✅'); });
+}
+
+function resetMpiZoom() {
+  localStorage.removeItem('mpi_zoom_level');
+  localStorage.removeItem('mpi_font_scale');
+  render();
+  alert('Zoom & font MPI direset ke 100%.');
+}
+
+// ===== Simulator =====
+const PRESETS = [
+  ['iPad 9/10 (landscape)', 1080, 810], ['iPad 9/10 (portrait)', 810, 1080],
+  ['iPad Air 11" (landscape)', 1180, 820], ['iPad Air 11" (portrait)', 820, 1180],
+  ['iPad Pro 12.9" (landscape)', 1366, 1024], ['iPad Pro 12.9" (portrait)', 1024, 1366],
+  ['iPad mini (landscape)', 1133, 744], ['iPad mini (portrait)', 744, 1133],
+  ['Galaxy Tab A 8"/A7 Lite (landscape)', 1340, 800], ['Galaxy Tab A7 Lite (portrait)', 800, 1340],
+  ['Galaxy Tab S6 Lite/A8 (landscape)', 1280, 800], ['Galaxy Tab S6 Lite/A8 (portrait)', 800, 1280],
+  ['Android 10" generik (landscape)', 1024, 600], ['Android 10" generik (portrait)', 600, 1024],
+  ['Laptop 1366×768 (browser ±1366×657)', 1366, 657], ['Desktop 1920×1080 (±1920×969)', 1920, 969],
+  ['Custom', 0, 0],
+];
+function initSim() {
+  $('sim-preset').innerHTML = PRESETS.map((p, i) => `<option value="${i}">${p[0]}${p[1] ? ` — ${p[1]}×${p[2]}` : ''}</option>`).join('');
+  applyPreset();
+}
+function applyPreset() {
+  const p = PRESETS[$('sim-preset').value];
+  if (p[1]) { $('sim-w').value = p[1]; $('sim-h').value = p[2]; }
+  renderSim();
+}
+function rotateSim() { const w = $('sim-w').value; $('sim-w').value = $('sim-h').value; $('sim-h').value = w; renderSim(); }
+function renderSim(reload) {
+  const w = +$('sim-w').value, h = +$('sim-h').value, s = $('sim-scale').value / 100;
+  $('sim-scale-v').textContent = Math.round(s * 100) + '%';
+  const f = $('sim-frame'), wrap = $('sim-wrap');
+  f.style.width = w + 'px'; f.style.height = h + 'px';
+  wrap.style.width = w + 'px'; wrap.style.height = h + 'px';
+  wrap.style.transform = `scale(${s})`;
+  $('sim-stage').style.height = (h * s + 40) + 'px';
+  if (reload || !f.src || !f.src.includes($('sim-url').value.replace('..', ''))) f.src = $('sim-url').value;
+}
+function showTab(t) {
+  $('info').style.display = t === 'info' ? 'block' : 'none';
+  $('sim').style.display = t === 'sim' ? 'block' : 'none';
+  $('tab-info').classList.toggle('on', t === 'info');
+  $('tab-sim').classList.toggle('on', t === 'sim');
+  if (t === 'sim' && !$('sim-frame').src) initSim();
+}
+
+window.addEventListener('resize', render);
+window.addEventListener('orientationchange', () => setTimeout(render, 300));
+if (window.visualViewport) visualViewport.addEventListener('resize', render);
+render();
+</script>
+</body>
+</html>
+
