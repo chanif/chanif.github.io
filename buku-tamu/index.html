@@ -503,16 +503,21 @@
       try {
         const response = await fetch(API_SUBMIT_URL, {
           method: 'POST',
+          mode: 'cors',
           headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({ nama, instansi, kesan, pesan })
         });
 
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.error || `Server merespon error (${response.status})`);
+        }
+
         const data = await response.json();
 
-        if (response.ok && data.success) {
+        if (data.success) {
           showAlert('🎉 Respon berhasil dikirim! Mengalihkan ke Wall of Responses...', 'success');
           
           try {
@@ -521,13 +526,16 @@
 
           setTimeout(() => {
             window.location.href = 'respon.html';
-          }, 900);
+          }, 800);
         } else {
           throw new Error(data.error || 'Terjadi kendala saat menyimpan.');
         }
       } catch (err) {
-        console.error(err);
-        showAlert(err.message || 'Gagal mengirim respon. Mohon periksa koneksi internet Anda.', 'error');
+        console.error('Submit error:', err);
+        const errMsg = (err && err.message === 'Failed to fetch')
+          ? 'Gagal terhubung ke server (Failed to fetch). Mohon periksa koneksi internet Anda atau coba lagi.'
+          : (err && err.message ? err.message : 'Gagal mengirim respon.');
+        showAlert(errMsg, 'error');
         submitBtn.disabled = false;
         btnSpinner.style.display = 'none';
         btnText.textContent = 'Kirim Respon & Masuk ke Wall 🚀';
