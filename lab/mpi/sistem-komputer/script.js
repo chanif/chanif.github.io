@@ -79,27 +79,51 @@ function applyConfig() {
 }
 
 // ==================== ZOOM CONTROLS ENGINE ====================
+function isTouchTabletDevice() {
+  const isCoarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  const hasTouch = (navigator.maxTouchPoints > 0) || ('ontouchstart' in window);
+  const ua = navigator.userAgent;
+  const isTabletUA = /iPad|Tablet|SM-T|SM-X|Tab|Android(?!.*Mobile)/i.test(ua) || 
+                     (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  return (isCoarse || isTabletUA) && hasTouch;
+}
+
 function getOptimalZoom() {
-  const saved = localStorage.getItem('mpi_zoom_level');
+  const isTablet = isTouchTabletDevice();
   const w = window.innerWidth;
   const h = window.innerHeight;
-  const isShortLandscape = (w >= 801 && h <= 720);
+  const isTabletShortLandscape = isTablet && (w >= 801 && h <= 720);
 
-  // Jika tablet landscape dan belum pernah di-init versi ini, gunakan 0.67
-  const tabletInit = localStorage.getItem('mpi_zoom_v10_init');
-  if (isShortLandscape && !tabletInit) {
+  // Jika ini komputer/laptop (bukan touchscreen tablet):
+  if (!isTablet) {
+    const saved = localStorage.getItem('mpi_zoom_level');
+    // Jika di komputer sempat tersimpan '0.67' akibat auto-init tablet sebelumnya, pulihkan ke 1.0
+    if (saved === '0.67') {
+      try {
+        localStorage.removeItem('mpi_zoom_level');
+        localStorage.removeItem('mpi_zoom_v10_init');
+      } catch (e) {}
+      return 1.0;
+    }
+    return saved !== null ? (parseFloat(saved) || 1.0) : 1.0;
+  }
+
+  // Jika ini tablet landscape pendek:
+  const tabletInit = localStorage.getItem('mpi_tablet_zoom_v12');
+  if (isTabletShortLandscape && !tabletInit) {
     try {
-      localStorage.setItem('mpi_zoom_v10_init', 'true');
+      localStorage.setItem('mpi_tablet_zoom_v12', 'true');
       localStorage.setItem('mpi_zoom_level', '0.67');
     } catch (e) {}
     return 0.67;
   }
 
+  const saved = localStorage.getItem('mpi_zoom_level');
   if (saved !== null) {
     return parseFloat(saved) || 1.0;
   }
 
-  return isShortLandscape ? 0.67 : 1.0;
+  return isTabletShortLandscape ? 0.67 : 1.0;
 }
 
 let currentZoom = getOptimalZoom();
@@ -161,9 +185,10 @@ function zoomOut() {
 }
 
 function resetZoom() {
+  const isTablet = isTouchTabletDevice();
   const w = window.innerWidth;
   const h = window.innerHeight;
-  const defaultZoom = (w >= 801 && h <= 720) ? 0.67 : 1.0;
+  const defaultZoom = (isTablet && w >= 801 && h <= 720) ? 0.67 : 1.0;
   setAppZoom(defaultZoom);
 }
 
