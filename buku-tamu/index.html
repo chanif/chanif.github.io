@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Buku Tamu Digital — Apresiasi GTK Jawa Timur 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090f1d;
+      --card-bg: rgba(18, 28, 49, 0.85);
+      --card-border: rgba(56, 85, 133, 0.45);
+      --primary: #38bdf8;
+      --primary-hover: #0ea5e9;
+      --accent: #f97316;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.18) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(249, 115, 22, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.4) 0px, transparent 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      margin: auto;
+    }
+
+    .badge-event {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(14, 165, 233, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #7dd3fc;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .badge-event span {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: #38bdf8;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #38bdf8;
+    }
+
+    .header-card {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.25;
+      background: linear-gradient(135deg, #ffffff 30%, #bae6fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    .label .req {
+      color: #f87171;
+      margin-left: 2px;
+    }
+
+    .label .hint {
+      font-weight: 500;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .input-field, .textarea-field {
+      width: 100%;
+      background: rgba(10, 18, 34, 0.7);
+      border: 1px solid rgba(71, 85, 105, 0.6);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      color: #fff;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .input-field:focus, .textarea-field:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .input-field::placeholder, .textarea-field::placeholder {
+      color: #64748b;
+      font-size: 0.88rem;
+    }
+
+    .textarea-field {
+      resize: vertical;
+      min-height: 72px;
+    }
+
+    /* Pilihan Kesan Pill Grid */
+    .pill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .pill-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(71, 85, 105, 0.5);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: #cbd5e1;
+      font-size: 0.84rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+    }
+
+    .pill-btn:hover {
+      background: rgba(30, 41, 59, 0.9);
+      border-color: rgba(148, 163, 184, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .pill-btn:active {
+      transform: scale(0.97);
+    }
+
+    .pill-btn .emoji {
+      font-size: 1.15rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    /* Active States */
+    .pill-btn.active {
+      background: rgba(14, 165, 233, 0.18);
+      border-color: #38bdf8;
+      color: #fff;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35);
+    }
+
+    .pill-btn.active.warn {
+      background: rgba(245, 158, 11, 0.18);
+      border-color: #fbbf24;
+      box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.35);
+    }
+
+    .pill-btn.active.bad {
+      background: rgba(239, 68, 68, 0.18);
+      border-color: #f87171;
+      box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.35);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 8px 20px -6px rgba(2, 132, 199, 0.6);
+      transition: all 0.2s ease;
+      margin-top: 22px;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+      box-shadow: 0 10px 24px -4px rgba(14, 165, 233, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:active {
+      transform: scale(0.98);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .footer-links {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .view-responses-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #7dd3fc;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: color 0.15s;
+    }
+
+    .view-responses-link:hover {
+      color: #bae6fd;
+      text-decoration: underline;
+    }
+
+    .alert {
+      display: none;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .alert-error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+    }
+
+    .alert-success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #6ee7b7;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    @media (max-width: 420px) {
+      .pill-grid {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        padding: 18px 16px;
+      }
+      .title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-card">
+      <div class="badge-event">
+        <span></span> Apresiasi GTK Jawa Timur 2026
+      </div>
+      <h1 class="title">Buku Tamu Digital</h1>
+      <p class="subtitle">Terima kasih telah berkunjung ke stand karya inovatif kami. Mohon luangkan 15 detik untuk meninggalkan jejak!</p>
+    </div>
+
+    <div class="card">
+      <div id="alertBox" class="alert"></div>
+
+      <form id="guestbookForm">
+        <!-- 1. Nama -->
+        <div class="form-group">
+          <label class="label" for="namaInput">
+            <span>Nama Lengkap & Gelar <span class="req">*</span></span>
+          </label>
+          <input 
+            type="text" 
+            id="namaInput" 
+            class="input-field" 
+            placeholder="Contoh: Budi Santoso, S.Pd." 
+            required 
+            maxlength="90"
+            autocomplete="name"
+          >
+        </div>
+
+        <!-- 2. Instansi / Kota -->
+        <div class="form-group">
+          <label class="label" for="instansiInput">
+            <span>Instansi / Asal Kota <span class="req">*</span></span>
+          </label>
+          <input 
+            type="text" 
+            id="instansiInput" 
+            class="input-field" 
+            placeholder="Contoh: SMPN 1 Surabaya / Kab. Malang" 
+            required 
+            maxlength="90"
+          >
+        </div>
+
+        <!-- 3. Kesan Cepat (7 Pilihan) -->
+        <div class="form-group">
+          <label class="label">
+            <span>Kesan Anda Terhadap Karya <span class="req">*</span></span>
+            <span class="hint">1x Klik</span>
+          </label>
+          <div class="pill-grid">
+            <button type="button" class="pill-btn active" data-kesan="🌟 Keren & Menginspirasi" data-tone="good">
+              <span class="emoji">🌟</span> Keren & Menginspirasi
+            </button>
+            <button type="button" class="pill-btn" data-kesan="💡 Sangat Inovatif" data-tone="good">
+              <span class="emoji">💡</span> Sangat Inovatif
+            </button>
+            <button type="button" class="pill-btn" data-kesan="🎮 Seru & Interaktif" data-tone="good">
+              <span class="emoji">🎮</span> Seru & Interaktif
+            </button>
+            <button type="button" class="pill-btn" data-kesan="👍 Cukup Bagus / Oke" data-tone="good">
+              <span class="emoji">👍</span> Cukup Bagus / Oke
+            </button>
+            <button type="button" class="pill-btn" data-kesan="🤔 Biasa Saja" data-tone="warn">
+              <span class="emoji">🤔</span> Biasa Saja
+            </button>
+            <button type="button" class="pill-btn" data-kesan="⚠️ Perlu Ditingkatkan" data-tone="warn">
+              <span class="emoji">⚠️</span> Perlu Ditingkatkan
+            </button>
+            <button type="button" class="pill-btn" data-kesan="👎 Kurang / Jelek" data-tone="bad" style="grid-column: 1 / -1;">
+              <span class="emoji">👎</span> Kurang / Jelek (Perlu Banyak Perbaikan)
+            </button>
+          </div>
+          <input type="hidden" id="selectedKesan" value="🌟 Keren & Menginspirasi">
+        </div>
+
+        <!-- 4. Pesan / Saran Singkat -->
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="label" for="pesanInput">
+            <span>Pesan / Saran Singkat</span>
+            <span class="hint">Opsional</span>
+          </label>
+          <textarea 
+            id="pesanInput" 
+            class="textarea-field" 
+            rows="2" 
+            maxlength="500" 
+            placeholder="Tulis pesan, doa, atau masukan untuk karya ini..."
+          ></textarea>
+        </div>
+
+        <!-- Tombol Kirim -->
+        <button type="submit" id="submitBtn" class="submit-btn">
+          <span class="btn-spinner" id="btnSpinner"></span>
+          <span id="btnText">Kirim Respon & Masuk ke Wall 🚀</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="footer-links">
+      <a href="respon.html" class="view-responses-link">
+        Lihat Semua Respon Pengunjung Lainnya &rarr;
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const API_SUBMIT_URL = 'https://api.fanani.my.id/buku-tamu/submit';
+
+    const form = document.getElementById('guestbookForm');
+    const namaInput = document.getElementById('namaInput');
+    const instansiInput = document.getElementById('instansiInput');
+    const pesanInput = document.getElementById('pesanInput');
+    const selectedKesan = document.getElementById('selectedKesan');
+    const pillButtons = document.querySelectorAll('.pill-btn');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnSpinner = document.getElementById('btnSpinner');
+    const btnText = document.getElementById('btnText');
+    const alertBox = document.getElementById('alertBox');
+
+    // Handle Pill Selection
+    pillButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        pillButtons.forEach(b => {
+          b.classList.remove('active', 'warn', 'bad');
+        });
+
+        const tone = btn.dataset.tone;
+        btn.classList.add('active');
+        if (tone === 'warn') btn.classList.add('warn');
+        if (tone === 'bad') btn.classList.add('bad');
+
+        selectedKesan.value = btn.dataset.kesan;
+
+        // Dynamic placeholder helper
+        if (tone === 'bad' || btn.dataset.kesan.includes('Perlu Ditingkatkan')) {
+          pesanInput.placeholder = 'Bagian mana yang menurut Anda kurang atau perlu kami tingkatkan? Kritik Anda sangat berharga...';
+        } else {
+          pesanInput.placeholder = 'Tulis pesan, doa, atau masukan untuk karya ini...';
+        }
+      });
+    });
+
+    // Handle Form Submit
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nama = namaInput.value.trim();
+      const instansi = instansiInput.value.trim();
+      const kesan = selectedKesan.value.trim();
+      const pesan = pesanInput.value.trim();
+
+      if (!nama || !instansi || !kesan) {
+        showAlert('Mohon isi nama, instansi, dan pilih salah satu kesan.', 'error');
+        return;
+      }
+
+      // UI Loading state
+      submitBtn.disabled = true;
+      btnSpinner.style.display = 'inline-block';
+      btnText.textContent = 'Mengirim...';
+      alertBox.style.display = 'none';
+
+      try {
+        const response = await fetch(API_SUBMIT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ nama, instansi, kesan, pesan })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          showAlert('🎉 Respon berhasil dikirim! Mengalihkan ke Wall of Responses...', 'success');
+          
+          // Simpan nama lokal untuk highlight di wall jika diinginkan
+          try {
+            sessionStorage.setItem('just_submitted_name', nama);
+          } catch(e) {}
+
+          setTimeout(() => {
+            window.location.href = 'respon.html';
+          }, 900);
+        } else {
+          throw new Error(data.error || 'Terjadi kendala saat menyimpan.');
+        }
+      } catch (err) {
+        console.error(err);
+        showAlert(err.message || 'Gagal mengirim respon. Mohon periksa koneksi internet Anda.', 'error');
+        submitBtn.disabled = false;
+        btnSpinner.style.display = 'none';
+        btnText.textContent = 'Kirim Respon & Masuk ke Wall 🚀';
+      }
+    });
+
+    function showAlert(msg, type) {
+      alertBox.textContent = msg;
+      alertBox.className = 'alert ' + (type === 'success' ? 'alert-success' : 'alert-error');
+      alertBox.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+

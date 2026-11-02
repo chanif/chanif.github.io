@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standing Sign Meja - Buku Tamu & Feedback Digital - Apresiasi GTK 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-white: #ffffff;
+      --navy-text: #061d38;
+      --blue-primary: #0284c7;
+      --blue-dark: #005f73;
+      --orange-accent: #ea580c;
+      --slate-text: #334155;
+      --font-head: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      background: #e2e8f0;
+      font-family: var(--font-body);
+      color: var(--navy-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 20px;
+    }
+
+    .print-bar {
+      background: #ffffff;
+      padding: 14px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .print-btn {
+      background: var(--blue-primary);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+        gap: 0;
+      }
+      .page-break {
+        page-break-after: always;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* ================= 1. VERSI PORTRAIT (10 cm x 22 cm) ================= */
+    .sign-portrait {
+      width: 550px;
+      height: 1210px;
+      background: #ffffff;
+      border: none;
+      border-radius: 28px;
+      padding: 38px 34px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+    }
+
+    .sp-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 100% 0%, rgba(2, 132, 199, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 0% 100%, rgba(234, 88, 12, 0.06) 0%, transparent 45%);
+      pointer-events: none;
+    }
+
+    .sp-top-badge {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--blue-primary);
+      background: #f0f9ff;
+      border: 1.5px solid #bae6fd;
+      padding: 6px 18px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .sp-school-title {
+      font-family: var(--font-head);
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--navy-text);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .sp-school-sub {
+      font-size: 16px;
+      font-weight: 700;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .sp-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 16px 0;
+    }
+
+    .sp-title-main {
+      font-family: var(--font-head);
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--navy-text);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .sp-title-sub {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--orange-accent);
+      line-height: 1.2;
+    }
+
+    .qr-container {
+      background: #ffffff;
+      border: 3px solid #0284c7;
+      border-radius: 20px;
+      padding: 14px;
+      margin: 20px 0 16px;
+      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.15);
+      display: inline-block;
+    }
+
+    .qr-container img {
+      width: 240px;
+      height: 240px;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .sp-scan-hint {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      padding: 8px 18px;
+      border-radius: 10px;
+      margin-bottom: 6px;
+    }
+
+    .sp-time-badge {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ea580c;
+    }
+
+    .sp-bottom {
+      border-top: 2px dashed #e2e8f0;
+      padding-top: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sp-author {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy-text);
+    }
+
+    .sp-web {
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 800;
+      color: #0369a1;
+      background: #eff6ff;
+      border: 1.5px solid #bae6fd;
+      padding: 5px 18px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ================= 2. VERSI LANDSCAPE (22 cm x 10 cm) ================= */
+    .sign-landscape {
+      width: 1210px;
+      height: 550px;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 30px 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 36px;
+      position: relative;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+    }
+
+    .sl-left {
+      flex: 1;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .sl-badge {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--blue-primary);
+      background: #f0f9ff;
+      border: 1.5px solid #bae6fd;
+      padding: 5px 16px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .sl-title {
+      font-family: var(--font-head);
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--navy-text);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .sl-sub {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--orange-accent);
+      margin-bottom: 12px;
+    }
+
+    .sl-desc {
+      font-size: 16px;
+      color: #475569;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .sl-author-box {
+      border-top: 2px dashed #e2e8f0;
+      padding-top: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sl-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .sl-right .qr-container img {
+      width: 220px;
+      height: 220px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="print-bar no-print">
+    <span>📐 <b>Ukuran Standing Sign:</b> 10 x 22 cm (Portrait &amp; Landscape)</span>
+    <button class="print-btn" onclick="window.print()">🖨️ Cetak Standing Sign (PDF / Print)</button>
+  </div>
+
+  <!-- ================= 1. KARTU PORTRAIT (10 cm x 22 cm) ================= -->
+  <div class="sign-portrait">
+    <div class="sp-bg-pattern"></div>
+    <div>
+      <div class="sp-top-badge">★ Apresiasi GTK Jawa Timur 2026</div>
+      <div class="sp-school-title">SMP Negeri 2 Lamongan</div>
+      <div class="sp-school-sub">Gelar Karya Praktik Baik Guru Inovatif</div>
+    </div>
+
+    <div class="sp-center">
+      <div class="sp-title-main">BUKU TAMU<br>&amp; APRESIASI</div>
+      <div class="sp-title-sub">TINGGALKAN JEJAK ANDA</div>
+
+      <div class="qr-container">
+        <!-- High-res QR code link to https://chanif.github.io/buku-tamu/ -->
+        <img 
+          src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&margin=8&data=https%3A%2F%2Fchanif.github.io%2Fbuku-tamu%2F" 
+          alt="QR Code Buku Tamu"
+        >
+      </div>
+
+      <div class="sp-scan-hint">
+        📷 Arahkan Kamera HP ke QR Code
+      </div>
+      <div class="sp-time-badge">
+        ⚡ Cukup 15 Detik &bull; Tanpa Perlu Login
+      </div>
+    </div>
+
+    <div class="sp-bottom">
+      <div class="sp-author">Ach. Chanifuddin Fanani, S.Pd.</div>
+      <div class="sp-web">🌐 chanif.github.io/buku-tamu</div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ================= 2. KARTU LANDSCAPE (22 cm x 10 cm) ================= -->
+  <div class="sign-landscape">
+    <div class="sp-bg-pattern"></div>
+    <div class="sl-left">
+      <div>
+        <div class="sl-badge">★ Gelar Karya Apresiasi GTK Jatim 2026</div>
+        <div class="sl-title">BUKU TAMU DIGITAL</div>
+        <div class="sl-sub">APRESIASI &amp; UMPAN BALIK PENGUNJUNG</div>
+        <div class="sl-desc">
+          Mohon luangkan 15 detik untuk memindai barcode di samping dan mengisi kesan Anda terhadap inovasi media pembelajaran ini. Jejak Anda sangat berarti bagi kami!
+        </div>
+      </div>
+
+      <div class="sl-author-box">
+        <span>SMP Negeri 2 Lamongan &bull; <b>Ach. Chanifuddin Fanani, S.Pd.</b></span>
+        <span style="color:#0284c7;">chanif.github.io/buku-tamu</span>
+      </div>
+    </div>
+
+    <div class="sl-right">
+      <div class="qr-container">
+        <img 
+          src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&margin=8&data=https%3A%2F%2Fchanif.github.io%2Fbuku-tamu%2F" 
+          alt="QR Code Buku Tamu"
+        >
+      </div>
+      <div class="sp-time-badge" style="margin-top: 4px;">
+        ⚡ Scan &bull; 1x Tap Kesan &bull; Masuk Wall
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
