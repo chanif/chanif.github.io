@@ -149,11 +149,15 @@ function setAppZoom(zoomLevel) {
 }
 
 function zoomIn() {
-  setAppZoom(currentZoom + 0.05);
+  // Snap ke kelipatan 5% berikutnya (misal dari 67% -> 70% -> 75%)
+  const next = Math.round((Math.ceil((currentZoom + 0.001) / 0.05) * 0.05) * 100) / 100;
+  setAppZoom(next);
 }
 
 function zoomOut() {
-  setAppZoom(currentZoom - 0.05);
+  // Snap ke kelipatan 5% sebelumnya (misal dari 67% -> 65% -> 60%)
+  const next = Math.round((Math.floor((currentZoom - 0.001) / 0.05) * 0.05) * 100) / 100;
+  setAppZoom(next);
 }
 
 function resetZoom() {
