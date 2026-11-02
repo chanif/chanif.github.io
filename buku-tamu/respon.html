@@ -627,7 +627,11 @@
     function formatTime(isoString) {
       if (!isoString) return '';
       try {
-        const date = new Date(isoString);
+        // Normalisasi format tanggal SQLite agar kompatibel dengan Safari iOS
+        const normalized = isoString.includes('T') 
+          ? isoString 
+          : isoString.replace(' ', 'T') + (isoString.endsWith('Z') ? '' : 'Z');
+        const date = new Date(normalized);
         if (isNaN(date.getTime())) return '';
         
         // Cek selisih menit
