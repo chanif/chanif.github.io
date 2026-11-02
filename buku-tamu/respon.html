@@ -200,19 +200,23 @@
     .filter-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
     }
 
     .chip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       background: #ffffff;
       border: 1.5px solid #cbd5e1;
-      color: #475569;
-      padding: 6px 12px;
+      color: #334155;
+      padding: 6px 13px;
       border-radius: 999px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.15s;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
     }
 
     .chip-btn:hover {
@@ -224,7 +228,28 @@
       background: #00798c;
       border-color: #00798c;
       color: #ffffff;
-      box-shadow: 0 2px 6px rgba(0, 121, 140, 0.3);
+      box-shadow: 0 2px 8px rgba(0, 121, 140, 0.3);
+    }
+
+    .chip-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #e2e8f0;
+      color: #0f172a;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      line-height: 1;
+      transition: all 0.15s;
+    }
+
+    .chip-btn.active .chip-count {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
     }
 
     /* Grid Kartu Respon */
@@ -488,16 +513,9 @@
         </div>
       </div>
 
-      <!-- Quick Filter Pills -->
-      <div class="filter-chips">
-        <button class="chip-btn active" data-filter="all">Semua</button>
-        <button class="chip-btn" data-filter="Keren">🌟 Keren</button>
-        <button class="chip-btn" data-filter="Inovatif">💡 Inovatif</button>
-        <button class="chip-btn" data-filter="Seru">🎮 Seru</button>
-        <button class="chip-btn" data-filter="Cukup">👍 Cukup Bagus</button>
-        <button class="chip-btn" data-filter="Biasa">🤔 Biasa</button>
-        <button class="chip-btn" data-filter="Perlu">⚠️ Perlu Ditingkatkan</button>
-        <button class="chip-btn" data-filter="Kurang">👎 Kurang / Jelek</button>
+      <!-- Quick Filter Pills with Dynamic Counters -->
+      <div class="filter-chips" id="filterChipsContainer">
+        <!-- Rendered dynamically with live counters: Semua (0), 🌟 Keren (0), etc. -->
       </div>
     </div>
 
@@ -519,7 +537,18 @@
     const refreshBtn = document.getElementById('refreshBtn');
     const totalCountBadge = document.getElementById('totalCountBadge');
     const liveStatusText = document.getElementById('liveStatusText');
-    const filterButtons = document.querySelectorAll('.chip-btn');
+    const filterChipsContainer = document.getElementById('filterChipsContainer');
+
+    const FILTERS = [
+      { key: 'all', label: 'Semua' },
+      { key: 'Keren', label: '🌟 Keren' },
+      { key: 'Inovatif', label: '💡 Inovatif' },
+      { key: 'Seru', label: '🎮 Seru' },
+      { key: 'Cukup', label: '👍 Cukup Bagus' },
+      { key: 'Biasa', label: '🤔 Biasa' },
+      { key: 'Perlu', label: '⚠️ Perlu Ditingkatkan' },
+      { key: 'Kurang', label: '👎 Kurang / Jelek' }
+    ];
 
     let allEntries = [];
     let activeFilter = 'all';
@@ -587,6 +616,33 @@
       }
     }
 
+    function renderFilterChips() {
+      filterChipsContainer.innerHTML = FILTERS.map(f => {
+        let count = 0;
+        if (f.key === 'all') {
+          count = allEntries.length;
+        } else {
+          count = allEntries.filter(item => (item.kesan || '').includes(f.key)).length;
+        }
+        const isActive = activeFilter === f.key ? 'active' : '';
+        return `
+          <button class="chip-btn ${isActive}" data-filter="${f.key}">
+            <span>${f.label}</span>
+            <span class="chip-count">${count}</span>
+          </button>
+        `;
+      }).join('');
+
+      // Attach click listeners to freshly rendered buttons
+      filterChipsContainer.querySelectorAll('.chip-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeFilter = btn.dataset.filter;
+          renderFilterChips();
+          applyFilterAndRender();
+        });
+      });
+    }
+
     async function loadResponses() {
       try {
         liveStatusText.textContent = 'Memperbarui...';
@@ -596,6 +652,7 @@
         if (res.ok && data.success) {
           allEntries = data.data || [];
           totalCountBadge.textContent = `${allEntries.length} Tamu`;
+          renderFilterChips();
           applyFilterAndRender();
           liveStatusText.textContent = 'Live update (15d)';
         } else {
@@ -664,22 +721,13 @@
       }).join('');
     }
 
-    // Filter Click Handlers
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeFilter = btn.dataset.filter;
-        applyFilterAndRender();
-      });
-    });
-
     // Refresh Click Handler
     refreshBtn.addEventListener('click', () => {
       loadResponses();
     });
 
     // Initial Load & Auto-Refresh every 15s
+    renderFilterChips();
     loadResponses();
     setInterval(loadResponses, 15000);
   </script>
