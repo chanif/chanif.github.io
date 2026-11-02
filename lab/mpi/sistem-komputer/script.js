@@ -79,11 +79,34 @@ function applyConfig() {
 }
 
 // ==================== ZOOM CONTROLS ENGINE ====================
-let currentZoom = parseFloat(localStorage.getItem('mpi_zoom_level')) || 1.0;
+function getOptimalZoom() {
+  const saved = localStorage.getItem('mpi_zoom_level');
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const isShortLandscape = (w >= 801 && h <= 720);
+
+  // Jika tablet landscape dan belum pernah di-init versi ini, gunakan 0.67
+  const tabletInit = localStorage.getItem('mpi_zoom_v10_init');
+  if (isShortLandscape && !tabletInit) {
+    try {
+      localStorage.setItem('mpi_zoom_v10_init', 'true');
+      localStorage.setItem('mpi_zoom_level', '0.67');
+    } catch (e) {}
+    return 0.67;
+  }
+
+  if (saved !== null) {
+    return parseFloat(saved) || 1.0;
+  }
+
+  return isShortLandscape ? 0.67 : 1.0;
+}
+
+let currentZoom = getOptimalZoom();
 
 function setAppZoom(zoomLevel) {
   zoomLevel = Math.round(zoomLevel * 100) / 100;
-  if (zoomLevel < 0.70) zoomLevel = 0.70;
+  if (zoomLevel < 0.50) zoomLevel = 0.50;
   if (zoomLevel > 1.30) zoomLevel = 1.30;
   currentZoom = zoomLevel;
 
@@ -109,8 +132,8 @@ function setAppZoom(zoomLevel) {
   // Update UI indicators
   const zoomTexts = document.querySelectorAll('.zoom-level-text');
   zoomTexts.forEach(el => {
-    el.textContent = `${zoomPct}%`;
-    el.title = zoomPct === 100 ? 'Zoom Normal (100%)' : 'Klik untuk Reset Zoom ke 100%';
+    el.textContent = zoomPct + '%';
+    el.title = 'Zoom: ' + zoomPct + '%. Klik untuk reset.';
   });
 
   // Re-draw dynamic lines after zoom change
@@ -134,7 +157,10 @@ function zoomOut() {
 }
 
 function resetZoom() {
-  setAppZoom(1.0);
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const defaultZoom = (w >= 801 && h <= 720) ? 0.67 : 1.0;
+  setAppZoom(defaultZoom);
 }
 
 // ==================== FONT SIZE CONTROLS ENGINE ====================
