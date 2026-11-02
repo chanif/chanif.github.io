@@ -290,7 +290,8 @@ function goToPage(pageId) {
   updateTopControls(pageId);
 
   // Reset scroll to top
-  const scrollables = newPage.querySelectorAll('.scrollable');
+  newPage.scrollTop = 0;
+  const scrollables = newPage.querySelectorAll('.scrollable, .content-box, .intro-card-box');
   scrollables.forEach(el => el.scrollTop = 0);
 
   // Update global compound navigation labels across all pages
