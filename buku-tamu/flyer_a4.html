@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flyer A4 - Buku Tamu Digital Menyelam ke Dalam Mesin Digital - Apresiasi GTK 2026</title>
+  <title>Buku Tamu Digital Menyelam ke Dalam Mesin Digital - Apresiasi GTK 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Fira+Code:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap"
     rel="stylesheet">
   <style>
     :root {
@@ -27,7 +27,7 @@
     }
 
     @page {
-      size: 210mm 297mm;
+      size: auto;
       margin: 0;
     }
 
@@ -43,15 +43,11 @@
 
     body {
       width: 1200px;
-      height: 1697px;
-      max-width: 1200px;
-      max-height: 1697px;
       margin: 0 auto;
       background: #061325;
       font-family: var(--font-ui);
       color: #0f172a;
       position: relative;
-      overflow: hidden;
     }
 
     .no-print-bar {
@@ -75,7 +71,7 @@
       background: linear-gradient(135deg, #0284c7 0%, #00798c 100%);
       color: #ffffff;
       border: none;
-      padding: 8px 20px;
+      padding: 8px 22px;
       border-radius: 999px;
       font-weight: 800;
       font-size: 14px;
@@ -92,14 +88,13 @@
       }
     }
 
-    /* KANVAS A4 SESUAI STANDAR DESAIN APRESIASI GTK */
+    /* KANVAS PAS DENGAN KONTEN (TANPA SISA KOSONG DI BAWAH) */
     .a4-canvas {
       width: 1200px;
-      height: 1697px;
-      padding: 24px 34px 22px 34px;
+      padding: 30px 40px 34px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 22px;
       position: relative;
       background:
         radial-gradient(circle at 5% 4%, rgba(0, 210, 238, 0.22) 0%, transparent 35%),
@@ -107,6 +102,7 @@
         radial-gradient(circle at 90% 55%, rgba(2, 132, 199, 0.16) 0%, transparent 38%),
         radial-gradient(circle at 8% 85%, rgba(16, 185, 129, 0.18) 0%, transparent 36%),
         linear-gradient(180deg, #f8fcfe 0%, #edf6f9 50%, #e2f0f4 100%);
+      border-radius: 0 0 32px 32px;
     }
 
     /* 1. HEADER 5 LOGO KAPSUL RESMI */
@@ -115,7 +111,7 @@
       backdrop-filter: blur(12px);
       border: 2.5px solid #bae6fd;
       border-radius: 26px;
-      padding: 8px 24px;
+      padding: 10px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -166,10 +162,10 @@
       white-space: nowrap;
     }
 
-    /* 2. HERO HEADER BUKU TAMU */
+    /* 2. HERO JUDUL BUKU TAMU */
     .hero-section {
       text-align: center;
-      margin: 12px 0 6px;
+      margin: 4px 0 0;
     }
 
     .hero-badges-row {
@@ -186,7 +182,7 @@
       gap: 8px;
       background: linear-gradient(90deg, #007788, #00a8b8);
       color: #ffffff;
-      font-size: 18px;
+      font-size: 18.5px;
       font-weight: 800;
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -202,7 +198,7 @@
       gap: 8px;
       background: linear-gradient(90deg, #f57936, #ea580c);
       color: #ffffff;
-      font-size: 18px;
+      font-size: 18.5px;
       font-weight: 800;
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -218,12 +214,12 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 12px 18px;
-      margin: 4px 0 6px;
+      margin: 6px 0;
     }
 
     .title-teal {
       font-family: var(--font-head);
-      font-size: 62px;
+      font-size: 66px;
       font-weight: 900;
       line-height: 1.05;
       color: #00889e;
@@ -236,7 +232,7 @@
 
     .title-orange {
       font-family: var(--font-head);
-      font-size: 46px;
+      font-size: 48px;
       font-weight: 900;
       line-height: 1.05;
       color: var(--orange-accent);
@@ -250,15 +246,15 @@
       font-size: 24px;
       font-weight: 700;
       color: var(--text-muted);
-      margin-top: 4px;
+      margin-top: 6px;
     }
 
-    /* 3. CENTER SECTION: GIANT QR CARD */
+    /* 3. CENTER: GIANT QR CARD */
     .qr-card-center {
       background: rgba(255, 255, 255, 0.98);
       border: 4px solid #00a8b8;
       border-radius: 36px;
-      padding: 30px 40px;
+      padding: 32px 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -273,32 +269,32 @@
       background: linear-gradient(90deg, #ea580c, #f57936);
       color: #ffffff;
       font-family: var(--font-head);
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 900;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 8px 32px;
+      padding: 10px 36px;
       border-radius: 999px;
       border: 3px solid #ffffff;
       box-shadow: 0 6px 16px rgba(234, 88, 12, 0.35);
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .qr-frame {
       background: #ffffff;
-      border: 4.5px solid #0284c7;
-      border-radius: 28px;
-      padding: 16px;
-      box-shadow: 0 12px 30px rgba(2, 132, 199, 0.2);
+      border: 5px solid #0284c7;
+      border-radius: 30px;
+      padding: 18px;
+      box-shadow: 0 14px 34px rgba(2, 132, 199, 0.22);
       display: inline-block;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .qr-frame img {
-      width: 440px;
-      height: 440px;
+      width: 480px;
+      height: 480px;
       display: block;
-      border-radius: 12px;
+      border-radius: 14px;
     }
 
     .scan-instruction {
@@ -309,153 +305,81 @@
       border: 2px dashed #00a8b8;
       color: #084c5e;
       font-family: var(--font-head);
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 800;
-      padding: 10px 28px;
-      border-radius: 16px;
-      margin-bottom: 12px;
+      padding: 12px 34px;
+      border-radius: 18px;
     }
 
-    .url-badge {
-      font-family: 'Fira Code', monospace;
-      font-size: 22px;
-      font-weight: 800;
-      color: #0369a1;
-      background: #e0f2fe;
-      border: 1.5px solid #bae6fd;
-      padding: 6px 22px;
-      border-radius: 999px;
-      letter-spacing: 0.02em;
-    }
-
-    /* 4. 3 CARDS: FAST FILLING / ZERO FRICTION */
-    .features-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin: 12px 0 6px;
-    }
-
-    .feature-card {
-      background: rgba(255, 255, 255, 0.95);
-      border: 2.5px solid #bae6fd;
-      border-radius: 22px;
-      padding: 22px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
-    }
-
-    .fc-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    }
-
-    .fc-icon.t1 {
-      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-    }
-
-    .fc-icon.t2 {
-      background: linear-gradient(135deg, #fef3c7, #fde68a);
-    }
-
-    .fc-icon.t3 {
-      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
-    }
-
-    .fc-title {
-      font-family: var(--font-head);
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--navy-deep);
-      margin-bottom: 6px;
-      line-height: 1.2;
-    }
-
-    .fc-desc {
-      font-size: 16.5px;
-      font-weight: 600;
-      color: #475569;
-      line-height: 1.45;
-    }
-
-    .fc-desc b {
-      color: #0369a1;
-    }
-
-    /* 5. FOOTER RESMI */
-    .a4-footer {
+    /* 4. IDENTITAS LANGSUNG SETELAH BARCODE (FONT BESAR & JELAS) */
+    .identity-card {
       background: #ffffff;
-      border: 2.5px solid #bae6fd;
-      border-radius: 24px;
-      padding: 14px 28px;
+      border: 3px solid #bae6fd;
+      border-radius: 28px;
+      padding: 22px 34px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+      margin-top: 4px;
     }
 
-    .footer-left {
+    .id-left {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
     }
 
     .author-avatar {
-      width: 64px;
-      height: 64px;
+      width: 86px;
+      height: 86px;
       border-radius: 50%;
-      border: 3px solid #00a8b8;
+      border: 3.5px solid #00a8b8;
       object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+      flex-shrink: 0;
     }
 
     .author-info {
       display: flex;
       flex-direction: column;
+      gap: 3px;
     }
 
     .author-name {
       font-family: var(--font-head);
-      font-size: 21px;
+      font-size: 28px;
       font-weight: 900;
       color: var(--navy-deep);
+      line-height: 1.15;
     }
 
     .author-role {
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: 800;
       color: #0369a1;
+      line-height: 1.2;
     }
 
-    .footer-right {
+    .id-right {
       text-align: right;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 2px;
+      gap: 4px;
     }
 
-    .fr-title {
+    .stand-event {
       font-family: var(--font-head);
-      font-size: 18px;
-      font-weight: 800;
+      font-size: 22px;
+      font-weight: 900;
       color: var(--navy-deep);
     }
 
-    .fr-sub {
-      font-size: 15px;
-      font-weight: 600;
-      color: #64748b;
+    .stand-sub {
+      font-size: 18px;
+      font-weight: 700;
+      color: #f57936;
     }
   </style>
 </head>
@@ -463,7 +387,7 @@
 <body>
 
   <div class="no-print-bar">
-    <span>🖨️ <b>Flyer A4 Buku Tamu Digital (Siap Cetak / Export PDF)</b></span>
+    <span>🖨️ <b>Poster Stand Buku Tamu Digital (Siap Cetak / Export PDF)</b></span>
     <button class="print-btn" onclick="window.print()">Cetak / Simpan PDF</button>
   </div>
 
@@ -511,7 +435,7 @@
       </p>
     </section>
 
-    <!-- 3. CENTER: GIANT QR CARD & FAST FILLING CALLOUT -->
+    <!-- 3. CENTER: GIANT QR CARD -->
     <section class="qr-card-center">
       <div class="fast-ribbon">
         ⚡ FAST FILLING BUKU TAMU &bull; 15 DETIK CUKUP!
@@ -528,42 +452,11 @@
       <div class="scan-instruction">
         📷 Arahkan Kamera HP ke QR Code di Atas
       </div>
-
-      <div class="url-badge">
-        🌐 chanif.github.io/buku-tamu
-      </div>
     </section>
 
-    <!-- 4. 3 PILAR KENAPA ORANG TIDAK MALAS MENGISI (ANTI-FRICTION) -->
-    <section class="features-row">
-      <div class="feature-card">
-        <div class="fc-icon t1">⚡</div>
-        <div class="fc-title">Super Kilat</div>
-        <div class="fc-desc">
-          Cukup isi <b>Nama &amp; Instansi</b>, lalu <b>1x tap</b> pilihan kesan. Selesai dalam 15 detik!
-        </div>
-      </div>
-
-      <div class="feature-card">
-        <div class="fc-icon t2">🔓</div>
-        <div class="fc-title">Tanpa Perlu Login</div>
-        <div class="fc-desc">
-          Langsung terbuka di browser HP. <b>Bebas ribet</b> tanpa perlu masuk akun Google atau email.
-        </div>
-      </div>
-
-      <div class="feature-card">
-        <div class="fc-icon t3">🚀</div>
-        <div class="fc-title">Langsung Masuk Wall</div>
-        <div class="fc-desc">
-          Respon Anda langsung tayang <b>secara live</b> di papan apresiasi monitor stand pameran kami!
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. FOOTER IDENTITAS -->
-    <footer class="a4-footer">
-      <div class="footer-left">
+    <!-- 4. IDENTITAS LANGSUNG SETELAH BARCODE (FONT BESAR) -->
+    <footer class="identity-card">
+      <div class="id-left">
         <img src="../lab/doc/20260930 - Apresiasi GTK 2026/image/foto-profil-fanani.jpg" alt="Ach. Chanifuddin Fanani, S.Pd." class="author-avatar">
         <div class="author-info">
           <span class="author-name">Ach. Chanifuddin Fanani, S.Pd.</span>
@@ -571,9 +464,9 @@
         </div>
       </div>
 
-      <div class="footer-right">
-        <span class="fr-title">Stand Gelar Karya Apresiasi GTK Jawa Timur 2026</span>
-        <span class="fr-sub">Media Pembelajaran Interaktif Sistem Komputer &bull; fanani.my.id</span>
+      <div class="id-right">
+        <span class="stand-event">Stand Gelar Karya Apresiasi GTK Jawa Timur 2026</span>
+        <span class="stand-sub">Media Pembelajaran Interaktif (MPI) Sistem Komputer</span>
       </div>
     </footer>
 
