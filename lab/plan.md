@@ -21,7 +21,7 @@ Mengembangkan Media Pembelajaran Interaktif (MPI), laboratorium maya, dan simula
 | **BK** (Berpikir Komputasional) | `lab/mpi/berpikir_komputasional/` | *MPI Berpikir Komputasional* | ✅ Selesai | 4 Pilar CT, Smart Home IoT, logika dekomposisi & abstraksi. |
 | **SK** (Sistem Komputer) | `lab/mpi/sistem-komputer/` | *MPI Sistem Komputer* | ✅ Selesai | Siklus CPU & Memori, Von Neumann, perangkat I/O. |
 | **JKI** (Jaringan Komputer & Internet) | `lab/mpi/jaringan/` | *MPI Jaringan Komputer* | ✅ Selesai | Mekanisme pengiriman paket data (*packet switching*) & perutean. |
-| **AD** (Analisis Data) | `lab/mpi/analisis_data/` | *MPI Analisis Data* | 📝 Konseptual (.md) | Ruang perancangan konsep MPI Analisis Data. |
+| **AD** (Analisis Data) | `lab/mpi/analisis_data/` | *MPI Analisis Data* | ✅ Selesai | Piramida DIKW, jenis data, spreadsheet, grafik jujur, statistik &amp; deteksi bias. |
 | **DSI** (Dampak Sosial Informatika) | `lab/mpi/dsi/` | *MPI Keamanan Digital (DSI)* | 📝 Konseptual (.md) | Keamanan kata sandi, mitigasi phishing, & rekayasa sosial. |
 | **TIK** (Teknologi Informasi & Komunikasi) | `lab/mpi/tik/` | *MPI Literasi Informasi (TIK)* | 📝 Konseptual (.md) | Operator pencarian data valid vs hoaks, uji CRAAP. |
 | **PLB** (Praktik Lintas Bidang) | `lab/mpi/plb/` | *MPI Karya & Kolaborasi (PLB)* | 📝 Konseptual (.md) | Showcase produk digital & rubrik peer review siswa. |
@@ -31,8 +31,8 @@ Mengembangkan Media Pembelajaran Interaktif (MPI), laboratorium maya, dan simula
 ## 🔬 Catatan Modul Baru (Folder MPI)
 
 ### 1. 📊 Modul AD: `lab/mpi/analisis_data/`
-- **File**: `README.md`
-- **Tujuan**: Ruang perancangan media pembelajaran interaktif untuk konsep analisis data SMP Fase D sesuai arahan dan ekspektasi guru.
+- **File**: `index.html`, `style.css`, `script.js`, `config.js`, `content.md`, `README.md`
+- **Status**: ✅ Selesai (21 halaman SPA terpadu, animasi alur data 48 detik, Laboratorium Detektif Data 4 misi progresif, evaluasi 25 poin, dan refleksi mandiri)
 
 ### 2. 🛡️ Modul DSI: `lab/mpi/dsi/`
 - **File**: `README.md`
