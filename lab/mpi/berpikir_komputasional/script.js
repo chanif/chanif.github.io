@@ -100,11 +100,58 @@ function applyConfig() {
 }
 
 // ==================== ZOOM CONTROLS ENGINE ====================
-let currentZoom = parseFloat(localStorage.getItem('mpi_zoom_level')) || 1.0;
+function isTouchTabletDevice() {
+  const isCoarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  const hasTouch = (navigator.maxTouchPoints > 0) || ('ontouchstart' in window);
+  const ua = navigator.userAgent;
+  const isTabletUA = /iPad|Tablet|SM-T|SM-X|Tab|Android(?!.*Mobile)/i.test(ua) || 
+                     (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  return (isCoarse || isTabletUA) && hasTouch;
+}
+
+function getOptimalZoom() {
+  const isTablet = isTouchTabletDevice();
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const isTabletShortLandscape = isTablet && (w >= 801 && h <= 720);
+
+  // Jika ini komputer/laptop (bukan touchscreen tablet):
+  if (!isTablet) {
+    const saved = localStorage.getItem('mpi_zoom_level');
+    // Jika di komputer sempat tersimpan '0.67' akibat auto-init tablet sebelumnya, pulihkan ke 1.0
+    if (saved === '0.67') {
+      try {
+        localStorage.removeItem('mpi_zoom_level');
+        localStorage.removeItem('mpi_zoom_v10_init');
+      } catch (e) {}
+      return 1.0;
+    }
+    return saved !== null ? (parseFloat(saved) || 1.0) : 1.0;
+  }
+
+  // Jika ini tablet landscape pendek:
+  const tabletInit = localStorage.getItem('mpi_tablet_zoom_v12');
+  if (isTabletShortLandscape && !tabletInit) {
+    try {
+      localStorage.setItem('mpi_tablet_zoom_v12', 'true');
+      localStorage.setItem('mpi_zoom_level', '0.67');
+    } catch (e) {}
+    return 0.67;
+  }
+
+  const saved = localStorage.getItem('mpi_zoom_level');
+  if (saved !== null) {
+    return parseFloat(saved) || 1.0;
+  }
+
+  return isTabletShortLandscape ? 0.67 : 1.0;
+}
+
+let currentZoom = getOptimalZoom();
 
 function setAppZoom(zoomLevel) {
   zoomLevel = Math.round(zoomLevel * 100) / 100;
-  if (zoomLevel < 0.70) zoomLevel = 0.70;
+  if (zoomLevel < 0.50) zoomLevel = 0.50;
   if (zoomLevel > 1.30) zoomLevel = 1.30;
   currentZoom = zoomLevel;
 
@@ -130,12 +177,15 @@ function setAppZoom(zoomLevel) {
   // Update UI indicators
   const zoomTexts = document.querySelectorAll('.zoom-level-text');
   zoomTexts.forEach(el => {
-    el.textContent = `${zoomPct}%`;
-    el.title = zoomPct === 100 ? 'Zoom Normal (100%)' : 'Klik untuk Reset Zoom ke 100%';
+    el.textContent = zoomPct + '%';
+    el.title = 'Zoom: ' + zoomPct + '%. Klik untuk reset.';
   });
 
   // Re-draw dynamic lines after zoom change
   setTimeout(() => {
+    if (typeof drawPatternTimeline === 'function' && currentPage === 'pola-timeline') {
+      drawPatternTimeline();
+    }
     const secC = document.getElementById('eval-section-C');
     if (secC && secC.classList.contains('active') && typeof drawMatchLines === 'function') {
       drawMatchLines();
@@ -144,15 +194,23 @@ function setAppZoom(zoomLevel) {
 }
 
 function zoomIn() {
-  setAppZoom(currentZoom + 0.05);
+  // Snap ke kelipatan 5% berikutnya (misal dari 67% -> 70% -> 75%)
+  const next = Math.round((Math.ceil((currentZoom + 0.001) / 0.05) * 0.05) * 100) / 100;
+  setAppZoom(next);
 }
 
 function zoomOut() {
-  setAppZoom(currentZoom - 0.05);
+  // Snap ke kelipatan 5% sebelumnya (misal dari 67% -> 65% -> 60%)
+  const next = Math.round((Math.floor((currentZoom - 0.001) / 0.05) * 0.05) * 100) / 100;
+  setAppZoom(next);
 }
 
 function resetZoom() {
-  setAppZoom(1.0);
+  const isTablet = isTouchTabletDevice();
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const defaultZoom = (isTablet && w >= 801 && h <= 720) ? 0.67 : 1.0;
+  setAppZoom(defaultZoom);
 }
 
 // ==================== FONT SIZE CONTROLS ENGINE ====================
@@ -260,7 +318,8 @@ function goToPage(pageId) {
   updateTopControls(pageId);
 
   // Reset scroll to top
-  const scrollables = newPage.querySelectorAll('.scrollable');
+  newPage.scrollTop = 0;
+  const scrollables = newPage.querySelectorAll('.scrollable, .content-box, .intro-card-box');
   scrollables.forEach(el => el.scrollTop = 0);
 
   // Stop all playing videos and audios when navigating to any page
