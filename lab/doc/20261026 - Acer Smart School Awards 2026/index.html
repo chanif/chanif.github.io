@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menyelam ke Dalam Mesin Digital — Presentasi Finalis ASSA 2026</title>
+<meta name="description" content="Presentasi Finalis Guru Kreatif Acer Smart School Awards (ASSA) 2026: Alur STAR — Kombinasi Multi-AI untuk Pembelajaran Visual Sistem Komputer & Laboratorium Maya.">
+<link rel="icon" href="../../../assets/images/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f7f9; --ink:#0b1324; --slate:#475569; --mute:#64748b; --line:#e2e8f0;
+    --acer:#0a6c58; --emr:#059669; --sky:#0284c7; --ind:#4f46e5; --amb:#d97706; --ros:#e11d48;
+    --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif; --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);font-family:var(--font);color:var(--ink);overflow:hidden;-webkit-font-smoothing:antialiased;user-select:none}
+
+  /* Latar belakang menyatu dengan jendela */
+  .bg{position:fixed;inset:0;pointer-events:none;
+    background:radial-gradient(1100px 760px at 0% 0%,rgba(10,108,88,.11),transparent 62%),
+               radial-gradient(1000px 800px at 100% 100%,rgba(2,132,199,.10),transparent 62%)}
+  .bg::after{content:'';position:absolute;inset:0;
+    background-image:radial-gradient(rgba(15,23,42,.065) 1px,transparent 1px);background-size:30px 30px;
+    -webkit-mask-image:linear-gradient(180deg,#000,transparent 72%);mask-image:linear-gradient(180deg,#000,transparent 72%)}
+
+  /* Kanvas 16:9 (1920x1080) auto-scale */
+  #stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform:translate(-50%,-50%) scale(var(--s,1))}
+
+  .topbar{position:absolute;top:40px;left:120px;right:120px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+  .brand{display:flex;align-items:center;gap:14px;font-weight:700;font-size:19px;color:var(--slate)}
+  .brand img{height:44px;width:auto}
+  .brand img.logo-acer-intel{height:28px;width:auto}
+  .brand-sep{width:1.5px;height:28px;background:#cbd5e1;display:inline-block}
+  .brand i{width:6px;height:6px;border-radius:50%;background:#cbd5e1;display:inline-block}
+  .assa-pill{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--acer);background:#d1fae5;padding:6px 14px;border-radius:999px}
+
+  .star{display:flex;gap:6px;transition:opacity .4s}
+  .star span{font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8;padding:9px 18px;border-radius:999px;transition:.35s;background:rgba(255,255,255,.55)}
+  .star span.on{background:var(--acer);color:#fff;box-shadow:0 10px 24px -10px rgba(10,108,88,.65)}
+
+  .foot{position:absolute;left:120px;right:120px;bottom:38px;display:flex;justify-content:space-between;align-items:center;font-size:17px;color:var(--mute);font-weight:600;z-index:5}
+  .pageno{font-family:var(--mono);letter-spacing:.04em}
+  .pageno b{color:var(--ink)}
+  .prog{position:absolute;left:0;bottom:0;height:6px;width:0;background:linear-gradient(90deg,var(--acer),var(--sky),var(--ind));transition:width .5s cubic-bezier(.16,1,.3,1);z-index:5}
+
+  /* Slide */
+  .slide{position:absolute;inset:0;padding:134px 120px 110px;display:flex;flex-direction:column;justify-content:center;opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s}
+  .slide.active{opacity:1;visibility:visible}
+  .rv{opacity:0;transform:translateY(24px)}
+  .slide.active .rv{animation:up .7s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(var(--d,0) * 85ms + 50ms)}
+  @keyframes up{to{opacity:1;transform:none}}
+
+  /* Tipografi */
+  .kicker{display:inline-flex;align-items:center;gap:14px;font-size:19px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--acer);margin-bottom:18px}
+  .kicker::before{content:'';width:42px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--acer),var(--sky))}
+  .h2{font-size:56px;font-weight:800;line-height:1.1;letter-spacing:-.035em;max-width:1620px;margin-bottom:40px}
+  .grad{background:linear-gradient(100deg,var(--acer),var(--sky));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .grad-ind{background:linear-gradient(100deg,var(--sky),var(--ind));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{font-size:28px;line-height:1.48;color:var(--slate)}
+  .ct{font-size:26px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
+  .cd{font-size:21px;line-height:1.5;color:var(--slate)}
+  .cd b{color:var(--ink)}
+
+  /* Komponen */
+  .ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .card{background:#fff;border-radius:26px;padding:30px 34px;box-shadow:0 1px 2px rgba(15,23,42,.04),0 24px 56px -28px rgba(15,23,42,.22);border:1px solid rgba(226,232,240,.8)}
+  .tile{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;flex:none;font-size:30px}
+  .t-acer{background:#d1fae5;color:var(--acer)}
+  .t-sky{background:#e0f2fe;color:var(--sky)} .t-ind{background:#e0e7ff;color:var(--ind)}
+  .t-emr{background:#d1fae5;color:var(--emr)} .t-amb{background:#fef3c7;color:var(--amb)} .t-ros{background:#ffe4e6;color:var(--ros)}
+  .row{display:flex;gap:22px;align-items:flex-start}
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .photo{border-radius:26px;overflow:hidden;position:relative;box-shadow:0 30px 64px -30px rgba(15,23,42,.42);background:#0f172a;border:1px solid rgba(15,23,42,.08)}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .cap{position:absolute;left:18px;bottom:18px;display:inline-flex;align-items:center;gap:10px;background:rgba(11,19,36,.84);backdrop-filter:blur(8px);color:#fff;font-size:17px;font-weight:600;padding:9px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
+  .chip{display:inline-flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:var(--slate);background:#fff;padding:10px 18px;border-radius:999px;box-shadow:0 8px 22px -12px rgba(15,23,42,.28);border:1px solid rgba(226,232,240,.9)}
+  .chip .ic{font-size:20px;color:var(--acer)}
+  .badge-sm{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:14px;font-weight:700;padding:5px 12px;border-radius:8px;background:#f1f5f9;color:var(--slate)}
+
+  /* Bingkai Screenshot Aplikasi 16:9 Bebas Terpotong */
+  .app-frame{background:#0f172a;border-radius:20px;overflow:hidden;border:1.5px solid rgba(15,23,42,.12);box-shadow:0 26px 56px -24px rgba(15,23,42,.45);cursor:pointer;transition:transform .28s,box-shadow .28s}
+  .app-frame:hover{transform:translateY(-4px);box-shadow:0 32px 64px -22px rgba(10,108,88,.45)}
+  .app-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 16px;background:linear-gradient(90deg,#0f172a,#1e293b);color:#e2e8f0;font-size:13.5px;font-weight:700;border-bottom:1px solid rgba(255,255,255,.08)}
+  .app-bar .dots{display:inline-flex;gap:5px}
+  .app-bar .dots i{width:9px;height:9px;border-radius:50%;display:block}
+  .app-bar span{font-family:var(--mono);font-size:12.5px;color:#94a3b8}
+  .app-frame img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top center;display:block}
+
+  /* Slide 1 — Sampul & Kolase Showcase */
+  .cover{display:grid;grid-template-columns:.96fr 1.04fr;gap:48px;align-items:center}
+  .cover h1{font-size:84px;font-weight:800;line-height:1.02;letter-spacing:-.045em;margin:24px 0 22px}
+  .author{display:flex;align-items:center;gap:20px;margin-top:36px}
+  .author img{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:center 15%;box-shadow:0 0 0 5px #fff,0 14px 30px -12px rgba(15,23,42,.38)}
+  .author .n{font-size:26px;font-weight:800}
+  .author .r{font-size:19px;color:var(--mute);margin-top:3px}
+  .cover-showcase{position:relative;height:640px}
+  .cover-showcase .cs-main{position:relative;width:88%;z-index:2;box-shadow:0 32px 70px -24px rgba(15,23,42,.52)}
+  .cover-showcase .cs-sub{position:absolute;right:0;bottom:22px;width:66%;z-index:3;border-color:rgba(56,189,248,.48);box-shadow:0 30px 64px -20px rgba(7,17,36,.65)}
+  .float{position:absolute;background:#fff;border-radius:20px;padding:14px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 24px 50px -20px rgba(15,23,42,.42);font-size:18px;font-weight:700;border:1px solid rgba(226,232,240,.9);z-index:4}
+  .float small{display:block;font-size:14px;color:var(--mute);font-weight:600}
+
+  /* Slide 2 — Situasi */
+  .empathy-quote{background:linear-gradient(135deg,#0a6c58,#065f46);color:#fff;border-radius:26px;padding:24px 30px;box-shadow:0 24px 50px -24px rgba(10,108,88,.65)}
+  .empathy-quote .eq-tag{font-family:var(--mono);font-size:13.5px;font-weight:700;letter-spacing:.12em;color:#6ee7b7;text-transform:uppercase;margin-bottom:8px}
+  .empathy-quote p{font-size:24px;font-weight:700;line-height:1.36;letter-spacing:-.02em}
+  .stat{display:flex;align-items:center;gap:26px;padding:24px 30px}
+  .num{font-size:54px;font-weight:800;letter-spacing:-.04em;min-width:190px;line-height:1}
+
+  /* Slide 4 — Multi-AI Orchestration */
+  .ai-card{display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:28px}
+  .ai-role{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:8px;align-self:flex-start}
+  .ai-out{padding-top:14px;border-top:1px dashed var(--line);font-size:17px;font-weight:700;color:var(--ink)}
+
+  /* Slide 5 & 6 — Showcase Karya Tumpuk 16:9 */
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+  .strip div{background:#f8fafc;border:1px solid var(--line);border-radius:18px;padding:15px 18px}
+  .strip b{display:block;font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1}
+  .strip span{font-size:15.5px;color:var(--mute);font-weight:600}
+  .shot-stack{position:relative;height:625px}
+  .shot-stack .shot-top{position:relative;width:82%;z-index:1}
+  .shot-stack .shot-btm{position:absolute;right:0;bottom:0;width:82%;z-index:2}
+  .shot-stack .app-frame:hover,.cover-showcase .app-frame:hover{z-index:6}
+
+  /* Slide 7 — Demo */
+  .demo{align-items:center;text-align:center}
+  .demo-bg{position:absolute;inset:0;background:url('./screenshots/mpi-simulator-rakit.png') center/cover;opacity:.08;filter:blur(2px)}
+  .btn-xl{display:inline-flex;align-items:center;gap:14px;font:800 24px var(--font);color:#fff;text-decoration:none;padding:20px 34px;border-radius:999px;background:linear-gradient(100deg,var(--acer),var(--sky));box-shadow:0 22px 46px -18px rgba(10,108,88,.6);border:none;cursor:pointer;transition:transform .25s}
+  .btn-xl:hover{transform:translateY(-3px) scale(1.02)}
+  .btn-ghost{display:inline-flex;align-items:center;gap:12px;font:700 22px var(--font);color:var(--ink);padding:20px 30px;border-radius:999px;background:#fff;border:1px solid var(--line);cursor:pointer;box-shadow:0 16px 36px -22px rgba(15,23,42,.35);transition:transform .2s}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--acer);color:var(--acer)}
+  .live{display:inline-flex;align-items:center;gap:12px}
+  .live::before{content:'';width:14px;height:14px;border-radius:50%;background:#16a34a;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,163,74,.6)}70%{box-shadow:0 0 0 14px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+  .step{position:relative;padding-top:34px;text-align:left}
+  .step .no{font-size:98px;font-weight:800;letter-spacing:-.05em;line-height:.8;color:#eaf0f6;position:absolute;right:26px;top:20px}
+
+  /* Slide 8 — Dampak */
+  .bars .grp{margin-bottom:32px}
+  .bars .grp:last-child{margin-bottom:0}
+  .bars h4{font-size:23px;font-weight:800;margin-bottom:14px;display:flex;justify-content:space-between;align-items:baseline}
+  .bars h4 em{font-style:normal;font-size:18px;color:var(--emr);background:#d1fae5;padding:5px 13px;border-radius:999px}
+  .bl{display:flex;align-items:center;gap:18px;margin-bottom:11px}
+  .bl > span{width:80px;font-size:18px;font-weight:700;color:var(--mute)}
+  .track{flex:1;height:50px;background:#eef2f7;border-radius:14px;overflow:hidden}
+  .fill{height:100%;width:0;border-radius:14px;display:flex;align-items:center;justify-content:flex-end;padding-right:18px;font-size:21px;font-weight:800;color:#fff;white-space:nowrap;transition:width 1.25s cubic-bezier(.16,1,.3,1) .3s}
+  .slide.active .fill{width:var(--w)}
+  .f-old{background:#94a3b8} .f-new{background:linear-gradient(90deg,#10b981,var(--acer))}
+  .big{font-size:76px;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--acer)}
+
+  /* Slide 9 & 10 */
+  .li{display:flex;gap:16px;align-items:flex-start;padding:15px 0;border-top:1px solid var(--line);font-size:20px;line-height:1.45;color:var(--slate)}
+  .li:first-of-type{border-top:none}
+  .li .ic{font-size:25px;margin-top:2px}
+  .li b{color:var(--ink)}
+
+  .v2-card{background:linear-gradient(145deg,#071124,#0f1f3d);color:#e2e8f0;border-radius:28px;padding:26px 30px;border:1px solid rgba(56,189,248,.35);box-shadow:0 28px 60px -24px rgba(15,23,42,.6)}
+  .v2-card .cd{color:#cbd5e1}
+  .v2-card .cd b{color:#ffffff}
+  .imbas-foot{background:linear-gradient(135deg,#0a6c58,#064e3b);color:#fff;border-radius:22px;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;box-shadow:0 18px 40px -24px rgba(10,108,88,.6)}
+  .imbas-foot b{display:block;font-size:20px;color:#fde047}
+  .imbas-foot span{font-size:16.5px;color:#d1fae5}
+
+  /* Slide 11 — Penutup */
+  .quote{font-size:50px;font-weight:800;line-height:1.2;letter-spacing:-.03em;max-width:1540px}
+  .quote::before{content:'“';display:block;font-size:132px;line-height:.6;color:#a7f3d0;margin-bottom:10px}
+  .closing{display:flex;align-items:center;justify-content:space-between;margin-top:56px}
+  .qr{display:flex;align-items:center;gap:20px;background:#fff;border-radius:22px;padding:16px 24px 16px 16px;box-shadow:0 20px 44px -26px rgba(15,23,42,.38);border:1px solid var(--line)}
+  .qr img{width:124px;height:124px;border-radius:10px}
+  .qr b{display:block;font-size:22px}
+  .qr span{font-size:17px;color:var(--mute);font-family:var(--mono)}
+
+  /* Kontrol mengambang */
+  .dock{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:4px;padding:7px;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-radius:999px;box-shadow:0 12px 34px -12px rgba(15,23,42,.32),0 0 0 1px rgba(15,23,42,.07);z-index:50;transition:opacity .3s,transform .3s}
+  .dock.hide{opacity:0;transform:translate(-50%,18px);pointer-events:none}
+  .db{height:38px;min-width:38px;padding:0 11px;border:none;background:transparent;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font:700 13.5px var(--font);color:var(--slate);cursor:pointer;transition:.2s}
+  .db:hover:not(:disabled){background:#f1f5f9;color:var(--ink)}
+  .db.on{background:#d1fae5;color:var(--acer)}
+  .db .ic{font-size:17px}
+  .db:disabled{opacity:.3;cursor:default}
+  .db.pri{background:var(--acer);color:#fff;padding:0 15px}
+  .db.pri:hover{background:#065f46;color:#fff}
+  .cnt{font:600 13.5px var(--font);color:var(--slate);padding:0 7px;white-space:nowrap}
+  .cnt b{color:var(--ink);font-family:var(--mono)}
+  .sep{width:1px;height:20px;background:#e2e8f0;margin:0 3px}
+  .tm{font-family:var(--mono);font-weight:700;color:var(--emr);min-width:48px}
+  .tm.warn{color:var(--amb)} .tm.danger{color:var(--ros);animation:blink 1s infinite}
+  @keyframes blink{50%{opacity:.35}}
+
+  /* Speaker Notes Floating Card */
+  .notes-box{position:fixed;right:24px;bottom:76px;width:min(460px,calc(100vw - 48px));background:rgba(11,19,36,.94);color:#e2e8f0;backdrop-filter:blur(14px);border-radius:18px;padding:16px 20px;box-shadow:0 24px 50px -18px rgba(15,23,42,.65);border:1px solid rgba(56,189,248,.3);z-index:48;display:none}
+  .notes-box.on{display:block}
+  .notes-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;color:#34d399;text-transform:uppercase;margin-bottom:8px}
+  .notes-text{font-size:14px;line-height:1.58;color:#cbd5e1}
+
+  /* Modal ringkasan & pratinjau */
+  .modal{position:fixed;inset:0;z-index:60;display:none}
+  .modal.on{display:flex}
+  #ov{background:rgba(244,247,249,.96);backdrop-filter:blur(10px);flex-direction:column;padding:48px 60px;overflow:auto}
+  #ov h2{font-size:28px;font-weight:800;margin-bottom:6px}
+  #ov p{color:var(--mute);margin-bottom:24px}
+  .ovg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .ovg button{text-align:left;border:none;background:#fff;border-radius:16px;padding:20px;cursor:pointer;font-family:var(--font);box-shadow:0 12px 30px -20px rgba(15,23,42,.35);transition:.2s;border:1px solid var(--line)}
+  .ovg button:hover{transform:translateY(-3px);border-color:var(--acer)}
+  .ovg button.cur{outline:3px solid var(--acer)}
+  .ovg small{display:block;font-family:var(--mono);color:var(--acer);font-weight:700;margin-bottom:6px}
+  .ovg strong{font-size:16px;color:var(--ink)}
+  #pv{background:rgba(11,19,36,.88);flex-direction:column;padding:16px}
+  .pvbar{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:10px 16px;border-radius:14px 14px 0 0;font:600 14px var(--font);color:var(--slate);gap:12px}
+  .pv-tabs{display:flex;gap:8px;flex-wrap:wrap}
+  .pv-tab{border:1px solid var(--line);background:#f8fafc;color:var(--slate);padding:6px 12px;border-radius:8px;font:700 12.5px var(--font);cursor:pointer}
+  .pv-tab.on{background:var(--acer);color:#fff;border-color:var(--acer)}
+  #pv iframe{flex:1;border:none;background:#fff;border-radius:0 0 14px 14px}
+</style>
+</head>
+<body>
+
+<!-- Ikon Sprite SVG -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.2z"/><path d="M19 17l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-school" viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol>
+  <symbol id="i-cube" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4z"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></symbol>
+  <symbol id="i-shrink" viewBox="0 0 24 24"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-p" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 4v16M16 4v16"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></symbol>
+</svg>
+
+<div class="bg"></div>
+
+<main id="stage">
+  <!-- Topbar: Identitas & Penanda Alur STAR -->
+  <div class="topbar">
+    <div class="brand">
+      <img src="./screenshots/logo-acer-intel.png" alt="Acer Intel" class="logo-acer-intel" onerror="this.remove()">
+      <span class="brand-sep"></span>
+      <img src="../20260930 - Apresiasi GTK 2026/image/logo-kemendikdasmen-simpel.png" alt="Kemendikdasmen" onerror="this.remove()">
+      <img src="../20260930 - Apresiasi GTK 2026/image/logo-kabupaten-lamongan.png" alt="Dinas Pendidikan Kabupaten Lamongan" onerror="this.remove()">
+      <img src="../20260930 - Apresiasi GTK 2026/image/logo-smpn-2-lamongan.png" alt="Logo SMP Negeri 2 Lamongan" onerror="this.remove()">
+      <span>SMP Negeri 2 Lamongan</span><i></i><span class="assa-pill">Finalis ASSA 2026 · Guru Kreatif</span>
+    </div>
+    <div class="star" id="star">
+      <span data-k="S">Situasi</span>
+      <span data-k="T">Tantangan</span>
+      <span data-k="A">Aksi</span>
+      <span data-k="R">Refleksi &amp; Dampak</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 1: SAMPUL -->
+  <section class="slide" data-title="Sampul: Finalis ASSA 2026"
+    data-note="Salam pembuka. Perkenalkan diri sebagai guru Informatika SMPN 2 Lamongan sekaligus pengembang web. Sampaikan judul 'Menyelam ke Dalam Mesin Digital' — mengombinasikan berbagai AI untuk membuat MPI Sistem Komputer dan Laboratorium Maya yang visual dan lengkap, serta terus disempurnakan hingga versi 3D.">
+    <div class="cover">
+      <div>
+        <div class="rv" style="--d:0;display:flex;gap:10px;flex-wrap:wrap">
+          <span class="chip"><svg class="ic"><use href="#i-school"/></svg>Guru Kreatif SMP/MTs</span>
+          <span class="chip"><svg class="ic"><use href="#i-spark"/></svg>Kombinasi Multi-AI</span>
+          <span class="chip"><svg class="ic"><use href="#i-cube"/></svg>MPI + Lab Maya v1 &amp; v2</span>
+        </div>
+        <h1 class="rv" style="--d:1">Menyelam ke Dalam <span class="grad">Mesin Digital</span></h1>
+        <p class="lead rv" style="--d:2">Mengombinasikan berbagai kecerdasan artifisial untuk mewujudkan <b style="color:var(--ink)">MPI Sistem Komputer</b> dan <b style="color:var(--ink)">Laboratorium Maya</b> yang visual, interaktif, dan terus bertumbuh.</p>
+        <div class="author rv" style="--d:3">
+          <img src="../20260930 - Apresiasi GTK 2026/image/foto-profil-fanani.webp" alt="Ach. Chanifuddin Fanani">
+          <div>
+            <div class="n">Ach. Chanifuddin Fanani, S.Pd.</div>
+            <div class="r">Guru Informatika · SMP Negeri 2 Lamongan, Jawa Timur</div>
+          </div>
+        </div>
+      </div>
+      <div class="cover-showcase rv" style="--d:2">
+        <div class="app-frame cs-main" style="margin-top:54px" data-preview="mpi" title="Klik untuk pratinjau MPI Sistem Komputer">
+          <div class="app-bar"><span class="dots"><i style="background:#ef4444"></i><i style="background:#f59e0b"></i><i style="background:#10b981"></i></span><span>MPI Sistem Komputer · Video &amp; Simulasi</span></div>
+          <img src="./screenshots/mpi-video-cpu.png" alt="Video Siklus Mesin CPU pada MPI Sistem Komputer">
+        </div>
+        <div class="app-frame cs-sub" data-preview="v2" title="Klik untuk pratinjau Lab Maya 3D v2">
+          <div class="app-bar"><span class="dots"><i style="background:#ef4444"></i><i style="background:#f59e0b"></i><i style="background:#10b981"></i></span><span>Evolusi Lab Maya 3D v2 · HOLO-RIG 3D</span></div>
+          <img src="./screenshots/labmaya-v2-3d-exploded.png" alt="Lab Maya Perakitan PC 3D v2">
+        </div>
+        <div class="float" style="left:-14px;bottom:24px"><span class="tile t-acer" style="width:50px;height:50px;font-size:22px"><svg class="ic"><use href="#i-check"/></svg></span><div>2 Karya Lomba + Evolusi 3D<small>MPI Sistem Komputer &amp; Lab Maya</small></div></div>
+        <div class="float" style="right:6px;top:-26px"><span class="tile t-sky" style="width:50px;height:50px;font-size:22px"><svg class="ic"><use href="#i-users"/></svg></span><div>Imbas 160 Guru SMP<small>Se-Kabupaten Lamongan</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: SITUASI (EMPATI KEPADA MURID SMP) -->
+  <section class="slide" data-title="S · Situasi: Mengenali Murid SMP" data-sec="S"
+    data-note="Tekankan latar belakang yang jujur dan personal: tugas pertama guru bukanlah langsung mengajar materi, melainkan mengenali muridnya. Anak SMP masih dalam masa transisi berpikir konkret menuju abstrak — saat materi Sistem Komputer hanya dijelaskan lewat teks atau gambar statis, mereka kesulitan membayangkan hal yang tak terlihat.">
+    <div class="kicker rv" style="--d:0">S · Situasi</div>
+    <h2 class="h2 rv" style="--d:1">Tugas pertama guru adalah <span class="grad">mengenali muridnya</span></h2>
+    <div style="display:grid;grid-template-columns:1.02fr .98fr;gap:36px;align-items:stretch">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="empathy-quote rv" style="--d:2">
+          <div class="eq-tag">Pengamatan Langsung di Kelas IX · SMPN 2 Lamongan</div>
+          <p>“Saat saya mengenali cara belajar murid SMP, mereka ternyata bukan tidak mampu — mereka hanya kesulitan membayangkan materi Sistem Komputer yang abstrak tanpa gambaran visual yang konkret.”</p>
+        </div>
+        <div class="photo rv" style="--d:3;height:405px">
+          <img src="../20260930 - Apresiasi GTK 2026/image/foto-siswa-praktik-pc.jpg" style="object-position:center 22%" alt="Murid SMPN 2 Lamongan praktik langsung memegang komponen komputer dengan unit PC terbatas">
+          <span class="cap"><svg class="ic"><use href="#i-users"/></svg>Praktik nyata kelas IX: 1 PC terbuka untuk 35 murid</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;justify-content:center">
+        <div class="card stat rv" style="--d:3">
+          <div class="num" style="color:var(--sky);font-size:48px">Konkret → Abstrak</div>
+          <div class="cd">Murid SMP belum terbiasa membayangkan <b>siklus Fetch–Decode–Execute CPU</b>, arus biner, dan alur kerja motherboard hanya dari ceramah atau buku teks.</div>
+        </div>
+        <div class="card stat rv" style="--d:4">
+          <div class="num" style="color:var(--ros)">1 : 35</div>
+          <div class="cd">Hanya <b>1 unit PC terbuka</b> untuk 35 murid. Mereka takut salah colok, takut merusak komponen fisik, sehingga belajar menjadi pasif.</div>
+        </div>
+        <div class="card stat rv" style="--d:5">
+          <div class="num" style="color:var(--amb)">58,40</div>
+          <div class="cd">Rata-rata asesmen awal kelas 9A. Hanya <b>13 dari 35 murid (37,1%)</b> yang tuntas karena terjebak menghafal istilah tanpa paham konsep.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: TANTANGAN -->
+  <section class="slide" data-title="T · Tantangan: Visualisasi & Multi-AI" data-sec="T"
+    data-note="Dari situasi itu muncul 4 tantangan utama: bagaimana menjembatani pemahaman abstrak anak SMP menjadi visual yang lengkap (ada simulasi, video animasi, audio, hingga interaksi langsung), dengan memanfaatkan berbagai AI secara etis sebagai pengali kekuatan guru tunggal.">
+    <div class="kicker rv" style="--d:0">T · Tantangan</div>
+    <h2 class="h2 rv" style="--d:1">Menjembatani materi abstrak menjadi <span class="grad">pengalaman visual utuh</span></h2>
+    <div class="g2">
+      <div class="card row rv" style="--d:2">
+        <span class="tile t-acer"><svg class="ic"><use href="#i-eye"/></svg></span>
+        <div>
+          <div class="ct">1. Kebutuhan Visualisasi Berlapis</div>
+          <div class="cd">Anak SMP tidak cukup diberi satu gambar statis. Mereka perlu melihat <b>alur gerak data</b> (video animasi), memegang komponen virtual (simulator), dan mendengar respons sistem (audio BIOS).</div>
+        </div>
+      </div>
+      <div class="card row rv" style="--d:3">
+        <span class="tile t-sky"><svg class="ic"><use href="#i-spark"/></svg></span>
+        <div>
+          <div class="ct">2. Mengombinasikan Beragam AI</div>
+          <div class="cd">Satu platform AI saja tidak cukup untuk membangun media pembelajaran lengkap. Guru harus memadukan <b>AI Coding, AI Video, AI Voice, Image AI, dan LLM</b> dalam satu rancangan pedagogi.</div>
+        </div>
+      </div>
+      <div class="card row rv" style="--d:4">
+        <span class="tile t-ind"><svg class="ic"><use href="#i-monitor"/></svg></span>
+        <div>
+          <div class="ct">3. Akses Ringan di Segala Perangkat</div>
+          <div class="cd">Harus tajam di layar sentuh kelas <b>IFP 16:9</b>, lancar di PC lab spesifikasi standar, dan bisa dibuka ulang murid dari HP di rumah tanpa instalasi rumit.</div>
+        </div>
+      </div>
+      <div class="card row rv" style="--d:5">
+        <span class="tile t-amb"><svg class="ic"><use href="#i-shield"/></svg></span>
+        <div>
+          <div class="ct">4. Etika &amp; Kendali Pedagogis Guru</div>
+          <div class="cd">AI menjadi akselerator teknis, bukan penentu kurikulum. Setiap prompt, skenario kesalahan (*error*), dan akurasi ilmiah wajib dikurasi guru serta dibuka secara transparan.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: AKSI 1 — KOMBINASI MULTI-AI -->
+  <section class="slide" data-title="A · Aksi: Kombinasi Multi-AI" data-sec="A"
+    data-note="Bagian terpenting untuk tema lomba AI ASSA 2026: jelaskan bagaimana Anda tidak memakai satu AI saja, melainkan mengkombinasikan 4 ekosistem AI secara sinergis—Google Antigravity untuk Vibe Coding logika interaktif & audio Web API, Google Vids untuk video animasi 3D siklus CPU + voiceover, Generative Image AI untuk 17 ilustrasi 3D komponen, dan LLM untuk kuis & transparansi prompt.">
+    <div class="kicker rv" style="--d:0">A · Aksi · Kombinasi Multi-AI</div>
+    <h2 class="h2 rv" style="--d:1">Kombinasi <span class="grad">berbagai AI</span> untuk media super visual &amp; lengkap</h2>
+    <div class="g4">
+      <div class="card ai-card rv" style="--d:2">
+        <div>
+          <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:18px">
+            <span class="tile t-acer"><svg class="ic"><use href="#i-code"/></svg></span>
+            <span class="ai-role" style="background:#d1fae5;color:var(--acer)">AI Software Eng</span>
+          </div>
+          <div class="ct">Google Antigravity (Vibe Coding)</div>
+          <div class="cd">Rekayasa kode web native, algoritma <b>drag-and-drop multi-touch IFP</b>, logika komponen pengecoh, serta sintesis <b>bunyi beep BIOS</b> via Web Audio API.</div>
+        </div>
+        <div class="ai-out">Output: Aplikasi Web Interaktif + Simulasi 2D &amp; 3D</div>
+      </div>
+
+      <div class="card ai-card rv" style="--d:3">
+        <div>
+          <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:18px">
+            <span class="tile t-sky"><svg class="ic"><use href="#i-video"/></svg></span>
+            <span class="ai-role" style="background:#e0f2fe;color:var(--sky)">AI Video &amp; Voice</span>
+          </div>
+          <div class="ct">Google Vids (Video &amp; Narasi)</div>
+          <div class="cd">Produksi <b>video animasi 3D 6-scene (48 detik, 1080p)</b> yang mengajak murid menyelam dari klik mouse, RAM, Control Unit, ALU hingga ke monitor.</div>
+        </div>
+        <div class="ai-out">Output: Video Siklus CPU + AI Voiceover Edukatif</div>
+      </div>
+
+      <div class="card ai-card rv" style="--d:4">
+        <div>
+          <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:18px">
+            <span class="tile t-ind"><svg class="ic"><use href="#i-image"/></svg></span>
+            <span class="ai-role" style="background:#e0e7ff;color:var(--ind)">Generative Image AI</span>
+          </div>
+          <div class="ct">Imagen / DALL-E (17 Aset Visual)</div>
+          <div class="cd">Menciptakan ilustrasi isometrik 3D seragam, gambar <b>komponen tepat vs pengecoh</b> (RAM DDR1 lawas, CPU pin patah, disket, charger 10W) agar kontras dan ramah anak.</div>
+        </div>
+        <div class="ai-out">Output: 17 Ilustrasi 3D &amp; Aset Diagnostik</div>
+      </div>
+
+      <div class="card ai-card rv" style="--d:5">
+        <div>
+          <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:18px">
+            <span class="tile t-amb"><svg class="ic"><use href="#i-shield"/></svg></span>
+            <span class="ai-role" style="background:#fef3c7;color:var(--amb)">LLM &amp; Etika AI</span>
+          </div>
+          <div class="ct">LLM + Vektor SVG Non-AI</div>
+          <div class="cd">Variasi soal HOTS &amp; pesan diagnostik ramah murid. Soket motherboard tetap digambar <b>vektor SVG manual</b> agar presisi, disertai menu <b>Prompt AI Terbuka</b>.</div>
+        </div>
+        <div class="ai-out">Output: Kuis 4 Format + Transparansi Prompt AI</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: AKSI 2 — KARYA 1 (MPI SISTEM KOMPUTER) -->
+  <section class="slide" data-title="A · Karya 1: MPI Sistem Komputer" data-sec="A"
+    data-note="Kenalkan Karya 1 yang diikutkan lomba: MPI Sistem Komputer. Tekankan bahwa media ini bukan sekadar slide klik-next, melainkan berisi 21 halaman visual lengkap: ada infografis analogi sekolah, video AI siklus CPU, simulator diagnostik masalah nyata (layar blank & RAM penuh), hingga kuis 4 format dan dokumentasi prompt AI.">
+    <div class="kicker rv" style="--d:0">A · Aksi · Karya Lomba 1</div>
+    <h2 class="h2 rv" style="--d:1">MPI Sistem Komputer: <span class="grad">visual, lengkap, ada video &amp; gim</span></h2>
+    <div style="display:grid;grid-template-columns:.92fr 1.08fr;gap:36px;align-items:center">
+      <div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="card row rv" style="--d:2;padding:20px 24px">
+            <span class="tile t-acer"><svg class="ic"><use href="#i-video"/></svg></span>
+            <div>
+              <div class="ct">6 Materi Visual + Video Animasi Siklus CPU</div>
+              <div class="cd">Analogi motherboard sebagai ruang kelas, Segitiga Emas, dan <b>video AI 3D Fetch–Decode–Execute–Store</b> agar murid melihat proses dalam CPU secara utuh.</div>
+            </div>
+          </div>
+          <div class="card row rv" style="--d:3;padding:20px 24px">
+            <span class="tile t-sky"><svg class="ic"><use href="#i-tool"/></svg></span>
+            <div>
+              <div class="ct">4 Misi Simulator &amp; Pemecahan Masalah</div>
+              <div class="cd">Misi Rakit PC (dengan komponen pengecoh), Sakelar Biner, Kasus <b>Layar Gelap No Signal</b>, dan <b>Task Manager RAM 98% Overload</b> beserta diagnostiknya.</div>
+            </div>
+          </div>
+          <div class="card row rv" style="--d:4;padding:20px 24px">
+            <span class="tile t-ind"><svg class="ic"><use href="#i-check"/></svg></span>
+            <div>
+              <div class="ct">Evaluasi 4 Format &amp; Transparansi Prompt AI</div>
+              <div class="cd">Pilihan Ganda HOTS, Benar/Salah, Menjodohkan, Pengurutan Booting, refleksi digital, plus halaman terbuka berisi seluruh prompt AI pembuatannya.</div>
+            </div>
+          </div>
+        </div>
+        <div class="strip rv" style="--d:5">
+          <div><b class="grad">21</b><span>halaman</span></div>
+          <div><b class="grad">6</b><span>materi &amp; video</span></div>
+          <div><b class="grad">4</b><span>misi simulator</span></div>
+          <div><b class="grad">17</b><span>aset visual AI</span></div>
+        </div>
+      </div>
+      <div class="shot-stack rv" style="--d:3">
+        <div class="app-frame shot-top" data-preview="mpi" title="Klik untuk pratinjau langsung MPI Sistem Komputer">
+          <div class="app-bar"><span class="dots"><i style="background:#ef4444"></i><i style="background:#f59e0b"></i><i style="background:#10b981"></i></span><span>Video Pembelajaran: Siklus Mesin CPU (Google Vids)</span></div>
+          <img src="./screenshots/mpi-video-cpu.png" alt="Video Pembelajaran Siklus Mesin CPU pada MPI Sistem Komputer">
+        </div>
+        <div class="app-frame shot-btm" data-preview="mpi" title="Klik untuk pratinjau langsung Simulator Rakit PC">
+          <div class="app-bar"><span class="dots"><i style="background:#ef4444"></i><i style="background:#f59e0b"></i><i style="background:#10b981"></i></span><span>Simulator 4 Misi · Rakit PC, Biner, No Signal &amp; RAM 98%</span></div>
+          <img src="./screenshots/mpi-simulator-rakit.png" alt="Simulator Rakit PC 4 Misi pada MPI Sistem Komputer">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: AKSI 3 — KARYA 2 (LAB MAYA PERAKITAN v1) -->
+  <section class="slide" data-title="A · Karya 2: Lab Maya Perakitan v1" data-sec="A"
+    data-note="Kenalkan Karya 2 yang diikutkan lomba: Laboratorium Maya Perakitan Komputer versi 1. Jelaskan perbedaannya dengan MPI: Lab Maya berfokus sebagai meja praktikum eksperimen mandiri (Teori -> Prosedur -> Simulasi -> LKPD Digital), lengkap dengan suara Web Audio API, konversi biner/hex, dan loupe sub-piksel RGB.">
+    <div class="kicker rv" style="--d:0">A · Aksi · Karya Lomba 2</div>
+    <h2 class="h2 rv" style="--d:1">Lab Maya Perakitan PC v1: <span class="grad">meja praktikum mandiri 16:9</span></h2>
+    <div style="display:grid;grid-template-columns:1.08fr .92fr;gap:36px;align-items:center">
+      <div class="shot-stack rv" style="--d:2">
+        <div class="app-frame shot-top" data-preview="v1" title="Klik untuk pratinjau Lab Maya Perakitan Komputer v1">
+          <div class="app-bar"><span class="dots"><i style="background:#ef4444"></i><i style="background:#f59e0b"></i><i style="background:#10b981"></i></span><span>Eksplorasi Digital · Sakelar Biner 8-Bit &amp; Warna RGB</span></div>
+          <img src="./screenshots/labmaya-v1-eksplorasi.png" alt="Eksplorasi Digital Sakelar Biner 8-Bit pada Lab Maya v1">
+        </div>
+        <div class="app-frame shot-btm" data-preview="v1" title="Klik untuk pratinjau Meja Perakitan ATX + POST BIOS">
+          <div class="app-bar"><span class="dots"><i style="background:#ef4444"></i><i style="background:#f59e0b"></i><i style="background:#10b981"></i></span><span>Meja Rakit ATX · 5 Komponen Terpasang &amp; Terminal BIOS POST</span></div>
+          <img src="./screenshots/labmaya-v1-rakit.png" alt="Meja Simulasi Perakitan PC dan Terminal BIOS POST Lab Maya v1">
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div class="card row rv" style="--d:3;padding:22px 26px">
+          <span class="tile t-sky"><svg class="ic"><use href="#i-cpu"/></svg></span>
+          <div>
+            <div class="ct">Rakit 5 Komponen ATX Vektor Presisi + Audio BIOS</div>
+            <div class="cd">Motherboard ATX, CPU LGA 1700, RAM DDR4, NVMe M.2, GPU dual-fan berputar, &amp; PSU. Salah pasang memicu peringatan error; rakitan tepat memunculkan urutan <b>POST BIOS CRT</b> dan bunyi chime nyata.</div>
+          </div>
+        </div>
+        <div class="card row rv" style="--d:4;padding:22px 26px">
+          <span class="tile t-ind"><svg class="ic"><use href="#i-eye"/></svg></span>
+          <div>
+            <div class="ct">Sakelar Biner 8-Bit &amp; Loupe Sub-Piksel RGB</div>
+            <div class="cd">Murid menguji sendiri konversi <b>Biner ↔ Desimal ↔ Hex ↔ ASCII</b> lewat 8 lampu sakelar, serta meneropong sub-piksel Red-Green-Blue pada monitor virtual.</div>
+          </div>
+        </div>
+        <div class="card row rv" style="--d:5;padding:22px 26px">
+          <span class="tile t-emr"><svg class="ic"><use href="#i-check"/></svg></span>
+          <div>
+            <div class="ct">Alur Praktikum Utuh + LKPD Digital 3 Bagian</div>
+            <div class="cd">Menyediakan alur <b>Teori → Prosedur → 3 Simulasi → LKPD Digital</b> (Pilihan Ganda, Benar/Salah, Menjodohkan) dengan skor otomatis dan bebas instalasi.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: AKSI 4 — IMPLEMENTASI & DEMO LANGSUNG -->
+  <section class="slide demo" data-title="A · Implementasi & Demo Langsung" data-sec="A"
+    data-note="Ceritakan singkat implementasi kelas (dari kelas sampel 9A ke 9B-9H), lalu tawarkan juri untuk melihat langsung karya secara live. Anda punya 3 tombol demo instan di dalam slide (MPI, Lab Maya v1, dan Lab Maya 3D v2) yang langsung terbuka di layar presentasi!">
+    <div class="demo-bg"></div>
+    <div class="kicker rv" style="--d:0;position:relative"><span class="live">A · Implementasi Kelas &amp; Demonstrasi Langsung</span></div>
+    <h2 class="h2 rv" style="--d:1;position:relative;margin-bottom:32px">Dari penceramah menjadi fasilitator — <span class="grad">uji langsung sekarang</span></h2>
+
+    <div class="g3 rv" style="--d:2;position:relative;width:100%;margin-bottom:38px">
+      <div class="card step"><span class="no">01</span><span class="tile t-acer"><svg class="ic"><use href="#i-eye"/></svg></span><div class="ct" style="margin-top:20px">Pemantik Visual di IFP</div><div class="cd">Guru memutar video AI siklus CPU di papan interaktif: <i>“Apa yang terjadi saat tombol power ditekan?”</i></div></div>
+      <div class="card step"><span class="no">02</span><span class="tile t-sky"><svg class="ic"><use href="#i-tool"/></svg></span><div class="ct" style="margin-top:20px">Eksplorasi &amp; Misi Lab Maya</div><div class="cd">Murid merakit PC di lab &amp; gawai, sengaja mencoba komponen pengecoh, dan mengamati pesan diagnostik.</div></div>
+      <div class="card step"><span class="no">03</span><span class="tile t-ind"><svg class="ic"><use href="#i-check"/></svg></span><div class="ct" style="margin-top:20px">LKPD Digital &amp; Refleksi</div><div class="cd">Kuis 4 format, refleksi mandiri, diperluas dari <b>9A ke 9B–9H</b> dan dibagikan ke pengampu <b>9I–9J</b>.</div></div>
+    </div>
+
+    <div class="rv" style="--d:3;position:relative;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <button class="btn-xl" data-preview="mpi"><svg class="ic"><use href="#i-play"/></svg>Demo Karya 1: MPI Sistem Komputer</button>
+      <button class="btn-xl" style="background:linear-gradient(100deg,#0284c7,#4f46e5)" data-preview="v1"><svg class="ic"><use href="#i-cpu"/></svg>Demo Karya 2: Lab Maya v1</button>
+      <button class="btn-ghost" data-preview="v2"><svg class="ic"><use href="#i-cube"/></svg>Intip Lab Maya 3D v2</button>
+    </div>
+    <div class="rv" style="--d:4;position:relative;margin-top:20px;font-family:var(--mono);font-size:18px;color:var(--acer);font-weight:700">
+      Portal Publik Gratis: https://fanani.my.id/lab/
+    </div>
+  </section>
+
+  <!-- SLIDE 8: REFLEKSI HASIL & DAMPAK 1 (SISWA) -->
+  <section class="slide" data-title="R · Dampak Belajar Murid" data-sec="R"
+    data-note="Paparkan dampak kuantitatif dan kualitatif di kelas sampel 9A (35 murid). Nilai rata-rata naik +28,4 poin (58,40 -> 86,80), ketuntasan melesat dari 13 menjadi 32 murid (37,1% -> 91,4%), soal HOTS CPU naik dari 22,8% ke 88,6%, dan 25 dari 35 murid mengulang simulasi dari rumah tanpa disuruh.">
+    <div class="kicker rv" style="--d:0">R · Refleksi Hasil &amp; Dampak (1/3) · Kelas Sampel 9A (35 Murid)</div>
+    <h2 class="h2 rv" style="--d:1">Pemahaman melonjak, rasa takut berubah menjadi <span class="grad">antusiasme</span></h2>
+    <div style="display:grid;grid-template-columns:1.32fr .68fr;gap:32px">
+      <div class="card bars rv" style="--d:2;padding:34px 40px">
+        <div class="grp">
+          <h4>Rata-rata Nilai Kelas <em>+28,40 Poin (+48,6%)</em></h4>
+          <div class="bl"><span>Awal</span><div class="track"><div class="fill f-old" style="--w:58.4%">58,40</div></div></div>
+          <div class="bl"><span>Akhir</span><div class="track"><div class="fill f-new" style="--w:86.8%">86,80</div></div></div>
+        </div>
+        <div class="grp">
+          <h4>Murid Tuntas (KKTP ≥ 75) <em>37,1% → 91,4%</em></h4>
+          <div class="bl"><span>Awal</span><div class="track"><div class="fill f-old" style="--w:37.1%">13 murid</div></div></div>
+          <div class="bl"><span>Akhir</span><div class="track"><div class="fill f-new" style="--w:91.4%">32 dari 35 murid</div></div></div>
+        </div>
+        <div class="grp">
+          <h4>Penguasaan Soal HOTS Siklus CPU <em>+65,8%</em></h4>
+          <div class="bl"><span>Awal</span><div class="track"><div class="fill f-old" style="--w:22.8%">22,8%</div></div></div>
+          <div class="bl"><span>Akhir</span><div class="track"><div class="fill f-new" style="--w:88.6%">88,6% (31 murid)</div></div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div class="card rv" style="--d:3;flex:1;display:flex;flex-direction:column;justify-content:center">
+          <span class="tile t-acer"><svg class="ic"><use href="#i-home"/></svg></span>
+          <div class="big" style="margin-top:18px">25<span style="font-size:34px;color:var(--mute)"> / 35</span></div>
+          <div class="cd" style="margin-top:8px"><b>(71,4%)</b> murid membuka ulang simulasi dari rumah secara sukarela karena penasaran ingin mencoba lagi.</div>
+        </div>
+        <div class="card rv" style="--d:4;flex:1;display:flex;flex-direction:column;justify-content:center">
+          <span class="tile t-ros"><svg class="ic"><use href="#i-heart"/></svg></span>
+          <div class="ct" style="margin-top:16px">Ruang Aman Bebas Risiko</div>
+          <div class="cd">Murid berani mencoba salah untuk memahami pesan error sistem — cemas berganti rasa ingin tahu di kelas 9A–9H.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9: REFLEKSI HASIL & DAMPAK 2 (PENGIMBASAN GURU TI SE-KABUPATEN) -->
+  <section class="slide" data-title="R · Pengimbasan 160 Guru SMP" data-sec="R"
+    data-note="Tekankan poin kebanggaan ini sesuai request: selain berdampak ke siswa, karya ini mendapat validasi dan persetujuan (approved) dari rekan-rekan guru TI lain, hingga akhirnya difasilitasi resmi oleh Dinas Pendidikan Kab. Lamongan untuk berbagi/sharing kepada guru SMP Negeri dan Swasta se-Kabupaten Lamongan (160 guru).">
+    <div class="kicker rv" style="--d:0">R · Refleksi Hasil &amp; Dampak (2/3) · Pengakuan &amp; Pengimbasan</div>
+    <h2 class="h2 rv" style="--d:1">Dipercaya sesama guru TI, difasilitasi <span class="grad">sharing se-Kab. Lamongan</span></h2>
+    <div style="display:grid;grid-template-columns:.92fr 1.08fr;gap:34px;align-items:stretch">
+      <div class="card rv" style="--d:2;display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div style="display:flex;align-items:center;gap:22px;margin-bottom:18px">
+            <div class="big">160</div>
+            <div class="cd"><b>Guru SMP Negeri &amp; Swasta</b><br>se-Kabupaten Lamongan mengikuti sesi sharing &amp; praktik langsung</div>
+          </div>
+          <div class="li"><svg class="ic" style="color:var(--acer)"><use href="#i-check"/></svg><div><b>Approved oleh Guru-Guru TI Lain:</b> Rekan guru Informatika di sekolah (pengampu 9I–9J) dan komunitas <b>MGMP Informatika</b> ikut mengadopsi media ini karena terbukti menyelesaikan masalah konkret pembelajaran sistem komputer.</div></div>
+          <div class="li"><svg class="ic" style="color:var(--sky)"><use href="#i-school"/></svg><div><b>Difasilitasi Dinas Pendidikan Kab. Lamongan:</b> Dipercaya menjadi narasumber Sosialisasi Pembelajaran Mendalam serta Koding &amp; KA (15 September 2026) untuk membekali guru SMP negeri dan swasta membuat media visual berbasis AI.</div></div>
+          <div class="li"><svg class="ic" style="color:var(--ind)"><use href="#i-code"/></svg><div><b>Terbuka &amp; Siap Direplikasi Nasional:</b> Seluruh media dan kode sumbernya dibuka gratis di <b>fanani.my.id/lab</b> dan GitHub.</div></div>
+        </div>
+      </div>
+      <div class="rv" style="--d:3;display:flex;flex-direction:column;gap:18px">
+        <div class="photo" style="height:415px">
+          <img src="../20260930 - Apresiasi GTK 2026/image/foto-narasumber-disdik.jpg" style="object-position:center 40%" alt="Pak Fanani menjadi narasumber berbagi praktik baik ke 160 guru SMP negeri dan swasta se-Kabupaten Lamongan">
+          <span class="cap"><svg class="ic"><use href="#i-users"/></svg>Sharing ke 160 Guru SMP Negeri &amp; Swasta se-Kab. Lamongan</span>
+        </div>
+        <div class="imbas-foot">
+          <div>
+            <b>★ Narasumber Dinas Pendidikan Kab. Lamongan</b>
+            <span>Berbagi Cara Pembuatan Media Interaktif via Vibe Coding (15 Sep 2026)</span>
+          </div>
+          <span class="badge-sm" style="background:rgba(255,255,255,.15);color:#fff;white-space:nowrap">Approved MGMP TI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10: REFLEKSI & EVOLUSI BERKELANJUTAN (LAB MAYA VERSI 2 — 3D) -->
+  <section class="slide" data-title="R · Evolusi ke Lab Maya 3D v2" data-sec="R"
+    data-note="Tekankan refleksi jujur dan bukti bahwa karya ini terus hidup: 3 murid tetap butuh pendampingan langsung guru, dan muncul masukan agar murid bisa memutar dan membedah posisi komponen PC di ruang 3 dimensi. Dari situlah lahir penyempurnaan terbaru: Lab Maya Versi 2 (HOLO-RIG 3D) berbasis Three.js!">
+    <div class="kicker rv" style="--d:0">R · Refleksi &amp; Penyempurnaan Berkelanjutan (3/3)</div>
+    <h2 class="h2 rv" style="--d:1">Karya yang terus disempurnakan: <span class="grad">hadirnya Lab Maya 3D v2</span></h2>
+    <div style="display:grid;grid-template-columns:.80fr 1.20fr;gap:30px;align-items:stretch">
+      <div class="card rv" style="--d:2;display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div class="ct" style="margin-bottom:8px">Refleksi Jujur Pasca Implementasi</div>
+          <div class="li"><svg class="ic" style="color:var(--amb)"><use href="#i-user"/></svg><div><b>3 murid belum tuntas di awal:</b> Media digital bukan pengganti guru — tetap dibutuhkan <i>scaffolding</i> personal dan pendampingan sebaya.</div></div>
+          <div class="li"><svg class="ic" style="color:var(--sky)"><use href="#i-eye"/></svg><div><b>Aspirasi visual spasial murid:</b> Tampilan 2D datar belum memperlihatkan posisi kedalaman slot pada casing dan motherboard dari berbagai sudut pandang.</div></div>
+          <div class="li"><svg class="ic" style="color:var(--acer)"><use href="#i-rocket"/></svg><div><b>Arah Penyempurnaan Berkelanjutan:</b> Karya tidak berhenti di lomba sebelumnya — terus dikembangkan ke media lain (Jaringan, CT, Analisis Data, Gim Edukasi) dan melahirkan <b>Lab Maya Versi 2 (3D)</b>.</div></div>
+        </div>
+        <div style="padding-top:16px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap">
+          <span class="badge-sm">6 Karya Aktif di /lab</span>
+          <span class="badge-sm">Gratis &amp; Open Source</span>
+          <span class="badge-sm">Mode Terang &amp; Gelap</span>
+        </div>
+      </div>
+
+      <div class="v2-card rv" style="--d:3;display:flex;flex-direction:column;justify-content:space-between;gap:18px">
+        <div style="display:grid;grid-template-columns:1.48fr .72fr;gap:16px;align-items:stretch">
+          <div class="app-frame" style="border-color:rgba(56,189,248,.45)" data-preview="v2" title="Klik untuk pratinjau langsung Lab Maya 3D v2">
+            <div class="app-bar"><span class="dots"><i style="background:#ef4444"></i><i style="background:#f59e0b"></i><i style="background:#10b981"></i></span><span>Breakdown 72% · CPU &amp; Motherboard 3D + Inspektor</span></div>
+            <img src="./screenshots/labmaya-v2-3d-exploded.png" alt="Lab Maya Perakitan PC 3D v2 dalam mode Exploded Breakdown 72%">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;justify-content:space-between">
+            <div class="app-frame" style="border-color:rgba(56,189,248,.38)" data-preview="v2" title="Klik untuk pratinjau simulasi Airflow & Bus Data 3D">
+              <div class="app-bar" style="padding:7px 12px;font-size:12px"><span>Simulasi Bus Data &amp; Airflow</span></div>
+              <img src="./screenshots/labmaya-v2-3d-bus.png" alt="Simulasi Bus Data dan Airflow 3D di HOLO-RIG 3D">
+            </div>
+            <div style="background:rgba(15,23,42,.7);border:1px solid rgba(56,189,248,.28);border-radius:16px;padding:12px 14px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div><b style="display:block;font-size:24px;color:#38bdf8;line-height:1">16</b><span style="font-size:12.5px;color:#cbd5e1">Komponen 3D</span></div>
+              <div><b style="display:block;font-size:24px;color:#34d399;line-height:1">360°</b><span style="font-size:12.5px;color:#cbd5e1">Putar &amp; Breakdown</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:4px;border-top:1px solid rgba(56,189,248,.22)">
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+              <span class="badge-sm" style="background:rgba(0,240,255,.15);color:#38bdf8;border:1px solid rgba(56,189,248,.35)">PENYEMPURNAAN TERBARU · v2</span>
+              <span class="ct" style="color:#fff;font-size:24px;margin:0">HOLO-RIG 3D: Lab Perakitan PC v2</span>
+            </div>
+            <div class="cd" style="font-size:18px;line-height:1.45">Aplikasi 3D WebGL (Three.js) bergaya CAD futuristik: putar PC <b>360°</b>, breakdown <b>0–100%</b> hingga ke CPU LGA 1700, VRM, RAM DDR5, NVMe, PCH, CMOS, &amp; GPU dengan inspektor anatomi lengkap.</div>
+          </div>
+          <button class="btn-xl" style="padding:14px 22px;font-size:17px;flex:none;white-space:nowrap" data-preview="v2"><svg class="ic"><use href="#i-cube"/></svg>Buka Demo 3D v2</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 11: PENUTUP -->
+  <section class="slide" data-title="Penutup"
+    data-note="Akhiri presentasi dengan tenang dan kuat. Tegaskan kembali pesan pembuka: teknologi AI terbaik di sekolah adalah teknologi yang membantu guru mengenali dan menjangkau cara belajar setiap murid. Siap masuk ke sesi tanya jawab & Innovation Arena.">
+    <div class="kicker rv" style="--d:0">Penutup</div>
+    <p class="quote rv" style="--d:1">Tugas pertama guru adalah mengenali muridnya. Kecerdasan artifisial hanyalah kuas di tangan guru — untuk mengubah konsep abstrak menjadi <span class="grad">pengalaman visual yang menyentuh nalar mereka.</span></p>
+    <div class="closing rv" style="--d:2">
+      <div class="author" style="margin:0">
+        <img src="../20260930 - Apresiasi GTK 2026/image/foto-profil-fanani.webp" alt="Ach. Chanifuddin Fanani">
+        <div>
+          <div class="n">Terima Kasih · Siap untuk Innovation Arena</div>
+          <div class="r">Ach. Chanifuddin Fanani, S.Pd. · SMP Negeri 2 Lamongan · chanifuddin@gmail.com</div>
+        </div>
+      </div>
+      <div class="qr">
+        <img src="../20260930 - Apresiasi GTK 2026/image/qr-portal-lab.png" alt="QR menuju fanani.my.id/lab" onerror="this.parentElement.remove()">
+        <div><b>Uji seluruh karya</b><span>fanani.my.id/lab</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot"><span>Acer Smart School Awards 2026</span><span class="pageno" id="pageno"></span></div>
+  <div class="prog" id="prog"></div>
+</main>
+
+<!-- Speaker Notes Drawer -->
+<aside class="notes-box" id="notesBox" aria-live="polite">
+  <div class="notes-head">
+    <span>Catatan Pembicara (Tekan N)</span>
+    <button id="notesClose" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:14px">✕</button>
+  </div>
+  <div class="notes-text" id="notesText"></div>
+</aside>
+
+<!-- Floating Presentation Controls -->
+<nav class="dock" id="dock" aria-label="Kontrol presentasi">
+  <button class="db" id="prev" title="Sebelumnya (←)"><svg class="ic"><use href="#i-left"/></svg></button>
+  <span class="cnt">Slide <b id="cur">1</b> / <b id="tot">11</b></span>
+  <button class="db" id="next" title="Berikutnya (→ / Spasi)"><svg class="ic"><use href="#i-right"/></svg></button>
+  <span class="sep"></span>
+  <span class="db" style="cursor:default;padding-right:2px"><svg class="ic"><use href="#i-clock"/></svg><span class="tm" id="tm">10:00</span></span>
+  <button class="db" id="tmToggle" title="Mulai/jeda timer 10 menit (T)"><svg class="ic"><use id="tmIcon" href="#i-p"/></svg></button>
+  <button class="db" id="tmReset" title="Atur ulang timer 10:00"><svg class="ic"><use href="#i-reset"/></svg></button>
+  <span class="sep"></span>
+  <button class="db" id="btnNotes" title="Catatan pembicara (N)"><svg class="ic"><use href="#i-note"/></svg></button>
+  <button class="db" id="btnOv" title="Daftar slide (O)"><svg class="ic"><use href="#i-grid"/></svg></button>
+  <button class="db pri" id="btnFs" title="Layar penuh (F)"><svg class="ic"><use id="fsIcon" href="#i-expand"/></svg><span id="fsText">Fullview</span></button>
+</nav>
+
+<!-- Slide Overview Modal -->
+<div class="modal" id="ov">
+  <h2>Peta Presentasi STAR (11 Slide · Maks. 10 Menit)</h2>
+  <p>Klik slide untuk melompat · tekan Esc atau O untuk menutup</p>
+  <div class="ovg" id="ovg"></div>
+</div>
+
+<!-- Live Demo Preview Modal (MPI / Lab Maya v1 / Lab Maya 3D v2) -->
+<div class="modal" id="pv">
+  <div class="pvbar">
+    <div class="pv-tabs" id="pvTabs">
+      <button class="pv-tab on" data-pv="mpi">Karya 1: MPI Sistem Komputer</button>
+      <button class="pv-tab" data-pv="v1">Karya 2: Lab Maya v1</button>
+      <button class="pv-tab" data-pv="v2">Evolusi: Lab Maya 3D v2</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a id="pvExt" href="../../mpi/sistem-komputer/index.html" target="_blank" rel="noopener" class="pv-tab" style="text-decoration:none">Buka Tab Baru ↗</a>
+      <button class="db" id="pvClose"><svg class="ic"><use href="#i-x"/></svg>Tutup (Esc)</button>
+    </div>
+  </div>
+  <iframe id="pvFrame" title="Live Demo Karya"></iframe>
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const stage = $('stage'), slides = [...document.querySelectorAll('.slide')], N = slides.length;
+  let idx = 0;
+
+  const DEMO_URLS = {
+    mpi: '../../mpi/sistem-komputer/index.html',
+    v1: '../../lab-maya/perakitan-komputer/index.html',
+    v2: '../../lab-maya/perakitan-komputer-3d/index.html'
+  };
+
+  function fit(){ stage.style.setProperty('--s', Math.min(innerWidth / 1920, innerHeight / 1080)); }
+  addEventListener('resize', fit); fit();
+
+  $('tot').textContent = N;
+  slides.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.innerHTML = `<small>${String(i + 1).padStart(2, '0')}</small><strong>${s.dataset.title}</strong>`;
+    b.onclick = () => { go(i); closeModals(); };
+    $('ovg').appendChild(b);
+  });
+
+  function go(i){
+    idx = Math.max(0, Math.min(N - 1, i));
+    slides.forEach((s, k) => s.classList.toggle('active', k === idx));
+    const sec = slides[idx].dataset.sec || '';
+    document.querySelectorAll('#star span').forEach(e => e.classList.toggle('on', e.dataset.k === sec));
+    $('star').style.opacity = sec ? 1 : 0;
+    $('cur').textContent = idx + 1;
+    $('pageno').innerHTML = `<b>${String(idx + 1).padStart(2, '0')}</b> / ${String(N).padStart(2, '0')}`;
+    $('prog').style.width = ((idx + 1) / N * 100) + '%';
+    $('prev').disabled = idx === 0;
+    $('next').disabled = idx === N - 1;
+    $('notesText').textContent = slides[idx].dataset.note || '';
+    [...$('ovg').children].forEach((b, k) => b.classList.toggle('cur', k === idx));
+    history.replaceState(null, '', '#' + (idx + 1));
+  }
+  const next = () => go(idx + 1), prev = () => go(idx - 1);
+  $('next').onclick = next; $('prev').onclick = prev;
+
+  function openDemo(key){
+    const url = DEMO_URLS[key] || DEMO_URLS.mpi;
+    $('pvFrame').src = url;
+    $('pvExt').href = url;
+    document.querySelectorAll('.pv-tab[data-pv]').forEach(t => t.classList.toggle('on', t.dataset.pv === key));
+    $('pv').classList.add('on');
+  }
+  function closeModals(){ $('ov').classList.remove('on'); $('pv').classList.remove('on'); $('pvFrame').src = ''; }
+
+  document.querySelectorAll('[data-preview]').forEach(btn => {
+    btn.addEventListener('click', () => openDemo(btn.dataset.preview));
+  });
+  document.querySelectorAll('.pv-tab[data-pv]').forEach(btn => {
+    btn.addEventListener('click', () => openDemo(btn.dataset.pv));
+  });
+
+  $('btnOv').onclick = () => $('ov').classList.toggle('on');
+  $('pvClose').onclick = closeModals;
+
+  function toggleNotes(){
+    const on = $('notesBox').classList.toggle('on');
+    $('btnNotes').classList.toggle('on', on);
+  }
+  $('btnNotes').onclick = toggleNotes;
+  $('notesClose').onclick = () => { $('notesBox').classList.remove('on'); $('btnNotes').classList.remove('on'); };
+
+  function toggleFs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {}); }
+  $('btnFs').onclick = toggleFs;
+  document.addEventListener('fullscreenchange', () => {
+    const on = !!document.fullscreenElement;
+    $('fsIcon').setAttribute('href', on ? '#i-shrink' : '#i-expand');
+    $('fsText').textContent = on ? 'Keluar' : 'Fullview';
+    wake();
+  });
+
+  let idle;
+  function wake(){
+    $('dock').classList.remove('hide');
+    clearTimeout(idle);
+    if (document.fullscreenElement) idle = setTimeout(() => $('dock').classList.add('hide'), 2500);
+  }
+  addEventListener('mousemove', wake);
+
+  let left = 600, run = false, iv = null;
+  function drawTm(){
+    $('tm').textContent = `${String(Math.floor(left / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}`;
+    $('tm').className = 'tm' + (left <= 60 ? ' danger' : left <= 120 ? ' warn' : '');
+  }
+  function toggleTm(){
+    run = !run;
+    $('tmIcon').setAttribute('href', run ? '#i-pause' : '#i-p');
+    clearInterval(iv);
+    if (run) iv = setInterval(() => { if (left > 0) { left--; drawTm(); } else toggleTm(); }, 1000);
+  }
+  $('tmToggle').onclick = toggleTm;
+  $('tmReset').onclick = () => { if (run) toggleTm(); left = 600; drawTm(); };
+
+  addEventListener('keydown', e => {
+    const k = e.key;
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(k)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(k)) { e.preventDefault(); prev(); }
+    else if (k === 'Home') go(0);
+    else if (k === 'End') go(N - 1);
+    else if (k.toLowerCase() === 'f') toggleFs();
+    else if (k.toLowerCase() === 'o') $('ov').classList.toggle('on');
+    else if (k.toLowerCase() === 'n') toggleNotes();
+    else if (k.toLowerCase() === 't') toggleTm();
+    else if (k === 'Escape') closeModals();
+  });
+
+  let tx = 0;
+  addEventListener('touchstart', e => tx = e.changedTouches[0].screenX, { passive: true });
+  addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].screenX - tx;
+    if (Math.abs(dx) > 60 && !$('pv').classList.contains('on')) dx < 0 ? next() : prev();
+  });
+
+  drawTm();
+  go((parseInt(location.hash.slice(1)) || 1) - 1);
+</script>
+</body>
+</html>
