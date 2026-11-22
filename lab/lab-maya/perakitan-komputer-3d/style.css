@@ -444,7 +444,7 @@ html, body {
     position: relative;
     overflow: hidden;
     background:
-        radial-gradient(circle at 50% 42%, rgba(0, 240, 255, 0.07) 0%, rgba(139, 92, 246, 0.05) 36%, rgba(4, 7, 17, 1) 78%);
+        radial-gradient(circle at 50% 42%, rgba(0, 240, 255, 0.11) 0%, rgba(139, 92, 246, 0.08) 38%, #0a1224 80%);
 }
 
 #pc3d-canvas {
@@ -1284,5 +1284,226 @@ html, body {
     .assembly-body {
         flex-direction: column;
         align-items: stretch;
+    }
+}
+
+/* ==========================================================================
+   LIGHT THEME OVERRIDES (Default tetap Dark Mode; diaktifkan via body.theme-light)
+   ========================================================================== */
+body.theme-light {
+    --bg-deep: #eef2f7;
+    --bg-panel: rgba(255, 255, 255, 0.92);
+    --bg-card: rgba(248, 250, 252, 0.96);
+    --bg-elevated: rgba(241, 245, 249, 0.96);
+    --border-subtle: rgba(15, 23, 42, 0.12);
+    --border-cyan: rgba(2, 132, 199, 0.42);
+    --cyan: #0284c7;
+    --cyan-soft: rgba(2, 132, 199, 0.12);
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --text-dim: #64748b;
+}
+
+body.theme-light .studio-header {
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+}
+body.theme-light .nav-pill {
+    background: rgba(241, 245, 249, 0.95);
+    color: var(--text-main);
+}
+body.theme-light .nav-pill-ghost {
+    background: transparent;
+    color: var(--text-muted);
+}
+body.theme-light .brand-name {
+    color: #0f172a;
+}
+body.theme-light .mode-switcher {
+    background: rgba(241, 245, 249, 0.95);
+}
+body.theme-light .mode-btn:hover {
+    color: #0f172a;
+    background: rgba(15, 23, 42, 0.05);
+}
+body.theme-light .mode-btn.active {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.16), rgba(99, 102, 241, 0.14));
+    color: #0f172a;
+    box-shadow: 0 2px 10px rgba(2, 132, 199, 0.14);
+}
+body.theme-light .icon-btn {
+    background: #ffffff;
+}
+body.theme-light .panel-close-btn {
+    background: #f1f5f9;
+    color: #475569;
+}
+body.theme-light .search-box input {
+    background: #ffffff;
+}
+body.theme-light .filter-tab {
+    background: #f1f5f9;
+}
+body.theme-light .outliner-item {
+    background: rgba(241, 245, 249, 0.78);
+}
+body.theme-light .outliner-item:hover {
+    background: rgba(226, 232, 240, 0.85);
+    border-color: rgba(15, 23, 42, 0.15);
+}
+body.theme-light .outliner-item.active {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.14), rgba(99, 102, 241, 0.1));
+}
+body.theme-light .oi-btn:hover {
+    color: #0f172a;
+    background: rgba(15, 23, 42, 0.08);
+}
+body.theme-light .mini-action-btn {
+    background: #f8fafc;
+}
+
+body.theme-light .viewport-stage {
+    background:
+        radial-gradient(circle at 50% 42%, rgba(2, 132, 199, 0.08) 0%, rgba(99, 102, 241, 0.05) 36%, #eef2f7 78%);
+}
+body.theme-light .cad-reticle {
+    border-color: rgba(2, 132, 199, 0.36);
+}
+body.theme-light .hud-chip {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+body.theme-light .hud-chip-mono span {
+    color: #0f172a;
+}
+
+body.theme-light .pin-3d {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(2, 132, 199, 0.4);
+    color: #0f172a;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+}
+body.theme-light .pin-3d:hover {
+    background: rgba(224, 242, 254, 0.96);
+}
+body.theme-light .pin-3d.active {
+    background: rgba(224, 242, 254, 0.98);
+    color: #0c4a6e;
+    box-shadow: 0 0 16px rgba(2, 132, 199, 0.25);
+}
+body.theme-light .pin-3d.active .pin-num {
+    background: var(--cyan);
+    color: #ffffff;
+}
+
+body.theme-light .hover-tooltip {
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+}
+body.theme-light .tt-title {
+    color: #0f172a;
+}
+
+body.theme-light .assembly-bar {
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.14);
+}
+body.theme-light .assembly-text h4 {
+    color: #0f172a;
+}
+
+body.theme-light .cad-dock {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(15, 23, 42, 0.14);
+    box-shadow: 0 14px 36px rgba(15, 23, 42, 0.14);
+}
+body.theme-light .preset-btn,
+body.theme-light .tool-btn {
+    background: #f8fafc;
+}
+body.theme-light .preset-btn:hover,
+body.theme-light .tool-btn:hover {
+    color: #0f172a;
+    border-color: rgba(15, 23, 42, 0.28);
+}
+body.theme-light .preset-btn.active,
+body.theme-light .tool-btn.active {
+    background: var(--cyan-soft);
+    border-color: var(--border-cyan);
+    color: var(--cyan);
+}
+
+body.theme-light .insp-num {
+    color: #ffffff;
+}
+body.theme-light .insp-icon {
+    background: #f1f5f9;
+}
+body.theme-light .insp-name {
+    color: #0f172a;
+}
+body.theme-light .insp-btn {
+    background: #f8fafc;
+}
+body.theme-light .insp-btn:hover,
+body.theme-light .insp-tab:hover {
+    color: #0f172a;
+}
+body.theme-light .info-card-analogy {
+    background: linear-gradient(145deg, rgba(139, 92, 246, 0.1), rgba(248, 250, 252, 0.98));
+    border-color: rgba(124, 58, 237, 0.25);
+}
+body.theme-light .info-card-analogy .info-label {
+    color: #6d28d9;
+}
+body.theme-light .info-card-tip {
+    background: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(248, 250, 252, 0.98));
+    border-color: rgba(5, 150, 105, 0.25);
+}
+body.theme-light .info-card-tip .info-label {
+    color: #047857;
+}
+body.theme-light .info-text {
+    color: #334155;
+}
+body.theme-light .subpart-item {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.1);
+}
+body.theme-light .subpart-title {
+    color: #0f172a;
+}
+body.theme-light .spec-val {
+    color: #0f172a;
+}
+body.theme-light .conn-chip {
+    background: #ffffff;
+}
+body.theme-light .nav-comp-btn {
+    background: #f8fafc;
+}
+
+body.theme-light .loading-screen {
+    background: radial-gradient(circle at center, #ffffff, #eef2f7);
+}
+body.theme-light .modal-backdrop {
+    background: rgba(15, 23, 42, 0.45);
+}
+body.theme-light .modal-card {
+    background: #ffffff;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.2);
+}
+body.theme-light .modal-head h3 {
+    color: #0f172a;
+}
+body.theme-light .help-item {
+    background: #f8fafc;
+}
+@media (max-width: 900px) {
+    body.theme-light .mode-switcher {
+        background: rgba(255, 255, 255, 0.97);
+    }
+    body.theme-light .side-panel {
+        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
     }
 }
