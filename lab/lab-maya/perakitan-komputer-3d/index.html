@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOLO-RIG 3D // Lab Perakitan Komputer v2 | Pak Fanani</title>
+    <meta name="description"
+        content="Laboratorium Maya Perakitan Komputer 3D v2 — Eksplorasi model 3D PC & Motherboard interaktif lengkap dengan breakdown komponen, aliran data, dan simulasi perakitan bertahap.">
+    <meta name="author" content="Ach. Chanifuddin Fanani, S.Pd.">
+    <link rel="canonical" href="https://fanani.my.id/lab/lab-maya/perakitan-komputer-3d/">
+    <link rel="icon" href="../../../assets/images/logo.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Quicksand:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Top Studio Toolbar -->
+    <header class="studio-header">
+        <div class="header-left">
+            <a href="../index.html" class="nav-pill" title="Kembali ke Portal Lab Maya">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                <span>Lab Maya</span>
+            </a>
+            <a href="../../index.html" class="nav-pill nav-pill-ghost" title="Kembali ke Beranda Lab">
+                <span>Lab</span>
+            </a>
+
+            <div class="brand-title">
+                <span class="brand-dot"></span>
+                <span class="brand-name">HOLO-RIG <span class="brand-accent">3D</span></span>
+                <span class="brand-tag">LAB PERAKITAN PC v2</span>
+            </div>
+        </div>
+
+        <!-- Mode Selector -->
+        <nav class="mode-switcher" aria-label="Mode Aplikasi 3D">
+            <button class="mode-btn active" data-mode="explore" title="Klik komponen 3D untuk membedah detailnya">
+                <span class="mode-ico">🔍</span>
+                <span>Eksplorasi 3D</span>
+            </button>
+            <button class="mode-btn" data-mode="explode" title="Mode breakdown penuh seluruh komponen & motherboard">
+                <span class="mode-ico">💥</span>
+                <span>Breakdown</span>
+            </button>
+            <button class="mode-btn" data-mode="assembly" title="Simulasi merakit PC langkah demi langkah">
+                <span class="mode-ico">🔧</span>
+                <span>Simulasi Rakit</span>
+            </button>
+            <button class="mode-btn" data-mode="flow" title="Visualisasi aliran data bus motherboard & airflow pendingin">
+                <span class="mode-ico">⚡</span>
+                <span>Alur Data &amp; Airflow</span>
+            </button>
+        </nav>
+
+        <div class="header-right">
+            <button id="btn-toggle-outliner" class="icon-btn mobile-only" title="Daftar Komponen" aria-label="Buka Daftar Komponen">
+                <span>☰</span>
+            </button>
+            <button id="btn-toggle-inspector" class="icon-btn mobile-only" title="Info Komponen" aria-label="Buka Info Komponen">
+                <span>ℹ️</span>
+            </button>
+            <button id="btn-sound" class="icon-btn active" title="Toggle Efek Suara (Web Audio)" aria-label="Efek Suara">
+                <span id="sound-icon">🔊</span>
+            </button>
+            <button id="btn-help" class="icon-btn" title="Panduan Kontrol 3D" aria-label="Panduan Kontrol">
+                <span>❓</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main 3D Studio Workspace -->
+    <div class="studio-workspace">
+
+        <!-- Left Panel: Outliner & Component Hierarchy -->
+        <aside id="left-panel" class="side-panel left-panel">
+            <div class="panel-header">
+                <div class="panel-title-row">
+                    <span class="panel-eyebrow">OUTLINER // HIERARKI 3D</span>
+                    <button class="panel-close-btn mobile-only" data-close-panel="left-panel" aria-label="Tutup Outliner">✕</button>
+                </div>
+                <div class="search-box">
+                    <span class="search-ico">⌕</span>
+                    <input type="text" id="component-search" placeholder="Cari komponen / slot..." autocomplete="off">
+                </div>
+                <div class="filter-tabs" role="tablist">
+                    <button class="filter-tab active" data-filter="all">Semua (16)</button>
+                    <button class="filter-tab" data-filter="motherboard-core">Mobo (11)</button>
+                    <button class="filter-tab" data-filter="expansion-cooling">Casing (5)</button>
+                </div>
+            </div>
+
+            <div id="outliner-list" class="outliner-list" role="list">
+                <!-- Populated by script.js -->
+            </div>
+
+            <div class="panel-footer-actions">
+                <button id="btn-show-all" class="mini-action-btn">👁️ Tampilkan Semua</button>
+                <button id="btn-dock-all" class="mini-action-btn">📥 Pasang Semua</button>
+            </div>
+        </aside>
+
+        <!-- Center 3D Viewport -->
+        <main class="viewport-stage">
+            <!-- Top-left HUD Telemetry -->
+            <div class="hud-telemetry">
+                <div class="hud-chip">
+                    <span class="hud-pulse"></span>
+                    <span id="hud-mode-label">MODE: EKSPLORASI 3D</span>
+                </div>
+                <div class="hud-chip hud-chip-mono">
+                    EXPLODE: <span id="hud-explode-val">0%</span>
+                </div>
+                <div class="hud-chip hud-chip-mono desktop-only">
+                    KOMPONEN: <span id="hud-visible-count">16/16</span>
+                </div>
+            </div>
+
+            <!-- Decorative CAD Corner Brackets -->
+            <div class="cad-reticle reticle-tl"></div>
+            <div class="cad-reticle reticle-tr"></div>
+            <div class="cad-reticle reticle-bl"></div>
+            <div class="cad-reticle reticle-br"></div>
+
+            <!-- Three.js WebGL Canvas -->
+            <canvas id="pc3d-canvas"></canvas>
+
+            <!-- Projected 3D Pin Callouts -->
+            <div id="labels-overlay" class="labels-overlay"></div>
+
+            <!-- Hover Tooltip -->
+            <div id="hover-tooltip" class="hover-tooltip hidden">
+                <div class="tt-title" id="tt-title"></div>
+                <div class="tt-sub" id="tt-sub"></div>
+            </div>
+
+            <!-- Guided Assembly Wizard Bar (Hidden unless in Assembly Mode) -->
+            <div id="assembly-bar" class="assembly-bar hidden">
+                <div class="assembly-top">
+                    <div class="assembly-step-badge" id="assembly-step-badge">LANGKAH 1 / 10</div>
+                    <div class="assembly-progress-dots" id="assembly-dots"></div>
+                    <button id="btn-assembly-reset" class="mini-action-btn" title="Ulangi Perakitan">↺ Ulangi</button>
+                </div>
+                <div class="assembly-body">
+                    <div class="assembly-text">
+                        <h4 id="assembly-title">Siapkan Motherboard ATX</h4>
+                        <p id="assembly-desc">Klik slot target yang menyala di 3D atau tekan tombol pasang di kanan.</p>
+                    </div>
+                    <div class="assembly-actions">
+                        <button id="btn-assembly-install" class="btn-primary-glow">
+                            <span>📥 Pasang Komponen Ini</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Bottom CAD Dock -->
+            <div class="cad-dock" id="cad-dock">
+                <!-- Explode / Breakdown Control Row -->
+                <div class="dock-row dock-explode-row">
+                    <div class="explode-label-group">
+                        <span class="dock-label">BREAKDOWN</span>
+                        <span id="explode-pct-badge" class="pct-badge">0%</span>
+                    </div>
+                    <input type="range" id="explode-slider" min="0" max="100" value="0" class="explode-slider"
+                        aria-label="Persentase Breakdown 3D">
+                    <div class="preset-group">
+                        <button class="preset-btn active" data-explode="0" data-focus="iso">0% Utuh</button>
+                        <button class="preset-btn" data-explode="35" data-focus="iso">35% Buka Casing</button>
+                        <button class="preset-btn" data-explode="72" data-focus="mobo">72% Breakdown Mobo</button>
+                        <button class="preset-btn" data-explode="100" data-focus="explode">100% Full</button>
+                    </div>
+                </div>
+
+                <!-- Camera & Visual Overlay Tools Row -->
+                <div class="dock-row dock-tools-row">
+                    <div class="tool-cluster">
+                        <span class="dock-label">KAMERA</span>
+                        <button class="tool-btn active" data-cam="iso" title="Sudut Isometrik 3/4">Isometrik</button>
+                        <button class="tool-btn" data-cam="mobo" title="Zoom langsung ke Motherboard & komponennya">Fokus Mobo</button>
+                        <button class="tool-btn" data-cam="side" title="Tampak Samping Lurus">Samping</button>
+                        <button class="tool-btn" data-cam="top" title="Tampak Atas">Atas</button>
+                        <button class="tool-btn" data-cam="rear" title="Tampak Belakang (Rear I/O & PSU)">Belakang</button>
+                    </div>
+
+                    <div class="tool-divider"></div>
+
+                    <div class="tool-cluster">
+                        <span class="dock-label">VISUAL</span>
+                        <button id="toggle-rotate" class="tool-btn" title="Putar kamera otomatis">🔄 Auto-Rotate</button>
+                        <button id="toggle-labels" class="tool-btn active" title="Tampilkan pin angka 3D">🏷️ Label 3D</button>
+                        <button id="toggle-xray" class="tool-btn" title="Mode Wireframe / X-Ray">🩻 X-Ray</button>
+                        <button id="toggle-airflow" class="tool-btn" title="Simulasi partikel udara dingin & panas">💨 Airflow</button>
+                        <button id="toggle-databus" class="tool-btn" title="Animasi sinyal bus data CPU-RAM-GPU-NVMe">⚡ Bus Data</button>
+                        <button id="toggle-solo" class="tool-btn" title="Isolasi komponen terpilih saja">🔬 Solo</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Initial WebGL Loading Overlay -->
+            <div id="loading-screen" class="loading-screen">
+                <div class="loader-ring"></div>
+                <div class="loader-text">MEMBANGUN MODEL 3D HOLO-RIG...</div>
+                <div class="loader-sub">Motherboard ATX • 16 Komponen • Three.js WebGL</div>
+            </div>
+        </main>
+
+        <!-- Right Panel: Component Inspector -->
+        <aside id="right-panel" class="side-panel right-panel">
+            <div class="inspector-header">
+                <div class="inspector-top-meta">
+                    <span id="insp-number" class="insp-num">#01</span>
+                    <span id="insp-cat" class="insp-cat">Motherboard &amp; Inti</span>
+                    <button class="panel-close-btn mobile-only" data-close-panel="right-panel" aria-label="Tutup Inspektor">✕</button>
+                </div>
+                <div class="inspector-title-wrap">
+                    <span id="insp-icon" class="insp-icon">🟩</span>
+                    <div>
+                        <h2 id="insp-name" class="insp-name">Motherboard ATX (Papan Induk)</h2>
+                        <div id="insp-slot" class="insp-slot">Form Factor ATX (305 × 244 mm)</div>
+                    </div>
+                </div>
+
+                <!-- Quick Component Actions -->
+                <div class="insp-actions">
+                    <button id="btn-insp-focus" class="insp-btn" title="Arahkan kamera ke komponen ini">
+                        <span>🎯</span> Fokus
+                    </button>
+                    <button id="btn-insp-solo" class="insp-btn" title="Tampilkan komponen ini saja">
+                        <span>🔬</span> Solo
+                    </button>
+                    <button id="btn-insp-detach" class="insp-btn" title="Keluarkan komponen ini dari slotnya">
+                        <span id="insp-detach-ico">⏏️</span> <span id="insp-detach-txt">Lepas Slot</span>
+                    </button>
+                    <button id="btn-insp-hide" class="insp-btn" title="Sembunyikan / tampilkan komponen">
+                        <span id="insp-hide-ico">👁️</span> <span id="insp-hide-txt">Sembunyi</span>
+                    </button>
+                </div>
+
+                <!-- Inspector Section Tabs -->
+                <div class="insp-tabs">
+                    <button class="insp-tab active" data-tab="overview">Penjelasan</button>
+                    <button class="insp-tab" data-tab="anatomy">Anatomi &amp; Spek</button>
+                    <button class="insp-tab" data-tab="tips">Tips &amp; Koneksi</button>
+                </div>
+            </div>
+
+            <div class="inspector-body">
+                <!-- Tab 1: Overview & Analogy -->
+                <div class="insp-tab-pane active" data-pane="overview">
+                    <div class="info-card">
+                        <div class="info-label">FUNGSI &amp; CARA KERJA</div>
+                        <p id="insp-summary" class="info-text"></p>
+                    </div>
+
+                    <div class="info-card info-card-analogy">
+                        <div class="info-label">💡 ANALOGI SEDERHANA</div>
+                        <p id="insp-analogy" class="info-text"></p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-label">🔗 TERHUBUNG LANGSUNG DENGAN</div>
+                        <div id="insp-connections-quick" class="conn-chips"></div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Anatomy & Technical Specs -->
+                <div class="insp-tab-pane" data-pane="anatomy">
+                    <div class="info-card">
+                        <div class="info-label">BAGIAN FISIK PADA MODEL 3D</div>
+                        <div id="insp-subparts" class="subparts-list"></div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-label">SPESIFIKASI TEKNIS</div>
+                        <div id="insp-specs" class="specs-table"></div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Assembly Tips & Connections -->
+                <div class="insp-tab-pane" data-pane="tips">
+                    <div class="info-card info-card-tip">
+                        <div class="info-label">🛠️ TIPS PERAKITAN &amp; TROUBLESHOOTING</div>
+                        <p id="insp-tip" class="info-text"></p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-label">NAVIGASI ANTAR KOMPONEN</div>
+                        <p class="info-hint">Klik komponen di bawah untuk berpindah ke jalur koneksi terkait:</p>
+                        <div id="insp-connections-full" class="conn-chips"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inspector-footer">
+                <button id="btn-prev-comp" class="nav-comp-btn">← Sebelumnya</button>
+                <span id="insp-counter" class="insp-counter">1 / 16</span>
+                <button id="btn-next-comp" class="nav-comp-btn">Berikutnya →</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Help / Controls Modal -->
+    <div id="help-modal" class="modal-backdrop hidden">
+        <div class="modal-card">
+            <div class="modal-head">
+                <div>
+                    <span class="panel-eyebrow">PANDUAN KONTROL 3D</span>
+                    <h3>Cara Menggunakan HOLO-RIG 3D</h3>
+                </div>
+                <button id="btn-close-help" class="panel-close-btn">✕</button>
+            </div>
+            <div class="modal-grid">
+                <div class="help-item">
+                    <div class="help-key">🖱️ Drag Kiri / 1 Jari</div>
+                    <p>Putar kamera mengelilingi model PC &amp; Motherboard 360°.</p>
+                </div>
+                <div class="help-item">
+                    <div class="help-key">🔍 Scroll / Pinch 2 Jari</div>
+                    <p>Perbesar (zoom-in) hingga ke detail pin socket CPU, RAM, &amp; baterai CMOS.</p>
+                </div>
+                <div class="help-item">
+                    <div class="help-key">✋ Drag Kanan / 2 Jari</div>
+                    <p>Geser posisi kamera (panning) ke area motherboard atau casing bawah.</p>
+                </div>
+                <div class="help-item">
+                    <div class="help-key">👆 Klik Komponen / Pin</div>
+                    <p>Pilih komponen di model 3D untuk memfokuskan kamera dan membaca penjelasannya.</p>
+                </div>
+                <div class="help-item">
+                    <div class="help-key">💥 Slider Breakdown</div>
+                    <p>Tarik slider untuk membongkar PC secara bertahap (72% khusus membedah seluruh isi motherboard).</p>
+                </div>
+                <div class="help-item">
+                    <div class="help-key">👁️ Mata &amp; ⏏️ Lepas Slot</div>
+                    <p>Sembunyikan casing/cooler atau keluarkan satu komponen saja dari slot motherboard-nya.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POST Boot Success Toast -->
+    <div id="post-toast" class="post-toast hidden">
+        <div class="post-toast-icon">✅</div>
+        <div>
+            <div class="post-toast-title">POST BOOT SUKSES!</div>
+            <div class="post-toast-sub">Seluruh 10 tahap perakitan selesai — sistem menyala normal &amp; kipas berputar!</div>
+        </div>
+        <button id="btn-close-post" class="panel-close-btn">✕</button>
+    </div>
+
+    <script src="components-data.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
