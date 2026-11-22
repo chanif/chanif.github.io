@@ -545,7 +545,7 @@
         </div>
     </footer>
 
-    <script src="js/tracker.js"></script>
+    <script src="js/tracker.js?v=20261122"></script>
     <script>
         // Decode JWT Payload from Google Token
         function parseJwt(token) {
@@ -595,7 +595,25 @@
             const gName = payload.name || 'Siswa';
             const picture = payload.picture || '';
 
-            // Try authenticating with backend (Cloudflare Edge D1)
+            // Check if existing user in localStorage
+            let storedUser = null;
+            try {
+                const storedUserStr = localStorage.getItem('fanani_user');
+                storedUser = storedUserStr ? JSON.parse(storedUserStr) : null;
+            } catch (e) {}
+
+            // Immediately persist initial Google identity locally so auth is never lost if modal is closed early
+            const initialUser = {
+                ...(storedUser || {}),
+                google_id: googleId,
+                email: email,
+                name: (storedUser && (storedUser.full_name || storedUser.name)) || gName,
+                full_name: (storedUser && (storedUser.full_name || storedUser.name)) || gName,
+                picture: picture || (storedUser && storedUser.picture) || ''
+            };
+            localStorage.setItem('fanani_user', JSON.stringify(initialUser));
+
+            // Authenticate with backend (Cloudflare Edge D1)
             let serverUser = null;
             let sessionToken = null;
             if (window.FananiTracker && FananiTracker.googleLogin) {
@@ -610,54 +628,46 @@
                 }
             }
 
-            // Check if existing user in localStorage or Server DB
-            let storedUser = null;
-            try {
-                const storedUserStr = localStorage.getItem('fanani_user');
-                storedUser = storedUserStr ? JSON.parse(storedUserStr) : null;
-            } catch (e) {}
-
-            const fullName = (serverUser && (serverUser.full_name || serverUser.name)) || (storedUser && (storedUser.full_name || storedUser.name)) || gName;
+            const fullName = (serverUser && (serverUser.full_name || serverUser.name)) || initialUser.full_name || gName;
             const isTeacher = (serverUser && serverUser.role === 'teacher') || (email && email.toLowerCase().trim() === 'chanifuddin@gmail.com');
             const kelas = (serverUser && serverUser.kelas && serverUser.kelas.trim() !== '') ? serverUser.kelas.trim() : (storedUser && storedUser.kelas ? storedUser.kelas.trim() : null);
-            const isProfileDone = Boolean((serverUser && serverUser.profile_completed) || (storedUser && storedUser.profile_completed) || kelas || isTeacher);
+            const isProfileDone = Boolean((serverUser && serverUser.profile_completed) || (storedUser && storedUser.profile_completed && kelas) || isTeacher);
 
-            if (isTeacher || isProfileDone) {
-                // Existing user / teacher: Profile already configured, DO NOT show modal!
-                const completeUser = {
-                    id: (serverUser && serverUser.id) || (storedUser && storedUser.id) || null,
-                    google_id: googleId,
-                    name: fullName,
-                    full_name: fullName,
-                    kelas: isTeacher && !kelas ? 'Guru' : (kelas || '9A'),
-                    role: isTeacher ? 'teacher' : ((serverUser && serverUser.role) || 'student'),
-                    email: email,
-                    picture: (serverUser && serverUser.avatar_url) || picture,
-                    profile_completed: true
-                };
-                localStorage.setItem('fanani_user', JSON.stringify(completeUser));
-                if (sessionToken) {
-                    localStorage.setItem('fanani_auth_token', sessionToken);
-                }
-                renderUserStatus();
+            const completeUser = {
+                id: (serverUser && serverUser.id) || (storedUser && storedUser.id) || null,
+                google_id: googleId,
+                name: fullName,
+                full_name: fullName,
+                kelas: isTeacher && !kelas ? 'Guru' : (kelas || ''),
+                role: isTeacher ? 'teacher' : ((serverUser && serverUser.role) || 'student'),
+                email: email,
+                picture: (serverUser && serverUser.avatar_url) || picture,
+                profile_completed: Boolean(isProfileDone && (kelas || isTeacher))
+            };
+            localStorage.setItem('fanani_user', JSON.stringify(completeUser));
+            if (sessionToken) {
+                localStorage.setItem('fanani_auth_token', sessionToken);
+            }
 
-                // Two-way synchronization & merge with server
-                if (window.FananiTracker && FananiTracker.syncData) {
-                    showAuthCardLoading('Menyinkronkan data...', 'Menggabungkan modul belajar & skor kuis...');
-                    try {
-                        await FananiTracker.syncData(true);
-                    } catch (e) {
-                        console.warn('[Edu] Sync on login error:', e);
-                    }
+            // Always sync any offline/pending evaluations right after login
+            if (window.FananiTracker && FananiTracker.syncData) {
+                showAuthCardLoading('Menyinkronkan data...', 'Menggabungkan modul belajar & skor kuis...');
+                try {
+                    await FananiTracker.syncData(true);
+                } catch (e) {
+                    console.warn('[Edu] Sync on login error:', e);
                 }
-                renderUserStatus();
-                hideAuthCardLoading();
-            } else {
-                // Genuinely new student with no class yet: Show Profile Modal
-                hideAuthCardLoading();
-                document.getElementById('modal-avatar-preview').innerHTML = picture ? `<img src="${picture}" referrerpolicy="no-referrer" class="w-full h-full object-cover rounded-xl" onerror="this.parentElement.innerHTML='🎓'">` : '🎓';
-                document.getElementById('modal-email-preview').innerText = `Terhubung sebagai ${email}. Silakan lengkapi nama & kelasmu:`;
-                document.getElementById('profile-input-name').value = fullName;
+            }
+
+            renderUserStatus();
+            hideAuthCardLoading();
+
+            // If new student or profile has no class yet, prompt modal to pick kelas
+            if (!isTeacher && !completeUser.kelas) {
+                document.getElementById('modal-avatar-preview').innerHTML = completeUser.picture ? `<img src="${completeUser.picture}" referrerpolicy="no-referrer" class="w-full h-full object-cover rounded-xl" onerror="this.parentElement.innerHTML='🎓'">` : '🎓';
+                document.getElementById('modal-email-preview').innerText = `Terhubung sebagai ${email}. Pilih nama & kelasmu agar nilai tercatat pada rombel yang tepat:`;
+                document.getElementById('profile-input-name').value = completeUser.full_name || fullName;
+                document.getElementById('profile-input-kelas').value = '';
                 document.getElementById('profile-modal').classList.remove('hidden');
             }
         }
@@ -676,6 +686,14 @@
                         email: mockName.toLowerCase().replace(/\s+/g, '') + '@smpn2lmg.sch.id',
                         picture: ''
                     };
+                    localStorage.setItem('fanani_user', JSON.stringify({
+                        google_id: pendingGooglePayload.sub,
+                        name: mockName,
+                        full_name: mockName,
+                        email: pendingGooglePayload.email,
+                        kelas: '',
+                        profile_completed: false
+                    }));
                     document.getElementById('modal-avatar-preview').innerHTML = '🎓';
                     document.getElementById('modal-email-preview').innerText = `Terhubung sebagai ${pendingGooglePayload.email}`;
                     document.getElementById('profile-input-name').value = mockName;
@@ -689,7 +707,7 @@
             const userJson = localStorage.getItem('fanani_user');
             if (userJson) {
                 const user = JSON.parse(userJson);
-                document.getElementById('profile-modal-title').innerText = 'Perbarui Profil Siswa';
+                document.getElementById('profile-modal-title').innerText = user.kelas ? 'Perbarui Profil Siswa' : 'Lengkapi Profil & Kelas';
                 document.getElementById('modal-email-preview').innerText = user.email ? `Akun Google: ${user.email}` : 'Perbarui nama lengkap dan kelasmu:';
                 document.getElementById('profile-input-name').value = user.name || user.full_name || '';
                 document.getElementById('profile-input-kelas').value = user.kelas || '';
@@ -703,6 +721,7 @@
 
         function closeProfileModal() {
             document.getElementById('profile-modal').classList.add('hidden');
+            renderUserStatus();
         }
 
         // Save Completed Profile (Name & Kelas 7A - 9K)
@@ -797,11 +816,8 @@
                 attempts++;
                 if (window.google && google.accounts && google.accounts.id) {
                     clearInterval(interval);
-                    if (!localStorage.getItem('fanani_user')) {
-                        renderGoogleSignInButton();
-                    }
+                    renderUserStatus();
                 } else if (attempts > 50) {
-                    // Stop polling after ~3.5s
                     clearInterval(interval);
                 }
             }, 70);
@@ -811,6 +827,7 @@
         function renderUserStatus() {
             try {
                 const userJson = localStorage.getItem('fanani_user');
+                const token = localStorage.getItem('fanani_auth_token');
                 const nameEl = document.getElementById('user-name-display');
                 const detailEl = document.getElementById('user-status-detail');
                 const avatarEl = document.getElementById('user-avatar');
@@ -818,20 +835,33 @@
                 const btnContainer = document.getElementById('google-signin-btn-container');
                 const progressBtn = document.getElementById('btn-progress');
                 const logoutBtn = document.getElementById('btn-logout');
+                const editProfileBtn = document.getElementById('btn-edit-profile');
 
                 if (userJson) {
                     const user = JSON.parse(userJson);
-                    if (user && user.name && (user.kelas || user.role === 'teacher')) {
-                        const isTeacher = user.role === 'teacher' || (user.email && user.email.toLowerCase().trim() === 'chanifuddin@gmail.com');
-                        const classDisplay = isTeacher ? 'Guru / Pengajar' : `Kelas ${user.kelas}`;
-                        nameEl.innerText = `${user.name} (${user.kelas || (isTeacher ? 'Guru' : '')})`;
-                        badgeEl.innerText = isTeacher ? 'Akun Pengajar' : 'Akun Siswa Aktif';
-                        badgeEl.className = isTeacher 
-                            ? 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300'
-                            : 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800';
-                        detailEl.innerText = isTeacher 
-                            ? `${user.email ? user.email + ' • ' : ''}Akses guru: Memantau progres belajar siswa di papan kelas & lab`
-                            : `${user.email ? user.email + ' • ' : ''}Nilai latihan & catatan refleksi tersimpan di database guru`;
+                    const hasGoogleCreds = Boolean(token || (user && user.google_id && user.email));
+                    const isTeacher = Boolean(user && (user.role === 'teacher' || (user.email && user.email.toLowerCase().trim() === 'chanifuddin@gmail.com')));
+
+                    if (user && user.name && hasGoogleCreds) {
+                        const hasKelas = Boolean(user.kelas && String(user.kelas).trim() !== '');
+                        nameEl.innerText = hasKelas
+                            ? `${user.name} (${user.kelas})`
+                            : (isTeacher ? `${user.name} (Guru)` : `${user.name} (Kelas Belum Dipilih)`);
+
+                        if (isTeacher) {
+                            badgeEl.innerText = 'Akun Pengajar';
+                            badgeEl.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300';
+                            detailEl.innerText = `${user.email ? user.email + ' • ' : ''}Akses guru: Memantau progres belajar siswa di papan kelas & lab`;
+                        } else if (!hasKelas) {
+                            badgeEl.innerText = '⚠️ Kelas Belum Dipilih';
+                            badgeEl.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300';
+                            detailEl.innerText = `${user.email ? user.email + ' • ' : ''}Klik Edit Profil untuk memilih kelasmu agar nilaimu tercatat di rombel yang benar.`;
+                        } else {
+                            badgeEl.innerText = 'Akun Siswa Aktif';
+                            badgeEl.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800';
+                            detailEl.innerText = `${user.email ? user.email + ' • ' : ''}Nilai latihan & catatan refleksi tersimpan di database guru`;
+                        }
+
                         avatarEl.innerHTML = user.picture ? `<img src="${user.picture}" referrerpolicy="no-referrer" class="w-full h-full object-cover rounded-full" onerror="this.parentElement.innerHTML='🎓'">` : '🎓';
 
                         if (btnContainer) btnContainer.classList.add('hidden');
@@ -840,21 +870,22 @@
                             progressBtn.href = "dashboard/progress/index.html";
                             progressBtn.innerHTML = '<span>📊 Progress Belajarku</span>';
                         }
-                        const editProfileBtn = document.getElementById('btn-edit-profile');
-                        if (editProfileBtn) editProfileBtn.classList.remove('hidden');
+                        if (editProfileBtn) {
+                            editProfileBtn.classList.remove('hidden');
+                            editProfileBtn.innerHTML = hasKelas ? '<span>✏️ Edit Profil</span>' : '<span>⚠️ Pilih Kelas</span>';
+                        }
                         if (logoutBtn) logoutBtn.classList.remove('hidden');
                         return;
                     }
                 }
 
-                // Default guest state
+                // Default guest state or incomplete local-only profile without Google credentials
                 nameEl.innerText = 'Mode Belajar Mandiri';
-                badgeEl.innerText = 'Mode Tamu';
-                badgeEl.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600';
-                detailEl.innerText = 'Masuk dengan Google untuk menyinkronkan skor evaluasi dan catatan refleksimu ke database guru.';
+                badgeEl.innerText = 'Belum Login Google';
+                badgeEl.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800';
+                detailEl.innerText = 'Masuk dengan Google agar seluruh skor evaluasi dan catatan refleksimu tersinkron ke database guru.';
                 avatarEl.innerHTML = '👤';
 
-                const editProfileBtn = document.getElementById('btn-edit-profile');
                 if (editProfileBtn) editProfileBtn.classList.add('hidden');
 
                 if (btnContainer) {

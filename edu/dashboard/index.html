@@ -544,7 +544,7 @@
         // Filter and Sort Handler
         function filterClass(kelas) {
             currentClassFilter = kelas;
-            document.getElementById('stat-active-class').textContent = kelas ? `Kelas ${kelas}` : 'Semua Kelas';
+            document.getElementById('stat-active-class').textContent = kelas ? (kelas === 'Belum Pilih Kelas' ? 'Belum Pilih Kelas' : `Kelas ${kelas}`) : 'Semua Kelas';
             renderClassPills(availableClasses);
             applyFiltersAndRender();
         }
@@ -638,7 +638,7 @@
                             </div>
                         </td>
                         <td class="py-3.5 px-3 text-center">
-                            <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200/60">
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-bold border ${s.kelas === 'Belum Pilih Kelas' ? 'bg-amber-100 text-amber-800 border-amber-300' : 'bg-slate-100 text-slate-700 border-slate-200/60'}">
                                 ${s.kelas || '-'}
                             </span>
                         </td>
@@ -682,7 +682,7 @@
             if (!student) return;
 
             document.getElementById('modal-name').textContent = student.full_name || 'Siswa';
-            document.getElementById('modal-kelas').textContent = 'Kelas ' + (student.kelas || '-');
+            document.getElementById('modal-kelas').textContent = student.kelas === 'Belum Pilih Kelas' ? 'Belum Pilih Kelas' : ('Kelas ' + (student.kelas || '-'));
             document.getElementById('modal-completed-count').textContent = student.completed_count || 0;
             document.getElementById('modal-avg-score').textContent = student.avg_score || 0;
             document.getElementById('modal-reflections-count').textContent = student.reflections_count || 0;
@@ -702,7 +702,7 @@
                 let evalHtml = '';
                 evalKeys.forEach(topicId => {
                     const e = student.evaluations[topicId];
-                    const isPassed = e.score >= 75;
+                    const isPassed = e.score >= 70;
                     evalHtml += `
                         <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between gap-3">
                             <div>

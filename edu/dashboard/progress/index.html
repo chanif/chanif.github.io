@@ -454,7 +454,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="../../js/tracker.js?v=20260927_02"></script>
+    <script src="../../js/tracker.js?v=20261122"></script>
     <script>
         let currentTab = 'informatika';
         let progressData = null;
@@ -853,7 +853,8 @@ const LOCAL_CATALOG = {
 
         async function loadProgressDashboard() {
             try {
-                if (window.FananiTracker && typeof FananiTracker.syncData === 'function' && FananiTracker.getToken()) {
+                const canServerSync = window.FananiTracker && (typeof FananiTracker.hasServerAuth === 'function' ? FananiTracker.hasServerAuth() : Boolean(FananiTracker.getToken()));
+                if (window.FananiTracker && typeof FananiTracker.syncData === 'function' && canServerSync) {
                     try {
                         await FananiTracker.syncData();
                     } catch(e) {
@@ -876,13 +877,16 @@ const LOCAL_CATALOG = {
 
             progressData = data;
             const { user, stats, badges, catalog } = progressData;
+            const isServerSynced = !window.FananiTracker || (typeof FananiTracker.hasServerAuth === 'function' ? FananiTracker.hasServerAuth() : Boolean(FananiTracker.getToken()));
 
             // 1. Render User Header
             if (user && user.name && user.name !== 'Siswa Tamu') {
                 const classNameText = user.kelas ? `Kelas ${user.kelas}` : 'Mode Mandiri';
                 const classBadgeHtml = user.kelas 
                     ? `<span class="inline-flex items-center px-3 py-1 bg-gradient-to-r from-amber-400 to-amber-300 text-slate-950 font-extrabold text-xs md:text-sm rounded-xl shadow-md border border-amber-300/90 tracking-wide">Kelas ${user.kelas}</span>` 
-                    : `<span class="inline-flex items-center px-2.5 py-0.5 bg-white/15 text-slate-200 font-bold text-xs rounded-xl border border-white/20">Mode Mandiri</span>`;
+                    : (isServerSynced && user.role !== 'teacher'
+                        ? `<button type="button" onclick="openEditProfileModal()" class="inline-flex items-center px-3 py-1 bg-rose-500 hover:bg-rose-400 text-white font-extrabold text-xs md:text-sm rounded-xl shadow-md animate-pulse">⚠️ Belum Pilih Kelas</button>`
+                        : `<span class="inline-flex items-center px-2.5 py-0.5 bg-white/15 text-slate-200 font-bold text-xs rounded-xl border border-white/20">Mode Mandiri</span>`);
 
                 document.getElementById('student-name-display').innerHTML = `
                     <span>${user.name}</span>
@@ -895,6 +899,7 @@ const LOCAL_CATALOG = {
                 document.getElementById('student-detail-info').innerHTML = `
                     <span>✨ Fanani's Class</span>
                     ${user.email ? `<span>•</span><span class="text-slate-300 font-mono text-[11px]">${user.email}</span>` : ''}
+                    ${!isServerSynced ? `<span>•</span><a href="../../index.html#auth-status-card" class="text-amber-300 hover:text-amber-200 font-bold underline transition">🔑 Masuk Google agar tersinkron ke server guru</a>` : ''}
                 `;
 
                 if (user.picture) {
@@ -915,7 +920,7 @@ const LOCAL_CATALOG = {
                 document.getElementById('student-detail-info').innerHTML = `
                     <span>✨ Fanani's Class</span>
                     <span>•</span>
-                    <a href="../index.html" class="text-amber-300 hover:text-amber-200 font-bold underline transition">🔑 Masuk dengan Google untuk sinkronkan nilai & foto</a>
+                    <a href="../../index.html#auth-status-card" class="text-amber-300 hover:text-amber-200 font-bold underline transition">🔑 Masuk dengan Google untuk sinkronkan nilai & foto</a>
                 `;
                 document.getElementById('student-avatar-box').innerHTML = '🎓';
             }

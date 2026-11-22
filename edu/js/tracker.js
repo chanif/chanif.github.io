@@ -56,10 +56,10 @@ const COURSE_CATALOG = {
                 desc: 'Perangkat keras (hardware), software, OS, sistem bilangan, dan interaksi manusia-komputer',
                 path: 'informatika/04-sistem-komputer/',
                 topics: [
-                    { id: 'inf-sistem-01', title: 'Mengenal Perangkat Komputer', path: 'informatika/04-sistem-komputer/01-perangkat-keras/' },
+                    { id: 'inf-sk-01', title: 'Mengenal Perangkat Komputer', path: 'informatika/04-sistem-komputer/01-perangkat-keras/' },
                     { id: 'inf-sk-02', title: 'Perangkat Lunak & Sistem Operasi', path: 'informatika/04-sistem-komputer/02-perangkat-lunak-sistem-operasi/' },
                     { id: 'inf-sk-03', title: 'Representasi Data Digital: Bit, Teks, Gambar & Suara', path: 'informatika/04-sistem-komputer/03-representasi-data-digital/' },
-                    { id: 'inf-sistem-04', title: 'Sistem Bilangan', path: 'informatika/04-sistem-komputer/04-sistem-bilangan/' },
+                    { id: 'inf-sk-04', title: 'Sistem Bilangan', path: 'informatika/04-sistem-komputer/04-sistem-bilangan/' },
                     { id: 'inf-sk-05', title: 'Interaksi Manusia-Komputer (IMK) & Prinsip UI/UX', path: 'informatika/04-sistem-komputer/05-interaksi-manusia-komputer/' }
                 ]
             },
@@ -69,12 +69,12 @@ const COURSE_CATALOG = {
                 desc: 'Topologi, arsitektur TCP/IP, DNS, paket data, dan keamanan koneksi jaringan',
                 path: 'informatika/05-jaringan-komputer-internet/',
                 topics: [
-                    { id: 'inf-jaringan-01', title: 'Jaringan Komputer & Internet', path: 'informatika/05-jaringan-komputer-internet/01-pengenalan-jaringan/' },
+                    { id: 'inf-jki-01', title: 'Jaringan Komputer & Internet', path: 'informatika/05-jaringan-komputer-internet/01-pengenalan-jaringan/' },
                     { id: 'inf-jki-02', title: 'Topologi & Perangkat Jaringan Komputer', path: 'informatika/05-jaringan-komputer-internet/02-topologi-dan-perangkat/' },
                     { id: 'inf-jki-03', title: 'Protokol Jaringan, IP Address & DNS', path: 'informatika/05-jaringan-komputer-internet/03-protokol-ip-address-dns/' },
                     { id: 'inf-jk-02', title: 'Jaringan Komputer: Perjalanan Paket Data di Internet', path: 'informatika/05-jaringan-komputer-internet/04-perjalanan-paket-data/' },
                     { id: 'inf-jki-05', title: 'Layanan Internet & Mesin Pencari Cerdas', path: 'informatika/05-jaringan-komputer-internet/05-layanan-internet/' },
-                    { id: 'inf-jaringan-06', title: 'Internet & Keamanan Digital', path: 'informatika/05-jaringan-komputer-internet/06-keamanan-jaringan/' }
+                    { id: 'inf-jki-06', title: 'Internet & Keamanan Digital', path: 'informatika/05-jaringan-komputer-internet/06-keamanan-jaringan/' }
                 ]
             },
             {
@@ -85,7 +85,7 @@ const COURSE_CATALOG = {
                 topics: [
                     { id: 'inf-ad-01', title: 'Pengantar Analisis Data & Hierarki DIKW', path: 'informatika/06-analisis-data/01-pengantar-data/' },
                     { id: 'inf-ad-02', title: 'Metode Pengumpulan Data & Etika Kuesioner', path: 'informatika/06-analisis-data/02-pengumpulan-data/' },
-                    { id: 'inf-analisis-03', title: 'Pengolahan Data dengan Google Sheets', path: 'informatika/06-analisis-data/03-pengolahan-spreadsheet/' },
+                    { id: 'inf-ad-03', title: 'Pengolahan Data dengan Google Sheets', path: 'informatika/06-analisis-data/03-pengolahan-spreadsheet/' },
                     { id: 'inf-ad-04', title: 'Visualisasi Data: Seni Mengubah Angka Menjadi Cerita', path: 'informatika/06-analisis-data/04-visualisasi-data/' },
                     { id: 'inf-ad-05', title: 'Interpretasi Data & Menarik Kesimpulan', path: 'informatika/06-analisis-data/05-interpretasi-kesimpulan/' },
                     { id: 'inf-ad-06', title: 'Proyek Analisis Data Mandiri', path: 'informatika/06-analisis-data/06-proyek-analisis-data/' }
@@ -97,12 +97,12 @@ const COURSE_CATALOG = {
                 desc: 'Flowchart, Scratch blok, variabel, percabangan if-else, loop, dan Python dasar',
                 path: 'informatika/07-algoritma-pemrograman/',
                 topics: [
-                    { id: 'inf-algoritma-01', title: 'Algoritma & Flowchart', path: 'informatika/07-algoritma-pemrograman/01-konsep-algoritma/' },
-                    { id: 'inf-algoritma-02', title: 'Scratch Lanjutan: Game & Animasi Interaktif', path: 'informatika/07-algoritma-pemrograman/02-pemrograman-blok-scratch/' },
+                    { id: 'inf-ap-01', title: 'Algoritma & Flowchart', path: 'informatika/07-algoritma-pemrograman/01-konsep-algoritma/' },
+                    { id: 'inf-ap-02', title: 'Scratch Lanjutan: Game & Animasi Interaktif', path: 'informatika/07-algoritma-pemrograman/02-pemrograman-blok-scratch/' },
                     { id: 'inf-ap-03', title: 'Variabel, Tipe Data & Operator', path: 'informatika/07-algoritma-pemrograman/03-variabel-dan-tipe-data/' },
                     { id: 'inf-ap-04', title: 'Struktur Percabangan (If-Else & Elif)', path: 'informatika/07-algoritma-pemrograman/04-percabangan-if-else/' },
-                    { id: 'inf-algoritma-05', title: 'Logika: Percabangan & Pengulangan', path: 'informatika/07-algoritma-pemrograman/05-perulangan-loop/' },
-                    { id: 'inf-algoritma-06', title: 'Python Turtle: Belajar Coding Lewat Menggambar', path: 'informatika/07-algoritma-pemrograman/06-python-dasar/' },
+                    { id: 'inf-ap-05', title: 'Logika: Percabangan & Pengulangan', path: 'informatika/07-algoritma-pemrograman/05-perulangan-loop/' },
+                    { id: 'inf-ap-06', title: 'Python Turtle: Belajar Coding Lewat Menggambar', path: 'informatika/07-algoritma-pemrograman/06-python-dasar/' },
                     { id: 'inf-ap-07', title: 'Fungsi & Modularitas Kode', path: 'informatika/07-algoritma-pemrograman/07-fungsi-dan-modularitas/' },
                     { id: 'inf-ap-08', title: 'Proyek Pemrograman Mandiri', path: 'informatika/07-algoritma-pemrograman/08-proyek-pemrograman/' }
                 ]
@@ -114,11 +114,11 @@ const COURSE_CATALOG = {
                 path: 'informatika/08-dampak-sosial-informatika/',
                 topics: [
                     { id: 'inf-dsi-01', title: 'Etika Digital & Netiquette', path: 'informatika/08-dampak-sosial-informatika/01-etika-digital/' },
-                    { id: 'inf-dampak-02', title: 'Rekam Jejak Digital', path: 'informatika/08-dampak-sosial-informatika/02-rekam-jejak-digital/' },
+                    { id: 'inf-dsi-02', title: 'Rekam Jejak Digital', path: 'informatika/08-dampak-sosial-informatika/02-rekam-jejak-digital/' },
                     { id: 'inf-dsi-03', title: 'Keamanan & Privasi Data Pribadi', path: 'informatika/08-dampak-sosial-informatika/03-keamanan-privasi-data/' },
                     { id: 'inf-dsi-04', title: 'Hak Kekayaan Intelektual (HKI) & Lisensi Digital', path: 'informatika/08-dampak-sosial-informatika/04-hak-kekayaan-intelektual/' },
                     { id: 'inf-dsi-05', title: 'Pencegahan Cyberbullying & Deteksi Hoax', path: 'informatika/08-dampak-sosial-informatika/05-cyberbullying-dan-hoax/' },
-                    { id: 'inf-dampak-06', title: 'Kewargaan Digital', path: 'informatika/08-dampak-sosial-informatika/06-kewargaan-digital/' }
+                    { id: 'inf-dsi-06', title: 'Kewargaan Digital', path: 'informatika/08-dampak-sosial-informatika/06-kewargaan-digital/' }
                 ]
             },
             {
@@ -127,11 +127,11 @@ const COURSE_CATALOG = {
                 desc: 'Membuat website HTML/CSS, UI/UX, mobile app inventor, dan pameran digital',
                 path: 'informatika/09-praktik-lintas-bidang/',
                 topics: [
-                    { id: 'inf-praktik-01', title: 'Membuat Website dengan HTML', path: 'informatika/09-praktik-lintas-bidang/01-membuat-website-html/' },
-                    { id: 'inf-praktik-02', title: 'Mempercantik Web dengan CSS', path: 'informatika/09-praktik-lintas-bidang/02-styling-dengan-css/' },
-                    { id: 'inf-praktik-03', title: 'UI/UX Dasar: Desain yang Nyaman', path: 'informatika/09-praktik-lintas-bidang/03-ui-ux-dasar/' },
-                    { id: 'inf-praktik-04', title: 'App Inventor: Buat Aplikasi Android', path: 'informatika/09-praktik-lintas-bidang/04-app-inventor/' },
-                    { id: 'inf-praktik-05', title: 'Proyek Pameran Digital', path: 'informatika/09-praktik-lintas-bidang/05-proyek-pameran-digital/' }
+                    { id: 'inf-plb-01', title: 'Membuat Website dengan HTML', path: 'informatika/09-praktik-lintas-bidang/01-membuat-website-html/' },
+                    { id: 'inf-plb-02', title: 'Mempercantik Web dengan CSS', path: 'informatika/09-praktik-lintas-bidang/02-styling-dengan-css/' },
+                    { id: 'inf-plb-03', title: 'UI/UX Dasar: Desain yang Nyaman', path: 'informatika/09-praktik-lintas-bidang/03-ui-ux-dasar/' },
+                    { id: 'inf-plb-04', title: 'App Inventor: Buat Aplikasi Android', path: 'informatika/09-praktik-lintas-bidang/04-app-inventor/' },
+                    { id: 'inf-plb-05', title: 'Proyek Pameran Digital', path: 'informatika/09-praktik-lintas-bidang/05-proyek-pameran-digital/' }
                 ]
             },
             {
@@ -254,6 +254,59 @@ const COURSE_CATALOG = {
         ]
     };
 
+    const LEGACY_TOPIC_ALIASES = {
+        'inf-sistem-01': 'inf-sk-01',
+        'inf-sistem-04': 'inf-sk-04',
+        'inf-jaringan-01': 'inf-jki-01',
+        'inf-jaringan-06': 'inf-jki-06',
+        'inf-analisis-03': 'inf-ad-03',
+        'inf-algoritma-01': 'inf-ap-01',
+        'inf-algoritma-02': 'inf-ap-02',
+        'inf-algoritma-05': 'inf-ap-05',
+        'inf-algoritma-06': 'inf-ap-06',
+        'inf-dampak-02': 'inf-dsi-02',
+        'inf-dampak-06': 'inf-dsi-06',
+        'inf-praktik-01': 'inf-plb-01',
+        'inf-praktik-02': 'inf-plb-02',
+        'inf-praktik-03': 'inf-plb-03',
+        'inf-praktik-04': 'inf-plb-04',
+        'inf-praktik-05': 'inf-plb-05'
+    };
+
+    function normalizeTopicId(topicId) {
+        const clean = String(topicId || '').trim();
+        return LEGACY_TOPIC_ALIASES[clean] || clean;
+    }
+
+    function migrateLegacyLocalKeys() {
+        try {
+            const prog = getLocalProgress();
+            let progChanged = false;
+            Object.keys(LEGACY_TOPIC_ALIASES).forEach(oldId => {
+                const newId = LEGACY_TOPIC_ALIASES[oldId];
+                if (prog[oldId] && !prog[newId]) {
+                    prog[newId] = true;
+                    progChanged = true;
+                }
+                const oldEvalRaw = localStorage.getItem(`eval_hist_${oldId}`);
+                if (oldEvalRaw) {
+                    const oldList = JSON.parse(oldEvalRaw || '[]');
+                    const curList = JSON.parse(localStorage.getItem(`eval_hist_${newId}`) || '[]');
+                    if (Array.isArray(oldList) && oldList.length > 0 && curList.length === 0) {
+                        localStorage.setItem(`eval_hist_${newId}`, JSON.stringify(oldList.map(e => ({ ...e, topic_id: newId }))));
+                    }
+                }
+                const oldRefl = localStorage.getItem(`refl_${oldId}`);
+                if (oldRefl && !localStorage.getItem(`refl_${newId}`)) {
+                    localStorage.setItem(`refl_${newId}`, oldRefl);
+                }
+            });
+            if (progChanged) {
+                localStorage.setItem('fanani_edu_progress', JSON.stringify(prog));
+            }
+        } catch (e) {}
+    }
+
     function getToken() {
         try {
             return localStorage.getItem('fanani_auth_token') || null;
@@ -266,25 +319,45 @@ const COURSE_CATALOG = {
         try {
             const user = JSON.parse(localStorage.getItem('fanani_user') || 'null');
             if (user) {
-                if (!user.picture) {
-                    const token = getToken();
-                    if (token) {
-                        try {
-                            const b64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
-                            const p = JSON.parse(decodeURIComponent(atob(b64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')));
-                            if (p && p.picture) {
-                                user.picture = p.picture;
-                                localStorage.setItem('fanani_user', JSON.stringify(user));
-                            }
-                        } catch(e) {}
-                    }
-                }
                 return user;
             }
             return null;
         } catch (e) {
             return null;
         }
+    }
+
+    function getUserIdentity() {
+        const user = getUser();
+        if (!user || !user.google_id || !user.email) return null;
+        return {
+            google_id: String(user.google_id).trim(),
+            email: String(user.email).trim(),
+            full_name: String(user.full_name || user.name || '').trim(),
+            kelas: String(user.kelas || '').trim()
+        };
+    }
+
+    function getUserProfilePayload() {
+        const user = getUser();
+        if (!user) return null;
+        return {
+            full_name: String(user.full_name || user.name || '').trim(),
+            kelas: String(user.kelas || '').trim()
+        };
+    }
+
+    function hasServerAuth() {
+        return Boolean(getToken() || getUserIdentity());
+    }
+
+    function persistRecoveredToken(data) {
+        try {
+            const newTok = data && (data.session_token || data.token);
+            if (newTok) {
+                localStorage.setItem('fanani_auth_token', newTok);
+            }
+        } catch (e) {}
     }
 
     function getLocalProgress() {
@@ -297,8 +370,9 @@ const COURSE_CATALOG = {
 
     function setLocalProgress(topicId, isCompleted = true) {
         try {
+            const tid = normalizeTopicId(topicId);
             const prog = getLocalProgress();
-            prog[topicId] = isCompleted;
+            prog[tid] = isCompleted;
             localStorage.setItem('fanani_edu_progress', JSON.stringify(prog));
         } catch (e) {}
     }
@@ -320,152 +394,217 @@ const COURSE_CATALOG = {
 
     // Record or sync completion status
     async function markCompleted(subject, topicId) {
-        setLocalProgress(topicId, true);
+        const canonicalId = normalizeTopicId(topicId);
+        setLocalProgress(canonicalId, true);
 
         const token = getToken();
-        if (!token) return { success: true, mode: 'local' };
+        const identity = getUserIdentity();
+        if (!token && !identity) return { success: true, mode: 'local' };
 
         try {
-            const res = await fetch(`${API_BASE_URL}/save_progress.php`, {
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) headers['Authorization'] = `Bearer ${token}`;
+
+            const res = await fetch(`${API_BASE_URL}/save_progress`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ subject, topic_id: topicId, status: 'completed' })
+                headers,
+                body: JSON.stringify({
+                    subject,
+                    topic_id: canonicalId,
+                    status: 'completed',
+                    user_identity: identity,
+                    user_profile: getUserProfilePayload()
+                })
             });
             if (!handleAuthStatus(res)) {
                 return { success: false, mode: 'session_expired' };
             }
+            if (!res.ok) {
+                const syncFallback = await syncData(true);
+                return syncFallback && syncFallback.success ? { success: true, mode: 'synced' } : { success: false, mode: 'local_fallback' };
+            }
             const data = await res.json();
+            persistRecoveredToken(data);
             syncData(false).catch(() => {});
-            return { success: data.success, mode: 'server' };
+            return { success: Boolean(data && data.success), mode: 'server' };
         } catch (err) {
             console.warn('[Tracker] Offline fallback for progress:', err);
-            return { success: true, mode: 'local_fallback' };
+            const syncFallback = await syncData(true).catch(() => null);
+            return syncFallback && syncFallback.success ? { success: true, mode: 'synced' } : { success: true, mode: 'local_fallback' };
+        }
+    }
+
+    function mountAuthSyncCard(totalScore, syncResult) {
+        try {
+            const html = getAuthSyncHtml(totalScore, syncResult);
+            const existing = document.getElementById('eval-auth-sync-card');
+            if (existing) {
+                existing.outerHTML = html;
+                return;
+            }
+            const recap = document.getElementById('eval-recap-result');
+            if (recap) {
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                if (temp.firstElementChild) recap.appendChild(temp.firstElementChild);
+                return;
+            }
+            const histBox = document.getElementById('attempt-history-box');
+            if (histBox && histBox.parentElement) {
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                if (temp.firstElementChild) histBox.parentElement.insertBefore(temp.firstElementChild, histBox);
+            }
+        } catch (e) {
+            console.warn('[Tracker] Error rendering auth sync card in eval recap:', e);
         }
     }
 
     // Submit evaluation with score and answers (multi-attempt)
     async function submitEvaluation(payload) {
-        // payload: { subject, topic_id, score_a, score_b, score_c, score_d, total_score, answers }
-        const { subject, topic_id, total_score } = payload;
+        const canonicalId = normalizeTopicId(payload.topic_id);
+        const { subject, total_score } = payload;
+        const clientCreatedAt = new Date().toISOString();
+        const normalizedPayload = { ...payload, topic_id: canonicalId, client_created_at: clientCreatedAt };
 
-        // 1. Save locally to history
+        // 1. Save locally to history first so data is never lost
         try {
-            const histKey = `eval_hist_${topic_id}`;
+            const histKey = `eval_hist_${canonicalId}`;
             const localHist = JSON.parse(localStorage.getItem(histKey) || '[]');
             const attemptNum = localHist.length + 1;
             const entry = {
                 attempt_number: attemptNum,
-                ...payload,
-                created_at: new Date().toISOString()
+                ...normalizedPayload,
+                created_at: clientCreatedAt
             };
             localHist.push(entry);
             localStorage.setItem(histKey, JSON.stringify(localHist));
 
             if (total_score >= 70) {
-                setLocalProgress(topic_id, true);
+                setLocalProgress(canonicalId, true);
             }
         } catch (e) {}
 
-        // 2. Sync to Server if authenticated
+        // 2. Sync to Server if token or student identity is present
         const token = getToken();
+        const identity = getUserIdentity();
         let syncResult = { success: true, mode: 'local' };
-        if (token) {
+
+        if (token || identity) {
             try {
-                const res = await fetch(`${API_BASE_URL}/submit_evaluation.php`, {
+                const headers = { 'Content-Type': 'application/json' };
+                if (token) headers['Authorization'] = `Bearer ${token}`;
+
+                const res = await fetch(`${API_BASE_URL}/submit_evaluation`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    body: JSON.stringify(payload)
+                    headers,
+                    body: JSON.stringify({
+                        ...normalizedPayload,
+                        user_identity: identity,
+                        user_profile: getUserProfilePayload()
+                    })
                 });
                 if (!handleAuthStatus(res)) {
                     syncResult = { success: false, mode: 'session_expired' };
+                } else if (!res.ok) {
+                    const fallbackSync = await syncData(true);
+                    syncResult = (fallbackSync && fallbackSync.success)
+                        ? { success: true, mode: 'synced' }
+                        : { success: false, mode: 'local_fallback' };
                 } else {
-                    syncResult = await res.json();
-                    syncData(false).catch(() => {});
+                    const data = await res.json();
+                    persistRecoveredToken(data);
+                    if (data && data.success) {
+                        syncResult = { ...data, mode: 'server' };
+                        syncData(false).catch(() => {});
+                    } else {
+                        const fallbackSync = await syncData(true);
+                        syncResult = (fallbackSync && fallbackSync.success)
+                            ? { success: true, mode: 'synced' }
+                            : { success: false, mode: 'local_fallback' };
+                    }
                 }
             } catch (err) {
                 console.warn('[Tracker] Offline fallback for evaluation:', err);
-                syncResult = { success: true, mode: 'local_fallback' };
+                const fallbackSync = await syncData(true).catch(() => null);
+                syncResult = (fallbackSync && fallbackSync.success)
+                    ? { success: true, mode: 'synced' }
+                    : { success: false, mode: 'local_fallback' };
             }
         }
 
-        // 3. Auto-inject or update HASIL ASESMEN FORMATIF Auth Sync Box
-        try {
-            const recap = document.getElementById('eval-recap-result');
-            if (recap) {
-                let syncBox = document.getElementById('eval-auth-sync-card');
-                if (syncBox) {
-                    syncBox.outerHTML = getAuthSyncHtml(total_score);
-                } else {
-                    const temp = document.createElement('div');
-                    temp.innerHTML = getAuthSyncHtml(total_score);
-                    if (temp.firstElementChild) {
-                        recap.appendChild(temp.firstElementChild);
-                    }
-                }
-            }
-        } catch (e) {
-            console.warn('[Tracker] Error rendering auth sync card in eval recap:', e);
-        }
-
+        // 3. Render accurate sync status card
+        mountAuthSyncCard(total_score, syncResult);
         return syncResult;
     }
 
     // Save reflection note
     async function saveReflection(subject, topic_id, reflection_text) {
+        const canonicalId = normalizeTopicId(topic_id);
         try {
-            localStorage.setItem(`refl_${topic_id}`, reflection_text);
+            localStorage.setItem(`refl_${canonicalId}`, reflection_text);
         } catch (e) {}
 
         const token = getToken();
-        if (!token) return { success: true, mode: 'local' };
+        const identity = getUserIdentity();
+        if (!token && !identity) return { success: true, mode: 'local' };
 
         try {
-            const res = await fetch(`${API_BASE_URL}/save_reflection.php`, {
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) headers['Authorization'] = `Bearer ${token}`;
+
+            const res = await fetch(`${API_BASE_URL}/save_reflection`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ subject, topic_id, reflection_text })
+                headers,
+                body: JSON.stringify({
+                    subject,
+                    topic_id: canonicalId,
+                    reflection_text,
+                    user_identity: identity,
+                    user_profile: getUserProfilePayload()
+                })
             });
             if (!handleAuthStatus(res)) {
                 return { success: false, mode: 'session_expired' };
             }
+            if (!res.ok) {
+                const syncFallback = await syncData(true);
+                return syncFallback && syncFallback.success ? { success: true, mode: 'synced' } : { success: false, mode: 'local_fallback' };
+            }
             const data = await res.json();
+            persistRecoveredToken(data);
             syncData(false).catch(() => {});
-            return { success: data.success, mode: 'server' };
+            return { success: Boolean(data && data.success), mode: 'server' };
         } catch (err) {
             console.warn('[Tracker] Offline fallback for reflection:', err);
-            return { success: true, mode: 'local_fallback' };
+            const syncFallback = await syncData(true).catch(() => null);
+            return syncFallback && syncFallback.success ? { success: true, mode: 'synced' } : { success: false, mode: 'local_fallback' };
         }
     }
 
     // Fetch history for specific topic
     async function getHistory(subject, topic_id) {
+        const canonicalId = normalizeTopicId(topic_id);
         const token = getToken();
         if (token) {
             try {
-                const res = await fetch(`${API_BASE_URL}/get_topic_history.php?subject=${subject}&topic_id=${topic_id}`, {
+                const res = await fetch(`${API_BASE_URL}/get_topic_history?subject=${encodeURIComponent(subject)}&topic_id=${encodeURIComponent(canonicalId)}`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
-                const data = await res.json();
-                if (data && data.success) {
-                    return data;
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.success) {
+                        return data;
+                    }
                 }
             } catch (err) {}
         }
 
         // Fallback local
-        const histKey = `eval_hist_${topic_id}`;
+        const histKey = `eval_hist_${canonicalId}`;
         const localHist = JSON.parse(localStorage.getItem(histKey) || '[]');
-        const localRefl = localStorage.getItem(`refl_${topic_id}`) || null;
-        const isComp = !!getLocalProgress()[topic_id];
+        const localRefl = localStorage.getItem(`refl_${canonicalId}`) || null;
+        const isComp = !!getLocalProgress()[canonicalId];
 
         return {
             success: true,
@@ -687,29 +826,30 @@ const COURSE_CATALOG = {
         const fullName = payload.full_name || payload.name || storedUser.full_name || storedUser.name || '';
         const kelas = payload.kelas || storedUser.kelas || '';
         const token = getToken();
+        const identity = getUserIdentity();
 
-        if (!token) {
+        if (!token && !identity) {
             return { success: true, mode: 'local_only' };
         }
 
         try {
-            const headers = { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            };
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) headers['Authorization'] = `Bearer ${token}`;
 
             const res = await fetch(`${API_BASE_URL}/save_profile`, {
                 method: 'POST',
                 headers,
-                body: JSON.stringify({ 
-                    full_name: fullName, 
-                    kelas
+                body: JSON.stringify({
+                    full_name: fullName,
+                    kelas,
+                    user_identity: identity
                 })
             });
             if (!handleAuthStatus(res)) {
                 return { success: false, error: 'Sesi login telah berakhir' };
             }
             const data = await res.json();
+            persistRecoveredToken(data);
             return data;
         } catch (err) {
             console.warn('[Tracker] Save profile network fallback:', err);
@@ -728,26 +868,41 @@ const COURSE_CATALOG = {
             return { skipped: true, reason: 'debounced' };
         }
 
+        migrateLegacyLocalKeys();
+
         const token = getToken();
-        if (!token) {
+        const identity = getUserIdentity();
+        if (!token && !identity) {
             return { skipped: true, reason: 'unauthenticated' };
         }
 
         isSyncing = true;
         try {
-            // 1. Gather all local progress
-            const localProg = getLocalProgress();
+            // 1. Gather all local progress (normalized to canonical topic IDs)
+            const rawLocalProg = getLocalProgress();
+            const localProg = {};
+            Object.keys(rawLocalProg).forEach(k => {
+                if (rawLocalProg[k]) {
+                    localProg[normalizeTopicId(k)] = true;
+                }
+            });
 
-            // 2. Gather all local evaluation submissions
+            // 2. Gather all local evaluation submissions (normalized & deduplicated)
             const localEvals = [];
+            const seenEvals = new Set();
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
                 if (key && key.startsWith('eval_hist_')) {
-                    const topicId = key.substring(10);
+                    const topicId = normalizeTopicId(key.substring(10));
                     try {
                         const attempts = JSON.parse(localStorage.getItem(key) || '[]');
                         if (Array.isArray(attempts)) {
                             attempts.forEach(att => {
+                                const createdAt = att.created_at || new Date().toISOString();
+                                const totalScore = att.total_score || 0;
+                                const dedupKey = `${topicId}|${createdAt}|${totalScore}`;
+                                if (seenEvals.has(dedupKey)) return;
+                                seenEvals.add(dedupKey);
                                 localEvals.push({
                                     topic_id: topicId,
                                     subject: att.subject || (topicId.startsWith('kka-') ? 'coding' : 'informatika'),
@@ -756,9 +911,9 @@ const COURSE_CATALOG = {
                                     score_b: att.score_b || 0,
                                     score_c: att.score_c || 0,
                                     score_d: att.score_d || 0,
-                                    total_score: att.total_score || 0,
+                                    total_score: totalScore,
                                     answers: att.answers || {},
-                                    created_at: att.created_at || new Date().toISOString()
+                                    created_at: createdAt
                                 });
                             });
                         }
@@ -766,14 +921,14 @@ const COURSE_CATALOG = {
                 }
             }
 
-            // 3. Gather all local reflection notes
+            // 3. Gather all local reflection notes (normalized to canonical topic IDs)
             const localReflections = {};
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
                 if (key && key.startsWith('refl_')) {
-                    const topicId = key.substring(5);
+                    const topicId = normalizeTopicId(key.substring(5));
                     const text = localStorage.getItem(key);
-                    if (text && text.trim()) {
+                    if (text && text.trim() && !localReflections[topicId]) {
                         localReflections[topicId] = {
                             text: text.trim(),
                             subject: topicId.startsWith('kka-') ? 'coding' : 'informatika'
@@ -783,15 +938,15 @@ const COURSE_CATALOG = {
             }
 
             // 4. Send to /sync_progress endpoint
-            const headers = { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            };
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) headers['Authorization'] = `Bearer ${token}`;
 
             const payload = {
                 progress: localProg,
                 evaluations: localEvals,
-                reflections: localReflections
+                reflections: localReflections,
+                user_identity: identity,
+                user_profile: getUserProfilePayload()
             };
 
             const res = await fetch(`${API_BASE_URL}/sync_progress`, {
@@ -811,28 +966,67 @@ const COURSE_CATALOG = {
             }
 
             const data = await res.json();
+            persistRecoveredToken(data);
+
             if (data && data.success) {
+                // Reconcile server user profile (e.g., kelas/name) back into localStorage
+                if (data.user) {
+                    try {
+                        const curUser = getUser() || {};
+                        const mergedKelas = data.user.kelas || curUser.kelas || '';
+                        const mergedName = data.user.full_name || curUser.full_name || curUser.name || '';
+                        const mergedUser = {
+                            ...curUser,
+                            id: data.user.id || curUser.id,
+                            google_id: curUser.google_id,
+                            email: data.user.email || curUser.email,
+                            name: mergedName,
+                            full_name: mergedName,
+                            kelas: mergedKelas,
+                            picture: data.user.avatar_url || curUser.picture || '',
+                            role: data.user.role || curUser.role || 'student',
+                            profile_completed: Boolean(data.user.profile_completed || mergedKelas)
+                        };
+                        localStorage.setItem('fanani_user', JSON.stringify(mergedUser));
+                    } catch (e) {}
+                }
+
                 // 5. Reconcile merged progress back to LocalStorage
                 if (data.merged_progress) {
                     const existingProg = getLocalProgress();
-                    const mergedProg = { ...existingProg, ...data.merged_progress };
+                    const mergedProg = {};
+                    Object.keys(existingProg).forEach(k => {
+                        if (existingProg[k]) mergedProg[normalizeTopicId(k)] = true;
+                    });
+                    Object.keys(data.merged_progress).forEach(k => {
+                        if (data.merged_progress[k]) mergedProg[normalizeTopicId(k)] = true;
+                    });
                     localStorage.setItem('fanani_edu_progress', JSON.stringify(mergedProg));
                 }
 
-                // 6. Reconcile merged evaluations back to LocalStorage
+                // 6. Reconcile merged evaluations back to LocalStorage (deduplicated)
                 if (data.merged_evaluations) {
-                    Object.keys(data.merged_evaluations).forEach(tId => {
-                        const sAttempts = data.merged_evaluations[tId];
+                    Object.keys(data.merged_evaluations).forEach(rawId => {
+                        const tId = normalizeTopicId(rawId);
+                        const sAttempts = data.merged_evaluations[rawId];
                         if (Array.isArray(sAttempts) && sAttempts.length > 0) {
-                            localStorage.setItem(`eval_hist_${tId}`, JSON.stringify(sAttempts));
+                            const existing = JSON.parse(localStorage.getItem(`eval_hist_${tId}`) || '[]');
+                            const combined = [...sAttempts];
+                            const serverKeys = new Set(sAttempts.map(a => `${a.total_score || 0}|${String(a.created_at || '').substring(0, 16)}`));
+                            existing.forEach(loc => {
+                                const locKey = `${loc.total_score || 0}|${String(loc.created_at || '').substring(0, 16)}`;
+                                if (!serverKeys.has(locKey)) combined.push(loc);
+                            });
+                            localStorage.setItem(`eval_hist_${tId}`, JSON.stringify(combined.map(a => ({ ...a, topic_id: tId }))));
                         }
                     });
                 }
 
                 // 7. Reconcile merged reflections back to LocalStorage
                 if (data.merged_reflections) {
-                    Object.keys(data.merged_reflections).forEach(tId => {
-                        const rText = data.merged_reflections[tId];
+                    Object.keys(data.merged_reflections).forEach(rawId => {
+                        const tId = normalizeTopicId(rawId);
+                        const rText = data.merged_reflections[rawId];
                         if (rText) {
                             localStorage.setItem(`refl_${tId}`, rText);
                         }
@@ -841,6 +1035,7 @@ const COURSE_CATALOG = {
 
                 lastSyncTime = Date.now();
                 isSyncing = false;
+                renderNavbarAuth();
 
                 // Dispatch global event for active pages to reactively refresh
                 if (typeof window !== 'undefined') {
@@ -891,14 +1086,39 @@ const COURSE_CATALOG = {
         return { learnBase, progressPath };
     }
 
+    async function retrySyncNow(btnEl) {
+        const scoreVal = btnEl && btnEl.dataset && btnEl.dataset.score !== undefined
+            ? Number(btnEl.dataset.score)
+            : undefined;
+        if (btnEl) {
+            btnEl.disabled = true;
+            btnEl.textContent = '⏳ Menyinkronkan...';
+        }
+        const res = await syncData(true);
+        const syncResult = (res && res.success)
+            ? { success: true, mode: 'synced' }
+            : { success: false, mode: 'local_fallback' };
+        mountAuthSyncCard(scoreVal, syncResult);
+        renderNavbarAuth();
+        return syncResult;
+    }
+
     // Generate rich status card for HASIL ASESMEN FORMATIF
-    function getAuthSyncHtml(totalScore) {
+    function getAuthSyncHtml(totalScore, syncResult = null) {
         const user = getUser();
         const { learnBase, progressPath } = getAppPaths();
-        const isLogged = user && user.name && user.name !== 'Siswa Tamu';
+        const authReady = hasServerAuth();
+        const hasName = Boolean(user && user.name && user.name !== 'Siswa Tamu');
+        const isLogged = hasName && authReady;
+        const didFailSync = Boolean(syncResult && syncResult.success === false);
         const scoreVal = totalScore !== undefined ? totalScore : 100;
 
-        if (isLogged) {
+        if (isLogged && !didFailSync) {
+            const kelasHtml = user.kelas
+                ? `<span class="bg-amber-400 text-slate-950 px-1.5 py-0.2 rounded font-bold">Kelas ${user.kelas}</span>`
+                : (user.role === 'teacher'
+                    ? `<span class="bg-indigo-400 text-slate-950 px-1.5 py-0.2 rounded font-bold">Akun Guru</span>`
+                    : `<a href="${learnBase}index.html" class="bg-amber-400 hover:bg-amber-300 text-slate-950 px-2 py-0.5 rounded font-extrabold underline">⚠️ Belum Pilih Kelas</a>`);
             return `
                 <div id="eval-auth-sync-card" class="mt-4 p-4 bg-emerald-950/60 border border-emerald-400/40 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-emerald-200 shadow-md">
                     <div class="flex items-center gap-3 w-full sm:w-auto">
@@ -911,13 +1131,43 @@ const COURSE_CATALOG = {
                                 <span class="px-2 py-0.5 bg-emerald-400 text-slate-950 font-extrabold text-[10px] rounded-lg">Tersinkron Guru</span>
                             </div>
                             <p class="text-[11px] text-emerald-300/90 mt-0.5">
-                                Tercatat atas nama <strong>${user.name}</strong> ${user.kelas ? `<span class="bg-amber-400 text-slate-950 px-1.5 py-0.2 rounded font-bold">Kelas ${user.kelas}</span>` : ''} • Nilai: <strong class="text-white">${scoreVal}/100</strong>
+                                Tercatat atas nama <strong>${user.name}</strong> ${kelasHtml} • Nilai: <strong class="text-white">${scoreVal}/100</strong>
                             </p>
                         </div>
                     </div>
                     <a href="${progressPath}" class="px-4 py-2 bg-gradient-to-r from-emerald-400 to-teal-300 hover:from-emerald-300 hover:to-teal-200 text-slate-950 font-extrabold rounded-xl transition text-xs flex items-center gap-1.5 shadow-md whitespace-nowrap flex-shrink-0">
                         <span>📊</span> Buka Rapor Progress Belajar →
                     </a>
+                </div>
+            `;
+        } else if (authReady && didFailSync) {
+            return `
+                <div id="eval-auth-sync-card" class="mt-4 p-4 bg-gradient-to-r from-amber-950/90 via-slate-900 to-rose-950/80 border-2 border-amber-400/70 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-amber-200 shadow-xl">
+                    <div class="flex items-start sm:items-center gap-3 w-full md:w-auto">
+                        <div class="w-11 h-11 rounded-2xl bg-amber-400/20 text-amber-300 border border-amber-400/40 flex items-center justify-center text-2xl flex-shrink-0">
+                            🔄
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <strong class="text-amber-300 text-sm font-heading font-extrabold">Nilai Tersimpan di Browser — Belum Terkirim ke Server Guru</strong>
+                                <span class="px-2 py-0.5 bg-amber-400 text-slate-950 font-extrabold text-[10px] rounded-full">Menunggu Sinkronisasi</span>
+                            </div>
+                            <p class="text-[11px] text-slate-300 leading-snug mt-1 max-w-xl">
+                                Koneksi ke server gagal atau sesi login ${(user && user.name) ? `<strong>${user.name}</strong> ` : ''}perlu diperbarui. Klik <strong>Kirim Ulang Sekarang</strong> atau masuk ulang dengan Google agar nilai <strong class="text-white font-mono">(${scoreVal}/100)</strong> masuk ke daftar nilai Pak Fanani!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 w-full md:w-auto justify-end flex-shrink-0 flex-wrap">
+                        <button type="button" data-score="${scoreVal}" onclick="window.FananiTracker.retrySyncNow(this)" class="px-4 py-2.5 bg-gradient-to-r from-amber-400 to-amber-300 hover:from-amber-300 hover:to-amber-200 text-slate-950 font-heading font-extrabold rounded-xl transition text-xs flex items-center gap-1.5 shadow-md whitespace-nowrap">
+                            <span>🔄</span> Kirim Ulang Sekarang
+                        </button>
+                        <a href="${learnBase}index.html#auth-status-card" class="px-3.5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl transition text-xs whitespace-nowrap border border-white/20">
+                            🔑 Cek Akun Google
+                        </a>
+                        <a href="${progressPath}" class="px-3.5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl transition text-xs whitespace-nowrap border border-white/20">
+                            📊 Rapor
+                        </a>
+                    </div>
                 </div>
             `;
         } else {
@@ -976,9 +1226,14 @@ const COURSE_CATALOG = {
 
         const user = getUser();
         const { learnBase, progressPath } = getAppPaths();
-        const isLogged = user && user.name && user.name !== 'Siswa Tamu';
+        const isLogged = Boolean(user && user.name && user.name !== 'Siswa Tamu' && hasServerAuth());
 
         if (isLogged) {
+            const kelasBadge = user.kelas
+                ? `<span class="text-[9px] font-extrabold text-amber-700 bg-amber-200 px-1 py-0.2 rounded">Kelas ${user.kelas}</span>`
+                : (user.role === 'teacher'
+                    ? `<span class="text-[9px] font-extrabold text-indigo-700 bg-indigo-100 px-1 py-0.2 rounded">Guru</span>`
+                    : `<a href="${learnBase}index.html" class="text-[9px] font-extrabold text-red-700 bg-red-100 border border-red-300 px-1.5 py-0.2 rounded animate-pulse" title="Klik untuk memilih kelas di beranda">⚠️ Pilih Kelas!</a>`);
             container.innerHTML = `
                 <div class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200/80 border border-slate-200 px-2.5 py-1 rounded-2xl transition">
                     <div class="w-7 h-7 rounded-xl bg-slate-900 flex items-center justify-center text-xs overflow-hidden flex-shrink-0">
@@ -986,7 +1241,7 @@ const COURSE_CATALOG = {
                     </div>
                     <div class="text-left hidden sm:block leading-tight pr-1">
                         <span class="text-[11px] font-extrabold text-slate-800 block truncate max-w-[120px]">${user.name}</span>
-                        <span class="text-[9px] font-extrabold text-amber-700 bg-amber-200 px-1 py-0.2 rounded">${user.kelas ? 'Kelas ' + user.kelas : 'Mandiri'}</span>
+                        ${kelasBadge}
                     </div>
                     <a href="${progressPath}" class="px-2.5 py-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] rounded-xl transition shadow-sm flex items-center gap-1">
                         <span>📊</span> <span class="hidden md:inline">Rapor</span>
@@ -997,7 +1252,7 @@ const COURSE_CATALOG = {
             container.innerHTML = `
                 <div class="flex items-center gap-1.5 bg-amber-50 border border-amber-200/90 px-2.5 py-1 rounded-2xl text-xs">
                     <span class="text-amber-800 font-bold text-[10px] sm:text-[11px] flex items-center gap-1">
-                        <span>👤</span> <span class="hidden md:inline">Mode Tamu · </span><span class="hidden sm:inline text-amber-600">Progres Belum Disimpan</span>
+                        <span>👤</span> <span class="hidden md:inline">Mode Tamu · </span><span class="hidden sm:inline text-amber-600">Belum Sinkron Guru</span>
                     </span>
                     <a href="${learnBase}index.html#auth-status-card" class="px-2 py-0.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[10px] rounded-lg transition shadow-sm whitespace-nowrap">
                         🔑 Masuk
@@ -1066,8 +1321,9 @@ const COURSE_CATALOG = {
 
     if (typeof window !== 'undefined') {
         const initTracker = () => {
+            migrateLegacyLocalKeys();
             renderNavbarAuth();
-            if (getToken()) {
+            if (hasServerAuth()) {
                 setTimeout(() => { syncData(false).catch(() => {}); }, 600);
             }
         };
@@ -1075,7 +1331,7 @@ const COURSE_CATALOG = {
         // Auto-retry sync when network reconnects (Item 3)
         window.addEventListener('online', () => {
             console.log('[Tracker] Jaringan internet kembali online, menyinkronkan data tertunda...');
-            if (getToken() || (getUser() && getUser().google_id)) {
+            if (hasServerAuth()) {
                 syncData(true).catch(() => {});
             }
         });
@@ -1090,6 +1346,9 @@ const COURSE_CATALOG = {
     return {
         getToken,
         getUser,
+        hasServerAuth,
+        normalizeTopicId,
+        retrySyncNow,
         COURSE_CATALOG,
         markCompleted,
         submitEvaluation,
