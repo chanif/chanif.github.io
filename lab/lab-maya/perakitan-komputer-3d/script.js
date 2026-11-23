@@ -1346,17 +1346,21 @@ function selectComponent(id, focusCam = true) {
     const photoCap = document.getElementById('insp-photo-caption');
     const photoCred = document.getElementById('insp-photo-credit');
     if (photoCard && photoImg) {
-        if (comp.realPhoto) {
-            photoImg.src = comp.realPhoto;
-            photoImg.alt = `Foto asli ${comp.name}`;
-            if (photoCap) photoCap.textContent = comp.photoCaption || '';
-            if (photoCred) photoCred.textContent = comp.photoCredit || '';
-            photoCard.classList.remove('hidden');
-        } else {
-            photoImg.removeAttribute('src');
-            photoImg.alt = '';
-            photoCard.classList.add('hidden');
-        }
+        const photoSrc = comp.realPhoto || `assets/photos/${comp.id}.webp`;
+        photoImg.onerror = () => {
+            if (!photoImg.dataset.retried) {
+                photoImg.dataset.retried = '1';
+                photoImg.src = `${photoSrc}?v=20261123`;
+            } else {
+                photoCard.classList.add('hidden');
+            }
+        };
+        photoImg.dataset.retried = '';
+        photoImg.src = photoSrc;
+        photoImg.alt = `Foto asli ${comp.name}`;
+        if (photoCap) photoCap.textContent = comp.photoCaption || '';
+        if (photoCred) photoCred.textContent = comp.photoCredit || '';
+        photoCard.classList.remove('hidden');
     }
 
     syncInspectorActionButtons();
