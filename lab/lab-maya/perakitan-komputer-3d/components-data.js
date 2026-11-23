@@ -35,7 +35,10 @@ window.PC_COMPONENTS = [
             'Konektivitas Internal': '4× DIMM DDR5, 2× M.2 NVMe, 4× SATA 6Gb/s'
         },
         connectedTo: ['cpu-socket', 'vrm-heatsink', 'ram', 'ssd-nvme', 'chipset', 'gpu', 'power-connectors'],
-        assemblyTip: 'Selalu pasang 9 baut standoff kuningan di casing sesuai lubang ATX sebelum menempelkan motherboard agar bagian belakang PCB tidak korsleting dengan logam casing.'
+        assemblyTip: 'Selalu pasang 9 baut standoff kuningan di casing sesuai lubang ATX sebelum menempelkan motherboard agar bagian belakang PCB tidak korsleting dengan logam casing.',
+        realPhoto: 'assets/photos/motherboard.webp',
+        photoCaption: 'Foto motherboard ATX (ASUS ROG Strix) tampak atas dengan socket CPU LGA, slot RAM DDR, heatsink VRM, dan slot PCIe.',
+        photoCredit: 'Foto: PantheraLeo1359531 (Wikimedia Commons, CC BY 4.0)'
     },
     {
         id: 'cpu-socket',
@@ -67,7 +70,10 @@ window.PC_COMPONENTS = [
             'Jalur Terhubung': 'Direct Memory Bus & PCIe Lanes ke CPU'
         },
         connectedTo: ['motherboard', 'cpu', 'vrm-heatsink', 'ram'],
-        assemblyTip: 'Jangan pernah menyentuh pin emas di dalam socket dengan jari! Biarkan penutup plastik pelindung tetap terpasang sampai CPU benar-benar siap diturunkan.'
+        assemblyTip: 'Jangan pernah menyentuh pin emas di dalam socket dengan jari! Biarkan penutup plastik pelindung tetap terpasang sampai CPU benar-benar siap diturunkan.',
+        realPhoto: 'assets/photos/cpu-socket.webp',
+        photoCaption: 'Foto closeup socket CPU LGA 1700 asli lengkap dengan rangka pengunci baja ILM dan array ribuan pin kontak.',
+        photoCredit: 'Foto: Jacek Halicki (Wikimedia Commons, CC BY-SA 4.0)'
     },
     {
         id: 'cpu',
@@ -99,7 +105,10 @@ window.PC_COMPONENTS = [
             'Konsumsi Daya': '65W – 125W TDP (Disuplai oleh VRM)'
         },
         connectedTo: ['cpu-socket', 'cpu-cooler', 'vrm-heatsink', 'ram', 'ssd-nvme', 'gpu'],
-        assemblyTip: 'Sejajarkan tanda segitiga emas di pojok kiri bawah CPU dengan tanda segitiga pada socket. Turunkan secara vertikal tanpa menggesernya agar pin tidak bengkok.'
+        assemblyTip: 'Sejajarkan tanda segitiga emas di pojok kiri bawah CPU dengan tanda segitiga pada socket. Turunkan secara vertikal tanpa menggesernya agar pin tidak bengkok.',
+        realPhoto: 'assets/photos/cpu.webp',
+        photoCaption: 'Foto prosesor asli Intel Core i7-12700K (Alder Lake, LGA 1700) memperlihatkan susunan ratusan pad kontak emas di sisi bawah PCB.',
+        photoCredit: 'Foto: Eric Gaba (Wikimedia Commons, CC BY-SA 4.0)'
     },
     {
         id: 'cpu-cooler',
@@ -131,7 +140,10 @@ window.PC_COMPONENTS = [
             'Aliran Udara': 'Mendorong panas dari depan (+Z) ke belakang (-Z)'
         },
         connectedTo: ['cpu', 'motherboard', 'case-fans'],
-        assemblyTip: 'Oleskan thermal paste seukuran biji kacang hijau di tengah IHS CPU, lepas stiker plastik bening di dasar cooler, lalu kencangkan baut secara menyilang agar tekanan rata.'
+        assemblyTip: 'Oleskan thermal paste seukuran biji kacang hijau di tengah IHS CPU, lepas stiker plastik bening di dasar cooler, lalu kencangkan baut secara menyilang agar tekanan rata.',
+        realPhoto: 'assets/photos/cpu-cooler.webp',
+        photoCaption: 'Foto CPU air cooler model tower (Jonsbo CR-1000 GT) dengan pipa tembaga (heatpipe), sirip aluminium, dan kipas 120 mm.',
+        photoCredit: 'Foto: PantheraLeo1359531 (Wikimedia Commons, CC BY 4.0)'
     },
     {
         id: 'vrm-heatsink',
@@ -163,7 +175,10 @@ window.PC_COMPONENTS = [
             'Pendinginan': 'Dual Anodized Aluminum Heatsink + Thermal Pad'
         },
         connectedTo: ['power-connectors', 'cpu-socket', 'cpu', 'motherboard'],
-        assemblyTip: 'Jangan abaikan aliran udara di sekitar VRM heatsink. Pastikan kipas CPU atau kipas exhaust belakang tetap mengalirkan udara melewati sirip VRM.'
+        assemblyTip: 'Jangan abaikan aliran udara di sekitar VRM heatsink. Pastikan kipas CPU atau kipas exhaust belakang tetap mengalirkan udara melewati sirip VRM.',
+        realPhoto: 'assets/photos/vrm-heatsink.webp',
+        photoCaption: 'Foto rangkaian VRM asli di sekitar socket CPU yang tersusun atas deretan induktor (choke), MOSFET, dan kapasitor padat.',
+        photoCredit: 'Foto: StefanEnDev (Wikimedia Commons, CC0)'
     },
     {
         id: 'ram',
@@ -195,7 +210,10 @@ window.PC_COMPONENTS = [
             'Bandwidth': 'Dual-Channel 128-bit bus langsung ke CPU'
         },
         connectedTo: ['cpu', 'motherboard', 'ssd-nvme'],
-        assemblyTip: 'Untuk 2 keping RAM, pasang di slot ke-2 dan ke-4 (DIMM A2 & B2) dari arah CPU agar mode Dual-Channel aktif. Tekan kedua ujung hingga pengunci berbunyi "KLIK".'
+        assemblyTip: 'Untuk 2 keping RAM, pasang di slot ke-2 dan ke-4 (DIMM A2 & B2) dari arah CPU agar mode Dual-Channel aktif. Tekan kedua ujung hingga pengunci berbunyi "KLIK".',
+        realPhoto: 'assets/photos/ram.webp',
+        photoCaption: 'Foto modul memori RAM DDR5 dual-channel asli (Corsair Vengeance RGB) dengan heatspreader putih dan 288-pin emas.',
+        photoCredit: 'Foto: Jacek Halicki (Wikimedia Commons, CC BY-SA 4.0)'
     },
     {
         id: 'ssd-nvme',
@@ -227,7 +245,10 @@ window.PC_COMPONENTS = [
             'Sifat Penyimpanan': 'Non-Volatil (Data tetap aman tanpa listrik)'
         },
         connectedTo: ['cpu', 'motherboard', 'ram'],
-        assemblyTip: 'Masukkan SSD NVMe pada sudut ~30° ke konektor M.2 hingga pin emas masuk penuh, lalu tekan ujungnya ke standoff dan kunci dengan baut kecil M.2.'
+        assemblyTip: 'Masukkan SSD NVMe pada sudut ~30° ke konektor M.2 hingga pin emas masuk penuh, lalu tekan ujungnya ke standoff dan kunci dengan baut kecil M.2.',
+        realPhoto: 'assets/photos/ssd-nvme.webp',
+        photoCaption: 'Foto SSD NVMe M.2 2280 PCIe 4.0 asli (Samsung 980 PRO 1 TB) dengan chip NAND Flash dan konektor M-Key tanpa kabel.',
+        photoCredit: 'Foto: D-Kuru (Wikimedia Commons, CC BY-SA 4.0)'
     },
     {
         id: 'chipset',
@@ -258,7 +279,10 @@ window.PC_COMPONENTS = [
             'TDP Operasi': '~6W (Didinginkan Heatsink Pasif)'
         },
         connectedTo: ['motherboard', 'cpu', 'storage-sata', 'io-panel', 'cmos-bios'],
-        assemblyTip: 'Driver chipset (Chipset INF) wajib diinstal setelah instalasi sistem operasi agar seluruh port USB, SATA, dan manajemen daya motherboard bekerja optimal.'
+        assemblyTip: 'Driver chipset (Chipset INF) wajib diinstal setelah instalasi sistem operasi agar seluruh port USB, SATA, dan manajemen daya motherboard bekerja optimal.',
+        realPhoto: 'assets/photos/chipset.webp',
+        photoCaption: 'Foto blok heatsink chipset PCH pada motherboard yang melayani jalur SATA, USB, dan slot ekspansi PCIe.',
+        photoCredit: 'Foto: TheStriker (Wikimedia Commons, CC BY-SA 4.0)'
     },
     {
         id: 'cmos-bios',
@@ -289,7 +313,10 @@ window.PC_COMPONENTS = [
             'Fitur Reset': 'Clear CMOS (Cabut baterai 5 menit / Jumper)'
         },
         connectedTo: ['motherboard', 'chipset', 'cpu'],
-        assemblyTip: 'Jika salah mengatur overclocking RAM atau PC gagal tampil ke layar (No Display), cabut kabel PSU lalu lepas baterai CMOS selama 3–5 menit untuk mereset BIOS ke setelan pabrik.'
+        assemblyTip: 'Jika salah mengatur overclocking RAM atau PC gagal tampil ke layar (No Display), cabut kabel PSU lalu lepas baterai CMOS selama 3–5 menit untuk mereset BIOS ke setelan pabrik.',
+        realPhoto: 'assets/photos/cmos-bios.webp',
+        photoCaption: 'Foto baterai kancing Lithium CR2032 3V terpasang pada holder motherboard untuk menjaga RTC dan konfigurasi BIOS/UEFI.',
+        photoCredit: 'Foto: Kent Madsen (Wikimedia Commons, CC BY-SA 2.0)'
     },
     {
         id: 'io-panel',
@@ -321,7 +348,10 @@ window.PC_COMPONENTS = [
             'Audio': '3× Gold-Plated 3.5mm HD Audio Jacks'
         },
         connectedTo: ['motherboard', 'chipset', 'case-chassis'],
-        assemblyTip: 'Perhatikan! Jika PC memakai kartu grafis dedicated (GPU), colokkan kabel monitor ke port di belakang GPU bagian bawah—BUKAN ke Rear I/O motherboard.'
+        assemblyTip: 'Perhatikan! Jika PC memakai kartu grafis dedicated (GPU), colokkan kabel monitor ke port di belakang GPU bagian bawah—BUKAN ke Rear I/O motherboard.',
+        realPhoto: 'assets/photos/io-panel.webp',
+        photoCaption: 'Foto panel Rear I/O motherboard asli berisi port HDMI, DisplayPort, USB 3.2/Type-C, LAN RJ-45, antena Wi-Fi, dan jack audio.',
+        photoCredit: 'Foto: Jacek Halicki (Wikimedia Commons, CC BY-SA 4.0)'
     },
     {
         id: 'power-connectors',
@@ -352,7 +382,10 @@ window.PC_COMPONENTS = [
             'Sumber Daya': 'Terhubung langsung ke modul PSU'
         },
         connectedTo: ['psu', 'motherboard', 'vrm-heatsink'],
-        assemblyTip: 'Kesalahan pemula paling sering: lupa mencolokkan kabel CPU 8-Pin di pojok kiri atas motherboard! Akibatnya kipas menyala namun layar tetap gelap (No POST).'
+        assemblyTip: 'Kesalahan pemula paling sering: lupa mencolokkan kabel CPU 8-Pin di pojok kiri atas motherboard! Akibatnya kipas menyala namun layar tetap gelap (No POST).',
+        realPhoto: 'assets/photos/power-connectors.webp',
+        photoCaption: 'Foto closeup soket daya utama ATX 24-Pin asli di tepi motherboard lengkap dengan pengait pengunci kabel PSU.',
+        photoCredit: 'Foto: Jacek Halicki (Wikimedia Commons, CC BY-SA 4.0)'
     },
     {
         id: 'gpu',
@@ -385,7 +418,10 @@ window.PC_COMPONENTS = [
             'Output Layar': '3× DisplayPort 1.4a, 1× HDMI 2.1'
         },
         connectedTo: ['motherboard', 'cpu', 'psu', 'case-chassis'],
-        assemblyTip: 'Buka pengait (latch) di ujung slot PCIe x16 sebelum menekan GPU masuk. Jangan lupa pasang baut bracket di casing belakang dan colokkan kabel daya PCIe dari PSU!'
+        assemblyTip: 'Buka pengait (latch) di ujung slot PCIe x16 sebelum menekan GPU masuk. Jangan lupa pasang baut bracket di casing belakang dan colokkan kabel daya PCIe dari PSU!',
+        realPhoto: 'assets/photos/gpu.webp',
+        photoCaption: 'Foto kartu grafis dedicated asli (MSI GeForce RTX 3070 Ventus 3X) dengan sistem pendingin tiga kipas dan antarmuka PCIe x16.',
+        photoCredit: 'Foto: TheStriker (Wikimedia Commons, CC BY 4.0)'
     },
     {
         id: 'case-chassis',
@@ -417,7 +453,10 @@ window.PC_COMPONENTS = [
             'Front I/O Atas': 'Power Button, USB 3.0, USB-C, Audio Combo'
         },
         connectedTo: ['motherboard', 'case-fans', 'psu', 'io-panel', 'gpu'],
-        assemblyTip: 'Selalu lepaskan panel samping Tempered Glass dengan hati-hati dan letakkan di permukaan empuk (bukan lantai keramik keras) sebelum merakit motherboard ke dalam casing.'
+        assemblyTip: 'Selalu lepaskan panel samping Tempered Glass dengan hati-hati dan letakkan di permukaan empuk (bukan lantai keramik keras) sebelum merakit motherboard ke dalam casing.',
+        realPhoto: 'assets/photos/case-chassis.webp',
+        photoCaption: 'Foto casing PC Mid-Tower asli (Kolink Observatory) dengan panel kaca tempered dan ventilasi aliran udara depan.',
+        photoCredit: 'Foto: PantheraLeo1359531 (Wikimedia Commons, CC BY 4.0)'
     },
     {
         id: 'psu',
@@ -449,7 +488,10 @@ window.PC_COMPONENTS = [
             'Proteksi': 'OVP, UVP, OCP, OPP, SCP, OTP'
         },
         connectedTo: ['power-connectors', 'gpu', 'storage-sata', 'case-chassis'],
-        assemblyTip: 'Pasang PSU dengan kipas menghadap ke bawah (ke lubang filter debu dasar casing) agar menghisap udara dingin dari luar. Gunakan hanya kabel modular bawaan asli PSU tersebut!'
+        assemblyTip: 'Pasang PSU dengan kipas menghadap ke bawah (ke lubang filter debu dasar casing) agar menghisap udara dingin dari luar. Gunakan hanya kabel modular bawaan asli PSU tersebut!',
+        realPhoto: 'assets/photos/psu.webp',
+        photoCaption: 'Foto Power Supply Unit (PSU) ATX full-modular asli yang menampilkan soket kabel terlabel dan bundel kabel daya modular.',
+        photoCredit: 'Foto: Project Kei (Wikimedia Commons, CC BY-SA 4.0)'
     },
     {
         id: 'storage-sata',
@@ -481,7 +523,10 @@ window.PC_COMPONENTS = [
             'Kapasitas Umum': '1 TB SSD 2.5" + 2 TB HDD 3.5"'
         },
         connectedTo: ['chipset', 'motherboard', 'psu', 'case-chassis'],
-        assemblyTip: 'Drive SATA membutuhkan DUA kabel sekaligus agar terdeteksi di BIOS: kabel data tipis (ke port SATA motherboard) dan kabel daya lebar (dari PSU).'
+        assemblyTip: 'Drive SATA membutuhkan DUA kabel sekaligus agar terdeteksi di BIOS: kabel data tipis (ke port SATA motherboard) dan kabel daya lebar (dari PSU).',
+        realPhoto: 'assets/photos/storage-sata.webp',
+        photoCaption: 'Perbandingan dua perangkat SATA III asli: kiri SSD 2.5" SATA (Samsung 870 QVO), kanan cakram magnetik HDD 3.5" desktop.',
+        photoCredit: 'Foto komposit: Dinkun Chen (CC BY-SA 4.0) & Evan-Amos (CC BY-SA 3.0)'
     },
     {
         id: 'case-fans',
@@ -513,7 +558,10 @@ window.PC_COMPONENTS = [
             'Arah Aliran': 'Depan (+Z) → Belakang (-Z) & Atas (+Y)'
         },
         connectedTo: ['case-chassis', 'cpu-cooler', 'gpu', 'motherboard'],
-        assemblyTip: 'Ingat aturan arah angin kipas standar: sisi depan yang terbuka (logo stiker rapi) adalah sisi HISAP (Intake), sedangkan sisi rangka penopang kabel di belakang adalah sisi TIUP (Exhaust).'
+        assemblyTip: 'Ingat aturan arah angin kipas standar: sisi depan yang terbuka (logo stiker rapi) adalah sisi HISAP (Intake), sedangkan sisi rangka penopang kabel di belakang adalah sisi TIUP (Exhaust).',
+        realPhoto: 'assets/photos/case-fans.webp',
+        photoCaption: 'Foto kipas casing PC 120 mm asli (Corsair) dengan desain bilah terarah untuk menjaga sirkulasi airflow dalam casing.',
+        photoCredit: 'Foto: Eric Chan (Wikimedia Commons, CC BY 2.0)'
     }
 ];
 

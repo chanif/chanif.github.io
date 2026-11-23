@@ -1340,6 +1340,25 @@ function selectComponent(id, focusCam = true) {
     document.getElementById('insp-connections-quick').innerHTML = connHtml;
     document.getElementById('insp-connections-full').innerHTML = connHtml;
 
+    // Real component photo at bottom of "Penjelasan" tab
+    const photoCard = document.getElementById('insp-photo-card');
+    const photoImg = document.getElementById('insp-real-photo');
+    const photoCap = document.getElementById('insp-photo-caption');
+    const photoCred = document.getElementById('insp-photo-credit');
+    if (photoCard && photoImg) {
+        if (comp.realPhoto) {
+            photoImg.src = comp.realPhoto;
+            photoImg.alt = `Foto asli ${comp.name}`;
+            if (photoCap) photoCap.textContent = comp.photoCaption || '';
+            if (photoCred) photoCred.textContent = comp.photoCredit || '';
+            photoCard.classList.remove('hidden');
+        } else {
+            photoImg.removeAttribute('src');
+            photoImg.alt = '';
+            photoCard.classList.add('hidden');
+        }
+    }
+
     syncInspectorActionButtons();
 
     if (focusCam) {
@@ -2136,6 +2155,40 @@ function bindEvents() {
         }
     });
 
+    // Real component photo lightbox triggers
+    const photoTrigger = document.getElementById('insp-photo-trigger');
+    const photoZoomBtn = document.getElementById('btn-insp-photo-zoom');
+    const closePhotoBtn = document.getElementById('btn-close-photo-modal');
+    const photoModal = document.getElementById('photo-modal');
+
+    if (photoTrigger) {
+        photoTrigger.addEventListener('click', () => { sfx.click(); openPhotoModal(); });
+        photoTrigger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                sfx.click();
+                openPhotoModal();
+            }
+        });
+    }
+    if (photoZoomBtn) {
+        photoZoomBtn.addEventListener('click', () => { sfx.click(); openPhotoModal(); });
+    }
+    if (closePhotoBtn) {
+        closePhotoBtn.addEventListener('click', () => { sfx.click(); closePhotoModal(); });
+    }
+    if (photoModal) {
+        photoModal.addEventListener('click', (e) => {
+            if (e.target.id === 'photo-modal') closePhotoModal();
+        });
+    }
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closePhotoModal();
+            document.getElementById('help-modal').classList.add('hidden');
+        }
+    });
+
     // Mobile side drawers
     document.getElementById('btn-toggle-outliner').addEventListener('click', () => {
         document.getElementById('left-panel').classList.toggle('open');
@@ -2150,6 +2203,34 @@ function bindEvents() {
             document.getElementById(btn.dataset.closePanel).classList.remove('open');
         });
     });
+}
+
+function openPhotoModal() {
+    const comp = getComponentById(state.selectedId);
+    const modal = document.getElementById('photo-modal');
+    if (!comp || !comp.realPhoto || !modal) return;
+
+    const titleEl = document.getElementById('photo-modal-title');
+    const subEl = document.getElementById('photo-modal-sub');
+    const imgEl = document.getElementById('photo-modal-img');
+    const capEl = document.getElementById('photo-modal-caption');
+    const credEl = document.getElementById('photo-modal-credit');
+
+    if (titleEl) titleEl.textContent = comp.name;
+    if (subEl) subEl.textContent = comp.slot;
+    if (imgEl) {
+        imgEl.src = comp.realPhoto;
+        imgEl.alt = `Foto asli ${comp.name}`;
+    }
+    if (capEl) capEl.textContent = comp.photoCaption || '';
+    if (credEl) credEl.textContent = comp.photoCredit || '';
+
+    modal.classList.remove('hidden');
+}
+
+function closePhotoModal() {
+    const modal = document.getElementById('photo-modal');
+    if (modal) modal.classList.add('hidden');
 }
 
 function applyTheme(theme) {

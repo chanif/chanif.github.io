@@ -281,6 +281,23 @@
                         <div class="info-label">🔗 TERHUBUNG LANGSUNG DENGAN</div>
                         <div id="insp-connections-quick" class="conn-chips"></div>
                     </div>
+
+                    <div class="info-card info-card-photo" id="insp-photo-card">
+                        <div class="info-label-row">
+                            <span class="info-label">📷 FOTO KOMPONEN ASLI</span>
+                            <button type="button" id="btn-insp-photo-zoom" class="photo-zoom-btn" title="Perbesar foto komponen asli">🔍 Perbesar</button>
+                        </div>
+                        <figure class="real-photo-figure">
+                            <div class="real-photo-frame" id="insp-photo-trigger" role="button" tabindex="0" title="Klik untuk memperbesar foto komponen asli">
+                                <img id="insp-real-photo" class="real-photo-img" src="" alt="" loading="lazy">
+                                <span class="real-photo-zoom-hint">🔍 Klik untuk zoom</span>
+                            </div>
+                            <figcaption class="real-photo-caption">
+                                <span id="insp-photo-caption"></span>
+                                <span id="insp-photo-credit" class="real-photo-credit"></span>
+                            </figcaption>
+                        </figure>
+                    </div>
                 </div>
 
                 <!-- Tab 2: Anatomy & Technical Specs -->
@@ -354,6 +371,27 @@
                     <div class="help-key">👁️ Mata &amp; ⏏️ Lepas Slot</div>
                     <p>Sembunyikan casing/cooler atau keluarkan satu komponen saja dari slot motherboard-nya.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Real Component Photo Lightbox Modal -->
+    <div id="photo-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="photo-modal-title">
+        <div class="modal-card photo-modal-card">
+            <div class="modal-head">
+                <div>
+                    <span class="panel-eyebrow">FOTO KOMPONEN ASLI // PERBESAR</span>
+                    <h3 id="photo-modal-title">Komponen Asli</h3>
+                    <div id="photo-modal-sub" class="photo-modal-sub"></div>
+                </div>
+                <button id="btn-close-photo-modal" class="panel-close-btn" aria-label="Tutup Foto">✕</button>
+            </div>
+            <div class="photo-modal-frame">
+                <img id="photo-modal-img" class="photo-modal-img" src="" alt="">
+            </div>
+            <div class="photo-modal-caption">
+                <p id="photo-modal-caption"></p>
+                <span id="photo-modal-credit" class="real-photo-credit"></span>
             </div>
         </div>
     </div>

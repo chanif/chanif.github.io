@@ -1057,6 +1057,139 @@ html, body {
     background: var(--cyan-soft);
 }
 
+/* Real Hardware Photo Card (Bottom of Tab "Penjelasan") */
+.info-card-photo.hidden {
+    display: none;
+}
+.info-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.info-label-row .info-label {
+    margin-bottom: 0;
+}
+.photo-zoom-btn {
+    border: 1px solid var(--border-subtle);
+    background: rgba(15, 23, 42, 0.78);
+    color: var(--cyan);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+.photo-zoom-btn:hover {
+    background: var(--cyan-soft);
+    border-color: var(--border-cyan);
+}
+.real-photo-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.real-photo-frame {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    background: rgba(2, 6, 23, 0.72);
+    max-height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-in;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.real-photo-frame:hover,
+.real-photo-frame:focus-visible {
+    border-color: var(--border-cyan);
+    box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.2);
+    outline: none;
+}
+.real-photo-img {
+    width: 100%;
+    max-height: 204px;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.25s ease;
+}
+.real-photo-frame:hover .real-photo-img {
+    transform: scale(1.02);
+}
+.real-photo-zoom-hint {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    color: #f8fafc;
+    background: rgba(2, 6, 23, 0.78);
+    border: 1px solid rgba(148, 163, 184, 0.32);
+    border-radius: 6px;
+    padding: 2px 7px;
+    pointer-events: none;
+}
+.real-photo-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 11.5px;
+    line-height: 1.48;
+    color: #cbd5e1;
+}
+.real-photo-credit {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--text-dim);
+}
+
+/* Photo Lightbox Modal */
+.photo-modal-card {
+    width: min(820px, 94vw);
+    max-width: 820px;
+}
+.photo-modal-sub {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+.photo-modal-frame {
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    background: rgba(2, 6, 23, 0.86);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+.photo-modal-img {
+    width: 100%;
+    max-height: 66vh;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+}
+.photo-modal-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.photo-modal-caption p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #e2e8f0;
+    margin: 0;
+}
+
 .inspector-footer {
     padding: 10px 14px;
     border-top: 1px solid var(--border-subtle);
@@ -1478,6 +1611,37 @@ body.theme-light .spec-val {
 }
 body.theme-light .conn-chip {
     background: #ffffff;
+}
+body.theme-light .photo-zoom-btn {
+    background: #f8fafc;
+    color: #0284c7;
+    border-color: rgba(15, 23, 42, 0.14);
+}
+body.theme-light .photo-zoom-btn:hover {
+    background: #e0f2fe;
+    border-color: rgba(2, 132, 199, 0.45);
+}
+body.theme-light .real-photo-frame {
+    background: #f1f5f9;
+    border-color: rgba(15, 23, 42, 0.12);
+}
+body.theme-light .real-photo-frame:hover,
+body.theme-light .real-photo-frame:focus-visible {
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.22);
+}
+body.theme-light .real-photo-zoom-hint {
+    background: rgba(15, 23, 42, 0.8);
+    color: #ffffff;
+}
+body.theme-light .real-photo-caption {
+    color: #334155;
+}
+body.theme-light .photo-modal-frame {
+    background: #f1f5f9;
+    border-color: rgba(15, 23, 42, 0.12);
+}
+body.theme-light .photo-modal-caption p {
+    color: #1e293b;
 }
 body.theme-light .nav-comp-btn {
     background: #f8fafc;
