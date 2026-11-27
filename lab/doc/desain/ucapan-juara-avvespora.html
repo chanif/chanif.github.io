@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ucapan Selamat Juara AVVESPORA — Tim Futsal & Supporter SMP Negeri 2 Lamongan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&family=Playball&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-dark: #030e2c;
+      --navy-mid: #08205f;
+      --navy-bright: #0f389a;
+      --gold-light: #fff3b8;
+      --gold-main: #f6cf59;
+      --gold-mid: #dfa426;
+      --gold-dark: #9c6208;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      font-family: 'Montserrat', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0d1526;
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body.screen-mode {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 20px 40px;
+      gap: 16px;
+    }
+
+    .screen-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1080px;
+      background: #132142;
+      border: 1px solid rgba(246, 207, 89, 0.35);
+      border-radius: 12px;
+      padding: 12px 20px;
+      color: #f1f5f9;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .toolbar-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13.5px;
+    }
+
+    .toolbar-badge {
+      background: linear-gradient(135deg, #f6cf59, #d4961a);
+      color: #06153d;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .btn-print {
+      appearance: none;
+      border: none;
+      background: linear-gradient(135deg, #f6cf59, #d99518);
+      color: #06153d;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Clean Export Mode */
+    body.export-mode {
+      background: #041135;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    body.export-mode .screen-toolbar {
+      display: none !important;
+    }
+
+    body.export-mode .poster-stage {
+      width: 1080px;
+      height: 1350px;
+      margin: 0;
+      padding: 0;
+      transform: none !important;
+    }
+
+    .poster-stage {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      transform-origin: top center;
+    }
+
+    /* Exact 4:5 Social Media Poster (1080x1350 base -> 2160x2700 @ 2x) */
+    .poster-canvas {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 68% 36% at 50% 17%, rgba(246, 207, 89, 0.16) 0%, rgba(16, 62, 168, 0.42) 38%, rgba(4, 15, 48, 0) 72%),
+        radial-gradient(ellipse 90% 42% at 50% 90%, rgba(18, 69, 184, 0.52) 0%, rgba(4, 15, 48, 0) 70%),
+        linear-gradient(160deg, #030c28 0%, #071e5b 48%, #041238 100%);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+    }
+
+    body.export-mode .poster-canvas {
+      box-shadow: none;
+    }
+
+    .bg-crest-watermark {
+      position: absolute;
+      right: 12px;
+      top: 120px;
+      width: 400px;
+      height: 400px;
+      object-fit: contain;
+      opacity: 0.055;
+      filter: brightness(1.4) contrast(1.1);
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+
+    .poster-bg-svg {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1350px;
+      z-index: 2;
+      pointer-events: none;
+      user-select: none;
+      display: block;
+    }
+
+    .poster-content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 1. Top Brand Bar */
+    .brand-bar {
+      width: 100%;
+      padding: 20px 30px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .school-crest {
+      width: 128px;
+      height: 128px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
+      flex: none;
+    }
+
+    .brand-divider {
+      width: 3.5px;
+      height: 92px;
+      border-radius: 3px;
+      background: linear-gradient(180deg, #fff1ab 0%, #e5a92b 100%);
+      box-shadow: 0 0 10px rgba(246, 207, 89, 0.4);
+      flex: none;
+    }
+
+    .school-identity {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .school-name {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: 0.03em;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+    }
+
+    .school-tagline {
+      margin-top: 4px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: #f7d66b;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+    }
+
+    .brand-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      padding-right: 12px;
+    }
+
+    .year-mark {
+      position: relative;
+      font-size: 62px;
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+    }
+
+    .sneda-script {
+      margin-top: 2px;
+      font-family: 'Playball', cursive;
+      font-size: 30px;
+      line-height: 1.05;
+      color: #fff6d6;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+    }
+
+    /* 2. Hero Celebratory Section */
+    .hero-header {
+      margin-top: -12px;
+      width: 100%;
+      padding: 0 42px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-script {
+      font-family: 'Playball', cursive;
+      font-size: 100px;
+      line-height: 1.0;
+      font-weight: 400;
+      color: #ffe066;
+      background: linear-gradient(180deg, #ffffff 0%, #fff7c2 28%, #ffe066 64%, #f5b31a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 3px 0 rgba(5, 16, 48, 0.92)) drop-shadow(0 0 18px rgba(255, 224, 102, 0.58)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.55));
+      padding: 0 18px;
+    }
+
+    .hero-sublead {
+      margin-top: 6px;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+    }
+
+    .team-banner-row {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .laurel-sprig {
+      width: 58px;
+      height: 46px;
+      flex: none;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+    }
+
+    .laurel-sprig.flip {
+      transform: scaleX(-1);
+    }
+
+    .team-banner-box {
+      padding: 8px 30px;
+      background: linear-gradient(90deg, rgba(6, 26, 82, 0.92) 0%, rgba(13, 47, 134, 0.96) 50%, rgba(6, 26, 82, 0.92) 100%);
+      border: 2px solid #f2c952;
+      border-radius: 10px;
+      box-shadow: inset 0 0 0 1px rgba(255, 243, 184, 0.35), 0 8px 22px rgba(0, 0, 0, 0.45);
+    }
+
+    .team-banner-text {
+      font-size: 25.5px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: #fff6d1;
+      text-transform: uppercase;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+      white-space: nowrap;
+    }
+
+    .event-lead {
+      margin-top: 9px;
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 700;
+      color: #f1f5f9;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .event-ribbon {
+      margin-top: 8px;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 54px;
+      background: linear-gradient(90deg, #b87c12 0%, #f5cf5e 24%, #fff1a8 50%, #f5cf5e 76%, #b87c12 100%);
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      clip-path: polygon(0% 0%, 100% 0%, 96% 50%, 100% 100%, 0% 100%, 4% 50%);
+    }
+
+    .event-ribbon-text {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      color: #051642;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .event-location {
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+    }
+
+    .pin-icon {
+      width: 17px;
+      height: 17px;
+      flex: none;
+    }
+
+    /* 3. Team & Supporter Photo Strip */
+    .photo-frame {
+      margin-top: 18px;
+      position: relative;
+      width: 1080px;
+      height: 512px;
+      border-top: 4px solid #f4cc56;
+      border-bottom: 4px solid #f4cc56;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55), 0 0 22px rgba(244, 204, 86, 0.25);
+      background: #061333;
+      overflow: hidden;
+      flex: none;
+    }
+
+    .team-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 90%;
+      display: block;
+    }
+
+    .photo-vignette {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(3, 13, 43, 0.14) 0%,
+        rgba(3, 13, 43, 0) 14%,
+        rgba(3, 13, 43, 0) 84%,
+        rgba(3, 13, 43, 0.36) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* 4. Achievements Podium Section */
+    .meraih-tag {
+      margin-top: -24px;
+      position: relative;
+      z-index: 5;
+      padding: 4px 44px;
+      background: linear-gradient(90deg, #b87c12 0%, #f6d161 30%, #fff2ad 50%, #f6d161 70%, #b87c12 100%);
+      border: 2px solid #fff5c8;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    }
+
+    .meraih-text {
+      font-family: 'Playball', cursive;
+      font-size: 34px;
+      line-height: 1.08;
+      color: #061746;
+    }
+
+    .awards-wrap {
+      margin-top: 18px;
+      width: 100%;
+      padding: 0 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .podium-laurel {
+      width: 82px;
+      height: 164px;
+      flex: none;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+    }
+
+    .podium-laurel.flip {
+      transform: scaleX(-1);
+    }
+
+    .awards-stack {
+      flex: 1;
+      max-width: 848px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .award-card-primary {
+      width: 100%;
+      max-width: 640px;
+      height: 72px;
+      padding: 0 26px;
+      background: linear-gradient(135deg, #bd8214 0%, #efc24e 42%, #f7d978 54%, #c28616 100%);
+      border: 1.5px solid #ffea9c;
+      border-radius: 14px;
+      box-shadow: inset 0 1px 0 rgba(255, 248, 214, 0.65), 0 8px 22px rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .award-card-primary-title {
+      font-size: 31px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: #051642;
+      text-shadow: 0 1px 0 rgba(255, 245, 200, 0.45);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .award-sub-badge {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: #ffe48a;
+      background: #061848;
+      padding: 5px 14px;
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      text-transform: uppercase;
+    }
+
+    .awards-row-secondary {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .award-card-secondary {
+      height: 82px;
+      padding: 0 18px;
+      background: linear-gradient(135deg, #ae7510 0%, #e2b341 48%, #e9c156 58%, #b37912 100%);
+      border: 1.5px solid rgba(255, 232, 150, 0.85);
+      border-radius: 14px;
+      box-shadow: inset 0 1px 0 rgba(255, 246, 205, 0.55), 0 7px 18px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .award-sec-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.08;
+    }
+
+    .award-sec-title {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      color: #051642;
+      text-shadow: 0 1px 0 rgba(255, 242, 192, 0.4);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .award-sec-sub {
+      margin-top: 4px;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: #081e54;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .trophy-icon {
+      width: 40px;
+      height: 40px;
+      flex: none;
+    }
+
+    .trophy-icon.sm {
+      width: 52px;
+      height: 52px;
+    }
+
+    /* 5. Bottom Motto & Official Social Pill */
+    .poster-footer {
+      margin-top: auto;
+      width: 100%;
+      padding: 0 34px 26px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .motto-ornament {
+      width: 460px;
+      height: 14px;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .motto-line {
+      flex: 1;
+      height: 1.5px;
+      background: linear-gradient(90deg, rgba(246, 207, 89, 0) 0%, #f6cf59 100%);
+    }
+
+    .motto-line.right {
+      background: linear-gradient(90deg, #f6cf59 0%, rgba(246, 207, 89, 0) 100%);
+    }
+
+    .motto-star {
+      width: 11px;
+      height: 11px;
+      color: #ffe88f;
+      filter: drop-shadow(0 0 6px rgba(246, 207, 89, 0.8));
+      flex: none;
+    }
+
+    .motto-star.sm {
+      width: 7px;
+      height: 7px;
+      opacity: 0.85;
+    }
+
+    .motto-text {
+      font-family: 'Playball', cursive;
+      font-size: 32px;
+      line-height: 1.12;
+      color: #ffffff;
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.72);
+    }
+
+    .social-pill {
+      width: 980px;
+      padding: 12px 26px;
+      border-radius: 999px;
+      background: rgba(6, 17, 46, 0.78);
+      border: 1.5px solid rgba(246, 207, 89, 0.34);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .social-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #ffffff;
+    }
+
+    .social-icon-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+      color: #081e59;
+    }
+
+    .social-meta {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      line-height: 1.2;
+    }
+
+    .social-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: #cbd5e1;
+    }
+
+    .social-handle {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body class="screen-mode">
+
+  <div class="screen-toolbar">
+    <div class="toolbar-info">
+      <span class="toolbar-badge">Instagram / WA Poster • 4:5 (2160 × 2700 px)</span>
+      <span>Ucapan Selamat Juara AVVESPORA — Tim Futsal &amp; Supporter SMP Negeri 2 Lamongan</span>
+    </div>
+    <button type="button" class="btn-print" onclick="window.print()">Cetak Poster</button>
+  </div>
+
+  <div class="poster-stage" id="posterStage">
+    <main class="poster-canvas" id="poster-4x5">
+      <img src="../piagam/logo-smpn-2-lamongan.png" class="bg-crest-watermark" alt="">
+
+      <!-- Pure-Vector Royal Navy & Brushed Gold Gala Decorative Layer -->
+      <svg class="poster-bg-svg" viewBox="0 0 1080 1350" width="1080" height="1350" aria-hidden="true">
+        <defs>
+          <linearGradient id="ribbonGold" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#8f5806"/>
+            <stop offset="30%" stop-color="#f5cd58"/>
+            <stop offset="55%" stop-color="#fff0a6"/>
+            <stop offset="80%" stop-color="#dc9c1c"/>
+            <stop offset="100%" stop-color="#875105"/>
+          </linearGradient>
+          <linearGradient id="ribbonGoldSoft" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f6d569" stop-opacity="0.72"/>
+            <stop offset="50%" stop-color="#b87b11" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#fff0aa" stop-opacity="0.65"/>
+          </linearGradient>
+          <linearGradient id="navyWaveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0b2f88" stop-opacity="0.75"/>
+            <stop offset="100%" stop-color="#04123a" stop-opacity="0.92"/>
+          </linearGradient>
+          <pattern id="hexGrid" width="56" height="48.5" patternUnits="userSpaceOnUse">
+            <polygon points="14,0 42,0 56,24.25 42,48.5 14,48.5 0,24.25" fill="none" stroke="#4679e8" stroke-width="1" stroke-opacity="0.22"/>
+          </pattern>
+          <pattern id="goldDots" width="12" height="12" patternUnits="userSpaceOnUse">
+            <circle cx="4" cy="4" r="1.8" fill="#f5cf5e" fill-opacity="0.5"/>
+          </pattern>
+          <radialGradient id="topCenterFlare" cx="50%" cy="17%" r="38%">
+            <stop offset="0%" stop-color="#ffe680" stop-opacity="0.32"/>
+            <stop offset="60%" stop-color="#194fc4" stop-opacity="0.14"/>
+            <stop offset="100%" stop-color="#04123a" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="bottomPodiumFlare" cx="50%" cy="80%" r="42%">
+            <stop offset="0%" stop-color="#f6cf59" stop-opacity="0.18"/>
+            <stop offset="50%" stop-color="#1a52d4" stop-opacity="0.22"/>
+            <stop offset="100%" stop-color="#04123a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Ambient Golden Flares & Side Hex Grids -->
+        <rect x="0" y="0" width="1080" height="1350" fill="url(#topCenterFlare)"/>
+        <rect x="0" y="0" width="1080" height="1350" fill="url(#bottomPodiumFlare)"/>
+        <rect x="0" y="130" width="160" height="1060" fill="url(#hexGrid)" opacity="0.65"/>
+        <rect x="920" y="130" width="160" height="1060" fill="url(#hexGrid)" opacity="0.65"/>
+
+        <!-- Top Left & Top Sweeping Ribbons (arching cleanly above header text) -->
+        <path d="M 0 34 C 240 6, 560 44, 1080 12 L 1080 0 L 0 0 Z" fill="url(#navyWaveGrad)"/>
+        <path d="M 0 28 C 250 2, 570 40, 1080 10 L 1080 18 C 570 50, 250 12, 0 38 Z" fill="url(#ribbonGold)"/>
+        <path d="M 0 18 C 190 4, 410 18, 690 0 L 635 0 C 390 12, 180 0, 0 10 Z" fill="url(#ribbonGoldSoft)"/>
+
+        <!-- Subtle Halftone Dot Accents & Clean Corner Sparkles (clear of 2026) -->
+        <rect x="980" y="210" width="84" height="130" fill="url(#goldDots)" opacity="0.65"/>
+        <rect x="14" y="210" width="72" height="130" fill="url(#goldDots)" opacity="0.6"/>
+        <path d="M 836 32 L 852 42 M 830 54 L 848 58 M 1058 34 L 1045 43 M 1064 56 L 1048 59" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" opacity="0.78"/>
+
+        <!-- Festive Floating Brushed Gold Confetti Curls (Upper & Lower Margins) -->
+        <path d="M 96 172 C 118 158, 128 182, 148 168 L 154 176 C 130 192, 116 170, 96 184 Z" fill="url(#ribbonGold)" opacity="0.88"/>
+        <path d="M 956 174 C 932 162, 922 186, 898 172 L 892 180 C 918 196, 932 174, 956 186 Z" fill="url(#ribbonGold)" opacity="0.88"/>
+        <path d="M 52 292 C 74 282, 78 308, 104 298 L 100 308 C 72 316, 66 292, 48 302 Z" fill="url(#ribbonGoldSoft)"/>
+        <path d="M 1028 290 C 1004 282, 1000 308, 974 298 L 978 308 C 1004 316, 1012 292, 1032 302 Z" fill="url(#ribbonGoldSoft)"/>
+
+        <path d="M 48 1004 C 76 988, 92 1022, 118 1002 L 122 1012 C 92 1034, 72 1000, 44 1016 Z" fill="url(#ribbonGold)" opacity="0.85"/>
+        <path d="M 1032 1004 C 1004 988, 988 1022, 962 1002 L 958 1012 C 988 1034, 1008 1000, 1036 1016 Z" fill="url(#ribbonGold)" opacity="0.85"/>
+        <path d="M 152 1192 C 174 1178, 184 1204, 210 1188 L 214 1196 C 184 1214, 170 1190, 148 1204 Z" fill="url(#ribbonGoldSoft)"/>
+        <path d="M 928 1192 C 906 1178, 896 1204, 870 1188 L 866 1196 C 896 1214, 910 1190, 932 1204 Z" fill="url(#ribbonGoldSoft)"/>
+
+        <!-- Bottom Flowing Gala Ribbons -->
+        <path d="M 0 1210 C 310 1300, 740 1280, 1080 1188 L 1080 1350 L 0 1350 Z" fill="url(#navyWaveGrad)"/>
+        <path d="M 0 1192 C 280 1285, 670 1315, 1080 1218 L 1080 1246 C 670 1336, 280 1305, 0 1216 Z" fill="url(#ribbonGold)"/>
+        <path d="M 0 1244 C 330 1338, 720 1296, 1080 1168 L 1080 1184 C 720 1312, 330 1354, 0 1262 Z" fill="url(#ribbonGoldSoft)"/>
+        <path d="M 100 1340 C 380 1280, 740 1285, 1080 1272 L 1080 1282 C 740 1296, 380 1292, 140 1350 Z" fill="#f6cf59" fill-opacity="0.45"/>
+
+        <!-- Gold Sparkle Diamonds & Festive Confetti Dots -->
+        <g fill="#fff1aa" opacity="0.88">
+          <polygon points="158,348 162,358 172,362 162,366 158,376 154,366 144,362 154,358"/>
+          <polygon points="932,344 936,353 945,357 936,361 932,370 928,361 919,357 928,353"/>
+          <polygon points="118,1080 123,1091 134,1096 123,1101 118,1112 113,1101 102,1096 113,1091"/>
+          <polygon points="960,1084 964,1094 974,1098 964,1102 960,1112 956,1102 946,1098 956,1094"/>
+          <polygon points="256,1176 259,1183 266,1186 259,1189 256,1196 253,1189 246,1186 253,1183"/>
+          <polygon points="824,1176 827,1183 834,1186 827,1189 824,1196 821,1189 814,1186 821,1183"/>
+        </g>
+        <circle cx="84" cy="1152" r="5" fill="#f6cf59" opacity="0.65"/>
+        <circle cx="996" cy="1166" r="6" fill="#fff0a6" opacity="0.6"/>
+        <circle cx="192" cy="1218" r="3.5" fill="#f6cf59" opacity="0.55"/>
+        <circle cx="888" cy="1218" r="3.5" fill="#fff0a6" opacity="0.55"/>
+        <circle cx="912" cy="164" r="3.5" fill="#fff0a6" opacity="0.65"/>
+        <circle cx="174" cy="168" r="3.5" fill="#f6cf59" opacity="0.65"/>
+        <rect x="132" y="238" width="11" height="11" rx="2" transform="rotate(35 137 243)" fill="#f6cf59" opacity="0.65"/>
+        <rect x="942" y="236" width="11" height="11" rx="2" transform="rotate(-28 947 241)" fill="#ffe896" opacity="0.65"/>
+      </svg>
+
+      <div class="poster-content">
+        <!-- 1. Top Brand Header -->
+        <header class="brand-bar">
+          <div class="brand-left">
+            <img src="../piagam/logo-smpn-2-lamongan.png" class="school-crest" alt="Logo SMP Negeri 2 Lamongan">
+            <span class="brand-divider" aria-hidden="true"></span>
+            <div class="school-identity">
+              <div class="school-name">SMP NEGERI 2<br>LAMONGAN</div>
+              <div class="school-tagline">Unggul, Berkarakter,<br>Menginspirasi</div>
+            </div>
+          </div>
+          <div class="brand-right">
+            <div class="year-mark">2026</div>
+            <div class="sneda-script">Sneda Megilan</div>
+          </div>
+        </header>
+
+        <!-- 2. Hero Congratulations Title & Event Info -->
+        <section class="hero-header">
+          <h1 class="hero-script">Selamat &amp; Sukses</h1>
+          <p class="hero-sublead">atas prestasi yang diraih oleh</p>
+
+          <div class="team-banner-row">
+            <svg class="laurel-sprig" viewBox="0 0 64 48" aria-hidden="true">
+              <path d="M 52 40 C 30 36, 18 24, 14 8" fill="none" stroke="#f5cf5e" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M 46 39 C 39 33, 41 25, 48 26 C 49 32, 47 36, 46 39 Z M 35 34 C 27 28, 29 19, 37 21 C 38 27, 36 31, 35 34 Z M 25 26 C 18 20, 20 11, 28 14 C 29 20, 27 23, 25 26 Z M 18 16 C 11 11, 13 3, 21 7 C 21 12, 19 15, 18 16 Z M 38 38 C 36 44, 44 46, 49 41 Z M 27 31 C 23 37, 30 40, 36 36 Z M 18 22 C 13 28, 20 32, 26 28 Z" fill="#f7d56b"/>
+            </svg>
+            <div class="team-banner-box">
+              <span class="team-banner-text">TIM FUTSAL &amp; SUPPORTER SMPN 2 LAMONGAN</span>
+            </div>
+            <svg class="laurel-sprig flip" viewBox="0 0 64 48" aria-hidden="true">
+              <path d="M 52 40 C 30 36, 18 24, 14 8" fill="none" stroke="#f5cf5e" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M 46 39 C 39 33, 41 25, 48 26 C 49 32, 47 36, 46 39 Z M 35 34 C 27 28, 29 19, 37 21 C 38 27, 36 31, 35 34 Z M 25 26 C 18 20, 20 11, 28 14 C 29 20, 27 23, 25 26 Z M 18 16 C 11 11, 13 3, 21 7 C 21 12, 19 15, 18 16 Z M 38 38 C 36 44, 44 46, 49 41 Z M 27 31 C 23 37, 30 40, 36 36 Z M 18 22 C 13 28, 20 32, 26 28 Z" fill="#f7d56b"/>
+            </svg>
+          </div>
+
+          <p class="event-lead">dalam ajang</p>
+          <div class="event-ribbon">
+            <span class="event-ribbon-text">AVVESPORA — KOMPETISI FUTSAL</span>
+          </div>
+          <div class="event-location">
+            <span>Oleh SMA Negeri 2 Lamongan</span>
+            <span aria-hidden="true" style="color: #f6cf59;">&bull;</span>
+            <svg class="pin-icon" viewBox="0 0 24 24" fill="#f6cf59" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/>
+            </svg>
+            <span>di GOR Lamongan</span>
+          </div>
+        </section>
+
+        <!-- 3. Real Team & Supporter Photo Strip -->
+        <section class="photo-frame">
+          <img src="WhatsApp%20Image%202026-11-24%20at%2017.15.32.jpeg" class="team-photo" alt="Tim Futsal dan Supporter SMP Negeri 2 Lamongan di Event AVVESPORA">
+          <div class="photo-vignette" aria-hidden="true"></div>
+        </section>
+
+        <!-- 4. Meraih Badge & 3 Achievements Podium -->
+        <div class="meraih-tag">
+          <span class="meraih-text">Meraih :</span>
+        </div>
+
+        <section class="awards-wrap">
+          <svg class="podium-laurel" viewBox="0 0 80 150" aria-hidden="true">
+            <path d="M 64 136 C 30 116, 18 68, 28 14" fill="none" stroke="#f5cf5e" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 52 128 C 42 118, 46 105, 58 109 C 59 118, 55 124, 52 128 Z M 40 107 C 29 97, 33 83, 45 87 C 46 96, 43 102, 40 107 Z M 31 84 C 20 74, 24 59, 36 63 C 37 73, 34 79, 31 84 Z M 26 60 C 16 50, 20 35, 32 40 C 33 49, 29 55, 26 60 Z M 26 36 C 17 26, 22 12, 33 18 C 34 26, 30 32, 26 36 Z M 48 130 C 42 140, 54 144, 61 135 Z M 35 110 C 27 120, 38 125, 46 116 Z M 25 87 C 17 97, 28 103, 36 94 Z M 19 63 C 11 72, 22 79, 30 70 Z M 19 39 C 11 47, 21 54, 29 45 Z" fill="#f7d56b"/>
+          </svg>
+
+          <div class="awards-stack">
+            <!-- Featured Primary Championship Card -->
+            <div class="award-card-primary">
+              <svg class="trophy-icon" viewBox="0 0 48 48" aria-hidden="true">
+                <defs>
+                  <linearGradient id="cupG1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#0c266e"/>
+                    <stop offset="55%" stop-color="#06194a"/>
+                    <stop offset="100%" stop-color="#030f30"/>
+                  </linearGradient>
+                </defs>
+                <path d="M14 8h20v12c0 6-4.5 11-10 11s-10-5-10-11V8z" fill="url(#cupG1)" stroke="#fff2b2" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M14 11H8c0 6 3 9 6 10M34 11h6c0 6-3 9-6 10" fill="none" stroke="#06194a" stroke-width="3" stroke-linecap="round"/>
+                <path d="M20 15h8" stroke="#ffd966" stroke-width="2" stroke-linecap="round"/>
+                <rect x="21" y="30" width="6" height="7" fill="#06194a"/>
+                <rect x="15" y="37" width="18" height="4" rx="1.5" fill="#06194a" stroke="#fff2b2" stroke-width="1"/>
+              </svg>
+              <span class="award-card-primary-title">JUARA 2 FUTSAL</span>
+              <span class="award-sub-badge">AVVESPORA</span>
+            </div>
+
+            <!-- Two Equal Honors Side-by-Side -->
+            <div class="awards-row-secondary">
+              <div class="award-card-secondary">
+                <svg class="trophy-icon sm" viewBox="0 0 48 48" aria-hidden="true">
+                  <path d="M24 5l5.4 11 12.1 1.7-8.8 8.5 2.1 12.1L24 32.6l-10.8 5.7 2.1-12.1-8.8-8.5 12.1-1.7z" fill="#06194a" stroke="#fff2b2" stroke-width="1.4" stroke-linejoin="round"/>
+                  <circle cx="24" cy="23" r="4.5" fill="#ffd966"/>
+                </svg>
+                <div class="award-sec-text">
+                  <span class="award-sec-title">BEST PLAYER</span>
+                  <span class="award-sec-sub">LUKAS NATALI C. (9A)</span>
+                </div>
+              </div>
+
+              <div class="award-card-secondary">
+                <svg class="trophy-icon sm" viewBox="0 0 48 48" aria-hidden="true">
+                  <path d="M9 34h30v5H9zM8 15l8 9 8-12 8 12 8-9-3 17H11z" fill="#06194a" stroke="#fff2b2" stroke-width="1.4" stroke-linejoin="round"/>
+                  <circle cx="24" cy="10" r="2.6" fill="#ffd966" stroke="#06194a" stroke-width="1"/>
+                  <circle cx="8" cy="13" r="2.3" fill="#ffd966" stroke="#06194a" stroke-width="1"/>
+                  <circle cx="40" cy="13" r="2.3" fill="#ffd966" stroke="#06194a" stroke-width="1"/>
+                </svg>
+                <div class="award-sec-text">
+                  <span class="award-sec-title">BEST SUPPORTER</span>
+                  <span class="award-sec-sub">STUDENT REBELS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <svg class="podium-laurel flip" viewBox="0 0 80 150" aria-hidden="true">
+            <path d="M 64 136 C 30 116, 18 68, 28 14" fill="none" stroke="#f5cf5e" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 52 128 C 42 118, 46 105, 58 109 C 59 118, 55 124, 52 128 Z M 40 107 C 29 97, 33 83, 45 87 C 46 96, 43 102, 40 107 Z M 31 84 C 20 74, 24 59, 36 63 C 37 73, 34 79, 31 84 Z M 26 60 C 16 50, 20 35, 32 40 C 33 49, 29 55, 26 60 Z M 26 36 C 17 26, 22 12, 33 18 C 34 26, 30 32, 26 36 Z M 48 130 C 42 140, 54 144, 61 135 Z M 35 110 C 27 120, 38 125, 46 116 Z M 25 87 C 17 97, 28 103, 36 94 Z M 19 63 C 11 72, 22 79, 30 70 Z M 19 39 C 11 47, 21 54, 29 45 Z" fill="#f7d56b"/>
+          </svg>
+        </section>
+
+        <!-- 5. Motto & Official SMPN 2 Lamongan Social Bar -->
+        <footer class="poster-footer">
+          <div class="motto-ornament" aria-hidden="true">
+            <span class="motto-line"></span>
+            <svg class="motto-star sm" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,1 15,9 23,12 15,15 12,23 9,15 1,12 9,9"/></svg>
+            <svg class="motto-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,1 15,9 23,12 15,15 12,23 9,15 1,12 9,9"/></svg>
+            <svg class="motto-star sm" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,1 15,9 23,12 15,15 12,23 9,15 1,12 9,9"/></svg>
+            <span class="motto-line right"></span>
+          </div>
+          <p class="motto-text">Terus Berprestasi, Mengharumkan Nama Sekolah</p>
+          <div class="social-pill">
+            <div class="social-item">
+              <div class="social-icon-circle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.14 5.6 12 5.6 12 5.6s-6.14 0-7.86.46A2.75 2.75 0 0 0 2.2 8.001C1.75 9.73 1.75 12 1.75 12s0 2.27.45 3.999a2.75 2.75 0 0 0 1.94 1.94c1.72.46 7.86.46 7.86.46s6.14 0 7.86-.46a2.75 2.75 0 0 0 1.94-1.94C22.25 14.27 22.25 12 22.25 12s0-2.27-.45-3.999zM10 15V9l5.2 3-5.2 3z"/>
+                </svg>
+              </div>
+              <div class="social-meta">
+                <span class="social-label">Youtube</span>
+                <span class="social-handle">SMPN2 Lamongan</span>
+              </div>
+            </div>
+
+            <div class="social-item">
+              <div class="social-icon-circle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                </svg>
+              </div>
+              <div class="social-meta">
+                <span class="social-label">Instagram</span>
+                <span class="social-handle">smp_negeri_2_lamongan</span>
+              </div>
+            </div>
+
+            <div class="social-item">
+              <div class="social-icon-circle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/>
+                </svg>
+              </div>
+              <div class="social-meta">
+                <span class="social-label">facebook</span>
+                <span class="social-handle">Sneda Lamongan</span>
+              </div>
+            </div>
+
+            <div class="social-item">
+              <div class="social-icon-circle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M3.6 9h16.8M3.6 15h16.8M12 3a13.5 13.5 0 0 1 0 18M12 3a13.5 13.5 0 0 0 0 18"/>
+                </svg>
+              </div>
+              <div class="social-meta">
+                <span class="social-label">Website</span>
+                <span class="social-handle">smpn2lmg.sch.id</span>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const isExport = params.get('export') === '1';
+
+      if (isExport) {
+        document.body.classList.remove('screen-mode');
+        document.body.classList.add('export-mode');
+        return;
+      }
+
+      function fitToViewport() {
+        const stage = document.getElementById('posterStage');
+        if (!stage) return;
+        const maxW = Math.max(320, window.innerWidth - 40);
+        const scale = Math.min(1, maxW / 1080);
+        stage.style.transform = scale < 1 ? 'scale(' + scale + ')' : 'none';
+        stage.style.height = scale < 1 ? Math.ceil(1350 * scale) + 'px' : 'auto';
+      }
+
+      fitToViewport();
+      window.addEventListener('resize', fitToViewport);
+    })();
+  </script>
+</body>
+</html>

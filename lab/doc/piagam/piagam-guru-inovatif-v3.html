@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piagam Penghargaan Guru Inovatif (V3 — Abstrak) — Ach. Chanifuddin Fanani, S.Pd.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a224d;
+      --gold: #b8892b;
+      --gold-deep: #6b5017;
+      --ink-body: #1f2f46;
+      --ink-muted: #4a5970;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--ink-body);
+      background: #e9edf3;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Screen preview wrapper */
+    body.screen-mode {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 20px 40px;
+      gap: 16px;
+    }
+
+    .screen-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1754px;
+      background: #ffffff;
+      border: 1px solid #d7dfeb;
+      border-radius: 12px;
+      padding: 12px 20px;
+      box-shadow: 0 6px 20px rgba(10, 34, 77, 0.08);
+    }
+
+    .toolbar-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13.5px;
+      color: #334155;
+    }
+
+    .toolbar-badge {
+      background: var(--navy);
+      color: #f3dc99;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-print {
+      appearance: none;
+      border: none;
+      background: var(--navy);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(10, 34, 77, 0.2);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-print:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 14px rgba(10, 34, 77, 0.26);
+    }
+
+    /* Export mode for clean headless 300 DPI render */
+    body.export-mode {
+      background: #ffffff;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    body.export-mode .screen-toolbar {
+      display: none !important;
+    }
+
+    body.export-mode .sheet-stage {
+      width: 1754px;
+      height: 1240px;
+      margin: 0;
+      padding: 0;
+      transform: none !important;
+    }
+
+    .sheet-stage {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      transform-origin: top center;
+    }
+
+    /* Core A4 Landscape Sheet (exact 1754 x 1240 px -> 3508 x 2480 @ 2x) */
+    .a4-sheet {
+      position: relative;
+      width: 1754px;
+      height: 1240px;
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(10, 34, 77, 0.18);
+    }
+
+    body.export-mode .a4-sheet {
+      box-shadow: none;
+    }
+
+    /* Abstract Luxury Fluid & Geometric Background Artwork */
+    .cert-bg-art {
+      position: absolute;
+      inset: 0;
+      width: 1754px;
+      height: 1240px;
+      object-fit: fill;
+      display: block;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Soft Radial Safety Veil for High Text & Logo Contrast */
+    .cert-center-veil {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(
+        ellipse 68% 66% at 50% 50%,
+        rgba(255, 255, 255, 0.88) 0%,
+        rgba(255, 255, 255, 0.55) 68%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Whisper-Faint Central Institutional Crest Watermark */
+    .cert-watermark {
+      position: absolute;
+      left: 50%;
+      top: 53%;
+      transform: translate(-50%, -50%);
+      width: 470px;
+      height: 470px;
+      object-fit: contain;
+      opacity: 0.03;
+      filter: grayscale(40%);
+      pointer-events: none;
+      user-select: none;
+      z-index: 2;
+    }
+
+    /* Editorial Open Content Container (no rigid rectangular border) */
+    .content-layer {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      padding: 86px 124px 92px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Top Dual-Logo & Official Institution Header */
+    .cert-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .dual-logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      height: 145px;
+    }
+
+    .smpn-logo-img {
+      width: 145px;
+      height: 145px;
+      object-fit: contain;
+      display: block;
+      flex: none;
+    }
+
+    .logo-divider {
+      width: 2px;
+      height: 88px;
+      background: linear-gradient(
+        180deg,
+        rgba(184, 137, 43, 0) 0%,
+        #b8892b 50%,
+        rgba(184, 137, 43, 0) 100%
+      );
+      flex: none;
+    }
+
+    /* Tight viewport crop for transparent padding around logo_hari_guru_nasional.png */
+    .hgn-logo-frame {
+      width: 244px;
+      height: 100px;
+      position: relative;
+      overflow: hidden;
+      flex: none;
+    }
+
+    .hgn-logo-img {
+      position: absolute;
+      width: 254px;
+      height: 254px;
+      left: -10px;
+      top: -75px;
+      max-width: none;
+      display: block;
+    }
+
+    .inst-eyebrow {
+      margin-top: 8px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 15.5px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      line-height: 20px;
+    }
+
+    .inst-name {
+      margin-top: 2px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--navy);
+      line-height: 34px;
+    }
+
+    .inst-address {
+      margin-top: 2px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 15.5px;
+      font-weight: 400;
+      letter-spacing: 0.015em;
+      color: #43536b;
+      line-height: 20px;
+    }
+
+    /* Title & Official Number */
+    .title-section {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .cert-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 58px;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      line-height: 62px;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+
+    .title-rule-wrap {
+      margin: 8px auto 8px;
+      width: 360px;
+      height: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .title-rule-line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(184, 137, 43, 0) 0%, #b8892b 100%);
+    }
+
+    .title-rule-line.right {
+      background: linear-gradient(90deg, #b8892b 0%, rgba(184, 137, 43, 0) 100%);
+    }
+
+    .title-rule-diamond {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border: 1.5px solid var(--navy);
+      transform: rotate(45deg);
+      flex: none;
+    }
+
+    .cert-number {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--ink-body);
+      line-height: 28px;
+    }
+
+    /* Recipient & Formal Citation */
+    .recipient-section {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .recipient-intro {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 28px;
+      font-weight: 600;
+      color: #3e4e66;
+      line-height: 32px;
+    }
+
+    .recipient-name {
+      margin-top: 2px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 76px;
+      line-height: 82px;
+      letter-spacing: 0.005em;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .name-divider {
+      margin: 8px auto 12px;
+      width: 640px;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        rgba(184, 137, 43, 0) 0%,
+        #b8892b 16%,
+        #dfc067 50%,
+        #b8892b 84%,
+        rgba(184, 137, 43, 0) 100%
+      );
+    }
+
+    .award-lead {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      color: var(--gold-deep);
+      line-height: 32px;
+    }
+
+    .award-title {
+      margin-top: 8px;
+      padding: 8px 52px;
+      border-top: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      background: rgba(184, 137, 43, 0.06);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      line-height: 44px;
+      color: var(--navy);
+      display: inline-block;
+    }
+
+    .citation-text {
+      margin: 16px auto 0;
+      max-width: 1080px;
+      text-wrap: balance;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.44;
+      color: var(--ink-body);
+    }
+
+    /* Official Centered Signature Zone */
+    .cert-footer {
+      margin-top: auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-right: 0;
+    }
+
+    .signature-block {
+      width: 540px;
+      text-align: center;
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--ink-body);
+    }
+
+    .sig-date {
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 32px;
+      color: var(--ink-body);
+    }
+
+    .sig-role {
+      margin-top: 2px;
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 32px;
+      color: var(--navy);
+    }
+
+    .sig-space {
+      width: 100%;
+      height: 114px;
+    }
+
+    .sig-name {
+      display: inline-block;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 34px;
+      color: var(--navy);
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 3px;
+    }
+
+    .sig-rank {
+      margin-top: 4px;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 30px;
+      color: var(--ink-body);
+    }
+
+    .sig-nip {
+      margin-top: 1px;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 30px;
+      color: var(--ink-body);
+    }
+
+    /* Print A4 Landscape Media Rules */
+    @page {
+      size: 297mm 210mm;
+      margin: 0;
+    }
+
+    @media print {
+      html, body {
+        width: 297mm;
+        height: 210mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+        overflow: hidden !important;
+      }
+
+      .screen-toolbar {
+        display: none !important;
+      }
+
+      .sheet-stage {
+        width: 297mm !important;
+        height: 210mm !important;
+        transform: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+      }
+
+      .a4-sheet {
+        width: 1754px !important;
+        height: 1240px !important;
+        zoom: 0.6401;
+        box-shadow: none !important;
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body class="screen-mode">
+
+  <div class="screen-toolbar">
+    <div class="toolbar-info">
+      <span class="toolbar-badge">A4 Landscape • 297 × 210 mm</span>
+      <span>Pratinjau Cetak Piagam Penghargaan Guru Inovatif (V3 — Abstrak) — Hari Guru Nasional 2026</span>
+    </div>
+    <div class="toolbar-actions">
+      <button type="button" class="btn-print" onclick="window.print()">Cetak / Simpan PDF (A4)</button>
+    </div>
+  </div>
+
+  <div class="sheet-stage" id="sheetStage">
+    <main class="a4-sheet" id="piagam-a4">
+      <img src="bg-piagam-v3-abstract.jpg" class="cert-bg-art" alt="">
+      <div class="cert-center-veil" aria-hidden="true"></div>
+      <img src="logo-smpn-2-lamongan.png" class="cert-watermark" alt="">
+
+      <div class="content-layer">
+        <header class="cert-header">
+          <div class="dual-logo-row">
+            <img src="logo-smpn-2-lamongan.png" class="smpn-logo-img" alt="Logo SMP Negeri 2 Lamongan">
+            <span class="logo-divider" aria-hidden="true"></span>
+            <div class="hgn-logo-frame">
+              <img src="logo_hari_guru_nasional.png" class="hgn-logo-img" alt="Logo Hari Guru Nasional 2026">
+            </div>
+          </div>
+          <p class="inst-eyebrow">Pemerintah Kabupaten Lamongan &bull; Dinas Pendidikan</p>
+          <h2 class="inst-name">SMP NEGERI 2 LAMONGAN</h2>
+          <p class="inst-address">Jl. Veteran No. 3, Kel. Banjarmendalan, Kec. Lamongan, Kab. Lamongan, Jawa Timur 62212</p>
+        </header>
+
+        <section class="title-section">
+          <h1 class="cert-title">PIAGAM PENGHARGAAN</h1>
+          <div class="title-rule-wrap" aria-hidden="true">
+            <span class="title-rule-line"></span>
+            <span class="title-rule-diamond"></span>
+            <span class="title-rule-line right"></span>
+          </div>
+          <p class="cert-number">Nomor : 400.3.7/881/413.101.C.20/2026</p>
+        </section>
+
+        <section class="recipient-section">
+          <p class="recipient-intro">Diberikan kepada</p>
+          <p class="recipient-name">Ach. Chanifuddin Fanani, S.Pd.</p>
+          <div class="name-divider" aria-hidden="true"></div>
+          <p class="award-lead">sebagai</p>
+          <p class="award-title">GURU INOVATIF</p>
+          <p class="citation-text">
+            Atas dedikasi dan kreativitasnya dalam mengembangkan inovasi pembelajaran di SMP Negeri 2 Lamongan, serta keteladanannya bagi rekan pendidik dan peserta didik. Penghargaan ini diberikan dalam rangka peringatan Hari Guru Nasional, 25 November 2026.
+          </p>
+        </section>
+
+        <footer class="cert-footer">
+          <div class="signature-block">
+            <p class="sig-date">Lamongan, 25 November 2026</p>
+            <p class="sig-role">Kepala SMP Negeri 2 Lamongan,</p>
+            <div class="sig-space" aria-hidden="true"></div>
+            <p class="sig-name">Sujarno, S.Pd.,M.Pd.</p>
+            <p class="sig-rank">Pembina Utama Muda</p>
+            <p class="sig-nip">NIP. 19670320 199003 1 010</p>
+          </div>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const isExport = params.get('export') === '1';
+
+      if (isExport) {
+        document.body.classList.remove('screen-mode');
+        document.body.classList.add('export-mode');
+        return;
+      }
+
+      function fitToViewport() {
+        const stage = document.getElementById('sheetStage');
+        if (!stage) return;
+        const maxW = Math.max(320, window.innerWidth - 40);
+        const scale = Math.min(1, maxW / 1754);
+        stage.style.transform = scale < 1 ? 'scale(' + scale + ')' : 'none';
+        stage.style.height = scale < 1 ? Math.ceil(1240 * scale) + 'px' : 'auto';
+      }
+
+      fitToViewport();
+      window.addEventListener('resize', fitToViewport);
+    })();
+  </script>
+</body>
+</html>
